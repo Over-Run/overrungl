@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2024 Overrun Organization
+ * Copyright (c) 2024-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +29,6 @@ import static overrungl.glfw.GLFW.*;
 final int INIT_WIDTH = 300;
 final int INIT_HEIGHT = 300;
 
-final GLFW glfw = GLFW.INSTANCE;
 // The window handle
 MemorySegment window = MemorySegment.NULL;
 // The OpenGL context
@@ -67,7 +66,7 @@ void start() {
     }
 
     // Set up a key callback. It will be called every time a key is pressed, repeated or released.
-    glfw.setKeyCallback(window, (handle, key, _, action, _) -> {
+    glfwSetKeyCallback(window, (handle, key, _, action, _) -> {
         if (key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE) {
             // We will detect this in the rendering loop
             glfwSetWindowShouldClose(handle, true);
@@ -81,14 +80,14 @@ void start() {
     });
 
     // Make the OpenGL context current
-    glfw.makeContextCurrent(window);
+    glfwMakeContextCurrent(window);
     // Enable v-sync
-    glfw.swapInterval(1);
+    glfwSwapInterval(1);
 
     // Load OpenGL capabilities with GLFW.
     // The default loading function uses a forward compatible profile,
     // which cannot access deprecated and removed functions.
-    gl = Objects.requireNonNull(GLLoader.load(GLLoader.loadFlags(glfw::getProcAddress)), "Failed to load OpenGL");
+    gl = Objects.requireNonNull(GLLoader.load(GLLoader.loadFlags(GLFW::glfwGetProcAddress)), "Failed to load OpenGL");
     initGL(gl);
 
     run();
@@ -114,7 +113,7 @@ void render(GL gl) {
     // clear the framebuffer
     gl.clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT);
     // swap the color buffers
-    glfw.swapBuffers(window);
+    glfwSwapBuffers(window);
 }
 
 void dispose() {

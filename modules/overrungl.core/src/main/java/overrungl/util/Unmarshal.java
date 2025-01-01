@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2024 Overrun Organization
+ * Copyright (c) 2024-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,6 +23,8 @@ import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.util.function.Function;
+import java.util.function.IntFunction;
 
 import static java.lang.foreign.ValueLayout.*;
 
@@ -200,7 +202,29 @@ public final class Unmarshal {
      * @return the array
      */
     public static MemorySegment @Nullable [] unmarshal(AddressLayout elementLayout, MemorySegment segment) {
-        return isNullPointer(segment) ? null : segment.elements(elementLayout).toArray(MemorySegment[]::new);
+        return unmarshal(elementLayout, segment, MemorySegment[]::new, Function.identity());
+    }
+
+    /**
+     * Unmarshal the given segment as an array.
+     *
+     * @param elementLayout    the source element layout
+     * @param segment          the segment
+     * @param arrayConstructor a function which produces a new array of the desired type and the provided length
+     * @param mapper           a function to apply to each element. the argument of the function is a slice of {@code segment}
+     * @param <T>              the type of the element
+     * @return the array
+     */
+    public static <T> T @Nullable [] unmarshal(AddressLayout elementLayout, MemorySegment segment, IntFunction<T[]> arrayConstructor, Function<MemorySegment, T> mapper) {
+        if (isNullPointer(segment)) return null;
+        long segmentSize = segment.byteSize();
+        long layoutSize = elementLayout.byteSize();
+        int count = Math.toIntExact(segmentSize / layoutSize);
+        T[] arr = arrayConstructor.apply(count);
+        for (int i = 0; i < count; i++) {
+            arr[i] = mapper.apply(segment.getAtIndex(ADDRESS, i));
+        }
+        return arr;
     }
 
     /**
@@ -281,6 +305,27 @@ public final class Unmarshal {
      */
     public static MemorySegment @Nullable [] unmarshalAsAddressArray(MemorySegment segment) {
         return unmarshal(ADDRESS, segment);
+    }
+
+    /**
+     * Unmarshal the given segment as an array.
+     *
+     * @param segment the segment
+     * @param charset the charset
+     * @return the array
+     */
+    public static String @Nullable [] unmarshalAsStringArray(MemorySegment segment, Charset charset) {
+        return unmarshal(STR_LAYOUT, segment, String[]::new, s -> unmarshalAsString(s, charset));
+    }
+
+    /**
+     * Unmarshal the given segment as an array.
+     *
+     * @param segment the segment
+     * @return the array
+     */
+    public static String @Nullable [] unmarshalAsStringArray(MemorySegment segment) {
+        return unmarshalAsStringArray(segment, StandardCharsets.UTF_8);
     }
 
     /**

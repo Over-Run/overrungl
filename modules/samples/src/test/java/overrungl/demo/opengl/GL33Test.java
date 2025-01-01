@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2024 Overrun Organization
+ * Copyright (c) 2022-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,6 +25,7 @@ import overrungl.joml.Matrixn;
 import overrungl.opengl.*;
 import overrungl.opengl.ext.amd.GLAMDDebugOutput;
 import overrungl.opengl.ext.arb.GLARBDebugOutput;
+import overrungl.util.MemoryStack;
 import overrungl.util.Unmarshal;
 
 import java.lang.foreign.Arena;
@@ -32,6 +33,7 @@ import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
 import java.util.Objects;
 
+import static java.lang.foreign.ValueLayout.JAVA_INT;
 import static overrungl.glfw.GLFW.*;
 
 /**
@@ -44,7 +46,6 @@ public class GL33Test {
     private static final int INSTANCE_COUNT = square(10);
     private static final String WND_TITLE = "OpenGL 3.3";
     private static final boolean VSYNC = true;
-    private final GLFW glfw = GLFW.INSTANCE;
     private MemorySegment window;
     private GL gl;
     private int program;
@@ -87,7 +88,7 @@ public class GL33Test {
         glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GLFW_TRUE);
         window = glfwCreateWindow(640, 480, WND_TITLE, MemorySegment.NULL, MemorySegment.NULL);
         if (Unmarshal.isNullPointer(window)) throw new IllegalStateException("Failed to create the GLFW window");
-        glfw.setKeyCallback(window, (_, key, _, action, _) -> {
+        glfwSetKeyCallback(window, (_, key, _, action, _) -> {
             if (key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE) {
                 glfwSetWindowShouldClose(window, true);
             }
@@ -96,22 +97,26 @@ public class GL33Test {
             gl.viewport(0, 0, width, height));
         var vidMode = glfwGetVideoMode(glfwGetPrimaryMonitor());
         if (vidMode != null) {
-            var size = glfwGetWindowSize(window);
-            glfwSetWindowPos(
-                window,
-                (vidMode.width() - size.x()) / 2,
-                (vidMode.height() - size.y()) / 2
-            );
+            try (var stack = MemoryStack.pushLocal()) {
+                MemorySegment width = stack.ints(0);
+                MemorySegment height = stack.ints(0);
+                glfwGetWindowSize(window, width, height);
+                glfwSetWindowPos(
+                    window,
+                    (vidMode.width() - width.get(JAVA_INT, 0)) / 2,
+                    (vidMode.height() - height.get(JAVA_INT, 0)) / 2
+                );
+            }
         }
 
-        glfw.makeContextCurrent(window);
-        if (VSYNC) glfw.swapInterval(1);
+        glfwMakeContextCurrent(window);
+        if (VSYNC) glfwSwapInterval(1);
 
         glfwShowWindow(window);
     }
 
     private void load(Arena arena) {
-        final GLFlags flags = GLLoader.loadFlags(GLLoadFunc.withAlias(glfw::getProcAddress));
+        final GLFlags flags = GLLoader.loadFlags(GLLoadFunc.withAlias(GLFW::glfwGetProcAddress));
         gl = Objects.requireNonNull(GLLoader.load(flags), "Failed to load OpenGL");
 
         debugProc = GLUtil.setupDebugMessageCallback(gl,
@@ -228,7 +233,7 @@ public class GL33Test {
             var matrix = new Matrix4f();
             var pRotationMat = Matrixn.allocate(arena, matrix);
 
-            var timer = Timer.ofGetter(20, glfw::getTime);
+            var timer = Timer.ofGetter(20, GLFW::glfwGetTime);
 
             while (!glfwWindowShouldClose(window)) {
                 timer.advanceTime();
@@ -249,7 +254,7 @@ public class GL33Test {
                 gl.bindVertexArray(0);
                 gl.useProgram(0);
 
-                glfw.swapBuffers(window);
+                glfwSwapBuffers(window);
 
                 glfwPollEvents();
 

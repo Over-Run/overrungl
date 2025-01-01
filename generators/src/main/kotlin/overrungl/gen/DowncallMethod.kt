@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2024 Overrun Organization
+ * Copyright (c) 2024-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -37,12 +37,13 @@ data class DowncallMethod(
     val entrypoint: String?,
     val javadoc: String?,
     val code: String?,
-    val overload: Boolean
+    val overload: Boolean,
+    val optional: Boolean,
+    val defaultCode: String?,
 ) {
     val allocatorRequirement: AllocatorRequirement by lazy {
         parameters.map { p ->
-            if (p.ref) p.type.allocatorRequirement.stricter(AllocatorRequirement.STACK)
-            else p.type.allocatorRequirement
+            p.type.allocatorRequirement
         }.reduceOrNull(AllocatorRequirement::stricter) ?: AllocatorRequirement.NO
     }
     val functionDescriptor: String by lazy {
@@ -67,7 +68,14 @@ data class DowncallMethod(
         name: String = this.name,
         parameters: List<DowncallParameter> = this.parameters,
         javadoc: String? = this.javadoc,
-    ): DowncallMethod = copy(name = name, parameters = parameters, javadoc = javadoc, overload = true)
+        defaultCode: String? = this.defaultCode
+    ): DowncallMethod = copy(
+        name = name,
+        parameters = parameters,
+        javadoc = javadoc,
+        overload = true,
+        defaultCode = defaultCode
+    )
 
     private fun <T> List<T>.insertFirst(t: T): List<T> {
         return toMutableList().also { it.addFirst(t) }

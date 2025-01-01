@@ -39,6 +39,5 @@ module overrungl.opengl {
 
     requires transitive overrungl.core;
     requires static org.jetbrains.annotations;
-    requires io.github.overrun.memstack;
     requires io.github.overrun.marshal; //TODO remove this
 }

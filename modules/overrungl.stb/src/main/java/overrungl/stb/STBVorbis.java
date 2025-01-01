@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023-2024 Overrun Organization
+ * Copyright (c) 2023-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -161,97 +161,100 @@ public final class STBVorbis {
         VORBIS_ogg_skeleton_not_supported = 38;
     //endregion
     //region Method handles
-    /// The method handle of `stb_vorbis_get_info`.
-    public static final MethodHandle MH_stb_vorbis_get_info = RuntimeHelper.downcall(Handles.lookup, "stb_vorbis_get_info", FunctionDescriptor.of(overrungl.stb.STBVorbisInfo.LAYOUT, ValueLayout.ADDRESS));
-    /// The method handle of `stb_vorbis_get_comment`.
-    public static final MethodHandle MH_stb_vorbis_get_comment = RuntimeHelper.downcall(Handles.lookup, "stb_vorbis_get_comment", FunctionDescriptor.of(overrungl.stb.STBVorbisComment.LAYOUT, ValueLayout.ADDRESS));
-    /// The method handle of `stb_vorbis_get_error`.
-    public static final MethodHandle MH_stb_vorbis_get_error = RuntimeHelper.downcall(Handles.lookup, "stb_vorbis_get_error", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    /// The method handle of `stb_vorbis_close`.
-    public static final MethodHandle MH_stb_vorbis_close = RuntimeHelper.downcall(Handles.lookup, "stb_vorbis_close", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-    /// The method handle of `stb_vorbis_get_sample_offset`.
-    public static final MethodHandle MH_stb_vorbis_get_sample_offset = RuntimeHelper.downcall(Handles.lookup, "stb_vorbis_get_sample_offset", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    /// The method handle of `stb_vorbis_get_file_offset`.
-    public static final MethodHandle MH_stb_vorbis_get_file_offset = RuntimeHelper.downcall(Handles.lookup, "stb_vorbis_get_file_offset", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    /// The method handle of `stb_vorbis_open_pushdata`.
-    public static final MethodHandle MH_stb_vorbis_open_pushdata = RuntimeHelper.downcall(Handles.lookup, "stb_vorbis_open_pushdata", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBVorbisAlloc.LAYOUT)));
-    /// The method handle of `stb_vorbis_decode_frame_pushdata`.
-    public static final MethodHandle MH_stb_vorbis_decode_frame_pushdata = RuntimeHelper.downcall(Handles.lookup, "stb_vorbis_decode_frame_pushdata", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    /// The method handle of `stb_vorbis_flush_pushdata`.
-    public static final MethodHandle MH_stb_vorbis_flush_pushdata = RuntimeHelper.downcall(Handles.lookup, "stb_vorbis_flush_pushdata", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-    /// The method handle of `stb_vorbis_decode_filename`.
-    public static final MethodHandle MH_stb_vorbis_decode_filename = RuntimeHelper.downcall(Handles.lookup, "stb_vorbis_decode_filename", FunctionDescriptor.of(ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    /// The method handle of `stb_vorbis_decode_memory`.
-    public static final MethodHandle MH_stb_vorbis_decode_memory = RuntimeHelper.downcall(Handles.lookup, "stb_vorbis_decode_memory", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    /// The method handle of `stb_vorbis_open_memory`.
-    public static final MethodHandle MH_stb_vorbis_open_memory = RuntimeHelper.downcall(Handles.lookup, "stb_vorbis_open_memory", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBVorbisAlloc.LAYOUT)));
-    /// The method handle of `stb_vorbis_open_filename`.
-    public static final MethodHandle MH_stb_vorbis_open_filename = RuntimeHelper.downcall(Handles.lookup, "stb_vorbis_open_filename", FunctionDescriptor.of(ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBVorbisAlloc.LAYOUT)));
-    /// The method handle of `stb_vorbis_seek_frame`.
-    public static final MethodHandle MH_stb_vorbis_seek_frame = RuntimeHelper.downcall(Handles.lookup, "stb_vorbis_seek_frame", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-    /// The method handle of `stb_vorbis_seek`.
-    public static final MethodHandle MH_stb_vorbis_seek = RuntimeHelper.downcall(Handles.lookup, "stb_vorbis_seek", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-    /// The method handle of `stb_vorbis_seek_start`.
-    public static final MethodHandle MH_stb_vorbis_seek_start = RuntimeHelper.downcall(Handles.lookup, "stb_vorbis_seek_start", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    /// The method handle of `stb_vorbis_stream_length_in_samples`.
-    public static final MethodHandle MH_stb_vorbis_stream_length_in_samples = RuntimeHelper.downcall(Handles.lookup, "stb_vorbis_stream_length_in_samples", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    /// The method handle of `stb_vorbis_stream_length_in_seconds`.
-    public static final MethodHandle MH_stb_vorbis_stream_length_in_seconds = RuntimeHelper.downcall(Handles.lookup, "stb_vorbis_stream_length_in_seconds", FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS));
-    /// The method handle of `stb_vorbis_get_frame_float`.
-    public static final MethodHandle MH_stb_vorbis_get_frame_float = RuntimeHelper.downcall(Handles.lookup, "stb_vorbis_get_frame_float", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    /// The method handle of `stb_vorbis_get_frame_short_interleaved`.
-    public static final MethodHandle MH_stb_vorbis_get_frame_short_interleaved = RuntimeHelper.downcall(Handles.lookup, "stb_vorbis_get_frame_short_interleaved", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-    /// The method handle of `stb_vorbis_get_frame_short`.
-    public static final MethodHandle MH_stb_vorbis_get_frame_short = RuntimeHelper.downcall(Handles.lookup, "stb_vorbis_get_frame_short", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-    /// The method handle of `stb_vorbis_get_samples_float_interleaved`.
-    public static final MethodHandle MH_stb_vorbis_get_samples_float_interleaved = RuntimeHelper.downcall(Handles.lookup, "stb_vorbis_get_samples_float_interleaved", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-    /// The method handle of `stb_vorbis_get_samples_float`.
-    public static final MethodHandle MH_stb_vorbis_get_samples_float = RuntimeHelper.downcall(Handles.lookup, "stb_vorbis_get_samples_float", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-    /// The method handle of `stb_vorbis_get_samples_short_interleaved`.
-    public static final MethodHandle MH_stb_vorbis_get_samples_short_interleaved = RuntimeHelper.downcall(Handles.lookup, "stb_vorbis_get_samples_short_interleaved", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-    /// The method handle of `stb_vorbis_get_samples_short`.
-    public static final MethodHandle MH_stb_vorbis_get_samples_short = RuntimeHelper.downcall(Handles.lookup, "stb_vorbis_get_samples_short", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+    /// Method handles.
+    public static final class Handles {
+        /// The method handle of `stb_vorbis_get_info`.
+        public static final MethodHandle MH_stb_vorbis_get_info = RuntimeHelper.downcall(STBInternal.lookup, "stb_vorbis_get_info", FunctionDescriptor.of(overrungl.stb.STBVorbisInfo.LAYOUT, ValueLayout.ADDRESS));
+        /// The method handle of `stb_vorbis_get_comment`.
+        public static final MethodHandle MH_stb_vorbis_get_comment = RuntimeHelper.downcall(STBInternal.lookup, "stb_vorbis_get_comment", FunctionDescriptor.of(overrungl.stb.STBVorbisComment.LAYOUT, ValueLayout.ADDRESS));
+        /// The method handle of `stb_vorbis_get_error`.
+        public static final MethodHandle MH_stb_vorbis_get_error = RuntimeHelper.downcall(STBInternal.lookup, "stb_vorbis_get_error", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        /// The method handle of `stb_vorbis_close`.
+        public static final MethodHandle MH_stb_vorbis_close = RuntimeHelper.downcall(STBInternal.lookup, "stb_vorbis_close", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        /// The method handle of `stb_vorbis_get_sample_offset`.
+        public static final MethodHandle MH_stb_vorbis_get_sample_offset = RuntimeHelper.downcall(STBInternal.lookup, "stb_vorbis_get_sample_offset", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        /// The method handle of `stb_vorbis_get_file_offset`.
+        public static final MethodHandle MH_stb_vorbis_get_file_offset = RuntimeHelper.downcall(STBInternal.lookup, "stb_vorbis_get_file_offset", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        /// The method handle of `stb_vorbis_open_pushdata`.
+        public static final MethodHandle MH_stb_vorbis_open_pushdata = RuntimeHelper.downcall(STBInternal.lookup, "stb_vorbis_open_pushdata", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBVorbisAlloc.LAYOUT)));
+        /// The method handle of `stb_vorbis_decode_frame_pushdata`.
+        public static final MethodHandle MH_stb_vorbis_decode_frame_pushdata = RuntimeHelper.downcall(STBInternal.lookup, "stb_vorbis_decode_frame_pushdata", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        /// The method handle of `stb_vorbis_flush_pushdata`.
+        public static final MethodHandle MH_stb_vorbis_flush_pushdata = RuntimeHelper.downcall(STBInternal.lookup, "stb_vorbis_flush_pushdata", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        /// The method handle of `stb_vorbis_decode_filename`.
+        public static final MethodHandle MH_stb_vorbis_decode_filename = RuntimeHelper.downcall(STBInternal.lookup, "stb_vorbis_decode_filename", FunctionDescriptor.of(ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        /// The method handle of `stb_vorbis_decode_memory`.
+        public static final MethodHandle MH_stb_vorbis_decode_memory = RuntimeHelper.downcall(STBInternal.lookup, "stb_vorbis_decode_memory", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        /// The method handle of `stb_vorbis_open_memory`.
+        public static final MethodHandle MH_stb_vorbis_open_memory = RuntimeHelper.downcall(STBInternal.lookup, "stb_vorbis_open_memory", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBVorbisAlloc.LAYOUT)));
+        /// The method handle of `stb_vorbis_open_filename`.
+        public static final MethodHandle MH_stb_vorbis_open_filename = RuntimeHelper.downcall(STBInternal.lookup, "stb_vorbis_open_filename", FunctionDescriptor.of(ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBVorbisAlloc.LAYOUT)));
+        /// The method handle of `stb_vorbis_seek_frame`.
+        public static final MethodHandle MH_stb_vorbis_seek_frame = RuntimeHelper.downcall(STBInternal.lookup, "stb_vorbis_seek_frame", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        /// The method handle of `stb_vorbis_seek`.
+        public static final MethodHandle MH_stb_vorbis_seek = RuntimeHelper.downcall(STBInternal.lookup, "stb_vorbis_seek", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        /// The method handle of `stb_vorbis_seek_start`.
+        public static final MethodHandle MH_stb_vorbis_seek_start = RuntimeHelper.downcall(STBInternal.lookup, "stb_vorbis_seek_start", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        /// The method handle of `stb_vorbis_stream_length_in_samples`.
+        public static final MethodHandle MH_stb_vorbis_stream_length_in_samples = RuntimeHelper.downcall(STBInternal.lookup, "stb_vorbis_stream_length_in_samples", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        /// The method handle of `stb_vorbis_stream_length_in_seconds`.
+        public static final MethodHandle MH_stb_vorbis_stream_length_in_seconds = RuntimeHelper.downcall(STBInternal.lookup, "stb_vorbis_stream_length_in_seconds", FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS));
+        /// The method handle of `stb_vorbis_get_frame_float`.
+        public static final MethodHandle MH_stb_vorbis_get_frame_float = RuntimeHelper.downcall(STBInternal.lookup, "stb_vorbis_get_frame_float", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        /// The method handle of `stb_vorbis_get_frame_short_interleaved`.
+        public static final MethodHandle MH_stb_vorbis_get_frame_short_interleaved = RuntimeHelper.downcall(STBInternal.lookup, "stb_vorbis_get_frame_short_interleaved", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        /// The method handle of `stb_vorbis_get_frame_short`.
+        public static final MethodHandle MH_stb_vorbis_get_frame_short = RuntimeHelper.downcall(STBInternal.lookup, "stb_vorbis_get_frame_short", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        /// The method handle of `stb_vorbis_get_samples_float_interleaved`.
+        public static final MethodHandle MH_stb_vorbis_get_samples_float_interleaved = RuntimeHelper.downcall(STBInternal.lookup, "stb_vorbis_get_samples_float_interleaved", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        /// The method handle of `stb_vorbis_get_samples_float`.
+        public static final MethodHandle MH_stb_vorbis_get_samples_float = RuntimeHelper.downcall(STBInternal.lookup, "stb_vorbis_get_samples_float", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        /// The method handle of `stb_vorbis_get_samples_short_interleaved`.
+        public static final MethodHandle MH_stb_vorbis_get_samples_short_interleaved = RuntimeHelper.downcall(STBInternal.lookup, "stb_vorbis_get_samples_short_interleaved", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        /// The method handle of `stb_vorbis_get_samples_short`.
+        public static final MethodHandle MH_stb_vorbis_get_samples_short = RuntimeHelper.downcall(STBInternal.lookup, "stb_vorbis_get_samples_short", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+    }
     //endregion
 
     ///get general information about the file
     public static @CType("stb_vorbis_info") java.lang.foreign.MemorySegment stb_vorbis_get_info_(java.lang.foreign.SegmentAllocator allocator, @CType("stb_vorbis *") java.lang.foreign.MemorySegment f) {
         try {
-            return (java.lang.foreign.MemorySegment) MH_stb_vorbis_get_info.invokeExact(allocator, f);
+            return (java.lang.foreign.MemorySegment) Handles.MH_stb_vorbis_get_info.invokeExact(allocator, f);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_info", e); }
     }
 
     ///get general information about the file
     public static @CType("stb_vorbis_info") overrungl.stb.STBVorbisInfo stb_vorbis_get_info(java.lang.foreign.SegmentAllocator allocator, @CType("stb_vorbis *") java.lang.foreign.MemorySegment f) {
         try {
-            return overrungl.stb.STBVorbisInfo.of((java.lang.foreign.MemorySegment) MH_stb_vorbis_get_info.invokeExact(allocator, f));
+            return overrungl.stb.STBVorbisInfo.of((java.lang.foreign.MemorySegment) Handles.MH_stb_vorbis_get_info.invokeExact(allocator, f));
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_info", e); }
     }
 
     ///get ogg comments
     public static @CType("stb_vorbis_comment") java.lang.foreign.MemorySegment stb_vorbis_get_comment_(java.lang.foreign.SegmentAllocator allocator, @CType("stb_vorbis *") java.lang.foreign.MemorySegment f) {
         try {
-            return (java.lang.foreign.MemorySegment) MH_stb_vorbis_get_comment.invokeExact(allocator, f);
+            return (java.lang.foreign.MemorySegment) Handles.MH_stb_vorbis_get_comment.invokeExact(allocator, f);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_comment", e); }
     }
 
     ///get ogg comments
     public static @CType("stb_vorbis_comment") overrungl.stb.STBVorbisComment stb_vorbis_get_comment(java.lang.foreign.SegmentAllocator allocator, @CType("stb_vorbis *") java.lang.foreign.MemorySegment f) {
         try {
-            return overrungl.stb.STBVorbisComment.of((java.lang.foreign.MemorySegment) MH_stb_vorbis_get_comment.invokeExact(allocator, f));
+            return overrungl.stb.STBVorbisComment.of((java.lang.foreign.MemorySegment) Handles.MH_stb_vorbis_get_comment.invokeExact(allocator, f));
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_comment", e); }
     }
 
     ///get the last error detected (clears it, too)
     public static @CType("int") int stb_vorbis_get_error(@CType("stb_vorbis *") java.lang.foreign.MemorySegment f) {
         try {
-            return (int) MH_stb_vorbis_get_error.invokeExact(f);
+            return (int) Handles.MH_stb_vorbis_get_error.invokeExact(f);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_error", e); }
     }
 
     ///close an ogg vorbis file and free all memory in use
     public static void stb_vorbis_close(@CType("stb_vorbis *") java.lang.foreign.MemorySegment f) {
         try {
-            MH_stb_vorbis_close.invokeExact(f);
+            Handles.MH_stb_vorbis_close.invokeExact(f);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_close", e); }
     }
 
@@ -263,7 +266,7 @@ public final class STBVorbis {
     ///NOT WORKING YET after a seek with PULLDATA API
     public static @CType("int") int stb_vorbis_get_sample_offset(@CType("stb_vorbis *") java.lang.foreign.MemorySegment f) {
         try {
-            return (int) MH_stb_vorbis_get_sample_offset.invokeExact(f);
+            return (int) Handles.MH_stb_vorbis_get_sample_offset.invokeExact(f);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_sample_offset", e); }
     }
 
@@ -271,7 +274,7 @@ public final class STBVorbis {
     ///of the memory buffer. In pushdata mode it returns 0.
     public static @CType("unsigned int") int stb_vorbis_get_file_offset(@CType("stb_vorbis *") java.lang.foreign.MemorySegment f) {
         try {
-            return (int) MH_stb_vorbis_get_file_offset.invokeExact(f);
+            return (int) Handles.MH_stb_vorbis_get_file_offset.invokeExact(f);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_file_offset", e); }
     }
 
@@ -288,7 +291,7 @@ public final class STBVorbis {
     ///incomplete and you need to pass in a larger block from the start of the file
     public static @CType("stb_vorbis *") java.lang.foreign.MemorySegment stb_vorbis_open_pushdata(@CType("const unsigned char *") java.lang.foreign.MemorySegment datablock, @CType("int") int datablock_length_in_bytes, @Out @CType("int*") java.lang.foreign.MemorySegment datablock_memory_consumed_in_bytes, @Out @CType("int*") java.lang.foreign.MemorySegment error, @CType("const stb_vorbis_alloc *") java.lang.foreign.MemorySegment alloc_buffer) {
         try {
-            return (java.lang.foreign.MemorySegment) MH_stb_vorbis_open_pushdata.invokeExact(datablock, datablock_length_in_bytes, datablock_memory_consumed_in_bytes, error, alloc_buffer);
+            return (java.lang.foreign.MemorySegment) Handles.MH_stb_vorbis_open_pushdata.invokeExact(datablock, datablock_length_in_bytes, datablock_memory_consumed_in_bytes, error, alloc_buffer);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_open_pushdata", e); }
     }
 
@@ -307,7 +310,7 @@ public final class STBVorbis {
         try (var __overrungl_stack = MemoryStack.pushLocal()) {
             var __overrungl_ref_datablock_memory_consumed_in_bytes = Marshal.marshal(__overrungl_stack, datablock_memory_consumed_in_bytes);
             var __overrungl_ref_error = Marshal.marshal(__overrungl_stack, error);
-            var __overrungl_result = (java.lang.foreign.MemorySegment) MH_stb_vorbis_open_pushdata.invokeExact(datablock, datablock_length_in_bytes, __overrungl_ref_datablock_memory_consumed_in_bytes, __overrungl_ref_error, Marshal.marshal(alloc_buffer));
+            var __overrungl_result = (java.lang.foreign.MemorySegment) Handles.MH_stb_vorbis_open_pushdata.invokeExact(datablock, datablock_length_in_bytes, __overrungl_ref_datablock_memory_consumed_in_bytes, __overrungl_ref_error, Marshal.marshal(alloc_buffer));
             Unmarshal.copy(__overrungl_ref_datablock_memory_consumed_in_bytes, datablock_memory_consumed_in_bytes);
             Unmarshal.copy(__overrungl_ref_error, error);
             return __overrungl_result;
@@ -348,7 +351,7 @@ public final class STBVorbis {
     ///@return number of bytes we used from datablock
     public static @CType("int") int stb_vorbis_decode_frame_pushdata(@CType("stb_vorbis *") java.lang.foreign.MemorySegment f, @CType("const unsigned char *") java.lang.foreign.MemorySegment datablock, @CType("int") int datablock_length_in_bytes, @Out @CType("int*") java.lang.foreign.MemorySegment channels, @Out @CType("float ***") java.lang.foreign.MemorySegment output, @Out @CType("int*") java.lang.foreign.MemorySegment samples) {
         try {
-            return (int) MH_stb_vorbis_decode_frame_pushdata.invokeExact(f, datablock, datablock_length_in_bytes, channels, output, samples);
+            return (int) Handles.MH_stb_vorbis_decode_frame_pushdata.invokeExact(f, datablock, datablock_length_in_bytes, channels, output, samples);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_decode_frame_pushdata", e); }
     }
 
@@ -364,7 +367,7 @@ public final class STBVorbis {
     ///if you don't like the result, seek your file again and repeat.
     public static void stb_vorbis_flush_pushdata(@CType("stb_vorbis *") java.lang.foreign.MemorySegment f) {
         try {
-            MH_stb_vorbis_flush_pushdata.invokeExact(f);
+            Handles.MH_stb_vorbis_flush_pushdata.invokeExact(f);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_flush_pushdata", e); }
     }
 
@@ -374,7 +377,7 @@ public final class STBVorbis {
     ///When you're done with it, just free() the pointer returned in *output.
     public static @CType("int") int stb_vorbis_decode_filename(@CType("const char*") java.lang.foreign.MemorySegment filename, @Out @CType("int*") java.lang.foreign.MemorySegment channels, @Out @CType("int*") java.lang.foreign.MemorySegment sample_rate, @Out @CType("short **") java.lang.foreign.MemorySegment output) {
         try {
-            return (int) MH_stb_vorbis_decode_filename.invokeExact(filename, channels, sample_rate, output);
+            return (int) Handles.MH_stb_vorbis_decode_filename.invokeExact(filename, channels, sample_rate, output);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_decode_filename", e); }
     }
 
@@ -384,7 +387,7 @@ public final class STBVorbis {
     ///When you're done with it, just free() the pointer returned in *output.
     public static @CType("int") int stb_vorbis_decode_memory(@CType("const unsigned char *") java.lang.foreign.MemorySegment mem, @CType("int") int len, @Out @CType("int*") java.lang.foreign.MemorySegment channels, @Out @CType("int*") java.lang.foreign.MemorySegment sample_rate, @Out @CType("short **") java.lang.foreign.MemorySegment output) {
         try {
-            return (int) MH_stb_vorbis_decode_memory.invokeExact(mem, len, channels, sample_rate, output);
+            return (int) Handles.MH_stb_vorbis_decode_memory.invokeExact(mem, len, channels, sample_rate, output);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_decode_memory", e); }
     }
 
@@ -392,7 +395,7 @@ public final class STBVorbis {
     ///this must be the entire stream!). on failure, returns NULL and sets *error
     public static @CType("stb_vorbis *") java.lang.foreign.MemorySegment stb_vorbis_open_memory(@CType("const unsigned char *") java.lang.foreign.MemorySegment data, @CType("int") int len, @Out @CType("int*") java.lang.foreign.MemorySegment error, @CType("const stb_vorbis_alloc *") java.lang.foreign.MemorySegment alloc_buffer) {
         try {
-            return (java.lang.foreign.MemorySegment) MH_stb_vorbis_open_memory.invokeExact(data, len, error, alloc_buffer);
+            return (java.lang.foreign.MemorySegment) Handles.MH_stb_vorbis_open_memory.invokeExact(data, len, error, alloc_buffer);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_open_memory", e); }
     }
 
@@ -401,7 +404,7 @@ public final class STBVorbis {
     public static @CType("stb_vorbis *") java.lang.foreign.MemorySegment stb_vorbis_open_memory(@CType("const unsigned char *") java.lang.foreign.MemorySegment data, @CType("int") int len, @Out @CType("int*") int[] error, @CType("const stb_vorbis_alloc *") overrungl.stb.STBVorbisAlloc alloc_buffer) {
         try (var __overrungl_stack = MemoryStack.pushLocal()) {
             var __overrungl_ref_error = Marshal.marshal(__overrungl_stack, error);
-            var __overrungl_result = (java.lang.foreign.MemorySegment) MH_stb_vorbis_open_memory.invokeExact(data, len, __overrungl_ref_error, Marshal.marshal(alloc_buffer));
+            var __overrungl_result = (java.lang.foreign.MemorySegment) Handles.MH_stb_vorbis_open_memory.invokeExact(data, len, __overrungl_ref_error, Marshal.marshal(alloc_buffer));
             Unmarshal.copy(__overrungl_ref_error, error);
             return __overrungl_result;
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_open_memory", e); }
@@ -411,7 +414,7 @@ public final class STBVorbis {
     ///returns NULL and sets *error (possibly to VORBIS_file_open_failure).
     public static @CType("stb_vorbis *") java.lang.foreign.MemorySegment stb_vorbis_open_filename(@CType("const char*") java.lang.foreign.MemorySegment filename, @Out @CType("int*") java.lang.foreign.MemorySegment error, @CType("const stb_vorbis_alloc *") java.lang.foreign.MemorySegment alloc_buffer) {
         try {
-            return (java.lang.foreign.MemorySegment) MH_stb_vorbis_open_filename.invokeExact(filename, error, alloc_buffer);
+            return (java.lang.foreign.MemorySegment) Handles.MH_stb_vorbis_open_filename.invokeExact(filename, error, alloc_buffer);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_open_filename", e); }
     }
 
@@ -420,7 +423,7 @@ public final class STBVorbis {
     public static @CType("stb_vorbis *") java.lang.foreign.MemorySegment stb_vorbis_open_filename(@CType("const char*") java.lang.String filename, @Out @CType("int*") int[] error, @CType("const stb_vorbis_alloc *") overrungl.stb.STBVorbisAlloc alloc_buffer) {
         try (var __overrungl_stack = MemoryStack.pushLocal()) {
             var __overrungl_ref_error = Marshal.marshal(__overrungl_stack, error);
-            var __overrungl_result = (java.lang.foreign.MemorySegment) MH_stb_vorbis_open_filename.invokeExact(Marshal.marshal(__overrungl_stack, filename), __overrungl_ref_error, Marshal.marshal(alloc_buffer));
+            var __overrungl_result = (java.lang.foreign.MemorySegment) Handles.MH_stb_vorbis_open_filename.invokeExact(Marshal.marshal(__overrungl_stack, filename), __overrungl_ref_error, Marshal.marshal(alloc_buffer));
             Unmarshal.copy(__overrungl_ref_error, error);
             return __overrungl_result;
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_open_filename", e); }
@@ -434,7 +437,7 @@ public final class STBVorbis {
     ///you can also use seek_frame().
     public static @CType("int") int stb_vorbis_seek_frame(@CType("stb_vorbis *") java.lang.foreign.MemorySegment f, @CType("unsigned int") int sample_number) {
         try {
-            return (int) MH_stb_vorbis_seek_frame.invokeExact(f, sample_number);
+            return (int) Handles.MH_stb_vorbis_seek_frame.invokeExact(f, sample_number);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_seek_frame", e); }
     }
 
@@ -446,28 +449,28 @@ public final class STBVorbis {
     ///you can also use seek_frame().
     public static @CType("int") int stb_vorbis_seek(@CType("stb_vorbis *") java.lang.foreign.MemorySegment f, @CType("unsigned int") int sample_number) {
         try {
-            return (int) MH_stb_vorbis_seek.invokeExact(f, sample_number);
+            return (int) Handles.MH_stb_vorbis_seek.invokeExact(f, sample_number);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_seek", e); }
     }
 
     ///this function is equivalent to stb_vorbis_seek(f,0)
     public static @CType("int") int stb_vorbis_seek_start(@CType("stb_vorbis *") java.lang.foreign.MemorySegment f) {
         try {
-            return (int) MH_stb_vorbis_seek_start.invokeExact(f);
+            return (int) Handles.MH_stb_vorbis_seek_start.invokeExact(f);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_seek_start", e); }
     }
 
     ///these functions return the total length of the vorbis stream
     public static @CType("unsigned int") int stb_vorbis_stream_length_in_samples(@CType("stb_vorbis *") java.lang.foreign.MemorySegment f) {
         try {
-            return (int) MH_stb_vorbis_stream_length_in_samples.invokeExact(f);
+            return (int) Handles.MH_stb_vorbis_stream_length_in_samples.invokeExact(f);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_stream_length_in_samples", e); }
     }
 
     ///these functions return the total length of the vorbis stream
     public static @CType("float") float stb_vorbis_stream_length_in_seconds(@CType("stb_vorbis *") java.lang.foreign.MemorySegment f) {
         try {
-            return (float) MH_stb_vorbis_stream_length_in_seconds.invokeExact(f);
+            return (float) Handles.MH_stb_vorbis_stream_length_in_seconds.invokeExact(f);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_stream_length_in_seconds", e); }
     }
 
@@ -481,7 +484,7 @@ public final class STBVorbis {
     ///and stb_vorbis_get_samples_*(), since the latter calls the former.
     public static @CType("int") int stb_vorbis_get_frame_float(@CType("stb_vorbis *") java.lang.foreign.MemorySegment f, @Out @CType("int*") java.lang.foreign.MemorySegment channels, @Out @CType("float ***") java.lang.foreign.MemorySegment output) {
         try {
-            return (int) MH_stb_vorbis_get_frame_float.invokeExact(f, channels, output);
+            return (int) Handles.MH_stb_vorbis_get_frame_float.invokeExact(f, channels, output);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_frame_float", e); }
     }
 
@@ -498,7 +501,7 @@ public final class STBVorbis {
     ///per channel.
     public static @CType("int") int stb_vorbis_get_frame_short_interleaved(@CType("stb_vorbis *") java.lang.foreign.MemorySegment f, @CType("int") int num_c, @Out @CType("short*") java.lang.foreign.MemorySegment buffer, @CType("int") int num_shorts) {
         try {
-            return (int) MH_stb_vorbis_get_frame_short_interleaved.invokeExact(f, num_c, buffer, num_shorts);
+            return (int) Handles.MH_stb_vorbis_get_frame_short_interleaved.invokeExact(f, num_c, buffer, num_shorts);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_frame_short_interleaved", e); }
     }
 
@@ -515,7 +518,7 @@ public final class STBVorbis {
     ///per channel.
     public static @CType("int") int stb_vorbis_get_frame_short(@CType("stb_vorbis *") java.lang.foreign.MemorySegment f, @CType("int") int num_c, @Out @CType("short **") java.lang.foreign.MemorySegment buffer, @CType("int") int num_samples) {
         try {
-            return (int) MH_stb_vorbis_get_frame_short.invokeExact(f, num_c, buffer, num_samples);
+            return (int) Handles.MH_stb_vorbis_get_frame_short.invokeExact(f, num_c, buffer, num_samples);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_frame_short", e); }
     }
 
@@ -525,7 +528,7 @@ public final class STBVorbis {
     ///at the end of the file. If there are no more samples in the file, returns 0.
     public static @CType("int") int stb_vorbis_get_samples_float_interleaved(@CType("stb_vorbis *") java.lang.foreign.MemorySegment f, @CType("int") int channels, @Out @CType("float*") java.lang.foreign.MemorySegment buffer, @CType("int") int num_floats) {
         try {
-            return (int) MH_stb_vorbis_get_samples_float_interleaved.invokeExact(f, channels, buffer, num_floats);
+            return (int) Handles.MH_stb_vorbis_get_samples_float_interleaved.invokeExact(f, channels, buffer, num_floats);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_samples_float_interleaved", e); }
     }
 
@@ -535,7 +538,7 @@ public final class STBVorbis {
     ///at the end of the file. If there are no more samples in the file, returns 0.
     public static @CType("int") int stb_vorbis_get_samples_float(@CType("stb_vorbis *") java.lang.foreign.MemorySegment f, @CType("int") int channels, @Out @CType("float **") java.lang.foreign.MemorySegment buffer, @CType("int") int num_samples) {
         try {
-            return (int) MH_stb_vorbis_get_samples_float.invokeExact(f, channels, buffer, num_samples);
+            return (int) Handles.MH_stb_vorbis_get_samples_float.invokeExact(f, channels, buffer, num_samples);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_samples_float", e); }
     }
 
@@ -547,7 +550,7 @@ public final class STBVorbis {
     ///samples in the file, returns 0.
     public static @CType("int") int stb_vorbis_get_samples_short_interleaved(@CType("stb_vorbis *") java.lang.foreign.MemorySegment f, @CType("int") int channels, @Out @CType("short*") java.lang.foreign.MemorySegment buffer, @CType("int") int num_shorts) {
         try {
-            return (int) MH_stb_vorbis_get_samples_short_interleaved.invokeExact(f, channels, buffer, num_shorts);
+            return (int) Handles.MH_stb_vorbis_get_samples_short_interleaved.invokeExact(f, channels, buffer, num_shorts);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_samples_short_interleaved", e); }
     }
 
@@ -559,7 +562,7 @@ public final class STBVorbis {
     ///samples in the file, returns 0.
     public static @CType("int") int stb_vorbis_get_samples_short(@CType("stb_vorbis *") java.lang.foreign.MemorySegment f, @CType("int") int channels, @Out @CType("short **") java.lang.foreign.MemorySegment buffer, @CType("int") int num_samples) {
         try {
-            return (int) MH_stb_vorbis_get_samples_short.invokeExact(f, channels, buffer, num_samples);
+            return (int) Handles.MH_stb_vorbis_get_samples_short.invokeExact(f, channels, buffer, num_samples);
         } catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_samples_short", e); }
     }
 

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2024 Overrun Organization
+ * Copyright (c) 2024-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -125,141 +125,144 @@ public final class STBImageResize2 {
         STBIR_TYPE_HALF_FLOAT = 5;
     //endregion
     //region Method handles
-    /// The method handle of `stbir_resize_uint8_srgb`.
-    public static final MethodHandle MH_stbir_resize_uint8_srgb = RuntimeHelper.downcall(Handles.lookup, "stbir_resize_uint8_srgb", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    /// The method handle of `stbir_resize`.
-    public static final MethodHandle MH_stbir_resize = RuntimeHelper.downcall(Handles.lookup, "stbir_resize", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    /// The method handle of `stbir_resize_init`.
-    public static final MethodHandle MH_stbir_resize_init = RuntimeHelper.downcall(Handles.lookup, "stbir_resize_init", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    /// The method handle of `stbir_set_datatypes`.
-    public static final MethodHandle MH_stbir_set_datatypes = RuntimeHelper.downcall(Handles.lookup, "stbir_set_datatypes", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    /// The method handle of `stbir_set_pixel_callbacks`.
-    public static final MethodHandle MH_stbir_set_pixel_callbacks = RuntimeHelper.downcall(Handles.lookup, "stbir_set_pixel_callbacks", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    /// The method handle of `stbir_set_user_data`.
-    public static final MethodHandle MH_stbir_set_user_data = RuntimeHelper.downcall(Handles.lookup, "stbir_set_user_data", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    /// The method handle of `stbir_set_buffer_ptrs`.
-    public static final MethodHandle MH_stbir_set_buffer_ptrs = RuntimeHelper.downcall(Handles.lookup, "stbir_set_buffer_ptrs", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-    /// The method handle of `stbir_set_pixel_layouts`.
-    public static final MethodHandle MH_stbir_set_pixel_layouts = RuntimeHelper.downcall(Handles.lookup, "stbir_set_pixel_layouts", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    /// The method handle of `stbir_set_edgemodes`.
-    public static final MethodHandle MH_stbir_set_edgemodes = RuntimeHelper.downcall(Handles.lookup, "stbir_set_edgemodes", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    /// The method handle of `stbir_set_filters`.
-    public static final MethodHandle MH_stbir_set_filters = RuntimeHelper.downcall(Handles.lookup, "stbir_set_filters", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    /// The method handle of `stbir_set_filter_callbacks`.
-    public static final MethodHandle MH_stbir_set_filter_callbacks = RuntimeHelper.downcall(Handles.lookup, "stbir_set_filter_callbacks", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    /// The method handle of `stbir_set_pixel_subrect`.
-    public static final MethodHandle MH_stbir_set_pixel_subrect = RuntimeHelper.downcall(Handles.lookup, "stbir_set_pixel_subrect", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    /// The method handle of `stbir_set_input_subrect`.
-    public static final MethodHandle MH_stbir_set_input_subrect = RuntimeHelper.downcall(Handles.lookup, "stbir_set_input_subrect", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
-    /// The method handle of `stbir_set_output_pixel_subrect`.
-    public static final MethodHandle MH_stbir_set_output_pixel_subrect = RuntimeHelper.downcall(Handles.lookup, "stbir_set_output_pixel_subrect", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    /// The method handle of `stbir_set_non_pm_alpha_speed_over_quality`.
-    public static final MethodHandle MH_stbir_set_non_pm_alpha_speed_over_quality = RuntimeHelper.downcall(Handles.lookup, "stbir_set_non_pm_alpha_speed_over_quality", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-    /// The method handle of `stbir_build_samplers`.
-    public static final MethodHandle MH_stbir_build_samplers = RuntimeHelper.downcall(Handles.lookup, "stbir_build_samplers", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
-    /// The method handle of `stbir_free_samplers`.
-    public static final MethodHandle MH_stbir_free_samplers = RuntimeHelper.downcall(Handles.lookup, "stbir_free_samplers", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-    /// The method handle of `stbir_resize_extended`.
-    public static final MethodHandle MH_stbir_resize_extended = RuntimeHelper.downcall(Handles.lookup, "stbir_resize_extended", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
-    /// The method handle of `stbir_build_samplers_with_splits`.
-    public static final MethodHandle MH_stbir_build_samplers_with_splits = RuntimeHelper.downcall(Handles.lookup, "stbir_build_samplers_with_splits", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-    /// The method handle of `stbir_resize_extended_splits`.
-    public static final MethodHandle MH_stbir_resize_extended_splits = RuntimeHelper.downcall(Handles.lookup, "stbir_resize_extended_splits", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+    /// Method handles.
+    public static final class Handles {
+        /// The method handle of `stbir_resize_uint8_srgb`.
+        public static final MethodHandle MH_stbir_resize_uint8_srgb = RuntimeHelper.downcall(STBInternal.lookup, "stbir_resize_uint8_srgb", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        /// The method handle of `stbir_resize`.
+        public static final MethodHandle MH_stbir_resize = RuntimeHelper.downcall(STBInternal.lookup, "stbir_resize", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        /// The method handle of `stbir_resize_init`.
+        public static final MethodHandle MH_stbir_resize_init = RuntimeHelper.downcall(STBInternal.lookup, "stbir_resize_init", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        /// The method handle of `stbir_set_datatypes`.
+        public static final MethodHandle MH_stbir_set_datatypes = RuntimeHelper.downcall(STBInternal.lookup, "stbir_set_datatypes", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        /// The method handle of `stbir_set_pixel_callbacks`.
+        public static final MethodHandle MH_stbir_set_pixel_callbacks = RuntimeHelper.downcall(STBInternal.lookup, "stbir_set_pixel_callbacks", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        /// The method handle of `stbir_set_user_data`.
+        public static final MethodHandle MH_stbir_set_user_data = RuntimeHelper.downcall(STBInternal.lookup, "stbir_set_user_data", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        /// The method handle of `stbir_set_buffer_ptrs`.
+        public static final MethodHandle MH_stbir_set_buffer_ptrs = RuntimeHelper.downcall(STBInternal.lookup, "stbir_set_buffer_ptrs", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        /// The method handle of `stbir_set_pixel_layouts`.
+        public static final MethodHandle MH_stbir_set_pixel_layouts = RuntimeHelper.downcall(STBInternal.lookup, "stbir_set_pixel_layouts", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        /// The method handle of `stbir_set_edgemodes`.
+        public static final MethodHandle MH_stbir_set_edgemodes = RuntimeHelper.downcall(STBInternal.lookup, "stbir_set_edgemodes", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        /// The method handle of `stbir_set_filters`.
+        public static final MethodHandle MH_stbir_set_filters = RuntimeHelper.downcall(STBInternal.lookup, "stbir_set_filters", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        /// The method handle of `stbir_set_filter_callbacks`.
+        public static final MethodHandle MH_stbir_set_filter_callbacks = RuntimeHelper.downcall(STBInternal.lookup, "stbir_set_filter_callbacks", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        /// The method handle of `stbir_set_pixel_subrect`.
+        public static final MethodHandle MH_stbir_set_pixel_subrect = RuntimeHelper.downcall(STBInternal.lookup, "stbir_set_pixel_subrect", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        /// The method handle of `stbir_set_input_subrect`.
+        public static final MethodHandle MH_stbir_set_input_subrect = RuntimeHelper.downcall(STBInternal.lookup, "stbir_set_input_subrect", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
+        /// The method handle of `stbir_set_output_pixel_subrect`.
+        public static final MethodHandle MH_stbir_set_output_pixel_subrect = RuntimeHelper.downcall(STBInternal.lookup, "stbir_set_output_pixel_subrect", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        /// The method handle of `stbir_set_non_pm_alpha_speed_over_quality`.
+        public static final MethodHandle MH_stbir_set_non_pm_alpha_speed_over_quality = RuntimeHelper.downcall(STBInternal.lookup, "stbir_set_non_pm_alpha_speed_over_quality", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        /// The method handle of `stbir_build_samplers`.
+        public static final MethodHandle MH_stbir_build_samplers = RuntimeHelper.downcall(STBInternal.lookup, "stbir_build_samplers", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
+        /// The method handle of `stbir_free_samplers`.
+        public static final MethodHandle MH_stbir_free_samplers = RuntimeHelper.downcall(STBInternal.lookup, "stbir_free_samplers", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        /// The method handle of `stbir_resize_extended`.
+        public static final MethodHandle MH_stbir_resize_extended = RuntimeHelper.downcall(STBInternal.lookup, "stbir_resize_extended", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
+        /// The method handle of `stbir_build_samplers_with_splits`.
+        public static final MethodHandle MH_stbir_build_samplers_with_splits = RuntimeHelper.downcall(STBInternal.lookup, "stbir_build_samplers_with_splits", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        /// The method handle of `stbir_resize_extended_splits`.
+        public static final MethodHandle MH_stbir_resize_extended_splits = RuntimeHelper.downcall(STBInternal.lookup, "stbir_resize_extended_splits", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+    }
     //endregion
 
     public static @CType("unsigned char *") java.lang.foreign.MemorySegment stbir_resize_uint8_srgb(@CType("const unsigned char *") java.lang.foreign.MemorySegment input_pixels, @CType("int") int input_w, @CType("int") int input_h, @CType("int") int input_stride_in_bytes, @CType("unsigned char *") java.lang.foreign.MemorySegment output_pixels, @CType("int") int output_w, @CType("int") int output_h, @CType("int") int output_stride_in_bytes, @CType("stbir_pixel_layout") int pixel_type) {
         try {
-            return (java.lang.foreign.MemorySegment) MH_stbir_resize_uint8_srgb.invokeExact(input_pixels, input_w, input_h, input_stride_in_bytes, output_pixels, output_w, output_h, output_stride_in_bytes, pixel_type);
+            return (java.lang.foreign.MemorySegment) Handles.MH_stbir_resize_uint8_srgb.invokeExact(input_pixels, input_w, input_h, input_stride_in_bytes, output_pixels, output_w, output_h, output_stride_in_bytes, pixel_type);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_resize_uint8_srgb", e); }
     }
 
     public static @CType("unsigned char *") java.lang.foreign.MemorySegment stbir_resize_uint8_linear(@CType("const unsigned char *") java.lang.foreign.MemorySegment input_pixels, @CType("int") int input_w, @CType("int") int input_h, @CType("int") int input_stride_in_bytes, @CType("unsigned char *") java.lang.foreign.MemorySegment output_pixels, @CType("int") int output_w, @CType("int") int output_h, @CType("int") int output_stride_in_bytes, @CType("stbir_pixel_layout") int pixel_type) {
         try {
-            return (java.lang.foreign.MemorySegment) MH_stbir_resize_uint8_srgb.invokeExact(input_pixels, input_w, input_h, input_stride_in_bytes, output_pixels, output_w, output_h, output_stride_in_bytes, pixel_type);
+            return (java.lang.foreign.MemorySegment) Handles.MH_stbir_resize_uint8_srgb.invokeExact(input_pixels, input_w, input_h, input_stride_in_bytes, output_pixels, output_w, output_h, output_stride_in_bytes, pixel_type);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_resize_uint8_srgb", e); }
     }
 
     public static @CType("float*") java.lang.foreign.MemorySegment stbir_resize_float_linear(@CType("const float *") java.lang.foreign.MemorySegment input_pixels, @CType("int") int input_w, @CType("int") int input_h, @CType("int") int input_stride_in_bytes, @CType("float*") java.lang.foreign.MemorySegment output_pixels, @CType("int") int output_w, @CType("int") int output_h, @CType("int") int output_stride_in_bytes, @CType("stbir_pixel_layout") int pixel_type) {
         try {
-            return (java.lang.foreign.MemorySegment) MH_stbir_resize_uint8_srgb.invokeExact(input_pixels, input_w, input_h, input_stride_in_bytes, output_pixels, output_w, output_h, output_stride_in_bytes, pixel_type);
+            return (java.lang.foreign.MemorySegment) Handles.MH_stbir_resize_uint8_srgb.invokeExact(input_pixels, input_w, input_h, input_stride_in_bytes, output_pixels, output_w, output_h, output_stride_in_bytes, pixel_type);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_resize_uint8_srgb", e); }
     }
 
     public static @CType("void*") java.lang.foreign.MemorySegment stbir_resize(@CType("const void*") java.lang.foreign.MemorySegment input_pixels, @CType("int") int input_w, @CType("int") int input_h, @CType("int") int input_stride_in_bytes, @CType("void*") java.lang.foreign.MemorySegment output_pixels, @CType("int") int output_w, @CType("int") int output_h, @CType("int") int output_stride_in_bytes, @CType("stbir_pixel_layout") int pixel_layout, @CType("stbir_datatype") int data_type, @CType("stbir_edge") int edge, @CType("stbir_filter") int filter) {
         try {
-            return (java.lang.foreign.MemorySegment) MH_stbir_resize.invokeExact(input_pixels, input_w, input_h, input_stride_in_bytes, output_pixels, output_w, output_h, output_stride_in_bytes, pixel_layout, data_type, edge, filter);
+            return (java.lang.foreign.MemorySegment) Handles.MH_stbir_resize.invokeExact(input_pixels, input_w, input_h, input_stride_in_bytes, output_pixels, output_w, output_h, output_stride_in_bytes, pixel_layout, data_type, edge, filter);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_resize", e); }
     }
 
     public static void stbir_resize_init(@CType("STBIR_RESIZE *") java.lang.foreign.MemorySegment resize, @CType("const void*") java.lang.foreign.MemorySegment input_pixels, @CType("int") int input_w, @CType("int") int input_h, @CType("int") int input_stride_in_bytes, @CType("void*") java.lang.foreign.MemorySegment output_pixels, @CType("int") int output_w, @CType("int") int output_h, @CType("int") int output_stride_in_bytes, @CType("stbir_pixel_layout") int pixel_layout, @CType("stbir_datatype") int data_type) {
         try {
-            MH_stbir_resize_init.invokeExact(resize, input_pixels, input_w, input_h, input_stride_in_bytes, output_pixels, output_w, output_h, output_stride_in_bytes, pixel_layout, data_type);
+            Handles.MH_stbir_resize_init.invokeExact(resize, input_pixels, input_w, input_h, input_stride_in_bytes, output_pixels, output_w, output_h, output_stride_in_bytes, pixel_layout, data_type);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_resize_init", e); }
     }
 
     public static void stbir_set_datatypes(@CType("STBIR_RESIZE *") java.lang.foreign.MemorySegment resize, @CType("stbir_datatype") int input_type, @CType("stbir_datatype") int output_type) {
         try {
-            MH_stbir_set_datatypes.invokeExact(resize, input_type, output_type);
+            Handles.MH_stbir_set_datatypes.invokeExact(resize, input_type, output_type);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_datatypes", e); }
     }
 
     public static void stbir_set_pixel_callbacks(@CType("STBIR_RESIZE *") java.lang.foreign.MemorySegment resize, @CType("stbir_input_callback *") java.lang.foreign.MemorySegment input_cb, @CType("stbir_output_callback *") java.lang.foreign.MemorySegment output_cb) {
         try {
-            MH_stbir_set_pixel_callbacks.invokeExact(resize, input_cb, output_cb);
+            Handles.MH_stbir_set_pixel_callbacks.invokeExact(resize, input_cb, output_cb);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_pixel_callbacks", e); }
     }
 
     public static void stbir_set_user_data(@CType("STBIR_RESIZE *") java.lang.foreign.MemorySegment resize, @CType("void*") java.lang.foreign.MemorySegment user_data) {
         try {
-            MH_stbir_set_user_data.invokeExact(resize, user_data);
+            Handles.MH_stbir_set_user_data.invokeExact(resize, user_data);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_user_data", e); }
     }
 
     public static void stbir_set_buffer_ptrs(@CType("STBIR_RESIZE *") java.lang.foreign.MemorySegment resize, @CType("const void*") java.lang.foreign.MemorySegment input_pixels, @CType("int") int input_stride_in_bytes, @CType("void*") java.lang.foreign.MemorySegment output_pixels, @CType("int") int output_stride_in_bytes) {
         try {
-            MH_stbir_set_buffer_ptrs.invokeExact(resize, input_pixels, input_stride_in_bytes, output_pixels, output_stride_in_bytes);
+            Handles.MH_stbir_set_buffer_ptrs.invokeExact(resize, input_pixels, input_stride_in_bytes, output_pixels, output_stride_in_bytes);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_buffer_ptrs", e); }
     }
 
     public static @CType("int") boolean stbir_set_pixel_layouts(@CType("STBIR_RESIZE *") java.lang.foreign.MemorySegment resize, @CType("stbir_pixel_layout") int input_pixel_layout, @CType("stbir_pixel_layout") int output_pixel_layout) {
         try {
-            return (boolean) MH_stbir_set_pixel_layouts.invokeExact(resize, input_pixel_layout, output_pixel_layout);
+            return (boolean) Handles.MH_stbir_set_pixel_layouts.invokeExact(resize, input_pixel_layout, output_pixel_layout);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_pixel_layouts", e); }
     }
 
     public static @CType("int") boolean stbir_set_edgemodes(@CType("STBIR_RESIZE *") java.lang.foreign.MemorySegment resize, @CType("stbir_edge") int horizontal_edge, @CType("stbir_edge") int vertical_edge) {
         try {
-            return (boolean) MH_stbir_set_edgemodes.invokeExact(resize, horizontal_edge, vertical_edge);
+            return (boolean) Handles.MH_stbir_set_edgemodes.invokeExact(resize, horizontal_edge, vertical_edge);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_edgemodes", e); }
     }
 
     public static @CType("int") boolean stbir_set_filters(@CType("STBIR_RESIZE *") java.lang.foreign.MemorySegment resize, @CType("stbir_filter") int horizontal_filter, @CType("stbir_filter") int vertical_filter) {
         try {
-            return (boolean) MH_stbir_set_filters.invokeExact(resize, horizontal_filter, vertical_filter);
+            return (boolean) Handles.MH_stbir_set_filters.invokeExact(resize, horizontal_filter, vertical_filter);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_filters", e); }
     }
 
     public static @CType("int") boolean stbir_set_filter_callbacks(@CType("STBIR_RESIZE *") java.lang.foreign.MemorySegment resize, @CType("stbir__kernel_callback *") java.lang.foreign.MemorySegment horizontal_filter, @CType("stbir__support_callback *") java.lang.foreign.MemorySegment horizontal_support, @CType("stbir__kernel_callback *") java.lang.foreign.MemorySegment vertical_filter, @CType("stbir__support_callback *") java.lang.foreign.MemorySegment vertical_support) {
         try {
-            return (boolean) MH_stbir_set_filter_callbacks.invokeExact(resize, horizontal_filter, horizontal_support, vertical_filter, vertical_support);
+            return (boolean) Handles.MH_stbir_set_filter_callbacks.invokeExact(resize, horizontal_filter, horizontal_support, vertical_filter, vertical_support);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_filter_callbacks", e); }
     }
 
     public static @CType("int") boolean stbir_set_pixel_subrect(@CType("STBIR_RESIZE *") java.lang.foreign.MemorySegment resize, @CType("int") int subx, @CType("int") int suby, @CType("int") int subw, @CType("int") int subh) {
         try {
-            return (boolean) MH_stbir_set_pixel_subrect.invokeExact(resize, subx, suby, subw, subh);
+            return (boolean) Handles.MH_stbir_set_pixel_subrect.invokeExact(resize, subx, suby, subw, subh);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_pixel_subrect", e); }
     }
 
     public static @CType("int") boolean stbir_set_input_subrect(@CType("STBIR_RESIZE *") java.lang.foreign.MemorySegment resize, @CType("double") double s0, @CType("double") double t0, @CType("double") double s1, @CType("double") double t1) {
         try {
-            return (boolean) MH_stbir_set_input_subrect.invokeExact(resize, s0, t0, s1, t1);
+            return (boolean) Handles.MH_stbir_set_input_subrect.invokeExact(resize, s0, t0, s1, t1);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_input_subrect", e); }
     }
 
     public static @CType("int") boolean stbir_set_output_pixel_subrect(@CType("STBIR_RESIZE *") java.lang.foreign.MemorySegment resize, @CType("int") int subx, @CType("int") int suby, @CType("int") int subw, @CType("int") int subh) {
         try {
-            return (boolean) MH_stbir_set_output_pixel_subrect.invokeExact(resize, subx, suby, subw, subh);
+            return (boolean) Handles.MH_stbir_set_output_pixel_subrect.invokeExact(resize, subx, suby, subw, subh);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_output_pixel_subrect", e); }
     }
 
@@ -269,28 +272,28 @@ public final class STBImageResize2 {
     ///types of resizes.
     public static @CType("int") boolean stbir_set_non_pm_alpha_speed_over_quality(@CType("STBIR_RESIZE *") java.lang.foreign.MemorySegment resize, @CType("int") int non_pma_alpha_speed_over_quality) {
         try {
-            return (boolean) MH_stbir_set_non_pm_alpha_speed_over_quality.invokeExact(resize, non_pma_alpha_speed_over_quality);
+            return (boolean) Handles.MH_stbir_set_non_pm_alpha_speed_over_quality.invokeExact(resize, non_pma_alpha_speed_over_quality);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_non_pm_alpha_speed_over_quality", e); }
     }
 
     ///This builds the samplers and does one allocation
     public static @CType("int") boolean stbir_build_samplers(@CType("STBIR_RESIZE *") java.lang.foreign.MemorySegment resize) {
         try {
-            return (boolean) MH_stbir_build_samplers.invokeExact(resize);
+            return (boolean) Handles.MH_stbir_build_samplers.invokeExact(resize);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_build_samplers", e); }
     }
 
     ///You MUST call this, if you call stbir_build_samplers or stbir_build_samplers_with_splits
     public static void stbir_free_samplers(@CType("STBIR_RESIZE *") java.lang.foreign.MemorySegment resize) {
         try {
-            MH_stbir_free_samplers.invokeExact(resize);
+            Handles.MH_stbir_free_samplers.invokeExact(resize);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_free_samplers", e); }
     }
 
     ///And this is the main function to perform the resize synchronously on one thread.
     public static @CType("int") boolean stbir_resize_extended(@CType("STBIR_RESIZE *") java.lang.foreign.MemorySegment resize) {
         try {
-            return (boolean) MH_stbir_resize_extended.invokeExact(resize);
+            return (boolean) Handles.MH_stbir_resize_extended.invokeExact(resize);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_resize_extended", e); }
     }
 
@@ -300,7 +303,7 @@ public final class STBImageResize2 {
     ///It might be less if the image resize can't be split up that many ways.
     public static @CType("int") boolean stbir_build_samplers_with_splits(@CType("STBIR_RESIZE *") java.lang.foreign.MemorySegment resize, @CType("int") int try_splits) {
         try {
-            return (boolean) MH_stbir_build_samplers_with_splits.invokeExact(resize, try_splits);
+            return (boolean) Handles.MH_stbir_build_samplers_with_splits.invokeExact(resize, try_splits);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_build_samplers_with_splits", e); }
     }
 
@@ -316,7 +319,7 @@ public final class STBImageResize2 {
     ///split_count each time to turn in into a 4 thread resize. (This is unusual).
     public static @CType("int") boolean stbir_resize_extended_split(@CType("STBIR_RESIZE *") java.lang.foreign.MemorySegment resize, @CType("int") int split_start, @CType("int") int split_count) {
         try {
-            return (boolean) MH_stbir_resize_extended_splits.invokeExact(resize, split_start, split_count);
+            return (boolean) Handles.MH_stbir_resize_extended_splits.invokeExact(resize, split_start, split_count);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_resize_extended_splits", e); }
     }
 

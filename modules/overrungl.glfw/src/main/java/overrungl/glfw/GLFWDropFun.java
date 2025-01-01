@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2024 Overrun Organization
+ * Copyright (c) 2022-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,8 +31,7 @@ import overrungl.util.*;
 /// void function_name(MemorySegment window, String[] paths)
 /// ```
 /// 
-/// TODO
-/// @see GLFW#glfwSetDropCallback()
+/// @see GLFW#glfwSetDropCallback(MemorySegment, MemorySegment)
 @FunctionalInterface
 public interface GLFWDropFun extends Upcall {
     /// The function descriptor.

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2024 Overrun Organization
+ * Copyright (c) 2022-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -16,7 +16,6 @@
 
 package overrungl.demo.glfw;
 
-import overrungl.glfw.GLFW;
 import overrungl.glfw.GLFWCallbacks;
 import overrungl.glfw.GLFWErrorCallback;
 import overrungl.glfw.GLFWGamepadState;
@@ -35,7 +34,6 @@ import static overrungl.glfw.GLFW.*;
  * @since 0.1.0
  */
 public final class GLFWJoystickTest {
-    private final GLFW glfw = GLFW.INSTANCE;
     private MemorySegment window;
 
     public void run() {
@@ -58,17 +56,17 @@ public final class GLFWJoystickTest {
         glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
         window = glfwCreateWindow(200, 100, "Holder", MemorySegment.NULL, MemorySegment.NULL);
         if (Unmarshal.isNullPointer(window)) throw new IllegalStateException("Failed to create the GLFW window");
-        glfw.setKeyCallback(window, (_, key, _, action, _) -> {
+        glfwSetKeyCallback(window, (_, key, _, action, _) -> {
             if (key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE) {
                 glfwSetWindowShouldClose(window, true);
             }
         });
-        glfw.setJoystickCallback((jid, event) -> {
+        glfwSetJoystickCallback((jid, event) -> {
             switch (event) {
                 case GLFW_CONNECTED -> {
-                    boolean isGamepad = glfw.joystickIsGamepad(jid);
+                    boolean isGamepad = glfwJoystickIsGamepad(jid);
                     var prefix = isGamepad ? "Gamepad " : "Joystick ";
-                    System.out.println(prefix + jid + ": \"" + (isGamepad ? glfw.getGamepadName(jid) : glfw.getJoystickName(jid)) + "\" has connected");
+                    System.out.println(prefix + jid + ": \"" + (isGamepad ? glfwGetGamepadName(jid) : glfwGetJoystickName(jid)) + "\" has connected");
                 }
                 case GLFW_DISCONNECTED -> System.out.println("Joystick " + jid + " has disconnected");
             }
@@ -85,10 +83,10 @@ public final class GLFWJoystickTest {
             }
             while (!glfwWindowShouldClose(window)) {
                 for (int i = 0; i <= GLFW_JOYSTICK_LAST; i++) {
-                    if (glfw.joystickPresent(i)) {
-                        if (glfw.joystickIsGamepad(i)) {
+                    if (glfwJoystickPresent(i)) {
+                        if (glfwJoystickIsGamepad(i)) {
                             var state = states[i];
-                            if (glfw.getGamepadState(i, state)) {
+                            if (glfwGetGamepadState(i, state)) {
                                 System.out.printf("""
                                         Get gamepad state for [jid=%d,name=%s] successful:
                                         Buttons: [A(Cross)=%d, B(Circle)=%d, X(Square)=%d, Y(Triangle)=%d,
@@ -98,7 +96,7 @@ public final class GLFWJoystickTest {
                                         Axis: [Left(x=%f, y=%f), Right(x=%f, y=%f), Trigger(left=%f, right%f)]
                                         %n""",
                                     i,
-                                    glfw.getGamepadName(i),
+                                    glfwGetGamepadName(i),
                                     gpsButton(state, GLFW_GAMEPAD_BUTTON_A),
                                     gpsButton(state, GLFW_GAMEPAD_BUTTON_B),
                                     gpsButton(state, GLFW_GAMEPAD_BUTTON_X),

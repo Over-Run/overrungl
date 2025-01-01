@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2024 Overrun Organization
+ * Copyright (c) 2022-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,8 +31,7 @@ import overrungl.util.*;
 /// void callback_name(MemorySegment window, int width, int height)
 /// ```
 /// 
-/// TODO
-/// @see GLFW#glfwSetWindowSizeCallback()
+/// @see GLFW#glfwSetWindowSizeCallback(MemorySegment, MemorySegment)
 @FunctionalInterface
 public interface GLFWWindowSizeFun extends Upcall {
     /// The function descriptor.

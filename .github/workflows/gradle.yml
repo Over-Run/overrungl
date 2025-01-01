@@ -43,7 +43,7 @@ jobs:
         with:
           name: build-reports-${{ runner.os }}-jdk${{ matrix.java }}
           path: |
-            modules/samples/build/reports/
+            modules/**/build/reports/
       - name: Capture build artifacts
         uses: actions/upload-artifact@v4
         with:

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2024 Overrun Organization
+ * Copyright (c) 2024-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -172,7 +172,7 @@ class Struct(
                     is FixedSizeStructMember -> sb.appendLine(
                         """
                             |    /// The byte offset handle of `${it.name}` of type `(long baseOffset, long elementIndex)long`.
-                            |    public static final MethodHandle MH_${it.name} = LAYOUT.byteOffsetHandle(PathElement.sequenceElement(), PathElement.groupElement("${it.name}"));
+                            |    public static final MethodHandle MH_${it.name} = LAYOUT.byteOffsetHandle(PathElement.groupElement("${it.name}"), PathElement.sequenceElement());
                             |    /// The memory layout of `${it.name}`.
                             |    public static final MemoryLayout ML_${it.name} = LAYOUT.select(PathElement.groupElement("${it.name}"));
                         """.trimMargin()

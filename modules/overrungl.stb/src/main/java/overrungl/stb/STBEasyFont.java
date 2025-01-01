@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023-2024 Overrun Organization
+ * Copyright (c) 2023-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -65,22 +65,25 @@ public final class STBEasyFont {
     //region Fields
     //endregion
     //region Method handles
-    /// The method handle of `stb_easy_font_get_spacing`.
-    public static final MethodHandle MH_stb_easy_font_get_spacing = RuntimeHelper.downcall(Handles.lookup, "stb_easy_font_get_spacing", FunctionDescriptor.of(ValueLayout.JAVA_FLOAT));
-    /// The method handle of `stb_easy_font_spacing`.
-    public static final MethodHandle MH_stb_easy_font_spacing = RuntimeHelper.downcall(Handles.lookup, "stb_easy_font_spacing", FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
-    /// The method handle of `stb_easy_font_print`.
-    public static final MethodHandle MH_stb_easy_font_print = RuntimeHelper.downcall(Handles.lookup, "stb_easy_font_print", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-    /// The method handle of `stb_easy_font_width`.
-    public static final MethodHandle MH_stb_easy_font_width = RuntimeHelper.downcall(Handles.lookup, "stb_easy_font_width", FunctionDescriptor.of(ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT));
-    /// The method handle of `stb_easy_font_height`.
-    public static final MethodHandle MH_stb_easy_font_height = RuntimeHelper.downcall(Handles.lookup, "stb_easy_font_height", FunctionDescriptor.of(ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT));
+    /// Method handles.
+    public static final class Handles {
+        /// The method handle of `stb_easy_font_get_spacing`.
+        public static final MethodHandle MH_stb_easy_font_get_spacing = RuntimeHelper.downcall(STBInternal.lookup, "stb_easy_font_get_spacing", FunctionDescriptor.of(ValueLayout.JAVA_FLOAT));
+        /// The method handle of `stb_easy_font_spacing`.
+        public static final MethodHandle MH_stb_easy_font_spacing = RuntimeHelper.downcall(STBInternal.lookup, "stb_easy_font_spacing", FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
+        /// The method handle of `stb_easy_font_print`.
+        public static final MethodHandle MH_stb_easy_font_print = RuntimeHelper.downcall(STBInternal.lookup, "stb_easy_font_print", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        /// The method handle of `stb_easy_font_width`.
+        public static final MethodHandle MH_stb_easy_font_width = RuntimeHelper.downcall(STBInternal.lookup, "stb_easy_font_width", FunctionDescriptor.of(ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT));
+        /// The method handle of `stb_easy_font_height`.
+        public static final MethodHandle MH_stb_easy_font_height = RuntimeHelper.downcall(STBInternal.lookup, "stb_easy_font_height", FunctionDescriptor.of(ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT));
+    }
     //endregion
 
     ///{@return `stb_easy_font_spacing_val`}
     public static @CType("float") float stb_easy_font_get_spacing() {
         try {
-            return (float) MH_stb_easy_font_get_spacing.invokeExact();
+            return (float) Handles.MH_stb_easy_font_get_spacing.invokeExact();
         } catch (Throwable e) { throw new RuntimeException("error in stb_easy_font_get_spacing", e); }
     }
 
@@ -95,7 +98,7 @@ public final class STBEasyFont {
     ///@param spacing value
     public static void stb_easy_font_spacing(@CType("float") float spacing) {
         try {
-            MH_stb_easy_font_spacing.invokeExact(spacing);
+            Handles.MH_stb_easy_font_spacing.invokeExact(spacing);
         } catch (Throwable e) { throw new RuntimeException("error in stb_easy_font_spacing", e); }
     }
 
@@ -129,7 +132,7 @@ public final class STBEasyFont {
     ///@return the number of quads.
     public static @CType("int") int stb_easy_font_print(@CType("float") float x, @CType("float") float y, @CType("char *") java.lang.foreign.MemorySegment text, @CType("unsigned char[4]") java.lang.foreign.MemorySegment color, @CType("void*") java.lang.foreign.MemorySegment vertex_buffer, @CType("int") int vbuf_size) {
         try {
-            return (int) MH_stb_easy_font_print.invokeExact(x, y, text, color, vertex_buffer, vbuf_size);
+            return (int) Handles.MH_stb_easy_font_print.invokeExact(x, y, text, color, vertex_buffer, vbuf_size);
         } catch (Throwable e) { throw new RuntimeException("error in stb_easy_font_print", e); }
     }
 
@@ -138,7 +141,7 @@ public final class STBEasyFont {
     ///@return the horizontal size
     public static @CType("int") int stb_easy_font_width(@CType("char *") java.lang.foreign.MemorySegment width) {
         try {
-            return (int) MH_stb_easy_font_width.invokeExact(width);
+            return (int) Handles.MH_stb_easy_font_width.invokeExact(width);
         } catch (Throwable e) { throw new RuntimeException("error in stb_easy_font_width", e); }
     }
 
@@ -147,7 +150,7 @@ public final class STBEasyFont {
     ///@return the horizontal size
     public static @CType("int") int stb_easy_font_width(java.lang.String width) {
         try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            return (int) MH_stb_easy_font_width.invokeExact(Marshal.marshal(__overrungl_stack, width));
+            return (int) Handles.MH_stb_easy_font_width.invokeExact(Marshal.marshal(__overrungl_stack, width));
         } catch (Throwable e) { throw new RuntimeException("error in stb_easy_font_width", e); }
     }
 
@@ -156,7 +159,7 @@ public final class STBEasyFont {
     ///@return the vertical size
     public static @CType("int") int stb_easy_font_height(@CType("char *") java.lang.foreign.MemorySegment height) {
         try {
-            return (int) MH_stb_easy_font_height.invokeExact(height);
+            return (int) Handles.MH_stb_easy_font_height.invokeExact(height);
         } catch (Throwable e) { throw new RuntimeException("error in stb_easy_font_height", e); }
     }
 
@@ -165,7 +168,7 @@ public final class STBEasyFont {
     ///@return the vertical size
     public static @CType("int") int stb_easy_font_height(java.lang.String height) {
         try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            return (int) MH_stb_easy_font_height.invokeExact(Marshal.marshal(__overrungl_stack, height));
+            return (int) Handles.MH_stb_easy_font_height.invokeExact(Marshal.marshal(__overrungl_stack, height));
         } catch (Throwable e) { throw new RuntimeException("error in stb_easy_font_height", e); }
     }
 

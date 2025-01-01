@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2024 Overrun Organization
+ * Copyright (c) 2024-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,7 +20,7 @@ import com.palantir.javapoet.TypeName
 import overrungl.gen.*
 
 val glfwPackage = "overrungl.glfw"
-val glfwLookup = "Handles.lookup"
+val glfwLookup = "GLFWInternal.lookup"
 
 val glfw_boolean = CustomTypeSpec(
     carrier = TypeName.INT,
@@ -273,7 +273,6 @@ fun main() {
             void callback_name(MemorySegment window, int xpos, int ypos)
             ```
 
-            TODO
             @see GLFW#glfwSetWindowPosCallback(MemorySegment, MemorySegment)
         """.trimIndent()
     ) {
@@ -306,8 +305,7 @@ fun main() {
             void callback_name(MemorySegment window, int width, int height)
             ```
 
-            TODO
-            @see GLFW#glfwSetWindowSizeCallback()
+            @see GLFW#glfwSetWindowSizeCallback(MemorySegment, MemorySegment)
         """.trimIndent()
     ) {
         targetMethod = "invoke"(
@@ -337,8 +335,7 @@ fun main() {
             void function_name(MemorySegment window)
             ```
 
-            TODO
-            @see GLFW#glfwSetWindowCloseCallback()
+            @see GLFW#glfwSetWindowCloseCallback(MemorySegment, MemorySegment)
         """.trimIndent()
     ) {
         targetMethod = "invoke"(
@@ -364,8 +361,7 @@ fun main() {
             void function_name(MemorySegment window);
             ```
 
-            TODO
-            @see GLFW#glfwSetWindowRefreshCallback()
+            @see GLFW#glfwSetWindowRefreshCallback(MemorySegment, MemorySegment)
         """.trimIndent()
     ) {
         targetMethod = "invoke"(
@@ -391,8 +387,7 @@ fun main() {
             void function_name(MemorySegment window, boolean focused)
             ```
 
-            TODO
-            @see GLFW#glfwSetWindowFocusCallback()
+            @see GLFW#glfwSetWindowFocusCallback(MemorySegment, MemorySegment)
         """.trimIndent()
     ) {
         interfaceMethod = "invoke"(
@@ -434,8 +429,7 @@ fun main() {
             void function_name(MemorySegment window, boolean iconified)
             ```
 
-            TODO
-            @see GLFW#glfwSetWindowIconifyCallback()
+            @see GLFW#glfwSetWindowIconifyCallback(MemorySegment, MemorySegment)
         """.trimIndent()
     ) {
         interfaceMethod = "invoke"(
@@ -477,8 +471,7 @@ fun main() {
             void function_name(MemorySegment window, boolean maximized)
             ```
 
-            TODO
-            @see GLFW#glfwSetWindowMaximizeCallback()
+            @see GLFW#glfwSetWindowMaximizeCallback(MemorySegment, MemorySegment)
         """.trimIndent()
     ) {
         interfaceMethod = "invoke"(
@@ -520,7 +513,7 @@ fun main() {
             void function_name(MemorySegment window, int width, int height)
             ```
 
-            @see GLFW#glfwSetFramebufferSizeCallback()
+            @see GLFW#glfwSetFramebufferSizeCallback(MemorySegment, MemorySegment)
         """.trimIndent()
     ) {
         targetMethod = "invoke"(
@@ -550,7 +543,7 @@ fun main() {
             void function_name(MemorySegment window, float xscale, float yscale)
             ```
 
-            @see GLFW#glfwSetWindowContentScaleCallback()
+            @see GLFW#glfwSetWindowContentScaleCallback(MemorySegment, MemorySegment)
         """.trimIndent()
     ) {
         targetMethod = "invoke"(
@@ -580,8 +573,7 @@ fun main() {
             void function_name(MemorySegment window, int button, int action, int mods)
             ```
 
-            TODO
-            @see GLFW#glfwSetMouseButtonCallback()
+            @see GLFW#glfwSetMouseButtonCallback(MemorySegment, MemorySegment)
         """.trimIndent()
     ) {
         targetMethod = "invoke"(
@@ -616,8 +608,7 @@ fun main() {
             void function_name(MemorySegment window, double xpos, double ypos);
             ```
 
-            TODO
-            @see GLFW#glfwSetCursorPosCallback()
+            @see GLFW#glfwSetCursorPosCallback(MemorySegment, MemorySegment)
         """.trimIndent()
     ) {
         targetMethod = "invoke"(
@@ -649,8 +640,7 @@ fun main() {
             void function_name(MemorySegment window, boolean entered)
             ```
 
-            TODO
-            @see GLFW#glfwSetCursorEnterCallback()
+            @see GLFW#glfwSetCursorEnterCallback(MemorySegment, MemorySegment)
         """.trimIndent()
     ) {
         interfaceMethod = "invoke"(
@@ -692,7 +682,7 @@ fun main() {
             void function_name(MemorySegment window, double xoffset, double yoffset)
             ```
 
-            @see GLFW#glfwSetScrollCallback()
+            @see GLFW#glfwSetScrollCallback(MemorySegment, MemorySegment)
         """.trimIndent()
     ) {
         targetMethod = "invoke"(
@@ -722,8 +712,7 @@ fun main() {
             void function_name(MemorySegment window, int key, int scancode, int action, int mods)
             ```
 
-            TODO
-            @see GLFW#glfwSetKeyCallback()
+            @see GLFW#glfwSetKeyCallback(MemorySegment, MemorySegment)
         """.trimIndent()
     ) {
         targetMethod = "invoke"(
@@ -759,8 +748,7 @@ fun main() {
             void function_name(MemorySegment window, int codepoint)
             ```
 
-            TODO
-            @see GLFW#glfwSetCharCallback()
+            @see GLFW#glfwSetCharCallback(MemorySegment, MemorySegment)
         """.trimIndent()
     ) {
         targetMethod = "invoke"(
@@ -788,8 +776,7 @@ fun main() {
             void function_name(MemorySegment window, String[] paths)
             ```
 
-            TODO
-            @see GLFW#glfwSetDropCallback()
+            @see GLFW#glfwSetDropCallback(MemorySegment, MemorySegment)
         """.trimIndent()
     ) {
         interfaceMethod = "invoke"(
@@ -875,8 +862,7 @@ fun main() {
             void function_name(int jid, int event)
             ```
 
-            TODO
-            @see GLFW#glfwSetJoystickCallback()
+            @see GLFW#glfwSetJoystickCallback(MemorySegment)
         """.trimIndent()
     ) {
         targetMethod = "invoke"(
@@ -957,7 +943,7 @@ fun main() {
         )
     }.pointerType c "const GLFWimage*"
 
-    Struct(
+    val GLFWgamepadstate_ptr = Struct(
         glfwPackage,
         "GLFWGamepadState",
         cType = "GLFWgamepadstate",
@@ -967,8 +953,7 @@ fun main() {
             This describes the input state of a gamepad.
 
             ## See Also
-            TODO
-            - [glfwGetGamepadState][GLFW#glfwGetGamepadState()]
+            - [glfwGetGamepadState][GLFW#glfwGetGamepadState(int, MemorySegment)]
         """.trimIndent()
     ) {
         fixedSize(
@@ -989,7 +974,7 @@ fun main() {
                 to 1.0 inclusive.
             """.trimIndent()
         )
-    }
+    }.pointerType c "GLFWgamepadstate*"
 
     val const_GLFWallocator_ptr = Struct(
         glfwPackage,
@@ -1395,8 +1380,8 @@ fun main() {
 
                     This occurs if a GLFW function was called that needs and operates on the
                     current OpenGL or OpenGL ES context but no context is current on the calling
-                    thread.  One such function is [glfwSwapInterval][#glfwSwapInterval()].
-                    TODO
+                    thread.  One such function is [glfwSwapInterval][#glfwSwapInterval(int)].
+
                     ###### Analysis
                     Application programmer error.  Ensure a context is current before
                     calling functions that require a current context.
@@ -1408,8 +1393,8 @@ fun main() {
                     One of the arguments to the function was an invalid enum value.
 
                     One of the arguments to the function was an invalid enum value, for example
-                    requesting [GLFW_RED_BITS][#GLFW_RED_BITS] with [glfwGetWindowAttrib][#glfwGetWindowAttrib()].
-                    TODO
+                    requesting [GLFW_RED_BITS][#GLFW_RED_BITS] with [glfwGetWindowAttrib][#glfwGetWindowAttrib(MemorySegment, int)].
+
                     ###### Analysis
                     Application programmer error.  Fix the offending call.
                 """.trimIndent()
@@ -1585,9 +1570,9 @@ fun main() {
                     a terminal that does not have the necessary environment variables.  Fall back to
                     a different platform if possible or notify the user that no usable platform was
                     detected.
-                    TODO
+
                     Failure to detect a specific platform may have the same cause as above or be because
-                    support for that platform was not compiled in.  Call [glfwPlatformSupported][#glfwPlatformSupported()] to
+                    support for that platform was not compiled in.  Call [glfwPlatformSupported][#glfwPlatformSupported(int)] to
                     check whether a specific platform is supported by a library binary.
                 """.trimIndent()
             )
@@ -2050,50 +2035,6 @@ fun main() {
             """.trimIndent()
         ).overload()
 
-        "glfwInitVulkanLoader"(
-            void,
-            (address c "PFN_vkGetInstanceProcAddr")("loader"),
-            entrypoint = "glfwInitVulkanLoader",
-            javadoc = """
-                Sets the desired Vulkan `vkGetInstanceProcAddr` function.
-
-                This function sets the `vkGetInstanceProcAddr` function that GLFW will use for all
-                Vulkan related entry point queries.
-
-                This feature is mostly useful on macOS, if your copy of the Vulkan loader is in
-                a location where GLFW cannot find it through dynamic loading, or if you are still
-                using the static library version of the loader.
-
-                If set to `NULL`, GLFW will try to load the Vulkan loader dynamically by its standard
-                name and get this function from there.  This is the default behavior.
-
-                The standard name of the loader is `vulkan-1.dll` on Windows, `libvulkan.so.1` on
-                Linux and other Unix-like systems and `libvulkan.1.dylib` on macOS.  If your code is
-                also loading it via these names then you probably don't need to use this function.
-
-                The function address you set is never reset by GLFW, but it only takes effect during
-                initialization.  Once GLFW has been initialized, any updates will be ignored until the
-                library is terminated and initialized again.
-
-                @param loader The address of the function to use, or `NULL`.
-
-                Loader function signature
-                ```c
-                PFN_vkVoidFunction vkGetInstanceProcAddr(VkInstance instance, const char* name)
-                ```
-                For more information about this function, see the
-                [Vulkan Registry](https://www.khronos.org/registry/vulkan/).
-
-                @glfw.errors None.
-
-                @glfw.remark This function may be called before [glfwInit][#glfwInit()].
-
-                @glfw.thread_safety This function must only be called from the main thread.
-
-                @see #glfwInit() glfwInit
-            """.trimIndent()
-        )
-
         +"glfwGetVersion"(
             void,
             int_ptr("major").ref(),
@@ -2138,9 +2079,9 @@ fun main() {
                 __Do not use the version string__ to parse the GLFW library version.  The
                 [glfwGetVersion][#glfwGetVersion(MemorySegment, MemorySegment, MemorySegment)] function provides the version of the running library
                 binary in numerical format.
-                TODO
+
                 __Do not use the version string__ to parse what platforms are supported.  The
-                [glfwPlatformSupported][#glfwPlatformSupported()] function lets you query platform support.
+                [glfwPlatformSupported][#glfwPlatformSupported(int)] function lets you query platform support.
 
                 @return The ASCII encoded GLFW version string.
 
@@ -2840,8 +2781,8 @@ fun main() {
                 hard constraints.  This includes the size of the
                 window, especially for full screen windows.  To query the actual attributes
                 of the created window, framebuffer and context, see
-                [glfwGetWindowAttrib][#glfwGetWindowAttrib()], [glfwGetWindowSize][#glfwGetWindowSize()] and [glfwGetFramebufferSize][#glfwGetFramebufferSize()].
-                TODO
+                [glfwGetWindowAttrib][#glfwGetWindowAttrib(MemorySegment, int)], [glfwGetWindowSize][#glfwGetWindowSize(MemorySegment, MemorySegment, MemorySegment)] and [glfwGetFramebufferSize][#glfwGetFramebufferSize(MemorySegment, MemorySegment, MemorySegment)].
+
                 To create a full screen window, you need to specify the monitor the window
                 will cover.  If no monitor is specified, the window will be windowed mode.
                 Unless you have a way for the user to choose a specific monitor, it is
@@ -2854,9 +2795,9 @@ fun main() {
                 mode is set for the specified monitor.  For more information about full
                 screen windows, including the creation of so called _windowed full screen_
                 or _borderless full screen_ windows, see window_windowed_full_screen.
-                TODO
+
                 Once you have created the window, you can switch it between windowed and
-                full screen mode with [glfwSetWindowMonitor][#glfwSetWindowMonitor()].  This will not affect its
+                full screen mode with [glfwSetWindowMonitor][#glfwSetWindowMonitor(MemorySegment, MemorySegment, int, int, int, int, int)].  This will not affect its
                 OpenGL or OpenGL ES context.
 
                 By default, newly created windows use the placement recommended by the
@@ -2895,11 +2836,11 @@ fun main() {
                 @glfw.remark
                 - __Windows:__ Window creation will fail if the Microsoft GDI software
                     OpenGL implementation is the only one available.
-                    TODO
+
                     If the executable has an icon resource named `GLFW_ICON,` it
                     will be set as the initial icon for the window.  If no such icon is present,
                     the `IDI_APPLICATION` icon will be used instead.  To set a different icon,
-                    see [glfwSetWindowIcon][#glfwSetWindowIcon()].
+                    see [glfwSetWindowIcon][#glfwSetWindowIcon(MemorySegment, int, MemorySegment)].
 
                     The context to share resources with must not be current on
                     any other thread.
@@ -3340,9 +3281,9 @@ fun main() {
                 video mode and switches to the video mode closest to it, without affecting
                 the window's context.  As the context is unaffected, the bit depths of the
                 framebuffer remain unchanged.
-                TODO
+
                 If you wish to update the refresh rate of the desired video mode in addition
-                to its resolution, see [glfwSetWindowMonitor][#glfwSetWindowMonitor()].
+                to its resolution, see [glfwSetWindowMonitor][#glfwSetWindowMonitor(MemorySegment, MemorySegment, int, int, int, int, int)].
 
                 The window manager may put limits on what sizes are allowed.  GLFW cannot
                 and should not override these limits.
@@ -3357,9 +3298,9 @@ fun main() {
                 [GLFW_PLATFORM_ERROR][#GLFW_PLATFORM_ERROR].
 
                 @glfw.thread_safety This function must only be called from the main thread.
-                TODO
+
                 @see #glfwGetWindowSize(MemorySegment, MemorySegment, MemorySegment) glfwGetWindowSize
-                @see #glfwSetWindowMonitor() glfwSetWindowMonitor
+                @see #glfwSetWindowMonitor(MemorySegment, MemorySegment, int, int, int, int, int) glfwSetWindowMonitor
             """.trimIndent()
         )
 
@@ -3624,8 +3565,8 @@ fun main() {
                 By default, windowed mode windows are focused when shown
                 Set the [GLFW_FOCUS_ON_SHOW][#GLFW_FOCUS_ON_SHOW] window hint
                 to change this behavior for all newly created windows, or change the
-                behavior for an existing window with [glfwSetWindowAttrib][#glfwSetWindowAttrib()].
-                TODO
+                behavior for an existing window with [glfwSetWindowAttrib][#glfwSetWindowAttrib(MemorySegment, int, int)].
+
                 @param window The window to make visible.
 
                 @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][#GLFW_NOT_INITIALIZED] and
@@ -3931,11 +3872,9 @@ fun main() {
         )
 
         //region Callback 1
-        +"glfwSetWindowPosCallback"(
-            address c "GLFWwindowposfun",
-            GLFWwindow_ptr("window"),
-            GLFWwindowposfun("callback"),
-            entrypoint = "glfwSetWindowPosCallback",
+        windowCallback(
+            "glfwSetWindowPosCallback",
+            GLFWwindowposfun,
             javadoc = """
                 Sets the position callback for the specified window.
 
@@ -3961,13 +3900,11 @@ fun main() {
 
                 @glfw.thread_safety This function must only be called from the main thread.
             """.trimIndent()
-        ).windowCallbackOverload()
+        )
 
-        +"glfwSetWindowSizeCallback"(
-            address c "GLFWwindowsizefun",
-            GLFWwindow_ptr("window"),
-            GLFWwindowsizefun("callback"),
-            entrypoint = "glfwSetWindowSizeCallback",
+        windowCallback(
+            "glfwSetWindowSizeCallback",
+            GLFWwindowsizefun,
             javadoc = """
                 Sets the size callback for the specified window.
 
@@ -3989,13 +3926,11 @@ fun main() {
 
                 @glfw.thread_safety This function must only be called from the main thread.
             """.trimIndent()
-        ).windowCallbackOverload()
+        )
 
-        +"glfwSetWindowCloseCallback"(
-            address c "GLFWwindowclosefun",
-            GLFWwindow_ptr("window"),
-            GLFWwindowclosefun("callback"),
-            entrypoint = "glfwSetWindowCloseCallback",
+        windowCallback(
+            "glfwSetWindowCloseCallback",
+            GLFWwindowclosefun,
             javadoc = """
                 Sets the close callback for the specified window.
 
@@ -4025,13 +3960,11 @@ fun main() {
 
                 @glfw.thread_safety This function must only be called from the main thread.
             """.trimIndent()
-        ).windowCallbackOverload()
+        )
 
-        +"glfwSetWindowRefreshCallback"(
-            address c "GLFWwindowrefreshfun",
-            GLFWwindow_ptr("window"),
-            GLFWwindowrefreshfun("callback"),
-            entrypoint = "glfwSetWindowRefreshCallback",
+        windowCallback(
+            "glfwSetWindowRefreshCallback",
+            GLFWwindowrefreshfun,
             javadoc = """
                 Sets the refresh callback for the specified window.
 
@@ -4057,13 +3990,11 @@ fun main() {
 
                 @glfw.thread_safety This function must only be called from the main thread.
             """.trimIndent()
-        ).windowCallbackOverload()
+        )
 
-        +"glfwSetWindowFocusCallback"(
-            address c "GLFWwindowfocusfun",
-            GLFWwindow_ptr("window"),
-            GLFWwindowfocusfun("callback"),
-            entrypoint = "glfwSetWindowFocusCallback",
+        windowCallback(
+            "glfwSetWindowFocusCallback",
+            GLFWwindowfocusfun,
             javadoc = """
                 Sets the focus callback for the specified window.
 
@@ -4089,13 +4020,11 @@ fun main() {
 
                 @glfw.thread_safety This function must only be called from the main thread.
             """.trimIndent()
-        ).windowCallbackOverload()
+        )
 
-        +"glfwSetWindowIconifyCallback"(
-            address c "GLFWwindowiconifyfun",
-            GLFWwindow_ptr("window"),
-            GLFWwindowiconifyfun("callback"),
-            entrypoint = "glfwSetWindowIconifyCallback",
+        windowCallback(
+            "glfwSetWindowIconifyCallback",
+            GLFWwindowiconifyfun,
             javadoc = """
                 Sets the iconify callback for the specified window.
 
@@ -4116,13 +4045,11 @@ fun main() {
 
                 @glfw.thread_safety This function must only be called from the main thread.
             """.trimIndent()
-        ).windowCallbackOverload()
+        )
 
-        +"glfwSetWindowMaximizeCallback"(
-            address c "GLFWwindowmaximizefun",
-            GLFWwindow_ptr("window"),
-            GLFWwindowmaximizefun("callback"),
-            entrypoint = "glfwSetWindowMaximizeCallback",
+        windowCallback(
+            "glfwSetWindowMaximizeCallback",
+            GLFWwindowmaximizefun,
             javadoc = """
                 Sets the maximize callback for the specified window.
 
@@ -4143,13 +4070,11 @@ fun main() {
 
                 @glfw.thread_safety This function must only be called from the main thread.
             """.trimIndent()
-        ).windowCallbackOverload()
+        )
 
-        +"glfwSetFramebufferSizeCallback"(
-            address c "GLFWframebuffersizefun",
-            GLFWwindow_ptr("window"),
-            GLFWframebuffersizefun("callback"),
-            entrypoint = "glfwSetFramebufferSizeCallback",
+        windowCallback(
+            "glfwSetFramebufferSizeCallback",
+            GLFWframebuffersizefun,
             javadoc = """
                 Sets the framebuffer resize callback for the specified window.
 
@@ -4170,13 +4095,11 @@ fun main() {
 
                 @glfw.thread_safety This function must only be called from the main thread.
             """.trimIndent()
-        ).windowCallbackOverload()
+        )
 
-        +"glfwSetWindowContentScaleCallback"(
-            address c "GLFWwindowcontentscalefun",
-            GLFWwindow_ptr("window"),
-            GLFWwindowcontentscalefun("callback"),
-            entrypoint = "glfwSetWindowContentScaleCallback",
+        windowCallback(
+            "glfwSetWindowContentScaleCallback",
+            GLFWwindowcontentscalefun,
             javadoc = """
                 Sets the window content scale callback for the specified window.
 
@@ -4197,7 +4120,7 @@ fun main() {
 
                 @glfw.thread_safety This function must only be called from the main thread.
             """.trimIndent()
-        ).windowCallbackOverload()
+        )
         //endregion
 
         "glfwPollEvents"(
@@ -4865,11 +4788,1947 @@ fun main() {
         )
 
         //region Callback 2
+        windowCallback(
+            "glfwSetKeyCallback",
+            GLFWkeyfun,
+            javadoc = """
+                Sets the key callback.
+
+                This function sets the key callback of the specified window, which is called
+                when a key is pressed, repeated or released.
+
+                The key functions deal with physical keys, with layout independent
+                key tokens named after their values in the standard US keyboard
+                layout.  If you want to input text, use the
+                [character callback][#glfwSetCharCallback(MemorySegment, MemorySegment)] instead.
+
+                When a window loses input focus, it will generate synthetic key release
+                events for all pressed keys with associated key tokens.  You can tell these
+                events from user-generated events by the fact that the synthetic ones are
+                generated after the focus loss event has been processed, i.e. after the
+                [window focus callback][#glfwSetWindowFocusCallback(MemorySegment, MemorySegment)] has been called.
+
+                The scancode of a key is specific to that platform or sometimes even to that
+                machine.  Scancodes are intended to allow users to bind keys that don't have
+                a GLFW key token.  Such keys have `key` set to `GLFW_KEY_UNKNOWN`, their
+                state is not saved and so it cannot be queried with [glfwGetKey][#glfwGetKey(MemorySegment, int)].
+
+                Sometimes GLFW needs to generate synthetic key events, in which case the
+                scancode may be zero.
+
+                @param window The window whose callback to set.
+                @param callback The new key callback, or `NULL` to remove the currently
+                set callback.
+                @return The previously set callback, or `NULL` if no callback was set or the
+                library had not been initialized.
+
+                @glfw.callback_signature
+                For more information about the callback parameters, see the
+                [function pointer type][GLFWKeyFun].
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][#GLFW_NOT_INITIALIZED].
+
+                @glfw.thread_safety This function must only be called from the main thread.
+            """.trimIndent()
+        )
+
+        windowCallback(
+            "glfwSetCharCallback",
+            GLFWcharfun,
+            javadoc = """
+                Sets the Unicode character callback.
+
+                This function sets the character callback of the specified window, which is
+                called when a Unicode character is input.
+
+                The character callback is intended for Unicode text input.  As it deals with
+                characters, it is keyboard layout dependent, whereas the
+                [key callback][#glfwSetKeyCallback(MemorySegment, MemorySegment)] is not.  Characters do not map 1:1
+                to physical keys, as a key may produce zero, one or more characters.  If you
+                want to know whether a specific physical key was pressed or released, see
+                the key callback instead.
+
+                The character callback behaves as system text input normally does and will
+                not be called if modifier keys are held down that would prevent normal text
+                input on that platform, for example a Super (Command) key on macOS or Alt key
+                on Windows.
+
+                @param window The window whose callback to set.
+                @param callback The new callback, or `NULL` to remove the currently set
+                callback.
+                @return The previously set callback, or `NULL` if no callback was set or the
+                library had not been initialized.
+
+                @glfw.callback_signature
+                For more information about the callback parameters, see the
+                [function pointer type][GLFWCharFun].
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][#GLFW_NOT_INITIALIZED].
+
+                @glfw.thread_safety This function must only be called from the main thread.
+            """.trimIndent()
+        )
+
+        windowCallback(
+            "glfwSetMouseButtonCallback",
+            GLFWmousebuttonfun,
+            javadoc = """
+                Sets the mouse button callback.
+
+                This function sets the mouse button callback of the specified window, which
+                is called when a mouse button is pressed or released.
+
+                When a window loses input focus, it will generate synthetic mouse button
+                release events for all pressed mouse buttons with associated button tokens.
+                You can tell these events from user-generated events by the fact that the
+                synthetic ones are generated after the focus loss event has been processed,
+                i.e. after the [window focus callback][#glfwSetWindowFocusCallback(MemorySegment, MemorySegment)] has
+                been called.
+
+                The reported `button` value can be higher than `GLFW_MOUSE_BUTTON_LAST` if
+                the button does not have an associated button token and the
+                [GLFW_UNLIMITED_MOUSE_BUTTONS][#GLFW_UNLIMITED_MOUSE_BUTTONS] input mode is set.
+
+                @param window The window whose callback to set.
+                @param callback The new callback, or `NULL` to remove the currently set
+                callback.
+                @return The previously set callback, or `NULL` if no callback was set or the
+                library had not been initialized.
+
+                @glfw.callback_signature
+                For more information about the callback parameters, see the
+                [function pointer type][GLFWMouseButtonFun].
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][#GLFW_NOT_INITIALIZED].
+
+                @glfw.thread_safety This function must only be called from the main thread.
+            """.trimIndent()
+        )
+
+        windowCallback(
+            "glfwSetCursorPosCallback",
+            GLFWcursorposfun,
+            javadoc = """
+                Sets the cursor position callback.
+
+                This function sets the cursor position callback of the specified window,
+                which is called when the cursor is moved.  The callback is provided with the
+                position, in screen coordinates, relative to the upper-left corner of the
+                content area of the window.
+
+                @param window The window whose callback to set.
+                @param callback The new callback, or `NULL` to remove the currently set
+                callback.
+                @return The previously set callback, or `NULL` if no callback was set or the
+                library had not been initialized.
+
+                @glfw.callback_signature
+                For more information about the callback parameters, see the
+                [function pointer type][GLFWCursorPosFun].
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][#GLFW_NOT_INITIALIZED].
+
+                @glfw.thread_safety This function must only be called from the main thread.
+            """.trimIndent()
+        )
+
+        windowCallback(
+            "glfwSetCursorEnterCallback",
+            GLFWcursorenterfun,
+            javadoc = """
+                Sets the cursor enter/leave callback.
+
+                This function sets the cursor boundary crossing callback of the specified
+                window, which is called when the cursor enters or leaves the content area of
+                the window.
+
+                @param window The window whose callback to set.
+                @param callback The new callback, or `NULL` to remove the currently set
+                callback.
+                @return The previously set callback, or `NULL` if no callback was set or the
+                library had not been initialized.
+
+                @glfw.callback_signature
+                For more information about the callback parameters, see the
+                [function pointer type][GLFWCursorEnterFun].
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][#GLFW_NOT_INITIALIZED].
+
+                @glfw.thread_safety This function must only be called from the main thread.
+            """.trimIndent()
+        )
+
+        windowCallback(
+            "glfwSetScrollCallback",
+            GLFWscrollfun,
+            javadoc = """
+                Sets the scroll callback.
+
+                This function sets the scroll callback of the specified window, which is
+                called when a scrolling device is used, such as a mouse wheel or scrolling
+                area of a touchpad.
+
+                The scroll callback receives all scrolling input, like that from a mouse
+                wheel or a touchpad scrolling area.
+
+                @param window The window whose callback to set.
+                @param callback The new scroll callback, or `NULL` to remove the
+                currently set callback.
+                @return The previously set callback, or `NULL` if no callback was set or the
+                library had not been initialized.
+
+                @glfw.callback_signature
+                For more information about the callback parameters, see the
+                [function pointer type][GLFWScrollFun].
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][#GLFW_NOT_INITIALIZED].
+
+                @glfw.thread_safety This function must only be called from the main thread.
+            """.trimIndent()
+        )
+
+        windowCallback(
+            "glfwSetDropCallback",
+            GLFWdropfun,
+            javadoc = """
+                Sets the path drop callback.
+
+                This function sets the path drop callback of the specified window, which is
+                called when one or more dragged paths are dropped on the window.
+
+                Because the path array and its strings may have been generated specifically
+                for that event, they are not guaranteed to be valid after the callback has
+                returned.  If you wish to use them after the callback returns, you need to
+                make a deep copy.
+
+                @param window The window whose callback to set.
+                @param callback The new file drop callback, or `NULL` to remove the
+                currently set callback.
+                @return The previously set callback, or `NULL` if no callback was set or the
+                library had not been initialized.
+
+                @glfw.callback_signature
+                For more information about the callback parameters, see the
+                [function pointer type][GLFWDropFun].
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][#GLFW_NOT_INITIALIZED].
+
+                @glfw.thread_safety This function must only be called from the main thread.
+            """.trimIndent()
+        )
         //endregion
+
+        +"glfwJoystickPresent"(
+            glfw_boolean,
+            int("jid"),
+            entrypoint = "glfwJoystickPresent",
+            javadoc = """
+                Returns whether the specified joystick is present.
+
+                This function returns whether the specified joystick is present.
+
+                There is no need to call this function before other functions that accept
+                a joystick ID, as they all check for presence before performing any other
+                work.
+
+                @param jid The joystick to query.
+                @return `GLFW_TRUE` if the joystick is present, or `GLFW_FALSE` otherwise.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][#GLFW_NOT_INITIALIZED],
+                [GLFW_INVALID_ENUM][#GLFW_INVALID_ENUM] and [GLFW_PLATFORM_ERROR][#GLFW_PLATFORM_ERROR].
+
+                @glfw.thread_safety This function must only be called from the main thread.
+            """.trimIndent(),
+            addNow = false
+        ).overload()
+
+        "glfwGetJoystickAxes"(
+            jfloat_array c "const float*",
+            int("jid"),
+            int_ptr("count").ref(),
+            entrypoint = "glfwGetJoystickAxes",
+            javadoc = """
+                Returns the values of all axes of the specified joystick.
+
+                This function returns the values of all axes of the specified joystick.
+                Each element in the array is a value between -1.0 and 1.0.
+
+                If the specified joystick is not present this function will return `NULL`
+                but will not generate an error.  This can be used instead of first calling
+                [glfwJoystickPresent][#glfwJoystickPresent(int)].
+
+                @param jid The joystick to query.
+                @param count Where to store the number of axis values in the returned
+                array.  This is set to zero if the joystick is not present or an error
+                occurred.
+                @return An array of axis values, or `NULL` if the joystick is not present or
+                an error occurred.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][#GLFW_NOT_INITIALIZED],
+                [GLFW_INVALID_ENUM][#GLFW_INVALID_ENUM] and [GLFW_PLATFORM_ERROR][#GLFW_PLATFORM_ERROR].
+
+                @glfw.pointer_lifetime The returned array is allocated and freed by GLFW.  You
+                should not free it yourself.  It is valid until the specified joystick is
+                disconnected or the library is terminated.
+
+                @glfw.thread_safety This function must only be called from the main thread.
+            """.trimIndent()
+        )
+
+        "glfwGetJoystickButtons"(
+            address c "const unsigned char*",
+            int("jid"),
+            int_ptr("count").ref(),
+            entrypoint = "glfwGetJoystickButtons",
+            javadoc = """
+                Returns the state of all buttons of the specified joystick.
+
+                This function returns the state of all buttons of the specified joystick.
+                Each element in the array is either `GLFW_PRESS` or `GLFW_RELEASE`.
+
+                For backward compatibility with earlier versions that did not have
+                [glfwGetJoystickHats][#glfwGetJoystickHats(int, MemorySegment)], the button array also includes all hats, each
+                represented as four buttons.  The hats are in the same order as returned by
+                __glfwGetJoystickHats__ and are in the order _up_, _right_, _down_ and
+                _left_.  To disable these extra buttons, set the
+                [GLFW_JOYSTICK_HAT_BUTTONS][#GLFW_JOYSTICK_HAT_BUTTONS] init hint before initialization.
+
+                If the specified joystick is not present this function will return `NULL`
+                but will not generate an error.  This can be used instead of first calling
+                [glfwJoystickPresent][#glfwJoystickPresent(int)].
+
+                @param jid The joystick to query.
+                @param count Where to store the number of button states in the returned
+                array.  This is set to zero if the joystick is not present or an error
+                occurred.
+                @return An array of button states, or `NULL` if the joystick is not present
+                or an error occurred.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][#GLFW_NOT_INITIALIZED],
+                [GLFW_INVALID_ENUM][#GLFW_INVALID_ENUM] and [GLFW_PLATFORM_ERROR][#GLFW_PLATFORM_ERROR].
+
+                @glfw.pointer_lifetime The returned array is allocated and freed by GLFW.  You
+                should not free it yourself.  It is valid until the specified joystick is
+                disconnected or the library is terminated.
+
+                @glfw.thread_safety This function must only be called from the main thread.
+            """.trimIndent()
+        )
+
+        "glfwGetJoystickHats"(
+            address c "const unsigned char*",
+            int("jid"),
+            int_ptr("count").ref(),
+            entrypoint = "glfwGetJoystickHats",
+            javadoc = """
+                Returns the state of all hats of the specified joystick.
+
+                This function returns the state of all hats of the specified joystick.
+                Each element in the array is one of the following values:
+
+                | Name                  | Value |
+                | ----                  | ----- |
+                | `GLFW_HAT_CENTERED`   | 0 |
+                | `GLFW_HAT_UP`         | 1 |
+                | `GLFW_HAT_RIGHT`      | 2 |
+                | `GLFW_HAT_DOWN`       | 4 |
+                | `GLFW_HAT_LEFT`       | 8 |
+                | `GLFW_HAT_RIGHT_UP`   | `GLFW_HAT_RIGHT` \| `GLFW_HAT_UP` |
+                | `GLFW_HAT_RIGHT_DOWN` | `GLFW_HAT_RIGHT` \| `GLFW_HAT_DOWN` |
+                | `GLFW_HAT_LEFT_UP`    | `GLFW_HAT_LEFT` \| `GLFW_HAT_UP` |
+                | `GLFW_HAT_LEFT_DOWN`  | `GLFW_HAT_LEFT` \| `GLFW_HAT_DOWN` |
+
+                The diagonal directions are bitwise combinations of the primary (up, right,
+                down and left) directions and you can test for these individually by ANDing
+                it with the corresponding direction.
+
+                ```java
+                if (hats[2] & GLFW_HAT_RIGHT)
+                {
+                    // State of hat 2 could be right-up, right or right-down
+                }
+                ```
+
+                If the specified joystick is not present this function will return `NULL`
+                but will not generate an error.  This can be used instead of first calling
+                [glfwJoystickPresent][#glfwJoystickPresent(int)].
+
+                @param jid The joystick to query.
+                @param count Where to store the number of hat states in the returned
+                array.  This is set to zero if the joystick is not present or an error
+                occurred.
+                @return An array of hat states, or `NULL` if the joystick is not present
+                or an error occurred.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][#GLFW_NOT_INITIALIZED],
+                [GLFW_INVALID_ENUM][#GLFW_INVALID_ENUM] and [GLFW_PLATFORM_ERROR][#GLFW_PLATFORM_ERROR].
+
+                @glfw.pointer_lifetime The returned array is allocated and freed by GLFW.  You
+                should not free it yourself.  It is valid until the specified joystick is
+                disconnected, this function is called again for that joystick or the library
+                is terminated.
+
+                @glfw.thread_safety This function must only be called from the main thread.
+            """.trimIndent()
+        )
+
+        +"glfwGetJoystickName_"(
+            const_char_ptr,
+            int("jid"),
+            entrypoint = "glfwGetJoystickName",
+            javadoc = """
+                Returns the name of the specified joystick.
+
+                This function returns the name, encoded as UTF-8, of the specified joystick.
+                The returned string is allocated and freed by GLFW.  You should not free it
+                yourself.
+
+                If the specified joystick is not present this function will return `NULL`
+                but will not generate an error.  This can be used instead of first calling
+                [glfwJoystickPresent][#glfwJoystickPresent(int)].
+
+                @param jid The joystick to query.
+                @return The UTF-8 encoded name of the joystick, or `NULL` if the joystick
+                is not present or an error occurred.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][#GLFW_NOT_INITIALIZED],
+                [GLFW_INVALID_ENUM][#GLFW_INVALID_ENUM] and [GLFW_PLATFORM_ERROR][#GLFW_PLATFORM_ERROR].
+
+                @glfw.pointer_lifetime The returned string is allocated and freed by GLFW.  You
+                should not free it yourself.  It is valid until the specified joystick is
+                disconnected or the library is terminated.
+
+                @glfw.thread_safety This function must only be called from the main thread.
+            """.trimIndent()
+        ).overload(name = "glfwGetJoystickName")
+
+        +"glfwGetJoystickGUID_"(
+            const_char_ptr,
+            int("jid"),
+            entrypoint = "glfwGetJoystickGUID",
+            javadoc = """
+                Returns the SDL compatible GUID of the specified joystick.
+
+                This function returns the SDL compatible GUID, as a UTF-8 encoded
+                hexadecimal string, of the specified joystick.  The returned string is
+                allocated and freed by GLFW.  You should not free it yourself.
+
+                The GUID is what connects a joystick to a gamepad mapping.  A connected
+                joystick will always have a GUID even if there is no gamepad mapping
+                assigned to it.
+
+                If the specified joystick is not present this function will return `NULL`
+                but will not generate an error.  This can be used instead of first calling
+                [glfwJoystickPresent][#glfwJoystickPresent(int)].
+
+                The GUID uses the format introduced in SDL 2.0.5.  This GUID tries to
+                uniquely identify the make and model of a joystick but does not identify
+                a specific unit, e.g. all wired Xbox 360 controllers will have the same
+                GUID on that platform.  The GUID for a unit may vary between platforms
+                depending on what hardware information the platform specific APIs provide.
+
+                @param jid The joystick to query.
+                @return The UTF-8 encoded GUID of the joystick, or `NULL` if the joystick
+                is not present or an error occurred.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][#GLFW_NOT_INITIALIZED],
+                [GLFW_INVALID_ENUM][#GLFW_INVALID_ENUM] and [GLFW_PLATFORM_ERROR][#GLFW_PLATFORM_ERROR].
+
+                @glfw.pointer_lifetime The returned string is allocated and freed by GLFW.  You
+                should not free it yourself.  It is valid until the specified joystick is
+                disconnected or the library is terminated.
+
+                @glfw.thread_safety This function must only be called from the main thread.
+            """.trimIndent()
+        ).overload(name = "glfwGetJoystickGUID")
+
+        "glfwSetJoystickUserPointer"(
+            void,
+            int("jid"),
+            void_ptr("pointer"),
+            entrypoint = "glfwSetJoystickUserPointer",
+            javadoc = """
+                Sets the user pointer of the specified joystick.
+
+                This function sets the user-defined pointer of the specified joystick.  The
+                current value is retained until the joystick is disconnected.  The initial
+                value is `NULL`.
+
+                This function may be called from the joystick callback, even for a joystick
+                that is being disconnected.
+
+                @param jid The joystick whose pointer to set.
+                @param pointer The new value.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][#GLFW_NOT_INITIALIZED].
+
+                @glfw.thread_safety This function may be called from any thread.  Access is not
+                synchronized.
+
+                @see #glfwGetJoystickUserPointer(int) glfwGetJoystickUserPointer
+            """.trimIndent()
+        )
+
+        "glfwGetJoystickUserPointer"(
+            void_ptr,
+            int("jid"),
+            entrypoint = "glfwGetJoystickUserPointer",
+            javadoc = """
+                Returns the user pointer of the specified joystick.
+
+                This function returns the current value of the user-defined pointer of the
+                specified joystick.  The initial value is `NULL`.
+
+                This function may be called from the joystick callback, even for a joystick
+                that is being disconnected.
+
+                @param jid The joystick whose pointer to return.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][#GLFW_NOT_INITIALIZED].
+
+                @glfw.thread_safety This function may be called from any thread.  Access is not
+                synchronized.
+
+                @see #glfwSetJoystickUserPointer(int, MemorySegment) glfwSetJoystickUserPointer
+            """.trimIndent()
+        )
+
+        +"glfwJoystickIsGamepad"(
+            glfw_boolean,
+            int("jid"),
+            entrypoint = "glfwJoystickIsGamepad",
+            javadoc = """
+                Returns whether the specified joystick has a gamepad mapping.
+
+                This function returns whether the specified joystick is both present and has
+                a gamepad mapping.
+
+                If the specified joystick is present but does not have a gamepad mapping
+                this function will return `GLFW_FALSE` but will not generate an error.  Call
+                [glfwJoystickPresent][#glfwJoystickPresent(int)] to check if a joystick is present regardless of
+                whether it has a mapping.
+
+                @param jid The joystick to query.
+                @return `GLFW_TRUE` if a joystick is both present and has a gamepad mapping,
+                or `GLFW_FALSE` otherwise.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][#GLFW_NOT_INITIALIZED] and
+                [GLFW_INVALID_ENUM][#GLFW_INVALID_ENUM].
+
+                @glfw.thread_safety This function must only be called from the main thread.
+
+                @see #glfwGetGamepadState(int, MemorySegment) glfwGetGamepadState
+            """.trimIndent(),
+            addNow = false
+        ).overload()
+
+        +"glfwSetJoystickCallback"(
+            address c "GLFWjoystickfun",
+            GLFWjoystickfun("callback"),
+            entrypoint = "glfwSetJoystickCallback",
+            javadoc = """
+                Sets the joystick configuration callback.
+
+                This function sets the joystick configuration callback, or removes the
+                currently set callback.  This is called when a joystick is connected to or
+                disconnected from the system.
+
+                For joystick connection and disconnection events to be delivered on all
+                platforms, you need to call one of the [event processing](@ref events)
+                functions.  Joystick disconnection may also be detected and the callback
+                called by joystick functions.  The function will then return whatever it
+                returns if the joystick is not present.
+
+                @param callback The new callback, or `NULL` to remove the currently set
+                callback.
+                @return The previously set callback, or `NULL` if no callback was set or the
+                library had not been initialized.
+
+                @glfw.callback_signature
+                For more information about the callback parameters, see the
+                [function pointer type][GLFWJoystickFun].
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][#GLFW_NOT_INITIALIZED].
+
+                @glfw.thread_safety This function must only be called from the main thread.
+            """.trimIndent()
+        ).callbackOverload("Arena.global()")
+
+        +(+"glfwUpdateGamepadMappings"(
+            glfw_boolean,
+            (address.copy(
+                javaType = MemorySegment_,
+                cType = const_char_ptr.cType,
+                layout = const_char_ptr.layout
+            ))("string"),
+            entrypoint = "glfwUpdateGamepadMappings",
+            javadoc = """
+                Adds the specified SDL_GameControllerDB gamepad mappings.
+
+                This function parses the specified ASCII encoded string and updates the
+                internal list with any gamepad mappings it finds.  This string may
+                contain either a single gamepad mapping or many mappings separated by
+                newlines.  The parser supports the full format of the `gamecontrollerdb.txt`
+                source file including empty lines and comments.
+
+                See gamepad_mapping for a description of the format.
+
+                If there is already a gamepad mapping for a given GUID in the internal list,
+                it will be replaced by the one passed to this function.  If the library is
+                terminated and re-initialized the internal list will revert to the built-in
+                default.
+
+                @param string The string containing the gamepad mappings.
+                @return `GLFW_TRUE` if successful, or `GLFW_FALSE` if an
+                error occurred.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][#GLFW_NOT_INITIALIZED] and
+                [GLFW_INVALID_VALUE][#GLFW_INVALID_VALUE].
+
+                @glfw.thread_safety This function must only be called from the main thread.
+
+                @see #glfwJoystickIsGamepad(int) glfwJoystickIsGamepad
+                @see #glfwGetGamepadName(int) glfwGetGamepadName
+            """.trimIndent(),
+            addNow = false,
+        ).overload()).overload(parameters = listOf(const_char_ptr("string")))
+
+        +"glfwGetGamepadName_"(
+            const_char_ptr,
+            int("jid"),
+            entrypoint = "glfwGetGamepadName",
+            javadoc = """
+                Returns the human-readable gamepad name for the specified joystick.
+
+                This function returns the human-readable name of the gamepad from the
+                gamepad mapping assigned to the specified joystick.
+
+                If the specified joystick is not present or does not have a gamepad mapping
+                this function will return `NULL` but will not generate an error.  Call
+                [glfwJoystickPresent][#glfwJoystickPresent(int)] to check whether it is present regardless of
+                whether it has a mapping.
+
+                @param jid The joystick to query.
+                @return The UTF-8 encoded name of the gamepad, or `NULL` if the
+                joystick is not present, does not have a mapping or an
+                error occurred.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][#GLFW_NOT_INITIALIZED] and [GLFW_INVALID_ENUM][#GLFW_INVALID_ENUM].
+
+                @glfw.pointer_lifetime The returned string is allocated and freed by GLFW.  You
+                should not free it yourself.  It is valid until the specified joystick is
+                disconnected, the gamepad mappings are updated or the library is terminated.
+                @glfw.thread_safety This function must only be called from the main thread.
+
+                @see #glfwJoystickIsGamepad(int) glfwJoystickIsGamepad
+            """.trimIndent()
+        ).overload(name = "glfwGetGamepadName")
+
+        +(+"glfwGetGamepadState"(
+            glfw_boolean,
+            int("jid"),
+            (address.copy(
+                javaType = MemorySegment_,
+                cType = GLFWgamepadstate_ptr.cType,
+                layout = GLFWgamepadstate_ptr.layout
+            ))("state"),
+            entrypoint = "glfwGetGamepadState",
+            javadoc = """
+                Retrieves the state of the specified joystick remapped as a gamepad.
+
+                This function retrieves the state of the specified joystick remapped to
+                an Xbox-like gamepad.
+
+                If the specified joystick is not present or does not have a gamepad mapping
+                this function will return `GLFW_FALSE` but will not generate an error.  Call
+                [glfwJoystickPresent][#glfwJoystickPresent(int)] to check whether it is present regardless of
+                whether it has a mapping.
+
+                The Guide button may not be available for input as it is often hooked by the
+                system or the Steam client.
+
+                Not all devices have all the buttons or axes provided by
+                [GLFWGamepadState].  Unavailable buttons and axes will always report
+                `GLFW_RELEASE` and 0.0 respectively.
+
+                @param jid The joystick to query.
+                @param state The gamepad input state of the joystick.
+                @return `GLFW_TRUE` if successful, or `GLFW_FALSE` if no joystick is
+                connected, it has no gamepad mapping or an error
+                occurred.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][#GLFW_NOT_INITIALIZED] and
+                [GLFW_INVALID_ENUM][#GLFW_INVALID_ENUM].
+
+                @glfw.thread_safety This function must only be called from the main thread.
+
+                @see #glfwUpdateGamepadMappings(MemorySegment) glfwUpdateGamepadMappings
+                @see #glfwJoystickIsGamepad(int) glfwJoystickIsGamepad
+            """.trimIndent(),
+            addNow = false
+        ).overload()).overload(parameters = listOf(int("jid"), GLFWgamepadstate_ptr("state")))
+
+        +"glfwSetClipboardString"(
+            void,
+            GLFWwindow_ptr("window"),
+            const_char_ptr("string"),
+            entrypoint = "glfwSetClipboardString",
+            javadoc = """
+                Sets the clipboard to the specified string.
+
+                This function sets the system clipboard to the specified, UTF-8 encoded
+                string.
+
+                @param window Deprecated.  Any valid window or `NULL`.
+                @param string A UTF-8 encoded string.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][#GLFW_NOT_INITIALIZED] and
+                [GLFW_PLATFORM_ERROR][#GLFW_PLATFORM_ERROR].
+
+                @glfw.remark __Windows:__ The clipboard on Windows has a single global lock for reading and
+                writing.  GLFW tries to acquire it a few times, which is almost always enough.  If it
+                cannot acquire the lock then this function emits [GLFW_PLATFORM_ERROR][#GLFW_PLATFORM_ERROR] and returns.
+                It is safe to try this multiple times.
+
+                @glfw.pointer_lifetime The specified string is copied before this function
+                returns.
+
+                @glfw.thread_safety This function must only be called from the main thread.
+
+                @see #glfwGetClipboardString(MemorySegment) glfwGetClipboardString
+            """.trimIndent()
+        ).overload()
+
+        +"glfwGetClipboardString_"(
+            const_char_ptr,
+            GLFWwindow_ptr("window"),
+            entrypoint = "glfwGetClipboardString",
+            javadoc = """
+                Returns the contents of the clipboard as a string.
+
+                This function returns the contents of the system clipboard, if it contains
+                or is convertible to a UTF-8 encoded string.  If the clipboard is empty or
+                if its contents cannot be converted, `NULL` is returned and a
+                [GLFW_FORMAT_UNAVAILABLE][#GLFW_FORMAT_UNAVAILABLE] error is generated.
+
+                @param window Deprecated.  Any valid window or `NULL`.
+                @return The contents of the clipboard as a UTF-8 encoded string, or `NULL`
+                if an error occurred.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][#GLFW_NOT_INITIALIZED],
+                [GLFW_FORMAT_UNAVAILABLE][#GLFW_FORMAT_UNAVAILABLE] and [GLFW_PLATFORM_ERROR][#GLFW_PLATFORM_ERROR].
+
+                @glfw.remark __Windows:__ The clipboard on Windows has a single global lock for reading and
+                writing.  GLFW tries to acquire it a few times, which is almost always enough.  If it
+                cannot acquire the lock then this function emits [GLFW_PLATFORM_ERROR][#GLFW_PLATFORM_ERROR] and returns.
+                It is safe to try this multiple times.
+
+                @glfw.pointer_lifetime The returned string is allocated and freed by GLFW.  You
+                should not free it yourself.  It is valid until the next call to
+                `glfwGetClipboardString` or [glfwSetClipboardString][#glfwSetClipboardString(MemorySegment, MemorySegment)], or until the library
+                is terminated.
+
+                @glfw.thread_safety This function must only be called from the main thread.
+
+                @see #glfwSetClipboardString(MemorySegment, MemorySegment) glfwSetClipboardString
+            """.trimIndent()
+        ).overload(name = "glfwGetClipboardString")
+
+        "glfwGetTime"(
+            double,
+            entrypoint = "glfwGetTime",
+            javadoc = """
+                Returns the GLFW time.
+
+                This function returns the current GLFW time, in seconds.  Unless the time
+                has been set using [glfwSetTime][#glfwSetTime(double)] it measures time elapsed since GLFW was
+                initialized.
+
+                This function and [glfwSetTime][#glfwSetTime(double)] are helper functions on top of
+                [glfwGetTimerFrequency][#glfwGetTimerFrequency()] and [glfwGetTimerValue][#glfwGetTimerValue()].
+
+                The resolution of the timer is system dependent, but is usually on the order
+                of a few micro- or nanoseconds.  It uses the highest-resolution monotonic
+                time source on each operating system.
+
+                @return The current time, in seconds, or zero if an
+                error occurred.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][#GLFW_NOT_INITIALIZED].
+
+                @glfw.thread_safety This function may be called from any thread.  Reading and
+                writing of the internal base time is not atomic, so it needs to be
+                externally synchronized with calls to [glfwSetTime][#glfwSetTime(double)].
+            """.trimIndent()
+        )
+
+        "glfwSetTime"(
+            void,
+            double("time"),
+            entrypoint = "glfwSetTime",
+            javadoc = """
+                Sets the GLFW time.
+
+                This function sets the current GLFW time, in seconds.  The value must be
+                a positive finite number less than or equal to 18446744073.0, which is
+                approximately 584.5 years.
+
+                This function and [glfwGetTime][#glfwGetTime()] are helper functions on top of
+                [glfwGetTimerFrequency][#glfwGetTimerFrequency()] and [glfwGetTimerValue][#glfwGetTimerValue()].
+
+                @param time The new value, in seconds.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][#GLFW_NOT_INITIALIZED] and
+                [GLFW_INVALID_VALUE][#GLFW_INVALID_VALUE].
+
+                @glfw.remark The upper limit of GLFW time is calculated as
+                floor((2<sup>64</sup> - 1) / 10<sup>9</sup>) and is due to implementations
+                storing nanoseconds in 64 bits.  The limit may be increased in the future.
+
+                @glfw.thread_safety This function may be called from any thread.  Reading and
+                writing of the internal base time is not atomic, so it needs to be
+                externally synchronized with calls to [glfwGetTime][#glfwGetTime()].
+            """.trimIndent()
+        )
+
+        "glfwGetTimerValue"(
+            uint64_t,
+            entrypoint = "glfwGetTimerValue",
+            javadoc = """
+                Returns the current value of the raw timer.
+
+                This function returns the current value of the raw timer, measured in
+                1&nbsp;/&nbsp;frequency seconds.  To get the frequency, call
+                [glfwGetTimerFrequency][#glfwGetTimerFrequency()].
+
+                @return The value of the timer, or zero if an
+                error occurred.
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][#GLFW_NOT_INITIALIZED].
+                @glfw.thread_safety This function may be called from any thread.
+
+                @see #glfwGetTimerFrequency() glfwGetTimerFrequency
+            """.trimIndent()
+        )
+
+        "glfwGetTimerFrequency"(
+            uint64_t,
+            entrypoint = "glfwGetTimerFrequency",
+            javadoc = """
+                Returns the frequency, in Hz, of the raw timer.
+
+                This function returns the frequency, in Hz, of the raw timer.
+
+                @return The frequency of the timer, in Hz, or zero if an
+                error occurred.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][#GLFW_NOT_INITIALIZED].
+
+                @glfw.thread_safety This function may be called from any thread.
+
+                @see #glfwGetTimerValue() glfwGetTimerValue
+            """.trimIndent()
+        )
+
+        "glfwMakeContextCurrent"(
+            void,
+            GLFWwindow_ptr("window"),
+            entrypoint = "glfwMakeContextCurrent",
+            javadoc = """
+                Makes the context of the specified window current for the calling
+                thread.
+
+                This function makes the OpenGL or OpenGL ES context of the specified window
+                current on the calling thread.  It can also detach the current context from
+                the calling thread without making a new one current by passing in `NULL`.
+
+                A context must only be made current on a single thread at a time and each
+                thread can have only a single current context at a time.  Making a context
+                current detaches any previously current context on the calling thread.
+
+                When moving a context between threads, you must detach it (make it
+                non-current) on the old thread before making it current on the new one.
+
+                By default, making a context non-current implicitly forces a pipeline flush.
+                On machines that support `GL_KHR_context_flush_control`, you can control
+                whether a context performs this flush by setting the
+                [GLFW_CONTEXT_RELEASE_BEHAVIOR][#GLFW_CONTEXT_RELEASE_BEHAVIOR]
+                hint.
+
+                The specified window must have an OpenGL or OpenGL ES context.  Specifying
+                a window without a context will generate a [GLFW_NO_WINDOW_CONTEXT][#GLFW_NO_WINDOW_CONTEXT]
+                error.
+
+                @param window The window whose context to make current, or `NULL` to
+                detach the current context.
+
+                @glfw.remark If the previously current context was created via a different
+                context creation API than the one passed to this function, GLFW will still
+                detach the previous one from its API before making the new one current.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][#GLFW_NOT_INITIALIZED],
+                [GLFW_NO_WINDOW_CONTEXT][#GLFW_NO_WINDOW_CONTEXT] and [GLFW_PLATFORM_ERROR][#GLFW_PLATFORM_ERROR].
+
+                @glfw.thread_safety This function may be called from any thread.
+
+                @see #glfwGetCurrentContext() glfwGetCurrentContext
+            """.trimIndent()
+        )
+
+        "glfwGetCurrentContext"(
+            GLFWwindow_ptr,
+            entrypoint = "glfwGetCurrentContext",
+            javadoc = """
+                Returns the window whose context is current on the calling thread.
+
+                This function returns the window whose OpenGL or OpenGL ES context is
+                current on the calling thread.
+
+                @return The window whose context is current, or `NULL` if no window's
+                context is current.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][#GLFW_NOT_INITIALIZED].
+
+                @glfw.thread_safety This function may be called from any thread.
+
+                @see #glfwMakeContextCurrent(MemorySegment) glfwMakeContextCurrent
+            """.trimIndent()
+        )
+
+        "glfwSwapBuffers"(
+            void,
+            GLFWwindow_ptr("window"),
+            entrypoint = "glfwSwapBuffers",
+            javadoc = """
+                Swaps the front and back buffers of the specified window.
+
+                This function swaps the front and back buffers of the specified window when
+                rendering with OpenGL or OpenGL ES.  If the swap interval is greater than
+                zero, the GPU driver waits the specified number of screen updates before
+                swapping the buffers.
+
+                The specified window must have an OpenGL or OpenGL ES context.  Specifying
+                a window without a context will generate a [GLFW_NO_WINDOW_CONTEXT][#GLFW_NO_WINDOW_CONTEXT]
+                error.
+
+                This function does not apply to Vulkan.  If you are rendering with Vulkan,
+                see `vkQueuePresentKHR` instead.
+
+                @param window The window whose buffers to swap.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][#GLFW_NOT_INITIALIZED],
+                [GLFW_NO_WINDOW_CONTEXT][#GLFW_NO_WINDOW_CONTEXT] and [GLFW_PLATFORM_ERROR][#GLFW_PLATFORM_ERROR].
+
+                @glfw.remark __EGL:__ The context of the specified window must be current on the
+                calling thread.
+
+                @glfw.thread_safety This function may be called from any thread.
+
+                @see #glfwSwapInterval(int) glfwSwapInterval
+            """.trimIndent()
+        )
+
+        "glfwSwapInterval"(
+            void,
+            int("interval"),
+            entrypoint = "glfwSwapInterval",
+            javadoc = """
+                Sets the swap interval for the current context.
+
+                This function sets the swap interval for the current OpenGL or OpenGL ES
+                context, i.e. the number of screen updates to wait from the time
+                [glfwSwapBuffers][#glfwSwapBuffers(MemorySegment)] was called before swapping the buffers and returning.  This
+                is sometimes called _vertical synchronization_, _vertical retrace
+                synchronization_ or just _vsync_.
+
+                A context that supports either of the `WGL_EXT_swap_control_tear` and
+                `GLX_EXT_swap_control_tear` extensions also accepts _negative_ swap
+                intervals, which allows the driver to swap immediately even if a frame
+                arrives a little bit late.  You can check for these extensions with
+                [glfwExtensionSupported][#glfwExtensionSupported(MemorySegment)].
+
+                A context must be current on the calling thread.  Calling this function
+                without a current context will cause a [GLFW_NO_CURRENT_CONTEXT][#GLFW_NO_CURRENT_CONTEXT] error.
+
+                This function does not apply to Vulkan.  If you are rendering with Vulkan,
+                see the present mode of your swapchain instead.
+
+                @param interval The minimum number of screen updates to wait for
+                until the buffers are swapped by [glfwSwapBuffers][#glfwSwapBuffers(MemorySegment)].
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][#GLFW_NOT_INITIALIZED],
+                [GLFW_NO_CURRENT_CONTEXT][#GLFW_NO_CURRENT_CONTEXT] and [GLFW_PLATFORM_ERROR][#GLFW_PLATFORM_ERROR].
+
+                @glfw.remark This function is not called during context creation, leaving the
+                swap interval set to whatever is the default for that API.  This is done
+                because some swap interval extensions used by GLFW do not allow the swap
+                interval to be reset to zero once it has been set to a non-zero value.
+
+                Some GPU drivers do not honor the requested swap interval, either
+                because of a user setting that overrides the application's request or due to
+                bugs in the driver.
+
+                @glfw.thread_safety This function may be called from any thread.
+
+                @see #glfwSwapBuffers(MemorySegment) glfwSwapBuffers
+            """.trimIndent()
+        )
+
+        +(+"glfwExtensionSupported"(
+            glfw_boolean,
+            address.copy(
+                javaType = MemorySegment_,
+                cType = const_char_ptr.cType,
+                layout = const_char_ptr.layout
+            )("extension"),
+            entrypoint = "glfwExtensionSupported",
+            javadoc = """
+                Returns whether the specified extension is available.
+
+                This function returns whether the specified
+                API extension is supported by the current OpenGL or
+                OpenGL ES context.  It searches both for client API extension and context
+                creation API extensions.
+
+                A context must be current on the calling thread.  Calling this function
+                without a current context will cause a [GLFW_NO_CURRENT_CONTEXT][#GLFW_NO_CURRENT_CONTEXT] error.
+
+                As this functions retrieves and searches one or more extension strings each
+                call, it is recommended that you cache its results if it is going to be used
+                frequently.  The extension strings will not change during the lifetime of
+                a context, so there is no danger in doing this.
+
+                This function does not apply to Vulkan.  If you are using Vulkan, see
+                [glfwGetRequiredInstanceExtensions][#glfwGetRequiredInstanceExtensions(MemorySegment)], `vkEnumerateInstanceExtensionProperties`
+                and `vkEnumerateDeviceExtensionProperties` instead.
+
+                @param extension The ASCII encoded name of the extension.
+                @return `GLFW_TRUE` if the extension is available, or `GLFW_FALSE`
+                otherwise.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][#GLFW_NOT_INITIALIZED],
+                [GLFW_NO_CURRENT_CONTEXT][#GLFW_NO_CURRENT_CONTEXT], [GLFW_INVALID_VALUE][#GLFW_INVALID_VALUE] and
+                [GLFW_PLATFORM_ERROR][#GLFW_PLATFORM_ERROR].
+
+                @glfw.thread_safety This function may be called from any thread.
+
+                @see #glfwGetProcAddress(MemorySegment) glfwGetProcAddress
+            """.trimIndent(),
+            addNow = false
+        ).overload()).overload(parameters = listOf(const_char_ptr("extension")))
+
+        +"glfwGetProcAddress"(
+            address c "GLFWglproc",
+            const_char_ptr("procname"),
+            entrypoint = "glfwGetProcAddress",
+            javadoc = """
+                Returns the address of the specified function for the current
+                context.
+
+                This function returns the address of the specified OpenGL or OpenGL ES
+                core or extension function, if it is supported
+                by the current context.
+
+                A context must be current on the calling thread.  Calling this function
+                without a current context will cause a [GLFW_NO_CURRENT_CONTEXT][#GLFW_NO_CURRENT_CONTEXT] error.
+
+                This function does not apply to Vulkan.  If you are rendering with Vulkan,
+                see [glfwGetInstanceProcAddress][GLFWVulkan#glfwGetInstanceProcAddress(MemorySegment, MemorySegment)], `vkGetInstanceProcAddr` and
+                `vkGetDeviceProcAddr` instead.
+
+                @param procname The ASCII encoded name of the function.
+                @return The address of the function, or `NULL` if an
+                error occurred.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][#GLFW_NOT_INITIALIZED],
+                [GLFW_NO_CURRENT_CONTEXT][#GLFW_NO_CURRENT_CONTEXT] and [GLFW_PLATFORM_ERROR][#GLFW_PLATFORM_ERROR].
+
+                @glfw.remark The address of a given function is not guaranteed to be the same
+                between contexts.
+
+                This function may return a non-`NULL` address despite the
+                associated version or extension not being available.  Always check the
+                context version or extension string first.
+
+                @glfw.pointer_lifetime The returned function pointer is valid until the context
+                is destroyed or the library is terminated.
+
+                @glfw.thread_safety This function may be called from any thread.
+
+                @see #glfwExtensionSupported(MemorySegment) glfwExtensionSupported
+            """.trimIndent()
+        ).overload()
+
+        +"glfwVulkanSupported"(
+            glfw_boolean,
+            entrypoint = "glfwVulkanSupported",
+            javadoc = """
+                Returns whether the Vulkan loader and an ICD have been found.
+
+                This function returns whether the Vulkan loader and any minimally functional
+                ICD have been found.
+
+                The availability of a Vulkan loader and even an ICD does not by itself guarantee that
+                surface creation or even instance creation is possible.  Call
+                [glfwGetRequiredInstanceExtensions][#glfwGetRequiredInstanceExtensions(MemorySegment)] to check whether the extensions necessary for Vulkan
+                surface creation are available and [glfwGetPhysicalDevicePresentationSupport][GLFWVulkan#glfwGetPhysicalDevicePresentationSupport(MemorySegment, MemorySegment, int)] to
+                check whether a queue family of a physical device supports image presentation.
+
+                @return `GLFW_TRUE` if Vulkan is minimally available, or `GLFW_FALSE`
+                otherwise.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][#GLFW_NOT_INITIALIZED].
+
+                @glfw.thread_safety This function may be called from any thread.
+            """.trimIndent(),
+            addNow = false
+        ).overload()
+
+        "glfwGetRequiredInstanceExtensions"(
+            address c "const char**",
+            (address c "uint32_t*")("count").ref(),
+            entrypoint = "glfwGetRequiredInstanceExtensions",
+            javadoc = """
+                Returns the Vulkan instance extensions required by GLFW.
+
+                This function returns an array of names of Vulkan instance extensions required
+                by GLFW for creating Vulkan surfaces for GLFW windows.  If successful, the
+                list will always contain `VK_KHR_surface`, so if you don't require any
+                additional extensions you can pass this list directly to the
+                `VkInstanceCreateInfo` struct.
+
+                If Vulkan is not available on the machine, this function returns `NULL` and
+                generates a [GLFW_API_UNAVAILABLE][#GLFW_API_UNAVAILABLE] error.  Call [glfwVulkanSupported][#glfwVulkanSupported()]
+                to check whether Vulkan is at least minimally available.
+
+                If Vulkan is available but no set of extensions allowing window surface
+                creation was found, this function returns `NULL`.  You may still use Vulkan
+                for off-screen rendering and compute work.
+
+                @param count Where to store the number of extensions in the returned
+                array.  This is set to zero if an error occurred.
+                @return An array of ASCII encoded extension names, or `NULL` if an
+                error occurred.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][#GLFW_NOT_INITIALIZED] and
+                [GLFW_API_UNAVAILABLE][#GLFW_API_UNAVAILABLE].
+
+                @glfw.remark Additional extensions may be required by future versions of GLFW.
+                You should check if any extensions you wish to enable are already in the
+                returned array, as it is an error to specify an extension more than once in
+                the `VkInstanceCreateInfo` struct.
+
+                @glfw.pointer_lifetime The returned array is allocated and freed by GLFW.  You
+                should not free it yourself.  It is guaranteed to be valid only until the
+                library is terminated.
+
+                @glfw.thread_safety This function may be called from any thread.
+
+                @see GLFWVulkan#glfwCreateWindowSurface(MemorySegment, MemorySegment, MemorySegment, MemorySegment) glfwCreateWindowSurface
+            """.trimIndent()
+        )
 
         //endregion
     }
-    //TODO window hint, window attribute
+
+    StaticDowncall(glfwPackage, "GLFWVulkan", symbolLookup = glfwLookup) {
+        val VkInstance = address c "VkInstance"
+        val VkPhysicalDevice = address c "VkPhysicalDevice"
+        val const_VkAllocationCallbacks_ptr = address c "const VkAllocationCallbacks*"
+        val VkSurfaceKHR_ptr = address c "VkSurfaceKHR*"
+        val VkResult = int c "VkResult"
+
+        "glfwInitVulkanLoader"(
+            void,
+            (address c "PFN_vkGetInstanceProcAddr")("loader"),
+            entrypoint = "glfwInitVulkanLoader",
+            javadoc = """
+                Sets the desired Vulkan `vkGetInstanceProcAddr` function.
+
+                This function sets the `vkGetInstanceProcAddr` function that GLFW will use for all
+                Vulkan related entry point queries.
+
+                This feature is mostly useful on macOS, if your copy of the Vulkan loader is in
+                a location where GLFW cannot find it through dynamic loading, or if you are still
+                using the static library version of the loader.
+
+                If set to `NULL`, GLFW will try to load the Vulkan loader dynamically by its standard
+                name and get this function from there.  This is the default behavior.
+
+                The standard name of the loader is `vulkan-1.dll` on Windows, `libvulkan.so.1` on
+                Linux and other Unix-like systems and `libvulkan.1.dylib` on macOS.  If your code is
+                also loading it via these names then you probably don't need to use this function.
+
+                The function address you set is never reset by GLFW, but it only takes effect during
+                initialization.  Once GLFW has been initialized, any updates will be ignored until the
+                library is terminated and initialized again.
+
+                @param loader The address of the function to use, or `NULL`.
+
+                Loader function signature
+                ```c
+                PFN_vkVoidFunction vkGetInstanceProcAddr(VkInstance instance, const char* name)
+                ```
+                For more information about this function, see the
+                [Vulkan Registry](https://www.khronos.org/registry/vulkan/).
+
+                @glfw.errors None.
+
+                @glfw.remark This function may be called before [glfwInit][GLFW#glfwInit()].
+
+                @glfw.thread_safety This function must only be called from the main thread.
+
+                @see GLFW#glfwInit() glfwInit
+            """.trimIndent()
+        )
+
+        +"glfwGetInstanceProcAddress"(
+            address c "GLFWvkproc",
+            VkInstance("instance"),
+            const_char_ptr("procname"),
+            entrypoint = "glfwGetInstanceProcAddress",
+            javadoc = """
+                Returns the address of the specified Vulkan instance function.
+
+                This function returns the address of the specified Vulkan core or extension
+                function for the specified instance.  If instance is set to `NULL` it can
+                return any function exported from the Vulkan loader, including at least the
+                following functions:
+                - `vkEnumerateInstanceExtensionProperties`
+                - `vkEnumerateInstanceLayerProperties`
+                - `vkCreateInstance`
+                - `vkGetInstanceProcAddr`
+
+                If Vulkan is not available on the machine, this function returns `NULL` and
+                generates a [GLFW_API_UNAVAILABLE][GLFW#GLFW_API_UNAVAILABLE] error.  Call [glfwVulkanSupported][GLFW#glfwVulkanSupported()]
+                to check whether Vulkan is at least minimally available.
+
+                This function is equivalent to calling `vkGetInstanceProcAddr` with
+                a platform-specific query of the Vulkan loader as a fallback.
+
+                @param instance The Vulkan instance to query, or `NULL` to retrieve
+                functions related to instance creation.
+                @param procname The ASCII encoded name of the function.
+                @return The address of the function, or `NULL` if an
+                error occurred.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][GLFW#GLFW_NOT_INITIALIZED] and
+                [GLFW_API_UNAVAILABLE][GLFW#GLFW_API_UNAVAILABLE].
+
+                @glfw.pointer_lifetime The returned function pointer is valid until the library
+                is terminated.
+
+                @glfw.thread_safety This function may be called from any thread.
+            """.trimIndent()
+        ).overload()
+
+        +"glfwGetPhysicalDevicePresentationSupport"(
+            glfw_boolean,
+            VkInstance("instance"),
+            VkPhysicalDevice("device"),
+            uint32_t("queuefamily"),
+            entrypoint = "glfwGetPhysicalDevicePresentationSupport",
+            javadoc = """
+                Returns whether the specified queue family can present images.
+
+                This function returns whether the specified queue family of the specified
+                physical device supports presentation to the platform GLFW was built for.
+
+                If Vulkan or the required window surface creation instance extensions are
+                not available on the machine, or if the specified instance was not created
+                with the required extensions, this function returns `GLFW_FALSE` and
+                generates a [GLFW_API_UNAVAILABLE][GLFW#GLFW_API_UNAVAILABLE] error.  Call [glfwVulkanSupported][GLFW#glfwVulkanSupported()]
+                to check whether Vulkan is at least minimally available and
+                [glfwGetRequiredInstanceExtensions][GLFW#glfwGetRequiredInstanceExtensions(MemorySegment)] to check what instance extensions are
+                required.
+
+                @param instance The instance that the physical device belongs to.
+                @param device The physical device that the queue family belongs to.
+                @param queuefamily The index of the queue family to query.
+                @return `GLFW_TRUE` if the queue family supports presentation, or
+                `GLFW_FALSE` otherwise.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][GLFW#GLFW_NOT_INITIALIZED],
+                [GLFW_API_UNAVAILABLE][GLFW#GLFW_API_UNAVAILABLE] and [GLFW_PLATFORM_ERROR][GLFW#GLFW_PLATFORM_ERROR].
+
+                @glfw.remark __macOS:__ This function currently always returns `GLFW_TRUE`, as the
+                `VK_MVK_macos_surface` and `VK_EXT_metal_surface` extensions do not provide
+                a `vkGetPhysicalDevice*PresentationSupport` type function.
+
+                @glfw.thread_safety This function may be called from any thread.  For
+                synchronization details of Vulkan objects, see the Vulkan specification.
+            """.trimIndent(),
+            addNow = false
+        ).overload()
+
+        "glfwCreateWindowSurface"(
+            VkResult,
+            VkInstance("instance"),
+            GLFWwindow_ptr("window"),
+            const_VkAllocationCallbacks_ptr("allocator"),
+            VkSurfaceKHR_ptr("surface").ref(),
+            entrypoint = "glfwCreateWindowSurface",
+            javadoc = """
+                Creates a Vulkan surface for the specified window.
+
+                This function creates a Vulkan surface for the specified window.
+
+                If the Vulkan loader or at least one minimally functional ICD were not found,
+                this function returns `VK_ERROR_INITIALIZATION_FAILED` and generates a
+                [GLFW_API_UNAVAILABLE][GLFW#GLFW_API_UNAVAILABLE] error.  Call [glfwVulkanSupported][GLFW#glfwVulkanSupported()] to check whether
+                Vulkan is at least minimally available.
+
+                If the required window surface creation instance extensions are not
+                available or if the specified instance was not created with these extensions
+                enabled, this function returns `VK_ERROR_EXTENSION_NOT_PRESENT` and
+                generates a [GLFW_API_UNAVAILABLE][GLFW#GLFW_API_UNAVAILABLE] error.  Call
+                [glfwGetRequiredInstanceExtensions][GLFW#glfwGetRequiredInstanceExtensions(MemorySegment)] to check what instance extensions are
+                required.
+
+                The window surface cannot be shared with another API so the window must
+                have been created with the client api hint
+                set to `GLFW_NO_API` otherwise it generates a [GLFW_INVALID_VALUE][GLFW#GLFW_INVALID_VALUE] error
+                and returns `VK_ERROR_NATIVE_WINDOW_IN_USE_KHR`.
+
+                The window surface must be destroyed before the specified Vulkan instance.
+                It is the responsibility of the caller to destroy the window surface.  GLFW
+                does not destroy it for you.  Call `vkDestroySurfaceKHR` to destroy the
+                surface.
+
+                @param instance The Vulkan instance to create the surface in.
+                @param window The window to create the surface for.
+                @param allocator The allocator to use, or `NULL` to use the default
+                allocator.
+                @param surface Where to store the handle of the surface.  This is set
+                to `VK_NULL_HANDLE` if an error occurred.
+                @return `VK_SUCCESS` if successful, or a Vulkan error code if an
+                error occurred.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][GLFW#GLFW_NOT_INITIALIZED],
+                [GLFW_API_UNAVAILABLE][GLFW#GLFW_API_UNAVAILABLE], [GLFW_PLATFORM_ERROR][GLFW#GLFW_PLATFORM_ERROR] and [GLFW_INVALID_VALUE][GLFW#GLFW_INVALID_VALUE]
+
+                @glfw.remark If an error occurs before the creation call is made, GLFW returns
+                the Vulkan error code most appropriate for the error.  Appropriate use of
+                [glfwVulkanSupported][GLFW#glfwVulkanSupported()] and [glfwGetRequiredInstanceExtensions][GLFW#glfwGetRequiredInstanceExtensions(MemorySegment)] should
+                eliminate almost all occurrences of these errors.
+                - __macOS:__ GLFW prefers the `VK_EXT_metal_surface` extension, with the
+                    `VK_MVK_macos_surface` extension as a fallback.  The name of the selected
+                    extension, if any, is included in the array returned by
+                    [glfwGetRequiredInstanceExtensions][GLFW#glfwGetRequiredInstanceExtensions(MemorySegment)].
+
+                    This function creates and sets a `CAMetalLayer` instance for
+                    the window content view, which is required for MoltenVK to function.
+                - __X11:__ By default GLFW prefers the `VK_KHR_xcb_surface` extension,
+                    with the `VK_KHR_xlib_surface` extension as a fallback.  You can make
+                    `VK_KHR_xlib_surface` the preferred extension by setting the
+                    [GLFW_X11_XCB_VULKAN_SURFACE][GLFW#GLFW_X11_XCB_VULKAN_SURFACE] init
+                    hint.  The name of the selected extension, if any, is included in the array
+                    returned by [glfwGetRequiredInstanceExtensions][GLFW#glfwGetRequiredInstanceExtensions(MemorySegment)].
+
+                @glfw.thread_safety This function may be called from any thread.  For
+                synchronization details of Vulkan objects, see the Vulkan specification.
+
+                @see GLFW#glfwGetRequiredInstanceExtensions(MemorySegment) glfwGetRequiredInstanceExtensions
+            """.trimIndent()
+        )
+    }
+
+    StaticDowncall(glfwPackage, "GLFWNative", symbolLookup = glfwLookup) {
+        //region WIN32
+        val HWND = address c "HWND"
+
+        +"glfwGetWin32Adapter_"(
+            const_char_ptr,
+            GLFWmonitor_ptr("monitor"),
+            entrypoint = "glfwGetWin32Adapter",
+            javadoc = """
+                Returns the adapter device name of the specified monitor.
+
+                @return The UTF-8 encoded adapter device name (for example `\\.\DISPLAY1`)
+                of the specified monitor, or `NULL` if an error
+                occurred.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][GLFW#GLFW_NOT_INITIALIZED] and
+                [GLFW_PLATFORM_UNAVAILABLE][GLFW#GLFW_PLATFORM_UNAVAILABLE].
+
+                @glfw.thread_safety This function may be called from any thread.  Access is not
+                synchronized.
+            """.trimIndent(),
+            optional = true,
+            defaultCode = "return MemorySegment.NULL;"
+        ).overload(name = "glfwGetWin32Adapter", defaultCode = "return null;")
+
+        +"glfwGetWin32Monitor_"(
+            const_char_ptr,
+            GLFWmonitor_ptr("monitor"),
+            entrypoint = "glfwGetWin32Monitor",
+            javadoc = """
+                Returns the display device name of the specified monitor.
+
+                @return The UTF-8 encoded display device name (for example
+                `\\.\DISPLAY1\Monitor0`) of the specified monitor, or `NULL` if an
+                error occurred.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][GLFW#GLFW_NOT_INITIALIZED] and
+                [GLFW_PLATFORM_UNAVAILABLE][GLFW#GLFW_PLATFORM_UNAVAILABLE].
+
+                @glfw.thread_safety This function may be called from any thread.  Access is not
+                synchronized.
+            """.trimIndent(),
+            optional = true,
+            defaultCode = "return MemorySegment.NULL;"
+        ).overload(name = "glfwGetWin32Monitor", defaultCode = "return null;")
+
+        "glfwGetWin32Window"(
+            HWND,
+            GLFWwindow_ptr("window"),
+            entrypoint = "glfwGetWin32Window",
+            javadoc = """
+                Returns the `HWND` of the specified window.
+
+                @return The `HWND` of the specified window, or `NULL` if an
+                error occurred.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][GLFW#GLFW_NOT_INITIALIZED] and
+                [GLFW_PLATFORM_UNAVAILABLE][GLFW#GLFW_PLATFORM_UNAVAILABLE].
+                @glfw.remark The `HDC` associated with the window can be queried with the
+                [GetDC](https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getdc)
+                function.
+                ```c
+                HDC dc = GetDC(glfwGetWin32Window(window));
+                ```
+                This DC is private and does not need to be released.
+
+                @glfw.thread_safety This function may be called from any thread.  Access is not
+                synchronized.
+            """.trimIndent(),
+            optional = true,
+            defaultCode = "return MemorySegment.NULL;"
+        )
+        //endregion
+
+        //region WGL
+        val HGLRC = address c "HGLRC"
+        "glfwGetWGLContext"(
+            HGLRC,
+            GLFWwindow_ptr("window"),
+            entrypoint = "glfwGetWGLContext",
+            javadoc = """
+                Returns the `HGLRC` of the specified window.
+
+                @return The `HGLRC` of the specified window, or `NULL` if an
+                error occurred.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][GLFW#GLFW_NOT_INITIALIZED],
+                [GLFW_PLATFORM_UNAVAILABLE][GLFW#GLFW_PLATFORM_UNAVAILABLE] and [GLFW_NO_WINDOW_CONTEXT][GLFW#GLFW_NO_WINDOW_CONTEXT].
+
+                @glfw.remark The `HDC` associated with the window can be queried with the
+                [GetDC](https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getdc)
+                function.
+                ```c
+                HDC dc = GetDC(glfwGetWin32Window(window));
+                ```
+                This DC is private and does not need to be released.
+
+                @glfw.thread_safety This function may be called from any thread.  Access is not
+                synchronized.
+            """.trimIndent(),
+            optional = true,
+            defaultCode = "return MemorySegment.NULL;"
+        )
+        //endregion
+
+        //region COCOA
+        val CGDirectDisplayID = int c "CGDirectDisplayID"
+        val id = address c "id"
+
+        "glfwGetCocoaMonitor"(
+            CGDirectDisplayID,
+            GLFWmonitor_ptr("monitor"),
+            entrypoint = "glfwGetCocoaMonitor",
+            javadoc = """
+                Returns the `CGDirectDisplayID` of the specified monitor.
+
+                @return The `CGDirectDisplayID` of the specified monitor, or
+                `kCGNullDirectDisplay` if an error occurred.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][GLFW#GLFW_NOT_INITIALIZED] and
+                [GLFW_PLATFORM_UNAVAILABLE][GLFW#GLFW_PLATFORM_UNAVAILABLE].
+
+                @glfw.thread_safety This function may be called from any thread.  Access is not
+                synchronized.
+            """.trimIndent(),
+            optional = true,
+            defaultCode = "return 0;"
+        )
+
+        "glfwGetCocoaWindow"(
+            id,
+            GLFWwindow_ptr("window"),
+            entrypoint = "glfwGetCocoaWindow",
+            javadoc = """
+                Returns the `NSWindow` of the specified window.
+
+                @return The `NSWindow` of the specified window, or `nil` if an
+                error occurred.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][GLFW#GLFW_NOT_INITIALIZED] and
+                [GLFW_PLATFORM_UNAVAILABLE][GLFW#GLFW_PLATFORM_UNAVAILABLE].
+
+                @glfw.thread_safety This function may be called from any thread.  Access is not
+                synchronized.
+            """.trimIndent(),
+            optional = true,
+            defaultCode = "return MemorySegment.NULL;"
+        )
+
+        "glfwGetCocoaView"(
+            id,
+            GLFWwindow_ptr("window"),
+            entrypoint = "glfwGetCocoaView",
+            javadoc = """
+                Returns the `NSView` of the specified window.
+
+                @return The `NSView` of the specified window, or `nil` if an
+                error occurred.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][GLFW#GLFW_NOT_INITIALIZED] and
+                [GLFW_PLATFORM_UNAVAILABLE][GLFW#GLFW_PLATFORM_UNAVAILABLE].
+
+                @glfw.thread_safety This function may be called from any thread.  Access is not
+                synchronized.
+            """.trimIndent(),
+            optional = true,
+            defaultCode = "return MemorySegment.NULL;"
+        )
+        //endregion
+
+        //region NSGL
+        "glfwGetNSGLContext"(
+            id,
+            GLFWwindow_ptr("window"),
+            entrypoint = "glfwGetNSGLContext",
+            javadoc = """
+                Returns the `NSOpenGLContext` of the specified window.
+
+                @return The `NSOpenGLContext` of the specified window, or `nil` if an
+                error occurred.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][GLFW#GLFW_NOT_INITIALIZED],
+                [GLFW_PLATFORM_UNAVAILABLE][GLFW#GLFW_PLATFORM_UNAVAILABLE] and [GLFW_NO_WINDOW_CONTEXT][GLFW#GLFW_NO_WINDOW_CONTEXT].
+
+                @glfw.thread_safety This function may be called from any thread.  Access is not
+                synchronized.
+            """.trimIndent(),
+            optional = true,
+            defaultCode = "return MemorySegment.NULL;"
+        )
+        //endregion
+
+        //region X11
+        val Display_ptr = address c "Display*"
+        val RRCrtc = jlong c "RRCrtc"
+        val RROutput = jlong c "RROutput"
+        val Window = jlong c "Window"
+
+        "glfwGetX11Display"(
+            Display_ptr,
+            entrypoint = "glfwGetX11Display",
+            javadoc = """
+                Returns the `Display` used by GLFW.
+
+                @return The `Display` used by GLFW, or `NULL` if an
+                error occurred.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][GLFW#GLFW_NOT_INITIALIZED] and
+                [GLFW_PLATFORM_UNAVAILABLE][GLFW#GLFW_PLATFORM_UNAVAILABLE].
+
+                @glfw.thread_safety This function may be called from any thread.  Access is not
+                synchronized.
+            """.trimIndent(),
+            optional = true,
+            defaultCode = "return MemorySegment.NULL;"
+        )
+
+        "glfwGetX11Adapter"(
+            RRCrtc,
+            GLFWmonitor_ptr("monitor"),
+            entrypoint = "glfwGetX11Adapter",
+            javadoc = """
+                Returns the `RRCrtc` of the specified monitor.
+
+                @return The `RRCrtc` of the specified monitor, or `None` if an
+                error occurred.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][GLFW#GLFW_NOT_INITIALIZED] and
+                [GLFW_PLATFORM_UNAVAILABLE][GLFW#GLFW_PLATFORM_UNAVAILABLE].
+
+                @glfw.thread_safety This function may be called from any thread.  Access is not
+                synchronized.
+            """.trimIndent(),
+            optional = true,
+            defaultCode = "return 0L;"
+        )
+
+        "glfwGetX11Monitor"(
+            RROutput,
+            GLFWmonitor_ptr("monitor"),
+            entrypoint = "glfwGetX11Monitor",
+            javadoc = """
+                Returns the `RROutput` of the specified monitor.
+
+                @return The `RROutput` of the specified monitor, or `None` if an
+                error occurred.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][GLFW#GLFW_NOT_INITIALIZED] and
+                [GLFW_PLATFORM_UNAVAILABLE][GLFW#GLFW_PLATFORM_UNAVAILABLE].
+
+                @glfw.thread_safety This function may be called from any thread.  Access is not
+                synchronized.
+            """.trimIndent(),
+            optional = true,
+            defaultCode = "return 0L;"
+        )
+
+        "glfwGetX11Window"(
+            RROutput,
+            GLFWwindow_ptr("window"),
+            entrypoint = "glfwGetX11Window",
+            javadoc = """
+                Returns the `Window` of the specified window.
+
+                @return The `Window` of the specified window, or `None` if an
+                error occurred.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][GLFW#GLFW_NOT_INITIALIZED] and
+                [GLFW_PLATFORM_UNAVAILABLE][GLFW#GLFW_PLATFORM_UNAVAILABLE].
+
+                @glfw.thread_safety This function may be called from any thread.  Access is not
+                synchronized.
+            """.trimIndent(),
+            optional = true,
+            defaultCode = "return 0L;"
+        )
+
+        +"glfwSetX11SelectionString"(
+            void,
+            const_char_ptr("string"),
+            entrypoint = "glfwSetX11SelectionString",
+            javadoc = """
+                Sets the current primary selection to the specified string.
+
+                @param string A UTF-8 encoded string.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][GLFW#GLFW_NOT_INITIALIZED],
+                [GLFW_PLATFORM_UNAVAILABLE][GLFW#GLFW_PLATFORM_UNAVAILABLE] and [GLFW_PLATFORM_ERROR][GLFW#GLFW_PLATFORM_ERROR].
+
+                @glfw.pointer_lifetime The specified string is copied before this function
+                returns.
+
+                @glfw.thread_safety This function must only be called from the main thread.
+
+                @see #glfwGetX11SelectionString() glfwGetX11SelectionString
+                @see GLFW#glfwSetClipboardString(MemorySegment, MemorySegment) glfwSetClipboardString
+            """.trimIndent(),
+            optional = true
+        ).overload()
+
+        +"glfwGetX11SelectionString_"(
+            const_char_ptr,
+            entrypoint = "glfwGetX11SelectionString",
+            javadoc = """
+                Returns the contents of the current primary selection as a string.
+
+                If the selection is empty or if its contents cannot be converted, `NULL`
+                is returned and a [GLFW_FORMAT_UNAVAILABLE][GLFW#GLFW_FORMAT_UNAVAILABLE] error is generated.
+
+                @return The contents of the selection as a UTF-8 encoded string, or `NULL`
+                if an error occurred.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][GLFW#GLFW_NOT_INITIALIZED],
+                [GLFW_PLATFORM_UNAVAILABLE][GLFW#GLFW_PLATFORM_UNAVAILABLE] and [GLFW_PLATFORM_ERROR][GLFW#GLFW_PLATFORM_ERROR].
+
+                @glfw.pointer_lifetime The returned string is allocated and freed by GLFW. You
+                should not free it yourself. It is valid until the next call to
+                `glfwGetX11SelectionString` or [glfwSetX11SelectionString][#glfwSetX11SelectionString(MemorySegment)], or until the
+                library is terminated.
+
+                @glfw.thread_safety This function must only be called from the main thread.
+
+                @see #glfwSetX11SelectionString(MemorySegment) glfwSetX11SelectionString
+                @see GLFW#glfwGetClipboardString(MemorySegment) glfwGetClipboardString
+            """.trimIndent(),
+            optional = true,
+            defaultCode = "return MemorySegment.NULL;"
+        ).overload(name = "glfwGetX11SelectionString", defaultCode = "return null;")
+        //endregion
+
+        //region GLX
+        val GLXContext = address c "GLXContext"
+        val GLXWindow = jlong c "GLXWindow"
+
+        "glfwGetGLXContext"(
+            GLXContext,
+            GLFWwindow_ptr("window"),
+            entrypoint = "glfwGetGLXContext",
+            javadoc = """
+                Returns the `GLXContext` of the specified window.
+
+                @return The `GLXContext` of the specified window, or `NULL` if an
+                error occurred.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][GLFW#GLFW_NOT_INITIALIZED],
+                [GLFW_NO_WINDOW_CONTEXT][GLFW#GLFW_NO_WINDOW_CONTEXT] and [GLFW_PLATFORM_UNAVAILABLE][GLFW#GLFW_PLATFORM_UNAVAILABLE].
+
+                @glfw.thread_safety This function may be called from any thread.  Access is not
+                synchronized.
+            """.trimIndent(),
+            optional = true,
+            defaultCode = "return MemorySegment.NULL;"
+        )
+
+        "glfwGetGLXWindow"(
+            GLXWindow,
+            GLFWwindow_ptr("window"),
+            entrypoint = "glfwGetGLXWindow",
+            javadoc = """
+                Returns the `GLXWindow` of the specified window.
+
+                @return The `GLXWindow` of the specified window, or `None` if an
+                error occurred.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][GLFW#GLFW_NOT_INITIALIZED],
+                [GLFW_NO_WINDOW_CONTEXT][GLFW#GLFW_NO_WINDOW_CONTEXT] and [GLFW_PLATFORM_UNAVAILABLE][GLFW#GLFW_PLATFORM_UNAVAILABLE].
+
+                @glfw.thread_safety This function may be called from any thread.  Access is not
+                synchronized.
+            """.trimIndent(),
+            optional = true,
+            defaultCode = "return 0L;"
+        )
+        //endregion
+
+        //region WAYLAND
+        val struct_wl_display_ptr = address c "struct wl_display*"
+        val struct_wl_output_ptr = address c "struct wl_output*"
+        val struct_wl_surface_ptr = address c "struct wl_surface*"
+
+        "glfwGetWaylandDisplay"(
+            struct_wl_display_ptr,
+            entrypoint = "glfwGetWaylandDisplay",
+            javadoc = """
+                Returns the `struct wl_display*` used by GLFW.
+
+                @return The `struct wl_display*` used by GLFW, or `NULL` if an
+                error occurred.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][GLFW#GLFW_NOT_INITIALIZED] and
+                [GLFW_PLATFORM_UNAVAILABLE][GLFW#GLFW_PLATFORM_UNAVAILABLE].
+
+                @glfw.thread_safety This function may be called from any thread.  Access is not
+                synchronized.
+            """.trimIndent(),
+            optional = true,
+            defaultCode = "return MemorySegment.NULL;"
+        )
+
+        "glfwGetWaylandMonitor"(
+            struct_wl_output_ptr,
+            GLFWmonitor_ptr("monitor"),
+            entrypoint = "glfwGetWaylandMonitor",
+            javadoc = """
+                Returns the `struct wl_output*` of the specified monitor.
+
+                @return The `struct wl_output*` of the specified monitor, or `NULL` if an
+                error occurred.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][GLFW#GLFW_NOT_INITIALIZED] and
+                [GLFW_PLATFORM_UNAVAILABLE][GLFW#GLFW_PLATFORM_UNAVAILABLE].
+
+                @glfw.thread_safety This function may be called from any thread.  Access is not
+                synchronized.
+            """.trimIndent(),
+            optional = true,
+            defaultCode = "return MemorySegment.NULL;"
+        )
+
+        "glfwGetWaylandWindow"(
+            struct_wl_surface_ptr,
+            GLFWwindow_ptr("window"),
+            entrypoint = "glfwGetWaylandWindow",
+            javadoc = """
+                Returns the main `struct wl_surface*` of the specified window.
+
+                @return The main `struct wl_surface*` of the specified window, or `NULL` if
+                an error occurred.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][GLFW#GLFW_NOT_INITIALIZED] and
+                [GLFW_PLATFORM_UNAVAILABLE][GLFW#GLFW_PLATFORM_UNAVAILABLE].
+
+                @glfw.thread_safety This function may be called from any thread.  Access is not
+                synchronized.
+            """.trimIndent(),
+            optional = true,
+            defaultCode = "return MemorySegment.NULL;"
+        )
+        //endregion
+
+        //region EGL
+        val EGLDisplay = address c "EGLDisplay"
+        val EGLContext = address c "EGLContext"
+        val EGLSurface = address c "EGLSurface"
+
+        "glfwGetEGLDisplay"(
+            EGLDisplay,
+            entrypoint = "glfwGetEGLDisplay",
+            javadoc = """
+                Returns the `EGLDisplay` used by GLFW.
+
+                @return The `EGLDisplay` used by GLFW, or `EGL_NO_DISPLAY` if an
+                error occurred.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][GLFW#GLFW_NOT_INITIALIZED].
+
+                @glfw.remark Because EGL is initialized on demand, this function will return
+                `EGL_NO_DISPLAY` until the first context has been created via EGL.
+
+                @glfw.thread_safety This function may be called from any thread.  Access is not
+                synchronized.
+            """.trimIndent(),
+            optional = true,
+            defaultCode = "return MemorySegment.NULL;"
+        )
+
+        "glfwGetEGLContext"(
+            EGLContext,
+            GLFWwindow_ptr("window"),
+            entrypoint = "glfwGetEGLContext",
+            javadoc = """
+                Returns the `EGLContext` of the specified window.
+
+                @return The `EGLContext` of the specified window, or `EGL_NO_CONTEXT` if an
+                error occurred.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][GLFW#GLFW_NOT_INITIALIZED] and
+                [GLFW_NO_WINDOW_CONTEXT][GLFW#GLFW_NO_WINDOW_CONTEXT].
+
+                @glfw.thread_safety This function may be called from any thread.  Access is not
+                synchronized.
+            """.trimIndent(),
+            optional = true,
+            defaultCode = "return MemorySegment.NULL;"
+        )
+
+        "glfwGetEGLSurface"(
+            EGLSurface,
+            GLFWwindow_ptr("window"),
+            entrypoint = "glfwGetEGLSurface",
+            javadoc = """
+                Returns the `EGLSurface` of the specified window.
+
+                @return The `EGLSurface` of the specified window, or `EGL_NO_SURFACE` if an
+                error occurred.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][GLFW#GLFW_NOT_INITIALIZED] and
+                [GLFW_NO_WINDOW_CONTEXT][GLFW#GLFW_NO_WINDOW_CONTEXT].
+
+                @glfw.thread_safety This function may be called from any thread.  Access is not
+                synchronized.
+            """.trimIndent(),
+            optional = true,
+            defaultCode = "return MemorySegment.NULL;"
+        )
+        //endregion
+
+        //region OSMESA
+        val OSMesaContext = address c "OSMesaContext"
+        val int_ptr_osmesa = address c "int*"
+        val void_ptr_ptr_osmesa = address c "void**"
+
+        +"glfwGetOSMesaColorBuffer"(
+            glfw_boolean,
+            GLFWwindow_ptr("window"),
+            int_ptr_osmesa("width").ref(),
+            int_ptr_osmesa("height").ref(),
+            int_ptr_osmesa("format").ref(),
+            void_ptr_ptr_osmesa("buffer").ref(),
+            entrypoint = "glfwGetOSMesaColorBuffer",
+            javadoc = """
+                Retrieves the color buffer associated with the specified window.
+
+                @param window The window whose color buffer to retrieve.
+                @param width Where to store the width of the color buffer, or `NULL`.
+                @param height Where to store the height of the color buffer, or `NULL`.
+                @param format Where to store the OSMesa pixel format of the color
+                buffer, or `NULL`.
+                @param buffer Where to store the address of the color buffer, or
+                `NULL`.
+                @return `GLFW_TRUE` if successful, or `GLFW_FALSE` if an
+                error occurred.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][GLFW#GLFW_NOT_INITIALIZED] and
+                [GLFW_NO_WINDOW_CONTEXT][GLFW#GLFW_NO_WINDOW_CONTEXT].
+
+                @glfw.thread_safety This function may be called from any thread.  Access is not
+                synchronized.
+            """.trimIndent(),
+            addNow = false,
+            optional = true,
+            defaultCode = "return false;"
+        ).overload()
+
+        +"glfwGetOSMesaDepthBuffer"(
+            glfw_boolean,
+            GLFWwindow_ptr("window"),
+            int_ptr_osmesa("width").ref(),
+            int_ptr_osmesa("height").ref(),
+            int_ptr_osmesa("bytesPerValue").ref(),
+            void_ptr_ptr_osmesa("buffer").ref(),
+            entrypoint = "glfwGetOSMesaDepthBuffer",
+            javadoc = """
+                Retrieves the depth buffer associated with the specified window.
+
+                @param window The window whose depth buffer to retrieve.
+                @param width Where to store the width of the depth buffer, or `NULL`.
+                @param height Where to store the height of the depth buffer, or `NULL`.
+                @param bytesPerValue Where to store the number of bytes per depth
+                buffer element, or `NULL`.
+                @param buffer Where to store the address of the depth buffer, or
+                `NULL`.
+                @return `GLFW_TRUE` if successful, or `GLFW_FALSE` if an
+                error occurred.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][GLFW#GLFW_NOT_INITIALIZED] and
+                [GLFW_NO_WINDOW_CONTEXT][GLFW#GLFW_NO_WINDOW_CONTEXT].
+
+                @glfw.thread_safety This function may be called from any thread.  Access is not
+                synchronized.
+            """.trimIndent(),
+            addNow = false,
+            optional = true,
+            defaultCode = "return false;"
+        ).overload()
+
+        "glfwGetOSMesaContext"(
+            OSMesaContext,
+            GLFWwindow_ptr("window"),
+            entrypoint = "glfwGetOSMesaContext",
+            javadoc = """
+                Returns the `OSMesaContext` of the specified window.
+
+                @return The `OSMesaContext` of the specified window, or `NULL` if an
+                error occurred.
+
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][GLFW#GLFW_NOT_INITIALIZED] and
+                [GLFW_NO_WINDOW_CONTEXT][GLFW#GLFW_NO_WINDOW_CONTEXT].
+
+                @glfw.thread_safety This function may be called from any thread.  Access is not
+                synchronized.
+            """.trimIndent(),
+            optional = true,
+            defaultCode = "return MemorySegment.NULL;"
+        )
+        //endregion
+    }
 }
 
 private fun DowncallMethod.callbackOverload(arena: String): DowncallMethod =
@@ -4883,3 +6742,17 @@ private fun DowncallMethod.windowCallbackOverload(): DowncallMethod =
         overload = true,
         code = "return $name(window, callback != null ? callback.stub(GLFWCallbacks.create(window)) : MemorySegment.NULL);"
     )
+
+private fun StaticDowncall.windowCallback(
+    name: String,
+    callbackType: CustomTypeSpec,
+    javadoc: String
+) {
+    +name(
+        address c callbackType.cType,
+        GLFWwindow_ptr("window"),
+        callbackType("callback"),
+        entrypoint = name,
+        javadoc = javadoc
+    ).windowCallbackOverload()
+}

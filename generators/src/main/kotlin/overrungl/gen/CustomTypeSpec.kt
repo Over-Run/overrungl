@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2024 Overrun Organization
+ * Copyright (c) 2024-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -112,6 +112,9 @@ val ulong = jlong c "unsigned long"
 val ulong_long = jlong c "unsigned long long"
 val ufloat = jfloat c "unsigned float"
 val udouble = jdouble c "unsigned double"
+
+val uint32_t = jint c "uint32_t"
+val uint64_t = jlong c "uint64_t"
 
 val const_char_ptr = string_u8 c "const char*"
 val const_void_ptr = address c "const void*"

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2024 Overrun Organization
+ * Copyright (c) 2022-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,8 +29,7 @@ import overrungl.util.*;
 /// This describes the input state of a gamepad.
 /// 
 /// ## See Also
-/// TODO
-/// - [glfwGetGamepadState][GLFW#glfwGetGamepadState()]
+/// - [glfwGetGamepadState][GLFW#glfwGetGamepadState(int, MemorySegment)]
 ///
 /// ## Members
 /// ### buttons
@@ -60,11 +59,11 @@ public final class GLFWGamepadState extends Struct {
         MemoryLayout.sequenceLayout(6L, ValueLayout.JAVA_FLOAT).withName("axes")
     );
     /// The byte offset handle of `buttons` of type `(long baseOffset, long elementIndex)long`.
-    public static final MethodHandle MH_buttons = LAYOUT.byteOffsetHandle(PathElement.sequenceElement(), PathElement.groupElement("buttons"));
+    public static final MethodHandle MH_buttons = LAYOUT.byteOffsetHandle(PathElement.groupElement("buttons"), PathElement.sequenceElement());
     /// The memory layout of `buttons`.
     public static final MemoryLayout ML_buttons = LAYOUT.select(PathElement.groupElement("buttons"));
     /// The byte offset handle of `axes` of type `(long baseOffset, long elementIndex)long`.
-    public static final MethodHandle MH_axes = LAYOUT.byteOffsetHandle(PathElement.sequenceElement(), PathElement.groupElement("axes"));
+    public static final MethodHandle MH_axes = LAYOUT.byteOffsetHandle(PathElement.groupElement("axes"), PathElement.sequenceElement());
     /// The memory layout of `axes`.
     public static final MemoryLayout ML_axes = LAYOUT.select(PathElement.groupElement("axes"));
 

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2024 Overrun Organization
+ * Copyright (c) 2022-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -127,7 +127,20 @@ public final class RuntimeHelper {
     /// @param lookup     the symbol lookup
     /// @param name       the name of the symbol
     /// @param descriptor the function descriptor
+    /// @return the method handle bound to the found address
     public static MethodHandle downcall(SymbolLookup lookup, String name, FunctionDescriptor descriptor) {
         return LINKER.downcallHandle(lookup.findOrThrow(name), descriptor);
+    }
+
+
+    /// Finds the address of the symbol with the given symbol lookup and name.
+    ///
+    /// @param lookup     the symbol lookup
+    /// @param name       the name of the symbol
+    /// @param descriptor the function descriptor
+    /// @return the method handle bound to the found address; or `null` if not found
+    public static MethodHandle downcallOrNull(SymbolLookup lookup, String name, FunctionDescriptor descriptor) {
+        var opt = lookup.find(name);
+        return opt.isPresent() ? LINKER.downcallHandle(opt.get(), descriptor) : null;
     }
 }

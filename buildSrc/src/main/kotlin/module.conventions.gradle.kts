@@ -1,3 +1,19 @@
+/*
+ * MIT License
+ *
+ * Copyright (c) 2025 Overrun Organization
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ */
+
 import org.gradle.plugins.ide.idea.model.IdeaModel
 
 plugins {
@@ -17,6 +33,7 @@ val jdkEnablePreview: String by rootProject
 val targetJavaVersion = jdkVersion.toInt()
 
 val jetbrainsAnnotationsVersion: String by rootProject
+val junitVersion: String by rootProject
 
 group = projGroupId
 version = projVersion
@@ -30,6 +47,8 @@ repositories {
 
 dependencies {
     compileOnly("org.jetbrains:annotations:$jetbrainsAnnotationsVersion")
+    testImplementation("org.junit.jupiter:junit-jupiter:$junitVersion")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 tasks.withType<JavaCompile> {
@@ -40,6 +59,7 @@ tasks.withType<JavaCompile> {
 
 tasks.withType<Test> {
     if (jdkEnablePreview.toBoolean()) jvmArgs("--enable-preview")
+    useJUnitPlatform()
 }
 
 extensions.configure<JavaPluginExtension>("java") {

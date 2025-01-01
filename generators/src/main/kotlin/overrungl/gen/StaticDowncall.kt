@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2024 Overrun Organization
+ * Copyright (c) 2024-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -61,23 +61,28 @@ class StaticDowncall(
         javadoc: String? = null,
         code: String? = null,
         overload: Boolean = false,
+        optional: Boolean = false,
+        defaultCode: String? = null,
         addNow: Boolean = true
     ): DowncallMethod {
         val method = DowncallMethod(
-            returnType,
-            this,
-            params.toList(),
-            entrypoint,
-            javadoc,
-            code,
-            overload
+            returnType = returnType,
+            name = this,
+            parameters = params.toList(),
+            entrypoint = entrypoint,
+            javadoc = javadoc,
+            code = code,
+            overload = overload,
+            optional = optional,
+            defaultCode = defaultCode,
         )
         if (addNow) methods.add(method)
         return method
     }
 
-    operator fun DowncallMethod.unaryPlus() {
+    operator fun DowncallMethod.unaryPlus(): DowncallMethod {
         methods.add(this)
+        return this
     }
 
     fun write(packageName: String, name: String) {
@@ -95,6 +100,8 @@ class StaticDowncall(
 
         // method handles
         sb.appendLine("    //region Method handles")
+        sb.appendLine("    /// Method handles.")
+        sb.appendLine("    public static final class Handles {")
         mutableListOf<DowncallMethod>().also { l ->
             methods.forEach {
                 if (it.entrypoint != null) {
@@ -108,8 +115,8 @@ class StaticDowncall(
                     } else {
                         sb.appendLine(
                             """
-                                |    /// The method handle of `${it.entrypoint}`.
-                                |    public static final MethodHandle MH_${it.entrypoint} = RuntimeHelper.downcall($symbolLookup, "${it.entrypoint}", $functionDescriptor);
+                                |        /// The method handle of `${it.entrypoint}`.
+                                |        public static final MethodHandle MH_${it.entrypoint} = RuntimeHelper.${if (it.optional) "downcallOrNull" else "downcall"}($symbolLookup, "${it.entrypoint}", $functionDescriptor);
                             """.trimMargin()
                         )
                         l.add(it)
@@ -117,6 +124,7 @@ class StaticDowncall(
                 }
             }
         }
+        sb.appendLine("    }")
         sb.appendLine("    //endregion")
 
         sb.appendLine()
@@ -166,6 +174,11 @@ class StaticDowncall(
                         else p
                     }
 
+                // optional
+                if (m.optional) {
+                    sb.appendLine("        if (Handles.MH_${m.entrypoint} != null) {")
+                }
+
                 // header
                 sb.append("        try ")
                 if (useMemStack) {
@@ -196,7 +209,7 @@ class StaticDowncall(
                     if (!returnVoid) {
                         b.append("(${m.returnType.carrier}) ")
                     }
-                    b.append("MH_${m.entrypoint}.invokeExact(")
+                    b.append("Handles.MH_${m.entrypoint}.invokeExact(")
                     b.append(writtenParams.joinToString { p ->
                         if (m.overload) {
                             buildString {
@@ -235,6 +248,16 @@ class StaticDowncall(
                 }
 
                 sb.appendLine("""        } catch (Throwable e) { throw new RuntimeException("error in ${m.entrypoint}", e); }""")
+
+                if (m.optional) {
+                    sb.append("        }")
+                    if (m.defaultCode != null) {
+                        sb.appendLine(" else {")
+                        sb.appendLine(m.defaultCode.prependIndent("            "))
+                        sb.append("        }")
+                    }
+                    sb.appendLine()
+                }
             }
             sb.appendLine("    }")
             sb.appendLine()

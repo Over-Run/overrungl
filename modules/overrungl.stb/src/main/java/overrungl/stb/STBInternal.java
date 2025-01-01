@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2024 Overrun Organization
+ * Copyright (c) 2022-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -14,31 +14,44 @@
  * copies or substantial portions of the Software.
  */
 
-package overrungl.glfw;
+package overrungl.stb;
 
 import overrungl.OverrunGLConfigurations;
 import overrungl.OverrunGL;
 import overrungl.internal.RuntimeHelper;
 
+import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SymbolLookup;
+import java.lang.foreign.ValueLayout;
 import java.util.function.Supplier;
 
 /**
- * The GLFW method handles.
+ * The STB method handles.
  *
  * @author squid233
  * @since 0.1.0
  */
-final class Handles {
+final class STBInternal {
     static final SymbolLookup lookup;
+    static final MemorySegment stbi_write_tga_with_rle,
+        stbi_write_png_compression_level,
+        stbi_write_force_png_filter;
 
     static {
-        final Supplier<SymbolLookup> lib = () -> RuntimeHelper.load("glfw", "glfw", OverrunGL.GLFW_VERSION);
-        final var function = OverrunGLConfigurations.GLFW_SYMBOL_LOOKUP.get();
+        final Supplier<SymbolLookup> lib = () -> RuntimeHelper.load("stb", "stb", OverrunGL.STB_VERSION);
+        final var function = OverrunGLConfigurations.STB_SYMBOL_LOOKUP.get();
         lookup = function != null ? function.apply(lib) : lib.get();
+
+        stbi_write_tga_with_rle = findIntOrThrow("stbi_write_tga_with_rle");
+        stbi_write_png_compression_level = findIntOrThrow("stbi_write_png_compression_level");
+        stbi_write_force_png_filter = findIntOrThrow("stbi_write_force_png_filter");
     }
 
-    private Handles() {
+    private static MemorySegment findIntOrThrow(String name) {
+        return lookup.findOrThrow(name).reinterpret(ValueLayout.JAVA_INT.byteSize());
+    }
+
+    private STBInternal() {
         //no instance
     }
 }
