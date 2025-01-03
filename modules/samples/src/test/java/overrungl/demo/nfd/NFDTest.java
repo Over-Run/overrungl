@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023-2024 Overrun Organization
+ * Copyright (c) 2023-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -127,7 +127,7 @@ public final class NFDTest {
                 case NFD_OKAY -> {
                     System.out.println("Success!");
 
-                    try (NFDEnumerator enumerator = NFDEnumerator.fromPathSet(stack, outPaths).x()) {
+                    try (NFDEnumerator enumerator = NFDEnumerator.fromPathSet(stack, outPaths).enumerator()) {
                         int i = 0;
                         for (String path : enumerator) {
                             System.out.println("Path " + i + ": " + path);

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023-2024 Overrun Organization
+ * Copyright (c) 2023-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -19,11 +19,11 @@ package overrungl.nfd;
 import org.jetbrains.annotations.NotNull;
 import overrungl.util.MemoryStack;
 import overrungl.util.Unmarshal;
-import overrungl.util.value.Tuple2;
 
 import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
+import java.lang.foreign.StructLayout;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -40,6 +40,8 @@ import static overrungl.nfd.NFD.*;
  * @since 0.1.0
  */
 public final class NFDEnumerator implements Iterable<String>, AutoCloseable {
+    /// The struct layout of `nfdpathsetenum_t`
+    public static final StructLayout STRUCT_LAYOUT = MemoryLayout.structLayout(ADDRESS.withName("ptr"));
     private static final Iterator<String> EMPTY_ITERATOR = new Iterator<>() {
         @Override
         public boolean hasNext() {
@@ -93,6 +95,18 @@ public final class NFDEnumerator implements Iterable<String>, AutoCloseable {
     }
 
     /**
+     * A result of {@link #fromPathSet(SegmentAllocator, MemorySegment) fromPathSet}
+     *
+     * @param enumerator the enumerator if {@code result} is {@link NFD#NFD_OKAY NFD_OKAY}; otherwise {@code null}
+     * @param result     the result of {@link NFD#NFD_PathSet_GetEnum(MemorySegment, MemorySegment) NFD_PathSet_GetEnum}
+     */
+    public record Result(
+        NFDEnumerator enumerator,
+        int result
+    ) {
+    }
+
+    /**
      * Creates an enumerator from the given path set created with
      * {@link NFD#NFD_OpenDialogMultiple(MemorySegment, NFDFilterItem, String) NFD_OpenDialogMultiple}.
      *
@@ -100,10 +114,10 @@ public final class NFDEnumerator implements Iterable<String>, AutoCloseable {
      * @param pathSet   the path set.
      * @return the result and the enumerator.
      */
-    public static Tuple2.OfObjInt<NFDEnumerator> fromPathSet(SegmentAllocator allocator, MemorySegment pathSet) {
-        MemorySegment struct = allocator.allocate(MemoryLayout.structLayout(ADDRESS));
+    public static Result fromPathSet(SegmentAllocator allocator, MemorySegment pathSet) {
+        MemorySegment struct = allocator.allocate(STRUCT_LAYOUT);
         int result = NFD_PathSet_GetEnum(pathSet, struct);
-        return new Tuple2.OfObjInt<>(result == NFD_OKAY ?
+        return new Result(result == NFD_OKAY ?
             new NFDEnumerator(struct) :
             null,
             result);

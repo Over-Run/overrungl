@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023-2024 Overrun Organization
+ * Copyright (c) 2023-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,7 +26,6 @@ module overrungl.core {
     exports overrungl.struct;
     exports overrungl.upcall;
     exports overrungl.util;
-    exports overrungl.util.value;
     exports overrungl.internal
         to overrungl.glfw,
         overrungl.nfd,
