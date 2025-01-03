@@ -110,7 +110,7 @@ public final class RuntimeHelper {
                 try (var is = STACK_WALKER.getCallerClass().getClassLoader().getResourceAsStream(fromPath)) {
                     Files.copy(Objects.requireNonNull(is, "File not found in classpath: " + fromPath), libFile);
                 } catch (Exception e) {
-                    throw new IllegalStateException("Couldn't load file: " + libFile + " or " + localFile + "; try setting -Doverrungl.natives to a valid path", e);
+                    throw new IllegalStateException("Couldn't load file: " + libFile.toAbsolutePath().normalize() + " or " + localFile.toAbsolutePath().normalize() + "; try setting -Doverrungl.natives to a valid path", e);
                 }
             }
             uri = libFile;

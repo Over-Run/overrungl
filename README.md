@@ -2,7 +2,7 @@
 
 ![License](https://img.shields.io/github/license/Over-Run/overrungl)
 
-[//]: # (![Maven Central]&#40;https://img.shields.io/maven-central/v/io.github.over-run/overrungl&#41;)
+![Maven Central](https://img.shields.io/maven-central/v/io.github.over-run/overrungl)
 ![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/io.github.over-run/overrungl?server=https%3A%2F%2Fs01.oss.sonatype.org)
 
 [![Java CI with Gradle](https://github.com/Over-Run/overrungl/actions/workflows/gradle.yml/badge.svg?event=push)](https://github.com/Over-Run/overrungl/actions/workflows/gradle.yml)
@@ -39,8 +39,15 @@ A documentation of the customizer is [here](doc/customizer/doc_on_customizer.md)
 - Core module Maven coordinate: `io.github.over-run:overrungl`
 - For others: `io.github.over-run:overrungl-<module-name>`
 
-Currently, OverrunGL uses preview features preventing users from using newer JDKs,
-so only `-SNAPSHOT` versions are provided at this time.
+For example:
+
+```kotlin
+dependencies {
+    implementation(platform("io.github.over-run:overrungl-bom:<VERSION>"))
+    implementation("io.github.over-run:overrungl")
+    implementation("io.github.over-run:overrungl-glfw")
+}
+```
 
 ### Using -SNAPSHOT Versions
 

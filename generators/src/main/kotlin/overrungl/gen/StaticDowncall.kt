@@ -102,6 +102,7 @@ class StaticDowncall(
         sb.appendLine("    //region Method handles")
         sb.appendLine("    /// Method handles.")
         sb.appendLine("    public static final class Handles {")
+        sb.appendLine("        private Handles() { }")
         mutableListOf<DowncallMethod>().also { l ->
             methods.forEach {
                 if (it.entrypoint != null) {

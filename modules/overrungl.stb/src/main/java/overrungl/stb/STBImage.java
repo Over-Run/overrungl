@@ -46,74 +46,75 @@ public final class STBImage {
     //region Method handles
     /// Method handles.
     public static final class Handles {
+        private Handles() { }
         /// The method handle of `stbi_load_from_memory`.
-        public static final MethodHandle MH_stbi_load_from_memory = RuntimeHelper.downcall(STBInternal.lookup, "stbi_load_from_memory", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbi_load_from_memory = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_load_from_memory", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         /// The method handle of `stbi_load_from_callbacks`.
-        public static final MethodHandle MH_stbi_load_from_callbacks = RuntimeHelper.downcall(STBInternal.lookup, "stbi_load_from_callbacks", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBIIOCallbacks.LAYOUT), ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbi_load_from_callbacks = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_load_from_callbacks", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBIIOCallbacks.LAYOUT), ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         /// The method handle of `stbi_load`.
-        public static final MethodHandle MH_stbi_load = RuntimeHelper.downcall(STBInternal.lookup, "stbi_load", FunctionDescriptor.of(ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbi_load = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_load", FunctionDescriptor.of(ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         /// The method handle of `stbi_load_gif_from_memory`.
-        public static final MethodHandle MH_stbi_load_gif_from_memory = RuntimeHelper.downcall(STBInternal.lookup, "stbi_load_gif_from_memory", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbi_load_gif_from_memory = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_load_gif_from_memory", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         /// The method handle of `stbi_load_16_from_memory`.
-        public static final MethodHandle MH_stbi_load_16_from_memory = RuntimeHelper.downcall(STBInternal.lookup, "stbi_load_16_from_memory", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbi_load_16_from_memory = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_load_16_from_memory", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         /// The method handle of `stbi_load_16_from_callbacks`.
-        public static final MethodHandle MH_stbi_load_16_from_callbacks = RuntimeHelper.downcall(STBInternal.lookup, "stbi_load_16_from_callbacks", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBIIOCallbacks.LAYOUT), ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbi_load_16_from_callbacks = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_load_16_from_callbacks", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBIIOCallbacks.LAYOUT), ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         /// The method handle of `stbi_load_16`.
-        public static final MethodHandle MH_stbi_load_16 = RuntimeHelper.downcall(STBInternal.lookup, "stbi_load_16", FunctionDescriptor.of(ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbi_load_16 = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_load_16", FunctionDescriptor.of(ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         /// The method handle of `stbi_loadf_from_memory`.
-        public static final MethodHandle MH_stbi_loadf_from_memory = RuntimeHelper.downcall(STBInternal.lookup, "stbi_loadf_from_memory", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbi_loadf_from_memory = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_loadf_from_memory", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         /// The method handle of `stbi_loadf_from_callbacks`.
-        public static final MethodHandle MH_stbi_loadf_from_callbacks = RuntimeHelper.downcall(STBInternal.lookup, "stbi_loadf_from_callbacks", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBIIOCallbacks.LAYOUT), ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbi_loadf_from_callbacks = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_loadf_from_callbacks", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBIIOCallbacks.LAYOUT), ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         /// The method handle of `stbi_loadf`.
-        public static final MethodHandle MH_stbi_loadf = RuntimeHelper.downcall(STBInternal.lookup, "stbi_loadf", FunctionDescriptor.of(ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbi_loadf = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_loadf", FunctionDescriptor.of(ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         /// The method handle of `stbi_hdr_to_ldr_gamma`.
-        public static final MethodHandle MH_stbi_hdr_to_ldr_gamma = RuntimeHelper.downcall(STBInternal.lookup, "stbi_hdr_to_ldr_gamma", FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_stbi_hdr_to_ldr_gamma = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_hdr_to_ldr_gamma", FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
         /// The method handle of `stbi_hdr_to_ldr_scale`.
-        public static final MethodHandle MH_stbi_hdr_to_ldr_scale = RuntimeHelper.downcall(STBInternal.lookup, "stbi_hdr_to_ldr_scale", FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_stbi_hdr_to_ldr_scale = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_hdr_to_ldr_scale", FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
         /// The method handle of `stbi_ldr_to_hdr_gamma`.
-        public static final MethodHandle MH_stbi_ldr_to_hdr_gamma = RuntimeHelper.downcall(STBInternal.lookup, "stbi_ldr_to_hdr_gamma", FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_stbi_ldr_to_hdr_gamma = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_ldr_to_hdr_gamma", FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
         /// The method handle of `stbi_ldr_to_hdr_scale`.
-        public static final MethodHandle MH_stbi_ldr_to_hdr_scale = RuntimeHelper.downcall(STBInternal.lookup, "stbi_ldr_to_hdr_scale", FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_stbi_ldr_to_hdr_scale = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_ldr_to_hdr_scale", FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
         /// The method handle of `stbi_is_hdr_from_callbacks`.
-        public static final MethodHandle MH_stbi_is_hdr_from_callbacks = RuntimeHelper.downcall(STBInternal.lookup, "stbi_is_hdr_from_callbacks", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBIIOCallbacks.LAYOUT), ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbi_is_hdr_from_callbacks = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_is_hdr_from_callbacks", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBIIOCallbacks.LAYOUT), ValueLayout.ADDRESS));
         /// The method handle of `stbi_is_hdr_from_memory`.
-        public static final MethodHandle MH_stbi_is_hdr_from_memory = RuntimeHelper.downcall(STBInternal.lookup, "stbi_is_hdr_from_memory", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbi_is_hdr_from_memory = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_is_hdr_from_memory", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         /// The method handle of `stbi_is_hdr`.
-        public static final MethodHandle MH_stbi_is_hdr = RuntimeHelper.downcall(STBInternal.lookup, "stbi_is_hdr", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, Unmarshal.STR_LAYOUT));
+        public static final MethodHandle MH_stbi_is_hdr = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_is_hdr", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, Unmarshal.STR_LAYOUT));
         /// The method handle of `stbi_failure_reason`.
-        public static final MethodHandle MH_stbi_failure_reason = RuntimeHelper.downcall(STBInternal.lookup, "stbi_failure_reason", FunctionDescriptor.of(Unmarshal.STR_LAYOUT));
+        public static final MethodHandle MH_stbi_failure_reason = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_failure_reason", FunctionDescriptor.of(Unmarshal.STR_LAYOUT));
         /// The method handle of `stbi_image_free`.
-        public static final MethodHandle MH_stbi_image_free = RuntimeHelper.downcall(STBInternal.lookup, "stbi_image_free", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbi_image_free = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_image_free", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
         /// The method handle of `stbi_info_from_memory`.
-        public static final MethodHandle MH_stbi_info_from_memory = RuntimeHelper.downcall(STBInternal.lookup, "stbi_info_from_memory", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbi_info_from_memory = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_info_from_memory", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `stbi_info_from_callbacks`.
-        public static final MethodHandle MH_stbi_info_from_callbacks = RuntimeHelper.downcall(STBInternal.lookup, "stbi_info_from_callbacks", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBIIOCallbacks.LAYOUT), ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbi_info_from_callbacks = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_info_from_callbacks", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBIIOCallbacks.LAYOUT), ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `stbi_is_16_bit_from_memory`.
-        public static final MethodHandle MH_stbi_is_16_bit_from_memory = RuntimeHelper.downcall(STBInternal.lookup, "stbi_is_16_bit_from_memory", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbi_is_16_bit_from_memory = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_is_16_bit_from_memory", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         /// The method handle of `stbi_is_16_bit_from_callbacks`.
-        public static final MethodHandle MH_stbi_is_16_bit_from_callbacks = RuntimeHelper.downcall(STBInternal.lookup, "stbi_is_16_bit_from_callbacks", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBIIOCallbacks.LAYOUT), ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbi_is_16_bit_from_callbacks = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_is_16_bit_from_callbacks", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBIIOCallbacks.LAYOUT), ValueLayout.ADDRESS));
         /// The method handle of `stbi_info`.
-        public static final MethodHandle MH_stbi_info = RuntimeHelper.downcall(STBInternal.lookup, "stbi_info", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbi_info = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_info", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `stbi_is_16_bit`.
-        public static final MethodHandle MH_stbi_is_16_bit = RuntimeHelper.downcall(STBInternal.lookup, "stbi_is_16_bit", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, Unmarshal.STR_LAYOUT));
+        public static final MethodHandle MH_stbi_is_16_bit = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_is_16_bit", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, Unmarshal.STR_LAYOUT));
         /// The method handle of `stbi_set_unpremultiply_on_load`.
-        public static final MethodHandle MH_stbi_set_unpremultiply_on_load = RuntimeHelper.downcall(STBInternal.lookup, "stbi_set_unpremultiply_on_load", FunctionDescriptor.ofVoid(ValueLayout.JAVA_BOOLEAN));
+        public static final MethodHandle MH_stbi_set_unpremultiply_on_load = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_set_unpremultiply_on_load", FunctionDescriptor.ofVoid(ValueLayout.JAVA_BOOLEAN));
         /// The method handle of `stbi_convert_iphone_png_to_rgb`.
-        public static final MethodHandle MH_stbi_convert_iphone_png_to_rgb = RuntimeHelper.downcall(STBInternal.lookup, "stbi_convert_iphone_png_to_rgb", FunctionDescriptor.ofVoid(ValueLayout.JAVA_BOOLEAN));
+        public static final MethodHandle MH_stbi_convert_iphone_png_to_rgb = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_convert_iphone_png_to_rgb", FunctionDescriptor.ofVoid(ValueLayout.JAVA_BOOLEAN));
         /// The method handle of `stbi_set_flip_vertically_on_load`.
-        public static final MethodHandle MH_stbi_set_flip_vertically_on_load = RuntimeHelper.downcall(STBInternal.lookup, "stbi_set_flip_vertically_on_load", FunctionDescriptor.ofVoid(ValueLayout.JAVA_BOOLEAN));
+        public static final MethodHandle MH_stbi_set_flip_vertically_on_load = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_set_flip_vertically_on_load", FunctionDescriptor.ofVoid(ValueLayout.JAVA_BOOLEAN));
         /// The method handle of `stbi_zlib_decode_malloc_guesssize`.
-        public static final MethodHandle MH_stbi_zlib_decode_malloc_guesssize = RuntimeHelper.downcall(STBInternal.lookup, "stbi_zlib_decode_malloc_guesssize", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbi_zlib_decode_malloc_guesssize = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_zlib_decode_malloc_guesssize", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         /// The method handle of `stbi_zlib_decode_malloc_guesssize_headerflag`.
-        public static final MethodHandle MH_stbi_zlib_decode_malloc_guesssize_headerflag = RuntimeHelper.downcall(STBInternal.lookup, "stbi_zlib_decode_malloc_guesssize_headerflag", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbi_zlib_decode_malloc_guesssize_headerflag = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_zlib_decode_malloc_guesssize_headerflag", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         /// The method handle of `stbi_zlib_decode_malloc`.
-        public static final MethodHandle MH_stbi_zlib_decode_malloc = RuntimeHelper.downcall(STBInternal.lookup, "stbi_zlib_decode_malloc", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbi_zlib_decode_malloc = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_zlib_decode_malloc", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         /// The method handle of `stbi_zlib_decode_buffer`.
-        public static final MethodHandle MH_stbi_zlib_decode_buffer = RuntimeHelper.downcall(STBInternal.lookup, "stbi_zlib_decode_buffer", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbi_zlib_decode_buffer = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_zlib_decode_buffer", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         /// The method handle of `stbi_zlib_decode_noheader_malloc`.
-        public static final MethodHandle MH_stbi_zlib_decode_noheader_malloc = RuntimeHelper.downcall(STBInternal.lookup, "stbi_zlib_decode_noheader_malloc", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbi_zlib_decode_noheader_malloc = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_zlib_decode_noheader_malloc", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         /// The method handle of `stbi_zlib_decode_noheader_buffer`.
-        public static final MethodHandle MH_stbi_zlib_decode_noheader_buffer = RuntimeHelper.downcall(STBInternal.lookup, "stbi_zlib_decode_noheader_buffer", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbi_zlib_decode_noheader_buffer = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_zlib_decode_noheader_buffer", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
     }
     //endregion
 

@@ -32,26 +32,26 @@ import java.util.function.Supplier;
  * @since 0.1.0
  */
 final class STBInternal {
-    static final SymbolLookup lookup;
-    static final MemorySegment stbi_write_tga_with_rle,
-        stbi_write_png_compression_level,
-        stbi_write_force_png_filter;
-
-    static {
-        final Supplier<SymbolLookup> lib = () -> RuntimeHelper.load("stb", "stb", OverrunGL.STB_VERSION);
-        final var function = OverrunGLConfigurations.STB_SYMBOL_LOOKUP.get();
-        lookup = function != null ? function.apply(lib) : lib.get();
-
-        stbi_write_tga_with_rle = findIntOrThrow("stbi_write_tga_with_rle");
-        stbi_write_png_compression_level = findIntOrThrow("stbi_write_png_compression_level");
-        stbi_write_force_png_filter = findIntOrThrow("stbi_write_force_png_filter");
-    }
-
-    private static MemorySegment findIntOrThrow(String name) {
-        return lookup.findOrThrow(name).reinterpret(ValueLayout.JAVA_INT.byteSize());
-    }
+    private static volatile SymbolLookup lookup;
 
     private STBInternal() {
         //no instance
+    }
+
+    static MemorySegment findIntOrThrow(String name) {
+        return lookup.findOrThrow(name).reinterpret(ValueLayout.JAVA_INT.byteSize());
+    }
+
+    static SymbolLookup lookup() {
+        if (lookup == null) {
+            synchronized (STBInternal.class) {
+                if (lookup == null) {
+                    final Supplier<SymbolLookup> lib = () -> RuntimeHelper.load("stb", "stb", OverrunGL.STB_VERSION);
+                    final var function = OverrunGLConfigurations.STB_SYMBOL_LOOKUP.get();
+                    lookup = function != null ? function.apply(lib) : lib.get();
+                }
+            }
+        }
+        return lookup;
     }
 }

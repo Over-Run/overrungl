@@ -42,14 +42,15 @@ public final class GLFWVulkan {
     //region Method handles
     /// Method handles.
     public static final class Handles {
+        private Handles() { }
         /// The method handle of `glfwInitVulkanLoader`.
-        public static final MethodHandle MH_glfwInitVulkanLoader = RuntimeHelper.downcall(GLFWInternal.lookup, "glfwInitVulkanLoader", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glfwInitVulkanLoader = RuntimeHelper.downcall(GLFWInternal.lookup(), "glfwInitVulkanLoader", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
         /// The method handle of `glfwGetInstanceProcAddress`.
-        public static final MethodHandle MH_glfwGetInstanceProcAddress = RuntimeHelper.downcall(GLFWInternal.lookup, "glfwGetInstanceProcAddress", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT));
+        public static final MethodHandle MH_glfwGetInstanceProcAddress = RuntimeHelper.downcall(GLFWInternal.lookup(), "glfwGetInstanceProcAddress", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT));
         /// The method handle of `glfwGetPhysicalDevicePresentationSupport`.
-        public static final MethodHandle MH_glfwGetPhysicalDevicePresentationSupport = RuntimeHelper.downcall(GLFWInternal.lookup, "glfwGetPhysicalDevicePresentationSupport", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glfwGetPhysicalDevicePresentationSupport = RuntimeHelper.downcall(GLFWInternal.lookup(), "glfwGetPhysicalDevicePresentationSupport", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         /// The method handle of `glfwCreateWindowSurface`.
-        public static final MethodHandle MH_glfwCreateWindowSurface = RuntimeHelper.downcall(GLFWInternal.lookup, "glfwCreateWindowSurface", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glfwCreateWindowSurface = RuntimeHelper.downcall(GLFWInternal.lookup(), "glfwCreateWindowSurface", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
     }
     //endregion
 

@@ -2,10 +2,6 @@
 
 You are welcome to contribute to OverrunGL.
 
-## Code of Conduct
-
-You must respect the [Code of Conduct](CODE_OF_CONDUCT.md).
-
 ## Issues
 
 Issues are only for discussing bugs and proposing new features. For other discussions such as usages,
@@ -47,5 +43,5 @@ The formatted code:
 
 ## Discussions
 
-You can visit [discussions](https://github.com/Over-Run/overrungl/discussions) and create your post, share your experience
+You can view [discussions](https://github.com/Over-Run/overrungl/discussions) and create your post, share your experience
 or just ask some questions.
