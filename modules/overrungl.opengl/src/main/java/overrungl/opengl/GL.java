@@ -22,7 +22,7 @@ package overrungl.opengl;
  * @author squid233
  * @since 0.1.0
  */
-public final class GL extends GL46 {
+public non-sealed class GL extends GL46 {
     /// Creates an instance of OpenGL functions.
     ///
     /// @param function a function that returns the address of specific OpenGL function
