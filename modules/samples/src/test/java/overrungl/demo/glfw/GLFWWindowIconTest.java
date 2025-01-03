@@ -22,7 +22,6 @@ import overrungl.glfw.GLFWCallbacks;
 import overrungl.glfw.GLFWErrorCallback;
 import overrungl.glfw.GLFWImage;
 import overrungl.opengl.GL;
-import overrungl.opengl.GLLoader;
 import overrungl.util.MemoryStack;
 import overrungl.util.Unmarshal;
 
@@ -33,6 +32,7 @@ import java.util.Objects;
 
 import static java.lang.foreign.ValueLayout.JAVA_INT;
 import static overrungl.glfw.GLFW.*;
+import static overrungl.opengl.GL.*;
 import static overrungl.stb.STBImage.*;
 
 /**
@@ -91,7 +91,7 @@ public final class GLFWWindowIconTest {
             }
         });
         glfwSetFramebufferSizeCallback(window, (_, width, height) ->
-            gl.viewport(0, 0, width, height));
+            gl.Viewport(0, 0, width, height));
         var vidMode = glfwGetVideoMode(glfwGetPrimaryMonitor());
         if (vidMode != null) {
             try (var stack = MemoryStack.pushLocal()) {
@@ -113,14 +113,14 @@ public final class GLFWWindowIconTest {
     }
 
     private void load() {
-        gl = Objects.requireNonNull(GLLoader.load(GLLoader.loadFlags(GLFW::glfwGetProcAddress)), "Failed to load OpenGL");
+        gl = new GL(GLFW::glfwGetProcAddress);
 
-        gl.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
+        gl.ClearColor(0.4f, 0.6f, 0.9f, 1.0f);
     }
 
     private void loop() {
         while (!glfwWindowShouldClose(window)) {
-            gl.clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT);
+            gl.Clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
             glfwSwapBuffers(window);
 

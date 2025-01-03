@@ -39,28 +39,29 @@ public final class STBImageWrite {
     //region Method handles
     /// Method handles.
     public static final class Handles {
+        private Handles() { }
         /// The method handle of `stbi_write_png`.
-        public static final MethodHandle MH_stbi_write_png = RuntimeHelper.downcall(STBInternal.lookup, "stbi_write_png", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbi_write_png = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_write_png", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         /// The method handle of `stbi_write_bmp`.
-        public static final MethodHandle MH_stbi_write_bmp = RuntimeHelper.downcall(STBInternal.lookup, "stbi_write_bmp", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbi_write_bmp = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_write_bmp", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         /// The method handle of `stbi_write_tga`.
-        public static final MethodHandle MH_stbi_write_tga = RuntimeHelper.downcall(STBInternal.lookup, "stbi_write_tga", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbi_write_tga = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_write_tga", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         /// The method handle of `stbi_write_hdr`.
-        public static final MethodHandle MH_stbi_write_hdr = RuntimeHelper.downcall(STBInternal.lookup, "stbi_write_hdr", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbi_write_hdr = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_write_hdr", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         /// The method handle of `stbi_write_jpg`.
-        public static final MethodHandle MH_stbi_write_jpg = RuntimeHelper.downcall(STBInternal.lookup, "stbi_write_jpg", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbi_write_jpg = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_write_jpg", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         /// The method handle of `stbi_write_png_to_func`.
-        public static final MethodHandle MH_stbi_write_png_to_func = RuntimeHelper.downcall(STBInternal.lookup, "stbi_write_png_to_func", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbi_write_png_to_func = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_write_png_to_func", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         /// The method handle of `stbi_write_bmp_to_func`.
-        public static final MethodHandle MH_stbi_write_bmp_to_func = RuntimeHelper.downcall(STBInternal.lookup, "stbi_write_bmp_to_func", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbi_write_bmp_to_func = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_write_bmp_to_func", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         /// The method handle of `stbi_write_tga_to_func`.
-        public static final MethodHandle MH_stbi_write_tga_to_func = RuntimeHelper.downcall(STBInternal.lookup, "stbi_write_tga_to_func", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbi_write_tga_to_func = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_write_tga_to_func", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         /// The method handle of `stbi_write_hdr_to_func`.
-        public static final MethodHandle MH_stbi_write_hdr_to_func = RuntimeHelper.downcall(STBInternal.lookup, "stbi_write_hdr_to_func", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbi_write_hdr_to_func = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_write_hdr_to_func", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         /// The method handle of `stbi_write_jpg_to_func`.
-        public static final MethodHandle MH_stbi_write_jpg_to_func = RuntimeHelper.downcall(STBInternal.lookup, "stbi_write_jpg_to_func", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbi_write_jpg_to_func = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_write_jpg_to_func", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         /// The method handle of `stbi_flip_vertically_on_write`.
-        public static final MethodHandle MH_stbi_flip_vertically_on_write = RuntimeHelper.downcall(STBInternal.lookup, "stbi_flip_vertically_on_write", FunctionDescriptor.ofVoid(ValueLayout.JAVA_BOOLEAN));
+        public static final MethodHandle MH_stbi_flip_vertically_on_write = RuntimeHelper.downcall(STBInternal.lookup(), "stbi_flip_vertically_on_write", FunctionDescriptor.ofVoid(ValueLayout.JAVA_BOOLEAN));
     }
     //endregion
 
@@ -193,11 +194,33 @@ public final class STBImageWrite {
     //@formatter:on
     //endregion ---[END GENERATOR END]---
 
-    @CType("int")
-    public static final MemorySegment stbi_write_tga_with_rle = STBInternal.stbi_write_tga_with_rle,
-        stbi_write_png_compression_level = STBInternal.stbi_write_png_compression_level,
-        stbi_write_force_png_filter = STBInternal.stbi_write_force_png_filter;
-
     private STBImageWrite() {
+    }
+
+    @CType("int")
+    public static MemorySegment stbi_write_tga_with_rle() {
+        return GlobalVariables.stbi_write_tga_with_rle;
+    }
+
+    @CType("int")
+    public static MemorySegment stbi_write_png_compression_level() {
+        return GlobalVariables.stbi_write_png_compression_level;
+    }
+
+    @CType("int")
+    public static MemorySegment stbi_write_force_png_filter() {
+        return GlobalVariables.stbi_write_force_png_filter;
+    }
+
+    static final class GlobalVariables {
+        static final MemorySegment stbi_write_tga_with_rle,
+            stbi_write_png_compression_level,
+            stbi_write_force_png_filter;
+
+        static {
+            stbi_write_tga_with_rle = STBInternal.findIntOrThrow("stbi_write_tga_with_rle");
+            stbi_write_png_compression_level = STBInternal.findIntOrThrow("stbi_write_png_compression_level");
+            stbi_write_force_png_filter = STBInternal.findIntOrThrow("stbi_write_force_png_filter");
+        }
     }
 }

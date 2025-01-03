@@ -20,7 +20,7 @@ import overrungl.gen.address
 import overrungl.gen.jboolean
 
 const val stbPackage = "overrungl.stb"
-const val stbLookup = "STBInternal.lookup"
+const val stbLookup = "STBInternal.lookup()"
 
 val boolean_int = jboolean c "int"
 val uchar_ptr = address c "unsigned char *"

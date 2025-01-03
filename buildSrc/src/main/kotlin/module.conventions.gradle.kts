@@ -119,26 +119,44 @@ afterEvaluate {
                         pom {
                             setupPom(it.projectName, it.projectDescription, "jar")
                         }
-                    }
-                    overrunglModule.nativeBinding.orNull?.platforms?.forEach { platform ->
-                        getByName<MavenPublication>("overrunglBOM") {
-                            pom {
-                                withXml {
-                                    asElement().getElementsByTagName("dependencyManagement").item(0).apply {
-                                        asElement().getElementsByTagName("dependencies").item(0).apply {
-                                            ownerDocument.createElement("dependency").also(::appendChild).apply {
-                                                appendChild(ownerDocument.createElement("groupId")
-                                                    .also(::appendChild)
-                                                    .apply { textContent = projGroupId })
-                                                appendChild(ownerDocument.createElement("artifactId")
-                                                    .also(::appendChild)
-                                                    .apply { textContent = overrunglModule.artifactName.get() })
-                                                appendChild(ownerDocument.createElement("version")
-                                                    .also(::appendChild)
-                                                    .apply { textContent = projVersion })
-                                                appendChild(ownerDocument.createElement("classifier")
-                                                    .also(::appendChild)
-                                                    .apply { textContent = platform.classifier })
+
+                        overrunglModule.nativeBinding.orNull?.also { nativeBinding ->
+                            nativeBinding.platforms.forEach { platform ->
+                                val nativeFileName = nativeFileName(nativeBinding, platform)
+                                val file = rootProject.projectDir.resolve("natives").resolve(nativeFileName)
+                                artifact(tasks.register<Jar>("${nativeBinding.bindingName}${platform.classifier}Jar") {
+                                    archiveBaseName.set(overrunglModule.artifactName)
+                                    archiveClassifier.set(platform.classifier)
+                                    from(file) { into(File(nativeFileName).parent) }
+                                })
+
+                                getByName<MavenPublication>("overrunglBOM") {
+                                    pom {
+                                        withXml {
+                                            asElement().getElementsByTagName("dependencyManagement").item(0).apply {
+                                                asElement().getElementsByTagName("dependencies").item(0).apply {
+                                                    ownerDocument.createElement("dependency").also(::appendChild)
+                                                        .apply {
+                                                            appendChild(
+                                                                ownerDocument.createElement("groupId")
+                                                                    .also(::appendChild)
+                                                                    .apply { textContent = projGroupId })
+                                                            appendChild(
+                                                                ownerDocument.createElement("artifactId")
+                                                                    .also(::appendChild)
+                                                                    .apply {
+                                                                        textContent = overrunglModule.artifactName.get()
+                                                                    })
+                                                            appendChild(
+                                                                ownerDocument.createElement("version")
+                                                                    .also(::appendChild)
+                                                                    .apply { textContent = projVersion })
+                                                            appendChild(
+                                                                ownerDocument.createElement("classifier")
+                                                                    .also(::appendChild)
+                                                                    .apply { textContent = platform.classifier })
+                                                        }
+                                                }
                                             }
                                         }
                                     }

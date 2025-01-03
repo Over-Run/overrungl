@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2024 Overrun Organization
+ * Copyright (c) 2024-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,6 +21,18 @@ import com.palantir.javapoet.TypeName
 import java.nio.file.Files
 import kotlin.io.path.Path
 
+fun generateUpcallType(packageName: String, name: String): CustomTypeSpec {
+    val typeName = ClassName.get(packageName, name)
+    return CustomTypeSpec(
+        carrier = MemorySegment_,
+        javaType = typeName,
+        processor = UpcallProcessor(typeName),
+        layout = address.layout,
+        allocatorRequirement = AllocatorRequirement.ARENA,
+        nullValue = address.nullValue,
+    )
+}
+
 class Upcall(
     val packageName: String,
     val name: String,
@@ -30,14 +42,7 @@ class Upcall(
     var targetMethod: UpcallMethod? = null
     var interfaceMethod: UpcallMethod? = null
     val pointerType: CustomTypeSpec by lazy {
-        val typeName = ClassName.get(packageName, name)
-        CustomTypeSpec(
-            carrier = MemorySegment_,
-            javaType = typeName,
-            processor = UpcallProcessor(typeName),
-            layout = address.layout,
-            allocatorRequirement = AllocatorRequirement.ARENA
-        )
+        generateUpcallType(packageName, name)
     }
     var wrapperCode: String? = null
 
@@ -289,11 +294,9 @@ class Upcall(
                 sb.append("return ")
             }
             targetMethodNotNull.returnType.processor.unmarshal(ProcessorContext(allocatorName = allocatorName, sb) {
-                it.append("invoke(stub, ")
+                it.append("invoke(stub")
                 targetMethodNotNull.parameters.forEachIndexed { index, p ->
-                    if (index != 0) {
-                        it.append(", ")
-                    }
+                    it.append(", ")
                     p.type.processor.marshal(ProcessorContext(allocatorName = allocatorName, it) { b ->
                         b.append(p.name)
                     })

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2024 Overrun Organization
+ * Copyright (c) 2022-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -14,347 +14,168 @@
  * copies or substantial portions of the Software.
  */
 
+// This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl;
 
-import overrun.marshal.DirectAccess;
-import overrun.marshal.gen.Entrypoint;
-import overrungl.opengl.ext.arb.GLARBTransposeMatrix;
+import java.lang.foreign.*;
+import java.lang.invoke.*;
+import overrungl.annotation.*;
+import overrungl.internal.RuntimeHelper;
+import overrungl.util.*;
 
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SegmentAllocator;
+public sealed class GL13 extends GL12 permits GL14 {
+    public static final int GL_TEXTURE0 = 0x84C0;
+    public static final int GL_TEXTURE1 = 0x84C1;
+    public static final int GL_TEXTURE2 = 0x84C2;
+    public static final int GL_TEXTURE3 = 0x84C3;
+    public static final int GL_TEXTURE4 = 0x84C4;
+    public static final int GL_TEXTURE5 = 0x84C5;
+    public static final int GL_TEXTURE6 = 0x84C6;
+    public static final int GL_TEXTURE7 = 0x84C7;
+    public static final int GL_TEXTURE8 = 0x84C8;
+    public static final int GL_TEXTURE9 = 0x84C9;
+    public static final int GL_TEXTURE10 = 0x84CA;
+    public static final int GL_TEXTURE11 = 0x84CB;
+    public static final int GL_TEXTURE12 = 0x84CC;
+    public static final int GL_TEXTURE13 = 0x84CD;
+    public static final int GL_TEXTURE14 = 0x84CE;
+    public static final int GL_TEXTURE15 = 0x84CF;
+    public static final int GL_TEXTURE16 = 0x84D0;
+    public static final int GL_TEXTURE17 = 0x84D1;
+    public static final int GL_TEXTURE18 = 0x84D2;
+    public static final int GL_TEXTURE19 = 0x84D3;
+    public static final int GL_TEXTURE20 = 0x84D4;
+    public static final int GL_TEXTURE21 = 0x84D5;
+    public static final int GL_TEXTURE22 = 0x84D6;
+    public static final int GL_TEXTURE23 = 0x84D7;
+    public static final int GL_TEXTURE24 = 0x84D8;
+    public static final int GL_TEXTURE25 = 0x84D9;
+    public static final int GL_TEXTURE26 = 0x84DA;
+    public static final int GL_TEXTURE27 = 0x84DB;
+    public static final int GL_TEXTURE28 = 0x84DC;
+    public static final int GL_TEXTURE29 = 0x84DD;
+    public static final int GL_TEXTURE30 = 0x84DE;
+    public static final int GL_TEXTURE31 = 0x84DF;
+    public static final int GL_ACTIVE_TEXTURE = 0x84E0;
+    public static final int GL_MULTISAMPLE = 0x809D;
+    public static final int GL_SAMPLE_ALPHA_TO_COVERAGE = 0x809E;
+    public static final int GL_SAMPLE_ALPHA_TO_ONE = 0x809F;
+    public static final int GL_SAMPLE_COVERAGE = 0x80A0;
+    public static final int GL_SAMPLE_BUFFERS = 0x80A8;
+    public static final int GL_SAMPLES = 0x80A9;
+    public static final int GL_SAMPLE_COVERAGE_VALUE = 0x80AA;
+    public static final int GL_SAMPLE_COVERAGE_INVERT = 0x80AB;
+    public static final int GL_TEXTURE_CUBE_MAP = 0x8513;
+    public static final int GL_TEXTURE_BINDING_CUBE_MAP = 0x8514;
+    public static final int GL_TEXTURE_CUBE_MAP_POSITIVE_X = 0x8515;
+    public static final int GL_TEXTURE_CUBE_MAP_NEGATIVE_X = 0x8516;
+    public static final int GL_TEXTURE_CUBE_MAP_POSITIVE_Y = 0x8517;
+    public static final int GL_TEXTURE_CUBE_MAP_NEGATIVE_Y = 0x8518;
+    public static final int GL_TEXTURE_CUBE_MAP_POSITIVE_Z = 0x8519;
+    public static final int GL_TEXTURE_CUBE_MAP_NEGATIVE_Z = 0x851A;
+    public static final int GL_PROXY_TEXTURE_CUBE_MAP = 0x851B;
+    public static final int GL_MAX_CUBE_MAP_TEXTURE_SIZE = 0x851C;
+    public static final int GL_COMPRESSED_RGB = 0x84ED;
+    public static final int GL_COMPRESSED_RGBA = 0x84EE;
+    public static final int GL_TEXTURE_COMPRESSION_HINT = 0x84EF;
+    public static final int GL_TEXTURE_COMPRESSED_IMAGE_SIZE = 0x86A0;
+    public static final int GL_TEXTURE_COMPRESSED = 0x86A1;
+    public static final int GL_NUM_COMPRESSED_TEXTURE_FORMATS = 0x86A2;
+    public static final int GL_COMPRESSED_TEXTURE_FORMATS = 0x86A3;
+    public static final int GL_CLAMP_TO_BORDER = 0x812D;
+    public static final MethodHandle MH_glActiveTexture = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+    public final MemorySegment PFN_glActiveTexture;
+    public static final MethodHandle MH_glSampleCoverage = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_BOOLEAN));
+    public final MemorySegment PFN_glSampleCoverage;
+    public static final MethodHandle MH_glCompressedTexImage3D = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glCompressedTexImage3D;
+    public static final MethodHandle MH_glCompressedTexImage2D = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glCompressedTexImage2D;
+    public static final MethodHandle MH_glCompressedTexImage1D = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glCompressedTexImage1D;
+    public static final MethodHandle MH_glCompressedTexSubImage3D = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glCompressedTexSubImage3D;
+    public static final MethodHandle MH_glCompressedTexSubImage2D = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glCompressedTexSubImage2D;
+    public static final MethodHandle MH_glCompressedTexSubImage1D = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glCompressedTexSubImage1D;
+    public static final MethodHandle MH_glGetCompressedTexImage = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glGetCompressedTexImage;
 
-/**
- * The OpenGL 1.3 functions.
- * <p>
- * These extensions are promoted in this version:
- * <ul>
- *     <li>{@linkplain GLARBTransposeMatrix GL_ARB_transpose_matrix}</li>
- * </ul>
- *
- * @author squid233
- * @since 0.1.0
- */
-public interface GL13 extends DirectAccess {
-    int CLIENT_ACTIVE_TEXTURE = 0x84E1;
-    int MAX_TEXTURE_UNITS = 0x84E2;
-    int TRANSPOSE_MODELVIEW_MATRIX = 0x84E3;
-    int TRANSPOSE_PROJECTION_MATRIX = 0x84E4;
-    int TRANSPOSE_TEXTURE_MATRIX = 0x84E5;
-    int TRANSPOSE_COLOR_MATRIX = 0x84E6;
-    int MULTISAMPLE_BIT = 0x20000000;
-    int NORMAL_MAP = 0x8511;
-    int REFLECTION_MAP = 0x8512;
-    int COMPRESSED_ALPHA = 0x84E9;
-    int COMPRESSED_LUMINANCE = 0x84EA;
-    int COMPRESSED_LUMINANCE_ALPHA = 0x84EB;
-    int COMPRESSED_INTENSITY = 0x84EC;
-    int COMBINE = 0x8570;
-    int COMBINE_RGB = 0x8571;
-    int COMBINE_ALPHA = 0x8572;
-    int SOURCE0_RGB = 0x8580;
-    int SOURCE1_RGB = 0x8581;
-    int SOURCE2_RGB = 0x8582;
-    int SOURCE0_ALPHA = 0x8588;
-    int SOURCE1_ALPHA = 0x8589;
-    int SOURCE2_ALPHA = 0x858A;
-    int OPERAND0_RGB = 0x8590;
-    int OPERAND1_RGB = 0x8591;
-    int OPERAND2_RGB = 0x8592;
-    int OPERAND0_ALPHA = 0x8598;
-    int OPERAND1_ALPHA = 0x8599;
-    int OPERAND2_ALPHA = 0x859A;
-    int RGB_SCALE = 0x8573;
-    int ADD_SIGNED = 0x8574;
-    int INTERPOLATE = 0x8575;
-    int SUBTRACT = 0x84E7;
-    int CONSTANT = 0x8576;
-    int PRIMARY_COLOR = 0x8577;
-    int PREVIOUS = 0x8578;
-    int DOT3_RGB = 0x86AE;
-    int DOT3_RGBA = 0x86AF;
-
-    @Entrypoint("glClientActiveTexture")
-    default void clientActiveTexture(int texture) {
-        throw new ContextException();
+    public GL13(GLLoadFunc func) {
+        super(func);
+        PFN_glActiveTexture = func.invoke("glActiveTexture", "glActiveTextureARB");
+        PFN_glSampleCoverage = func.invoke("glSampleCoverage", "glSampleCoverageARB");
+        PFN_glCompressedTexImage3D = func.invoke("glCompressedTexImage3D", "glCompressedTexImage3DARB");
+        PFN_glCompressedTexImage2D = func.invoke("glCompressedTexImage2D", "glCompressedTexImage2DARB");
+        PFN_glCompressedTexImage1D = func.invoke("glCompressedTexImage1D", "glCompressedTexImage1DARB");
+        PFN_glCompressedTexSubImage3D = func.invoke("glCompressedTexSubImage3D", "glCompressedTexSubImage3DARB");
+        PFN_glCompressedTexSubImage2D = func.invoke("glCompressedTexSubImage2D", "glCompressedTexSubImage2DARB");
+        PFN_glCompressedTexSubImage1D = func.invoke("glCompressedTexSubImage1D", "glCompressedTexSubImage1DARB");
+        PFN_glGetCompressedTexImage = func.invoke("glGetCompressedTexImage", "glGetCompressedTexImageARB");
     }
 
-    @Entrypoint("glLoadTransposeMatrixd")
-    default void loadTransposeMatrixd(MemorySegment m) {
-        throw new ContextException();
+    public void ActiveTexture(@CType("GLenum") int texture) {
+        try { if (!Unmarshal.isNullPointer(PFN_glActiveTexture))
+            MH_glActiveTexture.invokeExact(PFN_glActiveTexture, texture);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glActiveTexture", e); }
     }
 
-    @Entrypoint("glLoadTransposeMatrixd")
-    default void loadTransposeMatrixd(SegmentAllocator allocator, double[] m) {
-        throw new ContextException();
+    public void SampleCoverage(@CType("GLfloat") float value, @CType("GLboolean") boolean invert) {
+        try { if (!Unmarshal.isNullPointer(PFN_glSampleCoverage))
+            MH_glSampleCoverage.invokeExact(PFN_glSampleCoverage, value, invert);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glSampleCoverage", e); }
     }
 
-    @Entrypoint("glLoadTransposeMatrixf")
-    default void loadTransposeMatrixf(MemorySegment m) {
-        throw new ContextException();
+    public void CompressedTexImage3D(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth, @CType("GLint") int border, @CType("GLsizei") int imageSize, @CType("const void *") java.lang.foreign.MemorySegment data) {
+        try { if (!Unmarshal.isNullPointer(PFN_glCompressedTexImage3D))
+            MH_glCompressedTexImage3D.invokeExact(PFN_glCompressedTexImage3D, target, level, internalformat, width, height, depth, border, imageSize, data);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glCompressedTexImage3D", e); }
     }
 
-    @Entrypoint("glLoadTransposeMatrixf")
-    default void loadTransposeMatrixf(SegmentAllocator allocator, float[] m) {
-        throw new ContextException();
+    public void CompressedTexImage2D(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLint") int border, @CType("GLsizei") int imageSize, @CType("const void *") java.lang.foreign.MemorySegment data) {
+        try { if (!Unmarshal.isNullPointer(PFN_glCompressedTexImage2D))
+            MH_glCompressedTexImage2D.invokeExact(PFN_glCompressedTexImage2D, target, level, internalformat, width, height, border, imageSize, data);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glCompressedTexImage2D", e); }
     }
 
-    @Entrypoint("glMultTransposeMatrixd")
-    default void multTransposeMatrixd(MemorySegment m) {
-        throw new ContextException();
+    public void CompressedTexImage1D(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLint") int border, @CType("GLsizei") int imageSize, @CType("const void *") java.lang.foreign.MemorySegment data) {
+        try { if (!Unmarshal.isNullPointer(PFN_glCompressedTexImage1D))
+            MH_glCompressedTexImage1D.invokeExact(PFN_glCompressedTexImage1D, target, level, internalformat, width, border, imageSize, data);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glCompressedTexImage1D", e); }
     }
 
-    @Entrypoint("glMultTransposeMatrixd")
-    default void multTransposeMatrixd(SegmentAllocator allocator, double[] m) {
-        throw new ContextException();
+    public void CompressedTexSubImage3D(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLint") int yoffset, @CType("GLint") int zoffset, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth, @CType("GLenum") int format, @CType("GLsizei") int imageSize, @CType("const void *") java.lang.foreign.MemorySegment data) {
+        try { if (!Unmarshal.isNullPointer(PFN_glCompressedTexSubImage3D))
+            MH_glCompressedTexSubImage3D.invokeExact(PFN_glCompressedTexSubImage3D, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glCompressedTexSubImage3D", e); }
     }
 
-    @Entrypoint("glMultTransposeMatrixf")
-    default void multTransposeMatrixf(MemorySegment m) {
-        throw new ContextException();
+    public void CompressedTexSubImage2D(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLint") int yoffset, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLenum") int format, @CType("GLsizei") int imageSize, @CType("const void *") java.lang.foreign.MemorySegment data) {
+        try { if (!Unmarshal.isNullPointer(PFN_glCompressedTexSubImage2D))
+            MH_glCompressedTexSubImage2D.invokeExact(PFN_glCompressedTexSubImage2D, target, level, xoffset, yoffset, width, height, format, imageSize, data);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glCompressedTexSubImage2D", e); }
     }
 
-    @Entrypoint("glMultTransposeMatrixf")
-    default void multTransposeMatrixf(SegmentAllocator allocator, float[] m) {
-        throw new ContextException();
+    public void CompressedTexSubImage1D(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLsizei") int width, @CType("GLenum") int format, @CType("GLsizei") int imageSize, @CType("const void *") java.lang.foreign.MemorySegment data) {
+        try { if (!Unmarshal.isNullPointer(PFN_glCompressedTexSubImage1D))
+            MH_glCompressedTexSubImage1D.invokeExact(PFN_glCompressedTexSubImage1D, target, level, xoffset, width, format, imageSize, data);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glCompressedTexSubImage1D", e); }
     }
 
-    @Entrypoint("glMultiTexCoord1d")
-    default void multiTexCoord1d(int target, double s) {
-        throw new ContextException();
+    public void GetCompressedTexImage(@CType("GLenum") int target, @CType("GLint") int level, @CType("void*") java.lang.foreign.MemorySegment img) {
+        try { if (!Unmarshal.isNullPointer(PFN_glGetCompressedTexImage))
+            MH_glGetCompressedTexImage.invokeExact(PFN_glGetCompressedTexImage, target, level, img);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glGetCompressedTexImage", e); }
     }
 
-    @Entrypoint("glMultiTexCoord1dv")
-    default void multiTexCoord1dv(int target, MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord1dv")
-    default void multiTexCoord1dv(SegmentAllocator allocator, int target, double[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord1f")
-    default void multiTexCoord1f(int target, float s) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord1fv")
-    default void multiTexCoord1fv(int target, MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord1fv")
-    default void multiTexCoord1fv(SegmentAllocator allocator, int target, float[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord1i")
-    default void multiTexCoord1i(int target, int s) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord1iv")
-    default void multiTexCoord1iv(int target, MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord1iv")
-    default void multiTexCoord1iv(SegmentAllocator allocator, int target, int[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord1s")
-    default void multiTexCoord1s(int target, short s) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord1sv")
-    default void multiTexCoord1sv(int target, MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord1sv")
-    default void multiTexCoord1sv(SegmentAllocator allocator, int target, short[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord2d")
-    default void multiTexCoord2d(int target, double s, double t) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord2dv")
-    default void multiTexCoord2dv(int target, MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord2dv")
-    default void multiTexCoord2dv(SegmentAllocator allocator, int target, double[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord2f")
-    default void multiTexCoord2f(int target, float s, float t) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord2fv")
-    default void multiTexCoord2fv(int target, MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord2fv")
-    default void multiTexCoord2fv(SegmentAllocator allocator, int target, float[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord2i")
-    default void multiTexCoord2i(int target, int s, int t) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord2iv")
-    default void multiTexCoord2iv(int target, MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord2iv")
-    default void multiTexCoord2iv(SegmentAllocator allocator, int target, int[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord2s")
-    default void multiTexCoord2s(int target, short s, short t) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord2sv")
-    default void multiTexCoord2sv(int target, MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord2sv")
-    default void multiTexCoord2sv(SegmentAllocator allocator, int target, short[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord3d")
-    default void multiTexCoord3d(int target, double s, double t, double r) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord3dv")
-    default void multiTexCoord3dv(int target, MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord3dv")
-    default void multiTexCoord3dv(SegmentAllocator allocator, int target, double[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord3f")
-    default void multiTexCoord3f(int target, float s, float t, float r) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord3fv")
-    default void multiTexCoord3fv(int target, MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord3fv")
-    default void multiTexCoord3fv(SegmentAllocator allocator, int target, float[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord3i")
-    default void multiTexCoord3i(int target, int s, int t, int r) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord3iv")
-    default void multiTexCoord3iv(int target, MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord3iv")
-    default void multiTexCoord3iv(SegmentAllocator allocator, int target, int[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord3s")
-    default void multiTexCoord3s(int target, short s, short t, short r) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord3sv")
-    default void multiTexCoord3sv(int target, MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord3sv")
-    default void multiTexCoord3sv(SegmentAllocator allocator, int target, short[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord4d")
-    default void multiTexCoord4d(int target, double s, double t, double r, double q) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord4dv")
-    default void multiTexCoord4dv(int target, MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord4dv")
-    default void multiTexCoord4dv(SegmentAllocator allocator, int target, double[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord4f")
-    default void multiTexCoord4f(int target, float s, float t, float r, float q) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord4fv")
-    default void multiTexCoord4fv(int target, MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord4fv")
-    default void multiTexCoord4fv(SegmentAllocator allocator, int target, float[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord4i")
-    default void multiTexCoord4i(int target, int s, int t, int r, int q) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord4iv")
-    default void multiTexCoord4iv(int target, MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord4iv")
-    default void multiTexCoord4iv(SegmentAllocator allocator, int target, int[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord4s")
-    default void multiTexCoord4s(int target, short s, short t, short r, short q) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord4sv")
-    default void multiTexCoord4sv(int target, MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultiTexCoord4sv")
-    default void multiTexCoord4sv(SegmentAllocator allocator, int target, short[] v) {
-        throw new ContextException();
-    }
 }

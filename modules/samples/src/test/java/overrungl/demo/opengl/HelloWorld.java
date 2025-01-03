@@ -14,122 +14,123 @@
  * copies or substantial portions of the Software.
  */
 
+package overrungl.demo.opengl;
+
 import overrungl.glfw.GLFW;
 import overrungl.glfw.GLFWCallbacks;
 import overrungl.glfw.GLFWErrorCallback;
 import overrungl.opengl.GL;
-import overrungl.opengl.GLLoader;
 import overrungl.util.Unmarshal;
 
 import java.lang.foreign.MemorySegment;
-import java.util.Objects;
 
 import static overrungl.glfw.GLFW.*;
+import static overrungl.opengl.GL.*;
 
-final int INIT_WIDTH = 300;
-final int INIT_HEIGHT = 300;
+public class HelloWorld {
+    private static final int INIT_WIDTH = 300;
+    private static final int INIT_HEIGHT = 300;
+    // The window handle
+    private MemorySegment window = MemorySegment.NULL;
+    // The OpenGL context
+    private GL gl = null;
 
-// The window handle
-MemorySegment window = MemorySegment.NULL;
-// The OpenGL context
-GL gl = null;
+    private void start() {
+        // Set up an error callback. The default implementation
+        // will print the error message in System.err.
+        glfwSetErrorCallback(GLFWErrorCallback.createPrint());
 
-void start() {
-    // Set up an error callback. The default implementation
-    // will print the error message in System.err.
-    glfwSetErrorCallback(GLFWErrorCallback.createPrint());
-
-    // Initialize GLFW. Most GLFW functions will not work before doing this.
-    // If you are using Kotlin, you can use the builtin check function
-    if (!glfwInit()) {
-        throw new IllegalStateException("Failed to initialize GLFW");
-    }
-
-    // Configure GLFW
-    // optional, the current window hints are already the default
-    glfwDefaultWindowHints();
-    // the window will be resizable
-    glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
-
-    // Get the resolution of the primary monitor
-    var vidMode = glfwGetVideoMode(glfwGetPrimaryMonitor());
-    if (vidMode != null) {
-        // Center the window
-        glfwWindowHint(GLFW_POSITION_X, (vidMode.width() - INIT_WIDTH) / 2);
-        glfwWindowHint(GLFW_POSITION_Y, (vidMode.height() - INIT_HEIGHT) / 2);
-    }
-
-    // Create the window
-    window = glfwCreateWindow(INIT_WIDTH, INIT_HEIGHT, "Hello World!", MemorySegment.NULL, MemorySegment.NULL);
-    if (Unmarshal.isNullPointer(window)) {
-        throw new IllegalStateException("Failed to create the GLFW window");
-    }
-
-    // Set up a key callback. It will be called every time a key is pressed, repeated or released.
-    glfwSetKeyCallback(window, (handle, key, _, action, _) -> {
-        if (key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE) {
-            // We will detect this in the rendering loop
-            glfwSetWindowShouldClose(handle, true);
+        // Initialize GLFW. Most GLFW functions will not work before doing this.
+        // If you are using Kotlin, you can use the builtin check function
+        if (!glfwInit()) {
+            throw new IllegalStateException("Failed to initialize GLFW");
         }
-    });
-    glfwSetFramebufferSizeCallback(window, (_, width, height) -> {
-        // Resize the viewport
-        if (gl != null) {
-            gl.viewport(0, 0, width, height);
+
+        // Configure GLFW
+        // optional, the current window hints are already the default
+        glfwDefaultWindowHints();
+        // the window will be resizable
+        glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
+
+        // Get the resolution of the primary monitor
+        var vidMode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+        if (vidMode != null) {
+            // Center the window
+            glfwWindowHint(GLFW_POSITION_X, (vidMode.width() - INIT_WIDTH) / 2);
+            glfwWindowHint(GLFW_POSITION_Y, (vidMode.height() - INIT_HEIGHT) / 2);
         }
-    });
 
-    // Make the OpenGL context current
-    glfwMakeContextCurrent(window);
-    // Enable v-sync
-    glfwSwapInterval(1);
+        // Create the window
+        window = glfwCreateWindow(INIT_WIDTH, INIT_HEIGHT, "Hello World!", MemorySegment.NULL, MemorySegment.NULL);
+        if (Unmarshal.isNullPointer(window)) {
+            throw new IllegalStateException("Failed to create the GLFW window");
+        }
 
-    // Load OpenGL capabilities with GLFW.
-    // The default loading function uses a forward compatible profile,
-    // which cannot access deprecated and removed functions.
-    gl = Objects.requireNonNull(GLLoader.load(GLLoader.loadFlags(GLFW::glfwGetProcAddress)), "Failed to load OpenGL");
-    initGL(gl);
+        // Set up a key callback. It will be called every time a key is pressed, repeated or released.
+        glfwSetKeyCallback(window, (handle, key, _, action, _) -> {
+            if (key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE) {
+                // We will detect this in the rendering loop
+                glfwSetWindowShouldClose(handle, true);
+            }
+        });
+        glfwSetFramebufferSizeCallback(window, (_, width, height) -> {
+            // Resize the viewport
+            if (gl != null) {
+                gl.Viewport(0, 0, width, height);
+            }
+        });
 
-    run();
-}
+        // Make the OpenGL context current
+        glfwMakeContextCurrent(window);
+        // Enable v-sync
+        glfwSwapInterval(1);
 
-void initGL(GL gl) {
-    // Set the clear color
-    gl.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
-}
+        // Load OpenGL capabilities with GLFW.
+        // This uses core profile, which cannot access deprecated and removed functions.
+        gl = new GL(GLFW::glfwGetProcAddress);
+        initGL(gl);
 
-void run() {
-    // Run the rendering loop until the user has attempted to close
-    // the window or has pressed the ESCAPE key.
-    while (!glfwWindowShouldClose(window)) {
-        // Poll for window events. The key callback above will only be
-        // invoked during this call.
-        glfwPollEvents();
-        render(gl);
+        run();
     }
-}
 
-void render(GL gl) {
-    // clear the framebuffer
-    gl.clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT);
-    // swap the color buffers
-    glfwSwapBuffers(window);
-}
+    private void initGL(GL gl) {
+        // Set the clear color
+        gl.ClearColor(0.4f, 0.6f, 0.9f, 1.0f);
+    }
 
-void dispose() {
-    // Free the window callbacks and destroy the window
-    GLFWCallbacks.free(window);
-    glfwDestroyWindow(window);
+    private void run() {
+        // Run the rendering loop until the user has attempted to close
+        // the window or has pressed the ESCAPE key.
+        while (!glfwWindowShouldClose(window)) {
+            // Poll for window events. The key callback above will only be
+            // invoked during this call.
+            glfwPollEvents();
+            render(gl);
+        }
+    }
 
-    // Terminate GLFW and remove the error callback
-    glfwTerminate();
-    glfwSetErrorCallback(MemorySegment.NULL);
-}
+    private void render(GL gl) {
+        // clear the framebuffer
+        gl.Clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        // swap the color buffers
+        glfwSwapBuffers(window);
+    }
 
-void main() {
-    try {
-        start();
-    } finally {
-        dispose();
+    private void dispose() {
+        // Free the window callbacks and destroy the window
+        GLFWCallbacks.free(window);
+        glfwDestroyWindow(window);
+
+        // Terminate GLFW
+        glfwTerminate();
+    }
+
+    public static void main(String[] args) {
+        var app = new HelloWorld();
+        try {
+            app.start();
+        } finally {
+            app.dispose();
+        }
     }
 }

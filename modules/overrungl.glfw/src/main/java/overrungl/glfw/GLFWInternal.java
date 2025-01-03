@@ -30,15 +30,22 @@ import java.util.function.Supplier;
  * @since 0.1.0
  */
 final class GLFWInternal {
-    static final SymbolLookup lookup;
-
-    static {
-        final Supplier<SymbolLookup> lib = () -> RuntimeHelper.load("glfw", "glfw", OverrunGL.GLFW_VERSION);
-        final var function = OverrunGLConfigurations.GLFW_SYMBOL_LOOKUP.get();
-        lookup = function != null ? function.apply(lib) : lib.get();
-    }
+    private static volatile SymbolLookup lookup;
 
     private GLFWInternal() {
         //no instance
+    }
+
+    static SymbolLookup lookup() {
+        if (lookup == null) {
+            synchronized (GLFWInternal.class) {
+                if (lookup == null) {
+                    Supplier<SymbolLookup> lib = () -> RuntimeHelper.load("glfw", "glfw", OverrunGL.GLFW_VERSION);
+                    var function = OverrunGLConfigurations.GLFW_SYMBOL_LOOKUP.get();
+                    lookup = function != null ? function.apply(lib) : lib.get();
+                }
+            }
+        }
+        return lookup;
     }
 }

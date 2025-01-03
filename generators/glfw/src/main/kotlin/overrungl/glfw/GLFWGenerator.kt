@@ -20,7 +20,7 @@ import com.palantir.javapoet.TypeName
 import overrungl.gen.*
 
 val glfwPackage = "overrungl.glfw"
-val glfwLookup = "GLFWInternal.lookup"
+val glfwLookup = "GLFWInternal.lookup()"
 
 val glfw_boolean = CustomTypeSpec(
     carrier = TypeName.INT,
@@ -2960,9 +2960,9 @@ fun main() {
                 @param window The window whose flag to change.
                 @param value The new value.
 
-                @errors Possible errors include [GLFW_NOT_INITIALIZED][#GLFW_NOT_INITIALIZED].
+                @glfw.errors Possible errors include [GLFW_NOT_INITIALIZED][#GLFW_NOT_INITIALIZED].
 
-                @thread_safety This function may be called from any thread.  Access is not
+                @glfw.thread_safety This function may be called from any thread.  Access is not
                 synchronized.
             """.trimIndent(),
             addNow = false
@@ -3494,7 +3494,7 @@ fun main() {
                 be able to restore it.  This is a design decision of the xdg-shell
                 protocol.
 
-                @thread_safety This function must only be called from the main thread.
+                @glfw.thread_safety This function must only be called from the main thread.
 
                 @see #glfwRestoreWindow(MemorySegment) glfwRestoreWindow
                 @see #glfwMaximizeWindow(MemorySegment) glfwMaximizeWindow

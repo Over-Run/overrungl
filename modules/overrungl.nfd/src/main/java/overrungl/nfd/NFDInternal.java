@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2024 Overrun Organization
+ * Copyright (c) 2024-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -36,17 +36,14 @@ import java.util.function.Supplier;
  * @since 0.1.0
  */
 final class NFDInternal {
-    static final SymbolLookup LOOKUP;
-
-    static {
-        final Supplier<SymbolLookup> lib = () -> RuntimeHelper.load("nfd", "nfd", OverrunGL.NFD_VERSION);
-        final var function = OverrunGLConfigurations.NFD_SYMBOL_LOOKUP.get();
-        LOOKUP = function != null ? function.apply(lib) : lib.get();
-    }
+    private static volatile SymbolLookup lookup;
 
     static final Platform os = Platform.current();
     static final boolean isOsWin = os instanceof Platform.Windows;
     static final Charset nfdCharset = isOsWin ? StandardCharsets.UTF_16LE : StandardCharsets.UTF_8;
+
+    private NFDInternal() {
+    }
 
     static MemorySegment marshalString(SegmentAllocator allocator, String s) {
         return Marshal.marshal(allocator, s, nfdCharset);
@@ -54,5 +51,18 @@ final class NFDInternal {
 
     static MemorySegment marshalString(SegmentAllocator allocator, String[] arr) {
         return Marshal.marshal(allocator, arr, nfdCharset);
+    }
+
+    static SymbolLookup lookup() {
+        if (lookup == null) {
+            synchronized (NFDInternal.class) {
+                if (lookup == null) {
+                    final Supplier<SymbolLookup> lib = () -> RuntimeHelper.load("nfd", "nfd", OverrunGL.NFD_VERSION);
+                    final var function = OverrunGLConfigurations.NFD_SYMBOL_LOOKUP.get();
+                    lookup = function != null ? function.apply(lib) : lib.get();
+                }
+            }
+        }
+        return lookup;
     }
 }

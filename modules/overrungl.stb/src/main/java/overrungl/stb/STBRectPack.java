@@ -46,14 +46,15 @@ public final class STBRectPack {
     //region Method handles
     /// Method handles.
     public static final class Handles {
+        private Handles() { }
         /// The method handle of `stbrp_pack_rects`.
-        public static final MethodHandle MH_stbrp_pack_rects = RuntimeHelper.downcall(STBInternal.lookup, "stbrp_pack_rects", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBRPContext.LAYOUT), ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBRPRect.LAYOUT), ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbrp_pack_rects = RuntimeHelper.downcall(STBInternal.lookup(), "stbrp_pack_rects", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBRPContext.LAYOUT), ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBRPRect.LAYOUT), ValueLayout.JAVA_INT));
         /// The method handle of `stbrp_init_target`.
-        public static final MethodHandle MH_stbrp_init_target = RuntimeHelper.downcall(STBInternal.lookup, "stbrp_init_target", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBRPContext.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBRPNode.LAYOUT), ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbrp_init_target = RuntimeHelper.downcall(STBInternal.lookup(), "stbrp_init_target", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBRPContext.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBRPNode.LAYOUT), ValueLayout.JAVA_INT));
         /// The method handle of `stbrp_setup_allow_out_of_mem`.
-        public static final MethodHandle MH_stbrp_setup_allow_out_of_mem = RuntimeHelper.downcall(STBInternal.lookup, "stbrp_setup_allow_out_of_mem", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBRPContext.LAYOUT), ValueLayout.JAVA_BOOLEAN));
+        public static final MethodHandle MH_stbrp_setup_allow_out_of_mem = RuntimeHelper.downcall(STBInternal.lookup(), "stbrp_setup_allow_out_of_mem", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBRPContext.LAYOUT), ValueLayout.JAVA_BOOLEAN));
         /// The method handle of `stbrp_setup_heuristic`.
-        public static final MethodHandle MH_stbrp_setup_heuristic = RuntimeHelper.downcall(STBInternal.lookup, "stbrp_setup_heuristic", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBRPContext.LAYOUT), ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbrp_setup_heuristic = RuntimeHelper.downcall(STBInternal.lookup(), "stbrp_setup_heuristic", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBRPContext.LAYOUT), ValueLayout.JAVA_INT));
     }
     //endregion
 

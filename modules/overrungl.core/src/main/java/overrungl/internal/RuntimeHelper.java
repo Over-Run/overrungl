@@ -110,7 +110,7 @@ public final class RuntimeHelper {
                 try (var is = STACK_WALKER.getCallerClass().getClassLoader().getResourceAsStream(fromPath)) {
                     Files.copy(Objects.requireNonNull(is, "File not found in classpath: " + fromPath), libFile);
                 } catch (Exception e) {
-                    throw new IllegalStateException("Couldn't load file: " + libFile + " or " + localFile + "; try setting -Doverrungl.natives to a valid path", e);
+                    throw new IllegalStateException("Couldn't load file: " + libFile.toAbsolutePath().normalize() + " or " + localFile.toAbsolutePath().normalize() + "; try setting -Doverrungl.natives to a valid path", e);
                 }
             }
             uri = libFile;
@@ -142,5 +142,13 @@ public final class RuntimeHelper {
     public static MethodHandle downcallOrNull(SymbolLookup lookup, String name, FunctionDescriptor descriptor) {
         var opt = lookup.find(name);
         return opt.isPresent() ? LINKER.downcallHandle(opt.get(), descriptor) : null;
+    }
+
+    /// Creates a method handle without binding to a specific address.
+    ///
+    /// @param descriptor the function descriptor
+    /// @return the method handle
+    public static MethodHandle downcall(FunctionDescriptor descriptor) {
+        return LINKER.downcallHandle(descriptor);
     }
 }
