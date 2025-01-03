@@ -1,22 +1,37 @@
+/*
+ * MIT License
+ *
+ * Copyright (c) 2025 Overrun Organization
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ */
+
 enum class NativePlatform(
     val osFamilyName: String,
     val osArch: String,
-    classifier: String = "$osFamilyName-$osArch",
     val nativeLibPrefix: String = "lib",
     val nativeLibSuffix: String = ".so"
 ) {
-    FREEBSD_X64("freebsd", "x64", classifier = "freebsd"),
-    LINUX_64("linux", "x64", classifier = "linux"),
+    FREEBSD_X64("freebsd", "x64"),
+    LINUX_64("linux", "x64"),
     LINUX_ARM32("linux", "arm32"),
     LINUX_ARM64("linux", "arm64"),
     LINUX_PPC64LE("linux", "ppc64le"),
     LINUX_RISCV64("linux", "riscv64"),
-    MACOS("macos", "x64", classifier = "macos", nativeLibSuffix = ".dylib"),
+    MACOS("macos", "x64", nativeLibSuffix = ".dylib"),
     MACOS_ARM64("macos", "arm64", nativeLibSuffix = ".dylib"),
-    WIN_64("windows", "x64", classifier = "windows", nativeLibPrefix = "", nativeLibSuffix = ".dll"),
+    WIN_64("windows", "x64", nativeLibPrefix = "", nativeLibSuffix = ".dll"),
     WIN_ARM64("windows", "arm64", nativeLibPrefix = "", nativeLibSuffix = ".dll");
 
-    val classifier = "natives-$classifier"
+    val classifier = "natives-$osFamilyName-$osArch"
 
     companion object {
         val enumEntries = values().toList()
