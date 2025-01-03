@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2024 Overrun Organization
+ * Copyright (c) 2022-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -16,118 +16,137 @@
 
 package overrungl.opengl;
 
-import org.jetbrains.annotations.Nullable;
-import overrun.marshal.Downcall;
-import overrun.marshal.DowncallOption;
-import overrungl.opengl.ext.GLExtension;
+import overrungl.util.MemoryStack;
+import overrungl.util.Unmarshal;
 
-import java.lang.foreign.FunctionDescriptor;
-import java.lang.invoke.MethodHandles;
-import java.util.Map;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
+import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-import static java.lang.foreign.ValueLayout.*;
-import static overrun.marshal.gen.processor.ProcessorTypes.registerStruct;
+/// This class finds OpenGL capabilities.
+///
+/// The finding methods are ported from [glad2](https://github.com/Dav1dde/glad).
+///
+/// @author squid233
+/// @since 0.1.0
+final class GLLoader {
+    private static final String[] prefixes = {
+        "OpenGL ES-CM ",
+        "OpenGL ES-CL ",
+        "OpenGL ES ",
+        "OpenGL SC "
+    };
+    private static final Pattern versionPattern = Pattern.compile("(\\d+)\\.(\\d+)");
+    private final GLLoadFunc func;
+    private final MemorySegment glGetString;
+    private final boolean hasGL;
 
-/**
- * This class must be used before any OpenGL function is called. It has the following responsibilities:
- * <ul>
- * <li>Loads the OpenGL native library into the JVM process.</li>
- * <li>Creates instances of {@link GLFlags} classes. A {@code GLFlags} instance contains flags for functionality that is available in an OpenGL
- * context.</li>
- * <li>Creates instances of {@link GL} instances, corresponding to OpenGL contexts that are current in those threads.
- * Internally, it also contains function pointers that are only valid in that specific OpenGL context.</li>
- * </ul>
- * <h2>OpenGL Context Creation</h2>
- * <p>Instances of {@code GL} can be created with the {@link #load(GLFlags) load} method. An OpenGL context must be current in the current thread
- * before it is called. Calling this method is expensive, so the {@code GL} instance should be associated with the OpenGL context and reused as
- * necessary.</p>
- *
- * @author squid233
- * @see GLLoadFunc
- * @since 0.1.0
- */
-public final class GLLoader {
-    private static final Map<String, FunctionDescriptor> DESCRIPTOR_MAP = Map.of(
-        "glMapBuffer", FunctionDescriptor.of(ADDRESS, JAVA_INT, JAVA_INT),
-        "glMapBufferRange", FunctionDescriptor.of(ADDRESS, JAVA_INT, JAVA_LONG, JAVA_LONG, JAVA_INT),
-        "glMapNamedBuffer", FunctionDescriptor.of(ADDRESS, JAVA_INT, JAVA_INT),
-        "glMapNamedBufferRange", FunctionDescriptor.of(ADDRESS, JAVA_INT, JAVA_LONG, JAVA_LONG, JAVA_INT)
-    );
-    private static final MethodHandles.Lookup LOOKUP = MethodHandles.lookup();
-
-    static {
-        registerStruct(DrawArraysIndirectCommand.class, DrawArraysIndirectCommand.OF);
-        registerStruct(DrawElementsIndirectCommand.class, DrawElementsIndirectCommand.OF);
+    GLLoader(GLLoadFunc func) {
+        this.func = func;
+        this.glGetString = func.invoke("glGetString");
+        this.hasGL = !Unmarshal.isNullPointer(glGetString);
     }
 
-    /**
-     * Loads OpenGL flags.
-     *
-     * @param load the load function
-     * @return the OpenGL flags
-     */
-    public static GLFlags loadFlags(GLLoadFunc load) {
-        return new GLFlags(load);
+    private static int makeVersion(int major, int minor) {
+        return major * 10000 + minor;
     }
 
-    /**
-     * Loads OpenGL core profile with the given flags.
-     *
-     * @param flags the OpenGL flags
-     * @return the OpenGL context, or {@code null} if no OpenGL context found.
-     */
-    @Nullable
-    public static GL load(GLFlags flags) {
-        return flags.GL10 ? loadBuiltin(flags, GL.class) : null;
+    static int versionMajor(int version) {
+        return version / 10000;
     }
 
-    /**
-     * Loads OpenGL compatibility profile with the given flags.
-     *
-     * @param flags the OpenGL flags
-     * @return the OpenGL context, or {@code null} if no OpenGL context found.
-     */
-    @Nullable
-    public static GLLegacy loadLegacy(GLFlags flags) {
-        return flags.GL10 ? loadBuiltin(flags, GLLegacy.class) : null;
+    static int versionMinor(int version) {
+        return version % 10000;
     }
 
-    /**
-     * Loads OpenGL extensions with the given flags.
-     *
-     * @param flags the OpenGL flags
-     * @return the OpenGL extensions context, or {@code null} if no OpenGL context found.
-     */
-    @Nullable
-    public static GLExtension loadExtension(GLFlags flags) {
-        return flags.foundExtension ? loadBuiltin(flags, GLExtension.class) : null;
+    int findCoreGL() {
+        if (!hasGL) return 0;
+
+        MemorySegment pVersion;
+        try {
+            pVersion = (MemorySegment) GL10.MH_glGetString.invokeExact(glGetString, GL10.GL_VERSION);
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
+        }
+        String version = Unmarshal.unmarshalAsString(pVersion);
+        if (version == null) return 0;
+        for (String prefix : prefixes) {
+            if (version.startsWith(prefix)) {
+                version = version.substring(prefix.length());
+                break;
+            }
+        }
+
+        Matcher matcher = versionPattern.matcher(version);
+        if (!matcher.matches()) throw new IllegalStateException("Not a GL version: " + version);
+        int major = Integer.parseInt(matcher.group(1));
+        int minor = Integer.parseInt(matcher.group(2));
+
+        return makeVersion(major, minor);
     }
 
-    /**
-     * Loads OpenGL context with the given flags.
-     *
-     * @param flags       the OpenGL flags
-     * @param targetClass the target class
-     * @param <T>         the type of the instance
-     * @return an instance that wraps OpenGL context
-     */
-    public static <T> T loadBuiltin(GLFlags flags, Class<T> targetClass) {
-        return loadContext(LOOKUP, flags, targetClass);
+    record GetExtensions(
+        boolean result,
+        String[] exts,
+        String[] extsI
+    ) {
+        static final GetExtensions FAIL = new GetExtensions(false, null, null);
     }
 
-    /**
-     * Loads OpenGL context with the given flags.
-     *
-     * @param caller      the lookup object for the caller
-     * @param flags       the OpenGL flags
-     * @param targetClass the target class
-     * @param <T>         the type of the instance
-     * @return an instance that wraps OpenGL context
-     */
-    public static <T> T loadContext(MethodHandles.Lookup caller, GLFlags flags, Class<T> targetClass) {
-        return Downcall.load(caller,
-            flags.load.lookup(),
-            DowncallOption.targetClass(targetClass),
-            DowncallOption.descriptors(DESCRIPTOR_MAP));
+    GetExtensions getExtensions(int version) {
+        String[] exts = null;
+        String[] extsI = null;
+        if (versionMajor(version) < 3) {
+            if (!hasGL) return GetExtensions.FAIL;
+            MemorySegment segment;
+            try {
+                segment = (MemorySegment) GL10.MH_glGetString.invokeExact(glGetString, GL10.GL_VERSION);
+            } catch (Throwable e) {
+                throw new RuntimeException(e);
+            }
+            String s = Unmarshal.unmarshalAsString(segment);
+            if (s != null) {
+                exts = s.split(" ");
+                Arrays.sort(exts);
+            }
+        } else {
+            MemorySegment glGetStringi = func.invoke("glGetStringi");
+            MemorySegment glGetIntegerv = func.invoke("glGetIntegerv");
+            if (Unmarshal.isNullPointer(glGetStringi) || Unmarshal.isNullPointer(glGetIntegerv)) {
+                return GetExtensions.FAIL;
+            }
+            int numExtsI;
+            try (MemoryStack stack = MemoryStack.pushLocal()) {
+                var pNumExtsI = stack.ints(0);
+                try {
+                    GL10.MH_glGetIntegerv.invokeExact(glGetIntegerv, GL30.GL_NUM_EXTENSIONS, pNumExtsI);
+                } catch (Throwable e) {
+                    throw new RuntimeException(e);
+                }
+                numExtsI = pNumExtsI.get(ValueLayout.JAVA_INT, 0);
+            }
+            if (numExtsI > 0) {
+                extsI = new String[numExtsI];
+            }
+            if (extsI == null) return GetExtensions.FAIL;
+            try {
+                for (int index = 0; index < numExtsI; index++) {
+                    extsI[index] = Unmarshal.unmarshalAsString((MemorySegment) GL30.MH_glGetStringi.invokeExact(glGetStringi, GL10.GL_EXTENSIONS, index));
+                }
+            } catch (Throwable e) {
+                throw new RuntimeException(e);
+            }
+            Arrays.sort(extsI);
+        }
+        return new GetExtensions(true, exts, extsI);
+    }
+
+    boolean hasExtension(int version, GetExtensions exts, String extension) {
+        if (versionMajor(version) < 3) {
+            return Arrays.binarySearch(exts.exts, extension) >= 0;
+        }
+        return Arrays.binarySearch(exts.extsI, extension) >= 0;
     }
 }

@@ -143,4 +143,12 @@ public final class RuntimeHelper {
         var opt = lookup.find(name);
         return opt.isPresent() ? LINKER.downcallHandle(opt.get(), descriptor) : null;
     }
+
+    /// Creates a method handle without binding to a specific address.
+    ///
+    /// @param descriptor the function descriptor
+    /// @return the method handle
+    public static MethodHandle downcall(FunctionDescriptor descriptor) {
+        return LINKER.downcallHandle(descriptor);
+    }
 }

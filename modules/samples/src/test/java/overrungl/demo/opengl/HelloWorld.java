@@ -18,13 +18,12 @@ import overrungl.glfw.GLFW;
 import overrungl.glfw.GLFWCallbacks;
 import overrungl.glfw.GLFWErrorCallback;
 import overrungl.opengl.GL;
-import overrungl.opengl.GLLoader;
 import overrungl.util.Unmarshal;
 
 import java.lang.foreign.MemorySegment;
-import java.util.Objects;
 
 import static overrungl.glfw.GLFW.*;
+import static overrungl.opengl.GL.*;
 
 final int INIT_WIDTH = 300;
 final int INIT_HEIGHT = 300;
@@ -75,7 +74,7 @@ void start() {
     glfwSetFramebufferSizeCallback(window, (_, width, height) -> {
         // Resize the viewport
         if (gl != null) {
-            gl.viewport(0, 0, width, height);
+            gl.Viewport(0, 0, width, height);
         }
     });
 
@@ -85,9 +84,8 @@ void start() {
     glfwSwapInterval(1);
 
     // Load OpenGL capabilities with GLFW.
-    // The default loading function uses a forward compatible profile,
-    // which cannot access deprecated and removed functions.
-    gl = Objects.requireNonNull(GLLoader.load(GLLoader.loadFlags(GLFW::glfwGetProcAddress)), "Failed to load OpenGL");
+    // This uses core profile, which cannot access deprecated and removed functions.
+    gl = new GL(GLFW::glfwGetProcAddress);
     initGL(gl);
 
     run();
@@ -95,7 +93,7 @@ void start() {
 
 void initGL(GL gl) {
     // Set the clear color
-    gl.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
+    gl.ClearColor(0.4f, 0.6f, 0.9f, 1.0f);
 }
 
 void run() {
@@ -111,7 +109,7 @@ void run() {
 
 void render(GL gl) {
     // clear the framebuffer
-    gl.clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT);
+    gl.Clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     // swap the color buffers
     glfwSwapBuffers(window);
 }

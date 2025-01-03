@@ -114,7 +114,7 @@ public final class Unmarshal {
      * @return the string
      */
     public static @Nullable String unmarshalStringPointer(MemorySegment segment, Charset charset) {
-        return unmarshalAsString(unmarshalPointer(STR_LAYOUT, segment), charset);
+        return unmarshalAsString(unmarshalPointer(segment), charset);
     }
 
     /**

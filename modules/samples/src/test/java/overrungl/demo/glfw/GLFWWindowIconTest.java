@@ -21,8 +21,6 @@ import overrungl.glfw.GLFW;
 import overrungl.glfw.GLFWCallbacks;
 import overrungl.glfw.GLFWErrorCallback;
 import overrungl.glfw.GLFWImage;
-import overrungl.opengl.GL;
-import overrungl.opengl.GLLoader;
 import overrungl.util.MemoryStack;
 import overrungl.util.Unmarshal;
 
