@@ -26,7 +26,6 @@ module overrungl.core {
     exports overrungl.struct;
     exports overrungl.upcall;
     exports overrungl.util;
-    exports overrungl.util.value;
     exports overrungl.internal
         to overrungl.glfw,
         overrungl.nfd,
