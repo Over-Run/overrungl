@@ -23,6 +23,7 @@ package overrungl.opengl;
  * @since 0.1.0
  */
 public final class GL extends GL46 {
+    /// Creates an instance of OpenGL functions.
     public GL(GLLoadFunc function) {
         super(function);
     }

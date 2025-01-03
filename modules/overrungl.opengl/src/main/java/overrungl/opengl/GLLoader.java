@@ -80,7 +80,7 @@ final class GLLoader {
         }
 
         Matcher matcher = versionPattern.matcher(version);
-        if (!matcher.matches()) throw new IllegalStateException("Not a GL version: " + version);
+        if (!matcher.find()) throw new IllegalStateException("Cannot find OpenGL version: " + version);
         int major = Integer.parseInt(matcher.group(1));
         int minor = Integer.parseInt(matcher.group(2));
 
