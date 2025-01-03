@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2024 Overrun Organization
+ * Copyright (c) 2022-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -14,31 +14,58 @@
  * copies or substantial portions of the Software.
  */
 
+// This file is auto-generated. DO NOT EDIT!
 package overrungl.stb;
 
-import overrun.marshal.LayoutBuilder;
-import overrun.marshal.struct.Struct;
-import overrun.marshal.struct.StructAllocator;
+import java.lang.foreign.*;
+import java.lang.foreign.MemoryLayout.PathElement;
+import java.lang.invoke.*;
+import overrungl.annotation.*;
+import overrungl.struct.*;
+import overrungl.util.*;
 
-import java.lang.invoke.MethodHandles;
-
-/**
- * the details of the following structures don't matter to you, but they must
- * be visible so you can handle the memory allocations for them
- *
- * @author squid233
- * @since 0.1.0
- */
-public interface STBRPNode extends Struct<STBRPNode> {
-    /**
-     * The allocator
-     */
-    StructAllocator<STBRPNode> OF = new StructAllocator<>(
-        MethodHandles.lookup(),
-        LayoutBuilder.struct()
-            .cInt("x")
-            .cInt("y")
-            .cAddress("next")
-            .build()
+/// the details of the following structures don't matter to you, but they must
+/// be visible so you can handle the memory allocations for them
+///
+/// ## Members
+/// ### x
+/// ### y
+/// ### next
+/// ## Layout
+/// [Java definition][#LAYOUT]
+/// ```c
+/// typedef struct stbrp_node {
+///     stbrp_coord x;
+///     stbrp_coord y;
+///     stbrp_node * next;
+/// } STBRPNode;
+/// ```
+public final class STBRPNode extends Struct {
+    /// The struct layout of `stbrp_node`.
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+        ValueLayout.JAVA_INT.withName("x"),
+        ValueLayout.JAVA_INT.withName("y"),
+        ValueLayout.ADDRESS.withName("next")
     );
+
+    /// Creates `STBRPNode` with the given segment.
+    /// @param segment the memory segment
+    public STBRPNode(MemorySegment segment) { super(segment, LAYOUT); }
+
+    /// Creates `STBRPNode` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static STBRPNode of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new STBRPNode(segment); }
+
+    /// Allocates a `STBRPNode` with the given segment allocator.
+    /// @param allocator the segment allocator
+    /// @return the allocated `STBRPNode`
+    public static STBRPNode alloc(SegmentAllocator allocator) { return new STBRPNode(allocator.allocate(LAYOUT)); }
+
+    /// Allocates a `STBRPNode` with the given segment allocator and count.
+    /// @param allocator the segment allocator
+    /// @param count     the count
+    /// @return the allocated `STBRPNode`
+    public static STBRPNode alloc(SegmentAllocator allocator, long count) { return new STBRPNode(allocator.allocate(LAYOUT, count)); }
+
 }

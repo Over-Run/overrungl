@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2024 Overrun Organization
+ * Copyright (c) 2022-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -16,14 +16,16 @@
 
 package overrungl.demo.glfw;
 
-import overrun.marshal.Unmarshal;
-import overrungl.glfw.GLFW;
 import overrungl.glfw.GLFWCallbacks;
 import overrungl.glfw.GLFWErrorCallback;
 import overrungl.glfw.GLFWGamepadState;
+import overrungl.util.Unmarshal;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
+
+import static overrungl.glfw.GLFW.*;
 
 /**
  * Tests GLFW joystick
@@ -32,7 +34,6 @@ import java.lang.foreign.MemorySegment;
  * @since 0.1.0
  */
 public final class GLFWJoystickTest {
-    private final GLFW glfw = GLFW.INSTANCE;
     private MemorySegment window;
 
     public void run() {
@@ -40,90 +41,98 @@ public final class GLFWJoystickTest {
         loop();
 
         GLFWCallbacks.free(window);
-        glfw.destroyWindow(window);
+        glfwDestroyWindow(window);
 
-        glfw.terminate();
-        glfw.setErrorCallback(null);
+        glfwTerminate();
+        glfwSetErrorCallback(MemorySegment.NULL);
     }
 
     private void init() {
-        GLFWErrorCallback.createPrint().set();
-        if (!glfw.init()) throw new IllegalStateException("Unable to initialize GLFW");
-        glfw.defaultWindowHints();
-        glfw.windowHint(GLFW.VISIBLE, false);
-        glfw.windowHint(GLFW.RESIZABLE, true);
-        glfw.windowHint(GLFW.CLIENT_API, GLFW.NO_API);
-        window = glfw.createWindow(200, 100, "Holder", MemorySegment.NULL, MemorySegment.NULL);
+        glfwSetErrorCallback(GLFWErrorCallback.createPrint());
+        if (!glfwInit()) throw new IllegalStateException("Unable to initialize GLFW");
+        glfwDefaultWindowHints();
+        glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
+        glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
+        glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
+        window = glfwCreateWindow(200, 100, "Holder", MemorySegment.NULL, MemorySegment.NULL);
         if (Unmarshal.isNullPointer(window)) throw new IllegalStateException("Failed to create the GLFW window");
-        glfw.setKeyCallback(window, (_, key, _, action, _) -> {
-            if (key == GLFW.KEY_ESCAPE && action == GLFW.RELEASE) {
-                glfw.setWindowShouldClose(window, true);
+        glfwSetKeyCallback(window, (_, key, _, action, _) -> {
+            if (key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE) {
+                glfwSetWindowShouldClose(window, true);
             }
         });
-        glfw.setJoystickCallback((jid, event) -> {
+        glfwSetJoystickCallback((jid, event) -> {
             switch (event) {
-                case GLFW.CONNECTED -> {
-                    boolean isGamepad = glfw.joystickIsGamepad(jid);
+                case GLFW_CONNECTED -> {
+                    boolean isGamepad = glfwJoystickIsGamepad(jid);
                     var prefix = isGamepad ? "Gamepad " : "Joystick ";
-                    System.out.println(prefix + jid + ": \"" + (isGamepad ? glfw.getGamepadName(jid) : glfw.getJoystickName(jid)) + "\" has connected");
+                    System.out.println(prefix + jid + ": \"" + (isGamepad ? glfwGetGamepadName(jid) : glfwGetJoystickName(jid)) + "\" has connected");
                 }
-                case GLFW.DISCONNECTED -> System.out.println("Joystick " + jid + " has disconnected");
+                case GLFW_DISCONNECTED -> System.out.println("Joystick " + jid + " has disconnected");
             }
         });
 
-        glfw.showWindow(window);
+        glfwShowWindow(window);
     }
 
     private void loop() {
         try (Arena arena = Arena.ofConfined()) {
-            var states = new GLFWGamepadState[GLFW.JOYSTICK_LAST + 1];
+            var states = new GLFWGamepadState[GLFW_JOYSTICK_LAST + 1];
             for (int i = 0; i < states.length; i++) {
-                states[i] = GLFWGamepadState.OF.of(arena);
+                states[i] = GLFWGamepadState.alloc(arena);
             }
-            while (!glfw.windowShouldClose(window)) {
-                for (int i = 0; i <= GLFW.JOYSTICK_LAST; i++) {
-                    if (glfw.joystickPresent(i)) {
-                        if (glfw.joystickIsGamepad(i)) {
+            while (!glfwWindowShouldClose(window)) {
+                for (int i = 0; i <= GLFW_JOYSTICK_LAST; i++) {
+                    if (glfwJoystickPresent(i)) {
+                        if (glfwJoystickIsGamepad(i)) {
                             var state = states[i];
-                            if (glfw.getGamepadState(i, state)) {
+                            if (glfwGetGamepadState(i, state)) {
                                 System.out.printf("""
-                                    Get gamepad state for [jid=%d,name=%s] successful:
-                                    Buttons: [A(Cross)=%s, B(Circle)=%s, X(Square)=%s, Y(Triangle)=%s,
-                                    Left bumper=%s, Right bumper=%s, Back=%s, Start=%s,
-                                    Guide=%s, Left thumb=%s, Right thumb=%s,
-                                    DPAD(up=%s, right=%s, down=%s, left=%s)],
-                                    Axis: [Left(x=%s, y=%s), Right(x=%s, y=%s), Trigger(left=%s, right%s)]
-                                    %n""",
+                                        Get gamepad state for [jid=%d,name=%s] successful:
+                                        Buttons: [A(Cross)=%d, B(Circle)=%d, X(Square)=%d, Y(Triangle)=%d,
+                                        Left bumper=%d, Right bumper=%d, Back=%d, Start=%d,
+                                        Guide=%d, Left thumb=%d, Right thumb=%d,
+                                        DPAD(up=%d, right=%d, down=%d, left=%d)],
+                                        Axis: [Left(x=%f, y=%f), Right(x=%f, y=%f), Trigger(left=%f, right%f)]
+                                        %n""",
                                     i,
-                                    glfw.getGamepadName(i),
-                                    state.button(GLFW.GAMEPAD_BUTTON_A),
-                                    state.button(GLFW.GAMEPAD_BUTTON_B),
-                                    state.button(GLFW.GAMEPAD_BUTTON_X),
-                                    state.button(GLFW.GAMEPAD_BUTTON_Y),
-                                    state.button(GLFW.GAMEPAD_BUTTON_LEFT_BUMPER),
-                                    state.button(GLFW.GAMEPAD_BUTTON_RIGHT_BUMPER),
-                                    state.button(GLFW.GAMEPAD_BUTTON_BACK),
-                                    state.button(GLFW.GAMEPAD_BUTTON_START),
-                                    state.button(GLFW.GAMEPAD_BUTTON_GUIDE),
-                                    state.button(GLFW.GAMEPAD_BUTTON_LEFT_THUMB),
-                                    state.button(GLFW.GAMEPAD_BUTTON_RIGHT_THUMB),
-                                    state.button(GLFW.GAMEPAD_BUTTON_DPAD_UP),
-                                    state.button(GLFW.GAMEPAD_BUTTON_DPAD_RIGHT),
-                                    state.button(GLFW.GAMEPAD_BUTTON_DPAD_DOWN),
-                                    state.button(GLFW.GAMEPAD_BUTTON_DPAD_LEFT),
-                                    state.axe(GLFW.GAMEPAD_AXIS_LEFT_X),
-                                    state.axe(GLFW.GAMEPAD_AXIS_LEFT_Y),
-                                    state.axe(GLFW.GAMEPAD_AXIS_RIGHT_X),
-                                    state.axe(GLFW.GAMEPAD_AXIS_RIGHT_Y),
-                                    state.axe(GLFW.GAMEPAD_AXIS_LEFT_TRIGGER),
-                                    state.axe(GLFW.GAMEPAD_AXIS_RIGHT_TRIGGER));
+                                    glfwGetGamepadName(i),
+                                    gpsButton(state, GLFW_GAMEPAD_BUTTON_A),
+                                    gpsButton(state, GLFW_GAMEPAD_BUTTON_B),
+                                    gpsButton(state, GLFW_GAMEPAD_BUTTON_X),
+                                    gpsButton(state, GLFW_GAMEPAD_BUTTON_Y),
+                                    gpsButton(state, GLFW_GAMEPAD_BUTTON_LEFT_BUMPER),
+                                    gpsButton(state, GLFW_GAMEPAD_BUTTON_RIGHT_BUMPER),
+                                    gpsButton(state, GLFW_GAMEPAD_BUTTON_BACK),
+                                    gpsButton(state, GLFW_GAMEPAD_BUTTON_START),
+                                    gpsButton(state, GLFW_GAMEPAD_BUTTON_GUIDE),
+                                    gpsButton(state, GLFW_GAMEPAD_BUTTON_LEFT_THUMB),
+                                    gpsButton(state, GLFW_GAMEPAD_BUTTON_RIGHT_THUMB),
+                                    gpsButton(state, GLFW_GAMEPAD_BUTTON_DPAD_UP),
+                                    gpsButton(state, GLFW_GAMEPAD_BUTTON_DPAD_RIGHT),
+                                    gpsButton(state, GLFW_GAMEPAD_BUTTON_DPAD_DOWN),
+                                    gpsButton(state, GLFW_GAMEPAD_BUTTON_DPAD_LEFT),
+                                    gpsAxe(state, GLFW_GAMEPAD_AXIS_LEFT_X),
+                                    gpsAxe(state, GLFW_GAMEPAD_AXIS_LEFT_Y),
+                                    gpsAxe(state, GLFW_GAMEPAD_AXIS_RIGHT_X),
+                                    gpsAxe(state, GLFW_GAMEPAD_AXIS_RIGHT_Y),
+                                    gpsAxe(state, GLFW_GAMEPAD_AXIS_LEFT_TRIGGER),
+                                    gpsAxe(state, GLFW_GAMEPAD_AXIS_RIGHT_TRIGGER));
                             }
                         }
                     }
                 }
-                glfw.waitEventsTimeout(3);
+                glfwWaitEventsTimeout(3);
             }
         }
+    }
+
+    private static byte gpsButton(GLFWGamepadState state, int button) {
+        return state.buttons(button).get(ValueLayout.JAVA_BYTE, 0);
+    }
+
+    private static float gpsAxe(GLFWGamepadState state, int axis) {
+        return state.axes(axis).get(ValueLayout.JAVA_FLOAT, 0);
     }
 
     public static void main(String[] args) {

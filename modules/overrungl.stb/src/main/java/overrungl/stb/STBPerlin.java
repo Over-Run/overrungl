@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023-2024 Overrun Organization
+ * Copyright (c) 2023-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -16,128 +16,111 @@
 
 package overrungl.stb;
 
-import overrun.marshal.DirectAccess;
-import overrun.marshal.Downcall;
-import overrun.marshal.gen.Entrypoint;
+import overrungl.annotation.CType;
+import overrungl.internal.RuntimeHelper;
 
-import java.lang.invoke.MethodHandles;
+import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.ValueLayout;
+import java.lang.invoke.MethodHandle;
 
-/**
- * The STB perlin noise generator.
- *
- * @author squid233
- * @since 0.1.0
- */
-public interface STBPerlin extends DirectAccess {
-    /**
-     * The instance of STBPerlin.
-     */
-    STBPerlin INSTANCE = Downcall.load(MethodHandles.lookup(), Handles.lookup);
+/// perlin noise
+///
+/// Fractal Noise:
+///
+/// Three common fractal noise functions are included, which produce
+/// a wide variety of nice effects depending on the parameters
+/// provided. Note that each function will call stb_perlin_noise3
+/// 'octaves' times, so this parameter will affect runtime.
+///
+/// - [stb_perlin_ridge_noise3][#stb_perlin_ridge_noise3(float, float, float, float, float, float, int)]
+/// - [stb_perlin_fbm_noise3][#stb_perlin_fbm_noise3(float, float, float, float, float, int)]
+/// - [stb_perlin_turbulence_noise3][#stb_perlin_turbulence_noise3(float, float, float, float, float, int)]
+///
+/// Typical values to start playing with:
+/// - octaves    =   6     -- number of "octaves" of noise3() to sum
+/// - lacunarity = ~ 2.0   -- spacing between successive octaves (use exactly 2.0 for wrapping output)
+/// - gain       =   0.5   -- relative weighting applied to each successive octave
+/// - offset     =   1.0?  -- used to invert the ridges, may need to be larger, not sure
+///
+/// @author squid233
+/// @since 0.1.0
+public final class STBPerlin {
+    //region ---[BEGIN GENERATOR BEGIN]---
+    //@formatter:off
+    //region Fields
+    //endregion
+    //region Method handles
+    /// Method handles.
+    public static final class Handles {
+        private Handles() { }
+        /// The method handle of `stb_perlin_noise3`.
+        public static final MethodHandle MH_stb_perlin_noise3 = RuntimeHelper.downcall(STBInternal.lookup(), "stb_perlin_noise3", FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        /// The method handle of `stb_perlin_noise3_seed`.
+        public static final MethodHandle MH_stb_perlin_noise3_seed = RuntimeHelper.downcall(STBInternal.lookup(), "stb_perlin_noise3_seed", FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        /// The method handle of `stb_perlin_ridge_noise3`.
+        public static final MethodHandle MH_stb_perlin_ridge_noise3 = RuntimeHelper.downcall(STBInternal.lookup(), "stb_perlin_ridge_noise3", FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT));
+        /// The method handle of `stb_perlin_fbm_noise3`.
+        public static final MethodHandle MH_stb_perlin_fbm_noise3 = RuntimeHelper.downcall(STBInternal.lookup(), "stb_perlin_fbm_noise3", FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT));
+        /// The method handle of `stb_perlin_turbulence_noise3`.
+        public static final MethodHandle MH_stb_perlin_turbulence_noise3 = RuntimeHelper.downcall(STBInternal.lookup(), "stb_perlin_turbulence_noise3", FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT));
+        /// The method handle of `stb_perlin_noise3_wrap_nonpow2`.
+        public static final MethodHandle MH_stb_perlin_noise3_wrap_nonpow2 = RuntimeHelper.downcall(STBInternal.lookup(), "stb_perlin_noise3_wrap_nonpow2", FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE));
+    }
+    //endregion
 
-    /**
-     * This function computes a random value at the coordinate (x,y,z).<br>
-     * Adjacent random values are continuous but the noise fluctuates
-     * its randomness with period 1, i.e. takes on wholly unrelated values
-     * at integer points. Specifically, this implements Ken Perlin's
-     * revised noise function from 2002.
-     * <p>
-     * The "wrap" parameters can be used to create wraparound noise that
-     * wraps at powers of two. The numbers MUST be powers of two. Specify
-     * 0 to mean "don't care". (The noise always wraps every 256 due
-     * details of the implementation, even if you ask for larger or no
-     * wrapping.)
-     *
-     * @param x     x
-     * @param y     y
-     * @param z     z
-     * @param wrapX wrap x
-     * @param wrapY wrap y
-     * @param wrapZ wrap z
-     * @return the value
-     */
-    @Entrypoint("stb_perlin_noise3")
-    float noise3(float x, float y, float z, int wrapX, int wrapY, int wrapZ);
+    ///This function computes a random value at the coordinate (x,y,z).
+    ///Adjacent random values are continuous but the noise fluctuates
+    ///its randomness with period 1, i.e. takes on wholly unrelated values
+    ///at integer points. Specifically, this implements Ken Perlin's
+    ///revised noise function from 2002.
+    ///
+    ///The "wrap" parameters can be used to create wraparound noise that
+    ///wraps at powers of two. The numbers MUST be powers of two. Specify
+    ///0 to mean "don't care". (The noise always wraps every 256 due
+    ///details of the implementation, even if you ask for larger or no
+    ///wrapping.)
+    public static @CType("float") float stb_perlin_noise3(@CType("float") float x, @CType("float") float y, @CType("float") float z, @CType("int") int x_wrap, @CType("int") int y_wrap, @CType("int") int z_wrap) {
+        try {
+            return (float) Handles.MH_stb_perlin_noise3.invokeExact(x, y, z, x_wrap, y_wrap, z_wrap);
+        } catch (Throwable e) { throw new RuntimeException("error in stb_perlin_noise3", e); }
+    }
 
-    /**
-     * As {@link #noise3}, but 'seed' selects from multiple different variations of the
-     * noise function. The current implementation only uses the bottom 8 bits
-     * of 'seed', but possibly in the future more bits will be used.
-     *
-     * @param x     x
-     * @param y     y
-     * @param z     z
-     * @param wrapX wrap x
-     * @param wrapY wrap y
-     * @param wrapZ wrap z
-     * @param seed  the seed
-     * @return the value
-     */
-    @Entrypoint("stb_perlin_noise3_seed")
-    float noise3seed(float x, float y, float z, int wrapX, int wrapY, int wrapZ, int seed);
+    ///As above, but 'seed' selects from multiple different variations of the
+    ///noise function. The current implementation only uses the bottom 8 bits
+    /// of 'seed', but possibly in the future more bits will be used.
+    public static @CType("float") float stb_perlin_noise3_seed(@CType("float") float x, @CType("float") float y, @CType("float") float z, @CType("int") int x_wrap, @CType("int") int y_wrap, @CType("int") int z_wrap, @CType("int") int seed) {
+        try {
+            return (float) Handles.MH_stb_perlin_noise3_seed.invokeExact(x, y, z, x_wrap, y_wrap, z_wrap, seed);
+        } catch (Throwable e) { throw new RuntimeException("error in stb_perlin_noise3_seed", e); }
+    }
 
-    /**
-     * Three common fractal noise functions are included, which produce
-     * a wide variety of nice effects depending on the parameters
-     * provided. Note that each function will call stb_perlin_noise3
-     * 'octaves' times, so this parameter will affect runtime.
-     *
-     * @param x          x
-     * @param y          y
-     * @param z          z
-     * @param lacunarity = ~ 2.0 -- spacing between successive octaves (use exactly 2.0 for wrapping output)
-     * @param gain       = 0.5   -- relative weighting applied to each successive octave
-     * @param offset     = 1.0?  -- used to invert the ridges, may need to be larger, not sure
-     * @param octaves    = 6     -- number of "octaves" of noise3() to sum
-     * @return the value
-     */
-    @Entrypoint("stb_perlin_ridge_noise3")
-    float ridgeNoise3(float x, float y, float z, float lacunarity, float gain, float offset, int octaves);
+    public static @CType("float") float stb_perlin_ridge_noise3(@CType("float") float x, @CType("float") float y, @CType("float") float z, @CType("float") float lacunarity, @CType("float") float gain, @CType("float") float offset, @CType("int") int octaves) {
+        try {
+            return (float) Handles.MH_stb_perlin_ridge_noise3.invokeExact(x, y, z, lacunarity, gain, offset, octaves);
+        } catch (Throwable e) { throw new RuntimeException("error in stb_perlin_ridge_noise3", e); }
+    }
 
-    /**
-     * Three common fractal noise functions are included, which produce
-     * a wide variety of nice effects depending on the parameters
-     * provided. Note that each function will call stb_perlin_noise3
-     * 'octaves' times, so this parameter will affect runtime.
-     *
-     * @param x          x
-     * @param y          y
-     * @param z          z
-     * @param lacunarity = ~ 2.0 -- spacing between successive octaves (use exactly 2.0 for wrapping output)
-     * @param gain       = 0.5   -- relative weighting applied to each successive octave
-     * @param octaves    = 6     -- number of "octaves" of noise3() to sum
-     * @return the value
-     */
-    @Entrypoint("stb_perlin_fbm_noise3")
-    float fbmNoise3(float x, float y, float z, float lacunarity, float gain, int octaves);
+    public static @CType("float") float stb_perlin_fbm_noise3(@CType("float") float x, @CType("float") float y, @CType("float") float z, @CType("float") float lacunarity, @CType("float") float gain, @CType("int") int octaves) {
+        try {
+            return (float) Handles.MH_stb_perlin_fbm_noise3.invokeExact(x, y, z, lacunarity, gain, octaves);
+        } catch (Throwable e) { throw new RuntimeException("error in stb_perlin_fbm_noise3", e); }
+    }
 
-    /**
-     * Three common fractal noise functions are included, which produce
-     * a wide variety of nice effects depending on the parameters
-     * provided. Note that each function will call stb_perlin_noise3
-     * 'octaves' times, so this parameter will affect runtime.
-     *
-     * @param x          x
-     * @param y          y
-     * @param z          z
-     * @param lacunarity = ~ 2.0 -- spacing between successive octaves (use exactly 2.0 for wrapping output)
-     * @param gain       = 0.5   -- relative weighting applied to each successive octave
-     * @param octaves    = 6     -- number of "octaves" of noise3() to sum
-     * @return the value
-     */
-    @Entrypoint("stb_perlin_turbulence_noise3")
-    float turbulenceNoise3(float x, float y, float z, float lacunarity, float gain, int octaves);
+    public static @CType("float") float stb_perlin_turbulence_noise3(@CType("float") float x, @CType("float") float y, @CType("float") float z, @CType("float") float lacunarity, @CType("float") float gain, @CType("int") int octaves) {
+        try {
+            return (float) Handles.MH_stb_perlin_turbulence_noise3.invokeExact(x, y, z, lacunarity, gain, octaves);
+        } catch (Throwable e) { throw new RuntimeException("error in stb_perlin_turbulence_noise3", e); }
+    }
 
-    /**
-     * {@return noise3wrapNonpow2}
-     *
-     * @param x     x
-     * @param y     y
-     * @param z     z
-     * @param wrapX wrapX
-     * @param wrapY wrapY
-     * @param wrapZ wrapZ
-     * @param seed  seed
-     */
-    @Entrypoint("stb_perlin_noise3_wrap_nonpow2")
-    float noise3wrapNonpow2(float x, float y, float z, int wrapX, int wrapY, int wrapZ, byte seed);
+    public static @CType("float") float stb_perlin_noise3_wrap_nonpow2(@CType("float") float x, @CType("float") float y, @CType("float") float z, @CType("int") int x_wrap, @CType("int") int y_wrap, @CType("int") int z_wrap, @CType("unsigned char") byte seed) {
+        try {
+            return (float) Handles.MH_stb_perlin_noise3_wrap_nonpow2.invokeExact(x, y, z, x_wrap, y_wrap, z_wrap, seed);
+        } catch (Throwable e) { throw new RuntimeException("error in stb_perlin_noise3_wrap_nonpow2", e); }
+    }
+
+    //@formatter:on
+    //endregion ---[END GENERATOR END]---
+
+    private STBPerlin() {
+    }
 }

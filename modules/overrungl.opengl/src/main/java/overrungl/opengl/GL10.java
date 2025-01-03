@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2024 Overrun Organization
+ * Copyright (c) 2022-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -14,1996 +14,681 @@
  * copies or substantial portions of the Software.
  */
 
+// This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl;
 
-import io.github.overrun.memstack.MemoryStack;
-import overrun.marshal.DirectAccess;
-import overrun.marshal.Marshal;
-import overrun.marshal.Unmarshal;
-import overrun.marshal.gen.Entrypoint;
-import overrun.marshal.gen.Ref;
-import overrun.marshal.gen.Skip;
-
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SegmentAllocator;
-
-import static java.lang.foreign.ValueLayout.*;
-
-/**
- * The OpenGL 1.0 functions.
- *
- * @author squid233
- * @since 0.1.0
- */
-public interface GL10 extends DirectAccess {
-    @Entrypoint("glAccum")
-    default void accum(int op, float value) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glAlphaFunc")
-    default void alphaFunc(int func, float ref) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glBegin")
-    default void begin(int mode) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glBitmap")
-    default void bitmap(int width, int height, float xorig, float yorig, float xmove, float ymove, MemorySegment bitmap) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glCallList")
-    default void callList(int list) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glCallLists")
-    default void callLists(int n, int type, MemorySegment lists) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glClearAccum")
-    default void clearAccum(float red, float green, float blue, float alpha) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glClearIndex")
-    default void clearIndex(float c) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glClipPlane")
-    default void clipPlane(int plane, MemorySegment equation) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glClipPlane")
-    default void clipPlane(SegmentAllocator allocator, int plane, double[] equation) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor3b")
-    default void color3b(byte red, byte green, byte blue) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor3bv")
-    default void color3bv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor3bv")
-    default void color3bv(SegmentAllocator allocator, byte[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor3d")
-    default void color3d(double red, double green, double blue) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor3dv")
-    default void color3dv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor3dv")
-    default void color3dv(SegmentAllocator allocator, double[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor3f")
-    default void color3f(float red, float green, float blue) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor3fv")
-    default void color3fv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor3fv")
-    default void color3fv(SegmentAllocator allocator, float[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor3i")
-    default void color3i(int red, int green, int blue) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor3iv")
-    default void color3iv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor3iv")
-    default void color3iv(SegmentAllocator allocator, int[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor3s")
-    default void color3s(short red, short green, short blue) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor3sv")
-    default void color3sv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor3sv")
-    default void color3sv(SegmentAllocator allocator, short[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor3ub")
-    default void color3ub(byte red, byte green, byte blue) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor3ubv")
-    default void color3ubv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor3ubv")
-    default void color3ubv(SegmentAllocator allocator, byte[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor3ui")
-    default void color3ui(int red, int green, int blue) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor3uiv")
-    default void color3uiv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor3uiv")
-    default void color3uiv(SegmentAllocator allocator, int[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor3us")
-    default void color3us(short red, short green, short blue) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor3usv")
-    default void color3usv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor3usv")
-    default void color3usv(SegmentAllocator allocator, short[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor4b")
-    default void color4b(byte red, byte green, byte blue, byte alpha) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor4bv")
-    default void color4bv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor4bv")
-    default void color4bv(SegmentAllocator allocator, byte[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor4d")
-    default void color4d(double red, double green, double blue, double alpha) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor4dv")
-    default void color4dv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor4dv")
-    default void color4dv(SegmentAllocator allocator, double[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor4f")
-    default void color4f(float red, float green, float blue, float alpha) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor4fv")
-    default void color4fv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor4fv")
-    default void color4fv(SegmentAllocator allocator, float[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor4i")
-    default void color4i(int red, int green, int blue, int alpha) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor4iv")
-    default void color4iv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor4iv")
-    default void color4iv(SegmentAllocator allocator, int[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor4s")
-    default void color4s(short red, short green, short blue, short alpha) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor4sv")
-    default void color4sv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor4sv")
-    default void color4sv(SegmentAllocator allocator, short[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor4ub")
-    default void color4ub(byte red, byte green, byte blue, byte alpha) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor4ubv")
-    default void color4ubv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor4ubv")
-    default void color4ubv(SegmentAllocator allocator, byte[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor4ui")
-    default void color4ui(int red, int green, int blue, int alpha) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor4uiv")
-    default void color4uiv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor4uiv")
-    default void color4uiv(SegmentAllocator allocator, int[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor4us")
-    default void color4us(short red, short green, short blue, short alpha) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor4usv")
-    default void color4usv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColor4usv")
-    default void color4usv(SegmentAllocator allocator, short[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glColorMaterial")
-    default void colorMaterial(int face, int mode) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glCopyPixels")
-    default void copyPixels(int x, int y, int width, int height, int type) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glDeleteLists")
-    default void deleteLists(int list, int range) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glDrawPixels")
-    default void drawPixels(int width, int height, int format, int type, MemorySegment pixels) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glEdgeFlag")
-    default void edgeFlag(boolean flag) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glEdgeFlagv")
-    default void edgeFlagv(MemorySegment flag) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glEdgeFlagv")
-    default void edgeFlagv(SegmentAllocator allocator, boolean[] flag) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glEnd")
-    default void end() {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glEndList")
-    default void endList() {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glEvalCoord1d")
-    default void evalCoord1d(double u) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glEvalCoord1dv")
-    default void evalCoord1dv(MemorySegment u) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glEvalCoord1dv")
-    default void evalCoord1dv(SegmentAllocator allocator, double[] u) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glEvalCoord1f")
-    default void evalCoord1f(float u) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glEvalCoord1fv")
-    default void evalCoord1fv(MemorySegment u) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glEvalCoord1fv")
-    default void evalCoord1fv(SegmentAllocator allocator, float[] u) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glEvalCoord2d")
-    default void evalCoord2d(double u, double v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glEvalCoord2dv")
-    default void evalCoord2dv(MemorySegment u) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glEvalCoord2dv")
-    default void evalCoord2dv(SegmentAllocator allocator, double[] u) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glEvalCoord2f")
-    default void evalCoord2f(float u, float v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glEvalCoord2fv")
-    default void evalCoord2fv(MemorySegment u) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glEvalCoord2fv")
-    default void evalCoord2fv(SegmentAllocator allocator, float[] u) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glEvalMesh1")
-    default void evalMesh1(int mode, int i1, int i2) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glEvalMesh2")
-    default void evalMesh2(int mode, int i1, int i2, int j1, int j2) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glEvalPoint1")
-    default void evalPoint1(int mode, int i) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glEvalPoint2")
-    default void evalPoint2(int mode, int i, int j) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glFeedbackBuffer")
-    default void feedbackBuffer(int size, int type, MemorySegment buffer) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glFeedbackBuffer")
-    default void feedbackBuffer(SegmentAllocator allocator, int type, @Ref float[] buffer) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glFogf")
-    default void fogf(int pname, float param) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glFogfv")
-    default void fogfv(int pname, MemorySegment params) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glFogfv")
-    default void fogfv(SegmentAllocator allocator, int pname, float[] params) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glFogi")
-    default void fogi(int pname, int param) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glFogiv")
-    default void fogiv(int pname, MemorySegment params) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glFogiv")
-    default void fogiv(SegmentAllocator allocator, int pname, int[] params) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glFrustum")
-    default void frustum(double left, double right, double bottom, double top, double zNear, double zFar) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glGenLists")
-    default int genLists(int range) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glGetClipPlane")
-    default void getClipPlane(int plane, MemorySegment equation) {
-        throw new ContextException();
-    }
-
-    @Skip
-    default double[] getClipPlane(int plane) {
-        try (MemoryStack stack = MemoryStack.pushLocal()) {
-            var pEq = stack.allocate(JAVA_DOUBLE, 4);
-            getClipPlane(plane, pEq);
-            return Unmarshal.unmarshalAsDoubleArray(pEq);
+import java.lang.foreign.*;
+import java.lang.invoke.*;
+import overrungl.annotation.*;
+import overrungl.internal.RuntimeHelper;
+import overrungl.util.*;
+
+public sealed class GL10 permits GL11 {
+    public static final int GL_DEPTH_BUFFER_BIT = 0x00000100;
+    public static final int GL_STENCIL_BUFFER_BIT = 0x00000400;
+    public static final int GL_COLOR_BUFFER_BIT = 0x00004000;
+    public static final int GL_FALSE = 0;
+    public static final int GL_TRUE = 1;
+    public static final int GL_POINTS = 0x0000;
+    public static final int GL_LINES = 0x0001;
+    public static final int GL_LINE_LOOP = 0x0002;
+    public static final int GL_LINE_STRIP = 0x0003;
+    public static final int GL_TRIANGLES = 0x0004;
+    public static final int GL_TRIANGLE_STRIP = 0x0005;
+    public static final int GL_TRIANGLE_FAN = 0x0006;
+    public static final int GL_NEVER = 0x0200;
+    public static final int GL_LESS = 0x0201;
+    public static final int GL_EQUAL = 0x0202;
+    public static final int GL_LEQUAL = 0x0203;
+    public static final int GL_GREATER = 0x0204;
+    public static final int GL_NOTEQUAL = 0x0205;
+    public static final int GL_GEQUAL = 0x0206;
+    public static final int GL_ALWAYS = 0x0207;
+    public static final int GL_ZERO = 0;
+    public static final int GL_ONE = 1;
+    public static final int GL_SRC_COLOR = 0x0300;
+    public static final int GL_ONE_MINUS_SRC_COLOR = 0x0301;
+    public static final int GL_SRC_ALPHA = 0x0302;
+    public static final int GL_ONE_MINUS_SRC_ALPHA = 0x0303;
+    public static final int GL_DST_ALPHA = 0x0304;
+    public static final int GL_ONE_MINUS_DST_ALPHA = 0x0305;
+    public static final int GL_DST_COLOR = 0x0306;
+    public static final int GL_ONE_MINUS_DST_COLOR = 0x0307;
+    public static final int GL_SRC_ALPHA_SATURATE = 0x0308;
+    public static final int GL_NONE = 0;
+    public static final int GL_FRONT_LEFT = 0x0400;
+    public static final int GL_FRONT_RIGHT = 0x0401;
+    public static final int GL_BACK_LEFT = 0x0402;
+    public static final int GL_BACK_RIGHT = 0x0403;
+    public static final int GL_FRONT = 0x0404;
+    public static final int GL_BACK = 0x0405;
+    public static final int GL_LEFT = 0x0406;
+    public static final int GL_RIGHT = 0x0407;
+    public static final int GL_FRONT_AND_BACK = 0x0408;
+    public static final int GL_NO_ERROR = 0;
+    public static final int GL_INVALID_ENUM = 0x0500;
+    public static final int GL_INVALID_VALUE = 0x0501;
+    public static final int GL_INVALID_OPERATION = 0x0502;
+    public static final int GL_OUT_OF_MEMORY = 0x0505;
+    public static final int GL_CW = 0x0900;
+    public static final int GL_CCW = 0x0901;
+    public static final int GL_POINT_SIZE = 0x0B11;
+    public static final int GL_POINT_SIZE_RANGE = 0x0B12;
+    public static final int GL_POINT_SIZE_GRANULARITY = 0x0B13;
+    public static final int GL_LINE_SMOOTH = 0x0B20;
+    public static final int GL_LINE_WIDTH = 0x0B21;
+    public static final int GL_LINE_WIDTH_RANGE = 0x0B22;
+    public static final int GL_LINE_WIDTH_GRANULARITY = 0x0B23;
+    public static final int GL_POLYGON_MODE = 0x0B40;
+    public static final int GL_POLYGON_SMOOTH = 0x0B41;
+    public static final int GL_CULL_FACE = 0x0B44;
+    public static final int GL_CULL_FACE_MODE = 0x0B45;
+    public static final int GL_FRONT_FACE = 0x0B46;
+    public static final int GL_DEPTH_RANGE = 0x0B70;
+    public static final int GL_DEPTH_TEST = 0x0B71;
+    public static final int GL_DEPTH_WRITEMASK = 0x0B72;
+    public static final int GL_DEPTH_CLEAR_VALUE = 0x0B73;
+    public static final int GL_DEPTH_FUNC = 0x0B74;
+    public static final int GL_STENCIL_TEST = 0x0B90;
+    public static final int GL_STENCIL_CLEAR_VALUE = 0x0B91;
+    public static final int GL_STENCIL_FUNC = 0x0B92;
+    public static final int GL_STENCIL_VALUE_MASK = 0x0B93;
+    public static final int GL_STENCIL_FAIL = 0x0B94;
+    public static final int GL_STENCIL_PASS_DEPTH_FAIL = 0x0B95;
+    public static final int GL_STENCIL_PASS_DEPTH_PASS = 0x0B96;
+    public static final int GL_STENCIL_REF = 0x0B97;
+    public static final int GL_STENCIL_WRITEMASK = 0x0B98;
+    public static final int GL_VIEWPORT = 0x0BA2;
+    public static final int GL_DITHER = 0x0BD0;
+    public static final int GL_BLEND_DST = 0x0BE0;
+    public static final int GL_BLEND_SRC = 0x0BE1;
+    public static final int GL_BLEND = 0x0BE2;
+    public static final int GL_LOGIC_OP_MODE = 0x0BF0;
+    public static final int GL_DRAW_BUFFER = 0x0C01;
+    public static final int GL_READ_BUFFER = 0x0C02;
+    public static final int GL_SCISSOR_BOX = 0x0C10;
+    public static final int GL_SCISSOR_TEST = 0x0C11;
+    public static final int GL_COLOR_CLEAR_VALUE = 0x0C22;
+    public static final int GL_COLOR_WRITEMASK = 0x0C23;
+    public static final int GL_DOUBLEBUFFER = 0x0C32;
+    public static final int GL_STEREO = 0x0C33;
+    public static final int GL_LINE_SMOOTH_HINT = 0x0C52;
+    public static final int GL_POLYGON_SMOOTH_HINT = 0x0C53;
+    public static final int GL_UNPACK_SWAP_BYTES = 0x0CF0;
+    public static final int GL_UNPACK_LSB_FIRST = 0x0CF1;
+    public static final int GL_UNPACK_ROW_LENGTH = 0x0CF2;
+    public static final int GL_UNPACK_SKIP_ROWS = 0x0CF3;
+    public static final int GL_UNPACK_SKIP_PIXELS = 0x0CF4;
+    public static final int GL_UNPACK_ALIGNMENT = 0x0CF5;
+    public static final int GL_PACK_SWAP_BYTES = 0x0D00;
+    public static final int GL_PACK_LSB_FIRST = 0x0D01;
+    public static final int GL_PACK_ROW_LENGTH = 0x0D02;
+    public static final int GL_PACK_SKIP_ROWS = 0x0D03;
+    public static final int GL_PACK_SKIP_PIXELS = 0x0D04;
+    public static final int GL_PACK_ALIGNMENT = 0x0D05;
+    public static final int GL_MAX_TEXTURE_SIZE = 0x0D33;
+    public static final int GL_MAX_VIEWPORT_DIMS = 0x0D3A;
+    public static final int GL_SUBPIXEL_BITS = 0x0D50;
+    public static final int GL_TEXTURE_1D = 0x0DE0;
+    public static final int GL_TEXTURE_2D = 0x0DE1;
+    public static final int GL_TEXTURE_WIDTH = 0x1000;
+    public static final int GL_TEXTURE_HEIGHT = 0x1001;
+    public static final int GL_TEXTURE_BORDER_COLOR = 0x1004;
+    public static final int GL_DONT_CARE = 0x1100;
+    public static final int GL_FASTEST = 0x1101;
+    public static final int GL_NICEST = 0x1102;
+    public static final int GL_BYTE = 0x1400;
+    public static final int GL_UNSIGNED_BYTE = 0x1401;
+    public static final int GL_SHORT = 0x1402;
+    public static final int GL_UNSIGNED_SHORT = 0x1403;
+    public static final int GL_INT = 0x1404;
+    public static final int GL_UNSIGNED_INT = 0x1405;
+    public static final int GL_FLOAT = 0x1406;
+    public static final int GL_CLEAR = 0x1500;
+    public static final int GL_AND = 0x1501;
+    public static final int GL_AND_REVERSE = 0x1502;
+    public static final int GL_COPY = 0x1503;
+    public static final int GL_AND_INVERTED = 0x1504;
+    public static final int GL_NOOP = 0x1505;
+    public static final int GL_XOR = 0x1506;
+    public static final int GL_OR = 0x1507;
+    public static final int GL_NOR = 0x1508;
+    public static final int GL_EQUIV = 0x1509;
+    public static final int GL_INVERT = 0x150A;
+    public static final int GL_OR_REVERSE = 0x150B;
+    public static final int GL_COPY_INVERTED = 0x150C;
+    public static final int GL_OR_INVERTED = 0x150D;
+    public static final int GL_NAND = 0x150E;
+    public static final int GL_SET = 0x150F;
+    public static final int GL_TEXTURE = 0x1702;
+    public static final int GL_COLOR = 0x1800;
+    public static final int GL_DEPTH = 0x1801;
+    public static final int GL_STENCIL = 0x1802;
+    public static final int GL_STENCIL_INDEX = 0x1901;
+    public static final int GL_DEPTH_COMPONENT = 0x1902;
+    public static final int GL_RED = 0x1903;
+    public static final int GL_GREEN = 0x1904;
+    public static final int GL_BLUE = 0x1905;
+    public static final int GL_ALPHA = 0x1906;
+    public static final int GL_RGB = 0x1907;
+    public static final int GL_RGBA = 0x1908;
+    public static final int GL_POINT = 0x1B00;
+    public static final int GL_LINE = 0x1B01;
+    public static final int GL_FILL = 0x1B02;
+    public static final int GL_KEEP = 0x1E00;
+    public static final int GL_REPLACE = 0x1E01;
+    public static final int GL_INCR = 0x1E02;
+    public static final int GL_DECR = 0x1E03;
+    public static final int GL_VENDOR = 0x1F00;
+    public static final int GL_RENDERER = 0x1F01;
+    public static final int GL_VERSION = 0x1F02;
+    public static final int GL_EXTENSIONS = 0x1F03;
+    public static final int GL_NEAREST = 0x2600;
+    public static final int GL_LINEAR = 0x2601;
+    public static final int GL_NEAREST_MIPMAP_NEAREST = 0x2700;
+    public static final int GL_LINEAR_MIPMAP_NEAREST = 0x2701;
+    public static final int GL_NEAREST_MIPMAP_LINEAR = 0x2702;
+    public static final int GL_LINEAR_MIPMAP_LINEAR = 0x2703;
+    public static final int GL_TEXTURE_MAG_FILTER = 0x2800;
+    public static final int GL_TEXTURE_MIN_FILTER = 0x2801;
+    public static final int GL_TEXTURE_WRAP_S = 0x2802;
+    public static final int GL_TEXTURE_WRAP_T = 0x2803;
+    public static final int GL_REPEAT = 0x2901;
+    public static final MethodHandle MH_glCullFace = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+    public final MemorySegment PFN_glCullFace;
+    public static final MethodHandle MH_glFrontFace = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+    public final MemorySegment PFN_glFrontFace;
+    public static final MethodHandle MH_glHint = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+    public final MemorySegment PFN_glHint;
+    public static final MethodHandle MH_glLineWidth = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
+    public final MemorySegment PFN_glLineWidth;
+    public static final MethodHandle MH_glPointSize = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
+    public final MemorySegment PFN_glPointSize;
+    public static final MethodHandle MH_glPolygonMode = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+    public final MemorySegment PFN_glPolygonMode;
+    public static final MethodHandle MH_glScissor = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+    public final MemorySegment PFN_glScissor;
+    public static final MethodHandle MH_glTexParameterf = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
+    public final MemorySegment PFN_glTexParameterf;
+    public static final MethodHandle MH_glTexParameterfv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glTexParameterfv;
+    public static final MethodHandle MH_glTexParameteri = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+    public final MemorySegment PFN_glTexParameteri;
+    public static final MethodHandle MH_glTexParameteriv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glTexParameteriv;
+    public static final MethodHandle MH_glTexImage1D = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glTexImage1D;
+    public static final MethodHandle MH_glTexImage2D = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glTexImage2D;
+    public static final MethodHandle MH_glDrawBuffer = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+    public final MemorySegment PFN_glDrawBuffer;
+    public static final MethodHandle MH_glClear = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+    public final MemorySegment PFN_glClear;
+    public static final MethodHandle MH_glClearColor = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+    public final MemorySegment PFN_glClearColor;
+    public static final MethodHandle MH_glClearStencil = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+    public final MemorySegment PFN_glClearStencil;
+    public static final MethodHandle MH_glClearDepth = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE));
+    public final MemorySegment PFN_glClearDepth;
+    public static final MethodHandle MH_glStencilMask = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+    public final MemorySegment PFN_glStencilMask;
+    public static final MethodHandle MH_glColorMask = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_BOOLEAN));
+    public final MemorySegment PFN_glColorMask;
+    public static final MethodHandle MH_glDepthMask = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_BOOLEAN));
+    public final MemorySegment PFN_glDepthMask;
+    public static final MethodHandle MH_glDisable = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+    public final MemorySegment PFN_glDisable;
+    public static final MethodHandle MH_glEnable = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+    public final MemorySegment PFN_glEnable;
+    public static final MethodHandle MH_glFinish = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
+    public final MemorySegment PFN_glFinish;
+    public static final MethodHandle MH_glFlush = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
+    public final MemorySegment PFN_glFlush;
+    public static final MethodHandle MH_glBlendFunc = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+    public final MemorySegment PFN_glBlendFunc;
+    public static final MethodHandle MH_glLogicOp = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+    public final MemorySegment PFN_glLogicOp;
+    public static final MethodHandle MH_glStencilFunc = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+    public final MemorySegment PFN_glStencilFunc;
+    public static final MethodHandle MH_glStencilOp = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+    public final MemorySegment PFN_glStencilOp;
+    public static final MethodHandle MH_glDepthFunc = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+    public final MemorySegment PFN_glDepthFunc;
+    public static final MethodHandle MH_glPixelStoref = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
+    public final MemorySegment PFN_glPixelStoref;
+    public static final MethodHandle MH_glPixelStorei = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+    public final MemorySegment PFN_glPixelStorei;
+    public static final MethodHandle MH_glReadBuffer = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+    public final MemorySegment PFN_glReadBuffer;
+    public static final MethodHandle MH_glReadPixels = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glReadPixels;
+    public static final MethodHandle MH_glGetBooleanv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glGetBooleanv;
+    public static final MethodHandle MH_glGetDoublev = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glGetDoublev;
+    public static final MethodHandle MH_glGetError = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT));
+    public final MemorySegment PFN_glGetError;
+    public static final MethodHandle MH_glGetFloatv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glGetFloatv;
+    public static final MethodHandle MH_glGetIntegerv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glGetIntegerv;
+    public static final MethodHandle MH_glGetString = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+    public final MemorySegment PFN_glGetString;
+    public static final MethodHandle MH_glGetTexImage = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glGetTexImage;
+    public static final MethodHandle MH_glGetTexParameterfv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glGetTexParameterfv;
+    public static final MethodHandle MH_glGetTexParameteriv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glGetTexParameteriv;
+    public static final MethodHandle MH_glGetTexLevelParameterfv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glGetTexLevelParameterfv;
+    public static final MethodHandle MH_glGetTexLevelParameteriv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glGetTexLevelParameteriv;
+    public static final MethodHandle MH_glIsEnabled = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
+    public final MemorySegment PFN_glIsEnabled;
+    public static final MethodHandle MH_glDepthRange = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
+    public final MemorySegment PFN_glDepthRange;
+    public static final MethodHandle MH_glViewport = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+    public final MemorySegment PFN_glViewport;
+
+    public GL10(GLLoadFunc func) {
+        PFN_glCullFace = func.invoke("glCullFace");
+        PFN_glFrontFace = func.invoke("glFrontFace");
+        PFN_glHint = func.invoke("glHint");
+        PFN_glLineWidth = func.invoke("glLineWidth");
+        PFN_glPointSize = func.invoke("glPointSize");
+        PFN_glPolygonMode = func.invoke("glPolygonMode", "glPolygonModeNV");
+        PFN_glScissor = func.invoke("glScissor");
+        PFN_glTexParameterf = func.invoke("glTexParameterf");
+        PFN_glTexParameterfv = func.invoke("glTexParameterfv");
+        PFN_glTexParameteri = func.invoke("glTexParameteri");
+        PFN_glTexParameteriv = func.invoke("glTexParameteriv");
+        PFN_glTexImage1D = func.invoke("glTexImage1D");
+        PFN_glTexImage2D = func.invoke("glTexImage2D");
+        PFN_glDrawBuffer = func.invoke("glDrawBuffer");
+        PFN_glClear = func.invoke("glClear");
+        PFN_glClearColor = func.invoke("glClearColor");
+        PFN_glClearStencil = func.invoke("glClearStencil");
+        PFN_glClearDepth = func.invoke("glClearDepth");
+        PFN_glStencilMask = func.invoke("glStencilMask");
+        PFN_glColorMask = func.invoke("glColorMask");
+        PFN_glDepthMask = func.invoke("glDepthMask");
+        PFN_glDisable = func.invoke("glDisable");
+        PFN_glEnable = func.invoke("glEnable");
+        PFN_glFinish = func.invoke("glFinish");
+        PFN_glFlush = func.invoke("glFlush");
+        PFN_glBlendFunc = func.invoke("glBlendFunc");
+        PFN_glLogicOp = func.invoke("glLogicOp");
+        PFN_glStencilFunc = func.invoke("glStencilFunc");
+        PFN_glStencilOp = func.invoke("glStencilOp");
+        PFN_glDepthFunc = func.invoke("glDepthFunc");
+        PFN_glPixelStoref = func.invoke("glPixelStoref");
+        PFN_glPixelStorei = func.invoke("glPixelStorei");
+        PFN_glReadBuffer = func.invoke("glReadBuffer");
+        PFN_glReadPixels = func.invoke("glReadPixels");
+        PFN_glGetBooleanv = func.invoke("glGetBooleanv");
+        PFN_glGetDoublev = func.invoke("glGetDoublev");
+        PFN_glGetError = func.invoke("glGetError");
+        PFN_glGetFloatv = func.invoke("glGetFloatv");
+        PFN_glGetIntegerv = func.invoke("glGetIntegerv");
+        PFN_glGetString = func.invoke("glGetString");
+        PFN_glGetTexImage = func.invoke("glGetTexImage");
+        PFN_glGetTexParameterfv = func.invoke("glGetTexParameterfv");
+        PFN_glGetTexParameteriv = func.invoke("glGetTexParameteriv");
+        PFN_glGetTexLevelParameterfv = func.invoke("glGetTexLevelParameterfv");
+        PFN_glGetTexLevelParameteriv = func.invoke("glGetTexLevelParameteriv");
+        PFN_glIsEnabled = func.invoke("glIsEnabled");
+        PFN_glDepthRange = func.invoke("glDepthRange");
+        PFN_glViewport = func.invoke("glViewport");
+    }
+
+    public void CullFace(@CType("GLenum") int mode) {
+        try { if (!Unmarshal.isNullPointer(PFN_glCullFace))
+            MH_glCullFace.invokeExact(PFN_glCullFace, mode);
         }
+        catch (Throwable e) { throw new RuntimeException("error in glCullFace", e); }
     }
 
-    @Entrypoint("glGetLightfv")
-    default void getLightfv(int light, int pname, MemorySegment params) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glGetLightfv")
-    default void getLightfv(SegmentAllocator allocator, int light, int pname, @Ref float[] params) {
-        throw new ContextException();
-    }
-
-    @Skip
-    default float getLightfv(int light, int pname) {
-        try (MemoryStack stack = MemoryStack.pushLocal()) {
-            var pParams = stack.allocate(JAVA_FLOAT);
-            getLightfv(light, pname, pParams);
-            return pParams.get(JAVA_FLOAT, 0);
+    public void FrontFace(@CType("GLenum") int mode) {
+        try { if (!Unmarshal.isNullPointer(PFN_glFrontFace))
+            MH_glFrontFace.invokeExact(PFN_glFrontFace, mode);
         }
+        catch (Throwable e) { throw new RuntimeException("error in glFrontFace", e); }
     }
 
-    @Entrypoint("glGetLightiv")
-    default void getLightiv(int light, int pname, MemorySegment params) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glGetLightiv")
-    default void getLightiv(SegmentAllocator allocator, int light, int pname, @Ref int[] params) {
-        throw new ContextException();
-    }
-
-    @Skip
-    default int getLightiv(int light, int pname) {
-        try (MemoryStack stack = MemoryStack.pushLocal()) {
-            var pParams = stack.allocate(JAVA_INT);
-            getLightiv(light, pname, pParams);
-            return pParams.get(JAVA_INT, 0);
+    public void Hint(@CType("GLenum") int target, @CType("GLenum") int mode) {
+        try { if (!Unmarshal.isNullPointer(PFN_glHint))
+            MH_glHint.invokeExact(PFN_glHint, target, mode);
         }
+        catch (Throwable e) { throw new RuntimeException("error in glHint", e); }
     }
 
-    @Entrypoint("glGetMapdv")
-    default void getMapdv(int target, int query, MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glGetMapdv")
-    default void getMapdv(SegmentAllocator allocator, int target, int query, @Ref double[] v) {
-        throw new ContextException();
-    }
-
-    @Skip
-    default double getMapdv(int target, int query) {
-        try (MemoryStack stack = MemoryStack.pushLocal()) {
-            var pv = stack.allocate(JAVA_DOUBLE);
-            getMapdv(target, query, pv);
-            return pv.get(JAVA_DOUBLE, 0);
+    public void LineWidth(@CType("GLfloat") float width) {
+        try { if (!Unmarshal.isNullPointer(PFN_glLineWidth))
+            MH_glLineWidth.invokeExact(PFN_glLineWidth, width);
         }
+        catch (Throwable e) { throw new RuntimeException("error in glLineWidth", e); }
     }
 
-    @Entrypoint("glGetMapfv")
-    default void getMapfv(int target, int query, MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glGetMapfv")
-    default void getMapfv(SegmentAllocator allocator, int target, int query, @Ref float[] v) {
-        throw new ContextException();
-    }
-
-    @Skip
-    default float getMapfv(int target, int query) {
-        try (MemoryStack stack = MemoryStack.pushLocal()) {
-            var pv = stack.allocate(JAVA_FLOAT);
-            getMapfv(target, query, pv);
-            return pv.get(JAVA_FLOAT, 0);
+    public void PointSize(@CType("GLfloat") float size) {
+        try { if (!Unmarshal.isNullPointer(PFN_glPointSize))
+            MH_glPointSize.invokeExact(PFN_glPointSize, size);
         }
+        catch (Throwable e) { throw new RuntimeException("error in glPointSize", e); }
     }
 
-    @Entrypoint("glGetMapiv")
-    default void getMapiv(int target, int query, MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glGetMapiv")
-    default void getMapiv(SegmentAllocator allocator, int target, int query, @Ref int[] v) {
-        throw new ContextException();
-    }
-
-    @Skip
-    default int getMapiv(int target, int query) {
-        try (MemoryStack stack = MemoryStack.pushLocal()) {
-            var pv = stack.allocate(JAVA_INT);
-            getMapiv(target, query, pv);
-            return pv.get(JAVA_INT, 0);
+    public void PolygonMode(@CType("GLenum") int face, @CType("GLenum") int mode) {
+        try { if (!Unmarshal.isNullPointer(PFN_glPolygonMode))
+            MH_glPolygonMode.invokeExact(PFN_glPolygonMode, face, mode);
         }
+        catch (Throwable e) { throw new RuntimeException("error in glPolygonMode", e); }
     }
 
-    @Entrypoint("glGetMaterialfv")
-    default void getMaterialfv(int face, int pname, MemorySegment params) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glGetMaterialfv")
-    default void getMaterialfv(SegmentAllocator allocator, int face, int pname, @Ref float[] params) {
-        throw new ContextException();
-    }
-
-    @Skip
-    default float getMaterialfv(int face, int pname) {
-        try (MemoryStack stack = MemoryStack.pushLocal()) {
-            var pParams = stack.allocate(JAVA_FLOAT);
-            getMaterialfv(face, pname, pParams);
-            return pParams.get(JAVA_FLOAT, 0);
+    public void Scissor(@CType("GLint") int x, @CType("GLint") int y, @CType("GLsizei") int width, @CType("GLsizei") int height) {
+        try { if (!Unmarshal.isNullPointer(PFN_glScissor))
+            MH_glScissor.invokeExact(PFN_glScissor, x, y, width, height);
         }
+        catch (Throwable e) { throw new RuntimeException("error in glScissor", e); }
     }
 
-    @Entrypoint("glGetMaterialiv")
-    default void getMaterialiv(int face, int pname, MemorySegment params) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glGetMaterialiv")
-    default void getMaterialiv(SegmentAllocator allocator, int face, int pname, @Ref int[] params) {
-        throw new ContextException();
-    }
-
-    @Skip
-    default int getMaterialiv(int face, int pname) {
-        try (MemoryStack stack = MemoryStack.pushLocal()) {
-            var pParams = stack.allocate(JAVA_INT);
-            getMaterialiv(face, pname, pParams);
-            return pParams.get(JAVA_INT, 0);
+    public void TexParameterf(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLfloat") float param) {
+        try { if (!Unmarshal.isNullPointer(PFN_glTexParameterf))
+            MH_glTexParameterf.invokeExact(PFN_glTexParameterf, target, pname, param);
         }
+        catch (Throwable e) { throw new RuntimeException("error in glTexParameterf", e); }
     }
 
-    @Entrypoint("glGetPixelMapfv")
-    default void getPixelMapfv(int map, MemorySegment values) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glGetPixelMapfv")
-    default void getPixelMapfv(SegmentAllocator allocator, int map, @Ref float[] values) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glGetPixelMapuiv")
-    default void getPixelMapuiv(int map, MemorySegment values) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glGetPixelMapuiv")
-    default void getPixelMapuiv(SegmentAllocator allocator, int map, @Ref int[] values) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glGetPixelMapusv")
-    default void getPixelMapusv(int map, MemorySegment values) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glGetPixelMapusv")
-    default void getPixelMapusv(SegmentAllocator allocator, int map, @Ref short[] values) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glGetPolygonStipple")
-    default void getPolygonStipple(MemorySegment mask) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glGetPolygonStipple")
-    default void getPolygonStipple(SegmentAllocator allocator, @Ref byte[] mask) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glGetTexEnvfv")
-    default void getTexEnvfv(int target, int pname, MemorySegment params) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glGetTexEnvfv")
-    default void getTexEnvfv(SegmentAllocator allocator, int target, int pname, @Ref float[] params) {
-        throw new ContextException();
-    }
-
-    @Skip
-    default float getTexEnvfv(int target, int pname) {
-        try (MemoryStack stack = MemoryStack.pushLocal()) {
-            var pParams = stack.allocate(JAVA_FLOAT);
-            getTexEnvfv(target, pname, pParams);
-            return pParams.get(JAVA_FLOAT, 0);
+    public void TexParameterfv(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("const GLfloat *") java.lang.foreign.MemorySegment params) {
+        try { if (!Unmarshal.isNullPointer(PFN_glTexParameterfv))
+            MH_glTexParameterfv.invokeExact(PFN_glTexParameterfv, target, pname, params);
         }
+        catch (Throwable e) { throw new RuntimeException("error in glTexParameterfv", e); }
     }
 
-    @Entrypoint("glGetTexEnviv")
-    default void getTexEnviv(int target, int pname, MemorySegment params) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glGetTexEnviv")
-    default void getTexEnviv(SegmentAllocator allocator, int target, int pname, @Ref int[] params) {
-        throw new ContextException();
-    }
-
-    @Skip
-    default int getTexEnviv(int target, int pname) {
-        try (MemoryStack stack = MemoryStack.pushLocal()) {
-            var pParams = stack.allocate(JAVA_INT);
-            getTexEnviv(target, pname, pParams);
-            return pParams.get(JAVA_INT, 0);
+    public void TexParameteri(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLint") int param) {
+        try { if (!Unmarshal.isNullPointer(PFN_glTexParameteri))
+            MH_glTexParameteri.invokeExact(PFN_glTexParameteri, target, pname, param);
         }
+        catch (Throwable e) { throw new RuntimeException("error in glTexParameteri", e); }
     }
 
-    @Entrypoint("glGetTexGendv")
-    default void getTexGendv(int coord, int pname, MemorySegment params) {
-        throw new ContextException();
+    public void TexParameteriv(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("const GLint *") java.lang.foreign.MemorySegment params) {
+        try { if (!Unmarshal.isNullPointer(PFN_glTexParameteriv))
+            MH_glTexParameteriv.invokeExact(PFN_glTexParameteriv, target, pname, params);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glTexParameteriv", e); }
     }
 
-    @Entrypoint("glGetTexGendv")
-    default void getTexGendv(SegmentAllocator allocator, int coord, int pname, @Ref double[] params) {
-        throw new ContextException();
+    public void TexImage1D(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLint") int internalformat, @CType("GLsizei") int width, @CType("GLint") int border, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment pixels) {
+        try { if (!Unmarshal.isNullPointer(PFN_glTexImage1D))
+            MH_glTexImage1D.invokeExact(PFN_glTexImage1D, target, level, internalformat, width, border, format, type, pixels);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glTexImage1D", e); }
     }
 
-    @Entrypoint("glGetTexGenfv")
-    default void getTexGenfv(int coord, int pname, MemorySegment params) {
-        throw new ContextException();
+    public void TexImage2D(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLint") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLint") int border, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment pixels) {
+        try { if (!Unmarshal.isNullPointer(PFN_glTexImage2D))
+            MH_glTexImage2D.invokeExact(PFN_glTexImage2D, target, level, internalformat, width, height, border, format, type, pixels);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glTexImage2D", e); }
     }
 
-    @Entrypoint("glGetTexGenfv")
-    default void getTexGenfv(SegmentAllocator allocator, int coord, int pname, @Ref float[] params) {
-        throw new ContextException();
+    public void DrawBuffer(@CType("GLenum") int buf) {
+        try { if (!Unmarshal.isNullPointer(PFN_glDrawBuffer))
+            MH_glDrawBuffer.invokeExact(PFN_glDrawBuffer, buf);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glDrawBuffer", e); }
     }
 
-    @Entrypoint("glGetTexGeniv")
-    default void getTexGeniv(int coord, int pname, MemorySegment params) {
-        throw new ContextException();
+    public void Clear(@CType("GLbitfield") int mask) {
+        try { if (!Unmarshal.isNullPointer(PFN_glClear))
+            MH_glClear.invokeExact(PFN_glClear, mask);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glClear", e); }
     }
 
-    @Entrypoint("glGetTexGeniv")
-    default void getTexGeniv(SegmentAllocator allocator, int coord, int pname, @Ref int[] params) {
-        throw new ContextException();
+    public void ClearColor(@CType("GLfloat") float red, @CType("GLfloat") float green, @CType("GLfloat") float blue, @CType("GLfloat") float alpha) {
+        try { if (!Unmarshal.isNullPointer(PFN_glClearColor))
+            MH_glClearColor.invokeExact(PFN_glClearColor, red, green, blue, alpha);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glClearColor", e); }
     }
 
-    @Entrypoint("glIndexMask")
-    default void indexMask(int mask) {
-        throw new ContextException();
+    public void ClearStencil(@CType("GLint") int s) {
+        try { if (!Unmarshal.isNullPointer(PFN_glClearStencil))
+            MH_glClearStencil.invokeExact(PFN_glClearStencil, s);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glClearStencil", e); }
     }
 
-    @Entrypoint("glIndexd")
-    default void indexd(double c) {
-        throw new ContextException();
+    public void ClearDepth(@CType("GLdouble") double depth) {
+        try { if (!Unmarshal.isNullPointer(PFN_glClearDepth))
+            MH_glClearDepth.invokeExact(PFN_glClearDepth, depth);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glClearDepth", e); }
     }
 
-    @Entrypoint("glIndexdv")
-    default void indexdv(MemorySegment c) {
-        throw new ContextException();
+    public void StencilMask(@CType("GLuint") int mask) {
+        try { if (!Unmarshal.isNullPointer(PFN_glStencilMask))
+            MH_glStencilMask.invokeExact(PFN_glStencilMask, mask);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glStencilMask", e); }
     }
 
-    @Entrypoint("glIndexdv")
-    default void indexdv(SegmentAllocator allocator, double[] c) {
-        throw new ContextException();
+    public void ColorMask(@CType("GLboolean") boolean red, @CType("GLboolean") boolean green, @CType("GLboolean") boolean blue, @CType("GLboolean") boolean alpha) {
+        try { if (!Unmarshal.isNullPointer(PFN_glColorMask))
+            MH_glColorMask.invokeExact(PFN_glColorMask, red, green, blue, alpha);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glColorMask", e); }
     }
 
-    @Entrypoint("glIndexf")
-    default void indexf(float c) {
-        throw new ContextException();
+    public void DepthMask(@CType("GLboolean") boolean flag) {
+        try { if (!Unmarshal.isNullPointer(PFN_glDepthMask))
+            MH_glDepthMask.invokeExact(PFN_glDepthMask, flag);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glDepthMask", e); }
     }
 
-    @Entrypoint("glIndexfv")
-    default void indexfv(MemorySegment c) {
-        throw new ContextException();
+    public void Disable(@CType("GLenum") int cap) {
+        try { if (!Unmarshal.isNullPointer(PFN_glDisable))
+            MH_glDisable.invokeExact(PFN_glDisable, cap);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glDisable", e); }
     }
 
-    @Entrypoint("glIndexfv")
-    default void indexfv(SegmentAllocator allocator, float[] c) {
-        throw new ContextException();
+    public void Enable(@CType("GLenum") int cap) {
+        try { if (!Unmarshal.isNullPointer(PFN_glEnable))
+            MH_glEnable.invokeExact(PFN_glEnable, cap);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glEnable", e); }
     }
 
-    @Entrypoint("glIndexi")
-    default void indexi(int c) {
-        throw new ContextException();
+    public void Finish() {
+        try { if (!Unmarshal.isNullPointer(PFN_glFinish))
+            MH_glFinish.invokeExact(PFN_glFinish);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glFinish", e); }
     }
 
-    @Entrypoint("glIndexiv")
-    default void indexiv(MemorySegment c) {
-        throw new ContextException();
+    public void Flush() {
+        try { if (!Unmarshal.isNullPointer(PFN_glFlush))
+            MH_glFlush.invokeExact(PFN_glFlush);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glFlush", e); }
     }
 
-    @Entrypoint("glIndexiv")
-    default void indexiv(SegmentAllocator allocator, int[] c) {
-        throw new ContextException();
+    public void BlendFunc(@CType("GLenum") int sfactor, @CType("GLenum") int dfactor) {
+        try { if (!Unmarshal.isNullPointer(PFN_glBlendFunc))
+            MH_glBlendFunc.invokeExact(PFN_glBlendFunc, sfactor, dfactor);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glBlendFunc", e); }
     }
 
-    @Entrypoint("glIndexs")
-    default void indexs(short c) {
-        throw new ContextException();
+    public void LogicOp(@CType("GLenum") int opcode) {
+        try { if (!Unmarshal.isNullPointer(PFN_glLogicOp))
+            MH_glLogicOp.invokeExact(PFN_glLogicOp, opcode);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glLogicOp", e); }
     }
 
-    @Entrypoint("glIndexsv")
-    default void indexsv(MemorySegment c) {
-        throw new ContextException();
+    public void StencilFunc(@CType("GLenum") int func, @CType("GLint") int ref, @CType("GLuint") int mask) {
+        try { if (!Unmarshal.isNullPointer(PFN_glStencilFunc))
+            MH_glStencilFunc.invokeExact(PFN_glStencilFunc, func, ref, mask);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glStencilFunc", e); }
     }
 
-    @Entrypoint("glIndexsv")
-    default void indexsv(SegmentAllocator allocator, short[] c) {
-        throw new ContextException();
+    public void StencilOp(@CType("GLenum") int fail, @CType("GLenum") int zfail, @CType("GLenum") int zpass) {
+        try { if (!Unmarshal.isNullPointer(PFN_glStencilOp))
+            MH_glStencilOp.invokeExact(PFN_glStencilOp, fail, zfail, zpass);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glStencilOp", e); }
     }
 
-    @Entrypoint("glInitNames")
-    default void initNames() {
-        throw new ContextException();
+    public void DepthFunc(@CType("GLenum") int func) {
+        try { if (!Unmarshal.isNullPointer(PFN_glDepthFunc))
+            MH_glDepthFunc.invokeExact(PFN_glDepthFunc, func);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glDepthFunc", e); }
     }
 
-    @Entrypoint("glIsList")
-    default boolean isList(int list) {
-        throw new ContextException();
+    public void PixelStoref(@CType("GLenum") int pname, @CType("GLfloat") float param) {
+        try { if (!Unmarshal.isNullPointer(PFN_glPixelStoref))
+            MH_glPixelStoref.invokeExact(PFN_glPixelStoref, pname, param);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glPixelStoref", e); }
     }
 
-    @Entrypoint("glLightModelf")
-    default void lightModelf(int pname, float param) {
-        throw new ContextException();
+    public void PixelStorei(@CType("GLenum") int pname, @CType("GLint") int param) {
+        try { if (!Unmarshal.isNullPointer(PFN_glPixelStorei))
+            MH_glPixelStorei.invokeExact(PFN_glPixelStorei, pname, param);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glPixelStorei", e); }
     }
 
-    @Entrypoint("glLightModelfv")
-    default void lightModelfv(int pname, MemorySegment params) {
-        throw new ContextException();
+    public void ReadBuffer(@CType("GLenum") int src) {
+        try { if (!Unmarshal.isNullPointer(PFN_glReadBuffer))
+            MH_glReadBuffer.invokeExact(PFN_glReadBuffer, src);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glReadBuffer", e); }
     }
 
-    @Entrypoint("glLightModelfv")
-    default void lightModelfv(SegmentAllocator allocator, int pname, float[] params) {
-        throw new ContextException();
+    public void ReadPixels(@CType("GLint") int x, @CType("GLint") int y, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLenum") int format, @CType("GLenum") int type, @CType("void*") java.lang.foreign.MemorySegment pixels) {
+        try { if (!Unmarshal.isNullPointer(PFN_glReadPixels))
+            MH_glReadPixels.invokeExact(PFN_glReadPixels, x, y, width, height, format, type, pixels);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glReadPixels", e); }
     }
 
-    @Entrypoint("glLightModeli")
-    default void lightModeli(int pname, int param) {
-        throw new ContextException();
+    public void GetBooleanv(@CType("GLenum") int pname, @CType("GLboolean *") java.lang.foreign.MemorySegment data) {
+        try { if (!Unmarshal.isNullPointer(PFN_glGetBooleanv))
+            MH_glGetBooleanv.invokeExact(PFN_glGetBooleanv, pname, data);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glGetBooleanv", e); }
     }
 
-    @Entrypoint("glLightModeliv")
-    default void lightModeliv(int pname, MemorySegment params) {
-        throw new ContextException();
+    public void GetDoublev(@CType("GLenum") int pname, @CType("GLdouble *") java.lang.foreign.MemorySegment data) {
+        try { if (!Unmarshal.isNullPointer(PFN_glGetDoublev))
+            MH_glGetDoublev.invokeExact(PFN_glGetDoublev, pname, data);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glGetDoublev", e); }
     }
 
-    @Entrypoint("glLightModeliv")
-    default void lightModeliv(SegmentAllocator allocator, int pname, int[] params) {
-        throw new ContextException();
+    public @CType("GLenum") int GetError() {
+        try { if (!Unmarshal.isNullPointer(PFN_glGetError))
+            return (int) MH_glGetError.invokeExact(PFN_glGetError);
+            else return 0;
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glGetError", e); }
     }
 
-    @Entrypoint("glLightf")
-    default void lightf(int light, int pname, float param) {
-        throw new ContextException();
+    public void GetFloatv(@CType("GLenum") int pname, @CType("GLfloat *") java.lang.foreign.MemorySegment data) {
+        try { if (!Unmarshal.isNullPointer(PFN_glGetFloatv))
+            MH_glGetFloatv.invokeExact(PFN_glGetFloatv, pname, data);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glGetFloatv", e); }
     }
 
-    @Entrypoint("glLightfv")
-    default void lightfv(int light, int pname, MemorySegment params) {
-        throw new ContextException();
+    public void GetIntegerv(@CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment data) {
+        try { if (!Unmarshal.isNullPointer(PFN_glGetIntegerv))
+            MH_glGetIntegerv.invokeExact(PFN_glGetIntegerv, pname, data);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glGetIntegerv", e); }
     }
 
-    @Entrypoint("glLightfv")
-    default void lightfv(SegmentAllocator allocator, int light, int pname, float[] params) {
-        throw new ContextException();
+    public @CType("const GLubyte *") java.lang.foreign.MemorySegment GetString(@CType("GLenum") int name) {
+        try { if (!Unmarshal.isNullPointer(PFN_glGetString))
+            return (java.lang.foreign.MemorySegment) MH_glGetString.invokeExact(PFN_glGetString, name);
+            else return MemorySegment.NULL;
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glGetString", e); }
     }
 
-    @Entrypoint("glLighti")
-    default void lighti(int light, int pname, int param) {
-        throw new ContextException();
+    public void GetTexImage(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLenum") int format, @CType("GLenum") int type, @CType("void*") java.lang.foreign.MemorySegment pixels) {
+        try { if (!Unmarshal.isNullPointer(PFN_glGetTexImage))
+            MH_glGetTexImage.invokeExact(PFN_glGetTexImage, target, level, format, type, pixels);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glGetTexImage", e); }
     }
 
-    @Entrypoint("glLightiv")
-    default void lightiv(int light, int pname, MemorySegment params) {
-        throw new ContextException();
+    public void GetTexParameterfv(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
+        try { if (!Unmarshal.isNullPointer(PFN_glGetTexParameterfv))
+            MH_glGetTexParameterfv.invokeExact(PFN_glGetTexParameterfv, target, pname, params);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glGetTexParameterfv", e); }
     }
 
-    @Entrypoint("glLightiv")
-    default void lightiv(SegmentAllocator allocator, int light, int pname, int[] params) {
-        throw new ContextException();
+    public void GetTexParameteriv(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
+        try { if (!Unmarshal.isNullPointer(PFN_glGetTexParameteriv))
+            MH_glGetTexParameteriv.invokeExact(PFN_glGetTexParameteriv, target, pname, params);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glGetTexParameteriv", e); }
     }
 
-    @Entrypoint("glLineStipple")
-    default void lineStipple(int factor, short pattern) {
-        throw new ContextException();
+    public void GetTexLevelParameterfv(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLenum") int pname, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
+        try { if (!Unmarshal.isNullPointer(PFN_glGetTexLevelParameterfv))
+            MH_glGetTexLevelParameterfv.invokeExact(PFN_glGetTexLevelParameterfv, target, level, pname, params);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glGetTexLevelParameterfv", e); }
     }
 
-    @Entrypoint("glListBase")
-    default void listBase(int base) {
-        throw new ContextException();
+    public void GetTexLevelParameteriv(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
+        try { if (!Unmarshal.isNullPointer(PFN_glGetTexLevelParameteriv))
+            MH_glGetTexLevelParameteriv.invokeExact(PFN_glGetTexLevelParameteriv, target, level, pname, params);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glGetTexLevelParameteriv", e); }
     }
 
-    @Entrypoint("glLoadIdentity")
-    default void loadIdentity() {
-        throw new ContextException();
+    public @CType("GLboolean") boolean IsEnabled(@CType("GLenum") int cap) {
+        try { if (!Unmarshal.isNullPointer(PFN_glIsEnabled))
+            return (boolean) MH_glIsEnabled.invokeExact(PFN_glIsEnabled, cap);
+            else return false;
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glIsEnabled", e); }
     }
 
-    @Entrypoint("glLoadMatrixd")
-    default void loadMatrixd(MemorySegment m) {
-        throw new ContextException();
+    public void DepthRange(@CType("GLdouble") double n, @CType("GLdouble") double f) {
+        try { if (!Unmarshal.isNullPointer(PFN_glDepthRange))
+            MH_glDepthRange.invokeExact(PFN_glDepthRange, n, f);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glDepthRange", e); }
     }
 
-    @Entrypoint("glLoadMatrixd")
-    default void loadMatrixd(SegmentAllocator allocator, double[] m) {
-        throw new ContextException();
+    public void Viewport(@CType("GLint") int x, @CType("GLint") int y, @CType("GLsizei") int width, @CType("GLsizei") int height) {
+        try { if (!Unmarshal.isNullPointer(PFN_glViewport))
+            MH_glViewport.invokeExact(PFN_glViewport, x, y, width, height);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glViewport", e); }
     }
 
-    @Entrypoint("glLoadMatrixf")
-    default void loadMatrixf(MemorySegment m) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glLoadMatrixf")
-    default void loadMatrixf(SegmentAllocator allocator, float[] m) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glLoadName")
-    default void loadName(int name) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMap1d")
-    default void map1d(int target, double u1, double u2, int stride, int order, MemorySegment points) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMap1d")
-    default void map1d(SegmentAllocator allocator, int target, double u1, double u2, int stride, int order, double[] points) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMap1f")
-    default void map1f(int target, float u1, float u2, int stride, int order, MemorySegment points) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMap1f")
-    default void map1f(SegmentAllocator allocator, int target, float u1, float u2, int stride, int order, float[] points) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMap2d")
-    default void map2d(int target, double u1, double u2, int ustride, int uorder, double v1, double v2, int vstride, int vorder, MemorySegment points) {
-        throw new ContextException();
-    }
-
-
-    @Entrypoint("glMap2d")
-    default void map2d(SegmentAllocator allocator, int target, double u1, double u2, int ustride, int uorder, double v1, double v2, int vstride, int vorder, double[] points) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMap2f")
-    default void map2f(int target, float u1, float u2, int ustride, int uorder, float v1, float v2, int vstride, int vorder, MemorySegment points) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMap2f")
-    default void map2f(SegmentAllocator allocator, int target, float u1, float u2, int ustride, int uorder, float v1, float v2, int vstride, int vorder, float[] points) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMapGrid1d")
-    default void mapGrid1d(int un, double u1, double u2) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMapGrid1f")
-    default void mapGrid1f(int un, float u1, float u2) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMapGrid2d")
-    default void mapGrid2d(int un, double u1, double u2, int vn, double v1, double v2) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMapGrid2f")
-    default void mapGrid2f(int un, float u1, float u2, int vn, float v1, float v2) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMaterialf")
-    default void materialf(int face, int pname, float param) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMaterialfv")
-    default void materialfv(int face, int pname, MemorySegment params) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMaterialfv")
-    default void materialfv(SegmentAllocator allocator, int face, int pname, float[] params) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMateriali")
-    default void materiali(int face, int pname, int param) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMaterialiv")
-    default void materialiv(int face, int pname, MemorySegment params) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMaterialiv")
-    default void materialiv(SegmentAllocator allocator, int face, int pname, int[] params) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMatrixMode")
-    default void matrixMode(int mode) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultMatrixd")
-    default void multMatrixd(MemorySegment m) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultMatrixd")
-    default void multMatrixd(SegmentAllocator allocator, double[] m) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultMatrixf")
-    default void multMatrixf(MemorySegment m) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glMultMatrixf")
-    default void multMatrixf(SegmentAllocator allocator, float[] m) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glNewList")
-    default void newList(int list, int mode) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glNormal3b")
-    default void normal3b(byte nx, byte ny, byte nz) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glNormal3bv")
-    default void normal3bv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glNormal3bv")
-    default void normal3bv(SegmentAllocator allocator, byte[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glNormal3d")
-    default void normal3d(double nx, double ny, double nz) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glNormal3dv")
-    default void normal3dv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glNormal3dv")
-    default void normal3dv(SegmentAllocator allocator, double[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glNormal3f")
-    default void normal3f(float nx, float ny, float nz) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glNormal3fv")
-    default void normal3fv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glNormal3fv")
-    default void normal3fv(SegmentAllocator allocator, float[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glNormal3i")
-    default void normal3i(int nx, int ny, int nz) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glNormal3iv")
-    default void normal3iv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glNormal3iv")
-    default void normal3iv(SegmentAllocator allocator, int[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glNormal3s")
-    default void normal3s(short nx, short ny, short nz) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glNormal3sv")
-    default void normal3sv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glNormal3sv")
-    default void normal3sv(SegmentAllocator allocator, short[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glOrtho")
-    default void ortho(double left, double right, double bottom, double top, double zNear, double zFar) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glPassThrough")
-    default void passThrough(float token) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glPixelMapfv")
-    default void pixelMapfv(int map, int mapSize, MemorySegment values) {
-        throw new ContextException();
-    }
-
-    @Skip
-    default void pixelMapfv(SegmentAllocator allocator, int map, float[] values) {
-        pixelMapfv(map, values.length, Marshal.marshal(allocator, values));
-    }
-
-    @Entrypoint("glPixelMapuiv")
-    default void pixelMapuiv(int map, int mapSize, MemorySegment values) {
-        throw new ContextException();
-    }
-
-    @Skip
-    default void pixelMapuiv(SegmentAllocator allocator, int map, int[] values) {
-        pixelMapuiv(map, values.length, Marshal.marshal(allocator, values));
-    }
-
-    @Entrypoint("glPixelMapusv")
-    default void pixelMapusv(int map, int mapSize, MemorySegment values) {
-        throw new ContextException();
-    }
-
-    @Skip
-    default void pixelMapusv(SegmentAllocator allocator, int map, short[] values) {
-        pixelMapusv(map, values.length, Marshal.marshal(allocator, values));
-    }
-
-    @Entrypoint("glPixelTransferf")
-    default void pixelTransferf(int pname, float param) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glPixelTransferi")
-    default void pixelTransferi(int pname, int param) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glPixelZoom")
-    default void pixelZoom(float xfactor, float yfactor) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glPolygonStipple")
-    default void polygonStipple(MemorySegment mask) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glPolygonStipple")
-    default void polygonStipple(SegmentAllocator allocator, byte[] mask) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glPopAttrib")
-    default void popAttrib() {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glPopMatrix")
-    default void popMatrix() {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glPopName")
-    default void popName() {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glPushAttrib")
-    default void pushAttrib(int mask) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glPushMatrix")
-    default void pushMatrix() {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glPushName")
-    default void pushName(int name) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRasterPos2d")
-    default void rasterPos2d(double x, double y) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRasterPos2dv")
-    default void rasterPos2dv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRasterPos2dv")
-    default void rasterPos2dv(SegmentAllocator allocator, double[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRasterPos2f")
-    default void rasterPos2f(float x, float y) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRasterPos2fv")
-    default void rasterPos2fv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRasterPos2fv")
-    default void rasterPos2fv(SegmentAllocator allocator, float[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRasterPos2i")
-    default void rasterPos2i(int x, int y) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRasterPos2iv")
-    default void rasterPos2iv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRasterPos2iv")
-    default void rasterPos2iv(SegmentAllocator allocator, int[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRasterPos2s")
-    default void rasterPos2s(short x, short y) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRasterPos2sv")
-    default void rasterPos2sv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRasterPos2sv")
-    default void rasterPos2sv(SegmentAllocator allocator, short[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRasterPos3d")
-    default void rasterPos3d(double x, double y, double z) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRasterPos3dv")
-    default void rasterPos3dv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRasterPos3dv")
-    default void rasterPos3dv(SegmentAllocator allocator, double[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRasterPos3f")
-    default void rasterPos3f(float x, float y, float z) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRasterPos3fv")
-    default void rasterPos3fv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRasterPos3fv")
-    default void rasterPos3fv(SegmentAllocator allocator, float[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRasterPos3i")
-    default void rasterPos3i(int x, int y, int z) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRasterPos3iv")
-    default void rasterPos3iv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRasterPos3iv")
-    default void rasterPos3iv(SegmentAllocator allocator, int[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRasterPos3s")
-    default void rasterPos3s(short x, short y, short z) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRasterPos3sv")
-    default void rasterPos3sv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRasterPos3sv")
-    default void rasterPos3sv(SegmentAllocator allocator, short[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRasterPos4d")
-    default void rasterPos4d(double x, double y, double z, double w) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRasterPos4dv")
-    default void rasterPos4dv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRasterPos4dv")
-    default void rasterPos4dv(SegmentAllocator allocator, double[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRasterPos4f")
-    default void rasterPos4f(float x, float y, float z, float w) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRasterPos4fv")
-    default void rasterPos4fv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRasterPos4fv")
-    default void rasterPos4fv(SegmentAllocator allocator, float[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRasterPos4i")
-    default void rasterPos4i(int x, int y, int z, int w) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRasterPos4iv")
-    default void rasterPos4iv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRasterPos4iv")
-    default void rasterPos4iv(SegmentAllocator allocator, int[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRasterPos4s")
-    default void rasterPos4s(short x, short y, short z, short w) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRasterPos4sv")
-    default void rasterPos4sv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRasterPos4sv")
-    default void rasterPos4sv(SegmentAllocator allocator, short[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRectd")
-    default void rectd(double x1, double y1, double x2, double y2) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRectdv")
-    default void rectdv(MemorySegment v1, MemorySegment v2) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRectdv")
-    default void rectdv(SegmentAllocator allocator, double[] v1, double[] v2) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRectf")
-    default void rectf(float x1, float y1, float x2, float y2) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRectfv")
-    default void rectfv(MemorySegment v1, MemorySegment v2) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRectfv")
-    default void rectfv(SegmentAllocator allocator, float[] v1, float[] v2) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRecti")
-    default void recti(int x1, int y1, int x2, int y2) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRectiv")
-    default void rectiv(MemorySegment v1, MemorySegment v2) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRectiv")
-    default void rectiv(SegmentAllocator allocator, int[] v1, int[] v2) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRects")
-    default void rects(short x1, short y1, short x2, short y2) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRectsv")
-    default void rectsv(MemorySegment v1, MemorySegment v2) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRectsv")
-    default void rectsv(SegmentAllocator allocator, short[] v1, short[] v2) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRenderMode")
-    default int renderMode(int mode) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRotated")
-    default void rotated(double angle, double x, double y, double z) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glRotatef")
-    default void rotatef(float angle, float x, float y, float z) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glScaled")
-    default void scaled(double x, double y, double z) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glScalef")
-    default void scalef(float x, float y, float z) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glSelectBuffer")
-    default void selectBuffer(int size, MemorySegment buffer) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glSelectBuffer")
-    default void selectBuffer(SegmentAllocator allocator, @Ref int[] buffer) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glShadeModel")
-    default void shadeModel(int mode) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord1d")
-    default void texCoord1d(double s) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord1dv")
-    default void texCoord1dv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord1dv")
-    default void texCoord1dv(SegmentAllocator allocator, double[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord1f")
-    default void texCoord1f(float s) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord1fv")
-    default void texCoord1fv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord1fv")
-    default void texCoord1fv(SegmentAllocator allocator, float[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord1i")
-    default void texCoord1i(int s) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord1iv")
-    default void texCoord1iv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord1iv")
-    default void texCoord1iv(SegmentAllocator allocator, int[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord1s")
-    default void texCoord1s(short s) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord1sv")
-    default void texCoord1sv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord1sv")
-    default void texCoord1sv(SegmentAllocator allocator, short[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord2d")
-    default void texCoord2d(double s, double t) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord2dv")
-    default void texCoord2dv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord2dv")
-    default void texCoord2dv(SegmentAllocator allocator, double[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord2f")
-    default void texCoord2f(float s, float t) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord2fv")
-    default void texCoord2fv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord2fv")
-    default void texCoord2fv(SegmentAllocator allocator, float[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord2i")
-    default void texCoord2i(int s, int t) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord2iv")
-    default void texCoord2iv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord2iv")
-    default void texCoord2iv(SegmentAllocator allocator, int[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord2s")
-    default void texCoord2s(short s, short t) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord2sv")
-    default void texCoord2sv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord2sv")
-    default void texCoord2sv(SegmentAllocator allocator, short[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord3d")
-    default void texCoord3d(double s, double t, double r) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord3dv")
-    default void texCoord3dv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord3dv")
-    default void texCoord3dv(SegmentAllocator allocator, double[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord3f")
-    default void texCoord3f(float s, float t, float r) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord3fv")
-    default void texCoord3fv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord3fv")
-    default void texCoord3fv(SegmentAllocator allocator, float[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord3i")
-    default void texCoord3i(int s, int t, int r) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord3iv")
-    default void texCoord3iv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord3iv")
-    default void texCoord3iv(SegmentAllocator allocator, int[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord3s")
-    default void texCoord3s(short s, short t, short r) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord3sv")
-    default void texCoord3sv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord3sv")
-    default void texCoord3sv(SegmentAllocator allocator, short[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord4d")
-    default void texCoord4d(double s, double t, double r, double q) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord4dv")
-    default void texCoord4dv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord4dv")
-    default void texCoord4dv(SegmentAllocator allocator, double[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord4f")
-    default void texCoord4f(float s, float t, float r, float q) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord4fv")
-    default void texCoord4fv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord4fv")
-    default void texCoord4fv(SegmentAllocator allocator, float[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord4i")
-    default void texCoord4i(int s, int t, int r, int q) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord4iv")
-    default void texCoord4iv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord4iv")
-    default void texCoord4iv(SegmentAllocator allocator, int[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord4s")
-    default void texCoord4s(short s, short t, short r, short q) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord4sv")
-    default void texCoord4sv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexCoord4sv")
-    default void texCoord4sv(SegmentAllocator allocator, short[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexEnvf")
-    default void texEnvf(int target, int pname, float param) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexEnvfv")
-    default void texEnvfv(int target, int pname, MemorySegment params) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexEnvfv")
-    default void texEnvfv(SegmentAllocator allocator, int target, int pname, float[] params) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexEnvi")
-    default void texEnvi(int target, int pname, int param) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexEnviv")
-    default void texEnviv(int target, int pname, MemorySegment params) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexEnviv")
-    default void texEnviv(SegmentAllocator allocator, int target, int pname, int[] params) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexGend")
-    default void texGend(int coord, int pname, double param) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexGendv")
-    default void texGendv(int coord, int pname, MemorySegment params) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexGendv")
-    default void texGendv(SegmentAllocator allocator, int coord, int pname, double[] params) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexGenf")
-    default void texGenf(int coord, int pname, float param) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexGenfv")
-    default void texGenfv(int coord, int pname, MemorySegment params) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexGenfv")
-    default void texGenfv(SegmentAllocator allocator, int coord, int pname, float[] params) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexGeni")
-    default void texGeni(int coord, int pname, int param) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexGeniv")
-    default void texGeniv(int coord, int pname, MemorySegment params) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTexGeniv")
-    default void texGeniv(SegmentAllocator allocator, int coord, int pname, int[] params) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTranslated")
-    default void translated(double x, double y, double z) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glTranslatef")
-    default void translatef(float x, float y, float z) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glVertex2d")
-    default void vertex2d(double x, double y) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glVertex2dv")
-    default void vertex2dv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glVertex2dv")
-    default void vertex2dv(SegmentAllocator allocator, double[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glVertex2f")
-    default void vertex2f(float x, float y) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glVertex2fv")
-    default void vertex2fv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glVertex2fv")
-    default void vertex2fv(SegmentAllocator allocator, float[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glVertex2i")
-    default void vertex2i(int x, int y) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glVertex2iv")
-    default void vertex2iv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glVertex2iv")
-    default void vertex2iv(SegmentAllocator allocator, int[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glVertex2s")
-    default void vertex2s(short x, short y) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glVertex2sv")
-    default void vertex2sv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glVertex2sv")
-    default void vertex2sv(SegmentAllocator allocator, short[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glVertex3d")
-    default void vertex3d(double x, double y, double z) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glVertex3dv")
-    default void vertex3dv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glVertex3dv")
-    default void vertex3dv(SegmentAllocator allocator, double[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glVertex3f")
-    default void vertex3f(float x, float y, float z) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glVertex3fv")
-    default void vertex3fv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glVertex3fv")
-    default void vertex3fv(SegmentAllocator allocator, float[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glVertex3i")
-    default void vertex3i(int x, int y, int z) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glVertex3iv")
-    default void vertex3iv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glVertex3iv")
-    default void vertex3iv(SegmentAllocator allocator, int[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glVertex3s")
-    default void vertex3s(short x, short y, short z) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glVertex3sv")
-    default void vertex3sv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glVertex3sv")
-    default void vertex3sv(SegmentAllocator allocator, short[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glVertex4d")
-    default void vertex4d(double x, double y, double z, double w) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glVertex4dv")
-    default void vertex4dv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glVertex4dv")
-    default void vertex4dv(SegmentAllocator allocator, double[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glVertex4f")
-    default void vertex4f(float x, float y, float z, float w) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glVertex4fv")
-    default void vertex4fv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glVertex4fv")
-    default void vertex4fv(SegmentAllocator allocator, float[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glVertex4i")
-    default void vertex4i(int x, int y, int z, int w) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glVertex4iv")
-    default void vertex4iv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glVertex4iv")
-    default void vertex4iv(SegmentAllocator allocator, int[] v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glVertex4s")
-    default void vertex4s(short x, short y, short z, short w) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glVertex4sv")
-    default void vertex4sv(MemorySegment v) {
-        throw new ContextException();
-    }
-
-    @Entrypoint("glVertex4sv")
-    default void vertex4sv(SegmentAllocator allocator, short[] v) {
-        throw new ContextException();
-    }
+    // --- OverrunGL custom code ---
+    public boolean GetBooleanv(@CType("GLenum") int pname) { try (var __stack = MemoryStack.pushLocal()) { var p = __stack.bytes((byte) 0); GetBooleanv(pname, p); return p.get(ValueLayout.JAVA_BOOLEAN, 0); } }
+    public double GetDoublev(@CType("GLenum") int pname) { try (var __stack = MemoryStack.pushLocal()) { var p = __stack.doubles(0); GetDoublev(pname, p); return p.get(ValueLayout.JAVA_DOUBLE, 0); } }
+    public float GetFloatv(@CType("GLenum") int pname) { try (var __stack = MemoryStack.pushLocal()) { var p = __stack.floats(0); GetFloatv(pname, p); return p.get(ValueLayout.JAVA_FLOAT, 0); } }
+    public int GetIntegerv(@CType("GLenum") int pname) { try (var __stack = MemoryStack.pushLocal()) { var p = __stack.ints(0); GetIntegerv(pname, p); return p.get(ValueLayout.JAVA_INT, 0); } }
+    public String GetString_(@CType("GLenum") int pname) { return Unmarshal.unmarshalAsString(GetString(pname)); }
+    public float GetTexParameterfv(@CType("GLenum") int target, @CType("GLenum") int pname) { try (var __stack = MemoryStack.pushLocal()) { var p = __stack.floats(0); GetTexParameterfv(target, pname, p); return p.get(ValueLayout.JAVA_FLOAT, 0); } }
+    public int GetTexParameteriv(@CType("GLenum") int target, @CType("GLenum") int pname) { try (var __stack = MemoryStack.pushLocal()) { var p = __stack.ints(0); GetTexParameteriv(target, pname, p); return p.get(ValueLayout.JAVA_INT, 0); } }
+    public float GetTexLevelParameterfv(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLenum") int pname) { try (var __stack = MemoryStack.pushLocal()) { var p = __stack.floats(0); GetTexLevelParameterfv(target, level, pname, p); return p.get(ValueLayout.JAVA_FLOAT, 0); } }
+    public int GetTexLevelParameteriv(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLenum") int pname) { try (var __stack = MemoryStack.pushLocal()) { var p = __stack.ints(0); GetTexLevelParameteriv(target, level, pname, p); return p.get(ValueLayout.JAVA_INT, 0); } }
 }

@@ -17,8 +17,6 @@
 package overrungl.util;
 
 import org.jetbrains.annotations.Nullable;
-import overrun.marshal.Unmarshal;
-import overrungl.Configurations;
 
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
@@ -42,11 +40,6 @@ public final class MemoryUtil {
         m_memcpy = downcall("memcpy", FunctionDescriptor.of(ADDRESS, ADDRESS, ADDRESS, JAVA_LONG)),
         m_memmove = downcall("memmove", FunctionDescriptor.of(ADDRESS, ADDRESS, ADDRESS, JAVA_LONG)),
         m_memset = downcall("memset", FunctionDescriptor.of(ADDRESS, ADDRESS, JAVA_INT, JAVA_LONG));
-    private static final boolean DEBUG = Configurations.DEBUG_MEM_UTIL.get();
-    /**
-     * The address of {@code NULL}.
-     */
-    public static final long NULL = 0x0L;
 
     private static MethodHandle downcall(String name, FunctionDescriptor function) {
         return LINKER.downcallHandle(LOOKUP.findOrThrow(name), function);
@@ -54,24 +47,6 @@ public final class MemoryUtil {
 
     private MemoryUtil() {
         throw new IllegalStateException("Do not construct instance");
-    }
-
-    /**
-     * {@return {@code true} if <i>{@code segment}</i> is a null pointer}
-     *
-     * @param segment the segment.
-     */
-    public static boolean isNullptr(@Nullable MemorySegment segment) {
-        return Unmarshal.isNullPointer(segment);
-    }
-
-    /**
-     * {@return {@code true} if <i>{@code address}</i> is {@value NULL}}
-     *
-     * @param address the address.
-     */
-    public static boolean isNullptr(long address) {
-        return address == NULL;
     }
 
     /**
@@ -118,10 +93,8 @@ public final class MemoryUtil {
      */
     public static MemorySegment malloc(long size) {
         try {
-            final MemorySegment seg = ((MemorySegment) m_malloc.invokeExact(size))
+            return ((MemorySegment) m_malloc.invokeExact(size))
                 .reinterpret(size);
-            if (DEBUG) DebugAllocator.track(seg.address(), size);
-            return seg;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -153,10 +126,8 @@ public final class MemoryUtil {
     public static MemorySegment calloc(long number, long size) {
         try {
             long byteSize = number * size;
-            final MemorySegment seg = ((MemorySegment) m_calloc.invokeExact(number, size))
+            return ((MemorySegment) m_calloc.invokeExact(number, size))
                 .reinterpret(byteSize);
-            if (DEBUG) DebugAllocator.track(seg.address(), byteSize);
-            return seg;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -207,24 +178,10 @@ public final class MemoryUtil {
      * The return value points to a storage space that is suitably aligned for storage of any type of object.
      */
     public static MemorySegment realloc(@Nullable MemorySegment memblock, long size) {
-        long ptr = NULL;
-        long oldSize = 0;
-        if (DEBUG) {
-            ptr = memblock != null ? memblock.address() : NULL;
-            oldSize = DebugAllocator.untrack(ptr);
-        }
         try {
             final MemorySegment mem = memblock != null ? memblock : MemorySegment.NULL;
-            MemorySegment segment = ((MemorySegment) m_realloc.invokeExact(mem, size))
+            return ((MemorySegment) m_realloc.invokeExact(mem, size))
                 .reinterpret(size);
-            if (DEBUG) {
-                if (!isNullptr(segment)) {
-                    DebugAllocator.track(segment.address(), size);
-                } else if (size != 0L) {
-                    DebugAllocator.track(ptr, oldSize);
-                }
-            }
-            return segment;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -244,8 +201,7 @@ public final class MemoryUtil {
      * @param memblock Previously allocated memory block to be freed.
      */
     public static void free(@Nullable MemorySegment memblock) {
-        if (isNullptr(memblock)) return;
-        if (DEBUG) DebugAllocator.untrack(memblock.address());
+        if (Unmarshal.isNullPointer(memblock)) return;
         try {
             m_free.invokeExact(memblock);
         } catch (Throwable e) {
@@ -325,9 +281,10 @@ public final class MemoryUtil {
     }
 
     /**
-     * Creates a segment allocator with the given arena.
+     * Creates a segment allocator associated with the given arena,
+     * which automatically releases the allocated memory when the arena closes.
      *
-     * @param arena the arena to be associated
+     * @param arena the arena to be associated with
      * @return the segment allocator
      */
     public static SegmentAllocator allocator(Arena arena) {

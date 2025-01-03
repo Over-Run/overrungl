@@ -18,6 +18,8 @@ file("modules").listFiles()?.forEach {
 }
 
 include(
+    "generators:core",
+    "generators:glfw",
     "generators:nfd",
     "generators:opengl",
     "generators:stb",

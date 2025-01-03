@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2024 Overrun Organization
+ * Copyright (c) 2022-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -14,48 +14,47 @@
  * copies or substantial portions of the Software.
  */
 
+// This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl;
 
-import overrun.marshal.Unmarshal;
-import overrun.marshal.Upcall;
+import java.lang.foreign.*;
+import java.lang.invoke.*;
+import overrungl.annotation.*;
+import overrungl.upcall.*;
+import overrungl.util.*;
 
-import java.lang.foreign.Arena;
-import java.lang.foreign.FunctionDescriptor;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-/**
- * The OpenGL debug message callback.
- *
- * @author squid233
- * @since 0.1.0
- */
 @FunctionalInterface
 public interface GLDebugProc extends Upcall {
-    /**
-     * The type.
-     */
-    Type<GLDebugProc> TYPE = Upcall.type("ninvoke", FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+    /// The function descriptor.
+    FunctionDescriptor DESCRIPTOR = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
+    /// The method handle of the target method.
+    MethodHandle HANDLE = Upcall.findTarget(GLDebugProc.class, "invoke", DESCRIPTOR);
 
-    /**
-     * debug callback
-     *
-     * @param source    The source of debug message
-     * @param type      The type of debug message
-     * @param id        the id of the message
-     * @param severity  The severity of debug message
-     * @param message   The debug message
-     * @param userParam will be set to the value passed in the {@code userParam}
-     *                  parameter to the most recent call to {@code glDebugMessageCallback}.
-     */
-    void invoke(int source, int type, int id, int severity, String message, MemorySegment userParam);
+    ///The interface target method of the upcall.
+    void invoke(@CType("GLenum") int source, @CType("GLenum") int type, @CType("GLuint") int id, @CType("GLenum") int severity, @CType("const GLchar *") java.lang.String message, @CType("const void *") java.lang.foreign.MemorySegment userParam);
 
-    default void ninvoke(int source, int type, int id, int severity, int length, MemorySegment message, MemorySegment userParam) {
-        invoke(source, type, id, severity, Unmarshal.unmarshalAsString(message.reinterpret(length + 1)), userParam);
+    ///The target method of the upcall.
+    default void invoke(@CType("GLenum") int source, @CType("GLenum") int type, @CType("GLuint") int id, @CType("GLenum") int severity, @CType("GLsizei") int length, @CType("const GLchar *") java.lang.foreign.MemorySegment message, @CType("const void *") java.lang.foreign.MemorySegment userParam) {
+        invoke(source, type, id, severity, Unmarshal.unmarshalAsString(message), userParam);
     }
 
     @Override
-    default MemorySegment stub(Arena arena) {
-        return TYPE.of(arena, this);
+    default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
+
+    ///A static invoker of the target method.
+    ///@param stub the upcall stub
+    static void invoke(MemorySegment stub, @CType("GLenum") int source, @CType("GLenum") int type, @CType("GLuint") int id, @CType("GLenum") int severity, @CType("GLsizei") int length, @CType("const GLchar *") java.lang.foreign.MemorySegment message, @CType("const void *") java.lang.foreign.MemorySegment userParam) {
+        try { HANDLE.invokeExact(stub, source, type, id, severity, length, message, userParam); }
+        catch (Throwable e) { throw new RuntimeException("error in GLDebugProc::invoke (static invoker)", e); }
+    }
+
+    /// A wrapper for the target method.
+    /// @param stub the upcall stub
+    /// @return an instance that wraps the static invoker
+    static GLDebugProc wrap(MemorySegment stub) {
+        return (source, type, id, severity, message, userParam) -> { try (var stack = MemoryStack.pushLocal()) {
+            var seg = Marshal.marshal(stack, message);
+            invoke(stub, source, type, id, severity, Math.toIntExact(seg.byteSize()), seg, userParam);
+        } };
     }
 }

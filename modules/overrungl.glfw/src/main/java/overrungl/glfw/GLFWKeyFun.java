@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2024 Overrun Organization
+ * Copyright (c) 2022-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -14,48 +14,69 @@
  * copies or substantial portions of the Software.
  */
 
+// This file is auto-generated. DO NOT EDIT!
 package overrungl.glfw;
 
-import overrun.marshal.Upcall;
+import java.lang.foreign.*;
+import java.lang.invoke.*;
+import overrungl.annotation.*;
+import overrungl.upcall.*;
+import overrungl.util.*;
 
-import java.lang.foreign.Arena;
-import java.lang.foreign.FunctionDescriptor;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-/**
- * This is the function pointer type for keyboard key callbacks. A keyboard
- * key callback function has the following signature:
- * {@snippet :
- * void functionName(MemorySegment window, int key, int scancode, int action, int mods); // @link regex="functionName" target="#invoke"
- * }
- *
- * @author squid233
- * @see GLFW#setKeyCallback
- * @since 0.1.0
- */
+/// The function pointer type for keyboard key callbacks.
+/// 
+/// This is the function pointer type for keyboard key callbacks.  A keyboard
+/// key callback function has the following signature:
+/// ```java
+/// void function_name(MemorySegment window, int key, int scancode, int action, int mods)
+/// ```
+/// 
+/// @see GLFW#glfwSetKeyCallback(MemorySegment, MemorySegment)
 @FunctionalInterface
 public interface GLFWKeyFun extends Upcall {
-    /**
-     * The type.
-     */
-    Type<GLFWKeyFun> TYPE = Upcall.type("invoke", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+    /// The function descriptor.
+    FunctionDescriptor DESCRIPTOR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+    /// The method handle of the target method.
+    MethodHandle HANDLE = Upcall.findTarget(GLFWKeyFun.class, "invoke", DESCRIPTOR);
 
-    /**
-     * The function pointer type for keyboard key callbacks.
-     *
-     * @param window   The window that received the event.
-     * @param key      The <a href="https://www.glfw.org/docs/latest/group__keys.html">keyboard key</a>
-     *                 that was pressed or released.
-     * @param scancode The platform-specific scancode of the key.
-     * @param action   {@code PRESS}, {@code RELEASE} or {@code REPEAT}. Future releases may add more actions.
-     * @param mods     Bit field describing which <a href="https://www.glfw.org/docs/latest/group__mods.html">modifier keys</a>
-     *                 were held down.
-     */
-    void invoke(MemorySegment window, int key, int scancode, int action, int mods);
+    ///The target method of the upcall.
+    ///
+    ///Invoke
+    ///
+    ///@param window The window that received the event.
+    ///@param key The keyboard key that was pressed or released.
+    ///@param scancode The platform-specific scancode of the key.
+    ///@param action `GLFW_PRESS`, `GLFW_RELEASE` or `GLFW_REPEAT`.  Future
+    ///releases may add more actions.
+    ///@param mods Bit field describing which modifier keys were
+    ///held down.
+    void invoke(@CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("int") int key, @CType("int") int scancode, @CType("int") int action, @CType("int") int mods);
 
     @Override
-    default MemorySegment stub(Arena arena) {
-        return TYPE.of(arena, this);
+    default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
+
+    ///A static invoker of the target method.
+    ///
+    ///Invoke
+    ///
+    ///@param window The window that received the event.
+    ///@param key The keyboard key that was pressed or released.
+    ///@param scancode The platform-specific scancode of the key.
+    ///@param action `GLFW_PRESS`, `GLFW_RELEASE` or `GLFW_REPEAT`.  Future
+    ///releases may add more actions.
+    ///@param mods Bit field describing which modifier keys were
+    ///held down.
+    ///@param stub the upcall stub
+    static void invoke(MemorySegment stub, @CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("int") int key, @CType("int") int scancode, @CType("int") int action, @CType("int") int mods) {
+        try { HANDLE.invokeExact(stub, window, key, scancode, action, mods); }
+        catch (Throwable e) { throw new RuntimeException("error in GLFWKeyFun::invoke (static invoker)", e); }
+    }
+
+    /// A wrapper for the target method.
+    /// @param stub the upcall stub
+    /// @return an instance that wraps the static invoker
+    static GLFWKeyFun wrap(MemorySegment stub) {
+        return (window, key, scancode, action, mods) ->
+            invoke(stub, window, key, scancode, action, mods);
     }
 }

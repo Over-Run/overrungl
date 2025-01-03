@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2024 Overrun Organization
+ * Copyright (c) 2022-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -16,20 +16,17 @@
 
 package overrungl.opengl;
 
-import overrun.marshal.Unmarshal;
+import overrungl.util.Unmarshal;
 
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SymbolLookup;
-import java.util.Optional;
 
 /**
  * The OpenGL loading function.
  * <h2>Example</h2>
  * {@snippet lang = java:
  * // loads OpenGL forward-compatible profile
- * import java.util.Objects;
- * Objects.requireNonNull(GLLoader.load(GLLoader.loadFlags(glfw::getProcAddress)), "Failed to load OpenGL");
- * }
+ * gl = new GL(GLFW::glfwGetProcAddress);
+ *}
  *
  * @author squid233
  * @since 0.1.0
@@ -39,27 +36,26 @@ public interface GLLoadFunc {
     /**
      * Gets the function pointer of the given GL function.
      *
-     * @param string the name of the function.
+     * @param name the name of the function.
      * @return the function pointer.
      */
-    MemorySegment invoke(String string);
+    MemorySegment invoke(String name);
 
     /**
-     * {@return a symbol lookup of this}
-     */
-    default SymbolLookup lookup() {
-        return name -> {
-            final MemorySegment segment = invoke(name);
-            return Unmarshal.isNullPointer(segment) ? Optional.empty() : Optional.of(segment);
-        };
-    }
-
-    /**
-     * {@return a loading function with alias supports}
+     * Gets the function pointer of the given GL function.
      *
-     * @param load the original loading function
+     * @param name    the name of the function.
+     * @param aliases the aliases to be used
+     * @return the function pointer.
      */
-    static GLLoadFunc withAlias(GLLoadFunc load) {
-        return string -> GLAliasResolver.resolve(load, string);
+    default MemorySegment invoke(String name, String... aliases) {
+        MemorySegment p = invoke(name);
+        if (!Unmarshal.isNullPointer(p)) return p;
+        for (String alias : aliases) {
+            MemorySegment p1 = invoke(alias);
+            if (!Unmarshal.isNullPointer(p1)) return p1;
+            break;
+        }
+        return MemorySegment.NULL;
     }
 }

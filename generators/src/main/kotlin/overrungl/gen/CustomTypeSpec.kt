@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2024 Overrun Organization
+ * Copyright (c) 2024-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -18,55 +18,81 @@ package overrungl.gen
 
 import com.palantir.javapoet.ArrayTypeName
 import com.palantir.javapoet.ClassName
-import com.palantir.javapoet.CodeBlock
 import com.palantir.javapoet.TypeName
+import java.lang.foreign.Arena
 import java.lang.foreign.MemorySegment
-import java.lang.foreign.ValueLayout
-import kotlin.reflect.KProperty
+import java.lang.foreign.SegmentAllocator
 
 data class CustomTypeSpec(
     val carrier: TypeName,
+    val javaType: TypeName,
+    val processor: ValueProcessor = IdentityValueProcessor,
+    val layout: String?,
     val cType: String? = null,
-    val layout: CodeBlock
+    val allocatorRequirement: AllocatorRequirement = AllocatorRequirement.NO,
+    val nullValue: String? = null
 ) {
-    val array: CustomTypeSpec
-        get() = copy(carrier = ArrayTypeName.of(carrier))
+    val array: CustomTypeSpec by lazy {
+        CustomTypeSpec(
+            MemorySegment_,
+            ArrayTypeName.of(javaType),
+            processor,
+            layout,
+            cType,
+            AllocatorRequirement.STACK
+        )
+    }
 
     infix fun c(cType: String?): CustomTypeSpec = copy(cType = cType)
-    infix fun c(cType: CustomTypeSpec): CustomTypeSpec = copy(cType = cType.cType)
 
-    operator fun getValue(thisRef: Any?, property: KProperty<*>): CustomTypeSpec = copy(cType = property.name)
+    fun typeNameWithC(typeName: TypeName): String =
+        if (cType != null) """@CType("$cType") $typeName""" else typeName.toString()
+
+    fun selectTypeName(overload: Boolean): TypeName =
+        if (overload) javaType else carrier
+
+    fun carrierWithC(): String = typeNameWithC(carrier)
+    fun javaTypeWithC(): String = typeNameWithC(javaType)
 }
 
+val Arena_: ClassName = ClassName.get(Arena::class.java)
 val MemorySegment_: ClassName = ClassName.get(MemorySegment::class.java)
+val SegmentAllocator_: ClassName = ClassName.get(SegmentAllocator::class.java)
+val String_: ClassName = ClassName.get(String::class.java)
 
-val CType = ClassName.get("overrun.marshal.gen", "CType")
-val DirectAccess = ClassName.get("overrun.marshal", "DirectAccess")
-val Entrypoint = ClassName.get("overrun.marshal.gen", "Entrypoint")
-val LayoutBuilder = ClassName.get("overrun.marshal", "LayoutBuilder")
-val Marshal = ClassName.get("overrun.marshal", "Marshal")
-val ProcessorTypes = ClassName.get("overrun.marshal.gen.processor", "ProcessorTypes")
-val Ref = ClassName.get("overrun.marshal.gen", "Ref")
-val Skip = ClassName.get("overrun.marshal.gen", "Skip")
-val Struct = ClassName.get("overrun.marshal.struct", "Struct")
-val StructAllocator = ClassName.get("overrun.marshal.struct", "StructAllocator")
-val Unmarshal = ClassName.get("overrun.marshal", "Unmarshal")
+private fun javaPrimitive(typeName: TypeName, layoutName: String, nullValue: String?): CustomTypeSpec =
+    CustomTypeSpec(typeName, typeName, layout = "ValueLayout.$layoutName", nullValue = nullValue)
 
-private fun javaPrimitive(carrier: TypeName, layoutName: String): CustomTypeSpec =
-    CustomTypeSpec(carrier, layout = CodeBlock.of("\$T.\$L", ValueLayout::class.java, layoutName))
+val arena = CustomTypeSpec(Arena_, Arena_, layout = null)
+val allocator = CustomTypeSpec(SegmentAllocator_, SegmentAllocator_, layout = null)
 
-val jboolean = javaPrimitive(TypeName.BOOLEAN, "JAVA_BOOLEAN")
-val jchar = javaPrimitive(TypeName.CHAR, "JAVA_CHAR")
-val jbyte = javaPrimitive(TypeName.BYTE, "JAVA_BYTE")
-val jshort = javaPrimitive(TypeName.SHORT, "JAVA_SHORT")
-val jint = javaPrimitive(TypeName.INT, "JAVA_INT")
-val jlong = javaPrimitive(TypeName.LONG, "JAVA_LONG")
-val jfloat = javaPrimitive(TypeName.FLOAT, "JAVA_FLOAT")
-val jdouble = javaPrimitive(TypeName.DOUBLE, "JAVA_DOUBLE")
-val void = CustomTypeSpec(TypeName.VOID, layout = CodeBlock.of(""))
+val jboolean = javaPrimitive(TypeName.BOOLEAN, "JAVA_BOOLEAN", "false")
+val jchar = javaPrimitive(TypeName.CHAR, "JAVA_CHAR", "0")
+val jbyte = javaPrimitive(TypeName.BYTE, "JAVA_BYTE", "0")
+val jshort = javaPrimitive(TypeName.SHORT, "JAVA_SHORT", "0")
+val jint = javaPrimitive(TypeName.INT, "JAVA_INT", "0")
+val jlong = javaPrimitive(TypeName.LONG, "JAVA_LONG", "0L")
+val jfloat = javaPrimitive(TypeName.FLOAT, "JAVA_FLOAT", "0.0f")
+val jdouble = javaPrimitive(TypeName.DOUBLE, "JAVA_DOUBLE", "0.0")
+val void = CustomTypeSpec(TypeName.VOID, TypeName.VOID, layout = "No layout for void")
 
-val address = javaPrimitive(MemorySegment_, "ADDRESS")
-val string = CustomTypeSpec(MemorySegment_, null, CodeBlock.of("\$T.STR_LAYOUT", Unmarshal))
+val address = javaPrimitive(MemorySegment_, "ADDRESS", "MemorySegment.NULL")
+val string_u8 = CustomTypeSpec(
+    carrier = MemorySegment_,
+    javaType = String_,
+    processor = StringU8ValueProcessor,
+    layout = "Unmarshal.STR_LAYOUT",
+    allocatorRequirement = AllocatorRequirement.STACK
+)
+
+val jchar_array = jchar.array.copy(processor = ArrayValueProcessor("Char"), layout = address.layout, nullValue = address.nullValue)
+val jbyte_array = jbyte.array.copy(processor = ArrayValueProcessor("Byte"), layout = address.layout, nullValue = address.nullValue)
+val jshort_array = jshort.array.copy(processor = ArrayValueProcessor("Short"), layout = address.layout, nullValue = address.nullValue)
+val jint_array = jint.array.copy(processor = ArrayValueProcessor("Int"), layout = address.layout, nullValue = address.nullValue)
+val jlong_array = jlong.array.copy(processor = ArrayValueProcessor("Long"), layout = address.layout, nullValue = address.nullValue)
+val jfloat_array = jfloat.array.copy(processor = ArrayValueProcessor("Float"), layout = address.layout, nullValue = address.nullValue)
+val jdouble_array = jdouble.array.copy(processor = ArrayValueProcessor("Double"), layout = address.layout, nullValue = address.nullValue)
+val string_u8_array = string_u8.array.copy(processor = ArrayValueProcessor("String"), layout = address.layout, nullValue = address.nullValue)
 
 val bool = jboolean c "bool"
 val char = jbyte c "char"
@@ -80,4 +106,21 @@ val void_ptr = address c "void*"
 val size_t = jlong c "size_t"
 val wchar_t = jint c "wchar_t"
 
-val const_char_ptr = string c "const char*"
+val uchar = jbyte c "unsigned char"
+val ushort = jshort c "unsigned short"
+val uint = jint c "unsigned int"
+val ulong = jlong c "unsigned long"
+val ulong_long = jlong c "unsigned long long"
+val ufloat = jfloat c "unsigned float"
+val udouble = jdouble c "unsigned double"
+
+val uint32_t = jint c "uint32_t"
+val uint64_t = jlong c "uint64_t"
+
+val const_char_ptr = string_u8 c "const char*"
+val const_void_ptr = address c "const void*"
+
+val short_ptr = jshort_array c "short*"
+val int_ptr = jint_array c "int*"
+val float_ptr = jfloat_array c "float*"
+val double_ptr = jdouble_array c "double*"

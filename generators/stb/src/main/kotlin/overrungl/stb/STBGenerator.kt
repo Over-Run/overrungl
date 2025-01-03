@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2024 Overrun Organization
+ * Copyright (c) 2024-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -16,5 +16,25 @@
 
 package overrungl.stb
 
+import overrungl.gen.address
+import overrungl.gen.jboolean
+
+const val stbPackage = "overrungl.stb"
+const val stbLookup = "STBInternal.lookup()"
+
+val boolean_int = jboolean c "int"
+val uchar_ptr = address c "unsigned char *"
+val const_uchar_ptr = address c "const unsigned char *"
+
+val int_ptr_ptr = address c "int**"
+
 fun main() {
+    STBEasyFont()
+    STBImage()
+    STBImageResize2()
+    STBImageWrite()
+    STBPerlin()
+    STBRectPack()
+    STBTruetype()
+    STBVorbis()
 }

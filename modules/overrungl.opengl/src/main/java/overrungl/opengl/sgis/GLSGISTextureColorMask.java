@@ -1,0 +1,42 @@
+/*
+ * MIT License
+ *
+ * Copyright (c) 2022-2025 Overrun Organization
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ */
+
+// This file is auto-generated. DO NOT EDIT!
+package overrungl.opengl.sgis;
+
+import java.lang.foreign.*;
+import java.lang.invoke.*;
+import overrungl.annotation.*;
+import overrungl.internal.RuntimeHelper;
+import overrungl.util.*;
+
+public final class GLSGISTextureColorMask {
+    public static final int GL_TEXTURE_COLOR_WRITEMASK_SGIS = 0x81EF;
+    public static final MethodHandle MH_glTextureColorMaskSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_BOOLEAN));
+    public final MemorySegment PFN_glTextureColorMaskSGIS;
+
+    public GLSGISTextureColorMask(overrungl.opengl.GLLoadFunc func) {
+        PFN_glTextureColorMaskSGIS = func.invoke("glTextureColorMaskSGIS");
+    }
+
+    public void TextureColorMaskSGIS(@CType("GLboolean") boolean red, @CType("GLboolean") boolean green, @CType("GLboolean") boolean blue, @CType("GLboolean") boolean alpha) {
+        try { if (!Unmarshal.isNullPointer(PFN_glTextureColorMaskSGIS))
+            MH_glTextureColorMaskSGIS.invokeExact(PFN_glTextureColorMaskSGIS, red, green, blue, alpha);
+        }
+        catch (Throwable e) { throw new RuntimeException("error in glTextureColorMaskSGIS", e); }
+    }
+
+}

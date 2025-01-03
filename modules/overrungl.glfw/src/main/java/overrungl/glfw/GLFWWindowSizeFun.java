@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2024 Overrun Organization
+ * Copyright (c) 2022-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -14,44 +14,61 @@
  * copies or substantial portions of the Software.
  */
 
+// This file is auto-generated. DO NOT EDIT!
 package overrungl.glfw;
 
-import overrun.marshal.Upcall;
+import java.lang.foreign.*;
+import java.lang.invoke.*;
+import overrungl.annotation.*;
+import overrungl.upcall.*;
+import overrungl.util.*;
 
-import java.lang.foreign.Arena;
-import java.lang.foreign.FunctionDescriptor;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-/**
- * This is the function pointer type for window size callbacks. A window size
- * callback function has the following signature:
- * {@snippet :
- * void callbackName(MemorySegment window, int width, int height); // @link regex="functionName" target="#invoke"
- * }
- *
- * @author squid233
- * @see GLFW#setWindowSizeCallback
- * @since 0.1.0
- */
+/// The function pointer type for window size callbacks.
+/// 
+/// This is the function pointer type for window size callbacks.  A window size
+/// callback function has the following signature:
+/// ```java
+/// void callback_name(MemorySegment window, int width, int height)
+/// ```
+/// 
+/// @see GLFW#glfwSetWindowSizeCallback(MemorySegment, MemorySegment)
 @FunctionalInterface
 public interface GLFWWindowSizeFun extends Upcall {
-    /**
-     * The type.
-     */
-    Type<GLFWWindowSizeFun> TYPE = Upcall.type("invoke", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+    /// The function descriptor.
+    FunctionDescriptor DESCRIPTOR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+    /// The method handle of the target method.
+    MethodHandle HANDLE = Upcall.findTarget(GLFWWindowSizeFun.class, "invoke", DESCRIPTOR);
 
-    /**
-     * The function pointer type for window size callbacks.
-     *
-     * @param window The window that was resized.
-     * @param width  The new width, in screen coordinates, of the window.
-     * @param height The new height, in screen coordinates, of the window.
-     */
-    void invoke(MemorySegment window, int width, int height);
+    ///The target method of the upcall.
+    ///
+    ///Invoke
+    ///
+    ///@param window The window that was resized.
+    ///@param width The new width, in screen coordinates, of the window.
+    ///@param height The new height, in screen coordinates, of the window.
+    void invoke(@CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("int") int width, @CType("int") int height);
 
     @Override
-    default MemorySegment stub(Arena arena) {
-        return TYPE.of(arena, this);
+    default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
+
+    ///A static invoker of the target method.
+    ///
+    ///Invoke
+    ///
+    ///@param window The window that was resized.
+    ///@param width The new width, in screen coordinates, of the window.
+    ///@param height The new height, in screen coordinates, of the window.
+    ///@param stub the upcall stub
+    static void invoke(MemorySegment stub, @CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("int") int width, @CType("int") int height) {
+        try { HANDLE.invokeExact(stub, window, width, height); }
+        catch (Throwable e) { throw new RuntimeException("error in GLFWWindowSizeFun::invoke (static invoker)", e); }
+    }
+
+    /// A wrapper for the target method.
+    /// @param stub the upcall stub
+    /// @return an instance that wraps the static invoker
+    static GLFWWindowSizeFun wrap(MemorySegment stub) {
+        return (window, width, height) ->
+            invoke(stub, window, width, height);
     }
 }

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2024 Overrun Organization
+ * Copyright (c) 2022-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -18,11 +18,12 @@ package overrungl.internal;
 
 import io.github.overrun.platform.Architecture;
 import io.github.overrun.platform.Platform;
-import overrungl.Configurations;
+import overrungl.OverrunGLConfigurations;
 import overrungl.OverrunGL;
 
 import java.io.IOException;
 import java.lang.foreign.*;
+import java.lang.invoke.MethodHandle;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Objects;
@@ -37,6 +38,7 @@ public final class RuntimeHelper {
     private static final Path tmpdir = Path.of(System.getProperty("java.io.tmpdir"))
         .resolve("overrungl" + System.getProperty("user.name"));
     private static final StackWalker STACK_WALKER = StackWalker.getInstance(StackWalker.Option.RETAIN_CLASS_REFERENCE);
+    private static final Linker LINKER = Linker.nativeLinker();
 
     /**
      * constructor
@@ -108,15 +110,45 @@ public final class RuntimeHelper {
                 try (var is = STACK_WALKER.getCallerClass().getClassLoader().getResourceAsStream(fromPath)) {
                     Files.copy(Objects.requireNonNull(is, "File not found in classpath: " + fromPath), libFile);
                 } catch (Exception e) {
-                    throw new IllegalStateException("Couldn't load file: " + libFile + " or " + localFile + "; try setting -Doverrungl.natives to a valid path", e);
+                    throw new IllegalStateException("Couldn't load file: " + libFile.toAbsolutePath().normalize() + " or " + localFile.toAbsolutePath().normalize() + "; try setting -Doverrungl.natives to a valid path", e);
                 }
             }
             uri = libFile;
         }
-        if (Configurations.DEBUG.get()) {
+        if (OverrunGLConfigurations.DEBUG.get()) {
             OverrunGL.apiLog("[OverrunGL] Loading native library from: " + uri);
         }
         // Load the library by the path with the global arena
         return SymbolLookup.libraryLookup(uri, Arena.global());
+    }
+
+    /// Finds the address of the symbol with the given symbol lookup and name.
+    ///
+    /// @param lookup     the symbol lookup
+    /// @param name       the name of the symbol
+    /// @param descriptor the function descriptor
+    /// @return the method handle bound to the found address
+    public static MethodHandle downcall(SymbolLookup lookup, String name, FunctionDescriptor descriptor) {
+        return LINKER.downcallHandle(lookup.findOrThrow(name), descriptor);
+    }
+
+
+    /// Finds the address of the symbol with the given symbol lookup and name.
+    ///
+    /// @param lookup     the symbol lookup
+    /// @param name       the name of the symbol
+    /// @param descriptor the function descriptor
+    /// @return the method handle bound to the found address; or `null` if not found
+    public static MethodHandle downcallOrNull(SymbolLookup lookup, String name, FunctionDescriptor descriptor) {
+        var opt = lookup.find(name);
+        return opt.isPresent() ? LINKER.downcallHandle(opt.get(), descriptor) : null;
+    }
+
+    /// Creates a method handle without binding to a specific address.
+    ///
+    /// @param descriptor the function descriptor
+    /// @return the method handle
+    public static MethodHandle downcall(FunctionDescriptor descriptor) {
+        return LINKER.downcallHandle(descriptor);
     }
 }

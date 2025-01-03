@@ -25,5 +25,4 @@ module overrungl.glfw {
 
     requires transitive overrungl.core;
     requires static org.jetbrains.annotations;
-    requires io.github.overrun.memstack;
 }

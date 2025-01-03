@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2024 Overrun Organization
+ * Copyright (c) 2022-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -14,44 +14,41 @@
  * copies or substantial portions of the Software.
  */
 
+// This file is auto-generated. DO NOT EDIT!
 package overrungl.stb;
 
-import overrun.marshal.Upcall;
-import overrungl.NativeType;
+import java.lang.foreign.*;
+import java.lang.invoke.*;
+import overrungl.annotation.*;
+import overrungl.upcall.*;
+import overrungl.util.*;
 
-import java.lang.foreign.Arena;
-import java.lang.foreign.FunctionDescriptor;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-/**
- * OUTPUT CALLBACK: this callback is used for output scanlines
- * <p>
- * The output callback is considerably simpler - it just calls you so that you can dump
- * out each scanline. You could even directly copy out to disk if you have a simple format
- * like TGA or BMP. You can also convert to other output types here if you want.
- * <p>
- * Simple example:
- * <pre>{@code void const * my_output( void * output_ptr, int num_pixels, int y, void * context )
- * {
- *    percentage_done = y / output_height;
- *    fwrite( output_ptr, pixel_width_in_bytes, num_pixels, output_file );
- * }}</pre>
- *
- * @author squid233
- * @since 0.1.0
- */
+/// OUTPUT CALLBACK: this callback is used for output scanlines
 @FunctionalInterface
 public interface STBIROutputCallback extends Upcall {
-    /**
-     * the type
-     */
-    Type<STBIROutputCallback> TYPE = Upcall.type("invoke", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    /// The function descriptor.
+    FunctionDescriptor DESCRIPTOR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
+    /// The method handle of the target method.
+    MethodHandle HANDLE = Upcall.findTarget(STBIROutputCallback.class, "invoke", DESCRIPTOR);
 
-    void invoke(@NativeType("void const *") MemorySegment output_ptr, int num_pixels, int y, @NativeType("void *") MemorySegment context);
+    ///The target method of the upcall.
+    void invoke(@CType("void const *") java.lang.foreign.MemorySegment output_ptr, @CType("int") int num_pixels, @CType("int") int y, @CType("void*") java.lang.foreign.MemorySegment context);
 
     @Override
-    default MemorySegment stub(Arena arena) {
-        return TYPE.of(arena, this);
+    default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
+
+    ///A static invoker of the target method.
+    ///@param stub the upcall stub
+    static void invoke(MemorySegment stub, @CType("void const *") java.lang.foreign.MemorySegment output_ptr, @CType("int") int num_pixels, @CType("int") int y, @CType("void*") java.lang.foreign.MemorySegment context) {
+        try { HANDLE.invokeExact(stub, output_ptr, num_pixels, y, context); }
+        catch (Throwable e) { throw new RuntimeException("error in STBIROutputCallback::invoke (static invoker)", e); }
+    }
+
+    /// A wrapper for the target method.
+    /// @param stub the upcall stub
+    /// @return an instance that wraps the static invoker
+    static STBIROutputCallback wrap(MemorySegment stub) {
+        return (output_ptr, num_pixels, y, context) ->
+            invoke(stub, output_ptr, num_pixels, y, context);
     }
 }

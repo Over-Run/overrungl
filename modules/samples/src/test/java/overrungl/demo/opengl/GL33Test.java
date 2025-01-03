@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2024 Overrun Organization
+ * Copyright (c) 2022-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -18,19 +18,23 @@ package overrungl.demo.opengl;
 
 import org.joml.Matrix4f;
 import org.overrun.timer.Timer;
-import overrun.marshal.Unmarshal;
 import overrungl.glfw.GLFW;
 import overrungl.glfw.GLFWCallbacks;
 import overrungl.glfw.GLFWErrorCallback;
 import overrungl.joml.Matrixn;
 import overrungl.opengl.*;
-import overrungl.opengl.ext.amd.GLAMDDebugOutput;
-import overrungl.opengl.ext.arb.GLARBDebugOutput;
+import overrungl.opengl.amd.GLAMDDebugOutput;
+import overrungl.opengl.arb.GLARBDebugOutput;
+import overrungl.util.MemoryStack;
+import overrungl.util.Unmarshal;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
-import java.util.Objects;
+
+import static java.lang.foreign.ValueLayout.*;
+import static overrungl.glfw.GLFW.*;
+import static overrungl.opengl.GL.*;
 
 /**
  * Tests OpenGL 3.3 instanced rendering
@@ -42,7 +46,6 @@ public class GL33Test {
     private static final int INSTANCE_COUNT = square(10);
     private static final String WND_TITLE = "OpenGL 3.3";
     private static final boolean VSYNC = true;
-    private final GLFW glfw = GLFW.INSTANCE;
     private MemorySegment window;
     private GL gl;
     private int program;
@@ -61,66 +64,73 @@ public class GL33Test {
         }
         loop();
 
-        gl.deleteProgram(program);
-        gl.deleteVertexArrays(vao);
-        gl.deleteBuffers(vbo, ebo, mbo);
+        gl.DeleteProgram(program);
+        gl.DeleteVertexArrays(vao);
+        gl.DeleteBuffers(vbo);
+        gl.DeleteBuffers(ebo);
+        gl.DeleteBuffers(mbo);
 
         GLFWCallbacks.free(window);
-        glfw.destroyWindow(window);
+        glfwDestroyWindow(window);
         debugProc.close();
 
-        glfw.terminate();
-        glfw.setErrorCallback(null);
+        glfwTerminate();
+        glfwSetErrorCallback(MemorySegment.NULL);
     }
 
     private void init() {
-        GLFWErrorCallback.createPrint().set();
-        if (!glfw.init()) throw new IllegalStateException("Unable to initialize GLFW");
-        glfw.defaultWindowHints();
-        glfw.windowHint(GLFW.VISIBLE, false);
-        glfw.windowHint(GLFW.RESIZABLE, true);
-        glfw.windowHint(GLFW.CONTEXT_VERSION_MAJOR, 3);
-        glfw.windowHint(GLFW.CONTEXT_VERSION_MINOR, 3);
-        glfw.windowHint(GLFW.OPENGL_PROFILE, GLFW.OPENGL_CORE_PROFILE);
-        glfw.windowHint(GLFW.OPENGL_DEBUG_CONTEXT, true);
-        window = glfw.createWindow(640, 480, WND_TITLE, MemorySegment.NULL, MemorySegment.NULL);
+        glfwSetErrorCallback(GLFWErrorCallback.createPrint());
+        if (!glfwInit()) throw new IllegalStateException("Unable to initialize GLFW");
+        glfwDefaultWindowHints();
+        glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
+        glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+        glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+        glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GLFW_TRUE);
+        window = glfwCreateWindow(640, 480, WND_TITLE, MemorySegment.NULL, MemorySegment.NULL);
         if (Unmarshal.isNullPointer(window)) throw new IllegalStateException("Failed to create the GLFW window");
-        glfw.setKeyCallback(window, (_, key, _, action, _) -> {
-            if (key == GLFW.KEY_ESCAPE && action == GLFW.RELEASE) {
-                glfw.setWindowShouldClose(window, true);
+        glfwSetKeyCallback(window, (_, key, _, action, _) -> {
+            if (key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE) {
+                glfwSetWindowShouldClose(window, true);
             }
         });
-        glfw.setFramebufferSizeCallback(window, (_, width, height) ->
-            gl.viewport(0, 0, width, height));
-        var vidMode = glfw.getVideoMode(glfw.getPrimaryMonitor());
+        glfwSetFramebufferSizeCallback(window, (_, width, height) ->
+            gl.Viewport(0, 0, width, height));
+        var vidMode = glfwGetVideoMode(glfwGetPrimaryMonitor());
         if (vidMode != null) {
-            var size = glfw.getWindowSize(window);
-            glfw.setWindowPos(
-                window,
-                (vidMode.width() - size.x()) / 2,
-                (vidMode.height() - size.y()) / 2
-            );
+            try (var stack = MemoryStack.pushLocal()) {
+                MemorySegment width = stack.ints(0);
+                MemorySegment height = stack.ints(0);
+                glfwGetWindowSize(window, width, height);
+                glfwSetWindowPos(
+                    window,
+                    (vidMode.width() - width.get(JAVA_INT, 0)) / 2,
+                    (vidMode.height() - height.get(JAVA_INT, 0)) / 2
+                );
+            }
         }
 
-        glfw.makeContextCurrent(window);
-        if (VSYNC) glfw.swapInterval(1);
+        glfwMakeContextCurrent(window);
+        if (VSYNC) glfwSwapInterval(1);
 
-        glfw.showWindow(window);
+        glfwShowWindow(window);
     }
 
     private void load(Arena arena) {
-        final GLFlags flags = GLLoader.loadFlags(GLLoadFunc.withAlias(glfw::getProcAddress));
-        gl = Objects.requireNonNull(GLLoader.load(flags), "Failed to load OpenGL");
+        GLLoadFunc glLoadFunc = GLFW::glfwGetProcAddress;
+        gl = new GL(glLoadFunc);
 
+        var flags = new GLFlags(glLoadFunc);
         debugProc = GLUtil.setupDebugMessageCallback(gl,
             flags,
-            () -> GLLoader.loadBuiltin(flags, GLARBDebugOutput.class),
-            () -> GLLoader.loadBuiltin(flags, GLAMDDebugOutput.class));
-        gl.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
-        program = gl.createProgram();
-        int vsh = gl.createShader(GL.VERTEX_SHADER);
-        int fsh = gl.createShader(GL.FRAGMENT_SHADER);
-        gl.shaderSource(vsh, """
+            () -> new GLARBDebugOutput(glLoadFunc),
+            () -> new GLAMDDebugOutput(glLoadFunc));
+        gl.ClearColor(0.4f, 0.6f, 0.9f, 1.0f);
+        program = gl.CreateProgram();
+        int vsh = gl.CreateShader(GL_VERTEX_SHADER);
+        int fsh = gl.CreateShader(GL_FRAGMENT_SHADER);
+        gl.ShaderSource(vsh, """
             #version 330
 
             layout (location = 0) in vec3 position;
@@ -136,7 +146,7 @@ public class GL33Test {
                 vertexColor = color;
             }
             """);
-        gl.shaderSource(fsh, """
+        gl.ShaderSource(fsh, """
             #version 330
 
             in vec3 vertexColor;
@@ -147,39 +157,39 @@ public class GL33Test {
                 fragColor = vec4(vertexColor, 1.0);
             }
             """);
-        gl.compileShader(vsh);
-        gl.compileShader(fsh);
-        gl.attachShader(program, vsh);
-        gl.attachShader(program, fsh);
-        gl.linkProgram(program);
-        gl.detachShader(program, vsh);
-        gl.detachShader(program, fsh);
-        gl.deleteShader(vsh);
-        gl.deleteShader(fsh);
-        rotationMat = gl.getUniformLocation(program, "rotationMat");
+        gl.CompileShader(vsh);
+        gl.CompileShader(fsh);
+        gl.AttachShader(program, vsh);
+        gl.AttachShader(program, fsh);
+        gl.LinkProgram(program);
+        gl.DetachShader(program, vsh);
+        gl.DetachShader(program, fsh);
+        gl.DeleteShader(vsh);
+        gl.DeleteShader(fsh);
+        rotationMat = gl.GetUniformLocation(program, "rotationMat");
 
-        vao = gl.genVertexArrays();
-        gl.bindVertexArray(vao);
-        vbo = gl.genBuffers();
-        gl.bindBuffer(GL.ARRAY_BUFFER, vbo);
-        gl.bufferData(arena, GL.ARRAY_BUFFER, new float[]{
+        vao = gl.GenVertexArrays();
+        gl.BindVertexArray(vao);
+        vbo = gl.GenBuffers();
+        gl.BindBuffer(GL_ARRAY_BUFFER, vbo);
+        gl.BufferData(GL_ARRAY_BUFFER, arena.allocateFrom(JAVA_FLOAT,
             // Vertex          Color
             -0.5f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f,
             -0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f,
             0.5f, -0.5f, 0.0f, 1.0f, 1.0f, 0.0f,
             0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 0.0f
-        }, GL.STATIC_DRAW);
-        ebo = gl.genBuffers();
-        gl.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, ebo);
-        gl.bufferData(arena, GL.ELEMENT_ARRAY_BUFFER, new byte[]{
+        ), GL_STATIC_DRAW);
+        ebo = gl.GenBuffers();
+        gl.BindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
+        gl.BufferData(GL_ELEMENT_ARRAY_BUFFER, arena.allocateFrom(JAVA_BYTE, new byte[]{
             0, 1, 2, 2, 3, 0
-        }, GL.STATIC_DRAW);
-        gl.enableVertexAttribArray(0);
-        gl.enableVertexAttribArray(1);
-        gl.vertexAttribPointer(0, 3, GL.FLOAT, false, 24, MemorySegment.NULL);
-        gl.vertexAttribPointer(1, 3, GL.FLOAT, false, 24, MemorySegment.ofAddress(12));
-        mbo = gl.genBuffers();
-        gl.bindBuffer(GL.ARRAY_BUFFER, mbo);
+        }), GL_STATIC_DRAW);
+        gl.EnableVertexAttribArray(0);
+        gl.EnableVertexAttribArray(1);
+        gl.VertexAttribPointer(0, 3, GL_FLOAT, false, 24, MemorySegment.NULL);
+        gl.VertexAttribPointer(1, 3, GL_FLOAT, false, 24, MemorySegment.ofAddress(12));
+        mbo = gl.GenBuffers();
+        gl.BindBuffer(GL_ARRAY_BUFFER, mbo);
         var mat = new Matrix4f();
         var iseq = MemoryLayout.sequenceLayout(
             INSTANCE_COUNT,
@@ -204,21 +214,21 @@ public class GL33Test {
                 i * Matrixn.MAT4F.byteSize(),
                 matrices);
         }
-        gl.bufferData(GL.ARRAY_BUFFER, matrices, GL.STATIC_DRAW);
-        gl.enableVertexAttribArray(2);
-        gl.enableVertexAttribArray(3);
-        gl.enableVertexAttribArray(4);
-        gl.enableVertexAttribArray(5);
-        gl.vertexAttribPointer(2, 4, GL.FLOAT, false, 64, MemorySegment.NULL);
-        gl.vertexAttribPointer(3, 4, GL.FLOAT, false, 64, MemorySegment.ofAddress(16));
-        gl.vertexAttribPointer(4, 4, GL.FLOAT, false, 64, MemorySegment.ofAddress(32));
-        gl.vertexAttribPointer(5, 4, GL.FLOAT, false, 64, MemorySegment.ofAddress(48));
-        gl.vertexAttribDivisor(2, 1);
-        gl.vertexAttribDivisor(3, 1);
-        gl.vertexAttribDivisor(4, 1);
-        gl.vertexAttribDivisor(5, 1);
-        gl.bindBuffer(GL.ARRAY_BUFFER, 0);
-        gl.bindVertexArray(0);
+        gl.BufferData(GL_ARRAY_BUFFER, matrices, GL_STATIC_DRAW);
+        gl.EnableVertexAttribArray(2);
+        gl.EnableVertexAttribArray(3);
+        gl.EnableVertexAttribArray(4);
+        gl.EnableVertexAttribArray(5);
+        gl.VertexAttribPointer(2, 4, GL_FLOAT, false, 64, MemorySegment.NULL);
+        gl.VertexAttribPointer(3, 4, GL_FLOAT, false, 64, MemorySegment.ofAddress(16));
+        gl.VertexAttribPointer(4, 4, GL_FLOAT, false, 64, MemorySegment.ofAddress(32));
+        gl.VertexAttribPointer(5, 4, GL_FLOAT, false, 64, MemorySegment.ofAddress(48));
+        gl.VertexAttribDivisor(2, 1);
+        gl.VertexAttribDivisor(3, 1);
+        gl.VertexAttribDivisor(4, 1);
+        gl.VertexAttribDivisor(5, 1);
+        gl.BindBuffer(GL_ARRAY_BUFFER, 0);
+        gl.BindVertexArray(0);
     }
 
     private void loop() {
@@ -226,32 +236,32 @@ public class GL33Test {
             var matrix = new Matrix4f();
             var pRotationMat = Matrixn.allocate(arena, matrix);
 
-            var timer = Timer.ofGetter(20, glfw::getTime);
+            var timer = Timer.ofGetter(20, GLFW::glfwGetTime);
 
-            while (!glfw.windowShouldClose(window)) {
+            while (!glfwWindowShouldClose(window)) {
                 timer.advanceTime();
                 timer.performTicks(null);
 
-                gl.clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT);
+                gl.Clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
                 // Draw triangle
-                gl.useProgram(program);
+                gl.UseProgram(program);
 
                 // rotate 90deg per second
                 matrix.rotateZ((float) Math.toRadians(90 * timer.deltaTime()));
                 Matrixn.put(matrix, pRotationMat);
 
-                gl.uniformMatrix4fv(rotationMat, 1, false, pRotationMat);
-                gl.bindVertexArray(vao);
-                gl.drawElementsInstanced(GL.TRIANGLES, 6, GL.UNSIGNED_BYTE, MemorySegment.NULL, INSTANCE_COUNT);
-                gl.bindVertexArray(0);
-                gl.useProgram(0);
+                gl.UniformMatrix4fv(rotationMat, 1, false, pRotationMat);
+                gl.BindVertexArray(vao);
+                gl.DrawElementsInstanced(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, MemorySegment.NULL, INSTANCE_COUNT);
+                gl.BindVertexArray(0);
+                gl.UseProgram(0);
 
-                glfw.swapBuffers(window);
+                glfwSwapBuffers(window);
 
-                glfw.pollEvents();
+                glfwPollEvents();
 
-                timer.calcFPS(fps -> glfw.setWindowTitle(window, WND_TITLE + " FPS: " + fps));
+                timer.calcFPS(fps -> glfwSetWindowTitle(window, WND_TITLE + " FPS: " + fps));
             }
         }
     }

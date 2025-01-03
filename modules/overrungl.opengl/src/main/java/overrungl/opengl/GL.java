@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2024 Overrun Organization
+ * Copyright (c) 2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -16,18 +16,17 @@
 
 package overrungl.opengl;
 
-import overrun.marshal.DirectAccess;
-
 /**
- * The latest OpenGL functions.
+ * The latest OpenGL functions in core profile.
  *
  * @author squid233
  * @since 0.1.0
  */
-public interface GL extends
-    DirectAccess,
-    GL10C, GL11C, GL12C, GL13C, GL14C, GL15C,
-    GL20C, GL21C,
-    GL30C, GL31C, GL32C, GL33C,
-    GL40C, GL41C, GL42C, GL43C, GL44C, GL45C, GL46C {
+public final class GL extends GL46 {
+    /// Creates an instance of OpenGL functions.
+    ///
+    /// @param function a function that returns the address of specific OpenGL function
+    public GL(GLLoadFunc function) {
+        super(function);
+    }
 }

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023-2024 Overrun Organization
+ * Copyright (c) 2022-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -14,79 +14,160 @@
  * copies or substantial portions of the Software.
  */
 
+// This file is auto-generated. DO NOT EDIT!
 package overrungl.stb;
 
-import overrun.marshal.LayoutBuilder;
-import overrun.marshal.struct.Struct;
-import overrun.marshal.struct.StructAllocator;
+import java.lang.foreign.*;
+import java.lang.foreign.MemoryLayout.PathElement;
+import java.lang.invoke.*;
+import overrungl.annotation.*;
+import overrungl.struct.*;
+import overrungl.util.*;
 
-import java.lang.invoke.MethodHandles;
-
-/**
- * <h2>Layout</h2>
- * <pre><code>
- * typedef struct stbtt_kerningentry
- * {
- *    int {@link #glyph1}; // use stbtt_FindGlyphIndex
- *    int {@link #glyph2};
- *    int {@link #advance};
- * } stbtt_kerningentry;
- * </code></pre>
- *
- * @author squid233
- * @since 0.1.0
- */
-public interface STBTTKerningEntry extends Struct<STBTTKerningEntry> {
-    /**
-     * The allocator
-     */
-    StructAllocator<STBTTKerningEntry> OF = new StructAllocator<>(
-        MethodHandles.lookup(),
-        LayoutBuilder.struct()
-            .cInt("glyph1")
-            .cInt("glyph2")
-            .cInt("advance")
-            .build()
+/// ## Members
+/// ### glyph1
+/// [VarHandle][#VH_glyph1] - [Getter][#glyph1()] - [Setter][#glyph1(int)]
+///
+/// use stbtt_FindGlyphIndex
+///
+/// ### glyph2
+/// [VarHandle][#VH_glyph2] - [Getter][#glyph2()] - [Setter][#glyph2(int)]
+/// ### advance
+/// [VarHandle][#VH_advance] - [Getter][#advance()] - [Setter][#advance(int)]
+/// ## Layout
+/// [Java definition][#LAYOUT]
+/// ```c
+/// typedef struct stbtt_kerningentry {
+///     int glyph1;
+///     int glyph2;
+///     int advance;
+/// } STBTTKerningEntry;
+/// ```
+public final class STBTTKerningEntry extends Struct {
+    /// The struct layout of `stbtt_kerningentry`.
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+        ValueLayout.JAVA_INT.withName("glyph1"),
+        ValueLayout.JAVA_INT.withName("glyph2"),
+        ValueLayout.JAVA_INT.withName("advance")
     );
+    /// The [VarHandle] of `glyph1` of type `(MemorySegment base, long baseOffset, long index)int`.
+    public static final VarHandle VH_glyph1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("glyph1"));
+    /// The [VarHandle] of `glyph2` of type `(MemorySegment base, long baseOffset, long index)int`.
+    public static final VarHandle VH_glyph2 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("glyph2"));
+    /// The [VarHandle] of `advance` of type `(MemorySegment base, long baseOffset, long index)int`.
+    public static final VarHandle VH_advance = LAYOUT.arrayElementVarHandle(PathElement.groupElement("advance"));
 
-    /**
-     * use stbtt_FindGlyphIndex
-     *
-     * @return glyph1
-     */
-    int glyph1();
+    /// Creates `STBTTKerningEntry` with the given segment.
+    /// @param segment the memory segment
+    public STBTTKerningEntry(MemorySegment segment) { super(segment, LAYOUT); }
 
-    /**
-     * Sets {@link #glyph1()}.
-     *
-     * @param val the value
-     * @return this
-     */
-    STBTTKerningEntry glyph1(int val);
+    /// Creates `STBTTKerningEntry` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static STBTTKerningEntry of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new STBTTKerningEntry(segment); }
 
-    /**
-     * {@return glyph2}
-     */
-    int glyph2();
+    /// Allocates a `STBTTKerningEntry` with the given segment allocator.
+    /// @param allocator the segment allocator
+    /// @return the allocated `STBTTKerningEntry`
+    public static STBTTKerningEntry alloc(SegmentAllocator allocator) { return new STBTTKerningEntry(allocator.allocate(LAYOUT)); }
 
-    /**
-     * Sets {@link #glyph2()}.
-     *
-     * @param val the value
-     * @return this
-     */
-    STBTTKerningEntry glyph2(int val);
+    /// Allocates a `STBTTKerningEntry` with the given segment allocator and count.
+    /// @param allocator the segment allocator
+    /// @param count     the count
+    /// @return the allocated `STBTTKerningEntry`
+    public static STBTTKerningEntry alloc(SegmentAllocator allocator, long count) { return new STBTTKerningEntry(allocator.allocate(LAYOUT, count)); }
 
-    /**
-     * {@return advance}
-     */
-    int advance();
+    /// {@return `glyph1` at the given index}
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("int") int get_glyph1(MemorySegment segment, long index) { return (int) VH_glyph1.get(segment, 0L, index); }
+    /// {@return `glyph1`}
+    /// @param segment the segment of the struct
+    public static @CType("int") int get_glyph1(MemorySegment segment) { return STBTTKerningEntry.get_glyph1(segment, 0L); }
+    /// {@return `glyph1` at the given index}
+    /// @param index the index
+    public @CType("int") int glyph1At(long index) { return STBTTKerningEntry.get_glyph1(this.segment(), index); }
+    /// {@return `glyph1`}
+    public @CType("int") int glyph1() { return STBTTKerningEntry.get_glyph1(this.segment()); }
+    /// Sets `glyph1` with the given value at the given index.
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_glyph1(MemorySegment segment, long index, @CType("int") int value) { VH_glyph1.set(segment, 0L, index, value); }
+    /// Sets `glyph1` with the given value.
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_glyph1(MemorySegment segment, @CType("int") int value) { STBTTKerningEntry.set_glyph1(segment, 0L, value); }
+    /// Sets `glyph1` with the given value at the given index.
+    /// @param index the index
+    /// @param value the value
+    /// @return `this`
+    public STBTTKerningEntry glyph1At(long index, @CType("int") int value) { STBTTKerningEntry.set_glyph1(this.segment(), index, value); return this; }
+    /// Sets `glyph1` with the given value.
+    /// @param value the value
+    /// @return `this`
+    public STBTTKerningEntry glyph1(@CType("int") int value) { STBTTKerningEntry.set_glyph1(this.segment(), value); return this; }
 
-    /**
-     * Sets {@link #advance()}.
-     *
-     * @param val the value
-     * @return this
-     */
-    STBTTKerningEntry advance(int val);
+    /// {@return `glyph2` at the given index}
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("int") int get_glyph2(MemorySegment segment, long index) { return (int) VH_glyph2.get(segment, 0L, index); }
+    /// {@return `glyph2`}
+    /// @param segment the segment of the struct
+    public static @CType("int") int get_glyph2(MemorySegment segment) { return STBTTKerningEntry.get_glyph2(segment, 0L); }
+    /// {@return `glyph2` at the given index}
+    /// @param index the index
+    public @CType("int") int glyph2At(long index) { return STBTTKerningEntry.get_glyph2(this.segment(), index); }
+    /// {@return `glyph2`}
+    public @CType("int") int glyph2() { return STBTTKerningEntry.get_glyph2(this.segment()); }
+    /// Sets `glyph2` with the given value at the given index.
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_glyph2(MemorySegment segment, long index, @CType("int") int value) { VH_glyph2.set(segment, 0L, index, value); }
+    /// Sets `glyph2` with the given value.
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_glyph2(MemorySegment segment, @CType("int") int value) { STBTTKerningEntry.set_glyph2(segment, 0L, value); }
+    /// Sets `glyph2` with the given value at the given index.
+    /// @param index the index
+    /// @param value the value
+    /// @return `this`
+    public STBTTKerningEntry glyph2At(long index, @CType("int") int value) { STBTTKerningEntry.set_glyph2(this.segment(), index, value); return this; }
+    /// Sets `glyph2` with the given value.
+    /// @param value the value
+    /// @return `this`
+    public STBTTKerningEntry glyph2(@CType("int") int value) { STBTTKerningEntry.set_glyph2(this.segment(), value); return this; }
+
+    /// {@return `advance` at the given index}
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("int") int get_advance(MemorySegment segment, long index) { return (int) VH_advance.get(segment, 0L, index); }
+    /// {@return `advance`}
+    /// @param segment the segment of the struct
+    public static @CType("int") int get_advance(MemorySegment segment) { return STBTTKerningEntry.get_advance(segment, 0L); }
+    /// {@return `advance` at the given index}
+    /// @param index the index
+    public @CType("int") int advanceAt(long index) { return STBTTKerningEntry.get_advance(this.segment(), index); }
+    /// {@return `advance`}
+    public @CType("int") int advance() { return STBTTKerningEntry.get_advance(this.segment()); }
+    /// Sets `advance` with the given value at the given index.
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_advance(MemorySegment segment, long index, @CType("int") int value) { VH_advance.set(segment, 0L, index, value); }
+    /// Sets `advance` with the given value.
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_advance(MemorySegment segment, @CType("int") int value) { STBTTKerningEntry.set_advance(segment, 0L, value); }
+    /// Sets `advance` with the given value at the given index.
+    /// @param index the index
+    /// @param value the value
+    /// @return `this`
+    public STBTTKerningEntry advanceAt(long index, @CType("int") int value) { STBTTKerningEntry.set_advance(this.segment(), index, value); return this; }
+    /// Sets `advance` with the given value.
+    /// @param value the value
+    /// @return `this`
+    public STBTTKerningEntry advance(@CType("int") int value) { STBTTKerningEntry.set_advance(this.segment(), value); return this; }
+
 }

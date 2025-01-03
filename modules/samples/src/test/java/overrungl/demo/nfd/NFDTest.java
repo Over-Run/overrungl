@@ -16,9 +16,9 @@
 
 package overrungl.demo.nfd;
 
-import io.github.overrun.memstack.MemoryStack;
 import overrungl.nfd.NFDEnumerator;
-import overrungl.nfd.NFDNFilterItem;
+import overrungl.nfd.NFDFilterItem;
+import overrungl.util.MemoryStack;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
@@ -42,7 +42,7 @@ public final class NFDTest {
             String[] outPath = new String[1];
 
             // prepare filters for the dialog
-            final var filterItem = NFDNFilterItem.create(stack,
+            final var filterItem = NFDFilterItem.create(stack,
                 Map.entry("Source code", "java"),
                 Map.entry("Image file", "png,jpg"));
 
@@ -72,7 +72,7 @@ public final class NFDTest {
             String[] outPath = new String[1];
 
             // prepare filters for the dialog
-            final var filterItem = NFDNFilterItem.create(stack,
+            final var filterItem = NFDFilterItem.create(stack,
                 Map.entry("Source code", "java"),
                 Map.entry("Image file", "png,jpg"));
 
@@ -114,7 +114,7 @@ public final class NFDTest {
             MemorySegment pOutPaths = stack.allocate(ValueLayout.ADDRESS);
 
             // prepare filters for the dialog
-            final var filterItem = NFDNFilterItem.create(stack,
+            final var filterItem = NFDFilterItem.create(stack,
                 Map.entry("Source code", "java"),
                 Map.entry("Image file", "png,jpg"));
 
@@ -178,7 +178,7 @@ public final class NFDTest {
             String[] savePath = new String[1];
 
             // prepare filters for the dialog
-            final var filterItem = NFDNFilterItem.create(stack,
+            final var filterItem = NFDFilterItem.create(stack,
                 Map.entry("Source code", "java"),
                 Map.entry("Image file", "png,jpg"));
 

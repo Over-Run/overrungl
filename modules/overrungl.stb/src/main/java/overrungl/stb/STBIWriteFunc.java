@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2024 Overrun Organization
+ * Copyright (c) 2022-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -14,36 +14,40 @@
  * copies or substantial portions of the Software.
  */
 
+// This file is auto-generated. DO NOT EDIT!
 package overrungl.stb;
 
-import overrun.marshal.Upcall;
+import java.lang.foreign.*;
+import java.lang.invoke.*;
+import overrungl.annotation.*;
+import overrungl.upcall.*;
+import overrungl.util.*;
 
-import java.lang.foreign.Arena;
-import java.lang.foreign.FunctionDescriptor;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-/**
- * The write-callback.
- *
- * @author squid233
- * @since 0.1.0
- */
 @FunctionalInterface
 public interface STBIWriteFunc extends Upcall {
-    /**
-     * the type
-     */
-    Type<STBIWriteFunc> TYPE = Upcall.type("ninvoke", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+    /// The function descriptor.
+    FunctionDescriptor DESCRIPTOR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
+    /// The method handle of the target method.
+    MethodHandle HANDLE = Upcall.findTarget(STBIWriteFunc.class, "invoke", DESCRIPTOR);
 
-    void invoke(MemorySegment context, MemorySegment data);
-
-    default void ninvoke(MemorySegment context, MemorySegment data, int size) {
-        invoke(context, data.reinterpret(size));
-    }
+    ///The target method of the upcall.
+    void invoke(@CType("void*") java.lang.foreign.MemorySegment context, @CType("void*") java.lang.foreign.MemorySegment data, @CType("int") int size);
 
     @Override
-    default MemorySegment stub(Arena arena) {
-        return TYPE.of(arena, this);
+    default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
+
+    ///A static invoker of the target method.
+    ///@param stub the upcall stub
+    static void invoke(MemorySegment stub, @CType("void*") java.lang.foreign.MemorySegment context, @CType("void*") java.lang.foreign.MemorySegment data, @CType("int") int size) {
+        try { HANDLE.invokeExact(stub, context, data, size); }
+        catch (Throwable e) { throw new RuntimeException("error in STBIWriteFunc::invoke (static invoker)", e); }
+    }
+
+    /// A wrapper for the target method.
+    /// @param stub the upcall stub
+    /// @return an instance that wraps the static invoker
+    static STBIWriteFunc wrap(MemorySegment stub) {
+        return (context, data, size) ->
+            invoke(stub, context, data, size);
     }
 }

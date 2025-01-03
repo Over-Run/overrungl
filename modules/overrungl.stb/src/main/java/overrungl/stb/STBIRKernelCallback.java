@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2024 Overrun Organization
+ * Copyright (c) 2022-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -14,34 +14,41 @@
  * copies or substantial portions of the Software.
  */
 
+// This file is auto-generated. DO NOT EDIT!
 package overrungl.stb;
 
-import overrun.marshal.Upcall;
-import overrungl.NativeType;
+import java.lang.foreign.*;
+import java.lang.invoke.*;
+import overrungl.annotation.*;
+import overrungl.upcall.*;
+import overrungl.util.*;
 
-import java.lang.foreign.Arena;
-import java.lang.foreign.FunctionDescriptor;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
-
-/**
- * callbacks for user installed filters
- *
- * @author squid233
- * @since 0.1.0
- */
+/// callbacks for user installed filters
 @FunctionalInterface
 public interface STBIRKernelCallback extends Upcall {
-    /**
-     * the type
-     */
-    Type<STBIRKernelCallback> TYPE = Upcall.type("invoke", FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS));
+    /// The function descriptor.
+    FunctionDescriptor DESCRIPTOR = FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS);
+    /// The method handle of the target method.
+    MethodHandle HANDLE = Upcall.findTarget(STBIRKernelCallback.class, "invoke", DESCRIPTOR);
 
-    // centered at zero
-    float invoke(float x, float scale, @NativeType("void *") MemorySegment user_data);
+    ///The target method of the upcall.
+    @CType("float") float invoke(@CType("float") float x, @CType("float") float scale, @CType("void*") java.lang.foreign.MemorySegment user_data);
 
     @Override
-    default MemorySegment stub(Arena arena) {
-        return TYPE.of(arena, this);
+    default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
+
+    ///A static invoker of the target method.
+    ///@param stub the upcall stub
+    static @CType("float") float invoke(MemorySegment stub, @CType("float") float x, @CType("float") float scale, @CType("void*") java.lang.foreign.MemorySegment user_data) {
+        try { return (float) HANDLE.invokeExact(stub, x, scale, user_data); }
+        catch (Throwable e) { throw new RuntimeException("error in STBIRKernelCallback::invoke (static invoker)", e); }
+    }
+
+    /// A wrapper for the target method.
+    /// @param stub the upcall stub
+    /// @return an instance that wraps the static invoker
+    static STBIRKernelCallback wrap(MemorySegment stub) {
+        return (x, scale, user_data) ->
+            invoke(stub, x, scale, user_data);
     }
 }

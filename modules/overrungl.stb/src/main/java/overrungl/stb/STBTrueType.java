@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2024 Overrun Organization
+ * Copyright (c) 2024-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -16,15 +16,18 @@
 
 package overrungl.stb;
 
-import overrun.marshal.DirectAccess;
-import overrun.marshal.Downcall;
-import overrun.marshal.gen.AsBool;
-import overrun.marshal.gen.Convert;
-import overrun.marshal.gen.Entrypoint;
-import overrungl.NativeType;
+import overrungl.annotation.CType;
+import overrungl.annotation.Out;
+import overrungl.internal.RuntimeHelper;
+import overrungl.util.Marshal;
+import overrungl.util.MemoryStack;
+import overrungl.util.Unmarshal;
 
+import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
-import java.lang.invoke.MethodHandles;
+import java.lang.foreign.ValueLayout;
+import java.lang.invoke.MethodHandle;
+import java.nio.charset.StandardCharsets;
 
 /**
  * =======================================================================
@@ -150,15 +153,13 @@ import java.lang.invoke.MethodHandles;
  * <h2>SAMPLE PROGRAMS</h2>
  * Incomplete text-in-3d-api example, which draws quads properly aligned to be lossless.
  * {@snippet lang = java:
- * import io.github.overrun.memstack.MemoryStack;
  * import java.lang.foreign.Arena;
  * import java.nio.channels.FileChannel;
  * import java.nio.file.Path;
  * import java.nio.file.StandardOpenOption;
- * STBTrueType stbtt = STBTrueType.INSTANCE;
  * Arena arena = Arena.ofAuto();
  *
- * STBTTBakedChar cdata = STBTTBakedChar.OF.of(arena, 96);
+ * STBTTBakedChar cdata = STBTTBakedChar.alloc(arena, 96);
  * int ftex = 0;
  *
  * void my_stbtt_initfont() {
@@ -167,45 +168,44 @@ import java.lang.invoke.MethodHandles;
  *         var ttf_buffer = bufArena.allocate(1 << 20);
  *         var temp_bitmap = bufArena.allocate(512 * 512);
  *         ttf_buffer.copyFrom(fc.map(FileChannel.MapMode.READ_ONLY, 0, 1 << 20, arena));
- *         stbtt.bakeFontBitmap(ttf_buffer, 0, 32.0f, temp_bitmap, 512, 512, 32, 96, cdata); // no guarantee this fits!
+ *         stbtt_BakeFontBitmap(ttf_buffer, 0, 32.0f, temp_bitmap, 512, 512, 32, 96, cdata); // no guarantee this fits!
  *         // can free ttf_buffer at this point
- *         ftex = gl.genTextures();
- *         gl.bindTexture(GL.TEXTURE_2D, ftex);
- *         gl.texImage2D(GL.TEXTURE_2D, 0, GL.ALPHA, 512, 512, 0, GL.ALPHA, GL.UNSIGNED_BYTE, temp_bitmap);
+ *         ftex = gl.GenTextures();
+ *         gl.BindTexture(GL_TEXTURE_2D, ftex);
+ *         gl.TexImage2D(GL_TEXTURE_2D, 0, GL_ALPHA, 512, 512, 0, GL_ALPHA, GL_UNSIGNED_BYTE, temp_bitmap);
  *         // can free temp_bitmap at this point
- *         gl.texParameteri(GL.TEXTURE_2D, GL.TEXTURE_MIN_FILTER, GL.LINEAR);
+ *         gl.TexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
  *     }
  * }
  *
  * void my_stbtt_print(float x, float y, String text) {
  *     // assume orthographic projection with units = screen pixels, origin at top left
- *     gl.enable(GL.BLEND);
- *     gl.blendFunc(GL.SRC_ALPHA, GL.ONE_MINUS_SRC_ALPHA);
- *     gl.enable(GL.TEXTURE_2D);
- *     gl.bindTexture(GL.TEXTURE_2D, ftex);
- *     gl.begin(GL.QUADS);
+ *     gl.Enable(GL_BLEND);
+ *     gl.BlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+ *     gl.Enable(GL_TEXTURE_2D);
+ *     gl.BindTexture(GL_TEXTURE_2D, ftex);
+ *     gl.Begin(GL_QUADS);
  *     try (var stack = MemoryStack.pushLocal()) {
- *         var q = STBTTAlignedQuad.OF.of(stack);
- *         var px = stack.floats(x);
- *         var py = stack.floats(y);
+ *         var q = STBTTAlignedQuad.alloc(stack);
+ *         var px = stack.allocateFrom(ValueLayout.JAVA_FLOAT, x);
+ *         var py = stack.allocateFrom(ValueLayout.JAVA_FLOAT, y);
  *         for (int i = 0, c = text.codePointCount(0, text.length()); i < c; i++) {
  *             int p = text.codePointAt(i);
  *             if (p >= 32 && p < 128) {
- *                 stbtt.getBakedQuad(cdata, 512, 512, p - 32, px, py, q, true); //true=opengl & d3d10+,false=d3d9
- *                 gl.texCoord2f(q.s0(), q.t0()); gl.vertex2f(q.x0(), q.y0());
- *                 gl.texCoord2f(q.s1(), q.t0()); gl.vertex2f(q.x1(), q.y0());
- *                 gl.texCoord2f(q.s1(), q.t1()); gl.vertex2f(q.x1(), q.y1());
- *                 gl.texCoord2f(q.s0(), q.t1()); gl.vertex2f(q.x0(), q.y1());
+ *                 stbtt_GetBakedQuad(cdata.segment(), 512, 512, p - 32, px, py, q.segment(), true); //true=opengl & d3d10+,false=d3d9
+ *                 gl.TexCoord2f(q.s0(), q.t0()); gl.Vertex2f(q.x0(), q.y0());
+ *                 gl.TexCoord2f(q.s1(), q.t0()); gl.Vertex2f(q.x1(), q.y0());
+ *                 gl.TexCoord2f(q.s1(), q.t1()); gl.Vertex2f(q.x1(), q.y1());
+ *                 gl.TexCoord2f(q.s0(), q.t1()); gl.Vertex2f(q.x0(), q.y1());
  *             }
  *         }
  *     }
- *     gl.end();
+ *     gl.End();
  * }
  *}
  * <p>
  * Complete program (this compiles): get a single bitmap, print as ASCII art
  * {@snippet lang = java:
- * import io.github.overrun.memstack.MemoryStack;
  * import overrungl.stb.STBTTFontInfo;
  * import overrungl.stb.STBTrueType;
  *
@@ -218,22 +218,21 @@ import java.lang.invoke.MethodHandles;
  * import java.nio.file.StandardOpenOption;
  *
  * void main(String[] args) throws IOException {
- *     var stbtt = STBTrueType.INSTANCE;
  *     var arena = Arena.ofAuto();
  *
- *     var font = STBTTFontInfo.OF.of(arena);
+ *     var font = STBTTFontInfo.alloc(arena);
  *     int c = (args.length > 0 ? Integer.parseInt(args[0]) : 'a');
  *     int s = (args.length > 1 ? Integer.parseInt(args[1]) : 20);
  *
  *     try (var fc = FileChannel.open(Path.of(args.length > 2 ? args[2] : "c:/windows/fonts/arialbd.ttf"), StandardOpenOption.READ)) {
  *         var ttf_buffer = fc.map(FileChannel.MapMode.READ_ONLY, 0, fc.size(), arena);
- *         stbtt.initFont(font, ttf_buffer, stbtt.getFontOffsetForIndex(ttf_buffer, 0));
+ *         stbtt_InitFont(font, ttf_buffer, stbtt_GetFontOffsetForIndex(ttf_buffer, 0));
  *     }
  *
  *     try (var stack = MemoryStack.pushLocal()) {
- *         var pw = stack.ints(0);
- *         var ph = stack.ints(0);
- *         var bitmap = stbtt.getCodepointBitmap(font, 0, stbtt.scaleForPixelHeight(font, s), c, pw, ph, MemorySegment.NULL, MemorySegment.NULL);
+ *         var pw = stack.allocateFrom(ValueLayout.JAVA_INT, 0);
+ *         var ph = stack.allocateFrom(ValueLayout.JAVA_INT, 0);
+ *         var bitmap = stbtt_GetCodepointBitmap(font.segment(), 0, stbtt_ScaleForPixelHeight(font, s), c, pw, ph, MemorySegment.NULL, MemorySegment.NULL);
  *         int w = pw.get(ValueLayout.JAVA_INT, 0);
  *         int h = ph.get(ValueLayout.JAVA_INT, 0);
  *         bitmap = bitmap.reinterpret((long) w * h);
@@ -310,1175 +309,1288 @@ import java.lang.invoke.MethodHandles;
  * @author squid233
  * @since 0.1.0
  */
-public interface STBTrueType extends DirectAccess {
-    /**
-     * The instance of STBTrueType.
-     */
-    STBTrueType INSTANCE = Downcall.load(MethodHandles.lookup(), Handles.lookup);
-    /**
-     * STBTT_vmove
-     */
-    int vmove = 1,
-        vline = 2,
-        vcurve = 3,
-        vcubic = 4;
-    /**
-     * macStyle
-     */
-    int MACSTYLE_DONTCARE = 0,
-        MACSTYLE_BOLD = 1,
-        MACSTYLE_ITALIC = 2,
-        MACSTYLE_UNDERSCORE = 4,
-        MACSTYLE_NONE = 8;
-    /**
-     * platformID
-     */
-    int PLATFORM_ID_UNICODE = 0,
-        PLATFORM_ID_MAC = 1,
-        PLATFORM_ID_ISO = 2,
-        PLATFORM_ID_MICROSOFT = 3;
-    /**
-     * encodingID for STBTT_PLATFORM_ID_UNICODE
-     */
-    int UNICODE_EID_UNICODE_1_0 = 0,
-        UNICODE_EID_UNICODE_1_1 = 1,
-        UNICODE_EID_ISO_10646 = 2,
-        UNICODE_EID_UNICODE_2_0_BMP = 3,
-        UNICODE_EID_UNICODE_2_0_FULL = 4;
-    /**
-     * encodingID for STBTT_PLATFORM_ID_MICROSOFT
-     */
-    int MS_EID_SYMBOL = 0,
-        MS_EID_UNICODE_BMP = 1,
-        MS_EID_SHIFTJIS = 2,
-        MS_EID_UNICODE_FULL = 10;
-    /**
-     * encodingID for STBTT_PLATFORM_ID_MAC; same as Script Manager codes
-     */
-    int MAC_EID_ROMAN = 0, MAC_EID_ARABIC = 4,
-        MAC_EID_JAPANESE = 1, MAC_EID_HEBREW = 5,
-        MAC_EID_CHINESE_TRAD = 2, MAC_EID_GREEK = 6,
-        MAC_EID_KOREAN = 3, MAC_EID_RUSSIAN = 7;
-    /**
-     * languageID for STBTT_PLATFORM_ID_MICROSOFT; same as LCID...
-     * <p>
-     * problematic because there are e.g. 16 english LCIDs and 16 arabic LCIDs
-     */
-    int MS_LANG_ENGLISH = 0x0409, MS_LANG_ITALIAN = 0x0410,
-        MS_LANG_CHINESE = 0x0804, MS_LANG_JAPANESE = 0x0411,
-        MS_LANG_DUTCH = 0x0413, MS_LANG_KOREAN = 0x0412,
-        MS_LANG_FRENCH = 0x040c, MS_LANG_RUSSIAN = 0x0419,
-        MS_LANG_GERMAN = 0x0407, MS_LANG_SPANISH = 0x0409,
-        MS_LANG_HEBREW = 0x040d, MS_LANG_SWEDISH = 0x041D;
-    /**
-     * languageID for STBTT_PLATFORM_ID_MAC
-     */
-    int MAC_LANG_ENGLISH = 0, MAC_LANG_JAPANESE = 11,
-        MAC_LANG_ARABIC = 12, MAC_LANG_KOREAN = 23,
-        MAC_LANG_DUTCH = 4, MAC_LANG_RUSSIAN = 32,
-        MAC_LANG_FRENCH = 1, MAC_LANG_SPANISH = 6,
-        MAC_LANG_GERMAN = 2, MAC_LANG_SWEDISH = 5,
-        MAC_LANG_HEBREW = 10, MAC_LANG_CHINESE_SIMPLIFIED = 33,
-        MAC_LANG_ITALIAN = 3, MAC_LANG_CHINESE_TRAD = 19;
+public final class STBTrueType {
+    //region ---[BEGIN GENERATOR BEGIN]---
+    //@formatter:off
+    //region Fields
+    public static final int
+        STBTT_vmove = 1,
+        STBTT_vline = 2,
+        STBTT_vcurve = 3,
+        STBTT_vcubic = 4;
+    ///#### Documentation of fields
+    ///##### STBTT_MACSTYLE_NONE
+    ///<= not same as 0, this makes us check the bitfield is 0
+    public static final int
+        STBTT_MACSTYLE_DONTCARE = 0,
+        STBTT_MACSTYLE_BOLD = 1,
+        STBTT_MACSTYLE_ITALIC = 2,
+        STBTT_MACSTYLE_UNDERSCORE = 4,
+        STBTT_MACSTYLE_NONE = 8;
+    public static final int STBTT_PLATFORM_ID_UNICODE = 0;
+    public static final int STBTT_PLATFORM_ID_MAC = 1;
+    public static final int STBTT_PLATFORM_ID_ISO = 2;
+    public static final int STBTT_PLATFORM_ID_MICROSOFT = 3;
+    public static final int STBTT_UNICODE_EID_UNICODE_1_0 = 0;
+    public static final int STBTT_UNICODE_EID_UNICODE_1_1 = 1;
+    public static final int STBTT_UNICODE_EID_ISO_10646 = 2;
+    public static final int STBTT_UNICODE_EID_UNICODE_2_0_BMP = 3;
+    public static final int STBTT_UNICODE_EID_UNICODE_2_0_FULL = 4;
+    public static final int STBTT_MS_EID_SYMBOL = 0;
+    public static final int STBTT_MS_EID_UNICODE_BMP = 1;
+    public static final int STBTT_MS_EID_SHIFTJIS = 2;
+    public static final int STBTT_MS_EID_UNICODE_FULL = 10;
+    public static final int STBTT_MAC_EID_ROMAN = 0;
+    public static final int STBTT_MAC_EID_JAPANESE = 1;
+    public static final int STBTT_MAC_EID_CHINESE_TRAD = 2;
+    public static final int STBTT_MAC_EID_KOREAN = 3;
+    public static final int STBTT_MAC_EID_ARABIC = 4;
+    public static final int STBTT_MAC_EID_HEBREW = 5;
+    public static final int STBTT_MAC_EID_GREEK = 6;
+    public static final int STBTT_MAC_EID_RUSSIAN = 7;
+    public static final int STBTT_MS_LANG_ENGLISH = 0x0409;
+    public static final int STBTT_MS_LANG_CHINESE = 0x0804;
+    public static final int STBTT_MS_LANG_DUTCH = 0x0413;
+    public static final int STBTT_MS_LANG_FRENCH = 0x040c;
+    public static final int STBTT_MS_LANG_GERMAN = 0x0407;
+    public static final int STBTT_MS_LANG_HEBREW = 0x040d;
+    public static final int STBTT_MS_LANG_ITALIAN = 0x0410;
+    public static final int STBTT_MS_LANG_JAPANESE = 0x0411;
+    public static final int STBTT_MS_LANG_KOREAN = 0x0412;
+    public static final int STBTT_MS_LANG_RUSSIAN = 0x0419;
+    public static final int STBTT_MS_LANG_SPANISH = 0x0409;
+    public static final int STBTT_MS_LANG_SWEDISH = 0x041D;
+    public static final int STBTT_MAC_LANG_ENGLISH = 0;
+    public static final int STBTT_MAC_LANG_ARABIC = 12;
+    public static final int STBTT_MAC_LANG_DUTCH = 4;
+    public static final int STBTT_MAC_LANG_FRENCH = 1;
+    public static final int STBTT_MAC_LANG_GERMAN = 2;
+    public static final int STBTT_MAC_LANG_HEBREW = 10;
+    public static final int STBTT_MAC_LANG_ITALIAN = 3;
+    public static final int STBTT_MAC_LANG_JAPANESE = 11;
+    public static final int STBTT_MAC_LANG_KOREAN = 23;
+    public static final int STBTT_MAC_LANG_RUSSIAN = 32;
+    public static final int STBTT_MAC_LANG_SPANISH = 6;
+    public static final int STBTT_MAC_LANG_SWEDISH = 5;
+    public static final int STBTT_MAC_LANG_CHINESE_SIMPLIFIED = 33;
+    public static final int STBTT_MAC_LANG_CHINESE_TRAD = 19;
+    //endregion
+    //region Method handles
+    /// Method handles.
+    public static final class Handles {
+        private Handles() { }
+        /// The method handle of `stbtt_BakeFontBitmap`.
+        public static final MethodHandle MH_stbtt_BakeFontBitmap = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_BakeFontBitmap", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTBakedChar.LAYOUT)));
+        /// The method handle of `stbtt_GetBakedQuad`.
+        public static final MethodHandle MH_stbtt_GetBakedQuad = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetBakedQuad", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTBakedChar.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTAlignedQuad.LAYOUT), ValueLayout.JAVA_BOOLEAN));
+        /// The method handle of `stbtt_GetScaledFontVMetrics`.
+        public static final MethodHandle MH_stbtt_GetScaledFontVMetrics = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetScaledFontVMetrics", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        /// The method handle of `stbtt_PackBegin`.
+        public static final MethodHandle MH_stbtt_PackBegin = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_PackBegin", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        /// The method handle of `stbtt_PackEnd`.
+        public static final MethodHandle MH_stbtt_PackEnd = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_PackEnd", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        /// The method handle of `stbtt_PackFontRange`.
+        public static final MethodHandle MH_stbtt_PackFontRange = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_PackFontRange", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTPackedChar.LAYOUT)));
+        /// The method handle of `stbtt_PackFontRanges`.
+        public static final MethodHandle MH_stbtt_PackFontRanges = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_PackFontRanges", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTPackRange.LAYOUT), ValueLayout.JAVA_INT));
+        /// The method handle of `stbtt_PackSetOversampling`.
+        public static final MethodHandle MH_stbtt_PackSetOversampling = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_PackSetOversampling", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        /// The method handle of `stbtt_PackSetSkipMissingCodepoints`.
+        public static final MethodHandle MH_stbtt_PackSetSkipMissingCodepoints = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_PackSetSkipMissingCodepoints", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN));
+        /// The method handle of `stbtt_GetPackedQuad`.
+        public static final MethodHandle MH_stbtt_GetPackedQuad = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetPackedQuad", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTPackedChar.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTAlignedQuad.LAYOUT), ValueLayout.JAVA_BOOLEAN));
+        /// The method handle of `stbtt_PackFontRangesGatherRects`.
+        public static final MethodHandle MH_stbtt_PackFontRangesGatherRects = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_PackFontRangesGatherRects", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTPackRange.LAYOUT), ValueLayout.JAVA_INT, STBRPRect.LAYOUT));
+        /// The method handle of `stbtt_PackFontRangesPackRects`.
+        public static final MethodHandle MH_stbtt_PackFontRangesPackRects = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_PackFontRangesPackRects", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, STBRPRect.LAYOUT, ValueLayout.JAVA_INT));
+        /// The method handle of `stbtt_PackFontRangesRenderIntoRects`.
+        public static final MethodHandle MH_stbtt_PackFontRangesRenderIntoRects = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_PackFontRangesRenderIntoRects", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTPackRange.LAYOUT), ValueLayout.JAVA_INT, STBRPRect.LAYOUT));
+        /// The method handle of `stbtt_GetNumberOfFonts`.
+        public static final MethodHandle MH_stbtt_GetNumberOfFonts = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetNumberOfFonts", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        /// The method handle of `stbtt_GetFontOffsetForIndex`.
+        public static final MethodHandle MH_stbtt_GetFontOffsetForIndex = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetFontOffsetForIndex", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        /// The method handle of `stbtt_InitFont`.
+        public static final MethodHandle MH_stbtt_InitFont = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_InitFont", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        /// The method handle of `stbtt_FindGlyphIndex`.
+        public static final MethodHandle MH_stbtt_FindGlyphIndex = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_FindGlyphIndex", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT));
+        /// The method handle of `stbtt_ScaleForPixelHeight`.
+        public static final MethodHandle MH_stbtt_ScaleForPixelHeight = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_ScaleForPixelHeight", FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_FLOAT));
+        /// The method handle of `stbtt_ScaleForMappingEmToPixels`.
+        public static final MethodHandle MH_stbtt_ScaleForMappingEmToPixels = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_ScaleForMappingEmToPixels", FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_FLOAT));
+        /// The method handle of `stbtt_GetFontVMetrics`.
+        public static final MethodHandle MH_stbtt_GetFontVMetrics = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetFontVMetrics", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        /// The method handle of `stbtt_GetFontVMetricsOS2`.
+        public static final MethodHandle MH_stbtt_GetFontVMetricsOS2 = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetFontVMetricsOS2", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        /// The method handle of `stbtt_GetFontBoundingBox`.
+        public static final MethodHandle MH_stbtt_GetFontBoundingBox = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetFontBoundingBox", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        /// The method handle of `stbtt_GetCodepointHMetrics`.
+        public static final MethodHandle MH_stbtt_GetCodepointHMetrics = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetCodepointHMetrics", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        /// The method handle of `stbtt_GetCodepointKernAdvance`.
+        public static final MethodHandle MH_stbtt_GetCodepointKernAdvance = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetCodepointKernAdvance", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        /// The method handle of `stbtt_GetCodepointBox`.
+        public static final MethodHandle MH_stbtt_GetCodepointBox = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetCodepointBox", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        /// The method handle of `stbtt_GetGlyphHMetrics`.
+        public static final MethodHandle MH_stbtt_GetGlyphHMetrics = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetGlyphHMetrics", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        /// The method handle of `stbtt_GetGlyphKernAdvance`.
+        public static final MethodHandle MH_stbtt_GetGlyphKernAdvance = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetGlyphKernAdvance", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        /// The method handle of `stbtt_GetGlyphBox`.
+        public static final MethodHandle MH_stbtt_GetGlyphBox = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetGlyphBox", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        /// The method handle of `stbtt_GetKerningTableLength`.
+        public static final MethodHandle MH_stbtt_GetKerningTableLength = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetKerningTableLength", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT)));
+        /// The method handle of `stbtt_GetKerningTable`.
+        public static final MethodHandle MH_stbtt_GetKerningTable = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetKerningTable", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTKerningEntry.LAYOUT), ValueLayout.JAVA_INT));
+        /// The method handle of `stbtt_IsGlyphEmpty`.
+        public static final MethodHandle MH_stbtt_IsGlyphEmpty = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_IsGlyphEmpty", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT));
+        /// The method handle of `stbtt_GetCodepointShape`.
+        public static final MethodHandle MH_stbtt_GetCodepointShape = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetCodepointShape", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        /// The method handle of `stbtt_GetGlyphShape`.
+        public static final MethodHandle MH_stbtt_GetGlyphShape = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetGlyphShape", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        /// The method handle of `stbtt_FreeShape`.
+        public static final MethodHandle MH_stbtt_FreeShape = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_FreeShape", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTVertex.LAYOUT)));
+        /// The method handle of `stbtt_FindSVGDoc`.
+        public static final MethodHandle MH_stbtt_FindSVGDoc = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_FindSVGDoc", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT));
+        /// The method handle of `stbtt_GetCodepointSVG`.
+        public static final MethodHandle MH_stbtt_GetCodepointSVG = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetCodepointSVG", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        /// The method handle of `stbtt_GetGlyphSVG`.
+        public static final MethodHandle MH_stbtt_GetGlyphSVG = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetGlyphSVG", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        /// The method handle of `stbtt_FreeBitmap`.
+        public static final MethodHandle MH_stbtt_FreeBitmap = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_FreeBitmap", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        /// The method handle of `stbtt_GetCodepointBitmap`.
+        public static final MethodHandle MH_stbtt_GetCodepointBitmap = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetCodepointBitmap", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        /// The method handle of `stbtt_GetCodepointBitmapSubpixel`.
+        public static final MethodHandle MH_stbtt_GetCodepointBitmapSubpixel = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetCodepointBitmapSubpixel", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        /// The method handle of `stbtt_MakeCodepointBitmap`.
+        public static final MethodHandle MH_stbtt_MakeCodepointBitmap = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_MakeCodepointBitmap", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT));
+        /// The method handle of `stbtt_MakeCodepointBitmapSubpixel`.
+        public static final MethodHandle MH_stbtt_MakeCodepointBitmapSubpixel = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_MakeCodepointBitmapSubpixel", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT));
+        /// The method handle of `stbtt_MakeCodepointBitmapSubpixelPrefilter`.
+        public static final MethodHandle MH_stbtt_MakeCodepointBitmapSubpixelPrefilter = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_MakeCodepointBitmapSubpixelPrefilter", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        /// The method handle of `stbtt_GetCodepointBitmapBox`.
+        public static final MethodHandle MH_stbtt_GetCodepointBitmapBox = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetCodepointBitmapBox", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        /// The method handle of `stbtt_GetCodepointBitmapBoxSubpixel`.
+        public static final MethodHandle MH_stbtt_GetCodepointBitmapBoxSubpixel = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetCodepointBitmapBoxSubpixel", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        /// The method handle of `stbtt_GetGlyphBitmap`.
+        public static final MethodHandle MH_stbtt_GetGlyphBitmap = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetGlyphBitmap", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        /// The method handle of `stbtt_GetGlyphBitmapSubpixel`.
+        public static final MethodHandle MH_stbtt_GetGlyphBitmapSubpixel = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetGlyphBitmapSubpixel", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        /// The method handle of `stbtt_MakeGlyphBitmap`.
+        public static final MethodHandle MH_stbtt_MakeGlyphBitmap = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_MakeGlyphBitmap", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT));
+        /// The method handle of `stbtt_MakeGlyphBitmapSubpixel`.
+        public static final MethodHandle MH_stbtt_MakeGlyphBitmapSubpixel = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_MakeGlyphBitmapSubpixel", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT));
+        /// The method handle of `stbtt_MakeGlyphBitmapSubpixelPrefilter`.
+        public static final MethodHandle MH_stbtt_MakeGlyphBitmapSubpixelPrefilter = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_MakeGlyphBitmapSubpixelPrefilter", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        /// The method handle of `stbtt_GetGlyphBitmapBox`.
+        public static final MethodHandle MH_stbtt_GetGlyphBitmapBox = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetGlyphBitmapBox", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        /// The method handle of `stbtt_GetGlyphBitmapBoxSubpixel`.
+        public static final MethodHandle MH_stbtt_GetGlyphBitmapBoxSubpixel = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetGlyphBitmapBoxSubpixel", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        /// The method handle of `stbtt_Rasterize`.
+        public static final MethodHandle MH_stbtt_Rasterize = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_Rasterize", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTT__bitmap.LAYOUT), ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTVertex.LAYOUT), ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
+        /// The method handle of `stbtt_FreeSDF`.
+        public static final MethodHandle MH_stbtt_FreeSDF = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_FreeSDF", FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        /// The method handle of `stbtt_GetGlyphSDF`.
+        public static final MethodHandle MH_stbtt_GetGlyphSDF = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetGlyphSDF", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        /// The method handle of `stbtt_GetCodepointSDF`.
+        public static final MethodHandle MH_stbtt_GetCodepointSDF = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetCodepointSDF", FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_FLOAT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        /// The method handle of `stbtt_FindMatchingFont`.
+        public static final MethodHandle MH_stbtt_FindMatchingFont = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_FindMatchingFont", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT));
+        /// The method handle of `stbtt_CompareUTF8toUTF16_bigendian`.
+        public static final MethodHandle MH_stbtt_CompareUTF8toUTF16_bigendian = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_CompareUTF8toUTF16_bigendian", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT, Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT));
+        /// The method handle of `stbtt_GetFontNameString`.
+        public static final MethodHandle MH_stbtt_GetFontNameString = RuntimeHelper.downcall(STBInternal.lookup(), "stbtt_GetFontNameString", FunctionDescriptor.of(Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBTTFontInfo.LAYOUT), ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+    }
+    //endregion
 
-    //////////////////////////////////////////////////////////////////////////////
-    //
-    // TEXTURE BAKING API
-    //
-    // If you use this API, you only have to call two functions ever.
-    //
+    ///if return is positive, the first unused row of the bitmap
+    ///if return is negative, returns the negative of the number of characters that fit
+    ///if return is 0, no characters fit and no rows were used
+    ///This uses a very crappy packing.
+    public static @CType("int") int stbtt_BakeFontBitmap(@CType("const unsigned char *") java.lang.foreign.MemorySegment data, @CType("int") int offset, @CType("float") float pixel_height, @CType("unsigned char *") java.lang.foreign.MemorySegment pixels, @CType("int") int pw, @CType("int") int ph, @CType("int") int first_char, @CType("int") int num_chars, @CType("stbtt_bakedchar *") java.lang.foreign.MemorySegment chardata) {
+        try {
+            return (int) Handles.MH_stbtt_BakeFontBitmap.invokeExact(data, offset, pixel_height, pixels, pw, ph, first_char, num_chars, chardata);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_BakeFontBitmap", e); }
+    }
 
-    /**
-     * This uses a very crappy packing.
-     *
-     * @param data         data
-     * @param offset       font location (use offset=0 for plain .ttf)
-     * @param pixel_height height of font in pixels
-     * @param pixels       bitmap to be filled in
-     * @param pw           bitmap to be filled in
-     * @param ph           bitmap to be filled in
-     * @param first_char   characters to bake
-     * @param num_chars    characters to bake
-     * @param chardata     you allocate this, it's num_chars long
-     * @return if return is positive, the first unused row of the bitmap;
-     * if return is negative, returns the negative of the number of characters that fit;
-     * if return is 0, no characters fit and no rows were used
-     */
-    @Entrypoint("stbtt_BakeFontBitmap")
-    int bakeFontBitmap(@NativeType("const unsigned char *") MemorySegment data, int offset,
-                       float pixel_height,
-                       @NativeType("unsigned char *") MemorySegment pixels, int pw, int ph,
-                       int first_char, int num_chars,
-                       STBTTBakedChar chardata);
+    ///if return is positive, the first unused row of the bitmap
+    ///if return is negative, returns the negative of the number of characters that fit
+    ///if return is 0, no characters fit and no rows were used
+    ///This uses a very crappy packing.
+    public static @CType("int") int stbtt_BakeFontBitmap(@CType("const unsigned char *") java.lang.foreign.MemorySegment data, @CType("int") int offset, @CType("float") float pixel_height, @CType("unsigned char *") java.lang.foreign.MemorySegment pixels, @CType("int") int pw, @CType("int") int ph, @CType("int") int first_char, @CType("int") int num_chars, @CType("stbtt_bakedchar *") overrungl.stb.STBTTBakedChar chardata) {
+        try {
+            return (int) Handles.MH_stbtt_BakeFontBitmap.invokeExact(data, offset, pixel_height, pixels, pw, ph, first_char, num_chars, Marshal.marshal(chardata));
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_BakeFontBitmap", e); }
+    }
 
-    /**
-     * Call GetBakedQuad with char_index = 'character - first_char', and it
-     * creates the quad you need to draw and advances the current position.
-     * <p>
-     * The coordinate system used assumes y increases downwards.
-     * <p>
-     * Characters will extend both above and below the current position;
-     * see discussion of "BASELINE" above.
-     * <p>
-     * It's inefficient; you might want to c&amp;p it and optimize it.
-     *
-     * @param chardata        same data as {@link #bakeFontBitmap(MemorySegment, int, float, MemorySegment, int, int, int, int, STBTTBakedChar) above}
-     * @param pw              same data as above
-     * @param ph              same data as above
-     * @param char_index      character to display
-     * @param xpos            pointers to current position in screen pixel space
-     * @param ypos            pointers to current position in screen pixel space
-     * @param q               output: quad to draw
-     * @param opengl_fillrule true if opengl fill rule; false if DX9 or earlier
-     */
-    @Entrypoint("stbtt_GetBakedQuad")
-    void getBakedQuad(STBTTBakedChar chardata, int pw, int ph,
-                      int char_index,
-                      @NativeType("float *") MemorySegment xpos, @NativeType("float *") MemorySegment ypos,
-                      STBTTAlignedQuad q,
-                      @Convert(AsBool.INT) boolean opengl_fillrule);
+    ///Call GetBakedQuad with char_index = 'character - first_char', and it
+    ///creates the quad you need to draw and advances the current position.
+    ///
+    ///The coordinate system used assumes y increases downwards.
+    ///
+    ///Characters will extend both above and below the current position;
+    ///see discussion of "BASELINE" above.
+    ///
+    ///It's inefficient; you might want to c&p it and optimize it.
+    public static void stbtt_GetBakedQuad(@CType("const stbtt_bakedchar *") java.lang.foreign.MemorySegment chardata, @CType("int") int pw, @CType("int") int ph, @CType("int") int char_index, @Out @CType("float*") java.lang.foreign.MemorySegment xpos, @Out @CType("float*") java.lang.foreign.MemorySegment ypos, @CType("stbtt_aligned_quad *") java.lang.foreign.MemorySegment q, @CType("int") boolean opengl_fillrule) {
+        try {
+            Handles.MH_stbtt_GetBakedQuad.invokeExact(chardata, pw, ph, char_index, xpos, ypos, q, opengl_fillrule);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetBakedQuad", e); }
+    }
 
-    /**
-     * Query the font vertical metrics without having to create a font first.
-     *
-     * @param fontdata fontdata
-     * @param index    index
-     * @param size     size
-     * @param ascent   ascent
-     * @param descent  descent
-     * @param lineGap  lineGap
-     */
-    @Entrypoint("stbtt_GetScaledFontVMetrics")
-    void getScaledFontVMetrics(@NativeType("const unsigned char *") MemorySegment fontdata, int index, float size, @NativeType("float *") MemorySegment ascent, @NativeType("float *") MemorySegment descent, @NativeType("float *") MemorySegment lineGap);
+    ///Call GetBakedQuad with char_index = 'character - first_char', and it
+    ///creates the quad you need to draw and advances the current position.
+    ///
+    ///The coordinate system used assumes y increases downwards.
+    ///
+    ///Characters will extend both above and below the current position;
+    ///see discussion of "BASELINE" above.
+    ///
+    ///It's inefficient; you might want to c&p it and optimize it.
+    public static void stbtt_GetBakedQuad(@CType("const stbtt_bakedchar *") overrungl.stb.STBTTBakedChar chardata, @CType("int") int pw, @CType("int") int ph, @CType("int") int char_index, @Out @CType("float*") float[] xpos, @Out @CType("float*") float[] ypos, @CType("stbtt_aligned_quad *") overrungl.stb.STBTTAlignedQuad q, @CType("int") boolean opengl_fillrule) {
+        try (var __overrungl_stack = MemoryStack.pushLocal()) {
+            var __overrungl_ref_xpos = Marshal.marshal(__overrungl_stack, xpos);
+            var __overrungl_ref_ypos = Marshal.marshal(__overrungl_stack, ypos);
+            Handles.MH_stbtt_GetBakedQuad.invokeExact(Marshal.marshal(chardata), pw, ph, char_index, __overrungl_ref_xpos, __overrungl_ref_ypos, Marshal.marshal(q), opengl_fillrule);
+            Unmarshal.copy(__overrungl_ref_xpos, xpos);
+            Unmarshal.copy(__overrungl_ref_ypos, ypos);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetBakedQuad", e); }
+    }
 
-    //////////////////////////////////////////////////////////////////////////////
-    //
-    // NEW TEXTURE BAKING API
-    //
-    // This provides options for packing multiple fonts into one atlas, not
-    // perfectly but better than nothing.
+    ///Query the font vertical metrics without having to create a font first.
+    public static void stbtt_GetScaledFontVMetrics(@CType("const unsigned char *") java.lang.foreign.MemorySegment fontdata, @CType("int") int index, @CType("float") float size, @Out @CType("float*") java.lang.foreign.MemorySegment ascent, @Out @CType("float*") java.lang.foreign.MemorySegment descent, @Out @CType("float*") java.lang.foreign.MemorySegment lineGap) {
+        try {
+            Handles.MH_stbtt_GetScaledFontVMetrics.invokeExact(fontdata, index, size, ascent, descent, lineGap);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetScaledFontVMetrics", e); }
+    }
 
-    /**
-     * Initializes a packing context stored in the passed-in stbtt_pack_context.
-     * Future calls using this context will pack characters into the bitmap passed
-     * in here: a 1-channel bitmap that is width * height.
-     *
-     * @param spc             spc
-     * @param pixels          pixels
-     * @param width           width
-     * @param height          height
-     * @param stride_in_bytes the distance from one row to the next (or 0 to mean they are packed tightly
-     *                        together).
-     * @param padding         the amount of padding to leave between each
-     *                        character (normally you want '1' for bitmaps you'll use as textures with
-     *                        bilinear filtering).
-     * @param alloc_context   alloc_context
-     * @return 0 on failure, 1 on success.
-     */
-    @Entrypoint("stbtt_PackBegin")
-    int packBegin(@NativeType("stbtt_pack_context *") MemorySegment spc, @NativeType("unsigned char *") MemorySegment pixels, int width, int height, int stride_in_bytes, int padding, @NativeType("void *") MemorySegment alloc_context);
+    ///Query the font vertical metrics without having to create a font first.
+    public static void stbtt_GetScaledFontVMetrics(@CType("const unsigned char *") java.lang.foreign.MemorySegment fontdata, @CType("int") int index, @CType("float") float size, @Out @CType("float*") float[] ascent, @Out @CType("float*") float[] descent, @Out @CType("float*") float[] lineGap) {
+        try (var __overrungl_stack = MemoryStack.pushLocal()) {
+            var __overrungl_ref_ascent = Marshal.marshal(__overrungl_stack, ascent);
+            var __overrungl_ref_descent = Marshal.marshal(__overrungl_stack, descent);
+            var __overrungl_ref_lineGap = Marshal.marshal(__overrungl_stack, lineGap);
+            Handles.MH_stbtt_GetScaledFontVMetrics.invokeExact(fontdata, index, size, __overrungl_ref_ascent, __overrungl_ref_descent, __overrungl_ref_lineGap);
+            Unmarshal.copy(__overrungl_ref_ascent, ascent);
+            Unmarshal.copy(__overrungl_ref_descent, descent);
+            Unmarshal.copy(__overrungl_ref_lineGap, lineGap);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetScaledFontVMetrics", e); }
+    }
 
-    /**
-     * Cleans up the packing context and frees all memory.
-     *
-     * @param spc spc
-     */
-    @Entrypoint("stbtt_PackEnd")
-    void packEnd(@NativeType("stbtt_pack_context *") MemorySegment spc);
+    ///Initializes a packing context stored in the passed-in stbtt_pack_context.
+    ///Future calls using this context will pack characters into the bitmap passed
+    ///in here: a 1-channel bitmap that is width * height. stride_in_bytes is
+    ///the distance from one row to the next (or 0 to mean they are packed tightly
+    ///together). "padding" is the amount of padding to leave between each
+    ///character (normally you want '1' for bitmaps you'll use as textures with
+    ///bilinear filtering).
+    ///
+    ///Returns `false` on failure, `true` on success.
+    public static @CType("int") boolean stbtt_PackBegin(@CType("stbtt_pack_context *") java.lang.foreign.MemorySegment spc, @CType("unsigned char *") java.lang.foreign.MemorySegment pixels, @CType("int") int width, @CType("int") int height, @CType("int") int stride_in_bytes, @CType("int") int padding, @CType("void*") java.lang.foreign.MemorySegment alloc_context) {
+        try {
+            return (boolean) Handles.MH_stbtt_PackBegin.invokeExact(spc, pixels, width, height, stride_in_bytes, padding, alloc_context);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_PackBegin", e); }
+    }
 
-    /**
-     * {@return a point size as computed by stbtt_ScaleForMappingEmToPixels}
-     *
-     * @param x x
-     */
-    static float pointSize(float x) {
-        return -x;
+    ///Cleans up the packing context and frees all memory.
+    public static void stbtt_PackEnd(@CType("stbtt_pack_context *") java.lang.foreign.MemorySegment spc) {
+        try {
+            Handles.MH_stbtt_PackEnd.invokeExact(spc);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_PackEnd", e); }
+    }
+
+    ///Creates character bitmaps from the font_index'th font found in fontdata (use
+    ///font_index=0 if you don't know what that is). It creates num_chars_in_range
+    ///bitmaps for characters with unicode values starting at first_unicode_char_in_range
+    ///and increasing. Data for how to render them is stored in chardata_for_range;
+    ///pass these to stbtt_GetPackedQuad to get back renderable quads.
+    ///
+    ///font_size is the full height of the character from ascender to descender,
+    ///as computed by stbtt_ScaleForPixelHeight. To use a point size as computed
+    ///by stbtt_ScaleForMappingEmToPixels, wrap the point size in STBTT_POINT_SIZE()
+    ///and pass that result as 'font_size':
+    ///```
+    ///...,                  20 , ... // font max minus min y is 20 pixels tall
+    ///..., STBTT_POINT_SIZE(20), ... // 'M' is 20 pixels tall
+    ///```
+    public static @CType("int") boolean stbtt_PackFontRange(@CType("stbtt_pack_context *") java.lang.foreign.MemorySegment spc, @CType("const unsigned char *") java.lang.foreign.MemorySegment fontdata, @CType("int") int font_index, @CType("float") float font_size, @CType("int") int first_unicode_char_in_range, @CType("int") int num_chars_in_range, @CType("stbtt_packedchar *") java.lang.foreign.MemorySegment chardata_for_range) {
+        try {
+            return (boolean) Handles.MH_stbtt_PackFontRange.invokeExact(spc, fontdata, font_index, font_size, first_unicode_char_in_range, num_chars_in_range, chardata_for_range);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_PackFontRange", e); }
+    }
+
+    ///Creates character bitmaps from multiple ranges of characters stored in
+    ///ranges. This will usually create a better-packed bitmap than multiple
+    ///calls to stbtt_PackFontRange. Note that you can call this multiple
+    ///times within a single PackBegin/PackEnd.
+    public static @CType("int") boolean stbtt_PackFontRanges(@CType("stbtt_pack_context *") java.lang.foreign.MemorySegment spc, @CType("const unsigned char *") java.lang.foreign.MemorySegment fontdata, @CType("int") int font_index, @CType("stbtt_pack_range *") java.lang.foreign.MemorySegment ranges, @CType("int") int num_ranges) {
+        try {
+            return (boolean) Handles.MH_stbtt_PackFontRanges.invokeExact(spc, fontdata, font_index, ranges, num_ranges);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_PackFontRanges", e); }
+    }
+
+    ///Creates character bitmaps from multiple ranges of characters stored in
+    ///ranges. This will usually create a better-packed bitmap than multiple
+    ///calls to stbtt_PackFontRange. Note that you can call this multiple
+    ///times within a single PackBegin/PackEnd.
+    public static @CType("int") boolean stbtt_PackFontRanges(@CType("stbtt_pack_context *") java.lang.foreign.MemorySegment spc, @CType("const unsigned char *") java.lang.foreign.MemorySegment fontdata, @CType("int") int font_index, @CType("stbtt_pack_range *") overrungl.stb.STBTTPackRange ranges, @CType("int") int num_ranges) {
+        try {
+            return (boolean) Handles.MH_stbtt_PackFontRanges.invokeExact(spc, fontdata, font_index, Marshal.marshal(ranges), num_ranges);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_PackFontRanges", e); }
+    }
+
+    ///Oversampling a font increases the quality by allowing higher-quality subpixel
+    ///positioning, and is especially valuable at smaller text sizes.
+    ///
+    ///This function sets the amount of oversampling for all following calls to
+    ///stbtt_PackFontRange(s) or stbtt_PackFontRangesGatherRects for a given
+    ///pack context. The default (no oversampling) is achieved by h_oversample=1
+    ///and v_oversample=1. The total number of pixels required is
+    ///h_oversample*v_oversample larger than the default; for example, 2x2
+    ///oversampling requires 4x the storage of 1x1. For best results, render
+    ///oversampled textures with bilinear filtering. Look at the readme in
+    ///stb/tests/oversample for information about oversampled fonts
+    ///
+    ///To use with PackFontRangesGather etc., you must set it before calls
+    ///call to PackFontRangesGatherRects.
+    public static void stbtt_PackSetOversampling(@CType("stbtt_pack_context *") java.lang.foreign.MemorySegment spc, @CType("unsigned int") int h_oversample, @CType("unsigned int") int v_oversample) {
+        try {
+            Handles.MH_stbtt_PackSetOversampling.invokeExact(spc, h_oversample, v_oversample);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_PackSetOversampling", e); }
+    }
+
+    ///If skip != 0, this tells stb_truetype to skip any codepoints for which
+    ///there is no corresponding glyph. If skip=0, which is the default, then
+    ///codepoints without a glyph recived the font's "missing character" glyph,
+    ///typically an empty box by convention.
+    public static void stbtt_PackSetSkipMissingCodepoints(@CType("stbtt_pack_context *") java.lang.foreign.MemorySegment spc, @CType("int") boolean skip) {
+        try {
+            Handles.MH_stbtt_PackSetSkipMissingCodepoints.invokeExact(spc, skip);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_PackSetSkipMissingCodepoints", e); }
+    }
+
+    ///Calling these functions in sequence is roughly equivalent to calling
+    ///stbtt_PackFontRanges(). If you more control over the packing of multiple
+    ///fonts, or if you want to pack custom data into a font texture, take a look
+    ///at the source to of stbtt_PackFontRanges() and create a custom version
+    ///using these functions, e.g. call GatherRects multiple times,
+    ///building up a single array of rects, then call PackRects once,
+    ///then call RenderIntoRects repeatedly. This may result in a
+    ///better packing than calling PackFontRanges multiple times
+    ///(or it may not).
+    public static void stbtt_GetPackedQuad(@CType("const stbtt_packedchar *") java.lang.foreign.MemorySegment chardata, @CType("int") int pw, @CType("int") int ph, @CType("int") int char_index, @Out @CType("float*") java.lang.foreign.MemorySegment xpos, @Out @CType("float*") java.lang.foreign.MemorySegment ypos, @CType("stbtt_aligned_quad *") java.lang.foreign.MemorySegment q, @CType("int") boolean align_to_integer) {
+        try {
+            Handles.MH_stbtt_GetPackedQuad.invokeExact(chardata, pw, ph, char_index, xpos, ypos, q, align_to_integer);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetPackedQuad", e); }
+    }
+
+    ///Calling these functions in sequence is roughly equivalent to calling
+    ///stbtt_PackFontRanges(). If you more control over the packing of multiple
+    ///fonts, or if you want to pack custom data into a font texture, take a look
+    ///at the source to of stbtt_PackFontRanges() and create a custom version
+    ///using these functions, e.g. call GatherRects multiple times,
+    ///building up a single array of rects, then call PackRects once,
+    ///then call RenderIntoRects repeatedly. This may result in a
+    ///better packing than calling PackFontRanges multiple times
+    ///(or it may not).
+    public static void stbtt_GetPackedQuad(@CType("const stbtt_packedchar *") overrungl.stb.STBTTPackedChar chardata, @CType("int") int pw, @CType("int") int ph, @CType("int") int char_index, @Out @CType("float*") float[] xpos, @Out @CType("float*") float[] ypos, @CType("stbtt_aligned_quad *") overrungl.stb.STBTTAlignedQuad q, @CType("int") boolean align_to_integer) {
+        try (var __overrungl_stack = MemoryStack.pushLocal()) {
+            var __overrungl_ref_xpos = Marshal.marshal(__overrungl_stack, xpos);
+            var __overrungl_ref_ypos = Marshal.marshal(__overrungl_stack, ypos);
+            Handles.MH_stbtt_GetPackedQuad.invokeExact(Marshal.marshal(chardata), pw, ph, char_index, __overrungl_ref_xpos, __overrungl_ref_ypos, Marshal.marshal(q), align_to_integer);
+            Unmarshal.copy(__overrungl_ref_xpos, xpos);
+            Unmarshal.copy(__overrungl_ref_ypos, ypos);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetPackedQuad", e); }
+    }
+
+    public static @CType("int") int stbtt_PackFontRangesGatherRects(@CType("stbtt_pack_context *") java.lang.foreign.MemorySegment spc, @CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("stbtt_pack_range *") java.lang.foreign.MemorySegment ranges, @CType("int") int num_ranges, @CType("stbrp_rect *") java.lang.foreign.MemorySegment rects) {
+        try {
+            return (int) Handles.MH_stbtt_PackFontRangesGatherRects.invokeExact(spc, info, ranges, num_ranges, rects);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_PackFontRangesGatherRects", e); }
+    }
+
+    public static void stbtt_PackFontRangesPackRects(@CType("stbtt_pack_context *") java.lang.foreign.MemorySegment spc, @CType("stbrp_rect *") java.lang.foreign.MemorySegment rects, @CType("int") int num_rects) {
+        try {
+            Handles.MH_stbtt_PackFontRangesPackRects.invokeExact(spc, rects, num_rects);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_PackFontRangesPackRects", e); }
+    }
+
+    public static @CType("int") int stbtt_PackFontRangesRenderIntoRects(@CType("stbtt_pack_context *") java.lang.foreign.MemorySegment spc, @CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("stbtt_pack_range *") java.lang.foreign.MemorySegment ranges, @CType("int") int num_ranges, @CType("stbrp_rect *") java.lang.foreign.MemorySegment rects) {
+        try {
+            return (int) Handles.MH_stbtt_PackFontRangesRenderIntoRects.invokeExact(spc, info, ranges, num_ranges, rects);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_PackFontRangesRenderIntoRects", e); }
+    }
+
+    ///This function will determine the number of fonts in a font file.  TrueType
+    ///collection (.ttc) files may contain multiple fonts, while TrueType font
+    ///(.ttf) files only contain one font. The number of fonts can be used for
+    ///indexing with the previous function where the index is between zero and one
+    ///less than the total fonts. If an error occurs, -1 is returned.
+    public static @CType("int") int stbtt_GetNumberOfFonts(@CType("const unsigned char *") java.lang.foreign.MemorySegment data) {
+        try {
+            return (int) Handles.MH_stbtt_GetNumberOfFonts.invokeExact(data);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetNumberOfFonts", e); }
+    }
+
+    ///Each .ttf/.ttc file may have more than one font. Each font has a sequential
+    ///index number starting from 0. Call this function to get the font offset for
+    ///a given index; it returns -1 if the index is out of range. A regular .ttf
+    ///file will only define one font and it always be at offset 0, so it will
+    ///return '0' for index 0, and -1 for all other indices.
+    public static @CType("int") int stbtt_GetFontOffsetForIndex(@CType("const unsigned char *") java.lang.foreign.MemorySegment data, @CType("int") int index) {
+        try {
+            return (int) Handles.MH_stbtt_GetFontOffsetForIndex.invokeExact(data, index);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetFontOffsetForIndex", e); }
+    }
+
+    ///Given an offset into the file that defines a font, this function builds
+    ///the necessary cached info for the rest of the system. You must allocate
+    ///the stbtt_fontinfo yourself, and stbtt_InitFont will fill it out. You don't
+    ///need to do anything special to free it, because the contents are pure
+    ///value data with no additional data structures.
+    ///@return 0 on failure.
+    public static @CType("int") boolean stbtt_InitFont(@CType("stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("const unsigned char *") java.lang.foreign.MemorySegment data, @CType("int") int offset) {
+        try {
+            return (boolean) Handles.MH_stbtt_InitFont.invokeExact(info, data, offset);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_InitFont", e); }
+    }
+
+    ///If you're going to perform multiple operations on the same character
+    ///and you want a speed-up, call this function with the character you're
+    ///going to process, then use glyph-based functions instead of the
+    ///codepoint-based functions.
+    ///@return 0 if the character codepoint is not defined in the font.
+    public static @CType("int") int stbtt_FindGlyphIndex(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("int") int unicode_codepoint) {
+        try {
+            return (int) Handles.MH_stbtt_FindGlyphIndex.invokeExact(info, unicode_codepoint);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_FindGlyphIndex", e); }
+    }
+
+    ///computes a scale factor to produce a font whose "height" is 'pixels' tall.
+    ///Height is measured as the distance from the highest ascender to the lowest
+    ///descender; in other words, it's equivalent to calling stbtt_GetFontVMetrics
+    ///and computing:
+    ///```
+    ///scale = pixels / (ascent - descent)
+    ///```
+    ///so if you prefer to measure height by the ascent only, use a similar calculation.
+    public static @CType("float") float stbtt_ScaleForPixelHeight(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("float") float pixels) {
+        try {
+            return (float) Handles.MH_stbtt_ScaleForPixelHeight.invokeExact(info, pixels);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_ScaleForPixelHeight", e); }
+    }
+
+    ///computes a scale factor to produce a font whose EM size is mapped to
+    ///'pixels' tall. This is probably what traditional APIs compute, but
+    ///I'm not positive.
+    public static @CType("float") float stbtt_ScaleForMappingEmToPixels(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("float") float pixels) {
+        try {
+            return (float) Handles.MH_stbtt_ScaleForMappingEmToPixels.invokeExact(info, pixels);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_ScaleForMappingEmToPixels", e); }
+    }
+
+    ///these are expressed in unscaled coordinates, so you must multiply by
+    ///the scale factor for a given size
+    ///
+    ///@param ascent the coordinate above the baseline the font extends
+    ///@param descent the coordinate below the baseline the font extends (i.e. it is typically negative)
+    ///@param lineGap the spacing between one row's descent and the next row's ascent...
+    ///so you should advance the vertical position by "*ascent - *descent + *lineGap"
+    public static void stbtt_GetFontVMetrics(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @Out @CType("int*") java.lang.foreign.MemorySegment ascent, @Out @CType("int*") java.lang.foreign.MemorySegment descent, @Out @CType("int*") java.lang.foreign.MemorySegment lineGap) {
+        try {
+            Handles.MH_stbtt_GetFontVMetrics.invokeExact(info, ascent, descent, lineGap);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetFontVMetrics", e); }
+    }
+
+    ///these are expressed in unscaled coordinates, so you must multiply by
+    ///the scale factor for a given size
+    ///
+    ///@param ascent the coordinate above the baseline the font extends
+    ///@param descent the coordinate below the baseline the font extends (i.e. it is typically negative)
+    ///@param lineGap the spacing between one row's descent and the next row's ascent...
+    ///so you should advance the vertical position by "*ascent - *descent + *lineGap"
+    public static void stbtt_GetFontVMetrics(@CType("const stbtt_fontinfo *") overrungl.stb.STBTTFontInfo info, @Out @CType("int*") int[] ascent, @Out @CType("int*") int[] descent, @Out @CType("int*") int[] lineGap) {
+        try (var __overrungl_stack = MemoryStack.pushLocal()) {
+            var __overrungl_ref_ascent = Marshal.marshal(__overrungl_stack, ascent);
+            var __overrungl_ref_descent = Marshal.marshal(__overrungl_stack, descent);
+            var __overrungl_ref_lineGap = Marshal.marshal(__overrungl_stack, lineGap);
+            Handles.MH_stbtt_GetFontVMetrics.invokeExact(Marshal.marshal(info), __overrungl_ref_ascent, __overrungl_ref_descent, __overrungl_ref_lineGap);
+            Unmarshal.copy(__overrungl_ref_ascent, ascent);
+            Unmarshal.copy(__overrungl_ref_descent, descent);
+            Unmarshal.copy(__overrungl_ref_lineGap, lineGap);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetFontVMetrics", e); }
+    }
+
+    ///analogous to GetFontVMetrics, but returns the "typographic" values from the OS/2
+    ///table (specific to MS/Windows TTF files).
+    ///
+    ///@return 1 on success (table present), 0 on failure.
+    public static @CType("int") boolean stbtt_GetFontVMetricsOS2(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @Out @CType("int*") java.lang.foreign.MemorySegment typoAscent, @Out @CType("int*") java.lang.foreign.MemorySegment typoDescent, @Out @CType("int*") java.lang.foreign.MemorySegment typoLineGap) {
+        try {
+            return (boolean) Handles.MH_stbtt_GetFontVMetricsOS2.invokeExact(info, typoAscent, typoDescent, typoLineGap);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetFontVMetricsOS2", e); }
+    }
+
+    ///analogous to GetFontVMetrics, but returns the "typographic" values from the OS/2
+    ///table (specific to MS/Windows TTF files).
+    ///
+    ///@return 1 on success (table present), 0 on failure.
+    public static @CType("int") boolean stbtt_GetFontVMetricsOS2(@CType("const stbtt_fontinfo *") overrungl.stb.STBTTFontInfo info, @Out @CType("int*") int[] typoAscent, @Out @CType("int*") int[] typoDescent, @Out @CType("int*") int[] typoLineGap) {
+        try (var __overrungl_stack = MemoryStack.pushLocal()) {
+            var __overrungl_ref_typoAscent = Marshal.marshal(__overrungl_stack, typoAscent);
+            var __overrungl_ref_typoDescent = Marshal.marshal(__overrungl_stack, typoDescent);
+            var __overrungl_ref_typoLineGap = Marshal.marshal(__overrungl_stack, typoLineGap);
+            var __overrungl_result = (boolean) Handles.MH_stbtt_GetFontVMetricsOS2.invokeExact(Marshal.marshal(info), __overrungl_ref_typoAscent, __overrungl_ref_typoDescent, __overrungl_ref_typoLineGap);
+            Unmarshal.copy(__overrungl_ref_typoAscent, typoAscent);
+            Unmarshal.copy(__overrungl_ref_typoDescent, typoDescent);
+            Unmarshal.copy(__overrungl_ref_typoLineGap, typoLineGap);
+            return __overrungl_result;
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetFontVMetricsOS2", e); }
+    }
+
+    ///the bounding box around all possible characters
+    public static void stbtt_GetFontBoundingBox(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @Out @CType("int*") java.lang.foreign.MemorySegment x0, @Out @CType("int*") java.lang.foreign.MemorySegment y0, @Out @CType("int*") java.lang.foreign.MemorySegment x1, @Out @CType("int*") java.lang.foreign.MemorySegment y1) {
+        try {
+            Handles.MH_stbtt_GetFontBoundingBox.invokeExact(info, x0, y0, x1, y1);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetFontBoundingBox", e); }
+    }
+
+    ///the bounding box around all possible characters
+    public static void stbtt_GetFontBoundingBox(@CType("const stbtt_fontinfo *") overrungl.stb.STBTTFontInfo info, @Out @CType("int*") int[] x0, @Out @CType("int*") int[] y0, @Out @CType("int*") int[] x1, @Out @CType("int*") int[] y1) {
+        try (var __overrungl_stack = MemoryStack.pushLocal()) {
+            var __overrungl_ref_x0 = Marshal.marshal(__overrungl_stack, x0);
+            var __overrungl_ref_y0 = Marshal.marshal(__overrungl_stack, y0);
+            var __overrungl_ref_x1 = Marshal.marshal(__overrungl_stack, x1);
+            var __overrungl_ref_y1 = Marshal.marshal(__overrungl_stack, y1);
+            Handles.MH_stbtt_GetFontBoundingBox.invokeExact(Marshal.marshal(info), __overrungl_ref_x0, __overrungl_ref_y0, __overrungl_ref_x1, __overrungl_ref_y1);
+            Unmarshal.copy(__overrungl_ref_x0, x0);
+            Unmarshal.copy(__overrungl_ref_y0, y0);
+            Unmarshal.copy(__overrungl_ref_x1, x1);
+            Unmarshal.copy(__overrungl_ref_y1, y1);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetFontBoundingBox", e); }
+    }
+
+    ///these are expressed in unscaled coordinates
+    ///@param advanceWidth the offset from the current horizontal position to the next horizontal position
+    ///@param leftSideBearing the offset from the current horizontal position to the left edge of the character
+    public static void stbtt_GetCodepointHMetrics(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("int") int codepoint, @Out @CType("int*") java.lang.foreign.MemorySegment advanceWidth, @Out @CType("int*") java.lang.foreign.MemorySegment leftSideBearing) {
+        try {
+            Handles.MH_stbtt_GetCodepointHMetrics.invokeExact(info, codepoint, advanceWidth, leftSideBearing);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointHMetrics", e); }
+    }
+
+    ///these are expressed in unscaled coordinates
+    ///@param advanceWidth the offset from the current horizontal position to the next horizontal position
+    ///@param leftSideBearing the offset from the current horizontal position to the left edge of the character
+    public static void stbtt_GetCodepointHMetrics(@CType("const stbtt_fontinfo *") overrungl.stb.STBTTFontInfo info, @CType("int") int codepoint, @Out @CType("int*") int[] advanceWidth, @Out @CType("int*") int[] leftSideBearing) {
+        try (var __overrungl_stack = MemoryStack.pushLocal()) {
+            var __overrungl_ref_advanceWidth = Marshal.marshal(__overrungl_stack, advanceWidth);
+            var __overrungl_ref_leftSideBearing = Marshal.marshal(__overrungl_stack, leftSideBearing);
+            Handles.MH_stbtt_GetCodepointHMetrics.invokeExact(Marshal.marshal(info), codepoint, __overrungl_ref_advanceWidth, __overrungl_ref_leftSideBearing);
+            Unmarshal.copy(__overrungl_ref_advanceWidth, advanceWidth);
+            Unmarshal.copy(__overrungl_ref_leftSideBearing, leftSideBearing);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointHMetrics", e); }
+    }
+
+    ///an additional amount to add to the 'advance' value between ch1 and ch2
+    public static @CType("int") int stbtt_GetCodepointKernAdvance(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("int") int ch1, @CType("int") int ch2) {
+        try {
+            return (int) Handles.MH_stbtt_GetCodepointKernAdvance.invokeExact(info, ch1, ch2);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointKernAdvance", e); }
+    }
+
+    ///Gets the bounding box of the visible part of the glyph, in unscaled coordinates
+    public static @CType("int") int stbtt_GetCodepointBox(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("int") int codepoint, @Out @CType("int*") java.lang.foreign.MemorySegment x0, @Out @CType("int*") java.lang.foreign.MemorySegment y0, @Out @CType("int*") java.lang.foreign.MemorySegment x1, @Out @CType("int*") java.lang.foreign.MemorySegment y1) {
+        try {
+            return (int) Handles.MH_stbtt_GetCodepointBox.invokeExact(info, codepoint, x0, y0, x1, y1);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointBox", e); }
+    }
+
+    ///Gets the bounding box of the visible part of the glyph, in unscaled coordinates
+    public static @CType("int") int stbtt_GetCodepointBox(@CType("const stbtt_fontinfo *") overrungl.stb.STBTTFontInfo info, @CType("int") int codepoint, @Out @CType("int*") int[] x0, @Out @CType("int*") int[] y0, @Out @CType("int*") int[] x1, @Out @CType("int*") int[] y1) {
+        try (var __overrungl_stack = MemoryStack.pushLocal()) {
+            var __overrungl_ref_x0 = Marshal.marshal(__overrungl_stack, x0);
+            var __overrungl_ref_y0 = Marshal.marshal(__overrungl_stack, y0);
+            var __overrungl_ref_x1 = Marshal.marshal(__overrungl_stack, x1);
+            var __overrungl_ref_y1 = Marshal.marshal(__overrungl_stack, y1);
+            var __overrungl_result = (int) Handles.MH_stbtt_GetCodepointBox.invokeExact(Marshal.marshal(info), codepoint, __overrungl_ref_x0, __overrungl_ref_y0, __overrungl_ref_x1, __overrungl_ref_y1);
+            Unmarshal.copy(__overrungl_ref_x0, x0);
+            Unmarshal.copy(__overrungl_ref_y0, y0);
+            Unmarshal.copy(__overrungl_ref_x1, x1);
+            Unmarshal.copy(__overrungl_ref_y1, y1);
+            return __overrungl_result;
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointBox", e); }
+    }
+
+    ///as above, but takes one or more glyph indices for greater efficiency
+    public static void stbtt_GetGlyphHMetrics(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("int") int glyph_index, @Out @CType("int*") java.lang.foreign.MemorySegment advanceWidth, @Out @CType("int*") java.lang.foreign.MemorySegment leftSideBearing) {
+        try {
+            Handles.MH_stbtt_GetGlyphHMetrics.invokeExact(info, glyph_index, advanceWidth, leftSideBearing);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphHMetrics", e); }
+    }
+
+    ///as above, but takes one or more glyph indices for greater efficiency
+    public static void stbtt_GetGlyphHMetrics(@CType("const stbtt_fontinfo *") overrungl.stb.STBTTFontInfo info, @CType("int") int glyph_index, @Out @CType("int*") int[] advanceWidth, @Out @CType("int*") int[] leftSideBearing) {
+        try (var __overrungl_stack = MemoryStack.pushLocal()) {
+            var __overrungl_ref_advanceWidth = Marshal.marshal(__overrungl_stack, advanceWidth);
+            var __overrungl_ref_leftSideBearing = Marshal.marshal(__overrungl_stack, leftSideBearing);
+            Handles.MH_stbtt_GetGlyphHMetrics.invokeExact(Marshal.marshal(info), glyph_index, __overrungl_ref_advanceWidth, __overrungl_ref_leftSideBearing);
+            Unmarshal.copy(__overrungl_ref_advanceWidth, advanceWidth);
+            Unmarshal.copy(__overrungl_ref_leftSideBearing, leftSideBearing);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphHMetrics", e); }
+    }
+
+    public static @CType("int") int stbtt_GetGlyphKernAdvance(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("int") int glyph1, @CType("int") int glyph2) {
+        try {
+            return (int) Handles.MH_stbtt_GetGlyphKernAdvance.invokeExact(info, glyph1, glyph2);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphKernAdvance", e); }
+    }
+
+    public static @CType("int") int stbtt_GetGlyphBox(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("int") int glyph_index, @Out @CType("int*") java.lang.foreign.MemorySegment x0, @Out @CType("int*") java.lang.foreign.MemorySegment y0, @Out @CType("int*") java.lang.foreign.MemorySegment x1, @Out @CType("int*") java.lang.foreign.MemorySegment y1) {
+        try {
+            return (int) Handles.MH_stbtt_GetGlyphBox.invokeExact(info, glyph_index, x0, y0, x1, y1);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphBox", e); }
+    }
+
+    public static @CType("int") int stbtt_GetGlyphBox(@CType("const stbtt_fontinfo *") overrungl.stb.STBTTFontInfo info, @CType("int") int glyph_index, @Out @CType("int*") int[] x0, @Out @CType("int*") int[] y0, @Out @CType("int*") int[] x1, @Out @CType("int*") int[] y1) {
+        try (var __overrungl_stack = MemoryStack.pushLocal()) {
+            var __overrungl_ref_x0 = Marshal.marshal(__overrungl_stack, x0);
+            var __overrungl_ref_y0 = Marshal.marshal(__overrungl_stack, y0);
+            var __overrungl_ref_x1 = Marshal.marshal(__overrungl_stack, x1);
+            var __overrungl_ref_y1 = Marshal.marshal(__overrungl_stack, y1);
+            var __overrungl_result = (int) Handles.MH_stbtt_GetGlyphBox.invokeExact(Marshal.marshal(info), glyph_index, __overrungl_ref_x0, __overrungl_ref_y0, __overrungl_ref_x1, __overrungl_ref_y1);
+            Unmarshal.copy(__overrungl_ref_x0, x0);
+            Unmarshal.copy(__overrungl_ref_y0, y0);
+            Unmarshal.copy(__overrungl_ref_x1, x1);
+            Unmarshal.copy(__overrungl_ref_y1, y1);
+            return __overrungl_result;
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphBox", e); }
+    }
+
+    public static @CType("int") int stbtt_GetKerningTableLength(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info) {
+        try {
+            return (int) Handles.MH_stbtt_GetKerningTableLength.invokeExact(info);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetKerningTableLength", e); }
+    }
+
+    ///Retrieves a complete list of all of the kerning pairs provided by the font
+    ///stbtt_GetKerningTable never writes more than table_length entries and returns how many entries it did write.
+    ///The table will be sorted by (a.glyph1 == b.glyph1)?(a.glyph2 < b.glyph2):(a.glyph1 < b.glyph1)
+    public static @CType("int") int stbtt_GetKerningTable(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("stbtt_kerningentry*") java.lang.foreign.MemorySegment table, @CType("int") int table_length) {
+        try {
+            return (int) Handles.MH_stbtt_GetKerningTable.invokeExact(info, table, table_length);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetKerningTable", e); }
+    }
+
+    ///@return `true` if nothing is drawn for this glyph
+    public static @CType("int") boolean stbtt_IsGlyphEmpty(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("int") int glyph_index) {
+        try {
+            return (boolean) Handles.MH_stbtt_IsGlyphEmpty.invokeExact(info, glyph_index);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_IsGlyphEmpty", e); }
+    }
+
+    ///{@return # of vertices and fills *vertices with the pointer to them}
+    ///these are expressed in "unscaled" coordinates
+    ///
+    ///The shape is a series of contours. Each one starts with
+    ///a STBTT_moveto, then consists of a series of mixed
+    ///STBTT_lineto and STBTT_curveto segments. A lineto
+    ///draws a line from previous endpoint to its x,y; a curveto
+    ///draws a quadratic bezier from previous endpoint to
+    ///its x,y, using cx,cy as the bezier control point.
+    public static @CType("int") int stbtt_GetCodepointShape(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("int") int unicode_codepoint, @CType("stbtt_vertex **") java.lang.foreign.MemorySegment vertices) {
+        try {
+            return (int) Handles.MH_stbtt_GetCodepointShape.invokeExact(info, unicode_codepoint, vertices);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointShape", e); }
+    }
+
+    ///{@return # of vertices and fills *vertices with the pointer to them}
+    ///these are expressed in "unscaled" coordinates
+    ///
+    ///The shape is a series of contours. Each one starts with
+    ///a STBTT_moveto, then consists of a series of mixed
+    ///STBTT_lineto and STBTT_curveto segments. A lineto
+    ///draws a line from previous endpoint to its x,y; a curveto
+    ///draws a quadratic bezier from previous endpoint to
+    ///its x,y, using cx,cy as the bezier control point.
+    public static @CType("int") int stbtt_GetGlyphShape(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("int") int glyph_index, @CType("stbtt_vertex **") java.lang.foreign.MemorySegment vertices) {
+        try {
+            return (int) Handles.MH_stbtt_GetGlyphShape.invokeExact(info, glyph_index, vertices);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphShape", e); }
+    }
+
+    ///frees the data allocated above
+    public static void stbtt_FreeShape(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("stbtt_vertex *") java.lang.foreign.MemorySegment vertices) {
+        try {
+            Handles.MH_stbtt_FreeShape.invokeExact(info, vertices);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_FreeShape", e); }
+    }
+
+    ///frees the data allocated above
+    public static void stbtt_FreeShape(@CType("const stbtt_fontinfo *") overrungl.stb.STBTTFontInfo info, @CType("stbtt_vertex *") overrungl.stb.STBTTVertex vertices) {
+        try {
+            Handles.MH_stbtt_FreeShape.invokeExact(Marshal.marshal(info), Marshal.marshal(vertices));
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_FreeShape", e); }
+    }
+
+    public static @CType("unsigned char *") java.lang.foreign.MemorySegment stbtt_FindSVGDoc(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("int") int gl) {
+        try {
+            return (java.lang.foreign.MemorySegment) Handles.MH_stbtt_FindSVGDoc.invokeExact(info, gl);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_FindSVGDoc", e); }
+    }
+
+    ///fills svg with the character's SVG data.
+    ///@return data size or 0 if SVG not found.
+    public static @CType("int") int stbtt_GetCodepointSVG(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("int") int unicode_codepoint, @CType("const char **") java.lang.foreign.MemorySegment svg) {
+        try {
+            return (int) Handles.MH_stbtt_GetCodepointSVG.invokeExact(info, unicode_codepoint, svg);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointSVG", e); }
+    }
+
+    ///fills svg with the character's SVG data.
+    ///@return data size or 0 if SVG not found.
+    public static @CType("int") int stbtt_GetGlyphSVG(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("int") int gl, @CType("const char **") java.lang.foreign.MemorySegment svg) {
+        try {
+            return (int) Handles.MH_stbtt_GetGlyphSVG.invokeExact(info, gl, svg);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphSVG", e); }
+    }
+
+    ///frees the bitmap allocated below
+    public static void stbtt_FreeBitmap(@CType("unsigned char *") java.lang.foreign.MemorySegment bitmap, @CType("void*") java.lang.foreign.MemorySegment userdata) {
+        try {
+            Handles.MH_stbtt_FreeBitmap.invokeExact(bitmap, userdata);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_FreeBitmap", e); }
+    }
+
+    ///allocates a large-enough single-channel 8bpp bitmap and renders the
+    ///specified character/glyph at the specified scale into it, with
+    ///antialiasing. 0 is no coverage (transparent), 255 is fully covered (opaque).
+    ///*width & *height are filled out with the width & height of the bitmap,
+    ///which is stored left-to-right, top-to-bottom.
+    ///
+    ///xoff/yoff are the offset it pixel space from the glyph origin to the top-left of the bitmap
+    public static @CType("unsigned char *") java.lang.foreign.MemorySegment stbtt_GetCodepointBitmap(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("float") float scale_x, @CType("float") float scale_y, @CType("int") int codepoint, @Out @CType("int*") java.lang.foreign.MemorySegment width, @Out @CType("int*") java.lang.foreign.MemorySegment height, @Out @CType("int*") java.lang.foreign.MemorySegment xoff, @Out @CType("int*") java.lang.foreign.MemorySegment yoff) {
+        try {
+            return (java.lang.foreign.MemorySegment) Handles.MH_stbtt_GetCodepointBitmap.invokeExact(info, scale_x, scale_y, codepoint, width, height, xoff, yoff);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointBitmap", e); }
+    }
+
+    ///allocates a large-enough single-channel 8bpp bitmap and renders the
+    ///specified character/glyph at the specified scale into it, with
+    ///antialiasing. 0 is no coverage (transparent), 255 is fully covered (opaque).
+    ///*width & *height are filled out with the width & height of the bitmap,
+    ///which is stored left-to-right, top-to-bottom.
+    ///
+    ///xoff/yoff are the offset it pixel space from the glyph origin to the top-left of the bitmap
+    public static @CType("unsigned char *") java.lang.foreign.MemorySegment stbtt_GetCodepointBitmap(@CType("const stbtt_fontinfo *") overrungl.stb.STBTTFontInfo info, @CType("float") float scale_x, @CType("float") float scale_y, @CType("int") int codepoint, @Out @CType("int*") int[] width, @Out @CType("int*") int[] height, @Out @CType("int*") int[] xoff, @Out @CType("int*") int[] yoff) {
+        try (var __overrungl_stack = MemoryStack.pushLocal()) {
+            var __overrungl_ref_width = Marshal.marshal(__overrungl_stack, width);
+            var __overrungl_ref_height = Marshal.marshal(__overrungl_stack, height);
+            var __overrungl_ref_xoff = Marshal.marshal(__overrungl_stack, xoff);
+            var __overrungl_ref_yoff = Marshal.marshal(__overrungl_stack, yoff);
+            var __overrungl_result = (java.lang.foreign.MemorySegment) Handles.MH_stbtt_GetCodepointBitmap.invokeExact(Marshal.marshal(info), scale_x, scale_y, codepoint, __overrungl_ref_width, __overrungl_ref_height, __overrungl_ref_xoff, __overrungl_ref_yoff);
+            Unmarshal.copy(__overrungl_ref_width, width);
+            Unmarshal.copy(__overrungl_ref_height, height);
+            Unmarshal.copy(__overrungl_ref_xoff, xoff);
+            Unmarshal.copy(__overrungl_ref_yoff, yoff);
+            return __overrungl_result;
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointBitmap", e); }
+    }
+
+    ///the same as stbtt_GetCodepointBitmap, but you can specify a subpixel
+    ///shift for the character
+    public static @CType("unsigned char *") java.lang.foreign.MemorySegment stbtt_GetCodepointBitmapSubpixel(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("float") float scale_x, @CType("float") float scale_y, @CType("float") float shift_x, @CType("float") float shift_y, @CType("int") int codepoint, @Out @CType("int*") java.lang.foreign.MemorySegment width, @Out @CType("int*") java.lang.foreign.MemorySegment height, @Out @CType("int*") java.lang.foreign.MemorySegment xoff, @Out @CType("int*") java.lang.foreign.MemorySegment yoff) {
+        try {
+            return (java.lang.foreign.MemorySegment) Handles.MH_stbtt_GetCodepointBitmapSubpixel.invokeExact(info, scale_x, scale_y, shift_x, shift_y, codepoint, width, height, xoff, yoff);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointBitmapSubpixel", e); }
+    }
+
+    ///the same as stbtt_GetCodepointBitmap, but you can specify a subpixel
+    ///shift for the character
+    public static @CType("unsigned char *") java.lang.foreign.MemorySegment stbtt_GetCodepointBitmapSubpixel(@CType("const stbtt_fontinfo *") overrungl.stb.STBTTFontInfo info, @CType("float") float scale_x, @CType("float") float scale_y, @CType("float") float shift_x, @CType("float") float shift_y, @CType("int") int codepoint, @Out @CType("int*") int[] width, @Out @CType("int*") int[] height, @Out @CType("int*") int[] xoff, @Out @CType("int*") int[] yoff) {
+        try (var __overrungl_stack = MemoryStack.pushLocal()) {
+            var __overrungl_ref_width = Marshal.marshal(__overrungl_stack, width);
+            var __overrungl_ref_height = Marshal.marshal(__overrungl_stack, height);
+            var __overrungl_ref_xoff = Marshal.marshal(__overrungl_stack, xoff);
+            var __overrungl_ref_yoff = Marshal.marshal(__overrungl_stack, yoff);
+            var __overrungl_result = (java.lang.foreign.MemorySegment) Handles.MH_stbtt_GetCodepointBitmapSubpixel.invokeExact(Marshal.marshal(info), scale_x, scale_y, shift_x, shift_y, codepoint, __overrungl_ref_width, __overrungl_ref_height, __overrungl_ref_xoff, __overrungl_ref_yoff);
+            Unmarshal.copy(__overrungl_ref_width, width);
+            Unmarshal.copy(__overrungl_ref_height, height);
+            Unmarshal.copy(__overrungl_ref_xoff, xoff);
+            Unmarshal.copy(__overrungl_ref_yoff, yoff);
+            return __overrungl_result;
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointBitmapSubpixel", e); }
+    }
+
+    ///the same as stbtt_GetCodepointBitmap, but you pass in storage for the bitmap
+    ///in the form of 'output', with row spacing of 'out_stride' bytes. the bitmap
+    ///is clipped to out_w/out_h bytes. Call stbtt_GetCodepointBitmapBox to get the
+    ///width and height and positioning info for it first.
+    public static void stbtt_MakeCodepointBitmap(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("unsigned char *") java.lang.foreign.MemorySegment output, @CType("int") int out_w, @CType("int") int out_h, @CType("int") int out_stride, @CType("float") float scale_x, @CType("float") float scale_y, @CType("int") int codepoint) {
+        try {
+            Handles.MH_stbtt_MakeCodepointBitmap.invokeExact(info, output, out_w, out_h, out_stride, scale_x, scale_y, codepoint);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_MakeCodepointBitmap", e); }
+    }
+
+    ///same as stbtt_MakeCodepointBitmap, but you can specify a subpixel
+    ///shift for the character
+    public static void stbtt_MakeCodepointBitmapSubpixel(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("unsigned char *") java.lang.foreign.MemorySegment output, @CType("int") int out_w, @CType("int") int out_h, @CType("int") int out_stride, @CType("float") float scale_x, @CType("float") float scale_y, @CType("float") float shift_x, @CType("float") float shift_y, @CType("int") int codepoint) {
+        try {
+            Handles.MH_stbtt_MakeCodepointBitmapSubpixel.invokeExact(info, output, out_w, out_h, out_stride, scale_x, scale_y, shift_x, shift_y, codepoint);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_MakeCodepointBitmapSubpixel", e); }
+    }
+
+    ///same as stbtt_MakeCodepointBitmapSubpixel, but prefiltering
+    ///is performed (see stbtt_PackSetOversampling)
+    public static void stbtt_MakeCodepointBitmapSubpixelPrefilter(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("unsigned char *") java.lang.foreign.MemorySegment output, @CType("int") int out_w, @CType("int") int out_h, @CType("int") int out_stride, @CType("float") float scale_x, @CType("float") float scale_y, @CType("float") float shift_x, @CType("float") float shift_y, @CType("int") int oversample_x, @CType("int") int oversample_y, @Out @CType("float*") java.lang.foreign.MemorySegment sub_x, @Out @CType("float*") java.lang.foreign.MemorySegment sub_y, @CType("int") int codepoint) {
+        try {
+            Handles.MH_stbtt_MakeCodepointBitmapSubpixelPrefilter.invokeExact(info, output, out_w, out_h, out_stride, scale_x, scale_y, shift_x, shift_y, oversample_x, oversample_y, sub_x, sub_y, codepoint);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_MakeCodepointBitmapSubpixelPrefilter", e); }
+    }
+
+    ///same as stbtt_MakeCodepointBitmapSubpixel, but prefiltering
+    ///is performed (see stbtt_PackSetOversampling)
+    public static void stbtt_MakeCodepointBitmapSubpixelPrefilter(@CType("const stbtt_fontinfo *") overrungl.stb.STBTTFontInfo info, @CType("unsigned char *") java.lang.foreign.MemorySegment output, @CType("int") int out_w, @CType("int") int out_h, @CType("int") int out_stride, @CType("float") float scale_x, @CType("float") float scale_y, @CType("float") float shift_x, @CType("float") float shift_y, @CType("int") int oversample_x, @CType("int") int oversample_y, @Out @CType("float*") float[] sub_x, @Out @CType("float*") float[] sub_y, @CType("int") int codepoint) {
+        try (var __overrungl_stack = MemoryStack.pushLocal()) {
+            var __overrungl_ref_sub_x = Marshal.marshal(__overrungl_stack, sub_x);
+            var __overrungl_ref_sub_y = Marshal.marshal(__overrungl_stack, sub_y);
+            Handles.MH_stbtt_MakeCodepointBitmapSubpixelPrefilter.invokeExact(Marshal.marshal(info), output, out_w, out_h, out_stride, scale_x, scale_y, shift_x, shift_y, oversample_x, oversample_y, __overrungl_ref_sub_x, __overrungl_ref_sub_y, codepoint);
+            Unmarshal.copy(__overrungl_ref_sub_x, sub_x);
+            Unmarshal.copy(__overrungl_ref_sub_y, sub_y);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_MakeCodepointBitmapSubpixelPrefilter", e); }
+    }
+
+    ///get the bbox of the bitmap centered around the glyph origin; so the
+    ///bitmap width is ix1-ix0, height is iy1-iy0, and location to place
+    ///the bitmap top left is (leftSideBearing*scale,iy0).
+    ///(Note that the bitmap uses y-increases-down, but the shape uses
+    ///y-increases-up, so CodepointBitmapBox and CodepointBox are inverted.)
+    public static void stbtt_GetCodepointBitmapBox(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment font, @CType("int") int codepoint, @CType("float") float scale_x, @CType("float") float scale_y, @Out @CType("int*") java.lang.foreign.MemorySegment ix0, @Out @CType("int*") java.lang.foreign.MemorySegment iy0, @Out @CType("int*") java.lang.foreign.MemorySegment ix1, @Out @CType("int*") java.lang.foreign.MemorySegment iy1) {
+        try {
+            Handles.MH_stbtt_GetCodepointBitmapBox.invokeExact(font, codepoint, scale_x, scale_y, ix0, iy0, ix1, iy1);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointBitmapBox", e); }
+    }
+
+    ///get the bbox of the bitmap centered around the glyph origin; so the
+    ///bitmap width is ix1-ix0, height is iy1-iy0, and location to place
+    ///the bitmap top left is (leftSideBearing*scale,iy0).
+    ///(Note that the bitmap uses y-increases-down, but the shape uses
+    ///y-increases-up, so CodepointBitmapBox and CodepointBox are inverted.)
+    public static void stbtt_GetCodepointBitmapBox(@CType("const stbtt_fontinfo *") overrungl.stb.STBTTFontInfo font, @CType("int") int codepoint, @CType("float") float scale_x, @CType("float") float scale_y, @Out @CType("int*") int[] ix0, @Out @CType("int*") int[] iy0, @Out @CType("int*") int[] ix1, @Out @CType("int*") int[] iy1) {
+        try (var __overrungl_stack = MemoryStack.pushLocal()) {
+            var __overrungl_ref_ix0 = Marshal.marshal(__overrungl_stack, ix0);
+            var __overrungl_ref_iy0 = Marshal.marshal(__overrungl_stack, iy0);
+            var __overrungl_ref_ix1 = Marshal.marshal(__overrungl_stack, ix1);
+            var __overrungl_ref_iy1 = Marshal.marshal(__overrungl_stack, iy1);
+            Handles.MH_stbtt_GetCodepointBitmapBox.invokeExact(Marshal.marshal(font), codepoint, scale_x, scale_y, __overrungl_ref_ix0, __overrungl_ref_iy0, __overrungl_ref_ix1, __overrungl_ref_iy1);
+            Unmarshal.copy(__overrungl_ref_ix0, ix0);
+            Unmarshal.copy(__overrungl_ref_iy0, iy0);
+            Unmarshal.copy(__overrungl_ref_ix1, ix1);
+            Unmarshal.copy(__overrungl_ref_iy1, iy1);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointBitmapBox", e); }
+    }
+
+    ///same as stbtt_GetCodepointBitmapBox, but you can specify a subpixel
+    ///shift for the character
+    public static void stbtt_GetCodepointBitmapBoxSubpixel(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment font, @CType("int") int codepoint, @CType("float") float scale_x, @CType("float") float scale_y, @CType("float") float shift_x, @CType("float") float shift_y, @Out @CType("int*") java.lang.foreign.MemorySegment ix0, @Out @CType("int*") java.lang.foreign.MemorySegment iy0, @Out @CType("int*") java.lang.foreign.MemorySegment ix1, @Out @CType("int*") java.lang.foreign.MemorySegment iy1) {
+        try {
+            Handles.MH_stbtt_GetCodepointBitmapBoxSubpixel.invokeExact(font, codepoint, scale_x, scale_y, shift_x, shift_y, ix0, iy0, ix1, iy1);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointBitmapBoxSubpixel", e); }
+    }
+
+    ///same as stbtt_GetCodepointBitmapBox, but you can specify a subpixel
+    ///shift for the character
+    public static void stbtt_GetCodepointBitmapBoxSubpixel(@CType("const stbtt_fontinfo *") overrungl.stb.STBTTFontInfo font, @CType("int") int codepoint, @CType("float") float scale_x, @CType("float") float scale_y, @CType("float") float shift_x, @CType("float") float shift_y, @Out @CType("int*") int[] ix0, @Out @CType("int*") int[] iy0, @Out @CType("int*") int[] ix1, @Out @CType("int*") int[] iy1) {
+        try (var __overrungl_stack = MemoryStack.pushLocal()) {
+            var __overrungl_ref_ix0 = Marshal.marshal(__overrungl_stack, ix0);
+            var __overrungl_ref_iy0 = Marshal.marshal(__overrungl_stack, iy0);
+            var __overrungl_ref_ix1 = Marshal.marshal(__overrungl_stack, ix1);
+            var __overrungl_ref_iy1 = Marshal.marshal(__overrungl_stack, iy1);
+            Handles.MH_stbtt_GetCodepointBitmapBoxSubpixel.invokeExact(Marshal.marshal(font), codepoint, scale_x, scale_y, shift_x, shift_y, __overrungl_ref_ix0, __overrungl_ref_iy0, __overrungl_ref_ix1, __overrungl_ref_iy1);
+            Unmarshal.copy(__overrungl_ref_ix0, ix0);
+            Unmarshal.copy(__overrungl_ref_iy0, iy0);
+            Unmarshal.copy(__overrungl_ref_ix1, ix1);
+            Unmarshal.copy(__overrungl_ref_iy1, iy1);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointBitmapBoxSubpixel", e); }
+    }
+
+    ///the following functions are equivalent to the above functions, but operate
+    ///on glyph indices instead of Unicode codepoints (for efficiency)
+    public static @CType("unsigned char *") java.lang.foreign.MemorySegment stbtt_GetGlyphBitmap(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("float") float scale_x, @CType("float") float scale_y, @CType("int") int glyph, @Out @CType("int*") java.lang.foreign.MemorySegment width, @Out @CType("int*") java.lang.foreign.MemorySegment height, @Out @CType("int*") java.lang.foreign.MemorySegment xoff, @Out @CType("int*") java.lang.foreign.MemorySegment yoff) {
+        try {
+            return (java.lang.foreign.MemorySegment) Handles.MH_stbtt_GetGlyphBitmap.invokeExact(info, scale_x, scale_y, glyph, width, height, xoff, yoff);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphBitmap", e); }
+    }
+
+    ///the following functions are equivalent to the above functions, but operate
+    ///on glyph indices instead of Unicode codepoints (for efficiency)
+    public static @CType("unsigned char *") java.lang.foreign.MemorySegment stbtt_GetGlyphBitmap(@CType("const stbtt_fontinfo *") overrungl.stb.STBTTFontInfo info, @CType("float") float scale_x, @CType("float") float scale_y, @CType("int") int glyph, @Out @CType("int*") int[] width, @Out @CType("int*") int[] height, @Out @CType("int*") int[] xoff, @Out @CType("int*") int[] yoff) {
+        try (var __overrungl_stack = MemoryStack.pushLocal()) {
+            var __overrungl_ref_width = Marshal.marshal(__overrungl_stack, width);
+            var __overrungl_ref_height = Marshal.marshal(__overrungl_stack, height);
+            var __overrungl_ref_xoff = Marshal.marshal(__overrungl_stack, xoff);
+            var __overrungl_ref_yoff = Marshal.marshal(__overrungl_stack, yoff);
+            var __overrungl_result = (java.lang.foreign.MemorySegment) Handles.MH_stbtt_GetGlyphBitmap.invokeExact(Marshal.marshal(info), scale_x, scale_y, glyph, __overrungl_ref_width, __overrungl_ref_height, __overrungl_ref_xoff, __overrungl_ref_yoff);
+            Unmarshal.copy(__overrungl_ref_width, width);
+            Unmarshal.copy(__overrungl_ref_height, height);
+            Unmarshal.copy(__overrungl_ref_xoff, xoff);
+            Unmarshal.copy(__overrungl_ref_yoff, yoff);
+            return __overrungl_result;
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphBitmap", e); }
+    }
+
+    public static @CType("unsigned char *") java.lang.foreign.MemorySegment stbtt_GetGlyphBitmapSubpixel(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("float") float scale_x, @CType("float") float scale_y, @CType("float") float shift_x, @CType("float") float shift_y, @CType("int") int glyph, @Out @CType("int*") java.lang.foreign.MemorySegment width, @Out @CType("int*") java.lang.foreign.MemorySegment height, @Out @CType("int*") java.lang.foreign.MemorySegment xoff, @Out @CType("int*") java.lang.foreign.MemorySegment yoff) {
+        try {
+            return (java.lang.foreign.MemorySegment) Handles.MH_stbtt_GetGlyphBitmapSubpixel.invokeExact(info, scale_x, scale_y, shift_x, shift_y, glyph, width, height, xoff, yoff);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphBitmapSubpixel", e); }
+    }
+
+    public static @CType("unsigned char *") java.lang.foreign.MemorySegment stbtt_GetGlyphBitmapSubpixel(@CType("const stbtt_fontinfo *") overrungl.stb.STBTTFontInfo info, @CType("float") float scale_x, @CType("float") float scale_y, @CType("float") float shift_x, @CType("float") float shift_y, @CType("int") int glyph, @Out @CType("int*") int[] width, @Out @CType("int*") int[] height, @Out @CType("int*") int[] xoff, @Out @CType("int*") int[] yoff) {
+        try (var __overrungl_stack = MemoryStack.pushLocal()) {
+            var __overrungl_ref_width = Marshal.marshal(__overrungl_stack, width);
+            var __overrungl_ref_height = Marshal.marshal(__overrungl_stack, height);
+            var __overrungl_ref_xoff = Marshal.marshal(__overrungl_stack, xoff);
+            var __overrungl_ref_yoff = Marshal.marshal(__overrungl_stack, yoff);
+            var __overrungl_result = (java.lang.foreign.MemorySegment) Handles.MH_stbtt_GetGlyphBitmapSubpixel.invokeExact(Marshal.marshal(info), scale_x, scale_y, shift_x, shift_y, glyph, __overrungl_ref_width, __overrungl_ref_height, __overrungl_ref_xoff, __overrungl_ref_yoff);
+            Unmarshal.copy(__overrungl_ref_width, width);
+            Unmarshal.copy(__overrungl_ref_height, height);
+            Unmarshal.copy(__overrungl_ref_xoff, xoff);
+            Unmarshal.copy(__overrungl_ref_yoff, yoff);
+            return __overrungl_result;
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphBitmapSubpixel", e); }
+    }
+
+    public static void stbtt_MakeGlyphBitmap(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("unsigned char *") java.lang.foreign.MemorySegment output, @CType("int") int out_w, @CType("int") int out_h, @CType("int") int out_stride, @CType("float") float scale_x, @CType("float") float scale_y, @CType("int") int glyph) {
+        try {
+            Handles.MH_stbtt_MakeGlyphBitmap.invokeExact(info, output, out_w, out_h, out_stride, scale_x, scale_y, glyph);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_MakeGlyphBitmap", e); }
+    }
+
+    public static void stbtt_MakeGlyphBitmapSubpixel(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("unsigned char *") java.lang.foreign.MemorySegment output, @CType("int") int out_w, @CType("int") int out_h, @CType("int") int out_stride, @CType("float") float scale_x, @CType("float") float scale_y, @CType("float") float shift_x, @CType("float") float shift_y, @CType("int") int glyph) {
+        try {
+            Handles.MH_stbtt_MakeGlyphBitmapSubpixel.invokeExact(info, output, out_w, out_h, out_stride, scale_x, scale_y, shift_x, shift_y, glyph);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_MakeGlyphBitmapSubpixel", e); }
+    }
+
+    public static void stbtt_MakeGlyphBitmapSubpixelPrefilter(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("unsigned char *") java.lang.foreign.MemorySegment output, @CType("int") int out_w, @CType("int") int out_h, @CType("int") int out_stride, @CType("float") float scale_x, @CType("float") float scale_y, @CType("float") float shift_x, @CType("float") float shift_y, @CType("int") int oversample_x, @CType("int") int oversample_y, @Out @CType("float*") java.lang.foreign.MemorySegment sub_x, @Out @CType("float*") java.lang.foreign.MemorySegment sub_y, @CType("int") int glyph) {
+        try {
+            Handles.MH_stbtt_MakeGlyphBitmapSubpixelPrefilter.invokeExact(info, output, out_w, out_h, out_stride, scale_x, scale_y, shift_x, shift_y, oversample_x, oversample_y, sub_x, sub_y, glyph);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_MakeGlyphBitmapSubpixelPrefilter", e); }
+    }
+
+    public static void stbtt_MakeGlyphBitmapSubpixelPrefilter(@CType("const stbtt_fontinfo *") overrungl.stb.STBTTFontInfo info, @CType("unsigned char *") java.lang.foreign.MemorySegment output, @CType("int") int out_w, @CType("int") int out_h, @CType("int") int out_stride, @CType("float") float scale_x, @CType("float") float scale_y, @CType("float") float shift_x, @CType("float") float shift_y, @CType("int") int oversample_x, @CType("int") int oversample_y, @Out @CType("float*") float[] sub_x, @Out @CType("float*") float[] sub_y, @CType("int") int glyph) {
+        try (var __overrungl_stack = MemoryStack.pushLocal()) {
+            var __overrungl_ref_sub_x = Marshal.marshal(__overrungl_stack, sub_x);
+            var __overrungl_ref_sub_y = Marshal.marshal(__overrungl_stack, sub_y);
+            Handles.MH_stbtt_MakeGlyphBitmapSubpixelPrefilter.invokeExact(Marshal.marshal(info), output, out_w, out_h, out_stride, scale_x, scale_y, shift_x, shift_y, oversample_x, oversample_y, __overrungl_ref_sub_x, __overrungl_ref_sub_y, glyph);
+            Unmarshal.copy(__overrungl_ref_sub_x, sub_x);
+            Unmarshal.copy(__overrungl_ref_sub_y, sub_y);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_MakeGlyphBitmapSubpixelPrefilter", e); }
+    }
+
+    public static void stbtt_GetGlyphBitmapBox(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment font, @CType("int") int glyph, @CType("float") float scale_x, @CType("float") float scale_y, @Out @CType("int*") java.lang.foreign.MemorySegment ix0, @Out @CType("int*") java.lang.foreign.MemorySegment iy0, @Out @CType("int*") java.lang.foreign.MemorySegment ix1, @Out @CType("int*") java.lang.foreign.MemorySegment iy1) {
+        try {
+            Handles.MH_stbtt_GetGlyphBitmapBox.invokeExact(font, glyph, scale_x, scale_y, ix0, iy0, ix1, iy1);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphBitmapBox", e); }
+    }
+
+    public static void stbtt_GetGlyphBitmapBox(@CType("const stbtt_fontinfo *") overrungl.stb.STBTTFontInfo font, @CType("int") int glyph, @CType("float") float scale_x, @CType("float") float scale_y, @Out @CType("int*") int[] ix0, @Out @CType("int*") int[] iy0, @Out @CType("int*") int[] ix1, @Out @CType("int*") int[] iy1) {
+        try (var __overrungl_stack = MemoryStack.pushLocal()) {
+            var __overrungl_ref_ix0 = Marshal.marshal(__overrungl_stack, ix0);
+            var __overrungl_ref_iy0 = Marshal.marshal(__overrungl_stack, iy0);
+            var __overrungl_ref_ix1 = Marshal.marshal(__overrungl_stack, ix1);
+            var __overrungl_ref_iy1 = Marshal.marshal(__overrungl_stack, iy1);
+            Handles.MH_stbtt_GetGlyphBitmapBox.invokeExact(Marshal.marshal(font), glyph, scale_x, scale_y, __overrungl_ref_ix0, __overrungl_ref_iy0, __overrungl_ref_ix1, __overrungl_ref_iy1);
+            Unmarshal.copy(__overrungl_ref_ix0, ix0);
+            Unmarshal.copy(__overrungl_ref_iy0, iy0);
+            Unmarshal.copy(__overrungl_ref_ix1, ix1);
+            Unmarshal.copy(__overrungl_ref_iy1, iy1);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphBitmapBox", e); }
+    }
+
+    public static void stbtt_GetGlyphBitmapBoxSubpixel(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment font, @CType("int") int glyph, @CType("float") float scale_x, @CType("float") float scale_y, @CType("float") float shift_x, @CType("float") float shift_y, @Out @CType("int*") java.lang.foreign.MemorySegment ix0, @Out @CType("int*") java.lang.foreign.MemorySegment iy0, @Out @CType("int*") java.lang.foreign.MemorySegment ix1, @Out @CType("int*") java.lang.foreign.MemorySegment iy1) {
+        try {
+            Handles.MH_stbtt_GetGlyphBitmapBoxSubpixel.invokeExact(font, glyph, scale_x, scale_y, shift_x, shift_y, ix0, iy0, ix1, iy1);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphBitmapBoxSubpixel", e); }
+    }
+
+    public static void stbtt_GetGlyphBitmapBoxSubpixel(@CType("const stbtt_fontinfo *") overrungl.stb.STBTTFontInfo font, @CType("int") int glyph, @CType("float") float scale_x, @CType("float") float scale_y, @CType("float") float shift_x, @CType("float") float shift_y, @Out @CType("int*") int[] ix0, @Out @CType("int*") int[] iy0, @Out @CType("int*") int[] ix1, @Out @CType("int*") int[] iy1) {
+        try (var __overrungl_stack = MemoryStack.pushLocal()) {
+            var __overrungl_ref_ix0 = Marshal.marshal(__overrungl_stack, ix0);
+            var __overrungl_ref_iy0 = Marshal.marshal(__overrungl_stack, iy0);
+            var __overrungl_ref_ix1 = Marshal.marshal(__overrungl_stack, ix1);
+            var __overrungl_ref_iy1 = Marshal.marshal(__overrungl_stack, iy1);
+            Handles.MH_stbtt_GetGlyphBitmapBoxSubpixel.invokeExact(Marshal.marshal(font), glyph, scale_x, scale_y, shift_x, shift_y, __overrungl_ref_ix0, __overrungl_ref_iy0, __overrungl_ref_ix1, __overrungl_ref_iy1);
+            Unmarshal.copy(__overrungl_ref_ix0, ix0);
+            Unmarshal.copy(__overrungl_ref_iy0, iy0);
+            Unmarshal.copy(__overrungl_ref_ix1, ix1);
+            Unmarshal.copy(__overrungl_ref_iy1, iy1);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphBitmapBoxSubpixel", e); }
+    }
+
+    ///rasterize a shape with quadratic beziers into a bitmap
+    ///@param result 1-channel bitmap to draw into
+    ///@param flatness_in_pixels allowable error of curve in pixels
+    ///@param vertices array of vertices defining shape
+    ///@param num_verts number of vertices in above array
+    ///@param scale_x scale applied to input vertices
+    ///@param scale_y scale applied to input vertices
+    ///@param shift_x translation applied to input vertices
+    ///@param shift_y translation applied to input vertices
+    ///@param x_off another translation applied to input
+    ///@param y_off another translation applied to input
+    ///@param invert if non-zero, vertically flip shape
+    ///@param userdata context for to STBTT_MALLOC
+    public static void stbtt_Rasterize(@CType("stbtt__bitmap *") java.lang.foreign.MemorySegment result, @CType("float") float flatness_in_pixels, @CType("stbtt_vertex *") java.lang.foreign.MemorySegment vertices, @CType("int") int num_verts, @CType("float") float scale_x, @CType("float") float scale_y, @CType("float") float shift_x, @CType("float") float shift_y, @CType("int") int x_off, @CType("int") int y_off, @CType("int") boolean invert, @CType("void*") java.lang.foreign.MemorySegment userdata) {
+        try {
+            Handles.MH_stbtt_Rasterize.invokeExact(result, flatness_in_pixels, vertices, num_verts, scale_x, scale_y, shift_x, shift_y, x_off, y_off, invert, userdata);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_Rasterize", e); }
+    }
+
+    ///rasterize a shape with quadratic beziers into a bitmap
+    ///@param result 1-channel bitmap to draw into
+    ///@param flatness_in_pixels allowable error of curve in pixels
+    ///@param vertices array of vertices defining shape
+    ///@param num_verts number of vertices in above array
+    ///@param scale_x scale applied to input vertices
+    ///@param scale_y scale applied to input vertices
+    ///@param shift_x translation applied to input vertices
+    ///@param shift_y translation applied to input vertices
+    ///@param x_off another translation applied to input
+    ///@param y_off another translation applied to input
+    ///@param invert if non-zero, vertically flip shape
+    ///@param userdata context for to STBTT_MALLOC
+    public static void stbtt_Rasterize(@CType("stbtt__bitmap *") overrungl.stb.STBTT__bitmap result, @CType("float") float flatness_in_pixels, @CType("stbtt_vertex *") overrungl.stb.STBTTVertex vertices, @CType("int") int num_verts, @CType("float") float scale_x, @CType("float") float scale_y, @CType("float") float shift_x, @CType("float") float shift_y, @CType("int") int x_off, @CType("int") int y_off, @CType("int") boolean invert, @CType("void*") java.lang.foreign.MemorySegment userdata) {
+        try {
+            Handles.MH_stbtt_Rasterize.invokeExact(Marshal.marshal(result), flatness_in_pixels, Marshal.marshal(vertices), num_verts, scale_x, scale_y, shift_x, shift_y, x_off, y_off, invert, userdata);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_Rasterize", e); }
+    }
+
+    ///frees the SDF bitmap allocated below
+    public static void stbtt_FreeSDF(@CType("unsigned char *") java.lang.foreign.MemorySegment bitmap, @CType("void*") java.lang.foreign.MemorySegment userdata) {
+        try {
+            Handles.MH_stbtt_FreeSDF.invokeExact(bitmap, userdata);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_FreeSDF", e); }
+    }
+
+    ///These functions compute a discretized SDF field for a single character, suitable for storing
+    ///in a single-channel texture, sampling with bilinear filtering, and testing against
+    ///larger than some threshold to produce scalable fonts.
+    ///
+    ///pixel_dist_scale & onedge_value are a scale & bias that allows you to make
+    ///optimal use of the limited 0..255 for your application, trading off precision
+    ///and special effects. SDF values outside the range 0..255 are clamped to 0..255.
+    ///
+    ///The function computes the SDF analytically at each SDF pixel, not by e.g.
+    ///building a higher-res bitmap and approximating it. In theory the quality
+    ///should be as high as possible for an SDF of this size & representation, but
+    ///unclear if this is true in practice (perhaps building a higher-res bitmap
+    ///and computing from that can allow drop-out prevention).
+    ///
+    ///The algorithm has not been optimized at all, so expect it to be slow
+    ///if computing lots of characters or very large sizes.
+    ///
+    ///#### Example
+    ///- scale = stbtt_ScaleForPixelHeight(22)
+    ///- padding = 5
+    ///- onedge_value = 180
+    ///- pixel_dist_scale = 180/5.0 = 36.0
+    ///
+    ///This will create an SDF bitmap in which the character is about 22 pixels
+    ///high but the whole bitmap is about 22+5+5=32 pixels high. To produce a filled
+    ///shape, sample the SDF at each pixel and fill the pixel if the SDF value
+    ///is greater than or equal to 180/255. (You'll actually want to antialias,
+    ///which is beyond the scope of this example.) Additionally, you can compute
+    ///offset outlines (e.g. to stroke the character border inside & outside,
+    ///or only outside). For example, to fill outside the character up to 3 SDF
+    ///pixels, you would compare against (180-36.0*3)/255 = 72/255. The above
+    ///choice of variables maps a range from 5 pixels outside the shape to
+    ///2 pixels inside the shape to 0..255; this is intended primarily for apply
+    ///outside effects only (the interior range is needed to allow proper
+    ///antialiasing of the font at *smaller* sizes)
+    ///
+    ///@param info             the font
+    ///@param scale            controls the size of the resulting SDF bitmap, same as it would be creating a regular bitmap
+    ///@param glyph            the character to generate the SDF for
+    ///@param padding          extra "pixels" around the character which are filled with the distance to the character (not 0),
+    ///                        which allows effects like bit outlines
+    ///@param onedge_value     value 0-255 to test the SDF against to reconstruct the character (i.e. the isocontour of the character)
+    ///@param pixel_dist_scale what value the SDF should increase by when moving one SDF "pixel" away from the edge (on the 0..255 scale)
+    ///                        if positive, > onedge_value is inside; if negative, < onedge_value is inside
+    ///@param width            output width of the SDF bitmap (including padding)
+    ///@param height           output height of the SDF bitmap (including padding)
+    ///@param xoff             output origin of the character
+    ///@param yoff             output origin of the character
+    ///@return a 2D array of bytes 0..255, width*height in size
+    public static @CType("unsigned char *") java.lang.foreign.MemorySegment stbtt_GetGlyphSDF(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("float") float scale, @CType("int") int glyph, @CType("int") int padding, @CType("unsigned char") byte onedge_value, @CType("float") float pixel_dist_scale, @Out @CType("int*") java.lang.foreign.MemorySegment width, @Out @CType("int*") java.lang.foreign.MemorySegment height, @Out @CType("int*") java.lang.foreign.MemorySegment xoff, @Out @CType("int*") java.lang.foreign.MemorySegment yoff) {
+        try {
+            return (java.lang.foreign.MemorySegment) Handles.MH_stbtt_GetGlyphSDF.invokeExact(info, scale, glyph, padding, onedge_value, pixel_dist_scale, width, height, xoff, yoff);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphSDF", e); }
+    }
+
+    ///These functions compute a discretized SDF field for a single character, suitable for storing
+    ///in a single-channel texture, sampling with bilinear filtering, and testing against
+    ///larger than some threshold to produce scalable fonts.
+    ///
+    ///pixel_dist_scale & onedge_value are a scale & bias that allows you to make
+    ///optimal use of the limited 0..255 for your application, trading off precision
+    ///and special effects. SDF values outside the range 0..255 are clamped to 0..255.
+    ///
+    ///The function computes the SDF analytically at each SDF pixel, not by e.g.
+    ///building a higher-res bitmap and approximating it. In theory the quality
+    ///should be as high as possible for an SDF of this size & representation, but
+    ///unclear if this is true in practice (perhaps building a higher-res bitmap
+    ///and computing from that can allow drop-out prevention).
+    ///
+    ///The algorithm has not been optimized at all, so expect it to be slow
+    ///if computing lots of characters or very large sizes.
+    ///
+    ///#### Example
+    ///- scale = stbtt_ScaleForPixelHeight(22)
+    ///- padding = 5
+    ///- onedge_value = 180
+    ///- pixel_dist_scale = 180/5.0 = 36.0
+    ///
+    ///This will create an SDF bitmap in which the character is about 22 pixels
+    ///high but the whole bitmap is about 22+5+5=32 pixels high. To produce a filled
+    ///shape, sample the SDF at each pixel and fill the pixel if the SDF value
+    ///is greater than or equal to 180/255. (You'll actually want to antialias,
+    ///which is beyond the scope of this example.) Additionally, you can compute
+    ///offset outlines (e.g. to stroke the character border inside & outside,
+    ///or only outside). For example, to fill outside the character up to 3 SDF
+    ///pixels, you would compare against (180-36.0*3)/255 = 72/255. The above
+    ///choice of variables maps a range from 5 pixels outside the shape to
+    ///2 pixels inside the shape to 0..255; this is intended primarily for apply
+    ///outside effects only (the interior range is needed to allow proper
+    ///antialiasing of the font at *smaller* sizes)
+    ///
+    ///@param info             the font
+    ///@param scale            controls the size of the resulting SDF bitmap, same as it would be creating a regular bitmap
+    ///@param glyph            the character to generate the SDF for
+    ///@param padding          extra "pixels" around the character which are filled with the distance to the character (not 0),
+    ///                        which allows effects like bit outlines
+    ///@param onedge_value     value 0-255 to test the SDF against to reconstruct the character (i.e. the isocontour of the character)
+    ///@param pixel_dist_scale what value the SDF should increase by when moving one SDF "pixel" away from the edge (on the 0..255 scale)
+    ///                        if positive, > onedge_value is inside; if negative, < onedge_value is inside
+    ///@param width            output width of the SDF bitmap (including padding)
+    ///@param height           output height of the SDF bitmap (including padding)
+    ///@param xoff             output origin of the character
+    ///@param yoff             output origin of the character
+    ///@return a 2D array of bytes 0..255, width*height in size
+    public static @CType("unsigned char *") java.lang.foreign.MemorySegment stbtt_GetGlyphSDF(@CType("const stbtt_fontinfo *") overrungl.stb.STBTTFontInfo info, @CType("float") float scale, @CType("int") int glyph, @CType("int") int padding, @CType("unsigned char") byte onedge_value, @CType("float") float pixel_dist_scale, @Out @CType("int*") int[] width, @Out @CType("int*") int[] height, @Out @CType("int*") int[] xoff, @Out @CType("int*") int[] yoff) {
+        try (var __overrungl_stack = MemoryStack.pushLocal()) {
+            var __overrungl_ref_width = Marshal.marshal(__overrungl_stack, width);
+            var __overrungl_ref_height = Marshal.marshal(__overrungl_stack, height);
+            var __overrungl_ref_xoff = Marshal.marshal(__overrungl_stack, xoff);
+            var __overrungl_ref_yoff = Marshal.marshal(__overrungl_stack, yoff);
+            var __overrungl_result = (java.lang.foreign.MemorySegment) Handles.MH_stbtt_GetGlyphSDF.invokeExact(Marshal.marshal(info), scale, glyph, padding, onedge_value, pixel_dist_scale, __overrungl_ref_width, __overrungl_ref_height, __overrungl_ref_xoff, __overrungl_ref_yoff);
+            Unmarshal.copy(__overrungl_ref_width, width);
+            Unmarshal.copy(__overrungl_ref_height, height);
+            Unmarshal.copy(__overrungl_ref_xoff, xoff);
+            Unmarshal.copy(__overrungl_ref_yoff, yoff);
+            return __overrungl_result;
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetGlyphSDF", e); }
+    }
+
+    ///See stbtt_GetGlyphSDF
+    public static @CType("unsigned char *") java.lang.foreign.MemorySegment stbtt_GetCodepointSDF(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment info, @CType("float") float scale, @CType("int") int codepoint, @CType("int") int padding, @CType("unsigned char") byte onedge_value, @CType("float") float pixel_dist_scale, @Out @CType("int*") java.lang.foreign.MemorySegment width, @Out @CType("int*") java.lang.foreign.MemorySegment height, @Out @CType("int*") java.lang.foreign.MemorySegment xoff, @Out @CType("int*") java.lang.foreign.MemorySegment yoff) {
+        try {
+            return (java.lang.foreign.MemorySegment) Handles.MH_stbtt_GetCodepointSDF.invokeExact(info, scale, codepoint, padding, onedge_value, pixel_dist_scale, width, height, xoff, yoff);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointSDF", e); }
+    }
+
+    ///See stbtt_GetGlyphSDF
+    public static @CType("unsigned char *") java.lang.foreign.MemorySegment stbtt_GetCodepointSDF(@CType("const stbtt_fontinfo *") overrungl.stb.STBTTFontInfo info, @CType("float") float scale, @CType("int") int codepoint, @CType("int") int padding, @CType("unsigned char") byte onedge_value, @CType("float") float pixel_dist_scale, @Out @CType("int*") int[] width, @Out @CType("int*") int[] height, @Out @CType("int*") int[] xoff, @Out @CType("int*") int[] yoff) {
+        try (var __overrungl_stack = MemoryStack.pushLocal()) {
+            var __overrungl_ref_width = Marshal.marshal(__overrungl_stack, width);
+            var __overrungl_ref_height = Marshal.marshal(__overrungl_stack, height);
+            var __overrungl_ref_xoff = Marshal.marshal(__overrungl_stack, xoff);
+            var __overrungl_ref_yoff = Marshal.marshal(__overrungl_stack, yoff);
+            var __overrungl_result = (java.lang.foreign.MemorySegment) Handles.MH_stbtt_GetCodepointSDF.invokeExact(Marshal.marshal(info), scale, codepoint, padding, onedge_value, pixel_dist_scale, __overrungl_ref_width, __overrungl_ref_height, __overrungl_ref_xoff, __overrungl_ref_yoff);
+            Unmarshal.copy(__overrungl_ref_width, width);
+            Unmarshal.copy(__overrungl_ref_height, height);
+            Unmarshal.copy(__overrungl_ref_xoff, xoff);
+            Unmarshal.copy(__overrungl_ref_yoff, yoff);
+            return __overrungl_result;
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetCodepointSDF", e); }
+    }
+
+    ///returns the offset (not index) of the font that matches, or -1 if none
+    ///if you use STBTT_MACSTYLE_DONTCARE, use a font name like "Arial Bold".
+    ///if you use any other flag, use a font name like "Arial"; this checks
+    ///the 'macStyle' header field; i don't know if fonts set this consistently
+    public static @CType("int") int stbtt_FindMatchingFont(@CType("const unsigned char *") java.lang.foreign.MemorySegment fontdata, @CType("const char*") java.lang.foreign.MemorySegment name, @CType("int") int flags) {
+        try {
+            return (int) Handles.MH_stbtt_FindMatchingFont.invokeExact(fontdata, name, flags);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_FindMatchingFont", e); }
+    }
+
+    ///returns the offset (not index) of the font that matches, or -1 if none
+    ///if you use STBTT_MACSTYLE_DONTCARE, use a font name like "Arial Bold".
+    ///if you use any other flag, use a font name like "Arial"; this checks
+    ///the 'macStyle' header field; i don't know if fonts set this consistently
+    public static @CType("int") int stbtt_FindMatchingFont(@CType("const unsigned char *") java.lang.foreign.MemorySegment fontdata, @CType("const char*") java.lang.String name, @CType("int") int flags) {
+        try (var __overrungl_stack = MemoryStack.pushLocal()) {
+            return (int) Handles.MH_stbtt_FindMatchingFont.invokeExact(fontdata, Marshal.marshal(__overrungl_stack, name), flags);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_FindMatchingFont", e); }
+    }
+
+    ///returns 1/0 whether the first string interpreted as utf8 is identical to
+    ///the second string interpreted as big-endian utf16... useful for strings from next func
+    public static @CType("int") boolean stbtt_CompareUTF8toUTF16_bigendian(@CType("const char*") java.lang.foreign.MemorySegment s1, @CType("int") int len1, @CType("const char*") java.lang.foreign.MemorySegment s2, @CType("int") int len2) {
+        try {
+            return (boolean) Handles.MH_stbtt_CompareUTF8toUTF16_bigendian.invokeExact(s1, len1, s2, len2);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_CompareUTF8toUTF16_bigendian", e); }
+    }
+
+    ///returns the string (which may be big-endian double byte, e.g. for unicode)
+    ///and puts the length in bytes in *length.
+    ///
+    ///some of the values for the IDs are below; for more see the truetype spec:
+    ///- <https://developer.apple.com/textfonts/TTRefMan/RM06/Chap6name.html>
+    ///- <https://www.microsoft.com/typography/otspec/name.htm>
+    public static @CType("const char*") java.lang.foreign.MemorySegment stbtt_GetFontNameString(@CType("const stbtt_fontinfo *") java.lang.foreign.MemorySegment font, @Out @CType("int*") java.lang.foreign.MemorySegment length, @CType("int") int platformID, @CType("int") int encodingID, @CType("int") int languageID, @CType("int") int nameID) {
+        try {
+            return (java.lang.foreign.MemorySegment) Handles.MH_stbtt_GetFontNameString.invokeExact(font, length, platformID, encodingID, languageID, nameID);
+        } catch (Throwable e) { throw new RuntimeException("error in stbtt_GetFontNameString", e); }
+    }
+
+    //@formatter:on
+    //endregion ---[END GENERATOR END]---
+
+    private STBTrueType() {
     }
 
     /**
-     * Creates character bitmaps from the font_index'th font found in fontdata (use
-     * font_index=0 if you don't know what that is). It creates num_chars_in_range
-     * bitmaps for characters with unicode values starting at first_unicode_char_in_range
-     * and increasing. Data for how to render them is stored in chardata_for_range;
-     * pass these to stbtt_GetPackedQuad to get back renderable quads.
-     * <p>
-     * font_size is the full height of the character from ascender to descender,
-     * as computed by stbtt_ScaleForPixelHeight. To use a point size as computed
-     * by stbtt_ScaleForMappingEmToPixels, wrap the point size in STBTT_POINT_SIZE()
-     * and pass that result as 'font_size':
-     * <pre>{@code
-     * ...,                  20 , ... // font max minus min y is 20 pixels tall
-     * ..., STBTT_POINT_SIZE(20), ... // 'M' is 20 pixels tall}</pre>
+     * <h4>C Macro Definition</h4>
+     * <pre><code>
+     * #define STBTT_POINT_SIZE(x)   (-(x))
+     * </code></pre>
      *
-     * @param spc                         spc
-     * @param fontdata                    fontdata
-     * @param font_index                  font_index
-     * @param font_size                   the full height of the character from ascender to descender,
-     *                                    as computed by stbtt_ScaleForPixelHeight.
-     * @param first_unicode_char_in_range first_unicode_char_in_range
-     * @param num_chars_in_range          num_chars_in_range
-     * @param chardata_for_range          chardata_for_range
-     * @return int
+     * @param x the parameter
+     * @return {@code -x}
      */
-    @Entrypoint("stbtt_PackFontRange")
-    int packFontRange(@NativeType("stbtt_pack_context *") MemorySegment spc, @NativeType("const unsigned char *") MemorySegment fontdata, int font_index, float font_size,
-                      int first_unicode_char_in_range, int num_chars_in_range, STBTTPackedChar chardata_for_range);
+    public static float STBTT_POINT_SIZE(float x) {
+        return -x;
+    }
 
-    /**
-     * Creates character bitmaps from multiple ranges of characters stored in
-     * ranges. This will usually create a better-packed bitmap than multiple
-     * calls to stbtt_PackFontRange. Note that you can call this multiple
-     * times within a single PackBegin/PackEnd.
-     *
-     * @param spc        spc
-     * @param fontdata   fontdata
-     * @param font_index font_index
-     * @param ranges     ranges
-     * @param num_ranges num_ranges
-     * @return int
-     */
-    @Entrypoint("stbtt_PackFontRanges")
-    int packFontRanges(@NativeType("stbtt_pack_context *") MemorySegment spc, @NativeType("const unsigned char *") MemorySegment fontdata, int font_index, STBTTPackRange ranges, int num_ranges);
+    /// returns 1/0 whether the first string interpreted as utf8 is identical to
+    /// the second string interpreted as big-endian utf16... useful for strings from next func
+    public static boolean stbtt_CompareUTF8toUTF16_bigendian(String s1, String s2) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            MemorySegment ps1 = Marshal.marshal(stack, s1);
+            MemorySegment ps2 = Marshal.marshal(stack, s2, StandardCharsets.UTF_16BE);
+            return stbtt_CompareUTF8toUTF16_bigendian(ps1, Math.toIntExact(ps1.byteSize()) - 1, ps2, Math.toIntExact(ps2.byteSize()) - 2);
+        }
+    }
 
-    /**
-     * Oversampling a font increases the quality by allowing higher-quality subpixel
-     * positioning, and is especially valuable at smaller text sizes.
-     * <p>
-     * This function sets the amount of oversampling for all following calls to
-     * stbtt_PackFontRange(s) or stbtt_PackFontRangesGatherRects for a given
-     * pack context. The default (no oversampling) is achieved by h_oversample=1
-     * and v_oversample=1. The total number of pixels required is
-     * h_oversample*v_oversample larger than the default; for example, 2x2
-     * oversampling requires 4x the storage of 1x1. For best results, render
-     * oversampled textures with bilinear filtering. Look at the readme in
-     * stb/tests/oversample for information about oversampled fonts
-     * <p>
-     * To use with PackFontRangesGather etc., you must set it before calls
-     * call to PackFontRangesGatherRects.
-     *
-     * @param spc          spc
-     * @param h_oversample h_oversample
-     * @param v_oversample v_oversample
-     */
-    @Entrypoint("stbtt_PackSetOversampling")
-    void packSetOversampling(@NativeType("stbtt_pack_context *") MemorySegment spc, int h_oversample, int v_oversample);
-
-    /**
-     * If skip != 0, this tells stb_truetype to skip any codepoints for which
-     * there is no corresponding glyph. If skip=0, which is the default, then
-     * codepoints without a glyph recived the font's "missing character" glyph,
-     * typically an empty box by convention.
-     *
-     * @param spc  spc
-     * @param skip skip
-     */
-    @Entrypoint("stbtt_PackSetSkipMissingCodepoints")
-    void packSetSkipMissingCodepoints(@NativeType("stbtt_pack_context *") MemorySegment spc, @Convert(AsBool.INT) boolean skip);
-
-    /**
-     * Calling these functions in sequence is roughly equivalent to calling
-     * stbtt_PackFontRanges(). If you more control over the packing of multiple
-     * fonts, or if you want to pack custom data into a font texture, take a look
-     * at the source to of stbtt_PackFontRanges() and create a custom version
-     * using these functions, e.g. call GatherRects multiple times,
-     * building up a single array of rects, then call PackRects once,
-     * then call RenderIntoRects repeatedly. This may result in a
-     * better packing than calling PackFontRanges multiple times
-     * (or it may not).
-     *
-     * @param chardata         same data as above
-     * @param pw               same data as above
-     * @param ph               same data as above
-     * @param char_index       character to display
-     * @param xpos             pointers to current position in screen pixel space
-     * @param ypos             pointers to current position in screen pixel space
-     * @param q                output: quad to draw
-     * @param align_to_integer align_to_integer
-     */
-    @Entrypoint("stbtt_GetPackedQuad")
-    void getPackedQuad(STBTTPackedChar chardata, int pw, int ph,
-                       int char_index,
-                       @NativeType("float *") MemorySegment xpos, @NativeType("float *") MemorySegment ypos,
-                       STBTTAlignedQuad q,
-                       int align_to_integer);
-
-    /**
-     * Calling these functions in sequence is roughly equivalent to calling
-     * stbtt_PackFontRanges(). If you more control over the packing of multiple
-     * fonts, or if you want to pack custom data into a font texture, take a look
-     * at the source to of stbtt_PackFontRanges() and create a custom version
-     * using these functions, e.g. call GatherRects multiple times,
-     * building up a single array of rects, then call PackRects once,
-     * then call RenderIntoRects repeatedly. This may result in a
-     * better packing than calling PackFontRanges multiple times
-     * (or it may not).
-     *
-     * @param spc        spc
-     * @param info       info
-     * @param ranges     ranges
-     * @param num_ranges num_ranges
-     * @param rects      rects
-     * @return int
-     */
-    @Entrypoint("stbtt_PackFontRangesGatherRects")
-    int packFontRangesGatherRects(@NativeType("stbtt_pack_context *") MemorySegment spc, @NativeType("const stbtt_fontinfo *") MemorySegment info, STBTTPackRange ranges, int num_ranges, STBRPRect rects);
-
-    /**
-     * Calling these functions in sequence is roughly equivalent to calling
-     * stbtt_PackFontRanges(). If you more control over the packing of multiple
-     * fonts, or if you want to pack custom data into a font texture, take a look
-     * at the source to of stbtt_PackFontRanges() and create a custom version
-     * using these functions, e.g. call GatherRects multiple times,
-     * building up a single array of rects, then call PackRects once,
-     * then call RenderIntoRects repeatedly. This may result in a
-     * better packing than calling PackFontRanges multiple times
-     * (or it may not).
-     *
-     * @param spc       spc
-     * @param rects     rects
-     * @param num_rects num_rects
-     */
-    @Entrypoint("stbtt_PackFontRangesPackRects")
-    void packFontRangesPackRects(@NativeType("stbtt_pack_context *") MemorySegment spc, STBRPRect rects, int num_rects);
-
-    /**
-     * Calling these functions in sequence is roughly equivalent to calling
-     * stbtt_PackFontRanges(). If you more control over the packing of multiple
-     * fonts, or if you want to pack custom data into a font texture, take a look
-     * at the source to of stbtt_PackFontRanges() and create a custom version
-     * using these functions, e.g. call GatherRects multiple times,
-     * building up a single array of rects, then call PackRects once,
-     * then call RenderIntoRects repeatedly. This may result in a
-     * better packing than calling PackFontRanges multiple times
-     * (or it may not).
-     *
-     * @param spc        spc
-     * @param info       info
-     * @param ranges     ranges
-     * @param num_ranges num_ranges
-     * @param rects      rects
-     * @return int
-     */
-    @Entrypoint("stbtt_PackFontRangesRenderIntoRects")
-    int packFontRangesRenderIntoRects(@NativeType("stbtt_pack_context *") MemorySegment spc, @NativeType("const stbtt_fontinfo *") MemorySegment info, STBTTPackRange ranges, int num_ranges, STBRPRect rects);
-
-    //////////////////////////////////////////////////////////////////////////////
-    //
-    // FONT LOADING
-    //
-    //
-
-    /**
-     * This function will determine the number of fonts in a font file.  TrueType
-     * collection (.ttc) files may contain multiple fonts, while TrueType font
-     * (.ttf) files only contain one font. The number of fonts can be used for
-     * indexing with the previous function where the index is between zero and one
-     * less than the total fonts. If an error occurs, -1 is returned.
-     *
-     * @param data data
-     * @return the number of fonts in a font file
-     */
-    @Entrypoint("stbtt_GetNumberOfFonts")
-    int getNumberOfFonts(@NativeType("const unsigned char *") MemorySegment data);
-
-    /**
-     * Each .ttf/.ttc file may have more than one font. Each font has a sequential
-     * index number starting from 0. Call this function to get the font offset for
-     * a given index; it returns -1 if the index is out of range. A regular .ttf
-     * file will only define one font and it always be at offset 0, so it will
-     * return '0' for index 0, and -1 for all other indices.
-     *
-     * @param index index
-     * @return the font offset for a given index
-     */
-    @Entrypoint("stbtt_GetFontOffsetForIndex")
-    int getFontOffsetForIndex(@NativeType("const unsigned char *") MemorySegment data, int index);
-
-    /**
-     * Given an offset into the file that defines a font, this function builds
-     * the necessary cached info for the rest of the system. You must allocate
-     * the stbtt_fontinfo yourself, and stbtt_InitFont will fill it out. You don't
-     * need to do anything special to free it, because the contents are pure
-     * value data with no additional data structures.
-     *
-     * @param info   info
-     * @param data   data
-     * @param offset offset
-     * @return {@code false} on failure.
-     */
-    @Convert(AsBool.INT)
-    @Entrypoint("stbtt_InitFont")
-    boolean initFont(STBTTFontInfo info, @NativeType("const unsigned char *") MemorySegment data, int offset);
-
-    //////////////////////////////////////////////////////////////////////////////
-    //
-    // CHARACTER TO GLYPH-INDEX CONVERSION
-
-    /**
-     * If you're going to perform multiple operations on the same character
-     * and you want a speed-up, call this function with the character you're
-     * going to process, then use glyph-based functions instead of the
-     * codepoint-based functions.
-     *
-     * @param info              info
-     * @param unicode_codepoint unicode_codepoint
-     * @return 0 if the character codepoint is not defined in the font.
-     */
-    @Entrypoint("stbtt_FindGlyphIndex")
-    int findGlyphIndex(STBTTFontInfo info, int unicode_codepoint);
-
-    //////////////////////////////////////////////////////////////////////////////
-    //
-    // CHARACTER PROPERTIES
-    //
-
-    /**
-     * computes a scale factor to produce a font whose "height" is 'pixels' tall.
-     * Height is measured as the distance from the highest ascender to the lowest
-     * descender; in other words, it's equivalent to calling stbtt_GetFontVMetrics
-     * and computing:
-     * <p>
-     * {@code scale = pixels / (ascent - descent)}
-     * <p>
-     * so if you prefer to measure height by the ascent only, use a similar calculation.
-     *
-     * @param info   info
-     * @param pixels pixels
-     * @return a scale factor
-     */
-    @Entrypoint("stbtt_ScaleForPixelHeight")
-    float scaleForPixelHeight(STBTTFontInfo info, float pixels);
-
-    /**
-     * computes a scale factor to produce a font whose EM size is mapped to
-     * 'pixels' tall. This is probably what traditional APIs compute, but
-     * I'm not positive.
-     *
-     * @param info   info
-     * @param pixels pixels
-     * @return a scale factor
-     */
-    @Entrypoint("stbtt_ScaleForMappingEmToPixels")
-    float scaleForMappingEmToPixels(STBTTFontInfo info, float pixels);
-
-    /**
-     * ascent is the coordinate above the baseline the font extends; descent
-     * is the coordinate below the baseline the font extends (i.e. it is typically negative)
-     * lineGap is the spacing between one row's descent and the next row's ascent...
-     * so you should advance the vertical position by "*ascent - *descent + *lineGap"
-     * <p>
-     * these are expressed in unscaled coordinates, so you must multiply by
-     * the scale factor for a given size
-     *
-     * @param info    info
-     * @param ascent  ascent
-     * @param descent descent
-     * @param lineGap lineGap
-     */
-    @Entrypoint("stbtt_GetFontVMetrics")
-    void getFontVMetrics(STBTTFontInfo info, @NativeType("int *") MemorySegment ascent, @NativeType("int *") MemorySegment descent, @NativeType("int *") MemorySegment lineGap);
-
-    /**
-     * analogous to GetFontVMetrics, but returns the "typographic" values from the OS/2
-     * table (specific to MS/Windows TTF files).
-     *
-     * @param info        info
-     * @param typoAscent  typoAscent
-     * @param typoDescent typoDescent
-     * @param typoLineGap typoLineGap
-     * @return {@code true} on success (table present), {@code false} on failure.
-     */
-    @Convert(AsBool.INT)
-    @Entrypoint("stbtt_GetFontVMetricsOS2")
-    boolean getFontVMetricsOS2(STBTTFontInfo info, @NativeType("int *") MemorySegment typoAscent, @NativeType("int *") MemorySegment typoDescent, @NativeType("int *") MemorySegment typoLineGap);
-
-    /**
-     * the bounding box around all possible characters
-     *
-     * @param info info
-     * @param x0   x0
-     * @param y0   y0
-     * @param x1   x1
-     * @param y1   y1
-     */
-    @Entrypoint("stbtt_GetFontBoundingBox")
-    void getFontBoundingBox(STBTTFontInfo info, @NativeType("int *") MemorySegment x0, @NativeType("int *") MemorySegment y0, @NativeType("int *") MemorySegment x1, @NativeType("int *") MemorySegment y1);
-
-    /**
-     * <i>{@code advanceWidth}</i> and <i>{@code leftSideBearing}</i> are expressed in unscaled coordinates
-     *
-     * @param info            info
-     * @param codepoint       codepoint
-     * @param advanceWidth    the offset from the current horizontal position to the next horizontal position
-     * @param leftSideBearing the offset from the current horizontal position to the left edge of the character
-     */
-    @Entrypoint("stbtt_GetCodepointHMetrics")
-    void getCodepointHMetrics(STBTTFontInfo info, int codepoint, @NativeType("int *") MemorySegment advanceWidth, @NativeType("int *") MemorySegment leftSideBearing);
-
-    /**
-     * {@return an additional amount to add to the 'advance' value between ch1 and ch2}
-     *
-     * @param info info
-     * @param ch1  ch1
-     * @param ch2  ch2
-     */
-    @Entrypoint("stbtt_GetCodepointKernAdvance")
-    int getCodepointKernAdvance(STBTTFontInfo info, int ch1, int ch2);
-
-    /**
-     * Gets the bounding box of the visible part of the glyph, in unscaled coordinates
-     *
-     * @param info      info
-     * @param codepoint codepoint
-     * @param x0        x0
-     * @param y0        y0
-     * @param x1        x1
-     * @param y1        y1
-     * @return the bounding box of the visible part of the glyph, in unscaled coordinates
-     */
-    @Entrypoint("stbtt_GetCodepointBox")
-    int getCodepointBox(STBTTFontInfo info, int codepoint, @NativeType("int *") MemorySegment x0, @NativeType("int *") MemorySegment y0, @NativeType("int *") MemorySegment x1, @NativeType("int *") MemorySegment y1);
-
-    /**
-     * as above, but takes one or more glyph indices for greater efficiency
-     *
-     * @param info            info
-     * @param glyph_index     glyph_index
-     * @param advanceWidth    advanceWidth
-     * @param leftSideBearing leftSideBearing
-     */
-    @Entrypoint("stbtt_GetGlyphHMetrics")
-    void getGlyphHMetrics(STBTTFontInfo info, int glyph_index, @NativeType("int *") MemorySegment advanceWidth, @NativeType("int *") MemorySegment leftSideBearing);
-
-    /**
-     * as above, but takes one or more glyph indices for greater efficiency
-     *
-     * @param info   info
-     * @param glyph1 glyph1
-     * @param glyph2 glyph2
-     * @return int
-     */
-    @Entrypoint("stbtt_GetGlyphKernAdvance")
-    int getGlyphKernAdvance(STBTTFontInfo info, int glyph1, int glyph2);
-
-    /**
-     * as above, but takes one or more glyph indices for greater efficiency
-     *
-     * @param info        info
-     * @param glyph_index glyph_index
-     * @param x0          x0
-     * @param y0          y0
-     * @param x1          x1
-     * @param y1          y1
-     * @return int
-     */
-    @Entrypoint("stbtt_GetGlyphBox")
-    int getGlyphBox(STBTTFontInfo info, int glyph_index, @NativeType("int *") MemorySegment x0, @NativeType("int *") MemorySegment y0, @NativeType("int *") MemorySegment x1, @NativeType("int *") MemorySegment y1);
-
-    /**
-     * Retrieves a complete list of all of the kerning pairs provided by the font
-     * stbtt_GetKerningTable never writes more than table_length entries and returns how many entries it did write.
-     * <p>
-     * The table will be sorted by {@code (a.glyph1 == b.glyph1)?(a.glyph2 < b.glyph2):(a.glyph1 < b.glyph1)}
-     *
-     * @param info info
-     * @return how many entries it did write
-     */
-    @Entrypoint("stbtt_GetKerningTableLength")
-    int getKerningTableLength(STBTTFontInfo info);
-
-    /**
-     * Retrieves a complete list of all of the kerning pairs provided by the font
-     * stbtt_GetKerningTable never writes more than table_length entries and returns how many entries it did write.
-     * <p>
-     * The table will be sorted by {@code (a.glyph1 == b.glyph1)?(a.glyph2 < b.glyph2):(a.glyph1 < b.glyph1)}
-     *
-     * @param info         info
-     * @param table        table
-     * @param table_length table_length
-     * @return int
-     */
-    @Entrypoint("stbtt_GetKerningTable")
-    int getKerningTable(STBTTFontInfo info, STBTTKerningEntry table, int table_length);
-
-    //////////////////////////////////////////////////////////////////////////////
-    //
-    // GLYPH SHAPES (you probably don't need these, but they have to go before
-    // the bitmaps for C declaration-order reasons)
-    //
-
-    /**
-     * {@return true if nothing is drawn for this glyph}
-     *
-     * @param info        info
-     * @param glyph_index glyph_index
-     */
-    @Convert(AsBool.INT)
-    @Entrypoint("stbtt_IsGlyphEmpty")
-    boolean isGlyphEmpty(STBTTFontInfo info, int glyph_index);
-
-    /**
-     * {@return # of vertices and fills *vertices with the pointer to them
-     * these are expressed in "unscaled" coordinates}
-     * <p>
-     * The shape is a series of contours. Each one starts with
-     * a STBTT_moveto, then consists of a series of mixed
-     * STBTT_lineto and STBTT_curveto segments. A lineto
-     * draws a line from previous endpoint to its x,y; a curveto
-     * draws a quadratic bezier from previous endpoint to
-     * its x,y, using cx,cy as the bezier control point.
-     *
-     * @param info              info
-     * @param unicode_codepoint unicode_codepoint
-     * @param vertices          vertices
-     */
-    @Entrypoint("stbtt_GetCodepointShape")
-    int getCodepointShape(STBTTFontInfo info, int unicode_codepoint, @NativeType("stbtt_vertex **") MemorySegment vertices);
-
-    /**
-     * {@return # of vertices and fills *vertices with the pointer to them
-     * these are expressed in "unscaled" coordinates}
-     * <p>
-     * The shape is a series of contours. Each one starts with
-     * a STBTT_moveto, then consists of a series of mixed
-     * STBTT_lineto and STBTT_curveto segments. A lineto
-     * draws a line from previous endpoint to its x,y; a curveto
-     * draws a quadratic bezier from previous endpoint to
-     * its x,y, using cx,cy as the bezier control point.
-     *
-     * @param info        info
-     * @param glyph_index glyph_index
-     * @param vertices    vertices
-     */
-    @Entrypoint("stbtt_GetGlyphShape")
-    int getGlyphShape(STBTTFontInfo info, int glyph_index, @NativeType("stbtt_vertex **") MemorySegment vertices);
-
-    /**
-     * frees the data allocated above
-     *
-     * @param info     info
-     * @param vertices vertices
-     */
-    @Entrypoint("stbtt_FreeShape")
-    void freeShape(STBTTFontInfo info, STBTTVertex vertices);
-
-    /**
-     * fills svg with the character's SVG data.
-     *
-     * @param info info
-     * @param gl   gl
-     * @return data size or 0 if SVG not found.
-     */
-    @NativeType("unsigned char *")
-    @Entrypoint("stbtt_FindSVGDoc")
-    MemorySegment findSVGDoc(STBTTFontInfo info, int gl);
-
-    /**
-     * fills svg with the character's SVG data.
-     *
-     * @param info              info
-     * @param unicode_codepoint unicode_codepoint
-     * @param svg               svg
-     * @return data size or 0 if SVG not found.
-     */
-    @Entrypoint("stbtt_GetCodepointSVG")
-    int getCodepointSVG(STBTTFontInfo info, int unicode_codepoint, @NativeType("const char **") MemorySegment svg);
-
-    /**
-     * fills svg with the character's SVG data.
-     *
-     * @param info info
-     * @param gl   gl
-     * @param svg  svg
-     * @return data size or 0 if SVG not found.
-     */
-    @Entrypoint("stbtt_GetGlyphSVG")
-    int getGlyphSVG(STBTTFontInfo info, int gl, @NativeType("const char **") MemorySegment svg);
-
-    //////////////////////////////////////////////////////////////////////////////
-    //
-    // BITMAP RENDERING
-    //
-
-    /**
-     * frees the bitmap allocated below
-     *
-     * @param bitmap   bitmap
-     * @param userdata userdata
-     */
-    @Entrypoint("stbtt_FreeBitmap")
-    void freeBitmap(@NativeType("unsigned char *") MemorySegment bitmap, @NativeType("void *") MemorySegment userdata);
-
-    /**
-     * allocates a large-enough single-channel 8bpp bitmap and renders the
-     * specified character/glyph at the specified scale into it, with
-     * antialiasing. 0 is no coverage (transparent), 255 is fully covered (opaque).
-     * *width &amp; *height are filled out with the width &amp; height of the bitmap,
-     * which is stored left-to-right, top-to-bottom.
-     *
-     * @param info      info
-     * @param scale_x   scale_x
-     * @param scale_y   scale_y
-     * @param codepoint codepoint
-     * @param width     width
-     * @param height    height
-     * @param xoff      the offset it pixel space from the glyph origin to the top-left of the bitmap
-     * @param yoff      the offset it pixel space from the glyph origin to the top-left of the bitmap
-     * @return data
-     */
-    @Entrypoint("stbtt_GetCodepointBitmap")
-    @NativeType("unsigned char *")
-    MemorySegment getCodepointBitmap(STBTTFontInfo info, float scale_x, float scale_y, int codepoint, @NativeType("int *") MemorySegment width, @NativeType("int *") MemorySegment height, @NativeType("int *") MemorySegment xoff, @NativeType("int *") MemorySegment yoff);
-
-    /**
-     * the same as stbtt_GetCodepoitnBitmap, but you can specify a subpixel
-     * shift for the character
-     *
-     * @param info      info
-     * @param scale_x   scale_x
-     * @param scale_y   scale_y
-     * @param shift_x   shift_x
-     * @param shift_y   shift_y
-     * @param codepoint codepoint
-     * @param width     width
-     * @param height    height
-     * @param xoff      the offset it pixel space from the glyph origin to the top-left of the bitmap
-     * @param yoff      the offset it pixel space from the glyph origin to the top-left of the bitmap
-     * @return data
-     */
-    @Entrypoint("stbtt_GetCodepointBitmapSubpixel")
-    @NativeType("unsigned char *")
-    MemorySegment getCodepointBitmapSubpixel(STBTTFontInfo info, float scale_x, float scale_y, float shift_x, float shift_y, int codepoint, @NativeType("int *") MemorySegment width, @NativeType("int *") MemorySegment height, @NativeType("int *") MemorySegment xoff, @NativeType("int *") MemorySegment yoff);
-
-    /**
-     * the same as stbtt_GetCodepointBitmap, but you pass in storage for the bitmap
-     * in the form of 'output', with row spacing of 'out_stride' bytes. the bitmap
-     * is clipped to out_w/out_h bytes. Call stbtt_GetCodepointBitmapBox to get the
-     * width and height and positioning info for it first.
-     *
-     * @param info       info
-     * @param output     output
-     * @param out_w      out_w
-     * @param out_h      out_h
-     * @param out_stride out_stride
-     * @param scale_x    scale_x
-     * @param scale_y    scale_y
-     * @param codepoint  codepoint
-     */
-    @Entrypoint("stbtt_MakeCodepointBitmap")
-    void makeCodepointBitmap(STBTTFontInfo info, @NativeType("unsigned char *") MemorySegment output, int out_w, int out_h, int out_stride, float scale_x, float scale_y, int codepoint);
-
-    /**
-     * same as stbtt_MakeCodepointBitmap, but you can specify a subpixel
-     * shift for the character
-     *
-     * @param info       info
-     * @param output     output
-     * @param out_w      out_w
-     * @param out_h      out_h
-     * @param out_stride out_stride
-     * @param scale_x    scale_x
-     * @param scale_y    scale_y
-     * @param shift_x    shift_x
-     * @param shift_y    shift_y
-     * @param codepoint  codepoint
-     */
-    @Entrypoint("stbtt_MakeCodepointBitmapSubpixel")
-    void makeCodepointBitmapSubpixel(STBTTFontInfo info, @NativeType("unsigned char *") MemorySegment output, int out_w, int out_h, int out_stride, float scale_x, float scale_y, float shift_x, float shift_y, int codepoint);
-
-    /**
-     * same as stbtt_MakeCodepointBitmapSubpixel, but prefiltering
-     * is performed (see stbtt_PackSetOversampling)
-     *
-     * @param info         info
-     * @param output       output
-     * @param out_w        out_w
-     * @param out_h        out_h
-     * @param out_stride   out_stride
-     * @param scale_x      scale_x
-     * @param scale_y      scale_y
-     * @param shift_x      shift_x
-     * @param shift_y      shift_y
-     * @param oversample_x oversample_x
-     * @param oversample_y oversample_y
-     * @param sub_x        sub_x
-     * @param sub_y        sub_y
-     * @param codepoint    codepoint
-     * @see #packSetOversampling(MemorySegment, int, int)
-     */
-    @Entrypoint("stbtt_MakeCodepointBitmapSubpixelPrefilter")
-    void makeCodepointBitmapSubpixelPrefilter(STBTTFontInfo info, @NativeType("unsigned char *") MemorySegment output, int out_w, int out_h, int out_stride, float scale_x, float scale_y, float shift_x, float shift_y, int oversample_x, int oversample_y, @NativeType("float *") MemorySegment sub_x, @NativeType("float *") MemorySegment sub_y, int codepoint);
-
-    /**
-     * get the bbox of the bitmap centered around the glyph origin; so the
-     * bitmap width is ix1-ix0, height is iy1-iy0, and location to place
-     * the bitmap top left is (leftSideBearing*scale,iy0).
-     * (Note that the bitmap uses y-increases-down, but the shape uses
-     * y-increases-up, so CodepointBitmapBox and CodepointBox are inverted.)
-     *
-     * @param font      font
-     * @param codepoint codepoint
-     * @param scale_x   scale_x
-     * @param scale_y   scale_y
-     * @param ix0       ix0
-     * @param iy0       iy0
-     * @param ix1       ix1
-     * @param iy1       iy1
-     */
-    @Entrypoint("stbtt_GetCodepointBitmapBox")
-    void getCodepointBitmapBox(STBTTFontInfo font, int codepoint, float scale_x, float scale_y, @NativeType("int *") MemorySegment ix0, @NativeType("int *") MemorySegment iy0, @NativeType("int *") MemorySegment ix1, @NativeType("int *") MemorySegment iy1);
-
-    /**
-     * same as stbtt_GetCodepointBitmapBox, but you can specify a subpixel
-     * shift for the character
-     *
-     * @param font      font
-     * @param codepoint codepoint
-     * @param scale_x   scale_x
-     * @param scale_y   scale_y
-     * @param shift_x   shift_x
-     * @param shift_y   shift_y
-     * @param ix0       ix0
-     * @param iy0       iy0
-     * @param ix1       ix1
-     * @param iy1       iy1
-     */
-    @Entrypoint("stbtt_GetCodepointBitmapBoxSubpixel")
-    void getCodepointBitmapBoxSubpixel(STBTTFontInfo font, int codepoint, float scale_x, float scale_y, float shift_x, float shift_y, @NativeType("int *") MemorySegment ix0, @NativeType("int *") MemorySegment iy0, @NativeType("int *") MemorySegment ix1, @NativeType("int *") MemorySegment iy1);
-
-    /**
-     * the following functions are equivalent to the above functions, but operate
-     * on glyph indices instead of Unicode codepoints (for efficiency)
-     *
-     * @param info    info
-     * @param scale_x scale_x
-     * @param scale_y scale_y
-     * @param glyph   glyph
-     * @param width   width
-     * @param height  height
-     * @param xoff    xoff
-     * @param yoff    yoff
-     * @return data
-     */
-    @NativeType("unsigned char *")
-    @Entrypoint("stbtt_GetGlyphBitmap")
-    MemorySegment getGlyphBitmap(STBTTFontInfo info, float scale_x, float scale_y, int glyph, @NativeType("int *") MemorySegment width, @NativeType("int *") MemorySegment height, @NativeType("int *") MemorySegment xoff, @NativeType("int *") MemorySegment yoff);
-
-    /**
-     * the following functions are equivalent to the above functions, but operate
-     * on glyph indices instead of Unicode codepoints (for efficiency)
-     *
-     * @param info    info
-     * @param scale_x scale_x
-     * @param scale_y scale_y
-     * @param shift_x shift_x
-     * @param shift_y shift_y
-     * @param glyph   glyph
-     * @param width   width
-     * @param height  height
-     * @param xoff    xoff
-     * @param yoff    yoff
-     * @return data
-     */
-    @NativeType("unsigned char *")
-    @Entrypoint("stbtt_GetGlyphBitmapSubpixel")
-    MemorySegment getGlyphBitmapSubpixel(STBTTFontInfo info, float scale_x, float scale_y, float shift_x, float shift_y, int glyph, @NativeType("int *") MemorySegment width, @NativeType("int *") MemorySegment height, @NativeType("int *") MemorySegment xoff, @NativeType("int *") MemorySegment yoff);
-
-    /**
-     * the following functions are equivalent to the above functions, but operate
-     * on glyph indices instead of Unicode codepoints (for efficiency)
-     *
-     * @param info       info
-     * @param output     output
-     * @param out_w      out_w
-     * @param out_h      out_h
-     * @param out_stride out_stride
-     * @param scale_x    scale_x
-     * @param scale_y    scale_y
-     * @param glyph      glyph
-     */
-    @Entrypoint("stbtt_MakeGlyphBitmap")
-    void makeGlyphBitmap(STBTTFontInfo info, @NativeType("unsigned char *") MemorySegment output, int out_w, int out_h, int out_stride, float scale_x, float scale_y, int glyph);
-
-    /**
-     * the following functions are equivalent to the above functions, but operate
-     * on glyph indices instead of Unicode codepoints (for efficiency)
-     *
-     * @param info       info
-     * @param output     output
-     * @param out_w      out_w
-     * @param out_h      out_h
-     * @param out_stride out_stride
-     * @param scale_x    scale_x
-     * @param scale_y    scale_y
-     * @param shift_x    shift_x
-     * @param shift_y    shift_y
-     * @param glyph      glyph
-     */
-    @Entrypoint("stbtt_MakeGlyphBitmapSubpixel")
-    void makeGlyphBitmapSubpixel(STBTTFontInfo info, @NativeType("unsigned char *") MemorySegment output, int out_w, int out_h, int out_stride, float scale_x, float scale_y, float shift_x, float shift_y, int glyph);
-
-    /**
-     * the following functions are equivalent to the above functions, but operate
-     * on glyph indices instead of Unicode codepoints (for efficiency)
-     *
-     * @param info         info
-     * @param output       output
-     * @param out_w        out_w
-     * @param out_h        out_h
-     * @param out_stride   out_stride
-     * @param scale_x      scale_x
-     * @param scale_y      scale_y
-     * @param shift_x      shift_x
-     * @param shift_y      shift_y
-     * @param oversample_x oversample_x
-     * @param oversample_y oversample_y
-     * @param sub_x        sub_x
-     * @param sub_y        sub_y
-     * @param glyph        glyph
-     */
-    @Entrypoint("stbtt_MakeGlyphBitmapSubpixelPrefilter")
-    void makeGlyphBitmapSubpixelPrefilter(STBTTFontInfo info, @NativeType("unsigned char *") MemorySegment output, int out_w, int out_h, int out_stride, float scale_x, float scale_y, float shift_x, float shift_y, int oversample_x, int oversample_y, @NativeType("float *") MemorySegment sub_x, @NativeType("float *") MemorySegment sub_y, int glyph);
-
-    /**
-     * the following functions are equivalent to the above functions, but operate
-     * on glyph indices instead of Unicode codepoints (for efficiency)
-     *
-     * @param font    font
-     * @param glyph   glyph
-     * @param scale_x scale_x
-     * @param scale_y scale_y
-     * @param ix0     ix0
-     * @param iy0     iy0
-     * @param ix1     ix1
-     * @param iy1     iy1
-     */
-    @Entrypoint("stbtt_GetGlyphBitmapBox")
-    void getGlyphBitmapBox(STBTTFontInfo font, int glyph, float scale_x, float scale_y, @NativeType("int *") MemorySegment ix0, @NativeType("int *") MemorySegment iy0, @NativeType("int *") MemorySegment ix1, @NativeType("int *") MemorySegment iy1);
-
-    /**
-     * the following functions are equivalent to the above functions, but operate
-     * on glyph indices instead of Unicode codepoints (for efficiency)
-     *
-     * @param font    font
-     * @param glyph   glyph
-     * @param scale_x scale_x
-     * @param scale_y scale_y
-     * @param shift_x shift_x
-     * @param shift_y shift_y
-     * @param ix0     ix0
-     * @param iy0     iy0
-     * @param ix1     ix1
-     * @param iy1     iy1
-     */
-    @Entrypoint("stbtt_GetGlyphBitmapBoxSubpixel")
-    void getGlyphBitmapBoxSubpixel(STBTTFontInfo font, int glyph, float scale_x, float scale_y, float shift_x, float shift_y, @NativeType("int *") MemorySegment ix0, @NativeType("int *") MemorySegment iy0, @NativeType("int *") MemorySegment ix1, @NativeType("int *") MemorySegment iy1);
-
-    /**
-     * rasterize a shape with quadratic beziers into a bitmap
-     *
-     * @param result             1-channel bitmap to draw into
-     * @param flatness_in_pixels allowable error of curve in pixels
-     * @param vertices           array of vertices defining shape
-     * @param num_verts          number of vertices in above array
-     * @param scale_x            scale applied to input vertices
-     * @param scale_y            scale applied to input vertices
-     * @param shift_x            translation applied to input vertices
-     * @param shift_y            translation applied to input vertices
-     * @param x_off              another translation applied to input
-     * @param y_off              another translation applied to input
-     * @param invert             if non-zero, vertically flip shape
-     * @param userdata           context for to STBTT_MALLOC
-     */
-    @Entrypoint("stbtt_Rasterize")
-    void rasterize(@NativeType("stbtt__bitmap *") MemorySegment result,
-                   float flatness_in_pixels,
-                   STBTTVertex vertices,
-                   int num_verts,
-                   float scale_x, float scale_y,
-                   float shift_x, float shift_y,
-                   int x_off, int y_off,
-                   int invert,
-                   @NativeType("void *") MemorySegment userdata);
-
-    //////////////////////////////////////////////////////////////////////////////
-    //
-    // Signed Distance Function (or Field) rendering
-
-    /**
-     * frees the SDF bitmap allocated below
-     *
-     * @param bitmap   bitmap
-     * @param userdata userdata
-     */
-    @Entrypoint("stbtt_FreeSDF")
-    void freeSDF(@NativeType("unsigned char *") MemorySegment bitmap, @NativeType("void *") MemorySegment userdata);
-
-    /**
-     * These functions compute a discretized SDF field for a single character, suitable for storing
-     * in a single-channel texture, sampling with bilinear filtering, and testing against
-     * larger than some threshold to produce scalable fonts.
-     * <p>
-     * pixel_dist_scale &amp; onedge_value are a scale &amp; bias that allows you to make
-     * optimal use of the limited 0..255 for your application, trading off precision
-     * and special effects. SDF values outside the range 0..255 are clamped to 0..255.
-     * <h4>Example</h4>
-     * <pre>{@code scale = stbtt_ScaleForPixelHeight(22)
-     * padding = 5
-     * onedge_value = 180
-     * pixel_dist_scale = 180/5.0 = 36.0}</pre>
-     * <p>
-     * This will create an SDF bitmap in which the character is about 22 pixels
-     * high but the whole bitmap is about 22+5+5=32 pixels high. To produce a filled
-     * shape, sample the SDF at each pixel and fill the pixel if the SDF value
-     * is greater than or equal to 180/255. (You'll actually want to antialias,
-     * which is beyond the scope of this example.) Additionally, you can compute
-     * offset outlines (e.g. to stroke the character border inside &amp; outside,
-     * or only outside). For example, to fill outside the character up to 3 SDF
-     * pixels, you would compare against (180-36.0*3)/255 = 72/255. The above
-     * choice of variables maps a range from 5 pixels outside the shape to
-     * 2 pixels inside the shape to 0..255; this is intended primarily for apply
-     * outside effects only (the interior range is needed to allow proper
-     * antialiasing of the font at *smaller* sizes)
-     * <p>
-     * The function computes the SDF analytically at each SDF pixel, not by e.g.
-     * building a higher-res bitmap and approximating it. In theory the quality
-     * should be as high as possible for an SDF of this size &amp; representation, but
-     * unclear if this is true in practice (perhaps building a higher-res bitmap
-     * and computing from that can allow drop-out prevention).
-     * <p>
-     * The algorithm has not been optimized at all, so expect it to be slow
-     * if computing lots of characters or very large sizes.
-     *
-     * @param info             the font
-     * @param scale            controls the size of the resulting SDF bitmap, same as it would be creating a regular bitmap
-     * @param glyph            the character to generate the SDF for
-     * @param padding          extra "pixels" around the character which are filled with the distance to the character (not 0),
-     *                         which allows effects like bit outlines
-     * @param onedge_value     value 0-255 to test the SDF against to reconstruct the character (i.e. the isocontour of the character)
-     * @param pixel_dist_scale what value the SDF should increase by when moving one SDF "pixel" away from the edge (on the 0..255 scale)
-     *                         if positive, {@code > onedge_value} is inside; if negative, {@code < onedge_value} is inside
-     * @param width            output width of the SDF bitmap (including padding)
-     * @param height           output height of the SDF bitmap (including padding)
-     * @param xoff             output origin of the character
-     * @param yoff             output origin of the character
-     * @return a 2D array of bytes 0..255, width*height in size
-     */
-    @NativeType("unsigned char *")
-    @Entrypoint("stbtt_GetGlyphSDF")
-    MemorySegment getGlyphSDF(STBTTFontInfo info, float scale, int glyph, int padding, byte onedge_value, float pixel_dist_scale, @NativeType("int *") MemorySegment width, @NativeType("int *") MemorySegment height, @NativeType("int *") MemorySegment xoff, @NativeType("int *") MemorySegment yoff);
-
-    /**
-     * These functions compute a discretized SDF field for a single character, suitable for storing
-     * in a single-channel texture, sampling with bilinear filtering, and testing against
-     * larger than some threshold to produce scalable fonts.
-     * <p>
-     * pixel_dist_scale &amp; onedge_value are a scale &amp; bias that allows you to make
-     * optimal use of the limited 0..255 for your application, trading off precision
-     * and special effects. SDF values outside the range 0..255 are clamped to 0..255.
-     * <h4>Example</h4>
-     * <pre>{@code scale = stbtt_ScaleForPixelHeight(22)
-     * padding = 5
-     * onedge_value = 180
-     * pixel_dist_scale = 180/5.0 = 36.0}</pre>
-     * <p>
-     * This will create an SDF bitmap in which the character is about 22 pixels
-     * high but the whole bitmap is about 22+5+5=32 pixels high. To produce a filled
-     * shape, sample the SDF at each pixel and fill the pixel if the SDF value
-     * is greater than or equal to 180/255. (You'll actually want to antialias,
-     * which is beyond the scope of this example.) Additionally, you can compute
-     * offset outlines (e.g. to stroke the character border inside &amp; outside,
-     * or only outside). For example, to fill outside the character up to 3 SDF
-     * pixels, you would compare against (180-36.0*3)/255 = 72/255. The above
-     * choice of variables maps a range from 5 pixels outside the shape to
-     * 2 pixels inside the shape to 0..255; this is intended primarily for apply
-     * outside effects only (the interior range is needed to allow proper
-     * antialiasing of the font at *smaller* sizes)
-     * <p>
-     * The function computes the SDF analytically at each SDF pixel, not by e.g.
-     * building a higher-res bitmap and approximating it. In theory the quality
-     * should be as high as possible for an SDF of this size &amp; representation, but
-     * unclear if this is true in practice (perhaps building a higher-res bitmap
-     * and computing from that can allow drop-out prevention).
-     * <p>
-     * The algorithm has not been optimized at all, so expect it to be slow
-     * if computing lots of characters or very large sizes.
-     *
-     * @param info             the font
-     * @param scale            controls the size of the resulting SDF bitmap, same as it would be creating a regular bitmap
-     * @param codepoint        the character to generate the SDF for
-     * @param padding          extra "pixels" around the character which are filled with the distance to the character (not 0),
-     *                         which allows effects like bit outlines
-     * @param onedge_value     value 0-255 to test the SDF against to reconstruct the character (i.e. the isocontour of the character)
-     * @param pixel_dist_scale what value the SDF should increase by when moving one SDF "pixel" away from the edge (on the 0..255 scale)
-     *                         if positive, {@code > onedge_value} is inside; if negative, {@code < onedge_value} is inside
-     * @param width            output width of the SDF bitmap (including padding)
-     * @param height           output height of the SDF bitmap (including padding)
-     * @param xoff             output origin of the character
-     * @param yoff             output origin of the character
-     * @return a 2D array of bytes 0..255, width*height in size
-     */
-    @NativeType("unsigned char *")
-    @Entrypoint("stbtt_GetCodepointSDF")
-    MemorySegment getCodepointSDF(STBTTFontInfo info, float scale, int codepoint, int padding, byte onedge_value, float pixel_dist_scale, @NativeType("int *") MemorySegment width, @NativeType("int *") MemorySegment height, @NativeType("int *") MemorySegment xoff, @NativeType("int *") MemorySegment yoff);
-
-    /**
-     * returns the offset (not index) of the font that matches, or -1 if none
-     * if you use STBTT_MACSTYLE_DONTCARE, use a font name like "Arial Bold".
-     * if you use any other flag, use a font name like "Arial"; this checks
-     * the 'macStyle' header field; i don't know if fonts set this consistently
-     *
-     * @param fontdata fontdata
-     * @param name     name
-     * @param flags    flags
-     * @return the offset (not index) of the font that matches
-     */
-    @Entrypoint("stbtt_FindMatchingFont")
-    int findMatchingFont(@NativeType("const unsigned char *") MemorySegment fontdata, @NativeType("const char *") MemorySegment name, int flags);
-
-    /**
-     * returns the offset (not index) of the font that matches, or -1 if none
-     * if you use STBTT_MACSTYLE_DONTCARE, use a font name like "Arial Bold".
-     * if you use any other flag, use a font name like "Arial"; this checks
-     * the 'macStyle' header field; i don't know if fonts set this consistently
-     *
-     * @param fontdata fontdata
-     * @param name     name
-     * @param flags    flags
-     * @return the offset (not index) of the font that matches
-     */
-    @Entrypoint("stbtt_FindMatchingFont")
-    int findMatchingFont(@NativeType("const unsigned char *") MemorySegment fontdata, String name, int flags);
-
-    /**
-     * {@return 1/0 whether the first string interpreted as utf8 is identical to
-     * the second string interpreted as big-endian utf16}.. useful for strings from next func
-     *
-     * @param s1   s1
-     * @param len1 len1
-     * @param s2   s2
-     * @param len2 len2
-     */
-    @Entrypoint("stbtt_CompareUTF8toUTF16_bigendian")
-    int compareUTF8toUTF16_bigendian(@NativeType("const char *") MemorySegment s1, int len1, @NativeType("const char *") MemorySegment s2, int len2);
-
-    /**
-     * {@return the string (which may be big-endian double byte, e.g. for unicode)} and puts the length in bytes in *length.
-     * <p>
-     * some of the values for the IDs are below; for more see the truetype spec:
-     * <ul>
-     *     <li><a href="http://developer.apple.com/textfonts/TTRefMan/RM06/Chap6name.html">http://developer.apple.com/textfonts/TTRefMan/RM06/Chap6name.html</a></li>
-     *     <li><a href="http://www.microsoft.com/typography/otspec/name.htm">http://www.microsoft.com/typography/otspec/name.htm</a></li>
-     * </ul>
-     *
-     * @param font       font
-     * @param length     length
-     * @param platformID platformID
-     * @param encodingID encodingID
-     * @param languageID languageID
-     * @param nameID     nameID
-     */
-    @Entrypoint("stbtt_GetFontNameString")
-    @NativeType("const char *")
-    MemorySegment getFontNameString(STBTTFontInfo font, @NativeType("int *") MemorySegment length, int platformID, int encodingID, int languageID, int nameID);
+    /// Overloads [#stbtt_GetFontNameString(MemorySegment, MemorySegment, int, int, int, int)]
+    public static String stbtt_GetFontNameString(STBTTFontInfo font, int platformID, int encodingID, int languageID, int nameID) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            MemorySegment pLength = stack.allocate(ValueLayout.JAVA_INT);
+            var res = stbtt_GetFontNameString(Marshal.marshal(font), pLength, platformID, encodingID, languageID, nameID);
+            int length = pLength.get(ValueLayout.JAVA_INT, 0L);
+            return Unmarshal.unmarshalAsString(res,
+                stbtt_CompareUTF8toUTF16_bigendian(res, length, res, length) ?
+                    StandardCharsets.UTF_8 :
+                    StandardCharsets.UTF_16BE);
+        }
+    }
 }

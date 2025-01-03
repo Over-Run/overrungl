@@ -33,23 +33,28 @@ public final class GLFWErrorCallback {
     }
 
     /**
-     * {@return a {@link GLFWErrorFun } instance that throws an {@link IllegalStateException} when an error occurs}
+     * {@return a {@link GLFWErrorFun} instance that throws an {@link IllegalStateException} when an error occurs}
      */
     public static GLFWErrorFun createThrow() {
         return (errorCode, description) -> {
-            throw new IllegalStateException("GLFW error [0x" + Integer.toHexString(errorCode) + "]: " + description);
+            throw new IllegalStateException("GLFW " + GLFW.glfwGetErrorString(errorCode) + " error [0x" + Integer.toHexString(errorCode) + "]: " + description);
         };
     }
 
     /**
-     * {@return a {@link GLFWErrorFun } instance that logs a message when an error occurs}
+     * {@return a {@link GLFWErrorFun} instance that logs a message when an error occurs}
      *
      * @param logger the logger function.
      */
     public static GLFWErrorFun createLog(Consumer<String> logger) {
         return (errorCode, description) -> {
             var sb = new StringBuilder(512);
-            sb.append("[OverrunGL] GLFW ").append(GLFW.getErrorString(errorCode)).append(" error: ").append(description).append("\n");
+            sb.append("[OverrunGL] GLFW ")
+                .append(GLFW.glfwGetErrorString(errorCode))
+                .append(" error [0x")
+                .append(Integer.toHexString(errorCode))
+                .append("]: ")
+                .append(description).append("\n");
             var stack = Thread.currentThread().getStackTrace();
             for (int i = 3; i < stack.length; i++) {
                 sb.append("    at ").append(stack[i]).append("\n");
@@ -59,7 +64,7 @@ public final class GLFWErrorCallback {
     }
 
     /**
-     * {@return a {@link GLFWErrorFun } instance that prints a message when an error occurs}
+     * {@return a {@link GLFWErrorFun} instance that prints a message when an error occurs}
      *
      * @param stream the logger stream.
      * @see #createPrint()
@@ -69,7 +74,7 @@ public final class GLFWErrorCallback {
     }
 
     /**
-     * {@return a {@link GLFWErrorFun } instance that prints a message to
+     * {@return a {@link GLFWErrorFun} instance that prints a message to
      * {@link OverrunGL#apiLogger() default library logger} when an error occurs}
      *
      * @see #createPrint(PrintStream)
