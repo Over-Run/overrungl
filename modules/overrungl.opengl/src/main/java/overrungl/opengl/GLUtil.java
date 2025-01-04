@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -18,16 +18,21 @@ package overrungl.opengl;
 
 import org.jetbrains.annotations.Nullable;
 import overrungl.OverrunGL;
+import overrungl.opengl.amd.GLAMDDebugOutput;
+import overrungl.opengl.amd.GLDebugProcAMD;
+import overrungl.opengl.arb.GLARBDebugOutput;
 
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.util.Locale;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 import static overrungl.OverrunGL.apiLog;
 import static overrungl.internal.RuntimeHelper.unknownToken;
-import static overrungl.opengl.ext.amd.GLAMDDebugOutput.*;
-import static overrungl.opengl.ext.arb.GLARBDebugOutput.*;
+import static overrungl.opengl.GL.*;
+import static overrungl.opengl.amd.GLAMDDebugOutput.*;
+import static overrungl.opengl.arb.GLARBDebugOutput.*;
 
 /**
  * OpenGL utilities.
@@ -43,103 +48,113 @@ public final class GLUtil {
      * Detects the best debug output functionality to use and creates a callback that prints information to
      * {@link OverrunGL#apiLogger() API Logger}.
      * <p>
-     * The callback function is returned as an {@link Arena},
-     * that should reset to NULL and be {@link Arena#close() freed} when no longer needed, which is often after
-     * destroying GL context.
+     * The callback function is returned as a {@link Arena}, that should be reset to NULL and
+     * {@link Arena#close() closed} when no longer needed, which is often after destroying GL context.
      *
+     * @param gl          the OpenGL context.
+     * @param flags       the OpenGL flags.
+     * @param fallbackARB the GLARBDebugOutput context, which is supplied when OpenGL debug function is not found in core.
+     * @param fallbackAMD the GLAMDDebugOutput context, which is supplied when OpenGL debug function is not found in core.
      * @return the arena.
      */
     @Nullable
-    public static Arena setupDebugMessageCallback() {
-        return setupDebugMessageCallback(OverrunGL.apiLogger());
+    public static Arena setupDebugMessageCallback(
+        GL43 gl,
+        GLFlags flags,
+        @Nullable Supplier<GLARBDebugOutput> fallbackARB,
+        @Nullable Supplier<GLAMDDebugOutput> fallbackAMD
+    ) {
+        return setupDebugMessageCallback(gl, flags, fallbackARB, fallbackAMD, OverrunGL.apiLogger());
     }
 
     /**
      * Detects the best debug output functionality to use and creates a callback that prints information to the specified
      * logger.
      * <p>
-     * The callback function is returned as a {@link Arena}, that should reset to NULL and be
-     * {@link Arena#close() freed} when no longer needed, which is often after destroy GL context.
+     * The callback function is returned as a {@link Arena}, that should be reset to NULL and
+     * {@link Arena#close() closed} when no longer needed, which is often after destroying GL context.
      *
-     * @param logger the output logger.
+     * @param gl          the OpenGL context.
+     * @param flags       the OpenGL flags.
+     * @param fallbackARB the GLARBDebugOutput context, which is supplied when OpenGL debug function is not found in core.
+     * @param fallbackAMD the GLAMDDebugOutput context, which is supplied when OpenGL debug function is not found in core.
+     * @param logger      the output logger.
      * @return the arena.
      */
     @Nullable
-    public static Arena setupDebugMessageCallback(Consumer<String> logger) {
-        var caps = GLLoader.getCapabilities();
-
-        if (caps.Ver43 || caps.ext().GL_KHR_debug) {
-            if (caps.Ver43) {
+    public static Arena setupDebugMessageCallback(
+        GL43 gl,
+        GLFlags flags,
+        @Nullable Supplier<GLARBDebugOutput> fallbackARB,
+        @Nullable Supplier<GLAMDDebugOutput> fallbackAMD,
+        Consumer<String> logger
+    ) {
+        if (flags.GL43 || flags.GL_KHR_debug) {
+            if (flags.GL43) {
                 apiLog("[GL] Using OpenGL 4.3 for error logging.");
             } else {
                 apiLog("[GL] Using KHR_debug for error logging.");
             }
             var arena = Arena.ofConfined();
-            GL.debugMessageCallback(arena, (source, type, id, severity, message, userParam) -> {
+            gl.DebugMessageCallback(arena, (source, type, id, severity, message, _) -> {
                 var sb = new StringBuilder(768);
                 sb.append("[OverrunGL] OpenGL debug message\n");
-                printDetail(sb, "ID", STR."0x\{Integer.toHexString(id).toUpperCase(Locale.ROOT)}");
+                printDetail(sb, "ID", "0x" + Integer.toHexString(id).toUpperCase(Locale.ROOT));
                 printDetail(sb, "Source", getDebugSource(source));
                 printDetail(sb, "Type", getDebugType(type));
                 printDetail(sb, "Severity", getDebugSeverity(severity));
                 printDetail(sb, "Message", message);
                 var stack = Thread.currentThread().getStackTrace();
                 for (int i = 3; i < stack.length; i++) {
-                    sb.append("    at ")
-                        .append(stack[i])
-                        .append("\n");
+                    sb.append("    at ").append(stack[i]).append("\n");
                 }
                 logger.accept(sb.toString());
             }, MemorySegment.NULL);
             // no need GL_KHR_debug
-            if ((caps.Ver43 || caps.Ver30) &&
-                (GL.getInteger(GL.CONTEXT_FLAGS) & GL.CONTEXT_FLAG_DEBUG_BIT) == 0) {
+            if ((flags.GL43 || flags.GL30) &&
+                (gl.GetIntegerv(GL_CONTEXT_FLAGS) & GL_CONTEXT_FLAG_DEBUG_BIT) == 0) {
                 apiLog("[GL] Warning: A non-debug context may not produce any debug output.");
-                GL.enable(GL.DEBUG_OUTPUT);
+                gl.Enable(GL_DEBUG_OUTPUT);
             }
             return arena;
         }
 
-        if (caps.ext().GL_ARB_debug_output) {
+        if (flags.GL_ARB_debug_output && fallbackARB != null) {
             apiLog("[GL] Using ARB_debug_output for error logging.");
             var arena = Arena.ofConfined();
-            glDebugMessageCallbackARB(arena, (source, type, id, severity, message, userParam) -> {
+            fallbackARB.get().DebugMessageCallbackARB(((GLDebugProc) (source, type, id, severity, message, _) -> {
                 var sb = new StringBuilder(768);
                 sb.append("[OverrunGL] ARB_debug_output message\n");
-                printDetail(sb, "ID", STR."0x\{Integer.toHexString(id).toUpperCase(Locale.ROOT)}");
+                printDetail(sb, "ID", "0x" + Integer.toHexString(id).toUpperCase(Locale.ROOT));
                 printDetail(sb, "Source", getSourceARB(source));
                 printDetail(sb, "Type", getTypeARB(type));
                 printDetail(sb, "Severity", getSeverityARB(severity));
                 printDetail(sb, "Message", message);
                 var stack = Thread.currentThread().getStackTrace();
                 for (int i = 3; i < stack.length; i++) {
-                    sb.append("    at ")
-                        .append(stack[i])
-                        .append("\n");
+                    sb.append("    at ").append(stack[i]).append("\n");
                 }
                 logger.accept(sb.toString());
-            }, MemorySegment.NULL);
+            }).stub(arena), MemorySegment.NULL);
             return arena;
         }
 
-        if (caps.ext().GL_AMD_debug_output) {
+        if (flags.GL_AMD_debug_output && fallbackAMD != null) {
             apiLog("[GL] Using AMD_debug_output for error logging.");
             var arena = Arena.ofConfined();
-            glDebugMessageCallbackAMD(arena, (id, category, severity, message, userParam) -> {
+            fallbackAMD.get().DebugMessageCallbackAMD(((GLDebugProcAMD) (id, category, severity, message, _) -> {
                 var sb = new StringBuilder(768);
                 sb.append("[OverrunGL] AMD_debug_output message\n");
-                printDetail(sb, "ID", STR."0x\{Integer.toHexString(id).toUpperCase(Locale.ROOT)}");
+                printDetail(sb, "ID", "0x" + Integer.toHexString(id).toUpperCase(Locale.ROOT));
                 printDetail(sb, "Category", getCategoryAMD(category));
                 printDetail(sb, "Severity", getSeverityAMD(severity));
                 printDetail(sb, "Message", message);
                 var stack = Thread.currentThread().getStackTrace();
                 for (int i = 3; i < stack.length; i++) {
-                    sb.append("    at ")
-                        .append(stack[i])
-                        .append("\n");
+                    sb.append("    at ").append(stack[i]).append("\n");
                 }
                 logger.accept(sb.toString());
-            }, MemorySegment.NULL);
+            }).stub(arena), MemorySegment.NULL);
             return arena;
         }
 
@@ -148,44 +163,40 @@ public final class GLUtil {
     }
 
     private static void printDetail(StringBuilder sb, String type, String message) {
-        sb.append("    ")
-            .append(type)
-            .append(": ")
-            .append(message)
-            .append("\n");
+        sb.append("    ").append(type).append(": ").append(message).append("\n");
     }
 
     private static String getDebugSource(int source) {
         return switch (source) {
-            case GL.DEBUG_SOURCE_API -> "API";
-            case GL.DEBUG_SOURCE_WINDOW_SYSTEM -> "WINDOW SYSTEM";
-            case GL.DEBUG_SOURCE_SHADER_COMPILER -> "SHADER COMPILER";
-            case GL.DEBUG_SOURCE_THIRD_PARTY -> "THIRD PARTY";
-            case GL.DEBUG_SOURCE_APPLICATION -> "APPLICATION";
-            case GL.DEBUG_SOURCE_OTHER -> "OTHER";
+            case GL_DEBUG_SOURCE_API -> "API";
+            case GL_DEBUG_SOURCE_WINDOW_SYSTEM -> "WINDOW SYSTEM";
+            case GL_DEBUG_SOURCE_SHADER_COMPILER -> "SHADER COMPILER";
+            case GL_DEBUG_SOURCE_THIRD_PARTY -> "THIRD PARTY";
+            case GL_DEBUG_SOURCE_APPLICATION -> "APPLICATION";
+            case GL_DEBUG_SOURCE_OTHER -> "OTHER";
             default -> unknownToken(source);
         };
     }
 
     private static String getDebugType(int type) {
         return switch (type) {
-            case GL.DEBUG_TYPE_ERROR -> "ERROR";
-            case GL.DEBUG_TYPE_DEPRECATED_BEHAVIOR -> "DEPRECATED BEHAVIOR";
-            case GL.DEBUG_TYPE_UNDEFINED_BEHAVIOR -> "UNDEFINED BEHAVIOR";
-            case GL.DEBUG_TYPE_PORTABILITY -> "PORTABILITY";
-            case GL.DEBUG_TYPE_PERFORMANCE -> "PERFORMANCE";
-            case GL.DEBUG_TYPE_OTHER -> "OTHER";
-            case GL.DEBUG_TYPE_MARKER -> "MARKER";
+            case GL_DEBUG_TYPE_ERROR -> "ERROR";
+            case GL_DEBUG_TYPE_DEPRECATED_BEHAVIOR -> "DEPRECATED BEHAVIOR";
+            case GL_DEBUG_TYPE_UNDEFINED_BEHAVIOR -> "UNDEFINED BEHAVIOR";
+            case GL_DEBUG_TYPE_PORTABILITY -> "PORTABILITY";
+            case GL_DEBUG_TYPE_PERFORMANCE -> "PERFORMANCE";
+            case GL_DEBUG_TYPE_OTHER -> "OTHER";
+            case GL_DEBUG_TYPE_MARKER -> "MARKER";
             default -> unknownToken(type);
         };
     }
 
     private static String getDebugSeverity(int severity) {
         return switch (severity) {
-            case GL.DEBUG_SEVERITY_HIGH -> "HIGH";
-            case GL.DEBUG_SEVERITY_MEDIUM -> "MEDIUM";
-            case GL.DEBUG_SEVERITY_LOW -> "LOW";
-            case GL.DEBUG_SEVERITY_NOTIFICATION -> "NOTIFICATION";
+            case GL_DEBUG_SEVERITY_HIGH -> "HIGH";
+            case GL_DEBUG_SEVERITY_MEDIUM -> "MEDIUM";
+            case GL_DEBUG_SEVERITY_LOW -> "LOW";
+            case GL_DEBUG_SEVERITY_NOTIFICATION -> "NOTIFICATION";
             default -> unknownToken(severity);
         };
     }

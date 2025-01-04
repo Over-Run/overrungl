@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -17,13 +17,16 @@
 package overrungl.opengl;
 
 /**
- * The latest OpenGL functions.
+ * The latest OpenGL functions in core profile.
  *
  * @author squid233
  * @since 0.1.0
  */
-public final class GL extends GL46C {
-    private GL() {
-        //no instance
+public non-sealed class GL extends GL46 {
+    /// Creates an instance of OpenGL functions.
+    ///
+    /// @param function a function that returns the address of specific OpenGL function
+    public GL(GLLoadFunc function) {
+        super(function);
     }
 }

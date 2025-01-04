@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023 Overrun Organization
+ * Copyright (c) 2023-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -16,15 +16,15 @@
 
 package overrungl.demo.nfd;
 
-import overrungl.nfd.NFD;
 import overrungl.nfd.NFDEnumerator;
-import overrungl.nfd.NFDNFilterItem;
-import overrungl.nfd.NFDResult;
+import overrungl.nfd.NFDFilterItem;
 import overrungl.util.MemoryStack;
-import overrungl.util.value.Pair;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
+import java.util.Map;
+
+import static overrungl.nfd.NFD.*;
 
 /**
  * @author squid233
@@ -36,28 +36,28 @@ public final class NFDTest {
         // initialize NFD
         // either call NFD::init at the start of your program and NFD::quit at the end of your program,
         // or before/after every time you want to show a file dialog.
-        NFD.init();
+        NFD_Init();
 
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             String[] outPath = new String[1];
 
             // prepare filters for the dialog
-            final NFDNFilterItem.Buffer filterItem = NFDNFilterItem.create(stack,
-                new Pair<>("Source code", "java"),
-                new Pair<>("Image file", "png,jpg"));
+            final var filterItem = NFDFilterItem.create(stack,
+                Map.entry("Source code", "java"),
+                Map.entry("Image file", "png,jpg"));
 
             // show the dialog
-            final NFDResult result = NFD.openDialogN(outPath, filterItem, null);
+            final int result = NFD_OpenDialog(outPath, filterItem, null);
 
             switch (result) {
-                case ERROR -> System.err.println("Error: " + NFD.getError());
-                case OKAY -> System.out.println("Success! " + outPath[0]);
-                case CANCEL -> System.out.println("User pressed cancel.");
+                case NFD_ERROR -> System.err.println("Error: " + NFD_GetError());
+                case NFD_OKAY -> System.out.println("Success! " + outPath[0]);
+                case NFD_CANCEL -> System.out.println("User pressed cancel.");
             }
         }
 
         // Quit NFD
-        NFD.quit();
+        NFD_Quit();
     }
 
     private static void openDialogMultiple() {
@@ -65,40 +65,42 @@ public final class NFDTest {
         // initialize NFD
         // either call NFD::init at the start of your program and NFD::quit at the end of your program,
         // or before/after every time you want to show a file dialog.
-        NFD.init();
+        NFD_Init();
 
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            MemorySegment pOutPaths = stack.calloc(ValueLayout.ADDRESS);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            MemorySegment pOutPaths = stack.allocate(ValueLayout.ADDRESS);
             String[] outPath = new String[1];
 
             // prepare filters for the dialog
-            final NFDNFilterItem.Buffer filterItem = NFDNFilterItem.create(stack,
-                new Pair<>("Source code", "java"),
-                new Pair<>("Image file", "png,jpg"));
+            final var filterItem = NFDFilterItem.create(stack,
+                Map.entry("Source code", "java"),
+                Map.entry("Image file", "png,jpg"));
 
             // show the dialog
-            final NFDResult result = NFD.openDialogMultipleN(pOutPaths, filterItem, null);
+            final int result = NFD_OpenDialogMultiple(pOutPaths, filterItem, null);
             MemorySegment outPaths = pOutPaths.get(ValueLayout.ADDRESS, 0);
 
             switch (result) {
-                case ERROR -> System.err.println("Error: " + NFD.getError());
-                case OKAY -> {
+                case NFD_ERROR -> System.err.println("Error: " + NFD_GetError());
+                case NFD_OKAY -> {
                     System.out.println("Success!");
 
-                    for (long i = 0, numPaths = NFD.pathSetGetCount(outPaths).y(); i < numPaths; i++) {
-                        NFD.pathSetGetPathN(outPaths, i, outPath);
+                    long[] pNumPaths = new long[1];
+                    NFD_PathSet_GetCount(outPaths, pNumPaths);
+                    for (long i = 0, numPaths = pNumPaths[0]; i < numPaths; i++) {
+                        NFD_PathSet_GetPath(outPaths, i, outPath);
                         System.out.println("Path " + i + ": " + outPath[0]);
                     }
 
                     // remember to free the path-set memory (since NFDResult::OKAY is returned)
-                    NFD.pathSetFree(outPaths);
+                    NFD_PathSet_Free(outPaths);
                 }
-                case CANCEL -> System.out.println("User pressed cancel.");
+                case NFD_CANCEL -> System.out.println("User pressed cancel.");
             }
         }
 
         // Quit NFD
-        NFD.quit();
+        NFD_Quit();
     }
 
     private static void openDialogMultipleEnum() {
@@ -106,26 +108,26 @@ public final class NFDTest {
         // initialize NFD
         // either call NFD::init at the start of your program and NFD::quit at the end of your program,
         // or before/after every time you want to show a file dialog.
-        NFD.init();
+        NFD_Init();
 
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            MemorySegment pOutPaths = stack.calloc(ValueLayout.ADDRESS);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            MemorySegment pOutPaths = stack.allocate(ValueLayout.ADDRESS);
 
             // prepare filters for the dialog
-            final NFDNFilterItem.Buffer filterItem = NFDNFilterItem.create(stack,
-                new Pair<>("Source code", "java"),
-                new Pair<>("Image file", "png,jpg"));
+            final var filterItem = NFDFilterItem.create(stack,
+                Map.entry("Source code", "java"),
+                Map.entry("Image file", "png,jpg"));
 
             // show the dialog
-            final NFDResult result = NFD.openDialogMultipleN(pOutPaths, filterItem, null);
+            final int result = NFD_OpenDialogMultiple(pOutPaths, filterItem, null);
             MemorySegment outPaths = pOutPaths.get(ValueLayout.ADDRESS, 0);
 
             switch (result) {
-                case ERROR -> System.err.println("Error: " + NFD.getError());
-                case OKAY -> {
+                case NFD_ERROR -> System.err.println("Error: " + NFD_GetError());
+                case NFD_OKAY -> {
                     System.out.println("Success!");
 
-                    try (NFDEnumerator enumerator = NFDEnumerator.fromPathSetN(stack, outPaths).y()) {
+                    try (NFDEnumerator enumerator = NFDEnumerator.fromPathSet(stack, outPaths).enumerator()) {
                         int i = 0;
                         for (String path : enumerator) {
                             System.out.println("Path " + i + ": " + path);
@@ -134,14 +136,14 @@ public final class NFDTest {
                     }
 
                     // remember to free the path-set memory (since NFDResult::OKAY is returned)
-                    NFD.pathSetFree(outPaths);
+                    NFD_PathSet_Free(outPaths);
                 }
-                case CANCEL -> System.out.println("User pressed cancel.");
+                case NFD_CANCEL -> System.out.println("User pressed cancel.");
             }
         }
 
         // Quit NFD
-        NFD.quit();
+        NFD_Quit();
     }
 
     private static void pickFolder() {
@@ -149,22 +151,20 @@ public final class NFDTest {
         // initialize NFD
         // either call NFD::init at the start of your program and NFD::quit at the end of your program,
         // or before/after every time you want to show a file dialog.
-        NFD.init();
+        NFD_Init();
 
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            String[] outPath = new String[1];
+        String[] outPath = new String[1];
 
-            // show the dialog
-            final NFDResult result = NFD.pickFolderN(outPath, null);
-            switch (result) {
-                case ERROR -> System.err.println("Error: " + NFD.getError());
-                case OKAY -> System.out.println("Success! " + outPath[0]);
-                case CANCEL -> System.out.println("User pressed cancel.");
-            }
+        // show the dialog
+        final int result = NFD_PickFolder(outPath, null);
+        switch (result) {
+            case NFD_ERROR -> System.err.println("Error: " + NFD_GetError());
+            case NFD_OKAY -> System.out.println("Success! " + outPath[0]);
+            case NFD_CANCEL -> System.out.println("User pressed cancel.");
         }
 
         // Quit NFD
-        NFD.quit();
+        NFD_Quit();
     }
 
     private static void saveDialog() {
@@ -172,34 +172,34 @@ public final class NFDTest {
         // initialize NFD
         // either call NFD::init at the start of your program and NFD::quit at the end of your program,
         // or before/after every time you want to show a file dialog.
-        NFD.init();
+        NFD_Init();
 
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             String[] savePath = new String[1];
 
             // prepare filters for the dialog
-            final NFDNFilterItem.Buffer filterItem = NFDNFilterItem.create(stack,
-                new Pair<>("Source code", "java"),
-                new Pair<>("Image file", "png,jpg"));
+            final var filterItem = NFDFilterItem.create(stack,
+                Map.entry("Source code", "java"),
+                Map.entry("Image file", "png,jpg"));
 
             // show the dialog
-            final NFDResult result = NFD.saveDialogN(savePath, filterItem, null, "Untitled.java");
+            final int result = NFD_SaveDialog(savePath, filterItem, null, "Untitled.java");
             switch (result) {
-                case ERROR -> System.err.println("Error: " + NFD.getError());
-                case OKAY -> System.out.println("Success! " + savePath[0]);
-                case CANCEL -> System.out.println("User pressed cancel.");
+                case NFD_ERROR -> System.err.println("Error: " + NFD_GetError());
+                case NFD_OKAY -> System.out.println("Success! " + savePath[0]);
+                case NFD_CANCEL -> System.out.println("User pressed cancel.");
             }
         }
 
         // Quit NFD
-        NFD.quit();
+        NFD_Quit();
     }
 
     public static void main(String[] args) {
-//        openDialog();
-//        openDialogMultiple();
-//        openDialogMultipleEnum();
-//        pickFolder();
+        openDialog();
+        openDialogMultiple();
+        openDialogMultipleEnum();
+        pickFolder();
         saveDialog();
     }
 }

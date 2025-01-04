@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023 Overrun Organization
+ * Copyright (c) 2023-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -16,14 +16,12 @@
 
 package overrungl.demo.stb;
 
-import overrungl.stb.STBImage;
-import overrungl.stb.STBImageWrite;
-import overrungl.util.MemoryStack;
-
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 
+import static overrungl.stb.STBImage.STBI_grey;
+import static overrungl.stb.STBImageWrite.stbi_write_png;
 import static overrungl.stb.STBPerlin.*;
 
 /**
@@ -43,9 +41,7 @@ public final class STBPerlinTest {
                 buf.set(ValueLayout.JAVA_BYTE, y * HEIGHT + x, (byte) ((noise[y][x] + 1f) * .5f * 255f));
             }
         }
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            STBImageWrite.png(fileName, WIDTH, HEIGHT, STBImage.GREY, buf, WIDTH);
-        }
+        stbi_write_png(fileName, WIDTH, HEIGHT, STBI_grey, buf, WIDTH);
     }
 
     public static void main(String[] args) {
@@ -57,11 +53,11 @@ public final class STBPerlinTest {
             float[][] turbulenceNoise3 = new float[HEIGHT][WIDTH];
             for (int y = 0; y < HEIGHT; y++) {
                 for (int x = 0; x < WIDTH; x++) {
-                    noise3[y][x] = noise3(x / 256f, y / 256f, 0, 0, 0, 0);
-                    noise3seed[y][x] = noise3seed(x / 256f, y / 256f, 0, 0, 0, 0, 0b10101010);
-                    fbmNoise3[y][x] = fbmNoise3(x / 256f, y / 256f, 0, 2.0f, 0.5f, 6);
-                    ridgeNoise3[y][x] = ridgeNoise3(x / 256f, y / 256f, 0, 2.0f, 0.5f, 1.0f, 6);
-                    turbulenceNoise3[y][x] = turbulenceNoise3(x / 256f, y / 256f, 0, 2.0f, 0.5f, 6);
+                    noise3[y][x] = stb_perlin_noise3(x / 256f, y / 256f, 0, 0, 0, 0);
+                    noise3seed[y][x] = stb_perlin_noise3_seed(x / 256f, y / 256f, 0, 0, 0, 0, 0b10101010);
+                    fbmNoise3[y][x] = stb_perlin_fbm_noise3(x / 256f, y / 256f, 0, 2.0f, 0.5f, 6);
+                    ridgeNoise3[y][x] = stb_perlin_ridge_noise3(x / 256f, y / 256f, 0, 2.0f, 0.5f, 1.0f, 6);
+                    turbulenceNoise3[y][x] = stb_perlin_turbulence_noise3(x / 256f, y / 256f, 0, 2.0f, 0.5f, 6);
                 }
             }
             write(arena, noise3, "noise3.png");

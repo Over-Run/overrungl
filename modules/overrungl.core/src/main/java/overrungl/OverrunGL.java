@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023 Overrun Organization
+ * Copyright (c) 2023-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -16,8 +16,12 @@
 
 package overrungl;
 
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLClassLoader;
 import java.util.Objects;
 import java.util.function.Consumer;
+import java.util.jar.Manifest;
 
 /**
  * Constants of OverrunGL.
@@ -30,11 +34,41 @@ public final class OverrunGL {
      * The version of OverrunGL.
      */
     public static final String VERSION = "0.1.0";
+    /**
+     * The version of GLFW native libraries.
+     */
+    public static final String GLFW_VERSION = "3.5.0.1";
+    /**
+     * The version of NFD native libraries.
+     */
+    public static final String NFD_VERSION = "1.2.1.0";
+    /**
+     * The version of STB native libraries.
+     */
+    public static final String STB_VERSION = "0.1.0.5";
     private static final Consumer<String> DEFAULT_LOGGER = System.err::println;
     private static Consumer<String> apiLogger = DEFAULT_LOGGER;
 
     private OverrunGL() {
         //no instance
+    }
+
+    /**
+     * {@return the actual version of OverrunGL from the jar file}
+     */
+    public static String actualVersion() {
+        try {
+            final URL url = ((URLClassLoader) OverrunGL.class.getClassLoader()).findResource("META-INF/MANIFEST.MF");
+            if (url == null) {
+                return VERSION;
+            }
+            try (InputStream stream = url.openStream()) {
+                final String value = new Manifest(stream).getMainAttributes().getValue("Implementation-Version");
+                return value != null ? value : VERSION;
+            }
+        } catch (Exception e) {
+            return VERSION;
+        }
     }
 
     /**

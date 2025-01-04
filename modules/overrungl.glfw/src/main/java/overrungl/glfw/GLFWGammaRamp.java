@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -14,228 +14,214 @@
  * copies or substantial portions of the Software.
  */
 
+// This file is auto-generated. DO NOT EDIT!
 package overrungl.glfw;
 
-import overrungl.internal.RuntimeHelper;
-import overrungl.Struct;
-
 import java.lang.foreign.*;
-import java.lang.invoke.VarHandle;
+import java.lang.foreign.MemoryLayout.PathElement;
+import java.lang.invoke.*;
+import overrungl.annotation.*;
+import overrungl.struct.*;
+import overrungl.util.*;
 
-import static java.lang.foreign.ValueLayout.*;
-
-/**
- * This describes the gamma ramp for a monitor.
- *
- * <h2>Layout</h2>
- * <pre><code>
- * struct GLFWgammaramp {
- *     unsigned short* {@link #red() red};
- *     unsigned short* {@link #green() green};
- *     unsigned short* {@link #blue() blue};
- *     unsigned int {@link #size};
- * }</code></pre>
- *
- * @author squid233
- * @see GLFW#getGammaRamp
- * @see GLFW#setGammaRamp
- * @since 0.1.0
- */
+/// Gamma ramp.
+/// 
+/// This describes the gamma ramp for a monitor.
+/// 
+/// ## See Also
+/// - [glfwGetGammaRamp][GLFW#glfwGetGammaRamp(MemorySegment)]
+/// - [glfwSetGammaRamp][GLFW#glfwSetGammaRamp(MemorySegment, MemorySegment)]
+///
+/// ## Members
+/// ### red
+/// [VarHandle][#VH_red] - [Getter][#red()] - [Setter][#red(java.lang.foreign.MemorySegment)]
+///
+/// An array of value describing the response of the red channel.
+///
+/// ### green
+/// [VarHandle][#VH_green] - [Getter][#green()] - [Setter][#green(java.lang.foreign.MemorySegment)]
+///
+/// An array of value describing the response of the green channel.
+///
+/// ### blue
+/// [VarHandle][#VH_blue] - [Getter][#blue()] - [Setter][#blue(java.lang.foreign.MemorySegment)]
+///
+/// An array of value describing the response of the blue channel.
+///
+/// ### size
+/// [VarHandle][#VH_size] - [Getter][#size()] - [Setter][#size(int)]
+///
+/// The number of elements in each array.
+///
+/// ## Layout
+/// [Java definition][#LAYOUT]
+/// ```c
+/// typedef struct GLFWgammaramp {
+///     unsigned short* red;
+///     unsigned short* green;
+///     unsigned short* blue;
+///     unsigned int size;
+/// } GLFWGammaRamp;
+/// ```
 public final class GLFWGammaRamp extends Struct {
-    private static final AddressLayout SHORT_ARRAY = ADDRESS.withTargetLayout(MemoryLayout.sequenceLayout(JAVA_SHORT));
-    /**
-     * The struct layout.
-     */
-    public static final StructLayout LAYOUT = MemoryLayout.structLayout(
-        SHORT_ARRAY.withName("red"),
-        SHORT_ARRAY.withName("green"),
-        SHORT_ARRAY.withName("blue"),
-        JAVA_INT.withName("size")
+    /// The struct layout of `GLFWgammaramp`.
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+        ValueLayout.ADDRESS.withName("red"),
+        ValueLayout.ADDRESS.withName("green"),
+        ValueLayout.ADDRESS.withName("blue"),
+        ValueLayout.JAVA_INT.withName("size")
     );
-    private static final VarHandle
-        ppRed = LAYOUT.varHandle(PathElement.groupElement("red")),
-        ppGreen = LAYOUT.varHandle(PathElement.groupElement("green")),
-        ppBlue = LAYOUT.varHandle(PathElement.groupElement("blue")),
-        pRed = LAYOUT.varHandle(PathElement.groupElement("red"), PathElement.dereferenceElement(), PathElement.sequenceElement()),
-        pGreen = LAYOUT.varHandle(PathElement.groupElement("green"), PathElement.dereferenceElement(), PathElement.sequenceElement()),
-        pBlue = LAYOUT.varHandle(PathElement.groupElement("blue"), PathElement.dereferenceElement(), PathElement.sequenceElement()),
-        pSize = LAYOUT.varHandle(PathElement.groupElement("size"));
+    /// The [VarHandle] of `red` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    public static final VarHandle VH_red = LAYOUT.arrayElementVarHandle(PathElement.groupElement("red"));
+    /// The [VarHandle] of `green` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    public static final VarHandle VH_green = LAYOUT.arrayElementVarHandle(PathElement.groupElement("green"));
+    /// The [VarHandle] of `blue` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    public static final VarHandle VH_blue = LAYOUT.arrayElementVarHandle(PathElement.groupElement("blue"));
+    /// The [VarHandle] of `size` of type `(MemorySegment base, long baseOffset, long index)int`.
+    public static final VarHandle VH_size = LAYOUT.arrayElementVarHandle(PathElement.groupElement("size"));
 
-    /**
-     * Create a {@code GLFWgammaramp const} instance.
-     *
-     * @param address the address.
-     */
-    public GLFWGammaRamp(MemorySegment address) {
-        super(address, LAYOUT);
-    }
+    /// Creates `GLFWGammaRamp` with the given segment.
+    /// @param segment the memory segment
+    public GLFWGammaRamp(MemorySegment segment) { super(segment, LAYOUT); }
 
-    /**
-     * {@return the elements size of this struct in bytes}
-     */
-    public static long sizeof() {
-        return LAYOUT.byteSize();
-    }
+    /// Creates `GLFWGammaRamp` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static GLFWGammaRamp of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new GLFWGammaRamp(segment); }
 
-    /**
-     * Creates a {@code GLFWgammaramp} instance with the given allocator.
-     *
-     * @param allocator the allocator
-     * @return the instance
-     */
-    public static GLFWGammaRamp create(SegmentAllocator allocator) {
-        return new GLFWGammaRamp(allocator.allocate(LAYOUT));
-    }
+    /// Allocates a `GLFWGammaRamp` with the given segment allocator.
+    /// @param allocator the segment allocator
+    /// @return the allocated `GLFWGammaRamp`
+    public static GLFWGammaRamp alloc(SegmentAllocator allocator) { return new GLFWGammaRamp(allocator.allocate(LAYOUT)); }
 
-    /**
-     * Sets the red value array.
-     *
-     * @param allocator the allocator of the array.
-     * @param reds      the array
-     * @return this
-     */
-    public GLFWGammaRamp red(SegmentAllocator allocator, short[] reds) {
-        ppRed.set(segment(), allocator.allocateArray(JAVA_SHORT, reds));
-        return this;
-    }
+    /// Allocates a `GLFWGammaRamp` with the given segment allocator and count.
+    /// @param allocator the segment allocator
+    /// @param count     the count
+    /// @return the allocated `GLFWGammaRamp`
+    public static GLFWGammaRamp alloc(SegmentAllocator allocator, long count) { return new GLFWGammaRamp(allocator.allocate(LAYOUT, count)); }
 
-    /**
-     * Sets the green value array.
-     *
-     * @param allocator the allocator of the array.
-     * @param greens    the array
-     * @return this
-     */
-    public GLFWGammaRamp green(SegmentAllocator allocator, short[] greens) {
-        ppGreen.set(segment(), allocator.allocateArray(JAVA_SHORT, greens));
-        return this;
-    }
+    /// {@return `red` at the given index}
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("unsigned short*") java.lang.foreign.MemorySegment get_red(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_red.get(segment, 0L, index); }
+    /// {@return `red`}
+    /// @param segment the segment of the struct
+    public static @CType("unsigned short*") java.lang.foreign.MemorySegment get_red(MemorySegment segment) { return GLFWGammaRamp.get_red(segment, 0L); }
+    /// {@return `red` at the given index}
+    /// @param index the index
+    public @CType("unsigned short*") java.lang.foreign.MemorySegment redAt(long index) { return GLFWGammaRamp.get_red(this.segment(), index); }
+    /// {@return `red`}
+    public @CType("unsigned short*") java.lang.foreign.MemorySegment red() { return GLFWGammaRamp.get_red(this.segment()); }
+    /// Sets `red` with the given value at the given index.
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_red(MemorySegment segment, long index, @CType("unsigned short*") java.lang.foreign.MemorySegment value) { VH_red.set(segment, 0L, index, value); }
+    /// Sets `red` with the given value.
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_red(MemorySegment segment, @CType("unsigned short*") java.lang.foreign.MemorySegment value) { GLFWGammaRamp.set_red(segment, 0L, value); }
+    /// Sets `red` with the given value at the given index.
+    /// @param index the index
+    /// @param value the value
+    /// @return `this`
+    public GLFWGammaRamp redAt(long index, @CType("unsigned short*") java.lang.foreign.MemorySegment value) { GLFWGammaRamp.set_red(this.segment(), index, value); return this; }
+    /// Sets `red` with the given value.
+    /// @param value the value
+    /// @return `this`
+    public GLFWGammaRamp red(@CType("unsigned short*") java.lang.foreign.MemorySegment value) { GLFWGammaRamp.set_red(this.segment(), value); return this; }
 
-    /**
-     * Sets the blue value array.
-     *
-     * @param allocator the allocator of the array.
-     * @param blues     the array
-     * @return this
-     */
-    public GLFWGammaRamp blue(SegmentAllocator allocator, short[] blues) {
-        ppBlue.set(segment(), allocator.allocateArray(JAVA_SHORT, blues));
-        return this;
-    }
+    /// {@return `green` at the given index}
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("unsigned short*") java.lang.foreign.MemorySegment get_green(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_green.get(segment, 0L, index); }
+    /// {@return `green`}
+    /// @param segment the segment of the struct
+    public static @CType("unsigned short*") java.lang.foreign.MemorySegment get_green(MemorySegment segment) { return GLFWGammaRamp.get_green(segment, 0L); }
+    /// {@return `green` at the given index}
+    /// @param index the index
+    public @CType("unsigned short*") java.lang.foreign.MemorySegment greenAt(long index) { return GLFWGammaRamp.get_green(this.segment(), index); }
+    /// {@return `green`}
+    public @CType("unsigned short*") java.lang.foreign.MemorySegment green() { return GLFWGammaRamp.get_green(this.segment()); }
+    /// Sets `green` with the given value at the given index.
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_green(MemorySegment segment, long index, @CType("unsigned short*") java.lang.foreign.MemorySegment value) { VH_green.set(segment, 0L, index, value); }
+    /// Sets `green` with the given value.
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_green(MemorySegment segment, @CType("unsigned short*") java.lang.foreign.MemorySegment value) { GLFWGammaRamp.set_green(segment, 0L, value); }
+    /// Sets `green` with the given value at the given index.
+    /// @param index the index
+    /// @param value the value
+    /// @return `this`
+    public GLFWGammaRamp greenAt(long index, @CType("unsigned short*") java.lang.foreign.MemorySegment value) { GLFWGammaRamp.set_green(this.segment(), index, value); return this; }
+    /// Sets `green` with the given value.
+    /// @param value the value
+    /// @return `this`
+    public GLFWGammaRamp green(@CType("unsigned short*") java.lang.foreign.MemorySegment value) { GLFWGammaRamp.set_green(this.segment(), value); return this; }
 
-    /**
-     * Sets the size of arrays.
-     *
-     * @param size The number of elements in each array.
-     * @return this
-     */
-    public GLFWGammaRamp size(int size) {
-        pSize.set(segment(), size);
-        return this;
-    }
+    /// {@return `blue` at the given index}
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("unsigned short*") java.lang.foreign.MemorySegment get_blue(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_blue.get(segment, 0L, index); }
+    /// {@return `blue`}
+    /// @param segment the segment of the struct
+    public static @CType("unsigned short*") java.lang.foreign.MemorySegment get_blue(MemorySegment segment) { return GLFWGammaRamp.get_blue(segment, 0L); }
+    /// {@return `blue` at the given index}
+    /// @param index the index
+    public @CType("unsigned short*") java.lang.foreign.MemorySegment blueAt(long index) { return GLFWGammaRamp.get_blue(this.segment(), index); }
+    /// {@return `blue`}
+    public @CType("unsigned short*") java.lang.foreign.MemorySegment blue() { return GLFWGammaRamp.get_blue(this.segment()); }
+    /// Sets `blue` with the given value at the given index.
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_blue(MemorySegment segment, long index, @CType("unsigned short*") java.lang.foreign.MemorySegment value) { VH_blue.set(segment, 0L, index, value); }
+    /// Sets `blue` with the given value.
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_blue(MemorySegment segment, @CType("unsigned short*") java.lang.foreign.MemorySegment value) { GLFWGammaRamp.set_blue(segment, 0L, value); }
+    /// Sets `blue` with the given value at the given index.
+    /// @param index the index
+    /// @param value the value
+    /// @return `this`
+    public GLFWGammaRamp blueAt(long index, @CType("unsigned short*") java.lang.foreign.MemorySegment value) { GLFWGammaRamp.set_blue(this.segment(), index, value); return this; }
+    /// Sets `blue` with the given value.
+    /// @param value the value
+    /// @return `this`
+    public GLFWGammaRamp blue(@CType("unsigned short*") java.lang.foreign.MemorySegment value) { GLFWGammaRamp.set_blue(this.segment(), value); return this; }
 
-    /**
-     * Gets a red value at the given index.
-     *
-     * @param index the index
-     * @return the red value
-     */
-    public short red(int index) {
-        return (short) pRed.get(segment(), (long) index);
-    }
+    /// {@return `size` at the given index}
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("unsigned int") int get_size(MemorySegment segment, long index) { return (int) VH_size.get(segment, 0L, index); }
+    /// {@return `size`}
+    /// @param segment the segment of the struct
+    public static @CType("unsigned int") int get_size(MemorySegment segment) { return GLFWGammaRamp.get_size(segment, 0L); }
+    /// {@return `size` at the given index}
+    /// @param index the index
+    public @CType("unsigned int") int sizeAt(long index) { return GLFWGammaRamp.get_size(this.segment(), index); }
+    /// {@return `size`}
+    public @CType("unsigned int") int size() { return GLFWGammaRamp.get_size(this.segment()); }
+    /// Sets `size` with the given value at the given index.
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_size(MemorySegment segment, long index, @CType("unsigned int") int value) { VH_size.set(segment, 0L, index, value); }
+    /// Sets `size` with the given value.
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_size(MemorySegment segment, @CType("unsigned int") int value) { GLFWGammaRamp.set_size(segment, 0L, value); }
+    /// Sets `size` with the given value at the given index.
+    /// @param index the index
+    /// @param value the value
+    /// @return `this`
+    public GLFWGammaRamp sizeAt(long index, @CType("unsigned int") int value) { GLFWGammaRamp.set_size(this.segment(), index, value); return this; }
+    /// Sets `size` with the given value.
+    /// @param value the value
+    /// @return `this`
+    public GLFWGammaRamp size(@CType("unsigned int") int value) { GLFWGammaRamp.set_size(this.segment(), value); return this; }
 
-    /**
-     * Gets a green value at the given index.
-     *
-     * @param index the index
-     * @return the green value
-     */
-    public short green(int index) {
-        return (short) pGreen.get(segment(), (long) index);
-    }
-
-    /**
-     * Gets a blue value at the given index.
-     *
-     * @param index the index
-     * @return the blue value
-     */
-    public short blue(int index) {
-        return (short) pBlue.get(segment(), (long) index);
-    }
-
-    /**
-     * {@return the red value array}
-     *
-     * @param size the array size
-     */
-    public short[] reds(int size) {
-        return RuntimeHelper.toArray(nred(), new short[size]);
-    }
-
-    /**
-     * {@return the green value array}
-     *
-     * @param size the array size
-     */
-    public short[] greens(int size) {
-        return RuntimeHelper.toArray(ngreen(), new short[size]);
-    }
-
-    /**
-     * {@return the blue value array}
-     *
-     * @param size the array size
-     */
-    public short[] blues(int size) {
-        return RuntimeHelper.toArray(nblue(), new short[size]);
-    }
-
-    /**
-     * Gets the red value array.
-     *
-     * @return An array of value describing the response of the red channel.
-     */
-    public short[] red() {
-        return reds(size());
-    }
-
-    /**
-     * Gets the green value array.
-     *
-     * @return An array of value describing the response of the green channel.
-     */
-    public short[] green() {
-        return greens(size());
-    }
-
-    /**
-     * Gets the blue value array.
-     *
-     * @return An array of value describing the response of the blue channel.
-     */
-    public short[] blue() {
-        return blues(size());
-    }
-
-    /**
-     * Gets the arrays size.
-     *
-     * @return The number of elements in each array.
-     */
-    public int size() {
-        return (int) pSize.get(segment());
-    }
-
-    public MemorySegment nred() {
-        return (MemorySegment) ppRed.get(segment());
-    }
-
-    public MemorySegment ngreen() {
-        return (MemorySegment) ppGreen.get(segment());
-    }
-
-    public MemorySegment nblue() {
-        return (MemorySegment) ppBlue.get(segment());
-    }
 }

@@ -1,50 +1,75 @@
 # OverrunGL - Overrun Game Library
 
 ![License](https://img.shields.io/github/license/Over-Run/overrungl)
-[![GitHub contributors](https://img.shields.io/github/contributors/Over-Run/overrungl)](https://github.com/Over-Run/overrungl/graphs/contributors)
 
 ![Maven Central](https://img.shields.io/maven-central/v/io.github.over-run/overrungl)
-![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/io.github.over-run/overrungl?server=https%3A%2F%2Fs01.oss.sonatype.org%2F)
+![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/io.github.over-run/overrungl?server=https%3A%2F%2Fs01.oss.sonatype.org)
 
-![GitHub repo size](https://img.shields.io/github/repo-size/Over-Run/overrungl)
 [![Java CI with Gradle](https://github.com/Over-Run/overrungl/actions/workflows/gradle.yml/badge.svg?event=push)](https://github.com/Over-Run/overrungl/actions/workflows/gradle.yml)
+[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/8279/badge)](https://www.bestpractices.dev/projects/8279)
 
 ## Introduction
 
-Overrun Game Library is a high-performance library that implemented with Java 21,
-enables cross-platform access to a set of C/C++ library bindings, and provides some useful utilities.
+Overrun Game Library is a high-performance library implemented with Java 23,
+which enables cross-platform access to a set of C/C++ library bindings, providing various useful utilities.
 
-### OverrunGL vs. LWJGL
+### Comparing with LWJGL 3
 
-[LWJGL 3](https://github.com/LWJGL/lwjgl3) is also a Java library that enables native access.
+[LWJGL 3](https://github.com/LWJGL/lwjgl3) is also a Java library that enables cross-platform access.
 
-LWJGL 3 uses JNI to access native functions,
-but OverrunGL uses [FFM API](https://openjdk.org/jeps/434), which has better performance.
+LWJGL 3 uses JNI to access native functions, in OverrunGL, however,
+the [FFM API](https://openjdk.org/jeps/454) is used, which makes the linking to native functions more convenient
+as well as providing better memory management.
 
 ## Getting Started
 
 You can check our [wiki](https://github.com/Over-Run/overrungl/wiki) or
 the [samples](modules/samples/src/test/java/overrungl/demo).
 
-## Using as a Dependency
+Check [discussions](https://github.com/Over-Run/overrungl/discussions) in case you have trouble in setup works, such as environment configuring.
 
-~~The libraries are available on Maven Central.~~ Currently, we are developing with the first version, and it is very
-unstable, so you have to use `-SNAPSHOT` version.
+Feel free to ask questions as long as you have searched in discussions and found no one had the same question.
 
-You can import with `io.github.over-run:overrungl-bom:{the version}` and other submodules.
+## Import as a Dependency
 
-We have provided an artifacts customizer [here](https://over-run.github.io/overrungl-gen/).
+We provided a modules customizer [here](https://over-run.github.io/overrungl-gen/).
+A documentation of the customizer is [here](doc/customizer/doc_on_customizer.md).
+
+- Platform Maven coordinate: `io.github.over-run:overrungl-bom`
+- Core module Maven coordinate: `io.github.over-run:overrungl`
+- For others: `io.github.over-run:overrungl-<module-name>`
+
+For example:
+
+```kotlin
+dependencies {
+    implementation(platform("io.github.over-run:overrungl-bom:<VERSION>"))
+    implementation("io.github.over-run:overrungl")
+    implementation("io.github.over-run:overrungl-glfw")
+}
+```
 
 ### Using -SNAPSHOT Versions
 
 We publish `-SNAPSHOT` versions frequently.
 
-For `-SNAPSHOT` versions, you can use
+For `-SNAPSHOT` versions, you can check
 the [list of available versions](https://s01.oss.sonatype.org/content/repositories/snapshots/io/github/over-run/overrungl/maven-metadata.xml)
 and include this maven repository:
 
-```groovy
-maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots" }
+```kotlin
+repositories {
+    maven("https://s01.oss.sonatype.org/content/repositories/snapshots")
+}
+```
+
+### Enable native access
+
+You must enable the access to restricted methods by adding a VM argument or a manifest attribute.
+The customizer has already included this.
+
+```
+--enable-native-access=overrungl.core,...
 ```
 
 ## List of Supported Bindings
@@ -70,13 +95,16 @@ maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots" }
 
 ### [stb](https://github.com/nothings/stb) - single-file public domain libraries for C/C++
 
-| Library          | Description                                                                     |
-|------------------|---------------------------------------------------------------------------------|
-| stb_easy_font    | 	Quick-and-dirty easy-to-deploy bitmap font for printing frame rate, etc.       |
-| stb_image        | Image loading/decoding from file/memory: JPG, PNG, TGA, BMP, PSD, GIF, HDR, PIC |
-| stb_image_resize | Resize images larger/smaller with good quality.                                 |
-| stb_image_write  | 	Image writing to disk: PNG, TGA, BMP                                           |
-| stb_perlin       | Revised Perlin noise (3D input, 1D output).                                     |
+| Library           | Description                                                                     |
+|-------------------|---------------------------------------------------------------------------------|
+| stb_easy_font     | Quick-and-dirty easy-to-deploy bitmap font for printing frame rate, etc.        |
+| stb_image         | Image loading/decoding from file/memory: JPG, PNG, TGA, BMP, PSD, GIF, HDR, PIC |
+| stb_image_resize2 | Resize images larger/smaller with good quality.                                 |
+| stb_image_write   | Image writing to disk: PNG, TGA, BMP                                            |
+| stb_perlin        | Revised Perlin noise (3D input, 1D output).                                     |
+| stb_rect_pack     | Simple 2D rectangle packer with decent quality.                                 |
+| stb_truetype      | Parse, decode, and rasterize characters from truetype fonts.                    |
+| stb_vorbis        | Decode ogg vorbis files from file/memory to float/16-bit signed output.         |
 
 ### Other
 
@@ -84,99 +112,18 @@ maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots" }
 |-----------------------------------------|-------------------------------------------------------|
 | [JOML](https://github.com/JOML-CI/JOML) | A Java math library for OpenGL rendering calculations |
 
-## Contact
-
-- [Discussions](https://github.com/Over-Run/overrungl/discussions)
-- [Discord: ![Discord](https://img.shields.io/discord/1048545705553313862)](https://discord.gg/UKRJapDKgX)
-
 ## Release Notes
 
 See [doc/notes](doc/notes/README.md).
 
 ## Additional
 
-Javadoc can be found [here](https://over-run.github.io/overrungl-doc/).
+The latest Javadoc can be found [here](https://over-run.github.io/overrungl/).
 
-The documentation of OpenGL can be found [here](https://docs.gl/).
+The documentation of OpenGL can be found from [Khronos' references](https://registry.khronos.org/OpenGL-Refpages/gl4/) and [docs.gl](https://docs.gl/).
 
-### Publishing (for internal member)
+[JavaPoet](https://github.com/palantir/javapoet) is used to generate source files.
 
-To publish this library, you need a GPG key and the write permission of Maven Central.
+### Credits
 
-#### Packing Natives
-
-The build script can put the native libraries into jars.
-
-The tree structure of libraries is:
-
-```text
-natives
-├─ glfw
-│  ├─ linux
-│  │  ├─ arm64
-│  │  │  └─ libglfw3.so
-│  │  └─ x64
-│  │     └─ libglfw3.so
-│  ├─ macos
-│  │  ├─ arm64
-│  │  │  └─ libglfw3.dylib
-│  │  └─ x64
-│  │     └─ libglfw3.dylib
-│  └─ windows
-│     └─ x64
-│        └─ glfw3.dll
-├─ nfd https://github.com/Over-Run/nativefiledialog-extended-ci
-│  ├─ linux
-│  │  ├─ arm32
-│  │  │  └─ libnfd.so
-│  │  ├─ arm64
-│  │  │  └─ libnfd.so
-│  │  └─ x64
-│  │     └─ libnfd.so
-│  ├─ macos
-│  │  ├─ arm64
-│  │  │  └─ libnfd.dylib
-│  │  └─ x64
-│  │     └─ libnfd.dylib
-│  └─ windows
-│     ├─ arm64
-│     │  └─ nfd.dll
-│     └─ x64
-│        └─ nfd.dll
-│─ openal https://github.com/Over-Run/openal-soft-ci
-│  ├─ linux
-│  │  ├─ arm32
-│  │  │  └─ libopenal.so
-│  │  ├─ arm64
-│  │  │  └─ libopenal.so
-│  │  └─ x64
-│  │     └─ libopenal.so
-│  ├─ macos
-│  │  ├─ arm64
-│  │  │  └─ libopenal.dylib
-│  │  └─ x64
-│  │     └─ libopenal.dylib
-│  └─ windows
-│     ├─ arm64
-│     │  └─ openal.dll
-│     └─ x64
-│        └─ openal.dll
-└─ stb https://github.com/Over-Run/stb-ci
-   ├─ linux
-   │  ├─ arm32
-   │  │  └─ libstb.so
-   │  ├─ arm64
-   │  │  └─ libstb.so
-   │  └─ x64
-   │     └─ libstb.so
-   ├─ macos
-   │  ├─ arm64
-   │  │  └─ libstb.dylib
-   │  └─ x64
-   │     └─ libstb.dylib
-   └─ windows
-      ├─ arm64
-      │  └─ stb.dll
-      └─ x64
-         └─ stb.dll
-```
+[<img src="https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.png" alt="JetBrains Logo (Main) logo." width="128" height="128">](https://jb.gg/OpenSourceSupport)

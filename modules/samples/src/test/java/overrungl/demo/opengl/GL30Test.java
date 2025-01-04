@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -17,20 +17,21 @@
 package overrungl.demo.opengl;
 
 import overrungl.demo.util.IOUtil;
-import overrungl.glfw.GLFWCallbacks;
 import overrungl.glfw.GLFW;
+import overrungl.glfw.GLFWCallbacks;
 import overrungl.glfw.GLFWErrorCallback;
 import overrungl.opengl.GL;
-import overrungl.opengl.GLLoader;
-import overrungl.stb.STBImage;
 import overrungl.util.MemoryStack;
-import overrungl.util.CheckUtil;
+import overrungl.util.Unmarshal;
 
 import java.io.IOException;
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 
-import static java.lang.foreign.ValueLayout.JAVA_INT;
+import static java.lang.foreign.ValueLayout.*;
+import static overrungl.glfw.GLFW.*;
+import static overrungl.opengl.GL.*;
+import static overrungl.stb.STBImage.*;
 
 /**
  * Tests OpenGL 3.0 vertex arrays
@@ -40,6 +41,7 @@ import static java.lang.foreign.ValueLayout.JAVA_INT;
  */
 public final class GL30Test {
     private MemorySegment window;
+    private GL gl;
     private int program;
     private int colorFactor;
     private int vao, vbo, ebo;
@@ -52,85 +54,89 @@ public final class GL30Test {
         }
         loop();
 
-        GL.deleteProgram(program);
-        GL.deleteVertexArray(vao);
-        GL.deleteBuffer(vbo);
-        GL.deleteBuffer(ebo);
-        GL.deleteTexture(tex);
+        gl.DeleteProgram(program);
+        gl.DeleteVertexArrays(vao);
+        gl.DeleteBuffers(vbo);
+        gl.DeleteBuffers(ebo);
+        gl.DeleteTextures(tex);
 
         GLFWCallbacks.free(window);
-        GLFW.destroyWindow(window);
+        glfwDestroyWindow(window);
 
-        GLFW.terminate();
-        GLFW.setErrorCallback(null);
+        glfwTerminate();
+        glfwSetErrorCallback(MemorySegment.NULL);
     }
 
     private void init() {
-        GLFWErrorCallback.createPrint().set();
-        CheckUtil.check(GLFW.init(), "Unable to initialize GLFW");
-        GLFW.defaultWindowHints();
-        GLFW.windowHint(GLFW.VISIBLE, false);
-        GLFW.windowHint(GLFW.RESIZABLE, true);
-        window = GLFW.createWindow(640, 480, "OpenGL 3.0", MemorySegment.NULL, MemorySegment.NULL);
-        CheckUtil.checkNotNullptr(window, "Failed to create the GLFW window");
-        GLFW.setKeyCallback(window, (handle, key, scancode, action, mods) -> {
-            if (key == GLFW.KEY_ESCAPE && action == GLFW.RELEASE) {
-                GLFW.setWindowShouldClose(window, true);
+        glfwSetErrorCallback(GLFWErrorCallback.createPrint());
+        if (!glfwInit()) throw new IllegalStateException("Unable to initialize GLFW");
+        glfwDefaultWindowHints();
+        glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
+        glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
+        window = glfwCreateWindow(640, 480, "OpenGL 3.0", MemorySegment.NULL, MemorySegment.NULL);
+        if (Unmarshal.isNullPointer(window)) throw new IllegalStateException("Failed to create the GLFW window");
+        glfwSetKeyCallback(window, (_, key, _, action, _) -> {
+            if (key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE) {
+                glfwSetWindowShouldClose(window, true);
             }
         });
-        GLFW.setFramebufferSizeCallback(window, (handle, width, height) ->
-            GL.viewport(0, 0, width, height));
-        var vidMode = GLFW.getVideoMode(GLFW.getPrimaryMonitor());
+        glfwSetFramebufferSizeCallback(window, (_, width, height) ->
+            gl.Viewport(0, 0, width, height));
+        var vidMode = glfwGetVideoMode(glfwGetPrimaryMonitor());
         if (vidMode != null) {
-            var size = GLFW.getWindowSize(window);
-            GLFW.setWindowPos(
-                window,
-                (vidMode.width() - size.x()) / 2,
-                (vidMode.height() - size.y()) / 2
-            );
+            try (var stack = MemoryStack.pushLocal()) {
+                MemorySegment width = stack.ints(0);
+                MemorySegment height = stack.ints(0);
+                glfwGetWindowSize(window, width, height);
+                glfwSetWindowPos(
+                    window,
+                    (vidMode.width() - width.get(JAVA_INT, 0)) / 2,
+                    (vidMode.height() - height.get(JAVA_INT, 0)) / 2
+                );
+            }
         }
 
-        GLFW.makeContextCurrent(window);
-        GLFW.swapInterval(1);
+        glfwMakeContextCurrent(window);
+        glfwSwapInterval(1);
 
-        GLFW.showWindow(window);
+        glfwShowWindow(window);
     }
 
     private void load(Arena arena) {
-        CheckUtil.checkNotNull(GLLoader.load(GLFW::getProcAddress, true), "Failed to load OpenGL");
+        gl = new GL(GLFW::glfwGetProcAddress);
 
-        GL.clearColor(0.4f, 0.6f, 0.9f, 1.0f);
+        gl.ClearColor(0.4f, 0.6f, 0.9f, 1.0f);
 
-        tex = GL.genTexture();
-        GL.bindTexture(GL.TEXTURE_2D, tex);
-        GL.texParameteri(GL.TEXTURE_2D, GL.TEXTURE_MAG_FILTER, GL.NEAREST);
-        GL.texParameteri(GL.TEXTURE_2D, GL.TEXTURE_MIN_FILTER, GL.NEAREST);
-        try (MemoryStack stack = MemoryStack.stackPush()) {
+        tex = gl.GenTextures();
+        gl.BindTexture(GL_TEXTURE_2D, tex);
+        gl.TexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+        gl.TexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
             var px = stack.allocate(JAVA_INT);
             var py = stack.allocate(JAVA_INT);
             var pc = stack.allocate(JAVA_INT);
-            var data = STBImage.loadFromMemory(
-                IOUtil.ioResourceToSegment(arena, "image.png", 256),
-                px, py, pc, STBImage.RGB
+            var data = stbi_load_from_memory(
+                IOUtil.ioResourceToSegment(arena, "image.png"),
+                px, py, pc, STBI_rgb
             );
-            GL.texImage2D(GL.TEXTURE_2D,
+            gl.TexImage2D(GL_TEXTURE_2D,
                 0,
-                GL.RGB,
+                GL_RGB,
                 px.get(JAVA_INT, 0),
                 py.get(JAVA_INT, 0),
                 0,
-                GL.RGB,
-                GL.UNSIGNED_BYTE,
+                GL_RGB,
+                GL_UNSIGNED_BYTE,
                 data);
-            STBImage.free(data);
+            stbi_image_free(data);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        GL.bindTexture(GL.TEXTURE_2D, 0);
-        program = GL.createProgram();
-        int vsh = GL.createShader(GL.VERTEX_SHADER);
-        int fsh = GL.createShader(GL.FRAGMENT_SHADER);
-        GL.shaderSource(vsh, """
+        gl.BindTexture(GL_TEXTURE_2D, 0);
+        program = gl.CreateProgram();
+        int vsh = gl.CreateShader(GL_VERTEX_SHADER);
+        int fsh = gl.CreateShader(GL_FRAGMENT_SHADER);
+        gl.ShaderSource(vsh, """
             #version 130
 
             in vec3 position;
@@ -143,7 +149,7 @@ public final class GL30Test {
                 texCoord = uv;
             }
             """);
-        GL.shaderSource(fsh, """
+        gl.ShaderSource(fsh, """
             #version 130
 
             in vec2 texCoord;
@@ -157,64 +163,64 @@ public final class GL30Test {
                 fragColor = colorFactor * texture(sampler, texCoord);
             }
             """);
-        GL.compileShader(vsh);
-        GL.compileShader(fsh);
-        GL.attachShader(program, vsh);
-        GL.attachShader(program, fsh);
-        GL.bindAttribLocation(program, 0, "position");
-        GL.bindAttribLocation(program, 1, "uv");
-        GL.linkProgram(program);
-        GL.detachShader(program, vsh);
-        GL.detachShader(program, fsh);
-        GL.deleteShader(vsh);
-        GL.deleteShader(fsh);
-        GL.useProgram(program);
-        GL.uniform1i(GL.getUniformLocation(program, "sampler"), 0);
-        GL.useProgram(0);
+        gl.CompileShader(vsh);
+        gl.CompileShader(fsh);
+        gl.AttachShader(program, vsh);
+        gl.AttachShader(program, fsh);
+        gl.BindAttribLocation(program, 0, "position");
+        gl.BindAttribLocation(program, 1, "uv");
+        gl.LinkProgram(program);
+        gl.DetachShader(program, vsh);
+        gl.DetachShader(program, fsh);
+        gl.DeleteShader(vsh);
+        gl.DeleteShader(fsh);
+        gl.UseProgram(program);
+        gl.Uniform1i(gl.GetUniformLocation(program, "sampler"), 0);
+        gl.UseProgram(0);
 
-        vao = GL.genVertexArray();
-        GL.bindVertexArray(vao);
-        vbo = GL.genBuffer();
-        GL.bindBuffer(GL.ARRAY_BUFFER, vbo);
-        GL.bufferData(arena, GL.ARRAY_BUFFER, new float[]{
+        vao = gl.GenVertexArrays();
+        gl.BindVertexArray(vao);
+        vbo = gl.GenBuffers();
+        gl.BindBuffer(GL_ARRAY_BUFFER, vbo);
+        gl.BufferData(GL_ARRAY_BUFFER, arena.allocateFrom(JAVA_FLOAT,
             // Vertex          UV
             -0.5f, 0.5f, 0.0f, 0.0f, 0.0f,
             -0.5f, -0.5f, 0.0f, 0.0f, 1.0f,
             0.5f, -0.5f, 0.0f, 1.0f, 1.0f,
             0.5f, 0.5f, 0.0f, 1.0f, 0.0f
-        }, GL.STATIC_DRAW);
-        ebo = GL.genBuffer();
-        GL.bindBuffer(GL.ELEMENT_ARRAY_BUFFER, ebo);
-        GL.bufferData(arena, GL.ELEMENT_ARRAY_BUFFER, new byte[]{
+        ), GL_STATIC_DRAW);
+        ebo = gl.GenBuffers();
+        gl.BindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
+        gl.BufferData(GL_ELEMENT_ARRAY_BUFFER, arena.allocateFrom(JAVA_BYTE, new byte[]{
             0, 1, 2, 0, 2, 3
-        }, GL.STATIC_DRAW);
-        GL.enableVertexAttribArray(0);
-        GL.enableVertexAttribArray(1);
-        GL.vertexAttribPointer(0, 3, GL.FLOAT, false, 20, MemorySegment.NULL);
-        GL.vertexAttribPointer(1, 2, GL.FLOAT, false, 20, MemorySegment.ofAddress(12));
-        GL.bindBuffer(GL.ARRAY_BUFFER, 0);
-        GL.bindVertexArray(0);
+        }), GL_STATIC_DRAW);
+        gl.EnableVertexAttribArray(0);
+        gl.EnableVertexAttribArray(1);
+        gl.VertexAttribPointer(0, 3, GL_FLOAT, false, 20, MemorySegment.NULL);
+        gl.VertexAttribPointer(1, 2, GL_FLOAT, false, 20, MemorySegment.ofAddress(12));
+        gl.BindBuffer(GL_ARRAY_BUFFER, 0);
+        gl.BindVertexArray(0);
 
-        colorFactor = GL.getUniformLocation(program, "colorFactor");
+        colorFactor = gl.GetUniformLocation(program, "colorFactor");
     }
 
     private void loop() {
-        while (!GLFW.windowShouldClose(window)) {
-            GL.clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT);
+        while (!glfwWindowShouldClose(window)) {
+            gl.Clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
             // Draw triangle
-            GL.bindTexture(GL.TEXTURE_2D, tex);
-            GL.useProgram(program);
-            GL.uniform1f(colorFactor, (float) ((Math.sin(GLFW.getTime() * 2) + 1 * 0.5) * 0.6 + 0.4));
-            GL.bindVertexArray(vao);
-            GL.drawElements(GL.TRIANGLES, 6, GL.UNSIGNED_BYTE, MemorySegment.NULL);
-            GL.bindVertexArray(0);
-            GL.useProgram(0);
-            GL.bindTexture(GL.TEXTURE_2D, 0);
+            gl.BindTexture(GL_TEXTURE_2D, tex);
+            gl.UseProgram(program);
+            gl.Uniform1f(colorFactor, (float) ((Math.sin(glfwGetTime() * 2) + 1 * 0.5) * 0.6 + 0.4));
+            gl.BindVertexArray(vao);
+            gl.DrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, MemorySegment.NULL);
+            gl.BindVertexArray(0);
+            gl.UseProgram(0);
+            gl.BindTexture(GL_TEXTURE_2D, 0);
 
-            GLFW.swapBuffers(window);
+            glfwSwapBuffers(window);
 
-            GLFW.pollEvents();
+            glfwPollEvents();
         }
     }
 

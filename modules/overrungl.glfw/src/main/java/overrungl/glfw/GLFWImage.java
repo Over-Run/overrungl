@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -14,269 +14,171 @@
  * copies or substantial portions of the Software.
  */
 
+// This file is auto-generated. DO NOT EDIT!
 package overrungl.glfw;
-
-import overrungl.ArrayPointer;
-import overrungl.Struct;
 
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
-import java.lang.invoke.VarHandle;
+import java.lang.invoke.*;
+import overrungl.annotation.*;
+import overrungl.struct.*;
+import overrungl.util.*;
 
-import static java.lang.foreign.ValueLayout.*;
-
-/**
- * This describes a single 2D image. See the documentation for each related
- * function what the expected pixel format is.
- *
- * <h2>Layout</h2>
- * <pre><code>
- * struct GLFWimage {
- *     int {@link #width() width};
- *     int {@link #height() height};
- *     unsigned char* {@link #pixels() pixels};
- * }</code></pre>
- *
- * @author squid233
- * @since 0.1.0
- */
-public sealed class GLFWImage extends Struct {
-    /**
-     * The struct layout.
-     */
-    public static final StructLayout LAYOUT = MemoryLayout.structLayout(
-        JAVA_INT.withName("width"),
-        JAVA_INT.withName("height"),
-        ADDRESS.withTargetLayout(MemoryLayout.sequenceLayout(JAVA_BYTE)).withName("pixels")
+/// Image data.
+/// 
+/// This describes a single 2D image.  See the documentation for each related
+/// function what the expected pixel format is.
+///
+/// ## Members
+/// ### width
+/// [VarHandle][#VH_width] - [Getter][#width()] - [Setter][#width(int)]
+///
+/// The width, in pixels, of this image.
+///
+/// ### height
+/// [VarHandle][#VH_height] - [Getter][#height()] - [Setter][#height(int)]
+///
+/// The height, in pixels, of this image.
+///
+/// ### pixels
+/// [VarHandle][#VH_pixels] - [Getter][#pixels()] - [Setter][#pixels(java.lang.foreign.MemorySegment)]
+///
+/// The pixel data of this image, arranged left-to-right, top-to-bottom.
+///
+/// ## Layout
+/// [Java definition][#LAYOUT]
+/// ```c
+/// typedef struct GLFWimage {
+///     int width;
+///     int height;
+///     unsigned char* pixels;
+/// } GLFWImage;
+/// ```
+public final class GLFWImage extends Struct {
+    /// The struct layout of `GLFWimage`.
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+        ValueLayout.JAVA_INT.withName("width"),
+        ValueLayout.JAVA_INT.withName("height"),
+        ValueLayout.ADDRESS.withName("pixels")
     );
-    private static final VarHandle
-        pWidth = LAYOUT.varHandle(PathElement.groupElement("width")),
-        pHeight = LAYOUT.varHandle(PathElement.groupElement("height")),
-        pPixels = LAYOUT.varHandle(PathElement.groupElement("pixels"));
+    /// The [VarHandle] of `width` of type `(MemorySegment base, long baseOffset, long index)int`.
+    public static final VarHandle VH_width = LAYOUT.arrayElementVarHandle(PathElement.groupElement("width"));
+    /// The [VarHandle] of `height` of type `(MemorySegment base, long baseOffset, long index)int`.
+    public static final VarHandle VH_height = LAYOUT.arrayElementVarHandle(PathElement.groupElement("height"));
+    /// The [VarHandle] of `pixels` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    public static final VarHandle VH_pixels = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pixels"));
 
-    /**
-     * Create a {@code GLFWImage} instance.
-     *
-     * @param address the address.
-     */
-    public GLFWImage(MemorySegment address) {
-        super(address, LAYOUT);
-    }
+    /// Creates `GLFWImage` with the given segment.
+    /// @param segment the memory segment
+    public GLFWImage(MemorySegment segment) { super(segment, LAYOUT); }
 
-    /**
-     * Creates a struct instance with the given memory layout.
-     *
-     * @param address the address.
-     * @param layout  the memory layout of this struct.
-     */
-    protected GLFWImage(MemorySegment address, MemoryLayout layout) {
-        super(address, layout);
-    }
+    /// Creates `GLFWImage` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static GLFWImage of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new GLFWImage(segment); }
 
-    /**
-     * {@return the elements size of this struct in bytes}
-     */
-    public static long sizeof() {
-        return LAYOUT.byteSize();
-    }
+    /// Allocates a `GLFWImage` with the given segment allocator.
+    /// @param allocator the segment allocator
+    /// @return the allocated `GLFWImage`
+    public static GLFWImage alloc(SegmentAllocator allocator) { return new GLFWImage(allocator.allocate(LAYOUT)); }
 
-    /**
-     * Creates a {@code GLFWImage} instance with the given allocator.
-     *
-     * @param allocator the allocator
-     * @return the instance
-     */
-    public static GLFWImage create(SegmentAllocator allocator) {
-        return new GLFWImage(allocator.allocate(LAYOUT));
-    }
+    /// Allocates a `GLFWImage` with the given segment allocator and count.
+    /// @param allocator the segment allocator
+    /// @param count     the count
+    /// @return the allocated `GLFWImage`
+    public static GLFWImage alloc(SegmentAllocator allocator, long count) { return new GLFWImage(allocator.allocate(LAYOUT, count)); }
 
-    /**
-     * Creates a {@code GLFWImage.Buffer} instance with the given allocator and count.
-     *
-     * @param allocator the allocator
-     * @param count     the count
-     * @return the instance
-     */
-    public static Buffer create(SegmentAllocator allocator, long count) {
-        return new Buffer(allocator.allocateArray(LAYOUT, count), count);
-    }
+    /// {@return `width` at the given index}
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("int") int get_width(MemorySegment segment, long index) { return (int) VH_width.get(segment, 0L, index); }
+    /// {@return `width`}
+    /// @param segment the segment of the struct
+    public static @CType("int") int get_width(MemorySegment segment) { return GLFWImage.get_width(segment, 0L); }
+    /// {@return `width` at the given index}
+    /// @param index the index
+    public @CType("int") int widthAt(long index) { return GLFWImage.get_width(this.segment(), index); }
+    /// {@return `width`}
+    public @CType("int") int width() { return GLFWImage.get_width(this.segment()); }
+    /// Sets `width` with the given value at the given index.
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_width(MemorySegment segment, long index, @CType("int") int value) { VH_width.set(segment, 0L, index, value); }
+    /// Sets `width` with the given value.
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_width(MemorySegment segment, @CType("int") int value) { GLFWImage.set_width(segment, 0L, value); }
+    /// Sets `width` with the given value at the given index.
+    /// @param index the index
+    /// @param value the value
+    /// @return `this`
+    public GLFWImage widthAt(long index, @CType("int") int value) { GLFWImage.set_width(this.segment(), index, value); return this; }
+    /// Sets `width` with the given value.
+    /// @param value the value
+    /// @return `this`
+    public GLFWImage width(@CType("int") int value) { GLFWImage.set_width(this.segment(), value); return this; }
 
-    /**
-     * Sets the image width.
-     *
-     * @param width The width, in pixels, of this image.
-     * @return this
-     */
-    public GLFWImage width(int width) {
-        pWidth.set(segment(), width);
-        return this;
-    }
+    /// {@return `height` at the given index}
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("int") int get_height(MemorySegment segment, long index) { return (int) VH_height.get(segment, 0L, index); }
+    /// {@return `height`}
+    /// @param segment the segment of the struct
+    public static @CType("int") int get_height(MemorySegment segment) { return GLFWImage.get_height(segment, 0L); }
+    /// {@return `height` at the given index}
+    /// @param index the index
+    public @CType("int") int heightAt(long index) { return GLFWImage.get_height(this.segment(), index); }
+    /// {@return `height`}
+    public @CType("int") int height() { return GLFWImage.get_height(this.segment()); }
+    /// Sets `height` with the given value at the given index.
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_height(MemorySegment segment, long index, @CType("int") int value) { VH_height.set(segment, 0L, index, value); }
+    /// Sets `height` with the given value.
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_height(MemorySegment segment, @CType("int") int value) { GLFWImage.set_height(segment, 0L, value); }
+    /// Sets `height` with the given value at the given index.
+    /// @param index the index
+    /// @param value the value
+    /// @return `this`
+    public GLFWImage heightAt(long index, @CType("int") int value) { GLFWImage.set_height(this.segment(), index, value); return this; }
+    /// Sets `height` with the given value.
+    /// @param value the value
+    /// @return `this`
+    public GLFWImage height(@CType("int") int value) { GLFWImage.set_height(this.segment(), value); return this; }
 
-    /**
-     * Sets the image height.
-     *
-     * @param height The height, in pixels, of this image.
-     * @return this
-     */
-    public GLFWImage height(int height) {
-        pHeight.set(segment(), height);
-        return this;
-    }
+    /// {@return `pixels` at the given index}
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("unsigned char*") java.lang.foreign.MemorySegment get_pixels(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pixels.get(segment, 0L, index); }
+    /// {@return `pixels`}
+    /// @param segment the segment of the struct
+    public static @CType("unsigned char*") java.lang.foreign.MemorySegment get_pixels(MemorySegment segment) { return GLFWImage.get_pixels(segment, 0L); }
+    /// {@return `pixels` at the given index}
+    /// @param index the index
+    public @CType("unsigned char*") java.lang.foreign.MemorySegment pixelsAt(long index) { return GLFWImage.get_pixels(this.segment(), index); }
+    /// {@return `pixels`}
+    public @CType("unsigned char*") java.lang.foreign.MemorySegment pixels() { return GLFWImage.get_pixels(this.segment()); }
+    /// Sets `pixels` with the given value at the given index.
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_pixels(MemorySegment segment, long index, @CType("unsigned char*") java.lang.foreign.MemorySegment value) { VH_pixels.set(segment, 0L, index, value); }
+    /// Sets `pixels` with the given value.
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_pixels(MemorySegment segment, @CType("unsigned char*") java.lang.foreign.MemorySegment value) { GLFWImage.set_pixels(segment, 0L, value); }
+    /// Sets `pixels` with the given value at the given index.
+    /// @param index the index
+    /// @param value the value
+    /// @return `this`
+    public GLFWImage pixelsAt(long index, @CType("unsigned char*") java.lang.foreign.MemorySegment value) { GLFWImage.set_pixels(this.segment(), index, value); return this; }
+    /// Sets `pixels` with the given value.
+    /// @param value the value
+    /// @return `this`
+    public GLFWImage pixels(@CType("unsigned char*") java.lang.foreign.MemorySegment value) { GLFWImage.set_pixels(this.segment(), value); return this; }
 
-    /**
-     * Sets the image pixels address.
-     *
-     * @param pixels The pixel data address of this image, arranged left-to-right, top-to-bottom.
-     * @return this
-     */
-    public GLFWImage pixels(MemorySegment pixels) {
-        pPixels.set(segment(), pixels);
-        return this;
-    }
-
-    /**
-     * Gets the image width.
-     *
-     * @return The width, in pixels, of this image.
-     */
-    public int width() {
-        return (int) pWidth.get(segment());
-    }
-
-    /**
-     * Gets the image height.
-     *
-     * @return The height, in pixels, of this image.
-     */
-    public int height() {
-        return (int) pHeight.get(segment());
-    }
-
-    /**
-     * Gets the image pixels address.
-     *
-     * @return The pixel data address of this image, arranged left-to-right, top-to-bottom.
-     */
-    public MemorySegment pixels() {
-        return (MemorySegment) pPixels.get(segment());
-    }
-
-    /**
-     * This describes 2D images.
-     *
-     * @author squid233
-     * @since 0.1.0
-     */
-    public static final class Buffer extends GLFWImage implements ArrayPointer {
-        private final VarHandle pWidth, pHeight, pPixels;
-
-        /**
-         * Create a {@code GLFWImage.Buffer} instance.
-         *
-         * @param address      the address.
-         * @param elementCount the element count
-         */
-        public Buffer(MemorySegment address, long elementCount) {
-            super(address, MemoryLayout.sequenceLayout(elementCount, LAYOUT));
-            pWidth = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("width"));
-            pHeight = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("height"));
-            pPixels = layout().varHandle(PathElement.sequenceElement(), PathElement.groupElement("pixels"));
-        }
-
-        /**
-         * Sets the image width at the given index.
-         *
-         * @param index the index
-         * @param width The width, in pixels, of this image.
-         * @return this
-         */
-        public Buffer width(long index, int width) {
-            pWidth.set(segment(), index, width);
-            return this;
-        }
-
-        /**
-         * Sets the image height at the given index.
-         *
-         * @param index  the index
-         * @param height The height, in pixels, of this image.
-         * @return this
-         */
-        public Buffer height(long index, int height) {
-            pHeight.set(segment(), index, height);
-            return this;
-        }
-
-        /**
-         * Sets the image pixels address at the given index.
-         *
-         * @param index  the index
-         * @param pixels The pixel data address of this image, arranged left-to-right, top-to-bottom.
-         * @return this
-         */
-        public Buffer pixels(long index, MemorySegment pixels) {
-            pPixels.set(segment(), index, pixels);
-            return this;
-        }
-
-        @Override
-        public Buffer width(int width) {
-            return width(0, width);
-        }
-
-        @Override
-        public Buffer height(int height) {
-            return height(0, height);
-        }
-
-        @Override
-        public Buffer pixels(MemorySegment pixels) {
-            return pixels(0, pixels);
-        }
-
-        /**
-         * Gets the image width at the given index.
-         *
-         * @param index the index
-         * @return The width, in pixels, of this image.
-         */
-        public int widthAt(long index) {
-            return (int) pWidth.get(segment(), index);
-        }
-
-        /**
-         * Gets the image height at the given index.
-         *
-         * @param index the index
-         * @return The height, in pixels, of this image.
-         */
-        public int heightAt(long index) {
-            return (int) pHeight.get(segment(), index);
-        }
-
-        /**
-         * Gets the image pixels address at the given index.
-         *
-         * @param index the index
-         * @return The pixel data address of this image, arranged left-to-right, top-to-bottom.
-         */
-        public MemorySegment pixelsAt(long index) {
-            return (MemorySegment) pPixels.get(segment(), index);
-        }
-
-        @Override
-        public int width() {
-            return widthAt(0);
-        }
-
-        @Override
-        public int height() {
-            return heightAt(0);
-        }
-
-        @Override
-        public MemorySegment pixels() {
-            return pixelsAt(0);
-        }
-    }
 }

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,7 @@ import java.io.PrintStream;
 import java.util.function.Consumer;
 
 /**
- * The {@linkplain IGLFWErrorFun GLFW error callback} creator.
+ * The {@linkplain GLFWErrorFun GLFW error callback} creator.
  *
  * @author squid233
  * @since 0.1.0
@@ -33,54 +33,53 @@ public final class GLFWErrorCallback {
     }
 
     /**
-     * {@return a {@link IGLFWErrorFun} instance that throws an {@link IllegalStateException} when an error occurs}
+     * {@return a {@link GLFWErrorFun} instance that throws an {@link IllegalStateException} when an error occurs}
      */
-    public static IGLFWErrorFun createThrow() {
+    public static GLFWErrorFun createThrow() {
         return (errorCode, description) -> {
-            throw new IllegalStateException(String.format("GLFW error [0x%X]: %s", errorCode, description));
+            throw new IllegalStateException("GLFW " + GLFW.glfwGetErrorString(errorCode) + " error [0x" + Integer.toHexString(errorCode) + "]: " + description);
         };
     }
 
     /**
-     * {@return a {@link IGLFWErrorFun} instance that logs a message when an error occurs}
+     * {@return a {@link GLFWErrorFun} instance that logs a message when an error occurs}
      *
      * @param logger the logger function.
      */
-    public static IGLFWErrorFun createLog(Consumer<String> logger) {
+    public static GLFWErrorFun createLog(Consumer<String> logger) {
         return (errorCode, description) -> {
             var sb = new StringBuilder(512);
             sb.append("[OverrunGL] GLFW ")
-                .append(GLFW.getErrorString(errorCode))
-                .append(" error: ")
-                .append(description)
-                .append("\n");
+                .append(GLFW.glfwGetErrorString(errorCode))
+                .append(" error [0x")
+                .append(Integer.toHexString(errorCode))
+                .append("]: ")
+                .append(description).append("\n");
             var stack = Thread.currentThread().getStackTrace();
             for (int i = 3; i < stack.length; i++) {
-                sb.append("    at ")
-                    .append(stack[i])
-                    .append("\n");
+                sb.append("    at ").append(stack[i]).append("\n");
             }
             logger.accept(sb.toString());
         };
     }
 
     /**
-     * {@return a {@link IGLFWErrorFun} instance that prints a message when an error occurs}
+     * {@return a {@link GLFWErrorFun} instance that prints a message when an error occurs}
      *
      * @param stream the logger stream.
      * @see #createPrint()
      */
-    public static IGLFWErrorFun createPrint(PrintStream stream) {
+    public static GLFWErrorFun createPrint(PrintStream stream) {
         return createLog(stream::println);
     }
 
     /**
-     * {@return a {@link IGLFWErrorFun} instance that prints a message to
+     * {@return a {@link GLFWErrorFun} instance that prints a message to
      * {@link OverrunGL#apiLogger() default library logger} when an error occurs}
      *
      * @see #createPrint(PrintStream)
      */
-    public static IGLFWErrorFun createPrint() {
+    public static GLFWErrorFun createPrint() {
         return createLog(OverrunGL.apiLogger());
     }
 }

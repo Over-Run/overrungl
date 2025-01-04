@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -16,23 +16,17 @@
 
 package overrungl.opengl;
 
-import org.jetbrains.annotations.Nullable;
-import overrungl.FunctionDescriptors;
-import overrungl.internal.RuntimeHelper;
+import overrungl.util.Unmarshal;
 
-import java.lang.foreign.Linker;
 import java.lang.foreign.MemorySegment;
-import java.lang.invoke.MethodHandle;
 
 /**
  * The OpenGL loading function.
- *
  * <h2>Example</h2>
  * {@snippet lang = java:
  * // loads OpenGL forward-compatible profile
- * import overrungl.util.CheckUtil;
- * CheckUtil.checkNotNull(GLLoader.load(GLFW::getProcAddress, true), "Failed to load OpenGL");
- * }
+ * gl = new GL(GLFW::glfwGetProcAddress);
+ *}
  *
  * @author squid233
  * @since 0.1.0
@@ -42,32 +36,26 @@ public interface GLLoadFunc {
     /**
      * Gets the function pointer of the given GL function.
      *
-     * @param string the name of the function.
+     * @param name the name of the function.
      * @return the function pointer.
      */
-    MemorySegment invoke(String string);
+    MemorySegment invoke(String name);
 
     /**
-     * Load a function by the given name and creates a downcall handle or {@code null}.
+     * Gets the function pointer of the given GL function.
      *
-     * @param procName the function name
-     * @param function the function descriptor of the target function.
-     * @param options  the linker options associated with this linkage request.
-     * @return a downcall method handle,  or {@code null} if the symbol is {@link MemorySegment#NULL}
+     * @param name    the name of the function.
+     * @param aliases the aliases to be used
+     * @return the function pointer.
      */
-    @Nullable
-    default MethodHandle invoke(String procName, FunctionDescriptors function, Linker.Option... options) {
-        return RuntimeHelper.downcallSafe(invoke(procName), function, options);
-    }
-
-    /**
-     * Load a trivial function by the given name and creates a downcall handle or {@code null}.
-     *
-     * @param procName the function name
-     * @param function the function descriptor of the target function.
-     * @return a downcall method handle,  or {@code null} if the symbol is {@link MemorySegment#NULL}
-     */
-    default MethodHandle trivialHandle(String procName, FunctionDescriptors function) {
-        return invoke(procName, function, Linker.Option.isTrivial());
+    default MemorySegment invoke(String name, String... aliases) {
+        MemorySegment p = invoke(name);
+        if (!Unmarshal.isNullPointer(p)) return p;
+        for (String alias : aliases) {
+            MemorySegment p1 = invoke(alias);
+            if (!Unmarshal.isNullPointer(p1)) return p1;
+            break;
+        }
+        return MemorySegment.NULL;
     }
 }

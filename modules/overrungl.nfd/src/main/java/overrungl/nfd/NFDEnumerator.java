@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023 Overrun Organization
+ * Copyright (c) 2023-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -17,8 +17,8 @@
 package overrungl.nfd;
 
 import org.jetbrains.annotations.NotNull;
-import overrungl.Struct;
-import overrungl.util.value.Tuple2;
+import overrungl.util.MemoryStack;
+import overrungl.util.Unmarshal;
 
 import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.MemorySegment;
@@ -28,19 +28,20 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 import static java.lang.foreign.ValueLayout.ADDRESS;
+import static overrungl.nfd.NFD.*;
 
 /**
  * A wrapper of NFD path set enumerator.
+ * <p>
+ * Users are responsible to close the instance after the iteration finished.
  *
  * @author squid233
- * @see NFD#pathSetGetEnum(MemorySegment, MemorySegment)
+ * @see NFD#NFD_PathSet_GetEnum(MemorySegment, MemorySegment) NFD_PathSet_GetEnum
  * @since 0.1.0
  */
-public final class NFDEnumerator extends Struct implements Iterable<String>, AutoCloseable {
-    /**
-     * The struct layout.
-     */
-    public static final StructLayout LAYOUT = MemoryLayout.structLayout(ADDRESS.withName("ptr"));
+public final class NFDEnumerator implements Iterable<String>, AutoCloseable {
+    /// The struct layout of `nfdpathsetenum_t`
+    public static final StructLayout STRUCT_LAYOUT = MemoryLayout.structLayout(ADDRESS.withName("ptr"));
     private static final Iterator<String> EMPTY_ITERATOR = new Iterator<>() {
         @Override
         public boolean hasNext() {
@@ -52,28 +53,10 @@ public final class NFDEnumerator extends Struct implements Iterable<String>, Aut
             throw new NoSuchElementException();
         }
     };
-    private final Kind kind;
+    private final MemorySegment segment;
 
-    private NFDEnumerator(Kind kind, MemorySegment address) {
-        super(address, LAYOUT);
-        this.kind = kind;
-    }
-
-    /**
-     * The kind of the enumerator.
-     *
-     * @author squid233
-     * @since 0.1.0
-     */
-    public enum Kind {
-        /**
-         * Native (UTF-16LE for Windows, UTF-8 for others)
-         */
-        N,
-        /**
-         * UTF-8
-         */
-        U8
+    private NFDEnumerator(MemorySegment segment) {
+        this.segment = segment;
     }
 
     /**
@@ -98,80 +81,75 @@ public final class NFDEnumerator extends Struct implements Iterable<String>, Aut
             if (curr == null) {
                 throw new NoSuchElementException();
             }
-            String[] s = new String[1];
-            final NFDResult result = switch (kind) {
-                case N -> NFD.pathSetEnumNextN(address(), s);
-                case U8 -> NFD.pathSetEnumNextU8(address(), s);
-            };
-            if (result == NFDResult.ERROR) throw errorIterating();
-            nextPath = s[0];
+            try (MemoryStack stack = MemoryStack.pushLocal()) {
+                MemorySegment outPath = stack.allocate(ADDRESS);
+                int result = NFD_PathSet_EnumNext(segment, outPath);
+                if (result == NFD_ERROR) throw errorIterating();
+                nextPath = Unmarshal.unmarshalStringPointer(outPath, NFDInternal.nfdCharset);
+                if (nextPath != null) {
+                    NFD_PathSet_FreePath(outPath.get(ADDRESS, 0));
+                }
+            }
             return curr;
         }
     }
 
     /**
-     * {@return the elements size of this struct in bytes}
+     * A result of {@link #fromPathSet(SegmentAllocator, MemorySegment) fromPathSet}
+     *
+     * @param enumerator the enumerator if {@code result} is {@link NFD#NFD_OKAY NFD_OKAY}; otherwise {@code null}
+     * @param result     the result of {@link NFD#NFD_PathSet_GetEnum(MemorySegment, MemorySegment) NFD_PathSet_GetEnum}
      */
-    public static long sizeof() {
-        return LAYOUT.byteSize();
-    }
-
-    private static Tuple2<NFDResult, NFDEnumerator> fromPathSet(Kind kind, SegmentAllocator allocator, MemorySegment pathSet) {
-        final MemorySegment seg = allocator.allocate(ADDRESS);
-        final NFDResult result = NFD.pathSetGetEnum(pathSet, seg);
-        return new Tuple2<>(result,
-            result == NFDResult.OKAY ?
-                new NFDEnumerator(kind, seg) :
-                null);
+    public record Result(
+        NFDEnumerator enumerator,
+        int result
+    ) {
     }
 
     /**
-     * Creates an enumerator from the given path set that is created with {@link NFD#openDialogMultipleN}.
+     * Creates an enumerator from the given path set created with
+     * {@link NFD#NFD_OpenDialogMultiple(MemorySegment, NFDFilterItem, String) NFD_OpenDialogMultiple}.
      *
      * @param allocator the allocator of the enumerator.
      * @param pathSet   the path set.
      * @return the result and the enumerator.
      */
-    public static Tuple2<NFDResult, NFDEnumerator> fromPathSetN(SegmentAllocator allocator, MemorySegment pathSet) {
-        return fromPathSet(Kind.N, allocator, pathSet);
-    }
-
-    /**
-     * Creates an enumerator from the given path set that is created with {@link NFD#openDialogMultipleU8}.
-     *
-     * @param allocator the allocator of the enumerator.
-     * @param pathSet   the path set.
-     * @return the result and the enumerator.
-     */
-    public static Tuple2<NFDResult, NFDEnumerator> fromPathSetU8(SegmentAllocator allocator, MemorySegment pathSet) {
-        return fromPathSet(Kind.U8, allocator, pathSet);
+    public static Result fromPathSet(SegmentAllocator allocator, MemorySegment pathSet) {
+        MemorySegment struct = allocator.allocate(STRUCT_LAYOUT);
+        int result = NFD_PathSet_GetEnum(pathSet, struct);
+        return new Result(result == NFD_OKAY ?
+            new NFDEnumerator(struct) :
+            null,
+            result);
     }
 
     private static IllegalStateException errorIterating() {
-        return new IllegalStateException("Error iterating: " + NFD.getError());
+        return new IllegalStateException("Error iterating: " + NFD_GetError());
     }
 
     @NotNull
     @Override
     public Iterator<String> iterator() {
         // TODO: 2023/7/6 Value object
-        String[] s = new String[1];
-        final NFDResult result = switch (kind) {
-            case N -> NFD.pathSetEnumNextN(address(), s);
-            case U8 -> NFD.pathSetEnumNextU8(address(), s);
-        };
-        final String path = s[0];
-        if (path == null || result != NFDResult.OKAY) {
-            if (result == NFDResult.ERROR) {
-                throw errorIterating();
-            }
-            return EMPTY_ITERATOR;
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            MemorySegment outPath = stack.allocate(ADDRESS);
+            int result = NFD_PathSet_EnumNext(segment, outPath);
+            return switch (result) {
+                case NFD_OKAY -> {
+                    String path = Unmarshal.unmarshalStringPointer(outPath, NFDInternal.nfdCharset);
+                    if (path != null) {
+                        NFD_PathSet_FreePath(outPath.get(ADDRESS, 0));
+                    }
+                    yield new EnumIterator(path);
+                }
+                case NFD_CANCEL -> EMPTY_ITERATOR;
+                default -> throw errorIterating();
+            };
         }
-        return new EnumIterator(path);
     }
 
     @Override
     public void close() {
-        NFD.pathSetFreeEnum(address());
+        NFD_PathSet_FreeEnum(segment);
     }
 }

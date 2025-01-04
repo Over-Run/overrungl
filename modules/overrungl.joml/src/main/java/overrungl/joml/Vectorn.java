@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -17,7 +17,6 @@
 package overrungl.joml;
 
 import org.joml.*;
-import overrungl.util.MemoryStack;
 import overrungl.util.MemoryUtil;
 
 import java.lang.foreign.MemoryLayout;
@@ -262,105 +261,6 @@ public final class Vectorn {
      */
     public static MemorySegment malloc(Vector4dc vec) {
         return put(vec, MemoryUtil.malloc(VEC4D));
-    }
-
-    /**
-     * Allocates the vector on stack.
-     *
-     * @param stack the memory stack
-     * @param vec   the vector
-     * @return the memory address
-     */
-    public static MemorySegment malloc(MemoryStack stack, Vector2ic vec) {
-        return put(vec, stack.malloc(VEC2I));
-    }
-
-    /**
-     * Allocates the vector on stack.
-     *
-     * @param stack the memory stack
-     * @param vec   the vector
-     * @return the memory address
-     */
-    public static MemorySegment malloc(MemoryStack stack, Vector2fc vec) {
-        return put(vec, stack.malloc(VEC2F));
-    }
-
-    /**
-     * Allocates the vector on stack.
-     *
-     * @param stack the memory stack
-     * @param vec   the vector
-     * @return the memory address
-     */
-    public static MemorySegment malloc(MemoryStack stack, Vector2dc vec) {
-        return put(vec, stack.malloc(VEC2D));
-    }
-
-    /**
-     * Allocates the vector on stack.
-     *
-     * @param stack the memory stack
-     * @param vec   the vector
-     * @return the memory address
-     */
-    public static MemorySegment malloc(MemoryStack stack, Vector3ic vec) {
-        return put(vec, stack.malloc(VEC3I));
-    }
-
-    /**
-     * Allocates the vector on stack.
-     *
-     * @param stack the memory stack
-     * @param vec   the vector
-     * @return the memory address
-     */
-    public static MemorySegment malloc(MemoryStack stack, Vector3fc vec) {
-        return put(vec, stack.malloc(VEC3F));
-    }
-
-    /**
-     * Allocates the vector on stack.
-     *
-     * @param stack the memory stack
-     * @param vec   the vector
-     * @return the memory address
-     */
-    public static MemorySegment malloc(MemoryStack stack, Vector3dc vec) {
-        return put(vec, stack.malloc(VEC3D));
-    }
-
-    /**
-     * Allocates the vector on stack.
-     *
-     * @param stack the memory stack
-     * @param vec   the vector
-     * @return the memory address
-     */
-    public static MemorySegment malloc(MemoryStack stack, Vector4ic vec) {
-        return put(vec, stack.malloc(VEC4I));
-    }
-
-    /**
-     * Allocates the vector on stack.
-     *
-     * @param stack the memory stack
-     * @param vec   the vector
-     * @return the memory address
-     */
-    public static MemorySegment malloc(MemoryStack stack, Vector4fc vec) {
-        return put(vec, stack.malloc(VEC4F));
-    }
-
-    /**
-     * Allocates the vector on stack.
-     *
-     * @param stack the memory stack
-     * @param vec   the vector
-     * @return the memory address
-     */
-    public static MemorySegment malloc(MemoryStack stack, Vector4dc vec) {
-        return put(vec, stack.malloc(VEC4D));
     }
 
     /**

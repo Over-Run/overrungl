@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2023 Overrun Organization
+ * Copyright (c) 2022-2024 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -17,15 +17,11 @@
 package overrungl.util;
 
 import org.jetbrains.annotations.Nullable;
-import overrungl.Configurations;
-import overrungl.FunctionDescriptors;
-import overrungl.internal.RuntimeHelper;
 
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
-import java.util.Objects;
 
-import static overrungl.FunctionDescriptors.*;
+import static java.lang.foreign.ValueLayout.*;
 
 /**
  * The standard-C memory allocator.
@@ -34,60 +30,23 @@ import static overrungl.FunctionDescriptors.*;
  * @since 0.1.0
  */
 public final class MemoryUtil {
-    private static final SymbolLookup LOOKUP = RuntimeHelper.LINKER.defaultLookup();
+    private static final Linker LINKER = Linker.nativeLinker();
+    private static final SymbolLookup LOOKUP = LINKER.defaultLookup();
     private static final MethodHandle
-        m_malloc = downcall("malloc", JP),
-        m_calloc = downcall("calloc", JJP),
-        m_realloc = downcall("realloc", PJP),
-        m_free = downcall("free", PV),
-        m_memcpy = downcall("memcpy", PPJP),
-        m_memmove = downcall("memmove", PPJP),
-        m_memset = downcall("memset", PIJP);
-    private static final boolean DEBUG = Configurations.DEBUG_MEM_UTIL.get();
-    /**
-     * The address of {@code NULL}.
-     */
-    public static final long NULL = 0x0L;
-    /**
-     * An unbounded address layout.
-     */
-    public static final AddressLayout ADDRESS_UNBOUNDED = ValueLayout.ADDRESS.withTargetLayout(MemoryLayout.sequenceLayout(ValueLayout.JAVA_BYTE));
+        m_malloc = downcall("malloc", FunctionDescriptor.of(ADDRESS, JAVA_LONG)),
+        m_calloc = downcall("calloc", FunctionDescriptor.of(ADDRESS, JAVA_LONG, JAVA_LONG)),
+        m_realloc = downcall("realloc", FunctionDescriptor.of(ADDRESS, ADDRESS, JAVA_LONG)),
+        m_free = downcall("free", FunctionDescriptor.ofVoid(ADDRESS)),
+        m_memcpy = downcall("memcpy", FunctionDescriptor.of(ADDRESS, ADDRESS, ADDRESS, JAVA_LONG)),
+        m_memmove = downcall("memmove", FunctionDescriptor.of(ADDRESS, ADDRESS, ADDRESS, JAVA_LONG)),
+        m_memset = downcall("memset", FunctionDescriptor.of(ADDRESS, ADDRESS, JAVA_INT, JAVA_LONG));
 
-    private static MethodHandle downcall(String name, FunctionDescriptors function) {
-        return RuntimeHelper.downcallThrow(LOOKUP.find(name), function);
+    private static MethodHandle downcall(String name, FunctionDescriptor function) {
+        return LINKER.downcallHandle(LOOKUP.findOrThrow(name), function);
     }
 
     private MemoryUtil() {
         throw new IllegalStateException("Do not construct instance");
-    }
-
-    /**
-     * {@return a segment allocator of this}
-     * The returned memory must be released <strong>explicitly</strong> by {@link #free(MemorySegment)}.
-     */
-    public static SegmentAllocator segmentAllocator() {
-        class Holder {
-            private static final SegmentAllocator ALLOCATOR = (byteSize, byteAlignment) -> calloc(byteSize / byteAlignment, byteAlignment);
-        }
-        return Holder.ALLOCATOR;
-    }
-
-    /**
-     * {@return {@code true} if <i>{@code segment}</i> is a null pointer}
-     *
-     * @param segment the segment.
-     */
-    public static boolean isNullptr(@Nullable MemorySegment segment) {
-        return segment == null || segment.equals(MemorySegment.NULL);
-    }
-
-    /**
-     * {@return {@code true} if <i>{@code address}</i> is {@value NULL}}
-     *
-     * @param address the address.
-     */
-    public static boolean isNullptr(long address) {
-        return address == NULL;
     }
 
     /**
@@ -134,9 +93,8 @@ public final class MemoryUtil {
      */
     public static MemorySegment malloc(long size) {
         try {
-            final MemorySegment seg = ((MemorySegment) m_malloc.invokeExact(size)).reinterpret(size);
-            if (DEBUG) DebugAllocator.track(seg.address(), size);
-            return seg;
+            return ((MemorySegment) m_malloc.invokeExact(size))
+                .reinterpret(size);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -168,9 +126,8 @@ public final class MemoryUtil {
     public static MemorySegment calloc(long number, long size) {
         try {
             long byteSize = number * size;
-            final MemorySegment seg = ((MemorySegment) m_calloc.invokeExact(number, size)).reinterpret(byteSize);
-            if (DEBUG) DebugAllocator.track(seg.address(), byteSize);
-            return seg;
+            return ((MemorySegment) m_calloc.invokeExact(number, size))
+                .reinterpret(byteSize);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -221,24 +178,10 @@ public final class MemoryUtil {
      * The return value points to a storage space that is suitably aligned for storage of any type of object.
      */
     public static MemorySegment realloc(@Nullable MemorySegment memblock, long size) {
-        long ptr = NULL;
-        long oldSize = 0;
-        if (DEBUG) {
-            ptr = memblock != null ? memblock.address() : NULL;
-            oldSize = DebugAllocator.untrack(ptr);
-        }
         try {
-            MemorySegment segment = ((MemorySegment) m_realloc.invokeExact(
-                Objects.requireNonNullElse(memblock, MemorySegment.NULL),
-                size)).reinterpret(size);
-            if (DEBUG) {
-                if (!isNullptr(segment)) {
-                    DebugAllocator.track(segment.address(), size);
-                } else if (size != 0L) {
-                    DebugAllocator.track(ptr, oldSize);
-                }
-            }
-            return segment;
+            final MemorySegment mem = memblock != null ? memblock : MemorySegment.NULL;
+            return ((MemorySegment) m_realloc.invokeExact(mem, size))
+                .reinterpret(size);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -258,8 +201,7 @@ public final class MemoryUtil {
      * @param memblock Previously allocated memory block to be freed.
      */
     public static void free(@Nullable MemorySegment memblock) {
-        if (isNullptr(memblock)) return;
-        if (DEBUG) DebugAllocator.untrack(memblock.address());
+        if (Unmarshal.isNullPointer(memblock)) return;
         try {
             m_free.invokeExact(memblock);
         } catch (Throwable e) {
@@ -283,7 +225,7 @@ public final class MemoryUtil {
      */
     public static MemorySegment memcpy(MemorySegment dest, MemorySegment src, long count) {
         try {
-            RuntimeHelper.consume((MemorySegment) m_memcpy.invokeExact(dest, src, count));
+            final var _ = (MemorySegment) m_memcpy.invokeExact(dest, src, count);
             return dest;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
@@ -308,7 +250,7 @@ public final class MemoryUtil {
      */
     public static MemorySegment memmove(MemorySegment dest, MemorySegment src, long count) {
         try {
-            RuntimeHelper.consume((MemorySegment) m_memmove.invokeExact(dest, src, count));
+            final var _ = (MemorySegment) m_memmove.invokeExact(dest, src, count);
             return dest;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
@@ -331,10 +273,25 @@ public final class MemoryUtil {
      */
     public static MemorySegment memset(MemorySegment dest, int c, long count) {
         try {
-            RuntimeHelper.consume((MemorySegment) m_memset.invokeExact(dest, c, count));
+            final var _ = (MemorySegment) m_memset.invokeExact(dest, c, count);
             return dest;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
+    }
+
+    /**
+     * Creates a segment allocator associated with the given arena,
+     * which automatically releases the allocated memory when the arena closes.
+     *
+     * @param arena the arena to be associated with
+     * @return the segment allocator
+     */
+    public static SegmentAllocator allocator(Arena arena) {
+        return (byteSize, byteAlignment) -> {
+            checkByteSize(byteSize);
+            checkAlignment(byteAlignment);
+            return calloc(byteSize, 1).reinterpret(arena, MemoryUtil::free);
+        };
     }
 }
