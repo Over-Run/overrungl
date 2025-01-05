@@ -266,7 +266,7 @@ class StaticDowncall(
 
         sb.appendLine(formatter_on)
 
-        Files.writeString(path, replaceCode(Files.readString(path), sb.toString()))
+        writeString(path, replaceCode(Files.readString(path), sb.toString()))
     }
 }
 

@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2022-2024 Overrun Organization
+ * Copyright (c) 2022-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -57,6 +57,10 @@ public final class OverrunGLConfigurations {
      * The default value is {@code null}.
      */
     public static final Entry<Function<Supplier<SymbolLookup>, SymbolLookup>> NFD_SYMBOL_LOOKUP = new Entry<>(() -> null);
+    /// The symbol lookup of OpenAL. The returned value must not be null.
+    ///
+    /// The default value is `null`.
+    public static final Entry<Function<Supplier<SymbolLookup>, SymbolLookup>> OPENAL_SYMBOL_LOOKUP = new Entry<>(() -> null);
     /**
      * The symbol lookup of STB.
      * The returned value must not be null.

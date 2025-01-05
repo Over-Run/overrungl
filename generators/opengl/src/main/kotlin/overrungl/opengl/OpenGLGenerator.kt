@@ -21,12 +21,9 @@ import org.w3c.dom.Element
 import org.w3c.dom.Node
 import org.w3c.dom.Text
 import overrungl.gen.*
-import java.nio.file.Files
-import java.nio.file.Path
 import javax.xml.parsers.DocumentBuilderFactory
 import kotlin.io.path.Path
 import kotlin.io.path.createDirectories
-import kotlin.io.path.exists
 
 // gl.xml updated: 2025/01/01
 
@@ -1005,9 +1002,3 @@ data class GLFeature(val number: String, val requires: List<GLRequire>) {
 }
 
 data class GLExtension(val name: String, val requires: List<GLRequire>)
-
-// do not write if contents are equal
-internal fun writeString(path: Path, content: String) {
-    if (path.exists() && Files.readString(path) == content) return
-    Files.writeString(path, content)
-}

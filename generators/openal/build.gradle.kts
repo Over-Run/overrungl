@@ -15,12 +15,11 @@
  */
 
 plugins {
-    id("module.conventions")
-    id("submodule.conventions")
+    id("generator.conventions")
 }
 
-overrunglModule {
-    artifactName = "overrungl-openal"
-    publishInfo = Artifact.OPENAL
-    nativeBinding = NativeBinding.OPENAL
+dependencies {
+    implementation(project(":generators"))
 }
+
+registerGenerateTask("overrungl.openal.OpenALGeneratorKt", ":openal")

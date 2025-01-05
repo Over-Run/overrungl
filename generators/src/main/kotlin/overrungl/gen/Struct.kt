@@ -18,7 +18,6 @@ package overrungl.gen
 
 import com.palantir.javapoet.ArrayTypeName
 import com.palantir.javapoet.ClassName
-import java.nio.file.Files
 import kotlin.io.path.Path
 
 class Struct(
@@ -403,7 +402,7 @@ class Struct(
         doLast.invoke(sb)
         sb.appendLine("}")
 
-        Files.writeString(Path(packageName.replace('.', '/'), "$name.java"), sb.toString())
+        writeString(Path(packageName.replace('.', '/'), "$name.java"), sb.toString())
     }
 }
 

@@ -18,7 +18,6 @@ package overrungl.gen
 
 import com.palantir.javapoet.ClassName
 import com.palantir.javapoet.TypeName
-import java.nio.file.Files
 import kotlin.io.path.Path
 
 fun generateUpcallType(packageName: String, name: String): CustomTypeSpec {
@@ -312,7 +311,7 @@ class Upcall(
 
         sb.appendLine("}")
 
-        Files.writeString(path, sb.toString())
+        writeString(path, sb.toString())
     }
 }
 
