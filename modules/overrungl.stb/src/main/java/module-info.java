@@ -16,8 +16,6 @@
 
 /// The stb binding.
 ///
-/// - [Source](https://github.com/nothings/stb)
-///
 /// @author squid233
 /// @since 0.1.0
 module overrungl.stb {

@@ -64,12 +64,7 @@ val const_nfdpickfoldernargs_t_ptr = address c "const nfdpickfoldernargs_t*"
 
 fun main() {
     //region Structs
-    Struct(
-        nfdPackage,
-        "NFDFilterItem",
-        "nfdnfilteritem_t",
-        javadoc = "UTF-16 Filter Item on Windows, UTF-8 Filter Item on others"
-    ) {
+    Struct(nfdPackage, "NFDFilterItem", "nfdnfilteritem_t") {
         const_nfdnchar_t_ptr("name")
         const_nfdnchar_t_ptr("spec")
         doLast {
@@ -93,17 +88,7 @@ fun main() {
         }
     }
 
-    val nfdwindowhandle_t = Struct(
-        nfdPackage,
-        "NFDWindowHandle",
-        "nfdwindowhandle_t",
-        javadoc = """
-            The native window handle.
-
-            If using a platform abstraction framework (e.g. SDL2), this should be
-            obtained using the corresponding NFD glue header (e.g. nfd_sdl2.h).
-        """.trimIndent()
-    ) {
+    val nfdwindowhandle_t = Struct(nfdPackage, "NFDWindowHandle", "nfdwindowhandle_t") {
         size_t("type")
         void_ptr("handle")
     }
@@ -129,54 +114,22 @@ fun main() {
 
     StaticDowncall(nfdPackage, "NFD", "NFDInternal.lookup()") {
         int {
-            "NFD_ERROR"("0", javadoc = "Programmatic error")
-            "NFD_OKAY"("1", javadoc = "User pressed okay, or successful return")
-            "NFD_CANCEL"("2", javadoc = "User pressed cancel")
+            "NFD_ERROR"("0")
+            "NFD_OKAY"("1")
+            "NFD_CANCEL"("2")
         }
-        int(javadoc = "The native window handle type.\nWayland support will be implemented separately in the future") {
+        int {
             "NFD_WINDOW_HANDLE_TYPE_UNSET"("0")
-            "NFD_WINDOW_HANDLE_TYPE_WINDOWS"(
-                "1",
-                javadoc = "Windows: handle is HWND (the Windows API typedefs this to void*)"
-            )
-            "NFD_WINDOW_HANDLE_TYPE_COCOA"("2", javadoc = "Cocoa: handle is NSWindow*")
-            "NFD_WINDOW_HANDLE_TYPE_X11"("3", javadoc = "X11: handle is Window")
+            "NFD_WINDOW_HANDLE_TYPE_WINDOWS"("1")
+            "NFD_WINDOW_HANDLE_TYPE_COCOA"("2")
+            "NFD_WINDOW_HANDLE_TYPE_X11"("3")
         }
-        int(
-            "NFD_INTERFACE_VERSION" to "1",
-            javadoc = """
-                This is a unique identifier tagged to all the NFD_*With() function calls, for backward
-                compatibility purposes. <p>There is usually no need to use this directly, unless you want to use
-                NFD differently depending on the version you're building with.
-            """.trimIndent()
-        )
+        int("NFD_INTERFACE_VERSION" to "1")
 
         //region methods
-        "NFD_FreePath"(
-            void,
-            nfdnchar_t_ptr("filePath"),
-            entrypoint = "NFD_FreePathN",
-            javadoc = """
-                Free a file path that was returned by the dialogs.
-
-                Note: use NFD_PathSet_FreePath() to free path from pathset instead of this function.
-            """.trimIndent()
-        )
-        "NFD_Init"(
-            nfdresult_t,
-            entrypoint = "NFD_Init",
-            javadoc = """
-                Initialize NFD. Call this for every thread that might use NFD, before calling any other NFD
-                functions on that thread.
-            """.trimIndent()
-        )
-        "NFD_Quit"(
-            void,
-            entrypoint = "NFD_Quit",
-            javadoc = """
-                Call this to de-initialize NFD, if [NFD_Init][#NFD_Init()] returned NFD_OKAY.
-            """.trimIndent()
-        )
+        "NFD_FreePath"(void, nfdnchar_t_ptr("filePath"), entrypoint = "NFD_FreePathN")
+        "NFD_Init"(nfdresult_t, entrypoint = "NFD_Init")
+        "NFD_Quit"(void, entrypoint = "NFD_Quit")
 
         "NFD_OpenDialog"(
             nfdresult_t,
@@ -184,35 +137,20 @@ fun main() {
             const_nfdnfilteritem_t_ptr("filterList"),
             nfdfiltersize_t("filterCount"),
             const_nfdnchar_t_ptr("defaultPath"),
-            entrypoint = "NFD_OpenDialogN",
-            javadoc = """
-                Single file open dialog
-
-                It's the caller's responsibility to free `outPath` via NFD_FreePath() if this function returns
-                NFD_OKAY.
-                @param filterCount If zero, filterList is ignored (you can use null).
-                @param defaultPath If null, the operating system will decide.
-            """.trimIndent()
+            entrypoint = "NFD_OpenDialogN"
         )
         "NFD_OpenDialog_With_Impl"(
             nfdresult_t,
             nfdversion_t("version"),
             nfdnchar_t_ptr_ptr("outPath"),
             const_nfdopendialognargs_t_ptr("args"),
-            entrypoint = "NFD_OpenDialogN_With_Impl",
-            javadoc = "This function is a library implementation detail.  Please use NFD_OpenDialog_With() instead."
+            entrypoint = "NFD_OpenDialogN_With_Impl"
         )
         "NFD_OpenDialog_With"(
             nfdresult_t,
             nfdnchar_t_ptr_ptr("outPath"),
             const_nfdopendialognargs_t_ptr("args"),
             entrypoint = null,
-            javadoc = """
-                Single file open dialog, with additional parameters.
-
-                It is the caller's responsibility to free `outPath` via NFD_FreePath() if this function
-                returns NFD_OKAY.  See documentation of [NFDOpenDialogArgs] for details.
-            """.trimIndent(),
             code = "return NFD_OpenDialog_With_Impl(NFD_INTERFACE_VERSION, outPath, args);"
         )
         "NFD_OpenDialogMultiple"(
@@ -221,38 +159,20 @@ fun main() {
             const_nfdnfilteritem_t_ptr("filterList"),
             nfdfiltersize_t("filterCount"),
             const_nfdnchar_t_ptr("defaultPath"),
-            entrypoint = "NFD_OpenDialogMultipleN",
-            javadoc = """
-                Multiple file open dialog
-
-                It is the caller's responsibility to free `outPaths` via NFD_PathSet_Free() if this function
-                returns NFD_OKAY.
-                @param filterCount If zero, filterList is ignored (you can use null).
-                @param defaultPath If null, the operating system will decide.
-            """.trimIndent()
+            entrypoint = "NFD_OpenDialogMultipleN"
         )
         "NFD_OpenDialogMultiple_With_Impl"(
             nfdresult_t,
             nfdversion_t("version"),
             const_nfdpathset_t_ptr_ptr("outPaths"),
             const_nfdopendialognargs_t_ptr("args"),
-            entrypoint = "NFD_OpenDialogMultipleN_With_Impl",
-            javadoc = """
-                This function is a library implementation detail.  Please use NFD_OpenDialogMultiple_With()
-                instead.
-            """.trimIndent()
+            entrypoint = "NFD_OpenDialogMultipleN_With_Impl"
         )
         "NFD_OpenDialogMultiple_With"(
             nfdresult_t,
             const_nfdpathset_t_ptr_ptr("outPaths"),
             const_nfdopendialognargs_t_ptr("args"),
             entrypoint = null,
-            javadoc = """
-                Multiple file open dialog, with additional parameters.
-
-                It is the caller's responsibility to free `outPaths` via NFD_PathSet_Free() if this function
-                returns NFD_OKAY.  See documentation of [NFDOpenDialogArgs] for details.
-            """.trimIndent(),
             code = "return NFD_OpenDialogMultiple_With_Impl(NFD_INTERFACE_VERSION, outPaths, args);"
         )
 
@@ -263,35 +183,20 @@ fun main() {
             nfdfiltersize_t("filterCount"),
             const_nfdnchar_t_ptr("defaultPath"),
             const_nfdnchar_t_ptr("defaultName"),
-            entrypoint = "NFD_SaveDialogN",
-            javadoc = """
-                Save dialog
-
-                It is the caller's responsibility to free `outPath` via NFD_FreePath() if this function returns
-                NFD_OKAY.
-                @param filterCount If zero, filterList is ignored (you can use null).
-                @param defaultPath If null, the operating system will decide.
-            """.trimIndent()
+            entrypoint = "NFD_SaveDialogN"
         )
         "NFD_SaveDialog_With_Impl"(
             nfdresult_t,
             nfdversion_t("version"),
             nfdnchar_t_ptr_ptr("outPath"),
             const_nfdsavedialognargs_t_ptr("args"),
-            entrypoint = "NFD_SaveDialogN_With_Impl",
-            javadoc = "This function is a library implementation detail.  Please use NFD_SaveDialog_With() instead."
+            entrypoint = "NFD_SaveDialogN_With_Impl"
         )
         "NFD_SaveDialog_With"(
             nfdresult_t,
             nfdnchar_t_ptr_ptr("outPath"),
             const_nfdsavedialognargs_t_ptr("args"),
             entrypoint = null,
-            javadoc = """
-                Single file save dialog, with additional parameters.
-
-                It is the caller's responsibility to free `outPath` via NFD_FreePath() if this function
-                returns NFD_OKAY.  See documentation of [NFDSaveDialogArgs] for details.
-            """.trimIndent(),
             code = "return NFD_SaveDialog_With_Impl(NFD_INTERFACE_VERSION, outPath, args);"
         )
 
@@ -299,101 +204,51 @@ fun main() {
             nfdresult_t,
             nfdnchar_t_ptr_ptr("outPath"),
             const_nfdnchar_t_ptr("defaultPath"),
-            entrypoint = "NFD_PickFolderN",
-            javadoc = """
-                Select single folder dialog
-
-                It is the caller's responsibility to free `outPath` via NFD_FreePath() if this function returns
-                NFD_OKAY.
-                @param defaultPath If null, the operating system will decide.
-            """.trimIndent()
+            entrypoint = "NFD_PickFolderN"
         )
         "NFD_PickFolder_With_Impl"(
             nfdresult_t,
             nfdversion_t("version"),
             nfdnchar_t_ptr_ptr("outPath"),
             const_nfdpickfoldernargs_t_ptr("args"),
-            entrypoint = "NFD_PickFolderN_With_Impl",
-            javadoc = "This function is a library implementation detail.  Please use NFD_PickFolder_With() instead."
+            entrypoint = "NFD_PickFolderN_With_Impl"
         )
         "NFD_PickFolder_With"(
             nfdresult_t,
             nfdnchar_t_ptr_ptr("outPath"),
             const_nfdpickfoldernargs_t_ptr("args"),
             entrypoint = null,
-            javadoc = """
-                Select single folder dialog, with additional parameters.
-
-                It is the caller's responsibility to free `outPath` via NFD_FreePath() if this function
-                returns NFD_OKAY.  See documentation of [NFDPickFolderArgs] for details.
-            """.trimIndent(),
             code = "return NFD_PickFolder_With_Impl(NFD_INTERFACE_VERSION, outPath, args);"
         )
         "NFD_PickFolderMultiple"(
             nfdresult_t,
             const_nfdpathset_t_ptr_ptr("outPaths"),
             const_nfdnchar_t_ptr("defaultPath"),
-            entrypoint = "NFD_PickFolderMultipleN",
-            javadoc = """
-                Select multiple folder dialog
-
-                It is the caller's responsibility to free `outPaths` via NFD_PathSet_Free() if this function
-                NFD_OKAY.
-                @param defaultPath If null, the operating system will decide.
-            """.trimIndent()
+            entrypoint = "NFD_PickFolderMultipleN"
         )
         "NFD_PickFolderMultiple_With_Impl"(
             nfdresult_t,
             nfdversion_t("version"),
             const_nfdpathset_t_ptr_ptr("outPaths"),
             const_nfdpickfoldernargs_t_ptr("args"),
-            entrypoint = "NFD_PickFolderMultipleN_With_Impl",
-            javadoc = "This function is a library implementation detail.  Please use NFD_PickFolderMultiple_With() instead."
+            entrypoint = "NFD_PickFolderMultipleN_With_Impl"
         )
         "NFD_PickFolderMultiple_With"(
             nfdresult_t,
             const_nfdpathset_t_ptr_ptr("outPaths"),
             const_nfdpickfoldernargs_t_ptr("args"),
             entrypoint = null,
-            javadoc = """
-                Select multiple folder dialog, with additional parameters.
-
-                It is the caller's responsibility to free `outPaths` via NFD_PathSet_Free() if this function
-                returns NFD_OKAY.  See documentation of [NFDPickFolderArgs] for details.
-            """.trimIndent(),
             code = "return NFD_PickFolderMultiple_With_Impl(NFD_INTERFACE_VERSION, outPaths, args);"
         )
 
-        +"NFD_GetError_"(
-            const_char_ptr,
-            entrypoint = "NFD_GetError",
-            javadoc = """
-                Get the last error
-
-                This is set when a function returns NFD_ERROR.
-                The memory is owned by NFD and should not be freed by user code.
-                This is *always* ASCII printable characters, so it can be interpreted as UTF-8 without any
-                conversion.
-                @return The last error that was set, or null if there is no error.
-            """.trimIndent()
-        ).overload("NFD_GetError")
-        "NFD_ClearError"(
-            void,
-            entrypoint = "NFD_ClearError",
-            javadoc = "Clear the error."
-        )
+        +"NFD_GetError_"(const_char_ptr, entrypoint = "NFD_GetError").overload("NFD_GetError")
+        "NFD_ClearError"(void, entrypoint = "NFD_ClearError")
 
         +"NFD_PathSet_GetCount"(
             nfdresult_t,
             const_nfdpathset_t_ptr("pathSet"),
             nfdpathsetsize_t_ptr("count").ref(),
-            entrypoint = "NFD_PathSet_GetCount",
-            javadoc = """
-                Get the number of entries stored in pathSet.
-
-                Note: some paths might be invalid (NFD_ERROR will be returned by NFD_PathSet_GetPath),
-                so we might not actually have this number of usable paths.
-            """.trimIndent()
+            entrypoint = "NFD_PathSet_GetCount"
         ).overload(
             parameters = listOf(
                 const_nfdpathset_t_ptr("pathSet"),
@@ -405,57 +260,23 @@ fun main() {
             const_nfdpathset_t_ptr("pathSet"),
             nfdpathsetsize_t("index"),
             nfdnchar_t_ptr_ptr("outPath"),
-            entrypoint = "NFD_PathSet_GetPathN",
-            javadoc = """
-                Get the native path at offset index.
-                <p>
-                It is the caller's responsibility to free `outPath` via NFD_PathSet_FreePath() if this function
-                returns NFD_OKAY.
-            """.trimIndent()
+            entrypoint = "NFD_PathSet_GetPathN"
         )
-        "NFD_PathSet_FreePath"(
-            void,
-            const_nfdnchar_t_ptr("filePath"),
-            entrypoint = "NFD_PathSet_FreePathN",
-            javadoc = "Free the path gotten by NFD_PathSet_GetPath()."
-        )
+        "NFD_PathSet_FreePath"(void, const_nfdnchar_t_ptr("filePath"), entrypoint = "NFD_PathSet_FreePathN")
         "NFD_PathSet_GetEnum"(
             nfdresult_t,
             const_nfdpathset_t_ptr("pathSet"),
             nfdpathsetenum_t_ptr("outEnumerator"),
-            entrypoint = "NFD_PathSet_GetEnum",
-            javadoc = """
-                Gets an enumerator of the path set.
-
-                It is the caller's responsibility to free `enumerator` via NFD_PathSet_FreeEnum()
-                if this function returns NFD_OKAY, and it should be freed before freeing the pathset.
-            """.trimIndent()
+            entrypoint = "NFD_PathSet_GetEnum"
         )
-        "NFD_PathSet_FreeEnum"(
-            void,
-            nfdpathsetenum_t_ptr("enumerator"),
-            entrypoint = "NFD_PathSet_FreeEnum",
-            javadoc = "Frees an enumerator of the path set."
-        )
+        "NFD_PathSet_FreeEnum"(void, nfdpathsetenum_t_ptr("enumerator"), entrypoint = "NFD_PathSet_FreeEnum")
         "NFD_PathSet_EnumNext"(
             nfdresult_t,
             nfdpathsetenum_t_ptr("enumerator"),
             nfdnchar_t_ptr_ptr("outPath"),
-            entrypoint = "NFD_PathSet_EnumNextN",
-            javadoc = """
-                Gets the next item from the path set enumerator.
-
-                If there are no more items, then *outPaths will be set to null.
-                It is the caller's responsibility to free `*outPath` via NFD_PathSet_FreePath()
-                if this function returns NFD_OKAY and `*outPath` is not null.
-            """.trimIndent()
+            entrypoint = "NFD_PathSet_EnumNextN"
         )
-        "NFD_PathSet_Free"(
-            void,
-            const_nfdpathset_t_ptr("pathSet"),
-            entrypoint = "NFD_PathSet_Free",
-            javadoc = "Free the pathSet"
-        )
+        "NFD_PathSet_Free"(void, const_nfdpathset_t_ptr("pathSet"), entrypoint = "NFD_PathSet_Free")
         //endregion
     }
 }

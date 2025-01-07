@@ -47,7 +47,7 @@ fun ALC() {
         ALCenum("ALC_DEVICE_SPECIFIER" to "0x1005")
         ALCenum("ALC_EXTENSIONS" to "0x1006")
 
-        ALCenum("ALC_EXT_CAPTURE" to "1", "Capture extension")
+        ALCenum("ALC_EXT_CAPTURE" to "1")
         ALCenum("ALC_CAPTURE_DEVICE_SPECIFIER" to "0x310")
         ALCenum("ALC_CAPTURE_DEFAULT_DEVICE_SPECIFIER" to "0x311")
         ALCenum("ALC_CAPTURE_SAMPLES" to "0x312")

@@ -34,7 +34,6 @@ fun generateUpcallType(packageName: String, name: String): CustomTypeSpec {
 class Upcall(
     val packageName: String,
     val name: String,
-    val javadoc: String? = null,
     action: Upcall.() -> Unit
 ) {
     var targetMethod: UpcallMethod? = null
@@ -55,7 +54,6 @@ class Upcall(
     operator fun String.invoke(
         returnType: CustomTypeSpec,
         vararg parameters: UpcallMethodParameter,
-        javadoc: String? = null,
         code: String? = null,
         overload: String? = null
     ): UpcallMethod {
@@ -63,7 +61,6 @@ class Upcall(
             name = this,
             returnType = returnType,
             parameters = parameters.toList(),
-            javadoc = javadoc,
             code = code,
             overload = overload
         )
@@ -94,10 +91,6 @@ class Upcall(
         )
         sb.appendLine()
 
-        // javadoc
-        if (javadoc != null) {
-            sb.appendLine(javadoc.prependIndent("/// "))
-        }
         sb.appendLine("@FunctionalInterface")
         sb.appendLine("public interface $name extends Upcall {")
 
@@ -132,11 +125,7 @@ class Upcall(
 
         // interface method
         interfaceMethod?.also { m ->
-            sb.appendLine("    ///The interface target method of the upcall.")
-            if (m.javadoc != null) {
-                sb.appendLine("    ///")
-                sb.appendLine(m.javadoc.prependIndent("    ///"))
-            }
+            sb.appendLine("    /// The interface target method of the upcall.")
             sb.append(
                 "    ",
                 m.returnType.javaTypeWithC(),
@@ -151,11 +140,7 @@ class Upcall(
         }
 
         // target method
-        sb.appendLine("    ///The target method of the upcall.")
-        if (targetMethodNotNull.javadoc != null) {
-            sb.appendLine("    ///")
-            sb.appendLine(targetMethodNotNull.javadoc.prependIndent("    ///"))
-        }
+        sb.appendLine("    /// The target method of the upcall.")
         sb.append("    ")
         if (targetMethodNotNull.code != null || targetMethodNotNull.overload != null) {
             sb.append("default ")
@@ -208,12 +193,8 @@ class Upcall(
         )
 
         // invoker
-        sb.appendLine("    ///A static invoker of the target method.")
-        if (targetMethodNotNull.javadoc != null) {
-            sb.appendLine("    ///")
-            sb.appendLine(targetMethodNotNull.javadoc.prependIndent("    ///"))
-        }
-        sb.appendLine("    ///@param stub the upcall stub")
+        sb.appendLine("    /// A static invoker of the target method.")
+        sb.appendLine("    /// @param stub the upcall stub")
         sb.append("""    static ${targetMethodNotNull.returnType.carrierWithC()} invoke(MemorySegment stub""")
         targetMethodNotNull.parameters.forEach { sb.append(", ", it.type.carrierWithC(), " ", it.name) }
         sb.appendLine(") {")
@@ -333,7 +314,6 @@ data class UpcallMethod(
     val name: String,
     val returnType: CustomTypeSpec,
     val parameters: List<UpcallMethodParameter>,
-    val javadoc: String?,
     val code: String?,
     val overload: String?
 )

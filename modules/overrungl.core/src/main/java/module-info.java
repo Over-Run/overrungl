@@ -16,8 +16,6 @@
 
 /// The core module of OverrunGL.
 ///
-/// - [Source](https://github.com/Over-Run/overrungl)
-///
 /// @author squid233
 /// @since 0.1.0
 module overrungl.core {

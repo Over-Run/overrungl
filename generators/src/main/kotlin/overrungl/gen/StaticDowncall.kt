@@ -38,17 +38,17 @@ class StaticDowncall(
     class FieldGroupBuilder {
         internal val fields = mutableListOf<FieldGroupMember>()
 
-        operator fun String.invoke(value: String, javadoc: String? = null) {
-            fields.add(FieldGroupMember(this, value, javadoc))
+        operator fun String.invoke(value: String) {
+            fields.add(FieldGroupMember(this, value))
         }
     }
 
-    operator fun CustomTypeSpec.invoke(nameAndValue: Pair<String, String>, javadoc: String? = null) {
-        fields.add(DowncallField(this, nameAndValue.first, nameAndValue.second, javadoc))
+    operator fun CustomTypeSpec.invoke(nameAndValue: Pair<String, String>) {
+        fields.add(DowncallField(this, nameAndValue.first, nameAndValue.second))
     }
 
-    operator fun CustomTypeSpec.invoke(javadoc: String? = null, builder: FieldGroupBuilder.() -> Unit) {
-        fields.add(DowncallFieldGroup(this, javadoc, FieldGroupBuilder().also(builder).fields))
+    operator fun CustomTypeSpec.invoke(builder: FieldGroupBuilder.() -> Unit) {
+        fields.add(DowncallFieldGroup(this, FieldGroupBuilder().also(builder).fields))
     }
 
     operator fun CustomTypeSpec.invoke(name: String): DowncallParameter {
@@ -59,11 +59,9 @@ class StaticDowncall(
         returnType: CustomTypeSpec,
         vararg params: DowncallParameter,
         entrypoint: String?,
-        javadoc: String? = null,
         code: String? = null,
         overload: Boolean = false,
         optional: Boolean = false,
-        defaultCode: String? = null,
         addNow: Boolean = true
     ): DowncallMethod {
         val method = DowncallMethod(
@@ -71,11 +69,9 @@ class StaticDowncall(
             name = this,
             parameters = params.toList(),
             entrypoint = entrypoint,
-            javadoc = javadoc,
             code = code,
             overload = overload,
             optional = optional,
-            defaultCode = defaultCode,
         )
         if (addNow) methods.add(method)
         return method
@@ -164,9 +160,6 @@ class StaticDowncall(
             methods.forEach { m ->
                 val chosenReturnType = m.returnType.selectTypeName(m.overload)
                 val returnVoid = chosenReturnType == TypeName.VOID
-                if (m.javadoc != null) {
-                    sb.appendLine(m.javadoc.prependIndent("    ///"))
-                }
                 sb.appendLine(
                     "    public static ${m.returnType.typeNameWithC(chosenReturnType)} ${m.name}(${
                         m.parameters.joinToString { p ->
@@ -303,33 +296,18 @@ sealed interface DowncallFieldSpec {
 data class DowncallField(
     val type: CustomTypeSpec,
     val name: String,
-    val value: String,
-    val javadoc: String?
+    val value: String
 ) : DowncallFieldSpec {
     override fun append(builder: StringBuilder) {
-        if (javadoc != null) {
-            builder.appendLine(javadoc.prependIndent("    ///"))
-        }
         builder.appendLine("    public static final ${type.javaType} $name = $value;")
     }
 }
 
 data class DowncallFieldGroup(
     val type: CustomTypeSpec,
-    val javadoc: String?,
     val members: List<FieldGroupMember>
 ) : DowncallFieldSpec {
     override fun append(builder: StringBuilder) {
-        if (javadoc != null) {
-            builder.appendLine(javadoc.prependIndent("    ///"))
-        }
-        if (members.any { it.javadoc != null }) {
-            builder.appendLine("    ///#### Documentation of fields")
-            members.filter { it.javadoc != null }.forEach {
-                builder.appendLine("    ///##### ${it.name}")
-                builder.appendLine(it.javadoc!!.prependIndent("    ///"))
-            }
-        }
         builder.appendLine("    public static final ${type.javaType}")
         members.forEachIndexed { index, it ->
             if (index != 0) {
@@ -344,5 +322,4 @@ data class DowncallFieldGroup(
 data class FieldGroupMember(
     val name: String,
     val value: String,
-    val javadoc: String?
 )

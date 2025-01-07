@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2024 Overrun Organization
+ * Copyright (c) 2024-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -70,7 +70,7 @@ fun STBImageResize2() {
         stbir__info_ptr("samplers")
     }
 
-    Upcall(stbPackage, "STBIRInputCallback", javadoc = "INPUT CALLBACK: this callback is used for input scanlines") {
+    Upcall(stbPackage, "STBIRInputCallback") {
         targetMethod = "invoke"(
             void_const_ptr,
             void_ptr("optional_output"),
@@ -81,7 +81,7 @@ fun STBImageResize2() {
             void_ptr("context")
         )
     }
-    Upcall(stbPackage, "STBIROutputCallback", javadoc = "OUTPUT CALLBACK: this callback is used for output scanlines") {
+    Upcall(stbPackage, "STBIROutputCallback") {
         targetMethod = "invoke"(
             void,
             void_const_ptr("output_ptr"),
@@ -90,7 +90,7 @@ fun STBImageResize2() {
             void_ptr("context")
         )
     }
-    Upcall(stbPackage, "STBIRKernelCallback", javadoc = "callbacks for user installed filters") {
+    Upcall(stbPackage, "STBIRKernelCallback") {
         targetMethod = "invoke"(
             float,
             float("x"),
@@ -98,7 +98,7 @@ fun STBImageResize2() {
             void_ptr("user_data")
         )
     }
-    Upcall(stbPackage, "STBIRSupportCallback", javadoc = "callbacks for user installed filters") {
+    Upcall(stbPackage, "STBIRSupportCallback") {
         targetMethod = "invoke"(
             float,
             float("scale"),
@@ -108,44 +108,28 @@ fun STBImageResize2() {
 
     StaticDowncall(stbPackage, "STBImageResize2", symbolLookup = stbLookup) {
         // Easy-to-use API
-        stbir_pixel_layout(
-            javadoc = """
-                stbir_pixel_layout specifies:
-                - number of channels
-                - order of channels
-                - whether color is premultiplied by alpha
-                for back compatibility, you can cast the old channel count to an stbir_pixel_layout
-            """.trimIndent()
-        ) {
+        stbir_pixel_layout {
             "STBIR_1CHANNEL"("1")
             "STBIR_2CHANNEL"("2")
-            "STBIR_RGB"("3", javadoc = "3-chan, with order specified (for channel flipping)")
-            "STBIR_BGR"("0", javadoc = "3-chan, with order specified (for channel flipping)")
+            "STBIR_RGB"("3")
+            "STBIR_BGR"("0")
             "STBIR_4CHANNEL"("5")
 
-            "STBIR_RGBA"("4", javadoc = "alpha formats, where alpha is NOT premultiplied into color channels")
+            "STBIR_RGBA"("4")
             "STBIR_BGRA"("6")
             "STBIR_ARGB"("7")
             "STBIR_ABGR"("8")
             "STBIR_RA"("9")
             "STBIR_AR"("10")
 
-            "STBIR_RGBA_PM"("11", javadoc = "alpha formats, where alpha is premultiplied into color channels")
+            "STBIR_RGBA_PM"("11")
             "STBIR_BGRA_PM"("12")
             "STBIR_ARGB_PM"("13")
             "STBIR_ABGR_PM"("14")
             "STBIR_RA_PM"("15")
             "STBIR_AR_PM"("16")
 
-            "STBIR_RGBA_NO_AW"(
-                "11",
-                javadoc = """
-                    alpha formats, where NO alpha weighting is applied at all!
-                    these are just synonyms for the _PM flags (which also do
-                    no alpha weighting). These names just make it more clear
-                    for some folks).
-                """.trimIndent()
-            )
+            "STBIR_RGBA_NO_AW"("11")
             "STBIR_BGRA_NO_AW"("12")
             "STBIR_ARGB_NO_AW"("13")
             "STBIR_ABGR_NO_AW"("14")
@@ -177,37 +161,28 @@ fun STBImageResize2() {
 
 
         // Medium-complexity API
-        stbir_edge(javadoc = "stbir_edge") {
+        stbir_edge {
             "STBIR_EDGE_CLAMP"("0")
             "STBIR_EDGE_REFLECT"("1")
-            "STBIR_EDGE_WRAP"("2", javadoc = "this edge mode is slower and uses more memory")
+            "STBIR_EDGE_WRAP"("2")
             "STBIR_EDGE_ZERO"("3")
         }
 
-        stbir_filter(javadoc = "stbir_filter") {
-            "STBIR_FILTER_DEFAULT"("0", javadoc = "use same filter type that easy-to-use API chooses")
-            "STBIR_FILTER_BOX"(
-                "1",
-                javadoc = "A trapezoid w/1-pixel wide ramps, same result as box for integer scale ratios"
-            )
-            "STBIR_FILTER_TRIANGLE"("2", javadoc = "On upsampling, produces same results as bilinear texture filtering")
-            "STBIR_FILTER_CUBICBSPLINE"(
-                "3",
-                javadoc = "The cubic b-spline (aka Mitchell-Netrevalli with B=1,C=0), gaussian-esque"
-            )
-            "STBIR_FILTER_CATMULLROM"("4", javadoc = "An interpolating cubic spline")
-            "STBIR_FILTER_MITCHELL"("5", javadoc = "Mitchell-Netrevalli filter with B=1/3, C=1/3")
-            "STBIR_FILTER_POINT_SAMPLE"("6", javadoc = "Simple point sampling")
-            "STBIR_FILTER_OTHER"("7", javadoc = "User callback specified")
+        stbir_filter {
+            "STBIR_FILTER_DEFAULT"("0")
+            "STBIR_FILTER_BOX"("1")
+            "STBIR_FILTER_TRIANGLE"("2")
+            "STBIR_FILTER_CUBICBSPLINE"("3")
+            "STBIR_FILTER_CATMULLROM"("4")
+            "STBIR_FILTER_MITCHELL"("5")
+            "STBIR_FILTER_POINT_SAMPLE"("6")
+            "STBIR_FILTER_OTHER"("7")
         }
 
-        stbir_datatype(javadoc = "stbir_datatype") {
+        stbir_datatype {
             "STBIR_TYPE_UINT8"("0")
             "STBIR_TYPE_UINT8_SRGB"("1")
-            "STBIR_TYPE_UINT8_SRGB_ALPHA"(
-                "2",
-                javadoc = "alpha channel, when present, should also be SRGB (this is very unusual)"
-            )
+            "STBIR_TYPE_UINT8_SRGB_ALPHA"("2")
             "STBIR_TYPE_UINT16"("3")
             "STBIR_TYPE_FLOAT"("4")
             "STBIR_TYPE_HALF_FLOAT"("5")
@@ -323,45 +298,18 @@ fun STBImageResize2() {
             boolean_int,
             STBIR_RESIZE_ptr("resize"),
             int("non_pma_alpha_speed_over_quality"),
-            entrypoint = "stbir_set_non_pm_alpha_speed_over_quality",
-            javadoc = """
-                when inputting AND outputting non-premultiplied alpha pixels, we use a slower but higher quality technique
-                that fills the zero alpha pixel's RGB values with something plausible.  If you don't care about areas of
-                zero alpha, you can call this function to get about a 25% speed improvement for STBIR_RGBA to STBIR_RGBA
-                types of resizes.
-            """.trimIndent()
+            entrypoint = "stbir_set_non_pm_alpha_speed_over_quality"
         )
 
-        "stbir_build_samplers"(
-            boolean_int,
-            STBIR_RESIZE_ptr("resize"),
-            entrypoint = "stbir_build_samplers",
-            javadoc = "This builds the samplers and does one allocation"
-        )
-        "stbir_free_samplers"(
-            void,
-            STBIR_RESIZE_ptr("resize"),
-            entrypoint = "stbir_free_samplers",
-            javadoc = "You MUST call this, if you call stbir_build_samplers or stbir_build_samplers_with_splits"
-        )
-        "stbir_resize_extended"(
-            boolean_int,
-            STBIR_RESIZE_ptr("resize"),
-            entrypoint = "stbir_resize_extended",
-            javadoc = "And this is the main function to perform the resize synchronously on one thread."
-        )
+        "stbir_build_samplers"(boolean_int, STBIR_RESIZE_ptr("resize"), entrypoint = "stbir_build_samplers")
+        "stbir_free_samplers"(void, STBIR_RESIZE_ptr("resize"), entrypoint = "stbir_free_samplers")
+        "stbir_resize_extended"(boolean_int, STBIR_RESIZE_ptr("resize"), entrypoint = "stbir_resize_extended")
 
         "stbir_build_samplers_with_splits"(
             boolean_int,
             STBIR_RESIZE_ptr("resize"),
             int("try_splits"),
-            entrypoint = "stbir_build_samplers_with_splits",
-            javadoc = """
-                This will build samplers for threading.
-                You can pass in the number of threads you'd like to use (try_splits).
-                It returns the number of splits (threads) that you can call it with.
-                It might be less if the image resize can't be split up that many ways.
-            """.trimIndent()
+            entrypoint = "stbir_build_samplers_with_splits"
         )
 
         "stbir_resize_extended_split"(
@@ -369,19 +317,7 @@ fun STBImageResize2() {
             STBIR_RESIZE_ptr("resize"),
             int("split_start"),
             int("split_count"),
-            entrypoint = "stbir_resize_extended_splits",
-            javadoc = """
-                This function does a split of the resizing (you call this fuction for each
-                split, on multiple threads). A split is a piece of the output resize pixel space.
-
-                Note that you MUST call stbir_build_samplers_with_splits before stbir_resize_extended_split!
-
-                Usually, you will always call stbir_resize_split with split_start as the thread_index
-                and "1" for the split_count.
-                But, if you have a weird situation where you MIGHT want 8 threads, but sometimes
-                only 4 threads, you can use 0,2,4,6 for the split_start's and use "2" for the
-                split_count each time to turn in into a 4 thread resize. (This is unusual).
-            """.trimIndent()
+            entrypoint = "stbir_resize_extended_splits"
         )
     }
 }

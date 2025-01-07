@@ -16,8 +16,6 @@
 
 /// The NFD binding.
 ///
-/// - [Source](https://github.com/btzy/nativefiledialog-extended)
-///
 /// @author squid233
 /// @since 0.1.0
 module overrungl.nfd {
