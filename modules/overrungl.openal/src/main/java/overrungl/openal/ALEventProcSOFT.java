@@ -47,8 +47,7 @@ public interface ALEventProcSOFT extends Upcall {
     /// @param stub the upcall stub
     /// @return an instance that wraps the static invoker
     static ALEventProcSOFT wrap(MemorySegment stub) {
-        return (eventType, object, param, length, message, userParam) -> { try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            invoke(stub, eventType, object, param, length, Marshal.marshal(__overrungl_stack, message), userParam);
-        } };
+        return (eventType, object, param, length, message, userParam) ->
+            invoke(stub, eventType, object, param, length, message, userParam);
     }
 }

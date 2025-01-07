@@ -47,8 +47,7 @@ public interface ALDebugProcEXT extends Upcall {
     /// @param stub the upcall stub
     /// @return an instance that wraps the static invoker
     static ALDebugProcEXT wrap(MemorySegment stub) {
-        return (source, type, id, severity, length, message, userParam) -> { try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            invoke(stub, source, type, id, severity, length, Marshal.marshal(__overrungl_stack, message), userParam);
-        } };
+        return (source, type, id, severity, length, message, userParam) ->
+            invoke(stub, source, type, id, severity, length, message, userParam);
     }
 }

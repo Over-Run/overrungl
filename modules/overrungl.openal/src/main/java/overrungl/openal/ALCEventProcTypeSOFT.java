@@ -47,8 +47,7 @@ public interface ALCEventProcTypeSOFT extends Upcall {
     /// @param stub the upcall stub
     /// @return an instance that wraps the static invoker
     static ALCEventProcTypeSOFT wrap(MemorySegment stub) {
-        return (eventType, deviceType, device, length, message, userParam) -> { try (var __overrungl_stack = MemoryStack.pushLocal()) {
-            invoke(stub, eventType, deviceType, device, length, Marshal.marshal(__overrungl_stack, message), userParam);
-        } };
+        return (eventType, deviceType, device, length, message, userParam) ->
+            invoke(stub, eventType, deviceType, device, length, message, userParam);
     }
 }

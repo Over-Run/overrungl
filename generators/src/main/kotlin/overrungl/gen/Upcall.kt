@@ -72,7 +72,8 @@ class Upcall(
 
     fun write() {
         val targetMethodNotNull = targetMethod!!
-        val allocatorRequirement = targetMethodNotNull.parameters
+        val allocatorRequirement = if (interfaceMethod == null) AllocatorRequirement.NO
+        else targetMethodNotNull.parameters
             .map { it.type.allocatorRequirement }
             .reduceOrNull(AllocatorRequirement::stricter)
             ?: AllocatorRequirement.NO
@@ -292,16 +293,25 @@ class Upcall(
             if (allocatorRequirement == AllocatorRequirement.STACK && !returnVoid) {
                 sb.append("return ")
             }
-            targetMethodNotNull.returnType.processor.unmarshal(ProcessorContext(allocatorName = allocatorName, sb) {
-                it.append("invoke(stub")
-                targetMethodNotNull.parameters.forEachIndexed { index, p ->
-                    it.append(", ")
-                    p.type.processor.marshal(ProcessorContext(allocatorName = allocatorName, it) { b ->
-                        b.append(p.name)
-                    })
+            if (interfaceMethod != null) {
+                targetMethodNotNull.returnType.processor.unmarshal(ProcessorContext(allocatorName = allocatorName, sb) {
+                    it.append("invoke(stub")
+                    targetMethodNotNull.parameters.forEach { p ->
+                        it.append(", ")
+                        p.type.processor.marshal(ProcessorContext(allocatorName = allocatorName, it) { b ->
+                            b.append(p.name)
+                        })
+                    }
+                    it.append(")")
+                })
+            } else {
+                sb.append("invoke(stub")
+                targetMethodNotNull.parameters.forEach { p ->
+                    sb.append(", ")
+                    sb.append(p.name)
                 }
-                it.append(")")
-            })
+                sb.append(")")
+            }
             sb.appendLine(";")
             if (allocatorRequirement == AllocatorRequirement.STACK) {
                 sb.appendLine("        } };")
