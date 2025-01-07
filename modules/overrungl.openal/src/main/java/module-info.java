@@ -14,10 +14,11 @@
  * copies or substantial portions of the Software.
  */
 
-/// The [OpenAL](https://www.openal.org/) binding.
+/// The OpenAL binding.
 ///
 /// OverrunGL uses [openal-soft](https://openal-soft.org/).
 ///
+/// - [Website](https://www.openal.org/)
 /// - [Source](https://github.com/kcat/openal-soft)
 ///
 /// @author squid233

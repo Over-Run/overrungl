@@ -14,12 +14,14 @@
  * copies or substantial portions of the Software.
  */
 
-/**
- * The GLFW binding.
- *
- * @author squid233
- * @since 0.1.0
- */
+/// The GLFW binding.
+///
+/// - [Website](https://www.glfw.org/)
+/// - [Documentation](https://www.glfw.org/docs/latest/)
+/// - [Source](https://github.com/glfw/glfw)
+///
+/// @author squid233
+/// @since 0.1.0
 module overrungl.glfw {
     exports overrungl.glfw;
 

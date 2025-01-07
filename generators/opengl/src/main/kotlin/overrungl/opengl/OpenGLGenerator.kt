@@ -802,6 +802,9 @@ fun main() {
             appendLine(
                 """
                     /// The OpenGL binding.
+                    ///
+                    /// - [References](https://registry.khronos.org/OpenGL-Refpages/gl4/)
+                    /// - [Registry](https://github.com/KhronosGroup/OpenGL-Registry)
                     module overrungl.opengl {
                         exports overrungl.opengl;
                 """.trimIndent()
