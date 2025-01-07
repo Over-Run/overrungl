@@ -765,7 +765,7 @@ fun main() {
             if (extension.requires.isNotEmpty()) {
                 val vendor = extension.name.substring(3).substringBefore('_')
                 val className = extension.name.split('_')
-                    .joinToString("") { it.replaceFirstChar(Char::uppercase) }
+                    .joinToString("") { it.replaceFirstChar(Char::uppercaseChar) }
                 InstanceDowncall(extPackage(vendor), className) {
                     modifier = "final"
                     if (extension.requires.all { it.commands.isEmpty() }) {

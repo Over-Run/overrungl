@@ -24,6 +24,7 @@ import overrungl.util.MemoryStack;
 import overrungl.util.Unmarshal;
 
 import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.SymbolLookup;
 import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
 
@@ -37,282 +38,67 @@ public final class AL {
     //region ---[BEGIN GENERATOR BEGIN]---
     //@formatter:off
     //region Fields
-    ///No distance model or no buffer
     public static final int AL_NONE = 0;
-    ///Boolean False.
     public static final int AL_FALSE = 0;
-    ///Boolean True.
     public static final int AL_TRUE = 1;
-    ///Relative source.
-    ///- Type:    ALboolean
-    ///- Range:   \[AL_FALSE, AL_TRUE\]
-    ///- Default: AL_FALSE
-    ///
-    ///Specifies if the source uses relative coordinates.
     public static final int AL_SOURCE_RELATIVE = 0x202;
-    ///Inner cone angle, in degrees.
-    ///- Type:    ALint, ALfloat
-    ///- Range:   \[0 - 360\]
-    ///- Default: 360
-    ///
-    ///The angle covered by the inner cone, the area within which the source will
-    ///not be attenuated by direction.
     public static final int AL_CONE_INNER_ANGLE = 0x1001;
-    ///Outer cone angle, in degrees.
-    ///- Range:   \[0 - 360\]
-    ///- Default: 360
-    ///
-    ///The angle covered by the outer cone, the area outside of which the source
-    ///will be fully attenuated by direction.
     public static final int AL_CONE_OUTER_ANGLE = 0x1002;
-    ///Source pitch.
-    ///- Type:    ALfloat
-    ///- Range:   \[0.5 - 2.0\]
-    ///- Default: 1.0
-    ///
-    ///A multiplier for the sample rate of the source's buffer.
     public static final int AL_PITCH = 0x1003;
-    ///Source or listener position.
-    ///- Type:    ALfloat\[3\], ALint\[3\]
-    ///- Default: {0, 0, 0}
-    ///
-    ///The source or listener location in three dimensional space.
-    ///
-    ///OpenAL uses a right handed coordinate system, like OpenGL, where with a
-    ///default view, X points right (thumb), Y points up (index finger), and Z
-    ///points towards the viewer/camera (middle finger).
-    ///
-    ///To change from or to a left handed coordinate system, negate the Z
-    ///component.
     public static final int AL_POSITION = 0x1004;
-    ///Source direction.
-    ///- Type:    ALfloat\[3\], ALint\[3\]
-    ///- Default: {0, 0, 0}
-    ///
-    ///Specifies the current direction in local space. A zero-length vector
-    ///specifies an omni-directional source (cone is ignored).
-    ///
-    ///To change from or to a left handed coordinate system, negate the Z
-    ///component.
     public static final int AL_DIRECTION = 0x1005;
-    ///Source or listener velocity.
-    ///- Type:    ALfloat\[3\], ALint\[3]\
-    ///- Default: {0, 0, 0}
-    ///
-    ///Specifies the current velocity, relative to the position.
-    ///
-    ///To change from or to a left handed coordinate system, negate the Z
-    ///component.
     public static final int AL_VELOCITY = 0x1006;
-    ///Source looping.
-    ///- Type:    ALboolean
-    ///- Range:   \[AL_FALSE, AL_TRUE\]
-    ///- Default: AL_FALSE
-    ///
-    ///Specifies whether source playback loops.
     public static final int AL_LOOPING = 0x1007;
-    ///Source buffer.
-    ///- Type:    ALuint
-    ///- Range:   any valid Buffer ID
-    ///- Default: AL_NONE
-    ///
-    ///Specifies the buffer to provide sound samples for a source.
     public static final int AL_BUFFER = 0x1009;
-    ///Source or listener gain.
-    ///- Type:  ALfloat
-    ///- Range: \[0.0 - \]
-    ///
-    ///For sources, an initial linear gain value (before attenuation is applied).
-    ///For the listener, an output linear gain adjustment.
-    ///
-    ///A value of 1.0 means unattenuated. Each division by 2 equals an attenuation
-    ///of about -6dB. Each multiplication by 2 equals an amplification of about
-    ///+6dB.
     public static final int AL_GAIN = 0x100A;
-    ///Minimum source gain.
-    ///- Type:  ALfloat
-    ///- Range: \[0.0 - 1.0\]
-    ///
-    ///The minimum gain allowed for a source, after distance and cone attenuation
-    ///are applied (if applicable).
     public static final int AL_MIN_GAIN = 0x100D;
-    ///Maximum source gain.
-    ///- Type:  ALfloat
-    ///- Range: \[0.0 - 1.0\]
-    ///
-    ///The maximum gain allowed for a source, after distance and cone attenuation
-    ///are applied (if applicable).
     public static final int AL_MAX_GAIN = 0x100E;
-    ///Listener orientation.
-    ///- Type:    ALfloat\[6\]
-    ///- Default: {0.0, 0.0, -1.0, 0.0, 1.0, 0.0}
-    ///
-    ///Effectively two three dimensional vectors. The first vector is the front (or
-    ///"at") and the second is the top (or "up"). Both vectors are relative to the
-    ///listener position.
-    ///
-    ///To change from or to a left handed coordinate system, negate the Z
-    ///component of both vectors.
     public static final int AL_ORIENTATION = 0x100F;
-    ///Source state (query only).
-    ///- Type:  ALenum
-    ///- Range: \[AL_INITIAL, AL_PLAYING, AL_PAUSED, AL_STOPPED\]
     public static final int AL_SOURCE_STATE = 0x1010;
-    ///Source state values.
     public static final int
         AL_INITIAL = 0x1011,
         AL_PLAYING = 0x1012,
         AL_PAUSED = 0x1013,
         AL_STOPPED = 0x1014;
-    ///Source Buffer Queue size (query only).
-    ///- Type: ALint
-    ///
-    ///The number of buffers queued using alSourceQueueBuffers, minus the buffers
-    ///removed with alSourceUnqueueBuffers.
     public static final int AL_BUFFERS_QUEUED = 0x1015;
-    ///Source Buffer Queue processed count (query only).
-    ///- Type: ALint
-    ///
-    ///The number of queued buffers that have been fully processed, and can be
-    ///removed with alSourceUnqueueBuffers.
-    ///
-    ///Looping sources will never fully process buffers because they will be set to
-    ///play again for when the source loops.
     public static final int AL_BUFFERS_PROCESSED = 0x1016;
-    ///Source reference distance.
-    ///- Type:    ALfloat
-    ///- Range:   \[0.0 - \]
-    ///- Default: 1.0
-    ///
-    ///The distance in units that no distance attenuation occurs.
-    ///
-    ///At 0.0, no distance attenuation occurs with non-linear attenuation models.
     public static final int AL_REFERENCE_DISTANCE = 0x1020;
-    ///Source rolloff factor.
-    ///- Type:    ALfloat
-    ///- Range:   \[0.0 - \]
-    ///- Default: 1.0
-    ///
-    ///Multiplier to exaggerate or diminish distance attenuation.
-    ///
-    ///At 0.0, no distance attenuation ever occurs.
     public static final int AL_ROLLOFF_FACTOR = 0x1021;
-    ///Outer cone gain.
-    ///- Type:    ALfloat
-    ///- Range:   \[0.0 - 1.0\]
-    ///- Default: 0.0
-    ///
-    ///The gain attenuation applied when the listener is outside of the source's
-    ///outer cone angle.
     public static final int AL_CONE_OUTER_GAIN = 0x1022;
-    ///Source maximum distance.
-    ///- Type:    ALfloat
-    ///- Range:   \[0.0 - \]
-    ///- Default: FLT_MAX
-    ///
-    ///The distance above which the source is not attenuated any further with a
-    ///clamped distance model, or where attenuation reaches 0.0 gain for linear
-    ///distance models with a default rolloff factor.
     public static final int AL_MAX_DISTANCE = 0x1023;
-    ///Source buffer offset, in seconds
     public static final int AL_SEC_OFFSET = 0x1024;
-    ///Source buffer offset, in sample frames
     public static final int AL_SAMPLE_OFFSET = 0x1025;
-    ///Source buffer offset, in bytes
     public static final int AL_BYTE_OFFSET = 0x1026;
-    ///Source type (query only).
-    ///- Type:  ALenum
-    ///- Range: \[AL_STATIC, AL_STREAMING, AL_UNDETERMINED\]
-    ///
-    ///A Source is Static if a Buffer has been attached using AL_BUFFER.
-    ///
-    ///A Source is Streaming if one or more Buffers have been attached using
-    ///alSourceQueueBuffers.
-    ///
-    ///A Source is Undetermined when it has the NULL buffer attached using
-    ///AL_BUFFER.
     public static final int AL_SOURCE_TYPE = 0x1027;
-    ///Source type values.
     public static final int
         AL_STATIC = 0x1028,
         AL_STREAMING = 0x1029,
         AL_UNDETERMINED = 0x1030;
-    ///Unsigned 8-bit mono buffer format.
     public static final int AL_FORMAT_MONO8 = 0x1100;
-    ///Signed 16-bit mono buffer format.
     public static final int AL_FORMAT_MONO16 = 0x1101;
-    ///Unsigned 8-bit stereo buffer format.
     public static final int AL_FORMAT_STEREO8 = 0x1102;
-    ///Signed 16-bit stereo buffer format.
     public static final int AL_FORMAT_STEREO16 = 0x1103;
-    ///Buffer frequency/sample rate (query only).
     public static final int AL_FREQUENCY = 0x2001;
-    ///Buffer bits per sample (query only).
     public static final int AL_BITS = 0x2002;
-    ///Buffer channel count (query only).
     public static final int AL_CHANNELS = 0x2003;
-    ///Buffer data size in bytes (query only).
     public static final int AL_SIZE = 0x2004;
-    ///Buffer state. Not for public use.
     public static final int
         AL_UNUSED = 0x2010,
         AL_PENDING = 0x2011,
         AL_PROCESSED = 0x2012;
-    ///No error.
     public static final int AL_NO_ERROR = 0;
-    ///Invalid name (ID) passed to an AL call.
     public static final int AL_INVALID_NAME = 0xA001;
-    ///Invalid enumeration passed to AL call.
     public static final int AL_INVALID_ENUM = 0xA002;
-    ///Invalid value passed to AL call.
     public static final int AL_INVALID_VALUE = 0xA003;
-    ///Illegal AL call.
     public static final int AL_INVALID_OPERATION = 0xA004;
-    ///Not enough memory to execute the AL call.
     public static final int AL_OUT_OF_MEMORY = 0xA005;
-    ///Context string: Vendor name.
     public static final int AL_VENDOR = 0xB001;
-    ///Context string: Version.
     public static final int AL_VERSION = 0xB002;
-    ///Context string: Renderer name.
     public static final int AL_RENDERER = 0xB003;
-    ///Context string: Space-separated extension list.
     public static final int AL_EXTENSIONS = 0xB004;
-    ///Doppler scale.
-    ///- Type:    ALfloat
-    ///- Range:   \[0.0 - \]
-    ///- Default: 1.0
-    ///
-    ///Scale for source and listener velocities.
     public static final int AL_DOPPLER_FACTOR = 0xC000;
-    ///Doppler velocity (deprecated).
-    ///
-    ///A multiplier applied to the Speed of Sound.
     public static final int AL_DOPPLER_VELOCITY = 0xC001;
-    ///Speed of Sound, in units per second.
-    ///- Type:    ALfloat
-    ///- Range:   \[0.0001 - \]
-    ///- Default: 343.3
-    ///
-    ///The speed at which sound waves are assumed to travel, when calculating the
-    ///doppler effect from source and listener velocities.
     public static final int AL_SPEED_OF_SOUND = 0xC003;
-    ///Distance attenuation model.
-    ///- Type:    ALenum
-    ///- Range:   \[AL_NONE, AL_INVERSE_DISTANCE, AL_INVERSE_DISTANCE_CLAMPED,
-    ///          AL_LINEAR_DISTANCE, AL_LINEAR_DISTANCE_CLAMPED,
-    ///          AL_EXPONENT_DISTANCE, AL_EXPONENT_DISTANCE_CLAMPED\]
-    ///- Default: AL_INVERSE_DISTANCE_CLAMPED
-    ///
-    ///The model by which sources attenuate with distance.
-    ///
-    ///- None     - No distance attenuation.
-    ///- Inverse  - Doubling the distance halves the source gain.
-    ///- Linear   - Linear gain scaling between the reference and max distances.
-    ///- Exponent - Exponential gain dropoff.
-    ///
-    ///Clamped variations work like the non-clamped counterparts, except the
-    ///distance calculated is clamped between the reference and max distances.
     public static final int AL_DISTANCE_MODEL = 0xD000;
     ///Distance model values.
     public static final int
@@ -602,52 +388,42 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetDouble", e); }
     }
 
-    ///Obtain the first error generated in the AL context since the last call to
-    ///this function.
     public static @CType("ALenum") int alGetError() {
         try {
             return (int) Handles.MH_alGetError.invokeExact();
         } catch (Throwable e) { throw new RuntimeException("error in alGetError", e); }
     }
 
-    ///Query for the presence of an extension on the AL context.
     public static @CType("ALboolean") boolean alIsExtensionPresent(@CType("const ALchar*") java.lang.foreign.MemorySegment extname) {
         try {
             return (boolean) Handles.MH_alIsExtensionPresent.invokeExact(extname);
         } catch (Throwable e) { throw new RuntimeException("error in alIsExtensionPresent", e); }
     }
 
-    ///Query for the presence of an extension on the AL context.
     public static @CType("ALboolean") boolean alIsExtensionPresent(@CType("const ALchar*") java.lang.String extname) {
         try (var __overrungl_stack = MemoryStack.pushLocal()) {
             return (boolean) Handles.MH_alIsExtensionPresent.invokeExact(Marshal.marshal(__overrungl_stack, extname));
         } catch (Throwable e) { throw new RuntimeException("error in alIsExtensionPresent", e); }
     }
 
-    ///Retrieve the address of a function. The returned function may be context-
-    ///specific.
     public static @CType("void*") java.lang.foreign.MemorySegment alGetProcAddress(@CType("const ALchar*") java.lang.foreign.MemorySegment fname) {
         try {
             return (java.lang.foreign.MemorySegment) Handles.MH_alGetProcAddress.invokeExact(fname);
         } catch (Throwable e) { throw new RuntimeException("error in alGetProcAddress", e); }
     }
 
-    ///Retrieve the address of a function. The returned function may be context-
-    ///specific.
     public static @CType("void*") java.lang.foreign.MemorySegment alGetProcAddress(@CType("const ALchar*") java.lang.String fname) {
         try (var __overrungl_stack = MemoryStack.pushLocal()) {
             return (java.lang.foreign.MemorySegment) Handles.MH_alGetProcAddress.invokeExact(Marshal.marshal(__overrungl_stack, fname));
         } catch (Throwable e) { throw new RuntimeException("error in alGetProcAddress", e); }
     }
 
-    ///Retrieve the value of an enum. The returned value may be context-specific.
     public static @CType("ALenum") int alGetEnumValue(@CType("const ALchar*") java.lang.foreign.MemorySegment ename) {
         try {
             return (int) Handles.MH_alGetEnumValue.invokeExact(ename);
         } catch (Throwable e) { throw new RuntimeException("error in alGetEnumValue", e); }
     }
 
-    ///Retrieve the value of an enum. The returned value may be context-specific.
     public static @CType("ALenum") int alGetEnumValue(@CType("const ALchar*") java.lang.String ename) {
         try (var __overrungl_stack = MemoryStack.pushLocal()) {
             return (int) Handles.MH_alGetEnumValue.invokeExact(Marshal.marshal(__overrungl_stack, ename));
@@ -782,21 +558,18 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetListeneriv", e); }
     }
 
-    ///Create source objects.
     public static void alGenSources(@CType("ALsizei") int n, @Out @CType("ALuint *") java.lang.foreign.MemorySegment sources) {
         try {
             Handles.MH_alGenSources.invokeExact(n, sources);
         } catch (Throwable e) { throw new RuntimeException("error in alGenSources", e); }
     }
 
-    ///Delete source objects.
     public static void alDeleteSources(@CType("ALsizei") int n, @CType("const ALuint *") java.lang.foreign.MemorySegment sources) {
         try {
             Handles.MH_alDeleteSources.invokeExact(n, sources);
         } catch (Throwable e) { throw new RuntimeException("error in alDeleteSources", e); }
     }
 
-    ///Verify an ID is for a valid source.
     public static @CType("ALboolean") boolean alIsSource(@CType("ALuint") int source) {
         try {
             return (boolean) Handles.MH_alIsSource.invokeExact(source);
@@ -931,99 +704,84 @@ public final class AL {
         } catch (Throwable e) { throw new RuntimeException("error in alGetSourceiv", e); }
     }
 
-    ///Play, restart, or resume a source, setting its state to AL_PLAYING.
     public static void alSourcePlay(@CType("ALuint") int source) {
         try {
             Handles.MH_alSourcePlay.invokeExact(source);
         } catch (Throwable e) { throw new RuntimeException("error in alSourcePlay", e); }
     }
 
-    ///Stop a source, setting its state to AL_STOPPED if playing or paused.
     public static void alSourceStop(@CType("ALuint") int source) {
         try {
             Handles.MH_alSourceStop.invokeExact(source);
         } catch (Throwable e) { throw new RuntimeException("error in alSourceStop", e); }
     }
 
-    ///Rewind a source, setting its state to AL_INITIAL.
     public static void alSourceRewind(@CType("ALuint") int source) {
         try {
             Handles.MH_alSourceRewind.invokeExact(source);
         } catch (Throwable e) { throw new RuntimeException("error in alSourceRewind", e); }
     }
 
-    ///Pause a source, setting its state to AL_PAUSED if playing.
     public static void alSourcePause(@CType("ALuint") int source) {
         try {
             Handles.MH_alSourcePause.invokeExact(source);
         } catch (Throwable e) { throw new RuntimeException("error in alSourcePause", e); }
     }
 
-    ///Play, restart, or resume a list of sources atomically.
     public static void alSourcePlayv(@CType("ALsizei") int n, @CType("const ALuint *") java.lang.foreign.MemorySegment sources) {
         try {
             Handles.MH_alSourcePlayv.invokeExact(n, sources);
         } catch (Throwable e) { throw new RuntimeException("error in alSourcePlayv", e); }
     }
 
-    ///Stop a list of sources atomically.
     public static void alSourceStopv(@CType("ALsizei") int n, @CType("const ALuint *") java.lang.foreign.MemorySegment sources) {
         try {
             Handles.MH_alSourceStopv.invokeExact(n, sources);
         } catch (Throwable e) { throw new RuntimeException("error in alSourceStopv", e); }
     }
 
-    ///Rewind a list of sources atomically.
     public static void alSourceRewindv(@CType("ALsizei") int n, @CType("const ALuint *") java.lang.foreign.MemorySegment sources) {
         try {
             Handles.MH_alSourceRewindv.invokeExact(n, sources);
         } catch (Throwable e) { throw new RuntimeException("error in alSourceRewindv", e); }
     }
 
-    ///Pause a list of sources atomically.
     public static void alSourcePausev(@CType("ALsizei") int n, @CType("const ALuint *") java.lang.foreign.MemorySegment sources) {
         try {
             Handles.MH_alSourcePausev.invokeExact(n, sources);
         } catch (Throwable e) { throw new RuntimeException("error in alSourcePausev", e); }
     }
 
-    ///Queue buffers onto a source
     public static void alSourceQueueBuffers(@CType("ALuint") int source, @CType("ALsizei") int nb, @CType("const ALuint *") java.lang.foreign.MemorySegment buffers) {
         try {
             Handles.MH_alSourceQueueBuffers.invokeExact(source, nb, buffers);
         } catch (Throwable e) { throw new RuntimeException("error in alSourceQueueBuffers", e); }
     }
 
-    ///Unqueue processed buffers from a source
     public static void alSourceUnqueueBuffers(@CType("ALuint") int source, @CType("ALsizei") int nb, @Out @CType("ALuint *") java.lang.foreign.MemorySegment buffers) {
         try {
             Handles.MH_alSourceUnqueueBuffers.invokeExact(source, nb, buffers);
         } catch (Throwable e) { throw new RuntimeException("error in alSourceUnqueueBuffers", e); }
     }
 
-    ///Create buffer objects
     public static void alGenBuffers(@CType("ALsizei") int n, @Out @CType("ALuint *") java.lang.foreign.MemorySegment buffers) {
         try {
             Handles.MH_alGenBuffers.invokeExact(n, buffers);
         } catch (Throwable e) { throw new RuntimeException("error in alGenBuffers", e); }
     }
 
-    ///Delete buffer objects
     public static void alDeleteBuffers(@CType("ALsizei") int n, @CType("const ALuint *") java.lang.foreign.MemorySegment buffers) {
         try {
             Handles.MH_alDeleteBuffers.invokeExact(n, buffers);
         } catch (Throwable e) { throw new RuntimeException("error in alDeleteBuffers", e); }
     }
 
-    ///Verify an ID is a valid buffer (including the NULL buffer)
     public static @CType("ALboolean") boolean alIsBuffer(@CType("ALuint") int source) {
         try {
             return (boolean) Handles.MH_alIsBuffer.invokeExact(source);
         } catch (Throwable e) { throw new RuntimeException("error in alIsBuffer", e); }
     }
 
-    ///Copies data into the buffer, interpreting it using the specified format and
-    ///samplerate.
     public static void alBufferData(@CType("ALuint") int buffer, @CType("ALenum") int format, @CType("const ALvoid *") java.lang.foreign.MemorySegment data, @CType("ALsizei") int size, @CType("ALsizei") int samplerate) {
         try {
             Handles.MH_alBufferData.invokeExact(buffer, format, data, size, samplerate);

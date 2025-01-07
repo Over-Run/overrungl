@@ -31,17 +31,26 @@ val ALenum = int c "ALenum"
 val ALfloat = float c "ALfloat"
 val ALdouble = double c "ALdouble"
 
+val ALvoid_ptr = address c "ALvoid *"
+val ALvoid_ptr_ptr = address c "ALvoid **"
 val ALboolean_ptr = address c "ALboolean *"
+val ALchar_ptr = string_u8 c "ALchar*"
 val ALint_ptr = jint_array c "ALint *"
 val ALuint_ptr = jint_array c "ALuint *"
+val ALsizei_ptr = jint_array c "ALsizei *"
+val ALenum_ptr = jint_array c "ALenum *"
 val ALfloat_ptr = jfloat_array c "ALfloat *"
 val ALdouble_ptr = jdouble_array c "ALdouble *"
+
+val const_ALuint = uint c "const ALuint"
 
 val const_ALvoid_ptr = address c "const ALvoid *"
 val const_ALchar_ptr = string_u8 c "const ALchar*"
 val const_ALint_ptr = address c "const ALint *"
 val const_ALuint_ptr = address c "const ALuint *"
+val const_ALenum_ptr = address c "const ALenum *"
 val const_ALfloat_ptr = address c "const ALfloat *"
+val const_ALdouble_ptr = address c "const ALdouble *"
 
 
 val ALCdevice_ptr = address c "ALCdevice *"
@@ -66,6 +75,21 @@ val ALCint_ptr = jint_array c "ALCint *"
 val const_ALCvoid_ptr = address c "const ALCvoid *"
 val const_ALCchar_ptr = string_u8 c "const ALCchar*"
 val const_ALCint_ptr = address c "const ALCint *"
+val const_ALCenum_ptr = address c "const ALCenum *"
+
+val ALint64SOFT = jlong c "ALint64SOFT"
+val ALuint64SOFT = jlong c "ALuint64SOFT"
+val ALint64SOFT_ptr = address c "ALint64SOFT *"
+val ALuint64SOFT_ptr = address c "ALuint64SOFT *"
+val const_ALint64SOFT_ptr = address c "const ALint64SOFT *"
+val const_ALuint64SOFT_ptr = address c "const ALuint64SOFT *"
+
+val ALCint64SOFT = jlong c "ALCint64SOFT"
+val ALCuint64SOFT = jlong c "ALCuint64SOFT"
+val ALCint64SOFT_ptr = address c "ALCint64SOFT *"
+val ALCuint64SOFT_ptr = address c "ALCuint64SOFT *"
+val const_ALCint64SOFT_ptr = address c "const ALCint64SOFT *"
+val const_ALCuint64SOFT_ptr = address c "const ALCuint64SOFT *"
 
 
 const val alPackage = "overrungl.openal"
@@ -74,4 +98,6 @@ const val alLookup = "ALInternal.lookup()"
 fun main() {
     AL()
     ALC()
+    alext()
+    efx()
 }
