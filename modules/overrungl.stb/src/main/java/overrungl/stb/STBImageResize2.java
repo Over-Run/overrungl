@@ -23,35 +23,14 @@ import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
 
-/**
- * The STB image resizer.
- *
- * @author squid233
- * @since 0.1.0
- */
+/// [stb_image_resize2.h](https://github.com/nothings/stb/blob/master/stb_image_resize2.h)
+///
+/// @author squid233
+/// @since 0.1.0
 public final class STBImageResize2 {
     //region ---[BEGIN GENERATOR BEGIN]---
     //@formatter:off
     //region Fields
-    ///stbir_pixel_layout specifies:
-    ///- number of channels
-    ///- order of channels
-    ///- whether color is premultiplied by alpha
-    ///for back compatibility, you can cast the old channel count to an stbir_pixel_layout
-    ///#### Documentation of fields
-    ///##### STBIR_RGB
-    ///3-chan, with order specified (for channel flipping)
-    ///##### STBIR_BGR
-    ///3-chan, with order specified (for channel flipping)
-    ///##### STBIR_RGBA
-    ///alpha formats, where alpha is NOT premultiplied into color channels
-    ///##### STBIR_RGBA_PM
-    ///alpha formats, where alpha is premultiplied into color channels
-    ///##### STBIR_RGBA_NO_AW
-    ///alpha formats, where NO alpha weighting is applied at all!
-    ///these are just synonyms for the _PM flags (which also do
-    ///no alpha weighting). These names just make it more clear
-    ///for some folks).
     public static final int
         STBIR_1CHANNEL = 1,
         STBIR_2CHANNEL = 2,
@@ -76,33 +55,11 @@ public final class STBImageResize2 {
         STBIR_ABGR_NO_AW = 14,
         STBIR_RA_NO_AW = 15,
         STBIR_AR_NO_AW = 16;
-    ///stbir_edge
-    ///#### Documentation of fields
-    ///##### STBIR_EDGE_WRAP
-    ///this edge mode is slower and uses more memory
     public static final int
         STBIR_EDGE_CLAMP = 0,
         STBIR_EDGE_REFLECT = 1,
         STBIR_EDGE_WRAP = 2,
         STBIR_EDGE_ZERO = 3;
-    ///stbir_filter
-    ///#### Documentation of fields
-    ///##### STBIR_FILTER_DEFAULT
-    ///use same filter type that easy-to-use API chooses
-    ///##### STBIR_FILTER_BOX
-    ///A trapezoid w/1-pixel wide ramps, same result as box for integer scale ratios
-    ///##### STBIR_FILTER_TRIANGLE
-    ///On upsampling, produces same results as bilinear texture filtering
-    ///##### STBIR_FILTER_CUBICBSPLINE
-    ///The cubic b-spline (aka Mitchell-Netrevalli with B=1,C=0), gaussian-esque
-    ///##### STBIR_FILTER_CATMULLROM
-    ///An interpolating cubic spline
-    ///##### STBIR_FILTER_MITCHELL
-    ///Mitchell-Netrevalli filter with B=1/3, C=1/3
-    ///##### STBIR_FILTER_POINT_SAMPLE
-    ///Simple point sampling
-    ///##### STBIR_FILTER_OTHER
-    ///User callback specified
     public static final int
         STBIR_FILTER_DEFAULT = 0,
         STBIR_FILTER_BOX = 1,
@@ -112,10 +69,6 @@ public final class STBImageResize2 {
         STBIR_FILTER_MITCHELL = 5,
         STBIR_FILTER_POINT_SAMPLE = 6,
         STBIR_FILTER_OTHER = 7;
-    ///stbir_datatype
-    ///#### Documentation of fields
-    ///##### STBIR_TYPE_UINT8_SRGB_ALPHA
-    ///alpha channel, when present, should also be SRGB (this is very unusual)
     public static final int
         STBIR_TYPE_UINT8 = 0,
         STBIR_TYPE_UINT8_SRGB = 1,
@@ -267,57 +220,36 @@ public final class STBImageResize2 {
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_output_pixel_subrect", e); }
     }
 
-    ///when inputting AND outputting non-premultiplied alpha pixels, we use a slower but higher quality technique
-    ///that fills the zero alpha pixel's RGB values with something plausible.  If you don't care about areas of
-    ///zero alpha, you can call this function to get about a 25% speed improvement for STBIR_RGBA to STBIR_RGBA
-    ///types of resizes.
     public static @CType("int") boolean stbir_set_non_pm_alpha_speed_over_quality(@CType("STBIR_RESIZE *") java.lang.foreign.MemorySegment resize, @CType("int") int non_pma_alpha_speed_over_quality) {
         try {
             return (boolean) Handles.MH_stbir_set_non_pm_alpha_speed_over_quality.invokeExact(resize, non_pma_alpha_speed_over_quality);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_set_non_pm_alpha_speed_over_quality", e); }
     }
 
-    ///This builds the samplers and does one allocation
     public static @CType("int") boolean stbir_build_samplers(@CType("STBIR_RESIZE *") java.lang.foreign.MemorySegment resize) {
         try {
             return (boolean) Handles.MH_stbir_build_samplers.invokeExact(resize);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_build_samplers", e); }
     }
 
-    ///You MUST call this, if you call stbir_build_samplers or stbir_build_samplers_with_splits
     public static void stbir_free_samplers(@CType("STBIR_RESIZE *") java.lang.foreign.MemorySegment resize) {
         try {
             Handles.MH_stbir_free_samplers.invokeExact(resize);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_free_samplers", e); }
     }
 
-    ///And this is the main function to perform the resize synchronously on one thread.
     public static @CType("int") boolean stbir_resize_extended(@CType("STBIR_RESIZE *") java.lang.foreign.MemorySegment resize) {
         try {
             return (boolean) Handles.MH_stbir_resize_extended.invokeExact(resize);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_resize_extended", e); }
     }
 
-    ///This will build samplers for threading.
-    ///You can pass in the number of threads you'd like to use (try_splits).
-    ///It returns the number of splits (threads) that you can call it with.
-    ///It might be less if the image resize can't be split up that many ways.
     public static @CType("int") boolean stbir_build_samplers_with_splits(@CType("STBIR_RESIZE *") java.lang.foreign.MemorySegment resize, @CType("int") int try_splits) {
         try {
             return (boolean) Handles.MH_stbir_build_samplers_with_splits.invokeExact(resize, try_splits);
         } catch (Throwable e) { throw new RuntimeException("error in stbir_build_samplers_with_splits", e); }
     }
 
-    ///This function does a split of the resizing (you call this fuction for each
-    ///split, on multiple threads). A split is a piece of the output resize pixel space.
-    ///
-    ///Note that you MUST call stbir_build_samplers_with_splits before stbir_resize_extended_split!
-    ///
-    ///Usually, you will always call stbir_resize_split with split_start as the thread_index
-    ///and "1" for the split_count.
-    ///But, if you have a weird situation where you MIGHT want 8 threads, but sometimes
-    ///only 4 threads, you can use 0,2,4,6 for the split_start's and use "2" for the
-    ///split_count each time to turn in into a 4 thread resize. (This is unusual).
     public static @CType("int") boolean stbir_resize_extended_split(@CType("STBIR_RESIZE *") java.lang.foreign.MemorySegment resize, @CType("int") int split_start, @CType("int") int split_count) {
         try {
             return (boolean) Handles.MH_stbir_resize_extended_splits.invokeExact(resize, split_start, split_count);

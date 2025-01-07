@@ -16,9 +16,6 @@
 
 // This file is auto-generated. DO NOT EDIT!
 /// The OpenGL binding.
-///
-/// - [References](https://registry.khronos.org/OpenGL-Refpages/gl4/)
-/// - [Registry](https://github.com/KhronosGroup/OpenGL-Registry)
 module overrungl.opengl {
     exports overrungl.opengl;
     exports overrungl.opengl.threedfx;

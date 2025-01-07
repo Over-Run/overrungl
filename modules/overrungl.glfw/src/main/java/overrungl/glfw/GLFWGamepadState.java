@@ -24,26 +24,11 @@ import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// Gamepad input state
-/// 
-/// This describes the input state of a gamepad.
-/// 
-/// ## See Also
-/// - [glfwGetGamepadState][GLFW#glfwGetGamepadState(int, MemorySegment)]
-///
 /// ## Members
 /// ### buttons
 /// [Byte offset handle][#MH_buttons] - [Memory layout][#ML_buttons] - Getter - Setter
-///
-/// The states of each gamepad button, `GLFW_PRESS`
-/// or `GLFW_RELEASE`.
-///
 /// ### axes
 /// [Byte offset handle][#MH_axes] - [Memory layout][#ML_axes] - Getter - Setter
-///
-/// The states of each gamepad axis, in the range -1.0
-/// to 1.0 inclusive.
-///
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c

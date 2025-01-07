@@ -24,8 +24,6 @@ import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// UTF-16 Filter Item on Windows, UTF-8 Filter Item on others
-///
 /// ## Members
 /// ### name
 /// [VarHandle][#VH_name] - [Getter][#name()] - [Setter][#name(java.lang.foreign.MemorySegment)]

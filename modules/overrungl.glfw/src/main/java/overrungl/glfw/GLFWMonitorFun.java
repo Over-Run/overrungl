@@ -23,15 +23,6 @@ import overrungl.annotation.*;
 import overrungl.upcall.*;
 import overrungl.util.*;
 
-/// The function pointer type for monitor configuration callbacks.
-/// 
-/// This is the function pointer type for monitor configuration callbacks.
-/// A monitor callback function has the following signature:
-/// ```java
-/// void function_name(MemorySegment monitor, int event)
-/// ```
-/// 
-/// @see GLFW#glfwSetMonitorCallback(MemorySegment)
 @FunctionalInterface
 public interface GLFWMonitorFun extends Upcall {
     /// The function descriptor.
@@ -39,26 +30,14 @@ public interface GLFWMonitorFun extends Upcall {
     /// The method handle of the target method.
     MethodHandle HANDLE = Upcall.findTarget(GLFWMonitorFun.class, "invoke", DESCRIPTOR);
 
-    ///The target method of the upcall.
-    ///
-    ///Invoke
-    ///
-    ///@param monitor The monitor that was connected or disconnected.
-    ///@param event One of `GLFW_CONNECTED` or `GLFW_DISCONNECTED`.  Future
-    ///releases may add more events.
+    /// The target method of the upcall.
     void invoke(@CType("GLFWmonitor*") java.lang.foreign.MemorySegment monitor, @CType("int") int event);
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
-    ///A static invoker of the target method.
-    ///
-    ///Invoke
-    ///
-    ///@param monitor The monitor that was connected or disconnected.
-    ///@param event One of `GLFW_CONNECTED` or `GLFW_DISCONNECTED`.  Future
-    ///releases may add more events.
-    ///@param stub the upcall stub
+    /// A static invoker of the target method.
+    /// @param stub the upcall stub
     static void invoke(MemorySegment stub, @CType("GLFWmonitor*") java.lang.foreign.MemorySegment monitor, @CType("int") int event) {
         try { HANDLE.invokeExact(stub, monitor, event); }
         catch (Throwable e) { throw new RuntimeException("error in GLFWMonitorFun::invoke (static invoker)", e); }

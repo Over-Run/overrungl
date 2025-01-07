@@ -30,14 +30,14 @@ public interface ALBufferCallbackTypeSOFT extends Upcall {
     /// The method handle of the target method.
     MethodHandle HANDLE = Upcall.findTarget(ALBufferCallbackTypeSOFT.class, "invoke", DESCRIPTOR);
 
-    ///The target method of the upcall.
+    /// The target method of the upcall.
     @CType("ALsizei") int invoke(@CType("ALvoid *") java.lang.foreign.MemorySegment userptr, @CType("ALvoid *") java.lang.foreign.MemorySegment sampledata, @CType("ALsizei") int numbytes);
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
-    ///A static invoker of the target method.
-    ///@param stub the upcall stub
+    /// A static invoker of the target method.
+    /// @param stub the upcall stub
     static @CType("ALsizei") int invoke(MemorySegment stub, @CType("ALvoid *") java.lang.foreign.MemorySegment userptr, @CType("ALvoid *") java.lang.foreign.MemorySegment sampledata, @CType("ALsizei") int numbytes) {
         try { return (int) HANDLE.invokeExact(stub, userptr, sampledata, numbytes); }
         catch (Throwable e) { throw new RuntimeException("error in ALBufferCallbackTypeSOFT::invoke (static invoker)", e); }

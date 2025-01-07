@@ -27,44 +27,20 @@ import overrungl.util.*;
 /// ## Members
 /// ### x0
 /// [VarHandle][#VH_x0] - [Getter][#x0()] - [Setter][#x0(float)]
-///
-/// top-left
-///
 /// ### y0
 /// [VarHandle][#VH_y0] - [Getter][#y0()] - [Setter][#y0(float)]
-///
-/// top-left
-///
 /// ### s0
 /// [VarHandle][#VH_s0] - [Getter][#s0()] - [Setter][#s0(float)]
-///
-/// top-left
-///
 /// ### t0
 /// [VarHandle][#VH_t0] - [Getter][#t0()] - [Setter][#t0(float)]
-///
-/// top-left
-///
 /// ### x1
 /// [VarHandle][#VH_x1] - [Getter][#x1()] - [Setter][#x1(float)]
-///
-/// bottom-right
-///
 /// ### y1
 /// [VarHandle][#VH_y1] - [Getter][#y1()] - [Setter][#y1(float)]
-///
-/// bottom-right
-///
 /// ### s1
 /// [VarHandle][#VH_s1] - [Getter][#s1()] - [Setter][#s1(float)]
-///
-/// bottom-right
-///
 /// ### t1
 /// [VarHandle][#VH_t1] - [Getter][#t1()] - [Setter][#t1(float)]
-///
-/// bottom-right
-///
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c

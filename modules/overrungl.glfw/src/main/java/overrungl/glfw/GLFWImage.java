@@ -24,27 +24,13 @@ import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// Image data.
-/// 
-/// This describes a single 2D image.  See the documentation for each related
-/// function what the expected pixel format is.
-///
 /// ## Members
 /// ### width
 /// [VarHandle][#VH_width] - [Getter][#width()] - [Setter][#width(int)]
-///
-/// The width, in pixels, of this image.
-///
 /// ### height
 /// [VarHandle][#VH_height] - [Getter][#height()] - [Setter][#height(int)]
-///
-/// The height, in pixels, of this image.
-///
 /// ### pixels
 /// [VarHandle][#VH_pixels] - [Getter][#pixels()] - [Setter][#pixels(java.lang.foreign.MemorySegment)]
-///
-/// The pixel data of this image, arranged left-to-right, top-to-bottom.
-///
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c

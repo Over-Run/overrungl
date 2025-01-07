@@ -29,31 +29,16 @@ import overrungl.util.*;
 /// [VarHandle][#VH_font_size] - [Getter][#font_size()] - [Setter][#font_size(float)]
 /// ### first_unicode_codepoint_in_range
 /// [VarHandle][#VH_first_unicode_codepoint_in_range] - [Getter][#first_unicode_codepoint_in_range()] - [Setter][#first_unicode_codepoint_in_range(int)]
-///
-/// if non-zero, then the chars are continuous, and this is the first codepoint
-///
 /// ### array_of_unicode_codepoints
 /// [VarHandle][#VH_array_of_unicode_codepoints] - [Getter][#array_of_unicode_codepoints()] - [Setter][#array_of_unicode_codepoints(java.lang.foreign.MemorySegment)]
-///
-/// if non-zero, then this is an array of unicode codepoints
-///
 /// ### num_chars
 /// [VarHandle][#VH_num_chars] - [Getter][#num_chars()] - [Setter][#num_chars(int)]
 /// ### chardata_for_range
 /// [VarHandle][#VH_chardata_for_range] - [Getter][#chardata_for_range()] - [Setter][#chardata_for_range(java.lang.foreign.MemorySegment)]
-///
-/// output
-///
 /// ### h_oversample
 /// [VarHandle][#VH_h_oversample] - [Getter][#h_oversample()] - [Setter][#h_oversample(byte)]
-///
-/// don't set these, they're used internally
-///
 /// ### v_oversample
 /// [VarHandle][#VH_v_oversample] - [Getter][#v_oversample()] - [Setter][#v_oversample(byte)]
-///
-/// don't set these, they're used internally
-///
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c

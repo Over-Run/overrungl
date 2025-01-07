@@ -24,45 +24,19 @@ import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// Video mode type.
-/// 
-/// This describes a single video mode.
-/// 
-/// ## See Also
-/// - [glfwGetVideoMode][GLFW#glfwGetVideoMode(MemorySegment)]
-/// - [glfwGetVideoModes][GLFW#glfwGetVideoModes(MemorySegment, MemorySegment)]
-///
 /// ## Members
 /// ### width
 /// [VarHandle][#VH_width] - [Getter][#width()] - [Setter][#width(int)]
-///
-/// The width, in screen coordinates, of the video mode.
-///
 /// ### height
 /// [VarHandle][#VH_height] - [Getter][#height()] - [Setter][#height(int)]
-///
-/// The height, in screen coordinates, of the video mode.
-///
 /// ### redBits
 /// [VarHandle][#VH_redBits] - [Getter][#redBits()] - [Setter][#redBits(int)]
-///
-/// The bit depth of the red channel of the video mode.
-///
 /// ### greenBits
 /// [VarHandle][#VH_greenBits] - [Getter][#greenBits()] - [Setter][#greenBits(int)]
-///
-/// The bit depth of the green channel of the video mode.
-///
 /// ### blueBits
 /// [VarHandle][#VH_blueBits] - [Getter][#blueBits()] - [Setter][#blueBits(int)]
-///
-/// The bit depth of the blue channel of the video mode.
-///
 /// ### refreshRate
 /// [VarHandle][#VH_refreshRate] - [Getter][#refreshRate()] - [Setter][#refreshRate(int)]
-///
-/// The refresh rate, in Hz, of the video mode.
-///
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c

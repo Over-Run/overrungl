@@ -23,15 +23,6 @@ import overrungl.annotation.*;
 import overrungl.upcall.*;
 import overrungl.util.*;
 
-/// The function pointer type for cursor enter/leave callbacks.
-/// 
-/// This is the function pointer type for cursor enter/leave callbacks.
-/// A cursor enter/leave callback function has the following signature:
-/// ```java
-/// void function_name(MemorySegment window, boolean entered)
-/// ```
-/// 
-/// @see GLFW#glfwSetCursorEnterCallback(MemorySegment, MemorySegment)
 @FunctionalInterface
 public interface GLFWCursorEnterFun extends Upcall {
     /// The function descriptor.
@@ -39,22 +30,10 @@ public interface GLFWCursorEnterFun extends Upcall {
     /// The method handle of the target method.
     MethodHandle HANDLE = Upcall.findTarget(GLFWCursorEnterFun.class, "invoke", DESCRIPTOR);
 
-    ///The interface target method of the upcall.
-    ///
-    ///Invoke
-    ///
-    ///@param window The window that received the event.
-    ///@param entered `GLFW_TRUE` if the cursor entered the window's content
-    ///area, or `GLFW_FALSE` if it left it.
+    /// The interface target method of the upcall.
     void invoke(@CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("int") boolean entered);
 
-    ///The target method of the upcall.
-    ///
-    ///Invoke
-    ///
-    ///@param window The window that received the event.
-    ///@param entered `GLFW_TRUE` if the cursor entered the window's content
-    ///area, or `GLFW_FALSE` if it left it.
+    /// The target method of the upcall.
     default void invoke(@CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("int") int entered) {
         invoke(window, entered != GLFW.GLFW_FALSE);
     }
@@ -62,14 +41,8 @@ public interface GLFWCursorEnterFun extends Upcall {
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
-    ///A static invoker of the target method.
-    ///
-    ///Invoke
-    ///
-    ///@param window The window that received the event.
-    ///@param entered `GLFW_TRUE` if the cursor entered the window's content
-    ///area, or `GLFW_FALSE` if it left it.
-    ///@param stub the upcall stub
+    /// A static invoker of the target method.
+    /// @param stub the upcall stub
     static void invoke(MemorySegment stub, @CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("int") int entered) {
         try { HANDLE.invokeExact(stub, window, entered); }
         catch (Throwable e) { throw new RuntimeException("error in GLFWCursorEnterFun::invoke (static invoker)", e); }

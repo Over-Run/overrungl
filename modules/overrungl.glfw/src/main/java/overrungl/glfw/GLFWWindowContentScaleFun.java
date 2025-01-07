@@ -23,15 +23,6 @@ import overrungl.annotation.*;
 import overrungl.upcall.*;
 import overrungl.util.*;
 
-/// The function pointer type for window content scale callbacks.
-/// 
-/// This is the function pointer type for window content scale callbacks.
-/// A window content scale callback function has the following signature:
-/// ```java
-/// void function_name(MemorySegment window, float xscale, float yscale)
-/// ```
-/// 
-/// @see GLFW#glfwSetWindowContentScaleCallback(MemorySegment, MemorySegment)
 @FunctionalInterface
 public interface GLFWWindowContentScaleFun extends Upcall {
     /// The function descriptor.
@@ -39,26 +30,14 @@ public interface GLFWWindowContentScaleFun extends Upcall {
     /// The method handle of the target method.
     MethodHandle HANDLE = Upcall.findTarget(GLFWWindowContentScaleFun.class, "invoke", DESCRIPTOR);
 
-    ///The target method of the upcall.
-    ///
-    ///Invoke
-    ///
-    ///@param window The window whose content scale changed.
-    ///@param xscale The new x-axis content scale of the window.
-    ///@param yscale The new y-axis content scale of the window.
+    /// The target method of the upcall.
     void invoke(@CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("float") float xscale, @CType("float") float yscale);
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
-    ///A static invoker of the target method.
-    ///
-    ///Invoke
-    ///
-    ///@param window The window whose content scale changed.
-    ///@param xscale The new x-axis content scale of the window.
-    ///@param yscale The new y-axis content scale of the window.
-    ///@param stub the upcall stub
+    /// A static invoker of the target method.
+    /// @param stub the upcall stub
     static void invoke(MemorySegment stub, @CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("float") float xscale, @CType("float") float yscale) {
         try { HANDLE.invokeExact(stub, window, xscale, yscale); }
         catch (Throwable e) { throw new RuntimeException("error in GLFWWindowContentScaleFun::invoke (static invoker)", e); }

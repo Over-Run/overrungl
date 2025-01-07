@@ -24,35 +24,15 @@ import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// Gamma ramp.
-/// 
-/// This describes the gamma ramp for a monitor.
-/// 
-/// ## See Also
-/// - [glfwGetGammaRamp][GLFW#glfwGetGammaRamp(MemorySegment)]
-/// - [glfwSetGammaRamp][GLFW#glfwSetGammaRamp(MemorySegment, MemorySegment)]
-///
 /// ## Members
 /// ### red
 /// [VarHandle][#VH_red] - [Getter][#red()] - [Setter][#red(java.lang.foreign.MemorySegment)]
-///
-/// An array of value describing the response of the red channel.
-///
 /// ### green
 /// [VarHandle][#VH_green] - [Getter][#green()] - [Setter][#green(java.lang.foreign.MemorySegment)]
-///
-/// An array of value describing the response of the green channel.
-///
 /// ### blue
 /// [VarHandle][#VH_blue] - [Getter][#blue()] - [Setter][#blue(java.lang.foreign.MemorySegment)]
-///
-/// An array of value describing the response of the blue channel.
-///
 /// ### size
 /// [VarHandle][#VH_size] - [Getter][#size()] - [Setter][#size(int)]
-///
-/// The number of elements in each array.
-///
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c

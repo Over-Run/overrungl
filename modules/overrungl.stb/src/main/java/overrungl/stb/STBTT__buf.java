@@ -24,8 +24,6 @@ import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// private structure
-///
 /// ## Members
 /// ### data
 /// ### cursor

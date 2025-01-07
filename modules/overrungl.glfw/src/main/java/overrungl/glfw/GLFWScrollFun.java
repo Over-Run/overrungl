@@ -23,15 +23,6 @@ import overrungl.annotation.*;
 import overrungl.upcall.*;
 import overrungl.util.*;
 
-/// The function pointer type for scroll callbacks.
-/// 
-/// This is the function pointer type for scroll callbacks.  A scroll callback
-/// function has the following signature:
-/// ```java
-/// void function_name(MemorySegment window, double xoffset, double yoffset)
-/// ```
-/// 
-/// @see GLFW#glfwSetScrollCallback(MemorySegment, MemorySegment)
 @FunctionalInterface
 public interface GLFWScrollFun extends Upcall {
     /// The function descriptor.
@@ -39,26 +30,14 @@ public interface GLFWScrollFun extends Upcall {
     /// The method handle of the target method.
     MethodHandle HANDLE = Upcall.findTarget(GLFWScrollFun.class, "invoke", DESCRIPTOR);
 
-    ///The target method of the upcall.
-    ///
-    ///Invoke
-    ///
-    ///@param window The window that received the event.
-    ///@param xoffset The scroll offset along the x-axis.
-    ///@param yoffset The scroll offset along the y-axis.
+    /// The target method of the upcall.
     void invoke(@CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("double") double xoffset, @CType("double") double yoffset);
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
-    ///A static invoker of the target method.
-    ///
-    ///Invoke
-    ///
-    ///@param window The window that received the event.
-    ///@param xoffset The scroll offset along the x-axis.
-    ///@param yoffset The scroll offset along the y-axis.
-    ///@param stub the upcall stub
+    /// A static invoker of the target method.
+    /// @param stub the upcall stub
     static void invoke(MemorySegment stub, @CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("double") double xoffset, @CType("double") double yoffset) {
         try { HANDLE.invokeExact(stub, window, xoffset, yoffset); }
         catch (Throwable e) { throw new RuntimeException("error in GLFWScrollFun::invoke (static invoker)", e); }

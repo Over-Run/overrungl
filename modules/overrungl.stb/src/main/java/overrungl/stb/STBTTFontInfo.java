@@ -24,87 +24,27 @@ import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// The following structure is defined publicly so you can declare one on
-/// the stack or as a global or etc, but you should treat it as opaque.
-///
 /// ## Members
 /// ### userdata
 /// ### data
-///
-/// pointer to .ttf file
-///
 /// ### fontstart
-///
-/// offset of start of font
-///
 /// ### numGlyphs
-///
-/// number of glyphs, needed for range checking
-///
 /// ### loca
-///
-/// table locations as offset from start of .ttf
-///
 /// ### head
-///
-/// table locations as offset from start of .ttf
-///
 /// ### glyf
-///
-/// table locations as offset from start of .ttf
-///
 /// ### hhea
-///
-/// table locations as offset from start of .ttf
-///
 /// ### hmtx
-///
-/// table locations as offset from start of .ttf
-///
 /// ### kern
-///
-/// table locations as offset from start of .ttf
-///
 /// ### gpos
-///
-/// table locations as offset from start of .ttf
-///
 /// ### svg
-///
-/// table locations as offset from start of .ttf
-///
 /// ### index_map
-///
-/// a cmap mapping for our chosen character encoding
-///
 /// ### indexToLocFormat
-///
-/// format needed to map from glyph index to glyph
-///
 /// ### cff
-///
-/// cff font data
-///
 /// ### charstrings
-///
-/// the charstring index
-///
 /// ### gsubrs
-///
-/// global charstring subroutines index
-///
 /// ### subrs
-///
-/// private charstring subroutines index
-///
 /// ### fontdicts
-///
-/// array of font dicts
-///
 /// ### fdselect
-///
-/// map from glyph to fontdict
-///
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c

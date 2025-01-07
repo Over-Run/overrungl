@@ -23,7 +23,6 @@ import overrungl.annotation.*;
 import overrungl.upcall.*;
 import overrungl.util.*;
 
-/// OUTPUT CALLBACK: this callback is used for output scanlines
 @FunctionalInterface
 public interface STBIROutputCallback extends Upcall {
     /// The function descriptor.
@@ -31,14 +30,14 @@ public interface STBIROutputCallback extends Upcall {
     /// The method handle of the target method.
     MethodHandle HANDLE = Upcall.findTarget(STBIROutputCallback.class, "invoke", DESCRIPTOR);
 
-    ///The target method of the upcall.
+    /// The target method of the upcall.
     void invoke(@CType("void const *") java.lang.foreign.MemorySegment output_ptr, @CType("int") int num_pixels, @CType("int") int y, @CType("void*") java.lang.foreign.MemorySegment context);
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
-    ///A static invoker of the target method.
-    ///@param stub the upcall stub
+    /// A static invoker of the target method.
+    /// @param stub the upcall stub
     static void invoke(MemorySegment stub, @CType("void const *") java.lang.foreign.MemorySegment output_ptr, @CType("int") int num_pixels, @CType("int") int y, @CType("void*") java.lang.foreign.MemorySegment context) {
         try { HANDLE.invokeExact(stub, output_ptr, num_pixels, y, context); }
         catch (Throwable e) { throw new RuntimeException("error in STBIROutputCallback::invoke (static invoker)", e); }

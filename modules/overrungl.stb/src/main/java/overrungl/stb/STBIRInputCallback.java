@@ -23,7 +23,6 @@ import overrungl.annotation.*;
 import overrungl.upcall.*;
 import overrungl.util.*;
 
-/// INPUT CALLBACK: this callback is used for input scanlines
 @FunctionalInterface
 public interface STBIRInputCallback extends Upcall {
     /// The function descriptor.
@@ -31,14 +30,14 @@ public interface STBIRInputCallback extends Upcall {
     /// The method handle of the target method.
     MethodHandle HANDLE = Upcall.findTarget(STBIRInputCallback.class, "invoke", DESCRIPTOR);
 
-    ///The target method of the upcall.
+    /// The target method of the upcall.
     @CType("void const *") java.lang.foreign.MemorySegment invoke(@CType("void*") java.lang.foreign.MemorySegment optional_output, @CType("void const *") java.lang.foreign.MemorySegment input_ptr, @CType("int") int num_pixels, @CType("int") int x, @CType("int") int y, @CType("void*") java.lang.foreign.MemorySegment context);
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
-    ///A static invoker of the target method.
-    ///@param stub the upcall stub
+    /// A static invoker of the target method.
+    /// @param stub the upcall stub
     static @CType("void const *") java.lang.foreign.MemorySegment invoke(MemorySegment stub, @CType("void*") java.lang.foreign.MemorySegment optional_output, @CType("void const *") java.lang.foreign.MemorySegment input_ptr, @CType("int") int num_pixels, @CType("int") int x, @CType("int") int y, @CType("void*") java.lang.foreign.MemorySegment context) {
         try { return (java.lang.foreign.MemorySegment) HANDLE.invokeExact(stub, optional_output, input_ptr, num_pixels, x, y, context); }
         catch (Throwable e) { throw new RuntimeException("error in STBIRInputCallback::invoke (static invoker)", e); }

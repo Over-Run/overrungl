@@ -30,14 +30,14 @@ public interface ALFoldbackCallback extends Upcall {
     /// The method handle of the target method.
     MethodHandle HANDLE = Upcall.findTarget(ALFoldbackCallback.class, "invoke", DESCRIPTOR);
 
-    ///The target method of the upcall.
+    /// The target method of the upcall.
     void invoke(@CType("ALenum") int mode, @CType("ALsizei") int count);
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
-    ///A static invoker of the target method.
-    ///@param stub the upcall stub
+    /// A static invoker of the target method.
+    /// @param stub the upcall stub
     static void invoke(MemorySegment stub, @CType("ALenum") int mode, @CType("ALsizei") int count) {
         try { HANDLE.invokeExact(stub, mode, count); }
         catch (Throwable e) { throw new RuntimeException("error in ALFoldbackCallback::invoke (static invoker)", e); }

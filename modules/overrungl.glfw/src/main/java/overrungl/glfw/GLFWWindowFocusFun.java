@@ -23,15 +23,6 @@ import overrungl.annotation.*;
 import overrungl.upcall.*;
 import overrungl.util.*;
 
-/// The function pointer type for window focus callbacks.
-/// 
-/// This is the function pointer type for window focus callbacks.  A window
-/// focus callback function has the following signature:
-/// ```java
-/// void function_name(MemorySegment window, boolean focused)
-/// ```
-/// 
-/// @see GLFW#glfwSetWindowFocusCallback(MemorySegment, MemorySegment)
 @FunctionalInterface
 public interface GLFWWindowFocusFun extends Upcall {
     /// The function descriptor.
@@ -39,22 +30,10 @@ public interface GLFWWindowFocusFun extends Upcall {
     /// The method handle of the target method.
     MethodHandle HANDLE = Upcall.findTarget(GLFWWindowFocusFun.class, "invoke", DESCRIPTOR);
 
-    ///The interface target method of the upcall.
-    ///
-    ///Invoke
-    ///
-    ///@param window The window that gained or lost input focus.
-    ///@param focused `true` if the window was given input focus, or
-    ///`false` if it lost it.
+    /// The interface target method of the upcall.
     void invoke(@CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("int") boolean focused);
 
-    ///The target method of the upcall.
-    ///
-    ///Invoke
-    ///
-    ///@param window The window that gained or lost input focus.
-    ///@param focused `GLFW_TRUE` if the window was given input focus, or
-    ///`GLFW_FALSE` if it lost it.
+    /// The target method of the upcall.
     default void invoke(@CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("int") int focused) {
         invoke(window, focused != GLFW.GLFW_FALSE);
     }
@@ -62,14 +41,8 @@ public interface GLFWWindowFocusFun extends Upcall {
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
-    ///A static invoker of the target method.
-    ///
-    ///Invoke
-    ///
-    ///@param window The window that gained or lost input focus.
-    ///@param focused `GLFW_TRUE` if the window was given input focus, or
-    ///`GLFW_FALSE` if it lost it.
-    ///@param stub the upcall stub
+    /// A static invoker of the target method.
+    /// @param stub the upcall stub
     static void invoke(MemorySegment stub, @CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("int") int focused) {
         try { HANDLE.invokeExact(stub, window, focused); }
         catch (Throwable e) { throw new RuntimeException("error in GLFWWindowFocusFun::invoke (static invoker)", e); }

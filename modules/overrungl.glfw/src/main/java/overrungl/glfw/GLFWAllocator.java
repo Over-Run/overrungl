@@ -24,36 +24,15 @@ import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// Custom heap memory allocator.
-/// 
-/// This describes a custom heap memory allocator for GLFW.  To set an allocator, pass it
-/// to [glfwInitAllocator][GLFW#glfwInitAllocator(MemorySegment)] before initializing the library.
-///
 /// ## Members
 /// ### allocate
 /// [VarHandle][#VH_allocate] - [Getter][#allocate()] - [Setter][#allocate(java.lang.foreign.MemorySegment)]
-///
-/// The memory allocation function.  See [GLFWAllocateFun] for details about
-/// allocation function.
-///
 /// ### reallocate
 /// [VarHandle][#VH_reallocate] - [Getter][#reallocate()] - [Setter][#reallocate(java.lang.foreign.MemorySegment)]
-///
-/// The memory reallocation function.  See [GLFWReallocateFun] for details about
-/// reallocation function.
-///
 /// ### deallocate
 /// [VarHandle][#VH_deallocate] - [Getter][#deallocate()] - [Setter][#deallocate(java.lang.foreign.MemorySegment)]
-///
-/// The memory deallocation function.  See [GLFWDeallocateFun] for details about
-/// deallocation function.
-///
 /// ### user
 /// [VarHandle][#VH_user] - [Getter][#user()] - [Setter][#user(java.lang.foreign.MemorySegment)]
-///
-/// The user pointer for this custom allocator.  This value will be passed to the
-/// allocator functions.
-///
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c

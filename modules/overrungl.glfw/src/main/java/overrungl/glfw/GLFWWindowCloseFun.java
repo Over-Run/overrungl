@@ -23,15 +23,6 @@ import overrungl.annotation.*;
 import overrungl.upcall.*;
 import overrungl.util.*;
 
-/// The function pointer type for window close callbacks.
-/// 
-/// This is the function pointer type for window close callbacks.  A window
-/// close callback function has the following signature:
-/// ```java
-/// void function_name(MemorySegment window)
-/// ```
-/// 
-/// @see GLFW#glfwSetWindowCloseCallback(MemorySegment, MemorySegment)
 @FunctionalInterface
 public interface GLFWWindowCloseFun extends Upcall {
     /// The function descriptor.
@@ -39,22 +30,14 @@ public interface GLFWWindowCloseFun extends Upcall {
     /// The method handle of the target method.
     MethodHandle HANDLE = Upcall.findTarget(GLFWWindowCloseFun.class, "invoke", DESCRIPTOR);
 
-    ///The target method of the upcall.
-    ///
-    ///Invoke
-    ///
-    ///@param window The window that the user attempted to close.
+    /// The target method of the upcall.
     void invoke(@CType("GLFWwindow*") java.lang.foreign.MemorySegment window);
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
-    ///A static invoker of the target method.
-    ///
-    ///Invoke
-    ///
-    ///@param window The window that the user attempted to close.
-    ///@param stub the upcall stub
+    /// A static invoker of the target method.
+    /// @param stub the upcall stub
     static void invoke(MemorySegment stub, @CType("GLFWwindow*") java.lang.foreign.MemorySegment window) {
         try { HANDLE.invokeExact(stub, window); }
         catch (Throwable e) { throw new RuntimeException("error in GLFWWindowCloseFun::invoke (static invoker)", e); }
