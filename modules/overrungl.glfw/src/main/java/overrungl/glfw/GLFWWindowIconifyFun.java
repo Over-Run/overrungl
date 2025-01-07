@@ -23,15 +23,6 @@ import overrungl.annotation.*;
 import overrungl.upcall.*;
 import overrungl.util.*;
 
-/// The function pointer type for window iconify callbacks.
-/// 
-/// This is the function pointer type for window iconify callbacks.  A window
-/// iconify callback function has the following signature:
-/// ```java
-/// void function_name(MemorySegment window, boolean iconified)
-/// ```
-/// 
-/// @see GLFW#glfwSetWindowIconifyCallback(MemorySegment, MemorySegment)
 @FunctionalInterface
 public interface GLFWWindowIconifyFun extends Upcall {
     /// The function descriptor.
@@ -39,22 +30,10 @@ public interface GLFWWindowIconifyFun extends Upcall {
     /// The method handle of the target method.
     MethodHandle HANDLE = Upcall.findTarget(GLFWWindowIconifyFun.class, "invoke", DESCRIPTOR);
 
-    ///The interface target method of the upcall.
-    ///
-    ///Invoke
-    ///
-    ///@param window The window that was iconified or restored.
-    ///@param iconified `true` if the window was iconified, or
-    ///`false` if it was restored.
+    /// The interface target method of the upcall.
     void invoke(@CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("int") boolean iconified);
 
-    ///The target method of the upcall.
-    ///
-    ///Invoke
-    ///
-    ///@param window The window that was iconified or restored.
-    ///@param iconified `GLFW_TRUE` if the window was iconified, or
-    ///`GLFW_FALSE` if it was restored.
+    /// The target method of the upcall.
     default void invoke(@CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("int") int iconified) {
         invoke(window, iconified != GLFW.GLFW_FALSE);
     }
@@ -62,14 +41,8 @@ public interface GLFWWindowIconifyFun extends Upcall {
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
-    ///A static invoker of the target method.
-    ///
-    ///Invoke
-    ///
-    ///@param window The window that was iconified or restored.
-    ///@param iconified `GLFW_TRUE` if the window was iconified, or
-    ///`GLFW_FALSE` if it was restored.
-    ///@param stub the upcall stub
+    /// A static invoker of the target method.
+    /// @param stub the upcall stub
     static void invoke(MemorySegment stub, @CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("int") int iconified) {
         try { HANDLE.invokeExact(stub, window, iconified); }
         catch (Throwable e) { throw new RuntimeException("error in GLFWWindowIconifyFun::invoke (static invoker)", e); }

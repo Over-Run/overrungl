@@ -24,39 +24,19 @@ import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// 16 bytes, nominally
-///
 /// ## Members
 /// ### id
 /// [VarHandle][#VH_id] - [Getter][#id()] - [Setter][#id(int)]
-///
-/// reserved for your use
-///
 /// ### w
 /// [VarHandle][#VH_w] - [Getter][#w()] - [Setter][#w(int)]
-///
-/// input
-///
 /// ### h
 /// [VarHandle][#VH_h] - [Getter][#h()] - [Setter][#h(int)]
-///
-/// input
-///
 /// ### x
 /// [VarHandle][#VH_x] - [Getter][#x()] - [Setter][#x(int)]
-///
-/// output
-///
 /// ### y
 /// [VarHandle][#VH_y] - [Getter][#y()] - [Setter][#y(int)]
-///
-/// output
-///
 /// ### was_packed
 /// [VarHandle][#VH_was_packed] - [Getter][#was_packed()] - [Setter][#was_packed(int)]
-///
-/// non-zero if valid packing
-///
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c

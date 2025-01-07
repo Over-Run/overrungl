@@ -24,8 +24,6 @@ import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// `@TODO: don't expose this structure`
-///
 /// ## Members
 /// ### w
 /// ### h

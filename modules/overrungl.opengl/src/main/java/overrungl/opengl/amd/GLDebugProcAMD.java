@@ -30,10 +30,10 @@ public interface GLDebugProcAMD extends Upcall {
     /// The method handle of the target method.
     MethodHandle HANDLE = Upcall.findTarget(GLDebugProcAMD.class, "invoke", DESCRIPTOR);
 
-    ///The interface target method of the upcall.
+    /// The interface target method of the upcall.
     void invoke(@CType("GLuint") int id, @CType("GLenum") int category, @CType("GLenum") int severity, @CType("const GLchar *") java.lang.String message, @CType("void*") java.lang.foreign.MemorySegment userParam);
 
-    ///The target method of the upcall.
+    /// The target method of the upcall.
     default void invoke(@CType("GLuint") int id, @CType("GLenum") int category, @CType("GLenum") int severity, @CType("GLsizei") int length, @CType("const GLchar *") java.lang.foreign.MemorySegment message, @CType("void*") java.lang.foreign.MemorySegment userParam) {
         invoke(id, category, severity, Unmarshal.unmarshalAsString(message), userParam);
     }
@@ -41,8 +41,8 @@ public interface GLDebugProcAMD extends Upcall {
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
-    ///A static invoker of the target method.
-    ///@param stub the upcall stub
+    /// A static invoker of the target method.
+    /// @param stub the upcall stub
     static void invoke(MemorySegment stub, @CType("GLuint") int id, @CType("GLenum") int category, @CType("GLenum") int severity, @CType("GLsizei") int length, @CType("const GLchar *") java.lang.foreign.MemorySegment message, @CType("void*") java.lang.foreign.MemorySegment userParam) {
         try { HANDLE.invokeExact(stub, id, category, severity, length, message, userParam); }
         catch (Throwable e) { throw new RuntimeException("error in GLDebugProcAMD::invoke (static invoker)", e); }

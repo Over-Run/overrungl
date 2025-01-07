@@ -23,7 +23,6 @@ import overrungl.annotation.*;
 import overrungl.upcall.*;
 import overrungl.util.*;
 
-/// The skip callback
 @FunctionalInterface
 public interface STBIIOSkip extends Upcall {
     /// The function descriptor.
@@ -31,18 +30,14 @@ public interface STBIIOSkip extends Upcall {
     /// The method handle of the target method.
     MethodHandle HANDLE = Upcall.findTarget(STBIIOSkip.class, "invoke", DESCRIPTOR);
 
-    ///The target method of the upcall.
-    ///
-    ///skip the next 'n' bytes, or 'unget' the last -n bytes if negative
+    /// The target method of the upcall.
     void invoke(@CType("void*") java.lang.foreign.MemorySegment user, @CType("int") int n);
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
-    ///A static invoker of the target method.
-    ///
-    ///skip the next 'n' bytes, or 'unget' the last -n bytes if negative
-    ///@param stub the upcall stub
+    /// A static invoker of the target method.
+    /// @param stub the upcall stub
     static void invoke(MemorySegment stub, @CType("void*") java.lang.foreign.MemorySegment user, @CType("int") int n) {
         try { HANDLE.invokeExact(stub, user, n); }
         catch (Throwable e) { throw new RuntimeException("error in STBIIOSkip::invoke (static invoker)", e); }

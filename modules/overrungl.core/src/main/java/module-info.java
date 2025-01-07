@@ -14,12 +14,10 @@
  * copies or substantial portions of the Software.
  */
 
-/**
- * The core module of OverrunGL.
- *
- * @author squid233
- * @since 0.1.0
- */
+/// The core module of OverrunGL.
+///
+/// @author squid233
+/// @since 0.1.0
 module overrungl.core {
     exports overrungl;
     exports overrungl.annotation;
@@ -31,8 +29,7 @@ module overrungl.core {
         overrungl.nfd,
         overrungl.openal,
         overrungl.opengl,
-        overrungl.stb,
-        overrungl.vulkan;
+        overrungl.stb;
 
     requires transitive io.github.overrun.platform;
     requires static org.jetbrains.annotations;

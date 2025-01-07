@@ -51,17 +51,6 @@ allprojects {
                         links("https://download.java.net/java/early_access/$jdkEarlyAccessDoc/docs/api/")
                     }
 
-                    tags(
-                        "glfw.callback_signature:m:Callback signature:",
-                        "glfw.errors:m:Errors:",
-                        "glfw.note:m:Note:",
-                        "glfw.pointer_lifetime:m:Pointer lifetime:",
-                        "glfw.remark:m:Remarks:",
-                        "glfw.reentrancy:m:Reentrancy:",
-                        "glfw.thread_safety:m:Thread safety:",
-                        "glfw.warning:m:Warning:",
-                    )
-
                     bottom =
                         """<a href="https://github.com/Over-Run/overrungl/issues">Report a bug or suggest an enhancement</a><br>""" +
                             "Copyright © $projLicenseYear Overrun Organization<br>" +

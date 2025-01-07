@@ -27,7 +27,7 @@ import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
 
 /**
- * The OpenAL context binding.
+ * The OpenAL context related functions.
  *
  * @author squid233
  * @since 0.1.0
@@ -56,7 +56,6 @@ public final class ALC {
     public static final int ALC_DEFAULT_DEVICE_SPECIFIER = 0x1004;
     public static final int ALC_DEVICE_SPECIFIER = 0x1005;
     public static final int ALC_EXTENSIONS = 0x1006;
-    ///Capture extension
     public static final int ALC_EXT_CAPTURE = 1;
     public static final int ALC_CAPTURE_DEVICE_SPECIFIER = 0x310;
     public static final int ALC_CAPTURE_DEFAULT_DEVICE_SPECIFIER = 0x311;

@@ -27,24 +27,12 @@ import overrungl.util.*;
 /// ## Members
 /// ### x0
 /// [VarHandle][#VH_x0] - [Getter][#x0()] - [Setter][#x0(short)]
-///
-/// coordinates of bbox in bitmap
-///
 /// ### y0
 /// [VarHandle][#VH_y0] - [Getter][#y0()] - [Setter][#y0(short)]
-///
-/// coordinates of bbox in bitmap
-///
 /// ### x1
 /// [VarHandle][#VH_x1] - [Getter][#x1()] - [Setter][#x1(short)]
-///
-/// coordinates of bbox in bitmap
-///
 /// ### y1
 /// [VarHandle][#VH_y1] - [Getter][#y1()] - [Setter][#y1(short)]
-///
-/// coordinates of bbox in bitmap
-///
 /// ### xoff
 /// [VarHandle][#VH_xoff] - [Getter][#xoff()] - [Setter][#xoff(float)]
 /// ### yoff

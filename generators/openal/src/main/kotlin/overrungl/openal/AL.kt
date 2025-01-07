@@ -102,7 +102,7 @@ fun AL() {
 
         ALenum("AL_DISTANCE_MODEL" to "0xD000")
 
-        ALenum("Distance model values.") {
+        ALenum {
             "AL_INVERSE_DISTANCE"("0xD001")
             "AL_INVERSE_DISTANCE_CLAMPED"("0xD002")
             "AL_LINEAR_DISTANCE"("0xD003")

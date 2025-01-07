@@ -24,11 +24,6 @@ import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// The native window handle.
-/// 
-/// If using a platform abstraction framework (e.g. SDL2), this should be
-/// obtained using the corresponding NFD glue header (e.g. nfd_sdl2.h).
-///
 /// ## Members
 /// ### type
 /// [VarHandle][#VH_type] - [Getter][#type()] - [Setter][#type(long)]

@@ -26,17 +26,14 @@ import overrungl.util.Unmarshal;
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 
-/**
- * The STB image reader.
- *
- * @author squid233
- * @since 0.1.0
- */
+/// [stb_image.h](https://github.com/nothings/stb/blob/master/stb_image.h)
+///
+/// @author squid233
+/// @since 0.1.0
 public final class STBImage {
     //region ---[BEGIN GENERATOR BEGIN]---
     //@formatter:off
     //region Fields
-    ///only used for desired_channels
     public static final int STBI_default = 0;
     public static final int STBI_grey = 1;
     public static final int STBI_grey_alpha = 2;
@@ -310,25 +307,18 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_is_hdr", e); }
     }
 
-    ///get a VERY brief reason for failure
-    ///
-    ///on most compilers (and ALL modern mainstream compilers) this is threadsafe
     public static @CType("const char*") java.lang.foreign.MemorySegment stbi_failure_reason_() {
         try {
             return (java.lang.foreign.MemorySegment) Handles.MH_stbi_failure_reason.invokeExact();
         } catch (Throwable e) { throw new RuntimeException("error in stbi_failure_reason", e); }
     }
 
-    ///get a VERY brief reason for failure
-    ///
-    ///on most compilers (and ALL modern mainstream compilers) this is threadsafe
     public static @CType("const char*") java.lang.String stbi_failure_reason() {
         try {
             return Unmarshal.unmarshalAsString((java.lang.foreign.MemorySegment) Handles.MH_stbi_failure_reason.invokeExact());
         } catch (Throwable e) { throw new RuntimeException("error in stbi_failure_reason", e); }
     }
 
-    ///free the loaded image -- this is just free()
     public static void stbi_image_free(@CType("void*") java.lang.foreign.MemorySegment retval_from_stbi_load) {
         try {
             Handles.MH_stbi_image_free.invokeExact(retval_from_stbi_load);
@@ -403,24 +393,18 @@ public final class STBImage {
         } catch (Throwable e) { throw new RuntimeException("error in stbi_is_16_bit", e); }
     }
 
-    ///for image formats that explicitly notate that they have premultiplied alpha,
-    ///we just return the colors as stored in the file. set this flag to force
-    ///unpremultiplication. results are undefined if the unpremultiply overflow.
     public static void stbi_set_unpremultiply_on_load(@CType("int") boolean flag_true_if_should_unpremultiply) {
         try {
             Handles.MH_stbi_set_unpremultiply_on_load.invokeExact(flag_true_if_should_unpremultiply);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_set_unpremultiply_on_load", e); }
     }
 
-    ///indicate whether we should process iphone images back to canonical format,
-    ///or just pass them through "as-is"
     public static void stbi_convert_iphone_png_to_rgb(@CType("int") boolean flag_true_if_should_convert) {
         try {
             Handles.MH_stbi_convert_iphone_png_to_rgb.invokeExact(flag_true_if_should_convert);
         } catch (Throwable e) { throw new RuntimeException("error in stbi_convert_iphone_png_to_rgb", e); }
     }
 
-    ///flip the image vertically, so the first pixel in the output array is the bottom left
     public static void stbi_set_flip_vertically_on_load(@CType("int") boolean flag_true_if_should_flip) {
         try {
             Handles.MH_stbi_set_flip_vertically_on_load.invokeExact(flag_true_if_should_flip);

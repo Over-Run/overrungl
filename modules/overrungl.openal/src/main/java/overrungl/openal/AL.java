@@ -24,7 +24,6 @@ import overrungl.util.MemoryStack;
 import overrungl.util.Unmarshal;
 
 import java.lang.foreign.FunctionDescriptor;
-import java.lang.foreign.SymbolLookup;
 import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
 
@@ -100,7 +99,6 @@ public final class AL {
     public static final int AL_DOPPLER_VELOCITY = 0xC001;
     public static final int AL_SPEED_OF_SOUND = 0xC003;
     public static final int AL_DISTANCE_MODEL = 0xD000;
-    ///Distance model values.
     public static final int
         AL_INVERSE_DISTANCE = 0xD001,
         AL_INVERSE_DISTANCE_CLAMPED = 0xD002,

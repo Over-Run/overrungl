@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2024 Overrun Organization
+ * Copyright (c) 2024-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -38,33 +38,14 @@ fun STBImage() {
     }
     val stbi_io_callbacks_const_ptr = stbi_io_callbacks.pointerType c "stbi_io_callbacks const *"
 
-    Upcall(stbPackage, "STBIIORead", javadoc = "The read callback") {
-        targetMethod = "invoke"(
-            int,
-            void_ptr("user"),
-            char_ptr("data"),
-            int("size"),
-            javadoc = """
-                fill 'data' with 'size' bytes.
-                @return number of bytes actually read
-            """.trimIndent()
-        )
+    Upcall(stbPackage, "STBIIORead") {
+        targetMethod = "invoke"(int, void_ptr("user"), char_ptr("data"), int("size"))
     }
-    Upcall(stbPackage, "STBIIOSkip", javadoc = "The skip callback") {
-        targetMethod = "invoke"(
-            void,
-            void_ptr("user"),
-            int("n"),
-            javadoc = "skip the next 'n' bytes, or 'unget' the last -n bytes if negative"
-        )
+    Upcall(stbPackage, "STBIIOSkip") {
+        targetMethod = "invoke"(void, void_ptr("user"), int("n"))
     }
-    Upcall(stbPackage, "STBIIOEof", javadoc = "The eof callback") {
-        val doc = "@return nonzero if we are at end of file/data"
-        interfaceMethod = "invoke"(
-            jboolean,
-            void_ptr("user"),
-            javadoc = doc
-        )
+    Upcall(stbPackage, "STBIIOEof") {
+        interfaceMethod = "invoke"(jboolean, void_ptr("user"))
         targetMethod = "invoke_"(
             CustomTypeSpec(
                 carrier = TypeName.INT,
@@ -88,13 +69,12 @@ fun STBImage() {
                 cType = int.cType
             ),
             void_ptr("user"),
-            javadoc = doc,
             overload = "invoke"
         )
     }
 
     StaticDowncall(stbPackage, "STBImage", symbolLookup = stbLookup) {
-        int("STBI_default" to "0", javadoc = "only used for desired_channels")
+        int("STBI_default" to "0")
         int("STBI_grey" to "1")
         int("STBI_grey_alpha" to "2")
         int("STBI_rgb" to "3")
@@ -230,19 +210,9 @@ fun STBImage() {
 
         +"stbi_failure_reason_"(
             const_char_ptr,
-            entrypoint = "stbi_failure_reason",
-            javadoc = """
-                get a VERY brief reason for failure
-
-                on most compilers (and ALL modern mainstream compilers) this is threadsafe
-            """.trimIndent()
+            entrypoint = "stbi_failure_reason"
         ).overload(name = "stbi_failure_reason")
-        "stbi_image_free"(
-            void,
-            void_ptr("retval_from_stbi_load"),
-            entrypoint = "stbi_image_free",
-            javadoc = "free the loaded image -- this is just free()"
-        )
+        "stbi_image_free"(void, void_ptr("retval_from_stbi_load"), entrypoint = "stbi_image_free")
 
         // get image dimensions & components without fully decoding
         "stbi_info_from_memory"(
@@ -292,27 +262,17 @@ fun STBImage() {
         "stbi_set_unpremultiply_on_load"(
             void,
             boolean_int("flag_true_if_should_unpremultiply"),
-            entrypoint = "stbi_set_unpremultiply_on_load",
-            javadoc = """
-                for image formats that explicitly notate that they have premultiplied alpha,
-                we just return the colors as stored in the file. set this flag to force
-                unpremultiplication. results are undefined if the unpremultiply overflow.
-            """.trimIndent()
+            entrypoint = "stbi_set_unpremultiply_on_load"
         )
         "stbi_convert_iphone_png_to_rgb"(
             void,
             boolean_int("flag_true_if_should_convert"),
-            entrypoint = "stbi_convert_iphone_png_to_rgb",
-            javadoc = """
-                indicate whether we should process iphone images back to canonical format,
-                or just pass them through "as-is"
-            """.trimIndent()
+            entrypoint = "stbi_convert_iphone_png_to_rgb"
         )
         "stbi_set_flip_vertically_on_load"(
             void,
             boolean_int("flag_true_if_should_flip"),
-            entrypoint = "stbi_set_flip_vertically_on_load",
-            javadoc = "flip the image vertically, so the first pixel in the output array is the bottom left"
+            entrypoint = "stbi_set_flip_vertically_on_load"
         )
 
         "stbi_set_unpremultiply_on_load_thread"(

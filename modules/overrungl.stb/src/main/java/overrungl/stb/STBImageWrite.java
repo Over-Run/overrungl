@@ -25,12 +25,10 @@ import overrungl.util.Unmarshal;
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 
-/**
- * The STB image writer.
- *
- * @author squid233
- * @since 0.1.0
- */
+/// [stb_image_write.h](https://github.com/nothings/stb/blob/master/stb_image_write.h)
+///
+/// @author squid233
+/// @since 0.1.0
 public final class STBImageWrite {
     //region ---[BEGIN GENERATOR BEGIN]---
     //@formatter:off

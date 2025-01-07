@@ -35,11 +35,9 @@ data class DowncallMethod(
     val name: String,
     val parameters: List<DowncallParameter>,
     val entrypoint: String?,
-    val javadoc: String?,
     val code: String?,
     val overload: Boolean,
     val optional: Boolean,
-    val defaultCode: String?,
 ) {
     val allocatorRequirement: AllocatorRequirement by lazy {
         parameters.map { p ->
@@ -67,14 +65,10 @@ data class DowncallMethod(
     fun overload(
         name: String = this.name,
         parameters: List<DowncallParameter> = this.parameters,
-        javadoc: String? = this.javadoc,
-        defaultCode: String? = this.defaultCode
     ): DowncallMethod = copy(
         name = name,
         parameters = parameters,
-        javadoc = javadoc,
         overload = true,
-        defaultCode = defaultCode
     )
 
     private fun <T> List<T>.insertFirst(t: T): List<T> {

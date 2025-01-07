@@ -23,15 +23,6 @@ import overrungl.annotation.*;
 import overrungl.upcall.*;
 import overrungl.util.*;
 
-/// The function pointer type for framebuffer size callbacks.
-/// 
-/// This is the function pointer type for framebuffer size callbacks.
-/// A framebuffer size callback function has the following signature:
-/// ```java
-/// void function_name(MemorySegment window, int width, int height)
-/// ```
-/// 
-/// @see GLFW#glfwSetFramebufferSizeCallback(MemorySegment, MemorySegment)
 @FunctionalInterface
 public interface GLFWFramebufferSizeFun extends Upcall {
     /// The function descriptor.
@@ -39,26 +30,14 @@ public interface GLFWFramebufferSizeFun extends Upcall {
     /// The method handle of the target method.
     MethodHandle HANDLE = Upcall.findTarget(GLFWFramebufferSizeFun.class, "invoke", DESCRIPTOR);
 
-    ///The target method of the upcall.
-    ///
-    ///Invoke
-    ///
-    ///@param window The window whose framebuffer was resized.
-    ///@param width The new width, in pixels, of the framebuffer.
-    ///@param height The new height, in pixels, of the framebuffer.
+    /// The target method of the upcall.
     void invoke(@CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("int") int width, @CType("int") int height);
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
-    ///A static invoker of the target method.
-    ///
-    ///Invoke
-    ///
-    ///@param window The window whose framebuffer was resized.
-    ///@param width The new width, in pixels, of the framebuffer.
-    ///@param height The new height, in pixels, of the framebuffer.
-    ///@param stub the upcall stub
+    /// A static invoker of the target method.
+    /// @param stub the upcall stub
     static void invoke(MemorySegment stub, @CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("int") int width, @CType("int") int height) {
         try { HANDLE.invokeExact(stub, window, width, height); }
         catch (Throwable e) { throw new RuntimeException("error in GLFWFramebufferSizeFun::invoke (static invoker)", e); }

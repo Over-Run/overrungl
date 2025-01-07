@@ -14,12 +14,10 @@
  * copies or substantial portions of the Software.
  */
 
-/**
- * The STB binding.
- *
- * @author squid233
- * @since 0.1.0
- */
+/// The stb binding.
+///
+/// @author squid233
+/// @since 0.1.0
 module overrungl.stb {
     exports overrungl.stb;
 

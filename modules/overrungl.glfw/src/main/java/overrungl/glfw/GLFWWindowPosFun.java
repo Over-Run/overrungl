@@ -23,15 +23,6 @@ import overrungl.annotation.*;
 import overrungl.upcall.*;
 import overrungl.util.*;
 
-/// The function pointer type for window position callbacks.
-/// 
-/// This is the function pointer type for window position callbacks.  A window
-/// position callback function has the following signature:
-/// ```java
-/// void callback_name(MemorySegment window, int xpos, int ypos)
-/// ```
-/// 
-/// @see GLFW#glfwSetWindowPosCallback(MemorySegment, MemorySegment)
 @FunctionalInterface
 public interface GLFWWindowPosFun extends Upcall {
     /// The function descriptor.
@@ -39,30 +30,14 @@ public interface GLFWWindowPosFun extends Upcall {
     /// The method handle of the target method.
     MethodHandle HANDLE = Upcall.findTarget(GLFWWindowPosFun.class, "invoke", DESCRIPTOR);
 
-    ///The target method of the upcall.
-    ///
-    ///Invoke
-    ///
-    ///@param window The window that was moved.
-    ///@param xpos The new x-coordinate, in screen coordinates, of the
-    ///upper-left corner of the content area of the window.
-    ///@param ypos The new y-coordinate, in screen coordinates, of the
-    ///upper-left corner of the content area of the window.
+    /// The target method of the upcall.
     void invoke(@CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("int") int xpos, @CType("int") int ypos);
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
-    ///A static invoker of the target method.
-    ///
-    ///Invoke
-    ///
-    ///@param window The window that was moved.
-    ///@param xpos The new x-coordinate, in screen coordinates, of the
-    ///upper-left corner of the content area of the window.
-    ///@param ypos The new y-coordinate, in screen coordinates, of the
-    ///upper-left corner of the content area of the window.
-    ///@param stub the upcall stub
+    /// A static invoker of the target method.
+    /// @param stub the upcall stub
     static void invoke(MemorySegment stub, @CType("GLFWwindow*") java.lang.foreign.MemorySegment window, @CType("int") int xpos, @CType("int") int ypos) {
         try { HANDLE.invokeExact(stub, window, xpos, ypos); }
         catch (Throwable e) { throw new RuntimeException("error in GLFWWindowPosFun::invoke (static invoker)", e); }

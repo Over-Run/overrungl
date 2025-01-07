@@ -23,7 +23,6 @@ import overrungl.annotation.*;
 import overrungl.upcall.*;
 import overrungl.util.*;
 
-/// The eof callback
 @FunctionalInterface
 public interface STBIIOEof extends Upcall {
     /// The function descriptor.
@@ -31,14 +30,10 @@ public interface STBIIOEof extends Upcall {
     /// The method handle of the target method.
     MethodHandle HANDLE = Upcall.findTarget(STBIIOEof.class, "invoke_", DESCRIPTOR);
 
-    ///The interface target method of the upcall.
-    ///
-    ///@return nonzero if we are at end of file/data
+    /// The interface target method of the upcall.
     boolean invoke(@CType("void*") java.lang.foreign.MemorySegment user);
 
-    ///The target method of the upcall.
-    ///
-    ///@return nonzero if we are at end of file/data
+    /// The target method of the upcall.
     default @CType("int") int invoke_(@CType("void*") java.lang.foreign.MemorySegment user) {
         return invoke(user) ? 1 : 0;
     }
@@ -46,10 +41,8 @@ public interface STBIIOEof extends Upcall {
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
-    ///A static invoker of the target method.
-    ///
-    ///@return nonzero if we are at end of file/data
-    ///@param stub the upcall stub
+    /// A static invoker of the target method.
+    /// @param stub the upcall stub
     static @CType("int") int invoke(MemorySegment stub, @CType("void*") java.lang.foreign.MemorySegment user) {
         try { return (int) HANDLE.invokeExact(stub, user); }
         catch (Throwable e) { throw new RuntimeException("error in STBIIOEof::invoke (static invoker)", e); }

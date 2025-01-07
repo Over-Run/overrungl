@@ -23,15 +23,6 @@ import overrungl.annotation.*;
 import overrungl.upcall.*;
 import overrungl.util.*;
 
-/// The function pointer type for memory deallocation callbacks.
-/// 
-/// This is the function pointer type for memory deallocation callbacks.
-/// A memory deallocation callback function has the following signature:
-/// ```java
-/// void function_name(MemorySegment block, MemorySegment user)
-/// ```
-/// 
-/// @see GLFWAllocator
 @FunctionalInterface
 public interface GLFWDeallocateFun extends Upcall {
     /// The function descriptor.
@@ -39,64 +30,14 @@ public interface GLFWDeallocateFun extends Upcall {
     /// The method handle of the target method.
     MethodHandle HANDLE = Upcall.findTarget(GLFWDeallocateFun.class, "invoke", DESCRIPTOR);
 
-    ///The target method of the upcall.
-    ///
-    ///This function may deallocate the specified memory block.  This memory block
-    ///will have been allocated with the same allocator.
-    ///
-    ///This function must support being called during [glfwInit][GLFW#glfwInit()] but before the library is
-    ///flagged as initialized, as well as during [glfwTerminate][GLFW#glfwTerminate()] after the library is no
-    ///longer flagged as initialized.
-    ///
-    ///The block address will never be `NULL`.  Deallocations of `NULL` are filtered out
-    ///before reaching the custom allocator.
-    ///
-    ///If this function returns `NULL`, GLFW will emit [GLFW_OUT_OF_MEMORY][GLFW#GLFW_OUT_OF_MEMORY].
-    ///
-    ///This function must not call any GLFW function.
-    ///
-    ///@param block The address of the memory block to deallocate.
-    ///@param user The user-defined pointer from the allocator.
-    ///
-    ///@glfw.pointer_lifetime The specified memory block will not be accessed by GLFW
-    ///after this function is called.
-    ///
-    ///@glfw.reentrancy This function should not call any GLFW function.
-    ///
-    ///@glfw.thread_safety This function must support being called from any thread that calls GLFW
-    ///functions.
+    /// The target method of the upcall.
     void invoke(@CType("void*") java.lang.foreign.MemorySegment block, @CType("void*") java.lang.foreign.MemorySegment user);
 
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
-    ///A static invoker of the target method.
-    ///
-    ///This function may deallocate the specified memory block.  This memory block
-    ///will have been allocated with the same allocator.
-    ///
-    ///This function must support being called during [glfwInit][GLFW#glfwInit()] but before the library is
-    ///flagged as initialized, as well as during [glfwTerminate][GLFW#glfwTerminate()] after the library is no
-    ///longer flagged as initialized.
-    ///
-    ///The block address will never be `NULL`.  Deallocations of `NULL` are filtered out
-    ///before reaching the custom allocator.
-    ///
-    ///If this function returns `NULL`, GLFW will emit [GLFW_OUT_OF_MEMORY][GLFW#GLFW_OUT_OF_MEMORY].
-    ///
-    ///This function must not call any GLFW function.
-    ///
-    ///@param block The address of the memory block to deallocate.
-    ///@param user The user-defined pointer from the allocator.
-    ///
-    ///@glfw.pointer_lifetime The specified memory block will not be accessed by GLFW
-    ///after this function is called.
-    ///
-    ///@glfw.reentrancy This function should not call any GLFW function.
-    ///
-    ///@glfw.thread_safety This function must support being called from any thread that calls GLFW
-    ///functions.
-    ///@param stub the upcall stub
+    /// A static invoker of the target method.
+    /// @param stub the upcall stub
     static void invoke(MemorySegment stub, @CType("void*") java.lang.foreign.MemorySegment block, @CType("void*") java.lang.foreign.MemorySegment user) {
         try { HANDLE.invokeExact(stub, block, user); }
         catch (Throwable e) { throw new RuntimeException("error in GLFWDeallocateFun::invoke (static invoker)", e); }

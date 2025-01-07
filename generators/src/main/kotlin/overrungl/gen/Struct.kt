@@ -24,7 +24,6 @@ class Struct(
     private val packageName: String,
     private val name: String,
     private val cType: String? = null,
-    private val javadoc: String? = null,
     private val opaque: Boolean = false,
     action: Struct.() -> Unit
 ) {
@@ -65,16 +64,16 @@ class Struct(
         doLast = action
     }
 
-    operator fun CustomTypeSpec.invoke(name: String, javadoc: String? = null) {
-        members.add(ValueStructMember(this, name, javadoc))
+    operator fun CustomTypeSpec.invoke(name: String) {
+        members.add(ValueStructMember(this, name))
     }
 
-    operator fun ByValueWrapper.invoke(name: String, javadoc: String? = null) {
-        members.add(ByValueStructStructMember(this.struct, name, javadoc))
+    operator fun ByValueWrapper.invoke(name: String) {
+        members.add(ByValueStructStructMember(this.struct, name))
     }
 
-    fun fixedSize(type: CustomTypeSpec, name: String, size: Long, javadoc: String? = null) {
-        members.add(FixedSizeStructMember(type, size, name, javadoc))
+    fun fixedSize(type: CustomTypeSpec, name: String, size: Long) {
+        members.add(FixedSizeStructMember(type, size, name))
     }
 
     fun write() {
@@ -95,10 +94,6 @@ class Struct(
         )
 
         // javadoc
-        if (javadoc != null) {
-            sb.appendLine(javadoc.prependIndent("/// "))
-            sb.appendLine("///")
-        }
         sb.appendLine("/// ## Members")
         members.forEach {
             sb.appendLine("/// ### ${it.name}")
@@ -110,12 +105,6 @@ class Struct(
                         is FixedSizeStructMember -> "/// [Byte offset handle][#MH_${it.name}] - [Memory layout][#ML_${it.name}] - Getter - Setter"
                     }
                 )
-            }
-            if (it.javadoc != null) {
-                sb.appendLine("///")
-                sb.appendLine(it.javadoc!!.prependIndent("/// "))
-                sb.append("///")
-                sb.appendLine()
             }
         }
         sb.appendLine(
@@ -409,19 +398,16 @@ class Struct(
 sealed interface StructMember {
     val type: CustomTypeSpec
     val name: String
-    val javadoc: String?
 }
 
 data class ValueStructMember(
     override val type: CustomTypeSpec,
-    override val name: String,
-    override val javadoc: String?
+    override val name: String
 ) : StructMember
 
 data class ByValueStructStructMember(
     val struct: Struct,
-    override val name: String,
-    override val javadoc: String?
+    override val name: String
 ) : StructMember {
     override val type: CustomTypeSpec = struct.byValueType
 }
@@ -429,8 +415,7 @@ data class ByValueStructStructMember(
 data class FixedSizeStructMember(
     val componentType: CustomTypeSpec,
     val size: Long,
-    override val name: String,
-    override val javadoc: String?
+    override val name: String
 ) : StructMember {
     override val type: CustomTypeSpec
         get() = CustomTypeSpec(

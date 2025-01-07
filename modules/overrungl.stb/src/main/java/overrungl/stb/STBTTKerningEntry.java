@@ -27,9 +27,6 @@ import overrungl.util.*;
 /// ## Members
 /// ### glyph1
 /// [VarHandle][#VH_glyph1] - [Getter][#glyph1()] - [Setter][#glyph1(int)]
-///
-/// use stbtt_FindGlyphIndex
-///
 /// ### glyph2
 /// [VarHandle][#VH_glyph2] - [Getter][#glyph2()] - [Setter][#glyph2(int)]
 /// ### advance

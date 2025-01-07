@@ -24,9 +24,6 @@ import overrungl.annotation.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
-/// the details of the following structures don't matter to you, but they must
-/// be visible so you can handle the memory allocations for them
-///
 /// ## Members
 /// ### x
 /// ### y

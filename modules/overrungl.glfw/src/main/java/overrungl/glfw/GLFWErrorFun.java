@@ -23,15 +23,6 @@ import overrungl.annotation.*;
 import overrungl.upcall.*;
 import overrungl.util.*;
 
-/// The function pointer type for error callbacks.
-/// 
-/// This is the function pointer type for error callbacks.  An error callback
-/// function has the following signature:
-/// ```java
-/// void callback_name(int error_code, String description)
-/// ```
-/// 
-/// @see GLFW#glfwSetErrorCallback(MemorySegment)
 @FunctionalInterface
 public interface GLFWErrorFun extends Upcall {
     /// The function descriptor.
@@ -39,28 +30,10 @@ public interface GLFWErrorFun extends Upcall {
     /// The method handle of the target method.
     MethodHandle HANDLE = Upcall.findTarget(GLFWErrorFun.class, "invoke", DESCRIPTOR);
 
-    ///The interface target method of the upcall.
-    ///
-    ///Invoke
-    ///
-    ///@param error_code An error code.  Future releases may add
-    ///more error codes.
-    ///@param description A UTF-8 encoded string describing the error.
-    ///
-    ///@glfw.pointer_lifetime The error description string is valid until the callback
-    ///function returns.
+    /// The interface target method of the upcall.
     void invoke(@CType("int") int error_code, @CType("const char*") java.lang.String description);
 
-    ///The target method of the upcall.
-    ///
-    ///Invoke
-    ///
-    ///@param error_code An error code.  Future releases may add
-    ///more error codes.
-    ///@param description A UTF-8 encoded string describing the error.
-    ///
-    ///@glfw.pointer_lifetime The error description string is valid until the callback
-    ///function returns.
+    /// The target method of the upcall.
     default void invoke(@CType("int") int error_code, @CType("const char*") java.lang.foreign.MemorySegment description) {
         invoke(error_code, Unmarshal.unmarshalAsString(description));
     }
@@ -68,17 +41,8 @@ public interface GLFWErrorFun extends Upcall {
     @Override
     default MemorySegment stub(Arena arena) { return Linker.nativeLinker().upcallStub(HANDLE.bindTo(this), DESCRIPTOR, arena); }
 
-    ///A static invoker of the target method.
-    ///
-    ///Invoke
-    ///
-    ///@param error_code An error code.  Future releases may add
-    ///more error codes.
-    ///@param description A UTF-8 encoded string describing the error.
-    ///
-    ///@glfw.pointer_lifetime The error description string is valid until the callback
-    ///function returns.
-    ///@param stub the upcall stub
+    /// A static invoker of the target method.
+    /// @param stub the upcall stub
     static void invoke(MemorySegment stub, @CType("int") int error_code, @CType("const char*") java.lang.foreign.MemorySegment description) {
         try { HANDLE.invokeExact(stub, error_code, description); }
         catch (Throwable e) { throw new RuntimeException("error in GLFWErrorFun::invoke (static invoker)", e); }
