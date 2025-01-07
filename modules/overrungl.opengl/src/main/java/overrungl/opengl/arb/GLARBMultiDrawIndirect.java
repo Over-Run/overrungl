@@ -35,17 +35,17 @@ public final class GLARBMultiDrawIndirect {
     }
 
     public void MultiDrawArraysIndirect(@CType("GLenum") int mode, @CType("const void *") java.lang.foreign.MemorySegment indirect, @CType("GLsizei") int drawcount, @CType("GLsizei") int stride) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiDrawArraysIndirect))
+        if (!Unmarshal.isNullPointer(PFN_glMultiDrawArraysIndirect)) { try {
             MH_glMultiDrawArraysIndirect.invokeExact(PFN_glMultiDrawArraysIndirect, mode, indirect, drawcount, stride);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiDrawArraysIndirect", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiDrawArraysIndirect", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiDrawArraysIndirect"); }
     }
 
     public void MultiDrawElementsIndirect(@CType("GLenum") int mode, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment indirect, @CType("GLsizei") int drawcount, @CType("GLsizei") int stride) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiDrawElementsIndirect))
+        if (!Unmarshal.isNullPointer(PFN_glMultiDrawElementsIndirect)) { try {
             MH_glMultiDrawElementsIndirect.invokeExact(PFN_glMultiDrawElementsIndirect, mode, type, indirect, drawcount, stride);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiDrawElementsIndirect", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiDrawElementsIndirect", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiDrawElementsIndirect"); }
     }
 
 }

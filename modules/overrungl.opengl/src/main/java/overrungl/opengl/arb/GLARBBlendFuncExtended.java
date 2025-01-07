@@ -40,18 +40,17 @@ public final class GLARBBlendFuncExtended {
     }
 
     public void BindFragDataLocationIndexed(@CType("GLuint") int program, @CType("GLuint") int colorNumber, @CType("GLuint") int index, @CType("const GLchar *") java.lang.foreign.MemorySegment name) {
-        try { if (!Unmarshal.isNullPointer(PFN_glBindFragDataLocationIndexed))
+        if (!Unmarshal.isNullPointer(PFN_glBindFragDataLocationIndexed)) { try {
             MH_glBindFragDataLocationIndexed.invokeExact(PFN_glBindFragDataLocationIndexed, program, colorNumber, index, name);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glBindFragDataLocationIndexed", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glBindFragDataLocationIndexed", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glBindFragDataLocationIndexed"); }
     }
 
     public @CType("GLint") int GetFragDataIndex(@CType("GLuint") int program, @CType("const GLchar *") java.lang.foreign.MemorySegment name) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetFragDataIndex))
+        if (!Unmarshal.isNullPointer(PFN_glGetFragDataIndex)) { try {
             return (int) MH_glGetFragDataIndex.invokeExact(PFN_glGetFragDataIndex, program, name);
-            else return 0;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetFragDataIndex", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetFragDataIndex", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetFragDataIndex"); }
     }
 
 }

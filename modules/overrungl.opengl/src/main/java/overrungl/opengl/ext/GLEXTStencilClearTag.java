@@ -34,10 +34,10 @@ public final class GLEXTStencilClearTag {
     }
 
     public void StencilClearTagEXT(@CType("GLsizei") int stencilTagBits, @CType("GLuint") int stencilClearTag) {
-        try { if (!Unmarshal.isNullPointer(PFN_glStencilClearTagEXT))
+        if (!Unmarshal.isNullPointer(PFN_glStencilClearTagEXT)) { try {
             MH_glStencilClearTagEXT.invokeExact(PFN_glStencilClearTagEXT, stencilTagBits, stencilClearTag);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glStencilClearTagEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glStencilClearTagEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glStencilClearTagEXT"); }
     }
 
 }

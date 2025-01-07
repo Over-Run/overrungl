@@ -35,19 +35,17 @@ public final class GLEXTWin32KeyedMutex {
     }
 
     public @CType("GLboolean") boolean AcquireKeyedMutexWin32EXT(@CType("GLuint") int memory, @CType("GLuint64") long key, @CType("GLuint") int timeout) {
-        try { if (!Unmarshal.isNullPointer(PFN_glAcquireKeyedMutexWin32EXT))
+        if (!Unmarshal.isNullPointer(PFN_glAcquireKeyedMutexWin32EXT)) { try {
             return (boolean) MH_glAcquireKeyedMutexWin32EXT.invokeExact(PFN_glAcquireKeyedMutexWin32EXT, memory, key, timeout);
-            else return false;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glAcquireKeyedMutexWin32EXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glAcquireKeyedMutexWin32EXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glAcquireKeyedMutexWin32EXT"); }
     }
 
     public @CType("GLboolean") boolean ReleaseKeyedMutexWin32EXT(@CType("GLuint") int memory, @CType("GLuint64") long key) {
-        try { if (!Unmarshal.isNullPointer(PFN_glReleaseKeyedMutexWin32EXT))
+        if (!Unmarshal.isNullPointer(PFN_glReleaseKeyedMutexWin32EXT)) { try {
             return (boolean) MH_glReleaseKeyedMutexWin32EXT.invokeExact(PFN_glReleaseKeyedMutexWin32EXT, memory, key);
-            else return false;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glReleaseKeyedMutexWin32EXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glReleaseKeyedMutexWin32EXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glReleaseKeyedMutexWin32EXT"); }
     }
 
 }

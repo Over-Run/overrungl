@@ -40,24 +40,24 @@ public final class GLARBTimerQuery {
     }
 
     public void QueryCounter(@CType("GLuint") int id, @CType("GLenum") int target) {
-        try { if (!Unmarshal.isNullPointer(PFN_glQueryCounter))
+        if (!Unmarshal.isNullPointer(PFN_glQueryCounter)) { try {
             MH_glQueryCounter.invokeExact(PFN_glQueryCounter, id, target);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glQueryCounter", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glQueryCounter", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glQueryCounter"); }
     }
 
     public void GetQueryObjecti64v(@CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLint64 *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetQueryObjecti64v))
+        if (!Unmarshal.isNullPointer(PFN_glGetQueryObjecti64v)) { try {
             MH_glGetQueryObjecti64v.invokeExact(PFN_glGetQueryObjecti64v, id, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetQueryObjecti64v", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetQueryObjecti64v", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetQueryObjecti64v"); }
     }
 
     public void GetQueryObjectui64v(@CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLuint64 *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetQueryObjectui64v))
+        if (!Unmarshal.isNullPointer(PFN_glGetQueryObjectui64v)) { try {
             MH_glGetQueryObjectui64v.invokeExact(PFN_glGetQueryObjectui64v, id, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetQueryObjectui64v", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetQueryObjectui64v", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetQueryObjectui64v"); }
     }
 
 }

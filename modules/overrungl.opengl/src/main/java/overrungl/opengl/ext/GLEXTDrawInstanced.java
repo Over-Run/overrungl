@@ -35,17 +35,17 @@ public final class GLEXTDrawInstanced {
     }
 
     public void DrawArraysInstancedEXT(@CType("GLenum") int mode, @CType("GLint") int start, @CType("GLsizei") int count, @CType("GLsizei") int primcount) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDrawArraysInstancedEXT))
+        if (!Unmarshal.isNullPointer(PFN_glDrawArraysInstancedEXT)) { try {
             MH_glDrawArraysInstancedEXT.invokeExact(PFN_glDrawArraysInstancedEXT, mode, start, count, primcount);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawArraysInstancedEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDrawArraysInstancedEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDrawArraysInstancedEXT"); }
     }
 
     public void DrawElementsInstancedEXT(@CType("GLenum") int mode, @CType("GLsizei") int count, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment indices, @CType("GLsizei") int primcount) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDrawElementsInstancedEXT))
+        if (!Unmarshal.isNullPointer(PFN_glDrawElementsInstancedEXT)) { try {
             MH_glDrawElementsInstancedEXT.invokeExact(PFN_glDrawElementsInstancedEXT, mode, count, type, indices, primcount);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawElementsInstancedEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDrawElementsInstancedEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDrawElementsInstancedEXT"); }
     }
 
 }

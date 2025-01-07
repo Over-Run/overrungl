@@ -38,17 +38,17 @@ public final class GLSGISFogFunction {
     }
 
     public void FogFuncSGIS(@CType("GLsizei") int n, @CType("const GLfloat *") java.lang.foreign.MemorySegment points) {
-        try { if (!Unmarshal.isNullPointer(PFN_glFogFuncSGIS))
+        if (!Unmarshal.isNullPointer(PFN_glFogFuncSGIS)) { try {
             MH_glFogFuncSGIS.invokeExact(PFN_glFogFuncSGIS, n, points);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFogFuncSGIS", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFogFuncSGIS", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFogFuncSGIS"); }
     }
 
     public void GetFogFuncSGIS(@CType("GLfloat *") java.lang.foreign.MemorySegment points) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetFogFuncSGIS))
+        if (!Unmarshal.isNullPointer(PFN_glGetFogFuncSGIS)) { try {
             MH_glGetFogFuncSGIS.invokeExact(PFN_glGetFogFuncSGIS, points);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetFogFuncSGIS", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetFogFuncSGIS", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetFogFuncSGIS"); }
     }
 
 }

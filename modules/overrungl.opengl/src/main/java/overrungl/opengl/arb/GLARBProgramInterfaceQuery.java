@@ -97,48 +97,45 @@ public final class GLARBProgramInterfaceQuery {
     }
 
     public void GetProgramInterfaceiv(@CType("GLuint") int program, @CType("GLenum") int programInterface, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetProgramInterfaceiv))
+        if (!Unmarshal.isNullPointer(PFN_glGetProgramInterfaceiv)) { try {
             MH_glGetProgramInterfaceiv.invokeExact(PFN_glGetProgramInterfaceiv, program, programInterface, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetProgramInterfaceiv", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetProgramInterfaceiv", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetProgramInterfaceiv"); }
     }
 
     public @CType("GLuint") int GetProgramResourceIndex(@CType("GLuint") int program, @CType("GLenum") int programInterface, @CType("const GLchar *") java.lang.foreign.MemorySegment name) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetProgramResourceIndex))
+        if (!Unmarshal.isNullPointer(PFN_glGetProgramResourceIndex)) { try {
             return (int) MH_glGetProgramResourceIndex.invokeExact(PFN_glGetProgramResourceIndex, program, programInterface, name);
-            else return 0;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetProgramResourceIndex", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetProgramResourceIndex", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetProgramResourceIndex"); }
     }
 
     public void GetProgramResourceName(@CType("GLuint") int program, @CType("GLenum") int programInterface, @CType("GLuint") int index, @CType("GLsizei") int bufSize, @CType("GLsizei *") java.lang.foreign.MemorySegment length, @CType("GLchar *") java.lang.foreign.MemorySegment name) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetProgramResourceName))
+        if (!Unmarshal.isNullPointer(PFN_glGetProgramResourceName)) { try {
             MH_glGetProgramResourceName.invokeExact(PFN_glGetProgramResourceName, program, programInterface, index, bufSize, length, name);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetProgramResourceName", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetProgramResourceName", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetProgramResourceName"); }
     }
 
     public void GetProgramResourceiv(@CType("GLuint") int program, @CType("GLenum") int programInterface, @CType("GLuint") int index, @CType("GLsizei") int propCount, @CType("const GLenum *") java.lang.foreign.MemorySegment props, @CType("GLsizei") int count, @CType("GLsizei *") java.lang.foreign.MemorySegment length, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetProgramResourceiv))
+        if (!Unmarshal.isNullPointer(PFN_glGetProgramResourceiv)) { try {
             MH_glGetProgramResourceiv.invokeExact(PFN_glGetProgramResourceiv, program, programInterface, index, propCount, props, count, length, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetProgramResourceiv", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetProgramResourceiv", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetProgramResourceiv"); }
     }
 
     public @CType("GLint") int GetProgramResourceLocation(@CType("GLuint") int program, @CType("GLenum") int programInterface, @CType("const GLchar *") java.lang.foreign.MemorySegment name) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetProgramResourceLocation))
+        if (!Unmarshal.isNullPointer(PFN_glGetProgramResourceLocation)) { try {
             return (int) MH_glGetProgramResourceLocation.invokeExact(PFN_glGetProgramResourceLocation, program, programInterface, name);
-            else return 0;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetProgramResourceLocation", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetProgramResourceLocation", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetProgramResourceLocation"); }
     }
 
     public @CType("GLint") int GetProgramResourceLocationIndex(@CType("GLuint") int program, @CType("GLenum") int programInterface, @CType("const GLchar *") java.lang.foreign.MemorySegment name) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetProgramResourceLocationIndex))
+        if (!Unmarshal.isNullPointer(PFN_glGetProgramResourceLocationIndex)) { try {
             return (int) MH_glGetProgramResourceLocationIndex.invokeExact(PFN_glGetProgramResourceLocationIndex, program, programInterface, name);
-            else return 0;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetProgramResourceLocationIndex", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetProgramResourceLocationIndex", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetProgramResourceLocationIndex"); }
     }
 
 }

@@ -32,10 +32,10 @@ public final class GLSGIXTagSampleBuffer {
     }
 
     public void TagSampleBufferSGIX() {
-        try { if (!Unmarshal.isNullPointer(PFN_glTagSampleBufferSGIX))
+        if (!Unmarshal.isNullPointer(PFN_glTagSampleBufferSGIX)) { try {
             MH_glTagSampleBufferSGIX.invokeExact(PFN_glTagSampleBufferSGIX);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glTagSampleBufferSGIX", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glTagSampleBufferSGIX", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glTagSampleBufferSGIX"); }
     }
 
 }

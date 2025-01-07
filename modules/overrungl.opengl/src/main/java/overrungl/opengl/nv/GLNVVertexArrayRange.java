@@ -40,17 +40,17 @@ public final class GLNVVertexArrayRange {
     }
 
     public void FlushVertexArrayRangeNV() {
-        try { if (!Unmarshal.isNullPointer(PFN_glFlushVertexArrayRangeNV))
+        if (!Unmarshal.isNullPointer(PFN_glFlushVertexArrayRangeNV)) { try {
             MH_glFlushVertexArrayRangeNV.invokeExact(PFN_glFlushVertexArrayRangeNV);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFlushVertexArrayRangeNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFlushVertexArrayRangeNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFlushVertexArrayRangeNV"); }
     }
 
     public void VertexArrayRangeNV(@CType("GLsizei") int length, @CType("const void *") java.lang.foreign.MemorySegment pointer) {
-        try { if (!Unmarshal.isNullPointer(PFN_glVertexArrayRangeNV))
+        if (!Unmarshal.isNullPointer(PFN_glVertexArrayRangeNV)) { try {
             MH_glVertexArrayRangeNV.invokeExact(PFN_glVertexArrayRangeNV, length, pointer);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexArrayRangeNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glVertexArrayRangeNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glVertexArrayRangeNV"); }
     }
 
 }

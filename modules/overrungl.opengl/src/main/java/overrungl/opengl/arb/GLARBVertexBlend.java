@@ -101,73 +101,73 @@ public final class GLARBVertexBlend {
     }
 
     public void WeightbvARB(@CType("GLint") int size, @CType("const GLbyte *") java.lang.foreign.MemorySegment weights) {
-        try { if (!Unmarshal.isNullPointer(PFN_glWeightbvARB))
+        if (!Unmarshal.isNullPointer(PFN_glWeightbvARB)) { try {
             MH_glWeightbvARB.invokeExact(PFN_glWeightbvARB, size, weights);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glWeightbvARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glWeightbvARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glWeightbvARB"); }
     }
 
     public void WeightsvARB(@CType("GLint") int size, @CType("const GLshort *") java.lang.foreign.MemorySegment weights) {
-        try { if (!Unmarshal.isNullPointer(PFN_glWeightsvARB))
+        if (!Unmarshal.isNullPointer(PFN_glWeightsvARB)) { try {
             MH_glWeightsvARB.invokeExact(PFN_glWeightsvARB, size, weights);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glWeightsvARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glWeightsvARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glWeightsvARB"); }
     }
 
     public void WeightivARB(@CType("GLint") int size, @CType("const GLint *") java.lang.foreign.MemorySegment weights) {
-        try { if (!Unmarshal.isNullPointer(PFN_glWeightivARB))
+        if (!Unmarshal.isNullPointer(PFN_glWeightivARB)) { try {
             MH_glWeightivARB.invokeExact(PFN_glWeightivARB, size, weights);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glWeightivARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glWeightivARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glWeightivARB"); }
     }
 
     public void WeightfvARB(@CType("GLint") int size, @CType("const GLfloat *") java.lang.foreign.MemorySegment weights) {
-        try { if (!Unmarshal.isNullPointer(PFN_glWeightfvARB))
+        if (!Unmarshal.isNullPointer(PFN_glWeightfvARB)) { try {
             MH_glWeightfvARB.invokeExact(PFN_glWeightfvARB, size, weights);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glWeightfvARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glWeightfvARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glWeightfvARB"); }
     }
 
     public void WeightdvARB(@CType("GLint") int size, @CType("const GLdouble *") java.lang.foreign.MemorySegment weights) {
-        try { if (!Unmarshal.isNullPointer(PFN_glWeightdvARB))
+        if (!Unmarshal.isNullPointer(PFN_glWeightdvARB)) { try {
             MH_glWeightdvARB.invokeExact(PFN_glWeightdvARB, size, weights);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glWeightdvARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glWeightdvARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glWeightdvARB"); }
     }
 
     public void WeightubvARB(@CType("GLint") int size, @CType("const GLubyte *") java.lang.foreign.MemorySegment weights) {
-        try { if (!Unmarshal.isNullPointer(PFN_glWeightubvARB))
+        if (!Unmarshal.isNullPointer(PFN_glWeightubvARB)) { try {
             MH_glWeightubvARB.invokeExact(PFN_glWeightubvARB, size, weights);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glWeightubvARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glWeightubvARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glWeightubvARB"); }
     }
 
     public void WeightusvARB(@CType("GLint") int size, @CType("const GLushort *") java.lang.foreign.MemorySegment weights) {
-        try { if (!Unmarshal.isNullPointer(PFN_glWeightusvARB))
+        if (!Unmarshal.isNullPointer(PFN_glWeightusvARB)) { try {
             MH_glWeightusvARB.invokeExact(PFN_glWeightusvARB, size, weights);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glWeightusvARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glWeightusvARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glWeightusvARB"); }
     }
 
     public void WeightuivARB(@CType("GLint") int size, @CType("const GLuint *") java.lang.foreign.MemorySegment weights) {
-        try { if (!Unmarshal.isNullPointer(PFN_glWeightuivARB))
+        if (!Unmarshal.isNullPointer(PFN_glWeightuivARB)) { try {
             MH_glWeightuivARB.invokeExact(PFN_glWeightuivARB, size, weights);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glWeightuivARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glWeightuivARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glWeightuivARB"); }
     }
 
     public void WeightPointerARB(@CType("GLint") int size, @CType("GLenum") int type, @CType("GLsizei") int stride, @CType("const void *") java.lang.foreign.MemorySegment pointer) {
-        try { if (!Unmarshal.isNullPointer(PFN_glWeightPointerARB))
+        if (!Unmarshal.isNullPointer(PFN_glWeightPointerARB)) { try {
             MH_glWeightPointerARB.invokeExact(PFN_glWeightPointerARB, size, type, stride, pointer);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glWeightPointerARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glWeightPointerARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glWeightPointerARB"); }
     }
 
     public void VertexBlendARB(@CType("GLint") int count) {
-        try { if (!Unmarshal.isNullPointer(PFN_glVertexBlendARB))
+        if (!Unmarshal.isNullPointer(PFN_glVertexBlendARB)) { try {
             MH_glVertexBlendARB.invokeExact(PFN_glVertexBlendARB, count);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexBlendARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glVertexBlendARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glVertexBlendARB"); }
     }
 
 }

@@ -36,17 +36,17 @@ public final class GLMESAFramebufferFlipY {
     }
 
     public void FramebufferParameteriMESA(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLint") int param) {
-        try { if (!Unmarshal.isNullPointer(PFN_glFramebufferParameteriMESA))
+        if (!Unmarshal.isNullPointer(PFN_glFramebufferParameteriMESA)) { try {
             MH_glFramebufferParameteriMESA.invokeExact(PFN_glFramebufferParameteriMESA, target, pname, param);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFramebufferParameteriMESA", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFramebufferParameteriMESA", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFramebufferParameteriMESA"); }
     }
 
     public void GetFramebufferParameterivMESA(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetFramebufferParameterivMESA))
+        if (!Unmarshal.isNullPointer(PFN_glGetFramebufferParameterivMESA)) { try {
             MH_glGetFramebufferParameterivMESA.invokeExact(PFN_glGetFramebufferParameterivMESA, target, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetFramebufferParameterivMESA", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetFramebufferParameterivMESA", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetFramebufferParameterivMESA"); }
     }
 
 }

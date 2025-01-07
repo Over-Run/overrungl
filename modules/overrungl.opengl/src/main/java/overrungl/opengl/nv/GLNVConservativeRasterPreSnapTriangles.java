@@ -35,10 +35,10 @@ public final class GLNVConservativeRasterPreSnapTriangles {
     }
 
     public void ConservativeRasterParameteriNV(@CType("GLenum") int pname, @CType("GLint") int param) {
-        try { if (!Unmarshal.isNullPointer(PFN_glConservativeRasterParameteriNV))
+        if (!Unmarshal.isNullPointer(PFN_glConservativeRasterParameteriNV)) { try {
             MH_glConservativeRasterParameteriNV.invokeExact(PFN_glConservativeRasterParameteriNV, pname, param);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glConservativeRasterParameteriNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glConservativeRasterParameteriNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glConservativeRasterParameteriNV"); }
     }
 
 }

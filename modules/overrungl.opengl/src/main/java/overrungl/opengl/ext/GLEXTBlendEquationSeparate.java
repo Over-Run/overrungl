@@ -34,10 +34,10 @@ public final class GLEXTBlendEquationSeparate {
     }
 
     public void BlendEquationSeparateEXT(@CType("GLenum") int modeRGB, @CType("GLenum") int modeAlpha) {
-        try { if (!Unmarshal.isNullPointer(PFN_glBlendEquationSeparateEXT))
+        if (!Unmarshal.isNullPointer(PFN_glBlendEquationSeparateEXT)) { try {
             MH_glBlendEquationSeparateEXT.invokeExact(PFN_glBlendEquationSeparateEXT, modeRGB, modeAlpha);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glBlendEquationSeparateEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glBlendEquationSeparateEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glBlendEquationSeparateEXT"); }
     }
 
 }

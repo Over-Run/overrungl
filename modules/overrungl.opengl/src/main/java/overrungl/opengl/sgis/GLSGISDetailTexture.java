@@ -43,17 +43,17 @@ public final class GLSGISDetailTexture {
     }
 
     public void DetailTexFuncSGIS(@CType("GLenum") int target, @CType("GLsizei") int n, @CType("const GLfloat *") java.lang.foreign.MemorySegment points) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDetailTexFuncSGIS))
+        if (!Unmarshal.isNullPointer(PFN_glDetailTexFuncSGIS)) { try {
             MH_glDetailTexFuncSGIS.invokeExact(PFN_glDetailTexFuncSGIS, target, n, points);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDetailTexFuncSGIS", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDetailTexFuncSGIS", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDetailTexFuncSGIS"); }
     }
 
     public void GetDetailTexFuncSGIS(@CType("GLenum") int target, @CType("GLfloat *") java.lang.foreign.MemorySegment points) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetDetailTexFuncSGIS))
+        if (!Unmarshal.isNullPointer(PFN_glGetDetailTexFuncSGIS)) { try {
             MH_glGetDetailTexFuncSGIS.invokeExact(PFN_glGetDetailTexFuncSGIS, target, points);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetDetailTexFuncSGIS", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetDetailTexFuncSGIS", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetDetailTexFuncSGIS"); }
     }
 
 }

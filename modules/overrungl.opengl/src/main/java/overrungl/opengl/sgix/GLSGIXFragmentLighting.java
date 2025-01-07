@@ -103,129 +103,129 @@ public final class GLSGIXFragmentLighting {
     }
 
     public void FragmentColorMaterialSGIX(@CType("GLenum") int face, @CType("GLenum") int mode) {
-        try { if (!Unmarshal.isNullPointer(PFN_glFragmentColorMaterialSGIX))
+        if (!Unmarshal.isNullPointer(PFN_glFragmentColorMaterialSGIX)) { try {
             MH_glFragmentColorMaterialSGIX.invokeExact(PFN_glFragmentColorMaterialSGIX, face, mode);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFragmentColorMaterialSGIX", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFragmentColorMaterialSGIX", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFragmentColorMaterialSGIX"); }
     }
 
     public void FragmentLightfSGIX(@CType("GLenum") int light, @CType("GLenum") int pname, @CType("GLfloat") float param) {
-        try { if (!Unmarshal.isNullPointer(PFN_glFragmentLightfSGIX))
+        if (!Unmarshal.isNullPointer(PFN_glFragmentLightfSGIX)) { try {
             MH_glFragmentLightfSGIX.invokeExact(PFN_glFragmentLightfSGIX, light, pname, param);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFragmentLightfSGIX", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFragmentLightfSGIX", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFragmentLightfSGIX"); }
     }
 
     public void FragmentLightfvSGIX(@CType("GLenum") int light, @CType("GLenum") int pname, @CType("const GLfloat *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glFragmentLightfvSGIX))
+        if (!Unmarshal.isNullPointer(PFN_glFragmentLightfvSGIX)) { try {
             MH_glFragmentLightfvSGIX.invokeExact(PFN_glFragmentLightfvSGIX, light, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFragmentLightfvSGIX", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFragmentLightfvSGIX", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFragmentLightfvSGIX"); }
     }
 
     public void FragmentLightiSGIX(@CType("GLenum") int light, @CType("GLenum") int pname, @CType("GLint") int param) {
-        try { if (!Unmarshal.isNullPointer(PFN_glFragmentLightiSGIX))
+        if (!Unmarshal.isNullPointer(PFN_glFragmentLightiSGIX)) { try {
             MH_glFragmentLightiSGIX.invokeExact(PFN_glFragmentLightiSGIX, light, pname, param);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFragmentLightiSGIX", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFragmentLightiSGIX", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFragmentLightiSGIX"); }
     }
 
     public void FragmentLightivSGIX(@CType("GLenum") int light, @CType("GLenum") int pname, @CType("const GLint *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glFragmentLightivSGIX))
+        if (!Unmarshal.isNullPointer(PFN_glFragmentLightivSGIX)) { try {
             MH_glFragmentLightivSGIX.invokeExact(PFN_glFragmentLightivSGIX, light, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFragmentLightivSGIX", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFragmentLightivSGIX", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFragmentLightivSGIX"); }
     }
 
     public void FragmentLightModelfSGIX(@CType("GLenum") int pname, @CType("GLfloat") float param) {
-        try { if (!Unmarshal.isNullPointer(PFN_glFragmentLightModelfSGIX))
+        if (!Unmarshal.isNullPointer(PFN_glFragmentLightModelfSGIX)) { try {
             MH_glFragmentLightModelfSGIX.invokeExact(PFN_glFragmentLightModelfSGIX, pname, param);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFragmentLightModelfSGIX", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFragmentLightModelfSGIX", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFragmentLightModelfSGIX"); }
     }
 
     public void FragmentLightModelfvSGIX(@CType("GLenum") int pname, @CType("const GLfloat *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glFragmentLightModelfvSGIX))
+        if (!Unmarshal.isNullPointer(PFN_glFragmentLightModelfvSGIX)) { try {
             MH_glFragmentLightModelfvSGIX.invokeExact(PFN_glFragmentLightModelfvSGIX, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFragmentLightModelfvSGIX", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFragmentLightModelfvSGIX", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFragmentLightModelfvSGIX"); }
     }
 
     public void FragmentLightModeliSGIX(@CType("GLenum") int pname, @CType("GLint") int param) {
-        try { if (!Unmarshal.isNullPointer(PFN_glFragmentLightModeliSGIX))
+        if (!Unmarshal.isNullPointer(PFN_glFragmentLightModeliSGIX)) { try {
             MH_glFragmentLightModeliSGIX.invokeExact(PFN_glFragmentLightModeliSGIX, pname, param);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFragmentLightModeliSGIX", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFragmentLightModeliSGIX", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFragmentLightModeliSGIX"); }
     }
 
     public void FragmentLightModelivSGIX(@CType("GLenum") int pname, @CType("const GLint *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glFragmentLightModelivSGIX))
+        if (!Unmarshal.isNullPointer(PFN_glFragmentLightModelivSGIX)) { try {
             MH_glFragmentLightModelivSGIX.invokeExact(PFN_glFragmentLightModelivSGIX, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFragmentLightModelivSGIX", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFragmentLightModelivSGIX", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFragmentLightModelivSGIX"); }
     }
 
     public void FragmentMaterialfSGIX(@CType("GLenum") int face, @CType("GLenum") int pname, @CType("GLfloat") float param) {
-        try { if (!Unmarshal.isNullPointer(PFN_glFragmentMaterialfSGIX))
+        if (!Unmarshal.isNullPointer(PFN_glFragmentMaterialfSGIX)) { try {
             MH_glFragmentMaterialfSGIX.invokeExact(PFN_glFragmentMaterialfSGIX, face, pname, param);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFragmentMaterialfSGIX", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFragmentMaterialfSGIX", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFragmentMaterialfSGIX"); }
     }
 
     public void FragmentMaterialfvSGIX(@CType("GLenum") int face, @CType("GLenum") int pname, @CType("const GLfloat *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glFragmentMaterialfvSGIX))
+        if (!Unmarshal.isNullPointer(PFN_glFragmentMaterialfvSGIX)) { try {
             MH_glFragmentMaterialfvSGIX.invokeExact(PFN_glFragmentMaterialfvSGIX, face, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFragmentMaterialfvSGIX", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFragmentMaterialfvSGIX", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFragmentMaterialfvSGIX"); }
     }
 
     public void FragmentMaterialiSGIX(@CType("GLenum") int face, @CType("GLenum") int pname, @CType("GLint") int param) {
-        try { if (!Unmarshal.isNullPointer(PFN_glFragmentMaterialiSGIX))
+        if (!Unmarshal.isNullPointer(PFN_glFragmentMaterialiSGIX)) { try {
             MH_glFragmentMaterialiSGIX.invokeExact(PFN_glFragmentMaterialiSGIX, face, pname, param);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFragmentMaterialiSGIX", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFragmentMaterialiSGIX", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFragmentMaterialiSGIX"); }
     }
 
     public void FragmentMaterialivSGIX(@CType("GLenum") int face, @CType("GLenum") int pname, @CType("const GLint *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glFragmentMaterialivSGIX))
+        if (!Unmarshal.isNullPointer(PFN_glFragmentMaterialivSGIX)) { try {
             MH_glFragmentMaterialivSGIX.invokeExact(PFN_glFragmentMaterialivSGIX, face, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFragmentMaterialivSGIX", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFragmentMaterialivSGIX", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFragmentMaterialivSGIX"); }
     }
 
     public void GetFragmentLightfvSGIX(@CType("GLenum") int light, @CType("GLenum") int pname, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetFragmentLightfvSGIX))
+        if (!Unmarshal.isNullPointer(PFN_glGetFragmentLightfvSGIX)) { try {
             MH_glGetFragmentLightfvSGIX.invokeExact(PFN_glGetFragmentLightfvSGIX, light, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetFragmentLightfvSGIX", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetFragmentLightfvSGIX", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetFragmentLightfvSGIX"); }
     }
 
     public void GetFragmentLightivSGIX(@CType("GLenum") int light, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetFragmentLightivSGIX))
+        if (!Unmarshal.isNullPointer(PFN_glGetFragmentLightivSGIX)) { try {
             MH_glGetFragmentLightivSGIX.invokeExact(PFN_glGetFragmentLightivSGIX, light, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetFragmentLightivSGIX", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetFragmentLightivSGIX", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetFragmentLightivSGIX"); }
     }
 
     public void GetFragmentMaterialfvSGIX(@CType("GLenum") int face, @CType("GLenum") int pname, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetFragmentMaterialfvSGIX))
+        if (!Unmarshal.isNullPointer(PFN_glGetFragmentMaterialfvSGIX)) { try {
             MH_glGetFragmentMaterialfvSGIX.invokeExact(PFN_glGetFragmentMaterialfvSGIX, face, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetFragmentMaterialfvSGIX", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetFragmentMaterialfvSGIX", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetFragmentMaterialfvSGIX"); }
     }
 
     public void GetFragmentMaterialivSGIX(@CType("GLenum") int face, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetFragmentMaterialivSGIX))
+        if (!Unmarshal.isNullPointer(PFN_glGetFragmentMaterialivSGIX)) { try {
             MH_glGetFragmentMaterialivSGIX.invokeExact(PFN_glGetFragmentMaterialivSGIX, face, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetFragmentMaterialivSGIX", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetFragmentMaterialivSGIX", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetFragmentMaterialivSGIX"); }
     }
 
     public void LightEnviSGIX(@CType("GLenum") int pname, @CType("GLint") int param) {
-        try { if (!Unmarshal.isNullPointer(PFN_glLightEnviSGIX))
+        if (!Unmarshal.isNullPointer(PFN_glLightEnviSGIX)) { try {
             MH_glLightEnviSGIX.invokeExact(PFN_glLightEnviSGIX, pname, param);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glLightEnviSGIX", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glLightEnviSGIX", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glLightEnviSGIX"); }
     }
 
 }

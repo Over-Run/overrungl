@@ -34,10 +34,10 @@ public final class GLEXTStencilTwoSide {
     }
 
     public void ActiveStencilFaceEXT(@CType("GLenum") int face) {
-        try { if (!Unmarshal.isNullPointer(PFN_glActiveStencilFaceEXT))
+        if (!Unmarshal.isNullPointer(PFN_glActiveStencilFaceEXT)) { try {
             MH_glActiveStencilFaceEXT.invokeExact(PFN_glActiveStencilFaceEXT, face);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glActiveStencilFaceEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glActiveStencilFaceEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glActiveStencilFaceEXT"); }
     }
 
 }

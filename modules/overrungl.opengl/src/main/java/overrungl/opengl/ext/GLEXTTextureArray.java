@@ -41,10 +41,10 @@ public final class GLEXTTextureArray {
     }
 
     public void FramebufferTextureLayerEXT(@CType("GLenum") int target, @CType("GLenum") int attachment, @CType("GLuint") int texture, @CType("GLint") int level, @CType("GLint") int layer) {
-        try { if (!Unmarshal.isNullPointer(PFN_glFramebufferTextureLayerEXT))
+        if (!Unmarshal.isNullPointer(PFN_glFramebufferTextureLayerEXT)) { try {
             MH_glFramebufferTextureLayerEXT.invokeExact(PFN_glFramebufferTextureLayerEXT, target, attachment, texture, level, layer);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFramebufferTextureLayerEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFramebufferTextureLayerEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFramebufferTextureLayerEXT"); }
     }
 
 }

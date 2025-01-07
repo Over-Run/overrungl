@@ -55,62 +55,59 @@ public final class GLAPPLEFence {
     }
 
     public void GenFencesAPPLE(@CType("GLsizei") int n, @CType("GLuint *") java.lang.foreign.MemorySegment fences) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGenFencesAPPLE))
+        if (!Unmarshal.isNullPointer(PFN_glGenFencesAPPLE)) { try {
             MH_glGenFencesAPPLE.invokeExact(PFN_glGenFencesAPPLE, n, fences);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGenFencesAPPLE", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGenFencesAPPLE", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGenFencesAPPLE"); }
     }
 
     public void DeleteFencesAPPLE(@CType("GLsizei") int n, @CType("const GLuint *") java.lang.foreign.MemorySegment fences) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDeleteFencesAPPLE))
+        if (!Unmarshal.isNullPointer(PFN_glDeleteFencesAPPLE)) { try {
             MH_glDeleteFencesAPPLE.invokeExact(PFN_glDeleteFencesAPPLE, n, fences);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDeleteFencesAPPLE", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDeleteFencesAPPLE", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDeleteFencesAPPLE"); }
     }
 
     public void SetFenceAPPLE(@CType("GLuint") int fence) {
-        try { if (!Unmarshal.isNullPointer(PFN_glSetFenceAPPLE))
+        if (!Unmarshal.isNullPointer(PFN_glSetFenceAPPLE)) { try {
             MH_glSetFenceAPPLE.invokeExact(PFN_glSetFenceAPPLE, fence);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glSetFenceAPPLE", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glSetFenceAPPLE", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glSetFenceAPPLE"); }
     }
 
     public @CType("GLboolean") boolean IsFenceAPPLE(@CType("GLuint") int fence) {
-        try { if (!Unmarshal.isNullPointer(PFN_glIsFenceAPPLE))
+        if (!Unmarshal.isNullPointer(PFN_glIsFenceAPPLE)) { try {
             return (boolean) MH_glIsFenceAPPLE.invokeExact(PFN_glIsFenceAPPLE, fence);
-            else return false;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glIsFenceAPPLE", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glIsFenceAPPLE", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glIsFenceAPPLE"); }
     }
 
     public @CType("GLboolean") boolean TestFenceAPPLE(@CType("GLuint") int fence) {
-        try { if (!Unmarshal.isNullPointer(PFN_glTestFenceAPPLE))
+        if (!Unmarshal.isNullPointer(PFN_glTestFenceAPPLE)) { try {
             return (boolean) MH_glTestFenceAPPLE.invokeExact(PFN_glTestFenceAPPLE, fence);
-            else return false;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glTestFenceAPPLE", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glTestFenceAPPLE", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glTestFenceAPPLE"); }
     }
 
     public void FinishFenceAPPLE(@CType("GLuint") int fence) {
-        try { if (!Unmarshal.isNullPointer(PFN_glFinishFenceAPPLE))
+        if (!Unmarshal.isNullPointer(PFN_glFinishFenceAPPLE)) { try {
             MH_glFinishFenceAPPLE.invokeExact(PFN_glFinishFenceAPPLE, fence);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFinishFenceAPPLE", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFinishFenceAPPLE", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFinishFenceAPPLE"); }
     }
 
     public @CType("GLboolean") boolean TestObjectAPPLE(@CType("GLenum") int object, @CType("GLuint") int name) {
-        try { if (!Unmarshal.isNullPointer(PFN_glTestObjectAPPLE))
+        if (!Unmarshal.isNullPointer(PFN_glTestObjectAPPLE)) { try {
             return (boolean) MH_glTestObjectAPPLE.invokeExact(PFN_glTestObjectAPPLE, object, name);
-            else return false;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glTestObjectAPPLE", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glTestObjectAPPLE", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glTestObjectAPPLE"); }
     }
 
     public void FinishObjectAPPLE(@CType("GLenum") int object, @CType("GLint") int name) {
-        try { if (!Unmarshal.isNullPointer(PFN_glFinishObjectAPPLE))
+        if (!Unmarshal.isNullPointer(PFN_glFinishObjectAPPLE)) { try {
             MH_glFinishObjectAPPLE.invokeExact(PFN_glFinishObjectAPPLE, object, name);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFinishObjectAPPLE", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFinishObjectAPPLE", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFinishObjectAPPLE"); }
     }
 
 }

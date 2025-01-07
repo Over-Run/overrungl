@@ -38,24 +38,24 @@ public final class GLNVQueryResourceTag {
     }
 
     public void GenQueryResourceTagNV(@CType("GLsizei") int n, @CType("GLint *") java.lang.foreign.MemorySegment tagIds) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGenQueryResourceTagNV))
+        if (!Unmarshal.isNullPointer(PFN_glGenQueryResourceTagNV)) { try {
             MH_glGenQueryResourceTagNV.invokeExact(PFN_glGenQueryResourceTagNV, n, tagIds);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGenQueryResourceTagNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGenQueryResourceTagNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGenQueryResourceTagNV"); }
     }
 
     public void DeleteQueryResourceTagNV(@CType("GLsizei") int n, @CType("const GLint *") java.lang.foreign.MemorySegment tagIds) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDeleteQueryResourceTagNV))
+        if (!Unmarshal.isNullPointer(PFN_glDeleteQueryResourceTagNV)) { try {
             MH_glDeleteQueryResourceTagNV.invokeExact(PFN_glDeleteQueryResourceTagNV, n, tagIds);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDeleteQueryResourceTagNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDeleteQueryResourceTagNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDeleteQueryResourceTagNV"); }
     }
 
     public void QueryResourceTagNV(@CType("GLint") int tagId, @CType("const GLchar *") java.lang.foreign.MemorySegment tagString) {
-        try { if (!Unmarshal.isNullPointer(PFN_glQueryResourceTagNV))
+        if (!Unmarshal.isNullPointer(PFN_glQueryResourceTagNV)) { try {
             MH_glQueryResourceTagNV.invokeExact(PFN_glQueryResourceTagNV, tagId, tagString);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glQueryResourceTagNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glQueryResourceTagNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glQueryResourceTagNV"); }
     }
 
 }

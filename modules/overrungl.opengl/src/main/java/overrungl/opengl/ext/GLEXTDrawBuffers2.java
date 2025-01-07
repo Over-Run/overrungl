@@ -47,46 +47,45 @@ public final class GLEXTDrawBuffers2 {
     }
 
     public void ColorMaskIndexedEXT(@CType("GLuint") int index, @CType("GLboolean") boolean r, @CType("GLboolean") boolean g, @CType("GLboolean") boolean b, @CType("GLboolean") boolean a) {
-        try { if (!Unmarshal.isNullPointer(PFN_glColorMaskIndexedEXT))
+        if (!Unmarshal.isNullPointer(PFN_glColorMaskIndexedEXT)) { try {
             MH_glColorMaskIndexedEXT.invokeExact(PFN_glColorMaskIndexedEXT, index, r, g, b, a);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glColorMaskIndexedEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glColorMaskIndexedEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glColorMaskIndexedEXT"); }
     }
 
     public void GetBooleanIndexedvEXT(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLboolean *") java.lang.foreign.MemorySegment data) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetBooleanIndexedvEXT))
+        if (!Unmarshal.isNullPointer(PFN_glGetBooleanIndexedvEXT)) { try {
             MH_glGetBooleanIndexedvEXT.invokeExact(PFN_glGetBooleanIndexedvEXT, target, index, data);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetBooleanIndexedvEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetBooleanIndexedvEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetBooleanIndexedvEXT"); }
     }
 
     public void GetIntegerIndexedvEXT(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLint *") java.lang.foreign.MemorySegment data) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetIntegerIndexedvEXT))
+        if (!Unmarshal.isNullPointer(PFN_glGetIntegerIndexedvEXT)) { try {
             MH_glGetIntegerIndexedvEXT.invokeExact(PFN_glGetIntegerIndexedvEXT, target, index, data);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetIntegerIndexedvEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetIntegerIndexedvEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetIntegerIndexedvEXT"); }
     }
 
     public void EnableIndexedEXT(@CType("GLenum") int target, @CType("GLuint") int index) {
-        try { if (!Unmarshal.isNullPointer(PFN_glEnableIndexedEXT))
+        if (!Unmarshal.isNullPointer(PFN_glEnableIndexedEXT)) { try {
             MH_glEnableIndexedEXT.invokeExact(PFN_glEnableIndexedEXT, target, index);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glEnableIndexedEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glEnableIndexedEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glEnableIndexedEXT"); }
     }
 
     public void DisableIndexedEXT(@CType("GLenum") int target, @CType("GLuint") int index) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDisableIndexedEXT))
+        if (!Unmarshal.isNullPointer(PFN_glDisableIndexedEXT)) { try {
             MH_glDisableIndexedEXT.invokeExact(PFN_glDisableIndexedEXT, target, index);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDisableIndexedEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDisableIndexedEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDisableIndexedEXT"); }
     }
 
     public @CType("GLboolean") boolean IsEnabledIndexedEXT(@CType("GLenum") int target, @CType("GLuint") int index) {
-        try { if (!Unmarshal.isNullPointer(PFN_glIsEnabledIndexedEXT))
+        if (!Unmarshal.isNullPointer(PFN_glIsEnabledIndexedEXT)) { try {
             return (boolean) MH_glIsEnabledIndexedEXT.invokeExact(PFN_glIsEnabledIndexedEXT, target, index);
-            else return false;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glIsEnabledIndexedEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glIsEnabledIndexedEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glIsEnabledIndexedEXT"); }
     }
 
 }

@@ -53,54 +53,52 @@ public final class GLNVFence {
     }
 
     public void DeleteFencesNV(@CType("GLsizei") int n, @CType("const GLuint *") java.lang.foreign.MemorySegment fences) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDeleteFencesNV))
+        if (!Unmarshal.isNullPointer(PFN_glDeleteFencesNV)) { try {
             MH_glDeleteFencesNV.invokeExact(PFN_glDeleteFencesNV, n, fences);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDeleteFencesNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDeleteFencesNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDeleteFencesNV"); }
     }
 
     public void GenFencesNV(@CType("GLsizei") int n, @CType("GLuint *") java.lang.foreign.MemorySegment fences) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGenFencesNV))
+        if (!Unmarshal.isNullPointer(PFN_glGenFencesNV)) { try {
             MH_glGenFencesNV.invokeExact(PFN_glGenFencesNV, n, fences);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGenFencesNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGenFencesNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGenFencesNV"); }
     }
 
     public @CType("GLboolean") boolean IsFenceNV(@CType("GLuint") int fence) {
-        try { if (!Unmarshal.isNullPointer(PFN_glIsFenceNV))
+        if (!Unmarshal.isNullPointer(PFN_glIsFenceNV)) { try {
             return (boolean) MH_glIsFenceNV.invokeExact(PFN_glIsFenceNV, fence);
-            else return false;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glIsFenceNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glIsFenceNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glIsFenceNV"); }
     }
 
     public @CType("GLboolean") boolean TestFenceNV(@CType("GLuint") int fence) {
-        try { if (!Unmarshal.isNullPointer(PFN_glTestFenceNV))
+        if (!Unmarshal.isNullPointer(PFN_glTestFenceNV)) { try {
             return (boolean) MH_glTestFenceNV.invokeExact(PFN_glTestFenceNV, fence);
-            else return false;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glTestFenceNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glTestFenceNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glTestFenceNV"); }
     }
 
     public void GetFenceivNV(@CType("GLuint") int fence, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetFenceivNV))
+        if (!Unmarshal.isNullPointer(PFN_glGetFenceivNV)) { try {
             MH_glGetFenceivNV.invokeExact(PFN_glGetFenceivNV, fence, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetFenceivNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetFenceivNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetFenceivNV"); }
     }
 
     public void FinishFenceNV(@CType("GLuint") int fence) {
-        try { if (!Unmarshal.isNullPointer(PFN_glFinishFenceNV))
+        if (!Unmarshal.isNullPointer(PFN_glFinishFenceNV)) { try {
             MH_glFinishFenceNV.invokeExact(PFN_glFinishFenceNV, fence);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFinishFenceNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFinishFenceNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFinishFenceNV"); }
     }
 
     public void SetFenceNV(@CType("GLuint") int fence, @CType("GLenum") int condition) {
-        try { if (!Unmarshal.isNullPointer(PFN_glSetFenceNV))
+        if (!Unmarshal.isNullPointer(PFN_glSetFenceNV)) { try {
             MH_glSetFenceNV.invokeExact(PFN_glSetFenceNV, fence, condition);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glSetFenceNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glSetFenceNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glSetFenceNV"); }
     }
 
 }

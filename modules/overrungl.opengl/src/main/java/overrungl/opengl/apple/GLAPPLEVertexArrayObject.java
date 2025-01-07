@@ -42,32 +42,31 @@ public final class GLAPPLEVertexArrayObject {
     }
 
     public void BindVertexArrayAPPLE(@CType("GLuint") int array) {
-        try { if (!Unmarshal.isNullPointer(PFN_glBindVertexArrayAPPLE))
+        if (!Unmarshal.isNullPointer(PFN_glBindVertexArrayAPPLE)) { try {
             MH_glBindVertexArrayAPPLE.invokeExact(PFN_glBindVertexArrayAPPLE, array);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glBindVertexArrayAPPLE", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glBindVertexArrayAPPLE", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glBindVertexArrayAPPLE"); }
     }
 
     public void DeleteVertexArraysAPPLE(@CType("GLsizei") int n, @CType("const GLuint *") java.lang.foreign.MemorySegment arrays) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDeleteVertexArraysAPPLE))
+        if (!Unmarshal.isNullPointer(PFN_glDeleteVertexArraysAPPLE)) { try {
             MH_glDeleteVertexArraysAPPLE.invokeExact(PFN_glDeleteVertexArraysAPPLE, n, arrays);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDeleteVertexArraysAPPLE", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDeleteVertexArraysAPPLE", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDeleteVertexArraysAPPLE"); }
     }
 
     public void GenVertexArraysAPPLE(@CType("GLsizei") int n, @CType("GLuint *") java.lang.foreign.MemorySegment arrays) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGenVertexArraysAPPLE))
+        if (!Unmarshal.isNullPointer(PFN_glGenVertexArraysAPPLE)) { try {
             MH_glGenVertexArraysAPPLE.invokeExact(PFN_glGenVertexArraysAPPLE, n, arrays);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGenVertexArraysAPPLE", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGenVertexArraysAPPLE", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGenVertexArraysAPPLE"); }
     }
 
     public @CType("GLboolean") boolean IsVertexArrayAPPLE(@CType("GLuint") int array) {
-        try { if (!Unmarshal.isNullPointer(PFN_glIsVertexArrayAPPLE))
+        if (!Unmarshal.isNullPointer(PFN_glIsVertexArrayAPPLE)) { try {
             return (boolean) MH_glIsVertexArrayAPPLE.invokeExact(PFN_glIsVertexArrayAPPLE, array);
-            else return false;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glIsVertexArrayAPPLE", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glIsVertexArrayAPPLE", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glIsVertexArrayAPPLE"); }
     }
 
 }

@@ -32,11 +32,10 @@ public final class GLNVVdpauInterop2 {
     }
 
     public @CType("GLvdpauSurfaceNV") long VDPAURegisterVideoSurfaceWithPictureStructureNV(@CType("const void *") java.lang.foreign.MemorySegment vdpSurface, @CType("GLenum") int target, @CType("GLsizei") int numTextureNames, @CType("const GLuint *") java.lang.foreign.MemorySegment textureNames, @CType("GLboolean") boolean isFrameStructure) {
-        try { if (!Unmarshal.isNullPointer(PFN_glVDPAURegisterVideoSurfaceWithPictureStructureNV))
+        if (!Unmarshal.isNullPointer(PFN_glVDPAURegisterVideoSurfaceWithPictureStructureNV)) { try {
             return (long) MH_glVDPAURegisterVideoSurfaceWithPictureStructureNV.invokeExact(PFN_glVDPAURegisterVideoSurfaceWithPictureStructureNV, vdpSurface, target, numTextureNames, textureNames, isFrameStructure);
-            else return 0L;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glVDPAURegisterVideoSurfaceWithPictureStructureNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glVDPAURegisterVideoSurfaceWithPictureStructureNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glVDPAURegisterVideoSurfaceWithPictureStructureNV"); }
     }
 
 }

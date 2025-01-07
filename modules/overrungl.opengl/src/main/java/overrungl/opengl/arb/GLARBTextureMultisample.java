@@ -62,31 +62,31 @@ public final class GLARBTextureMultisample {
     }
 
     public void TexImage2DMultisample(@CType("GLenum") int target, @CType("GLsizei") int samples, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLboolean") boolean fixedsamplelocations) {
-        try { if (!Unmarshal.isNullPointer(PFN_glTexImage2DMultisample))
+        if (!Unmarshal.isNullPointer(PFN_glTexImage2DMultisample)) { try {
             MH_glTexImage2DMultisample.invokeExact(PFN_glTexImage2DMultisample, target, samples, internalformat, width, height, fixedsamplelocations);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glTexImage2DMultisample", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glTexImage2DMultisample", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glTexImage2DMultisample"); }
     }
 
     public void TexImage3DMultisample(@CType("GLenum") int target, @CType("GLsizei") int samples, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth, @CType("GLboolean") boolean fixedsamplelocations) {
-        try { if (!Unmarshal.isNullPointer(PFN_glTexImage3DMultisample))
+        if (!Unmarshal.isNullPointer(PFN_glTexImage3DMultisample)) { try {
             MH_glTexImage3DMultisample.invokeExact(PFN_glTexImage3DMultisample, target, samples, internalformat, width, height, depth, fixedsamplelocations);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glTexImage3DMultisample", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glTexImage3DMultisample", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glTexImage3DMultisample"); }
     }
 
     public void GetMultisamplefv(@CType("GLenum") int pname, @CType("GLuint") int index, @CType("GLfloat *") java.lang.foreign.MemorySegment val) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetMultisamplefv))
+        if (!Unmarshal.isNullPointer(PFN_glGetMultisamplefv)) { try {
             MH_glGetMultisamplefv.invokeExact(PFN_glGetMultisamplefv, pname, index, val);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetMultisamplefv", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetMultisamplefv", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetMultisamplefv"); }
     }
 
     public void SampleMaski(@CType("GLuint") int maskNumber, @CType("GLbitfield") int mask) {
-        try { if (!Unmarshal.isNullPointer(PFN_glSampleMaski))
+        if (!Unmarshal.isNullPointer(PFN_glSampleMaski)) { try {
             MH_glSampleMaski.invokeExact(PFN_glSampleMaski, maskNumber, mask);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glSampleMaski", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glSampleMaski", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glSampleMaski"); }
     }
 
 }

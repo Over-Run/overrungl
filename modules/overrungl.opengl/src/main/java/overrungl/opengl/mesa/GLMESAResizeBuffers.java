@@ -32,10 +32,10 @@ public final class GLMESAResizeBuffers {
     }
 
     public void ResizeBuffersMESA() {
-        try { if (!Unmarshal.isNullPointer(PFN_glResizeBuffersMESA))
+        if (!Unmarshal.isNullPointer(PFN_glResizeBuffersMESA)) { try {
             MH_glResizeBuffersMESA.invokeExact(PFN_glResizeBuffersMESA);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glResizeBuffersMESA", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glResizeBuffersMESA", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glResizeBuffersMESA"); }
     }
 
 }

@@ -37,10 +37,10 @@ public final class GLEXTBlendColor {
     }
 
     public void BlendColorEXT(@CType("GLfloat") float red, @CType("GLfloat") float green, @CType("GLfloat") float blue, @CType("GLfloat") float alpha) {
-        try { if (!Unmarshal.isNullPointer(PFN_glBlendColorEXT))
+        if (!Unmarshal.isNullPointer(PFN_glBlendColorEXT)) { try {
             MH_glBlendColorEXT.invokeExact(PFN_glBlendColorEXT, red, green, blue, alpha);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glBlendColorEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glBlendColorEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glBlendColorEXT"); }
     }
 
 }

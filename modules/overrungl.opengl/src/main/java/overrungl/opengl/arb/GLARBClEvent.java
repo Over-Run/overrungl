@@ -34,11 +34,10 @@ public final class GLARBClEvent {
     }
 
     public @CType("GLsync") java.lang.foreign.MemorySegment CreateSyncFromCLeventARB(@CType("struct _cl_context *") java.lang.foreign.MemorySegment context, @CType("struct _cl_event *") java.lang.foreign.MemorySegment event, @CType("GLbitfield") int flags) {
-        try { if (!Unmarshal.isNullPointer(PFN_glCreateSyncFromCLeventARB))
+        if (!Unmarshal.isNullPointer(PFN_glCreateSyncFromCLeventARB)) { try {
             return (java.lang.foreign.MemorySegment) MH_glCreateSyncFromCLeventARB.invokeExact(PFN_glCreateSyncFromCLeventARB, context, event, flags);
-            else return MemorySegment.NULL;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glCreateSyncFromCLeventARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glCreateSyncFromCLeventARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glCreateSyncFromCLeventARB"); }
     }
 
 }

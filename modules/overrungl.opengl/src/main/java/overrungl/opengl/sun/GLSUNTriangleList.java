@@ -67,52 +67,52 @@ public final class GLSUNTriangleList {
     }
 
     public void ReplacementCodeuiSUN(@CType("GLuint") int code) {
-        try { if (!Unmarshal.isNullPointer(PFN_glReplacementCodeuiSUN))
+        if (!Unmarshal.isNullPointer(PFN_glReplacementCodeuiSUN)) { try {
             MH_glReplacementCodeuiSUN.invokeExact(PFN_glReplacementCodeuiSUN, code);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glReplacementCodeuiSUN", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glReplacementCodeuiSUN", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glReplacementCodeuiSUN"); }
     }
 
     public void ReplacementCodeusSUN(@CType("GLushort") short code) {
-        try { if (!Unmarshal.isNullPointer(PFN_glReplacementCodeusSUN))
+        if (!Unmarshal.isNullPointer(PFN_glReplacementCodeusSUN)) { try {
             MH_glReplacementCodeusSUN.invokeExact(PFN_glReplacementCodeusSUN, code);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glReplacementCodeusSUN", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glReplacementCodeusSUN", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glReplacementCodeusSUN"); }
     }
 
     public void ReplacementCodeubSUN(@CType("GLubyte") byte code) {
-        try { if (!Unmarshal.isNullPointer(PFN_glReplacementCodeubSUN))
+        if (!Unmarshal.isNullPointer(PFN_glReplacementCodeubSUN)) { try {
             MH_glReplacementCodeubSUN.invokeExact(PFN_glReplacementCodeubSUN, code);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glReplacementCodeubSUN", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glReplacementCodeubSUN", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glReplacementCodeubSUN"); }
     }
 
     public void ReplacementCodeuivSUN(@CType("const GLuint *") java.lang.foreign.MemorySegment code) {
-        try { if (!Unmarshal.isNullPointer(PFN_glReplacementCodeuivSUN))
+        if (!Unmarshal.isNullPointer(PFN_glReplacementCodeuivSUN)) { try {
             MH_glReplacementCodeuivSUN.invokeExact(PFN_glReplacementCodeuivSUN, code);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glReplacementCodeuivSUN", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glReplacementCodeuivSUN", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glReplacementCodeuivSUN"); }
     }
 
     public void ReplacementCodeusvSUN(@CType("const GLushort *") java.lang.foreign.MemorySegment code) {
-        try { if (!Unmarshal.isNullPointer(PFN_glReplacementCodeusvSUN))
+        if (!Unmarshal.isNullPointer(PFN_glReplacementCodeusvSUN)) { try {
             MH_glReplacementCodeusvSUN.invokeExact(PFN_glReplacementCodeusvSUN, code);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glReplacementCodeusvSUN", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glReplacementCodeusvSUN", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glReplacementCodeusvSUN"); }
     }
 
     public void ReplacementCodeubvSUN(@CType("const GLubyte *") java.lang.foreign.MemorySegment code) {
-        try { if (!Unmarshal.isNullPointer(PFN_glReplacementCodeubvSUN))
+        if (!Unmarshal.isNullPointer(PFN_glReplacementCodeubvSUN)) { try {
             MH_glReplacementCodeubvSUN.invokeExact(PFN_glReplacementCodeubvSUN, code);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glReplacementCodeubvSUN", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glReplacementCodeubvSUN", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glReplacementCodeubvSUN"); }
     }
 
     public void ReplacementCodePointerSUN(@CType("GLenum") int type, @CType("GLsizei") int stride, @CType("const void **") java.lang.foreign.MemorySegment pointer) {
-        try { if (!Unmarshal.isNullPointer(PFN_glReplacementCodePointerSUN))
+        if (!Unmarshal.isNullPointer(PFN_glReplacementCodePointerSUN)) { try {
             MH_glReplacementCodePointerSUN.invokeExact(PFN_glReplacementCodePointerSUN, type, stride, pointer);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glReplacementCodePointerSUN", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glReplacementCodePointerSUN", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glReplacementCodePointerSUN"); }
     }
 
 }

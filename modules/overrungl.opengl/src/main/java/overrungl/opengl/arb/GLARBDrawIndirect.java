@@ -37,17 +37,17 @@ public final class GLARBDrawIndirect {
     }
 
     public void DrawArraysIndirect(@CType("GLenum") int mode, @CType("const void *") java.lang.foreign.MemorySegment indirect) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDrawArraysIndirect))
+        if (!Unmarshal.isNullPointer(PFN_glDrawArraysIndirect)) { try {
             MH_glDrawArraysIndirect.invokeExact(PFN_glDrawArraysIndirect, mode, indirect);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawArraysIndirect", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDrawArraysIndirect", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDrawArraysIndirect"); }
     }
 
     public void DrawElementsIndirect(@CType("GLenum") int mode, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment indirect) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDrawElementsIndirect))
+        if (!Unmarshal.isNullPointer(PFN_glDrawElementsIndirect)) { try {
             MH_glDrawElementsIndirect.invokeExact(PFN_glDrawElementsIndirect, mode, type, indirect);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawElementsIndirect", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDrawElementsIndirect", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDrawElementsIndirect"); }
     }
 
 }

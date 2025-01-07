@@ -178,87 +178,87 @@ public sealed class GL42 extends GL41 permits GL43 {
     }
 
     public void DrawArraysInstancedBaseInstance(@CType("GLenum") int mode, @CType("GLint") int first, @CType("GLsizei") int count, @CType("GLsizei") int instancecount, @CType("GLuint") int baseinstance) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDrawArraysInstancedBaseInstance))
+        if (!Unmarshal.isNullPointer(PFN_glDrawArraysInstancedBaseInstance)) { try {
             MH_glDrawArraysInstancedBaseInstance.invokeExact(PFN_glDrawArraysInstancedBaseInstance, mode, first, count, instancecount, baseinstance);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawArraysInstancedBaseInstance", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDrawArraysInstancedBaseInstance", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDrawArraysInstancedBaseInstance"); }
     }
 
     public void DrawElementsInstancedBaseInstance(@CType("GLenum") int mode, @CType("GLsizei") int count, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment indices, @CType("GLsizei") int instancecount, @CType("GLuint") int baseinstance) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDrawElementsInstancedBaseInstance))
+        if (!Unmarshal.isNullPointer(PFN_glDrawElementsInstancedBaseInstance)) { try {
             MH_glDrawElementsInstancedBaseInstance.invokeExact(PFN_glDrawElementsInstancedBaseInstance, mode, count, type, indices, instancecount, baseinstance);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawElementsInstancedBaseInstance", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDrawElementsInstancedBaseInstance", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDrawElementsInstancedBaseInstance"); }
     }
 
     public void DrawElementsInstancedBaseVertexBaseInstance(@CType("GLenum") int mode, @CType("GLsizei") int count, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment indices, @CType("GLsizei") int instancecount, @CType("GLint") int basevertex, @CType("GLuint") int baseinstance) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDrawElementsInstancedBaseVertexBaseInstance))
+        if (!Unmarshal.isNullPointer(PFN_glDrawElementsInstancedBaseVertexBaseInstance)) { try {
             MH_glDrawElementsInstancedBaseVertexBaseInstance.invokeExact(PFN_glDrawElementsInstancedBaseVertexBaseInstance, mode, count, type, indices, instancecount, basevertex, baseinstance);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawElementsInstancedBaseVertexBaseInstance", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDrawElementsInstancedBaseVertexBaseInstance", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDrawElementsInstancedBaseVertexBaseInstance"); }
     }
 
     public void GetInternalformativ(@CType("GLenum") int target, @CType("GLenum") int internalformat, @CType("GLenum") int pname, @CType("GLsizei") int count, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetInternalformativ))
+        if (!Unmarshal.isNullPointer(PFN_glGetInternalformativ)) { try {
             MH_glGetInternalformativ.invokeExact(PFN_glGetInternalformativ, target, internalformat, pname, count, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetInternalformativ", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetInternalformativ", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetInternalformativ"); }
     }
 
     public void GetActiveAtomicCounterBufferiv(@CType("GLuint") int program, @CType("GLuint") int bufferIndex, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetActiveAtomicCounterBufferiv))
+        if (!Unmarshal.isNullPointer(PFN_glGetActiveAtomicCounterBufferiv)) { try {
             MH_glGetActiveAtomicCounterBufferiv.invokeExact(PFN_glGetActiveAtomicCounterBufferiv, program, bufferIndex, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetActiveAtomicCounterBufferiv", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetActiveAtomicCounterBufferiv", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetActiveAtomicCounterBufferiv"); }
     }
 
     public void BindImageTexture(@CType("GLuint") int unit, @CType("GLuint") int texture, @CType("GLint") int level, @CType("GLboolean") boolean layered, @CType("GLint") int layer, @CType("GLenum") int access, @CType("GLenum") int format) {
-        try { if (!Unmarshal.isNullPointer(PFN_glBindImageTexture))
+        if (!Unmarshal.isNullPointer(PFN_glBindImageTexture)) { try {
             MH_glBindImageTexture.invokeExact(PFN_glBindImageTexture, unit, texture, level, layered, layer, access, format);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glBindImageTexture", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glBindImageTexture", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glBindImageTexture"); }
     }
 
     public void MemoryBarrier(@CType("GLbitfield") int barriers) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMemoryBarrier))
+        if (!Unmarshal.isNullPointer(PFN_glMemoryBarrier)) { try {
             MH_glMemoryBarrier.invokeExact(PFN_glMemoryBarrier, barriers);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMemoryBarrier", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMemoryBarrier", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMemoryBarrier"); }
     }
 
     public void TexStorage1D(@CType("GLenum") int target, @CType("GLsizei") int levels, @CType("GLenum") int internalformat, @CType("GLsizei") int width) {
-        try { if (!Unmarshal.isNullPointer(PFN_glTexStorage1D))
+        if (!Unmarshal.isNullPointer(PFN_glTexStorage1D)) { try {
             MH_glTexStorage1D.invokeExact(PFN_glTexStorage1D, target, levels, internalformat, width);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glTexStorage1D", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glTexStorage1D", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glTexStorage1D"); }
     }
 
     public void TexStorage2D(@CType("GLenum") int target, @CType("GLsizei") int levels, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height) {
-        try { if (!Unmarshal.isNullPointer(PFN_glTexStorage2D))
+        if (!Unmarshal.isNullPointer(PFN_glTexStorage2D)) { try {
             MH_glTexStorage2D.invokeExact(PFN_glTexStorage2D, target, levels, internalformat, width, height);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glTexStorage2D", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glTexStorage2D", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glTexStorage2D"); }
     }
 
     public void TexStorage3D(@CType("GLenum") int target, @CType("GLsizei") int levels, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth) {
-        try { if (!Unmarshal.isNullPointer(PFN_glTexStorage3D))
+        if (!Unmarshal.isNullPointer(PFN_glTexStorage3D)) { try {
             MH_glTexStorage3D.invokeExact(PFN_glTexStorage3D, target, levels, internalformat, width, height, depth);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glTexStorage3D", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glTexStorage3D", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glTexStorage3D"); }
     }
 
     public void DrawTransformFeedbackInstanced(@CType("GLenum") int mode, @CType("GLuint") int id, @CType("GLsizei") int instancecount) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDrawTransformFeedbackInstanced))
+        if (!Unmarshal.isNullPointer(PFN_glDrawTransformFeedbackInstanced)) { try {
             MH_glDrawTransformFeedbackInstanced.invokeExact(PFN_glDrawTransformFeedbackInstanced, mode, id, instancecount);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawTransformFeedbackInstanced", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDrawTransformFeedbackInstanced", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDrawTransformFeedbackInstanced"); }
     }
 
     public void DrawTransformFeedbackStreamInstanced(@CType("GLenum") int mode, @CType("GLuint") int id, @CType("GLuint") int stream, @CType("GLsizei") int instancecount) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDrawTransformFeedbackStreamInstanced))
+        if (!Unmarshal.isNullPointer(PFN_glDrawTransformFeedbackStreamInstanced)) { try {
             MH_glDrawTransformFeedbackStreamInstanced.invokeExact(PFN_glDrawTransformFeedbackStreamInstanced, mode, id, stream, instancecount);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawTransformFeedbackStreamInstanced", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDrawTransformFeedbackStreamInstanced", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDrawTransformFeedbackStreamInstanced"); }
     }
 
 }

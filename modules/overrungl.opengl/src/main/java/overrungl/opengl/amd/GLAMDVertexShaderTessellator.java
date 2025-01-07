@@ -42,17 +42,17 @@ public final class GLAMDVertexShaderTessellator {
     }
 
     public void TessellationFactorAMD(@CType("GLfloat") float factor) {
-        try { if (!Unmarshal.isNullPointer(PFN_glTessellationFactorAMD))
+        if (!Unmarshal.isNullPointer(PFN_glTessellationFactorAMD)) { try {
             MH_glTessellationFactorAMD.invokeExact(PFN_glTessellationFactorAMD, factor);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glTessellationFactorAMD", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glTessellationFactorAMD", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glTessellationFactorAMD"); }
     }
 
     public void TessellationModeAMD(@CType("GLenum") int mode) {
-        try { if (!Unmarshal.isNullPointer(PFN_glTessellationModeAMD))
+        if (!Unmarshal.isNullPointer(PFN_glTessellationModeAMD)) { try {
             MH_glTessellationModeAMD.invokeExact(PFN_glTessellationModeAMD, mode);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glTessellationModeAMD", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glTessellationModeAMD", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glTessellationModeAMD"); }
     }
 
 }

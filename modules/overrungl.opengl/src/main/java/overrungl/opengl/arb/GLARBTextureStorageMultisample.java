@@ -35,17 +35,17 @@ public final class GLARBTextureStorageMultisample {
     }
 
     public void TexStorage2DMultisample(@CType("GLenum") int target, @CType("GLsizei") int samples, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLboolean") boolean fixedsamplelocations) {
-        try { if (!Unmarshal.isNullPointer(PFN_glTexStorage2DMultisample))
+        if (!Unmarshal.isNullPointer(PFN_glTexStorage2DMultisample)) { try {
             MH_glTexStorage2DMultisample.invokeExact(PFN_glTexStorage2DMultisample, target, samples, internalformat, width, height, fixedsamplelocations);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glTexStorage2DMultisample", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glTexStorage2DMultisample", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glTexStorage2DMultisample"); }
     }
 
     public void TexStorage3DMultisample(@CType("GLenum") int target, @CType("GLsizei") int samples, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth, @CType("GLboolean") boolean fixedsamplelocations) {
-        try { if (!Unmarshal.isNullPointer(PFN_glTexStorage3DMultisample))
+        if (!Unmarshal.isNullPointer(PFN_glTexStorage3DMultisample)) { try {
             MH_glTexStorage3DMultisample.invokeExact(PFN_glTexStorage3DMultisample, target, samples, internalformat, width, height, depth, fixedsamplelocations);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glTexStorage3DMultisample", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glTexStorage3DMultisample", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glTexStorage3DMultisample"); }
     }
 
 }

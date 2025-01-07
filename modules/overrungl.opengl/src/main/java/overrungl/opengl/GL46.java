@@ -64,31 +64,31 @@ public sealed class GL46 extends GL45 permits GL {
     }
 
     public void SpecializeShader(@CType("GLuint") int shader, @CType("const GLchar *") java.lang.foreign.MemorySegment pEntryPoint, @CType("GLuint") int numSpecializationConstants, @CType("const GLuint *") java.lang.foreign.MemorySegment pConstantIndex, @CType("const GLuint *") java.lang.foreign.MemorySegment pConstantValue) {
-        try { if (!Unmarshal.isNullPointer(PFN_glSpecializeShader))
+        if (!Unmarshal.isNullPointer(PFN_glSpecializeShader)) { try {
             MH_glSpecializeShader.invokeExact(PFN_glSpecializeShader, shader, pEntryPoint, numSpecializationConstants, pConstantIndex, pConstantValue);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glSpecializeShader", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glSpecializeShader", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glSpecializeShader"); }
     }
 
     public void MultiDrawArraysIndirectCount(@CType("GLenum") int mode, @CType("const void *") java.lang.foreign.MemorySegment indirect, @CType("GLintptr") long drawcount, @CType("GLsizei") int maxdrawcount, @CType("GLsizei") int stride) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiDrawArraysIndirectCount))
+        if (!Unmarshal.isNullPointer(PFN_glMultiDrawArraysIndirectCount)) { try {
             MH_glMultiDrawArraysIndirectCount.invokeExact(PFN_glMultiDrawArraysIndirectCount, mode, indirect, drawcount, maxdrawcount, stride);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiDrawArraysIndirectCount", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiDrawArraysIndirectCount", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiDrawArraysIndirectCount"); }
     }
 
     public void MultiDrawElementsIndirectCount(@CType("GLenum") int mode, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment indirect, @CType("GLintptr") long drawcount, @CType("GLsizei") int maxdrawcount, @CType("GLsizei") int stride) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiDrawElementsIndirectCount))
+        if (!Unmarshal.isNullPointer(PFN_glMultiDrawElementsIndirectCount)) { try {
             MH_glMultiDrawElementsIndirectCount.invokeExact(PFN_glMultiDrawElementsIndirectCount, mode, type, indirect, drawcount, maxdrawcount, stride);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiDrawElementsIndirectCount", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiDrawElementsIndirectCount", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiDrawElementsIndirectCount"); }
     }
 
     public void PolygonOffsetClamp(@CType("GLfloat") float factor, @CType("GLfloat") float units, @CType("GLfloat") float clamp) {
-        try { if (!Unmarshal.isNullPointer(PFN_glPolygonOffsetClamp))
+        if (!Unmarshal.isNullPointer(PFN_glPolygonOffsetClamp)) { try {
             MH_glPolygonOffsetClamp.invokeExact(PFN_glPolygonOffsetClamp, factor, units, clamp);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glPolygonOffsetClamp", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glPolygonOffsetClamp", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glPolygonOffsetClamp"); }
     }
 
 }

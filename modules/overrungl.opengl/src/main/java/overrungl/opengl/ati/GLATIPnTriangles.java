@@ -44,17 +44,17 @@ public final class GLATIPnTriangles {
     }
 
     public void PNTrianglesiATI(@CType("GLenum") int pname, @CType("GLint") int param) {
-        try { if (!Unmarshal.isNullPointer(PFN_glPNTrianglesiATI))
+        if (!Unmarshal.isNullPointer(PFN_glPNTrianglesiATI)) { try {
             MH_glPNTrianglesiATI.invokeExact(PFN_glPNTrianglesiATI, pname, param);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glPNTrianglesiATI", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glPNTrianglesiATI", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glPNTrianglesiATI"); }
     }
 
     public void PNTrianglesfATI(@CType("GLenum") int pname, @CType("GLfloat") float param) {
-        try { if (!Unmarshal.isNullPointer(PFN_glPNTrianglesfATI))
+        if (!Unmarshal.isNullPointer(PFN_glPNTrianglesfATI)) { try {
             MH_glPNTrianglesfATI.invokeExact(PFN_glPNTrianglesfATI, pname, param);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glPNTrianglesfATI", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glPNTrianglesfATI", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glPNTrianglesfATI"); }
     }
 
 }

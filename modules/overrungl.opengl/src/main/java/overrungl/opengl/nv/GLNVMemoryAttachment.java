@@ -56,45 +56,45 @@ public final class GLNVMemoryAttachment {
     }
 
     public void GetMemoryObjectDetachedResourcesuivNV(@CType("GLuint") int memory, @CType("GLenum") int pname, @CType("GLint") int first, @CType("GLsizei") int count, @CType("GLuint *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetMemoryObjectDetachedResourcesuivNV))
+        if (!Unmarshal.isNullPointer(PFN_glGetMemoryObjectDetachedResourcesuivNV)) { try {
             MH_glGetMemoryObjectDetachedResourcesuivNV.invokeExact(PFN_glGetMemoryObjectDetachedResourcesuivNV, memory, pname, first, count, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetMemoryObjectDetachedResourcesuivNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetMemoryObjectDetachedResourcesuivNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetMemoryObjectDetachedResourcesuivNV"); }
     }
 
     public void ResetMemoryObjectParameterNV(@CType("GLuint") int memory, @CType("GLenum") int pname) {
-        try { if (!Unmarshal.isNullPointer(PFN_glResetMemoryObjectParameterNV))
+        if (!Unmarshal.isNullPointer(PFN_glResetMemoryObjectParameterNV)) { try {
             MH_glResetMemoryObjectParameterNV.invokeExact(PFN_glResetMemoryObjectParameterNV, memory, pname);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glResetMemoryObjectParameterNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glResetMemoryObjectParameterNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glResetMemoryObjectParameterNV"); }
     }
 
     public void TexAttachMemoryNV(@CType("GLenum") int target, @CType("GLuint") int memory, @CType("GLuint64") long offset) {
-        try { if (!Unmarshal.isNullPointer(PFN_glTexAttachMemoryNV))
+        if (!Unmarshal.isNullPointer(PFN_glTexAttachMemoryNV)) { try {
             MH_glTexAttachMemoryNV.invokeExact(PFN_glTexAttachMemoryNV, target, memory, offset);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glTexAttachMemoryNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glTexAttachMemoryNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glTexAttachMemoryNV"); }
     }
 
     public void BufferAttachMemoryNV(@CType("GLenum") int target, @CType("GLuint") int memory, @CType("GLuint64") long offset) {
-        try { if (!Unmarshal.isNullPointer(PFN_glBufferAttachMemoryNV))
+        if (!Unmarshal.isNullPointer(PFN_glBufferAttachMemoryNV)) { try {
             MH_glBufferAttachMemoryNV.invokeExact(PFN_glBufferAttachMemoryNV, target, memory, offset);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glBufferAttachMemoryNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glBufferAttachMemoryNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glBufferAttachMemoryNV"); }
     }
 
     public void TextureAttachMemoryNV(@CType("GLuint") int texture, @CType("GLuint") int memory, @CType("GLuint64") long offset) {
-        try { if (!Unmarshal.isNullPointer(PFN_glTextureAttachMemoryNV))
+        if (!Unmarshal.isNullPointer(PFN_glTextureAttachMemoryNV)) { try {
             MH_glTextureAttachMemoryNV.invokeExact(PFN_glTextureAttachMemoryNV, texture, memory, offset);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glTextureAttachMemoryNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glTextureAttachMemoryNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glTextureAttachMemoryNV"); }
     }
 
     public void NamedBufferAttachMemoryNV(@CType("GLuint") int buffer, @CType("GLuint") int memory, @CType("GLuint64") long offset) {
-        try { if (!Unmarshal.isNullPointer(PFN_glNamedBufferAttachMemoryNV))
+        if (!Unmarshal.isNullPointer(PFN_glNamedBufferAttachMemoryNV)) { try {
             MH_glNamedBufferAttachMemoryNV.invokeExact(PFN_glNamedBufferAttachMemoryNV, buffer, memory, offset);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glNamedBufferAttachMemoryNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glNamedBufferAttachMemoryNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glNamedBufferAttachMemoryNV"); }
     }
 
 }

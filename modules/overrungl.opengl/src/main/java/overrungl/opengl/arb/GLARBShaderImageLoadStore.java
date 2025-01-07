@@ -99,17 +99,17 @@ public final class GLARBShaderImageLoadStore {
     }
 
     public void BindImageTexture(@CType("GLuint") int unit, @CType("GLuint") int texture, @CType("GLint") int level, @CType("GLboolean") boolean layered, @CType("GLint") int layer, @CType("GLenum") int access, @CType("GLenum") int format) {
-        try { if (!Unmarshal.isNullPointer(PFN_glBindImageTexture))
+        if (!Unmarshal.isNullPointer(PFN_glBindImageTexture)) { try {
             MH_glBindImageTexture.invokeExact(PFN_glBindImageTexture, unit, texture, level, layered, layer, access, format);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glBindImageTexture", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glBindImageTexture", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glBindImageTexture"); }
     }
 
     public void MemoryBarrier(@CType("GLbitfield") int barriers) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMemoryBarrier))
+        if (!Unmarshal.isNullPointer(PFN_glMemoryBarrier)) { try {
             MH_glMemoryBarrier.invokeExact(PFN_glMemoryBarrier, barriers);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMemoryBarrier", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMemoryBarrier", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMemoryBarrier"); }
     }
 
 }

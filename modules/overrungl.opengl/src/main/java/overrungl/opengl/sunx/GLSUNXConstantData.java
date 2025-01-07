@@ -34,10 +34,10 @@ public final class GLSUNXConstantData {
     }
 
     public void FinishTextureSUNX() {
-        try { if (!Unmarshal.isNullPointer(PFN_glFinishTextureSUNX))
+        if (!Unmarshal.isNullPointer(PFN_glFinishTextureSUNX)) { try {
             MH_glFinishTextureSUNX.invokeExact(PFN_glFinishTextureSUNX);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFinishTextureSUNX", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFinishTextureSUNX", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFinishTextureSUNX"); }
     }
 
 }

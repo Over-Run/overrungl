@@ -35,10 +35,10 @@ public final class GLNVConservativeRasterDilate {
     }
 
     public void ConservativeRasterParameterfNV(@CType("GLenum") int pname, @CType("GLfloat") float value) {
-        try { if (!Unmarshal.isNullPointer(PFN_glConservativeRasterParameterfNV))
+        if (!Unmarshal.isNullPointer(PFN_glConservativeRasterParameterfNV)) { try {
             MH_glConservativeRasterParameterfNV.invokeExact(PFN_glConservativeRasterParameterfNV, pname, value);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glConservativeRasterParameterfNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glConservativeRasterParameterfNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glConservativeRasterParameterfNV"); }
     }
 
 }

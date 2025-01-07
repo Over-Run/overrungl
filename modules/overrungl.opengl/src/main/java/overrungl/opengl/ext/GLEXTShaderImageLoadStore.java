@@ -90,17 +90,17 @@ public final class GLEXTShaderImageLoadStore {
     }
 
     public void BindImageTextureEXT(@CType("GLuint") int index, @CType("GLuint") int texture, @CType("GLint") int level, @CType("GLboolean") boolean layered, @CType("GLint") int layer, @CType("GLenum") int access, @CType("GLint") int format) {
-        try { if (!Unmarshal.isNullPointer(PFN_glBindImageTextureEXT))
+        if (!Unmarshal.isNullPointer(PFN_glBindImageTextureEXT)) { try {
             MH_glBindImageTextureEXT.invokeExact(PFN_glBindImageTextureEXT, index, texture, level, layered, layer, access, format);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glBindImageTextureEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glBindImageTextureEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glBindImageTextureEXT"); }
     }
 
     public void MemoryBarrierEXT(@CType("GLbitfield") int barriers) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMemoryBarrierEXT))
+        if (!Unmarshal.isNullPointer(PFN_glMemoryBarrierEXT)) { try {
             MH_glMemoryBarrierEXT.invokeExact(PFN_glMemoryBarrierEXT, barriers);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMemoryBarrierEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMemoryBarrierEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMemoryBarrierEXT"); }
     }
 
 }

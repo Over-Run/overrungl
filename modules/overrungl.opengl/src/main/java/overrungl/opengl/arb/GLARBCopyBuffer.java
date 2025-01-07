@@ -34,10 +34,10 @@ public final class GLARBCopyBuffer {
     }
 
     public void CopyBufferSubData(@CType("GLenum") int readTarget, @CType("GLenum") int writeTarget, @CType("GLintptr") long readOffset, @CType("GLintptr") long writeOffset, @CType("GLsizeiptr") long size) {
-        try { if (!Unmarshal.isNullPointer(PFN_glCopyBufferSubData))
+        if (!Unmarshal.isNullPointer(PFN_glCopyBufferSubData)) { try {
             MH_glCopyBufferSubData.invokeExact(PFN_glCopyBufferSubData, readTarget, writeTarget, readOffset, writeOffset, size);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glCopyBufferSubData", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glCopyBufferSubData", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glCopyBufferSubData"); }
     }
 
 }

@@ -33,10 +33,10 @@ public final class GLEXTMemoryObjectFd {
     }
 
     public void ImportMemoryFdEXT(@CType("GLuint") int memory, @CType("GLuint64") long size, @CType("GLenum") int handleType, @CType("GLint") int fd) {
-        try { if (!Unmarshal.isNullPointer(PFN_glImportMemoryFdEXT))
+        if (!Unmarshal.isNullPointer(PFN_glImportMemoryFdEXT)) { try {
             MH_glImportMemoryFdEXT.invokeExact(PFN_glImportMemoryFdEXT, memory, size, handleType, fd);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glImportMemoryFdEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glImportMemoryFdEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glImportMemoryFdEXT"); }
     }
 
 }

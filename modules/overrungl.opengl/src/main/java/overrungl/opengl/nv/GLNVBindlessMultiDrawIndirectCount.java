@@ -35,17 +35,17 @@ public final class GLNVBindlessMultiDrawIndirectCount {
     }
 
     public void MultiDrawArraysIndirectBindlessCountNV(@CType("GLenum") int mode, @CType("const void *") java.lang.foreign.MemorySegment indirect, @CType("GLsizei") int drawCount, @CType("GLsizei") int maxDrawCount, @CType("GLsizei") int stride, @CType("GLint") int vertexBufferCount) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiDrawArraysIndirectBindlessCountNV))
+        if (!Unmarshal.isNullPointer(PFN_glMultiDrawArraysIndirectBindlessCountNV)) { try {
             MH_glMultiDrawArraysIndirectBindlessCountNV.invokeExact(PFN_glMultiDrawArraysIndirectBindlessCountNV, mode, indirect, drawCount, maxDrawCount, stride, vertexBufferCount);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiDrawArraysIndirectBindlessCountNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiDrawArraysIndirectBindlessCountNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiDrawArraysIndirectBindlessCountNV"); }
     }
 
     public void MultiDrawElementsIndirectBindlessCountNV(@CType("GLenum") int mode, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment indirect, @CType("GLsizei") int drawCount, @CType("GLsizei") int maxDrawCount, @CType("GLsizei") int stride, @CType("GLint") int vertexBufferCount) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiDrawElementsIndirectBindlessCountNV))
+        if (!Unmarshal.isNullPointer(PFN_glMultiDrawElementsIndirectBindlessCountNV)) { try {
             MH_glMultiDrawElementsIndirectBindlessCountNV.invokeExact(PFN_glMultiDrawElementsIndirectBindlessCountNV, mode, type, indirect, drawCount, maxDrawCount, stride, vertexBufferCount);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiDrawElementsIndirectBindlessCountNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiDrawElementsIndirectBindlessCountNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiDrawElementsIndirectBindlessCountNV"); }
     }
 
 }

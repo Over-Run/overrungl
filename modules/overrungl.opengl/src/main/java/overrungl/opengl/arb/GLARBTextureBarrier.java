@@ -32,10 +32,10 @@ public final class GLARBTextureBarrier {
     }
 
     public void TextureBarrier() {
-        try { if (!Unmarshal.isNullPointer(PFN_glTextureBarrier))
+        if (!Unmarshal.isNullPointer(PFN_glTextureBarrier)) { try {
             MH_glTextureBarrier.invokeExact(PFN_glTextureBarrier);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glTextureBarrier", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glTextureBarrier", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glTextureBarrier"); }
     }
 
 }

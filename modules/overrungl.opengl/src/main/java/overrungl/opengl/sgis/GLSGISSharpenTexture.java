@@ -39,17 +39,17 @@ public final class GLSGISSharpenTexture {
     }
 
     public void SharpenTexFuncSGIS(@CType("GLenum") int target, @CType("GLsizei") int n, @CType("const GLfloat *") java.lang.foreign.MemorySegment points) {
-        try { if (!Unmarshal.isNullPointer(PFN_glSharpenTexFuncSGIS))
+        if (!Unmarshal.isNullPointer(PFN_glSharpenTexFuncSGIS)) { try {
             MH_glSharpenTexFuncSGIS.invokeExact(PFN_glSharpenTexFuncSGIS, target, n, points);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glSharpenTexFuncSGIS", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glSharpenTexFuncSGIS", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glSharpenTexFuncSGIS"); }
     }
 
     public void GetSharpenTexFuncSGIS(@CType("GLenum") int target, @CType("GLfloat *") java.lang.foreign.MemorySegment points) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetSharpenTexFuncSGIS))
+        if (!Unmarshal.isNullPointer(PFN_glGetSharpenTexFuncSGIS)) { try {
             MH_glGetSharpenTexFuncSGIS.invokeExact(PFN_glGetSharpenTexFuncSGIS, target, points);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetSharpenTexFuncSGIS", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetSharpenTexFuncSGIS", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetSharpenTexFuncSGIS"); }
     }
 
 }

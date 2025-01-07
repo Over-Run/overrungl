@@ -34,10 +34,10 @@ public final class GLEXTDepthBoundsTest {
     }
 
     public void DepthBoundsEXT(@CType("GLclampd") double zmin, @CType("GLclampd") double zmax) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDepthBoundsEXT))
+        if (!Unmarshal.isNullPointer(PFN_glDepthBoundsEXT)) { try {
             MH_glDepthBoundsEXT.invokeExact(PFN_glDepthBoundsEXT, zmin, zmax);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDepthBoundsEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDepthBoundsEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDepthBoundsEXT"); }
     }
 
 }

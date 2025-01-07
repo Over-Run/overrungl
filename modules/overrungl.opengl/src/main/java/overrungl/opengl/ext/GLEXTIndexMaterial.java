@@ -35,10 +35,10 @@ public final class GLEXTIndexMaterial {
     }
 
     public void IndexMaterialEXT(@CType("GLenum") int face, @CType("GLenum") int mode) {
-        try { if (!Unmarshal.isNullPointer(PFN_glIndexMaterialEXT))
+        if (!Unmarshal.isNullPointer(PFN_glIndexMaterialEXT)) { try {
             MH_glIndexMaterialEXT.invokeExact(PFN_glIndexMaterialEXT, face, mode);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glIndexMaterialEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glIndexMaterialEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glIndexMaterialEXT"); }
     }
 
 }

@@ -38,17 +38,17 @@ public final class GLOVRMultiview {
     }
 
     public void FramebufferTextureMultiviewOVR(@CType("GLenum") int target, @CType("GLenum") int attachment, @CType("GLuint") int texture, @CType("GLint") int level, @CType("GLint") int baseViewIndex, @CType("GLsizei") int numViews) {
-        try { if (!Unmarshal.isNullPointer(PFN_glFramebufferTextureMultiviewOVR))
+        if (!Unmarshal.isNullPointer(PFN_glFramebufferTextureMultiviewOVR)) { try {
             MH_glFramebufferTextureMultiviewOVR.invokeExact(PFN_glFramebufferTextureMultiviewOVR, target, attachment, texture, level, baseViewIndex, numViews);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFramebufferTextureMultiviewOVR", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFramebufferTextureMultiviewOVR", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFramebufferTextureMultiviewOVR"); }
     }
 
     public void NamedFramebufferTextureMultiviewOVR(@CType("GLuint") int framebuffer, @CType("GLenum") int attachment, @CType("GLuint") int texture, @CType("GLint") int level, @CType("GLint") int baseViewIndex, @CType("GLsizei") int numViews) {
-        try { if (!Unmarshal.isNullPointer(PFN_glNamedFramebufferTextureMultiviewOVR))
+        if (!Unmarshal.isNullPointer(PFN_glNamedFramebufferTextureMultiviewOVR)) { try {
             MH_glNamedFramebufferTextureMultiviewOVR.invokeExact(PFN_glNamedFramebufferTextureMultiviewOVR, framebuffer, attachment, texture, level, baseViewIndex, numViews);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glNamedFramebufferTextureMultiviewOVR", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glNamedFramebufferTextureMultiviewOVR", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glNamedFramebufferTextureMultiviewOVR"); }
     }
 
 }

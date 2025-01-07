@@ -39,17 +39,17 @@ public final class GLSGISPointParameters {
     }
 
     public void PointParameterfSGIS(@CType("GLenum") int pname, @CType("GLfloat") float param) {
-        try { if (!Unmarshal.isNullPointer(PFN_glPointParameterfSGIS))
+        if (!Unmarshal.isNullPointer(PFN_glPointParameterfSGIS)) { try {
             MH_glPointParameterfSGIS.invokeExact(PFN_glPointParameterfSGIS, pname, param);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glPointParameterfSGIS", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glPointParameterfSGIS", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glPointParameterfSGIS"); }
     }
 
     public void PointParameterfvSGIS(@CType("GLenum") int pname, @CType("const GLfloat *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glPointParameterfvSGIS))
+        if (!Unmarshal.isNullPointer(PFN_glPointParameterfvSGIS)) { try {
             MH_glPointParameterfvSGIS.invokeExact(PFN_glPointParameterfvSGIS, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glPointParameterfvSGIS", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glPointParameterfvSGIS", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glPointParameterfvSGIS"); }
     }
 
 }

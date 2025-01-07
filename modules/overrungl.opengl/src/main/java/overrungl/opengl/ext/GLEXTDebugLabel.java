@@ -43,17 +43,17 @@ public final class GLEXTDebugLabel {
     }
 
     public void LabelObjectEXT(@CType("GLenum") int type, @CType("GLuint") int object, @CType("GLsizei") int length, @CType("const GLchar *") java.lang.foreign.MemorySegment label) {
-        try { if (!Unmarshal.isNullPointer(PFN_glLabelObjectEXT))
+        if (!Unmarshal.isNullPointer(PFN_glLabelObjectEXT)) { try {
             MH_glLabelObjectEXT.invokeExact(PFN_glLabelObjectEXT, type, object, length, label);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glLabelObjectEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glLabelObjectEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glLabelObjectEXT"); }
     }
 
     public void GetObjectLabelEXT(@CType("GLenum") int type, @CType("GLuint") int object, @CType("GLsizei") int bufSize, @CType("GLsizei *") java.lang.foreign.MemorySegment length, @CType("GLchar *") java.lang.foreign.MemorySegment label) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetObjectLabelEXT))
+        if (!Unmarshal.isNullPointer(PFN_glGetObjectLabelEXT)) { try {
             MH_glGetObjectLabelEXT.invokeExact(PFN_glGetObjectLabelEXT, type, object, bufSize, length, label);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetObjectLabelEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetObjectLabelEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetObjectLabelEXT"); }
     }
 
 }

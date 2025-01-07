@@ -52,17 +52,17 @@ public final class GLEXTMultisample {
     }
 
     public void SampleMaskEXT(@CType("GLclampf") float value, @CType("GLboolean") boolean invert) {
-        try { if (!Unmarshal.isNullPointer(PFN_glSampleMaskEXT))
+        if (!Unmarshal.isNullPointer(PFN_glSampleMaskEXT)) { try {
             MH_glSampleMaskEXT.invokeExact(PFN_glSampleMaskEXT, value, invert);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glSampleMaskEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glSampleMaskEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glSampleMaskEXT"); }
     }
 
     public void SamplePatternEXT(@CType("GLenum") int pattern) {
-        try { if (!Unmarshal.isNullPointer(PFN_glSamplePatternEXT))
+        if (!Unmarshal.isNullPointer(PFN_glSamplePatternEXT)) { try {
             MH_glSamplePatternEXT.invokeExact(PFN_glSamplePatternEXT, pattern);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glSamplePatternEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glSamplePatternEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glSamplePatternEXT"); }
     }
 
 }

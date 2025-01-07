@@ -35,17 +35,17 @@ public final class GLIBMMultimodeDrawArrays {
     }
 
     public void MultiModeDrawArraysIBM(@CType("const GLenum *") java.lang.foreign.MemorySegment mode, @CType("const GLint *") java.lang.foreign.MemorySegment first, @CType("const GLsizei *") java.lang.foreign.MemorySegment count, @CType("GLsizei") int primcount, @CType("GLint") int modestride) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiModeDrawArraysIBM))
+        if (!Unmarshal.isNullPointer(PFN_glMultiModeDrawArraysIBM)) { try {
             MH_glMultiModeDrawArraysIBM.invokeExact(PFN_glMultiModeDrawArraysIBM, mode, first, count, primcount, modestride);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiModeDrawArraysIBM", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiModeDrawArraysIBM", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiModeDrawArraysIBM"); }
     }
 
     public void MultiModeDrawElementsIBM(@CType("const GLenum *") java.lang.foreign.MemorySegment mode, @CType("const GLsizei *") java.lang.foreign.MemorySegment count, @CType("GLenum") int type, @CType("const void *const*") java.lang.foreign.MemorySegment indices, @CType("GLsizei") int primcount, @CType("GLint") int modestride) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiModeDrawElementsIBM))
+        if (!Unmarshal.isNullPointer(PFN_glMultiModeDrawElementsIBM)) { try {
             MH_glMultiModeDrawElementsIBM.invokeExact(PFN_glMultiModeDrawElementsIBM, mode, count, type, indices, primcount, modestride);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiModeDrawElementsIBM", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiModeDrawElementsIBM", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiModeDrawElementsIBM"); }
     }
 
 }

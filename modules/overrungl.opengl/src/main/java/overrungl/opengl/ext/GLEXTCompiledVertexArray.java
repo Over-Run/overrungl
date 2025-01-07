@@ -37,17 +37,17 @@ public final class GLEXTCompiledVertexArray {
     }
 
     public void LockArraysEXT(@CType("GLint") int first, @CType("GLsizei") int count) {
-        try { if (!Unmarshal.isNullPointer(PFN_glLockArraysEXT))
+        if (!Unmarshal.isNullPointer(PFN_glLockArraysEXT)) { try {
             MH_glLockArraysEXT.invokeExact(PFN_glLockArraysEXT, first, count);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glLockArraysEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glLockArraysEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glLockArraysEXT"); }
     }
 
     public void UnlockArraysEXT() {
-        try { if (!Unmarshal.isNullPointer(PFN_glUnlockArraysEXT))
+        if (!Unmarshal.isNullPointer(PFN_glUnlockArraysEXT)) { try {
             MH_glUnlockArraysEXT.invokeExact(PFN_glUnlockArraysEXT);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glUnlockArraysEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glUnlockArraysEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glUnlockArraysEXT"); }
     }
 
 }

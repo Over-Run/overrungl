@@ -45,31 +45,31 @@ public final class GLAMDFramebufferSamplePositions {
     }
 
     public void FramebufferSamplePositionsfvAMD(@CType("GLenum") int target, @CType("GLuint") int numsamples, @CType("GLuint") int pixelindex, @CType("const GLfloat *") java.lang.foreign.MemorySegment values) {
-        try { if (!Unmarshal.isNullPointer(PFN_glFramebufferSamplePositionsfvAMD))
+        if (!Unmarshal.isNullPointer(PFN_glFramebufferSamplePositionsfvAMD)) { try {
             MH_glFramebufferSamplePositionsfvAMD.invokeExact(PFN_glFramebufferSamplePositionsfvAMD, target, numsamples, pixelindex, values);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFramebufferSamplePositionsfvAMD", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFramebufferSamplePositionsfvAMD", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFramebufferSamplePositionsfvAMD"); }
     }
 
     public void NamedFramebufferSamplePositionsfvAMD(@CType("GLuint") int framebuffer, @CType("GLuint") int numsamples, @CType("GLuint") int pixelindex, @CType("const GLfloat *") java.lang.foreign.MemorySegment values) {
-        try { if (!Unmarshal.isNullPointer(PFN_glNamedFramebufferSamplePositionsfvAMD))
+        if (!Unmarshal.isNullPointer(PFN_glNamedFramebufferSamplePositionsfvAMD)) { try {
             MH_glNamedFramebufferSamplePositionsfvAMD.invokeExact(PFN_glNamedFramebufferSamplePositionsfvAMD, framebuffer, numsamples, pixelindex, values);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glNamedFramebufferSamplePositionsfvAMD", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glNamedFramebufferSamplePositionsfvAMD", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glNamedFramebufferSamplePositionsfvAMD"); }
     }
 
     public void GetFramebufferParameterfvAMD(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLuint") int numsamples, @CType("GLuint") int pixelindex, @CType("GLsizei") int size, @CType("GLfloat *") java.lang.foreign.MemorySegment values) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetFramebufferParameterfvAMD))
+        if (!Unmarshal.isNullPointer(PFN_glGetFramebufferParameterfvAMD)) { try {
             MH_glGetFramebufferParameterfvAMD.invokeExact(PFN_glGetFramebufferParameterfvAMD, target, pname, numsamples, pixelindex, size, values);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetFramebufferParameterfvAMD", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetFramebufferParameterfvAMD", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetFramebufferParameterfvAMD"); }
     }
 
     public void GetNamedFramebufferParameterfvAMD(@CType("GLuint") int framebuffer, @CType("GLenum") int pname, @CType("GLuint") int numsamples, @CType("GLuint") int pixelindex, @CType("GLsizei") int size, @CType("GLfloat *") java.lang.foreign.MemorySegment values) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetNamedFramebufferParameterfvAMD))
+        if (!Unmarshal.isNullPointer(PFN_glGetNamedFramebufferParameterfvAMD)) { try {
             MH_glGetNamedFramebufferParameterfvAMD.invokeExact(PFN_glGetNamedFramebufferParameterfvAMD, framebuffer, pname, numsamples, pixelindex, size, values);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetNamedFramebufferParameterfvAMD", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetNamedFramebufferParameterfvAMD", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetNamedFramebufferParameterfvAMD"); }
     }
 
 }

@@ -39,17 +39,17 @@ public final class GLNVConditionalRender {
     }
 
     public void BeginConditionalRenderNV(@CType("GLuint") int id, @CType("GLenum") int mode) {
-        try { if (!Unmarshal.isNullPointer(PFN_glBeginConditionalRenderNV))
+        if (!Unmarshal.isNullPointer(PFN_glBeginConditionalRenderNV)) { try {
             MH_glBeginConditionalRenderNV.invokeExact(PFN_glBeginConditionalRenderNV, id, mode);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glBeginConditionalRenderNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glBeginConditionalRenderNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glBeginConditionalRenderNV"); }
     }
 
     public void EndConditionalRenderNV() {
-        try { if (!Unmarshal.isNullPointer(PFN_glEndConditionalRenderNV))
+        if (!Unmarshal.isNullPointer(PFN_glEndConditionalRenderNV)) { try {
             MH_glEndConditionalRenderNV.invokeExact(PFN_glEndConditionalRenderNV);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glEndConditionalRenderNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glEndConditionalRenderNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glEndConditionalRenderNV"); }
     }
 
 }

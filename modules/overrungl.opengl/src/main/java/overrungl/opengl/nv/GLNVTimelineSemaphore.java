@@ -43,24 +43,24 @@ public final class GLNVTimelineSemaphore {
     }
 
     public void CreateSemaphoresNV(@CType("GLsizei") int n, @CType("GLuint *") java.lang.foreign.MemorySegment semaphores) {
-        try { if (!Unmarshal.isNullPointer(PFN_glCreateSemaphoresNV))
+        if (!Unmarshal.isNullPointer(PFN_glCreateSemaphoresNV)) { try {
             MH_glCreateSemaphoresNV.invokeExact(PFN_glCreateSemaphoresNV, n, semaphores);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glCreateSemaphoresNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glCreateSemaphoresNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glCreateSemaphoresNV"); }
     }
 
     public void SemaphoreParameterivNV(@CType("GLuint") int semaphore, @CType("GLenum") int pname, @CType("const GLint *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glSemaphoreParameterivNV))
+        if (!Unmarshal.isNullPointer(PFN_glSemaphoreParameterivNV)) { try {
             MH_glSemaphoreParameterivNV.invokeExact(PFN_glSemaphoreParameterivNV, semaphore, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glSemaphoreParameterivNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glSemaphoreParameterivNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glSemaphoreParameterivNV"); }
     }
 
     public void GetSemaphoreParameterivNV(@CType("GLuint") int semaphore, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetSemaphoreParameterivNV))
+        if (!Unmarshal.isNullPointer(PFN_glGetSemaphoreParameterivNV)) { try {
             MH_glGetSemaphoreParameterivNV.invokeExact(PFN_glGetSemaphoreParameterivNV, semaphore, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetSemaphoreParameterivNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetSemaphoreParameterivNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetSemaphoreParameterivNV"); }
     }
 
 }

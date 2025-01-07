@@ -74,103 +74,101 @@ public final class GLNVShaderBufferLoad {
     }
 
     public void MakeBufferResidentNV(@CType("GLenum") int target, @CType("GLenum") int access) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMakeBufferResidentNV))
+        if (!Unmarshal.isNullPointer(PFN_glMakeBufferResidentNV)) { try {
             MH_glMakeBufferResidentNV.invokeExact(PFN_glMakeBufferResidentNV, target, access);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMakeBufferResidentNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMakeBufferResidentNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMakeBufferResidentNV"); }
     }
 
     public void MakeBufferNonResidentNV(@CType("GLenum") int target) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMakeBufferNonResidentNV))
+        if (!Unmarshal.isNullPointer(PFN_glMakeBufferNonResidentNV)) { try {
             MH_glMakeBufferNonResidentNV.invokeExact(PFN_glMakeBufferNonResidentNV, target);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMakeBufferNonResidentNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMakeBufferNonResidentNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMakeBufferNonResidentNV"); }
     }
 
     public @CType("GLboolean") boolean IsBufferResidentNV(@CType("GLenum") int target) {
-        try { if (!Unmarshal.isNullPointer(PFN_glIsBufferResidentNV))
+        if (!Unmarshal.isNullPointer(PFN_glIsBufferResidentNV)) { try {
             return (boolean) MH_glIsBufferResidentNV.invokeExact(PFN_glIsBufferResidentNV, target);
-            else return false;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glIsBufferResidentNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glIsBufferResidentNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glIsBufferResidentNV"); }
     }
 
     public void MakeNamedBufferResidentNV(@CType("GLuint") int buffer, @CType("GLenum") int access) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMakeNamedBufferResidentNV))
+        if (!Unmarshal.isNullPointer(PFN_glMakeNamedBufferResidentNV)) { try {
             MH_glMakeNamedBufferResidentNV.invokeExact(PFN_glMakeNamedBufferResidentNV, buffer, access);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMakeNamedBufferResidentNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMakeNamedBufferResidentNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMakeNamedBufferResidentNV"); }
     }
 
     public void MakeNamedBufferNonResidentNV(@CType("GLuint") int buffer) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMakeNamedBufferNonResidentNV))
+        if (!Unmarshal.isNullPointer(PFN_glMakeNamedBufferNonResidentNV)) { try {
             MH_glMakeNamedBufferNonResidentNV.invokeExact(PFN_glMakeNamedBufferNonResidentNV, buffer);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMakeNamedBufferNonResidentNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMakeNamedBufferNonResidentNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMakeNamedBufferNonResidentNV"); }
     }
 
     public @CType("GLboolean") boolean IsNamedBufferResidentNV(@CType("GLuint") int buffer) {
-        try { if (!Unmarshal.isNullPointer(PFN_glIsNamedBufferResidentNV))
+        if (!Unmarshal.isNullPointer(PFN_glIsNamedBufferResidentNV)) { try {
             return (boolean) MH_glIsNamedBufferResidentNV.invokeExact(PFN_glIsNamedBufferResidentNV, buffer);
-            else return false;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glIsNamedBufferResidentNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glIsNamedBufferResidentNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glIsNamedBufferResidentNV"); }
     }
 
     public void GetBufferParameterui64vNV(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLuint64EXT *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetBufferParameterui64vNV))
+        if (!Unmarshal.isNullPointer(PFN_glGetBufferParameterui64vNV)) { try {
             MH_glGetBufferParameterui64vNV.invokeExact(PFN_glGetBufferParameterui64vNV, target, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetBufferParameterui64vNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetBufferParameterui64vNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetBufferParameterui64vNV"); }
     }
 
     public void GetNamedBufferParameterui64vNV(@CType("GLuint") int buffer, @CType("GLenum") int pname, @CType("GLuint64EXT *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetNamedBufferParameterui64vNV))
+        if (!Unmarshal.isNullPointer(PFN_glGetNamedBufferParameterui64vNV)) { try {
             MH_glGetNamedBufferParameterui64vNV.invokeExact(PFN_glGetNamedBufferParameterui64vNV, buffer, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetNamedBufferParameterui64vNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetNamedBufferParameterui64vNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetNamedBufferParameterui64vNV"); }
     }
 
     public void GetIntegerui64vNV(@CType("GLenum") int value, @CType("GLuint64EXT *") java.lang.foreign.MemorySegment result) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetIntegerui64vNV))
+        if (!Unmarshal.isNullPointer(PFN_glGetIntegerui64vNV)) { try {
             MH_glGetIntegerui64vNV.invokeExact(PFN_glGetIntegerui64vNV, value, result);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetIntegerui64vNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetIntegerui64vNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetIntegerui64vNV"); }
     }
 
     public void Uniformui64NV(@CType("GLint") int location, @CType("GLuint64EXT") long value) {
-        try { if (!Unmarshal.isNullPointer(PFN_glUniformui64NV))
+        if (!Unmarshal.isNullPointer(PFN_glUniformui64NV)) { try {
             MH_glUniformui64NV.invokeExact(PFN_glUniformui64NV, location, value);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glUniformui64NV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glUniformui64NV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glUniformui64NV"); }
     }
 
     public void Uniformui64vNV(@CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLuint64EXT *") java.lang.foreign.MemorySegment value) {
-        try { if (!Unmarshal.isNullPointer(PFN_glUniformui64vNV))
+        if (!Unmarshal.isNullPointer(PFN_glUniformui64vNV)) { try {
             MH_glUniformui64vNV.invokeExact(PFN_glUniformui64vNV, location, count, value);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glUniformui64vNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glUniformui64vNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glUniformui64vNV"); }
     }
 
     public void GetUniformui64vNV(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLuint64EXT *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetUniformui64vNV))
+        if (!Unmarshal.isNullPointer(PFN_glGetUniformui64vNV)) { try {
             MH_glGetUniformui64vNV.invokeExact(PFN_glGetUniformui64vNV, program, location, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetUniformui64vNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetUniformui64vNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetUniformui64vNV"); }
     }
 
     public void ProgramUniformui64NV(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLuint64EXT") long value) {
-        try { if (!Unmarshal.isNullPointer(PFN_glProgramUniformui64NV))
+        if (!Unmarshal.isNullPointer(PFN_glProgramUniformui64NV)) { try {
             MH_glProgramUniformui64NV.invokeExact(PFN_glProgramUniformui64NV, program, location, value);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glProgramUniformui64NV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glProgramUniformui64NV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glProgramUniformui64NV"); }
     }
 
     public void ProgramUniformui64vNV(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLuint64EXT *") java.lang.foreign.MemorySegment value) {
-        try { if (!Unmarshal.isNullPointer(PFN_glProgramUniformui64vNV))
+        if (!Unmarshal.isNullPointer(PFN_glProgramUniformui64vNV)) { try {
             MH_glProgramUniformui64vNV.invokeExact(PFN_glProgramUniformui64vNV, program, location, count, value);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glProgramUniformui64vNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glProgramUniformui64vNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glProgramUniformui64vNV"); }
     }
 
 }

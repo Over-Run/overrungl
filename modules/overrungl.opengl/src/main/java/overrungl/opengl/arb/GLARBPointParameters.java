@@ -39,17 +39,17 @@ public final class GLARBPointParameters {
     }
 
     public void PointParameterfARB(@CType("GLenum") int pname, @CType("GLfloat") float param) {
-        try { if (!Unmarshal.isNullPointer(PFN_glPointParameterfARB))
+        if (!Unmarshal.isNullPointer(PFN_glPointParameterfARB)) { try {
             MH_glPointParameterfARB.invokeExact(PFN_glPointParameterfARB, pname, param);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glPointParameterfARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glPointParameterfARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glPointParameterfARB"); }
     }
 
     public void PointParameterfvARB(@CType("GLenum") int pname, @CType("const GLfloat *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glPointParameterfvARB))
+        if (!Unmarshal.isNullPointer(PFN_glPointParameterfvARB)) { try {
             MH_glPointParameterfvARB.invokeExact(PFN_glPointParameterfvARB, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glPointParameterfvARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glPointParameterfvARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glPointParameterfvARB"); }
     }
 
 }

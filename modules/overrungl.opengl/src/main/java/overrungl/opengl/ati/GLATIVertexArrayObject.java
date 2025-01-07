@@ -73,89 +73,87 @@ public final class GLATIVertexArrayObject {
     }
 
     public @CType("GLuint") int NewObjectBufferATI(@CType("GLsizei") int size, @CType("const void *") java.lang.foreign.MemorySegment pointer, @CType("GLenum") int usage) {
-        try { if (!Unmarshal.isNullPointer(PFN_glNewObjectBufferATI))
+        if (!Unmarshal.isNullPointer(PFN_glNewObjectBufferATI)) { try {
             return (int) MH_glNewObjectBufferATI.invokeExact(PFN_glNewObjectBufferATI, size, pointer, usage);
-            else return 0;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glNewObjectBufferATI", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glNewObjectBufferATI", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glNewObjectBufferATI"); }
     }
 
     public @CType("GLboolean") boolean IsObjectBufferATI(@CType("GLuint") int buffer) {
-        try { if (!Unmarshal.isNullPointer(PFN_glIsObjectBufferATI))
+        if (!Unmarshal.isNullPointer(PFN_glIsObjectBufferATI)) { try {
             return (boolean) MH_glIsObjectBufferATI.invokeExact(PFN_glIsObjectBufferATI, buffer);
-            else return false;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glIsObjectBufferATI", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glIsObjectBufferATI", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glIsObjectBufferATI"); }
     }
 
     public void UpdateObjectBufferATI(@CType("GLuint") int buffer, @CType("GLuint") int offset, @CType("GLsizei") int size, @CType("const void *") java.lang.foreign.MemorySegment pointer, @CType("GLenum") int preserve) {
-        try { if (!Unmarshal.isNullPointer(PFN_glUpdateObjectBufferATI))
+        if (!Unmarshal.isNullPointer(PFN_glUpdateObjectBufferATI)) { try {
             MH_glUpdateObjectBufferATI.invokeExact(PFN_glUpdateObjectBufferATI, buffer, offset, size, pointer, preserve);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glUpdateObjectBufferATI", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glUpdateObjectBufferATI", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glUpdateObjectBufferATI"); }
     }
 
     public void GetObjectBufferfvATI(@CType("GLuint") int buffer, @CType("GLenum") int pname, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetObjectBufferfvATI))
+        if (!Unmarshal.isNullPointer(PFN_glGetObjectBufferfvATI)) { try {
             MH_glGetObjectBufferfvATI.invokeExact(PFN_glGetObjectBufferfvATI, buffer, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetObjectBufferfvATI", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetObjectBufferfvATI", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetObjectBufferfvATI"); }
     }
 
     public void GetObjectBufferivATI(@CType("GLuint") int buffer, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetObjectBufferivATI))
+        if (!Unmarshal.isNullPointer(PFN_glGetObjectBufferivATI)) { try {
             MH_glGetObjectBufferivATI.invokeExact(PFN_glGetObjectBufferivATI, buffer, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetObjectBufferivATI", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetObjectBufferivATI", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetObjectBufferivATI"); }
     }
 
     public void FreeObjectBufferATI(@CType("GLuint") int buffer) {
-        try { if (!Unmarshal.isNullPointer(PFN_glFreeObjectBufferATI))
+        if (!Unmarshal.isNullPointer(PFN_glFreeObjectBufferATI)) { try {
             MH_glFreeObjectBufferATI.invokeExact(PFN_glFreeObjectBufferATI, buffer);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFreeObjectBufferATI", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFreeObjectBufferATI", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFreeObjectBufferATI"); }
     }
 
     public void ArrayObjectATI(@CType("GLenum") int array, @CType("GLint") int size, @CType("GLenum") int type, @CType("GLsizei") int stride, @CType("GLuint") int buffer, @CType("GLuint") int offset) {
-        try { if (!Unmarshal.isNullPointer(PFN_glArrayObjectATI))
+        if (!Unmarshal.isNullPointer(PFN_glArrayObjectATI)) { try {
             MH_glArrayObjectATI.invokeExact(PFN_glArrayObjectATI, array, size, type, stride, buffer, offset);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glArrayObjectATI", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glArrayObjectATI", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glArrayObjectATI"); }
     }
 
     public void GetArrayObjectfvATI(@CType("GLenum") int array, @CType("GLenum") int pname, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetArrayObjectfvATI))
+        if (!Unmarshal.isNullPointer(PFN_glGetArrayObjectfvATI)) { try {
             MH_glGetArrayObjectfvATI.invokeExact(PFN_glGetArrayObjectfvATI, array, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetArrayObjectfvATI", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetArrayObjectfvATI", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetArrayObjectfvATI"); }
     }
 
     public void GetArrayObjectivATI(@CType("GLenum") int array, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetArrayObjectivATI))
+        if (!Unmarshal.isNullPointer(PFN_glGetArrayObjectivATI)) { try {
             MH_glGetArrayObjectivATI.invokeExact(PFN_glGetArrayObjectivATI, array, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetArrayObjectivATI", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetArrayObjectivATI", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetArrayObjectivATI"); }
     }
 
     public void VariantArrayObjectATI(@CType("GLuint") int id, @CType("GLenum") int type, @CType("GLsizei") int stride, @CType("GLuint") int buffer, @CType("GLuint") int offset) {
-        try { if (!Unmarshal.isNullPointer(PFN_glVariantArrayObjectATI))
+        if (!Unmarshal.isNullPointer(PFN_glVariantArrayObjectATI)) { try {
             MH_glVariantArrayObjectATI.invokeExact(PFN_glVariantArrayObjectATI, id, type, stride, buffer, offset);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glVariantArrayObjectATI", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glVariantArrayObjectATI", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glVariantArrayObjectATI"); }
     }
 
     public void GetVariantArrayObjectfvATI(@CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetVariantArrayObjectfvATI))
+        if (!Unmarshal.isNullPointer(PFN_glGetVariantArrayObjectfvATI)) { try {
             MH_glGetVariantArrayObjectfvATI.invokeExact(PFN_glGetVariantArrayObjectfvATI, id, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetVariantArrayObjectfvATI", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetVariantArrayObjectfvATI", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetVariantArrayObjectfvATI"); }
     }
 
     public void GetVariantArrayObjectivATI(@CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetVariantArrayObjectivATI))
+        if (!Unmarshal.isNullPointer(PFN_glGetVariantArrayObjectivATI)) { try {
             MH_glGetVariantArrayObjectivATI.invokeExact(PFN_glGetVariantArrayObjectivATI, id, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetVariantArrayObjectivATI", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetVariantArrayObjectivATI", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetVariantArrayObjectivATI"); }
     }
 
 }

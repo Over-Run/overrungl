@@ -21,6 +21,7 @@ import overrungl.annotation.Out;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.Marshal;
 import overrungl.util.MemoryStack;
+import overrungl.util.SymbolNotFoundError;
 import overrungl.util.Unmarshal;
 
 import java.lang.foreign.FunctionDescriptor;
@@ -118,9 +119,7 @@ public final class GLFWNative {
         try {
             return (java.lang.foreign.MemorySegment) Handles.MH_glfwGetWin32Adapter.invokeExact(monitor);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetWin32Adapter", e); }
-        } else {
-            return MemorySegment.NULL;
-        }
+        } else { throw new SymbolNotFoundError("Symbol not found: glfwGetWin32Adapter"); }
     }
 
     ///Returns the adapter device name of the specified monitor.
@@ -139,9 +138,7 @@ public final class GLFWNative {
         try {
             return Unmarshal.unmarshalAsString((java.lang.foreign.MemorySegment) Handles.MH_glfwGetWin32Adapter.invokeExact(monitor));
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetWin32Adapter", e); }
-        } else {
-            return null;
-        }
+        } else { throw new SymbolNotFoundError("Symbol not found: glfwGetWin32Adapter"); }
     }
 
     ///Returns the display device name of the specified monitor.
@@ -160,9 +157,7 @@ public final class GLFWNative {
         try {
             return (java.lang.foreign.MemorySegment) Handles.MH_glfwGetWin32Monitor.invokeExact(monitor);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetWin32Monitor", e); }
-        } else {
-            return MemorySegment.NULL;
-        }
+        } else { throw new SymbolNotFoundError("Symbol not found: glfwGetWin32Monitor"); }
     }
 
     ///Returns the display device name of the specified monitor.
@@ -181,9 +176,7 @@ public final class GLFWNative {
         try {
             return Unmarshal.unmarshalAsString((java.lang.foreign.MemorySegment) Handles.MH_glfwGetWin32Monitor.invokeExact(monitor));
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetWin32Monitor", e); }
-        } else {
-            return null;
-        }
+        } else { throw new SymbolNotFoundError("Symbol not found: glfwGetWin32Monitor"); }
     }
 
     ///Returns the `HWND` of the specified window.
@@ -208,9 +201,7 @@ public final class GLFWNative {
         try {
             return (java.lang.foreign.MemorySegment) Handles.MH_glfwGetWin32Window.invokeExact(window);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetWin32Window", e); }
-        } else {
-            return MemorySegment.NULL;
-        }
+        } else { throw new SymbolNotFoundError("Symbol not found: glfwGetWin32Window"); }
     }
 
     ///Returns the `HGLRC` of the specified window.
@@ -236,9 +227,7 @@ public final class GLFWNative {
         try {
             return (java.lang.foreign.MemorySegment) Handles.MH_glfwGetWGLContext.invokeExact(window);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetWGLContext", e); }
-        } else {
-            return MemorySegment.NULL;
-        }
+        } else { throw new SymbolNotFoundError("Symbol not found: glfwGetWGLContext"); }
     }
 
     ///Returns the `CGDirectDisplayID` of the specified monitor.
@@ -256,9 +245,7 @@ public final class GLFWNative {
         try {
             return (int) Handles.MH_glfwGetCocoaMonitor.invokeExact(monitor);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetCocoaMonitor", e); }
-        } else {
-            return 0;
-        }
+        } else { throw new SymbolNotFoundError("Symbol not found: glfwGetCocoaMonitor"); }
     }
 
     ///Returns the `NSWindow` of the specified window.
@@ -276,9 +263,7 @@ public final class GLFWNative {
         try {
             return (java.lang.foreign.MemorySegment) Handles.MH_glfwGetCocoaWindow.invokeExact(window);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetCocoaWindow", e); }
-        } else {
-            return MemorySegment.NULL;
-        }
+        } else { throw new SymbolNotFoundError("Symbol not found: glfwGetCocoaWindow"); }
     }
 
     ///Returns the `NSView` of the specified window.
@@ -296,9 +281,7 @@ public final class GLFWNative {
         try {
             return (java.lang.foreign.MemorySegment) Handles.MH_glfwGetCocoaView.invokeExact(window);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetCocoaView", e); }
-        } else {
-            return MemorySegment.NULL;
-        }
+        } else { throw new SymbolNotFoundError("Symbol not found: glfwGetCocoaView"); }
     }
 
     ///Returns the `NSOpenGLContext` of the specified window.
@@ -316,9 +299,7 @@ public final class GLFWNative {
         try {
             return (java.lang.foreign.MemorySegment) Handles.MH_glfwGetNSGLContext.invokeExact(window);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetNSGLContext", e); }
-        } else {
-            return MemorySegment.NULL;
-        }
+        } else { throw new SymbolNotFoundError("Symbol not found: glfwGetNSGLContext"); }
     }
 
     ///Returns the `Display` used by GLFW.
@@ -336,9 +317,7 @@ public final class GLFWNative {
         try {
             return (java.lang.foreign.MemorySegment) Handles.MH_glfwGetX11Display.invokeExact();
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetX11Display", e); }
-        } else {
-            return MemorySegment.NULL;
-        }
+        } else { throw new SymbolNotFoundError("Symbol not found: glfwGetX11Display"); }
     }
 
     ///Returns the `RRCrtc` of the specified monitor.
@@ -356,9 +335,7 @@ public final class GLFWNative {
         try {
             return (long) Handles.MH_glfwGetX11Adapter.invokeExact(monitor);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetX11Adapter", e); }
-        } else {
-            return 0L;
-        }
+        } else { throw new SymbolNotFoundError("Symbol not found: glfwGetX11Adapter"); }
     }
 
     ///Returns the `RROutput` of the specified monitor.
@@ -376,9 +353,7 @@ public final class GLFWNative {
         try {
             return (long) Handles.MH_glfwGetX11Monitor.invokeExact(monitor);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetX11Monitor", e); }
-        } else {
-            return 0L;
-        }
+        } else { throw new SymbolNotFoundError("Symbol not found: glfwGetX11Monitor"); }
     }
 
     ///Returns the `Window` of the specified window.
@@ -396,9 +371,7 @@ public final class GLFWNative {
         try {
             return (long) Handles.MH_glfwGetX11Window.invokeExact(window);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetX11Window", e); }
-        } else {
-            return 0L;
-        }
+        } else { throw new SymbolNotFoundError("Symbol not found: glfwGetX11Window"); }
     }
 
     ///Sets the current primary selection to the specified string.
@@ -420,7 +393,7 @@ public final class GLFWNative {
         try {
             Handles.MH_glfwSetX11SelectionString.invokeExact(string);
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetX11SelectionString", e); }
-        }
+        } else { throw new SymbolNotFoundError("Symbol not found: glfwSetX11SelectionString"); }
     }
 
     ///Sets the current primary selection to the specified string.
@@ -442,7 +415,7 @@ public final class GLFWNative {
         try (var __overrungl_stack = MemoryStack.pushLocal()) {
             Handles.MH_glfwSetX11SelectionString.invokeExact(Marshal.marshal(__overrungl_stack, string));
         } catch (Throwable e) { throw new RuntimeException("error in glfwSetX11SelectionString", e); }
-        }
+        } else { throw new SymbolNotFoundError("Symbol not found: glfwSetX11SelectionString"); }
     }
 
     ///Returns the contents of the current primary selection as a string.
@@ -470,9 +443,7 @@ public final class GLFWNative {
         try {
             return (java.lang.foreign.MemorySegment) Handles.MH_glfwGetX11SelectionString.invokeExact();
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetX11SelectionString", e); }
-        } else {
-            return MemorySegment.NULL;
-        }
+        } else { throw new SymbolNotFoundError("Symbol not found: glfwGetX11SelectionString"); }
     }
 
     ///Returns the contents of the current primary selection as a string.
@@ -500,9 +471,7 @@ public final class GLFWNative {
         try {
             return Unmarshal.unmarshalAsString((java.lang.foreign.MemorySegment) Handles.MH_glfwGetX11SelectionString.invokeExact());
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetX11SelectionString", e); }
-        } else {
-            return null;
-        }
+        } else { throw new SymbolNotFoundError("Symbol not found: glfwGetX11SelectionString"); }
     }
 
     ///Returns the `GLXContext` of the specified window.
@@ -520,9 +489,7 @@ public final class GLFWNative {
         try {
             return (java.lang.foreign.MemorySegment) Handles.MH_glfwGetGLXContext.invokeExact(window);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetGLXContext", e); }
-        } else {
-            return MemorySegment.NULL;
-        }
+        } else { throw new SymbolNotFoundError("Symbol not found: glfwGetGLXContext"); }
     }
 
     ///Returns the `GLXWindow` of the specified window.
@@ -540,9 +507,7 @@ public final class GLFWNative {
         try {
             return (long) Handles.MH_glfwGetGLXWindow.invokeExact(window);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetGLXWindow", e); }
-        } else {
-            return 0L;
-        }
+        } else { throw new SymbolNotFoundError("Symbol not found: glfwGetGLXWindow"); }
     }
 
     ///Returns the `struct wl_display*` used by GLFW.
@@ -560,9 +525,7 @@ public final class GLFWNative {
         try {
             return (java.lang.foreign.MemorySegment) Handles.MH_glfwGetWaylandDisplay.invokeExact();
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetWaylandDisplay", e); }
-        } else {
-            return MemorySegment.NULL;
-        }
+        } else { throw new SymbolNotFoundError("Symbol not found: glfwGetWaylandDisplay"); }
     }
 
     ///Returns the `struct wl_output*` of the specified monitor.
@@ -580,9 +543,7 @@ public final class GLFWNative {
         try {
             return (java.lang.foreign.MemorySegment) Handles.MH_glfwGetWaylandMonitor.invokeExact(monitor);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetWaylandMonitor", e); }
-        } else {
-            return MemorySegment.NULL;
-        }
+        } else { throw new SymbolNotFoundError("Symbol not found: glfwGetWaylandMonitor"); }
     }
 
     ///Returns the main `struct wl_surface*` of the specified window.
@@ -600,9 +561,7 @@ public final class GLFWNative {
         try {
             return (java.lang.foreign.MemorySegment) Handles.MH_glfwGetWaylandWindow.invokeExact(window);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetWaylandWindow", e); }
-        } else {
-            return MemorySegment.NULL;
-        }
+        } else { throw new SymbolNotFoundError("Symbol not found: glfwGetWaylandWindow"); }
     }
 
     ///Returns the `EGLDisplay` used by GLFW.
@@ -622,9 +581,7 @@ public final class GLFWNative {
         try {
             return (java.lang.foreign.MemorySegment) Handles.MH_glfwGetEGLDisplay.invokeExact();
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetEGLDisplay", e); }
-        } else {
-            return MemorySegment.NULL;
-        }
+        } else { throw new SymbolNotFoundError("Symbol not found: glfwGetEGLDisplay"); }
     }
 
     ///Returns the `EGLContext` of the specified window.
@@ -642,9 +599,7 @@ public final class GLFWNative {
         try {
             return (java.lang.foreign.MemorySegment) Handles.MH_glfwGetEGLContext.invokeExact(window);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetEGLContext", e); }
-        } else {
-            return MemorySegment.NULL;
-        }
+        } else { throw new SymbolNotFoundError("Symbol not found: glfwGetEGLContext"); }
     }
 
     ///Returns the `EGLSurface` of the specified window.
@@ -662,9 +617,7 @@ public final class GLFWNative {
         try {
             return (java.lang.foreign.MemorySegment) Handles.MH_glfwGetEGLSurface.invokeExact(window);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetEGLSurface", e); }
-        } else {
-            return MemorySegment.NULL;
-        }
+        } else { throw new SymbolNotFoundError("Symbol not found: glfwGetEGLSurface"); }
     }
 
     ///Retrieves the color buffer associated with the specified window.
@@ -689,9 +642,7 @@ public final class GLFWNative {
         try {
             return (int) Handles.MH_glfwGetOSMesaColorBuffer.invokeExact(window, width, height, format, buffer) != GLFW.GLFW_FALSE;
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetOSMesaColorBuffer", e); }
-        } else {
-            return false;
-        }
+        } else { throw new SymbolNotFoundError("Symbol not found: glfwGetOSMesaColorBuffer"); }
     }
 
     ///Retrieves the depth buffer associated with the specified window.
@@ -716,9 +667,7 @@ public final class GLFWNative {
         try {
             return (int) Handles.MH_glfwGetOSMesaDepthBuffer.invokeExact(window, width, height, bytesPerValue, buffer) != GLFW.GLFW_FALSE;
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetOSMesaDepthBuffer", e); }
-        } else {
-            return false;
-        }
+        } else { throw new SymbolNotFoundError("Symbol not found: glfwGetOSMesaDepthBuffer"); }
     }
 
     ///Returns the `OSMesaContext` of the specified window.
@@ -736,9 +685,7 @@ public final class GLFWNative {
         try {
             return (java.lang.foreign.MemorySegment) Handles.MH_glfwGetOSMesaContext.invokeExact(window);
         } catch (Throwable e) { throw new RuntimeException("error in glfwGetOSMesaContext", e); }
-        } else {
-            return MemorySegment.NULL;
-        }
+        } else { throw new SymbolNotFoundError("Symbol not found: glfwGetOSMesaContext"); }
     }
 
     //@formatter:on

@@ -45,24 +45,24 @@ public final class GLAPPLEVertexArrayRange {
     }
 
     public void VertexArrayRangeAPPLE(@CType("GLsizei") int length, @CType("void*") java.lang.foreign.MemorySegment pointer) {
-        try { if (!Unmarshal.isNullPointer(PFN_glVertexArrayRangeAPPLE))
+        if (!Unmarshal.isNullPointer(PFN_glVertexArrayRangeAPPLE)) { try {
             MH_glVertexArrayRangeAPPLE.invokeExact(PFN_glVertexArrayRangeAPPLE, length, pointer);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexArrayRangeAPPLE", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glVertexArrayRangeAPPLE", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glVertexArrayRangeAPPLE"); }
     }
 
     public void FlushVertexArrayRangeAPPLE(@CType("GLsizei") int length, @CType("void*") java.lang.foreign.MemorySegment pointer) {
-        try { if (!Unmarshal.isNullPointer(PFN_glFlushVertexArrayRangeAPPLE))
+        if (!Unmarshal.isNullPointer(PFN_glFlushVertexArrayRangeAPPLE)) { try {
             MH_glFlushVertexArrayRangeAPPLE.invokeExact(PFN_glFlushVertexArrayRangeAPPLE, length, pointer);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFlushVertexArrayRangeAPPLE", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFlushVertexArrayRangeAPPLE", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFlushVertexArrayRangeAPPLE"); }
     }
 
     public void VertexArrayParameteriAPPLE(@CType("GLenum") int pname, @CType("GLint") int param) {
-        try { if (!Unmarshal.isNullPointer(PFN_glVertexArrayParameteriAPPLE))
+        if (!Unmarshal.isNullPointer(PFN_glVertexArrayParameteriAPPLE)) { try {
             MH_glVertexArrayParameteriAPPLE.invokeExact(PFN_glVertexArrayParameteriAPPLE, pname, param);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexArrayParameteriAPPLE", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glVertexArrayParameteriAPPLE", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glVertexArrayParameteriAPPLE"); }
     }
 
 }

@@ -60,38 +60,38 @@ public final class GLARBES2Compatibility {
     }
 
     public void ReleaseShaderCompiler() {
-        try { if (!Unmarshal.isNullPointer(PFN_glReleaseShaderCompiler))
+        if (!Unmarshal.isNullPointer(PFN_glReleaseShaderCompiler)) { try {
             MH_glReleaseShaderCompiler.invokeExact(PFN_glReleaseShaderCompiler);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glReleaseShaderCompiler", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glReleaseShaderCompiler", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glReleaseShaderCompiler"); }
     }
 
     public void ShaderBinary(@CType("GLsizei") int count, @CType("const GLuint *") java.lang.foreign.MemorySegment shaders, @CType("GLenum") int binaryFormat, @CType("const void *") java.lang.foreign.MemorySegment binary, @CType("GLsizei") int length) {
-        try { if (!Unmarshal.isNullPointer(PFN_glShaderBinary))
+        if (!Unmarshal.isNullPointer(PFN_glShaderBinary)) { try {
             MH_glShaderBinary.invokeExact(PFN_glShaderBinary, count, shaders, binaryFormat, binary, length);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glShaderBinary", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glShaderBinary", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glShaderBinary"); }
     }
 
     public void GetShaderPrecisionFormat(@CType("GLenum") int shadertype, @CType("GLenum") int precisiontype, @CType("GLint *") java.lang.foreign.MemorySegment range, @CType("GLint *") java.lang.foreign.MemorySegment precision) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetShaderPrecisionFormat))
+        if (!Unmarshal.isNullPointer(PFN_glGetShaderPrecisionFormat)) { try {
             MH_glGetShaderPrecisionFormat.invokeExact(PFN_glGetShaderPrecisionFormat, shadertype, precisiontype, range, precision);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetShaderPrecisionFormat", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetShaderPrecisionFormat", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetShaderPrecisionFormat"); }
     }
 
     public void DepthRangef(@CType("GLfloat") float n, @CType("GLfloat") float f) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDepthRangef))
+        if (!Unmarshal.isNullPointer(PFN_glDepthRangef)) { try {
             MH_glDepthRangef.invokeExact(PFN_glDepthRangef, n, f);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDepthRangef", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDepthRangef", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDepthRangef"); }
     }
 
     public void ClearDepthf(@CType("GLfloat") float d) {
-        try { if (!Unmarshal.isNullPointer(PFN_glClearDepthf))
+        if (!Unmarshal.isNullPointer(PFN_glClearDepthf)) { try {
             MH_glClearDepthf.invokeExact(PFN_glClearDepthf, d);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glClearDepthf", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glClearDepthf", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glClearDepthf"); }
     }
 
 }

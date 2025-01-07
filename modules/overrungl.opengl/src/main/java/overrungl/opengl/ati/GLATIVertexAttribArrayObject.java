@@ -38,24 +38,24 @@ public final class GLATIVertexAttribArrayObject {
     }
 
     public void VertexAttribArrayObjectATI(@CType("GLuint") int index, @CType("GLint") int size, @CType("GLenum") int type, @CType("GLboolean") boolean normalized, @CType("GLsizei") int stride, @CType("GLuint") int buffer, @CType("GLuint") int offset) {
-        try { if (!Unmarshal.isNullPointer(PFN_glVertexAttribArrayObjectATI))
+        if (!Unmarshal.isNullPointer(PFN_glVertexAttribArrayObjectATI)) { try {
             MH_glVertexAttribArrayObjectATI.invokeExact(PFN_glVertexAttribArrayObjectATI, index, size, type, normalized, stride, buffer, offset);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexAttribArrayObjectATI", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glVertexAttribArrayObjectATI", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glVertexAttribArrayObjectATI"); }
     }
 
     public void GetVertexAttribArrayObjectfvATI(@CType("GLuint") int index, @CType("GLenum") int pname, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetVertexAttribArrayObjectfvATI))
+        if (!Unmarshal.isNullPointer(PFN_glGetVertexAttribArrayObjectfvATI)) { try {
             MH_glGetVertexAttribArrayObjectfvATI.invokeExact(PFN_glGetVertexAttribArrayObjectfvATI, index, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetVertexAttribArrayObjectfvATI", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetVertexAttribArrayObjectfvATI", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetVertexAttribArrayObjectfvATI"); }
     }
 
     public void GetVertexAttribArrayObjectivATI(@CType("GLuint") int index, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetVertexAttribArrayObjectivATI))
+        if (!Unmarshal.isNullPointer(PFN_glGetVertexAttribArrayObjectivATI)) { try {
             MH_glGetVertexAttribArrayObjectivATI.invokeExact(PFN_glGetVertexAttribArrayObjectivATI, index, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetVertexAttribArrayObjectivATI", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetVertexAttribArrayObjectivATI", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetVertexAttribArrayObjectivATI"); }
     }
 
 }

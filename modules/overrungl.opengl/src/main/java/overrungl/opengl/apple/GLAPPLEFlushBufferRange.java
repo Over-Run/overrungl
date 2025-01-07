@@ -37,17 +37,17 @@ public final class GLAPPLEFlushBufferRange {
     }
 
     public void BufferParameteriAPPLE(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLint") int param) {
-        try { if (!Unmarshal.isNullPointer(PFN_glBufferParameteriAPPLE))
+        if (!Unmarshal.isNullPointer(PFN_glBufferParameteriAPPLE)) { try {
             MH_glBufferParameteriAPPLE.invokeExact(PFN_glBufferParameteriAPPLE, target, pname, param);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glBufferParameteriAPPLE", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glBufferParameteriAPPLE", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glBufferParameteriAPPLE"); }
     }
 
     public void FlushMappedBufferRangeAPPLE(@CType("GLenum") int target, @CType("GLintptr") long offset, @CType("GLsizeiptr") long size) {
-        try { if (!Unmarshal.isNullPointer(PFN_glFlushMappedBufferRangeAPPLE))
+        if (!Unmarshal.isNullPointer(PFN_glFlushMappedBufferRangeAPPLE)) { try {
             MH_glFlushMappedBufferRangeAPPLE.invokeExact(PFN_glFlushMappedBufferRangeAPPLE, target, offset, size);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFlushMappedBufferRangeAPPLE", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFlushMappedBufferRangeAPPLE", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFlushMappedBufferRangeAPPLE"); }
     }
 
 }

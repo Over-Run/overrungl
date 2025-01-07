@@ -35,17 +35,17 @@ public final class GLARBClearBufferObject {
     }
 
     public void ClearBufferData(@CType("GLenum") int target, @CType("GLenum") int internalformat, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment data) {
-        try { if (!Unmarshal.isNullPointer(PFN_glClearBufferData))
+        if (!Unmarshal.isNullPointer(PFN_glClearBufferData)) { try {
             MH_glClearBufferData.invokeExact(PFN_glClearBufferData, target, internalformat, format, type, data);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glClearBufferData", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glClearBufferData", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glClearBufferData"); }
     }
 
     public void ClearBufferSubData(@CType("GLenum") int target, @CType("GLenum") int internalformat, @CType("GLintptr") long offset, @CType("GLsizeiptr") long size, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment data) {
-        try { if (!Unmarshal.isNullPointer(PFN_glClearBufferSubData))
+        if (!Unmarshal.isNullPointer(PFN_glClearBufferSubData)) { try {
             MH_glClearBufferSubData.invokeExact(PFN_glClearBufferSubData, target, internalformat, offset, size, format, type, data);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glClearBufferSubData", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glClearBufferSubData", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glClearBufferSubData"); }
     }
 
 }

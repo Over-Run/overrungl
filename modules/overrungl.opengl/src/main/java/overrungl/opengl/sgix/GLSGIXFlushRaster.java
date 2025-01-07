@@ -32,10 +32,10 @@ public final class GLSGIXFlushRaster {
     }
 
     public void FlushRasterSGIX() {
-        try { if (!Unmarshal.isNullPointer(PFN_glFlushRasterSGIX))
+        if (!Unmarshal.isNullPointer(PFN_glFlushRasterSGIX)) { try {
             MH_glFlushRasterSGIX.invokeExact(PFN_glFlushRasterSGIX);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFlushRasterSGIX", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFlushRasterSGIX", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFlushRasterSGIX"); }
     }
 
 }

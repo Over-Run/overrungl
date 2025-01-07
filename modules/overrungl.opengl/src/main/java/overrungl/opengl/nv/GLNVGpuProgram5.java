@@ -43,17 +43,17 @@ public final class GLNVGpuProgram5 {
     }
 
     public void ProgramSubroutineParametersuivNV(@CType("GLenum") int target, @CType("GLsizei") int count, @CType("const GLuint *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glProgramSubroutineParametersuivNV))
+        if (!Unmarshal.isNullPointer(PFN_glProgramSubroutineParametersuivNV)) { try {
             MH_glProgramSubroutineParametersuivNV.invokeExact(PFN_glProgramSubroutineParametersuivNV, target, count, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glProgramSubroutineParametersuivNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glProgramSubroutineParametersuivNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glProgramSubroutineParametersuivNV"); }
     }
 
     public void GetProgramSubroutineParameteruivNV(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLuint *") java.lang.foreign.MemorySegment param) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetProgramSubroutineParameteruivNV))
+        if (!Unmarshal.isNullPointer(PFN_glGetProgramSubroutineParameteruivNV)) { try {
             MH_glGetProgramSubroutineParameteruivNV.invokeExact(PFN_glGetProgramSubroutineParameteruivNV, target, index, param);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetProgramSubroutineParameteruivNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetProgramSubroutineParameteruivNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetProgramSubroutineParameteruivNV"); }
     }
 
 }

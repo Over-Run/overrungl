@@ -44,17 +44,17 @@ public final class GLEXTTexture3D {
     }
 
     public void TexImage3DEXT(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth, @CType("GLint") int border, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment pixels) {
-        try { if (!Unmarshal.isNullPointer(PFN_glTexImage3DEXT))
+        if (!Unmarshal.isNullPointer(PFN_glTexImage3DEXT)) { try {
             MH_glTexImage3DEXT.invokeExact(PFN_glTexImage3DEXT, target, level, internalformat, width, height, depth, border, format, type, pixels);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glTexImage3DEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glTexImage3DEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glTexImage3DEXT"); }
     }
 
     public void TexSubImage3DEXT(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLint") int yoffset, @CType("GLint") int zoffset, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment pixels) {
-        try { if (!Unmarshal.isNullPointer(PFN_glTexSubImage3DEXT))
+        if (!Unmarshal.isNullPointer(PFN_glTexSubImage3DEXT)) { try {
             MH_glTexSubImage3DEXT.invokeExact(PFN_glTexSubImage3DEXT, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glTexSubImage3DEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glTexSubImage3DEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glTexSubImage3DEXT"); }
     }
 
 }

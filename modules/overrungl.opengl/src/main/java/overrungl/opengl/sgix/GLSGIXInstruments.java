@@ -49,47 +49,45 @@ public final class GLSGIXInstruments {
     }
 
     public @CType("GLint") int GetInstrumentsSGIX() {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetInstrumentsSGIX))
+        if (!Unmarshal.isNullPointer(PFN_glGetInstrumentsSGIX)) { try {
             return (int) MH_glGetInstrumentsSGIX.invokeExact(PFN_glGetInstrumentsSGIX);
-            else return 0;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetInstrumentsSGIX", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetInstrumentsSGIX", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetInstrumentsSGIX"); }
     }
 
     public void InstrumentsBufferSGIX(@CType("GLsizei") int size, @CType("GLint *") java.lang.foreign.MemorySegment buffer) {
-        try { if (!Unmarshal.isNullPointer(PFN_glInstrumentsBufferSGIX))
+        if (!Unmarshal.isNullPointer(PFN_glInstrumentsBufferSGIX)) { try {
             MH_glInstrumentsBufferSGIX.invokeExact(PFN_glInstrumentsBufferSGIX, size, buffer);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glInstrumentsBufferSGIX", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glInstrumentsBufferSGIX", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glInstrumentsBufferSGIX"); }
     }
 
     public @CType("GLint") int PollInstrumentsSGIX(@CType("GLint *") java.lang.foreign.MemorySegment marker_p) {
-        try { if (!Unmarshal.isNullPointer(PFN_glPollInstrumentsSGIX))
+        if (!Unmarshal.isNullPointer(PFN_glPollInstrumentsSGIX)) { try {
             return (int) MH_glPollInstrumentsSGIX.invokeExact(PFN_glPollInstrumentsSGIX, marker_p);
-            else return 0;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glPollInstrumentsSGIX", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glPollInstrumentsSGIX", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glPollInstrumentsSGIX"); }
     }
 
     public void ReadInstrumentsSGIX(@CType("GLint") int marker) {
-        try { if (!Unmarshal.isNullPointer(PFN_glReadInstrumentsSGIX))
+        if (!Unmarshal.isNullPointer(PFN_glReadInstrumentsSGIX)) { try {
             MH_glReadInstrumentsSGIX.invokeExact(PFN_glReadInstrumentsSGIX, marker);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glReadInstrumentsSGIX", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glReadInstrumentsSGIX", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glReadInstrumentsSGIX"); }
     }
 
     public void StartInstrumentsSGIX() {
-        try { if (!Unmarshal.isNullPointer(PFN_glStartInstrumentsSGIX))
+        if (!Unmarshal.isNullPointer(PFN_glStartInstrumentsSGIX)) { try {
             MH_glStartInstrumentsSGIX.invokeExact(PFN_glStartInstrumentsSGIX);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glStartInstrumentsSGIX", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glStartInstrumentsSGIX", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glStartInstrumentsSGIX"); }
     }
 
     public void StopInstrumentsSGIX(@CType("GLint") int marker) {
-        try { if (!Unmarshal.isNullPointer(PFN_glStopInstrumentsSGIX))
+        if (!Unmarshal.isNullPointer(PFN_glStopInstrumentsSGIX)) { try {
             MH_glStopInstrumentsSGIX.invokeExact(PFN_glStopInstrumentsSGIX, marker);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glStopInstrumentsSGIX", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glStopInstrumentsSGIX", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glStopInstrumentsSGIX"); }
     }
 
 }

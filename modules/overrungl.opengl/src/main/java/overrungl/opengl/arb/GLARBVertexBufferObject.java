@@ -93,83 +93,80 @@ public final class GLARBVertexBufferObject {
     }
 
     public void BindBufferARB(@CType("GLenum") int target, @CType("GLuint") int buffer) {
-        try { if (!Unmarshal.isNullPointer(PFN_glBindBufferARB))
+        if (!Unmarshal.isNullPointer(PFN_glBindBufferARB)) { try {
             MH_glBindBufferARB.invokeExact(PFN_glBindBufferARB, target, buffer);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glBindBufferARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glBindBufferARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glBindBufferARB"); }
     }
 
     public void DeleteBuffersARB(@CType("GLsizei") int n, @CType("const GLuint *") java.lang.foreign.MemorySegment buffers) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDeleteBuffersARB))
+        if (!Unmarshal.isNullPointer(PFN_glDeleteBuffersARB)) { try {
             MH_glDeleteBuffersARB.invokeExact(PFN_glDeleteBuffersARB, n, buffers);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDeleteBuffersARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDeleteBuffersARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDeleteBuffersARB"); }
     }
 
     public void GenBuffersARB(@CType("GLsizei") int n, @CType("GLuint *") java.lang.foreign.MemorySegment buffers) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGenBuffersARB))
+        if (!Unmarshal.isNullPointer(PFN_glGenBuffersARB)) { try {
             MH_glGenBuffersARB.invokeExact(PFN_glGenBuffersARB, n, buffers);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGenBuffersARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGenBuffersARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGenBuffersARB"); }
     }
 
     public @CType("GLboolean") boolean IsBufferARB(@CType("GLuint") int buffer) {
-        try { if (!Unmarshal.isNullPointer(PFN_glIsBufferARB))
+        if (!Unmarshal.isNullPointer(PFN_glIsBufferARB)) { try {
             return (boolean) MH_glIsBufferARB.invokeExact(PFN_glIsBufferARB, buffer);
-            else return false;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glIsBufferARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glIsBufferARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glIsBufferARB"); }
     }
 
     public void BufferDataARB(@CType("GLenum") int target, @CType("GLsizeiptrARB") long size, @CType("const void *") java.lang.foreign.MemorySegment data, @CType("GLenum") int usage) {
-        try { if (!Unmarshal.isNullPointer(PFN_glBufferDataARB))
+        if (!Unmarshal.isNullPointer(PFN_glBufferDataARB)) { try {
             MH_glBufferDataARB.invokeExact(PFN_glBufferDataARB, target, size, data, usage);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glBufferDataARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glBufferDataARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glBufferDataARB"); }
     }
 
     public void BufferSubDataARB(@CType("GLenum") int target, @CType("GLintptrARB") long offset, @CType("GLsizeiptrARB") long size, @CType("const void *") java.lang.foreign.MemorySegment data) {
-        try { if (!Unmarshal.isNullPointer(PFN_glBufferSubDataARB))
+        if (!Unmarshal.isNullPointer(PFN_glBufferSubDataARB)) { try {
             MH_glBufferSubDataARB.invokeExact(PFN_glBufferSubDataARB, target, offset, size, data);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glBufferSubDataARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glBufferSubDataARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glBufferSubDataARB"); }
     }
 
     public void GetBufferSubDataARB(@CType("GLenum") int target, @CType("GLintptrARB") long offset, @CType("GLsizeiptrARB") long size, @CType("void*") java.lang.foreign.MemorySegment data) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetBufferSubDataARB))
+        if (!Unmarshal.isNullPointer(PFN_glGetBufferSubDataARB)) { try {
             MH_glGetBufferSubDataARB.invokeExact(PFN_glGetBufferSubDataARB, target, offset, size, data);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetBufferSubDataARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetBufferSubDataARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetBufferSubDataARB"); }
     }
 
     public @CType("void*") java.lang.foreign.MemorySegment MapBufferARB(@CType("GLenum") int target, @CType("GLenum") int access) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMapBufferARB))
+        if (!Unmarshal.isNullPointer(PFN_glMapBufferARB)) { try {
             return (java.lang.foreign.MemorySegment) MH_glMapBufferARB.invokeExact(PFN_glMapBufferARB, target, access);
-            else return MemorySegment.NULL;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMapBufferARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMapBufferARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMapBufferARB"); }
     }
 
     public @CType("GLboolean") boolean UnmapBufferARB(@CType("GLenum") int target) {
-        try { if (!Unmarshal.isNullPointer(PFN_glUnmapBufferARB))
+        if (!Unmarshal.isNullPointer(PFN_glUnmapBufferARB)) { try {
             return (boolean) MH_glUnmapBufferARB.invokeExact(PFN_glUnmapBufferARB, target);
-            else return false;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glUnmapBufferARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glUnmapBufferARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glUnmapBufferARB"); }
     }
 
     public void GetBufferParameterivARB(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetBufferParameterivARB))
+        if (!Unmarshal.isNullPointer(PFN_glGetBufferParameterivARB)) { try {
             MH_glGetBufferParameterivARB.invokeExact(PFN_glGetBufferParameterivARB, target, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetBufferParameterivARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetBufferParameterivARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetBufferParameterivARB"); }
     }
 
     public void GetBufferPointervARB(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("void **") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetBufferPointervARB))
+        if (!Unmarshal.isNullPointer(PFN_glGetBufferPointervARB)) { try {
             MH_glGetBufferPointervARB.invokeExact(PFN_glGetBufferPointervARB, target, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetBufferPointervARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetBufferPointervARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetBufferPointervARB"); }
     }
 
 }

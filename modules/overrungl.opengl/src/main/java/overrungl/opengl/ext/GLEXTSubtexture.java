@@ -35,17 +35,17 @@ public final class GLEXTSubtexture {
     }
 
     public void TexSubImage1DEXT(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLsizei") int width, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment pixels) {
-        try { if (!Unmarshal.isNullPointer(PFN_glTexSubImage1DEXT))
+        if (!Unmarshal.isNullPointer(PFN_glTexSubImage1DEXT)) { try {
             MH_glTexSubImage1DEXT.invokeExact(PFN_glTexSubImage1DEXT, target, level, xoffset, width, format, type, pixels);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glTexSubImage1DEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glTexSubImage1DEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glTexSubImage1DEXT"); }
     }
 
     public void TexSubImage2DEXT(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLint") int yoffset, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment pixels) {
-        try { if (!Unmarshal.isNullPointer(PFN_glTexSubImage2DEXT))
+        if (!Unmarshal.isNullPointer(PFN_glTexSubImage2DEXT)) { try {
             MH_glTexSubImage2DEXT.invokeExact(PFN_glTexSubImage2DEXT, target, level, xoffset, yoffset, width, height, format, type, pixels);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glTexSubImage2DEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glTexSubImage2DEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glTexSubImage2DEXT"); }
     }
 
 }

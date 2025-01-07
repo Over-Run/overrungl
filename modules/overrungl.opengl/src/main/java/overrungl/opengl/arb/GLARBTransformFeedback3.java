@@ -43,31 +43,31 @@ public final class GLARBTransformFeedback3 {
     }
 
     public void DrawTransformFeedbackStream(@CType("GLenum") int mode, @CType("GLuint") int id, @CType("GLuint") int stream) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDrawTransformFeedbackStream))
+        if (!Unmarshal.isNullPointer(PFN_glDrawTransformFeedbackStream)) { try {
             MH_glDrawTransformFeedbackStream.invokeExact(PFN_glDrawTransformFeedbackStream, mode, id, stream);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawTransformFeedbackStream", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDrawTransformFeedbackStream", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDrawTransformFeedbackStream"); }
     }
 
     public void BeginQueryIndexed(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLuint") int id) {
-        try { if (!Unmarshal.isNullPointer(PFN_glBeginQueryIndexed))
+        if (!Unmarshal.isNullPointer(PFN_glBeginQueryIndexed)) { try {
             MH_glBeginQueryIndexed.invokeExact(PFN_glBeginQueryIndexed, target, index, id);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glBeginQueryIndexed", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glBeginQueryIndexed", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glBeginQueryIndexed"); }
     }
 
     public void EndQueryIndexed(@CType("GLenum") int target, @CType("GLuint") int index) {
-        try { if (!Unmarshal.isNullPointer(PFN_glEndQueryIndexed))
+        if (!Unmarshal.isNullPointer(PFN_glEndQueryIndexed)) { try {
             MH_glEndQueryIndexed.invokeExact(PFN_glEndQueryIndexed, target, index);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glEndQueryIndexed", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glEndQueryIndexed", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glEndQueryIndexed"); }
     }
 
     public void GetQueryIndexediv(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetQueryIndexediv))
+        if (!Unmarshal.isNullPointer(PFN_glGetQueryIndexediv)) { try {
             MH_glGetQueryIndexediv.invokeExact(PFN_glGetQueryIndexediv, target, index, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetQueryIndexediv", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetQueryIndexediv", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetQueryIndexediv"); }
     }
 
 }

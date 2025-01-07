@@ -53,45 +53,45 @@ public final class GLNVFragmentProgram {
     }
 
     public void ProgramNamedParameter4fNV(@CType("GLuint") int id, @CType("GLsizei") int len, @CType("const GLubyte *") java.lang.foreign.MemorySegment name, @CType("GLfloat") float x, @CType("GLfloat") float y, @CType("GLfloat") float z, @CType("GLfloat") float w) {
-        try { if (!Unmarshal.isNullPointer(PFN_glProgramNamedParameter4fNV))
+        if (!Unmarshal.isNullPointer(PFN_glProgramNamedParameter4fNV)) { try {
             MH_glProgramNamedParameter4fNV.invokeExact(PFN_glProgramNamedParameter4fNV, id, len, name, x, y, z, w);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glProgramNamedParameter4fNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glProgramNamedParameter4fNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glProgramNamedParameter4fNV"); }
     }
 
     public void ProgramNamedParameter4fvNV(@CType("GLuint") int id, @CType("GLsizei") int len, @CType("const GLubyte *") java.lang.foreign.MemorySegment name, @CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
-        try { if (!Unmarshal.isNullPointer(PFN_glProgramNamedParameter4fvNV))
+        if (!Unmarshal.isNullPointer(PFN_glProgramNamedParameter4fvNV)) { try {
             MH_glProgramNamedParameter4fvNV.invokeExact(PFN_glProgramNamedParameter4fvNV, id, len, name, v);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glProgramNamedParameter4fvNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glProgramNamedParameter4fvNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glProgramNamedParameter4fvNV"); }
     }
 
     public void ProgramNamedParameter4dNV(@CType("GLuint") int id, @CType("GLsizei") int len, @CType("const GLubyte *") java.lang.foreign.MemorySegment name, @CType("GLdouble") double x, @CType("GLdouble") double y, @CType("GLdouble") double z, @CType("GLdouble") double w) {
-        try { if (!Unmarshal.isNullPointer(PFN_glProgramNamedParameter4dNV))
+        if (!Unmarshal.isNullPointer(PFN_glProgramNamedParameter4dNV)) { try {
             MH_glProgramNamedParameter4dNV.invokeExact(PFN_glProgramNamedParameter4dNV, id, len, name, x, y, z, w);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glProgramNamedParameter4dNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glProgramNamedParameter4dNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glProgramNamedParameter4dNV"); }
     }
 
     public void ProgramNamedParameter4dvNV(@CType("GLuint") int id, @CType("GLsizei") int len, @CType("const GLubyte *") java.lang.foreign.MemorySegment name, @CType("const GLdouble *") java.lang.foreign.MemorySegment v) {
-        try { if (!Unmarshal.isNullPointer(PFN_glProgramNamedParameter4dvNV))
+        if (!Unmarshal.isNullPointer(PFN_glProgramNamedParameter4dvNV)) { try {
             MH_glProgramNamedParameter4dvNV.invokeExact(PFN_glProgramNamedParameter4dvNV, id, len, name, v);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glProgramNamedParameter4dvNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glProgramNamedParameter4dvNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glProgramNamedParameter4dvNV"); }
     }
 
     public void GetProgramNamedParameterfvNV(@CType("GLuint") int id, @CType("GLsizei") int len, @CType("const GLubyte *") java.lang.foreign.MemorySegment name, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetProgramNamedParameterfvNV))
+        if (!Unmarshal.isNullPointer(PFN_glGetProgramNamedParameterfvNV)) { try {
             MH_glGetProgramNamedParameterfvNV.invokeExact(PFN_glGetProgramNamedParameterfvNV, id, len, name, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetProgramNamedParameterfvNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetProgramNamedParameterfvNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetProgramNamedParameterfvNV"); }
     }
 
     public void GetProgramNamedParameterdvNV(@CType("GLuint") int id, @CType("GLsizei") int len, @CType("const GLubyte *") java.lang.foreign.MemorySegment name, @CType("GLdouble *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetProgramNamedParameterdvNV))
+        if (!Unmarshal.isNullPointer(PFN_glGetProgramNamedParameterdvNV)) { try {
             MH_glGetProgramNamedParameterdvNV.invokeExact(PFN_glGetProgramNamedParameterdvNV, id, len, name, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetProgramNamedParameterdvNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetProgramNamedParameterdvNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetProgramNamedParameterdvNV"); }
     }
 
 }

@@ -32,10 +32,10 @@ public final class GLINGRBlendFuncSeparate {
     }
 
     public void BlendFuncSeparateINGR(@CType("GLenum") int sfactorRGB, @CType("GLenum") int dfactorRGB, @CType("GLenum") int sfactorAlpha, @CType("GLenum") int dfactorAlpha) {
-        try { if (!Unmarshal.isNullPointer(PFN_glBlendFuncSeparateINGR))
+        if (!Unmarshal.isNullPointer(PFN_glBlendFuncSeparateINGR)) { try {
             MH_glBlendFuncSeparateINGR.invokeExact(PFN_glBlendFuncSeparateINGR, sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glBlendFuncSeparateINGR", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glBlendFuncSeparateINGR", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glBlendFuncSeparateINGR"); }
     }
 
 }

@@ -27,8 +27,7 @@ fun generateUpcallType(packageName: String, name: String): CustomTypeSpec {
         javaType = typeName,
         processor = UpcallProcessor(typeName),
         layout = address.layout,
-        allocatorRequirement = AllocatorRequirement.ARENA,
-        nullValue = address.nullValue,
+        allocatorRequirement = AllocatorRequirement.ARENA
     )
 }
 

@@ -38,17 +38,17 @@ public final class GLEXTCullVertex {
     }
 
     public void CullParameterdvEXT(@CType("GLenum") int pname, @CType("GLdouble *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glCullParameterdvEXT))
+        if (!Unmarshal.isNullPointer(PFN_glCullParameterdvEXT)) { try {
             MH_glCullParameterdvEXT.invokeExact(PFN_glCullParameterdvEXT, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glCullParameterdvEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glCullParameterdvEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glCullParameterdvEXT"); }
     }
 
     public void CullParameterfvEXT(@CType("GLenum") int pname, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glCullParameterfvEXT))
+        if (!Unmarshal.isNullPointer(PFN_glCullParameterfvEXT)) { try {
             MH_glCullParameterfvEXT.invokeExact(PFN_glCullParameterfvEXT, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glCullParameterfvEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glCullParameterfvEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glCullParameterfvEXT"); }
     }
 
 }

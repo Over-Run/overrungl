@@ -42,24 +42,24 @@ public final class GLARBGetProgramBinary {
     }
 
     public void GetProgramBinary(@CType("GLuint") int program, @CType("GLsizei") int bufSize, @CType("GLsizei *") java.lang.foreign.MemorySegment length, @CType("GLenum *") java.lang.foreign.MemorySegment binaryFormat, @CType("void*") java.lang.foreign.MemorySegment binary) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetProgramBinary))
+        if (!Unmarshal.isNullPointer(PFN_glGetProgramBinary)) { try {
             MH_glGetProgramBinary.invokeExact(PFN_glGetProgramBinary, program, bufSize, length, binaryFormat, binary);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetProgramBinary", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetProgramBinary", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetProgramBinary"); }
     }
 
     public void ProgramBinary(@CType("GLuint") int program, @CType("GLenum") int binaryFormat, @CType("const void *") java.lang.foreign.MemorySegment binary, @CType("GLsizei") int length) {
-        try { if (!Unmarshal.isNullPointer(PFN_glProgramBinary))
+        if (!Unmarshal.isNullPointer(PFN_glProgramBinary)) { try {
             MH_glProgramBinary.invokeExact(PFN_glProgramBinary, program, binaryFormat, binary, length);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glProgramBinary", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glProgramBinary", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glProgramBinary"); }
     }
 
     public void ProgramParameteri(@CType("GLuint") int program, @CType("GLenum") int pname, @CType("GLint") int value) {
-        try { if (!Unmarshal.isNullPointer(PFN_glProgramParameteri))
+        if (!Unmarshal.isNullPointer(PFN_glProgramParameteri)) { try {
             MH_glProgramParameteri.invokeExact(PFN_glProgramParameteri, program, pname, value);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glProgramParameteri", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glProgramParameteri", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glProgramParameteri"); }
     }
 
 }

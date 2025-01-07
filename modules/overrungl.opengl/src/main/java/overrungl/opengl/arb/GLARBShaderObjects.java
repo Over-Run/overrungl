@@ -180,280 +180,276 @@ public final class GLARBShaderObjects {
     }
 
     public void DeleteObjectARB(@CType("GLhandleARB") int obj) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDeleteObjectARB))
+        if (!Unmarshal.isNullPointer(PFN_glDeleteObjectARB)) { try {
             MH_glDeleteObjectARB.invokeExact(PFN_glDeleteObjectARB, obj);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDeleteObjectARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDeleteObjectARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDeleteObjectARB"); }
     }
 
     public @CType("GLhandleARB") int GetHandleARB(@CType("GLenum") int pname) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetHandleARB))
+        if (!Unmarshal.isNullPointer(PFN_glGetHandleARB)) { try {
             return (int) MH_glGetHandleARB.invokeExact(PFN_glGetHandleARB, pname);
-            else return 0;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetHandleARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetHandleARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetHandleARB"); }
     }
 
     public void DetachObjectARB(@CType("GLhandleARB") int containerObj, @CType("GLhandleARB") int attachedObj) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDetachObjectARB))
+        if (!Unmarshal.isNullPointer(PFN_glDetachObjectARB)) { try {
             MH_glDetachObjectARB.invokeExact(PFN_glDetachObjectARB, containerObj, attachedObj);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDetachObjectARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDetachObjectARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDetachObjectARB"); }
     }
 
     public @CType("GLhandleARB") int CreateShaderObjectARB(@CType("GLenum") int shaderType) {
-        try { if (!Unmarshal.isNullPointer(PFN_glCreateShaderObjectARB))
+        if (!Unmarshal.isNullPointer(PFN_glCreateShaderObjectARB)) { try {
             return (int) MH_glCreateShaderObjectARB.invokeExact(PFN_glCreateShaderObjectARB, shaderType);
-            else return 0;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glCreateShaderObjectARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glCreateShaderObjectARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glCreateShaderObjectARB"); }
     }
 
     public void ShaderSourceARB(@CType("GLhandleARB") int shaderObj, @CType("GLsizei") int count, @CType("const GLcharARB **") java.lang.foreign.MemorySegment string, @CType("const GLint *") java.lang.foreign.MemorySegment length) {
-        try { if (!Unmarshal.isNullPointer(PFN_glShaderSourceARB))
+        if (!Unmarshal.isNullPointer(PFN_glShaderSourceARB)) { try {
             MH_glShaderSourceARB.invokeExact(PFN_glShaderSourceARB, shaderObj, count, string, length);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glShaderSourceARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glShaderSourceARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glShaderSourceARB"); }
     }
 
     public void CompileShaderARB(@CType("GLhandleARB") int shaderObj) {
-        try { if (!Unmarshal.isNullPointer(PFN_glCompileShaderARB))
+        if (!Unmarshal.isNullPointer(PFN_glCompileShaderARB)) { try {
             MH_glCompileShaderARB.invokeExact(PFN_glCompileShaderARB, shaderObj);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glCompileShaderARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glCompileShaderARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glCompileShaderARB"); }
     }
 
     public @CType("GLhandleARB") int CreateProgramObjectARB() {
-        try { if (!Unmarshal.isNullPointer(PFN_glCreateProgramObjectARB))
+        if (!Unmarshal.isNullPointer(PFN_glCreateProgramObjectARB)) { try {
             return (int) MH_glCreateProgramObjectARB.invokeExact(PFN_glCreateProgramObjectARB);
-            else return 0;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glCreateProgramObjectARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glCreateProgramObjectARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glCreateProgramObjectARB"); }
     }
 
     public void AttachObjectARB(@CType("GLhandleARB") int containerObj, @CType("GLhandleARB") int obj) {
-        try { if (!Unmarshal.isNullPointer(PFN_glAttachObjectARB))
+        if (!Unmarshal.isNullPointer(PFN_glAttachObjectARB)) { try {
             MH_glAttachObjectARB.invokeExact(PFN_glAttachObjectARB, containerObj, obj);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glAttachObjectARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glAttachObjectARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glAttachObjectARB"); }
     }
 
     public void LinkProgramARB(@CType("GLhandleARB") int programObj) {
-        try { if (!Unmarshal.isNullPointer(PFN_glLinkProgramARB))
+        if (!Unmarshal.isNullPointer(PFN_glLinkProgramARB)) { try {
             MH_glLinkProgramARB.invokeExact(PFN_glLinkProgramARB, programObj);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glLinkProgramARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glLinkProgramARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glLinkProgramARB"); }
     }
 
     public void UseProgramObjectARB(@CType("GLhandleARB") int programObj) {
-        try { if (!Unmarshal.isNullPointer(PFN_glUseProgramObjectARB))
+        if (!Unmarshal.isNullPointer(PFN_glUseProgramObjectARB)) { try {
             MH_glUseProgramObjectARB.invokeExact(PFN_glUseProgramObjectARB, programObj);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glUseProgramObjectARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glUseProgramObjectARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glUseProgramObjectARB"); }
     }
 
     public void ValidateProgramARB(@CType("GLhandleARB") int programObj) {
-        try { if (!Unmarshal.isNullPointer(PFN_glValidateProgramARB))
+        if (!Unmarshal.isNullPointer(PFN_glValidateProgramARB)) { try {
             MH_glValidateProgramARB.invokeExact(PFN_glValidateProgramARB, programObj);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glValidateProgramARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glValidateProgramARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glValidateProgramARB"); }
     }
 
     public void Uniform1fARB(@CType("GLint") int location, @CType("GLfloat") float v0) {
-        try { if (!Unmarshal.isNullPointer(PFN_glUniform1fARB))
+        if (!Unmarshal.isNullPointer(PFN_glUniform1fARB)) { try {
             MH_glUniform1fARB.invokeExact(PFN_glUniform1fARB, location, v0);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glUniform1fARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glUniform1fARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glUniform1fARB"); }
     }
 
     public void Uniform2fARB(@CType("GLint") int location, @CType("GLfloat") float v0, @CType("GLfloat") float v1) {
-        try { if (!Unmarshal.isNullPointer(PFN_glUniform2fARB))
+        if (!Unmarshal.isNullPointer(PFN_glUniform2fARB)) { try {
             MH_glUniform2fARB.invokeExact(PFN_glUniform2fARB, location, v0, v1);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glUniform2fARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glUniform2fARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glUniform2fARB"); }
     }
 
     public void Uniform3fARB(@CType("GLint") int location, @CType("GLfloat") float v0, @CType("GLfloat") float v1, @CType("GLfloat") float v2) {
-        try { if (!Unmarshal.isNullPointer(PFN_glUniform3fARB))
+        if (!Unmarshal.isNullPointer(PFN_glUniform3fARB)) { try {
             MH_glUniform3fARB.invokeExact(PFN_glUniform3fARB, location, v0, v1, v2);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glUniform3fARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glUniform3fARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glUniform3fARB"); }
     }
 
     public void Uniform4fARB(@CType("GLint") int location, @CType("GLfloat") float v0, @CType("GLfloat") float v1, @CType("GLfloat") float v2, @CType("GLfloat") float v3) {
-        try { if (!Unmarshal.isNullPointer(PFN_glUniform4fARB))
+        if (!Unmarshal.isNullPointer(PFN_glUniform4fARB)) { try {
             MH_glUniform4fARB.invokeExact(PFN_glUniform4fARB, location, v0, v1, v2, v3);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glUniform4fARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glUniform4fARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glUniform4fARB"); }
     }
 
     public void Uniform1iARB(@CType("GLint") int location, @CType("GLint") int v0) {
-        try { if (!Unmarshal.isNullPointer(PFN_glUniform1iARB))
+        if (!Unmarshal.isNullPointer(PFN_glUniform1iARB)) { try {
             MH_glUniform1iARB.invokeExact(PFN_glUniform1iARB, location, v0);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glUniform1iARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glUniform1iARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glUniform1iARB"); }
     }
 
     public void Uniform2iARB(@CType("GLint") int location, @CType("GLint") int v0, @CType("GLint") int v1) {
-        try { if (!Unmarshal.isNullPointer(PFN_glUniform2iARB))
+        if (!Unmarshal.isNullPointer(PFN_glUniform2iARB)) { try {
             MH_glUniform2iARB.invokeExact(PFN_glUniform2iARB, location, v0, v1);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glUniform2iARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glUniform2iARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glUniform2iARB"); }
     }
 
     public void Uniform3iARB(@CType("GLint") int location, @CType("GLint") int v0, @CType("GLint") int v1, @CType("GLint") int v2) {
-        try { if (!Unmarshal.isNullPointer(PFN_glUniform3iARB))
+        if (!Unmarshal.isNullPointer(PFN_glUniform3iARB)) { try {
             MH_glUniform3iARB.invokeExact(PFN_glUniform3iARB, location, v0, v1, v2);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glUniform3iARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glUniform3iARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glUniform3iARB"); }
     }
 
     public void Uniform4iARB(@CType("GLint") int location, @CType("GLint") int v0, @CType("GLint") int v1, @CType("GLint") int v2, @CType("GLint") int v3) {
-        try { if (!Unmarshal.isNullPointer(PFN_glUniform4iARB))
+        if (!Unmarshal.isNullPointer(PFN_glUniform4iARB)) { try {
             MH_glUniform4iARB.invokeExact(PFN_glUniform4iARB, location, v0, v1, v2, v3);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glUniform4iARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glUniform4iARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glUniform4iARB"); }
     }
 
     public void Uniform1fvARB(@CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLfloat *") java.lang.foreign.MemorySegment value) {
-        try { if (!Unmarshal.isNullPointer(PFN_glUniform1fvARB))
+        if (!Unmarshal.isNullPointer(PFN_glUniform1fvARB)) { try {
             MH_glUniform1fvARB.invokeExact(PFN_glUniform1fvARB, location, count, value);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glUniform1fvARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glUniform1fvARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glUniform1fvARB"); }
     }
 
     public void Uniform2fvARB(@CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLfloat *") java.lang.foreign.MemorySegment value) {
-        try { if (!Unmarshal.isNullPointer(PFN_glUniform2fvARB))
+        if (!Unmarshal.isNullPointer(PFN_glUniform2fvARB)) { try {
             MH_glUniform2fvARB.invokeExact(PFN_glUniform2fvARB, location, count, value);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glUniform2fvARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glUniform2fvARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glUniform2fvARB"); }
     }
 
     public void Uniform3fvARB(@CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLfloat *") java.lang.foreign.MemorySegment value) {
-        try { if (!Unmarshal.isNullPointer(PFN_glUniform3fvARB))
+        if (!Unmarshal.isNullPointer(PFN_glUniform3fvARB)) { try {
             MH_glUniform3fvARB.invokeExact(PFN_glUniform3fvARB, location, count, value);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glUniform3fvARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glUniform3fvARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glUniform3fvARB"); }
     }
 
     public void Uniform4fvARB(@CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLfloat *") java.lang.foreign.MemorySegment value) {
-        try { if (!Unmarshal.isNullPointer(PFN_glUniform4fvARB))
+        if (!Unmarshal.isNullPointer(PFN_glUniform4fvARB)) { try {
             MH_glUniform4fvARB.invokeExact(PFN_glUniform4fvARB, location, count, value);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glUniform4fvARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glUniform4fvARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glUniform4fvARB"); }
     }
 
     public void Uniform1ivARB(@CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLint *") java.lang.foreign.MemorySegment value) {
-        try { if (!Unmarshal.isNullPointer(PFN_glUniform1ivARB))
+        if (!Unmarshal.isNullPointer(PFN_glUniform1ivARB)) { try {
             MH_glUniform1ivARB.invokeExact(PFN_glUniform1ivARB, location, count, value);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glUniform1ivARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glUniform1ivARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glUniform1ivARB"); }
     }
 
     public void Uniform2ivARB(@CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLint *") java.lang.foreign.MemorySegment value) {
-        try { if (!Unmarshal.isNullPointer(PFN_glUniform2ivARB))
+        if (!Unmarshal.isNullPointer(PFN_glUniform2ivARB)) { try {
             MH_glUniform2ivARB.invokeExact(PFN_glUniform2ivARB, location, count, value);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glUniform2ivARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glUniform2ivARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glUniform2ivARB"); }
     }
 
     public void Uniform3ivARB(@CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLint *") java.lang.foreign.MemorySegment value) {
-        try { if (!Unmarshal.isNullPointer(PFN_glUniform3ivARB))
+        if (!Unmarshal.isNullPointer(PFN_glUniform3ivARB)) { try {
             MH_glUniform3ivARB.invokeExact(PFN_glUniform3ivARB, location, count, value);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glUniform3ivARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glUniform3ivARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glUniform3ivARB"); }
     }
 
     public void Uniform4ivARB(@CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLint *") java.lang.foreign.MemorySegment value) {
-        try { if (!Unmarshal.isNullPointer(PFN_glUniform4ivARB))
+        if (!Unmarshal.isNullPointer(PFN_glUniform4ivARB)) { try {
             MH_glUniform4ivARB.invokeExact(PFN_glUniform4ivARB, location, count, value);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glUniform4ivARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glUniform4ivARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glUniform4ivARB"); }
     }
 
     public void UniformMatrix2fvARB(@CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") java.lang.foreign.MemorySegment value) {
-        try { if (!Unmarshal.isNullPointer(PFN_glUniformMatrix2fvARB))
+        if (!Unmarshal.isNullPointer(PFN_glUniformMatrix2fvARB)) { try {
             MH_glUniformMatrix2fvARB.invokeExact(PFN_glUniformMatrix2fvARB, location, count, transpose, value);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glUniformMatrix2fvARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glUniformMatrix2fvARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glUniformMatrix2fvARB"); }
     }
 
     public void UniformMatrix3fvARB(@CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") java.lang.foreign.MemorySegment value) {
-        try { if (!Unmarshal.isNullPointer(PFN_glUniformMatrix3fvARB))
+        if (!Unmarshal.isNullPointer(PFN_glUniformMatrix3fvARB)) { try {
             MH_glUniformMatrix3fvARB.invokeExact(PFN_glUniformMatrix3fvARB, location, count, transpose, value);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glUniformMatrix3fvARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glUniformMatrix3fvARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glUniformMatrix3fvARB"); }
     }
 
     public void UniformMatrix4fvARB(@CType("GLint") int location, @CType("GLsizei") int count, @CType("GLboolean") boolean transpose, @CType("const GLfloat *") java.lang.foreign.MemorySegment value) {
-        try { if (!Unmarshal.isNullPointer(PFN_glUniformMatrix4fvARB))
+        if (!Unmarshal.isNullPointer(PFN_glUniformMatrix4fvARB)) { try {
             MH_glUniformMatrix4fvARB.invokeExact(PFN_glUniformMatrix4fvARB, location, count, transpose, value);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glUniformMatrix4fvARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glUniformMatrix4fvARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glUniformMatrix4fvARB"); }
     }
 
     public void GetObjectParameterfvARB(@CType("GLhandleARB") int obj, @CType("GLenum") int pname, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetObjectParameterfvARB))
+        if (!Unmarshal.isNullPointer(PFN_glGetObjectParameterfvARB)) { try {
             MH_glGetObjectParameterfvARB.invokeExact(PFN_glGetObjectParameterfvARB, obj, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetObjectParameterfvARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetObjectParameterfvARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetObjectParameterfvARB"); }
     }
 
     public void GetObjectParameterivARB(@CType("GLhandleARB") int obj, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetObjectParameterivARB))
+        if (!Unmarshal.isNullPointer(PFN_glGetObjectParameterivARB)) { try {
             MH_glGetObjectParameterivARB.invokeExact(PFN_glGetObjectParameterivARB, obj, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetObjectParameterivARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetObjectParameterivARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetObjectParameterivARB"); }
     }
 
     public void GetInfoLogARB(@CType("GLhandleARB") int obj, @CType("GLsizei") int maxLength, @CType("GLsizei *") java.lang.foreign.MemorySegment length, @CType("GLcharARB *") java.lang.foreign.MemorySegment infoLog) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetInfoLogARB))
+        if (!Unmarshal.isNullPointer(PFN_glGetInfoLogARB)) { try {
             MH_glGetInfoLogARB.invokeExact(PFN_glGetInfoLogARB, obj, maxLength, length, infoLog);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetInfoLogARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetInfoLogARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetInfoLogARB"); }
     }
 
     public void GetAttachedObjectsARB(@CType("GLhandleARB") int containerObj, @CType("GLsizei") int maxCount, @CType("GLsizei *") java.lang.foreign.MemorySegment count, @CType("GLhandleARB *") java.lang.foreign.MemorySegment obj) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetAttachedObjectsARB))
+        if (!Unmarshal.isNullPointer(PFN_glGetAttachedObjectsARB)) { try {
             MH_glGetAttachedObjectsARB.invokeExact(PFN_glGetAttachedObjectsARB, containerObj, maxCount, count, obj);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetAttachedObjectsARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetAttachedObjectsARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetAttachedObjectsARB"); }
     }
 
     public @CType("GLint") int GetUniformLocationARB(@CType("GLhandleARB") int programObj, @CType("const GLcharARB *") java.lang.foreign.MemorySegment name) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetUniformLocationARB))
+        if (!Unmarshal.isNullPointer(PFN_glGetUniformLocationARB)) { try {
             return (int) MH_glGetUniformLocationARB.invokeExact(PFN_glGetUniformLocationARB, programObj, name);
-            else return 0;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetUniformLocationARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetUniformLocationARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetUniformLocationARB"); }
     }
 
     public void GetActiveUniformARB(@CType("GLhandleARB") int programObj, @CType("GLuint") int index, @CType("GLsizei") int maxLength, @CType("GLsizei *") java.lang.foreign.MemorySegment length, @CType("GLint *") java.lang.foreign.MemorySegment size, @CType("GLenum *") java.lang.foreign.MemorySegment type, @CType("GLcharARB *") java.lang.foreign.MemorySegment name) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetActiveUniformARB))
+        if (!Unmarshal.isNullPointer(PFN_glGetActiveUniformARB)) { try {
             MH_glGetActiveUniformARB.invokeExact(PFN_glGetActiveUniformARB, programObj, index, maxLength, length, size, type, name);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetActiveUniformARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetActiveUniformARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetActiveUniformARB"); }
     }
 
     public void GetUniformfvARB(@CType("GLhandleARB") int programObj, @CType("GLint") int location, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetUniformfvARB))
+        if (!Unmarshal.isNullPointer(PFN_glGetUniformfvARB)) { try {
             MH_glGetUniformfvARB.invokeExact(PFN_glGetUniformfvARB, programObj, location, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetUniformfvARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetUniformfvARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetUniformfvARB"); }
     }
 
     public void GetUniformivARB(@CType("GLhandleARB") int programObj, @CType("GLint") int location, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetUniformivARB))
+        if (!Unmarshal.isNullPointer(PFN_glGetUniformivARB)) { try {
             MH_glGetUniformivARB.invokeExact(PFN_glGetUniformivARB, programObj, location, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetUniformivARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetUniformivARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetUniformivARB"); }
     }
 
     public void GetShaderSourceARB(@CType("GLhandleARB") int obj, @CType("GLsizei") int maxLength, @CType("GLsizei *") java.lang.foreign.MemorySegment length, @CType("GLcharARB *") java.lang.foreign.MemorySegment source) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetShaderSourceARB))
+        if (!Unmarshal.isNullPointer(PFN_glGetShaderSourceARB)) { try {
             MH_glGetShaderSourceARB.invokeExact(PFN_glGetShaderSourceARB, obj, maxLength, length, source);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetShaderSourceARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetShaderSourceARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetShaderSourceARB"); }
     }
 
 }

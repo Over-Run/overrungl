@@ -54,45 +54,45 @@ public final class GLARBVertexAttribBinding {
     }
 
     public void BindVertexBuffer(@CType("GLuint") int bindingindex, @CType("GLuint") int buffer, @CType("GLintptr") long offset, @CType("GLsizei") int stride) {
-        try { if (!Unmarshal.isNullPointer(PFN_glBindVertexBuffer))
+        if (!Unmarshal.isNullPointer(PFN_glBindVertexBuffer)) { try {
             MH_glBindVertexBuffer.invokeExact(PFN_glBindVertexBuffer, bindingindex, buffer, offset, stride);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glBindVertexBuffer", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glBindVertexBuffer", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glBindVertexBuffer"); }
     }
 
     public void VertexAttribFormat(@CType("GLuint") int attribindex, @CType("GLint") int size, @CType("GLenum") int type, @CType("GLboolean") boolean normalized, @CType("GLuint") int relativeoffset) {
-        try { if (!Unmarshal.isNullPointer(PFN_glVertexAttribFormat))
+        if (!Unmarshal.isNullPointer(PFN_glVertexAttribFormat)) { try {
             MH_glVertexAttribFormat.invokeExact(PFN_glVertexAttribFormat, attribindex, size, type, normalized, relativeoffset);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexAttribFormat", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glVertexAttribFormat", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glVertexAttribFormat"); }
     }
 
     public void VertexAttribIFormat(@CType("GLuint") int attribindex, @CType("GLint") int size, @CType("GLenum") int type, @CType("GLuint") int relativeoffset) {
-        try { if (!Unmarshal.isNullPointer(PFN_glVertexAttribIFormat))
+        if (!Unmarshal.isNullPointer(PFN_glVertexAttribIFormat)) { try {
             MH_glVertexAttribIFormat.invokeExact(PFN_glVertexAttribIFormat, attribindex, size, type, relativeoffset);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexAttribIFormat", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glVertexAttribIFormat", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glVertexAttribIFormat"); }
     }
 
     public void VertexAttribLFormat(@CType("GLuint") int attribindex, @CType("GLint") int size, @CType("GLenum") int type, @CType("GLuint") int relativeoffset) {
-        try { if (!Unmarshal.isNullPointer(PFN_glVertexAttribLFormat))
+        if (!Unmarshal.isNullPointer(PFN_glVertexAttribLFormat)) { try {
             MH_glVertexAttribLFormat.invokeExact(PFN_glVertexAttribLFormat, attribindex, size, type, relativeoffset);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexAttribLFormat", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glVertexAttribLFormat", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glVertexAttribLFormat"); }
     }
 
     public void VertexAttribBinding(@CType("GLuint") int attribindex, @CType("GLuint") int bindingindex) {
-        try { if (!Unmarshal.isNullPointer(PFN_glVertexAttribBinding))
+        if (!Unmarshal.isNullPointer(PFN_glVertexAttribBinding)) { try {
             MH_glVertexAttribBinding.invokeExact(PFN_glVertexAttribBinding, attribindex, bindingindex);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexAttribBinding", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glVertexAttribBinding", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glVertexAttribBinding"); }
     }
 
     public void VertexBindingDivisor(@CType("GLuint") int bindingindex, @CType("GLuint") int divisor) {
-        try { if (!Unmarshal.isNullPointer(PFN_glVertexBindingDivisor))
+        if (!Unmarshal.isNullPointer(PFN_glVertexBindingDivisor)) { try {
             MH_glVertexBindingDivisor.invokeExact(PFN_glVertexBindingDivisor, bindingindex, divisor);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexBindingDivisor", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glVertexBindingDivisor", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glVertexBindingDivisor"); }
     }
 
 }

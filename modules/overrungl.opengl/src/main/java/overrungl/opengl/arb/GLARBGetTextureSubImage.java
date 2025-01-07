@@ -35,17 +35,17 @@ public final class GLARBGetTextureSubImage {
     }
 
     public void GetTextureSubImage(@CType("GLuint") int texture, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLint") int yoffset, @CType("GLint") int zoffset, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth, @CType("GLenum") int format, @CType("GLenum") int type, @CType("GLsizei") int bufSize, @CType("void*") java.lang.foreign.MemorySegment pixels) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetTextureSubImage))
+        if (!Unmarshal.isNullPointer(PFN_glGetTextureSubImage)) { try {
             MH_glGetTextureSubImage.invokeExact(PFN_glGetTextureSubImage, texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, bufSize, pixels);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetTextureSubImage", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetTextureSubImage", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetTextureSubImage"); }
     }
 
     public void GetCompressedTextureSubImage(@CType("GLuint") int texture, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLint") int yoffset, @CType("GLint") int zoffset, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth, @CType("GLsizei") int bufSize, @CType("void*") java.lang.foreign.MemorySegment pixels) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetCompressedTextureSubImage))
+        if (!Unmarshal.isNullPointer(PFN_glGetCompressedTextureSubImage)) { try {
             MH_glGetCompressedTextureSubImage.invokeExact(PFN_glGetCompressedTextureSubImage, texture, level, xoffset, yoffset, zoffset, width, height, depth, bufSize, pixels);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetCompressedTextureSubImage", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetCompressedTextureSubImage", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetCompressedTextureSubImage"); }
     }
 
 }

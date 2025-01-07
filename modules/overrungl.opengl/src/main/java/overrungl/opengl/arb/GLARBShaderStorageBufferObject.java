@@ -49,10 +49,10 @@ public final class GLARBShaderStorageBufferObject {
     }
 
     public void ShaderStorageBlockBinding(@CType("GLuint") int program, @CType("GLuint") int storageBlockIndex, @CType("GLuint") int storageBlockBinding) {
-        try { if (!Unmarshal.isNullPointer(PFN_glShaderStorageBlockBinding))
+        if (!Unmarshal.isNullPointer(PFN_glShaderStorageBlockBinding)) { try {
             MH_glShaderStorageBlockBinding.invokeExact(PFN_glShaderStorageBlockBinding, program, storageBlockIndex, storageBlockBinding);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glShaderStorageBlockBinding", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glShaderStorageBlockBinding", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glShaderStorageBlockBinding"); }
     }
 
 }

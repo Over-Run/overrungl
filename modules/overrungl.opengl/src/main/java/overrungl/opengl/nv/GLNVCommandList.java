@@ -99,126 +99,122 @@ public final class GLNVCommandList {
     }
 
     public void CreateStatesNV(@CType("GLsizei") int n, @CType("GLuint *") java.lang.foreign.MemorySegment states) {
-        try { if (!Unmarshal.isNullPointer(PFN_glCreateStatesNV))
+        if (!Unmarshal.isNullPointer(PFN_glCreateStatesNV)) { try {
             MH_glCreateStatesNV.invokeExact(PFN_glCreateStatesNV, n, states);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glCreateStatesNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glCreateStatesNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glCreateStatesNV"); }
     }
 
     public void DeleteStatesNV(@CType("GLsizei") int n, @CType("const GLuint *") java.lang.foreign.MemorySegment states) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDeleteStatesNV))
+        if (!Unmarshal.isNullPointer(PFN_glDeleteStatesNV)) { try {
             MH_glDeleteStatesNV.invokeExact(PFN_glDeleteStatesNV, n, states);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDeleteStatesNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDeleteStatesNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDeleteStatesNV"); }
     }
 
     public @CType("GLboolean") boolean IsStateNV(@CType("GLuint") int state) {
-        try { if (!Unmarshal.isNullPointer(PFN_glIsStateNV))
+        if (!Unmarshal.isNullPointer(PFN_glIsStateNV)) { try {
             return (boolean) MH_glIsStateNV.invokeExact(PFN_glIsStateNV, state);
-            else return false;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glIsStateNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glIsStateNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glIsStateNV"); }
     }
 
     public void StateCaptureNV(@CType("GLuint") int state, @CType("GLenum") int mode) {
-        try { if (!Unmarshal.isNullPointer(PFN_glStateCaptureNV))
+        if (!Unmarshal.isNullPointer(PFN_glStateCaptureNV)) { try {
             MH_glStateCaptureNV.invokeExact(PFN_glStateCaptureNV, state, mode);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glStateCaptureNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glStateCaptureNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glStateCaptureNV"); }
     }
 
     public @CType("GLuint") int GetCommandHeaderNV(@CType("GLenum") int tokenID, @CType("GLuint") int size) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetCommandHeaderNV))
+        if (!Unmarshal.isNullPointer(PFN_glGetCommandHeaderNV)) { try {
             return (int) MH_glGetCommandHeaderNV.invokeExact(PFN_glGetCommandHeaderNV, tokenID, size);
-            else return 0;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetCommandHeaderNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetCommandHeaderNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetCommandHeaderNV"); }
     }
 
     public @CType("GLushort") short GetStageIndexNV(@CType("GLenum") int shadertype) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetStageIndexNV))
+        if (!Unmarshal.isNullPointer(PFN_glGetStageIndexNV)) { try {
             return (short) MH_glGetStageIndexNV.invokeExact(PFN_glGetStageIndexNV, shadertype);
-            else return 0;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetStageIndexNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetStageIndexNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetStageIndexNV"); }
     }
 
     public void DrawCommandsNV(@CType("GLenum") int primitiveMode, @CType("GLuint") int buffer, @CType("const GLintptr *") java.lang.foreign.MemorySegment indirects, @CType("const GLsizei *") java.lang.foreign.MemorySegment sizes, @CType("GLuint") int count) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDrawCommandsNV))
+        if (!Unmarshal.isNullPointer(PFN_glDrawCommandsNV)) { try {
             MH_glDrawCommandsNV.invokeExact(PFN_glDrawCommandsNV, primitiveMode, buffer, indirects, sizes, count);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawCommandsNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDrawCommandsNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDrawCommandsNV"); }
     }
 
     public void DrawCommandsAddressNV(@CType("GLenum") int primitiveMode, @CType("const GLuint64 *") java.lang.foreign.MemorySegment indirects, @CType("const GLsizei *") java.lang.foreign.MemorySegment sizes, @CType("GLuint") int count) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDrawCommandsAddressNV))
+        if (!Unmarshal.isNullPointer(PFN_glDrawCommandsAddressNV)) { try {
             MH_glDrawCommandsAddressNV.invokeExact(PFN_glDrawCommandsAddressNV, primitiveMode, indirects, sizes, count);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawCommandsAddressNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDrawCommandsAddressNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDrawCommandsAddressNV"); }
     }
 
     public void DrawCommandsStatesNV(@CType("GLuint") int buffer, @CType("const GLintptr *") java.lang.foreign.MemorySegment indirects, @CType("const GLsizei *") java.lang.foreign.MemorySegment sizes, @CType("const GLuint *") java.lang.foreign.MemorySegment states, @CType("const GLuint *") java.lang.foreign.MemorySegment fbos, @CType("GLuint") int count) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDrawCommandsStatesNV))
+        if (!Unmarshal.isNullPointer(PFN_glDrawCommandsStatesNV)) { try {
             MH_glDrawCommandsStatesNV.invokeExact(PFN_glDrawCommandsStatesNV, buffer, indirects, sizes, states, fbos, count);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawCommandsStatesNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDrawCommandsStatesNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDrawCommandsStatesNV"); }
     }
 
     public void DrawCommandsStatesAddressNV(@CType("const GLuint64 *") java.lang.foreign.MemorySegment indirects, @CType("const GLsizei *") java.lang.foreign.MemorySegment sizes, @CType("const GLuint *") java.lang.foreign.MemorySegment states, @CType("const GLuint *") java.lang.foreign.MemorySegment fbos, @CType("GLuint") int count) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDrawCommandsStatesAddressNV))
+        if (!Unmarshal.isNullPointer(PFN_glDrawCommandsStatesAddressNV)) { try {
             MH_glDrawCommandsStatesAddressNV.invokeExact(PFN_glDrawCommandsStatesAddressNV, indirects, sizes, states, fbos, count);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawCommandsStatesAddressNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDrawCommandsStatesAddressNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDrawCommandsStatesAddressNV"); }
     }
 
     public void CreateCommandListsNV(@CType("GLsizei") int n, @CType("GLuint *") java.lang.foreign.MemorySegment lists) {
-        try { if (!Unmarshal.isNullPointer(PFN_glCreateCommandListsNV))
+        if (!Unmarshal.isNullPointer(PFN_glCreateCommandListsNV)) { try {
             MH_glCreateCommandListsNV.invokeExact(PFN_glCreateCommandListsNV, n, lists);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glCreateCommandListsNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glCreateCommandListsNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glCreateCommandListsNV"); }
     }
 
     public void DeleteCommandListsNV(@CType("GLsizei") int n, @CType("const GLuint *") java.lang.foreign.MemorySegment lists) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDeleteCommandListsNV))
+        if (!Unmarshal.isNullPointer(PFN_glDeleteCommandListsNV)) { try {
             MH_glDeleteCommandListsNV.invokeExact(PFN_glDeleteCommandListsNV, n, lists);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDeleteCommandListsNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDeleteCommandListsNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDeleteCommandListsNV"); }
     }
 
     public @CType("GLboolean") boolean IsCommandListNV(@CType("GLuint") int list) {
-        try { if (!Unmarshal.isNullPointer(PFN_glIsCommandListNV))
+        if (!Unmarshal.isNullPointer(PFN_glIsCommandListNV)) { try {
             return (boolean) MH_glIsCommandListNV.invokeExact(PFN_glIsCommandListNV, list);
-            else return false;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glIsCommandListNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glIsCommandListNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glIsCommandListNV"); }
     }
 
     public void ListDrawCommandsStatesClientNV(@CType("GLuint") int list, @CType("GLuint") int segment, @CType("const void **") java.lang.foreign.MemorySegment indirects, @CType("const GLsizei *") java.lang.foreign.MemorySegment sizes, @CType("const GLuint *") java.lang.foreign.MemorySegment states, @CType("const GLuint *") java.lang.foreign.MemorySegment fbos, @CType("GLuint") int count) {
-        try { if (!Unmarshal.isNullPointer(PFN_glListDrawCommandsStatesClientNV))
+        if (!Unmarshal.isNullPointer(PFN_glListDrawCommandsStatesClientNV)) { try {
             MH_glListDrawCommandsStatesClientNV.invokeExact(PFN_glListDrawCommandsStatesClientNV, list, segment, indirects, sizes, states, fbos, count);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glListDrawCommandsStatesClientNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glListDrawCommandsStatesClientNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glListDrawCommandsStatesClientNV"); }
     }
 
     public void CommandListSegmentsNV(@CType("GLuint") int list, @CType("GLuint") int segments) {
-        try { if (!Unmarshal.isNullPointer(PFN_glCommandListSegmentsNV))
+        if (!Unmarshal.isNullPointer(PFN_glCommandListSegmentsNV)) { try {
             MH_glCommandListSegmentsNV.invokeExact(PFN_glCommandListSegmentsNV, list, segments);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glCommandListSegmentsNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glCommandListSegmentsNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glCommandListSegmentsNV"); }
     }
 
     public void CompileCommandListNV(@CType("GLuint") int list) {
-        try { if (!Unmarshal.isNullPointer(PFN_glCompileCommandListNV))
+        if (!Unmarshal.isNullPointer(PFN_glCompileCommandListNV)) { try {
             MH_glCompileCommandListNV.invokeExact(PFN_glCompileCommandListNV, list);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glCompileCommandListNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glCompileCommandListNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glCompileCommandListNV"); }
     }
 
     public void CallCommandListNV(@CType("GLuint") int list) {
-        try { if (!Unmarshal.isNullPointer(PFN_glCallCommandListNV))
+        if (!Unmarshal.isNullPointer(PFN_glCallCommandListNV)) { try {
             MH_glCallCommandListNV.invokeExact(PFN_glCallCommandListNV, list);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glCallCommandListNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glCallCommandListNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glCallCommandListNV"); }
     }
 
 }

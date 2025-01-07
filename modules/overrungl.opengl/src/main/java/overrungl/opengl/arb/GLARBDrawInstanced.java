@@ -35,17 +35,17 @@ public final class GLARBDrawInstanced {
     }
 
     public void DrawArraysInstancedARB(@CType("GLenum") int mode, @CType("GLint") int first, @CType("GLsizei") int count, @CType("GLsizei") int primcount) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDrawArraysInstancedARB))
+        if (!Unmarshal.isNullPointer(PFN_glDrawArraysInstancedARB)) { try {
             MH_glDrawArraysInstancedARB.invokeExact(PFN_glDrawArraysInstancedARB, mode, first, count, primcount);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawArraysInstancedARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDrawArraysInstancedARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDrawArraysInstancedARB"); }
     }
 
     public void DrawElementsInstancedARB(@CType("GLenum") int mode, @CType("GLsizei") int count, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment indices, @CType("GLsizei") int primcount) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDrawElementsInstancedARB))
+        if (!Unmarshal.isNullPointer(PFN_glDrawElementsInstancedARB)) { try {
             MH_glDrawElementsInstancedARB.invokeExact(PFN_glDrawElementsInstancedARB, mode, count, type, indices, primcount);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawElementsInstancedARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDrawElementsInstancedARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDrawElementsInstancedARB"); }
     }
 
 }

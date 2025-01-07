@@ -44,17 +44,17 @@ public final class GLEXTMemoryObjectWin32 {
     }
 
     public void ImportMemoryWin32HandleEXT(@CType("GLuint") int memory, @CType("GLuint64") long size, @CType("GLenum") int handleType, @CType("void*") java.lang.foreign.MemorySegment handle) {
-        try { if (!Unmarshal.isNullPointer(PFN_glImportMemoryWin32HandleEXT))
+        if (!Unmarshal.isNullPointer(PFN_glImportMemoryWin32HandleEXT)) { try {
             MH_glImportMemoryWin32HandleEXT.invokeExact(PFN_glImportMemoryWin32HandleEXT, memory, size, handleType, handle);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glImportMemoryWin32HandleEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glImportMemoryWin32HandleEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glImportMemoryWin32HandleEXT"); }
     }
 
     public void ImportMemoryWin32NameEXT(@CType("GLuint") int memory, @CType("GLuint64") long size, @CType("GLenum") int handleType, @CType("const void *") java.lang.foreign.MemorySegment name) {
-        try { if (!Unmarshal.isNullPointer(PFN_glImportMemoryWin32NameEXT))
+        if (!Unmarshal.isNullPointer(PFN_glImportMemoryWin32NameEXT)) { try {
             MH_glImportMemoryWin32NameEXT.invokeExact(PFN_glImportMemoryWin32NameEXT, memory, size, handleType, name);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glImportMemoryWin32NameEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glImportMemoryWin32NameEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glImportMemoryWin32NameEXT"); }
     }
 
 }

@@ -42,25 +42,24 @@ public final class GLINTELMapTexture {
     }
 
     public void SyncTextureINTEL(@CType("GLuint") int texture) {
-        try { if (!Unmarshal.isNullPointer(PFN_glSyncTextureINTEL))
+        if (!Unmarshal.isNullPointer(PFN_glSyncTextureINTEL)) { try {
             MH_glSyncTextureINTEL.invokeExact(PFN_glSyncTextureINTEL, texture);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glSyncTextureINTEL", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glSyncTextureINTEL", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glSyncTextureINTEL"); }
     }
 
     public void UnmapTexture2DINTEL(@CType("GLuint") int texture, @CType("GLint") int level) {
-        try { if (!Unmarshal.isNullPointer(PFN_glUnmapTexture2DINTEL))
+        if (!Unmarshal.isNullPointer(PFN_glUnmapTexture2DINTEL)) { try {
             MH_glUnmapTexture2DINTEL.invokeExact(PFN_glUnmapTexture2DINTEL, texture, level);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glUnmapTexture2DINTEL", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glUnmapTexture2DINTEL", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glUnmapTexture2DINTEL"); }
     }
 
     public @CType("void*") java.lang.foreign.MemorySegment MapTexture2DINTEL(@CType("GLuint") int texture, @CType("GLint") int level, @CType("GLbitfield") int access, @CType("GLint *") java.lang.foreign.MemorySegment stride, @CType("GLenum *") java.lang.foreign.MemorySegment layout) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMapTexture2DINTEL))
+        if (!Unmarshal.isNullPointer(PFN_glMapTexture2DINTEL)) { try {
             return (java.lang.foreign.MemorySegment) MH_glMapTexture2DINTEL.invokeExact(PFN_glMapTexture2DINTEL, texture, level, access, stride, layout);
-            else return MemorySegment.NULL;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMapTexture2DINTEL", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMapTexture2DINTEL", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMapTexture2DINTEL"); }
     }
 
 }

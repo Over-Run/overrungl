@@ -41,17 +41,17 @@ public final class GLAPPLETextureRange {
     }
 
     public void TextureRangeAPPLE(@CType("GLenum") int target, @CType("GLsizei") int length, @CType("const void *") java.lang.foreign.MemorySegment pointer) {
-        try { if (!Unmarshal.isNullPointer(PFN_glTextureRangeAPPLE))
+        if (!Unmarshal.isNullPointer(PFN_glTextureRangeAPPLE)) { try {
             MH_glTextureRangeAPPLE.invokeExact(PFN_glTextureRangeAPPLE, target, length, pointer);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glTextureRangeAPPLE", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glTextureRangeAPPLE", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glTextureRangeAPPLE"); }
     }
 
     public void GetTexParameterPointervAPPLE(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("void **") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetTexParameterPointervAPPLE))
+        if (!Unmarshal.isNullPointer(PFN_glGetTexParameterPointervAPPLE)) { try {
             MH_glGetTexParameterPointervAPPLE.invokeExact(PFN_glGetTexParameterPointervAPPLE, target, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetTexParameterPointervAPPLE", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetTexParameterPointervAPPLE", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetTexParameterPointervAPPLE"); }
     }
 
 }

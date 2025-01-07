@@ -32,10 +32,10 @@ public final class GL3DFXTbuffer {
     }
 
     public void TbufferMask3DFX(@CType("GLuint") int mask) {
-        try { if (!Unmarshal.isNullPointer(PFN_glTbufferMask3DFX))
+        if (!Unmarshal.isNullPointer(PFN_glTbufferMask3DFX)) { try {
             MH_glTbufferMask3DFX.invokeExact(PFN_glTbufferMask3DFX, mask);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glTbufferMask3DFX", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glTbufferMask3DFX", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glTbufferMask3DFX"); }
     }
 
 }

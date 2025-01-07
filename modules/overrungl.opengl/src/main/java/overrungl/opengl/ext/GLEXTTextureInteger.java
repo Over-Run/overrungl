@@ -94,45 +94,45 @@ public final class GLEXTTextureInteger {
     }
 
     public void TexParameterIivEXT(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("const GLint *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glTexParameterIivEXT))
+        if (!Unmarshal.isNullPointer(PFN_glTexParameterIivEXT)) { try {
             MH_glTexParameterIivEXT.invokeExact(PFN_glTexParameterIivEXT, target, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glTexParameterIivEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glTexParameterIivEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glTexParameterIivEXT"); }
     }
 
     public void TexParameterIuivEXT(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("const GLuint *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glTexParameterIuivEXT))
+        if (!Unmarshal.isNullPointer(PFN_glTexParameterIuivEXT)) { try {
             MH_glTexParameterIuivEXT.invokeExact(PFN_glTexParameterIuivEXT, target, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glTexParameterIuivEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glTexParameterIuivEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glTexParameterIuivEXT"); }
     }
 
     public void GetTexParameterIivEXT(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetTexParameterIivEXT))
+        if (!Unmarshal.isNullPointer(PFN_glGetTexParameterIivEXT)) { try {
             MH_glGetTexParameterIivEXT.invokeExact(PFN_glGetTexParameterIivEXT, target, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetTexParameterIivEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetTexParameterIivEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetTexParameterIivEXT"); }
     }
 
     public void GetTexParameterIuivEXT(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLuint *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetTexParameterIuivEXT))
+        if (!Unmarshal.isNullPointer(PFN_glGetTexParameterIuivEXT)) { try {
             MH_glGetTexParameterIuivEXT.invokeExact(PFN_glGetTexParameterIuivEXT, target, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetTexParameterIuivEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetTexParameterIuivEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetTexParameterIuivEXT"); }
     }
 
     public void ClearColorIiEXT(@CType("GLint") int red, @CType("GLint") int green, @CType("GLint") int blue, @CType("GLint") int alpha) {
-        try { if (!Unmarshal.isNullPointer(PFN_glClearColorIiEXT))
+        if (!Unmarshal.isNullPointer(PFN_glClearColorIiEXT)) { try {
             MH_glClearColorIiEXT.invokeExact(PFN_glClearColorIiEXT, red, green, blue, alpha);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glClearColorIiEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glClearColorIiEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glClearColorIiEXT"); }
     }
 
     public void ClearColorIuiEXT(@CType("GLuint") int red, @CType("GLuint") int green, @CType("GLuint") int blue, @CType("GLuint") int alpha) {
-        try { if (!Unmarshal.isNullPointer(PFN_glClearColorIuiEXT))
+        if (!Unmarshal.isNullPointer(PFN_glClearColorIuiEXT)) { try {
             MH_glClearColorIuiEXT.invokeExact(PFN_glClearColorIuiEXT, red, green, blue, alpha);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glClearColorIuiEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glClearColorIuiEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glClearColorIuiEXT"); }
     }
 
 }

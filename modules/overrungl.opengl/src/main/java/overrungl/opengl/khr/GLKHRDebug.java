@@ -175,159 +175,157 @@ public final class GLKHRDebug {
     }
 
     public void DebugMessageControl(@CType("GLenum") int source, @CType("GLenum") int type, @CType("GLenum") int severity, @CType("GLsizei") int count, @CType("const GLuint *") java.lang.foreign.MemorySegment ids, @CType("GLboolean") boolean enabled) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDebugMessageControl))
+        if (!Unmarshal.isNullPointer(PFN_glDebugMessageControl)) { try {
             MH_glDebugMessageControl.invokeExact(PFN_glDebugMessageControl, source, type, severity, count, ids, enabled);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDebugMessageControl", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDebugMessageControl", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDebugMessageControl"); }
     }
 
     public void DebugMessageInsert(@CType("GLenum") int source, @CType("GLenum") int type, @CType("GLuint") int id, @CType("GLenum") int severity, @CType("GLsizei") int length, @CType("const GLchar *") java.lang.foreign.MemorySegment buf) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDebugMessageInsert))
+        if (!Unmarshal.isNullPointer(PFN_glDebugMessageInsert)) { try {
             MH_glDebugMessageInsert.invokeExact(PFN_glDebugMessageInsert, source, type, id, severity, length, buf);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDebugMessageInsert", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDebugMessageInsert", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDebugMessageInsert"); }
     }
 
     public void DebugMessageCallback(@CType("GLDEBUGPROC") java.lang.foreign.MemorySegment callback, @CType("const void *") java.lang.foreign.MemorySegment userParam) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDebugMessageCallback))
+        if (!Unmarshal.isNullPointer(PFN_glDebugMessageCallback)) { try {
             MH_glDebugMessageCallback.invokeExact(PFN_glDebugMessageCallback, callback, userParam);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDebugMessageCallback", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDebugMessageCallback", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDebugMessageCallback"); }
     }
 
     public @CType("GLuint") int GetDebugMessageLog(@CType("GLuint") int count, @CType("GLsizei") int bufSize, @CType("GLenum *") java.lang.foreign.MemorySegment sources, @CType("GLenum *") java.lang.foreign.MemorySegment types, @CType("GLuint *") java.lang.foreign.MemorySegment ids, @CType("GLenum *") java.lang.foreign.MemorySegment severities, @CType("GLsizei *") java.lang.foreign.MemorySegment lengths, @CType("GLchar *") java.lang.foreign.MemorySegment messageLog) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetDebugMessageLog))
+        if (!Unmarshal.isNullPointer(PFN_glGetDebugMessageLog)) { try {
             return (int) MH_glGetDebugMessageLog.invokeExact(PFN_glGetDebugMessageLog, count, bufSize, sources, types, ids, severities, lengths, messageLog);
-            else return 0;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetDebugMessageLog", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetDebugMessageLog", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetDebugMessageLog"); }
     }
 
     public void PushDebugGroup(@CType("GLenum") int source, @CType("GLuint") int id, @CType("GLsizei") int length, @CType("const GLchar *") java.lang.foreign.MemorySegment message) {
-        try { if (!Unmarshal.isNullPointer(PFN_glPushDebugGroup))
+        if (!Unmarshal.isNullPointer(PFN_glPushDebugGroup)) { try {
             MH_glPushDebugGroup.invokeExact(PFN_glPushDebugGroup, source, id, length, message);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glPushDebugGroup", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glPushDebugGroup", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glPushDebugGroup"); }
     }
 
     public void PopDebugGroup() {
-        try { if (!Unmarshal.isNullPointer(PFN_glPopDebugGroup))
+        if (!Unmarshal.isNullPointer(PFN_glPopDebugGroup)) { try {
             MH_glPopDebugGroup.invokeExact(PFN_glPopDebugGroup);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glPopDebugGroup", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glPopDebugGroup", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glPopDebugGroup"); }
     }
 
     public void ObjectLabel(@CType("GLenum") int identifier, @CType("GLuint") int name, @CType("GLsizei") int length, @CType("const GLchar *") java.lang.foreign.MemorySegment label) {
-        try { if (!Unmarshal.isNullPointer(PFN_glObjectLabel))
+        if (!Unmarshal.isNullPointer(PFN_glObjectLabel)) { try {
             MH_glObjectLabel.invokeExact(PFN_glObjectLabel, identifier, name, length, label);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glObjectLabel", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glObjectLabel", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glObjectLabel"); }
     }
 
     public void GetObjectLabel(@CType("GLenum") int identifier, @CType("GLuint") int name, @CType("GLsizei") int bufSize, @CType("GLsizei *") java.lang.foreign.MemorySegment length, @CType("GLchar *") java.lang.foreign.MemorySegment label) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetObjectLabel))
+        if (!Unmarshal.isNullPointer(PFN_glGetObjectLabel)) { try {
             MH_glGetObjectLabel.invokeExact(PFN_glGetObjectLabel, identifier, name, bufSize, length, label);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetObjectLabel", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetObjectLabel", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetObjectLabel"); }
     }
 
     public void ObjectPtrLabel(@CType("const void *") java.lang.foreign.MemorySegment ptr, @CType("GLsizei") int length, @CType("const GLchar *") java.lang.foreign.MemorySegment label) {
-        try { if (!Unmarshal.isNullPointer(PFN_glObjectPtrLabel))
+        if (!Unmarshal.isNullPointer(PFN_glObjectPtrLabel)) { try {
             MH_glObjectPtrLabel.invokeExact(PFN_glObjectPtrLabel, ptr, length, label);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glObjectPtrLabel", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glObjectPtrLabel", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glObjectPtrLabel"); }
     }
 
     public void GetObjectPtrLabel(@CType("const void *") java.lang.foreign.MemorySegment ptr, @CType("GLsizei") int bufSize, @CType("GLsizei *") java.lang.foreign.MemorySegment length, @CType("GLchar *") java.lang.foreign.MemorySegment label) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetObjectPtrLabel))
+        if (!Unmarshal.isNullPointer(PFN_glGetObjectPtrLabel)) { try {
             MH_glGetObjectPtrLabel.invokeExact(PFN_glGetObjectPtrLabel, ptr, bufSize, length, label);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetObjectPtrLabel", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetObjectPtrLabel", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetObjectPtrLabel"); }
     }
 
     public void GetPointerv(@CType("GLenum") int pname, @CType("void **") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetPointerv))
+        if (!Unmarshal.isNullPointer(PFN_glGetPointerv)) { try {
             MH_glGetPointerv.invokeExact(PFN_glGetPointerv, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetPointerv", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetPointerv", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetPointerv"); }
     }
 
     public void DebugMessageControlKHR(@CType("GLenum") int source, @CType("GLenum") int type, @CType("GLenum") int severity, @CType("GLsizei") int count, @CType("const GLuint *") java.lang.foreign.MemorySegment ids, @CType("GLboolean") boolean enabled) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDebugMessageControlKHR))
+        if (!Unmarshal.isNullPointer(PFN_glDebugMessageControlKHR)) { try {
             MH_glDebugMessageControlKHR.invokeExact(PFN_glDebugMessageControlKHR, source, type, severity, count, ids, enabled);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDebugMessageControlKHR", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDebugMessageControlKHR", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDebugMessageControlKHR"); }
     }
 
     public void DebugMessageInsertKHR(@CType("GLenum") int source, @CType("GLenum") int type, @CType("GLuint") int id, @CType("GLenum") int severity, @CType("GLsizei") int length, @CType("const GLchar *") java.lang.foreign.MemorySegment buf) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDebugMessageInsertKHR))
+        if (!Unmarshal.isNullPointer(PFN_glDebugMessageInsertKHR)) { try {
             MH_glDebugMessageInsertKHR.invokeExact(PFN_glDebugMessageInsertKHR, source, type, id, severity, length, buf);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDebugMessageInsertKHR", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDebugMessageInsertKHR", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDebugMessageInsertKHR"); }
     }
 
     public void DebugMessageCallbackKHR(@CType("GLDEBUGPROCKHR") java.lang.foreign.MemorySegment callback, @CType("const void *") java.lang.foreign.MemorySegment userParam) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDebugMessageCallbackKHR))
+        if (!Unmarshal.isNullPointer(PFN_glDebugMessageCallbackKHR)) { try {
             MH_glDebugMessageCallbackKHR.invokeExact(PFN_glDebugMessageCallbackKHR, callback, userParam);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDebugMessageCallbackKHR", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDebugMessageCallbackKHR", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDebugMessageCallbackKHR"); }
     }
 
     public @CType("GLuint") int GetDebugMessageLogKHR(@CType("GLuint") int count, @CType("GLsizei") int bufSize, @CType("GLenum *") java.lang.foreign.MemorySegment sources, @CType("GLenum *") java.lang.foreign.MemorySegment types, @CType("GLuint *") java.lang.foreign.MemorySegment ids, @CType("GLenum *") java.lang.foreign.MemorySegment severities, @CType("GLsizei *") java.lang.foreign.MemorySegment lengths, @CType("GLchar *") java.lang.foreign.MemorySegment messageLog) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetDebugMessageLogKHR))
+        if (!Unmarshal.isNullPointer(PFN_glGetDebugMessageLogKHR)) { try {
             return (int) MH_glGetDebugMessageLogKHR.invokeExact(PFN_glGetDebugMessageLogKHR, count, bufSize, sources, types, ids, severities, lengths, messageLog);
-            else return 0;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetDebugMessageLogKHR", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetDebugMessageLogKHR", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetDebugMessageLogKHR"); }
     }
 
     public void PushDebugGroupKHR(@CType("GLenum") int source, @CType("GLuint") int id, @CType("GLsizei") int length, @CType("const GLchar *") java.lang.foreign.MemorySegment message) {
-        try { if (!Unmarshal.isNullPointer(PFN_glPushDebugGroupKHR))
+        if (!Unmarshal.isNullPointer(PFN_glPushDebugGroupKHR)) { try {
             MH_glPushDebugGroupKHR.invokeExact(PFN_glPushDebugGroupKHR, source, id, length, message);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glPushDebugGroupKHR", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glPushDebugGroupKHR", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glPushDebugGroupKHR"); }
     }
 
     public void PopDebugGroupKHR() {
-        try { if (!Unmarshal.isNullPointer(PFN_glPopDebugGroupKHR))
+        if (!Unmarshal.isNullPointer(PFN_glPopDebugGroupKHR)) { try {
             MH_glPopDebugGroupKHR.invokeExact(PFN_glPopDebugGroupKHR);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glPopDebugGroupKHR", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glPopDebugGroupKHR", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glPopDebugGroupKHR"); }
     }
 
     public void ObjectLabelKHR(@CType("GLenum") int identifier, @CType("GLuint") int name, @CType("GLsizei") int length, @CType("const GLchar *") java.lang.foreign.MemorySegment label) {
-        try { if (!Unmarshal.isNullPointer(PFN_glObjectLabelKHR))
+        if (!Unmarshal.isNullPointer(PFN_glObjectLabelKHR)) { try {
             MH_glObjectLabelKHR.invokeExact(PFN_glObjectLabelKHR, identifier, name, length, label);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glObjectLabelKHR", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glObjectLabelKHR", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glObjectLabelKHR"); }
     }
 
     public void GetObjectLabelKHR(@CType("GLenum") int identifier, @CType("GLuint") int name, @CType("GLsizei") int bufSize, @CType("GLsizei *") java.lang.foreign.MemorySegment length, @CType("GLchar *") java.lang.foreign.MemorySegment label) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetObjectLabelKHR))
+        if (!Unmarshal.isNullPointer(PFN_glGetObjectLabelKHR)) { try {
             MH_glGetObjectLabelKHR.invokeExact(PFN_glGetObjectLabelKHR, identifier, name, bufSize, length, label);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetObjectLabelKHR", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetObjectLabelKHR", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetObjectLabelKHR"); }
     }
 
     public void ObjectPtrLabelKHR(@CType("const void *") java.lang.foreign.MemorySegment ptr, @CType("GLsizei") int length, @CType("const GLchar *") java.lang.foreign.MemorySegment label) {
-        try { if (!Unmarshal.isNullPointer(PFN_glObjectPtrLabelKHR))
+        if (!Unmarshal.isNullPointer(PFN_glObjectPtrLabelKHR)) { try {
             MH_glObjectPtrLabelKHR.invokeExact(PFN_glObjectPtrLabelKHR, ptr, length, label);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glObjectPtrLabelKHR", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glObjectPtrLabelKHR", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glObjectPtrLabelKHR"); }
     }
 
     public void GetObjectPtrLabelKHR(@CType("const void *") java.lang.foreign.MemorySegment ptr, @CType("GLsizei") int bufSize, @CType("GLsizei *") java.lang.foreign.MemorySegment length, @CType("GLchar *") java.lang.foreign.MemorySegment label) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetObjectPtrLabelKHR))
+        if (!Unmarshal.isNullPointer(PFN_glGetObjectPtrLabelKHR)) { try {
             MH_glGetObjectPtrLabelKHR.invokeExact(PFN_glGetObjectPtrLabelKHR, ptr, bufSize, length, label);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetObjectPtrLabelKHR", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetObjectPtrLabelKHR", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetObjectPtrLabelKHR"); }
     }
 
     public void GetPointervKHR(@CType("GLenum") int pname, @CType("void **") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetPointervKHR))
+        if (!Unmarshal.isNullPointer(PFN_glGetPointervKHR)) { try {
             MH_glGetPointervKHR.invokeExact(PFN_glGetPointervKHR, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetPointervKHR", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetPointervKHR", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetPointervKHR"); }
     }
 
 }

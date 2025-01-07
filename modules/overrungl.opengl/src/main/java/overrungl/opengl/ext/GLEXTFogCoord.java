@@ -52,38 +52,38 @@ public final class GLEXTFogCoord {
     }
 
     public void FogCoordfEXT(@CType("GLfloat") float coord) {
-        try { if (!Unmarshal.isNullPointer(PFN_glFogCoordfEXT))
+        if (!Unmarshal.isNullPointer(PFN_glFogCoordfEXT)) { try {
             MH_glFogCoordfEXT.invokeExact(PFN_glFogCoordfEXT, coord);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFogCoordfEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFogCoordfEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFogCoordfEXT"); }
     }
 
     public void FogCoordfvEXT(@CType("const GLfloat *") java.lang.foreign.MemorySegment coord) {
-        try { if (!Unmarshal.isNullPointer(PFN_glFogCoordfvEXT))
+        if (!Unmarshal.isNullPointer(PFN_glFogCoordfvEXT)) { try {
             MH_glFogCoordfvEXT.invokeExact(PFN_glFogCoordfvEXT, coord);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFogCoordfvEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFogCoordfvEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFogCoordfvEXT"); }
     }
 
     public void FogCoorddEXT(@CType("GLdouble") double coord) {
-        try { if (!Unmarshal.isNullPointer(PFN_glFogCoorddEXT))
+        if (!Unmarshal.isNullPointer(PFN_glFogCoorddEXT)) { try {
             MH_glFogCoorddEXT.invokeExact(PFN_glFogCoorddEXT, coord);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFogCoorddEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFogCoorddEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFogCoorddEXT"); }
     }
 
     public void FogCoorddvEXT(@CType("const GLdouble *") java.lang.foreign.MemorySegment coord) {
-        try { if (!Unmarshal.isNullPointer(PFN_glFogCoorddvEXT))
+        if (!Unmarshal.isNullPointer(PFN_glFogCoorddvEXT)) { try {
             MH_glFogCoorddvEXT.invokeExact(PFN_glFogCoorddvEXT, coord);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFogCoorddvEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFogCoorddvEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFogCoorddvEXT"); }
     }
 
     public void FogCoordPointerEXT(@CType("GLenum") int type, @CType("GLsizei") int stride, @CType("const void *") java.lang.foreign.MemorySegment pointer) {
-        try { if (!Unmarshal.isNullPointer(PFN_glFogCoordPointerEXT))
+        if (!Unmarshal.isNullPointer(PFN_glFogCoordPointerEXT)) { try {
             MH_glFogCoordPointerEXT.invokeExact(PFN_glFogCoordPointerEXT, type, stride, pointer);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFogCoordPointerEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFogCoordPointerEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFogCoordPointerEXT"); }
     }
 
 }

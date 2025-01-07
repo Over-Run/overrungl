@@ -62,45 +62,45 @@ public final class GLHPImageTransform {
     }
 
     public void ImageTransformParameteriHP(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLint") int param) {
-        try { if (!Unmarshal.isNullPointer(PFN_glImageTransformParameteriHP))
+        if (!Unmarshal.isNullPointer(PFN_glImageTransformParameteriHP)) { try {
             MH_glImageTransformParameteriHP.invokeExact(PFN_glImageTransformParameteriHP, target, pname, param);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glImageTransformParameteriHP", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glImageTransformParameteriHP", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glImageTransformParameteriHP"); }
     }
 
     public void ImageTransformParameterfHP(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLfloat") float param) {
-        try { if (!Unmarshal.isNullPointer(PFN_glImageTransformParameterfHP))
+        if (!Unmarshal.isNullPointer(PFN_glImageTransformParameterfHP)) { try {
             MH_glImageTransformParameterfHP.invokeExact(PFN_glImageTransformParameterfHP, target, pname, param);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glImageTransformParameterfHP", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glImageTransformParameterfHP", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glImageTransformParameterfHP"); }
     }
 
     public void ImageTransformParameterivHP(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("const GLint *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glImageTransformParameterivHP))
+        if (!Unmarshal.isNullPointer(PFN_glImageTransformParameterivHP)) { try {
             MH_glImageTransformParameterivHP.invokeExact(PFN_glImageTransformParameterivHP, target, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glImageTransformParameterivHP", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glImageTransformParameterivHP", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glImageTransformParameterivHP"); }
     }
 
     public void ImageTransformParameterfvHP(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("const GLfloat *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glImageTransformParameterfvHP))
+        if (!Unmarshal.isNullPointer(PFN_glImageTransformParameterfvHP)) { try {
             MH_glImageTransformParameterfvHP.invokeExact(PFN_glImageTransformParameterfvHP, target, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glImageTransformParameterfvHP", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glImageTransformParameterfvHP", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glImageTransformParameterfvHP"); }
     }
 
     public void GetImageTransformParameterivHP(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetImageTransformParameterivHP))
+        if (!Unmarshal.isNullPointer(PFN_glGetImageTransformParameterivHP)) { try {
             MH_glGetImageTransformParameterivHP.invokeExact(PFN_glGetImageTransformParameterivHP, target, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetImageTransformParameterivHP", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetImageTransformParameterivHP", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetImageTransformParameterivHP"); }
     }
 
     public void GetImageTransformParameterfvHP(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetImageTransformParameterfvHP))
+        if (!Unmarshal.isNullPointer(PFN_glGetImageTransformParameterfvHP)) { try {
             MH_glGetImageTransformParameterfvHP.invokeExact(PFN_glGetImageTransformParameterfvHP, target, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetImageTransformParameterfvHP", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetImageTransformParameterfvHP", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetImageTransformParameterfvHP"); }
     }
 
 }

@@ -37,10 +37,10 @@ public final class GLARBTextureView {
     }
 
     public void TextureView(@CType("GLuint") int texture, @CType("GLenum") int target, @CType("GLuint") int origtexture, @CType("GLenum") int internalformat, @CType("GLuint") int minlevel, @CType("GLuint") int numlevels, @CType("GLuint") int minlayer, @CType("GLuint") int numlayers) {
-        try { if (!Unmarshal.isNullPointer(PFN_glTextureView))
+        if (!Unmarshal.isNullPointer(PFN_glTextureView)) { try {
             MH_glTextureView.invokeExact(PFN_glTextureView, texture, target, origtexture, internalformat, minlevel, numlevels, minlayer, numlayers);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glTextureView", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glTextureView", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glTextureView"); }
     }
 
 }

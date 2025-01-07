@@ -37,17 +37,17 @@ public final class GLNVPrimitiveRestart {
     }
 
     public void PrimitiveRestartNV() {
-        try { if (!Unmarshal.isNullPointer(PFN_glPrimitiveRestartNV))
+        if (!Unmarshal.isNullPointer(PFN_glPrimitiveRestartNV)) { try {
             MH_glPrimitiveRestartNV.invokeExact(PFN_glPrimitiveRestartNV);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glPrimitiveRestartNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glPrimitiveRestartNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glPrimitiveRestartNV"); }
     }
 
     public void PrimitiveRestartIndexNV(@CType("GLuint") int index) {
-        try { if (!Unmarshal.isNullPointer(PFN_glPrimitiveRestartIndexNV))
+        if (!Unmarshal.isNullPointer(PFN_glPrimitiveRestartIndexNV)) { try {
             MH_glPrimitiveRestartIndexNV.invokeExact(PFN_glPrimitiveRestartIndexNV, index);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glPrimitiveRestartIndexNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glPrimitiveRestartIndexNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glPrimitiveRestartIndexNV"); }
     }
 
 }

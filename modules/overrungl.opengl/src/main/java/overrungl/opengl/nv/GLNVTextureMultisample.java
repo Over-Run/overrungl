@@ -48,45 +48,45 @@ public final class GLNVTextureMultisample {
     }
 
     public void TexImage2DMultisampleCoverageNV(@CType("GLenum") int target, @CType("GLsizei") int coverageSamples, @CType("GLsizei") int colorSamples, @CType("GLint") int internalFormat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLboolean") boolean fixedSampleLocations) {
-        try { if (!Unmarshal.isNullPointer(PFN_glTexImage2DMultisampleCoverageNV))
+        if (!Unmarshal.isNullPointer(PFN_glTexImage2DMultisampleCoverageNV)) { try {
             MH_glTexImage2DMultisampleCoverageNV.invokeExact(PFN_glTexImage2DMultisampleCoverageNV, target, coverageSamples, colorSamples, internalFormat, width, height, fixedSampleLocations);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glTexImage2DMultisampleCoverageNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glTexImage2DMultisampleCoverageNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glTexImage2DMultisampleCoverageNV"); }
     }
 
     public void TexImage3DMultisampleCoverageNV(@CType("GLenum") int target, @CType("GLsizei") int coverageSamples, @CType("GLsizei") int colorSamples, @CType("GLint") int internalFormat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth, @CType("GLboolean") boolean fixedSampleLocations) {
-        try { if (!Unmarshal.isNullPointer(PFN_glTexImage3DMultisampleCoverageNV))
+        if (!Unmarshal.isNullPointer(PFN_glTexImage3DMultisampleCoverageNV)) { try {
             MH_glTexImage3DMultisampleCoverageNV.invokeExact(PFN_glTexImage3DMultisampleCoverageNV, target, coverageSamples, colorSamples, internalFormat, width, height, depth, fixedSampleLocations);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glTexImage3DMultisampleCoverageNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glTexImage3DMultisampleCoverageNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glTexImage3DMultisampleCoverageNV"); }
     }
 
     public void TextureImage2DMultisampleNV(@CType("GLuint") int texture, @CType("GLenum") int target, @CType("GLsizei") int samples, @CType("GLint") int internalFormat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLboolean") boolean fixedSampleLocations) {
-        try { if (!Unmarshal.isNullPointer(PFN_glTextureImage2DMultisampleNV))
+        if (!Unmarshal.isNullPointer(PFN_glTextureImage2DMultisampleNV)) { try {
             MH_glTextureImage2DMultisampleNV.invokeExact(PFN_glTextureImage2DMultisampleNV, texture, target, samples, internalFormat, width, height, fixedSampleLocations);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glTextureImage2DMultisampleNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glTextureImage2DMultisampleNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glTextureImage2DMultisampleNV"); }
     }
 
     public void TextureImage3DMultisampleNV(@CType("GLuint") int texture, @CType("GLenum") int target, @CType("GLsizei") int samples, @CType("GLint") int internalFormat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth, @CType("GLboolean") boolean fixedSampleLocations) {
-        try { if (!Unmarshal.isNullPointer(PFN_glTextureImage3DMultisampleNV))
+        if (!Unmarshal.isNullPointer(PFN_glTextureImage3DMultisampleNV)) { try {
             MH_glTextureImage3DMultisampleNV.invokeExact(PFN_glTextureImage3DMultisampleNV, texture, target, samples, internalFormat, width, height, depth, fixedSampleLocations);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glTextureImage3DMultisampleNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glTextureImage3DMultisampleNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glTextureImage3DMultisampleNV"); }
     }
 
     public void TextureImage2DMultisampleCoverageNV(@CType("GLuint") int texture, @CType("GLenum") int target, @CType("GLsizei") int coverageSamples, @CType("GLsizei") int colorSamples, @CType("GLint") int internalFormat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLboolean") boolean fixedSampleLocations) {
-        try { if (!Unmarshal.isNullPointer(PFN_glTextureImage2DMultisampleCoverageNV))
+        if (!Unmarshal.isNullPointer(PFN_glTextureImage2DMultisampleCoverageNV)) { try {
             MH_glTextureImage2DMultisampleCoverageNV.invokeExact(PFN_glTextureImage2DMultisampleCoverageNV, texture, target, coverageSamples, colorSamples, internalFormat, width, height, fixedSampleLocations);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glTextureImage2DMultisampleCoverageNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glTextureImage2DMultisampleCoverageNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glTextureImage2DMultisampleCoverageNV"); }
     }
 
     public void TextureImage3DMultisampleCoverageNV(@CType("GLuint") int texture, @CType("GLenum") int target, @CType("GLsizei") int coverageSamples, @CType("GLsizei") int colorSamples, @CType("GLint") int internalFormat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth, @CType("GLboolean") boolean fixedSampleLocations) {
-        try { if (!Unmarshal.isNullPointer(PFN_glTextureImage3DMultisampleCoverageNV))
+        if (!Unmarshal.isNullPointer(PFN_glTextureImage3DMultisampleCoverageNV)) { try {
             MH_glTextureImage3DMultisampleCoverageNV.invokeExact(PFN_glTextureImage3DMultisampleCoverageNV, texture, target, coverageSamples, colorSamples, internalFormat, width, height, depth, fixedSampleLocations);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glTextureImage3DMultisampleCoverageNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glTextureImage3DMultisampleCoverageNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glTextureImage3DMultisampleCoverageNV"); }
     }
 
 }
