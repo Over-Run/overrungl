@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2023-2024 Overrun Organization
+ * Copyright (c) 2023-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -42,6 +42,10 @@ public final class OverrunGL {
      * The version of NFD native libraries.
      */
     public static final String NFD_VERSION = "1.2.1.0";
+    /**
+     * The version of OpenAL native libraries.
+     */
+    public static final String OPENAL_VERSION = "0.1.0.0";
     /**
      * The version of STB native libraries.
      */

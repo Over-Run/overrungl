@@ -37,7 +37,7 @@ The formatted code:
    */
   ```
   ;
-- The class names **MUST** be CamelCase;
+- The class names **MUST** be CamelCase except for generated sources;
 - The method and field names _should_ be camelCase; this restriction can be widened for non-public APIs;
 - Other rules specified in [.editorconfig](.editorconfig).
 

@@ -19,6 +19,7 @@ package overrungl.opengl
 import com.palantir.javapoet.TypeName
 import overrungl.gen.CustomTypeSpec
 import overrungl.gen.commentedFileHeader
+import overrungl.gen.writeString
 import kotlin.io.path.Path
 
 class InstanceDowncall(

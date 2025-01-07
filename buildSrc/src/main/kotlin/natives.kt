@@ -45,6 +45,7 @@ enum class NativeBinding(
 ) {
     GLFW("glfw", "glfw", NativePlatform.enumEntries),
     NFD("nfd", "nfd", NativePlatform.enumEntries),
+    OPENAL("openal", "openal", NativePlatform.enumEntries),
     STB("stb", "stb", NativePlatform.enumEntries),
 }
 
@@ -72,6 +73,11 @@ enum class Artifact(
         "OverrunGL - Native File Dialog",
         "A tiny, neat C library that portably invokes native file open and save dialogs.",
         ":nfd"
+    ),
+    OPENAL(
+        "OverrunGL - OpenAL bindings",
+        "A cross-platform 3D audio API appropriate for use with gaming applications and many other types of audio applications.",
+        ":openal"
     ),
     OPENGL(
         "OverrunGL - OpenGL bindings",

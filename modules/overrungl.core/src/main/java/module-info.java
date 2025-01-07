@@ -29,6 +29,7 @@ module overrungl.core {
     exports overrungl.internal
         to overrungl.glfw,
         overrungl.nfd,
+        overrungl.openal,
         overrungl.opengl,
         overrungl.stb,
         overrungl.vulkan;

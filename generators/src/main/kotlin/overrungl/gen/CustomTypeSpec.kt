@@ -124,3 +124,5 @@ val short_ptr = jshort_array c "short*"
 val int_ptr = jint_array c "int*"
 val float_ptr = jfloat_array c "float*"
 val double_ptr = jdouble_array c "double*"
+
+val void_ptr_ptr = address c "void**"
