@@ -36,10 +36,10 @@ public final class GLARBProvokingVertex {
     }
 
     public void ProvokingVertex(@CType("GLenum") int mode) {
-        try { if (!Unmarshal.isNullPointer(PFN_glProvokingVertex))
+        if (!Unmarshal.isNullPointer(PFN_glProvokingVertex)) { try {
             MH_glProvokingVertex.invokeExact(PFN_glProvokingVertex, mode);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glProvokingVertex", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glProvokingVertex", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glProvokingVertex"); }
     }
 
 }

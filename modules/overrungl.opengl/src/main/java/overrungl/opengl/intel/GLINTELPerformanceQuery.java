@@ -79,73 +79,73 @@ public final class GLINTELPerformanceQuery {
     }
 
     public void BeginPerfQueryINTEL(@CType("GLuint") int queryHandle) {
-        try { if (!Unmarshal.isNullPointer(PFN_glBeginPerfQueryINTEL))
+        if (!Unmarshal.isNullPointer(PFN_glBeginPerfQueryINTEL)) { try {
             MH_glBeginPerfQueryINTEL.invokeExact(PFN_glBeginPerfQueryINTEL, queryHandle);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glBeginPerfQueryINTEL", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glBeginPerfQueryINTEL", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glBeginPerfQueryINTEL"); }
     }
 
     public void CreatePerfQueryINTEL(@CType("GLuint") int queryId, @CType("GLuint *") java.lang.foreign.MemorySegment queryHandle) {
-        try { if (!Unmarshal.isNullPointer(PFN_glCreatePerfQueryINTEL))
+        if (!Unmarshal.isNullPointer(PFN_glCreatePerfQueryINTEL)) { try {
             MH_glCreatePerfQueryINTEL.invokeExact(PFN_glCreatePerfQueryINTEL, queryId, queryHandle);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glCreatePerfQueryINTEL", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glCreatePerfQueryINTEL", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glCreatePerfQueryINTEL"); }
     }
 
     public void DeletePerfQueryINTEL(@CType("GLuint") int queryHandle) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDeletePerfQueryINTEL))
+        if (!Unmarshal.isNullPointer(PFN_glDeletePerfQueryINTEL)) { try {
             MH_glDeletePerfQueryINTEL.invokeExact(PFN_glDeletePerfQueryINTEL, queryHandle);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDeletePerfQueryINTEL", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDeletePerfQueryINTEL", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDeletePerfQueryINTEL"); }
     }
 
     public void EndPerfQueryINTEL(@CType("GLuint") int queryHandle) {
-        try { if (!Unmarshal.isNullPointer(PFN_glEndPerfQueryINTEL))
+        if (!Unmarshal.isNullPointer(PFN_glEndPerfQueryINTEL)) { try {
             MH_glEndPerfQueryINTEL.invokeExact(PFN_glEndPerfQueryINTEL, queryHandle);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glEndPerfQueryINTEL", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glEndPerfQueryINTEL", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glEndPerfQueryINTEL"); }
     }
 
     public void GetFirstPerfQueryIdINTEL(@CType("GLuint *") java.lang.foreign.MemorySegment queryId) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetFirstPerfQueryIdINTEL))
+        if (!Unmarshal.isNullPointer(PFN_glGetFirstPerfQueryIdINTEL)) { try {
             MH_glGetFirstPerfQueryIdINTEL.invokeExact(PFN_glGetFirstPerfQueryIdINTEL, queryId);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetFirstPerfQueryIdINTEL", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetFirstPerfQueryIdINTEL", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetFirstPerfQueryIdINTEL"); }
     }
 
     public void GetNextPerfQueryIdINTEL(@CType("GLuint") int queryId, @CType("GLuint *") java.lang.foreign.MemorySegment nextQueryId) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetNextPerfQueryIdINTEL))
+        if (!Unmarshal.isNullPointer(PFN_glGetNextPerfQueryIdINTEL)) { try {
             MH_glGetNextPerfQueryIdINTEL.invokeExact(PFN_glGetNextPerfQueryIdINTEL, queryId, nextQueryId);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetNextPerfQueryIdINTEL", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetNextPerfQueryIdINTEL", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetNextPerfQueryIdINTEL"); }
     }
 
     public void GetPerfCounterInfoINTEL(@CType("GLuint") int queryId, @CType("GLuint") int counterId, @CType("GLuint") int counterNameLength, @CType("GLchar *") java.lang.foreign.MemorySegment counterName, @CType("GLuint") int counterDescLength, @CType("GLchar *") java.lang.foreign.MemorySegment counterDesc, @CType("GLuint *") java.lang.foreign.MemorySegment counterOffset, @CType("GLuint *") java.lang.foreign.MemorySegment counterDataSize, @CType("GLuint *") java.lang.foreign.MemorySegment counterTypeEnum, @CType("GLuint *") java.lang.foreign.MemorySegment counterDataTypeEnum, @CType("GLuint64 *") java.lang.foreign.MemorySegment rawCounterMaxValue) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetPerfCounterInfoINTEL))
+        if (!Unmarshal.isNullPointer(PFN_glGetPerfCounterInfoINTEL)) { try {
             MH_glGetPerfCounterInfoINTEL.invokeExact(PFN_glGetPerfCounterInfoINTEL, queryId, counterId, counterNameLength, counterName, counterDescLength, counterDesc, counterOffset, counterDataSize, counterTypeEnum, counterDataTypeEnum, rawCounterMaxValue);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetPerfCounterInfoINTEL", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetPerfCounterInfoINTEL", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetPerfCounterInfoINTEL"); }
     }
 
     public void GetPerfQueryDataINTEL(@CType("GLuint") int queryHandle, @CType("GLuint") int flags, @CType("GLsizei") int dataSize, @CType("void*") java.lang.foreign.MemorySegment data, @CType("GLuint *") java.lang.foreign.MemorySegment bytesWritten) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetPerfQueryDataINTEL))
+        if (!Unmarshal.isNullPointer(PFN_glGetPerfQueryDataINTEL)) { try {
             MH_glGetPerfQueryDataINTEL.invokeExact(PFN_glGetPerfQueryDataINTEL, queryHandle, flags, dataSize, data, bytesWritten);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetPerfQueryDataINTEL", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetPerfQueryDataINTEL", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetPerfQueryDataINTEL"); }
     }
 
     public void GetPerfQueryIdByNameINTEL(@CType("GLchar *") java.lang.foreign.MemorySegment queryName, @CType("GLuint *") java.lang.foreign.MemorySegment queryId) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetPerfQueryIdByNameINTEL))
+        if (!Unmarshal.isNullPointer(PFN_glGetPerfQueryIdByNameINTEL)) { try {
             MH_glGetPerfQueryIdByNameINTEL.invokeExact(PFN_glGetPerfQueryIdByNameINTEL, queryName, queryId);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetPerfQueryIdByNameINTEL", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetPerfQueryIdByNameINTEL", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetPerfQueryIdByNameINTEL"); }
     }
 
     public void GetPerfQueryInfoINTEL(@CType("GLuint") int queryId, @CType("GLuint") int queryNameLength, @CType("GLchar *") java.lang.foreign.MemorySegment queryName, @CType("GLuint *") java.lang.foreign.MemorySegment dataSize, @CType("GLuint *") java.lang.foreign.MemorySegment noCounters, @CType("GLuint *") java.lang.foreign.MemorySegment noInstances, @CType("GLuint *") java.lang.foreign.MemorySegment capsMask) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetPerfQueryInfoINTEL))
+        if (!Unmarshal.isNullPointer(PFN_glGetPerfQueryInfoINTEL)) { try {
             MH_glGetPerfQueryInfoINTEL.invokeExact(PFN_glGetPerfQueryInfoINTEL, queryId, queryNameLength, queryName, dataSize, noCounters, noInstances, capsMask);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetPerfQueryInfoINTEL", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetPerfQueryInfoINTEL", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetPerfQueryInfoINTEL"); }
     }
 
 }

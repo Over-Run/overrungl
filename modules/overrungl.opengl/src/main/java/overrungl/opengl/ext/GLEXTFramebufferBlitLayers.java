@@ -35,17 +35,17 @@ public final class GLEXTFramebufferBlitLayers {
     }
 
     public void BlitFramebufferLayersEXT(@CType("GLint") int srcX0, @CType("GLint") int srcY0, @CType("GLint") int srcX1, @CType("GLint") int srcY1, @CType("GLint") int dstX0, @CType("GLint") int dstY0, @CType("GLint") int dstX1, @CType("GLint") int dstY1, @CType("GLbitfield") int mask, @CType("GLenum") int filter) {
-        try { if (!Unmarshal.isNullPointer(PFN_glBlitFramebufferLayersEXT))
+        if (!Unmarshal.isNullPointer(PFN_glBlitFramebufferLayersEXT)) { try {
             MH_glBlitFramebufferLayersEXT.invokeExact(PFN_glBlitFramebufferLayersEXT, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glBlitFramebufferLayersEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glBlitFramebufferLayersEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glBlitFramebufferLayersEXT"); }
     }
 
     public void BlitFramebufferLayerEXT(@CType("GLint") int srcX0, @CType("GLint") int srcY0, @CType("GLint") int srcX1, @CType("GLint") int srcY1, @CType("GLint") int srcLayer, @CType("GLint") int dstX0, @CType("GLint") int dstY0, @CType("GLint") int dstX1, @CType("GLint") int dstY1, @CType("GLint") int dstLayer, @CType("GLbitfield") int mask, @CType("GLenum") int filter) {
-        try { if (!Unmarshal.isNullPointer(PFN_glBlitFramebufferLayerEXT))
+        if (!Unmarshal.isNullPointer(PFN_glBlitFramebufferLayerEXT)) { try {
             MH_glBlitFramebufferLayerEXT.invokeExact(PFN_glBlitFramebufferLayerEXT, srcX0, srcY0, srcX1, srcY1, srcLayer, dstX0, dstY0, dstX1, dstY1, dstLayer, mask, filter);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glBlitFramebufferLayerEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glBlitFramebufferLayerEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glBlitFramebufferLayerEXT"); }
     }
 
 }

@@ -63,76 +63,73 @@ public final class GLNVVdpauInterop {
     }
 
     public void VDPAUInitNV(@CType("const void *") java.lang.foreign.MemorySegment vdpDevice, @CType("const void *") java.lang.foreign.MemorySegment getProcAddress) {
-        try { if (!Unmarshal.isNullPointer(PFN_glVDPAUInitNV))
+        if (!Unmarshal.isNullPointer(PFN_glVDPAUInitNV)) { try {
             MH_glVDPAUInitNV.invokeExact(PFN_glVDPAUInitNV, vdpDevice, getProcAddress);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glVDPAUInitNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glVDPAUInitNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glVDPAUInitNV"); }
     }
 
     public void VDPAUFiniNV() {
-        try { if (!Unmarshal.isNullPointer(PFN_glVDPAUFiniNV))
+        if (!Unmarshal.isNullPointer(PFN_glVDPAUFiniNV)) { try {
             MH_glVDPAUFiniNV.invokeExact(PFN_glVDPAUFiniNV);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glVDPAUFiniNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glVDPAUFiniNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glVDPAUFiniNV"); }
     }
 
     public @CType("GLvdpauSurfaceNV") long VDPAURegisterVideoSurfaceNV(@CType("const void *") java.lang.foreign.MemorySegment vdpSurface, @CType("GLenum") int target, @CType("GLsizei") int numTextureNames, @CType("const GLuint *") java.lang.foreign.MemorySegment textureNames) {
-        try { if (!Unmarshal.isNullPointer(PFN_glVDPAURegisterVideoSurfaceNV))
+        if (!Unmarshal.isNullPointer(PFN_glVDPAURegisterVideoSurfaceNV)) { try {
             return (long) MH_glVDPAURegisterVideoSurfaceNV.invokeExact(PFN_glVDPAURegisterVideoSurfaceNV, vdpSurface, target, numTextureNames, textureNames);
-            else return 0L;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glVDPAURegisterVideoSurfaceNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glVDPAURegisterVideoSurfaceNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glVDPAURegisterVideoSurfaceNV"); }
     }
 
     public @CType("GLvdpauSurfaceNV") long VDPAURegisterOutputSurfaceNV(@CType("const void *") java.lang.foreign.MemorySegment vdpSurface, @CType("GLenum") int target, @CType("GLsizei") int numTextureNames, @CType("const GLuint *") java.lang.foreign.MemorySegment textureNames) {
-        try { if (!Unmarshal.isNullPointer(PFN_glVDPAURegisterOutputSurfaceNV))
+        if (!Unmarshal.isNullPointer(PFN_glVDPAURegisterOutputSurfaceNV)) { try {
             return (long) MH_glVDPAURegisterOutputSurfaceNV.invokeExact(PFN_glVDPAURegisterOutputSurfaceNV, vdpSurface, target, numTextureNames, textureNames);
-            else return 0L;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glVDPAURegisterOutputSurfaceNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glVDPAURegisterOutputSurfaceNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glVDPAURegisterOutputSurfaceNV"); }
     }
 
     public @CType("GLboolean") boolean VDPAUIsSurfaceNV(@CType("GLvdpauSurfaceNV") long surface) {
-        try { if (!Unmarshal.isNullPointer(PFN_glVDPAUIsSurfaceNV))
+        if (!Unmarshal.isNullPointer(PFN_glVDPAUIsSurfaceNV)) { try {
             return (boolean) MH_glVDPAUIsSurfaceNV.invokeExact(PFN_glVDPAUIsSurfaceNV, surface);
-            else return false;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glVDPAUIsSurfaceNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glVDPAUIsSurfaceNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glVDPAUIsSurfaceNV"); }
     }
 
     public void VDPAUUnregisterSurfaceNV(@CType("GLvdpauSurfaceNV") long surface) {
-        try { if (!Unmarshal.isNullPointer(PFN_glVDPAUUnregisterSurfaceNV))
+        if (!Unmarshal.isNullPointer(PFN_glVDPAUUnregisterSurfaceNV)) { try {
             MH_glVDPAUUnregisterSurfaceNV.invokeExact(PFN_glVDPAUUnregisterSurfaceNV, surface);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glVDPAUUnregisterSurfaceNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glVDPAUUnregisterSurfaceNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glVDPAUUnregisterSurfaceNV"); }
     }
 
     public void VDPAUGetSurfaceivNV(@CType("GLvdpauSurfaceNV") long surface, @CType("GLenum") int pname, @CType("GLsizei") int count, @CType("GLsizei *") java.lang.foreign.MemorySegment length, @CType("GLint *") java.lang.foreign.MemorySegment values) {
-        try { if (!Unmarshal.isNullPointer(PFN_glVDPAUGetSurfaceivNV))
+        if (!Unmarshal.isNullPointer(PFN_glVDPAUGetSurfaceivNV)) { try {
             MH_glVDPAUGetSurfaceivNV.invokeExact(PFN_glVDPAUGetSurfaceivNV, surface, pname, count, length, values);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glVDPAUGetSurfaceivNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glVDPAUGetSurfaceivNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glVDPAUGetSurfaceivNV"); }
     }
 
     public void VDPAUSurfaceAccessNV(@CType("GLvdpauSurfaceNV") long surface, @CType("GLenum") int access) {
-        try { if (!Unmarshal.isNullPointer(PFN_glVDPAUSurfaceAccessNV))
+        if (!Unmarshal.isNullPointer(PFN_glVDPAUSurfaceAccessNV)) { try {
             MH_glVDPAUSurfaceAccessNV.invokeExact(PFN_glVDPAUSurfaceAccessNV, surface, access);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glVDPAUSurfaceAccessNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glVDPAUSurfaceAccessNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glVDPAUSurfaceAccessNV"); }
     }
 
     public void VDPAUMapSurfacesNV(@CType("GLsizei") int numSurfaces, @CType("const GLvdpauSurfaceNV *") java.lang.foreign.MemorySegment surfaces) {
-        try { if (!Unmarshal.isNullPointer(PFN_glVDPAUMapSurfacesNV))
+        if (!Unmarshal.isNullPointer(PFN_glVDPAUMapSurfacesNV)) { try {
             MH_glVDPAUMapSurfacesNV.invokeExact(PFN_glVDPAUMapSurfacesNV, numSurfaces, surfaces);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glVDPAUMapSurfacesNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glVDPAUMapSurfacesNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glVDPAUMapSurfacesNV"); }
     }
 
     public void VDPAUUnmapSurfacesNV(@CType("GLsizei") int numSurface, @CType("const GLvdpauSurfaceNV *") java.lang.foreign.MemorySegment surfaces) {
-        try { if (!Unmarshal.isNullPointer(PFN_glVDPAUUnmapSurfacesNV))
+        if (!Unmarshal.isNullPointer(PFN_glVDPAUUnmapSurfacesNV)) { try {
             MH_glVDPAUUnmapSurfacesNV.invokeExact(PFN_glVDPAUUnmapSurfacesNV, numSurface, surfaces);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glVDPAUUnmapSurfacesNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glVDPAUUnmapSurfacesNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glVDPAUUnmapSurfacesNV"); }
     }
 
 }

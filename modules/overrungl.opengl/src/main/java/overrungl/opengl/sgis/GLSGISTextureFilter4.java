@@ -37,17 +37,17 @@ public final class GLSGISTextureFilter4 {
     }
 
     public void GetTexFilterFuncSGIS(@CType("GLenum") int target, @CType("GLenum") int filter, @CType("GLfloat *") java.lang.foreign.MemorySegment weights) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetTexFilterFuncSGIS))
+        if (!Unmarshal.isNullPointer(PFN_glGetTexFilterFuncSGIS)) { try {
             MH_glGetTexFilterFuncSGIS.invokeExact(PFN_glGetTexFilterFuncSGIS, target, filter, weights);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetTexFilterFuncSGIS", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetTexFilterFuncSGIS", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetTexFilterFuncSGIS"); }
     }
 
     public void TexFilterFuncSGIS(@CType("GLenum") int target, @CType("GLenum") int filter, @CType("GLsizei") int n, @CType("const GLfloat *") java.lang.foreign.MemorySegment weights) {
-        try { if (!Unmarshal.isNullPointer(PFN_glTexFilterFuncSGIS))
+        if (!Unmarshal.isNullPointer(PFN_glTexFilterFuncSGIS)) { try {
             MH_glTexFilterFuncSGIS.invokeExact(PFN_glTexFilterFuncSGIS, target, filter, n, weights);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glTexFilterFuncSGIS", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glTexFilterFuncSGIS", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glTexFilterFuncSGIS"); }
     }
 
 }

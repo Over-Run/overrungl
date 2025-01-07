@@ -69,67 +69,66 @@ public final class GLEXTSemaphore {
     }
 
     public void GetUnsignedBytevEXT(@CType("GLenum") int pname, @CType("GLubyte *") java.lang.foreign.MemorySegment data) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetUnsignedBytevEXT))
+        if (!Unmarshal.isNullPointer(PFN_glGetUnsignedBytevEXT)) { try {
             MH_glGetUnsignedBytevEXT.invokeExact(PFN_glGetUnsignedBytevEXT, pname, data);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetUnsignedBytevEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetUnsignedBytevEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetUnsignedBytevEXT"); }
     }
 
     public void GetUnsignedBytei_vEXT(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLubyte *") java.lang.foreign.MemorySegment data) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetUnsignedBytei_vEXT))
+        if (!Unmarshal.isNullPointer(PFN_glGetUnsignedBytei_vEXT)) { try {
             MH_glGetUnsignedBytei_vEXT.invokeExact(PFN_glGetUnsignedBytei_vEXT, target, index, data);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetUnsignedBytei_vEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetUnsignedBytei_vEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetUnsignedBytei_vEXT"); }
     }
 
     public void GenSemaphoresEXT(@CType("GLsizei") int n, @CType("GLuint *") java.lang.foreign.MemorySegment semaphores) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGenSemaphoresEXT))
+        if (!Unmarshal.isNullPointer(PFN_glGenSemaphoresEXT)) { try {
             MH_glGenSemaphoresEXT.invokeExact(PFN_glGenSemaphoresEXT, n, semaphores);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGenSemaphoresEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGenSemaphoresEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGenSemaphoresEXT"); }
     }
 
     public void DeleteSemaphoresEXT(@CType("GLsizei") int n, @CType("const GLuint *") java.lang.foreign.MemorySegment semaphores) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDeleteSemaphoresEXT))
+        if (!Unmarshal.isNullPointer(PFN_glDeleteSemaphoresEXT)) { try {
             MH_glDeleteSemaphoresEXT.invokeExact(PFN_glDeleteSemaphoresEXT, n, semaphores);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDeleteSemaphoresEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDeleteSemaphoresEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDeleteSemaphoresEXT"); }
     }
 
     public @CType("GLboolean") boolean IsSemaphoreEXT(@CType("GLuint") int semaphore) {
-        try { if (!Unmarshal.isNullPointer(PFN_glIsSemaphoreEXT))
+        if (!Unmarshal.isNullPointer(PFN_glIsSemaphoreEXT)) { try {
             return (boolean) MH_glIsSemaphoreEXT.invokeExact(PFN_glIsSemaphoreEXT, semaphore);
-            else return false;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glIsSemaphoreEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glIsSemaphoreEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glIsSemaphoreEXT"); }
     }
 
     public void SemaphoreParameterui64vEXT(@CType("GLuint") int semaphore, @CType("GLenum") int pname, @CType("const GLuint64 *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glSemaphoreParameterui64vEXT))
+        if (!Unmarshal.isNullPointer(PFN_glSemaphoreParameterui64vEXT)) { try {
             MH_glSemaphoreParameterui64vEXT.invokeExact(PFN_glSemaphoreParameterui64vEXT, semaphore, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glSemaphoreParameterui64vEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glSemaphoreParameterui64vEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glSemaphoreParameterui64vEXT"); }
     }
 
     public void GetSemaphoreParameterui64vEXT(@CType("GLuint") int semaphore, @CType("GLenum") int pname, @CType("GLuint64 *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetSemaphoreParameterui64vEXT))
+        if (!Unmarshal.isNullPointer(PFN_glGetSemaphoreParameterui64vEXT)) { try {
             MH_glGetSemaphoreParameterui64vEXT.invokeExact(PFN_glGetSemaphoreParameterui64vEXT, semaphore, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetSemaphoreParameterui64vEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetSemaphoreParameterui64vEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetSemaphoreParameterui64vEXT"); }
     }
 
     public void WaitSemaphoreEXT(@CType("GLuint") int semaphore, @CType("GLuint") int numBufferBarriers, @CType("const GLuint *") java.lang.foreign.MemorySegment buffers, @CType("GLuint") int numTextureBarriers, @CType("const GLuint *") java.lang.foreign.MemorySegment textures, @CType("const GLenum *") java.lang.foreign.MemorySegment srcLayouts) {
-        try { if (!Unmarshal.isNullPointer(PFN_glWaitSemaphoreEXT))
+        if (!Unmarshal.isNullPointer(PFN_glWaitSemaphoreEXT)) { try {
             MH_glWaitSemaphoreEXT.invokeExact(PFN_glWaitSemaphoreEXT, semaphore, numBufferBarriers, buffers, numTextureBarriers, textures, srcLayouts);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glWaitSemaphoreEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glWaitSemaphoreEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glWaitSemaphoreEXT"); }
     }
 
     public void SignalSemaphoreEXT(@CType("GLuint") int semaphore, @CType("GLuint") int numBufferBarriers, @CType("const GLuint *") java.lang.foreign.MemorySegment buffers, @CType("GLuint") int numTextureBarriers, @CType("const GLuint *") java.lang.foreign.MemorySegment textures, @CType("const GLenum *") java.lang.foreign.MemorySegment dstLayouts) {
-        try { if (!Unmarshal.isNullPointer(PFN_glSignalSemaphoreEXT))
+        if (!Unmarshal.isNullPointer(PFN_glSignalSemaphoreEXT)) { try {
             MH_glSignalSemaphoreEXT.invokeExact(PFN_glSignalSemaphoreEXT, semaphore, numBufferBarriers, buffers, numTextureBarriers, textures, dstLayouts);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glSignalSemaphoreEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glSignalSemaphoreEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glSignalSemaphoreEXT"); }
     }
 
 }

@@ -35,18 +35,17 @@ public final class GLATIMapObjectBuffer {
     }
 
     public @CType("void*") java.lang.foreign.MemorySegment MapObjectBufferATI(@CType("GLuint") int buffer) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMapObjectBufferATI))
+        if (!Unmarshal.isNullPointer(PFN_glMapObjectBufferATI)) { try {
             return (java.lang.foreign.MemorySegment) MH_glMapObjectBufferATI.invokeExact(PFN_glMapObjectBufferATI, buffer);
-            else return MemorySegment.NULL;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMapObjectBufferATI", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMapObjectBufferATI", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMapObjectBufferATI"); }
     }
 
     public void UnmapObjectBufferATI(@CType("GLuint") int buffer) {
-        try { if (!Unmarshal.isNullPointer(PFN_glUnmapObjectBufferATI))
+        if (!Unmarshal.isNullPointer(PFN_glUnmapObjectBufferATI)) { try {
             MH_glUnmapObjectBufferATI.invokeExact(PFN_glUnmapObjectBufferATI, buffer);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glUnmapObjectBufferATI", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glUnmapObjectBufferATI", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glUnmapObjectBufferATI"); }
     }
 
 }

@@ -38,10 +38,10 @@ public final class GLEXTRasterMultisample {
     }
 
     public void RasterSamplesEXT(@CType("GLuint") int samples, @CType("GLboolean") boolean fixedsamplelocations) {
-        try { if (!Unmarshal.isNullPointer(PFN_glRasterSamplesEXT))
+        if (!Unmarshal.isNullPointer(PFN_glRasterSamplesEXT)) { try {
             MH_glRasterSamplesEXT.invokeExact(PFN_glRasterSamplesEXT, samples, fixedsamplelocations);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glRasterSamplesEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glRasterSamplesEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glRasterSamplesEXT"); }
     }
 
 }

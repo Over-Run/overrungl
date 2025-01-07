@@ -53,17 +53,17 @@ public final class GLARBComputeShader {
     }
 
     public void DispatchCompute(@CType("GLuint") int num_groups_x, @CType("GLuint") int num_groups_y, @CType("GLuint") int num_groups_z) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDispatchCompute))
+        if (!Unmarshal.isNullPointer(PFN_glDispatchCompute)) { try {
             MH_glDispatchCompute.invokeExact(PFN_glDispatchCompute, num_groups_x, num_groups_y, num_groups_z);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDispatchCompute", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDispatchCompute", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDispatchCompute"); }
     }
 
     public void DispatchComputeIndirect(@CType("GLintptr") long indirect) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDispatchComputeIndirect))
+        if (!Unmarshal.isNullPointer(PFN_glDispatchComputeIndirect)) { try {
             MH_glDispatchComputeIndirect.invokeExact(PFN_glDispatchComputeIndirect, indirect);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDispatchComputeIndirect", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDispatchComputeIndirect", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDispatchComputeIndirect"); }
     }
 
 }

@@ -37,17 +37,17 @@ public final class GLNVScissorExclusive {
     }
 
     public void ScissorExclusiveNV(@CType("GLint") int x, @CType("GLint") int y, @CType("GLsizei") int width, @CType("GLsizei") int height) {
-        try { if (!Unmarshal.isNullPointer(PFN_glScissorExclusiveNV))
+        if (!Unmarshal.isNullPointer(PFN_glScissorExclusiveNV)) { try {
             MH_glScissorExclusiveNV.invokeExact(PFN_glScissorExclusiveNV, x, y, width, height);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glScissorExclusiveNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glScissorExclusiveNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glScissorExclusiveNV"); }
     }
 
     public void ScissorExclusiveArrayvNV(@CType("GLuint") int first, @CType("GLsizei") int count, @CType("const GLint *") java.lang.foreign.MemorySegment v) {
-        try { if (!Unmarshal.isNullPointer(PFN_glScissorExclusiveArrayvNV))
+        if (!Unmarshal.isNullPointer(PFN_glScissorExclusiveArrayvNV)) { try {
             MH_glScissorExclusiveArrayvNV.invokeExact(PFN_glScissorExclusiveArrayvNV, first, count, v);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glScissorExclusiveArrayvNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glScissorExclusiveArrayvNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glScissorExclusiveArrayvNV"); }
     }
 
 }

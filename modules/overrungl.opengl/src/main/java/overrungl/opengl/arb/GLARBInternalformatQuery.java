@@ -33,10 +33,10 @@ public final class GLARBInternalformatQuery {
     }
 
     public void GetInternalformativ(@CType("GLenum") int target, @CType("GLenum") int internalformat, @CType("GLenum") int pname, @CType("GLsizei") int count, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetInternalformativ))
+        if (!Unmarshal.isNullPointer(PFN_glGetInternalformativ)) { try {
             MH_glGetInternalformativ.invokeExact(PFN_glGetInternalformativ, target, internalformat, pname, count, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetInternalformativ", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetInternalformativ", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetInternalformativ"); }
     }
 
 }

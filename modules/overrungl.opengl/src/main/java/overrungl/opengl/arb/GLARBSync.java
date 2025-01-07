@@ -65,55 +65,52 @@ public final class GLARBSync {
     }
 
     public @CType("GLsync") java.lang.foreign.MemorySegment FenceSync(@CType("GLenum") int condition, @CType("GLbitfield") int flags) {
-        try { if (!Unmarshal.isNullPointer(PFN_glFenceSync))
+        if (!Unmarshal.isNullPointer(PFN_glFenceSync)) { try {
             return (java.lang.foreign.MemorySegment) MH_glFenceSync.invokeExact(PFN_glFenceSync, condition, flags);
-            else return MemorySegment.NULL;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFenceSync", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFenceSync", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFenceSync"); }
     }
 
     public @CType("GLboolean") boolean IsSync(@CType("GLsync") java.lang.foreign.MemorySegment sync) {
-        try { if (!Unmarshal.isNullPointer(PFN_glIsSync))
+        if (!Unmarshal.isNullPointer(PFN_glIsSync)) { try {
             return (boolean) MH_glIsSync.invokeExact(PFN_glIsSync, sync);
-            else return false;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glIsSync", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glIsSync", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glIsSync"); }
     }
 
     public void DeleteSync(@CType("GLsync") java.lang.foreign.MemorySegment sync) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDeleteSync))
+        if (!Unmarshal.isNullPointer(PFN_glDeleteSync)) { try {
             MH_glDeleteSync.invokeExact(PFN_glDeleteSync, sync);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDeleteSync", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDeleteSync", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDeleteSync"); }
     }
 
     public @CType("GLenum") int ClientWaitSync(@CType("GLsync") java.lang.foreign.MemorySegment sync, @CType("GLbitfield") int flags, @CType("GLuint64") long timeout) {
-        try { if (!Unmarshal.isNullPointer(PFN_glClientWaitSync))
+        if (!Unmarshal.isNullPointer(PFN_glClientWaitSync)) { try {
             return (int) MH_glClientWaitSync.invokeExact(PFN_glClientWaitSync, sync, flags, timeout);
-            else return 0;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glClientWaitSync", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glClientWaitSync", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glClientWaitSync"); }
     }
 
     public void WaitSync(@CType("GLsync") java.lang.foreign.MemorySegment sync, @CType("GLbitfield") int flags, @CType("GLuint64") long timeout) {
-        try { if (!Unmarshal.isNullPointer(PFN_glWaitSync))
+        if (!Unmarshal.isNullPointer(PFN_glWaitSync)) { try {
             MH_glWaitSync.invokeExact(PFN_glWaitSync, sync, flags, timeout);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glWaitSync", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glWaitSync", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glWaitSync"); }
     }
 
     public void GetInteger64v(@CType("GLenum") int pname, @CType("GLint64 *") java.lang.foreign.MemorySegment data) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetInteger64v))
+        if (!Unmarshal.isNullPointer(PFN_glGetInteger64v)) { try {
             MH_glGetInteger64v.invokeExact(PFN_glGetInteger64v, pname, data);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetInteger64v", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetInteger64v", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetInteger64v"); }
     }
 
     public void GetSynciv(@CType("GLsync") java.lang.foreign.MemorySegment sync, @CType("GLenum") int pname, @CType("GLsizei") int count, @CType("GLsizei *") java.lang.foreign.MemorySegment length, @CType("GLint *") java.lang.foreign.MemorySegment values) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetSynciv))
+        if (!Unmarshal.isNullPointer(PFN_glGetSynciv)) { try {
             MH_glGetSynciv.invokeExact(PFN_glGetSynciv, sync, pname, count, length, values);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetSynciv", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetSynciv", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetSynciv"); }
     }
 
 }

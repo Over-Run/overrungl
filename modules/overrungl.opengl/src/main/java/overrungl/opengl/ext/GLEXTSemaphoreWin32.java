@@ -42,17 +42,17 @@ public final class GLEXTSemaphoreWin32 {
     }
 
     public void ImportSemaphoreWin32HandleEXT(@CType("GLuint") int semaphore, @CType("GLenum") int handleType, @CType("void*") java.lang.foreign.MemorySegment handle) {
-        try { if (!Unmarshal.isNullPointer(PFN_glImportSemaphoreWin32HandleEXT))
+        if (!Unmarshal.isNullPointer(PFN_glImportSemaphoreWin32HandleEXT)) { try {
             MH_glImportSemaphoreWin32HandleEXT.invokeExact(PFN_glImportSemaphoreWin32HandleEXT, semaphore, handleType, handle);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glImportSemaphoreWin32HandleEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glImportSemaphoreWin32HandleEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glImportSemaphoreWin32HandleEXT"); }
     }
 
     public void ImportSemaphoreWin32NameEXT(@CType("GLuint") int semaphore, @CType("GLenum") int handleType, @CType("const void *") java.lang.foreign.MemorySegment name) {
-        try { if (!Unmarshal.isNullPointer(PFN_glImportSemaphoreWin32NameEXT))
+        if (!Unmarshal.isNullPointer(PFN_glImportSemaphoreWin32NameEXT)) { try {
             MH_glImportSemaphoreWin32NameEXT.invokeExact(PFN_glImportSemaphoreWin32NameEXT, semaphore, handleType, name);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glImportSemaphoreWin32NameEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glImportSemaphoreWin32NameEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glImportSemaphoreWin32NameEXT"); }
     }
 
 }

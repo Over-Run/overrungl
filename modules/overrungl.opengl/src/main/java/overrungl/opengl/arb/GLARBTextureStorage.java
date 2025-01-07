@@ -39,24 +39,24 @@ public final class GLARBTextureStorage {
     }
 
     public void TexStorage1D(@CType("GLenum") int target, @CType("GLsizei") int levels, @CType("GLenum") int internalformat, @CType("GLsizei") int width) {
-        try { if (!Unmarshal.isNullPointer(PFN_glTexStorage1D))
+        if (!Unmarshal.isNullPointer(PFN_glTexStorage1D)) { try {
             MH_glTexStorage1D.invokeExact(PFN_glTexStorage1D, target, levels, internalformat, width);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glTexStorage1D", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glTexStorage1D", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glTexStorage1D"); }
     }
 
     public void TexStorage2D(@CType("GLenum") int target, @CType("GLsizei") int levels, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height) {
-        try { if (!Unmarshal.isNullPointer(PFN_glTexStorage2D))
+        if (!Unmarshal.isNullPointer(PFN_glTexStorage2D)) { try {
             MH_glTexStorage2D.invokeExact(PFN_glTexStorage2D, target, levels, internalformat, width, height);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glTexStorage2D", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glTexStorage2D", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glTexStorage2D"); }
     }
 
     public void TexStorage3D(@CType("GLenum") int target, @CType("GLsizei") int levels, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth) {
-        try { if (!Unmarshal.isNullPointer(PFN_glTexStorage3D))
+        if (!Unmarshal.isNullPointer(PFN_glTexStorage3D)) { try {
             MH_glTexStorage3D.invokeExact(PFN_glTexStorage3D, target, levels, internalformat, width, height, depth);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glTexStorage3D", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glTexStorage3D", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glTexStorage3D"); }
     }
 
 }

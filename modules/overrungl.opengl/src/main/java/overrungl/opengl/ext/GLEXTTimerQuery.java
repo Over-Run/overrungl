@@ -36,17 +36,17 @@ public final class GLEXTTimerQuery {
     }
 
     public void GetQueryObjecti64vEXT(@CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLint64 *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetQueryObjecti64vEXT))
+        if (!Unmarshal.isNullPointer(PFN_glGetQueryObjecti64vEXT)) { try {
             MH_glGetQueryObjecti64vEXT.invokeExact(PFN_glGetQueryObjecti64vEXT, id, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetQueryObjecti64vEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetQueryObjecti64vEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetQueryObjecti64vEXT"); }
     }
 
     public void GetQueryObjectui64vEXT(@CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLuint64 *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetQueryObjectui64vEXT))
+        if (!Unmarshal.isNullPointer(PFN_glGetQueryObjectui64vEXT)) { try {
             MH_glGetQueryObjectui64vEXT.invokeExact(PFN_glGetQueryObjectui64vEXT, id, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetQueryObjectui64vEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetQueryObjectui64vEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetQueryObjectui64vEXT"); }
     }
 
 }

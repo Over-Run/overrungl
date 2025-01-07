@@ -130,7 +130,7 @@ class InstanceDowncall(
             sb.append(m.params.joinToString(", ") { p -> "${p.type.carrierWithC()} ${p.name}" })
             sb.appendLine(") {")
 
-            sb.appendLine("        try { if (!Unmarshal.isNullPointer(PFN_${m.entrypoint}))")
+            sb.appendLine("        if (!Unmarshal.isNullPointer(PFN_${m.entrypoint})) { try {")
             sb.append("            ")
             if (m.returnType.carrier != TypeName.VOID) {
                 sb.append("return (${m.returnType.carrier}) ")
@@ -140,11 +140,8 @@ class InstanceDowncall(
                 sb.append(", ${it.name}")
             }
             sb.appendLine(");")
-            if (m.returnType.carrier != TypeName.VOID) {
-                sb.appendLine("            else return ${m.returnType.nullValue};")
-            }
-            sb.appendLine("        }")
-            sb.appendLine("""        catch (Throwable e) { throw new RuntimeException("error in ${m.entrypoint}", e); }""")
+            sb.appendLine("""        } catch (Throwable e) { throw new RuntimeException("error in ${m.entrypoint}", e); }""")
+            sb.appendLine("""        } else { throw new SymbolNotFoundError("Symbol not found: ${m.entrypoint}"); }""")
 
             sb.appendLine("    }")
             sb.appendLine()

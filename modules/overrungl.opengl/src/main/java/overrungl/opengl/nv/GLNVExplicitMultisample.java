@@ -48,24 +48,24 @@ public final class GLNVExplicitMultisample {
     }
 
     public void GetMultisamplefvNV(@CType("GLenum") int pname, @CType("GLuint") int index, @CType("GLfloat *") java.lang.foreign.MemorySegment val) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetMultisamplefvNV))
+        if (!Unmarshal.isNullPointer(PFN_glGetMultisamplefvNV)) { try {
             MH_glGetMultisamplefvNV.invokeExact(PFN_glGetMultisamplefvNV, pname, index, val);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetMultisamplefvNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetMultisamplefvNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetMultisamplefvNV"); }
     }
 
     public void SampleMaskIndexedNV(@CType("GLuint") int index, @CType("GLbitfield") int mask) {
-        try { if (!Unmarshal.isNullPointer(PFN_glSampleMaskIndexedNV))
+        if (!Unmarshal.isNullPointer(PFN_glSampleMaskIndexedNV)) { try {
             MH_glSampleMaskIndexedNV.invokeExact(PFN_glSampleMaskIndexedNV, index, mask);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glSampleMaskIndexedNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glSampleMaskIndexedNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glSampleMaskIndexedNV"); }
     }
 
     public void TexRenderbufferNV(@CType("GLenum") int target, @CType("GLuint") int renderbuffer) {
-        try { if (!Unmarshal.isNullPointer(PFN_glTexRenderbufferNV))
+        if (!Unmarshal.isNullPointer(PFN_glTexRenderbufferNV)) { try {
             MH_glTexRenderbufferNV.invokeExact(PFN_glTexRenderbufferNV, target, renderbuffer);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glTexRenderbufferNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glTexRenderbufferNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glTexRenderbufferNV"); }
     }
 
 }

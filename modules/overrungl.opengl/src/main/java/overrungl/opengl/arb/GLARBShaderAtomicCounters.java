@@ -61,10 +61,10 @@ public final class GLARBShaderAtomicCounters {
     }
 
     public void GetActiveAtomicCounterBufferiv(@CType("GLuint") int program, @CType("GLuint") int bufferIndex, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetActiveAtomicCounterBufferiv))
+        if (!Unmarshal.isNullPointer(PFN_glGetActiveAtomicCounterBufferiv)) { try {
             MH_glGetActiveAtomicCounterBufferiv.invokeExact(PFN_glGetActiveAtomicCounterBufferiv, program, bufferIndex, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetActiveAtomicCounterBufferiv", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetActiveAtomicCounterBufferiv", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetActiveAtomicCounterBufferiv"); }
     }
 
 }

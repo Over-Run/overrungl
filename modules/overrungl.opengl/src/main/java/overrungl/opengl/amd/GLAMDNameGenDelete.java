@@ -43,25 +43,24 @@ public final class GLAMDNameGenDelete {
     }
 
     public void GenNamesAMD(@CType("GLenum") int identifier, @CType("GLuint") int num, @CType("GLuint *") java.lang.foreign.MemorySegment names) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGenNamesAMD))
+        if (!Unmarshal.isNullPointer(PFN_glGenNamesAMD)) { try {
             MH_glGenNamesAMD.invokeExact(PFN_glGenNamesAMD, identifier, num, names);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGenNamesAMD", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGenNamesAMD", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGenNamesAMD"); }
     }
 
     public void DeleteNamesAMD(@CType("GLenum") int identifier, @CType("GLuint") int num, @CType("const GLuint *") java.lang.foreign.MemorySegment names) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDeleteNamesAMD))
+        if (!Unmarshal.isNullPointer(PFN_glDeleteNamesAMD)) { try {
             MH_glDeleteNamesAMD.invokeExact(PFN_glDeleteNamesAMD, identifier, num, names);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDeleteNamesAMD", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDeleteNamesAMD", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDeleteNamesAMD"); }
     }
 
     public @CType("GLboolean") boolean IsNameAMD(@CType("GLenum") int identifier, @CType("GLuint") int name) {
-        try { if (!Unmarshal.isNullPointer(PFN_glIsNameAMD))
+        if (!Unmarshal.isNullPointer(PFN_glIsNameAMD)) { try {
             return (boolean) MH_glIsNameAMD.invokeExact(PFN_glIsNameAMD, identifier, name);
-            else return false;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glIsNameAMD", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glIsNameAMD", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glIsNameAMD"); }
     }
 
 }

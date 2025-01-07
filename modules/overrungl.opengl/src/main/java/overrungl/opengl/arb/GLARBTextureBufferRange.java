@@ -35,10 +35,10 @@ public final class GLARBTextureBufferRange {
     }
 
     public void TexBufferRange(@CType("GLenum") int target, @CType("GLenum") int internalformat, @CType("GLuint") int buffer, @CType("GLintptr") long offset, @CType("GLsizeiptr") long size) {
-        try { if (!Unmarshal.isNullPointer(PFN_glTexBufferRange))
+        if (!Unmarshal.isNullPointer(PFN_glTexBufferRange)) { try {
             MH_glTexBufferRange.invokeExact(PFN_glTexBufferRange, target, internalformat, buffer, offset, size);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glTexBufferRange", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glTexBufferRange", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glTexBufferRange"); }
     }
 
 }

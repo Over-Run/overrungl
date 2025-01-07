@@ -35,10 +35,10 @@ public final class GLEXTFramebufferMultisample {
     }
 
     public void RenderbufferStorageMultisampleEXT(@CType("GLenum") int target, @CType("GLsizei") int samples, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height) {
-        try { if (!Unmarshal.isNullPointer(PFN_glRenderbufferStorageMultisampleEXT))
+        if (!Unmarshal.isNullPointer(PFN_glRenderbufferStorageMultisampleEXT)) { try {
             MH_glRenderbufferStorageMultisampleEXT.invokeExact(PFN_glRenderbufferStorageMultisampleEXT, target, samples, internalformat, width, height);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glRenderbufferStorageMultisampleEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glRenderbufferStorageMultisampleEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glRenderbufferStorageMultisampleEXT"); }
     }
 
 }

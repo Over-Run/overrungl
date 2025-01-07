@@ -51,45 +51,45 @@ public final class GLSGISPixelTexture {
     }
 
     public void PixelTexGenParameteriSGIS(@CType("GLenum") int pname, @CType("GLint") int param) {
-        try { if (!Unmarshal.isNullPointer(PFN_glPixelTexGenParameteriSGIS))
+        if (!Unmarshal.isNullPointer(PFN_glPixelTexGenParameteriSGIS)) { try {
             MH_glPixelTexGenParameteriSGIS.invokeExact(PFN_glPixelTexGenParameteriSGIS, pname, param);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glPixelTexGenParameteriSGIS", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glPixelTexGenParameteriSGIS", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glPixelTexGenParameteriSGIS"); }
     }
 
     public void PixelTexGenParameterivSGIS(@CType("GLenum") int pname, @CType("const GLint *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glPixelTexGenParameterivSGIS))
+        if (!Unmarshal.isNullPointer(PFN_glPixelTexGenParameterivSGIS)) { try {
             MH_glPixelTexGenParameterivSGIS.invokeExact(PFN_glPixelTexGenParameterivSGIS, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glPixelTexGenParameterivSGIS", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glPixelTexGenParameterivSGIS", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glPixelTexGenParameterivSGIS"); }
     }
 
     public void PixelTexGenParameterfSGIS(@CType("GLenum") int pname, @CType("GLfloat") float param) {
-        try { if (!Unmarshal.isNullPointer(PFN_glPixelTexGenParameterfSGIS))
+        if (!Unmarshal.isNullPointer(PFN_glPixelTexGenParameterfSGIS)) { try {
             MH_glPixelTexGenParameterfSGIS.invokeExact(PFN_glPixelTexGenParameterfSGIS, pname, param);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glPixelTexGenParameterfSGIS", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glPixelTexGenParameterfSGIS", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glPixelTexGenParameterfSGIS"); }
     }
 
     public void PixelTexGenParameterfvSGIS(@CType("GLenum") int pname, @CType("const GLfloat *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glPixelTexGenParameterfvSGIS))
+        if (!Unmarshal.isNullPointer(PFN_glPixelTexGenParameterfvSGIS)) { try {
             MH_glPixelTexGenParameterfvSGIS.invokeExact(PFN_glPixelTexGenParameterfvSGIS, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glPixelTexGenParameterfvSGIS", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glPixelTexGenParameterfvSGIS", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glPixelTexGenParameterfvSGIS"); }
     }
 
     public void GetPixelTexGenParameterivSGIS(@CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetPixelTexGenParameterivSGIS))
+        if (!Unmarshal.isNullPointer(PFN_glGetPixelTexGenParameterivSGIS)) { try {
             MH_glGetPixelTexGenParameterivSGIS.invokeExact(PFN_glGetPixelTexGenParameterivSGIS, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetPixelTexGenParameterivSGIS", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetPixelTexGenParameterivSGIS", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetPixelTexGenParameterivSGIS"); }
     }
 
     public void GetPixelTexGenParameterfvSGIS(@CType("GLenum") int pname, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetPixelTexGenParameterfvSGIS))
+        if (!Unmarshal.isNullPointer(PFN_glGetPixelTexGenParameterfvSGIS)) { try {
             MH_glGetPixelTexGenParameterfvSGIS.invokeExact(PFN_glGetPixelTexGenParameterfvSGIS, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetPixelTexGenParameterfvSGIS", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetPixelTexGenParameterfvSGIS", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetPixelTexGenParameterfvSGIS"); }
     }
 
 }

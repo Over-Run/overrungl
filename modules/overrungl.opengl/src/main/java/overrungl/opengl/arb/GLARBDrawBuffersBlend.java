@@ -41,31 +41,31 @@ public final class GLARBDrawBuffersBlend {
     }
 
     public void BlendEquationiARB(@CType("GLuint") int buf, @CType("GLenum") int mode) {
-        try { if (!Unmarshal.isNullPointer(PFN_glBlendEquationiARB))
+        if (!Unmarshal.isNullPointer(PFN_glBlendEquationiARB)) { try {
             MH_glBlendEquationiARB.invokeExact(PFN_glBlendEquationiARB, buf, mode);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glBlendEquationiARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glBlendEquationiARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glBlendEquationiARB"); }
     }
 
     public void BlendEquationSeparateiARB(@CType("GLuint") int buf, @CType("GLenum") int modeRGB, @CType("GLenum") int modeAlpha) {
-        try { if (!Unmarshal.isNullPointer(PFN_glBlendEquationSeparateiARB))
+        if (!Unmarshal.isNullPointer(PFN_glBlendEquationSeparateiARB)) { try {
             MH_glBlendEquationSeparateiARB.invokeExact(PFN_glBlendEquationSeparateiARB, buf, modeRGB, modeAlpha);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glBlendEquationSeparateiARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glBlendEquationSeparateiARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glBlendEquationSeparateiARB"); }
     }
 
     public void BlendFunciARB(@CType("GLuint") int buf, @CType("GLenum") int src, @CType("GLenum") int dst) {
-        try { if (!Unmarshal.isNullPointer(PFN_glBlendFunciARB))
+        if (!Unmarshal.isNullPointer(PFN_glBlendFunciARB)) { try {
             MH_glBlendFunciARB.invokeExact(PFN_glBlendFunciARB, buf, src, dst);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glBlendFunciARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glBlendFunciARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glBlendFunciARB"); }
     }
 
     public void BlendFuncSeparateiARB(@CType("GLuint") int buf, @CType("GLenum") int srcRGB, @CType("GLenum") int dstRGB, @CType("GLenum") int srcAlpha, @CType("GLenum") int dstAlpha) {
-        try { if (!Unmarshal.isNullPointer(PFN_glBlendFuncSeparateiARB))
+        if (!Unmarshal.isNullPointer(PFN_glBlendFuncSeparateiARB)) { try {
             MH_glBlendFuncSeparateiARB.invokeExact(PFN_glBlendFuncSeparateiARB, buf, srcRGB, dstRGB, srcAlpha, dstAlpha);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glBlendFuncSeparateiARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glBlendFuncSeparateiARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glBlendFuncSeparateiARB"); }
     }
 
 }

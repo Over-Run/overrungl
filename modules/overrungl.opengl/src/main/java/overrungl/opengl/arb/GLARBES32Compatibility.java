@@ -35,10 +35,10 @@ public final class GLARBES32Compatibility {
     }
 
     public void PrimitiveBoundingBoxARB(@CType("GLfloat") float minX, @CType("GLfloat") float minY, @CType("GLfloat") float minZ, @CType("GLfloat") float minW, @CType("GLfloat") float maxX, @CType("GLfloat") float maxY, @CType("GLfloat") float maxZ, @CType("GLfloat") float maxW) {
-        try { if (!Unmarshal.isNullPointer(PFN_glPrimitiveBoundingBoxARB))
+        if (!Unmarshal.isNullPointer(PFN_glPrimitiveBoundingBoxARB)) { try {
             MH_glPrimitiveBoundingBoxARB.invokeExact(PFN_glPrimitiveBoundingBoxARB, minX, minY, minZ, minW, maxX, maxY, maxZ, maxW);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glPrimitiveBoundingBoxARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glPrimitiveBoundingBoxARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glPrimitiveBoundingBoxARB"); }
     }
 
 }

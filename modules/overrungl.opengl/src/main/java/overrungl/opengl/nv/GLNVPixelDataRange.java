@@ -41,17 +41,17 @@ public final class GLNVPixelDataRange {
     }
 
     public void PixelDataRangeNV(@CType("GLenum") int target, @CType("GLsizei") int length, @CType("const void *") java.lang.foreign.MemorySegment pointer) {
-        try { if (!Unmarshal.isNullPointer(PFN_glPixelDataRangeNV))
+        if (!Unmarshal.isNullPointer(PFN_glPixelDataRangeNV)) { try {
             MH_glPixelDataRangeNV.invokeExact(PFN_glPixelDataRangeNV, target, length, pointer);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glPixelDataRangeNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glPixelDataRangeNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glPixelDataRangeNV"); }
     }
 
     public void FlushPixelDataRangeNV(@CType("GLenum") int target) {
-        try { if (!Unmarshal.isNullPointer(PFN_glFlushPixelDataRangeNV))
+        if (!Unmarshal.isNullPointer(PFN_glFlushPixelDataRangeNV)) { try {
             MH_glFlushPixelDataRangeNV.invokeExact(PFN_glFlushPixelDataRangeNV, target);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFlushPixelDataRangeNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFlushPixelDataRangeNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFlushPixelDataRangeNV"); }
     }
 
 }

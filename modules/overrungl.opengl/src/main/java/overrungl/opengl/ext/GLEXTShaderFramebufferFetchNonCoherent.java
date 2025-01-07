@@ -33,10 +33,10 @@ public final class GLEXTShaderFramebufferFetchNonCoherent {
     }
 
     public void FramebufferFetchBarrierEXT() {
-        try { if (!Unmarshal.isNullPointer(PFN_glFramebufferFetchBarrierEXT))
+        if (!Unmarshal.isNullPointer(PFN_glFramebufferFetchBarrierEXT)) { try {
             MH_glFramebufferFetchBarrierEXT.invokeExact(PFN_glFramebufferFetchBarrierEXT);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFramebufferFetchBarrierEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFramebufferFetchBarrierEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFramebufferFetchBarrierEXT"); }
     }
 
 }

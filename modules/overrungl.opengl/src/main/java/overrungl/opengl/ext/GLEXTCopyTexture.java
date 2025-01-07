@@ -44,38 +44,38 @@ public final class GLEXTCopyTexture {
     }
 
     public void CopyTexImage1DEXT(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLenum") int internalformat, @CType("GLint") int x, @CType("GLint") int y, @CType("GLsizei") int width, @CType("GLint") int border) {
-        try { if (!Unmarshal.isNullPointer(PFN_glCopyTexImage1DEXT))
+        if (!Unmarshal.isNullPointer(PFN_glCopyTexImage1DEXT)) { try {
             MH_glCopyTexImage1DEXT.invokeExact(PFN_glCopyTexImage1DEXT, target, level, internalformat, x, y, width, border);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glCopyTexImage1DEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glCopyTexImage1DEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glCopyTexImage1DEXT"); }
     }
 
     public void CopyTexImage2DEXT(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLenum") int internalformat, @CType("GLint") int x, @CType("GLint") int y, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLint") int border) {
-        try { if (!Unmarshal.isNullPointer(PFN_glCopyTexImage2DEXT))
+        if (!Unmarshal.isNullPointer(PFN_glCopyTexImage2DEXT)) { try {
             MH_glCopyTexImage2DEXT.invokeExact(PFN_glCopyTexImage2DEXT, target, level, internalformat, x, y, width, height, border);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glCopyTexImage2DEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glCopyTexImage2DEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glCopyTexImage2DEXT"); }
     }
 
     public void CopyTexSubImage1DEXT(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLint") int x, @CType("GLint") int y, @CType("GLsizei") int width) {
-        try { if (!Unmarshal.isNullPointer(PFN_glCopyTexSubImage1DEXT))
+        if (!Unmarshal.isNullPointer(PFN_glCopyTexSubImage1DEXT)) { try {
             MH_glCopyTexSubImage1DEXT.invokeExact(PFN_glCopyTexSubImage1DEXT, target, level, xoffset, x, y, width);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glCopyTexSubImage1DEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glCopyTexSubImage1DEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glCopyTexSubImage1DEXT"); }
     }
 
     public void CopyTexSubImage2DEXT(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLint") int yoffset, @CType("GLint") int x, @CType("GLint") int y, @CType("GLsizei") int width, @CType("GLsizei") int height) {
-        try { if (!Unmarshal.isNullPointer(PFN_glCopyTexSubImage2DEXT))
+        if (!Unmarshal.isNullPointer(PFN_glCopyTexSubImage2DEXT)) { try {
             MH_glCopyTexSubImage2DEXT.invokeExact(PFN_glCopyTexSubImage2DEXT, target, level, xoffset, yoffset, x, y, width, height);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glCopyTexSubImage2DEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glCopyTexSubImage2DEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glCopyTexSubImage2DEXT"); }
     }
 
     public void CopyTexSubImage3DEXT(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLint") int yoffset, @CType("GLint") int zoffset, @CType("GLint") int x, @CType("GLint") int y, @CType("GLsizei") int width, @CType("GLsizei") int height) {
-        try { if (!Unmarshal.isNullPointer(PFN_glCopyTexSubImage3DEXT))
+        if (!Unmarshal.isNullPointer(PFN_glCopyTexSubImage3DEXT)) { try {
             MH_glCopyTexSubImage3DEXT.invokeExact(PFN_glCopyTexSubImage3DEXT, target, level, xoffset, yoffset, zoffset, x, y, width, height);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glCopyTexSubImage3DEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glCopyTexSubImage3DEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glCopyTexSubImage3DEXT"); }
     }
 
 }

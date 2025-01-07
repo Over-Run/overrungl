@@ -84,66 +84,66 @@ public sealed class GL14 extends GL13 permits GL15 {
     }
 
     public void BlendFuncSeparate(@CType("GLenum") int sfactorRGB, @CType("GLenum") int dfactorRGB, @CType("GLenum") int sfactorAlpha, @CType("GLenum") int dfactorAlpha) {
-        try { if (!Unmarshal.isNullPointer(PFN_glBlendFuncSeparate))
+        if (!Unmarshal.isNullPointer(PFN_glBlendFuncSeparate)) { try {
             MH_glBlendFuncSeparate.invokeExact(PFN_glBlendFuncSeparate, sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glBlendFuncSeparate", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glBlendFuncSeparate", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glBlendFuncSeparate"); }
     }
 
     public void MultiDrawArrays(@CType("GLenum") int mode, @CType("const GLint *") java.lang.foreign.MemorySegment first, @CType("const GLsizei *") java.lang.foreign.MemorySegment count, @CType("GLsizei") int drawcount) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiDrawArrays))
+        if (!Unmarshal.isNullPointer(PFN_glMultiDrawArrays)) { try {
             MH_glMultiDrawArrays.invokeExact(PFN_glMultiDrawArrays, mode, first, count, drawcount);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiDrawArrays", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiDrawArrays", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiDrawArrays"); }
     }
 
     public void MultiDrawElements(@CType("GLenum") int mode, @CType("const GLsizei *") java.lang.foreign.MemorySegment count, @CType("GLenum") int type, @CType("const void *const*") java.lang.foreign.MemorySegment indices, @CType("GLsizei") int drawcount) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiDrawElements))
+        if (!Unmarshal.isNullPointer(PFN_glMultiDrawElements)) { try {
             MH_glMultiDrawElements.invokeExact(PFN_glMultiDrawElements, mode, count, type, indices, drawcount);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiDrawElements", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiDrawElements", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiDrawElements"); }
     }
 
     public void PointParameterf(@CType("GLenum") int pname, @CType("GLfloat") float param) {
-        try { if (!Unmarshal.isNullPointer(PFN_glPointParameterf))
+        if (!Unmarshal.isNullPointer(PFN_glPointParameterf)) { try {
             MH_glPointParameterf.invokeExact(PFN_glPointParameterf, pname, param);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glPointParameterf", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glPointParameterf", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glPointParameterf"); }
     }
 
     public void PointParameterfv(@CType("GLenum") int pname, @CType("const GLfloat *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glPointParameterfv))
+        if (!Unmarshal.isNullPointer(PFN_glPointParameterfv)) { try {
             MH_glPointParameterfv.invokeExact(PFN_glPointParameterfv, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glPointParameterfv", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glPointParameterfv", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glPointParameterfv"); }
     }
 
     public void PointParameteri(@CType("GLenum") int pname, @CType("GLint") int param) {
-        try { if (!Unmarshal.isNullPointer(PFN_glPointParameteri))
+        if (!Unmarshal.isNullPointer(PFN_glPointParameteri)) { try {
             MH_glPointParameteri.invokeExact(PFN_glPointParameteri, pname, param);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glPointParameteri", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glPointParameteri", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glPointParameteri"); }
     }
 
     public void PointParameteriv(@CType("GLenum") int pname, @CType("const GLint *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glPointParameteriv))
+        if (!Unmarshal.isNullPointer(PFN_glPointParameteriv)) { try {
             MH_glPointParameteriv.invokeExact(PFN_glPointParameteriv, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glPointParameteriv", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glPointParameteriv", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glPointParameteriv"); }
     }
 
     public void BlendColor(@CType("GLfloat") float red, @CType("GLfloat") float green, @CType("GLfloat") float blue, @CType("GLfloat") float alpha) {
-        try { if (!Unmarshal.isNullPointer(PFN_glBlendColor))
+        if (!Unmarshal.isNullPointer(PFN_glBlendColor)) { try {
             MH_glBlendColor.invokeExact(PFN_glBlendColor, red, green, blue, alpha);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glBlendColor", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glBlendColor", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glBlendColor"); }
     }
 
     public void BlendEquation(@CType("GLenum") int mode) {
-        try { if (!Unmarshal.isNullPointer(PFN_glBlendEquation))
+        if (!Unmarshal.isNullPointer(PFN_glBlendEquation)) { try {
             MH_glBlendEquation.invokeExact(PFN_glBlendEquation, mode);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glBlendEquation", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glBlendEquation", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glBlendEquation"); }
     }
 
 }

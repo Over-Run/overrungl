@@ -86,17 +86,17 @@ public final class GLNVBlendEquationAdvanced {
     }
 
     public void BlendParameteriNV(@CType("GLenum") int pname, @CType("GLint") int value) {
-        try { if (!Unmarshal.isNullPointer(PFN_glBlendParameteriNV))
+        if (!Unmarshal.isNullPointer(PFN_glBlendParameteriNV)) { try {
             MH_glBlendParameteriNV.invokeExact(PFN_glBlendParameteriNV, pname, value);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glBlendParameteriNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glBlendParameteriNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glBlendParameteriNV"); }
     }
 
     public void BlendBarrierNV() {
-        try { if (!Unmarshal.isNullPointer(PFN_glBlendBarrierNV))
+        if (!Unmarshal.isNullPointer(PFN_glBlendBarrierNV)) { try {
             MH_glBlendBarrierNV.invokeExact(PFN_glBlendBarrierNV);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glBlendBarrierNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glBlendBarrierNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glBlendBarrierNV"); }
     }
 
 }

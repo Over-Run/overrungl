@@ -61,31 +61,31 @@ public final class GLARBGeometryShader4 {
     }
 
     public void ProgramParameteriARB(@CType("GLuint") int program, @CType("GLenum") int pname, @CType("GLint") int value) {
-        try { if (!Unmarshal.isNullPointer(PFN_glProgramParameteriARB))
+        if (!Unmarshal.isNullPointer(PFN_glProgramParameteriARB)) { try {
             MH_glProgramParameteriARB.invokeExact(PFN_glProgramParameteriARB, program, pname, value);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glProgramParameteriARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glProgramParameteriARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glProgramParameteriARB"); }
     }
 
     public void FramebufferTextureARB(@CType("GLenum") int target, @CType("GLenum") int attachment, @CType("GLuint") int texture, @CType("GLint") int level) {
-        try { if (!Unmarshal.isNullPointer(PFN_glFramebufferTextureARB))
+        if (!Unmarshal.isNullPointer(PFN_glFramebufferTextureARB)) { try {
             MH_glFramebufferTextureARB.invokeExact(PFN_glFramebufferTextureARB, target, attachment, texture, level);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFramebufferTextureARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFramebufferTextureARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFramebufferTextureARB"); }
     }
 
     public void FramebufferTextureLayerARB(@CType("GLenum") int target, @CType("GLenum") int attachment, @CType("GLuint") int texture, @CType("GLint") int level, @CType("GLint") int layer) {
-        try { if (!Unmarshal.isNullPointer(PFN_glFramebufferTextureLayerARB))
+        if (!Unmarshal.isNullPointer(PFN_glFramebufferTextureLayerARB)) { try {
             MH_glFramebufferTextureLayerARB.invokeExact(PFN_glFramebufferTextureLayerARB, target, attachment, texture, level, layer);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFramebufferTextureLayerARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFramebufferTextureLayerARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFramebufferTextureLayerARB"); }
     }
 
     public void FramebufferTextureFaceARB(@CType("GLenum") int target, @CType("GLenum") int attachment, @CType("GLuint") int texture, @CType("GLint") int level, @CType("GLenum") int face) {
-        try { if (!Unmarshal.isNullPointer(PFN_glFramebufferTextureFaceARB))
+        if (!Unmarshal.isNullPointer(PFN_glFramebufferTextureFaceARB)) { try {
             MH_glFramebufferTextureFaceARB.invokeExact(PFN_glFramebufferTextureFaceARB, target, attachment, texture, level, face);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFramebufferTextureFaceARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFramebufferTextureFaceARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFramebufferTextureFaceARB"); }
     }
 
 }

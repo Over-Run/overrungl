@@ -44,17 +44,17 @@ public final class GLARBFramebufferNoAttachments {
     }
 
     public void FramebufferParameteri(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLint") int param) {
-        try { if (!Unmarshal.isNullPointer(PFN_glFramebufferParameteri))
+        if (!Unmarshal.isNullPointer(PFN_glFramebufferParameteri)) { try {
             MH_glFramebufferParameteri.invokeExact(PFN_glFramebufferParameteri, target, pname, param);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFramebufferParameteri", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFramebufferParameteri", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFramebufferParameteri"); }
     }
 
     public void GetFramebufferParameteriv(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetFramebufferParameteriv))
+        if (!Unmarshal.isNullPointer(PFN_glGetFramebufferParameteriv)) { try {
             MH_glGetFramebufferParameteriv.invokeExact(PFN_glGetFramebufferParameteriv, target, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetFramebufferParameteriv", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetFramebufferParameteriv", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetFramebufferParameteriv"); }
     }
 
 }

@@ -36,10 +36,10 @@ public final class GLAMDStencilOperationExtended {
     }
 
     public void StencilOpValueAMD(@CType("GLenum") int face, @CType("GLuint") int value) {
-        try { if (!Unmarshal.isNullPointer(PFN_glStencilOpValueAMD))
+        if (!Unmarshal.isNullPointer(PFN_glStencilOpValueAMD)) { try {
             MH_glStencilOpValueAMD.invokeExact(PFN_glStencilOpValueAMD, face, value);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glStencilOpValueAMD", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glStencilOpValueAMD", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glStencilOpValueAMD"); }
     }
 
 }

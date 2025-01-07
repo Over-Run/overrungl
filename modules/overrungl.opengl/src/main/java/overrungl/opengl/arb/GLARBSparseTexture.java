@@ -43,10 +43,10 @@ public final class GLARBSparseTexture {
     }
 
     public void TexPageCommitmentARB(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLint") int yoffset, @CType("GLint") int zoffset, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth, @CType("GLboolean") boolean commit) {
-        try { if (!Unmarshal.isNullPointer(PFN_glTexPageCommitmentARB))
+        if (!Unmarshal.isNullPointer(PFN_glTexPageCommitmentARB)) { try {
             MH_glTexPageCommitmentARB.invokeExact(PFN_glTexPageCommitmentARB, target, level, xoffset, yoffset, zoffset, width, height, depth, commit);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glTexPageCommitmentARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glTexPageCommitmentARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glTexPageCommitmentARB"); }
     }
 
 }

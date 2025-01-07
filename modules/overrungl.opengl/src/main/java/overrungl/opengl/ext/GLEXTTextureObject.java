@@ -52,47 +52,45 @@ public final class GLEXTTextureObject {
     }
 
     public @CType("GLboolean") boolean AreTexturesResidentEXT(@CType("GLsizei") int n, @CType("const GLuint *") java.lang.foreign.MemorySegment textures, @CType("GLboolean *") java.lang.foreign.MemorySegment residences) {
-        try { if (!Unmarshal.isNullPointer(PFN_glAreTexturesResidentEXT))
+        if (!Unmarshal.isNullPointer(PFN_glAreTexturesResidentEXT)) { try {
             return (boolean) MH_glAreTexturesResidentEXT.invokeExact(PFN_glAreTexturesResidentEXT, n, textures, residences);
-            else return false;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glAreTexturesResidentEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glAreTexturesResidentEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glAreTexturesResidentEXT"); }
     }
 
     public void BindTextureEXT(@CType("GLenum") int target, @CType("GLuint") int texture) {
-        try { if (!Unmarshal.isNullPointer(PFN_glBindTextureEXT))
+        if (!Unmarshal.isNullPointer(PFN_glBindTextureEXT)) { try {
             MH_glBindTextureEXT.invokeExact(PFN_glBindTextureEXT, target, texture);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glBindTextureEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glBindTextureEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glBindTextureEXT"); }
     }
 
     public void DeleteTexturesEXT(@CType("GLsizei") int n, @CType("const GLuint *") java.lang.foreign.MemorySegment textures) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDeleteTexturesEXT))
+        if (!Unmarshal.isNullPointer(PFN_glDeleteTexturesEXT)) { try {
             MH_glDeleteTexturesEXT.invokeExact(PFN_glDeleteTexturesEXT, n, textures);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDeleteTexturesEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDeleteTexturesEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDeleteTexturesEXT"); }
     }
 
     public void GenTexturesEXT(@CType("GLsizei") int n, @CType("GLuint *") java.lang.foreign.MemorySegment textures) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGenTexturesEXT))
+        if (!Unmarshal.isNullPointer(PFN_glGenTexturesEXT)) { try {
             MH_glGenTexturesEXT.invokeExact(PFN_glGenTexturesEXT, n, textures);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGenTexturesEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGenTexturesEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGenTexturesEXT"); }
     }
 
     public @CType("GLboolean") boolean IsTextureEXT(@CType("GLuint") int texture) {
-        try { if (!Unmarshal.isNullPointer(PFN_glIsTextureEXT))
+        if (!Unmarshal.isNullPointer(PFN_glIsTextureEXT)) { try {
             return (boolean) MH_glIsTextureEXT.invokeExact(PFN_glIsTextureEXT, texture);
-            else return false;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glIsTextureEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glIsTextureEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glIsTextureEXT"); }
     }
 
     public void PrioritizeTexturesEXT(@CType("GLsizei") int n, @CType("const GLuint *") java.lang.foreign.MemorySegment textures, @CType("const GLclampf *") java.lang.foreign.MemorySegment priorities) {
-        try { if (!Unmarshal.isNullPointer(PFN_glPrioritizeTexturesEXT))
+        if (!Unmarshal.isNullPointer(PFN_glPrioritizeTexturesEXT)) { try {
             MH_glPrioritizeTexturesEXT.invokeExact(PFN_glPrioritizeTexturesEXT, n, textures, priorities);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glPrioritizeTexturesEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glPrioritizeTexturesEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glPrioritizeTexturesEXT"); }
     }
 
 }

@@ -51,17 +51,17 @@ public final class GLSGISMultisample {
     }
 
     public void SampleMaskSGIS(@CType("GLclampf") float value, @CType("GLboolean") boolean invert) {
-        try { if (!Unmarshal.isNullPointer(PFN_glSampleMaskSGIS))
+        if (!Unmarshal.isNullPointer(PFN_glSampleMaskSGIS)) { try {
             MH_glSampleMaskSGIS.invokeExact(PFN_glSampleMaskSGIS, value, invert);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glSampleMaskSGIS", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glSampleMaskSGIS", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glSampleMaskSGIS"); }
     }
 
     public void SamplePatternSGIS(@CType("GLenum") int pattern) {
-        try { if (!Unmarshal.isNullPointer(PFN_glSamplePatternSGIS))
+        if (!Unmarshal.isNullPointer(PFN_glSamplePatternSGIS)) { try {
             MH_glSamplePatternSGIS.invokeExact(PFN_glSamplePatternSGIS, pattern);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glSamplePatternSGIS", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glSamplePatternSGIS", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glSamplePatternSGIS"); }
     }
 
 }

@@ -54,53 +54,52 @@ public final class GLNVTransformFeedback2 {
     }
 
     public void BindTransformFeedbackNV(@CType("GLenum") int target, @CType("GLuint") int id) {
-        try { if (!Unmarshal.isNullPointer(PFN_glBindTransformFeedbackNV))
+        if (!Unmarshal.isNullPointer(PFN_glBindTransformFeedbackNV)) { try {
             MH_glBindTransformFeedbackNV.invokeExact(PFN_glBindTransformFeedbackNV, target, id);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glBindTransformFeedbackNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glBindTransformFeedbackNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glBindTransformFeedbackNV"); }
     }
 
     public void DeleteTransformFeedbacksNV(@CType("GLsizei") int n, @CType("const GLuint *") java.lang.foreign.MemorySegment ids) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDeleteTransformFeedbacksNV))
+        if (!Unmarshal.isNullPointer(PFN_glDeleteTransformFeedbacksNV)) { try {
             MH_glDeleteTransformFeedbacksNV.invokeExact(PFN_glDeleteTransformFeedbacksNV, n, ids);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDeleteTransformFeedbacksNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDeleteTransformFeedbacksNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDeleteTransformFeedbacksNV"); }
     }
 
     public void GenTransformFeedbacksNV(@CType("GLsizei") int n, @CType("GLuint *") java.lang.foreign.MemorySegment ids) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGenTransformFeedbacksNV))
+        if (!Unmarshal.isNullPointer(PFN_glGenTransformFeedbacksNV)) { try {
             MH_glGenTransformFeedbacksNV.invokeExact(PFN_glGenTransformFeedbacksNV, n, ids);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGenTransformFeedbacksNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGenTransformFeedbacksNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGenTransformFeedbacksNV"); }
     }
 
     public @CType("GLboolean") boolean IsTransformFeedbackNV(@CType("GLuint") int id) {
-        try { if (!Unmarshal.isNullPointer(PFN_glIsTransformFeedbackNV))
+        if (!Unmarshal.isNullPointer(PFN_glIsTransformFeedbackNV)) { try {
             return (boolean) MH_glIsTransformFeedbackNV.invokeExact(PFN_glIsTransformFeedbackNV, id);
-            else return false;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glIsTransformFeedbackNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glIsTransformFeedbackNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glIsTransformFeedbackNV"); }
     }
 
     public void PauseTransformFeedbackNV() {
-        try { if (!Unmarshal.isNullPointer(PFN_glPauseTransformFeedbackNV))
+        if (!Unmarshal.isNullPointer(PFN_glPauseTransformFeedbackNV)) { try {
             MH_glPauseTransformFeedbackNV.invokeExact(PFN_glPauseTransformFeedbackNV);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glPauseTransformFeedbackNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glPauseTransformFeedbackNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glPauseTransformFeedbackNV"); }
     }
 
     public void ResumeTransformFeedbackNV() {
-        try { if (!Unmarshal.isNullPointer(PFN_glResumeTransformFeedbackNV))
+        if (!Unmarshal.isNullPointer(PFN_glResumeTransformFeedbackNV)) { try {
             MH_glResumeTransformFeedbackNV.invokeExact(PFN_glResumeTransformFeedbackNV);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glResumeTransformFeedbackNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glResumeTransformFeedbackNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glResumeTransformFeedbackNV"); }
     }
 
     public void DrawTransformFeedbackNV(@CType("GLenum") int mode, @CType("GLuint") int id) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDrawTransformFeedbackNV))
+        if (!Unmarshal.isNullPointer(PFN_glDrawTransformFeedbackNV)) { try {
             MH_glDrawTransformFeedbackNV.invokeExact(PFN_glDrawTransformFeedbackNV, mode, id);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawTransformFeedbackNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDrawTransformFeedbackNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDrawTransformFeedbackNV"); }
     }
 
 }

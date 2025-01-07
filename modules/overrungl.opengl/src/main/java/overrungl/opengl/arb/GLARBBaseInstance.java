@@ -38,24 +38,24 @@ public final class GLARBBaseInstance {
     }
 
     public void DrawArraysInstancedBaseInstance(@CType("GLenum") int mode, @CType("GLint") int first, @CType("GLsizei") int count, @CType("GLsizei") int instancecount, @CType("GLuint") int baseinstance) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDrawArraysInstancedBaseInstance))
+        if (!Unmarshal.isNullPointer(PFN_glDrawArraysInstancedBaseInstance)) { try {
             MH_glDrawArraysInstancedBaseInstance.invokeExact(PFN_glDrawArraysInstancedBaseInstance, mode, first, count, instancecount, baseinstance);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawArraysInstancedBaseInstance", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDrawArraysInstancedBaseInstance", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDrawArraysInstancedBaseInstance"); }
     }
 
     public void DrawElementsInstancedBaseInstance(@CType("GLenum") int mode, @CType("GLsizei") int count, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment indices, @CType("GLsizei") int instancecount, @CType("GLuint") int baseinstance) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDrawElementsInstancedBaseInstance))
+        if (!Unmarshal.isNullPointer(PFN_glDrawElementsInstancedBaseInstance)) { try {
             MH_glDrawElementsInstancedBaseInstance.invokeExact(PFN_glDrawElementsInstancedBaseInstance, mode, count, type, indices, instancecount, baseinstance);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawElementsInstancedBaseInstance", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDrawElementsInstancedBaseInstance", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDrawElementsInstancedBaseInstance"); }
     }
 
     public void DrawElementsInstancedBaseVertexBaseInstance(@CType("GLenum") int mode, @CType("GLsizei") int count, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment indices, @CType("GLsizei") int instancecount, @CType("GLint") int basevertex, @CType("GLuint") int baseinstance) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDrawElementsInstancedBaseVertexBaseInstance))
+        if (!Unmarshal.isNullPointer(PFN_glDrawElementsInstancedBaseVertexBaseInstance)) { try {
             MH_glDrawElementsInstancedBaseVertexBaseInstance.invokeExact(PFN_glDrawElementsInstancedBaseVertexBaseInstance, mode, count, type, indices, instancecount, basevertex, baseinstance);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawElementsInstancedBaseVertexBaseInstance", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDrawElementsInstancedBaseVertexBaseInstance", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDrawElementsInstancedBaseVertexBaseInstance"); }
     }
 
 }

@@ -57,31 +57,31 @@ public final class GLNVGeometryProgram4 {
     }
 
     public void ProgramVertexLimitNV(@CType("GLenum") int target, @CType("GLint") int limit) {
-        try { if (!Unmarshal.isNullPointer(PFN_glProgramVertexLimitNV))
+        if (!Unmarshal.isNullPointer(PFN_glProgramVertexLimitNV)) { try {
             MH_glProgramVertexLimitNV.invokeExact(PFN_glProgramVertexLimitNV, target, limit);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glProgramVertexLimitNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glProgramVertexLimitNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glProgramVertexLimitNV"); }
     }
 
     public void FramebufferTextureEXT(@CType("GLenum") int target, @CType("GLenum") int attachment, @CType("GLuint") int texture, @CType("GLint") int level) {
-        try { if (!Unmarshal.isNullPointer(PFN_glFramebufferTextureEXT))
+        if (!Unmarshal.isNullPointer(PFN_glFramebufferTextureEXT)) { try {
             MH_glFramebufferTextureEXT.invokeExact(PFN_glFramebufferTextureEXT, target, attachment, texture, level);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFramebufferTextureEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFramebufferTextureEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFramebufferTextureEXT"); }
     }
 
     public void FramebufferTextureLayerEXT(@CType("GLenum") int target, @CType("GLenum") int attachment, @CType("GLuint") int texture, @CType("GLint") int level, @CType("GLint") int layer) {
-        try { if (!Unmarshal.isNullPointer(PFN_glFramebufferTextureLayerEXT))
+        if (!Unmarshal.isNullPointer(PFN_glFramebufferTextureLayerEXT)) { try {
             MH_glFramebufferTextureLayerEXT.invokeExact(PFN_glFramebufferTextureLayerEXT, target, attachment, texture, level, layer);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFramebufferTextureLayerEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFramebufferTextureLayerEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFramebufferTextureLayerEXT"); }
     }
 
     public void FramebufferTextureFaceEXT(@CType("GLenum") int target, @CType("GLenum") int attachment, @CType("GLuint") int texture, @CType("GLint") int level, @CType("GLenum") int face) {
-        try { if (!Unmarshal.isNullPointer(PFN_glFramebufferTextureFaceEXT))
+        if (!Unmarshal.isNullPointer(PFN_glFramebufferTextureFaceEXT)) { try {
             MH_glFramebufferTextureFaceEXT.invokeExact(PFN_glFramebufferTextureFaceEXT, target, attachment, texture, level, face);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFramebufferTextureFaceEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFramebufferTextureFaceEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFramebufferTextureFaceEXT"); }
     }
 
 }

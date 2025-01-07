@@ -56,45 +56,45 @@ public final class GLEXTPixelTransform {
     }
 
     public void PixelTransformParameteriEXT(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLint") int param) {
-        try { if (!Unmarshal.isNullPointer(PFN_glPixelTransformParameteriEXT))
+        if (!Unmarshal.isNullPointer(PFN_glPixelTransformParameteriEXT)) { try {
             MH_glPixelTransformParameteriEXT.invokeExact(PFN_glPixelTransformParameteriEXT, target, pname, param);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glPixelTransformParameteriEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glPixelTransformParameteriEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glPixelTransformParameteriEXT"); }
     }
 
     public void PixelTransformParameterfEXT(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLfloat") float param) {
-        try { if (!Unmarshal.isNullPointer(PFN_glPixelTransformParameterfEXT))
+        if (!Unmarshal.isNullPointer(PFN_glPixelTransformParameterfEXT)) { try {
             MH_glPixelTransformParameterfEXT.invokeExact(PFN_glPixelTransformParameterfEXT, target, pname, param);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glPixelTransformParameterfEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glPixelTransformParameterfEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glPixelTransformParameterfEXT"); }
     }
 
     public void PixelTransformParameterivEXT(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("const GLint *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glPixelTransformParameterivEXT))
+        if (!Unmarshal.isNullPointer(PFN_glPixelTransformParameterivEXT)) { try {
             MH_glPixelTransformParameterivEXT.invokeExact(PFN_glPixelTransformParameterivEXT, target, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glPixelTransformParameterivEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glPixelTransformParameterivEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glPixelTransformParameterivEXT"); }
     }
 
     public void PixelTransformParameterfvEXT(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("const GLfloat *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glPixelTransformParameterfvEXT))
+        if (!Unmarshal.isNullPointer(PFN_glPixelTransformParameterfvEXT)) { try {
             MH_glPixelTransformParameterfvEXT.invokeExact(PFN_glPixelTransformParameterfvEXT, target, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glPixelTransformParameterfvEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glPixelTransformParameterfvEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glPixelTransformParameterfvEXT"); }
     }
 
     public void GetPixelTransformParameterivEXT(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetPixelTransformParameterivEXT))
+        if (!Unmarshal.isNullPointer(PFN_glGetPixelTransformParameterivEXT)) { try {
             MH_glGetPixelTransformParameterivEXT.invokeExact(PFN_glGetPixelTransformParameterivEXT, target, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetPixelTransformParameterivEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetPixelTransformParameterivEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetPixelTransformParameterivEXT"); }
     }
 
     public void GetPixelTransformParameterfvEXT(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetPixelTransformParameterfvEXT))
+        if (!Unmarshal.isNullPointer(PFN_glGetPixelTransformParameterfvEXT)) { try {
             MH_glGetPixelTransformParameterfvEXT.invokeExact(PFN_glGetPixelTransformParameterfvEXT, target, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetPixelTransformParameterfvEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetPixelTransformParameterfvEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetPixelTransformParameterfvEXT"); }
     }
 
 }

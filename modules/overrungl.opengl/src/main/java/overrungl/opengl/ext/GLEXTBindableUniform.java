@@ -44,26 +44,24 @@ public final class GLEXTBindableUniform {
     }
 
     public void UniformBufferEXT(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLuint") int buffer) {
-        try { if (!Unmarshal.isNullPointer(PFN_glUniformBufferEXT))
+        if (!Unmarshal.isNullPointer(PFN_glUniformBufferEXT)) { try {
             MH_glUniformBufferEXT.invokeExact(PFN_glUniformBufferEXT, program, location, buffer);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glUniformBufferEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glUniformBufferEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glUniformBufferEXT"); }
     }
 
     public @CType("GLint") int GetUniformBufferSizeEXT(@CType("GLuint") int program, @CType("GLint") int location) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetUniformBufferSizeEXT))
+        if (!Unmarshal.isNullPointer(PFN_glGetUniformBufferSizeEXT)) { try {
             return (int) MH_glGetUniformBufferSizeEXT.invokeExact(PFN_glGetUniformBufferSizeEXT, program, location);
-            else return 0;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetUniformBufferSizeEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetUniformBufferSizeEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetUniformBufferSizeEXT"); }
     }
 
     public @CType("GLintptr") long GetUniformOffsetEXT(@CType("GLuint") int program, @CType("GLint") int location) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetUniformOffsetEXT))
+        if (!Unmarshal.isNullPointer(PFN_glGetUniformOffsetEXT)) { try {
             return (long) MH_glGetUniformOffsetEXT.invokeExact(PFN_glGetUniformOffsetEXT, program, location);
-            else return 0L;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetUniformOffsetEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetUniformOffsetEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetUniformOffsetEXT"); }
     }
 
 }

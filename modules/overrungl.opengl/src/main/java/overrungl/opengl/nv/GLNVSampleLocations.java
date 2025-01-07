@@ -46,24 +46,24 @@ public final class GLNVSampleLocations {
     }
 
     public void FramebufferSampleLocationsfvNV(@CType("GLenum") int target, @CType("GLuint") int start, @CType("GLsizei") int count, @CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
-        try { if (!Unmarshal.isNullPointer(PFN_glFramebufferSampleLocationsfvNV))
+        if (!Unmarshal.isNullPointer(PFN_glFramebufferSampleLocationsfvNV)) { try {
             MH_glFramebufferSampleLocationsfvNV.invokeExact(PFN_glFramebufferSampleLocationsfvNV, target, start, count, v);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFramebufferSampleLocationsfvNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFramebufferSampleLocationsfvNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFramebufferSampleLocationsfvNV"); }
     }
 
     public void NamedFramebufferSampleLocationsfvNV(@CType("GLuint") int framebuffer, @CType("GLuint") int start, @CType("GLsizei") int count, @CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
-        try { if (!Unmarshal.isNullPointer(PFN_glNamedFramebufferSampleLocationsfvNV))
+        if (!Unmarshal.isNullPointer(PFN_glNamedFramebufferSampleLocationsfvNV)) { try {
             MH_glNamedFramebufferSampleLocationsfvNV.invokeExact(PFN_glNamedFramebufferSampleLocationsfvNV, framebuffer, start, count, v);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glNamedFramebufferSampleLocationsfvNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glNamedFramebufferSampleLocationsfvNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glNamedFramebufferSampleLocationsfvNV"); }
     }
 
     public void ResolveDepthValuesNV() {
-        try { if (!Unmarshal.isNullPointer(PFN_glResolveDepthValuesNV))
+        if (!Unmarshal.isNullPointer(PFN_glResolveDepthValuesNV)) { try {
             MH_glResolveDepthValuesNV.invokeExact(PFN_glResolveDepthValuesNV);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glResolveDepthValuesNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glResolveDepthValuesNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glResolveDepthValuesNV"); }
     }
 
 }

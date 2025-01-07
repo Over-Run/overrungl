@@ -41,17 +41,17 @@ public final class GLAMDFramebufferMultisampleAdvanced {
     }
 
     public void RenderbufferStorageMultisampleAdvancedAMD(@CType("GLenum") int target, @CType("GLsizei") int samples, @CType("GLsizei") int storageSamples, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height) {
-        try { if (!Unmarshal.isNullPointer(PFN_glRenderbufferStorageMultisampleAdvancedAMD))
+        if (!Unmarshal.isNullPointer(PFN_glRenderbufferStorageMultisampleAdvancedAMD)) { try {
             MH_glRenderbufferStorageMultisampleAdvancedAMD.invokeExact(PFN_glRenderbufferStorageMultisampleAdvancedAMD, target, samples, storageSamples, internalformat, width, height);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glRenderbufferStorageMultisampleAdvancedAMD", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glRenderbufferStorageMultisampleAdvancedAMD", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glRenderbufferStorageMultisampleAdvancedAMD"); }
     }
 
     public void NamedRenderbufferStorageMultisampleAdvancedAMD(@CType("GLuint") int renderbuffer, @CType("GLsizei") int samples, @CType("GLsizei") int storageSamples, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height) {
-        try { if (!Unmarshal.isNullPointer(PFN_glNamedRenderbufferStorageMultisampleAdvancedAMD))
+        if (!Unmarshal.isNullPointer(PFN_glNamedRenderbufferStorageMultisampleAdvancedAMD)) { try {
             MH_glNamedRenderbufferStorageMultisampleAdvancedAMD.invokeExact(PFN_glNamedRenderbufferStorageMultisampleAdvancedAMD, renderbuffer, samples, storageSamples, internalformat, width, height);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glNamedRenderbufferStorageMultisampleAdvancedAMD", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glNamedRenderbufferStorageMultisampleAdvancedAMD", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glNamedRenderbufferStorageMultisampleAdvancedAMD"); }
     }
 
 }

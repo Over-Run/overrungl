@@ -52,10 +52,10 @@ public final class GLEXTGeometryShader4 {
     }
 
     public void ProgramParameteriEXT(@CType("GLuint") int program, @CType("GLenum") int pname, @CType("GLint") int value) {
-        try { if (!Unmarshal.isNullPointer(PFN_glProgramParameteriEXT))
+        if (!Unmarshal.isNullPointer(PFN_glProgramParameteriEXT)) { try {
             MH_glProgramParameteriEXT.invokeExact(PFN_glProgramParameteriEXT, program, pname, value);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glProgramParameteriEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glProgramParameteriEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glProgramParameteriEXT"); }
     }
 
 }

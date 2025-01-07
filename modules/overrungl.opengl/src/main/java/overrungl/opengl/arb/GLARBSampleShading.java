@@ -34,10 +34,10 @@ public final class GLARBSampleShading {
     }
 
     public void MinSampleShadingARB(@CType("GLfloat") float value) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMinSampleShadingARB))
+        if (!Unmarshal.isNullPointer(PFN_glMinSampleShadingARB)) { try {
             MH_glMinSampleShadingARB.invokeExact(PFN_glMinSampleShadingARB, value);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMinSampleShadingARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMinSampleShadingARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMinSampleShadingARB"); }
     }
 
 }

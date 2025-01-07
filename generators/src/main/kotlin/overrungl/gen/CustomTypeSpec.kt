@@ -29,8 +29,7 @@ data class CustomTypeSpec(
     val processor: ValueProcessor = IdentityValueProcessor,
     val layout: String?,
     val cType: String? = null,
-    val allocatorRequirement: AllocatorRequirement = AllocatorRequirement.NO,
-    val nullValue: String? = null
+    val allocatorRequirement: AllocatorRequirement = AllocatorRequirement.NO
 ) {
     val array: CustomTypeSpec by lazy {
         CustomTypeSpec(
@@ -60,23 +59,23 @@ val MemorySegment_: ClassName = ClassName.get(MemorySegment::class.java)
 val SegmentAllocator_: ClassName = ClassName.get(SegmentAllocator::class.java)
 val String_: ClassName = ClassName.get(String::class.java)
 
-private fun javaPrimitive(typeName: TypeName, layoutName: String, nullValue: String?): CustomTypeSpec =
-    CustomTypeSpec(typeName, typeName, layout = "ValueLayout.$layoutName", nullValue = nullValue)
+private fun javaPrimitive(typeName: TypeName, layoutName: String): CustomTypeSpec =
+    CustomTypeSpec(typeName, typeName, layout = "ValueLayout.$layoutName")
 
 val arena = CustomTypeSpec(Arena_, Arena_, layout = null)
 val allocator = CustomTypeSpec(SegmentAllocator_, SegmentAllocator_, layout = null)
 
-val jboolean = javaPrimitive(TypeName.BOOLEAN, "JAVA_BOOLEAN", "false")
-val jchar = javaPrimitive(TypeName.CHAR, "JAVA_CHAR", "0")
-val jbyte = javaPrimitive(TypeName.BYTE, "JAVA_BYTE", "0")
-val jshort = javaPrimitive(TypeName.SHORT, "JAVA_SHORT", "0")
-val jint = javaPrimitive(TypeName.INT, "JAVA_INT", "0")
-val jlong = javaPrimitive(TypeName.LONG, "JAVA_LONG", "0L")
-val jfloat = javaPrimitive(TypeName.FLOAT, "JAVA_FLOAT", "0.0f")
-val jdouble = javaPrimitive(TypeName.DOUBLE, "JAVA_DOUBLE", "0.0")
+val jboolean = javaPrimitive(TypeName.BOOLEAN, "JAVA_BOOLEAN")
+val jchar = javaPrimitive(TypeName.CHAR, "JAVA_CHAR")
+val jbyte = javaPrimitive(TypeName.BYTE, "JAVA_BYTE")
+val jshort = javaPrimitive(TypeName.SHORT, "JAVA_SHORT")
+val jint = javaPrimitive(TypeName.INT, "JAVA_INT")
+val jlong = javaPrimitive(TypeName.LONG, "JAVA_LONG")
+val jfloat = javaPrimitive(TypeName.FLOAT, "JAVA_FLOAT")
+val jdouble = javaPrimitive(TypeName.DOUBLE, "JAVA_DOUBLE")
 val void = CustomTypeSpec(TypeName.VOID, TypeName.VOID, layout = "No layout for void")
 
-val address = javaPrimitive(MemorySegment_, "ADDRESS", "MemorySegment.NULL")
+val address = javaPrimitive(MemorySegment_, "ADDRESS")
 val string_u8 = CustomTypeSpec(
     carrier = MemorySegment_,
     javaType = String_,
@@ -85,14 +84,14 @@ val string_u8 = CustomTypeSpec(
     allocatorRequirement = AllocatorRequirement.STACK
 )
 
-val jchar_array = jchar.array.copy(processor = ArrayValueProcessor("Char"), layout = address.layout, nullValue = address.nullValue)
-val jbyte_array = jbyte.array.copy(processor = ArrayValueProcessor("Byte"), layout = address.layout, nullValue = address.nullValue)
-val jshort_array = jshort.array.copy(processor = ArrayValueProcessor("Short"), layout = address.layout, nullValue = address.nullValue)
-val jint_array = jint.array.copy(processor = ArrayValueProcessor("Int"), layout = address.layout, nullValue = address.nullValue)
-val jlong_array = jlong.array.copy(processor = ArrayValueProcessor("Long"), layout = address.layout, nullValue = address.nullValue)
-val jfloat_array = jfloat.array.copy(processor = ArrayValueProcessor("Float"), layout = address.layout, nullValue = address.nullValue)
-val jdouble_array = jdouble.array.copy(processor = ArrayValueProcessor("Double"), layout = address.layout, nullValue = address.nullValue)
-val string_u8_array = string_u8.array.copy(processor = ArrayValueProcessor("String"), layout = address.layout, nullValue = address.nullValue)
+val jchar_array = jchar.array.copy(processor = ArrayValueProcessor("Char"), layout = address.layout)
+val jbyte_array = jbyte.array.copy(processor = ArrayValueProcessor("Byte"), layout = address.layout)
+val jshort_array = jshort.array.copy(processor = ArrayValueProcessor("Short"), layout = address.layout)
+val jint_array = jint.array.copy(processor = ArrayValueProcessor("Int"), layout = address.layout)
+val jlong_array = jlong.array.copy(processor = ArrayValueProcessor("Long"), layout = address.layout)
+val jfloat_array = jfloat.array.copy(processor = ArrayValueProcessor("Float"), layout = address.layout)
+val jdouble_array = jdouble.array.copy(processor = ArrayValueProcessor("Double"), layout = address.layout)
+val string_u8_array = string_u8.array.copy(processor = ArrayValueProcessor("String"), layout = address.layout)
 
 val bool = jboolean c "bool"
 val char = jbyte c "char"

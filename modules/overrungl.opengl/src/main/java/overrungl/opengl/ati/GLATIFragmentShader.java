@@ -175,102 +175,101 @@ public final class GLATIFragmentShader {
     }
 
     public @CType("GLuint") int GenFragmentShadersATI(@CType("GLuint") int range) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGenFragmentShadersATI))
+        if (!Unmarshal.isNullPointer(PFN_glGenFragmentShadersATI)) { try {
             return (int) MH_glGenFragmentShadersATI.invokeExact(PFN_glGenFragmentShadersATI, range);
-            else return 0;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGenFragmentShadersATI", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGenFragmentShadersATI", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGenFragmentShadersATI"); }
     }
 
     public void BindFragmentShaderATI(@CType("GLuint") int id) {
-        try { if (!Unmarshal.isNullPointer(PFN_glBindFragmentShaderATI))
+        if (!Unmarshal.isNullPointer(PFN_glBindFragmentShaderATI)) { try {
             MH_glBindFragmentShaderATI.invokeExact(PFN_glBindFragmentShaderATI, id);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glBindFragmentShaderATI", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glBindFragmentShaderATI", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glBindFragmentShaderATI"); }
     }
 
     public void DeleteFragmentShaderATI(@CType("GLuint") int id) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDeleteFragmentShaderATI))
+        if (!Unmarshal.isNullPointer(PFN_glDeleteFragmentShaderATI)) { try {
             MH_glDeleteFragmentShaderATI.invokeExact(PFN_glDeleteFragmentShaderATI, id);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDeleteFragmentShaderATI", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDeleteFragmentShaderATI", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDeleteFragmentShaderATI"); }
     }
 
     public void BeginFragmentShaderATI() {
-        try { if (!Unmarshal.isNullPointer(PFN_glBeginFragmentShaderATI))
+        if (!Unmarshal.isNullPointer(PFN_glBeginFragmentShaderATI)) { try {
             MH_glBeginFragmentShaderATI.invokeExact(PFN_glBeginFragmentShaderATI);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glBeginFragmentShaderATI", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glBeginFragmentShaderATI", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glBeginFragmentShaderATI"); }
     }
 
     public void EndFragmentShaderATI() {
-        try { if (!Unmarshal.isNullPointer(PFN_glEndFragmentShaderATI))
+        if (!Unmarshal.isNullPointer(PFN_glEndFragmentShaderATI)) { try {
             MH_glEndFragmentShaderATI.invokeExact(PFN_glEndFragmentShaderATI);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glEndFragmentShaderATI", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glEndFragmentShaderATI", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glEndFragmentShaderATI"); }
     }
 
     public void PassTexCoordATI(@CType("GLuint") int dst, @CType("GLuint") int coord, @CType("GLenum") int swizzle) {
-        try { if (!Unmarshal.isNullPointer(PFN_glPassTexCoordATI))
+        if (!Unmarshal.isNullPointer(PFN_glPassTexCoordATI)) { try {
             MH_glPassTexCoordATI.invokeExact(PFN_glPassTexCoordATI, dst, coord, swizzle);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glPassTexCoordATI", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glPassTexCoordATI", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glPassTexCoordATI"); }
     }
 
     public void SampleMapATI(@CType("GLuint") int dst, @CType("GLuint") int interp, @CType("GLenum") int swizzle) {
-        try { if (!Unmarshal.isNullPointer(PFN_glSampleMapATI))
+        if (!Unmarshal.isNullPointer(PFN_glSampleMapATI)) { try {
             MH_glSampleMapATI.invokeExact(PFN_glSampleMapATI, dst, interp, swizzle);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glSampleMapATI", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glSampleMapATI", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glSampleMapATI"); }
     }
 
     public void ColorFragmentOp1ATI(@CType("GLenum") int op, @CType("GLuint") int dst, @CType("GLuint") int dstMask, @CType("GLuint") int dstMod, @CType("GLuint") int arg1, @CType("GLuint") int arg1Rep, @CType("GLuint") int arg1Mod) {
-        try { if (!Unmarshal.isNullPointer(PFN_glColorFragmentOp1ATI))
+        if (!Unmarshal.isNullPointer(PFN_glColorFragmentOp1ATI)) { try {
             MH_glColorFragmentOp1ATI.invokeExact(PFN_glColorFragmentOp1ATI, op, dst, dstMask, dstMod, arg1, arg1Rep, arg1Mod);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glColorFragmentOp1ATI", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glColorFragmentOp1ATI", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glColorFragmentOp1ATI"); }
     }
 
     public void ColorFragmentOp2ATI(@CType("GLenum") int op, @CType("GLuint") int dst, @CType("GLuint") int dstMask, @CType("GLuint") int dstMod, @CType("GLuint") int arg1, @CType("GLuint") int arg1Rep, @CType("GLuint") int arg1Mod, @CType("GLuint") int arg2, @CType("GLuint") int arg2Rep, @CType("GLuint") int arg2Mod) {
-        try { if (!Unmarshal.isNullPointer(PFN_glColorFragmentOp2ATI))
+        if (!Unmarshal.isNullPointer(PFN_glColorFragmentOp2ATI)) { try {
             MH_glColorFragmentOp2ATI.invokeExact(PFN_glColorFragmentOp2ATI, op, dst, dstMask, dstMod, arg1, arg1Rep, arg1Mod, arg2, arg2Rep, arg2Mod);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glColorFragmentOp2ATI", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glColorFragmentOp2ATI", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glColorFragmentOp2ATI"); }
     }
 
     public void ColorFragmentOp3ATI(@CType("GLenum") int op, @CType("GLuint") int dst, @CType("GLuint") int dstMask, @CType("GLuint") int dstMod, @CType("GLuint") int arg1, @CType("GLuint") int arg1Rep, @CType("GLuint") int arg1Mod, @CType("GLuint") int arg2, @CType("GLuint") int arg2Rep, @CType("GLuint") int arg2Mod, @CType("GLuint") int arg3, @CType("GLuint") int arg3Rep, @CType("GLuint") int arg3Mod) {
-        try { if (!Unmarshal.isNullPointer(PFN_glColorFragmentOp3ATI))
+        if (!Unmarshal.isNullPointer(PFN_glColorFragmentOp3ATI)) { try {
             MH_glColorFragmentOp3ATI.invokeExact(PFN_glColorFragmentOp3ATI, op, dst, dstMask, dstMod, arg1, arg1Rep, arg1Mod, arg2, arg2Rep, arg2Mod, arg3, arg3Rep, arg3Mod);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glColorFragmentOp3ATI", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glColorFragmentOp3ATI", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glColorFragmentOp3ATI"); }
     }
 
     public void AlphaFragmentOp1ATI(@CType("GLenum") int op, @CType("GLuint") int dst, @CType("GLuint") int dstMod, @CType("GLuint") int arg1, @CType("GLuint") int arg1Rep, @CType("GLuint") int arg1Mod) {
-        try { if (!Unmarshal.isNullPointer(PFN_glAlphaFragmentOp1ATI))
+        if (!Unmarshal.isNullPointer(PFN_glAlphaFragmentOp1ATI)) { try {
             MH_glAlphaFragmentOp1ATI.invokeExact(PFN_glAlphaFragmentOp1ATI, op, dst, dstMod, arg1, arg1Rep, arg1Mod);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glAlphaFragmentOp1ATI", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glAlphaFragmentOp1ATI", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glAlphaFragmentOp1ATI"); }
     }
 
     public void AlphaFragmentOp2ATI(@CType("GLenum") int op, @CType("GLuint") int dst, @CType("GLuint") int dstMod, @CType("GLuint") int arg1, @CType("GLuint") int arg1Rep, @CType("GLuint") int arg1Mod, @CType("GLuint") int arg2, @CType("GLuint") int arg2Rep, @CType("GLuint") int arg2Mod) {
-        try { if (!Unmarshal.isNullPointer(PFN_glAlphaFragmentOp2ATI))
+        if (!Unmarshal.isNullPointer(PFN_glAlphaFragmentOp2ATI)) { try {
             MH_glAlphaFragmentOp2ATI.invokeExact(PFN_glAlphaFragmentOp2ATI, op, dst, dstMod, arg1, arg1Rep, arg1Mod, arg2, arg2Rep, arg2Mod);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glAlphaFragmentOp2ATI", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glAlphaFragmentOp2ATI", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glAlphaFragmentOp2ATI"); }
     }
 
     public void AlphaFragmentOp3ATI(@CType("GLenum") int op, @CType("GLuint") int dst, @CType("GLuint") int dstMod, @CType("GLuint") int arg1, @CType("GLuint") int arg1Rep, @CType("GLuint") int arg1Mod, @CType("GLuint") int arg2, @CType("GLuint") int arg2Rep, @CType("GLuint") int arg2Mod, @CType("GLuint") int arg3, @CType("GLuint") int arg3Rep, @CType("GLuint") int arg3Mod) {
-        try { if (!Unmarshal.isNullPointer(PFN_glAlphaFragmentOp3ATI))
+        if (!Unmarshal.isNullPointer(PFN_glAlphaFragmentOp3ATI)) { try {
             MH_glAlphaFragmentOp3ATI.invokeExact(PFN_glAlphaFragmentOp3ATI, op, dst, dstMod, arg1, arg1Rep, arg1Mod, arg2, arg2Rep, arg2Mod, arg3, arg3Rep, arg3Mod);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glAlphaFragmentOp3ATI", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glAlphaFragmentOp3ATI", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glAlphaFragmentOp3ATI"); }
     }
 
     public void SetFragmentShaderConstantATI(@CType("GLuint") int dst, @CType("const GLfloat *") java.lang.foreign.MemorySegment value) {
-        try { if (!Unmarshal.isNullPointer(PFN_glSetFragmentShaderConstantATI))
+        if (!Unmarshal.isNullPointer(PFN_glSetFragmentShaderConstantATI)) { try {
             MH_glSetFragmentShaderConstantATI.invokeExact(PFN_glSetFragmentShaderConstantATI, dst, value);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glSetFragmentShaderConstantATI", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glSetFragmentShaderConstantATI", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glSetFragmentShaderConstantATI"); }
     }
 
 }

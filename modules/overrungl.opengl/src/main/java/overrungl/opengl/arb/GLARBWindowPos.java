@@ -77,115 +77,115 @@ public final class GLARBWindowPos {
     }
 
     public void WindowPos2dARB(@CType("GLdouble") double x, @CType("GLdouble") double y) {
-        try { if (!Unmarshal.isNullPointer(PFN_glWindowPos2dARB))
+        if (!Unmarshal.isNullPointer(PFN_glWindowPos2dARB)) { try {
             MH_glWindowPos2dARB.invokeExact(PFN_glWindowPos2dARB, x, y);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glWindowPos2dARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glWindowPos2dARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glWindowPos2dARB"); }
     }
 
     public void WindowPos2dvARB(@CType("const GLdouble *") java.lang.foreign.MemorySegment v) {
-        try { if (!Unmarshal.isNullPointer(PFN_glWindowPos2dvARB))
+        if (!Unmarshal.isNullPointer(PFN_glWindowPos2dvARB)) { try {
             MH_glWindowPos2dvARB.invokeExact(PFN_glWindowPos2dvARB, v);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glWindowPos2dvARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glWindowPos2dvARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glWindowPos2dvARB"); }
     }
 
     public void WindowPos2fARB(@CType("GLfloat") float x, @CType("GLfloat") float y) {
-        try { if (!Unmarshal.isNullPointer(PFN_glWindowPos2fARB))
+        if (!Unmarshal.isNullPointer(PFN_glWindowPos2fARB)) { try {
             MH_glWindowPos2fARB.invokeExact(PFN_glWindowPos2fARB, x, y);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glWindowPos2fARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glWindowPos2fARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glWindowPos2fARB"); }
     }
 
     public void WindowPos2fvARB(@CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
-        try { if (!Unmarshal.isNullPointer(PFN_glWindowPos2fvARB))
+        if (!Unmarshal.isNullPointer(PFN_glWindowPos2fvARB)) { try {
             MH_glWindowPos2fvARB.invokeExact(PFN_glWindowPos2fvARB, v);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glWindowPos2fvARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glWindowPos2fvARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glWindowPos2fvARB"); }
     }
 
     public void WindowPos2iARB(@CType("GLint") int x, @CType("GLint") int y) {
-        try { if (!Unmarshal.isNullPointer(PFN_glWindowPos2iARB))
+        if (!Unmarshal.isNullPointer(PFN_glWindowPos2iARB)) { try {
             MH_glWindowPos2iARB.invokeExact(PFN_glWindowPos2iARB, x, y);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glWindowPos2iARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glWindowPos2iARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glWindowPos2iARB"); }
     }
 
     public void WindowPos2ivARB(@CType("const GLint *") java.lang.foreign.MemorySegment v) {
-        try { if (!Unmarshal.isNullPointer(PFN_glWindowPos2ivARB))
+        if (!Unmarshal.isNullPointer(PFN_glWindowPos2ivARB)) { try {
             MH_glWindowPos2ivARB.invokeExact(PFN_glWindowPos2ivARB, v);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glWindowPos2ivARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glWindowPos2ivARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glWindowPos2ivARB"); }
     }
 
     public void WindowPos2sARB(@CType("GLshort") short x, @CType("GLshort") short y) {
-        try { if (!Unmarshal.isNullPointer(PFN_glWindowPos2sARB))
+        if (!Unmarshal.isNullPointer(PFN_glWindowPos2sARB)) { try {
             MH_glWindowPos2sARB.invokeExact(PFN_glWindowPos2sARB, x, y);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glWindowPos2sARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glWindowPos2sARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glWindowPos2sARB"); }
     }
 
     public void WindowPos2svARB(@CType("const GLshort *") java.lang.foreign.MemorySegment v) {
-        try { if (!Unmarshal.isNullPointer(PFN_glWindowPos2svARB))
+        if (!Unmarshal.isNullPointer(PFN_glWindowPos2svARB)) { try {
             MH_glWindowPos2svARB.invokeExact(PFN_glWindowPos2svARB, v);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glWindowPos2svARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glWindowPos2svARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glWindowPos2svARB"); }
     }
 
     public void WindowPos3dARB(@CType("GLdouble") double x, @CType("GLdouble") double y, @CType("GLdouble") double z) {
-        try { if (!Unmarshal.isNullPointer(PFN_glWindowPos3dARB))
+        if (!Unmarshal.isNullPointer(PFN_glWindowPos3dARB)) { try {
             MH_glWindowPos3dARB.invokeExact(PFN_glWindowPos3dARB, x, y, z);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glWindowPos3dARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glWindowPos3dARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glWindowPos3dARB"); }
     }
 
     public void WindowPos3dvARB(@CType("const GLdouble *") java.lang.foreign.MemorySegment v) {
-        try { if (!Unmarshal.isNullPointer(PFN_glWindowPos3dvARB))
+        if (!Unmarshal.isNullPointer(PFN_glWindowPos3dvARB)) { try {
             MH_glWindowPos3dvARB.invokeExact(PFN_glWindowPos3dvARB, v);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glWindowPos3dvARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glWindowPos3dvARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glWindowPos3dvARB"); }
     }
 
     public void WindowPos3fARB(@CType("GLfloat") float x, @CType("GLfloat") float y, @CType("GLfloat") float z) {
-        try { if (!Unmarshal.isNullPointer(PFN_glWindowPos3fARB))
+        if (!Unmarshal.isNullPointer(PFN_glWindowPos3fARB)) { try {
             MH_glWindowPos3fARB.invokeExact(PFN_glWindowPos3fARB, x, y, z);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glWindowPos3fARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glWindowPos3fARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glWindowPos3fARB"); }
     }
 
     public void WindowPos3fvARB(@CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
-        try { if (!Unmarshal.isNullPointer(PFN_glWindowPos3fvARB))
+        if (!Unmarshal.isNullPointer(PFN_glWindowPos3fvARB)) { try {
             MH_glWindowPos3fvARB.invokeExact(PFN_glWindowPos3fvARB, v);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glWindowPos3fvARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glWindowPos3fvARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glWindowPos3fvARB"); }
     }
 
     public void WindowPos3iARB(@CType("GLint") int x, @CType("GLint") int y, @CType("GLint") int z) {
-        try { if (!Unmarshal.isNullPointer(PFN_glWindowPos3iARB))
+        if (!Unmarshal.isNullPointer(PFN_glWindowPos3iARB)) { try {
             MH_glWindowPos3iARB.invokeExact(PFN_glWindowPos3iARB, x, y, z);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glWindowPos3iARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glWindowPos3iARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glWindowPos3iARB"); }
     }
 
     public void WindowPos3ivARB(@CType("const GLint *") java.lang.foreign.MemorySegment v) {
-        try { if (!Unmarshal.isNullPointer(PFN_glWindowPos3ivARB))
+        if (!Unmarshal.isNullPointer(PFN_glWindowPos3ivARB)) { try {
             MH_glWindowPos3ivARB.invokeExact(PFN_glWindowPos3ivARB, v);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glWindowPos3ivARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glWindowPos3ivARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glWindowPos3ivARB"); }
     }
 
     public void WindowPos3sARB(@CType("GLshort") short x, @CType("GLshort") short y, @CType("GLshort") short z) {
-        try { if (!Unmarshal.isNullPointer(PFN_glWindowPos3sARB))
+        if (!Unmarshal.isNullPointer(PFN_glWindowPos3sARB)) { try {
             MH_glWindowPos3sARB.invokeExact(PFN_glWindowPos3sARB, x, y, z);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glWindowPos3sARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glWindowPos3sARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glWindowPos3sARB"); }
     }
 
     public void WindowPos3svARB(@CType("const GLshort *") java.lang.foreign.MemorySegment v) {
-        try { if (!Unmarshal.isNullPointer(PFN_glWindowPos3svARB))
+        if (!Unmarshal.isNullPointer(PFN_glWindowPos3svARB)) { try {
             MH_glWindowPos3svARB.invokeExact(PFN_glWindowPos3svARB, v);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glWindowPos3svARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glWindowPos3svARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glWindowPos3svARB"); }
     }
 
 }

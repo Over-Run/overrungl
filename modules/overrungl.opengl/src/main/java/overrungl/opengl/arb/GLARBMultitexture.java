@@ -166,241 +166,241 @@ public final class GLARBMultitexture {
     }
 
     public void ActiveTextureARB(@CType("GLenum") int texture) {
-        try { if (!Unmarshal.isNullPointer(PFN_glActiveTextureARB))
+        if (!Unmarshal.isNullPointer(PFN_glActiveTextureARB)) { try {
             MH_glActiveTextureARB.invokeExact(PFN_glActiveTextureARB, texture);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glActiveTextureARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glActiveTextureARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glActiveTextureARB"); }
     }
 
     public void ClientActiveTextureARB(@CType("GLenum") int texture) {
-        try { if (!Unmarshal.isNullPointer(PFN_glClientActiveTextureARB))
+        if (!Unmarshal.isNullPointer(PFN_glClientActiveTextureARB)) { try {
             MH_glClientActiveTextureARB.invokeExact(PFN_glClientActiveTextureARB, texture);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glClientActiveTextureARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glClientActiveTextureARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glClientActiveTextureARB"); }
     }
 
     public void MultiTexCoord1dARB(@CType("GLenum") int target, @CType("GLdouble") double s) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord1dARB))
+        if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord1dARB)) { try {
             MH_glMultiTexCoord1dARB.invokeExact(PFN_glMultiTexCoord1dARB, target, s);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord1dARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord1dARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord1dARB"); }
     }
 
     public void MultiTexCoord1dvARB(@CType("GLenum") int target, @CType("const GLdouble *") java.lang.foreign.MemorySegment v) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord1dvARB))
+        if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord1dvARB)) { try {
             MH_glMultiTexCoord1dvARB.invokeExact(PFN_glMultiTexCoord1dvARB, target, v);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord1dvARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord1dvARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord1dvARB"); }
     }
 
     public void MultiTexCoord1fARB(@CType("GLenum") int target, @CType("GLfloat") float s) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord1fARB))
+        if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord1fARB)) { try {
             MH_glMultiTexCoord1fARB.invokeExact(PFN_glMultiTexCoord1fARB, target, s);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord1fARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord1fARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord1fARB"); }
     }
 
     public void MultiTexCoord1fvARB(@CType("GLenum") int target, @CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord1fvARB))
+        if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord1fvARB)) { try {
             MH_glMultiTexCoord1fvARB.invokeExact(PFN_glMultiTexCoord1fvARB, target, v);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord1fvARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord1fvARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord1fvARB"); }
     }
 
     public void MultiTexCoord1iARB(@CType("GLenum") int target, @CType("GLint") int s) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord1iARB))
+        if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord1iARB)) { try {
             MH_glMultiTexCoord1iARB.invokeExact(PFN_glMultiTexCoord1iARB, target, s);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord1iARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord1iARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord1iARB"); }
     }
 
     public void MultiTexCoord1ivARB(@CType("GLenum") int target, @CType("const GLint *") java.lang.foreign.MemorySegment v) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord1ivARB))
+        if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord1ivARB)) { try {
             MH_glMultiTexCoord1ivARB.invokeExact(PFN_glMultiTexCoord1ivARB, target, v);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord1ivARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord1ivARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord1ivARB"); }
     }
 
     public void MultiTexCoord1sARB(@CType("GLenum") int target, @CType("GLshort") short s) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord1sARB))
+        if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord1sARB)) { try {
             MH_glMultiTexCoord1sARB.invokeExact(PFN_glMultiTexCoord1sARB, target, s);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord1sARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord1sARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord1sARB"); }
     }
 
     public void MultiTexCoord1svARB(@CType("GLenum") int target, @CType("const GLshort *") java.lang.foreign.MemorySegment v) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord1svARB))
+        if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord1svARB)) { try {
             MH_glMultiTexCoord1svARB.invokeExact(PFN_glMultiTexCoord1svARB, target, v);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord1svARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord1svARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord1svARB"); }
     }
 
     public void MultiTexCoord2dARB(@CType("GLenum") int target, @CType("GLdouble") double s, @CType("GLdouble") double t) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord2dARB))
+        if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord2dARB)) { try {
             MH_glMultiTexCoord2dARB.invokeExact(PFN_glMultiTexCoord2dARB, target, s, t);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord2dARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord2dARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord2dARB"); }
     }
 
     public void MultiTexCoord2dvARB(@CType("GLenum") int target, @CType("const GLdouble *") java.lang.foreign.MemorySegment v) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord2dvARB))
+        if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord2dvARB)) { try {
             MH_glMultiTexCoord2dvARB.invokeExact(PFN_glMultiTexCoord2dvARB, target, v);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord2dvARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord2dvARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord2dvARB"); }
     }
 
     public void MultiTexCoord2fARB(@CType("GLenum") int target, @CType("GLfloat") float s, @CType("GLfloat") float t) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord2fARB))
+        if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord2fARB)) { try {
             MH_glMultiTexCoord2fARB.invokeExact(PFN_glMultiTexCoord2fARB, target, s, t);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord2fARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord2fARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord2fARB"); }
     }
 
     public void MultiTexCoord2fvARB(@CType("GLenum") int target, @CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord2fvARB))
+        if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord2fvARB)) { try {
             MH_glMultiTexCoord2fvARB.invokeExact(PFN_glMultiTexCoord2fvARB, target, v);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord2fvARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord2fvARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord2fvARB"); }
     }
 
     public void MultiTexCoord2iARB(@CType("GLenum") int target, @CType("GLint") int s, @CType("GLint") int t) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord2iARB))
+        if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord2iARB)) { try {
             MH_glMultiTexCoord2iARB.invokeExact(PFN_glMultiTexCoord2iARB, target, s, t);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord2iARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord2iARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord2iARB"); }
     }
 
     public void MultiTexCoord2ivARB(@CType("GLenum") int target, @CType("const GLint *") java.lang.foreign.MemorySegment v) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord2ivARB))
+        if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord2ivARB)) { try {
             MH_glMultiTexCoord2ivARB.invokeExact(PFN_glMultiTexCoord2ivARB, target, v);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord2ivARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord2ivARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord2ivARB"); }
     }
 
     public void MultiTexCoord2sARB(@CType("GLenum") int target, @CType("GLshort") short s, @CType("GLshort") short t) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord2sARB))
+        if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord2sARB)) { try {
             MH_glMultiTexCoord2sARB.invokeExact(PFN_glMultiTexCoord2sARB, target, s, t);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord2sARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord2sARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord2sARB"); }
     }
 
     public void MultiTexCoord2svARB(@CType("GLenum") int target, @CType("const GLshort *") java.lang.foreign.MemorySegment v) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord2svARB))
+        if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord2svARB)) { try {
             MH_glMultiTexCoord2svARB.invokeExact(PFN_glMultiTexCoord2svARB, target, v);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord2svARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord2svARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord2svARB"); }
     }
 
     public void MultiTexCoord3dARB(@CType("GLenum") int target, @CType("GLdouble") double s, @CType("GLdouble") double t, @CType("GLdouble") double r) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord3dARB))
+        if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord3dARB)) { try {
             MH_glMultiTexCoord3dARB.invokeExact(PFN_glMultiTexCoord3dARB, target, s, t, r);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord3dARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord3dARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord3dARB"); }
     }
 
     public void MultiTexCoord3dvARB(@CType("GLenum") int target, @CType("const GLdouble *") java.lang.foreign.MemorySegment v) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord3dvARB))
+        if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord3dvARB)) { try {
             MH_glMultiTexCoord3dvARB.invokeExact(PFN_glMultiTexCoord3dvARB, target, v);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord3dvARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord3dvARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord3dvARB"); }
     }
 
     public void MultiTexCoord3fARB(@CType("GLenum") int target, @CType("GLfloat") float s, @CType("GLfloat") float t, @CType("GLfloat") float r) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord3fARB))
+        if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord3fARB)) { try {
             MH_glMultiTexCoord3fARB.invokeExact(PFN_glMultiTexCoord3fARB, target, s, t, r);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord3fARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord3fARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord3fARB"); }
     }
 
     public void MultiTexCoord3fvARB(@CType("GLenum") int target, @CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord3fvARB))
+        if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord3fvARB)) { try {
             MH_glMultiTexCoord3fvARB.invokeExact(PFN_glMultiTexCoord3fvARB, target, v);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord3fvARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord3fvARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord3fvARB"); }
     }
 
     public void MultiTexCoord3iARB(@CType("GLenum") int target, @CType("GLint") int s, @CType("GLint") int t, @CType("GLint") int r) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord3iARB))
+        if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord3iARB)) { try {
             MH_glMultiTexCoord3iARB.invokeExact(PFN_glMultiTexCoord3iARB, target, s, t, r);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord3iARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord3iARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord3iARB"); }
     }
 
     public void MultiTexCoord3ivARB(@CType("GLenum") int target, @CType("const GLint *") java.lang.foreign.MemorySegment v) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord3ivARB))
+        if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord3ivARB)) { try {
             MH_glMultiTexCoord3ivARB.invokeExact(PFN_glMultiTexCoord3ivARB, target, v);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord3ivARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord3ivARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord3ivARB"); }
     }
 
     public void MultiTexCoord3sARB(@CType("GLenum") int target, @CType("GLshort") short s, @CType("GLshort") short t, @CType("GLshort") short r) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord3sARB))
+        if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord3sARB)) { try {
             MH_glMultiTexCoord3sARB.invokeExact(PFN_glMultiTexCoord3sARB, target, s, t, r);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord3sARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord3sARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord3sARB"); }
     }
 
     public void MultiTexCoord3svARB(@CType("GLenum") int target, @CType("const GLshort *") java.lang.foreign.MemorySegment v) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord3svARB))
+        if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord3svARB)) { try {
             MH_glMultiTexCoord3svARB.invokeExact(PFN_glMultiTexCoord3svARB, target, v);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord3svARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord3svARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord3svARB"); }
     }
 
     public void MultiTexCoord4dARB(@CType("GLenum") int target, @CType("GLdouble") double s, @CType("GLdouble") double t, @CType("GLdouble") double r, @CType("GLdouble") double q) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord4dARB))
+        if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord4dARB)) { try {
             MH_glMultiTexCoord4dARB.invokeExact(PFN_glMultiTexCoord4dARB, target, s, t, r, q);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord4dARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord4dARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord4dARB"); }
     }
 
     public void MultiTexCoord4dvARB(@CType("GLenum") int target, @CType("const GLdouble *") java.lang.foreign.MemorySegment v) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord4dvARB))
+        if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord4dvARB)) { try {
             MH_glMultiTexCoord4dvARB.invokeExact(PFN_glMultiTexCoord4dvARB, target, v);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord4dvARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord4dvARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord4dvARB"); }
     }
 
     public void MultiTexCoord4fARB(@CType("GLenum") int target, @CType("GLfloat") float s, @CType("GLfloat") float t, @CType("GLfloat") float r, @CType("GLfloat") float q) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord4fARB))
+        if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord4fARB)) { try {
             MH_glMultiTexCoord4fARB.invokeExact(PFN_glMultiTexCoord4fARB, target, s, t, r, q);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord4fARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord4fARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord4fARB"); }
     }
 
     public void MultiTexCoord4fvARB(@CType("GLenum") int target, @CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord4fvARB))
+        if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord4fvARB)) { try {
             MH_glMultiTexCoord4fvARB.invokeExact(PFN_glMultiTexCoord4fvARB, target, v);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord4fvARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord4fvARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord4fvARB"); }
     }
 
     public void MultiTexCoord4iARB(@CType("GLenum") int target, @CType("GLint") int s, @CType("GLint") int t, @CType("GLint") int r, @CType("GLint") int q) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord4iARB))
+        if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord4iARB)) { try {
             MH_glMultiTexCoord4iARB.invokeExact(PFN_glMultiTexCoord4iARB, target, s, t, r, q);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord4iARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord4iARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord4iARB"); }
     }
 
     public void MultiTexCoord4ivARB(@CType("GLenum") int target, @CType("const GLint *") java.lang.foreign.MemorySegment v) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord4ivARB))
+        if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord4ivARB)) { try {
             MH_glMultiTexCoord4ivARB.invokeExact(PFN_glMultiTexCoord4ivARB, target, v);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord4ivARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord4ivARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord4ivARB"); }
     }
 
     public void MultiTexCoord4sARB(@CType("GLenum") int target, @CType("GLshort") short s, @CType("GLshort") short t, @CType("GLshort") short r, @CType("GLshort") short q) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord4sARB))
+        if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord4sARB)) { try {
             MH_glMultiTexCoord4sARB.invokeExact(PFN_glMultiTexCoord4sARB, target, s, t, r, q);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord4sARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord4sARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord4sARB"); }
     }
 
     public void MultiTexCoord4svARB(@CType("GLenum") int target, @CType("const GLshort *") java.lang.foreign.MemorySegment v) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord4svARB))
+        if (!Unmarshal.isNullPointer(PFN_glMultiTexCoord4svARB)) { try {
             MH_glMultiTexCoord4svARB.invokeExact(PFN_glMultiTexCoord4svARB, target, v);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord4svARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiTexCoord4svARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord4svARB"); }
     }
 
 }

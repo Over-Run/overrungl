@@ -54,38 +54,38 @@ public final class GLARBMatrixPalette {
     }
 
     public void CurrentPaletteMatrixARB(@CType("GLint") int index) {
-        try { if (!Unmarshal.isNullPointer(PFN_glCurrentPaletteMatrixARB))
+        if (!Unmarshal.isNullPointer(PFN_glCurrentPaletteMatrixARB)) { try {
             MH_glCurrentPaletteMatrixARB.invokeExact(PFN_glCurrentPaletteMatrixARB, index);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glCurrentPaletteMatrixARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glCurrentPaletteMatrixARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glCurrentPaletteMatrixARB"); }
     }
 
     public void MatrixIndexubvARB(@CType("GLint") int size, @CType("const GLubyte *") java.lang.foreign.MemorySegment indices) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMatrixIndexubvARB))
+        if (!Unmarshal.isNullPointer(PFN_glMatrixIndexubvARB)) { try {
             MH_glMatrixIndexubvARB.invokeExact(PFN_glMatrixIndexubvARB, size, indices);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMatrixIndexubvARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMatrixIndexubvARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMatrixIndexubvARB"); }
     }
 
     public void MatrixIndexusvARB(@CType("GLint") int size, @CType("const GLushort *") java.lang.foreign.MemorySegment indices) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMatrixIndexusvARB))
+        if (!Unmarshal.isNullPointer(PFN_glMatrixIndexusvARB)) { try {
             MH_glMatrixIndexusvARB.invokeExact(PFN_glMatrixIndexusvARB, size, indices);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMatrixIndexusvARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMatrixIndexusvARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMatrixIndexusvARB"); }
     }
 
     public void MatrixIndexuivARB(@CType("GLint") int size, @CType("const GLuint *") java.lang.foreign.MemorySegment indices) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMatrixIndexuivARB))
+        if (!Unmarshal.isNullPointer(PFN_glMatrixIndexuivARB)) { try {
             MH_glMatrixIndexuivARB.invokeExact(PFN_glMatrixIndexuivARB, size, indices);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMatrixIndexuivARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMatrixIndexuivARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMatrixIndexuivARB"); }
     }
 
     public void MatrixIndexPointerARB(@CType("GLint") int size, @CType("GLenum") int type, @CType("GLsizei") int stride, @CType("const void *") java.lang.foreign.MemorySegment pointer) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMatrixIndexPointerARB))
+        if (!Unmarshal.isNullPointer(PFN_glMatrixIndexPointerARB)) { try {
             MH_glMatrixIndexPointerARB.invokeExact(PFN_glMatrixIndexPointerARB, size, type, stride, pointer);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMatrixIndexPointerARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMatrixIndexPointerARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMatrixIndexPointerARB"); }
     }
 
 }

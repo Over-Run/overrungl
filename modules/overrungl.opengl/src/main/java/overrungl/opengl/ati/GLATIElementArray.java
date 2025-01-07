@@ -41,24 +41,24 @@ public final class GLATIElementArray {
     }
 
     public void ElementPointerATI(@CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment pointer) {
-        try { if (!Unmarshal.isNullPointer(PFN_glElementPointerATI))
+        if (!Unmarshal.isNullPointer(PFN_glElementPointerATI)) { try {
             MH_glElementPointerATI.invokeExact(PFN_glElementPointerATI, type, pointer);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glElementPointerATI", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glElementPointerATI", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glElementPointerATI"); }
     }
 
     public void DrawElementArrayATI(@CType("GLenum") int mode, @CType("GLsizei") int count) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDrawElementArrayATI))
+        if (!Unmarshal.isNullPointer(PFN_glDrawElementArrayATI)) { try {
             MH_glDrawElementArrayATI.invokeExact(PFN_glDrawElementArrayATI, mode, count);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawElementArrayATI", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDrawElementArrayATI", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDrawElementArrayATI"); }
     }
 
     public void DrawRangeElementArrayATI(@CType("GLenum") int mode, @CType("GLuint") int start, @CType("GLuint") int end, @CType("GLsizei") int count) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDrawRangeElementArrayATI))
+        if (!Unmarshal.isNullPointer(PFN_glDrawRangeElementArrayATI)) { try {
             MH_glDrawRangeElementArrayATI.invokeExact(PFN_glDrawRangeElementArrayATI, mode, start, end, count);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawRangeElementArrayATI", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDrawRangeElementArrayATI", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDrawRangeElementArrayATI"); }
     }
 
 }

@@ -47,45 +47,45 @@ public final class GLARBInvalidateSubdata {
     }
 
     public void InvalidateTexSubImage(@CType("GLuint") int texture, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLint") int yoffset, @CType("GLint") int zoffset, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth) {
-        try { if (!Unmarshal.isNullPointer(PFN_glInvalidateTexSubImage))
+        if (!Unmarshal.isNullPointer(PFN_glInvalidateTexSubImage)) { try {
             MH_glInvalidateTexSubImage.invokeExact(PFN_glInvalidateTexSubImage, texture, level, xoffset, yoffset, zoffset, width, height, depth);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glInvalidateTexSubImage", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glInvalidateTexSubImage", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glInvalidateTexSubImage"); }
     }
 
     public void InvalidateTexImage(@CType("GLuint") int texture, @CType("GLint") int level) {
-        try { if (!Unmarshal.isNullPointer(PFN_glInvalidateTexImage))
+        if (!Unmarshal.isNullPointer(PFN_glInvalidateTexImage)) { try {
             MH_glInvalidateTexImage.invokeExact(PFN_glInvalidateTexImage, texture, level);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glInvalidateTexImage", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glInvalidateTexImage", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glInvalidateTexImage"); }
     }
 
     public void InvalidateBufferSubData(@CType("GLuint") int buffer, @CType("GLintptr") long offset, @CType("GLsizeiptr") long length) {
-        try { if (!Unmarshal.isNullPointer(PFN_glInvalidateBufferSubData))
+        if (!Unmarshal.isNullPointer(PFN_glInvalidateBufferSubData)) { try {
             MH_glInvalidateBufferSubData.invokeExact(PFN_glInvalidateBufferSubData, buffer, offset, length);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glInvalidateBufferSubData", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glInvalidateBufferSubData", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glInvalidateBufferSubData"); }
     }
 
     public void InvalidateBufferData(@CType("GLuint") int buffer) {
-        try { if (!Unmarshal.isNullPointer(PFN_glInvalidateBufferData))
+        if (!Unmarshal.isNullPointer(PFN_glInvalidateBufferData)) { try {
             MH_glInvalidateBufferData.invokeExact(PFN_glInvalidateBufferData, buffer);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glInvalidateBufferData", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glInvalidateBufferData", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glInvalidateBufferData"); }
     }
 
     public void InvalidateFramebuffer(@CType("GLenum") int target, @CType("GLsizei") int numAttachments, @CType("const GLenum *") java.lang.foreign.MemorySegment attachments) {
-        try { if (!Unmarshal.isNullPointer(PFN_glInvalidateFramebuffer))
+        if (!Unmarshal.isNullPointer(PFN_glInvalidateFramebuffer)) { try {
             MH_glInvalidateFramebuffer.invokeExact(PFN_glInvalidateFramebuffer, target, numAttachments, attachments);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glInvalidateFramebuffer", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glInvalidateFramebuffer", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glInvalidateFramebuffer"); }
     }
 
     public void InvalidateSubFramebuffer(@CType("GLenum") int target, @CType("GLsizei") int numAttachments, @CType("const GLenum *") java.lang.foreign.MemorySegment attachments, @CType("GLint") int x, @CType("GLint") int y, @CType("GLsizei") int width, @CType("GLsizei") int height) {
-        try { if (!Unmarshal.isNullPointer(PFN_glInvalidateSubFramebuffer))
+        if (!Unmarshal.isNullPointer(PFN_glInvalidateSubFramebuffer)) { try {
             MH_glInvalidateSubFramebuffer.invokeExact(PFN_glInvalidateSubFramebuffer, target, numAttachments, attachments, x, y, width, height);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glInvalidateSubFramebuffer", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glInvalidateSubFramebuffer", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glInvalidateSubFramebuffer"); }
     }
 
 }

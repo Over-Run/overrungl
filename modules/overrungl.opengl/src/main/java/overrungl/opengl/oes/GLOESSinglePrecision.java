@@ -47,45 +47,45 @@ public final class GLOESSinglePrecision {
     }
 
     public void ClearDepthfOES(@CType("GLclampf") float depth) {
-        try { if (!Unmarshal.isNullPointer(PFN_glClearDepthfOES))
+        if (!Unmarshal.isNullPointer(PFN_glClearDepthfOES)) { try {
             MH_glClearDepthfOES.invokeExact(PFN_glClearDepthfOES, depth);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glClearDepthfOES", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glClearDepthfOES", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glClearDepthfOES"); }
     }
 
     public void ClipPlanefOES(@CType("GLenum") int plane, @CType("const GLfloat *") java.lang.foreign.MemorySegment equation) {
-        try { if (!Unmarshal.isNullPointer(PFN_glClipPlanefOES))
+        if (!Unmarshal.isNullPointer(PFN_glClipPlanefOES)) { try {
             MH_glClipPlanefOES.invokeExact(PFN_glClipPlanefOES, plane, equation);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glClipPlanefOES", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glClipPlanefOES", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glClipPlanefOES"); }
     }
 
     public void DepthRangefOES(@CType("GLclampf") float n, @CType("GLclampf") float f) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDepthRangefOES))
+        if (!Unmarshal.isNullPointer(PFN_glDepthRangefOES)) { try {
             MH_glDepthRangefOES.invokeExact(PFN_glDepthRangefOES, n, f);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDepthRangefOES", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDepthRangefOES", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDepthRangefOES"); }
     }
 
     public void FrustumfOES(@CType("GLfloat") float l, @CType("GLfloat") float r, @CType("GLfloat") float b, @CType("GLfloat") float t, @CType("GLfloat") float n, @CType("GLfloat") float f) {
-        try { if (!Unmarshal.isNullPointer(PFN_glFrustumfOES))
+        if (!Unmarshal.isNullPointer(PFN_glFrustumfOES)) { try {
             MH_glFrustumfOES.invokeExact(PFN_glFrustumfOES, l, r, b, t, n, f);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFrustumfOES", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFrustumfOES", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFrustumfOES"); }
     }
 
     public void GetClipPlanefOES(@CType("GLenum") int plane, @CType("GLfloat *") java.lang.foreign.MemorySegment equation) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetClipPlanefOES))
+        if (!Unmarshal.isNullPointer(PFN_glGetClipPlanefOES)) { try {
             MH_glGetClipPlanefOES.invokeExact(PFN_glGetClipPlanefOES, plane, equation);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetClipPlanefOES", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetClipPlanefOES", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetClipPlanefOES"); }
     }
 
     public void OrthofOES(@CType("GLfloat") float l, @CType("GLfloat") float r, @CType("GLfloat") float b, @CType("GLfloat") float t, @CType("GLfloat") float n, @CType("GLfloat") float f) {
-        try { if (!Unmarshal.isNullPointer(PFN_glOrthofOES))
+        if (!Unmarshal.isNullPointer(PFN_glOrthofOES)) { try {
             MH_glOrthofOES.invokeExact(PFN_glOrthofOES, l, r, b, t, n, f);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glOrthofOES", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glOrthofOES", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glOrthofOES"); }
     }
 
 }

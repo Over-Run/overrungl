@@ -51,24 +51,24 @@ public final class GLEXTVertexWeighting {
     }
 
     public void VertexWeightfEXT(@CType("GLfloat") float weight) {
-        try { if (!Unmarshal.isNullPointer(PFN_glVertexWeightfEXT))
+        if (!Unmarshal.isNullPointer(PFN_glVertexWeightfEXT)) { try {
             MH_glVertexWeightfEXT.invokeExact(PFN_glVertexWeightfEXT, weight);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexWeightfEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glVertexWeightfEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glVertexWeightfEXT"); }
     }
 
     public void VertexWeightfvEXT(@CType("const GLfloat *") java.lang.foreign.MemorySegment weight) {
-        try { if (!Unmarshal.isNullPointer(PFN_glVertexWeightfvEXT))
+        if (!Unmarshal.isNullPointer(PFN_glVertexWeightfvEXT)) { try {
             MH_glVertexWeightfvEXT.invokeExact(PFN_glVertexWeightfvEXT, weight);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexWeightfvEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glVertexWeightfvEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glVertexWeightfvEXT"); }
     }
 
     public void VertexWeightPointerEXT(@CType("GLint") int size, @CType("GLenum") int type, @CType("GLsizei") int stride, @CType("const void *") java.lang.foreign.MemorySegment pointer) {
-        try { if (!Unmarshal.isNullPointer(PFN_glVertexWeightPointerEXT))
+        if (!Unmarshal.isNullPointer(PFN_glVertexWeightPointerEXT)) { try {
             MH_glVertexWeightPointerEXT.invokeExact(PFN_glVertexWeightPointerEXT, size, type, stride, pointer);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glVertexWeightPointerEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glVertexWeightPointerEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glVertexWeightPointerEXT"); }
     }
 
 }

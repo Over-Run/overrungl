@@ -41,18 +41,17 @@ public final class GLARBMapBufferRange {
     }
 
     public @CType("void*") java.lang.foreign.MemorySegment MapBufferRange(@CType("GLenum") int target, @CType("GLintptr") long offset, @CType("GLsizeiptr") long length, @CType("GLbitfield") int access) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMapBufferRange))
+        if (!Unmarshal.isNullPointer(PFN_glMapBufferRange)) { try {
             return (java.lang.foreign.MemorySegment) MH_glMapBufferRange.invokeExact(PFN_glMapBufferRange, target, offset, length, access);
-            else return MemorySegment.NULL;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMapBufferRange", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMapBufferRange", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMapBufferRange"); }
     }
 
     public void FlushMappedBufferRange(@CType("GLenum") int target, @CType("GLintptr") long offset, @CType("GLsizeiptr") long length) {
-        try { if (!Unmarshal.isNullPointer(PFN_glFlushMappedBufferRange))
+        if (!Unmarshal.isNullPointer(PFN_glFlushMappedBufferRange)) { try {
             MH_glFlushMappedBufferRange.invokeExact(PFN_glFlushMappedBufferRange, target, offset, length);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFlushMappedBufferRange", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFlushMappedBufferRange", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFlushMappedBufferRange"); }
     }
 
 }

@@ -35,17 +35,17 @@ public final class GLARBTransformFeedbackInstanced {
     }
 
     public void DrawTransformFeedbackInstanced(@CType("GLenum") int mode, @CType("GLuint") int id, @CType("GLsizei") int instancecount) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDrawTransformFeedbackInstanced))
+        if (!Unmarshal.isNullPointer(PFN_glDrawTransformFeedbackInstanced)) { try {
             MH_glDrawTransformFeedbackInstanced.invokeExact(PFN_glDrawTransformFeedbackInstanced, mode, id, instancecount);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawTransformFeedbackInstanced", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDrawTransformFeedbackInstanced", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDrawTransformFeedbackInstanced"); }
     }
 
     public void DrawTransformFeedbackStreamInstanced(@CType("GLenum") int mode, @CType("GLuint") int id, @CType("GLuint") int stream, @CType("GLsizei") int instancecount) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDrawTransformFeedbackStreamInstanced))
+        if (!Unmarshal.isNullPointer(PFN_glDrawTransformFeedbackStreamInstanced)) { try {
             MH_glDrawTransformFeedbackStreamInstanced.invokeExact(PFN_glDrawTransformFeedbackStreamInstanced, mode, id, stream, instancecount);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawTransformFeedbackStreamInstanced", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDrawTransformFeedbackStreamInstanced", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDrawTransformFeedbackStreamInstanced"); }
     }
 
 }

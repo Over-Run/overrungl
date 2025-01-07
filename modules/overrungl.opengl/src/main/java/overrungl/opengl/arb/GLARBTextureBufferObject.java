@@ -37,10 +37,10 @@ public final class GLARBTextureBufferObject {
     }
 
     public void TexBufferARB(@CType("GLenum") int target, @CType("GLenum") int internalformat, @CType("GLuint") int buffer) {
-        try { if (!Unmarshal.isNullPointer(PFN_glTexBufferARB))
+        if (!Unmarshal.isNullPointer(PFN_glTexBufferARB)) { try {
             MH_glTexBufferARB.invokeExact(PFN_glTexBufferARB, target, internalformat, buffer);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glTexBufferARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glTexBufferARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glTexBufferARB"); }
     }
 
 }

@@ -42,32 +42,31 @@ public final class GLARBVertexArrayObject {
     }
 
     public void BindVertexArray(@CType("GLuint") int array) {
-        try { if (!Unmarshal.isNullPointer(PFN_glBindVertexArray))
+        if (!Unmarshal.isNullPointer(PFN_glBindVertexArray)) { try {
             MH_glBindVertexArray.invokeExact(PFN_glBindVertexArray, array);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glBindVertexArray", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glBindVertexArray", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glBindVertexArray"); }
     }
 
     public void DeleteVertexArrays(@CType("GLsizei") int n, @CType("const GLuint *") java.lang.foreign.MemorySegment arrays) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDeleteVertexArrays))
+        if (!Unmarshal.isNullPointer(PFN_glDeleteVertexArrays)) { try {
             MH_glDeleteVertexArrays.invokeExact(PFN_glDeleteVertexArrays, n, arrays);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDeleteVertexArrays", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDeleteVertexArrays", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDeleteVertexArrays"); }
     }
 
     public void GenVertexArrays(@CType("GLsizei") int n, @CType("GLuint *") java.lang.foreign.MemorySegment arrays) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGenVertexArrays))
+        if (!Unmarshal.isNullPointer(PFN_glGenVertexArrays)) { try {
             MH_glGenVertexArrays.invokeExact(PFN_glGenVertexArrays, n, arrays);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGenVertexArrays", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGenVertexArrays", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGenVertexArrays"); }
     }
 
     public @CType("GLboolean") boolean IsVertexArray(@CType("GLuint") int array) {
-        try { if (!Unmarshal.isNullPointer(PFN_glIsVertexArray))
+        if (!Unmarshal.isNullPointer(PFN_glIsVertexArray)) { try {
             return (boolean) MH_glIsVertexArray.invokeExact(PFN_glIsVertexArray, array);
-            else return false;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glIsVertexArray", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glIsVertexArray", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glIsVertexArray"); }
     }
 
 }

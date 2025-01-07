@@ -72,17 +72,17 @@ public final class GLARBTessellationShader {
     }
 
     public void PatchParameteri(@CType("GLenum") int pname, @CType("GLint") int value) {
-        try { if (!Unmarshal.isNullPointer(PFN_glPatchParameteri))
+        if (!Unmarshal.isNullPointer(PFN_glPatchParameteri)) { try {
             MH_glPatchParameteri.invokeExact(PFN_glPatchParameteri, pname, value);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glPatchParameteri", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glPatchParameteri", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glPatchParameteri"); }
     }
 
     public void PatchParameterfv(@CType("GLenum") int pname, @CType("const GLfloat *") java.lang.foreign.MemorySegment values) {
-        try { if (!Unmarshal.isNullPointer(PFN_glPatchParameterfv))
+        if (!Unmarshal.isNullPointer(PFN_glPatchParameterfv)) { try {
             MH_glPatchParameterfv.invokeExact(PFN_glPatchParameterfv, pname, values);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glPatchParameterfv", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glPatchParameterfv", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glPatchParameterfv"); }
     }
 
 }

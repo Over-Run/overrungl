@@ -38,24 +38,24 @@ public final class GLARBSparseBuffer {
     }
 
     public void BufferPageCommitmentARB(@CType("GLenum") int target, @CType("GLintptr") long offset, @CType("GLsizeiptr") long size, @CType("GLboolean") boolean commit) {
-        try { if (!Unmarshal.isNullPointer(PFN_glBufferPageCommitmentARB))
+        if (!Unmarshal.isNullPointer(PFN_glBufferPageCommitmentARB)) { try {
             MH_glBufferPageCommitmentARB.invokeExact(PFN_glBufferPageCommitmentARB, target, offset, size, commit);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glBufferPageCommitmentARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glBufferPageCommitmentARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glBufferPageCommitmentARB"); }
     }
 
     public void NamedBufferPageCommitmentEXT(@CType("GLuint") int buffer, @CType("GLintptr") long offset, @CType("GLsizeiptr") long size, @CType("GLboolean") boolean commit) {
-        try { if (!Unmarshal.isNullPointer(PFN_glNamedBufferPageCommitmentEXT))
+        if (!Unmarshal.isNullPointer(PFN_glNamedBufferPageCommitmentEXT)) { try {
             MH_glNamedBufferPageCommitmentEXT.invokeExact(PFN_glNamedBufferPageCommitmentEXT, buffer, offset, size, commit);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glNamedBufferPageCommitmentEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glNamedBufferPageCommitmentEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glNamedBufferPageCommitmentEXT"); }
     }
 
     public void NamedBufferPageCommitmentARB(@CType("GLuint") int buffer, @CType("GLintptr") long offset, @CType("GLsizeiptr") long size, @CType("GLboolean") boolean commit) {
-        try { if (!Unmarshal.isNullPointer(PFN_glNamedBufferPageCommitmentARB))
+        if (!Unmarshal.isNullPointer(PFN_glNamedBufferPageCommitmentARB)) { try {
             MH_glNamedBufferPageCommitmentARB.invokeExact(PFN_glNamedBufferPageCommitmentARB, buffer, offset, size, commit);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glNamedBufferPageCommitmentARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glNamedBufferPageCommitmentARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glNamedBufferPageCommitmentARB"); }
     }
 
 }

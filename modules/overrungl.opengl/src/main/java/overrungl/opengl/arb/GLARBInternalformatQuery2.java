@@ -166,10 +166,10 @@ public final class GLARBInternalformatQuery2 {
     }
 
     public void GetInternalformati64v(@CType("GLenum") int target, @CType("GLenum") int internalformat, @CType("GLenum") int pname, @CType("GLsizei") int count, @CType("GLint64 *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetInternalformati64v))
+        if (!Unmarshal.isNullPointer(PFN_glGetInternalformati64v)) { try {
             MH_glGetInternalformati64v.invokeExact(PFN_glGetInternalformati64v, target, internalformat, pname, count, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetInternalformati64v", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetInternalformati64v", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetInternalformati64v"); }
     }
 
 }

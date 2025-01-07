@@ -66,52 +66,52 @@ public final class GLSGIColorTable {
     }
 
     public void ColorTableSGI(@CType("GLenum") int target, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment table) {
-        try { if (!Unmarshal.isNullPointer(PFN_glColorTableSGI))
+        if (!Unmarshal.isNullPointer(PFN_glColorTableSGI)) { try {
             MH_glColorTableSGI.invokeExact(PFN_glColorTableSGI, target, internalformat, width, format, type, table);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glColorTableSGI", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glColorTableSGI", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glColorTableSGI"); }
     }
 
     public void ColorTableParameterfvSGI(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("const GLfloat *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glColorTableParameterfvSGI))
+        if (!Unmarshal.isNullPointer(PFN_glColorTableParameterfvSGI)) { try {
             MH_glColorTableParameterfvSGI.invokeExact(PFN_glColorTableParameterfvSGI, target, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glColorTableParameterfvSGI", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glColorTableParameterfvSGI", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glColorTableParameterfvSGI"); }
     }
 
     public void ColorTableParameterivSGI(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("const GLint *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glColorTableParameterivSGI))
+        if (!Unmarshal.isNullPointer(PFN_glColorTableParameterivSGI)) { try {
             MH_glColorTableParameterivSGI.invokeExact(PFN_glColorTableParameterivSGI, target, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glColorTableParameterivSGI", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glColorTableParameterivSGI", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glColorTableParameterivSGI"); }
     }
 
     public void CopyColorTableSGI(@CType("GLenum") int target, @CType("GLenum") int internalformat, @CType("GLint") int x, @CType("GLint") int y, @CType("GLsizei") int width) {
-        try { if (!Unmarshal.isNullPointer(PFN_glCopyColorTableSGI))
+        if (!Unmarshal.isNullPointer(PFN_glCopyColorTableSGI)) { try {
             MH_glCopyColorTableSGI.invokeExact(PFN_glCopyColorTableSGI, target, internalformat, x, y, width);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glCopyColorTableSGI", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glCopyColorTableSGI", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glCopyColorTableSGI"); }
     }
 
     public void GetColorTableSGI(@CType("GLenum") int target, @CType("GLenum") int format, @CType("GLenum") int type, @CType("void*") java.lang.foreign.MemorySegment table) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetColorTableSGI))
+        if (!Unmarshal.isNullPointer(PFN_glGetColorTableSGI)) { try {
             MH_glGetColorTableSGI.invokeExact(PFN_glGetColorTableSGI, target, format, type, table);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetColorTableSGI", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetColorTableSGI", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetColorTableSGI"); }
     }
 
     public void GetColorTableParameterfvSGI(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetColorTableParameterfvSGI))
+        if (!Unmarshal.isNullPointer(PFN_glGetColorTableParameterfvSGI)) { try {
             MH_glGetColorTableParameterfvSGI.invokeExact(PFN_glGetColorTableParameterfvSGI, target, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetColorTableParameterfvSGI", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetColorTableParameterfvSGI", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetColorTableParameterfvSGI"); }
     }
 
     public void GetColorTableParameterivSGI(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetColorTableParameterivSGI))
+        if (!Unmarshal.isNullPointer(PFN_glGetColorTableParameterivSGI)) { try {
             MH_glGetColorTableParameterivSGI.invokeExact(PFN_glGetColorTableParameterivSGI, target, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetColorTableParameterivSGI", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetColorTableParameterivSGI", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetColorTableParameterivSGI"); }
     }
 
 }

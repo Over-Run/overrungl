@@ -35,17 +35,17 @@ public final class GLEXTColorSubtable {
     }
 
     public void ColorSubTableEXT(@CType("GLenum") int target, @CType("GLsizei") int start, @CType("GLsizei") int count, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment data) {
-        try { if (!Unmarshal.isNullPointer(PFN_glColorSubTableEXT))
+        if (!Unmarshal.isNullPointer(PFN_glColorSubTableEXT)) { try {
             MH_glColorSubTableEXT.invokeExact(PFN_glColorSubTableEXT, target, start, count, format, type, data);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glColorSubTableEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glColorSubTableEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glColorSubTableEXT"); }
     }
 
     public void CopyColorSubTableEXT(@CType("GLenum") int target, @CType("GLsizei") int start, @CType("GLint") int x, @CType("GLint") int y, @CType("GLsizei") int width) {
-        try { if (!Unmarshal.isNullPointer(PFN_glCopyColorSubTableEXT))
+        if (!Unmarshal.isNullPointer(PFN_glCopyColorSubTableEXT)) { try {
             MH_glCopyColorSubTableEXT.invokeExact(PFN_glCopyColorSubTableEXT, target, start, x, y, width);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glCopyColorSubTableEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glCopyColorSubTableEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glCopyColorSubTableEXT"); }
     }
 
 }

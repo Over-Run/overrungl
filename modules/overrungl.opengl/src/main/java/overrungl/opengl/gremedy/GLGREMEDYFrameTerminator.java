@@ -32,10 +32,10 @@ public final class GLGREMEDYFrameTerminator {
     }
 
     public void FrameTerminatorGREMEDY() {
-        try { if (!Unmarshal.isNullPointer(PFN_glFrameTerminatorGREMEDY))
+        if (!Unmarshal.isNullPointer(PFN_glFrameTerminatorGREMEDY)) { try {
             MH_glFrameTerminatorGREMEDY.invokeExact(PFN_glFrameTerminatorGREMEDY);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glFrameTerminatorGREMEDY", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glFrameTerminatorGREMEDY", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glFrameTerminatorGREMEDY"); }
     }
 
 }

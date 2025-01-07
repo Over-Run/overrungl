@@ -33,11 +33,10 @@ public final class GLEXTX11SyncObject {
     }
 
     public @CType("GLsync") java.lang.foreign.MemorySegment ImportSyncEXT(@CType("GLenum") int external_sync_type, @CType("GLintptr") long external_sync, @CType("GLbitfield") int flags) {
-        try { if (!Unmarshal.isNullPointer(PFN_glImportSyncEXT))
+        if (!Unmarshal.isNullPointer(PFN_glImportSyncEXT)) { try {
             return (java.lang.foreign.MemorySegment) MH_glImportSyncEXT.invokeExact(PFN_glImportSyncEXT, external_sync_type, external_sync, flags);
-            else return MemorySegment.NULL;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glImportSyncEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glImportSyncEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glImportSyncEXT"); }
     }
 
 }

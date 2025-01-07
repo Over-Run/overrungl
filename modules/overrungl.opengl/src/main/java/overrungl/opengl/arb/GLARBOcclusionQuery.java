@@ -58,60 +58,59 @@ public final class GLARBOcclusionQuery {
     }
 
     public void GenQueriesARB(@CType("GLsizei") int n, @CType("GLuint *") java.lang.foreign.MemorySegment ids) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGenQueriesARB))
+        if (!Unmarshal.isNullPointer(PFN_glGenQueriesARB)) { try {
             MH_glGenQueriesARB.invokeExact(PFN_glGenQueriesARB, n, ids);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGenQueriesARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGenQueriesARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGenQueriesARB"); }
     }
 
     public void DeleteQueriesARB(@CType("GLsizei") int n, @CType("const GLuint *") java.lang.foreign.MemorySegment ids) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDeleteQueriesARB))
+        if (!Unmarshal.isNullPointer(PFN_glDeleteQueriesARB)) { try {
             MH_glDeleteQueriesARB.invokeExact(PFN_glDeleteQueriesARB, n, ids);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDeleteQueriesARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDeleteQueriesARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDeleteQueriesARB"); }
     }
 
     public @CType("GLboolean") boolean IsQueryARB(@CType("GLuint") int id) {
-        try { if (!Unmarshal.isNullPointer(PFN_glIsQueryARB))
+        if (!Unmarshal.isNullPointer(PFN_glIsQueryARB)) { try {
             return (boolean) MH_glIsQueryARB.invokeExact(PFN_glIsQueryARB, id);
-            else return false;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glIsQueryARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glIsQueryARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glIsQueryARB"); }
     }
 
     public void BeginQueryARB(@CType("GLenum") int target, @CType("GLuint") int id) {
-        try { if (!Unmarshal.isNullPointer(PFN_glBeginQueryARB))
+        if (!Unmarshal.isNullPointer(PFN_glBeginQueryARB)) { try {
             MH_glBeginQueryARB.invokeExact(PFN_glBeginQueryARB, target, id);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glBeginQueryARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glBeginQueryARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glBeginQueryARB"); }
     }
 
     public void EndQueryARB(@CType("GLenum") int target) {
-        try { if (!Unmarshal.isNullPointer(PFN_glEndQueryARB))
+        if (!Unmarshal.isNullPointer(PFN_glEndQueryARB)) { try {
             MH_glEndQueryARB.invokeExact(PFN_glEndQueryARB, target);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glEndQueryARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glEndQueryARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glEndQueryARB"); }
     }
 
     public void GetQueryivARB(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetQueryivARB))
+        if (!Unmarshal.isNullPointer(PFN_glGetQueryivARB)) { try {
             MH_glGetQueryivARB.invokeExact(PFN_glGetQueryivARB, target, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetQueryivARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetQueryivARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetQueryivARB"); }
     }
 
     public void GetQueryObjectivARB(@CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetQueryObjectivARB))
+        if (!Unmarshal.isNullPointer(PFN_glGetQueryObjectivARB)) { try {
             MH_glGetQueryObjectivARB.invokeExact(PFN_glGetQueryObjectivARB, id, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetQueryObjectivARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetQueryObjectivARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetQueryObjectivARB"); }
     }
 
     public void GetQueryObjectuivARB(@CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLuint *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetQueryObjectuivARB))
+        if (!Unmarshal.isNullPointer(PFN_glGetQueryObjectuivARB)) { try {
             MH_glGetQueryObjectuivARB.invokeExact(PFN_glGetQueryObjectuivARB, id, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetQueryObjectuivARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetQueryObjectuivARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetQueryObjectuivARB"); }
     }
 
 }

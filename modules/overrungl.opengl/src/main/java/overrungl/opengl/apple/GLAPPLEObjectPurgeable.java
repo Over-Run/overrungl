@@ -44,26 +44,24 @@ public final class GLAPPLEObjectPurgeable {
     }
 
     public @CType("GLenum") int ObjectPurgeableAPPLE(@CType("GLenum") int objectType, @CType("GLuint") int name, @CType("GLenum") int option) {
-        try { if (!Unmarshal.isNullPointer(PFN_glObjectPurgeableAPPLE))
+        if (!Unmarshal.isNullPointer(PFN_glObjectPurgeableAPPLE)) { try {
             return (int) MH_glObjectPurgeableAPPLE.invokeExact(PFN_glObjectPurgeableAPPLE, objectType, name, option);
-            else return 0;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glObjectPurgeableAPPLE", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glObjectPurgeableAPPLE", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glObjectPurgeableAPPLE"); }
     }
 
     public @CType("GLenum") int ObjectUnpurgeableAPPLE(@CType("GLenum") int objectType, @CType("GLuint") int name, @CType("GLenum") int option) {
-        try { if (!Unmarshal.isNullPointer(PFN_glObjectUnpurgeableAPPLE))
+        if (!Unmarshal.isNullPointer(PFN_glObjectUnpurgeableAPPLE)) { try {
             return (int) MH_glObjectUnpurgeableAPPLE.invokeExact(PFN_glObjectUnpurgeableAPPLE, objectType, name, option);
-            else return 0;
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glObjectUnpurgeableAPPLE", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glObjectUnpurgeableAPPLE", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glObjectUnpurgeableAPPLE"); }
     }
 
     public void GetObjectParameterivAPPLE(@CType("GLenum") int objectType, @CType("GLuint") int name, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetObjectParameterivAPPLE))
+        if (!Unmarshal.isNullPointer(PFN_glGetObjectParameterivAPPLE)) { try {
             MH_glGetObjectParameterivAPPLE.invokeExact(PFN_glGetObjectParameterivAPPLE, objectType, name, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetObjectParameterivAPPLE", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetObjectParameterivAPPLE", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetObjectParameterivAPPLE"); }
     }
 
 }

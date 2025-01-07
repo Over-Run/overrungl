@@ -47,10 +47,10 @@ public final class GLKHRBlendEquationAdvanced {
     }
 
     public void BlendBarrierKHR() {
-        try { if (!Unmarshal.isNullPointer(PFN_glBlendBarrierKHR))
+        if (!Unmarshal.isNullPointer(PFN_glBlendBarrierKHR)) { try {
             MH_glBlendBarrierKHR.invokeExact(PFN_glBlendBarrierKHR);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glBlendBarrierKHR", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glBlendBarrierKHR", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glBlendBarrierKHR"); }
     }
 
 }

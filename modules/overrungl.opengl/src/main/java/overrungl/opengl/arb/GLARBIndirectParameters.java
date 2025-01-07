@@ -37,17 +37,17 @@ public final class GLARBIndirectParameters {
     }
 
     public void MultiDrawArraysIndirectCountARB(@CType("GLenum") int mode, @CType("const void *") java.lang.foreign.MemorySegment indirect, @CType("GLintptr") long drawcount, @CType("GLsizei") int maxdrawcount, @CType("GLsizei") int stride) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiDrawArraysIndirectCountARB))
+        if (!Unmarshal.isNullPointer(PFN_glMultiDrawArraysIndirectCountARB)) { try {
             MH_glMultiDrawArraysIndirectCountARB.invokeExact(PFN_glMultiDrawArraysIndirectCountARB, mode, indirect, drawcount, maxdrawcount, stride);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiDrawArraysIndirectCountARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiDrawArraysIndirectCountARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiDrawArraysIndirectCountARB"); }
     }
 
     public void MultiDrawElementsIndirectCountARB(@CType("GLenum") int mode, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment indirect, @CType("GLintptr") long drawcount, @CType("GLsizei") int maxdrawcount, @CType("GLsizei") int stride) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiDrawElementsIndirectCountARB))
+        if (!Unmarshal.isNullPointer(PFN_glMultiDrawElementsIndirectCountARB)) { try {
             MH_glMultiDrawElementsIndirectCountARB.invokeExact(PFN_glMultiDrawElementsIndirectCountARB, mode, type, indirect, drawcount, maxdrawcount, stride);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiDrawElementsIndirectCountARB", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiDrawElementsIndirectCountARB", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiDrawElementsIndirectCountARB"); }
     }
 
 }

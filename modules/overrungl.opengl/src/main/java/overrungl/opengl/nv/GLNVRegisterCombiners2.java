@@ -36,17 +36,17 @@ public final class GLNVRegisterCombiners2 {
     }
 
     public void CombinerStageParameterfvNV(@CType("GLenum") int stage, @CType("GLenum") int pname, @CType("const GLfloat *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glCombinerStageParameterfvNV))
+        if (!Unmarshal.isNullPointer(PFN_glCombinerStageParameterfvNV)) { try {
             MH_glCombinerStageParameterfvNV.invokeExact(PFN_glCombinerStageParameterfvNV, stage, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glCombinerStageParameterfvNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glCombinerStageParameterfvNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glCombinerStageParameterfvNV"); }
     }
 
     public void GetCombinerStageParameterfvNV(@CType("GLenum") int stage, @CType("GLenum") int pname, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
-        try { if (!Unmarshal.isNullPointer(PFN_glGetCombinerStageParameterfvNV))
+        if (!Unmarshal.isNullPointer(PFN_glGetCombinerStageParameterfvNV)) { try {
             MH_glGetCombinerStageParameterfvNV.invokeExact(PFN_glGetCombinerStageParameterfvNV, stage, pname, params);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glGetCombinerStageParameterfvNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glGetCombinerStageParameterfvNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glGetCombinerStageParameterfvNV"); }
     }
 
 }

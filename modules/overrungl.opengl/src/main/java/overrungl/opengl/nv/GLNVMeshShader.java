@@ -89,31 +89,31 @@ public final class GLNVMeshShader {
     }
 
     public void DrawMeshTasksNV(@CType("GLuint") int first, @CType("GLuint") int count) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDrawMeshTasksNV))
+        if (!Unmarshal.isNullPointer(PFN_glDrawMeshTasksNV)) { try {
             MH_glDrawMeshTasksNV.invokeExact(PFN_glDrawMeshTasksNV, first, count);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawMeshTasksNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDrawMeshTasksNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDrawMeshTasksNV"); }
     }
 
     public void DrawMeshTasksIndirectNV(@CType("GLintptr") long indirect) {
-        try { if (!Unmarshal.isNullPointer(PFN_glDrawMeshTasksIndirectNV))
+        if (!Unmarshal.isNullPointer(PFN_glDrawMeshTasksIndirectNV)) { try {
             MH_glDrawMeshTasksIndirectNV.invokeExact(PFN_glDrawMeshTasksIndirectNV, indirect);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glDrawMeshTasksIndirectNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glDrawMeshTasksIndirectNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glDrawMeshTasksIndirectNV"); }
     }
 
     public void MultiDrawMeshTasksIndirectNV(@CType("GLintptr") long indirect, @CType("GLsizei") int drawcount, @CType("GLsizei") int stride) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiDrawMeshTasksIndirectNV))
+        if (!Unmarshal.isNullPointer(PFN_glMultiDrawMeshTasksIndirectNV)) { try {
             MH_glMultiDrawMeshTasksIndirectNV.invokeExact(PFN_glMultiDrawMeshTasksIndirectNV, indirect, drawcount, stride);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiDrawMeshTasksIndirectNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiDrawMeshTasksIndirectNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiDrawMeshTasksIndirectNV"); }
     }
 
     public void MultiDrawMeshTasksIndirectCountNV(@CType("GLintptr") long indirect, @CType("GLintptr") long drawcount, @CType("GLsizei") int maxdrawcount, @CType("GLsizei") int stride) {
-        try { if (!Unmarshal.isNullPointer(PFN_glMultiDrawMeshTasksIndirectCountNV))
+        if (!Unmarshal.isNullPointer(PFN_glMultiDrawMeshTasksIndirectCountNV)) { try {
             MH_glMultiDrawMeshTasksIndirectCountNV.invokeExact(PFN_glMultiDrawMeshTasksIndirectCountNV, indirect, drawcount, maxdrawcount, stride);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glMultiDrawMeshTasksIndirectCountNV", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glMultiDrawMeshTasksIndirectCountNV", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glMultiDrawMeshTasksIndirectCountNV"); }
     }
 
 }

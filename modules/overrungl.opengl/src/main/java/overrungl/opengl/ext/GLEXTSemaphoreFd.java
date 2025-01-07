@@ -33,10 +33,10 @@ public final class GLEXTSemaphoreFd {
     }
 
     public void ImportSemaphoreFdEXT(@CType("GLuint") int semaphore, @CType("GLenum") int handleType, @CType("GLint") int fd) {
-        try { if (!Unmarshal.isNullPointer(PFN_glImportSemaphoreFdEXT))
+        if (!Unmarshal.isNullPointer(PFN_glImportSemaphoreFdEXT)) { try {
             MH_glImportSemaphoreFdEXT.invokeExact(PFN_glImportSemaphoreFdEXT, semaphore, handleType, fd);
-        }
-        catch (Throwable e) { throw new RuntimeException("error in glImportSemaphoreFdEXT", e); }
+        } catch (Throwable e) { throw new RuntimeException("error in glImportSemaphoreFdEXT", e); }
+        } else { throw new SymbolNotFoundError("Symbol not found: glImportSemaphoreFdEXT"); }
     }
 
 }
