@@ -69,10 +69,11 @@ extensions.configure<JavaPluginExtension>("java") {
 }
 
 tasks.named<Jar>("jar") {
+    val split = projVersion.split('.', limit = 3)
     manifest.attributes(
         "Specification-Title" to projName,
         "Specification-Vendor" to "Overrun Organization",
-        "Specification-Version" to projVersion.split('.', limit = 2)[0],
+        "Specification-Version" to "${split[0]}.${split[1]}",
         "Implementation-Title" to projName,
         "Implementation-Vendor" to "Overrun Organization",
         "Implementation-Version" to projVersion

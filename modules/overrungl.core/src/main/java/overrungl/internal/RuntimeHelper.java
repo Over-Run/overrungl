@@ -37,7 +37,6 @@ import java.util.Objects;
 public final class RuntimeHelper {
     private static final Path tmpdir = Path.of(System.getProperty("java.io.tmpdir"))
         .resolve("overrungl" + System.getProperty("user.name"));
-    private static final StackWalker STACK_WALKER = StackWalker.getInstance(StackWalker.Option.RETAIN_CLASS_REFERENCE);
     private static final Linker LINKER = Linker.nativeLinker();
 
     /**
@@ -72,7 +71,7 @@ public final class RuntimeHelper {
     /**
      * Loads a library from classpath or local.
      *
-     * @param module   the module name. e.x. {@code glfw}
+     * @param module   the module name. e.g. {@code glfw}
      * @param basename the basename of the library (without file extensions)
      * @param version  the version suffix
      * @return the {@link SymbolLookup}
@@ -107,7 +106,7 @@ public final class RuntimeHelper {
             if (!Files.exists(libFile)) {
                 // Extract
                 final String fromPath = module + "/" + os.familyName() + "-" + Architecture.current() + "/" + path;
-                try (var is = STACK_WALKER.getCallerClass().getClassLoader().getResourceAsStream(fromPath)) {
+                try (var is = ClassLoader.getSystemResourceAsStream(fromPath)) {
                     Files.copy(Objects.requireNonNull(is, "File not found in classpath: " + fromPath), libFile);
                 } catch (Exception e) {
                     throw new IllegalStateException("Couldn't load file: " + libFile.toAbsolutePath().normalize() + " or " + localFile.toAbsolutePath().normalize() + "; try setting -Doverrungl.natives to a valid path", e);

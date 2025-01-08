@@ -62,7 +62,7 @@ public final class OverrunGL {
      */
     public static String actualVersion() {
         try {
-            final URL url = ((URLClassLoader) OverrunGL.class.getClassLoader()).findResource("META-INF/MANIFEST.MF");
+            final URL url = OverrunGL.class.getResource("/META-INF/MANIFEST.MF");
             if (url == null) {
                 return VERSION;
             }
