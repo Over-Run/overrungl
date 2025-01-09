@@ -25,10 +25,10 @@ import overrungl.util.*;
 
 public final class GLNVQueryResourceTag {
     public static final MethodHandle MH_glGenQueryResourceTagNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glGenQueryResourceTagNV;
     public static final MethodHandle MH_glDeleteQueryResourceTagNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glDeleteQueryResourceTagNV;
     public static final MethodHandle MH_glQueryResourceTagNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glGenQueryResourceTagNV;
+    public final MemorySegment PFN_glDeleteQueryResourceTagNV;
     public final MemorySegment PFN_glQueryResourceTagNV;
 
     public GLNVQueryResourceTag(overrungl.opengl.GLLoadFunc func) {
@@ -38,24 +38,21 @@ public final class GLNVQueryResourceTag {
     }
 
     public void GenQueryResourceTagNV(@CType("GLsizei") int n, @CType("GLint *") java.lang.foreign.MemorySegment tagIds) {
-        if (!Unmarshal.isNullPointer(PFN_glGenQueryResourceTagNV)) { try {
-            MH_glGenQueryResourceTagNV.invokeExact(PFN_glGenQueryResourceTagNV, n, tagIds);
-        } catch (Throwable e) { throw new RuntimeException("error in glGenQueryResourceTagNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGenQueryResourceTagNV"); }
+        if (Unmarshal.isNullPointer(PFN_glGenQueryResourceTagNV)) throw new SymbolNotFoundError("Symbol not found: glGenQueryResourceTagNV");
+        try { MH_glGenQueryResourceTagNV.invokeExact(PFN_glGenQueryResourceTagNV, n, tagIds); }
+        catch (Throwable e) { throw new RuntimeException("error in glGenQueryResourceTagNV", e); }
     }
 
     public void DeleteQueryResourceTagNV(@CType("GLsizei") int n, @CType("const GLint *") java.lang.foreign.MemorySegment tagIds) {
-        if (!Unmarshal.isNullPointer(PFN_glDeleteQueryResourceTagNV)) { try {
-            MH_glDeleteQueryResourceTagNV.invokeExact(PFN_glDeleteQueryResourceTagNV, n, tagIds);
-        } catch (Throwable e) { throw new RuntimeException("error in glDeleteQueryResourceTagNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glDeleteQueryResourceTagNV"); }
+        if (Unmarshal.isNullPointer(PFN_glDeleteQueryResourceTagNV)) throw new SymbolNotFoundError("Symbol not found: glDeleteQueryResourceTagNV");
+        try { MH_glDeleteQueryResourceTagNV.invokeExact(PFN_glDeleteQueryResourceTagNV, n, tagIds); }
+        catch (Throwable e) { throw new RuntimeException("error in glDeleteQueryResourceTagNV", e); }
     }
 
     public void QueryResourceTagNV(@CType("GLint") int tagId, @CType("const GLchar *") java.lang.foreign.MemorySegment tagString) {
-        if (!Unmarshal.isNullPointer(PFN_glQueryResourceTagNV)) { try {
-            MH_glQueryResourceTagNV.invokeExact(PFN_glQueryResourceTagNV, tagId, tagString);
-        } catch (Throwable e) { throw new RuntimeException("error in glQueryResourceTagNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glQueryResourceTagNV"); }
+        if (Unmarshal.isNullPointer(PFN_glQueryResourceTagNV)) throw new SymbolNotFoundError("Symbol not found: glQueryResourceTagNV");
+        try { MH_glQueryResourceTagNV.invokeExact(PFN_glQueryResourceTagNV, tagId, tagString); }
+        catch (Throwable e) { throw new RuntimeException("error in glQueryResourceTagNV", e); }
     }
 
 }

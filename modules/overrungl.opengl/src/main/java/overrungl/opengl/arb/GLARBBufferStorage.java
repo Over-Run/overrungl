@@ -41,10 +41,9 @@ public final class GLARBBufferStorage {
     }
 
     public void BufferStorage(@CType("GLenum") int target, @CType("GLsizeiptr") long size, @CType("const void *") java.lang.foreign.MemorySegment data, @CType("GLbitfield") int flags) {
-        if (!Unmarshal.isNullPointer(PFN_glBufferStorage)) { try {
-            MH_glBufferStorage.invokeExact(PFN_glBufferStorage, target, size, data, flags);
-        } catch (Throwable e) { throw new RuntimeException("error in glBufferStorage", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glBufferStorage"); }
+        if (Unmarshal.isNullPointer(PFN_glBufferStorage)) throw new SymbolNotFoundError("Symbol not found: glBufferStorage");
+        try { MH_glBufferStorage.invokeExact(PFN_glBufferStorage, target, size, data, flags); }
+        catch (Throwable e) { throw new RuntimeException("error in glBufferStorage", e); }
     }
 
 }

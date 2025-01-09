@@ -39,19 +39,17 @@ public final class ALSOFTDeferredUpdates {
     //endregion
 
     public static void alDeferUpdatesSOFT() {
-        if (Handles.MH_alDeferUpdatesSOFT != null) {
+        if (Handles.MH_alDeferUpdatesSOFT == null) throw new SymbolNotFoundError("Symbol not found: alDeferUpdatesSOFT");
         try {
             Handles.MH_alDeferUpdatesSOFT.invokeExact();
         } catch (Throwable e) { throw new RuntimeException("error in alDeferUpdatesSOFT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alDeferUpdatesSOFT"); }
     }
 
     public static void alProcessUpdatesSOFT() {
-        if (Handles.MH_alProcessUpdatesSOFT != null) {
+        if (Handles.MH_alProcessUpdatesSOFT == null) throw new SymbolNotFoundError("Symbol not found: alProcessUpdatesSOFT");
         try {
             Handles.MH_alProcessUpdatesSOFT.invokeExact();
         } catch (Throwable e) { throw new RuntimeException("error in alProcessUpdatesSOFT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alProcessUpdatesSOFT"); }
     }
 
     //@formatter:on

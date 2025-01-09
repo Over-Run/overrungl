@@ -36,10 +36,9 @@ public final class GLARBComputeVariableGroupSize {
     }
 
     public void DispatchComputeGroupSizeARB(@CType("GLuint") int num_groups_x, @CType("GLuint") int num_groups_y, @CType("GLuint") int num_groups_z, @CType("GLuint") int group_size_x, @CType("GLuint") int group_size_y, @CType("GLuint") int group_size_z) {
-        if (!Unmarshal.isNullPointer(PFN_glDispatchComputeGroupSizeARB)) { try {
-            MH_glDispatchComputeGroupSizeARB.invokeExact(PFN_glDispatchComputeGroupSizeARB, num_groups_x, num_groups_y, num_groups_z, group_size_x, group_size_y, group_size_z);
-        } catch (Throwable e) { throw new RuntimeException("error in glDispatchComputeGroupSizeARB", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glDispatchComputeGroupSizeARB"); }
+        if (Unmarshal.isNullPointer(PFN_glDispatchComputeGroupSizeARB)) throw new SymbolNotFoundError("Symbol not found: glDispatchComputeGroupSizeARB");
+        try { MH_glDispatchComputeGroupSizeARB.invokeExact(PFN_glDispatchComputeGroupSizeARB, num_groups_x, num_groups_y, num_groups_z, group_size_x, group_size_y, group_size_z); }
+        catch (Throwable e) { throw new RuntimeException("error in glDispatchComputeGroupSizeARB", e); }
     }
 
 }

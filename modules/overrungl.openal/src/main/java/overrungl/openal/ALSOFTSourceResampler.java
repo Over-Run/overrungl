@@ -40,11 +40,10 @@ public final class ALSOFTSourceResampler {
     //endregion
 
     public static @CType("const ALchar*") java.lang.foreign.MemorySegment alGetStringiSOFT(@CType("ALenum") int pname, @CType("ALsizei") int index) {
-        if (Handles.MH_alGetStringiSOFT != null) {
+        if (Handles.MH_alGetStringiSOFT == null) throw new SymbolNotFoundError("Symbol not found: alGetStringiSOFT");
         try {
             return (java.lang.foreign.MemorySegment) Handles.MH_alGetStringiSOFT.invokeExact(pname, index);
         } catch (Throwable e) { throw new RuntimeException("error in alGetStringiSOFT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alGetStringiSOFT"); }
     }
 
     //@formatter:on

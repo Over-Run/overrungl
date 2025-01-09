@@ -35,10 +35,10 @@ public final class GLNVExplicitMultisample {
     public static final int GL_UNSIGNED_INT_SAMPLER_RENDERBUFFER_NV = 0x8E58;
     public static final int GL_MAX_SAMPLE_MASK_WORDS_NV = 0x8E59;
     public static final MethodHandle MH_glGetMultisamplefvNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glGetMultisamplefvNV;
     public static final MethodHandle MH_glSampleMaskIndexedNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glSampleMaskIndexedNV;
     public static final MethodHandle MH_glTexRenderbufferNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+    public final MemorySegment PFN_glGetMultisamplefvNV;
+    public final MemorySegment PFN_glSampleMaskIndexedNV;
     public final MemorySegment PFN_glTexRenderbufferNV;
 
     public GLNVExplicitMultisample(overrungl.opengl.GLLoadFunc func) {
@@ -48,24 +48,21 @@ public final class GLNVExplicitMultisample {
     }
 
     public void GetMultisamplefvNV(@CType("GLenum") int pname, @CType("GLuint") int index, @CType("GLfloat *") java.lang.foreign.MemorySegment val) {
-        if (!Unmarshal.isNullPointer(PFN_glGetMultisamplefvNV)) { try {
-            MH_glGetMultisamplefvNV.invokeExact(PFN_glGetMultisamplefvNV, pname, index, val);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetMultisamplefvNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetMultisamplefvNV"); }
+        if (Unmarshal.isNullPointer(PFN_glGetMultisamplefvNV)) throw new SymbolNotFoundError("Symbol not found: glGetMultisamplefvNV");
+        try { MH_glGetMultisamplefvNV.invokeExact(PFN_glGetMultisamplefvNV, pname, index, val); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetMultisamplefvNV", e); }
     }
 
     public void SampleMaskIndexedNV(@CType("GLuint") int index, @CType("GLbitfield") int mask) {
-        if (!Unmarshal.isNullPointer(PFN_glSampleMaskIndexedNV)) { try {
-            MH_glSampleMaskIndexedNV.invokeExact(PFN_glSampleMaskIndexedNV, index, mask);
-        } catch (Throwable e) { throw new RuntimeException("error in glSampleMaskIndexedNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glSampleMaskIndexedNV"); }
+        if (Unmarshal.isNullPointer(PFN_glSampleMaskIndexedNV)) throw new SymbolNotFoundError("Symbol not found: glSampleMaskIndexedNV");
+        try { MH_glSampleMaskIndexedNV.invokeExact(PFN_glSampleMaskIndexedNV, index, mask); }
+        catch (Throwable e) { throw new RuntimeException("error in glSampleMaskIndexedNV", e); }
     }
 
     public void TexRenderbufferNV(@CType("GLenum") int target, @CType("GLuint") int renderbuffer) {
-        if (!Unmarshal.isNullPointer(PFN_glTexRenderbufferNV)) { try {
-            MH_glTexRenderbufferNV.invokeExact(PFN_glTexRenderbufferNV, target, renderbuffer);
-        } catch (Throwable e) { throw new RuntimeException("error in glTexRenderbufferNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glTexRenderbufferNV"); }
+        if (Unmarshal.isNullPointer(PFN_glTexRenderbufferNV)) throw new SymbolNotFoundError("Symbol not found: glTexRenderbufferNV");
+        try { MH_glTexRenderbufferNV.invokeExact(PFN_glTexRenderbufferNV, target, renderbuffer); }
+        catch (Throwable e) { throw new RuntimeException("error in glTexRenderbufferNV", e); }
     }
 
 }

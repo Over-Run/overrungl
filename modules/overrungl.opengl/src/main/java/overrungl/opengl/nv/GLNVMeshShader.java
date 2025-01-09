@@ -66,20 +66,20 @@ public final class GLNVMeshShader {
     public static final int GL_REFERENCED_BY_TASK_SHADER_NV = 0x95A1;
     public static final int GL_MESH_SHADER_BIT_NV = 0x00000040;
     public static final int GL_TASK_SHADER_BIT_NV = 0x00000080;
-    public static final MethodHandle MH_glDrawMeshTasksNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glDrawMeshTasksNV;
-    public static final MethodHandle MH_glDrawMeshTasksIndirectNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG));
-    public final MemorySegment PFN_glDrawMeshTasksIndirectNV;
-    public static final MethodHandle MH_glMultiDrawMeshTasksIndirectNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glMultiDrawMeshTasksIndirectNV;
-    public static final MethodHandle MH_glMultiDrawMeshTasksIndirectCountNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glMultiDrawMeshTasksIndirectCountNV;
     public static final int GL_MESH_SUBROUTINE_NV = 0x957C;
     public static final int GL_TASK_SUBROUTINE_NV = 0x957D;
     public static final int GL_MESH_SUBROUTINE_UNIFORM_NV = 0x957E;
     public static final int GL_TASK_SUBROUTINE_UNIFORM_NV = 0x957F;
     public static final int GL_ATOMIC_COUNTER_BUFFER_REFERENCED_BY_MESH_SHADER_NV = 0x959E;
     public static final int GL_ATOMIC_COUNTER_BUFFER_REFERENCED_BY_TASK_SHADER_NV = 0x959F;
+    public static final MethodHandle MH_glDrawMeshTasksNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+    public static final MethodHandle MH_glDrawMeshTasksIndirectNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG));
+    public static final MethodHandle MH_glMultiDrawMeshTasksIndirectNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+    public static final MethodHandle MH_glMultiDrawMeshTasksIndirectCountNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+    public final MemorySegment PFN_glDrawMeshTasksNV;
+    public final MemorySegment PFN_glDrawMeshTasksIndirectNV;
+    public final MemorySegment PFN_glMultiDrawMeshTasksIndirectNV;
+    public final MemorySegment PFN_glMultiDrawMeshTasksIndirectCountNV;
 
     public GLNVMeshShader(overrungl.opengl.GLLoadFunc func) {
         PFN_glDrawMeshTasksNV = func.invoke("glDrawMeshTasksNV");
@@ -89,31 +89,27 @@ public final class GLNVMeshShader {
     }
 
     public void DrawMeshTasksNV(@CType("GLuint") int first, @CType("GLuint") int count) {
-        if (!Unmarshal.isNullPointer(PFN_glDrawMeshTasksNV)) { try {
-            MH_glDrawMeshTasksNV.invokeExact(PFN_glDrawMeshTasksNV, first, count);
-        } catch (Throwable e) { throw new RuntimeException("error in glDrawMeshTasksNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glDrawMeshTasksNV"); }
+        if (Unmarshal.isNullPointer(PFN_glDrawMeshTasksNV)) throw new SymbolNotFoundError("Symbol not found: glDrawMeshTasksNV");
+        try { MH_glDrawMeshTasksNV.invokeExact(PFN_glDrawMeshTasksNV, first, count); }
+        catch (Throwable e) { throw new RuntimeException("error in glDrawMeshTasksNV", e); }
     }
 
     public void DrawMeshTasksIndirectNV(@CType("GLintptr") long indirect) {
-        if (!Unmarshal.isNullPointer(PFN_glDrawMeshTasksIndirectNV)) { try {
-            MH_glDrawMeshTasksIndirectNV.invokeExact(PFN_glDrawMeshTasksIndirectNV, indirect);
-        } catch (Throwable e) { throw new RuntimeException("error in glDrawMeshTasksIndirectNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glDrawMeshTasksIndirectNV"); }
+        if (Unmarshal.isNullPointer(PFN_glDrawMeshTasksIndirectNV)) throw new SymbolNotFoundError("Symbol not found: glDrawMeshTasksIndirectNV");
+        try { MH_glDrawMeshTasksIndirectNV.invokeExact(PFN_glDrawMeshTasksIndirectNV, indirect); }
+        catch (Throwable e) { throw new RuntimeException("error in glDrawMeshTasksIndirectNV", e); }
     }
 
     public void MultiDrawMeshTasksIndirectNV(@CType("GLintptr") long indirect, @CType("GLsizei") int drawcount, @CType("GLsizei") int stride) {
-        if (!Unmarshal.isNullPointer(PFN_glMultiDrawMeshTasksIndirectNV)) { try {
-            MH_glMultiDrawMeshTasksIndirectNV.invokeExact(PFN_glMultiDrawMeshTasksIndirectNV, indirect, drawcount, stride);
-        } catch (Throwable e) { throw new RuntimeException("error in glMultiDrawMeshTasksIndirectNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glMultiDrawMeshTasksIndirectNV"); }
+        if (Unmarshal.isNullPointer(PFN_glMultiDrawMeshTasksIndirectNV)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawMeshTasksIndirectNV");
+        try { MH_glMultiDrawMeshTasksIndirectNV.invokeExact(PFN_glMultiDrawMeshTasksIndirectNV, indirect, drawcount, stride); }
+        catch (Throwable e) { throw new RuntimeException("error in glMultiDrawMeshTasksIndirectNV", e); }
     }
 
     public void MultiDrawMeshTasksIndirectCountNV(@CType("GLintptr") long indirect, @CType("GLintptr") long drawcount, @CType("GLsizei") int maxdrawcount, @CType("GLsizei") int stride) {
-        if (!Unmarshal.isNullPointer(PFN_glMultiDrawMeshTasksIndirectCountNV)) { try {
-            MH_glMultiDrawMeshTasksIndirectCountNV.invokeExact(PFN_glMultiDrawMeshTasksIndirectCountNV, indirect, drawcount, maxdrawcount, stride);
-        } catch (Throwable e) { throw new RuntimeException("error in glMultiDrawMeshTasksIndirectCountNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glMultiDrawMeshTasksIndirectCountNV"); }
+        if (Unmarshal.isNullPointer(PFN_glMultiDrawMeshTasksIndirectCountNV)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawMeshTasksIndirectCountNV");
+        try { MH_glMultiDrawMeshTasksIndirectCountNV.invokeExact(PFN_glMultiDrawMeshTasksIndirectCountNV, indirect, drawcount, maxdrawcount, stride); }
+        catch (Throwable e) { throw new RuntimeException("error in glMultiDrawMeshTasksIndirectCountNV", e); }
     }
 
 }

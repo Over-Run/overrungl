@@ -44,10 +44,9 @@ public final class GLNVViewportSwizzle {
     }
 
     public void ViewportSwizzleNV(@CType("GLuint") int index, @CType("GLenum") int swizzlex, @CType("GLenum") int swizzley, @CType("GLenum") int swizzlez, @CType("GLenum") int swizzlew) {
-        if (!Unmarshal.isNullPointer(PFN_glViewportSwizzleNV)) { try {
-            MH_glViewportSwizzleNV.invokeExact(PFN_glViewportSwizzleNV, index, swizzlex, swizzley, swizzlez, swizzlew);
-        } catch (Throwable e) { throw new RuntimeException("error in glViewportSwizzleNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glViewportSwizzleNV"); }
+        if (Unmarshal.isNullPointer(PFN_glViewportSwizzleNV)) throw new SymbolNotFoundError("Symbol not found: glViewportSwizzleNV");
+        try { MH_glViewportSwizzleNV.invokeExact(PFN_glViewportSwizzleNV, index, swizzlex, swizzley, swizzlez, swizzlew); }
+        catch (Throwable e) { throw new RuntimeException("error in glViewportSwizzleNV", e); }
     }
 
 }

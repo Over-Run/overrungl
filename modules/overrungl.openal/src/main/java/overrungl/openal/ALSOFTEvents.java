@@ -47,35 +47,31 @@ public final class ALSOFTEvents {
     //endregion
 
     public static void alEventControlSOFT(@CType("ALsizei") int count, @CType("const ALenum *") java.lang.foreign.MemorySegment types, @CType("ALboolean") boolean enable) {
-        if (Handles.MH_alEventControlSOFT != null) {
+        if (Handles.MH_alEventControlSOFT == null) throw new SymbolNotFoundError("Symbol not found: alEventControlSOFT");
         try {
             Handles.MH_alEventControlSOFT.invokeExact(count, types, enable);
         } catch (Throwable e) { throw new RuntimeException("error in alEventControlSOFT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alEventControlSOFT"); }
     }
 
     public static void alEventCallbackSOFT(@CType("ALEVENTPROCSOFT") java.lang.foreign.MemorySegment callback, @CType("void*") java.lang.foreign.MemorySegment userParam) {
-        if (Handles.MH_alEventCallbackSOFT != null) {
+        if (Handles.MH_alEventCallbackSOFT == null) throw new SymbolNotFoundError("Symbol not found: alEventCallbackSOFT");
         try {
             Handles.MH_alEventCallbackSOFT.invokeExact(callback, userParam);
         } catch (Throwable e) { throw new RuntimeException("error in alEventCallbackSOFT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alEventCallbackSOFT"); }
     }
 
     public static @CType("void*") java.lang.foreign.MemorySegment alGetPointerSOFT(@CType("ALenum") int pname) {
-        if (Handles.MH_alGetPointerSOFT != null) {
+        if (Handles.MH_alGetPointerSOFT == null) throw new SymbolNotFoundError("Symbol not found: alGetPointerSOFT");
         try {
             return (java.lang.foreign.MemorySegment) Handles.MH_alGetPointerSOFT.invokeExact(pname);
         } catch (Throwable e) { throw new RuntimeException("error in alGetPointerSOFT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alGetPointerSOFT"); }
     }
 
     public static void alGetPointervSOFT(@CType("ALenum") int pname, @CType("void**") java.lang.foreign.MemorySegment values) {
-        if (Handles.MH_alGetPointervSOFT != null) {
+        if (Handles.MH_alGetPointervSOFT == null) throw new SymbolNotFoundError("Symbol not found: alGetPointervSOFT");
         try {
             Handles.MH_alGetPointervSOFT.invokeExact(pname, values);
         } catch (Throwable e) { throw new RuntimeException("error in alGetPointervSOFT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alGetPointervSOFT"); }
     }
 
     //@formatter:on

@@ -34,10 +34,9 @@ public final class GLEXTTexturePerturbNormal {
     }
 
     public void TextureNormalEXT(@CType("GLenum") int mode) {
-        if (!Unmarshal.isNullPointer(PFN_glTextureNormalEXT)) { try {
-            MH_glTextureNormalEXT.invokeExact(PFN_glTextureNormalEXT, mode);
-        } catch (Throwable e) { throw new RuntimeException("error in glTextureNormalEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glTextureNormalEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glTextureNormalEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureNormalEXT");
+        try { MH_glTextureNormalEXT.invokeExact(PFN_glTextureNormalEXT, mode); }
+        catch (Throwable e) { throw new RuntimeException("error in glTextureNormalEXT", e); }
     }
 
 }

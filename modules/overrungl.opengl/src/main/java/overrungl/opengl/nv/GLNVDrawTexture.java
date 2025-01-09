@@ -32,10 +32,9 @@ public final class GLNVDrawTexture {
     }
 
     public void DrawTextureNV(@CType("GLuint") int texture, @CType("GLuint") int sampler, @CType("GLfloat") float x0, @CType("GLfloat") float y0, @CType("GLfloat") float x1, @CType("GLfloat") float y1, @CType("GLfloat") float z, @CType("GLfloat") float s0, @CType("GLfloat") float t0, @CType("GLfloat") float s1, @CType("GLfloat") float t1) {
-        if (!Unmarshal.isNullPointer(PFN_glDrawTextureNV)) { try {
-            MH_glDrawTextureNV.invokeExact(PFN_glDrawTextureNV, texture, sampler, x0, y0, x1, y1, z, s0, t0, s1, t1);
-        } catch (Throwable e) { throw new RuntimeException("error in glDrawTextureNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glDrawTextureNV"); }
+        if (Unmarshal.isNullPointer(PFN_glDrawTextureNV)) throw new SymbolNotFoundError("Symbol not found: glDrawTextureNV");
+        try { MH_glDrawTextureNV.invokeExact(PFN_glDrawTextureNV, texture, sampler, x0, y0, x1, y1, z, s0, t0, s1, t1); }
+        catch (Throwable e) { throw new RuntimeException("error in glDrawTextureNV", e); }
     }
 
 }

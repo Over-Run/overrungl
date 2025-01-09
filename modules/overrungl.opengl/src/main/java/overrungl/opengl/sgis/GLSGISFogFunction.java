@@ -28,8 +28,8 @@ public final class GLSGISFogFunction {
     public static final int GL_FOG_FUNC_POINTS_SGIS = 0x812B;
     public static final int GL_MAX_FOG_FUNC_POINTS_SGIS = 0x812C;
     public static final MethodHandle MH_glFogFuncSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glFogFuncSGIS;
     public static final MethodHandle MH_glGetFogFuncSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glFogFuncSGIS;
     public final MemorySegment PFN_glGetFogFuncSGIS;
 
     public GLSGISFogFunction(overrungl.opengl.GLLoadFunc func) {
@@ -38,17 +38,15 @@ public final class GLSGISFogFunction {
     }
 
     public void FogFuncSGIS(@CType("GLsizei") int n, @CType("const GLfloat *") java.lang.foreign.MemorySegment points) {
-        if (!Unmarshal.isNullPointer(PFN_glFogFuncSGIS)) { try {
-            MH_glFogFuncSGIS.invokeExact(PFN_glFogFuncSGIS, n, points);
-        } catch (Throwable e) { throw new RuntimeException("error in glFogFuncSGIS", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glFogFuncSGIS"); }
+        if (Unmarshal.isNullPointer(PFN_glFogFuncSGIS)) throw new SymbolNotFoundError("Symbol not found: glFogFuncSGIS");
+        try { MH_glFogFuncSGIS.invokeExact(PFN_glFogFuncSGIS, n, points); }
+        catch (Throwable e) { throw new RuntimeException("error in glFogFuncSGIS", e); }
     }
 
     public void GetFogFuncSGIS(@CType("GLfloat *") java.lang.foreign.MemorySegment points) {
-        if (!Unmarshal.isNullPointer(PFN_glGetFogFuncSGIS)) { try {
-            MH_glGetFogFuncSGIS.invokeExact(PFN_glGetFogFuncSGIS, points);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetFogFuncSGIS", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetFogFuncSGIS"); }
+        if (Unmarshal.isNullPointer(PFN_glGetFogFuncSGIS)) throw new SymbolNotFoundError("Symbol not found: glGetFogFuncSGIS");
+        try { MH_glGetFogFuncSGIS.invokeExact(PFN_glGetFogFuncSGIS, points); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetFogFuncSGIS", e); }
     }
 
 }

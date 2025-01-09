@@ -27,8 +27,8 @@ public final class GLEXTCompiledVertexArray {
     public static final int GL_ARRAY_ELEMENT_LOCK_FIRST_EXT = 0x81A8;
     public static final int GL_ARRAY_ELEMENT_LOCK_COUNT_EXT = 0x81A9;
     public static final MethodHandle MH_glLockArraysEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glLockArraysEXT;
     public static final MethodHandle MH_glUnlockArraysEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
+    public final MemorySegment PFN_glLockArraysEXT;
     public final MemorySegment PFN_glUnlockArraysEXT;
 
     public GLEXTCompiledVertexArray(overrungl.opengl.GLLoadFunc func) {
@@ -37,17 +37,15 @@ public final class GLEXTCompiledVertexArray {
     }
 
     public void LockArraysEXT(@CType("GLint") int first, @CType("GLsizei") int count) {
-        if (!Unmarshal.isNullPointer(PFN_glLockArraysEXT)) { try {
-            MH_glLockArraysEXT.invokeExact(PFN_glLockArraysEXT, first, count);
-        } catch (Throwable e) { throw new RuntimeException("error in glLockArraysEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glLockArraysEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glLockArraysEXT)) throw new SymbolNotFoundError("Symbol not found: glLockArraysEXT");
+        try { MH_glLockArraysEXT.invokeExact(PFN_glLockArraysEXT, first, count); }
+        catch (Throwable e) { throw new RuntimeException("error in glLockArraysEXT", e); }
     }
 
     public void UnlockArraysEXT() {
-        if (!Unmarshal.isNullPointer(PFN_glUnlockArraysEXT)) { try {
-            MH_glUnlockArraysEXT.invokeExact(PFN_glUnlockArraysEXT);
-        } catch (Throwable e) { throw new RuntimeException("error in glUnlockArraysEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glUnlockArraysEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glUnlockArraysEXT)) throw new SymbolNotFoundError("Symbol not found: glUnlockArraysEXT");
+        try { MH_glUnlockArraysEXT.invokeExact(PFN_glUnlockArraysEXT); }
+        catch (Throwable e) { throw new RuntimeException("error in glUnlockArraysEXT", e); }
     }
 
 }

@@ -31,8 +31,8 @@ public final class GLARBMapBufferRange {
     public static final int GL_MAP_FLUSH_EXPLICIT_BIT = 0x0010;
     public static final int GL_MAP_UNSYNCHRONIZED_BIT = 0x0020;
     public static final MethodHandle MH_glMapBufferRange = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glMapBufferRange;
     public static final MethodHandle MH_glFlushMappedBufferRange = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+    public final MemorySegment PFN_glMapBufferRange;
     public final MemorySegment PFN_glFlushMappedBufferRange;
 
     public GLARBMapBufferRange(overrungl.opengl.GLLoadFunc func) {
@@ -41,17 +41,15 @@ public final class GLARBMapBufferRange {
     }
 
     public @CType("void*") java.lang.foreign.MemorySegment MapBufferRange(@CType("GLenum") int target, @CType("GLintptr") long offset, @CType("GLsizeiptr") long length, @CType("GLbitfield") int access) {
-        if (!Unmarshal.isNullPointer(PFN_glMapBufferRange)) { try {
-            return (java.lang.foreign.MemorySegment) MH_glMapBufferRange.invokeExact(PFN_glMapBufferRange, target, offset, length, access);
-        } catch (Throwable e) { throw new RuntimeException("error in glMapBufferRange", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glMapBufferRange"); }
+        if (Unmarshal.isNullPointer(PFN_glMapBufferRange)) throw new SymbolNotFoundError("Symbol not found: glMapBufferRange");
+        try { return (java.lang.foreign.MemorySegment) MH_glMapBufferRange.invokeExact(PFN_glMapBufferRange, target, offset, length, access); }
+        catch (Throwable e) { throw new RuntimeException("error in glMapBufferRange", e); }
     }
 
     public void FlushMappedBufferRange(@CType("GLenum") int target, @CType("GLintptr") long offset, @CType("GLsizeiptr") long length) {
-        if (!Unmarshal.isNullPointer(PFN_glFlushMappedBufferRange)) { try {
-            MH_glFlushMappedBufferRange.invokeExact(PFN_glFlushMappedBufferRange, target, offset, length);
-        } catch (Throwable e) { throw new RuntimeException("error in glFlushMappedBufferRange", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glFlushMappedBufferRange"); }
+        if (Unmarshal.isNullPointer(PFN_glFlushMappedBufferRange)) throw new SymbolNotFoundError("Symbol not found: glFlushMappedBufferRange");
+        try { MH_glFlushMappedBufferRange.invokeExact(PFN_glFlushMappedBufferRange, target, offset, length); }
+        catch (Throwable e) { throw new RuntimeException("error in glFlushMappedBufferRange", e); }
     }
 
 }

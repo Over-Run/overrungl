@@ -38,19 +38,17 @@ public final class ALSOFTSourceStartDelay {
     //endregion
 
     public static void alSourcePlayAtTimeSOFT(@CType("ALuint") int source, @CType("ALint64SOFT") long start_time) {
-        if (Handles.MH_alSourcePlayAtTimeSOFT != null) {
+        if (Handles.MH_alSourcePlayAtTimeSOFT == null) throw new SymbolNotFoundError("Symbol not found: alSourcePlayAtTimeSOFT");
         try {
             Handles.MH_alSourcePlayAtTimeSOFT.invokeExact(source, start_time);
         } catch (Throwable e) { throw new RuntimeException("error in alSourcePlayAtTimeSOFT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alSourcePlayAtTimeSOFT"); }
     }
 
     public static void alSourcePlayAtTimevSOFT(@CType("ALsizei") int n, @CType("const ALuint *") java.lang.foreign.MemorySegment sources, @CType("ALint64SOFT") long start_time) {
-        if (Handles.MH_alSourcePlayAtTimevSOFT != null) {
+        if (Handles.MH_alSourcePlayAtTimevSOFT == null) throw new SymbolNotFoundError("Symbol not found: alSourcePlayAtTimevSOFT");
         try {
             Handles.MH_alSourcePlayAtTimevSOFT.invokeExact(n, sources, start_time);
         } catch (Throwable e) { throw new RuntimeException("error in alSourcePlayAtTimevSOFT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alSourcePlayAtTimevSOFT"); }
     }
 
     //@formatter:on

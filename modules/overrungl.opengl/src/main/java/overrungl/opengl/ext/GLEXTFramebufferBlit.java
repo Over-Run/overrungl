@@ -36,10 +36,9 @@ public final class GLEXTFramebufferBlit {
     }
 
     public void BlitFramebufferEXT(@CType("GLint") int srcX0, @CType("GLint") int srcY0, @CType("GLint") int srcX1, @CType("GLint") int srcY1, @CType("GLint") int dstX0, @CType("GLint") int dstY0, @CType("GLint") int dstX1, @CType("GLint") int dstY1, @CType("GLbitfield") int mask, @CType("GLenum") int filter) {
-        if (!Unmarshal.isNullPointer(PFN_glBlitFramebufferEXT)) { try {
-            MH_glBlitFramebufferEXT.invokeExact(PFN_glBlitFramebufferEXT, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
-        } catch (Throwable e) { throw new RuntimeException("error in glBlitFramebufferEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glBlitFramebufferEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glBlitFramebufferEXT)) throw new SymbolNotFoundError("Symbol not found: glBlitFramebufferEXT");
+        try { MH_glBlitFramebufferEXT.invokeExact(PFN_glBlitFramebufferEXT, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter); }
+        catch (Throwable e) { throw new RuntimeException("error in glBlitFramebufferEXT", e); }
     }
 
 }

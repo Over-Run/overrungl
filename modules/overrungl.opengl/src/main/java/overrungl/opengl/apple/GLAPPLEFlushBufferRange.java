@@ -27,8 +27,8 @@ public final class GLAPPLEFlushBufferRange {
     public static final int GL_BUFFER_SERIALIZED_MODIFY_APPLE = 0x8A12;
     public static final int GL_BUFFER_FLUSHING_UNMAP_APPLE = 0x8A13;
     public static final MethodHandle MH_glBufferParameteriAPPLE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glBufferParameteriAPPLE;
     public static final MethodHandle MH_glFlushMappedBufferRangeAPPLE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+    public final MemorySegment PFN_glBufferParameteriAPPLE;
     public final MemorySegment PFN_glFlushMappedBufferRangeAPPLE;
 
     public GLAPPLEFlushBufferRange(overrungl.opengl.GLLoadFunc func) {
@@ -37,17 +37,15 @@ public final class GLAPPLEFlushBufferRange {
     }
 
     public void BufferParameteriAPPLE(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLint") int param) {
-        if (!Unmarshal.isNullPointer(PFN_glBufferParameteriAPPLE)) { try {
-            MH_glBufferParameteriAPPLE.invokeExact(PFN_glBufferParameteriAPPLE, target, pname, param);
-        } catch (Throwable e) { throw new RuntimeException("error in glBufferParameteriAPPLE", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glBufferParameteriAPPLE"); }
+        if (Unmarshal.isNullPointer(PFN_glBufferParameteriAPPLE)) throw new SymbolNotFoundError("Symbol not found: glBufferParameteriAPPLE");
+        try { MH_glBufferParameteriAPPLE.invokeExact(PFN_glBufferParameteriAPPLE, target, pname, param); }
+        catch (Throwable e) { throw new RuntimeException("error in glBufferParameteriAPPLE", e); }
     }
 
     public void FlushMappedBufferRangeAPPLE(@CType("GLenum") int target, @CType("GLintptr") long offset, @CType("GLsizeiptr") long size) {
-        if (!Unmarshal.isNullPointer(PFN_glFlushMappedBufferRangeAPPLE)) { try {
-            MH_glFlushMappedBufferRangeAPPLE.invokeExact(PFN_glFlushMappedBufferRangeAPPLE, target, offset, size);
-        } catch (Throwable e) { throw new RuntimeException("error in glFlushMappedBufferRangeAPPLE", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glFlushMappedBufferRangeAPPLE"); }
+        if (Unmarshal.isNullPointer(PFN_glFlushMappedBufferRangeAPPLE)) throw new SymbolNotFoundError("Symbol not found: glFlushMappedBufferRangeAPPLE");
+        try { MH_glFlushMappedBufferRangeAPPLE.invokeExact(PFN_glFlushMappedBufferRangeAPPLE, target, offset, size); }
+        catch (Throwable e) { throw new RuntimeException("error in glFlushMappedBufferRangeAPPLE", e); }
     }
 
 }

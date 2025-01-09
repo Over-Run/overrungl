@@ -41,20 +41,20 @@ public final class GLIBMVertexArrayLists {
     public static final int GL_FOG_COORDINATE_ARRAY_LIST_STRIDE_IBM = 103086;
     public static final int GL_SECONDARY_COLOR_ARRAY_LIST_STRIDE_IBM = 103087;
     public static final MethodHandle MH_glColorPointerListIBM = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glColorPointerListIBM;
     public static final MethodHandle MH_glSecondaryColorPointerListIBM = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glSecondaryColorPointerListIBM;
     public static final MethodHandle MH_glEdgeFlagPointerListIBM = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glEdgeFlagPointerListIBM;
     public static final MethodHandle MH_glFogCoordPointerListIBM = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glFogCoordPointerListIBM;
     public static final MethodHandle MH_glIndexPointerListIBM = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glIndexPointerListIBM;
     public static final MethodHandle MH_glNormalPointerListIBM = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glNormalPointerListIBM;
     public static final MethodHandle MH_glTexCoordPointerListIBM = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glTexCoordPointerListIBM;
     public static final MethodHandle MH_glVertexPointerListIBM = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+    public final MemorySegment PFN_glColorPointerListIBM;
+    public final MemorySegment PFN_glSecondaryColorPointerListIBM;
+    public final MemorySegment PFN_glEdgeFlagPointerListIBM;
+    public final MemorySegment PFN_glFogCoordPointerListIBM;
+    public final MemorySegment PFN_glIndexPointerListIBM;
+    public final MemorySegment PFN_glNormalPointerListIBM;
+    public final MemorySegment PFN_glTexCoordPointerListIBM;
     public final MemorySegment PFN_glVertexPointerListIBM;
 
     public GLIBMVertexArrayLists(overrungl.opengl.GLLoadFunc func) {
@@ -69,59 +69,51 @@ public final class GLIBMVertexArrayLists {
     }
 
     public void ColorPointerListIBM(@CType("GLint") int size, @CType("GLenum") int type, @CType("GLint") int stride, @CType("const void **") java.lang.foreign.MemorySegment pointer, @CType("GLint") int ptrstride) {
-        if (!Unmarshal.isNullPointer(PFN_glColorPointerListIBM)) { try {
-            MH_glColorPointerListIBM.invokeExact(PFN_glColorPointerListIBM, size, type, stride, pointer, ptrstride);
-        } catch (Throwable e) { throw new RuntimeException("error in glColorPointerListIBM", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glColorPointerListIBM"); }
+        if (Unmarshal.isNullPointer(PFN_glColorPointerListIBM)) throw new SymbolNotFoundError("Symbol not found: glColorPointerListIBM");
+        try { MH_glColorPointerListIBM.invokeExact(PFN_glColorPointerListIBM, size, type, stride, pointer, ptrstride); }
+        catch (Throwable e) { throw new RuntimeException("error in glColorPointerListIBM", e); }
     }
 
     public void SecondaryColorPointerListIBM(@CType("GLint") int size, @CType("GLenum") int type, @CType("GLint") int stride, @CType("const void **") java.lang.foreign.MemorySegment pointer, @CType("GLint") int ptrstride) {
-        if (!Unmarshal.isNullPointer(PFN_glSecondaryColorPointerListIBM)) { try {
-            MH_glSecondaryColorPointerListIBM.invokeExact(PFN_glSecondaryColorPointerListIBM, size, type, stride, pointer, ptrstride);
-        } catch (Throwable e) { throw new RuntimeException("error in glSecondaryColorPointerListIBM", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glSecondaryColorPointerListIBM"); }
+        if (Unmarshal.isNullPointer(PFN_glSecondaryColorPointerListIBM)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColorPointerListIBM");
+        try { MH_glSecondaryColorPointerListIBM.invokeExact(PFN_glSecondaryColorPointerListIBM, size, type, stride, pointer, ptrstride); }
+        catch (Throwable e) { throw new RuntimeException("error in glSecondaryColorPointerListIBM", e); }
     }
 
     public void EdgeFlagPointerListIBM(@CType("GLint") int stride, @CType("const GLboolean **") java.lang.foreign.MemorySegment pointer, @CType("GLint") int ptrstride) {
-        if (!Unmarshal.isNullPointer(PFN_glEdgeFlagPointerListIBM)) { try {
-            MH_glEdgeFlagPointerListIBM.invokeExact(PFN_glEdgeFlagPointerListIBM, stride, pointer, ptrstride);
-        } catch (Throwable e) { throw new RuntimeException("error in glEdgeFlagPointerListIBM", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glEdgeFlagPointerListIBM"); }
+        if (Unmarshal.isNullPointer(PFN_glEdgeFlagPointerListIBM)) throw new SymbolNotFoundError("Symbol not found: glEdgeFlagPointerListIBM");
+        try { MH_glEdgeFlagPointerListIBM.invokeExact(PFN_glEdgeFlagPointerListIBM, stride, pointer, ptrstride); }
+        catch (Throwable e) { throw new RuntimeException("error in glEdgeFlagPointerListIBM", e); }
     }
 
     public void FogCoordPointerListIBM(@CType("GLenum") int type, @CType("GLint") int stride, @CType("const void **") java.lang.foreign.MemorySegment pointer, @CType("GLint") int ptrstride) {
-        if (!Unmarshal.isNullPointer(PFN_glFogCoordPointerListIBM)) { try {
-            MH_glFogCoordPointerListIBM.invokeExact(PFN_glFogCoordPointerListIBM, type, stride, pointer, ptrstride);
-        } catch (Throwable e) { throw new RuntimeException("error in glFogCoordPointerListIBM", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glFogCoordPointerListIBM"); }
+        if (Unmarshal.isNullPointer(PFN_glFogCoordPointerListIBM)) throw new SymbolNotFoundError("Symbol not found: glFogCoordPointerListIBM");
+        try { MH_glFogCoordPointerListIBM.invokeExact(PFN_glFogCoordPointerListIBM, type, stride, pointer, ptrstride); }
+        catch (Throwable e) { throw new RuntimeException("error in glFogCoordPointerListIBM", e); }
     }
 
     public void IndexPointerListIBM(@CType("GLenum") int type, @CType("GLint") int stride, @CType("const void **") java.lang.foreign.MemorySegment pointer, @CType("GLint") int ptrstride) {
-        if (!Unmarshal.isNullPointer(PFN_glIndexPointerListIBM)) { try {
-            MH_glIndexPointerListIBM.invokeExact(PFN_glIndexPointerListIBM, type, stride, pointer, ptrstride);
-        } catch (Throwable e) { throw new RuntimeException("error in glIndexPointerListIBM", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glIndexPointerListIBM"); }
+        if (Unmarshal.isNullPointer(PFN_glIndexPointerListIBM)) throw new SymbolNotFoundError("Symbol not found: glIndexPointerListIBM");
+        try { MH_glIndexPointerListIBM.invokeExact(PFN_glIndexPointerListIBM, type, stride, pointer, ptrstride); }
+        catch (Throwable e) { throw new RuntimeException("error in glIndexPointerListIBM", e); }
     }
 
     public void NormalPointerListIBM(@CType("GLenum") int type, @CType("GLint") int stride, @CType("const void **") java.lang.foreign.MemorySegment pointer, @CType("GLint") int ptrstride) {
-        if (!Unmarshal.isNullPointer(PFN_glNormalPointerListIBM)) { try {
-            MH_glNormalPointerListIBM.invokeExact(PFN_glNormalPointerListIBM, type, stride, pointer, ptrstride);
-        } catch (Throwable e) { throw new RuntimeException("error in glNormalPointerListIBM", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glNormalPointerListIBM"); }
+        if (Unmarshal.isNullPointer(PFN_glNormalPointerListIBM)) throw new SymbolNotFoundError("Symbol not found: glNormalPointerListIBM");
+        try { MH_glNormalPointerListIBM.invokeExact(PFN_glNormalPointerListIBM, type, stride, pointer, ptrstride); }
+        catch (Throwable e) { throw new RuntimeException("error in glNormalPointerListIBM", e); }
     }
 
     public void TexCoordPointerListIBM(@CType("GLint") int size, @CType("GLenum") int type, @CType("GLint") int stride, @CType("const void **") java.lang.foreign.MemorySegment pointer, @CType("GLint") int ptrstride) {
-        if (!Unmarshal.isNullPointer(PFN_glTexCoordPointerListIBM)) { try {
-            MH_glTexCoordPointerListIBM.invokeExact(PFN_glTexCoordPointerListIBM, size, type, stride, pointer, ptrstride);
-        } catch (Throwable e) { throw new RuntimeException("error in glTexCoordPointerListIBM", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glTexCoordPointerListIBM"); }
+        if (Unmarshal.isNullPointer(PFN_glTexCoordPointerListIBM)) throw new SymbolNotFoundError("Symbol not found: glTexCoordPointerListIBM");
+        try { MH_glTexCoordPointerListIBM.invokeExact(PFN_glTexCoordPointerListIBM, size, type, stride, pointer, ptrstride); }
+        catch (Throwable e) { throw new RuntimeException("error in glTexCoordPointerListIBM", e); }
     }
 
     public void VertexPointerListIBM(@CType("GLint") int size, @CType("GLenum") int type, @CType("GLint") int stride, @CType("const void **") java.lang.foreign.MemorySegment pointer, @CType("GLint") int ptrstride) {
-        if (!Unmarshal.isNullPointer(PFN_glVertexPointerListIBM)) { try {
-            MH_glVertexPointerListIBM.invokeExact(PFN_glVertexPointerListIBM, size, type, stride, pointer, ptrstride);
-        } catch (Throwable e) { throw new RuntimeException("error in glVertexPointerListIBM", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glVertexPointerListIBM"); }
+        if (Unmarshal.isNullPointer(PFN_glVertexPointerListIBM)) throw new SymbolNotFoundError("Symbol not found: glVertexPointerListIBM");
+        try { MH_glVertexPointerListIBM.invokeExact(PFN_glVertexPointerListIBM, size, type, stride, pointer, ptrstride); }
+        catch (Throwable e) { throw new RuntimeException("error in glVertexPointerListIBM", e); }
     }
 
 }

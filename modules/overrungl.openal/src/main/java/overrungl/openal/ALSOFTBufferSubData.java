@@ -38,11 +38,10 @@ public final class ALSOFTBufferSubData {
     //endregion
 
     public static void alBufferSubDataSOFT(@CType("ALuint") int buffer, @CType("ALenum") int format, @CType("const ALvoid *") java.lang.foreign.MemorySegment data, @CType("ALsizei") int offset, @CType("ALsizei") int length) {
-        if (Handles.MH_alBufferSubDataSOFT != null) {
+        if (Handles.MH_alBufferSubDataSOFT == null) throw new SymbolNotFoundError("Symbol not found: alBufferSubDataSOFT");
         try {
             Handles.MH_alBufferSubDataSOFT.invokeExact(buffer, format, data, offset, length);
         } catch (Throwable e) { throw new RuntimeException("error in alBufferSubDataSOFT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alBufferSubDataSOFT"); }
     }
 
     //@formatter:on

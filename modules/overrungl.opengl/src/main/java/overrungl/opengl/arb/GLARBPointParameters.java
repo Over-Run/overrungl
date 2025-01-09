@@ -29,8 +29,8 @@ public final class GLARBPointParameters {
     public static final int GL_POINT_FADE_THRESHOLD_SIZE_ARB = 0x8128;
     public static final int GL_POINT_DISTANCE_ATTENUATION_ARB = 0x8129;
     public static final MethodHandle MH_glPointParameterfARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
-    public final MemorySegment PFN_glPointParameterfARB;
     public static final MethodHandle MH_glPointParameterfvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glPointParameterfARB;
     public final MemorySegment PFN_glPointParameterfvARB;
 
     public GLARBPointParameters(overrungl.opengl.GLLoadFunc func) {
@@ -39,17 +39,15 @@ public final class GLARBPointParameters {
     }
 
     public void PointParameterfARB(@CType("GLenum") int pname, @CType("GLfloat") float param) {
-        if (!Unmarshal.isNullPointer(PFN_glPointParameterfARB)) { try {
-            MH_glPointParameterfARB.invokeExact(PFN_glPointParameterfARB, pname, param);
-        } catch (Throwable e) { throw new RuntimeException("error in glPointParameterfARB", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glPointParameterfARB"); }
+        if (Unmarshal.isNullPointer(PFN_glPointParameterfARB)) throw new SymbolNotFoundError("Symbol not found: glPointParameterfARB");
+        try { MH_glPointParameterfARB.invokeExact(PFN_glPointParameterfARB, pname, param); }
+        catch (Throwable e) { throw new RuntimeException("error in glPointParameterfARB", e); }
     }
 
     public void PointParameterfvARB(@CType("GLenum") int pname, @CType("const GLfloat *") java.lang.foreign.MemorySegment params) {
-        if (!Unmarshal.isNullPointer(PFN_glPointParameterfvARB)) { try {
-            MH_glPointParameterfvARB.invokeExact(PFN_glPointParameterfvARB, pname, params);
-        } catch (Throwable e) { throw new RuntimeException("error in glPointParameterfvARB", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glPointParameterfvARB"); }
+        if (Unmarshal.isNullPointer(PFN_glPointParameterfvARB)) throw new SymbolNotFoundError("Symbol not found: glPointParameterfvARB");
+        try { MH_glPointParameterfvARB.invokeExact(PFN_glPointParameterfvARB, pname, params); }
+        catch (Throwable e) { throw new RuntimeException("error in glPointParameterfvARB", e); }
     }
 
 }

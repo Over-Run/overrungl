@@ -32,8 +32,8 @@ public final class GLEXTSemaphoreWin32 {
     public static final int GL_HANDLE_TYPE_D3D12_FENCE_EXT = 0x9594;
     public static final int GL_D3D12_FENCE_VALUE_EXT = 0x9595;
     public static final MethodHandle MH_glImportSemaphoreWin32HandleEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glImportSemaphoreWin32HandleEXT;
     public static final MethodHandle MH_glImportSemaphoreWin32NameEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glImportSemaphoreWin32HandleEXT;
     public final MemorySegment PFN_glImportSemaphoreWin32NameEXT;
 
     public GLEXTSemaphoreWin32(overrungl.opengl.GLLoadFunc func) {
@@ -42,17 +42,15 @@ public final class GLEXTSemaphoreWin32 {
     }
 
     public void ImportSemaphoreWin32HandleEXT(@CType("GLuint") int semaphore, @CType("GLenum") int handleType, @CType("void*") java.lang.foreign.MemorySegment handle) {
-        if (!Unmarshal.isNullPointer(PFN_glImportSemaphoreWin32HandleEXT)) { try {
-            MH_glImportSemaphoreWin32HandleEXT.invokeExact(PFN_glImportSemaphoreWin32HandleEXT, semaphore, handleType, handle);
-        } catch (Throwable e) { throw new RuntimeException("error in glImportSemaphoreWin32HandleEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glImportSemaphoreWin32HandleEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glImportSemaphoreWin32HandleEXT)) throw new SymbolNotFoundError("Symbol not found: glImportSemaphoreWin32HandleEXT");
+        try { MH_glImportSemaphoreWin32HandleEXT.invokeExact(PFN_glImportSemaphoreWin32HandleEXT, semaphore, handleType, handle); }
+        catch (Throwable e) { throw new RuntimeException("error in glImportSemaphoreWin32HandleEXT", e); }
     }
 
     public void ImportSemaphoreWin32NameEXT(@CType("GLuint") int semaphore, @CType("GLenum") int handleType, @CType("const void *") java.lang.foreign.MemorySegment name) {
-        if (!Unmarshal.isNullPointer(PFN_glImportSemaphoreWin32NameEXT)) { try {
-            MH_glImportSemaphoreWin32NameEXT.invokeExact(PFN_glImportSemaphoreWin32NameEXT, semaphore, handleType, name);
-        } catch (Throwable e) { throw new RuntimeException("error in glImportSemaphoreWin32NameEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glImportSemaphoreWin32NameEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glImportSemaphoreWin32NameEXT)) throw new SymbolNotFoundError("Symbol not found: glImportSemaphoreWin32NameEXT");
+        try { MH_glImportSemaphoreWin32NameEXT.invokeExact(PFN_glImportSemaphoreWin32NameEXT, semaphore, handleType, name); }
+        catch (Throwable e) { throw new RuntimeException("error in glImportSemaphoreWin32NameEXT", e); }
     }
 
 }

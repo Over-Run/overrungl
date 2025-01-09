@@ -25,10 +25,10 @@ import overrungl.util.*;
 
 public final class GLARBBaseInstance {
     public static final MethodHandle MH_glDrawArraysInstancedBaseInstance = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glDrawArraysInstancedBaseInstance;
     public static final MethodHandle MH_glDrawElementsInstancedBaseInstance = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glDrawElementsInstancedBaseInstance;
     public static final MethodHandle MH_glDrawElementsInstancedBaseVertexBaseInstance = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+    public final MemorySegment PFN_glDrawArraysInstancedBaseInstance;
+    public final MemorySegment PFN_glDrawElementsInstancedBaseInstance;
     public final MemorySegment PFN_glDrawElementsInstancedBaseVertexBaseInstance;
 
     public GLARBBaseInstance(overrungl.opengl.GLLoadFunc func) {
@@ -38,24 +38,21 @@ public final class GLARBBaseInstance {
     }
 
     public void DrawArraysInstancedBaseInstance(@CType("GLenum") int mode, @CType("GLint") int first, @CType("GLsizei") int count, @CType("GLsizei") int instancecount, @CType("GLuint") int baseinstance) {
-        if (!Unmarshal.isNullPointer(PFN_glDrawArraysInstancedBaseInstance)) { try {
-            MH_glDrawArraysInstancedBaseInstance.invokeExact(PFN_glDrawArraysInstancedBaseInstance, mode, first, count, instancecount, baseinstance);
-        } catch (Throwable e) { throw new RuntimeException("error in glDrawArraysInstancedBaseInstance", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glDrawArraysInstancedBaseInstance"); }
+        if (Unmarshal.isNullPointer(PFN_glDrawArraysInstancedBaseInstance)) throw new SymbolNotFoundError("Symbol not found: glDrawArraysInstancedBaseInstance");
+        try { MH_glDrawArraysInstancedBaseInstance.invokeExact(PFN_glDrawArraysInstancedBaseInstance, mode, first, count, instancecount, baseinstance); }
+        catch (Throwable e) { throw new RuntimeException("error in glDrawArraysInstancedBaseInstance", e); }
     }
 
     public void DrawElementsInstancedBaseInstance(@CType("GLenum") int mode, @CType("GLsizei") int count, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment indices, @CType("GLsizei") int instancecount, @CType("GLuint") int baseinstance) {
-        if (!Unmarshal.isNullPointer(PFN_glDrawElementsInstancedBaseInstance)) { try {
-            MH_glDrawElementsInstancedBaseInstance.invokeExact(PFN_glDrawElementsInstancedBaseInstance, mode, count, type, indices, instancecount, baseinstance);
-        } catch (Throwable e) { throw new RuntimeException("error in glDrawElementsInstancedBaseInstance", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glDrawElementsInstancedBaseInstance"); }
+        if (Unmarshal.isNullPointer(PFN_glDrawElementsInstancedBaseInstance)) throw new SymbolNotFoundError("Symbol not found: glDrawElementsInstancedBaseInstance");
+        try { MH_glDrawElementsInstancedBaseInstance.invokeExact(PFN_glDrawElementsInstancedBaseInstance, mode, count, type, indices, instancecount, baseinstance); }
+        catch (Throwable e) { throw new RuntimeException("error in glDrawElementsInstancedBaseInstance", e); }
     }
 
     public void DrawElementsInstancedBaseVertexBaseInstance(@CType("GLenum") int mode, @CType("GLsizei") int count, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment indices, @CType("GLsizei") int instancecount, @CType("GLint") int basevertex, @CType("GLuint") int baseinstance) {
-        if (!Unmarshal.isNullPointer(PFN_glDrawElementsInstancedBaseVertexBaseInstance)) { try {
-            MH_glDrawElementsInstancedBaseVertexBaseInstance.invokeExact(PFN_glDrawElementsInstancedBaseVertexBaseInstance, mode, count, type, indices, instancecount, basevertex, baseinstance);
-        } catch (Throwable e) { throw new RuntimeException("error in glDrawElementsInstancedBaseVertexBaseInstance", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glDrawElementsInstancedBaseVertexBaseInstance"); }
+        if (Unmarshal.isNullPointer(PFN_glDrawElementsInstancedBaseVertexBaseInstance)) throw new SymbolNotFoundError("Symbol not found: glDrawElementsInstancedBaseVertexBaseInstance");
+        try { MH_glDrawElementsInstancedBaseVertexBaseInstance.invokeExact(PFN_glDrawElementsInstancedBaseVertexBaseInstance, mode, count, type, indices, instancecount, basevertex, baseinstance); }
+        catch (Throwable e) { throw new RuntimeException("error in glDrawElementsInstancedBaseVertexBaseInstance", e); }
     }
 
 }

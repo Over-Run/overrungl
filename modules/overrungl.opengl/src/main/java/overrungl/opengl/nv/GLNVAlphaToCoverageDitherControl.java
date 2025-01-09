@@ -36,10 +36,9 @@ public final class GLNVAlphaToCoverageDitherControl {
     }
 
     public void AlphaToCoverageDitherControlNV(@CType("GLenum") int mode) {
-        if (!Unmarshal.isNullPointer(PFN_glAlphaToCoverageDitherControlNV)) { try {
-            MH_glAlphaToCoverageDitherControlNV.invokeExact(PFN_glAlphaToCoverageDitherControlNV, mode);
-        } catch (Throwable e) { throw new RuntimeException("error in glAlphaToCoverageDitherControlNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glAlphaToCoverageDitherControlNV"); }
+        if (Unmarshal.isNullPointer(PFN_glAlphaToCoverageDitherControlNV)) throw new SymbolNotFoundError("Symbol not found: glAlphaToCoverageDitherControlNV");
+        try { MH_glAlphaToCoverageDitherControlNV.invokeExact(PFN_glAlphaToCoverageDitherControlNV, mode); }
+        catch (Throwable e) { throw new RuntimeException("error in glAlphaToCoverageDitherControlNV", e); }
     }
 
 }

@@ -25,16 +25,16 @@ import overrungl.util.*;
 
 public final class GLARBMultiBind {
     public static final MethodHandle MH_glBindBuffersBase = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glBindBuffersBase;
     public static final MethodHandle MH_glBindBuffersRange = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glBindBuffersRange;
     public static final MethodHandle MH_glBindTextures = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glBindTextures;
     public static final MethodHandle MH_glBindSamplers = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glBindSamplers;
     public static final MethodHandle MH_glBindImageTextures = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glBindImageTextures;
     public static final MethodHandle MH_glBindVertexBuffers = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glBindBuffersBase;
+    public final MemorySegment PFN_glBindBuffersRange;
+    public final MemorySegment PFN_glBindTextures;
+    public final MemorySegment PFN_glBindSamplers;
+    public final MemorySegment PFN_glBindImageTextures;
     public final MemorySegment PFN_glBindVertexBuffers;
 
     public GLARBMultiBind(overrungl.opengl.GLLoadFunc func) {
@@ -47,45 +47,39 @@ public final class GLARBMultiBind {
     }
 
     public void BindBuffersBase(@CType("GLenum") int target, @CType("GLuint") int first, @CType("GLsizei") int count, @CType("const GLuint *") java.lang.foreign.MemorySegment buffers) {
-        if (!Unmarshal.isNullPointer(PFN_glBindBuffersBase)) { try {
-            MH_glBindBuffersBase.invokeExact(PFN_glBindBuffersBase, target, first, count, buffers);
-        } catch (Throwable e) { throw new RuntimeException("error in glBindBuffersBase", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glBindBuffersBase"); }
+        if (Unmarshal.isNullPointer(PFN_glBindBuffersBase)) throw new SymbolNotFoundError("Symbol not found: glBindBuffersBase");
+        try { MH_glBindBuffersBase.invokeExact(PFN_glBindBuffersBase, target, first, count, buffers); }
+        catch (Throwable e) { throw new RuntimeException("error in glBindBuffersBase", e); }
     }
 
     public void BindBuffersRange(@CType("GLenum") int target, @CType("GLuint") int first, @CType("GLsizei") int count, @CType("const GLuint *") java.lang.foreign.MemorySegment buffers, @CType("const GLintptr *") java.lang.foreign.MemorySegment offsets, @CType("const GLsizeiptr *") java.lang.foreign.MemorySegment sizes) {
-        if (!Unmarshal.isNullPointer(PFN_glBindBuffersRange)) { try {
-            MH_glBindBuffersRange.invokeExact(PFN_glBindBuffersRange, target, first, count, buffers, offsets, sizes);
-        } catch (Throwable e) { throw new RuntimeException("error in glBindBuffersRange", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glBindBuffersRange"); }
+        if (Unmarshal.isNullPointer(PFN_glBindBuffersRange)) throw new SymbolNotFoundError("Symbol not found: glBindBuffersRange");
+        try { MH_glBindBuffersRange.invokeExact(PFN_glBindBuffersRange, target, first, count, buffers, offsets, sizes); }
+        catch (Throwable e) { throw new RuntimeException("error in glBindBuffersRange", e); }
     }
 
     public void BindTextures(@CType("GLuint") int first, @CType("GLsizei") int count, @CType("const GLuint *") java.lang.foreign.MemorySegment textures) {
-        if (!Unmarshal.isNullPointer(PFN_glBindTextures)) { try {
-            MH_glBindTextures.invokeExact(PFN_glBindTextures, first, count, textures);
-        } catch (Throwable e) { throw new RuntimeException("error in glBindTextures", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glBindTextures"); }
+        if (Unmarshal.isNullPointer(PFN_glBindTextures)) throw new SymbolNotFoundError("Symbol not found: glBindTextures");
+        try { MH_glBindTextures.invokeExact(PFN_glBindTextures, first, count, textures); }
+        catch (Throwable e) { throw new RuntimeException("error in glBindTextures", e); }
     }
 
     public void BindSamplers(@CType("GLuint") int first, @CType("GLsizei") int count, @CType("const GLuint *") java.lang.foreign.MemorySegment samplers) {
-        if (!Unmarshal.isNullPointer(PFN_glBindSamplers)) { try {
-            MH_glBindSamplers.invokeExact(PFN_glBindSamplers, first, count, samplers);
-        } catch (Throwable e) { throw new RuntimeException("error in glBindSamplers", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glBindSamplers"); }
+        if (Unmarshal.isNullPointer(PFN_glBindSamplers)) throw new SymbolNotFoundError("Symbol not found: glBindSamplers");
+        try { MH_glBindSamplers.invokeExact(PFN_glBindSamplers, first, count, samplers); }
+        catch (Throwable e) { throw new RuntimeException("error in glBindSamplers", e); }
     }
 
     public void BindImageTextures(@CType("GLuint") int first, @CType("GLsizei") int count, @CType("const GLuint *") java.lang.foreign.MemorySegment textures) {
-        if (!Unmarshal.isNullPointer(PFN_glBindImageTextures)) { try {
-            MH_glBindImageTextures.invokeExact(PFN_glBindImageTextures, first, count, textures);
-        } catch (Throwable e) { throw new RuntimeException("error in glBindImageTextures", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glBindImageTextures"); }
+        if (Unmarshal.isNullPointer(PFN_glBindImageTextures)) throw new SymbolNotFoundError("Symbol not found: glBindImageTextures");
+        try { MH_glBindImageTextures.invokeExact(PFN_glBindImageTextures, first, count, textures); }
+        catch (Throwable e) { throw new RuntimeException("error in glBindImageTextures", e); }
     }
 
     public void BindVertexBuffers(@CType("GLuint") int first, @CType("GLsizei") int count, @CType("const GLuint *") java.lang.foreign.MemorySegment buffers, @CType("const GLintptr *") java.lang.foreign.MemorySegment offsets, @CType("const GLsizei *") java.lang.foreign.MemorySegment strides) {
-        if (!Unmarshal.isNullPointer(PFN_glBindVertexBuffers)) { try {
-            MH_glBindVertexBuffers.invokeExact(PFN_glBindVertexBuffers, first, count, buffers, offsets, strides);
-        } catch (Throwable e) { throw new RuntimeException("error in glBindVertexBuffers", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glBindVertexBuffers"); }
+        if (Unmarshal.isNullPointer(PFN_glBindVertexBuffers)) throw new SymbolNotFoundError("Symbol not found: glBindVertexBuffers");
+        try { MH_glBindVertexBuffers.invokeExact(PFN_glBindVertexBuffers, first, count, buffers, offsets, strides); }
+        catch (Throwable e) { throw new RuntimeException("error in glBindVertexBuffers", e); }
     }
 
 }

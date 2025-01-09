@@ -30,8 +30,8 @@ public final class GLNVVertexArrayRange {
     public static final int GL_MAX_VERTEX_ARRAY_RANGE_ELEMENT_NV = 0x8520;
     public static final int GL_VERTEX_ARRAY_RANGE_POINTER_NV = 0x8521;
     public static final MethodHandle MH_glFlushVertexArrayRangeNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
-    public final MemorySegment PFN_glFlushVertexArrayRangeNV;
     public static final MethodHandle MH_glVertexArrayRangeNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glFlushVertexArrayRangeNV;
     public final MemorySegment PFN_glVertexArrayRangeNV;
 
     public GLNVVertexArrayRange(overrungl.opengl.GLLoadFunc func) {
@@ -40,17 +40,15 @@ public final class GLNVVertexArrayRange {
     }
 
     public void FlushVertexArrayRangeNV() {
-        if (!Unmarshal.isNullPointer(PFN_glFlushVertexArrayRangeNV)) { try {
-            MH_glFlushVertexArrayRangeNV.invokeExact(PFN_glFlushVertexArrayRangeNV);
-        } catch (Throwable e) { throw new RuntimeException("error in glFlushVertexArrayRangeNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glFlushVertexArrayRangeNV"); }
+        if (Unmarshal.isNullPointer(PFN_glFlushVertexArrayRangeNV)) throw new SymbolNotFoundError("Symbol not found: glFlushVertexArrayRangeNV");
+        try { MH_glFlushVertexArrayRangeNV.invokeExact(PFN_glFlushVertexArrayRangeNV); }
+        catch (Throwable e) { throw new RuntimeException("error in glFlushVertexArrayRangeNV", e); }
     }
 
     public void VertexArrayRangeNV(@CType("GLsizei") int length, @CType("const void *") java.lang.foreign.MemorySegment pointer) {
-        if (!Unmarshal.isNullPointer(PFN_glVertexArrayRangeNV)) { try {
-            MH_glVertexArrayRangeNV.invokeExact(PFN_glVertexArrayRangeNV, length, pointer);
-        } catch (Throwable e) { throw new RuntimeException("error in glVertexArrayRangeNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glVertexArrayRangeNV"); }
+        if (Unmarshal.isNullPointer(PFN_glVertexArrayRangeNV)) throw new SymbolNotFoundError("Symbol not found: glVertexArrayRangeNV");
+        try { MH_glVertexArrayRangeNV.invokeExact(PFN_glVertexArrayRangeNV, length, pointer); }
+        catch (Throwable e) { throw new RuntimeException("error in glVertexArrayRangeNV", e); }
     }
 
 }

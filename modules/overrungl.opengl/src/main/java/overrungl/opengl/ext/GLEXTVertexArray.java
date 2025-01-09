@@ -57,22 +57,22 @@ public final class GLEXTVertexArray {
     public static final int GL_TEXTURE_COORD_ARRAY_POINTER_EXT = 0x8092;
     public static final int GL_EDGE_FLAG_ARRAY_POINTER_EXT = 0x8093;
     public static final MethodHandle MH_glArrayElementEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glArrayElementEXT;
     public static final MethodHandle MH_glColorPointerEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glColorPointerEXT;
     public static final MethodHandle MH_glDrawArraysEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glDrawArraysEXT;
     public static final MethodHandle MH_glEdgeFlagPointerEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glEdgeFlagPointerEXT;
     public static final MethodHandle MH_glGetPointervEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glGetPointervEXT;
     public static final MethodHandle MH_glIndexPointerEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glIndexPointerEXT;
     public static final MethodHandle MH_glNormalPointerEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glNormalPointerEXT;
     public static final MethodHandle MH_glTexCoordPointerEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glTexCoordPointerEXT;
     public static final MethodHandle MH_glVertexPointerEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glArrayElementEXT;
+    public final MemorySegment PFN_glColorPointerEXT;
+    public final MemorySegment PFN_glDrawArraysEXT;
+    public final MemorySegment PFN_glEdgeFlagPointerEXT;
+    public final MemorySegment PFN_glGetPointervEXT;
+    public final MemorySegment PFN_glIndexPointerEXT;
+    public final MemorySegment PFN_glNormalPointerEXT;
+    public final MemorySegment PFN_glTexCoordPointerEXT;
     public final MemorySegment PFN_glVertexPointerEXT;
 
     public GLEXTVertexArray(overrungl.opengl.GLLoadFunc func) {
@@ -88,66 +88,57 @@ public final class GLEXTVertexArray {
     }
 
     public void ArrayElementEXT(@CType("GLint") int i) {
-        if (!Unmarshal.isNullPointer(PFN_glArrayElementEXT)) { try {
-            MH_glArrayElementEXT.invokeExact(PFN_glArrayElementEXT, i);
-        } catch (Throwable e) { throw new RuntimeException("error in glArrayElementEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glArrayElementEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glArrayElementEXT)) throw new SymbolNotFoundError("Symbol not found: glArrayElementEXT");
+        try { MH_glArrayElementEXT.invokeExact(PFN_glArrayElementEXT, i); }
+        catch (Throwable e) { throw new RuntimeException("error in glArrayElementEXT", e); }
     }
 
     public void ColorPointerEXT(@CType("GLint") int size, @CType("GLenum") int type, @CType("GLsizei") int stride, @CType("GLsizei") int count, @CType("const void *") java.lang.foreign.MemorySegment pointer) {
-        if (!Unmarshal.isNullPointer(PFN_glColorPointerEXT)) { try {
-            MH_glColorPointerEXT.invokeExact(PFN_glColorPointerEXT, size, type, stride, count, pointer);
-        } catch (Throwable e) { throw new RuntimeException("error in glColorPointerEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glColorPointerEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glColorPointerEXT)) throw new SymbolNotFoundError("Symbol not found: glColorPointerEXT");
+        try { MH_glColorPointerEXT.invokeExact(PFN_glColorPointerEXT, size, type, stride, count, pointer); }
+        catch (Throwable e) { throw new RuntimeException("error in glColorPointerEXT", e); }
     }
 
     public void DrawArraysEXT(@CType("GLenum") int mode, @CType("GLint") int first, @CType("GLsizei") int count) {
-        if (!Unmarshal.isNullPointer(PFN_glDrawArraysEXT)) { try {
-            MH_glDrawArraysEXT.invokeExact(PFN_glDrawArraysEXT, mode, first, count);
-        } catch (Throwable e) { throw new RuntimeException("error in glDrawArraysEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glDrawArraysEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glDrawArraysEXT)) throw new SymbolNotFoundError("Symbol not found: glDrawArraysEXT");
+        try { MH_glDrawArraysEXT.invokeExact(PFN_glDrawArraysEXT, mode, first, count); }
+        catch (Throwable e) { throw new RuntimeException("error in glDrawArraysEXT", e); }
     }
 
     public void EdgeFlagPointerEXT(@CType("GLsizei") int stride, @CType("GLsizei") int count, @CType("const GLboolean *") java.lang.foreign.MemorySegment pointer) {
-        if (!Unmarshal.isNullPointer(PFN_glEdgeFlagPointerEXT)) { try {
-            MH_glEdgeFlagPointerEXT.invokeExact(PFN_glEdgeFlagPointerEXT, stride, count, pointer);
-        } catch (Throwable e) { throw new RuntimeException("error in glEdgeFlagPointerEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glEdgeFlagPointerEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glEdgeFlagPointerEXT)) throw new SymbolNotFoundError("Symbol not found: glEdgeFlagPointerEXT");
+        try { MH_glEdgeFlagPointerEXT.invokeExact(PFN_glEdgeFlagPointerEXT, stride, count, pointer); }
+        catch (Throwable e) { throw new RuntimeException("error in glEdgeFlagPointerEXT", e); }
     }
 
     public void GetPointervEXT(@CType("GLenum") int pname, @CType("void **") java.lang.foreign.MemorySegment params) {
-        if (!Unmarshal.isNullPointer(PFN_glGetPointervEXT)) { try {
-            MH_glGetPointervEXT.invokeExact(PFN_glGetPointervEXT, pname, params);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetPointervEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetPointervEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glGetPointervEXT)) throw new SymbolNotFoundError("Symbol not found: glGetPointervEXT");
+        try { MH_glGetPointervEXT.invokeExact(PFN_glGetPointervEXT, pname, params); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetPointervEXT", e); }
     }
 
     public void IndexPointerEXT(@CType("GLenum") int type, @CType("GLsizei") int stride, @CType("GLsizei") int count, @CType("const void *") java.lang.foreign.MemorySegment pointer) {
-        if (!Unmarshal.isNullPointer(PFN_glIndexPointerEXT)) { try {
-            MH_glIndexPointerEXT.invokeExact(PFN_glIndexPointerEXT, type, stride, count, pointer);
-        } catch (Throwable e) { throw new RuntimeException("error in glIndexPointerEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glIndexPointerEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glIndexPointerEXT)) throw new SymbolNotFoundError("Symbol not found: glIndexPointerEXT");
+        try { MH_glIndexPointerEXT.invokeExact(PFN_glIndexPointerEXT, type, stride, count, pointer); }
+        catch (Throwable e) { throw new RuntimeException("error in glIndexPointerEXT", e); }
     }
 
     public void NormalPointerEXT(@CType("GLenum") int type, @CType("GLsizei") int stride, @CType("GLsizei") int count, @CType("const void *") java.lang.foreign.MemorySegment pointer) {
-        if (!Unmarshal.isNullPointer(PFN_glNormalPointerEXT)) { try {
-            MH_glNormalPointerEXT.invokeExact(PFN_glNormalPointerEXT, type, stride, count, pointer);
-        } catch (Throwable e) { throw new RuntimeException("error in glNormalPointerEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glNormalPointerEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glNormalPointerEXT)) throw new SymbolNotFoundError("Symbol not found: glNormalPointerEXT");
+        try { MH_glNormalPointerEXT.invokeExact(PFN_glNormalPointerEXT, type, stride, count, pointer); }
+        catch (Throwable e) { throw new RuntimeException("error in glNormalPointerEXT", e); }
     }
 
     public void TexCoordPointerEXT(@CType("GLint") int size, @CType("GLenum") int type, @CType("GLsizei") int stride, @CType("GLsizei") int count, @CType("const void *") java.lang.foreign.MemorySegment pointer) {
-        if (!Unmarshal.isNullPointer(PFN_glTexCoordPointerEXT)) { try {
-            MH_glTexCoordPointerEXT.invokeExact(PFN_glTexCoordPointerEXT, size, type, stride, count, pointer);
-        } catch (Throwable e) { throw new RuntimeException("error in glTexCoordPointerEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glTexCoordPointerEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glTexCoordPointerEXT)) throw new SymbolNotFoundError("Symbol not found: glTexCoordPointerEXT");
+        try { MH_glTexCoordPointerEXT.invokeExact(PFN_glTexCoordPointerEXT, size, type, stride, count, pointer); }
+        catch (Throwable e) { throw new RuntimeException("error in glTexCoordPointerEXT", e); }
     }
 
     public void VertexPointerEXT(@CType("GLint") int size, @CType("GLenum") int type, @CType("GLsizei") int stride, @CType("GLsizei") int count, @CType("const void *") java.lang.foreign.MemorySegment pointer) {
-        if (!Unmarshal.isNullPointer(PFN_glVertexPointerEXT)) { try {
-            MH_glVertexPointerEXT.invokeExact(PFN_glVertexPointerEXT, size, type, stride, count, pointer);
-        } catch (Throwable e) { throw new RuntimeException("error in glVertexPointerEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glVertexPointerEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glVertexPointerEXT)) throw new SymbolNotFoundError("Symbol not found: glVertexPointerEXT");
+        try { MH_glVertexPointerEXT.invokeExact(PFN_glVertexPointerEXT, size, type, stride, count, pointer); }
+        catch (Throwable e) { throw new RuntimeException("error in glVertexPointerEXT", e); }
     }
 
 }

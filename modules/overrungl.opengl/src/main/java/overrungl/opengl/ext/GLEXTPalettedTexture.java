@@ -32,12 +32,12 @@ public final class GLEXTPalettedTexture {
     public static final int GL_COLOR_INDEX16_EXT = 0x80E7;
     public static final int GL_TEXTURE_INDEX_SIZE_EXT = 0x80ED;
     public static final MethodHandle MH_glColorTableEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glColorTableEXT;
     public static final MethodHandle MH_glGetColorTableEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glGetColorTableEXT;
     public static final MethodHandle MH_glGetColorTableParameterivEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glGetColorTableParameterivEXT;
     public static final MethodHandle MH_glGetColorTableParameterfvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glColorTableEXT;
+    public final MemorySegment PFN_glGetColorTableEXT;
+    public final MemorySegment PFN_glGetColorTableParameterivEXT;
     public final MemorySegment PFN_glGetColorTableParameterfvEXT;
 
     public GLEXTPalettedTexture(overrungl.opengl.GLLoadFunc func) {
@@ -48,31 +48,27 @@ public final class GLEXTPalettedTexture {
     }
 
     public void ColorTableEXT(@CType("GLenum") int target, @CType("GLenum") int internalFormat, @CType("GLsizei") int width, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment table) {
-        if (!Unmarshal.isNullPointer(PFN_glColorTableEXT)) { try {
-            MH_glColorTableEXT.invokeExact(PFN_glColorTableEXT, target, internalFormat, width, format, type, table);
-        } catch (Throwable e) { throw new RuntimeException("error in glColorTableEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glColorTableEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glColorTableEXT)) throw new SymbolNotFoundError("Symbol not found: glColorTableEXT");
+        try { MH_glColorTableEXT.invokeExact(PFN_glColorTableEXT, target, internalFormat, width, format, type, table); }
+        catch (Throwable e) { throw new RuntimeException("error in glColorTableEXT", e); }
     }
 
     public void GetColorTableEXT(@CType("GLenum") int target, @CType("GLenum") int format, @CType("GLenum") int type, @CType("void*") java.lang.foreign.MemorySegment data) {
-        if (!Unmarshal.isNullPointer(PFN_glGetColorTableEXT)) { try {
-            MH_glGetColorTableEXT.invokeExact(PFN_glGetColorTableEXT, target, format, type, data);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetColorTableEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetColorTableEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glGetColorTableEXT)) throw new SymbolNotFoundError("Symbol not found: glGetColorTableEXT");
+        try { MH_glGetColorTableEXT.invokeExact(PFN_glGetColorTableEXT, target, format, type, data); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetColorTableEXT", e); }
     }
 
     public void GetColorTableParameterivEXT(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        if (!Unmarshal.isNullPointer(PFN_glGetColorTableParameterivEXT)) { try {
-            MH_glGetColorTableParameterivEXT.invokeExact(PFN_glGetColorTableParameterivEXT, target, pname, params);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetColorTableParameterivEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetColorTableParameterivEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glGetColorTableParameterivEXT)) throw new SymbolNotFoundError("Symbol not found: glGetColorTableParameterivEXT");
+        try { MH_glGetColorTableParameterivEXT.invokeExact(PFN_glGetColorTableParameterivEXT, target, pname, params); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetColorTableParameterivEXT", e); }
     }
 
     public void GetColorTableParameterfvEXT(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
-        if (!Unmarshal.isNullPointer(PFN_glGetColorTableParameterfvEXT)) { try {
-            MH_glGetColorTableParameterfvEXT.invokeExact(PFN_glGetColorTableParameterfvEXT, target, pname, params);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetColorTableParameterfvEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetColorTableParameterfvEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glGetColorTableParameterfvEXT)) throw new SymbolNotFoundError("Symbol not found: glGetColorTableParameterfvEXT");
+        try { MH_glGetColorTableParameterfvEXT.invokeExact(PFN_glGetColorTableParameterfvEXT, target, pname, params); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetColorTableParameterfvEXT", e); }
     }
 
 }

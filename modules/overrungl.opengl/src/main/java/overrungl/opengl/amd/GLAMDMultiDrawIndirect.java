@@ -25,8 +25,8 @@ import overrungl.util.*;
 
 public final class GLAMDMultiDrawIndirect {
     public static final MethodHandle MH_glMultiDrawArraysIndirectAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glMultiDrawArraysIndirectAMD;
     public static final MethodHandle MH_glMultiDrawElementsIndirectAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+    public final MemorySegment PFN_glMultiDrawArraysIndirectAMD;
     public final MemorySegment PFN_glMultiDrawElementsIndirectAMD;
 
     public GLAMDMultiDrawIndirect(overrungl.opengl.GLLoadFunc func) {
@@ -35,17 +35,15 @@ public final class GLAMDMultiDrawIndirect {
     }
 
     public void MultiDrawArraysIndirectAMD(@CType("GLenum") int mode, @CType("const void *") java.lang.foreign.MemorySegment indirect, @CType("GLsizei") int primcount, @CType("GLsizei") int stride) {
-        if (!Unmarshal.isNullPointer(PFN_glMultiDrawArraysIndirectAMD)) { try {
-            MH_glMultiDrawArraysIndirectAMD.invokeExact(PFN_glMultiDrawArraysIndirectAMD, mode, indirect, primcount, stride);
-        } catch (Throwable e) { throw new RuntimeException("error in glMultiDrawArraysIndirectAMD", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glMultiDrawArraysIndirectAMD"); }
+        if (Unmarshal.isNullPointer(PFN_glMultiDrawArraysIndirectAMD)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawArraysIndirectAMD");
+        try { MH_glMultiDrawArraysIndirectAMD.invokeExact(PFN_glMultiDrawArraysIndirectAMD, mode, indirect, primcount, stride); }
+        catch (Throwable e) { throw new RuntimeException("error in glMultiDrawArraysIndirectAMD", e); }
     }
 
     public void MultiDrawElementsIndirectAMD(@CType("GLenum") int mode, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment indirect, @CType("GLsizei") int primcount, @CType("GLsizei") int stride) {
-        if (!Unmarshal.isNullPointer(PFN_glMultiDrawElementsIndirectAMD)) { try {
-            MH_glMultiDrawElementsIndirectAMD.invokeExact(PFN_glMultiDrawElementsIndirectAMD, mode, type, indirect, primcount, stride);
-        } catch (Throwable e) { throw new RuntimeException("error in glMultiDrawElementsIndirectAMD", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glMultiDrawElementsIndirectAMD"); }
+        if (Unmarshal.isNullPointer(PFN_glMultiDrawElementsIndirectAMD)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawElementsIndirectAMD");
+        try { MH_glMultiDrawElementsIndirectAMD.invokeExact(PFN_glMultiDrawElementsIndirectAMD, mode, type, indirect, primcount, stride); }
+        catch (Throwable e) { throw new RuntimeException("error in glMultiDrawElementsIndirectAMD", e); }
     }
 
 }

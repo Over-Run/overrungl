@@ -43,8 +43,8 @@ public final class GLARBComputeShader {
     public static final int GL_DISPATCH_INDIRECT_BUFFER_BINDING = 0x90EF;
     public static final int GL_COMPUTE_SHADER_BIT = 0x00000020;
     public static final MethodHandle MH_glDispatchCompute = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glDispatchCompute;
     public static final MethodHandle MH_glDispatchComputeIndirect = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG));
+    public final MemorySegment PFN_glDispatchCompute;
     public final MemorySegment PFN_glDispatchComputeIndirect;
 
     public GLARBComputeShader(overrungl.opengl.GLLoadFunc func) {
@@ -53,17 +53,15 @@ public final class GLARBComputeShader {
     }
 
     public void DispatchCompute(@CType("GLuint") int num_groups_x, @CType("GLuint") int num_groups_y, @CType("GLuint") int num_groups_z) {
-        if (!Unmarshal.isNullPointer(PFN_glDispatchCompute)) { try {
-            MH_glDispatchCompute.invokeExact(PFN_glDispatchCompute, num_groups_x, num_groups_y, num_groups_z);
-        } catch (Throwable e) { throw new RuntimeException("error in glDispatchCompute", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glDispatchCompute"); }
+        if (Unmarshal.isNullPointer(PFN_glDispatchCompute)) throw new SymbolNotFoundError("Symbol not found: glDispatchCompute");
+        try { MH_glDispatchCompute.invokeExact(PFN_glDispatchCompute, num_groups_x, num_groups_y, num_groups_z); }
+        catch (Throwable e) { throw new RuntimeException("error in glDispatchCompute", e); }
     }
 
     public void DispatchComputeIndirect(@CType("GLintptr") long indirect) {
-        if (!Unmarshal.isNullPointer(PFN_glDispatchComputeIndirect)) { try {
-            MH_glDispatchComputeIndirect.invokeExact(PFN_glDispatchComputeIndirect, indirect);
-        } catch (Throwable e) { throw new RuntimeException("error in glDispatchComputeIndirect", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glDispatchComputeIndirect"); }
+        if (Unmarshal.isNullPointer(PFN_glDispatchComputeIndirect)) throw new SymbolNotFoundError("Symbol not found: glDispatchComputeIndirect");
+        try { MH_glDispatchComputeIndirect.invokeExact(PFN_glDispatchComputeIndirect, indirect); }
+        catch (Throwable e) { throw new RuntimeException("error in glDispatchComputeIndirect", e); }
     }
 
 }

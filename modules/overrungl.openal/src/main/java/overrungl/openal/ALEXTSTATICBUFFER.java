@@ -36,11 +36,10 @@ public final class ALEXTSTATICBUFFER {
     //endregion
 
     public static void alBufferDataStatic(@CType("const ALuint") int buffer, @CType("ALenum") int format, @CType("ALvoid *") java.lang.foreign.MemorySegment data, @CType("ALsizei") int size, @CType("ALsizei") int freq) {
-        if (Handles.MH_alBufferDataStatic != null) {
+        if (Handles.MH_alBufferDataStatic == null) throw new SymbolNotFoundError("Symbol not found: alBufferDataStatic");
         try {
             Handles.MH_alBufferDataStatic.invokeExact(buffer, format, data, size, freq);
         } catch (Throwable e) { throw new RuntimeException("error in alBufferDataStatic", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alBufferDataStatic"); }
     }
 
     //@formatter:on

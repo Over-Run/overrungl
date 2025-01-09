@@ -27,10 +27,10 @@ public final class GLARBSparseBuffer {
     public static final int GL_SPARSE_STORAGE_BIT_ARB = 0x0400;
     public static final int GL_SPARSE_BUFFER_PAGE_SIZE_ARB = 0x82F8;
     public static final MethodHandle MH_glBufferPageCommitmentARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_BOOLEAN));
-    public final MemorySegment PFN_glBufferPageCommitmentARB;
     public static final MethodHandle MH_glNamedBufferPageCommitmentEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_BOOLEAN));
-    public final MemorySegment PFN_glNamedBufferPageCommitmentEXT;
     public static final MethodHandle MH_glNamedBufferPageCommitmentARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_BOOLEAN));
+    public final MemorySegment PFN_glBufferPageCommitmentARB;
+    public final MemorySegment PFN_glNamedBufferPageCommitmentEXT;
     public final MemorySegment PFN_glNamedBufferPageCommitmentARB;
 
     public GLARBSparseBuffer(overrungl.opengl.GLLoadFunc func) {
@@ -38,24 +38,21 @@ public final class GLARBSparseBuffer {
     }
 
     public void BufferPageCommitmentARB(@CType("GLenum") int target, @CType("GLintptr") long offset, @CType("GLsizeiptr") long size, @CType("GLboolean") boolean commit) {
-        if (!Unmarshal.isNullPointer(PFN_glBufferPageCommitmentARB)) { try {
-            MH_glBufferPageCommitmentARB.invokeExact(PFN_glBufferPageCommitmentARB, target, offset, size, commit);
-        } catch (Throwable e) { throw new RuntimeException("error in glBufferPageCommitmentARB", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glBufferPageCommitmentARB"); }
+        if (Unmarshal.isNullPointer(PFN_glBufferPageCommitmentARB)) throw new SymbolNotFoundError("Symbol not found: glBufferPageCommitmentARB");
+        try { MH_glBufferPageCommitmentARB.invokeExact(PFN_glBufferPageCommitmentARB, target, offset, size, commit); }
+        catch (Throwable e) { throw new RuntimeException("error in glBufferPageCommitmentARB", e); }
     }
 
     public void NamedBufferPageCommitmentEXT(@CType("GLuint") int buffer, @CType("GLintptr") long offset, @CType("GLsizeiptr") long size, @CType("GLboolean") boolean commit) {
-        if (!Unmarshal.isNullPointer(PFN_glNamedBufferPageCommitmentEXT)) { try {
-            MH_glNamedBufferPageCommitmentEXT.invokeExact(PFN_glNamedBufferPageCommitmentEXT, buffer, offset, size, commit);
-        } catch (Throwable e) { throw new RuntimeException("error in glNamedBufferPageCommitmentEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glNamedBufferPageCommitmentEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glNamedBufferPageCommitmentEXT)) throw new SymbolNotFoundError("Symbol not found: glNamedBufferPageCommitmentEXT");
+        try { MH_glNamedBufferPageCommitmentEXT.invokeExact(PFN_glNamedBufferPageCommitmentEXT, buffer, offset, size, commit); }
+        catch (Throwable e) { throw new RuntimeException("error in glNamedBufferPageCommitmentEXT", e); }
     }
 
     public void NamedBufferPageCommitmentARB(@CType("GLuint") int buffer, @CType("GLintptr") long offset, @CType("GLsizeiptr") long size, @CType("GLboolean") boolean commit) {
-        if (!Unmarshal.isNullPointer(PFN_glNamedBufferPageCommitmentARB)) { try {
-            MH_glNamedBufferPageCommitmentARB.invokeExact(PFN_glNamedBufferPageCommitmentARB, buffer, offset, size, commit);
-        } catch (Throwable e) { throw new RuntimeException("error in glNamedBufferPageCommitmentARB", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glNamedBufferPageCommitmentARB"); }
+        if (Unmarshal.isNullPointer(PFN_glNamedBufferPageCommitmentARB)) throw new SymbolNotFoundError("Symbol not found: glNamedBufferPageCommitmentARB");
+        try { MH_glNamedBufferPageCommitmentARB.invokeExact(PFN_glNamedBufferPageCommitmentARB, buffer, offset, size, commit); }
+        catch (Throwable e) { throw new RuntimeException("error in glNamedBufferPageCommitmentARB", e); }
     }
 
 }

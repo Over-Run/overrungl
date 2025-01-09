@@ -50,19 +50,17 @@ public final class ALCSOFTHRTF {
     //endregion
 
     public static @CType("const ALCchar*") java.lang.foreign.MemorySegment alcGetStringiSOFT(@CType("ALCdevice *") java.lang.foreign.MemorySegment device, @CType("ALCenum") int paramName, @CType("ALCsizei") int index) {
-        if (Handles.MH_alcGetStringiSOFT != null) {
+        if (Handles.MH_alcGetStringiSOFT == null) throw new SymbolNotFoundError("Symbol not found: alcGetStringiSOFT");
         try {
             return (java.lang.foreign.MemorySegment) Handles.MH_alcGetStringiSOFT.invokeExact(device, paramName, index);
         } catch (Throwable e) { throw new RuntimeException("error in alcGetStringiSOFT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alcGetStringiSOFT"); }
     }
 
     public static @CType("ALCboolean") boolean alcResetDeviceSOFT(@CType("ALCdevice *") java.lang.foreign.MemorySegment device, @CType("const ALCint *") java.lang.foreign.MemorySegment attribs) {
-        if (Handles.MH_alcResetDeviceSOFT != null) {
+        if (Handles.MH_alcResetDeviceSOFT == null) throw new SymbolNotFoundError("Symbol not found: alcResetDeviceSOFT");
         try {
             return (boolean) Handles.MH_alcResetDeviceSOFT.invokeExact(device, attribs);
         } catch (Throwable e) { throw new RuntimeException("error in alcResetDeviceSOFT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alcResetDeviceSOFT"); }
     }
 
     //@formatter:on

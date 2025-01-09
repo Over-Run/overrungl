@@ -38,19 +38,17 @@ public final class ALCEXTThreadLocalContext {
     //endregion
 
     public static @CType("ALCboolean") boolean alcSetThreadContext(@CType("ALCcontext *") java.lang.foreign.MemorySegment context) {
-        if (Handles.MH_alcSetThreadContext != null) {
+        if (Handles.MH_alcSetThreadContext == null) throw new SymbolNotFoundError("Symbol not found: alcSetThreadContext");
         try {
             return (boolean) Handles.MH_alcSetThreadContext.invokeExact(context);
         } catch (Throwable e) { throw new RuntimeException("error in alcSetThreadContext", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alcSetThreadContext"); }
     }
 
     public static @CType("ALCcontext *") java.lang.foreign.MemorySegment alcGetThreadContext() {
-        if (Handles.MH_alcGetThreadContext != null) {
+        if (Handles.MH_alcGetThreadContext == null) throw new SymbolNotFoundError("Symbol not found: alcGetThreadContext");
         try {
             return (java.lang.foreign.MemorySegment) Handles.MH_alcGetThreadContext.invokeExact();
         } catch (Throwable e) { throw new RuntimeException("error in alcGetThreadContext", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alcGetThreadContext"); }
     }
 
     //@formatter:on

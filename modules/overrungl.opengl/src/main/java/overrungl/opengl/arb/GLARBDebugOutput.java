@@ -47,12 +47,12 @@ public final class GLARBDebugOutput {
     public static final int GL_DEBUG_SEVERITY_MEDIUM_ARB = 0x9147;
     public static final int GL_DEBUG_SEVERITY_LOW_ARB = 0x9148;
     public static final MethodHandle MH_glDebugMessageControlARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN));
-    public final MemorySegment PFN_glDebugMessageControlARB;
     public static final MethodHandle MH_glDebugMessageInsertARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glDebugMessageInsertARB;
     public static final MethodHandle MH_glDebugMessageCallbackARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glDebugMessageCallbackARB;
     public static final MethodHandle MH_glGetDebugMessageLogARB = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glDebugMessageControlARB;
+    public final MemorySegment PFN_glDebugMessageInsertARB;
+    public final MemorySegment PFN_glDebugMessageCallbackARB;
     public final MemorySegment PFN_glGetDebugMessageLogARB;
 
     public GLARBDebugOutput(overrungl.opengl.GLLoadFunc func) {
@@ -63,31 +63,27 @@ public final class GLARBDebugOutput {
     }
 
     public void DebugMessageControlARB(@CType("GLenum") int source, @CType("GLenum") int type, @CType("GLenum") int severity, @CType("GLsizei") int count, @CType("const GLuint *") java.lang.foreign.MemorySegment ids, @CType("GLboolean") boolean enabled) {
-        if (!Unmarshal.isNullPointer(PFN_glDebugMessageControlARB)) { try {
-            MH_glDebugMessageControlARB.invokeExact(PFN_glDebugMessageControlARB, source, type, severity, count, ids, enabled);
-        } catch (Throwable e) { throw new RuntimeException("error in glDebugMessageControlARB", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glDebugMessageControlARB"); }
+        if (Unmarshal.isNullPointer(PFN_glDebugMessageControlARB)) throw new SymbolNotFoundError("Symbol not found: glDebugMessageControlARB");
+        try { MH_glDebugMessageControlARB.invokeExact(PFN_glDebugMessageControlARB, source, type, severity, count, ids, enabled); }
+        catch (Throwable e) { throw new RuntimeException("error in glDebugMessageControlARB", e); }
     }
 
     public void DebugMessageInsertARB(@CType("GLenum") int source, @CType("GLenum") int type, @CType("GLuint") int id, @CType("GLenum") int severity, @CType("GLsizei") int length, @CType("const GLchar *") java.lang.foreign.MemorySegment buf) {
-        if (!Unmarshal.isNullPointer(PFN_glDebugMessageInsertARB)) { try {
-            MH_glDebugMessageInsertARB.invokeExact(PFN_glDebugMessageInsertARB, source, type, id, severity, length, buf);
-        } catch (Throwable e) { throw new RuntimeException("error in glDebugMessageInsertARB", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glDebugMessageInsertARB"); }
+        if (Unmarshal.isNullPointer(PFN_glDebugMessageInsertARB)) throw new SymbolNotFoundError("Symbol not found: glDebugMessageInsertARB");
+        try { MH_glDebugMessageInsertARB.invokeExact(PFN_glDebugMessageInsertARB, source, type, id, severity, length, buf); }
+        catch (Throwable e) { throw new RuntimeException("error in glDebugMessageInsertARB", e); }
     }
 
     public void DebugMessageCallbackARB(@CType("GLDEBUGPROCARB") java.lang.foreign.MemorySegment callback, @CType("const void *") java.lang.foreign.MemorySegment userParam) {
-        if (!Unmarshal.isNullPointer(PFN_glDebugMessageCallbackARB)) { try {
-            MH_glDebugMessageCallbackARB.invokeExact(PFN_glDebugMessageCallbackARB, callback, userParam);
-        } catch (Throwable e) { throw new RuntimeException("error in glDebugMessageCallbackARB", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glDebugMessageCallbackARB"); }
+        if (Unmarshal.isNullPointer(PFN_glDebugMessageCallbackARB)) throw new SymbolNotFoundError("Symbol not found: glDebugMessageCallbackARB");
+        try { MH_glDebugMessageCallbackARB.invokeExact(PFN_glDebugMessageCallbackARB, callback, userParam); }
+        catch (Throwable e) { throw new RuntimeException("error in glDebugMessageCallbackARB", e); }
     }
 
     public @CType("GLuint") int GetDebugMessageLogARB(@CType("GLuint") int count, @CType("GLsizei") int bufSize, @CType("GLenum *") java.lang.foreign.MemorySegment sources, @CType("GLenum *") java.lang.foreign.MemorySegment types, @CType("GLuint *") java.lang.foreign.MemorySegment ids, @CType("GLenum *") java.lang.foreign.MemorySegment severities, @CType("GLsizei *") java.lang.foreign.MemorySegment lengths, @CType("GLchar *") java.lang.foreign.MemorySegment messageLog) {
-        if (!Unmarshal.isNullPointer(PFN_glGetDebugMessageLogARB)) { try {
-            return (int) MH_glGetDebugMessageLogARB.invokeExact(PFN_glGetDebugMessageLogARB, count, bufSize, sources, types, ids, severities, lengths, messageLog);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetDebugMessageLogARB", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetDebugMessageLogARB"); }
+        if (Unmarshal.isNullPointer(PFN_glGetDebugMessageLogARB)) throw new SymbolNotFoundError("Symbol not found: glGetDebugMessageLogARB");
+        try { return (int) MH_glGetDebugMessageLogARB.invokeExact(PFN_glGetDebugMessageLogARB, count, bufSize, sources, types, ids, severities, lengths, messageLog); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetDebugMessageLogARB", e); }
     }
 
 }

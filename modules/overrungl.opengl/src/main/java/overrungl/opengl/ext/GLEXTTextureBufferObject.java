@@ -37,10 +37,9 @@ public final class GLEXTTextureBufferObject {
     }
 
     public void TexBufferEXT(@CType("GLenum") int target, @CType("GLenum") int internalformat, @CType("GLuint") int buffer) {
-        if (!Unmarshal.isNullPointer(PFN_glTexBufferEXT)) { try {
-            MH_glTexBufferEXT.invokeExact(PFN_glTexBufferEXT, target, internalformat, buffer);
-        } catch (Throwable e) { throw new RuntimeException("error in glTexBufferEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glTexBufferEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glTexBufferEXT)) throw new SymbolNotFoundError("Symbol not found: glTexBufferEXT");
+        try { MH_glTexBufferEXT.invokeExact(PFN_glTexBufferEXT, target, internalformat, buffer); }
+        catch (Throwable e) { throw new RuntimeException("error in glTexBufferEXT", e); }
     }
 
 }

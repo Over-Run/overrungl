@@ -55,30 +55,30 @@ public sealed class GL11 extends GL10 permits GL12 {
     public static final int GL_RGBA12 = 0x805A;
     public static final int GL_RGBA16 = 0x805B;
     public static final MethodHandle MH_glDrawArrays = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glDrawArrays;
     public static final MethodHandle MH_glDrawElements = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glDrawElements;
     public static final MethodHandle MH_glPolygonOffset = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
-    public final MemorySegment PFN_glPolygonOffset;
     public static final MethodHandle MH_glCopyTexImage1D = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glCopyTexImage1D;
     public static final MethodHandle MH_glCopyTexImage2D = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glCopyTexImage2D;
     public static final MethodHandle MH_glCopyTexSubImage1D = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glCopyTexSubImage1D;
     public static final MethodHandle MH_glCopyTexSubImage2D = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glCopyTexSubImage2D;
     public static final MethodHandle MH_glTexSubImage1D = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glTexSubImage1D;
     public static final MethodHandle MH_glTexSubImage2D = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glTexSubImage2D;
     public static final MethodHandle MH_glBindTexture = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glBindTexture;
     public static final MethodHandle MH_glDeleteTextures = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glDeleteTextures;
     public static final MethodHandle MH_glGenTextures = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glGenTextures;
     public static final MethodHandle MH_glIsTexture = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
+    public final MemorySegment PFN_glDrawArrays;
+    public final MemorySegment PFN_glDrawElements;
+    public final MemorySegment PFN_glPolygonOffset;
+    public final MemorySegment PFN_glCopyTexImage1D;
+    public final MemorySegment PFN_glCopyTexImage2D;
+    public final MemorySegment PFN_glCopyTexSubImage1D;
+    public final MemorySegment PFN_glCopyTexSubImage2D;
+    public final MemorySegment PFN_glTexSubImage1D;
+    public final MemorySegment PFN_glTexSubImage2D;
+    public final MemorySegment PFN_glBindTexture;
+    public final MemorySegment PFN_glDeleteTextures;
+    public final MemorySegment PFN_glGenTextures;
     public final MemorySegment PFN_glIsTexture;
 
     public GL11(GLLoadFunc func) {
@@ -99,94 +99,81 @@ public sealed class GL11 extends GL10 permits GL12 {
     }
 
     public void DrawArrays(@CType("GLenum") int mode, @CType("GLint") int first, @CType("GLsizei") int count) {
-        if (!Unmarshal.isNullPointer(PFN_glDrawArrays)) { try {
-            MH_glDrawArrays.invokeExact(PFN_glDrawArrays, mode, first, count);
-        } catch (Throwable e) { throw new RuntimeException("error in glDrawArrays", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glDrawArrays"); }
+        if (Unmarshal.isNullPointer(PFN_glDrawArrays)) throw new SymbolNotFoundError("Symbol not found: glDrawArrays");
+        try { MH_glDrawArrays.invokeExact(PFN_glDrawArrays, mode, first, count); }
+        catch (Throwable e) { throw new RuntimeException("error in glDrawArrays", e); }
     }
 
     public void DrawElements(@CType("GLenum") int mode, @CType("GLsizei") int count, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment indices) {
-        if (!Unmarshal.isNullPointer(PFN_glDrawElements)) { try {
-            MH_glDrawElements.invokeExact(PFN_glDrawElements, mode, count, type, indices);
-        } catch (Throwable e) { throw new RuntimeException("error in glDrawElements", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glDrawElements"); }
+        if (Unmarshal.isNullPointer(PFN_glDrawElements)) throw new SymbolNotFoundError("Symbol not found: glDrawElements");
+        try { MH_glDrawElements.invokeExact(PFN_glDrawElements, mode, count, type, indices); }
+        catch (Throwable e) { throw new RuntimeException("error in glDrawElements", e); }
     }
 
     public void PolygonOffset(@CType("GLfloat") float factor, @CType("GLfloat") float units) {
-        if (!Unmarshal.isNullPointer(PFN_glPolygonOffset)) { try {
-            MH_glPolygonOffset.invokeExact(PFN_glPolygonOffset, factor, units);
-        } catch (Throwable e) { throw new RuntimeException("error in glPolygonOffset", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glPolygonOffset"); }
+        if (Unmarshal.isNullPointer(PFN_glPolygonOffset)) throw new SymbolNotFoundError("Symbol not found: glPolygonOffset");
+        try { MH_glPolygonOffset.invokeExact(PFN_glPolygonOffset, factor, units); }
+        catch (Throwable e) { throw new RuntimeException("error in glPolygonOffset", e); }
     }
 
     public void CopyTexImage1D(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLenum") int internalformat, @CType("GLint") int x, @CType("GLint") int y, @CType("GLsizei") int width, @CType("GLint") int border) {
-        if (!Unmarshal.isNullPointer(PFN_glCopyTexImage1D)) { try {
-            MH_glCopyTexImage1D.invokeExact(PFN_glCopyTexImage1D, target, level, internalformat, x, y, width, border);
-        } catch (Throwable e) { throw new RuntimeException("error in glCopyTexImage1D", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glCopyTexImage1D"); }
+        if (Unmarshal.isNullPointer(PFN_glCopyTexImage1D)) throw new SymbolNotFoundError("Symbol not found: glCopyTexImage1D");
+        try { MH_glCopyTexImage1D.invokeExact(PFN_glCopyTexImage1D, target, level, internalformat, x, y, width, border); }
+        catch (Throwable e) { throw new RuntimeException("error in glCopyTexImage1D", e); }
     }
 
     public void CopyTexImage2D(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLenum") int internalformat, @CType("GLint") int x, @CType("GLint") int y, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLint") int border) {
-        if (!Unmarshal.isNullPointer(PFN_glCopyTexImage2D)) { try {
-            MH_glCopyTexImage2D.invokeExact(PFN_glCopyTexImage2D, target, level, internalformat, x, y, width, height, border);
-        } catch (Throwable e) { throw new RuntimeException("error in glCopyTexImage2D", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glCopyTexImage2D"); }
+        if (Unmarshal.isNullPointer(PFN_glCopyTexImage2D)) throw new SymbolNotFoundError("Symbol not found: glCopyTexImage2D");
+        try { MH_glCopyTexImage2D.invokeExact(PFN_glCopyTexImage2D, target, level, internalformat, x, y, width, height, border); }
+        catch (Throwable e) { throw new RuntimeException("error in glCopyTexImage2D", e); }
     }
 
     public void CopyTexSubImage1D(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLint") int x, @CType("GLint") int y, @CType("GLsizei") int width) {
-        if (!Unmarshal.isNullPointer(PFN_glCopyTexSubImage1D)) { try {
-            MH_glCopyTexSubImage1D.invokeExact(PFN_glCopyTexSubImage1D, target, level, xoffset, x, y, width);
-        } catch (Throwable e) { throw new RuntimeException("error in glCopyTexSubImage1D", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glCopyTexSubImage1D"); }
+        if (Unmarshal.isNullPointer(PFN_glCopyTexSubImage1D)) throw new SymbolNotFoundError("Symbol not found: glCopyTexSubImage1D");
+        try { MH_glCopyTexSubImage1D.invokeExact(PFN_glCopyTexSubImage1D, target, level, xoffset, x, y, width); }
+        catch (Throwable e) { throw new RuntimeException("error in glCopyTexSubImage1D", e); }
     }
 
     public void CopyTexSubImage2D(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLint") int yoffset, @CType("GLint") int x, @CType("GLint") int y, @CType("GLsizei") int width, @CType("GLsizei") int height) {
-        if (!Unmarshal.isNullPointer(PFN_glCopyTexSubImage2D)) { try {
-            MH_glCopyTexSubImage2D.invokeExact(PFN_glCopyTexSubImage2D, target, level, xoffset, yoffset, x, y, width, height);
-        } catch (Throwable e) { throw new RuntimeException("error in glCopyTexSubImage2D", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glCopyTexSubImage2D"); }
+        if (Unmarshal.isNullPointer(PFN_glCopyTexSubImage2D)) throw new SymbolNotFoundError("Symbol not found: glCopyTexSubImage2D");
+        try { MH_glCopyTexSubImage2D.invokeExact(PFN_glCopyTexSubImage2D, target, level, xoffset, yoffset, x, y, width, height); }
+        catch (Throwable e) { throw new RuntimeException("error in glCopyTexSubImage2D", e); }
     }
 
     public void TexSubImage1D(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLsizei") int width, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment pixels) {
-        if (!Unmarshal.isNullPointer(PFN_glTexSubImage1D)) { try {
-            MH_glTexSubImage1D.invokeExact(PFN_glTexSubImage1D, target, level, xoffset, width, format, type, pixels);
-        } catch (Throwable e) { throw new RuntimeException("error in glTexSubImage1D", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glTexSubImage1D"); }
+        if (Unmarshal.isNullPointer(PFN_glTexSubImage1D)) throw new SymbolNotFoundError("Symbol not found: glTexSubImage1D");
+        try { MH_glTexSubImage1D.invokeExact(PFN_glTexSubImage1D, target, level, xoffset, width, format, type, pixels); }
+        catch (Throwable e) { throw new RuntimeException("error in glTexSubImage1D", e); }
     }
 
     public void TexSubImage2D(@CType("GLenum") int target, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLint") int yoffset, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment pixels) {
-        if (!Unmarshal.isNullPointer(PFN_glTexSubImage2D)) { try {
-            MH_glTexSubImage2D.invokeExact(PFN_glTexSubImage2D, target, level, xoffset, yoffset, width, height, format, type, pixels);
-        } catch (Throwable e) { throw new RuntimeException("error in glTexSubImage2D", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glTexSubImage2D"); }
+        if (Unmarshal.isNullPointer(PFN_glTexSubImage2D)) throw new SymbolNotFoundError("Symbol not found: glTexSubImage2D");
+        try { MH_glTexSubImage2D.invokeExact(PFN_glTexSubImage2D, target, level, xoffset, yoffset, width, height, format, type, pixels); }
+        catch (Throwable e) { throw new RuntimeException("error in glTexSubImage2D", e); }
     }
 
     public void BindTexture(@CType("GLenum") int target, @CType("GLuint") int texture) {
-        if (!Unmarshal.isNullPointer(PFN_glBindTexture)) { try {
-            MH_glBindTexture.invokeExact(PFN_glBindTexture, target, texture);
-        } catch (Throwable e) { throw new RuntimeException("error in glBindTexture", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glBindTexture"); }
+        if (Unmarshal.isNullPointer(PFN_glBindTexture)) throw new SymbolNotFoundError("Symbol not found: glBindTexture");
+        try { MH_glBindTexture.invokeExact(PFN_glBindTexture, target, texture); }
+        catch (Throwable e) { throw new RuntimeException("error in glBindTexture", e); }
     }
 
     public void DeleteTextures(@CType("GLsizei") int n, @CType("const GLuint *") java.lang.foreign.MemorySegment textures) {
-        if (!Unmarshal.isNullPointer(PFN_glDeleteTextures)) { try {
-            MH_glDeleteTextures.invokeExact(PFN_glDeleteTextures, n, textures);
-        } catch (Throwable e) { throw new RuntimeException("error in glDeleteTextures", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glDeleteTextures"); }
+        if (Unmarshal.isNullPointer(PFN_glDeleteTextures)) throw new SymbolNotFoundError("Symbol not found: glDeleteTextures");
+        try { MH_glDeleteTextures.invokeExact(PFN_glDeleteTextures, n, textures); }
+        catch (Throwable e) { throw new RuntimeException("error in glDeleteTextures", e); }
     }
 
     public void GenTextures(@CType("GLsizei") int n, @CType("GLuint *") java.lang.foreign.MemorySegment textures) {
-        if (!Unmarshal.isNullPointer(PFN_glGenTextures)) { try {
-            MH_glGenTextures.invokeExact(PFN_glGenTextures, n, textures);
-        } catch (Throwable e) { throw new RuntimeException("error in glGenTextures", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGenTextures"); }
+        if (Unmarshal.isNullPointer(PFN_glGenTextures)) throw new SymbolNotFoundError("Symbol not found: glGenTextures");
+        try { MH_glGenTextures.invokeExact(PFN_glGenTextures, n, textures); }
+        catch (Throwable e) { throw new RuntimeException("error in glGenTextures", e); }
     }
 
     public @CType("GLboolean") boolean IsTexture(@CType("GLuint") int texture) {
-        if (!Unmarshal.isNullPointer(PFN_glIsTexture)) { try {
-            return (boolean) MH_glIsTexture.invokeExact(PFN_glIsTexture, texture);
-        } catch (Throwable e) { throw new RuntimeException("error in glIsTexture", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glIsTexture"); }
+        if (Unmarshal.isNullPointer(PFN_glIsTexture)) throw new SymbolNotFoundError("Symbol not found: glIsTexture");
+        try { return (boolean) MH_glIsTexture.invokeExact(PFN_glIsTexture, texture); }
+        catch (Throwable e) { throw new RuntimeException("error in glIsTexture", e); }
     }
 
     // --- OverrunGL custom code ---

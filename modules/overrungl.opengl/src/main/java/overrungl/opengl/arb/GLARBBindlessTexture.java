@@ -26,36 +26,36 @@ import overrungl.util.*;
 public final class GLARBBindlessTexture {
     public static final int GL_UNSIGNED_INT64_ARB = 0x140F;
     public static final MethodHandle MH_glGetTextureHandleARB = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glGetTextureHandleARB;
     public static final MethodHandle MH_glGetTextureSamplerHandleARB = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glGetTextureSamplerHandleARB;
     public static final MethodHandle MH_glMakeTextureHandleResidentARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG));
-    public final MemorySegment PFN_glMakeTextureHandleResidentARB;
     public static final MethodHandle MH_glMakeTextureHandleNonResidentARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG));
-    public final MemorySegment PFN_glMakeTextureHandleNonResidentARB;
     public static final MethodHandle MH_glGetImageHandleARB = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glGetImageHandleARB;
     public static final MethodHandle MH_glMakeImageHandleResidentARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glMakeImageHandleResidentARB;
     public static final MethodHandle MH_glMakeImageHandleNonResidentARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG));
-    public final MemorySegment PFN_glMakeImageHandleNonResidentARB;
     public static final MethodHandle MH_glUniformHandleui64ARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
-    public final MemorySegment PFN_glUniformHandleui64ARB;
     public static final MethodHandle MH_glUniformHandleui64vARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glUniformHandleui64vARB;
     public static final MethodHandle MH_glProgramUniformHandleui64ARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
-    public final MemorySegment PFN_glProgramUniformHandleui64ARB;
     public static final MethodHandle MH_glProgramUniformHandleui64vARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glProgramUniformHandleui64vARB;
     public static final MethodHandle MH_glIsTextureHandleResidentARB = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_LONG));
-    public final MemorySegment PFN_glIsTextureHandleResidentARB;
     public static final MethodHandle MH_glIsImageHandleResidentARB = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_LONG));
-    public final MemorySegment PFN_glIsImageHandleResidentARB;
     public static final MethodHandle MH_glVertexAttribL1ui64ARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
-    public final MemorySegment PFN_glVertexAttribL1ui64ARB;
     public static final MethodHandle MH_glVertexAttribL1ui64vARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glVertexAttribL1ui64vARB;
     public static final MethodHandle MH_glGetVertexAttribLui64vARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glGetTextureHandleARB;
+    public final MemorySegment PFN_glGetTextureSamplerHandleARB;
+    public final MemorySegment PFN_glMakeTextureHandleResidentARB;
+    public final MemorySegment PFN_glMakeTextureHandleNonResidentARB;
+    public final MemorySegment PFN_glGetImageHandleARB;
+    public final MemorySegment PFN_glMakeImageHandleResidentARB;
+    public final MemorySegment PFN_glMakeImageHandleNonResidentARB;
+    public final MemorySegment PFN_glUniformHandleui64ARB;
+    public final MemorySegment PFN_glUniformHandleui64vARB;
+    public final MemorySegment PFN_glProgramUniformHandleui64ARB;
+    public final MemorySegment PFN_glProgramUniformHandleui64vARB;
+    public final MemorySegment PFN_glIsTextureHandleResidentARB;
+    public final MemorySegment PFN_glIsImageHandleResidentARB;
+    public final MemorySegment PFN_glVertexAttribL1ui64ARB;
+    public final MemorySegment PFN_glVertexAttribL1ui64vARB;
     public final MemorySegment PFN_glGetVertexAttribLui64vARB;
 
     public GLARBBindlessTexture(overrungl.opengl.GLLoadFunc func) {
@@ -78,115 +78,99 @@ public final class GLARBBindlessTexture {
     }
 
     public @CType("GLuint64") long GetTextureHandleARB(@CType("GLuint") int texture) {
-        if (!Unmarshal.isNullPointer(PFN_glGetTextureHandleARB)) { try {
-            return (long) MH_glGetTextureHandleARB.invokeExact(PFN_glGetTextureHandleARB, texture);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetTextureHandleARB", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetTextureHandleARB"); }
+        if (Unmarshal.isNullPointer(PFN_glGetTextureHandleARB)) throw new SymbolNotFoundError("Symbol not found: glGetTextureHandleARB");
+        try { return (long) MH_glGetTextureHandleARB.invokeExact(PFN_glGetTextureHandleARB, texture); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetTextureHandleARB", e); }
     }
 
     public @CType("GLuint64") long GetTextureSamplerHandleARB(@CType("GLuint") int texture, @CType("GLuint") int sampler) {
-        if (!Unmarshal.isNullPointer(PFN_glGetTextureSamplerHandleARB)) { try {
-            return (long) MH_glGetTextureSamplerHandleARB.invokeExact(PFN_glGetTextureSamplerHandleARB, texture, sampler);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetTextureSamplerHandleARB", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetTextureSamplerHandleARB"); }
+        if (Unmarshal.isNullPointer(PFN_glGetTextureSamplerHandleARB)) throw new SymbolNotFoundError("Symbol not found: glGetTextureSamplerHandleARB");
+        try { return (long) MH_glGetTextureSamplerHandleARB.invokeExact(PFN_glGetTextureSamplerHandleARB, texture, sampler); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetTextureSamplerHandleARB", e); }
     }
 
     public void MakeTextureHandleResidentARB(@CType("GLuint64") long handle) {
-        if (!Unmarshal.isNullPointer(PFN_glMakeTextureHandleResidentARB)) { try {
-            MH_glMakeTextureHandleResidentARB.invokeExact(PFN_glMakeTextureHandleResidentARB, handle);
-        } catch (Throwable e) { throw new RuntimeException("error in glMakeTextureHandleResidentARB", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glMakeTextureHandleResidentARB"); }
+        if (Unmarshal.isNullPointer(PFN_glMakeTextureHandleResidentARB)) throw new SymbolNotFoundError("Symbol not found: glMakeTextureHandleResidentARB");
+        try { MH_glMakeTextureHandleResidentARB.invokeExact(PFN_glMakeTextureHandleResidentARB, handle); }
+        catch (Throwable e) { throw new RuntimeException("error in glMakeTextureHandleResidentARB", e); }
     }
 
     public void MakeTextureHandleNonResidentARB(@CType("GLuint64") long handle) {
-        if (!Unmarshal.isNullPointer(PFN_glMakeTextureHandleNonResidentARB)) { try {
-            MH_glMakeTextureHandleNonResidentARB.invokeExact(PFN_glMakeTextureHandleNonResidentARB, handle);
-        } catch (Throwable e) { throw new RuntimeException("error in glMakeTextureHandleNonResidentARB", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glMakeTextureHandleNonResidentARB"); }
+        if (Unmarshal.isNullPointer(PFN_glMakeTextureHandleNonResidentARB)) throw new SymbolNotFoundError("Symbol not found: glMakeTextureHandleNonResidentARB");
+        try { MH_glMakeTextureHandleNonResidentARB.invokeExact(PFN_glMakeTextureHandleNonResidentARB, handle); }
+        catch (Throwable e) { throw new RuntimeException("error in glMakeTextureHandleNonResidentARB", e); }
     }
 
     public @CType("GLuint64") long GetImageHandleARB(@CType("GLuint") int texture, @CType("GLint") int level, @CType("GLboolean") boolean layered, @CType("GLint") int layer, @CType("GLenum") int format) {
-        if (!Unmarshal.isNullPointer(PFN_glGetImageHandleARB)) { try {
-            return (long) MH_glGetImageHandleARB.invokeExact(PFN_glGetImageHandleARB, texture, level, layered, layer, format);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetImageHandleARB", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetImageHandleARB"); }
+        if (Unmarshal.isNullPointer(PFN_glGetImageHandleARB)) throw new SymbolNotFoundError("Symbol not found: glGetImageHandleARB");
+        try { return (long) MH_glGetImageHandleARB.invokeExact(PFN_glGetImageHandleARB, texture, level, layered, layer, format); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetImageHandleARB", e); }
     }
 
     public void MakeImageHandleResidentARB(@CType("GLuint64") long handle, @CType("GLenum") int access) {
-        if (!Unmarshal.isNullPointer(PFN_glMakeImageHandleResidentARB)) { try {
-            MH_glMakeImageHandleResidentARB.invokeExact(PFN_glMakeImageHandleResidentARB, handle, access);
-        } catch (Throwable e) { throw new RuntimeException("error in glMakeImageHandleResidentARB", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glMakeImageHandleResidentARB"); }
+        if (Unmarshal.isNullPointer(PFN_glMakeImageHandleResidentARB)) throw new SymbolNotFoundError("Symbol not found: glMakeImageHandleResidentARB");
+        try { MH_glMakeImageHandleResidentARB.invokeExact(PFN_glMakeImageHandleResidentARB, handle, access); }
+        catch (Throwable e) { throw new RuntimeException("error in glMakeImageHandleResidentARB", e); }
     }
 
     public void MakeImageHandleNonResidentARB(@CType("GLuint64") long handle) {
-        if (!Unmarshal.isNullPointer(PFN_glMakeImageHandleNonResidentARB)) { try {
-            MH_glMakeImageHandleNonResidentARB.invokeExact(PFN_glMakeImageHandleNonResidentARB, handle);
-        } catch (Throwable e) { throw new RuntimeException("error in glMakeImageHandleNonResidentARB", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glMakeImageHandleNonResidentARB"); }
+        if (Unmarshal.isNullPointer(PFN_glMakeImageHandleNonResidentARB)) throw new SymbolNotFoundError("Symbol not found: glMakeImageHandleNonResidentARB");
+        try { MH_glMakeImageHandleNonResidentARB.invokeExact(PFN_glMakeImageHandleNonResidentARB, handle); }
+        catch (Throwable e) { throw new RuntimeException("error in glMakeImageHandleNonResidentARB", e); }
     }
 
     public void UniformHandleui64ARB(@CType("GLint") int location, @CType("GLuint64") long value) {
-        if (!Unmarshal.isNullPointer(PFN_glUniformHandleui64ARB)) { try {
-            MH_glUniformHandleui64ARB.invokeExact(PFN_glUniformHandleui64ARB, location, value);
-        } catch (Throwable e) { throw new RuntimeException("error in glUniformHandleui64ARB", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glUniformHandleui64ARB"); }
+        if (Unmarshal.isNullPointer(PFN_glUniformHandleui64ARB)) throw new SymbolNotFoundError("Symbol not found: glUniformHandleui64ARB");
+        try { MH_glUniformHandleui64ARB.invokeExact(PFN_glUniformHandleui64ARB, location, value); }
+        catch (Throwable e) { throw new RuntimeException("error in glUniformHandleui64ARB", e); }
     }
 
     public void UniformHandleui64vARB(@CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLuint64 *") java.lang.foreign.MemorySegment value) {
-        if (!Unmarshal.isNullPointer(PFN_glUniformHandleui64vARB)) { try {
-            MH_glUniformHandleui64vARB.invokeExact(PFN_glUniformHandleui64vARB, location, count, value);
-        } catch (Throwable e) { throw new RuntimeException("error in glUniformHandleui64vARB", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glUniformHandleui64vARB"); }
+        if (Unmarshal.isNullPointer(PFN_glUniformHandleui64vARB)) throw new SymbolNotFoundError("Symbol not found: glUniformHandleui64vARB");
+        try { MH_glUniformHandleui64vARB.invokeExact(PFN_glUniformHandleui64vARB, location, count, value); }
+        catch (Throwable e) { throw new RuntimeException("error in glUniformHandleui64vARB", e); }
     }
 
     public void ProgramUniformHandleui64ARB(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLuint64") long value) {
-        if (!Unmarshal.isNullPointer(PFN_glProgramUniformHandleui64ARB)) { try {
-            MH_glProgramUniformHandleui64ARB.invokeExact(PFN_glProgramUniformHandleui64ARB, program, location, value);
-        } catch (Throwable e) { throw new RuntimeException("error in glProgramUniformHandleui64ARB", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glProgramUniformHandleui64ARB"); }
+        if (Unmarshal.isNullPointer(PFN_glProgramUniformHandleui64ARB)) throw new SymbolNotFoundError("Symbol not found: glProgramUniformHandleui64ARB");
+        try { MH_glProgramUniformHandleui64ARB.invokeExact(PFN_glProgramUniformHandleui64ARB, program, location, value); }
+        catch (Throwable e) { throw new RuntimeException("error in glProgramUniformHandleui64ARB", e); }
     }
 
     public void ProgramUniformHandleui64vARB(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int count, @CType("const GLuint64 *") java.lang.foreign.MemorySegment values) {
-        if (!Unmarshal.isNullPointer(PFN_glProgramUniformHandleui64vARB)) { try {
-            MH_glProgramUniformHandleui64vARB.invokeExact(PFN_glProgramUniformHandleui64vARB, program, location, count, values);
-        } catch (Throwable e) { throw new RuntimeException("error in glProgramUniformHandleui64vARB", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glProgramUniformHandleui64vARB"); }
+        if (Unmarshal.isNullPointer(PFN_glProgramUniformHandleui64vARB)) throw new SymbolNotFoundError("Symbol not found: glProgramUniformHandleui64vARB");
+        try { MH_glProgramUniformHandleui64vARB.invokeExact(PFN_glProgramUniformHandleui64vARB, program, location, count, values); }
+        catch (Throwable e) { throw new RuntimeException("error in glProgramUniformHandleui64vARB", e); }
     }
 
     public @CType("GLboolean") boolean IsTextureHandleResidentARB(@CType("GLuint64") long handle) {
-        if (!Unmarshal.isNullPointer(PFN_glIsTextureHandleResidentARB)) { try {
-            return (boolean) MH_glIsTextureHandleResidentARB.invokeExact(PFN_glIsTextureHandleResidentARB, handle);
-        } catch (Throwable e) { throw new RuntimeException("error in glIsTextureHandleResidentARB", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glIsTextureHandleResidentARB"); }
+        if (Unmarshal.isNullPointer(PFN_glIsTextureHandleResidentARB)) throw new SymbolNotFoundError("Symbol not found: glIsTextureHandleResidentARB");
+        try { return (boolean) MH_glIsTextureHandleResidentARB.invokeExact(PFN_glIsTextureHandleResidentARB, handle); }
+        catch (Throwable e) { throw new RuntimeException("error in glIsTextureHandleResidentARB", e); }
     }
 
     public @CType("GLboolean") boolean IsImageHandleResidentARB(@CType("GLuint64") long handle) {
-        if (!Unmarshal.isNullPointer(PFN_glIsImageHandleResidentARB)) { try {
-            return (boolean) MH_glIsImageHandleResidentARB.invokeExact(PFN_glIsImageHandleResidentARB, handle);
-        } catch (Throwable e) { throw new RuntimeException("error in glIsImageHandleResidentARB", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glIsImageHandleResidentARB"); }
+        if (Unmarshal.isNullPointer(PFN_glIsImageHandleResidentARB)) throw new SymbolNotFoundError("Symbol not found: glIsImageHandleResidentARB");
+        try { return (boolean) MH_glIsImageHandleResidentARB.invokeExact(PFN_glIsImageHandleResidentARB, handle); }
+        catch (Throwable e) { throw new RuntimeException("error in glIsImageHandleResidentARB", e); }
     }
 
     public void VertexAttribL1ui64ARB(@CType("GLuint") int index, @CType("GLuint64EXT") long x) {
-        if (!Unmarshal.isNullPointer(PFN_glVertexAttribL1ui64ARB)) { try {
-            MH_glVertexAttribL1ui64ARB.invokeExact(PFN_glVertexAttribL1ui64ARB, index, x);
-        } catch (Throwable e) { throw new RuntimeException("error in glVertexAttribL1ui64ARB", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glVertexAttribL1ui64ARB"); }
+        if (Unmarshal.isNullPointer(PFN_glVertexAttribL1ui64ARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribL1ui64ARB");
+        try { MH_glVertexAttribL1ui64ARB.invokeExact(PFN_glVertexAttribL1ui64ARB, index, x); }
+        catch (Throwable e) { throw new RuntimeException("error in glVertexAttribL1ui64ARB", e); }
     }
 
     public void VertexAttribL1ui64vARB(@CType("GLuint") int index, @CType("const GLuint64EXT *") java.lang.foreign.MemorySegment v) {
-        if (!Unmarshal.isNullPointer(PFN_glVertexAttribL1ui64vARB)) { try {
-            MH_glVertexAttribL1ui64vARB.invokeExact(PFN_glVertexAttribL1ui64vARB, index, v);
-        } catch (Throwable e) { throw new RuntimeException("error in glVertexAttribL1ui64vARB", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glVertexAttribL1ui64vARB"); }
+        if (Unmarshal.isNullPointer(PFN_glVertexAttribL1ui64vARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribL1ui64vARB");
+        try { MH_glVertexAttribL1ui64vARB.invokeExact(PFN_glVertexAttribL1ui64vARB, index, v); }
+        catch (Throwable e) { throw new RuntimeException("error in glVertexAttribL1ui64vARB", e); }
     }
 
     public void GetVertexAttribLui64vARB(@CType("GLuint") int index, @CType("GLenum") int pname, @CType("GLuint64EXT *") java.lang.foreign.MemorySegment params) {
-        if (!Unmarshal.isNullPointer(PFN_glGetVertexAttribLui64vARB)) { try {
-            MH_glGetVertexAttribLui64vARB.invokeExact(PFN_glGetVertexAttribLui64vARB, index, pname, params);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetVertexAttribLui64vARB", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetVertexAttribLui64vARB"); }
+        if (Unmarshal.isNullPointer(PFN_glGetVertexAttribLui64vARB)) throw new SymbolNotFoundError("Symbol not found: glGetVertexAttribLui64vARB");
+        try { MH_glGetVertexAttribLui64vARB.invokeExact(PFN_glGetVertexAttribLui64vARB, index, pname, params); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetVertexAttribLui64vARB", e); }
     }
 
 }

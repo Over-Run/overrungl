@@ -39,12 +39,12 @@ public final class GLAMDDebugOutput {
     public static final int GL_DEBUG_CATEGORY_APPLICATION_AMD = 0x914F;
     public static final int GL_DEBUG_CATEGORY_OTHER_AMD = 0x9150;
     public static final MethodHandle MH_glDebugMessageEnableAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN));
-    public final MemorySegment PFN_glDebugMessageEnableAMD;
     public static final MethodHandle MH_glDebugMessageInsertAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glDebugMessageInsertAMD;
     public static final MethodHandle MH_glDebugMessageCallbackAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glDebugMessageCallbackAMD;
     public static final MethodHandle MH_glGetDebugMessageLogAMD = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glDebugMessageEnableAMD;
+    public final MemorySegment PFN_glDebugMessageInsertAMD;
+    public final MemorySegment PFN_glDebugMessageCallbackAMD;
     public final MemorySegment PFN_glGetDebugMessageLogAMD;
 
     public GLAMDDebugOutput(overrungl.opengl.GLLoadFunc func) {
@@ -55,31 +55,27 @@ public final class GLAMDDebugOutput {
     }
 
     public void DebugMessageEnableAMD(@CType("GLenum") int category, @CType("GLenum") int severity, @CType("GLsizei") int count, @CType("const GLuint *") java.lang.foreign.MemorySegment ids, @CType("GLboolean") boolean enabled) {
-        if (!Unmarshal.isNullPointer(PFN_glDebugMessageEnableAMD)) { try {
-            MH_glDebugMessageEnableAMD.invokeExact(PFN_glDebugMessageEnableAMD, category, severity, count, ids, enabled);
-        } catch (Throwable e) { throw new RuntimeException("error in glDebugMessageEnableAMD", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glDebugMessageEnableAMD"); }
+        if (Unmarshal.isNullPointer(PFN_glDebugMessageEnableAMD)) throw new SymbolNotFoundError("Symbol not found: glDebugMessageEnableAMD");
+        try { MH_glDebugMessageEnableAMD.invokeExact(PFN_glDebugMessageEnableAMD, category, severity, count, ids, enabled); }
+        catch (Throwable e) { throw new RuntimeException("error in glDebugMessageEnableAMD", e); }
     }
 
     public void DebugMessageInsertAMD(@CType("GLenum") int category, @CType("GLenum") int severity, @CType("GLuint") int id, @CType("GLsizei") int length, @CType("const GLchar *") java.lang.foreign.MemorySegment buf) {
-        if (!Unmarshal.isNullPointer(PFN_glDebugMessageInsertAMD)) { try {
-            MH_glDebugMessageInsertAMD.invokeExact(PFN_glDebugMessageInsertAMD, category, severity, id, length, buf);
-        } catch (Throwable e) { throw new RuntimeException("error in glDebugMessageInsertAMD", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glDebugMessageInsertAMD"); }
+        if (Unmarshal.isNullPointer(PFN_glDebugMessageInsertAMD)) throw new SymbolNotFoundError("Symbol not found: glDebugMessageInsertAMD");
+        try { MH_glDebugMessageInsertAMD.invokeExact(PFN_glDebugMessageInsertAMD, category, severity, id, length, buf); }
+        catch (Throwable e) { throw new RuntimeException("error in glDebugMessageInsertAMD", e); }
     }
 
     public void DebugMessageCallbackAMD(@CType("GLDEBUGPROCAMD") java.lang.foreign.MemorySegment callback, @CType("void*") java.lang.foreign.MemorySegment userParam) {
-        if (!Unmarshal.isNullPointer(PFN_glDebugMessageCallbackAMD)) { try {
-            MH_glDebugMessageCallbackAMD.invokeExact(PFN_glDebugMessageCallbackAMD, callback, userParam);
-        } catch (Throwable e) { throw new RuntimeException("error in glDebugMessageCallbackAMD", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glDebugMessageCallbackAMD"); }
+        if (Unmarshal.isNullPointer(PFN_glDebugMessageCallbackAMD)) throw new SymbolNotFoundError("Symbol not found: glDebugMessageCallbackAMD");
+        try { MH_glDebugMessageCallbackAMD.invokeExact(PFN_glDebugMessageCallbackAMD, callback, userParam); }
+        catch (Throwable e) { throw new RuntimeException("error in glDebugMessageCallbackAMD", e); }
     }
 
     public @CType("GLuint") int GetDebugMessageLogAMD(@CType("GLuint") int count, @CType("GLsizei") int bufSize, @CType("GLenum *") java.lang.foreign.MemorySegment categories, @CType("GLenum *") java.lang.foreign.MemorySegment severities, @CType("GLuint *") java.lang.foreign.MemorySegment ids, @CType("GLsizei *") java.lang.foreign.MemorySegment lengths, @CType("GLchar *") java.lang.foreign.MemorySegment message) {
-        if (!Unmarshal.isNullPointer(PFN_glGetDebugMessageLogAMD)) { try {
-            return (int) MH_glGetDebugMessageLogAMD.invokeExact(PFN_glGetDebugMessageLogAMD, count, bufSize, categories, severities, ids, lengths, message);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetDebugMessageLogAMD", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetDebugMessageLogAMD"); }
+        if (Unmarshal.isNullPointer(PFN_glGetDebugMessageLogAMD)) throw new SymbolNotFoundError("Symbol not found: glGetDebugMessageLogAMD");
+        try { return (int) MH_glGetDebugMessageLogAMD.invokeExact(PFN_glGetDebugMessageLogAMD, count, bufSize, categories, severities, ids, lengths, message); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetDebugMessageLogAMD", e); }
     }
 
 }

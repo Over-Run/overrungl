@@ -37,10 +37,9 @@ public final class GLARBColorBufferFloat {
     }
 
     public void ClampColorARB(@CType("GLenum") int target, @CType("GLenum") int clamp) {
-        if (!Unmarshal.isNullPointer(PFN_glClampColorARB)) { try {
-            MH_glClampColorARB.invokeExact(PFN_glClampColorARB, target, clamp);
-        } catch (Throwable e) { throw new RuntimeException("error in glClampColorARB", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glClampColorARB"); }
+        if (Unmarshal.isNullPointer(PFN_glClampColorARB)) throw new SymbolNotFoundError("Symbol not found: glClampColorARB");
+        try { MH_glClampColorARB.invokeExact(PFN_glClampColorARB, target, clamp); }
+        catch (Throwable e) { throw new RuntimeException("error in glClampColorARB", e); }
     }
 
 }

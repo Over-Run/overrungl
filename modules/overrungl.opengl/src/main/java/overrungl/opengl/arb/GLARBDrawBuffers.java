@@ -49,10 +49,9 @@ public final class GLARBDrawBuffers {
     }
 
     public void DrawBuffersARB(@CType("GLsizei") int n, @CType("const GLenum *") java.lang.foreign.MemorySegment bufs) {
-        if (!Unmarshal.isNullPointer(PFN_glDrawBuffersARB)) { try {
-            MH_glDrawBuffersARB.invokeExact(PFN_glDrawBuffersARB, n, bufs);
-        } catch (Throwable e) { throw new RuntimeException("error in glDrawBuffersARB", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glDrawBuffersARB"); }
+        if (Unmarshal.isNullPointer(PFN_glDrawBuffersARB)) throw new SymbolNotFoundError("Symbol not found: glDrawBuffersARB");
+        try { MH_glDrawBuffersARB.invokeExact(PFN_glDrawBuffersARB, n, bufs); }
+        catch (Throwable e) { throw new RuntimeException("error in glDrawBuffersARB", e); }
     }
 
 }

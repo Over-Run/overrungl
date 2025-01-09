@@ -27,8 +27,8 @@ public final class GLSGISTextureFilter4 {
     public static final int GL_FILTER4_SGIS = 0x8146;
     public static final int GL_TEXTURE_FILTER4_SIZE_SGIS = 0x8147;
     public static final MethodHandle MH_glGetTexFilterFuncSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glGetTexFilterFuncSGIS;
     public static final MethodHandle MH_glTexFilterFuncSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glGetTexFilterFuncSGIS;
     public final MemorySegment PFN_glTexFilterFuncSGIS;
 
     public GLSGISTextureFilter4(overrungl.opengl.GLLoadFunc func) {
@@ -37,17 +37,15 @@ public final class GLSGISTextureFilter4 {
     }
 
     public void GetTexFilterFuncSGIS(@CType("GLenum") int target, @CType("GLenum") int filter, @CType("GLfloat *") java.lang.foreign.MemorySegment weights) {
-        if (!Unmarshal.isNullPointer(PFN_glGetTexFilterFuncSGIS)) { try {
-            MH_glGetTexFilterFuncSGIS.invokeExact(PFN_glGetTexFilterFuncSGIS, target, filter, weights);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetTexFilterFuncSGIS", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetTexFilterFuncSGIS"); }
+        if (Unmarshal.isNullPointer(PFN_glGetTexFilterFuncSGIS)) throw new SymbolNotFoundError("Symbol not found: glGetTexFilterFuncSGIS");
+        try { MH_glGetTexFilterFuncSGIS.invokeExact(PFN_glGetTexFilterFuncSGIS, target, filter, weights); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetTexFilterFuncSGIS", e); }
     }
 
     public void TexFilterFuncSGIS(@CType("GLenum") int target, @CType("GLenum") int filter, @CType("GLsizei") int n, @CType("const GLfloat *") java.lang.foreign.MemorySegment weights) {
-        if (!Unmarshal.isNullPointer(PFN_glTexFilterFuncSGIS)) { try {
-            MH_glTexFilterFuncSGIS.invokeExact(PFN_glTexFilterFuncSGIS, target, filter, n, weights);
-        } catch (Throwable e) { throw new RuntimeException("error in glTexFilterFuncSGIS", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glTexFilterFuncSGIS"); }
+        if (Unmarshal.isNullPointer(PFN_glTexFilterFuncSGIS)) throw new SymbolNotFoundError("Symbol not found: glTexFilterFuncSGIS");
+        try { MH_glTexFilterFuncSGIS.invokeExact(PFN_glTexFilterFuncSGIS, target, filter, n, weights); }
+        catch (Throwable e) { throw new RuntimeException("error in glTexFilterFuncSGIS", e); }
     }
 
 }

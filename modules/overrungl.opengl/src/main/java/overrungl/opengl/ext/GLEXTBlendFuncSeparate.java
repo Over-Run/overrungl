@@ -36,10 +36,9 @@ public final class GLEXTBlendFuncSeparate {
     }
 
     public void BlendFuncSeparateEXT(@CType("GLenum") int sfactorRGB, @CType("GLenum") int dfactorRGB, @CType("GLenum") int sfactorAlpha, @CType("GLenum") int dfactorAlpha) {
-        if (!Unmarshal.isNullPointer(PFN_glBlendFuncSeparateEXT)) { try {
-            MH_glBlendFuncSeparateEXT.invokeExact(PFN_glBlendFuncSeparateEXT, sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha);
-        } catch (Throwable e) { throw new RuntimeException("error in glBlendFuncSeparateEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glBlendFuncSeparateEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glBlendFuncSeparateEXT)) throw new SymbolNotFoundError("Symbol not found: glBlendFuncSeparateEXT");
+        try { MH_glBlendFuncSeparateEXT.invokeExact(PFN_glBlendFuncSeparateEXT, sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha); }
+        catch (Throwable e) { throw new RuntimeException("error in glBlendFuncSeparateEXT", e); }
     }
 
 }

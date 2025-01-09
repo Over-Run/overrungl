@@ -76,8 +76,8 @@ public final class GLNVBlendEquationAdvanced {
     public static final int GL_XOR_NV = 0x1506;
     public static final int GL_ZERO = 0;
     public static final MethodHandle MH_glBlendParameteriNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glBlendParameteriNV;
     public static final MethodHandle MH_glBlendBarrierNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
+    public final MemorySegment PFN_glBlendParameteriNV;
     public final MemorySegment PFN_glBlendBarrierNV;
 
     public GLNVBlendEquationAdvanced(overrungl.opengl.GLLoadFunc func) {
@@ -86,17 +86,15 @@ public final class GLNVBlendEquationAdvanced {
     }
 
     public void BlendParameteriNV(@CType("GLenum") int pname, @CType("GLint") int value) {
-        if (!Unmarshal.isNullPointer(PFN_glBlendParameteriNV)) { try {
-            MH_glBlendParameteriNV.invokeExact(PFN_glBlendParameteriNV, pname, value);
-        } catch (Throwable e) { throw new RuntimeException("error in glBlendParameteriNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glBlendParameteriNV"); }
+        if (Unmarshal.isNullPointer(PFN_glBlendParameteriNV)) throw new SymbolNotFoundError("Symbol not found: glBlendParameteriNV");
+        try { MH_glBlendParameteriNV.invokeExact(PFN_glBlendParameteriNV, pname, value); }
+        catch (Throwable e) { throw new RuntimeException("error in glBlendParameteriNV", e); }
     }
 
     public void BlendBarrierNV() {
-        if (!Unmarshal.isNullPointer(PFN_glBlendBarrierNV)) { try {
-            MH_glBlendBarrierNV.invokeExact(PFN_glBlendBarrierNV);
-        } catch (Throwable e) { throw new RuntimeException("error in glBlendBarrierNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glBlendBarrierNV"); }
+        if (Unmarshal.isNullPointer(PFN_glBlendBarrierNV)) throw new SymbolNotFoundError("Symbol not found: glBlendBarrierNV");
+        try { MH_glBlendBarrierNV.invokeExact(PFN_glBlendBarrierNV); }
+        catch (Throwable e) { throw new RuntimeException("error in glBlendBarrierNV", e); }
     }
 
 }

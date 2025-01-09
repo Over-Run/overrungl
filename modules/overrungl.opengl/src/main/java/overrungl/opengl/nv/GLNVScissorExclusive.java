@@ -27,8 +27,8 @@ public final class GLNVScissorExclusive {
     public static final int GL_SCISSOR_TEST_EXCLUSIVE_NV = 0x9555;
     public static final int GL_SCISSOR_BOX_EXCLUSIVE_NV = 0x9556;
     public static final MethodHandle MH_glScissorExclusiveNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glScissorExclusiveNV;
     public static final MethodHandle MH_glScissorExclusiveArrayvNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glScissorExclusiveNV;
     public final MemorySegment PFN_glScissorExclusiveArrayvNV;
 
     public GLNVScissorExclusive(overrungl.opengl.GLLoadFunc func) {
@@ -37,17 +37,15 @@ public final class GLNVScissorExclusive {
     }
 
     public void ScissorExclusiveNV(@CType("GLint") int x, @CType("GLint") int y, @CType("GLsizei") int width, @CType("GLsizei") int height) {
-        if (!Unmarshal.isNullPointer(PFN_glScissorExclusiveNV)) { try {
-            MH_glScissorExclusiveNV.invokeExact(PFN_glScissorExclusiveNV, x, y, width, height);
-        } catch (Throwable e) { throw new RuntimeException("error in glScissorExclusiveNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glScissorExclusiveNV"); }
+        if (Unmarshal.isNullPointer(PFN_glScissorExclusiveNV)) throw new SymbolNotFoundError("Symbol not found: glScissorExclusiveNV");
+        try { MH_glScissorExclusiveNV.invokeExact(PFN_glScissorExclusiveNV, x, y, width, height); }
+        catch (Throwable e) { throw new RuntimeException("error in glScissorExclusiveNV", e); }
     }
 
     public void ScissorExclusiveArrayvNV(@CType("GLuint") int first, @CType("GLsizei") int count, @CType("const GLint *") java.lang.foreign.MemorySegment v) {
-        if (!Unmarshal.isNullPointer(PFN_glScissorExclusiveArrayvNV)) { try {
-            MH_glScissorExclusiveArrayvNV.invokeExact(PFN_glScissorExclusiveArrayvNV, first, count, v);
-        } catch (Throwable e) { throw new RuntimeException("error in glScissorExclusiveArrayvNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glScissorExclusiveArrayvNV"); }
+        if (Unmarshal.isNullPointer(PFN_glScissorExclusiveArrayvNV)) throw new SymbolNotFoundError("Symbol not found: glScissorExclusiveArrayvNV");
+        try { MH_glScissorExclusiveArrayvNV.invokeExact(PFN_glScissorExclusiveArrayvNV, first, count, v); }
+        catch (Throwable e) { throw new RuntimeException("error in glScissorExclusiveArrayvNV", e); }
     }
 
 }

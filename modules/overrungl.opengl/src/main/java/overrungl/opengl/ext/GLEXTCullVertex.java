@@ -28,8 +28,8 @@ public final class GLEXTCullVertex {
     public static final int GL_CULL_VERTEX_EYE_POSITION_EXT = 0x81AB;
     public static final int GL_CULL_VERTEX_OBJECT_POSITION_EXT = 0x81AC;
     public static final MethodHandle MH_glCullParameterdvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glCullParameterdvEXT;
     public static final MethodHandle MH_glCullParameterfvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glCullParameterdvEXT;
     public final MemorySegment PFN_glCullParameterfvEXT;
 
     public GLEXTCullVertex(overrungl.opengl.GLLoadFunc func) {
@@ -38,17 +38,15 @@ public final class GLEXTCullVertex {
     }
 
     public void CullParameterdvEXT(@CType("GLenum") int pname, @CType("GLdouble *") java.lang.foreign.MemorySegment params) {
-        if (!Unmarshal.isNullPointer(PFN_glCullParameterdvEXT)) { try {
-            MH_glCullParameterdvEXT.invokeExact(PFN_glCullParameterdvEXT, pname, params);
-        } catch (Throwable e) { throw new RuntimeException("error in glCullParameterdvEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glCullParameterdvEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glCullParameterdvEXT)) throw new SymbolNotFoundError("Symbol not found: glCullParameterdvEXT");
+        try { MH_glCullParameterdvEXT.invokeExact(PFN_glCullParameterdvEXT, pname, params); }
+        catch (Throwable e) { throw new RuntimeException("error in glCullParameterdvEXT", e); }
     }
 
     public void CullParameterfvEXT(@CType("GLenum") int pname, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
-        if (!Unmarshal.isNullPointer(PFN_glCullParameterfvEXT)) { try {
-            MH_glCullParameterfvEXT.invokeExact(PFN_glCullParameterfvEXT, pname, params);
-        } catch (Throwable e) { throw new RuntimeException("error in glCullParameterfvEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glCullParameterfvEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glCullParameterfvEXT)) throw new SymbolNotFoundError("Symbol not found: glCullParameterfvEXT");
+        try { MH_glCullParameterfvEXT.invokeExact(PFN_glCullParameterfvEXT, pname, params); }
+        catch (Throwable e) { throw new RuntimeException("error in glCullParameterfvEXT", e); }
     }
 
 }

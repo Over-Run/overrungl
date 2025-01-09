@@ -30,12 +30,12 @@ public final class GLINTELParallelArrays {
     public static final int GL_COLOR_ARRAY_PARALLEL_POINTERS_INTEL = 0x83F7;
     public static final int GL_TEXTURE_COORD_ARRAY_PARALLEL_POINTERS_INTEL = 0x83F8;
     public static final MethodHandle MH_glVertexPointervINTEL = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glVertexPointervINTEL;
     public static final MethodHandle MH_glNormalPointervINTEL = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glNormalPointervINTEL;
     public static final MethodHandle MH_glColorPointervINTEL = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glColorPointervINTEL;
     public static final MethodHandle MH_glTexCoordPointervINTEL = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glVertexPointervINTEL;
+    public final MemorySegment PFN_glNormalPointervINTEL;
+    public final MemorySegment PFN_glColorPointervINTEL;
     public final MemorySegment PFN_glTexCoordPointervINTEL;
 
     public GLINTELParallelArrays(overrungl.opengl.GLLoadFunc func) {
@@ -46,31 +46,27 @@ public final class GLINTELParallelArrays {
     }
 
     public void VertexPointervINTEL(@CType("GLint") int size, @CType("GLenum") int type, @CType("const void **") java.lang.foreign.MemorySegment pointer) {
-        if (!Unmarshal.isNullPointer(PFN_glVertexPointervINTEL)) { try {
-            MH_glVertexPointervINTEL.invokeExact(PFN_glVertexPointervINTEL, size, type, pointer);
-        } catch (Throwable e) { throw new RuntimeException("error in glVertexPointervINTEL", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glVertexPointervINTEL"); }
+        if (Unmarshal.isNullPointer(PFN_glVertexPointervINTEL)) throw new SymbolNotFoundError("Symbol not found: glVertexPointervINTEL");
+        try { MH_glVertexPointervINTEL.invokeExact(PFN_glVertexPointervINTEL, size, type, pointer); }
+        catch (Throwable e) { throw new RuntimeException("error in glVertexPointervINTEL", e); }
     }
 
     public void NormalPointervINTEL(@CType("GLenum") int type, @CType("const void **") java.lang.foreign.MemorySegment pointer) {
-        if (!Unmarshal.isNullPointer(PFN_glNormalPointervINTEL)) { try {
-            MH_glNormalPointervINTEL.invokeExact(PFN_glNormalPointervINTEL, type, pointer);
-        } catch (Throwable e) { throw new RuntimeException("error in glNormalPointervINTEL", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glNormalPointervINTEL"); }
+        if (Unmarshal.isNullPointer(PFN_glNormalPointervINTEL)) throw new SymbolNotFoundError("Symbol not found: glNormalPointervINTEL");
+        try { MH_glNormalPointervINTEL.invokeExact(PFN_glNormalPointervINTEL, type, pointer); }
+        catch (Throwable e) { throw new RuntimeException("error in glNormalPointervINTEL", e); }
     }
 
     public void ColorPointervINTEL(@CType("GLint") int size, @CType("GLenum") int type, @CType("const void **") java.lang.foreign.MemorySegment pointer) {
-        if (!Unmarshal.isNullPointer(PFN_glColorPointervINTEL)) { try {
-            MH_glColorPointervINTEL.invokeExact(PFN_glColorPointervINTEL, size, type, pointer);
-        } catch (Throwable e) { throw new RuntimeException("error in glColorPointervINTEL", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glColorPointervINTEL"); }
+        if (Unmarshal.isNullPointer(PFN_glColorPointervINTEL)) throw new SymbolNotFoundError("Symbol not found: glColorPointervINTEL");
+        try { MH_glColorPointervINTEL.invokeExact(PFN_glColorPointervINTEL, size, type, pointer); }
+        catch (Throwable e) { throw new RuntimeException("error in glColorPointervINTEL", e); }
     }
 
     public void TexCoordPointervINTEL(@CType("GLint") int size, @CType("GLenum") int type, @CType("const void **") java.lang.foreign.MemorySegment pointer) {
-        if (!Unmarshal.isNullPointer(PFN_glTexCoordPointervINTEL)) { try {
-            MH_glTexCoordPointervINTEL.invokeExact(PFN_glTexCoordPointervINTEL, size, type, pointer);
-        } catch (Throwable e) { throw new RuntimeException("error in glTexCoordPointervINTEL", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glTexCoordPointervINTEL"); }
+        if (Unmarshal.isNullPointer(PFN_glTexCoordPointervINTEL)) throw new SymbolNotFoundError("Symbol not found: glTexCoordPointervINTEL");
+        try { MH_glTexCoordPointervINTEL.invokeExact(PFN_glTexCoordPointervINTEL, size, type, pointer); }
+        catch (Throwable e) { throw new RuntimeException("error in glTexCoordPointervINTEL", e); }
     }
 
 }

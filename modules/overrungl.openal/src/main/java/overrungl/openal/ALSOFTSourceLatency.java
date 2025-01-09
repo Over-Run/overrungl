@@ -60,99 +60,87 @@ public final class ALSOFTSourceLatency {
     //endregion
 
     public static void alSourcedSOFT(@CType("ALuint") int source, @CType("ALenum") int param, @CType("ALdouble") double value) {
-        if (Handles.MH_alSourcedSOFT != null) {
+        if (Handles.MH_alSourcedSOFT == null) throw new SymbolNotFoundError("Symbol not found: alSourcedSOFT");
         try {
             Handles.MH_alSourcedSOFT.invokeExact(source, param, value);
         } catch (Throwable e) { throw new RuntimeException("error in alSourcedSOFT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alSourcedSOFT"); }
     }
 
     public static void alSource3dSOFT(@CType("ALuint") int source, @CType("ALenum") int param, @CType("ALdouble") double value1, @CType("ALdouble") double value2, @CType("ALdouble") double value3) {
-        if (Handles.MH_alSource3dSOFT != null) {
+        if (Handles.MH_alSource3dSOFT == null) throw new SymbolNotFoundError("Symbol not found: alSource3dSOFT");
         try {
             Handles.MH_alSource3dSOFT.invokeExact(source, param, value1, value2, value3);
         } catch (Throwable e) { throw new RuntimeException("error in alSource3dSOFT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alSource3dSOFT"); }
     }
 
     public static void alSourcedvSOFT(@CType("ALuint") int source, @CType("ALenum") int param, @CType("const ALdouble *") java.lang.foreign.MemorySegment values) {
-        if (Handles.MH_alSourcedvSOFT != null) {
+        if (Handles.MH_alSourcedvSOFT == null) throw new SymbolNotFoundError("Symbol not found: alSourcedvSOFT");
         try {
             Handles.MH_alSourcedvSOFT.invokeExact(source, param, values);
         } catch (Throwable e) { throw new RuntimeException("error in alSourcedvSOFT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alSourcedvSOFT"); }
     }
 
     public static void alGetSourcedSOFT(@CType("ALuint") int source, @CType("ALenum") int param, @CType("ALdouble *") java.lang.foreign.MemorySegment value) {
-        if (Handles.MH_alGetSourcedSOFT != null) {
+        if (Handles.MH_alGetSourcedSOFT == null) throw new SymbolNotFoundError("Symbol not found: alGetSourcedSOFT");
         try {
             Handles.MH_alGetSourcedSOFT.invokeExact(source, param, value);
         } catch (Throwable e) { throw new RuntimeException("error in alGetSourcedSOFT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alGetSourcedSOFT"); }
     }
 
     public static void alGetSource3dSOFT(@CType("ALuint") int source, @CType("ALenum") int param, @CType("ALdouble *") java.lang.foreign.MemorySegment value1, @CType("ALdouble *") java.lang.foreign.MemorySegment value2, @CType("ALdouble *") java.lang.foreign.MemorySegment value3) {
-        if (Handles.MH_alGetSource3dSOFT != null) {
+        if (Handles.MH_alGetSource3dSOFT == null) throw new SymbolNotFoundError("Symbol not found: alGetSource3dSOFT");
         try {
             Handles.MH_alGetSource3dSOFT.invokeExact(source, param, value1, value2, value3);
         } catch (Throwable e) { throw new RuntimeException("error in alGetSource3dSOFT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alGetSource3dSOFT"); }
     }
 
     public static void alGetSourcedvSOFT(@CType("ALuint") int source, @CType("ALenum") int param, @CType("ALdouble *") java.lang.foreign.MemorySegment values) {
-        if (Handles.MH_alGetSourcedvSOFT != null) {
+        if (Handles.MH_alGetSourcedvSOFT == null) throw new SymbolNotFoundError("Symbol not found: alGetSourcedvSOFT");
         try {
             Handles.MH_alGetSourcedvSOFT.invokeExact(source, param, values);
         } catch (Throwable e) { throw new RuntimeException("error in alGetSourcedvSOFT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alGetSourcedvSOFT"); }
     }
 
     public static void alSourcei64SOFT(@CType("ALuint") int source, @CType("ALenum") int param, @CType("ALint64SOFT") long value) {
-        if (Handles.MH_alSourcei64SOFT != null) {
+        if (Handles.MH_alSourcei64SOFT == null) throw new SymbolNotFoundError("Symbol not found: alSourcei64SOFT");
         try {
             Handles.MH_alSourcei64SOFT.invokeExact(source, param, value);
         } catch (Throwable e) { throw new RuntimeException("error in alSourcei64SOFT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alSourcei64SOFT"); }
     }
 
     public static void alSource3i64SOFT(@CType("ALuint") int source, @CType("ALenum") int param, @CType("ALint64SOFT") long value1, @CType("ALint64SOFT") long value2, @CType("ALint64SOFT") long value3) {
-        if (Handles.MH_alSource3i64SOFT != null) {
+        if (Handles.MH_alSource3i64SOFT == null) throw new SymbolNotFoundError("Symbol not found: alSource3i64SOFT");
         try {
             Handles.MH_alSource3i64SOFT.invokeExact(source, param, value1, value2, value3);
         } catch (Throwable e) { throw new RuntimeException("error in alSource3i64SOFT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alSource3i64SOFT"); }
     }
 
     public static void alSourcei64vSOFT(@CType("ALuint") int source, @CType("ALenum") int param, @CType("const ALint64SOFT *") java.lang.foreign.MemorySegment values) {
-        if (Handles.MH_alSourcei64vSOFT != null) {
+        if (Handles.MH_alSourcei64vSOFT == null) throw new SymbolNotFoundError("Symbol not found: alSourcei64vSOFT");
         try {
             Handles.MH_alSourcei64vSOFT.invokeExact(source, param, values);
         } catch (Throwable e) { throw new RuntimeException("error in alSourcei64vSOFT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alSourcei64vSOFT"); }
     }
 
     public static void alGetSourcei64SOFT(@CType("ALuint") int source, @CType("ALenum") int param, @CType("ALint64SOFT *") java.lang.foreign.MemorySegment value) {
-        if (Handles.MH_alGetSourcei64SOFT != null) {
+        if (Handles.MH_alGetSourcei64SOFT == null) throw new SymbolNotFoundError("Symbol not found: alGetSourcei64SOFT");
         try {
             Handles.MH_alGetSourcei64SOFT.invokeExact(source, param, value);
         } catch (Throwable e) { throw new RuntimeException("error in alGetSourcei64SOFT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alGetSourcei64SOFT"); }
     }
 
     public static void alGetSource3i64SOFT(@CType("ALuint") int source, @CType("ALenum") int param, @CType("ALint64SOFT *") java.lang.foreign.MemorySegment value1, @CType("ALint64SOFT *") java.lang.foreign.MemorySegment value2, @CType("ALint64SOFT *") java.lang.foreign.MemorySegment value3) {
-        if (Handles.MH_alGetSource3i64SOFT != null) {
+        if (Handles.MH_alGetSource3i64SOFT == null) throw new SymbolNotFoundError("Symbol not found: alGetSource3i64SOFT");
         try {
             Handles.MH_alGetSource3i64SOFT.invokeExact(source, param, value1, value2, value3);
         } catch (Throwable e) { throw new RuntimeException("error in alGetSource3i64SOFT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alGetSource3i64SOFT"); }
     }
 
     public static void alGetSourcei64vSOFT(@CType("ALuint") int source, @CType("ALenum") int param, @CType("ALint64SOFT *") java.lang.foreign.MemorySegment values) {
-        if (Handles.MH_alGetSourcei64vSOFT != null) {
+        if (Handles.MH_alGetSourcei64vSOFT == null) throw new SymbolNotFoundError("Symbol not found: alGetSourcei64vSOFT");
         try {
             Handles.MH_alGetSourcei64vSOFT.invokeExact(source, param, values);
         } catch (Throwable e) { throw new RuntimeException("error in alGetSourcei64vSOFT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alGetSourcei64vSOFT"); }
     }
 
     //@formatter:on

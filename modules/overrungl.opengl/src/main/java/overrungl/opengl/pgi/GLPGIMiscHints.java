@@ -52,10 +52,9 @@ public final class GLPGIMiscHints {
     }
 
     public void HintPGI(@CType("GLenum") int target, @CType("GLint") int mode) {
-        if (!Unmarshal.isNullPointer(PFN_glHintPGI)) { try {
-            MH_glHintPGI.invokeExact(PFN_glHintPGI, target, mode);
-        } catch (Throwable e) { throw new RuntimeException("error in glHintPGI", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glHintPGI"); }
+        if (Unmarshal.isNullPointer(PFN_glHintPGI)) throw new SymbolNotFoundError("Symbol not found: glHintPGI");
+        try { MH_glHintPGI.invokeExact(PFN_glHintPGI, target, mode); }
+        catch (Throwable e) { throw new RuntimeException("error in glHintPGI", e); }
     }
 
 }

@@ -27,8 +27,8 @@ public final class GLNVPrimitiveRestart {
     public static final int GL_PRIMITIVE_RESTART_NV = 0x8558;
     public static final int GL_PRIMITIVE_RESTART_INDEX_NV = 0x8559;
     public static final MethodHandle MH_glPrimitiveRestartNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
-    public final MemorySegment PFN_glPrimitiveRestartNV;
     public static final MethodHandle MH_glPrimitiveRestartIndexNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+    public final MemorySegment PFN_glPrimitiveRestartNV;
     public final MemorySegment PFN_glPrimitiveRestartIndexNV;
 
     public GLNVPrimitiveRestart(overrungl.opengl.GLLoadFunc func) {
@@ -37,17 +37,15 @@ public final class GLNVPrimitiveRestart {
     }
 
     public void PrimitiveRestartNV() {
-        if (!Unmarshal.isNullPointer(PFN_glPrimitiveRestartNV)) { try {
-            MH_glPrimitiveRestartNV.invokeExact(PFN_glPrimitiveRestartNV);
-        } catch (Throwable e) { throw new RuntimeException("error in glPrimitiveRestartNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glPrimitiveRestartNV"); }
+        if (Unmarshal.isNullPointer(PFN_glPrimitiveRestartNV)) throw new SymbolNotFoundError("Symbol not found: glPrimitiveRestartNV");
+        try { MH_glPrimitiveRestartNV.invokeExact(PFN_glPrimitiveRestartNV); }
+        catch (Throwable e) { throw new RuntimeException("error in glPrimitiveRestartNV", e); }
     }
 
     public void PrimitiveRestartIndexNV(@CType("GLuint") int index) {
-        if (!Unmarshal.isNullPointer(PFN_glPrimitiveRestartIndexNV)) { try {
-            MH_glPrimitiveRestartIndexNV.invokeExact(PFN_glPrimitiveRestartIndexNV, index);
-        } catch (Throwable e) { throw new RuntimeException("error in glPrimitiveRestartIndexNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glPrimitiveRestartIndexNV"); }
+        if (Unmarshal.isNullPointer(PFN_glPrimitiveRestartIndexNV)) throw new SymbolNotFoundError("Symbol not found: glPrimitiveRestartIndexNV");
+        try { MH_glPrimitiveRestartIndexNV.invokeExact(PFN_glPrimitiveRestartIndexNV, index); }
+        catch (Throwable e) { throw new RuntimeException("error in glPrimitiveRestartIndexNV", e); }
     }
 
 }

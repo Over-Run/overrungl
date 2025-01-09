@@ -41,10 +41,9 @@ public final class GLARBMultisample {
     }
 
     public void SampleCoverageARB(@CType("GLfloat") float value, @CType("GLboolean") boolean invert) {
-        if (!Unmarshal.isNullPointer(PFN_glSampleCoverageARB)) { try {
-            MH_glSampleCoverageARB.invokeExact(PFN_glSampleCoverageARB, value, invert);
-        } catch (Throwable e) { throw new RuntimeException("error in glSampleCoverageARB", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glSampleCoverageARB"); }
+        if (Unmarshal.isNullPointer(PFN_glSampleCoverageARB)) throw new SymbolNotFoundError("Symbol not found: glSampleCoverageARB");
+        try { MH_glSampleCoverageARB.invokeExact(PFN_glSampleCoverageARB, value, invert); }
+        catch (Throwable e) { throw new RuntimeException("error in glSampleCoverageARB", e); }
     }
 
 }

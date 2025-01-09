@@ -31,16 +31,16 @@ public final class GLNVPresentVideo {
     public static final int GL_PRESENT_TIME_NV = 0x8E2A;
     public static final int GL_PRESENT_DURATION_NV = 0x8E2B;
     public static final MethodHandle MH_glPresentFrameKeyedNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glPresentFrameKeyedNV;
     public static final MethodHandle MH_glPresentFrameDualFillNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glPresentFrameDualFillNV;
     public static final MethodHandle MH_glGetVideoivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glGetVideoivNV;
     public static final MethodHandle MH_glGetVideouivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glGetVideouivNV;
     public static final MethodHandle MH_glGetVideoi64vNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glGetVideoi64vNV;
     public static final MethodHandle MH_glGetVideoui64vNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glPresentFrameKeyedNV;
+    public final MemorySegment PFN_glPresentFrameDualFillNV;
+    public final MemorySegment PFN_glGetVideoivNV;
+    public final MemorySegment PFN_glGetVideouivNV;
+    public final MemorySegment PFN_glGetVideoi64vNV;
     public final MemorySegment PFN_glGetVideoui64vNV;
 
     public GLNVPresentVideo(overrungl.opengl.GLLoadFunc func) {
@@ -53,45 +53,39 @@ public final class GLNVPresentVideo {
     }
 
     public void PresentFrameKeyedNV(@CType("GLuint") int video_slot, @CType("GLuint64EXT") long minPresentTime, @CType("GLuint") int beginPresentTimeId, @CType("GLuint") int presentDurationId, @CType("GLenum") int type, @CType("GLenum") int target0, @CType("GLuint") int fill0, @CType("GLuint") int key0, @CType("GLenum") int target1, @CType("GLuint") int fill1, @CType("GLuint") int key1) {
-        if (!Unmarshal.isNullPointer(PFN_glPresentFrameKeyedNV)) { try {
-            MH_glPresentFrameKeyedNV.invokeExact(PFN_glPresentFrameKeyedNV, video_slot, minPresentTime, beginPresentTimeId, presentDurationId, type, target0, fill0, key0, target1, fill1, key1);
-        } catch (Throwable e) { throw new RuntimeException("error in glPresentFrameKeyedNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glPresentFrameKeyedNV"); }
+        if (Unmarshal.isNullPointer(PFN_glPresentFrameKeyedNV)) throw new SymbolNotFoundError("Symbol not found: glPresentFrameKeyedNV");
+        try { MH_glPresentFrameKeyedNV.invokeExact(PFN_glPresentFrameKeyedNV, video_slot, minPresentTime, beginPresentTimeId, presentDurationId, type, target0, fill0, key0, target1, fill1, key1); }
+        catch (Throwable e) { throw new RuntimeException("error in glPresentFrameKeyedNV", e); }
     }
 
     public void PresentFrameDualFillNV(@CType("GLuint") int video_slot, @CType("GLuint64EXT") long minPresentTime, @CType("GLuint") int beginPresentTimeId, @CType("GLuint") int presentDurationId, @CType("GLenum") int type, @CType("GLenum") int target0, @CType("GLuint") int fill0, @CType("GLenum") int target1, @CType("GLuint") int fill1, @CType("GLenum") int target2, @CType("GLuint") int fill2, @CType("GLenum") int target3, @CType("GLuint") int fill3) {
-        if (!Unmarshal.isNullPointer(PFN_glPresentFrameDualFillNV)) { try {
-            MH_glPresentFrameDualFillNV.invokeExact(PFN_glPresentFrameDualFillNV, video_slot, minPresentTime, beginPresentTimeId, presentDurationId, type, target0, fill0, target1, fill1, target2, fill2, target3, fill3);
-        } catch (Throwable e) { throw new RuntimeException("error in glPresentFrameDualFillNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glPresentFrameDualFillNV"); }
+        if (Unmarshal.isNullPointer(PFN_glPresentFrameDualFillNV)) throw new SymbolNotFoundError("Symbol not found: glPresentFrameDualFillNV");
+        try { MH_glPresentFrameDualFillNV.invokeExact(PFN_glPresentFrameDualFillNV, video_slot, minPresentTime, beginPresentTimeId, presentDurationId, type, target0, fill0, target1, fill1, target2, fill2, target3, fill3); }
+        catch (Throwable e) { throw new RuntimeException("error in glPresentFrameDualFillNV", e); }
     }
 
     public void GetVideoivNV(@CType("GLuint") int video_slot, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        if (!Unmarshal.isNullPointer(PFN_glGetVideoivNV)) { try {
-            MH_glGetVideoivNV.invokeExact(PFN_glGetVideoivNV, video_slot, pname, params);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetVideoivNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetVideoivNV"); }
+        if (Unmarshal.isNullPointer(PFN_glGetVideoivNV)) throw new SymbolNotFoundError("Symbol not found: glGetVideoivNV");
+        try { MH_glGetVideoivNV.invokeExact(PFN_glGetVideoivNV, video_slot, pname, params); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetVideoivNV", e); }
     }
 
     public void GetVideouivNV(@CType("GLuint") int video_slot, @CType("GLenum") int pname, @CType("GLuint *") java.lang.foreign.MemorySegment params) {
-        if (!Unmarshal.isNullPointer(PFN_glGetVideouivNV)) { try {
-            MH_glGetVideouivNV.invokeExact(PFN_glGetVideouivNV, video_slot, pname, params);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetVideouivNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetVideouivNV"); }
+        if (Unmarshal.isNullPointer(PFN_glGetVideouivNV)) throw new SymbolNotFoundError("Symbol not found: glGetVideouivNV");
+        try { MH_glGetVideouivNV.invokeExact(PFN_glGetVideouivNV, video_slot, pname, params); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetVideouivNV", e); }
     }
 
     public void GetVideoi64vNV(@CType("GLuint") int video_slot, @CType("GLenum") int pname, @CType("GLint64EXT *") java.lang.foreign.MemorySegment params) {
-        if (!Unmarshal.isNullPointer(PFN_glGetVideoi64vNV)) { try {
-            MH_glGetVideoi64vNV.invokeExact(PFN_glGetVideoi64vNV, video_slot, pname, params);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetVideoi64vNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetVideoi64vNV"); }
+        if (Unmarshal.isNullPointer(PFN_glGetVideoi64vNV)) throw new SymbolNotFoundError("Symbol not found: glGetVideoi64vNV");
+        try { MH_glGetVideoi64vNV.invokeExact(PFN_glGetVideoi64vNV, video_slot, pname, params); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetVideoi64vNV", e); }
     }
 
     public void GetVideoui64vNV(@CType("GLuint") int video_slot, @CType("GLenum") int pname, @CType("GLuint64EXT *") java.lang.foreign.MemorySegment params) {
-        if (!Unmarshal.isNullPointer(PFN_glGetVideoui64vNV)) { try {
-            MH_glGetVideoui64vNV.invokeExact(PFN_glGetVideoui64vNV, video_slot, pname, params);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetVideoui64vNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetVideoui64vNV"); }
+        if (Unmarshal.isNullPointer(PFN_glGetVideoui64vNV)) throw new SymbolNotFoundError("Symbol not found: glGetVideoui64vNV");
+        try { MH_glGetVideoui64vNV.invokeExact(PFN_glGetVideoui64vNV, video_slot, pname, params); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetVideoui64vNV", e); }
     }
 
 }

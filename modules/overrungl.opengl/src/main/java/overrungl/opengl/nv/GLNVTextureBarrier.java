@@ -32,10 +32,9 @@ public final class GLNVTextureBarrier {
     }
 
     public void TextureBarrierNV() {
-        if (!Unmarshal.isNullPointer(PFN_glTextureBarrierNV)) { try {
-            MH_glTextureBarrierNV.invokeExact(PFN_glTextureBarrierNV);
-        } catch (Throwable e) { throw new RuntimeException("error in glTextureBarrierNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glTextureBarrierNV"); }
+        if (Unmarshal.isNullPointer(PFN_glTextureBarrierNV)) throw new SymbolNotFoundError("Symbol not found: glTextureBarrierNV");
+        try { MH_glTextureBarrierNV.invokeExact(PFN_glTextureBarrierNV); }
+        catch (Throwable e) { throw new RuntimeException("error in glTextureBarrierNV", e); }
     }
 
 }

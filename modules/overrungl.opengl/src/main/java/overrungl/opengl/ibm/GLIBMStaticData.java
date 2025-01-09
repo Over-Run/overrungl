@@ -34,10 +34,9 @@ public final class GLIBMStaticData {
     }
 
     public void FlushStaticDataIBM(@CType("GLenum") int target) {
-        if (!Unmarshal.isNullPointer(PFN_glFlushStaticDataIBM)) { try {
-            MH_glFlushStaticDataIBM.invokeExact(PFN_glFlushStaticDataIBM, target);
-        } catch (Throwable e) { throw new RuntimeException("error in glFlushStaticDataIBM", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glFlushStaticDataIBM"); }
+        if (Unmarshal.isNullPointer(PFN_glFlushStaticDataIBM)) throw new SymbolNotFoundError("Symbol not found: glFlushStaticDataIBM");
+        try { MH_glFlushStaticDataIBM.invokeExact(PFN_glFlushStaticDataIBM, target); }
+        catch (Throwable e) { throw new RuntimeException("error in glFlushStaticDataIBM", e); }
     }
 
 }

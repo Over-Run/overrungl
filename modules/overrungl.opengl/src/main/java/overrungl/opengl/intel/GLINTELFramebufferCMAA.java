@@ -32,10 +32,9 @@ public final class GLINTELFramebufferCMAA {
     }
 
     public void ApplyFramebufferAttachmentCMAAINTEL() {
-        if (!Unmarshal.isNullPointer(PFN_glApplyFramebufferAttachmentCMAAINTEL)) { try {
-            MH_glApplyFramebufferAttachmentCMAAINTEL.invokeExact(PFN_glApplyFramebufferAttachmentCMAAINTEL);
-        } catch (Throwable e) { throw new RuntimeException("error in glApplyFramebufferAttachmentCMAAINTEL", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glApplyFramebufferAttachmentCMAAINTEL"); }
+        if (Unmarshal.isNullPointer(PFN_glApplyFramebufferAttachmentCMAAINTEL)) throw new SymbolNotFoundError("Symbol not found: glApplyFramebufferAttachmentCMAAINTEL");
+        try { MH_glApplyFramebufferAttachmentCMAAINTEL.invokeExact(PFN_glApplyFramebufferAttachmentCMAAINTEL); }
+        catch (Throwable e) { throw new RuntimeException("error in glApplyFramebufferAttachmentCMAAINTEL", e); }
     }
 
 }
