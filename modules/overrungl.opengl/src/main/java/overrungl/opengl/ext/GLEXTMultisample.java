@@ -42,8 +42,8 @@ public final class GLEXTMultisample {
     public static final int GL_SAMPLE_PATTERN_EXT = 0x80AC;
     public static final int GL_MULTISAMPLE_BIT_EXT = 0x20000000;
     public static final MethodHandle MH_glSampleMaskEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_BOOLEAN));
-    public final MemorySegment PFN_glSampleMaskEXT;
     public static final MethodHandle MH_glSamplePatternEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+    public final MemorySegment PFN_glSampleMaskEXT;
     public final MemorySegment PFN_glSamplePatternEXT;
 
     public GLEXTMultisample(overrungl.opengl.GLLoadFunc func) {
@@ -52,17 +52,15 @@ public final class GLEXTMultisample {
     }
 
     public void SampleMaskEXT(@CType("GLclampf") float value, @CType("GLboolean") boolean invert) {
-        if (!Unmarshal.isNullPointer(PFN_glSampleMaskEXT)) { try {
-            MH_glSampleMaskEXT.invokeExact(PFN_glSampleMaskEXT, value, invert);
-        } catch (Throwable e) { throw new RuntimeException("error in glSampleMaskEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glSampleMaskEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glSampleMaskEXT)) throw new SymbolNotFoundError("Symbol not found: glSampleMaskEXT");
+        try { MH_glSampleMaskEXT.invokeExact(PFN_glSampleMaskEXT, value, invert); }
+        catch (Throwable e) { throw new RuntimeException("error in glSampleMaskEXT", e); }
     }
 
     public void SamplePatternEXT(@CType("GLenum") int pattern) {
-        if (!Unmarshal.isNullPointer(PFN_glSamplePatternEXT)) { try {
-            MH_glSamplePatternEXT.invokeExact(PFN_glSamplePatternEXT, pattern);
-        } catch (Throwable e) { throw new RuntimeException("error in glSamplePatternEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glSamplePatternEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glSamplePatternEXT)) throw new SymbolNotFoundError("Symbol not found: glSamplePatternEXT");
+        try { MH_glSamplePatternEXT.invokeExact(PFN_glSamplePatternEXT, pattern); }
+        catch (Throwable e) { throw new RuntimeException("error in glSamplePatternEXT", e); }
     }
 
 }

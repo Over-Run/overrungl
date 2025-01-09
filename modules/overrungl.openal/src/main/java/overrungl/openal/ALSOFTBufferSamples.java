@@ -84,35 +84,31 @@ public final class ALSOFTBufferSamples {
     //endregion
 
     public static void alBufferSamplesSOFT(@CType("ALuint") int buffer, @CType("ALuint") int samplerate, @CType("ALenum") int internalformat, @CType("ALsizei") int samples, @CType("ALenum") int channels, @CType("ALenum") int type, @CType("const ALvoid *") java.lang.foreign.MemorySegment data) {
-        if (Handles.MH_alBufferSamplesSOFT != null) {
+        if (Handles.MH_alBufferSamplesSOFT == null) throw new SymbolNotFoundError("Symbol not found: alBufferSamplesSOFT");
         try {
             Handles.MH_alBufferSamplesSOFT.invokeExact(buffer, samplerate, internalformat, samples, channels, type, data);
         } catch (Throwable e) { throw new RuntimeException("error in alBufferSamplesSOFT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alBufferSamplesSOFT"); }
     }
 
     public static void alBufferSubSamplesSOFT(@CType("ALuint") int buffer, @CType("ALsizei") int offset, @CType("ALsizei") int samples, @CType("ALenum") int channels, @CType("ALenum") int type, @CType("const ALvoid *") java.lang.foreign.MemorySegment data) {
-        if (Handles.MH_alBufferSubSamplesSOFT != null) {
+        if (Handles.MH_alBufferSubSamplesSOFT == null) throw new SymbolNotFoundError("Symbol not found: alBufferSubSamplesSOFT");
         try {
             Handles.MH_alBufferSubSamplesSOFT.invokeExact(buffer, offset, samples, channels, type, data);
         } catch (Throwable e) { throw new RuntimeException("error in alBufferSubSamplesSOFT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alBufferSubSamplesSOFT"); }
     }
 
     public static void alGetBufferSamplesSOFT(@CType("ALuint") int buffer, @CType("ALsizei") int offset, @CType("ALsizei") int samples, @CType("ALenum") int channels, @CType("ALenum") int type, @CType("ALvoid *") java.lang.foreign.MemorySegment data) {
-        if (Handles.MH_alGetBufferSamplesSOFT != null) {
+        if (Handles.MH_alGetBufferSamplesSOFT == null) throw new SymbolNotFoundError("Symbol not found: alGetBufferSamplesSOFT");
         try {
             Handles.MH_alGetBufferSamplesSOFT.invokeExact(buffer, offset, samples, channels, type, data);
         } catch (Throwable e) { throw new RuntimeException("error in alGetBufferSamplesSOFT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alGetBufferSamplesSOFT"); }
     }
 
     public static @CType("ALboolean") boolean alIsBufferFormatSupportedSOFT(@CType("ALenum") int format) {
-        if (Handles.MH_alIsBufferFormatSupportedSOFT != null) {
+        if (Handles.MH_alIsBufferFormatSupportedSOFT == null) throw new SymbolNotFoundError("Symbol not found: alIsBufferFormatSupportedSOFT");
         try {
             return (boolean) Handles.MH_alIsBufferFormatSupportedSOFT.invokeExact(format);
         } catch (Throwable e) { throw new RuntimeException("error in alIsBufferFormatSupportedSOFT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alIsBufferFormatSupportedSOFT"); }
     }
 
     //@formatter:on

@@ -33,8 +33,8 @@ public final class GLSGISDetailTexture {
     public static final int GL_DETAIL_TEXTURE_MODE_SGIS = 0x809B;
     public static final int GL_DETAIL_TEXTURE_FUNC_POINTS_SGIS = 0x809C;
     public static final MethodHandle MH_glDetailTexFuncSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glDetailTexFuncSGIS;
     public static final MethodHandle MH_glGetDetailTexFuncSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glDetailTexFuncSGIS;
     public final MemorySegment PFN_glGetDetailTexFuncSGIS;
 
     public GLSGISDetailTexture(overrungl.opengl.GLLoadFunc func) {
@@ -43,17 +43,15 @@ public final class GLSGISDetailTexture {
     }
 
     public void DetailTexFuncSGIS(@CType("GLenum") int target, @CType("GLsizei") int n, @CType("const GLfloat *") java.lang.foreign.MemorySegment points) {
-        if (!Unmarshal.isNullPointer(PFN_glDetailTexFuncSGIS)) { try {
-            MH_glDetailTexFuncSGIS.invokeExact(PFN_glDetailTexFuncSGIS, target, n, points);
-        } catch (Throwable e) { throw new RuntimeException("error in glDetailTexFuncSGIS", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glDetailTexFuncSGIS"); }
+        if (Unmarshal.isNullPointer(PFN_glDetailTexFuncSGIS)) throw new SymbolNotFoundError("Symbol not found: glDetailTexFuncSGIS");
+        try { MH_glDetailTexFuncSGIS.invokeExact(PFN_glDetailTexFuncSGIS, target, n, points); }
+        catch (Throwable e) { throw new RuntimeException("error in glDetailTexFuncSGIS", e); }
     }
 
     public void GetDetailTexFuncSGIS(@CType("GLenum") int target, @CType("GLfloat *") java.lang.foreign.MemorySegment points) {
-        if (!Unmarshal.isNullPointer(PFN_glGetDetailTexFuncSGIS)) { try {
-            MH_glGetDetailTexFuncSGIS.invokeExact(PFN_glGetDetailTexFuncSGIS, target, points);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetDetailTexFuncSGIS", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetDetailTexFuncSGIS"); }
+        if (Unmarshal.isNullPointer(PFN_glGetDetailTexFuncSGIS)) throw new SymbolNotFoundError("Symbol not found: glGetDetailTexFuncSGIS");
+        try { MH_glGetDetailTexFuncSGIS.invokeExact(PFN_glGetDetailTexFuncSGIS, target, points); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetDetailTexFuncSGIS", e); }
     }
 
 }

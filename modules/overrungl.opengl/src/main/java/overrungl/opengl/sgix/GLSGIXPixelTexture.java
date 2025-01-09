@@ -34,10 +34,9 @@ public final class GLSGIXPixelTexture {
     }
 
     public void PixelTexGenSGIX(@CType("GLenum") int mode) {
-        if (!Unmarshal.isNullPointer(PFN_glPixelTexGenSGIX)) { try {
-            MH_glPixelTexGenSGIX.invokeExact(PFN_glPixelTexGenSGIX, mode);
-        } catch (Throwable e) { throw new RuntimeException("error in glPixelTexGenSGIX", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glPixelTexGenSGIX"); }
+        if (Unmarshal.isNullPointer(PFN_glPixelTexGenSGIX)) throw new SymbolNotFoundError("Symbol not found: glPixelTexGenSGIX");
+        try { MH_glPixelTexGenSGIX.invokeExact(PFN_glPixelTexGenSGIX, mode); }
+        catch (Throwable e) { throw new RuntimeException("error in glPixelTexGenSGIX", e); }
     }
 
 }

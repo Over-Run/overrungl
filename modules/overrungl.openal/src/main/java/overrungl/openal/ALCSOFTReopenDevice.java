@@ -36,11 +36,10 @@ public final class ALCSOFTReopenDevice {
     //endregion
 
     public static @CType("ALCboolean") boolean alcReopenDeviceSOFT(@CType("ALCdevice *") java.lang.foreign.MemorySegment device, @CType("const ALCchar*") java.lang.foreign.MemorySegment deviceName, @CType("const ALCint *") java.lang.foreign.MemorySegment attribs) {
-        if (Handles.MH_alcReopenDeviceSOFT != null) {
+        if (Handles.MH_alcReopenDeviceSOFT == null) throw new SymbolNotFoundError("Symbol not found: alcReopenDeviceSOFT");
         try {
             return (boolean) Handles.MH_alcReopenDeviceSOFT.invokeExact(device, deviceName, attribs);
         } catch (Throwable e) { throw new RuntimeException("error in alcReopenDeviceSOFT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alcReopenDeviceSOFT"); }
     }
 
     //@formatter:on

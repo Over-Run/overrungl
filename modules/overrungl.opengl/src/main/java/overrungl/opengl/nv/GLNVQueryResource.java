@@ -38,10 +38,9 @@ public final class GLNVQueryResource {
     }
 
     public @CType("GLint") int QueryResourceNV(@CType("GLenum") int queryType, @CType("GLint") int tagId, @CType("GLuint") int count, @CType("GLint *") java.lang.foreign.MemorySegment buffer) {
-        if (!Unmarshal.isNullPointer(PFN_glQueryResourceNV)) { try {
-            return (int) MH_glQueryResourceNV.invokeExact(PFN_glQueryResourceNV, queryType, tagId, count, buffer);
-        } catch (Throwable e) { throw new RuntimeException("error in glQueryResourceNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glQueryResourceNV"); }
+        if (Unmarshal.isNullPointer(PFN_glQueryResourceNV)) throw new SymbolNotFoundError("Symbol not found: glQueryResourceNV");
+        try { return (int) MH_glQueryResourceNV.invokeExact(PFN_glQueryResourceNV, queryType, tagId, count, buffer); }
+        catch (Throwable e) { throw new RuntimeException("error in glQueryResourceNV", e); }
     }
 
 }

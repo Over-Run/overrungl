@@ -34,10 +34,9 @@ public final class GLSGIXReferencePlane {
     }
 
     public void ReferencePlaneSGIX(@CType("const GLdouble *") java.lang.foreign.MemorySegment equation) {
-        if (!Unmarshal.isNullPointer(PFN_glReferencePlaneSGIX)) { try {
-            MH_glReferencePlaneSGIX.invokeExact(PFN_glReferencePlaneSGIX, equation);
-        } catch (Throwable e) { throw new RuntimeException("error in glReferencePlaneSGIX", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glReferencePlaneSGIX"); }
+        if (Unmarshal.isNullPointer(PFN_glReferencePlaneSGIX)) throw new SymbolNotFoundError("Symbol not found: glReferencePlaneSGIX");
+        try { MH_glReferencePlaneSGIX.invokeExact(PFN_glReferencePlaneSGIX, equation); }
+        catch (Throwable e) { throw new RuntimeException("error in glReferencePlaneSGIX", e); }
     }
 
 }

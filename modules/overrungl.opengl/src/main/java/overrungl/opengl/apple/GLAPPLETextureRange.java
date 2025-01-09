@@ -31,8 +31,8 @@ public final class GLAPPLETextureRange {
     public static final int GL_STORAGE_CACHED_APPLE = 0x85BE;
     public static final int GL_STORAGE_SHARED_APPLE = 0x85BF;
     public static final MethodHandle MH_glTextureRangeAPPLE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glTextureRangeAPPLE;
     public static final MethodHandle MH_glGetTexParameterPointervAPPLE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glTextureRangeAPPLE;
     public final MemorySegment PFN_glGetTexParameterPointervAPPLE;
 
     public GLAPPLETextureRange(overrungl.opengl.GLLoadFunc func) {
@@ -41,17 +41,15 @@ public final class GLAPPLETextureRange {
     }
 
     public void TextureRangeAPPLE(@CType("GLenum") int target, @CType("GLsizei") int length, @CType("const void *") java.lang.foreign.MemorySegment pointer) {
-        if (!Unmarshal.isNullPointer(PFN_glTextureRangeAPPLE)) { try {
-            MH_glTextureRangeAPPLE.invokeExact(PFN_glTextureRangeAPPLE, target, length, pointer);
-        } catch (Throwable e) { throw new RuntimeException("error in glTextureRangeAPPLE", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glTextureRangeAPPLE"); }
+        if (Unmarshal.isNullPointer(PFN_glTextureRangeAPPLE)) throw new SymbolNotFoundError("Symbol not found: glTextureRangeAPPLE");
+        try { MH_glTextureRangeAPPLE.invokeExact(PFN_glTextureRangeAPPLE, target, length, pointer); }
+        catch (Throwable e) { throw new RuntimeException("error in glTextureRangeAPPLE", e); }
     }
 
     public void GetTexParameterPointervAPPLE(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("void **") java.lang.foreign.MemorySegment params) {
-        if (!Unmarshal.isNullPointer(PFN_glGetTexParameterPointervAPPLE)) { try {
-            MH_glGetTexParameterPointervAPPLE.invokeExact(PFN_glGetTexParameterPointervAPPLE, target, pname, params);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetTexParameterPointervAPPLE", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetTexParameterPointervAPPLE"); }
+        if (Unmarshal.isNullPointer(PFN_glGetTexParameterPointervAPPLE)) throw new SymbolNotFoundError("Symbol not found: glGetTexParameterPointervAPPLE");
+        try { MH_glGetTexParameterPointervAPPLE.invokeExact(PFN_glGetTexParameterPointervAPPLE, target, pname, params); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetTexParameterPointervAPPLE", e); }
     }
 
 }

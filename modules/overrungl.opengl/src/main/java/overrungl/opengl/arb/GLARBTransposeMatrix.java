@@ -29,12 +29,12 @@ public final class GLARBTransposeMatrix {
     public static final int GL_TRANSPOSE_TEXTURE_MATRIX_ARB = 0x84E5;
     public static final int GL_TRANSPOSE_COLOR_MATRIX_ARB = 0x84E6;
     public static final MethodHandle MH_glLoadTransposeMatrixfARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glLoadTransposeMatrixfARB;
     public static final MethodHandle MH_glLoadTransposeMatrixdARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glLoadTransposeMatrixdARB;
     public static final MethodHandle MH_glMultTransposeMatrixfARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glMultTransposeMatrixfARB;
     public static final MethodHandle MH_glMultTransposeMatrixdARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glLoadTransposeMatrixfARB;
+    public final MemorySegment PFN_glLoadTransposeMatrixdARB;
+    public final MemorySegment PFN_glMultTransposeMatrixfARB;
     public final MemorySegment PFN_glMultTransposeMatrixdARB;
 
     public GLARBTransposeMatrix(overrungl.opengl.GLLoadFunc func) {
@@ -45,31 +45,27 @@ public final class GLARBTransposeMatrix {
     }
 
     public void LoadTransposeMatrixfARB(@CType("const GLfloat *") java.lang.foreign.MemorySegment m) {
-        if (!Unmarshal.isNullPointer(PFN_glLoadTransposeMatrixfARB)) { try {
-            MH_glLoadTransposeMatrixfARB.invokeExact(PFN_glLoadTransposeMatrixfARB, m);
-        } catch (Throwable e) { throw new RuntimeException("error in glLoadTransposeMatrixfARB", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glLoadTransposeMatrixfARB"); }
+        if (Unmarshal.isNullPointer(PFN_glLoadTransposeMatrixfARB)) throw new SymbolNotFoundError("Symbol not found: glLoadTransposeMatrixfARB");
+        try { MH_glLoadTransposeMatrixfARB.invokeExact(PFN_glLoadTransposeMatrixfARB, m); }
+        catch (Throwable e) { throw new RuntimeException("error in glLoadTransposeMatrixfARB", e); }
     }
 
     public void LoadTransposeMatrixdARB(@CType("const GLdouble *") java.lang.foreign.MemorySegment m) {
-        if (!Unmarshal.isNullPointer(PFN_glLoadTransposeMatrixdARB)) { try {
-            MH_glLoadTransposeMatrixdARB.invokeExact(PFN_glLoadTransposeMatrixdARB, m);
-        } catch (Throwable e) { throw new RuntimeException("error in glLoadTransposeMatrixdARB", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glLoadTransposeMatrixdARB"); }
+        if (Unmarshal.isNullPointer(PFN_glLoadTransposeMatrixdARB)) throw new SymbolNotFoundError("Symbol not found: glLoadTransposeMatrixdARB");
+        try { MH_glLoadTransposeMatrixdARB.invokeExact(PFN_glLoadTransposeMatrixdARB, m); }
+        catch (Throwable e) { throw new RuntimeException("error in glLoadTransposeMatrixdARB", e); }
     }
 
     public void MultTransposeMatrixfARB(@CType("const GLfloat *") java.lang.foreign.MemorySegment m) {
-        if (!Unmarshal.isNullPointer(PFN_glMultTransposeMatrixfARB)) { try {
-            MH_glMultTransposeMatrixfARB.invokeExact(PFN_glMultTransposeMatrixfARB, m);
-        } catch (Throwable e) { throw new RuntimeException("error in glMultTransposeMatrixfARB", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glMultTransposeMatrixfARB"); }
+        if (Unmarshal.isNullPointer(PFN_glMultTransposeMatrixfARB)) throw new SymbolNotFoundError("Symbol not found: glMultTransposeMatrixfARB");
+        try { MH_glMultTransposeMatrixfARB.invokeExact(PFN_glMultTransposeMatrixfARB, m); }
+        catch (Throwable e) { throw new RuntimeException("error in glMultTransposeMatrixfARB", e); }
     }
 
     public void MultTransposeMatrixdARB(@CType("const GLdouble *") java.lang.foreign.MemorySegment m) {
-        if (!Unmarshal.isNullPointer(PFN_glMultTransposeMatrixdARB)) { try {
-            MH_glMultTransposeMatrixdARB.invokeExact(PFN_glMultTransposeMatrixdARB, m);
-        } catch (Throwable e) { throw new RuntimeException("error in glMultTransposeMatrixdARB", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glMultTransposeMatrixdARB"); }
+        if (Unmarshal.isNullPointer(PFN_glMultTransposeMatrixdARB)) throw new SymbolNotFoundError("Symbol not found: glMultTransposeMatrixdARB");
+        try { MH_glMultTransposeMatrixdARB.invokeExact(PFN_glMultTransposeMatrixdARB, m); }
+        catch (Throwable e) { throw new RuntimeException("error in glMultTransposeMatrixdARB", e); }
     }
 
 }

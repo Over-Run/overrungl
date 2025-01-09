@@ -39,12 +39,12 @@ public final class GLNVFramebufferMixedSamples {
     public static final int GL_COVERAGE_MODULATION_NV = 0x9332;
     public static final int GL_COVERAGE_MODULATION_TABLE_SIZE_NV = 0x9333;
     public static final MethodHandle MH_glRasterSamplesEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN));
-    public final MemorySegment PFN_glRasterSamplesEXT;
     public static final MethodHandle MH_glCoverageModulationTableNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glCoverageModulationTableNV;
     public static final MethodHandle MH_glGetCoverageModulationTableNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glGetCoverageModulationTableNV;
     public static final MethodHandle MH_glCoverageModulationNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+    public final MemorySegment PFN_glRasterSamplesEXT;
+    public final MemorySegment PFN_glCoverageModulationTableNV;
+    public final MemorySegment PFN_glGetCoverageModulationTableNV;
     public final MemorySegment PFN_glCoverageModulationNV;
 
     public GLNVFramebufferMixedSamples(overrungl.opengl.GLLoadFunc func) {
@@ -55,31 +55,27 @@ public final class GLNVFramebufferMixedSamples {
     }
 
     public void RasterSamplesEXT(@CType("GLuint") int samples, @CType("GLboolean") boolean fixedsamplelocations) {
-        if (!Unmarshal.isNullPointer(PFN_glRasterSamplesEXT)) { try {
-            MH_glRasterSamplesEXT.invokeExact(PFN_glRasterSamplesEXT, samples, fixedsamplelocations);
-        } catch (Throwable e) { throw new RuntimeException("error in glRasterSamplesEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glRasterSamplesEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glRasterSamplesEXT)) throw new SymbolNotFoundError("Symbol not found: glRasterSamplesEXT");
+        try { MH_glRasterSamplesEXT.invokeExact(PFN_glRasterSamplesEXT, samples, fixedsamplelocations); }
+        catch (Throwable e) { throw new RuntimeException("error in glRasterSamplesEXT", e); }
     }
 
     public void CoverageModulationTableNV(@CType("GLsizei") int n, @CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
-        if (!Unmarshal.isNullPointer(PFN_glCoverageModulationTableNV)) { try {
-            MH_glCoverageModulationTableNV.invokeExact(PFN_glCoverageModulationTableNV, n, v);
-        } catch (Throwable e) { throw new RuntimeException("error in glCoverageModulationTableNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glCoverageModulationTableNV"); }
+        if (Unmarshal.isNullPointer(PFN_glCoverageModulationTableNV)) throw new SymbolNotFoundError("Symbol not found: glCoverageModulationTableNV");
+        try { MH_glCoverageModulationTableNV.invokeExact(PFN_glCoverageModulationTableNV, n, v); }
+        catch (Throwable e) { throw new RuntimeException("error in glCoverageModulationTableNV", e); }
     }
 
     public void GetCoverageModulationTableNV(@CType("GLsizei") int bufSize, @CType("GLfloat *") java.lang.foreign.MemorySegment v) {
-        if (!Unmarshal.isNullPointer(PFN_glGetCoverageModulationTableNV)) { try {
-            MH_glGetCoverageModulationTableNV.invokeExact(PFN_glGetCoverageModulationTableNV, bufSize, v);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetCoverageModulationTableNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetCoverageModulationTableNV"); }
+        if (Unmarshal.isNullPointer(PFN_glGetCoverageModulationTableNV)) throw new SymbolNotFoundError("Symbol not found: glGetCoverageModulationTableNV");
+        try { MH_glGetCoverageModulationTableNV.invokeExact(PFN_glGetCoverageModulationTableNV, bufSize, v); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetCoverageModulationTableNV", e); }
     }
 
     public void CoverageModulationNV(@CType("GLenum") int components) {
-        if (!Unmarshal.isNullPointer(PFN_glCoverageModulationNV)) { try {
-            MH_glCoverageModulationNV.invokeExact(PFN_glCoverageModulationNV, components);
-        } catch (Throwable e) { throw new RuntimeException("error in glCoverageModulationNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glCoverageModulationNV"); }
+        if (Unmarshal.isNullPointer(PFN_glCoverageModulationNV)) throw new SymbolNotFoundError("Symbol not found: glCoverageModulationNV");
+        try { MH_glCoverageModulationNV.invokeExact(PFN_glCoverageModulationNV, components); }
+        catch (Throwable e) { throw new RuntimeException("error in glCoverageModulationNV", e); }
     }
 
 }

@@ -35,10 +35,9 @@ public final class GLNVClipSpaceWScaling {
     }
 
     public void ViewportPositionWScaleNV(@CType("GLuint") int index, @CType("GLfloat") float xcoeff, @CType("GLfloat") float ycoeff) {
-        if (!Unmarshal.isNullPointer(PFN_glViewportPositionWScaleNV)) { try {
-            MH_glViewportPositionWScaleNV.invokeExact(PFN_glViewportPositionWScaleNV, index, xcoeff, ycoeff);
-        } catch (Throwable e) { throw new RuntimeException("error in glViewportPositionWScaleNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glViewportPositionWScaleNV"); }
+        if (Unmarshal.isNullPointer(PFN_glViewportPositionWScaleNV)) throw new SymbolNotFoundError("Symbol not found: glViewportPositionWScaleNV");
+        try { MH_glViewportPositionWScaleNV.invokeExact(PFN_glViewportPositionWScaleNV, index, xcoeff, ycoeff); }
+        catch (Throwable e) { throw new RuntimeException("error in glViewportPositionWScaleNV", e); }
     }
 
 }

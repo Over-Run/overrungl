@@ -25,8 +25,8 @@ import overrungl.util.*;
 
 public final class GLIBMMultimodeDrawArrays {
     public static final MethodHandle MH_glMultiModeDrawArraysIBM = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glMultiModeDrawArraysIBM;
     public static final MethodHandle MH_glMultiModeDrawElementsIBM = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+    public final MemorySegment PFN_glMultiModeDrawArraysIBM;
     public final MemorySegment PFN_glMultiModeDrawElementsIBM;
 
     public GLIBMMultimodeDrawArrays(overrungl.opengl.GLLoadFunc func) {
@@ -35,17 +35,15 @@ public final class GLIBMMultimodeDrawArrays {
     }
 
     public void MultiModeDrawArraysIBM(@CType("const GLenum *") java.lang.foreign.MemorySegment mode, @CType("const GLint *") java.lang.foreign.MemorySegment first, @CType("const GLsizei *") java.lang.foreign.MemorySegment count, @CType("GLsizei") int primcount, @CType("GLint") int modestride) {
-        if (!Unmarshal.isNullPointer(PFN_glMultiModeDrawArraysIBM)) { try {
-            MH_glMultiModeDrawArraysIBM.invokeExact(PFN_glMultiModeDrawArraysIBM, mode, first, count, primcount, modestride);
-        } catch (Throwable e) { throw new RuntimeException("error in glMultiModeDrawArraysIBM", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glMultiModeDrawArraysIBM"); }
+        if (Unmarshal.isNullPointer(PFN_glMultiModeDrawArraysIBM)) throw new SymbolNotFoundError("Symbol not found: glMultiModeDrawArraysIBM");
+        try { MH_glMultiModeDrawArraysIBM.invokeExact(PFN_glMultiModeDrawArraysIBM, mode, first, count, primcount, modestride); }
+        catch (Throwable e) { throw new RuntimeException("error in glMultiModeDrawArraysIBM", e); }
     }
 
     public void MultiModeDrawElementsIBM(@CType("const GLenum *") java.lang.foreign.MemorySegment mode, @CType("const GLsizei *") java.lang.foreign.MemorySegment count, @CType("GLenum") int type, @CType("const void *const*") java.lang.foreign.MemorySegment indices, @CType("GLsizei") int primcount, @CType("GLint") int modestride) {
-        if (!Unmarshal.isNullPointer(PFN_glMultiModeDrawElementsIBM)) { try {
-            MH_glMultiModeDrawElementsIBM.invokeExact(PFN_glMultiModeDrawElementsIBM, mode, count, type, indices, primcount, modestride);
-        } catch (Throwable e) { throw new RuntimeException("error in glMultiModeDrawElementsIBM", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glMultiModeDrawElementsIBM"); }
+        if (Unmarshal.isNullPointer(PFN_glMultiModeDrawElementsIBM)) throw new SymbolNotFoundError("Symbol not found: glMultiModeDrawElementsIBM");
+        try { MH_glMultiModeDrawElementsIBM.invokeExact(PFN_glMultiModeDrawElementsIBM, mode, count, type, indices, primcount, modestride); }
+        catch (Throwable e) { throw new RuntimeException("error in glMultiModeDrawElementsIBM", e); }
     }
 
 }

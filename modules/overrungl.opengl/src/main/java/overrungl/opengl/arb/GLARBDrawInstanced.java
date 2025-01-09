@@ -25,8 +25,8 @@ import overrungl.util.*;
 
 public final class GLARBDrawInstanced {
     public static final MethodHandle MH_glDrawArraysInstancedARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glDrawArraysInstancedARB;
     public static final MethodHandle MH_glDrawElementsInstancedARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+    public final MemorySegment PFN_glDrawArraysInstancedARB;
     public final MemorySegment PFN_glDrawElementsInstancedARB;
 
     public GLARBDrawInstanced(overrungl.opengl.GLLoadFunc func) {
@@ -35,17 +35,15 @@ public final class GLARBDrawInstanced {
     }
 
     public void DrawArraysInstancedARB(@CType("GLenum") int mode, @CType("GLint") int first, @CType("GLsizei") int count, @CType("GLsizei") int primcount) {
-        if (!Unmarshal.isNullPointer(PFN_glDrawArraysInstancedARB)) { try {
-            MH_glDrawArraysInstancedARB.invokeExact(PFN_glDrawArraysInstancedARB, mode, first, count, primcount);
-        } catch (Throwable e) { throw new RuntimeException("error in glDrawArraysInstancedARB", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glDrawArraysInstancedARB"); }
+        if (Unmarshal.isNullPointer(PFN_glDrawArraysInstancedARB)) throw new SymbolNotFoundError("Symbol not found: glDrawArraysInstancedARB");
+        try { MH_glDrawArraysInstancedARB.invokeExact(PFN_glDrawArraysInstancedARB, mode, first, count, primcount); }
+        catch (Throwable e) { throw new RuntimeException("error in glDrawArraysInstancedARB", e); }
     }
 
     public void DrawElementsInstancedARB(@CType("GLenum") int mode, @CType("GLsizei") int count, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment indices, @CType("GLsizei") int primcount) {
-        if (!Unmarshal.isNullPointer(PFN_glDrawElementsInstancedARB)) { try {
-            MH_glDrawElementsInstancedARB.invokeExact(PFN_glDrawElementsInstancedARB, mode, count, type, indices, primcount);
-        } catch (Throwable e) { throw new RuntimeException("error in glDrawElementsInstancedARB", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glDrawElementsInstancedARB"); }
+        if (Unmarshal.isNullPointer(PFN_glDrawElementsInstancedARB)) throw new SymbolNotFoundError("Symbol not found: glDrawElementsInstancedARB");
+        try { MH_glDrawElementsInstancedARB.invokeExact(PFN_glDrawElementsInstancedARB, mode, count, type, indices, primcount); }
+        catch (Throwable e) { throw new RuntimeException("error in glDrawElementsInstancedARB", e); }
     }
 
 }

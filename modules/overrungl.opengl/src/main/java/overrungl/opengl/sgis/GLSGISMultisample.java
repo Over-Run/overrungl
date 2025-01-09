@@ -41,8 +41,8 @@ public final class GLSGISMultisample {
     public static final int GL_SAMPLE_MASK_INVERT_SGIS = 0x80AB;
     public static final int GL_SAMPLE_PATTERN_SGIS = 0x80AC;
     public static final MethodHandle MH_glSampleMaskSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_BOOLEAN));
-    public final MemorySegment PFN_glSampleMaskSGIS;
     public static final MethodHandle MH_glSamplePatternSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+    public final MemorySegment PFN_glSampleMaskSGIS;
     public final MemorySegment PFN_glSamplePatternSGIS;
 
     public GLSGISMultisample(overrungl.opengl.GLLoadFunc func) {
@@ -51,17 +51,15 @@ public final class GLSGISMultisample {
     }
 
     public void SampleMaskSGIS(@CType("GLclampf") float value, @CType("GLboolean") boolean invert) {
-        if (!Unmarshal.isNullPointer(PFN_glSampleMaskSGIS)) { try {
-            MH_glSampleMaskSGIS.invokeExact(PFN_glSampleMaskSGIS, value, invert);
-        } catch (Throwable e) { throw new RuntimeException("error in glSampleMaskSGIS", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glSampleMaskSGIS"); }
+        if (Unmarshal.isNullPointer(PFN_glSampleMaskSGIS)) throw new SymbolNotFoundError("Symbol not found: glSampleMaskSGIS");
+        try { MH_glSampleMaskSGIS.invokeExact(PFN_glSampleMaskSGIS, value, invert); }
+        catch (Throwable e) { throw new RuntimeException("error in glSampleMaskSGIS", e); }
     }
 
     public void SamplePatternSGIS(@CType("GLenum") int pattern) {
-        if (!Unmarshal.isNullPointer(PFN_glSamplePatternSGIS)) { try {
-            MH_glSamplePatternSGIS.invokeExact(PFN_glSamplePatternSGIS, pattern);
-        } catch (Throwable e) { throw new RuntimeException("error in glSamplePatternSGIS", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glSamplePatternSGIS"); }
+        if (Unmarshal.isNullPointer(PFN_glSamplePatternSGIS)) throw new SymbolNotFoundError("Symbol not found: glSamplePatternSGIS");
+        try { MH_glSamplePatternSGIS.invokeExact(PFN_glSamplePatternSGIS, pattern); }
+        catch (Throwable e) { throw new RuntimeException("error in glSamplePatternSGIS", e); }
     }
 
 }

@@ -188,9 +188,9 @@ class VkDowncall(
                 import overrungl.annotation.*;
                 import overrungl.internal.RuntimeHelper;
                 import overrungl.util.*;
-                import overrungl.vulkan.*;
             """.trimIndent()
         )
+        if (packageName != vulkanPackage) sb.appendLine("import overrungl.vulkan.*;")
         imports.sorted().forEach { sb.appendLine("import $it;") }
         sb.append("public class $className")
         if (extends.isNotEmpty()) {

@@ -36,10 +36,9 @@ public final class GLEXTBlendMinmax {
     }
 
     public void BlendEquationEXT(@CType("GLenum") int mode) {
-        if (!Unmarshal.isNullPointer(PFN_glBlendEquationEXT)) { try {
-            MH_glBlendEquationEXT.invokeExact(PFN_glBlendEquationEXT, mode);
-        } catch (Throwable e) { throw new RuntimeException("error in glBlendEquationEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glBlendEquationEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glBlendEquationEXT)) throw new SymbolNotFoundError("Symbol not found: glBlendEquationEXT");
+        try { MH_glBlendEquationEXT.invokeExact(PFN_glBlendEquationEXT, mode); }
+        catch (Throwable e) { throw new RuntimeException("error in glBlendEquationEXT", e); }
     }
 
 }

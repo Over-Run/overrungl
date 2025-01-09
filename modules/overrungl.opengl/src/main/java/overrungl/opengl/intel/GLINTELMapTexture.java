@@ -29,10 +29,10 @@ public final class GLINTELMapTexture {
     public static final int GL_LAYOUT_LINEAR_INTEL = 1;
     public static final int GL_LAYOUT_LINEAR_CPU_CACHED_INTEL = 2;
     public static final MethodHandle MH_glSyncTextureINTEL = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glSyncTextureINTEL;
     public static final MethodHandle MH_glUnmapTexture2DINTEL = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glUnmapTexture2DINTEL;
     public static final MethodHandle MH_glMapTexture2DINTEL = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glSyncTextureINTEL;
+    public final MemorySegment PFN_glUnmapTexture2DINTEL;
     public final MemorySegment PFN_glMapTexture2DINTEL;
 
     public GLINTELMapTexture(overrungl.opengl.GLLoadFunc func) {
@@ -42,24 +42,21 @@ public final class GLINTELMapTexture {
     }
 
     public void SyncTextureINTEL(@CType("GLuint") int texture) {
-        if (!Unmarshal.isNullPointer(PFN_glSyncTextureINTEL)) { try {
-            MH_glSyncTextureINTEL.invokeExact(PFN_glSyncTextureINTEL, texture);
-        } catch (Throwable e) { throw new RuntimeException("error in glSyncTextureINTEL", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glSyncTextureINTEL"); }
+        if (Unmarshal.isNullPointer(PFN_glSyncTextureINTEL)) throw new SymbolNotFoundError("Symbol not found: glSyncTextureINTEL");
+        try { MH_glSyncTextureINTEL.invokeExact(PFN_glSyncTextureINTEL, texture); }
+        catch (Throwable e) { throw new RuntimeException("error in glSyncTextureINTEL", e); }
     }
 
     public void UnmapTexture2DINTEL(@CType("GLuint") int texture, @CType("GLint") int level) {
-        if (!Unmarshal.isNullPointer(PFN_glUnmapTexture2DINTEL)) { try {
-            MH_glUnmapTexture2DINTEL.invokeExact(PFN_glUnmapTexture2DINTEL, texture, level);
-        } catch (Throwable e) { throw new RuntimeException("error in glUnmapTexture2DINTEL", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glUnmapTexture2DINTEL"); }
+        if (Unmarshal.isNullPointer(PFN_glUnmapTexture2DINTEL)) throw new SymbolNotFoundError("Symbol not found: glUnmapTexture2DINTEL");
+        try { MH_glUnmapTexture2DINTEL.invokeExact(PFN_glUnmapTexture2DINTEL, texture, level); }
+        catch (Throwable e) { throw new RuntimeException("error in glUnmapTexture2DINTEL", e); }
     }
 
     public @CType("void*") java.lang.foreign.MemorySegment MapTexture2DINTEL(@CType("GLuint") int texture, @CType("GLint") int level, @CType("GLbitfield") int access, @CType("GLint *") java.lang.foreign.MemorySegment stride, @CType("GLenum *") java.lang.foreign.MemorySegment layout) {
-        if (!Unmarshal.isNullPointer(PFN_glMapTexture2DINTEL)) { try {
-            return (java.lang.foreign.MemorySegment) MH_glMapTexture2DINTEL.invokeExact(PFN_glMapTexture2DINTEL, texture, level, access, stride, layout);
-        } catch (Throwable e) { throw new RuntimeException("error in glMapTexture2DINTEL", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glMapTexture2DINTEL"); }
+        if (Unmarshal.isNullPointer(PFN_glMapTexture2DINTEL)) throw new SymbolNotFoundError("Symbol not found: glMapTexture2DINTEL");
+        try { return (java.lang.foreign.MemorySegment) MH_glMapTexture2DINTEL.invokeExact(PFN_glMapTexture2DINTEL, texture, level, access, stride, layout); }
+        catch (Throwable e) { throw new RuntimeException("error in glMapTexture2DINTEL", e); }
     }
 
 }

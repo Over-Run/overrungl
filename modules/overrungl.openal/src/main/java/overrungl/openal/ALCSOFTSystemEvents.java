@@ -47,27 +47,24 @@ public final class ALCSOFTSystemEvents {
     //endregion
 
     public static @CType("ALCenum") int alcEventIsSupportedSOFT(@CType("ALCenum") int eventType, @CType("ALCenum") int deviceType) {
-        if (Handles.MH_alcEventIsSupportedSOFT != null) {
+        if (Handles.MH_alcEventIsSupportedSOFT == null) throw new SymbolNotFoundError("Symbol not found: alcEventIsSupportedSOFT");
         try {
             return (int) Handles.MH_alcEventIsSupportedSOFT.invokeExact(eventType, deviceType);
         } catch (Throwable e) { throw new RuntimeException("error in alcEventIsSupportedSOFT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alcEventIsSupportedSOFT"); }
     }
 
     public static @CType("ALCboolean") boolean alcEventControlSOFT(@CType("ALCsizei") int count, @CType("const ALCenum *") java.lang.foreign.MemorySegment events, @CType("ALCboolean") boolean enable) {
-        if (Handles.MH_alcEventControlSOFT != null) {
+        if (Handles.MH_alcEventControlSOFT == null) throw new SymbolNotFoundError("Symbol not found: alcEventControlSOFT");
         try {
             return (boolean) Handles.MH_alcEventControlSOFT.invokeExact(count, events, enable);
         } catch (Throwable e) { throw new RuntimeException("error in alcEventControlSOFT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alcEventControlSOFT"); }
     }
 
     public static void alcEventCallbackSOFT(@CType("ALCEVENTPROCTYPESOFT") java.lang.foreign.MemorySegment callback, @CType("void*") java.lang.foreign.MemorySegment userParam) {
-        if (Handles.MH_alcEventCallbackSOFT != null) {
+        if (Handles.MH_alcEventCallbackSOFT == null) throw new SymbolNotFoundError("Symbol not found: alcEventCallbackSOFT");
         try {
             Handles.MH_alcEventCallbackSOFT.invokeExact(callback, userParam);
         } catch (Throwable e) { throw new RuntimeException("error in alcEventCallbackSOFT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alcEventCallbackSOFT"); }
     }
 
     //@formatter:on

@@ -28,18 +28,18 @@ public final class GLNVFence {
     public static final int GL_FENCE_STATUS_NV = 0x84F3;
     public static final int GL_FENCE_CONDITION_NV = 0x84F4;
     public static final MethodHandle MH_glDeleteFencesNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glDeleteFencesNV;
     public static final MethodHandle MH_glGenFencesNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glGenFencesNV;
     public static final MethodHandle MH_glIsFenceNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glIsFenceNV;
     public static final MethodHandle MH_glTestFenceNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glTestFenceNV;
     public static final MethodHandle MH_glGetFenceivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glGetFenceivNV;
     public static final MethodHandle MH_glFinishFenceNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glFinishFenceNV;
     public static final MethodHandle MH_glSetFenceNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+    public final MemorySegment PFN_glDeleteFencesNV;
+    public final MemorySegment PFN_glGenFencesNV;
+    public final MemorySegment PFN_glIsFenceNV;
+    public final MemorySegment PFN_glTestFenceNV;
+    public final MemorySegment PFN_glGetFenceivNV;
+    public final MemorySegment PFN_glFinishFenceNV;
     public final MemorySegment PFN_glSetFenceNV;
 
     public GLNVFence(overrungl.opengl.GLLoadFunc func) {
@@ -53,52 +53,45 @@ public final class GLNVFence {
     }
 
     public void DeleteFencesNV(@CType("GLsizei") int n, @CType("const GLuint *") java.lang.foreign.MemorySegment fences) {
-        if (!Unmarshal.isNullPointer(PFN_glDeleteFencesNV)) { try {
-            MH_glDeleteFencesNV.invokeExact(PFN_glDeleteFencesNV, n, fences);
-        } catch (Throwable e) { throw new RuntimeException("error in glDeleteFencesNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glDeleteFencesNV"); }
+        if (Unmarshal.isNullPointer(PFN_glDeleteFencesNV)) throw new SymbolNotFoundError("Symbol not found: glDeleteFencesNV");
+        try { MH_glDeleteFencesNV.invokeExact(PFN_glDeleteFencesNV, n, fences); }
+        catch (Throwable e) { throw new RuntimeException("error in glDeleteFencesNV", e); }
     }
 
     public void GenFencesNV(@CType("GLsizei") int n, @CType("GLuint *") java.lang.foreign.MemorySegment fences) {
-        if (!Unmarshal.isNullPointer(PFN_glGenFencesNV)) { try {
-            MH_glGenFencesNV.invokeExact(PFN_glGenFencesNV, n, fences);
-        } catch (Throwable e) { throw new RuntimeException("error in glGenFencesNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGenFencesNV"); }
+        if (Unmarshal.isNullPointer(PFN_glGenFencesNV)) throw new SymbolNotFoundError("Symbol not found: glGenFencesNV");
+        try { MH_glGenFencesNV.invokeExact(PFN_glGenFencesNV, n, fences); }
+        catch (Throwable e) { throw new RuntimeException("error in glGenFencesNV", e); }
     }
 
     public @CType("GLboolean") boolean IsFenceNV(@CType("GLuint") int fence) {
-        if (!Unmarshal.isNullPointer(PFN_glIsFenceNV)) { try {
-            return (boolean) MH_glIsFenceNV.invokeExact(PFN_glIsFenceNV, fence);
-        } catch (Throwable e) { throw new RuntimeException("error in glIsFenceNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glIsFenceNV"); }
+        if (Unmarshal.isNullPointer(PFN_glIsFenceNV)) throw new SymbolNotFoundError("Symbol not found: glIsFenceNV");
+        try { return (boolean) MH_glIsFenceNV.invokeExact(PFN_glIsFenceNV, fence); }
+        catch (Throwable e) { throw new RuntimeException("error in glIsFenceNV", e); }
     }
 
     public @CType("GLboolean") boolean TestFenceNV(@CType("GLuint") int fence) {
-        if (!Unmarshal.isNullPointer(PFN_glTestFenceNV)) { try {
-            return (boolean) MH_glTestFenceNV.invokeExact(PFN_glTestFenceNV, fence);
-        } catch (Throwable e) { throw new RuntimeException("error in glTestFenceNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glTestFenceNV"); }
+        if (Unmarshal.isNullPointer(PFN_glTestFenceNV)) throw new SymbolNotFoundError("Symbol not found: glTestFenceNV");
+        try { return (boolean) MH_glTestFenceNV.invokeExact(PFN_glTestFenceNV, fence); }
+        catch (Throwable e) { throw new RuntimeException("error in glTestFenceNV", e); }
     }
 
     public void GetFenceivNV(@CType("GLuint") int fence, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        if (!Unmarshal.isNullPointer(PFN_glGetFenceivNV)) { try {
-            MH_glGetFenceivNV.invokeExact(PFN_glGetFenceivNV, fence, pname, params);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetFenceivNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetFenceivNV"); }
+        if (Unmarshal.isNullPointer(PFN_glGetFenceivNV)) throw new SymbolNotFoundError("Symbol not found: glGetFenceivNV");
+        try { MH_glGetFenceivNV.invokeExact(PFN_glGetFenceivNV, fence, pname, params); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetFenceivNV", e); }
     }
 
     public void FinishFenceNV(@CType("GLuint") int fence) {
-        if (!Unmarshal.isNullPointer(PFN_glFinishFenceNV)) { try {
-            MH_glFinishFenceNV.invokeExact(PFN_glFinishFenceNV, fence);
-        } catch (Throwable e) { throw new RuntimeException("error in glFinishFenceNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glFinishFenceNV"); }
+        if (Unmarshal.isNullPointer(PFN_glFinishFenceNV)) throw new SymbolNotFoundError("Symbol not found: glFinishFenceNV");
+        try { MH_glFinishFenceNV.invokeExact(PFN_glFinishFenceNV, fence); }
+        catch (Throwable e) { throw new RuntimeException("error in glFinishFenceNV", e); }
     }
 
     public void SetFenceNV(@CType("GLuint") int fence, @CType("GLenum") int condition) {
-        if (!Unmarshal.isNullPointer(PFN_glSetFenceNV)) { try {
-            MH_glSetFenceNV.invokeExact(PFN_glSetFenceNV, fence, condition);
-        } catch (Throwable e) { throw new RuntimeException("error in glSetFenceNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glSetFenceNV"); }
+        if (Unmarshal.isNullPointer(PFN_glSetFenceNV)) throw new SymbolNotFoundError("Symbol not found: glSetFenceNV");
+        try { MH_glSetFenceNV.invokeExact(PFN_glSetFenceNV, fence, condition); }
+        catch (Throwable e) { throw new RuntimeException("error in glSetFenceNV", e); }
     }
 
 }

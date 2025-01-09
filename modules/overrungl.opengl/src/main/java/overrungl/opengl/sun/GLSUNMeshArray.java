@@ -34,10 +34,9 @@ public final class GLSUNMeshArray {
     }
 
     public void DrawMeshArraysSUN(@CType("GLenum") int mode, @CType("GLint") int first, @CType("GLsizei") int count, @CType("GLsizei") int width) {
-        if (!Unmarshal.isNullPointer(PFN_glDrawMeshArraysSUN)) { try {
-            MH_glDrawMeshArraysSUN.invokeExact(PFN_glDrawMeshArraysSUN, mode, first, count, width);
-        } catch (Throwable e) { throw new RuntimeException("error in glDrawMeshArraysSUN", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glDrawMeshArraysSUN"); }
+        if (Unmarshal.isNullPointer(PFN_glDrawMeshArraysSUN)) throw new SymbolNotFoundError("Symbol not found: glDrawMeshArraysSUN");
+        try { MH_glDrawMeshArraysSUN.invokeExact(PFN_glDrawMeshArraysSUN, mode, first, count, width); }
+        catch (Throwable e) { throw new RuntimeException("error in glDrawMeshArraysSUN", e); }
     }
 
 }

@@ -40,18 +40,18 @@ public final class GLARBSync {
     public static final int GL_SYNC_FLUSH_COMMANDS_BIT = 0x00000001;
     public static final long GL_TIMEOUT_IGNORED = 0xFFFFFFFFFFFFFFFFL;
     public static final MethodHandle MH_glFenceSync = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glFenceSync;
     public static final MethodHandle MH_glIsSync = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glIsSync;
     public static final MethodHandle MH_glDeleteSync = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glDeleteSync;
     public static final MethodHandle MH_glClientWaitSync = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
-    public final MemorySegment PFN_glClientWaitSync;
     public static final MethodHandle MH_glWaitSync = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
-    public final MemorySegment PFN_glWaitSync;
     public static final MethodHandle MH_glGetInteger64v = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glGetInteger64v;
     public static final MethodHandle MH_glGetSynciv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glFenceSync;
+    public final MemorySegment PFN_glIsSync;
+    public final MemorySegment PFN_glDeleteSync;
+    public final MemorySegment PFN_glClientWaitSync;
+    public final MemorySegment PFN_glWaitSync;
+    public final MemorySegment PFN_glGetInteger64v;
     public final MemorySegment PFN_glGetSynciv;
 
     public GLARBSync(overrungl.opengl.GLLoadFunc func) {
@@ -65,52 +65,45 @@ public final class GLARBSync {
     }
 
     public @CType("GLsync") java.lang.foreign.MemorySegment FenceSync(@CType("GLenum") int condition, @CType("GLbitfield") int flags) {
-        if (!Unmarshal.isNullPointer(PFN_glFenceSync)) { try {
-            return (java.lang.foreign.MemorySegment) MH_glFenceSync.invokeExact(PFN_glFenceSync, condition, flags);
-        } catch (Throwable e) { throw new RuntimeException("error in glFenceSync", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glFenceSync"); }
+        if (Unmarshal.isNullPointer(PFN_glFenceSync)) throw new SymbolNotFoundError("Symbol not found: glFenceSync");
+        try { return (java.lang.foreign.MemorySegment) MH_glFenceSync.invokeExact(PFN_glFenceSync, condition, flags); }
+        catch (Throwable e) { throw new RuntimeException("error in glFenceSync", e); }
     }
 
     public @CType("GLboolean") boolean IsSync(@CType("GLsync") java.lang.foreign.MemorySegment sync) {
-        if (!Unmarshal.isNullPointer(PFN_glIsSync)) { try {
-            return (boolean) MH_glIsSync.invokeExact(PFN_glIsSync, sync);
-        } catch (Throwable e) { throw new RuntimeException("error in glIsSync", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glIsSync"); }
+        if (Unmarshal.isNullPointer(PFN_glIsSync)) throw new SymbolNotFoundError("Symbol not found: glIsSync");
+        try { return (boolean) MH_glIsSync.invokeExact(PFN_glIsSync, sync); }
+        catch (Throwable e) { throw new RuntimeException("error in glIsSync", e); }
     }
 
     public void DeleteSync(@CType("GLsync") java.lang.foreign.MemorySegment sync) {
-        if (!Unmarshal.isNullPointer(PFN_glDeleteSync)) { try {
-            MH_glDeleteSync.invokeExact(PFN_glDeleteSync, sync);
-        } catch (Throwable e) { throw new RuntimeException("error in glDeleteSync", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glDeleteSync"); }
+        if (Unmarshal.isNullPointer(PFN_glDeleteSync)) throw new SymbolNotFoundError("Symbol not found: glDeleteSync");
+        try { MH_glDeleteSync.invokeExact(PFN_glDeleteSync, sync); }
+        catch (Throwable e) { throw new RuntimeException("error in glDeleteSync", e); }
     }
 
     public @CType("GLenum") int ClientWaitSync(@CType("GLsync") java.lang.foreign.MemorySegment sync, @CType("GLbitfield") int flags, @CType("GLuint64") long timeout) {
-        if (!Unmarshal.isNullPointer(PFN_glClientWaitSync)) { try {
-            return (int) MH_glClientWaitSync.invokeExact(PFN_glClientWaitSync, sync, flags, timeout);
-        } catch (Throwable e) { throw new RuntimeException("error in glClientWaitSync", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glClientWaitSync"); }
+        if (Unmarshal.isNullPointer(PFN_glClientWaitSync)) throw new SymbolNotFoundError("Symbol not found: glClientWaitSync");
+        try { return (int) MH_glClientWaitSync.invokeExact(PFN_glClientWaitSync, sync, flags, timeout); }
+        catch (Throwable e) { throw new RuntimeException("error in glClientWaitSync", e); }
     }
 
     public void WaitSync(@CType("GLsync") java.lang.foreign.MemorySegment sync, @CType("GLbitfield") int flags, @CType("GLuint64") long timeout) {
-        if (!Unmarshal.isNullPointer(PFN_glWaitSync)) { try {
-            MH_glWaitSync.invokeExact(PFN_glWaitSync, sync, flags, timeout);
-        } catch (Throwable e) { throw new RuntimeException("error in glWaitSync", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glWaitSync"); }
+        if (Unmarshal.isNullPointer(PFN_glWaitSync)) throw new SymbolNotFoundError("Symbol not found: glWaitSync");
+        try { MH_glWaitSync.invokeExact(PFN_glWaitSync, sync, flags, timeout); }
+        catch (Throwable e) { throw new RuntimeException("error in glWaitSync", e); }
     }
 
     public void GetInteger64v(@CType("GLenum") int pname, @CType("GLint64 *") java.lang.foreign.MemorySegment data) {
-        if (!Unmarshal.isNullPointer(PFN_glGetInteger64v)) { try {
-            MH_glGetInteger64v.invokeExact(PFN_glGetInteger64v, pname, data);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetInteger64v", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetInteger64v"); }
+        if (Unmarshal.isNullPointer(PFN_glGetInteger64v)) throw new SymbolNotFoundError("Symbol not found: glGetInteger64v");
+        try { MH_glGetInteger64v.invokeExact(PFN_glGetInteger64v, pname, data); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetInteger64v", e); }
     }
 
     public void GetSynciv(@CType("GLsync") java.lang.foreign.MemorySegment sync, @CType("GLenum") int pname, @CType("GLsizei") int count, @CType("GLsizei *") java.lang.foreign.MemorySegment length, @CType("GLint *") java.lang.foreign.MemorySegment values) {
-        if (!Unmarshal.isNullPointer(PFN_glGetSynciv)) { try {
-            MH_glGetSynciv.invokeExact(PFN_glGetSynciv, sync, pname, count, length, values);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetSynciv", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetSynciv"); }
+        if (Unmarshal.isNullPointer(PFN_glGetSynciv)) throw new SymbolNotFoundError("Symbol not found: glGetSynciv");
+        try { MH_glGetSynciv.invokeExact(PFN_glGetSynciv, sync, pname, count, length, values); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetSynciv", e); }
     }
 
 }

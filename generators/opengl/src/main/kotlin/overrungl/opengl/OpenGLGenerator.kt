@@ -639,7 +639,7 @@ fun main() {
     fun InstanceDowncall.addCommand(command: GLRequireCommand) {
         val get = commandMap[command.name]!!
         // handles
-        field(
+        handleFields.add(
             InstanceDowncallField(
                 modifier = "static",
                 type = "MethodHandle",
@@ -649,7 +649,7 @@ fun main() {
         )
 
         // address
-        field(
+        pfnFields.add(
             InstanceDowncallField(
                 type = "MemorySegment",
                 name = "PFN_${get.name}"

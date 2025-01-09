@@ -32,10 +32,9 @@ public final class GLOESQueryMatrix {
     }
 
     public @CType("GLbitfield") int QueryMatrixxOES(@CType("GLfixed *") java.lang.foreign.MemorySegment mantissa, @CType("GLint *") java.lang.foreign.MemorySegment exponent) {
-        if (!Unmarshal.isNullPointer(PFN_glQueryMatrixxOES)) { try {
-            return (int) MH_glQueryMatrixxOES.invokeExact(PFN_glQueryMatrixxOES, mantissa, exponent);
-        } catch (Throwable e) { throw new RuntimeException("error in glQueryMatrixxOES", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glQueryMatrixxOES"); }
+        if (Unmarshal.isNullPointer(PFN_glQueryMatrixxOES)) throw new SymbolNotFoundError("Symbol not found: glQueryMatrixxOES");
+        try { return (int) MH_glQueryMatrixxOES.invokeExact(PFN_glQueryMatrixxOES, mantissa, exponent); }
+        catch (Throwable e) { throw new RuntimeException("error in glQueryMatrixxOES", e); }
     }
 
 }

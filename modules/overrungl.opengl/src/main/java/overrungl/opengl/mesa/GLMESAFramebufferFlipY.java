@@ -26,8 +26,8 @@ import overrungl.util.*;
 public final class GLMESAFramebufferFlipY {
     public static final int GL_FRAMEBUFFER_FLIP_Y_MESA = 0x8BBB;
     public static final MethodHandle MH_glFramebufferParameteriMESA = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glFramebufferParameteriMESA;
     public static final MethodHandle MH_glGetFramebufferParameterivMESA = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glFramebufferParameteriMESA;
     public final MemorySegment PFN_glGetFramebufferParameterivMESA;
 
     public GLMESAFramebufferFlipY(overrungl.opengl.GLLoadFunc func) {
@@ -36,17 +36,15 @@ public final class GLMESAFramebufferFlipY {
     }
 
     public void FramebufferParameteriMESA(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLint") int param) {
-        if (!Unmarshal.isNullPointer(PFN_glFramebufferParameteriMESA)) { try {
-            MH_glFramebufferParameteriMESA.invokeExact(PFN_glFramebufferParameteriMESA, target, pname, param);
-        } catch (Throwable e) { throw new RuntimeException("error in glFramebufferParameteriMESA", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glFramebufferParameteriMESA"); }
+        if (Unmarshal.isNullPointer(PFN_glFramebufferParameteriMESA)) throw new SymbolNotFoundError("Symbol not found: glFramebufferParameteriMESA");
+        try { MH_glFramebufferParameteriMESA.invokeExact(PFN_glFramebufferParameteriMESA, target, pname, param); }
+        catch (Throwable e) { throw new RuntimeException("error in glFramebufferParameteriMESA", e); }
     }
 
     public void GetFramebufferParameterivMESA(@CType("GLenum") int target, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        if (!Unmarshal.isNullPointer(PFN_glGetFramebufferParameterivMESA)) { try {
-            MH_glGetFramebufferParameterivMESA.invokeExact(PFN_glGetFramebufferParameterivMESA, target, pname, params);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetFramebufferParameterivMESA", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetFramebufferParameterivMESA"); }
+        if (Unmarshal.isNullPointer(PFN_glGetFramebufferParameterivMESA)) throw new SymbolNotFoundError("Symbol not found: glGetFramebufferParameterivMESA");
+        try { MH_glGetFramebufferParameterivMESA.invokeExact(PFN_glGetFramebufferParameterivMESA, target, pname, params); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetFramebufferParameterivMESA", e); }
     }
 
 }

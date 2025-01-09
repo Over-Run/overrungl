@@ -33,10 +33,9 @@ public final class GLARBInstancedArrays {
     }
 
     public void VertexAttribDivisorARB(@CType("GLuint") int index, @CType("GLuint") int divisor) {
-        if (!Unmarshal.isNullPointer(PFN_glVertexAttribDivisorARB)) { try {
-            MH_glVertexAttribDivisorARB.invokeExact(PFN_glVertexAttribDivisorARB, index, divisor);
-        } catch (Throwable e) { throw new RuntimeException("error in glVertexAttribDivisorARB", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glVertexAttribDivisorARB"); }
+        if (Unmarshal.isNullPointer(PFN_glVertexAttribDivisorARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribDivisorARB");
+        try { MH_glVertexAttribDivisorARB.invokeExact(PFN_glVertexAttribDivisorARB, index, divisor); }
+        catch (Throwable e) { throw new RuntimeException("error in glVertexAttribDivisorARB", e); }
     }
 
 }

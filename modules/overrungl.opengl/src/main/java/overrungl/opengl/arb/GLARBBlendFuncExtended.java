@@ -30,8 +30,8 @@ public final class GLARBBlendFuncExtended {
     public static final int GL_ONE_MINUS_SRC1_ALPHA = 0x88FB;
     public static final int GL_MAX_DUAL_SOURCE_DRAW_BUFFERS = 0x88FC;
     public static final MethodHandle MH_glBindFragDataLocationIndexed = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glBindFragDataLocationIndexed;
     public static final MethodHandle MH_glGetFragDataIndex = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glBindFragDataLocationIndexed;
     public final MemorySegment PFN_glGetFragDataIndex;
 
     public GLARBBlendFuncExtended(overrungl.opengl.GLLoadFunc func) {
@@ -40,17 +40,15 @@ public final class GLARBBlendFuncExtended {
     }
 
     public void BindFragDataLocationIndexed(@CType("GLuint") int program, @CType("GLuint") int colorNumber, @CType("GLuint") int index, @CType("const GLchar *") java.lang.foreign.MemorySegment name) {
-        if (!Unmarshal.isNullPointer(PFN_glBindFragDataLocationIndexed)) { try {
-            MH_glBindFragDataLocationIndexed.invokeExact(PFN_glBindFragDataLocationIndexed, program, colorNumber, index, name);
-        } catch (Throwable e) { throw new RuntimeException("error in glBindFragDataLocationIndexed", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glBindFragDataLocationIndexed"); }
+        if (Unmarshal.isNullPointer(PFN_glBindFragDataLocationIndexed)) throw new SymbolNotFoundError("Symbol not found: glBindFragDataLocationIndexed");
+        try { MH_glBindFragDataLocationIndexed.invokeExact(PFN_glBindFragDataLocationIndexed, program, colorNumber, index, name); }
+        catch (Throwable e) { throw new RuntimeException("error in glBindFragDataLocationIndexed", e); }
     }
 
     public @CType("GLint") int GetFragDataIndex(@CType("GLuint") int program, @CType("const GLchar *") java.lang.foreign.MemorySegment name) {
-        if (!Unmarshal.isNullPointer(PFN_glGetFragDataIndex)) { try {
-            return (int) MH_glGetFragDataIndex.invokeExact(PFN_glGetFragDataIndex, program, name);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetFragDataIndex", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetFragDataIndex"); }
+        if (Unmarshal.isNullPointer(PFN_glGetFragDataIndex)) throw new SymbolNotFoundError("Symbol not found: glGetFragDataIndex");
+        try { return (int) MH_glGetFragDataIndex.invokeExact(PFN_glGetFragDataIndex, program, name); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetFragDataIndex", e); }
     }
 
 }

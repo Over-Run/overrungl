@@ -33,10 +33,9 @@ public final class GLAMDSamplePositions {
     }
 
     public void SetMultisamplefvAMD(@CType("GLenum") int pname, @CType("GLuint") int index, @CType("const GLfloat *") java.lang.foreign.MemorySegment val) {
-        if (!Unmarshal.isNullPointer(PFN_glSetMultisamplefvAMD)) { try {
-            MH_glSetMultisamplefvAMD.invokeExact(PFN_glSetMultisamplefvAMD, pname, index, val);
-        } catch (Throwable e) { throw new RuntimeException("error in glSetMultisamplefvAMD", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glSetMultisamplefvAMD"); }
+        if (Unmarshal.isNullPointer(PFN_glSetMultisamplefvAMD)) throw new SymbolNotFoundError("Symbol not found: glSetMultisamplefvAMD");
+        try { MH_glSetMultisamplefvAMD.invokeExact(PFN_glSetMultisamplefvAMD, pname, index, val); }
+        catch (Throwable e) { throw new RuntimeException("error in glSetMultisamplefvAMD", e); }
     }
 
 }

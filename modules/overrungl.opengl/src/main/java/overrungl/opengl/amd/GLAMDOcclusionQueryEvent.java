@@ -38,10 +38,9 @@ public final class GLAMDOcclusionQueryEvent {
     }
 
     public void QueryObjectParameteruiAMD(@CType("GLenum") int target, @CType("GLuint") int id, @CType("GLenum") int pname, @CType("GLuint") int param) {
-        if (!Unmarshal.isNullPointer(PFN_glQueryObjectParameteruiAMD)) { try {
-            MH_glQueryObjectParameteruiAMD.invokeExact(PFN_glQueryObjectParameteruiAMD, target, id, pname, param);
-        } catch (Throwable e) { throw new RuntimeException("error in glQueryObjectParameteruiAMD", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glQueryObjectParameteruiAMD"); }
+        if (Unmarshal.isNullPointer(PFN_glQueryObjectParameteruiAMD)) throw new SymbolNotFoundError("Symbol not found: glQueryObjectParameteruiAMD");
+        try { MH_glQueryObjectParameteruiAMD.invokeExact(PFN_glQueryObjectParameteruiAMD, target, id, pname, param); }
+        catch (Throwable e) { throw new RuntimeException("error in glQueryObjectParameteruiAMD", e); }
     }
 
 }

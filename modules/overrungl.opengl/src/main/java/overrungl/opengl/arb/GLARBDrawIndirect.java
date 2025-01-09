@@ -27,8 +27,8 @@ public final class GLARBDrawIndirect {
     public static final int GL_DRAW_INDIRECT_BUFFER = 0x8F3F;
     public static final int GL_DRAW_INDIRECT_BUFFER_BINDING = 0x8F43;
     public static final MethodHandle MH_glDrawArraysIndirect = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glDrawArraysIndirect;
     public static final MethodHandle MH_glDrawElementsIndirect = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glDrawArraysIndirect;
     public final MemorySegment PFN_glDrawElementsIndirect;
 
     public GLARBDrawIndirect(overrungl.opengl.GLLoadFunc func) {
@@ -37,17 +37,15 @@ public final class GLARBDrawIndirect {
     }
 
     public void DrawArraysIndirect(@CType("GLenum") int mode, @CType("const void *") java.lang.foreign.MemorySegment indirect) {
-        if (!Unmarshal.isNullPointer(PFN_glDrawArraysIndirect)) { try {
-            MH_glDrawArraysIndirect.invokeExact(PFN_glDrawArraysIndirect, mode, indirect);
-        } catch (Throwable e) { throw new RuntimeException("error in glDrawArraysIndirect", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glDrawArraysIndirect"); }
+        if (Unmarshal.isNullPointer(PFN_glDrawArraysIndirect)) throw new SymbolNotFoundError("Symbol not found: glDrawArraysIndirect");
+        try { MH_glDrawArraysIndirect.invokeExact(PFN_glDrawArraysIndirect, mode, indirect); }
+        catch (Throwable e) { throw new RuntimeException("error in glDrawArraysIndirect", e); }
     }
 
     public void DrawElementsIndirect(@CType("GLenum") int mode, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment indirect) {
-        if (!Unmarshal.isNullPointer(PFN_glDrawElementsIndirect)) { try {
-            MH_glDrawElementsIndirect.invokeExact(PFN_glDrawElementsIndirect, mode, type, indirect);
-        } catch (Throwable e) { throw new RuntimeException("error in glDrawElementsIndirect", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glDrawElementsIndirect"); }
+        if (Unmarshal.isNullPointer(PFN_glDrawElementsIndirect)) throw new SymbolNotFoundError("Symbol not found: glDrawElementsIndirect");
+        try { MH_glDrawElementsIndirect.invokeExact(PFN_glDrawElementsIndirect, mode, type, indirect); }
+        catch (Throwable e) { throw new RuntimeException("error in glDrawElementsIndirect", e); }
     }
 
 }

@@ -35,10 +35,9 @@ public final class GLEXTIndexFunc {
     }
 
     public void IndexFuncEXT(@CType("GLenum") int func, @CType("GLclampf") float ref) {
-        if (!Unmarshal.isNullPointer(PFN_glIndexFuncEXT)) { try {
-            MH_glIndexFuncEXT.invokeExact(PFN_glIndexFuncEXT, func, ref);
-        } catch (Throwable e) { throw new RuntimeException("error in glIndexFuncEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glIndexFuncEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glIndexFuncEXT)) throw new SymbolNotFoundError("Symbol not found: glIndexFuncEXT");
+        try { MH_glIndexFuncEXT.invokeExact(PFN_glIndexFuncEXT, func, ref); }
+        catch (Throwable e) { throw new RuntimeException("error in glIndexFuncEXT", e); }
     }
 
 }

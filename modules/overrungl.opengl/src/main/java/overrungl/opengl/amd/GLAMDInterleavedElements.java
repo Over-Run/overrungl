@@ -41,10 +41,9 @@ public final class GLAMDInterleavedElements {
     }
 
     public void VertexAttribParameteriAMD(@CType("GLuint") int index, @CType("GLenum") int pname, @CType("GLint") int param) {
-        if (!Unmarshal.isNullPointer(PFN_glVertexAttribParameteriAMD)) { try {
-            MH_glVertexAttribParameteriAMD.invokeExact(PFN_glVertexAttribParameteriAMD, index, pname, param);
-        } catch (Throwable e) { throw new RuntimeException("error in glVertexAttribParameteriAMD", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glVertexAttribParameteriAMD"); }
+        if (Unmarshal.isNullPointer(PFN_glVertexAttribParameteriAMD)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribParameteriAMD");
+        try { MH_glVertexAttribParameteriAMD.invokeExact(PFN_glVertexAttribParameteriAMD, index, pname, param); }
+        catch (Throwable e) { throw new RuntimeException("error in glVertexAttribParameteriAMD", e); }
     }
 
 }

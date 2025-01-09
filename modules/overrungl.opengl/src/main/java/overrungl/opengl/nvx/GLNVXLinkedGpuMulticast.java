@@ -27,10 +27,10 @@ public final class GLNVXLinkedGpuMulticast {
     public static final int GL_LGPU_SEPARATE_STORAGE_BIT_NVX = 0x0800;
     public static final int GL_MAX_LGPU_GPUS_NVX = 0x92BA;
     public static final MethodHandle MH_glLGPUNamedBufferSubDataNVX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glLGPUNamedBufferSubDataNVX;
     public static final MethodHandle MH_glLGPUCopyImageSubDataNVX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glLGPUCopyImageSubDataNVX;
     public static final MethodHandle MH_glLGPUInterlockNVX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
+    public final MemorySegment PFN_glLGPUNamedBufferSubDataNVX;
+    public final MemorySegment PFN_glLGPUCopyImageSubDataNVX;
     public final MemorySegment PFN_glLGPUInterlockNVX;
 
     public GLNVXLinkedGpuMulticast(overrungl.opengl.GLLoadFunc func) {
@@ -40,24 +40,21 @@ public final class GLNVXLinkedGpuMulticast {
     }
 
     public void LGPUNamedBufferSubDataNVX(@CType("GLbitfield") int gpuMask, @CType("GLuint") int buffer, @CType("GLintptr") long offset, @CType("GLsizeiptr") long size, @CType("const void *") java.lang.foreign.MemorySegment data) {
-        if (!Unmarshal.isNullPointer(PFN_glLGPUNamedBufferSubDataNVX)) { try {
-            MH_glLGPUNamedBufferSubDataNVX.invokeExact(PFN_glLGPUNamedBufferSubDataNVX, gpuMask, buffer, offset, size, data);
-        } catch (Throwable e) { throw new RuntimeException("error in glLGPUNamedBufferSubDataNVX", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glLGPUNamedBufferSubDataNVX"); }
+        if (Unmarshal.isNullPointer(PFN_glLGPUNamedBufferSubDataNVX)) throw new SymbolNotFoundError("Symbol not found: glLGPUNamedBufferSubDataNVX");
+        try { MH_glLGPUNamedBufferSubDataNVX.invokeExact(PFN_glLGPUNamedBufferSubDataNVX, gpuMask, buffer, offset, size, data); }
+        catch (Throwable e) { throw new RuntimeException("error in glLGPUNamedBufferSubDataNVX", e); }
     }
 
     public void LGPUCopyImageSubDataNVX(@CType("GLuint") int sourceGpu, @CType("GLbitfield") int destinationGpuMask, @CType("GLuint") int srcName, @CType("GLenum") int srcTarget, @CType("GLint") int srcLevel, @CType("GLint") int srcX, @CType("GLint") int srxY, @CType("GLint") int srcZ, @CType("GLuint") int dstName, @CType("GLenum") int dstTarget, @CType("GLint") int dstLevel, @CType("GLint") int dstX, @CType("GLint") int dstY, @CType("GLint") int dstZ, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth) {
-        if (!Unmarshal.isNullPointer(PFN_glLGPUCopyImageSubDataNVX)) { try {
-            MH_glLGPUCopyImageSubDataNVX.invokeExact(PFN_glLGPUCopyImageSubDataNVX, sourceGpu, destinationGpuMask, srcName, srcTarget, srcLevel, srcX, srxY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, width, height, depth);
-        } catch (Throwable e) { throw new RuntimeException("error in glLGPUCopyImageSubDataNVX", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glLGPUCopyImageSubDataNVX"); }
+        if (Unmarshal.isNullPointer(PFN_glLGPUCopyImageSubDataNVX)) throw new SymbolNotFoundError("Symbol not found: glLGPUCopyImageSubDataNVX");
+        try { MH_glLGPUCopyImageSubDataNVX.invokeExact(PFN_glLGPUCopyImageSubDataNVX, sourceGpu, destinationGpuMask, srcName, srcTarget, srcLevel, srcX, srxY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, width, height, depth); }
+        catch (Throwable e) { throw new RuntimeException("error in glLGPUCopyImageSubDataNVX", e); }
     }
 
     public void LGPUInterlockNVX() {
-        if (!Unmarshal.isNullPointer(PFN_glLGPUInterlockNVX)) { try {
-            MH_glLGPUInterlockNVX.invokeExact(PFN_glLGPUInterlockNVX);
-        } catch (Throwable e) { throw new RuntimeException("error in glLGPUInterlockNVX", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glLGPUInterlockNVX"); }
+        if (Unmarshal.isNullPointer(PFN_glLGPUInterlockNVX)) throw new SymbolNotFoundError("Symbol not found: glLGPUInterlockNVX");
+        try { MH_glLGPUInterlockNVX.invokeExact(PFN_glLGPUInterlockNVX); }
+        catch (Throwable e) { throw new RuntimeException("error in glLGPUInterlockNVX", e); }
     }
 
 }

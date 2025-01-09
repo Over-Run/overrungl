@@ -80,8 +80,8 @@ public final class GLEXTShaderImageLoadStore {
     public static final int GL_ATOMIC_COUNTER_BARRIER_BIT_EXT = 0x00001000;
     public static final int GL_ALL_BARRIER_BITS_EXT = 0xFFFFFFFF;
     public static final MethodHandle MH_glBindImageTextureEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glBindImageTextureEXT;
     public static final MethodHandle MH_glMemoryBarrierEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+    public final MemorySegment PFN_glBindImageTextureEXT;
     public final MemorySegment PFN_glMemoryBarrierEXT;
 
     public GLEXTShaderImageLoadStore(overrungl.opengl.GLLoadFunc func) {
@@ -90,17 +90,15 @@ public final class GLEXTShaderImageLoadStore {
     }
 
     public void BindImageTextureEXT(@CType("GLuint") int index, @CType("GLuint") int texture, @CType("GLint") int level, @CType("GLboolean") boolean layered, @CType("GLint") int layer, @CType("GLenum") int access, @CType("GLint") int format) {
-        if (!Unmarshal.isNullPointer(PFN_glBindImageTextureEXT)) { try {
-            MH_glBindImageTextureEXT.invokeExact(PFN_glBindImageTextureEXT, index, texture, level, layered, layer, access, format);
-        } catch (Throwable e) { throw new RuntimeException("error in glBindImageTextureEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glBindImageTextureEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glBindImageTextureEXT)) throw new SymbolNotFoundError("Symbol not found: glBindImageTextureEXT");
+        try { MH_glBindImageTextureEXT.invokeExact(PFN_glBindImageTextureEXT, index, texture, level, layered, layer, access, format); }
+        catch (Throwable e) { throw new RuntimeException("error in glBindImageTextureEXT", e); }
     }
 
     public void MemoryBarrierEXT(@CType("GLbitfield") int barriers) {
-        if (!Unmarshal.isNullPointer(PFN_glMemoryBarrierEXT)) { try {
-            MH_glMemoryBarrierEXT.invokeExact(PFN_glMemoryBarrierEXT, barriers);
-        } catch (Throwable e) { throw new RuntimeException("error in glMemoryBarrierEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glMemoryBarrierEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glMemoryBarrierEXT)) throw new SymbolNotFoundError("Symbol not found: glMemoryBarrierEXT");
+        try { MH_glMemoryBarrierEXT.invokeExact(PFN_glMemoryBarrierEXT, barriers); }
+        catch (Throwable e) { throw new RuntimeException("error in glMemoryBarrierEXT", e); }
     }
 
 }

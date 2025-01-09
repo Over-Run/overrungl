@@ -33,10 +33,9 @@ public final class GLSGISTextureColorMask {
     }
 
     public void TextureColorMaskSGIS(@CType("GLboolean") boolean red, @CType("GLboolean") boolean green, @CType("GLboolean") boolean blue, @CType("GLboolean") boolean alpha) {
-        if (!Unmarshal.isNullPointer(PFN_glTextureColorMaskSGIS)) { try {
-            MH_glTextureColorMaskSGIS.invokeExact(PFN_glTextureColorMaskSGIS, red, green, blue, alpha);
-        } catch (Throwable e) { throw new RuntimeException("error in glTextureColorMaskSGIS", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glTextureColorMaskSGIS"); }
+        if (Unmarshal.isNullPointer(PFN_glTextureColorMaskSGIS)) throw new SymbolNotFoundError("Symbol not found: glTextureColorMaskSGIS");
+        try { MH_glTextureColorMaskSGIS.invokeExact(PFN_glTextureColorMaskSGIS, red, green, blue, alpha); }
+        catch (Throwable e) { throw new RuntimeException("error in glTextureColorMaskSGIS", e); }
     }
 
 }

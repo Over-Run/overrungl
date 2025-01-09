@@ -26,8 +26,8 @@ import overrungl.util.*;
 public final class GLARBClearTexture {
     public static final int GL_CLEAR_TEXTURE = 0x9365;
     public static final MethodHandle MH_glClearTexImage = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glClearTexImage;
     public static final MethodHandle MH_glClearTexSubImage = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glClearTexImage;
     public final MemorySegment PFN_glClearTexSubImage;
 
     public GLARBClearTexture(overrungl.opengl.GLLoadFunc func) {
@@ -36,17 +36,15 @@ public final class GLARBClearTexture {
     }
 
     public void ClearTexImage(@CType("GLuint") int texture, @CType("GLint") int level, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment data) {
-        if (!Unmarshal.isNullPointer(PFN_glClearTexImage)) { try {
-            MH_glClearTexImage.invokeExact(PFN_glClearTexImage, texture, level, format, type, data);
-        } catch (Throwable e) { throw new RuntimeException("error in glClearTexImage", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glClearTexImage"); }
+        if (Unmarshal.isNullPointer(PFN_glClearTexImage)) throw new SymbolNotFoundError("Symbol not found: glClearTexImage");
+        try { MH_glClearTexImage.invokeExact(PFN_glClearTexImage, texture, level, format, type, data); }
+        catch (Throwable e) { throw new RuntimeException("error in glClearTexImage", e); }
     }
 
     public void ClearTexSubImage(@CType("GLuint") int texture, @CType("GLint") int level, @CType("GLint") int xoffset, @CType("GLint") int yoffset, @CType("GLint") int zoffset, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth, @CType("GLenum") int format, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment data) {
-        if (!Unmarshal.isNullPointer(PFN_glClearTexSubImage)) { try {
-            MH_glClearTexSubImage.invokeExact(PFN_glClearTexSubImage, texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, data);
-        } catch (Throwable e) { throw new RuntimeException("error in glClearTexSubImage", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glClearTexSubImage"); }
+        if (Unmarshal.isNullPointer(PFN_glClearTexSubImage)) throw new SymbolNotFoundError("Symbol not found: glClearTexSubImage");
+        try { MH_glClearTexSubImage.invokeExact(PFN_glClearTexSubImage, texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, data); }
+        catch (Throwable e) { throw new RuntimeException("error in glClearTexSubImage", e); }
     }
 
 }

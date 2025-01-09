@@ -36,20 +36,20 @@ public final class GLARBShaderSubroutine {
     public static final int GL_UNIFORM_SIZE = 0x8A38;
     public static final int GL_UNIFORM_NAME_LENGTH = 0x8A39;
     public static final MethodHandle MH_glGetSubroutineUniformLocation = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glGetSubroutineUniformLocation;
     public static final MethodHandle MH_glGetSubroutineIndex = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glGetSubroutineIndex;
     public static final MethodHandle MH_glGetActiveSubroutineUniformiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glGetActiveSubroutineUniformiv;
     public static final MethodHandle MH_glGetActiveSubroutineUniformName = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glGetActiveSubroutineUniformName;
     public static final MethodHandle MH_glGetActiveSubroutineName = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glGetActiveSubroutineName;
     public static final MethodHandle MH_glUniformSubroutinesuiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glUniformSubroutinesuiv;
     public static final MethodHandle MH_glGetUniformSubroutineuiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glGetUniformSubroutineuiv;
     public static final MethodHandle MH_glGetProgramStageiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glGetSubroutineUniformLocation;
+    public final MemorySegment PFN_glGetSubroutineIndex;
+    public final MemorySegment PFN_glGetActiveSubroutineUniformiv;
+    public final MemorySegment PFN_glGetActiveSubroutineUniformName;
+    public final MemorySegment PFN_glGetActiveSubroutineName;
+    public final MemorySegment PFN_glUniformSubroutinesuiv;
+    public final MemorySegment PFN_glGetUniformSubroutineuiv;
     public final MemorySegment PFN_glGetProgramStageiv;
 
     public GLARBShaderSubroutine(overrungl.opengl.GLLoadFunc func) {
@@ -64,59 +64,51 @@ public final class GLARBShaderSubroutine {
     }
 
     public @CType("GLint") int GetSubroutineUniformLocation(@CType("GLuint") int program, @CType("GLenum") int shadertype, @CType("const GLchar *") java.lang.foreign.MemorySegment name) {
-        if (!Unmarshal.isNullPointer(PFN_glGetSubroutineUniformLocation)) { try {
-            return (int) MH_glGetSubroutineUniformLocation.invokeExact(PFN_glGetSubroutineUniformLocation, program, shadertype, name);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetSubroutineUniformLocation", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetSubroutineUniformLocation"); }
+        if (Unmarshal.isNullPointer(PFN_glGetSubroutineUniformLocation)) throw new SymbolNotFoundError("Symbol not found: glGetSubroutineUniformLocation");
+        try { return (int) MH_glGetSubroutineUniformLocation.invokeExact(PFN_glGetSubroutineUniformLocation, program, shadertype, name); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetSubroutineUniformLocation", e); }
     }
 
     public @CType("GLuint") int GetSubroutineIndex(@CType("GLuint") int program, @CType("GLenum") int shadertype, @CType("const GLchar *") java.lang.foreign.MemorySegment name) {
-        if (!Unmarshal.isNullPointer(PFN_glGetSubroutineIndex)) { try {
-            return (int) MH_glGetSubroutineIndex.invokeExact(PFN_glGetSubroutineIndex, program, shadertype, name);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetSubroutineIndex", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetSubroutineIndex"); }
+        if (Unmarshal.isNullPointer(PFN_glGetSubroutineIndex)) throw new SymbolNotFoundError("Symbol not found: glGetSubroutineIndex");
+        try { return (int) MH_glGetSubroutineIndex.invokeExact(PFN_glGetSubroutineIndex, program, shadertype, name); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetSubroutineIndex", e); }
     }
 
     public void GetActiveSubroutineUniformiv(@CType("GLuint") int program, @CType("GLenum") int shadertype, @CType("GLuint") int index, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment values) {
-        if (!Unmarshal.isNullPointer(PFN_glGetActiveSubroutineUniformiv)) { try {
-            MH_glGetActiveSubroutineUniformiv.invokeExact(PFN_glGetActiveSubroutineUniformiv, program, shadertype, index, pname, values);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetActiveSubroutineUniformiv", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetActiveSubroutineUniformiv"); }
+        if (Unmarshal.isNullPointer(PFN_glGetActiveSubroutineUniformiv)) throw new SymbolNotFoundError("Symbol not found: glGetActiveSubroutineUniformiv");
+        try { MH_glGetActiveSubroutineUniformiv.invokeExact(PFN_glGetActiveSubroutineUniformiv, program, shadertype, index, pname, values); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetActiveSubroutineUniformiv", e); }
     }
 
     public void GetActiveSubroutineUniformName(@CType("GLuint") int program, @CType("GLenum") int shadertype, @CType("GLuint") int index, @CType("GLsizei") int bufSize, @CType("GLsizei *") java.lang.foreign.MemorySegment length, @CType("GLchar *") java.lang.foreign.MemorySegment name) {
-        if (!Unmarshal.isNullPointer(PFN_glGetActiveSubroutineUniformName)) { try {
-            MH_glGetActiveSubroutineUniformName.invokeExact(PFN_glGetActiveSubroutineUniformName, program, shadertype, index, bufSize, length, name);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetActiveSubroutineUniformName", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetActiveSubroutineUniformName"); }
+        if (Unmarshal.isNullPointer(PFN_glGetActiveSubroutineUniformName)) throw new SymbolNotFoundError("Symbol not found: glGetActiveSubroutineUniformName");
+        try { MH_glGetActiveSubroutineUniformName.invokeExact(PFN_glGetActiveSubroutineUniformName, program, shadertype, index, bufSize, length, name); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetActiveSubroutineUniformName", e); }
     }
 
     public void GetActiveSubroutineName(@CType("GLuint") int program, @CType("GLenum") int shadertype, @CType("GLuint") int index, @CType("GLsizei") int bufSize, @CType("GLsizei *") java.lang.foreign.MemorySegment length, @CType("GLchar *") java.lang.foreign.MemorySegment name) {
-        if (!Unmarshal.isNullPointer(PFN_glGetActiveSubroutineName)) { try {
-            MH_glGetActiveSubroutineName.invokeExact(PFN_glGetActiveSubroutineName, program, shadertype, index, bufSize, length, name);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetActiveSubroutineName", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetActiveSubroutineName"); }
+        if (Unmarshal.isNullPointer(PFN_glGetActiveSubroutineName)) throw new SymbolNotFoundError("Symbol not found: glGetActiveSubroutineName");
+        try { MH_glGetActiveSubroutineName.invokeExact(PFN_glGetActiveSubroutineName, program, shadertype, index, bufSize, length, name); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetActiveSubroutineName", e); }
     }
 
     public void UniformSubroutinesuiv(@CType("GLenum") int shadertype, @CType("GLsizei") int count, @CType("const GLuint *") java.lang.foreign.MemorySegment indices) {
-        if (!Unmarshal.isNullPointer(PFN_glUniformSubroutinesuiv)) { try {
-            MH_glUniformSubroutinesuiv.invokeExact(PFN_glUniformSubroutinesuiv, shadertype, count, indices);
-        } catch (Throwable e) { throw new RuntimeException("error in glUniformSubroutinesuiv", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glUniformSubroutinesuiv"); }
+        if (Unmarshal.isNullPointer(PFN_glUniformSubroutinesuiv)) throw new SymbolNotFoundError("Symbol not found: glUniformSubroutinesuiv");
+        try { MH_glUniformSubroutinesuiv.invokeExact(PFN_glUniformSubroutinesuiv, shadertype, count, indices); }
+        catch (Throwable e) { throw new RuntimeException("error in glUniformSubroutinesuiv", e); }
     }
 
     public void GetUniformSubroutineuiv(@CType("GLenum") int shadertype, @CType("GLint") int location, @CType("GLuint *") java.lang.foreign.MemorySegment params) {
-        if (!Unmarshal.isNullPointer(PFN_glGetUniformSubroutineuiv)) { try {
-            MH_glGetUniformSubroutineuiv.invokeExact(PFN_glGetUniformSubroutineuiv, shadertype, location, params);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetUniformSubroutineuiv", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetUniformSubroutineuiv"); }
+        if (Unmarshal.isNullPointer(PFN_glGetUniformSubroutineuiv)) throw new SymbolNotFoundError("Symbol not found: glGetUniformSubroutineuiv");
+        try { MH_glGetUniformSubroutineuiv.invokeExact(PFN_glGetUniformSubroutineuiv, shadertype, location, params); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetUniformSubroutineuiv", e); }
     }
 
     public void GetProgramStageiv(@CType("GLuint") int program, @CType("GLenum") int shadertype, @CType("GLenum") int pname, @CType("GLint *") java.lang.foreign.MemorySegment values) {
-        if (!Unmarshal.isNullPointer(PFN_glGetProgramStageiv)) { try {
-            MH_glGetProgramStageiv.invokeExact(PFN_glGetProgramStageiv, program, shadertype, pname, values);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetProgramStageiv", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetProgramStageiv"); }
+        if (Unmarshal.isNullPointer(PFN_glGetProgramStageiv)) throw new SymbolNotFoundError("Symbol not found: glGetProgramStageiv");
+        try { MH_glGetProgramStageiv.invokeExact(PFN_glGetProgramStageiv, program, shadertype, pname, values); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetProgramStageiv", e); }
     }
 
 }

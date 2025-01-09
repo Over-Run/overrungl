@@ -32,38 +32,38 @@ public final class GLEXTSecondaryColor {
     public static final int GL_SECONDARY_COLOR_ARRAY_POINTER_EXT = 0x845D;
     public static final int GL_SECONDARY_COLOR_ARRAY_EXT = 0x845E;
     public static final MethodHandle MH_glSecondaryColor3bEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE));
-    public final MemorySegment PFN_glSecondaryColor3bEXT;
     public static final MethodHandle MH_glSecondaryColor3bvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glSecondaryColor3bvEXT;
     public static final MethodHandle MH_glSecondaryColor3dEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
-    public final MemorySegment PFN_glSecondaryColor3dEXT;
     public static final MethodHandle MH_glSecondaryColor3dvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glSecondaryColor3dvEXT;
     public static final MethodHandle MH_glSecondaryColor3fEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
-    public final MemorySegment PFN_glSecondaryColor3fEXT;
     public static final MethodHandle MH_glSecondaryColor3fvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glSecondaryColor3fvEXT;
     public static final MethodHandle MH_glSecondaryColor3iEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glSecondaryColor3iEXT;
     public static final MethodHandle MH_glSecondaryColor3ivEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glSecondaryColor3ivEXT;
     public static final MethodHandle MH_glSecondaryColor3sEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT));
-    public final MemorySegment PFN_glSecondaryColor3sEXT;
     public static final MethodHandle MH_glSecondaryColor3svEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glSecondaryColor3svEXT;
     public static final MethodHandle MH_glSecondaryColor3ubEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE));
-    public final MemorySegment PFN_glSecondaryColor3ubEXT;
     public static final MethodHandle MH_glSecondaryColor3ubvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glSecondaryColor3ubvEXT;
     public static final MethodHandle MH_glSecondaryColor3uiEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glSecondaryColor3uiEXT;
     public static final MethodHandle MH_glSecondaryColor3uivEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glSecondaryColor3uivEXT;
     public static final MethodHandle MH_glSecondaryColor3usEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT));
-    public final MemorySegment PFN_glSecondaryColor3usEXT;
     public static final MethodHandle MH_glSecondaryColor3usvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glSecondaryColor3usvEXT;
     public static final MethodHandle MH_glSecondaryColorPointerEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glSecondaryColor3bEXT;
+    public final MemorySegment PFN_glSecondaryColor3bvEXT;
+    public final MemorySegment PFN_glSecondaryColor3dEXT;
+    public final MemorySegment PFN_glSecondaryColor3dvEXT;
+    public final MemorySegment PFN_glSecondaryColor3fEXT;
+    public final MemorySegment PFN_glSecondaryColor3fvEXT;
+    public final MemorySegment PFN_glSecondaryColor3iEXT;
+    public final MemorySegment PFN_glSecondaryColor3ivEXT;
+    public final MemorySegment PFN_glSecondaryColor3sEXT;
+    public final MemorySegment PFN_glSecondaryColor3svEXT;
+    public final MemorySegment PFN_glSecondaryColor3ubEXT;
+    public final MemorySegment PFN_glSecondaryColor3ubvEXT;
+    public final MemorySegment PFN_glSecondaryColor3uiEXT;
+    public final MemorySegment PFN_glSecondaryColor3uivEXT;
+    public final MemorySegment PFN_glSecondaryColor3usEXT;
+    public final MemorySegment PFN_glSecondaryColor3usvEXT;
     public final MemorySegment PFN_glSecondaryColorPointerEXT;
 
     public GLEXTSecondaryColor(overrungl.opengl.GLLoadFunc func) {
@@ -87,122 +87,105 @@ public final class GLEXTSecondaryColor {
     }
 
     public void SecondaryColor3bEXT(@CType("GLbyte") byte red, @CType("GLbyte") byte green, @CType("GLbyte") byte blue) {
-        if (!Unmarshal.isNullPointer(PFN_glSecondaryColor3bEXT)) { try {
-            MH_glSecondaryColor3bEXT.invokeExact(PFN_glSecondaryColor3bEXT, red, green, blue);
-        } catch (Throwable e) { throw new RuntimeException("error in glSecondaryColor3bEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3bEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glSecondaryColor3bEXT)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3bEXT");
+        try { MH_glSecondaryColor3bEXT.invokeExact(PFN_glSecondaryColor3bEXT, red, green, blue); }
+        catch (Throwable e) { throw new RuntimeException("error in glSecondaryColor3bEXT", e); }
     }
 
     public void SecondaryColor3bvEXT(@CType("const GLbyte *") java.lang.foreign.MemorySegment v) {
-        if (!Unmarshal.isNullPointer(PFN_glSecondaryColor3bvEXT)) { try {
-            MH_glSecondaryColor3bvEXT.invokeExact(PFN_glSecondaryColor3bvEXT, v);
-        } catch (Throwable e) { throw new RuntimeException("error in glSecondaryColor3bvEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3bvEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glSecondaryColor3bvEXT)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3bvEXT");
+        try { MH_glSecondaryColor3bvEXT.invokeExact(PFN_glSecondaryColor3bvEXT, v); }
+        catch (Throwable e) { throw new RuntimeException("error in glSecondaryColor3bvEXT", e); }
     }
 
     public void SecondaryColor3dEXT(@CType("GLdouble") double red, @CType("GLdouble") double green, @CType("GLdouble") double blue) {
-        if (!Unmarshal.isNullPointer(PFN_glSecondaryColor3dEXT)) { try {
-            MH_glSecondaryColor3dEXT.invokeExact(PFN_glSecondaryColor3dEXT, red, green, blue);
-        } catch (Throwable e) { throw new RuntimeException("error in glSecondaryColor3dEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3dEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glSecondaryColor3dEXT)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3dEXT");
+        try { MH_glSecondaryColor3dEXT.invokeExact(PFN_glSecondaryColor3dEXT, red, green, blue); }
+        catch (Throwable e) { throw new RuntimeException("error in glSecondaryColor3dEXT", e); }
     }
 
     public void SecondaryColor3dvEXT(@CType("const GLdouble *") java.lang.foreign.MemorySegment v) {
-        if (!Unmarshal.isNullPointer(PFN_glSecondaryColor3dvEXT)) { try {
-            MH_glSecondaryColor3dvEXT.invokeExact(PFN_glSecondaryColor3dvEXT, v);
-        } catch (Throwable e) { throw new RuntimeException("error in glSecondaryColor3dvEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3dvEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glSecondaryColor3dvEXT)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3dvEXT");
+        try { MH_glSecondaryColor3dvEXT.invokeExact(PFN_glSecondaryColor3dvEXT, v); }
+        catch (Throwable e) { throw new RuntimeException("error in glSecondaryColor3dvEXT", e); }
     }
 
     public void SecondaryColor3fEXT(@CType("GLfloat") float red, @CType("GLfloat") float green, @CType("GLfloat") float blue) {
-        if (!Unmarshal.isNullPointer(PFN_glSecondaryColor3fEXT)) { try {
-            MH_glSecondaryColor3fEXT.invokeExact(PFN_glSecondaryColor3fEXT, red, green, blue);
-        } catch (Throwable e) { throw new RuntimeException("error in glSecondaryColor3fEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3fEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glSecondaryColor3fEXT)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3fEXT");
+        try { MH_glSecondaryColor3fEXT.invokeExact(PFN_glSecondaryColor3fEXT, red, green, blue); }
+        catch (Throwable e) { throw new RuntimeException("error in glSecondaryColor3fEXT", e); }
     }
 
     public void SecondaryColor3fvEXT(@CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
-        if (!Unmarshal.isNullPointer(PFN_glSecondaryColor3fvEXT)) { try {
-            MH_glSecondaryColor3fvEXT.invokeExact(PFN_glSecondaryColor3fvEXT, v);
-        } catch (Throwable e) { throw new RuntimeException("error in glSecondaryColor3fvEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3fvEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glSecondaryColor3fvEXT)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3fvEXT");
+        try { MH_glSecondaryColor3fvEXT.invokeExact(PFN_glSecondaryColor3fvEXT, v); }
+        catch (Throwable e) { throw new RuntimeException("error in glSecondaryColor3fvEXT", e); }
     }
 
     public void SecondaryColor3iEXT(@CType("GLint") int red, @CType("GLint") int green, @CType("GLint") int blue) {
-        if (!Unmarshal.isNullPointer(PFN_glSecondaryColor3iEXT)) { try {
-            MH_glSecondaryColor3iEXT.invokeExact(PFN_glSecondaryColor3iEXT, red, green, blue);
-        } catch (Throwable e) { throw new RuntimeException("error in glSecondaryColor3iEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3iEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glSecondaryColor3iEXT)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3iEXT");
+        try { MH_glSecondaryColor3iEXT.invokeExact(PFN_glSecondaryColor3iEXT, red, green, blue); }
+        catch (Throwable e) { throw new RuntimeException("error in glSecondaryColor3iEXT", e); }
     }
 
     public void SecondaryColor3ivEXT(@CType("const GLint *") java.lang.foreign.MemorySegment v) {
-        if (!Unmarshal.isNullPointer(PFN_glSecondaryColor3ivEXT)) { try {
-            MH_glSecondaryColor3ivEXT.invokeExact(PFN_glSecondaryColor3ivEXT, v);
-        } catch (Throwable e) { throw new RuntimeException("error in glSecondaryColor3ivEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3ivEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glSecondaryColor3ivEXT)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3ivEXT");
+        try { MH_glSecondaryColor3ivEXT.invokeExact(PFN_glSecondaryColor3ivEXT, v); }
+        catch (Throwable e) { throw new RuntimeException("error in glSecondaryColor3ivEXT", e); }
     }
 
     public void SecondaryColor3sEXT(@CType("GLshort") short red, @CType("GLshort") short green, @CType("GLshort") short blue) {
-        if (!Unmarshal.isNullPointer(PFN_glSecondaryColor3sEXT)) { try {
-            MH_glSecondaryColor3sEXT.invokeExact(PFN_glSecondaryColor3sEXT, red, green, blue);
-        } catch (Throwable e) { throw new RuntimeException("error in glSecondaryColor3sEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3sEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glSecondaryColor3sEXT)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3sEXT");
+        try { MH_glSecondaryColor3sEXT.invokeExact(PFN_glSecondaryColor3sEXT, red, green, blue); }
+        catch (Throwable e) { throw new RuntimeException("error in glSecondaryColor3sEXT", e); }
     }
 
     public void SecondaryColor3svEXT(@CType("const GLshort *") java.lang.foreign.MemorySegment v) {
-        if (!Unmarshal.isNullPointer(PFN_glSecondaryColor3svEXT)) { try {
-            MH_glSecondaryColor3svEXT.invokeExact(PFN_glSecondaryColor3svEXT, v);
-        } catch (Throwable e) { throw new RuntimeException("error in glSecondaryColor3svEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3svEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glSecondaryColor3svEXT)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3svEXT");
+        try { MH_glSecondaryColor3svEXT.invokeExact(PFN_glSecondaryColor3svEXT, v); }
+        catch (Throwable e) { throw new RuntimeException("error in glSecondaryColor3svEXT", e); }
     }
 
     public void SecondaryColor3ubEXT(@CType("GLubyte") byte red, @CType("GLubyte") byte green, @CType("GLubyte") byte blue) {
-        if (!Unmarshal.isNullPointer(PFN_glSecondaryColor3ubEXT)) { try {
-            MH_glSecondaryColor3ubEXT.invokeExact(PFN_glSecondaryColor3ubEXT, red, green, blue);
-        } catch (Throwable e) { throw new RuntimeException("error in glSecondaryColor3ubEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3ubEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glSecondaryColor3ubEXT)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3ubEXT");
+        try { MH_glSecondaryColor3ubEXT.invokeExact(PFN_glSecondaryColor3ubEXT, red, green, blue); }
+        catch (Throwable e) { throw new RuntimeException("error in glSecondaryColor3ubEXT", e); }
     }
 
     public void SecondaryColor3ubvEXT(@CType("const GLubyte *") java.lang.foreign.MemorySegment v) {
-        if (!Unmarshal.isNullPointer(PFN_glSecondaryColor3ubvEXT)) { try {
-            MH_glSecondaryColor3ubvEXT.invokeExact(PFN_glSecondaryColor3ubvEXT, v);
-        } catch (Throwable e) { throw new RuntimeException("error in glSecondaryColor3ubvEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3ubvEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glSecondaryColor3ubvEXT)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3ubvEXT");
+        try { MH_glSecondaryColor3ubvEXT.invokeExact(PFN_glSecondaryColor3ubvEXT, v); }
+        catch (Throwable e) { throw new RuntimeException("error in glSecondaryColor3ubvEXT", e); }
     }
 
     public void SecondaryColor3uiEXT(@CType("GLuint") int red, @CType("GLuint") int green, @CType("GLuint") int blue) {
-        if (!Unmarshal.isNullPointer(PFN_glSecondaryColor3uiEXT)) { try {
-            MH_glSecondaryColor3uiEXT.invokeExact(PFN_glSecondaryColor3uiEXT, red, green, blue);
-        } catch (Throwable e) { throw new RuntimeException("error in glSecondaryColor3uiEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3uiEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glSecondaryColor3uiEXT)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3uiEXT");
+        try { MH_glSecondaryColor3uiEXT.invokeExact(PFN_glSecondaryColor3uiEXT, red, green, blue); }
+        catch (Throwable e) { throw new RuntimeException("error in glSecondaryColor3uiEXT", e); }
     }
 
     public void SecondaryColor3uivEXT(@CType("const GLuint *") java.lang.foreign.MemorySegment v) {
-        if (!Unmarshal.isNullPointer(PFN_glSecondaryColor3uivEXT)) { try {
-            MH_glSecondaryColor3uivEXT.invokeExact(PFN_glSecondaryColor3uivEXT, v);
-        } catch (Throwable e) { throw new RuntimeException("error in glSecondaryColor3uivEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3uivEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glSecondaryColor3uivEXT)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3uivEXT");
+        try { MH_glSecondaryColor3uivEXT.invokeExact(PFN_glSecondaryColor3uivEXT, v); }
+        catch (Throwable e) { throw new RuntimeException("error in glSecondaryColor3uivEXT", e); }
     }
 
     public void SecondaryColor3usEXT(@CType("GLushort") short red, @CType("GLushort") short green, @CType("GLushort") short blue) {
-        if (!Unmarshal.isNullPointer(PFN_glSecondaryColor3usEXT)) { try {
-            MH_glSecondaryColor3usEXT.invokeExact(PFN_glSecondaryColor3usEXT, red, green, blue);
-        } catch (Throwable e) { throw new RuntimeException("error in glSecondaryColor3usEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3usEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glSecondaryColor3usEXT)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3usEXT");
+        try { MH_glSecondaryColor3usEXT.invokeExact(PFN_glSecondaryColor3usEXT, red, green, blue); }
+        catch (Throwable e) { throw new RuntimeException("error in glSecondaryColor3usEXT", e); }
     }
 
     public void SecondaryColor3usvEXT(@CType("const GLushort *") java.lang.foreign.MemorySegment v) {
-        if (!Unmarshal.isNullPointer(PFN_glSecondaryColor3usvEXT)) { try {
-            MH_glSecondaryColor3usvEXT.invokeExact(PFN_glSecondaryColor3usvEXT, v);
-        } catch (Throwable e) { throw new RuntimeException("error in glSecondaryColor3usvEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3usvEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glSecondaryColor3usvEXT)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3usvEXT");
+        try { MH_glSecondaryColor3usvEXT.invokeExact(PFN_glSecondaryColor3usvEXT, v); }
+        catch (Throwable e) { throw new RuntimeException("error in glSecondaryColor3usvEXT", e); }
     }
 
     public void SecondaryColorPointerEXT(@CType("GLint") int size, @CType("GLenum") int type, @CType("GLsizei") int stride, @CType("const void *") java.lang.foreign.MemorySegment pointer) {
-        if (!Unmarshal.isNullPointer(PFN_glSecondaryColorPointerEXT)) { try {
-            MH_glSecondaryColorPointerEXT.invokeExact(PFN_glSecondaryColorPointerEXT, size, type, stride, pointer);
-        } catch (Throwable e) { throw new RuntimeException("error in glSecondaryColorPointerEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glSecondaryColorPointerEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glSecondaryColorPointerEXT)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColorPointerEXT");
+        try { MH_glSecondaryColorPointerEXT.invokeExact(PFN_glSecondaryColorPointerEXT, size, type, stride, pointer); }
+        catch (Throwable e) { throw new RuntimeException("error in glSecondaryColorPointerEXT", e); }
     }
 
 }

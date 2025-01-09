@@ -33,16 +33,6 @@ public final class GLKHRRobustness {
     public static final int GL_RESET_NOTIFICATION_STRATEGY = 0x8256;
     public static final int GL_NO_RESET_NOTIFICATION = 0x8261;
     public static final int GL_CONTEXT_LOST = 0x0507;
-    public static final MethodHandle MH_glGetGraphicsResetStatus = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glGetGraphicsResetStatus;
-    public static final MethodHandle MH_glReadnPixels = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glReadnPixels;
-    public static final MethodHandle MH_glGetnUniformfv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glGetnUniformfv;
-    public static final MethodHandle MH_glGetnUniformiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glGetnUniformiv;
-    public static final MethodHandle MH_glGetnUniformuiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glGetnUniformuiv;
     public static final int GL_CONTEXT_ROBUST_ACCESS_KHR = 0x90F3;
     public static final int GL_LOSE_CONTEXT_ON_RESET_KHR = 0x8252;
     public static final int GL_GUILTY_CONTEXT_RESET_KHR = 0x8253;
@@ -51,15 +41,25 @@ public final class GLKHRRobustness {
     public static final int GL_RESET_NOTIFICATION_STRATEGY_KHR = 0x8256;
     public static final int GL_NO_RESET_NOTIFICATION_KHR = 0x8261;
     public static final int GL_CONTEXT_LOST_KHR = 0x0507;
+    public static final MethodHandle MH_glGetGraphicsResetStatus = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT));
+    public static final MethodHandle MH_glReadnPixels = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public static final MethodHandle MH_glGetnUniformfv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public static final MethodHandle MH_glGetnUniformiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public static final MethodHandle MH_glGetnUniformuiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
     public static final MethodHandle MH_glGetGraphicsResetStatusKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glGetGraphicsResetStatusKHR;
     public static final MethodHandle MH_glReadnPixelsKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glReadnPixelsKHR;
     public static final MethodHandle MH_glGetnUniformfvKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glGetnUniformfvKHR;
     public static final MethodHandle MH_glGetnUniformivKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glGetnUniformivKHR;
     public static final MethodHandle MH_glGetnUniformuivKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glGetGraphicsResetStatus;
+    public final MemorySegment PFN_glReadnPixels;
+    public final MemorySegment PFN_glGetnUniformfv;
+    public final MemorySegment PFN_glGetnUniformiv;
+    public final MemorySegment PFN_glGetnUniformuiv;
+    public final MemorySegment PFN_glGetGraphicsResetStatusKHR;
+    public final MemorySegment PFN_glReadnPixelsKHR;
+    public final MemorySegment PFN_glGetnUniformfvKHR;
+    public final MemorySegment PFN_glGetnUniformivKHR;
     public final MemorySegment PFN_glGetnUniformuivKHR;
 
     public GLKHRRobustness(overrungl.opengl.GLLoadFunc func) {
@@ -75,73 +75,63 @@ public final class GLKHRRobustness {
     }
 
     public @CType("GLenum") int GetGraphicsResetStatus() {
-        if (!Unmarshal.isNullPointer(PFN_glGetGraphicsResetStatus)) { try {
-            return (int) MH_glGetGraphicsResetStatus.invokeExact(PFN_glGetGraphicsResetStatus);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetGraphicsResetStatus", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetGraphicsResetStatus"); }
+        if (Unmarshal.isNullPointer(PFN_glGetGraphicsResetStatus)) throw new SymbolNotFoundError("Symbol not found: glGetGraphicsResetStatus");
+        try { return (int) MH_glGetGraphicsResetStatus.invokeExact(PFN_glGetGraphicsResetStatus); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetGraphicsResetStatus", e); }
     }
 
     public void ReadnPixels(@CType("GLint") int x, @CType("GLint") int y, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLenum") int format, @CType("GLenum") int type, @CType("GLsizei") int bufSize, @CType("void*") java.lang.foreign.MemorySegment data) {
-        if (!Unmarshal.isNullPointer(PFN_glReadnPixels)) { try {
-            MH_glReadnPixels.invokeExact(PFN_glReadnPixels, x, y, width, height, format, type, bufSize, data);
-        } catch (Throwable e) { throw new RuntimeException("error in glReadnPixels", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glReadnPixels"); }
+        if (Unmarshal.isNullPointer(PFN_glReadnPixels)) throw new SymbolNotFoundError("Symbol not found: glReadnPixels");
+        try { MH_glReadnPixels.invokeExact(PFN_glReadnPixels, x, y, width, height, format, type, bufSize, data); }
+        catch (Throwable e) { throw new RuntimeException("error in glReadnPixels", e); }
     }
 
     public void GetnUniformfv(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int bufSize, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
-        if (!Unmarshal.isNullPointer(PFN_glGetnUniformfv)) { try {
-            MH_glGetnUniformfv.invokeExact(PFN_glGetnUniformfv, program, location, bufSize, params);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetnUniformfv", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetnUniformfv"); }
+        if (Unmarshal.isNullPointer(PFN_glGetnUniformfv)) throw new SymbolNotFoundError("Symbol not found: glGetnUniformfv");
+        try { MH_glGetnUniformfv.invokeExact(PFN_glGetnUniformfv, program, location, bufSize, params); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetnUniformfv", e); }
     }
 
     public void GetnUniformiv(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int bufSize, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        if (!Unmarshal.isNullPointer(PFN_glGetnUniformiv)) { try {
-            MH_glGetnUniformiv.invokeExact(PFN_glGetnUniformiv, program, location, bufSize, params);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetnUniformiv", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetnUniformiv"); }
+        if (Unmarshal.isNullPointer(PFN_glGetnUniformiv)) throw new SymbolNotFoundError("Symbol not found: glGetnUniformiv");
+        try { MH_glGetnUniformiv.invokeExact(PFN_glGetnUniformiv, program, location, bufSize, params); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetnUniformiv", e); }
     }
 
     public void GetnUniformuiv(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int bufSize, @CType("GLuint *") java.lang.foreign.MemorySegment params) {
-        if (!Unmarshal.isNullPointer(PFN_glGetnUniformuiv)) { try {
-            MH_glGetnUniformuiv.invokeExact(PFN_glGetnUniformuiv, program, location, bufSize, params);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetnUniformuiv", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetnUniformuiv"); }
+        if (Unmarshal.isNullPointer(PFN_glGetnUniformuiv)) throw new SymbolNotFoundError("Symbol not found: glGetnUniformuiv");
+        try { MH_glGetnUniformuiv.invokeExact(PFN_glGetnUniformuiv, program, location, bufSize, params); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetnUniformuiv", e); }
     }
 
     public @CType("GLenum") int GetGraphicsResetStatusKHR() {
-        if (!Unmarshal.isNullPointer(PFN_glGetGraphicsResetStatusKHR)) { try {
-            return (int) MH_glGetGraphicsResetStatusKHR.invokeExact(PFN_glGetGraphicsResetStatusKHR);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetGraphicsResetStatusKHR", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetGraphicsResetStatusKHR"); }
+        if (Unmarshal.isNullPointer(PFN_glGetGraphicsResetStatusKHR)) throw new SymbolNotFoundError("Symbol not found: glGetGraphicsResetStatusKHR");
+        try { return (int) MH_glGetGraphicsResetStatusKHR.invokeExact(PFN_glGetGraphicsResetStatusKHR); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetGraphicsResetStatusKHR", e); }
     }
 
     public void ReadnPixelsKHR(@CType("GLint") int x, @CType("GLint") int y, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLenum") int format, @CType("GLenum") int type, @CType("GLsizei") int bufSize, @CType("void*") java.lang.foreign.MemorySegment data) {
-        if (!Unmarshal.isNullPointer(PFN_glReadnPixelsKHR)) { try {
-            MH_glReadnPixelsKHR.invokeExact(PFN_glReadnPixelsKHR, x, y, width, height, format, type, bufSize, data);
-        } catch (Throwable e) { throw new RuntimeException("error in glReadnPixelsKHR", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glReadnPixelsKHR"); }
+        if (Unmarshal.isNullPointer(PFN_glReadnPixelsKHR)) throw new SymbolNotFoundError("Symbol not found: glReadnPixelsKHR");
+        try { MH_glReadnPixelsKHR.invokeExact(PFN_glReadnPixelsKHR, x, y, width, height, format, type, bufSize, data); }
+        catch (Throwable e) { throw new RuntimeException("error in glReadnPixelsKHR", e); }
     }
 
     public void GetnUniformfvKHR(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int bufSize, @CType("GLfloat *") java.lang.foreign.MemorySegment params) {
-        if (!Unmarshal.isNullPointer(PFN_glGetnUniformfvKHR)) { try {
-            MH_glGetnUniformfvKHR.invokeExact(PFN_glGetnUniformfvKHR, program, location, bufSize, params);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetnUniformfvKHR", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetnUniformfvKHR"); }
+        if (Unmarshal.isNullPointer(PFN_glGetnUniformfvKHR)) throw new SymbolNotFoundError("Symbol not found: glGetnUniformfvKHR");
+        try { MH_glGetnUniformfvKHR.invokeExact(PFN_glGetnUniformfvKHR, program, location, bufSize, params); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetnUniformfvKHR", e); }
     }
 
     public void GetnUniformivKHR(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int bufSize, @CType("GLint *") java.lang.foreign.MemorySegment params) {
-        if (!Unmarshal.isNullPointer(PFN_glGetnUniformivKHR)) { try {
-            MH_glGetnUniformivKHR.invokeExact(PFN_glGetnUniformivKHR, program, location, bufSize, params);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetnUniformivKHR", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetnUniformivKHR"); }
+        if (Unmarshal.isNullPointer(PFN_glGetnUniformivKHR)) throw new SymbolNotFoundError("Symbol not found: glGetnUniformivKHR");
+        try { MH_glGetnUniformivKHR.invokeExact(PFN_glGetnUniformivKHR, program, location, bufSize, params); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetnUniformivKHR", e); }
     }
 
     public void GetnUniformuivKHR(@CType("GLuint") int program, @CType("GLint") int location, @CType("GLsizei") int bufSize, @CType("GLuint *") java.lang.foreign.MemorySegment params) {
-        if (!Unmarshal.isNullPointer(PFN_glGetnUniformuivKHR)) { try {
-            MH_glGetnUniformuivKHR.invokeExact(PFN_glGetnUniformuivKHR, program, location, bufSize, params);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetnUniformuivKHR", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetnUniformuivKHR"); }
+        if (Unmarshal.isNullPointer(PFN_glGetnUniformuivKHR)) throw new SymbolNotFoundError("Symbol not found: glGetnUniformuivKHR");
+        try { MH_glGetnUniformuivKHR.invokeExact(PFN_glGetnUniformuivKHR, program, location, bufSize, params); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetnUniformuivKHR", e); }
     }
 
 }

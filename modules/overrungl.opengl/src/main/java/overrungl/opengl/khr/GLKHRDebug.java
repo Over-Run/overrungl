@@ -64,28 +64,6 @@ public final class GLKHRDebug {
     public static final int GL_CONTEXT_FLAG_DEBUG_BIT = 0x00000002;
     public static final int GL_STACK_OVERFLOW = 0x0503;
     public static final int GL_STACK_UNDERFLOW = 0x0504;
-    public static final MethodHandle MH_glDebugMessageControl = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN));
-    public final MemorySegment PFN_glDebugMessageControl;
-    public static final MethodHandle MH_glDebugMessageInsert = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glDebugMessageInsert;
-    public static final MethodHandle MH_glDebugMessageCallback = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glDebugMessageCallback;
-    public static final MethodHandle MH_glGetDebugMessageLog = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glGetDebugMessageLog;
-    public static final MethodHandle MH_glPushDebugGroup = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glPushDebugGroup;
-    public static final MethodHandle MH_glPopDebugGroup = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
-    public final MemorySegment PFN_glPopDebugGroup;
-    public static final MethodHandle MH_glObjectLabel = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glObjectLabel;
-    public static final MethodHandle MH_glGetObjectLabel = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glGetObjectLabel;
-    public static final MethodHandle MH_glObjectPtrLabel = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glObjectPtrLabel;
-    public static final MethodHandle MH_glGetObjectPtrLabel = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glGetObjectPtrLabel;
-    public static final MethodHandle MH_glGetPointerv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glGetPointerv;
     public static final int GL_DEBUG_OUTPUT_SYNCHRONOUS_KHR = 0x8242;
     public static final int GL_DEBUG_NEXT_LOGGED_MESSAGE_LENGTH_KHR = 0x8243;
     public static final int GL_DEBUG_CALLBACK_FUNCTION_KHR = 0x8244;
@@ -126,29 +104,51 @@ public final class GLKHRDebug {
     public static final int GL_CONTEXT_FLAG_DEBUG_BIT_KHR = 0x00000002;
     public static final int GL_STACK_OVERFLOW_KHR = 0x0503;
     public static final int GL_STACK_UNDERFLOW_KHR = 0x0504;
-    public static final MethodHandle MH_glDebugMessageControlKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN));
-    public final MemorySegment PFN_glDebugMessageControlKHR;
-    public static final MethodHandle MH_glDebugMessageInsertKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glDebugMessageInsertKHR;
-    public static final MethodHandle MH_glDebugMessageCallbackKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glDebugMessageCallbackKHR;
-    public static final MethodHandle MH_glGetDebugMessageLogKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glGetDebugMessageLogKHR;
-    public static final MethodHandle MH_glPushDebugGroupKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glPushDebugGroupKHR;
-    public static final MethodHandle MH_glPopDebugGroupKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
-    public final MemorySegment PFN_glPopDebugGroupKHR;
-    public static final MethodHandle MH_glObjectLabelKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glObjectLabelKHR;
-    public static final MethodHandle MH_glGetObjectLabelKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glGetObjectLabelKHR;
-    public static final MethodHandle MH_glObjectPtrLabelKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glObjectPtrLabelKHR;
-    public static final MethodHandle MH_glGetObjectPtrLabelKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glGetObjectPtrLabelKHR;
-    public static final MethodHandle MH_glGetPointervKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glGetPointervKHR;
     public static final int GL_DISPLAY_LIST = 0x82E7;
+    public static final MethodHandle MH_glDebugMessageControl = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN));
+    public static final MethodHandle MH_glDebugMessageInsert = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public static final MethodHandle MH_glDebugMessageCallback = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+    public static final MethodHandle MH_glGetDebugMessageLog = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+    public static final MethodHandle MH_glPushDebugGroup = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public static final MethodHandle MH_glPopDebugGroup = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
+    public static final MethodHandle MH_glObjectLabel = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public static final MethodHandle MH_glGetObjectLabel = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+    public static final MethodHandle MH_glObjectPtrLabel = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public static final MethodHandle MH_glGetObjectPtrLabel = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+    public static final MethodHandle MH_glGetPointerv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public static final MethodHandle MH_glDebugMessageControlKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN));
+    public static final MethodHandle MH_glDebugMessageInsertKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public static final MethodHandle MH_glDebugMessageCallbackKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+    public static final MethodHandle MH_glGetDebugMessageLogKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+    public static final MethodHandle MH_glPushDebugGroupKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public static final MethodHandle MH_glPopDebugGroupKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
+    public static final MethodHandle MH_glObjectLabelKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public static final MethodHandle MH_glGetObjectLabelKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+    public static final MethodHandle MH_glObjectPtrLabelKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public static final MethodHandle MH_glGetObjectPtrLabelKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+    public static final MethodHandle MH_glGetPointervKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glDebugMessageControl;
+    public final MemorySegment PFN_glDebugMessageInsert;
+    public final MemorySegment PFN_glDebugMessageCallback;
+    public final MemorySegment PFN_glGetDebugMessageLog;
+    public final MemorySegment PFN_glPushDebugGroup;
+    public final MemorySegment PFN_glPopDebugGroup;
+    public final MemorySegment PFN_glObjectLabel;
+    public final MemorySegment PFN_glGetObjectLabel;
+    public final MemorySegment PFN_glObjectPtrLabel;
+    public final MemorySegment PFN_glGetObjectPtrLabel;
+    public final MemorySegment PFN_glGetPointerv;
+    public final MemorySegment PFN_glDebugMessageControlKHR;
+    public final MemorySegment PFN_glDebugMessageInsertKHR;
+    public final MemorySegment PFN_glDebugMessageCallbackKHR;
+    public final MemorySegment PFN_glGetDebugMessageLogKHR;
+    public final MemorySegment PFN_glPushDebugGroupKHR;
+    public final MemorySegment PFN_glPopDebugGroupKHR;
+    public final MemorySegment PFN_glObjectLabelKHR;
+    public final MemorySegment PFN_glGetObjectLabelKHR;
+    public final MemorySegment PFN_glObjectPtrLabelKHR;
+    public final MemorySegment PFN_glGetObjectPtrLabelKHR;
+    public final MemorySegment PFN_glGetPointervKHR;
 
     public GLKHRDebug(overrungl.opengl.GLLoadFunc func) {
         PFN_glDebugMessageControl = func.invoke("glDebugMessageControl");
@@ -175,157 +175,135 @@ public final class GLKHRDebug {
     }
 
     public void DebugMessageControl(@CType("GLenum") int source, @CType("GLenum") int type, @CType("GLenum") int severity, @CType("GLsizei") int count, @CType("const GLuint *") java.lang.foreign.MemorySegment ids, @CType("GLboolean") boolean enabled) {
-        if (!Unmarshal.isNullPointer(PFN_glDebugMessageControl)) { try {
-            MH_glDebugMessageControl.invokeExact(PFN_glDebugMessageControl, source, type, severity, count, ids, enabled);
-        } catch (Throwable e) { throw new RuntimeException("error in glDebugMessageControl", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glDebugMessageControl"); }
+        if (Unmarshal.isNullPointer(PFN_glDebugMessageControl)) throw new SymbolNotFoundError("Symbol not found: glDebugMessageControl");
+        try { MH_glDebugMessageControl.invokeExact(PFN_glDebugMessageControl, source, type, severity, count, ids, enabled); }
+        catch (Throwable e) { throw new RuntimeException("error in glDebugMessageControl", e); }
     }
 
     public void DebugMessageInsert(@CType("GLenum") int source, @CType("GLenum") int type, @CType("GLuint") int id, @CType("GLenum") int severity, @CType("GLsizei") int length, @CType("const GLchar *") java.lang.foreign.MemorySegment buf) {
-        if (!Unmarshal.isNullPointer(PFN_glDebugMessageInsert)) { try {
-            MH_glDebugMessageInsert.invokeExact(PFN_glDebugMessageInsert, source, type, id, severity, length, buf);
-        } catch (Throwable e) { throw new RuntimeException("error in glDebugMessageInsert", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glDebugMessageInsert"); }
+        if (Unmarshal.isNullPointer(PFN_glDebugMessageInsert)) throw new SymbolNotFoundError("Symbol not found: glDebugMessageInsert");
+        try { MH_glDebugMessageInsert.invokeExact(PFN_glDebugMessageInsert, source, type, id, severity, length, buf); }
+        catch (Throwable e) { throw new RuntimeException("error in glDebugMessageInsert", e); }
     }
 
     public void DebugMessageCallback(@CType("GLDEBUGPROC") java.lang.foreign.MemorySegment callback, @CType("const void *") java.lang.foreign.MemorySegment userParam) {
-        if (!Unmarshal.isNullPointer(PFN_glDebugMessageCallback)) { try {
-            MH_glDebugMessageCallback.invokeExact(PFN_glDebugMessageCallback, callback, userParam);
-        } catch (Throwable e) { throw new RuntimeException("error in glDebugMessageCallback", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glDebugMessageCallback"); }
+        if (Unmarshal.isNullPointer(PFN_glDebugMessageCallback)) throw new SymbolNotFoundError("Symbol not found: glDebugMessageCallback");
+        try { MH_glDebugMessageCallback.invokeExact(PFN_glDebugMessageCallback, callback, userParam); }
+        catch (Throwable e) { throw new RuntimeException("error in glDebugMessageCallback", e); }
     }
 
     public @CType("GLuint") int GetDebugMessageLog(@CType("GLuint") int count, @CType("GLsizei") int bufSize, @CType("GLenum *") java.lang.foreign.MemorySegment sources, @CType("GLenum *") java.lang.foreign.MemorySegment types, @CType("GLuint *") java.lang.foreign.MemorySegment ids, @CType("GLenum *") java.lang.foreign.MemorySegment severities, @CType("GLsizei *") java.lang.foreign.MemorySegment lengths, @CType("GLchar *") java.lang.foreign.MemorySegment messageLog) {
-        if (!Unmarshal.isNullPointer(PFN_glGetDebugMessageLog)) { try {
-            return (int) MH_glGetDebugMessageLog.invokeExact(PFN_glGetDebugMessageLog, count, bufSize, sources, types, ids, severities, lengths, messageLog);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetDebugMessageLog", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetDebugMessageLog"); }
+        if (Unmarshal.isNullPointer(PFN_glGetDebugMessageLog)) throw new SymbolNotFoundError("Symbol not found: glGetDebugMessageLog");
+        try { return (int) MH_glGetDebugMessageLog.invokeExact(PFN_glGetDebugMessageLog, count, bufSize, sources, types, ids, severities, lengths, messageLog); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetDebugMessageLog", e); }
     }
 
     public void PushDebugGroup(@CType("GLenum") int source, @CType("GLuint") int id, @CType("GLsizei") int length, @CType("const GLchar *") java.lang.foreign.MemorySegment message) {
-        if (!Unmarshal.isNullPointer(PFN_glPushDebugGroup)) { try {
-            MH_glPushDebugGroup.invokeExact(PFN_glPushDebugGroup, source, id, length, message);
-        } catch (Throwable e) { throw new RuntimeException("error in glPushDebugGroup", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glPushDebugGroup"); }
+        if (Unmarshal.isNullPointer(PFN_glPushDebugGroup)) throw new SymbolNotFoundError("Symbol not found: glPushDebugGroup");
+        try { MH_glPushDebugGroup.invokeExact(PFN_glPushDebugGroup, source, id, length, message); }
+        catch (Throwable e) { throw new RuntimeException("error in glPushDebugGroup", e); }
     }
 
     public void PopDebugGroup() {
-        if (!Unmarshal.isNullPointer(PFN_glPopDebugGroup)) { try {
-            MH_glPopDebugGroup.invokeExact(PFN_glPopDebugGroup);
-        } catch (Throwable e) { throw new RuntimeException("error in glPopDebugGroup", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glPopDebugGroup"); }
+        if (Unmarshal.isNullPointer(PFN_glPopDebugGroup)) throw new SymbolNotFoundError("Symbol not found: glPopDebugGroup");
+        try { MH_glPopDebugGroup.invokeExact(PFN_glPopDebugGroup); }
+        catch (Throwable e) { throw new RuntimeException("error in glPopDebugGroup", e); }
     }
 
     public void ObjectLabel(@CType("GLenum") int identifier, @CType("GLuint") int name, @CType("GLsizei") int length, @CType("const GLchar *") java.lang.foreign.MemorySegment label) {
-        if (!Unmarshal.isNullPointer(PFN_glObjectLabel)) { try {
-            MH_glObjectLabel.invokeExact(PFN_glObjectLabel, identifier, name, length, label);
-        } catch (Throwable e) { throw new RuntimeException("error in glObjectLabel", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glObjectLabel"); }
+        if (Unmarshal.isNullPointer(PFN_glObjectLabel)) throw new SymbolNotFoundError("Symbol not found: glObjectLabel");
+        try { MH_glObjectLabel.invokeExact(PFN_glObjectLabel, identifier, name, length, label); }
+        catch (Throwable e) { throw new RuntimeException("error in glObjectLabel", e); }
     }
 
     public void GetObjectLabel(@CType("GLenum") int identifier, @CType("GLuint") int name, @CType("GLsizei") int bufSize, @CType("GLsizei *") java.lang.foreign.MemorySegment length, @CType("GLchar *") java.lang.foreign.MemorySegment label) {
-        if (!Unmarshal.isNullPointer(PFN_glGetObjectLabel)) { try {
-            MH_glGetObjectLabel.invokeExact(PFN_glGetObjectLabel, identifier, name, bufSize, length, label);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetObjectLabel", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetObjectLabel"); }
+        if (Unmarshal.isNullPointer(PFN_glGetObjectLabel)) throw new SymbolNotFoundError("Symbol not found: glGetObjectLabel");
+        try { MH_glGetObjectLabel.invokeExact(PFN_glGetObjectLabel, identifier, name, bufSize, length, label); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetObjectLabel", e); }
     }
 
     public void ObjectPtrLabel(@CType("const void *") java.lang.foreign.MemorySegment ptr, @CType("GLsizei") int length, @CType("const GLchar *") java.lang.foreign.MemorySegment label) {
-        if (!Unmarshal.isNullPointer(PFN_glObjectPtrLabel)) { try {
-            MH_glObjectPtrLabel.invokeExact(PFN_glObjectPtrLabel, ptr, length, label);
-        } catch (Throwable e) { throw new RuntimeException("error in glObjectPtrLabel", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glObjectPtrLabel"); }
+        if (Unmarshal.isNullPointer(PFN_glObjectPtrLabel)) throw new SymbolNotFoundError("Symbol not found: glObjectPtrLabel");
+        try { MH_glObjectPtrLabel.invokeExact(PFN_glObjectPtrLabel, ptr, length, label); }
+        catch (Throwable e) { throw new RuntimeException("error in glObjectPtrLabel", e); }
     }
 
     public void GetObjectPtrLabel(@CType("const void *") java.lang.foreign.MemorySegment ptr, @CType("GLsizei") int bufSize, @CType("GLsizei *") java.lang.foreign.MemorySegment length, @CType("GLchar *") java.lang.foreign.MemorySegment label) {
-        if (!Unmarshal.isNullPointer(PFN_glGetObjectPtrLabel)) { try {
-            MH_glGetObjectPtrLabel.invokeExact(PFN_glGetObjectPtrLabel, ptr, bufSize, length, label);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetObjectPtrLabel", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetObjectPtrLabel"); }
+        if (Unmarshal.isNullPointer(PFN_glGetObjectPtrLabel)) throw new SymbolNotFoundError("Symbol not found: glGetObjectPtrLabel");
+        try { MH_glGetObjectPtrLabel.invokeExact(PFN_glGetObjectPtrLabel, ptr, bufSize, length, label); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetObjectPtrLabel", e); }
     }
 
     public void GetPointerv(@CType("GLenum") int pname, @CType("void **") java.lang.foreign.MemorySegment params) {
-        if (!Unmarshal.isNullPointer(PFN_glGetPointerv)) { try {
-            MH_glGetPointerv.invokeExact(PFN_glGetPointerv, pname, params);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetPointerv", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetPointerv"); }
+        if (Unmarshal.isNullPointer(PFN_glGetPointerv)) throw new SymbolNotFoundError("Symbol not found: glGetPointerv");
+        try { MH_glGetPointerv.invokeExact(PFN_glGetPointerv, pname, params); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetPointerv", e); }
     }
 
     public void DebugMessageControlKHR(@CType("GLenum") int source, @CType("GLenum") int type, @CType("GLenum") int severity, @CType("GLsizei") int count, @CType("const GLuint *") java.lang.foreign.MemorySegment ids, @CType("GLboolean") boolean enabled) {
-        if (!Unmarshal.isNullPointer(PFN_glDebugMessageControlKHR)) { try {
-            MH_glDebugMessageControlKHR.invokeExact(PFN_glDebugMessageControlKHR, source, type, severity, count, ids, enabled);
-        } catch (Throwable e) { throw new RuntimeException("error in glDebugMessageControlKHR", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glDebugMessageControlKHR"); }
+        if (Unmarshal.isNullPointer(PFN_glDebugMessageControlKHR)) throw new SymbolNotFoundError("Symbol not found: glDebugMessageControlKHR");
+        try { MH_glDebugMessageControlKHR.invokeExact(PFN_glDebugMessageControlKHR, source, type, severity, count, ids, enabled); }
+        catch (Throwable e) { throw new RuntimeException("error in glDebugMessageControlKHR", e); }
     }
 
     public void DebugMessageInsertKHR(@CType("GLenum") int source, @CType("GLenum") int type, @CType("GLuint") int id, @CType("GLenum") int severity, @CType("GLsizei") int length, @CType("const GLchar *") java.lang.foreign.MemorySegment buf) {
-        if (!Unmarshal.isNullPointer(PFN_glDebugMessageInsertKHR)) { try {
-            MH_glDebugMessageInsertKHR.invokeExact(PFN_glDebugMessageInsertKHR, source, type, id, severity, length, buf);
-        } catch (Throwable e) { throw new RuntimeException("error in glDebugMessageInsertKHR", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glDebugMessageInsertKHR"); }
+        if (Unmarshal.isNullPointer(PFN_glDebugMessageInsertKHR)) throw new SymbolNotFoundError("Symbol not found: glDebugMessageInsertKHR");
+        try { MH_glDebugMessageInsertKHR.invokeExact(PFN_glDebugMessageInsertKHR, source, type, id, severity, length, buf); }
+        catch (Throwable e) { throw new RuntimeException("error in glDebugMessageInsertKHR", e); }
     }
 
     public void DebugMessageCallbackKHR(@CType("GLDEBUGPROCKHR") java.lang.foreign.MemorySegment callback, @CType("const void *") java.lang.foreign.MemorySegment userParam) {
-        if (!Unmarshal.isNullPointer(PFN_glDebugMessageCallbackKHR)) { try {
-            MH_glDebugMessageCallbackKHR.invokeExact(PFN_glDebugMessageCallbackKHR, callback, userParam);
-        } catch (Throwable e) { throw new RuntimeException("error in glDebugMessageCallbackKHR", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glDebugMessageCallbackKHR"); }
+        if (Unmarshal.isNullPointer(PFN_glDebugMessageCallbackKHR)) throw new SymbolNotFoundError("Symbol not found: glDebugMessageCallbackKHR");
+        try { MH_glDebugMessageCallbackKHR.invokeExact(PFN_glDebugMessageCallbackKHR, callback, userParam); }
+        catch (Throwable e) { throw new RuntimeException("error in glDebugMessageCallbackKHR", e); }
     }
 
     public @CType("GLuint") int GetDebugMessageLogKHR(@CType("GLuint") int count, @CType("GLsizei") int bufSize, @CType("GLenum *") java.lang.foreign.MemorySegment sources, @CType("GLenum *") java.lang.foreign.MemorySegment types, @CType("GLuint *") java.lang.foreign.MemorySegment ids, @CType("GLenum *") java.lang.foreign.MemorySegment severities, @CType("GLsizei *") java.lang.foreign.MemorySegment lengths, @CType("GLchar *") java.lang.foreign.MemorySegment messageLog) {
-        if (!Unmarshal.isNullPointer(PFN_glGetDebugMessageLogKHR)) { try {
-            return (int) MH_glGetDebugMessageLogKHR.invokeExact(PFN_glGetDebugMessageLogKHR, count, bufSize, sources, types, ids, severities, lengths, messageLog);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetDebugMessageLogKHR", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetDebugMessageLogKHR"); }
+        if (Unmarshal.isNullPointer(PFN_glGetDebugMessageLogKHR)) throw new SymbolNotFoundError("Symbol not found: glGetDebugMessageLogKHR");
+        try { return (int) MH_glGetDebugMessageLogKHR.invokeExact(PFN_glGetDebugMessageLogKHR, count, bufSize, sources, types, ids, severities, lengths, messageLog); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetDebugMessageLogKHR", e); }
     }
 
     public void PushDebugGroupKHR(@CType("GLenum") int source, @CType("GLuint") int id, @CType("GLsizei") int length, @CType("const GLchar *") java.lang.foreign.MemorySegment message) {
-        if (!Unmarshal.isNullPointer(PFN_glPushDebugGroupKHR)) { try {
-            MH_glPushDebugGroupKHR.invokeExact(PFN_glPushDebugGroupKHR, source, id, length, message);
-        } catch (Throwable e) { throw new RuntimeException("error in glPushDebugGroupKHR", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glPushDebugGroupKHR"); }
+        if (Unmarshal.isNullPointer(PFN_glPushDebugGroupKHR)) throw new SymbolNotFoundError("Symbol not found: glPushDebugGroupKHR");
+        try { MH_glPushDebugGroupKHR.invokeExact(PFN_glPushDebugGroupKHR, source, id, length, message); }
+        catch (Throwable e) { throw new RuntimeException("error in glPushDebugGroupKHR", e); }
     }
 
     public void PopDebugGroupKHR() {
-        if (!Unmarshal.isNullPointer(PFN_glPopDebugGroupKHR)) { try {
-            MH_glPopDebugGroupKHR.invokeExact(PFN_glPopDebugGroupKHR);
-        } catch (Throwable e) { throw new RuntimeException("error in glPopDebugGroupKHR", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glPopDebugGroupKHR"); }
+        if (Unmarshal.isNullPointer(PFN_glPopDebugGroupKHR)) throw new SymbolNotFoundError("Symbol not found: glPopDebugGroupKHR");
+        try { MH_glPopDebugGroupKHR.invokeExact(PFN_glPopDebugGroupKHR); }
+        catch (Throwable e) { throw new RuntimeException("error in glPopDebugGroupKHR", e); }
     }
 
     public void ObjectLabelKHR(@CType("GLenum") int identifier, @CType("GLuint") int name, @CType("GLsizei") int length, @CType("const GLchar *") java.lang.foreign.MemorySegment label) {
-        if (!Unmarshal.isNullPointer(PFN_glObjectLabelKHR)) { try {
-            MH_glObjectLabelKHR.invokeExact(PFN_glObjectLabelKHR, identifier, name, length, label);
-        } catch (Throwable e) { throw new RuntimeException("error in glObjectLabelKHR", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glObjectLabelKHR"); }
+        if (Unmarshal.isNullPointer(PFN_glObjectLabelKHR)) throw new SymbolNotFoundError("Symbol not found: glObjectLabelKHR");
+        try { MH_glObjectLabelKHR.invokeExact(PFN_glObjectLabelKHR, identifier, name, length, label); }
+        catch (Throwable e) { throw new RuntimeException("error in glObjectLabelKHR", e); }
     }
 
     public void GetObjectLabelKHR(@CType("GLenum") int identifier, @CType("GLuint") int name, @CType("GLsizei") int bufSize, @CType("GLsizei *") java.lang.foreign.MemorySegment length, @CType("GLchar *") java.lang.foreign.MemorySegment label) {
-        if (!Unmarshal.isNullPointer(PFN_glGetObjectLabelKHR)) { try {
-            MH_glGetObjectLabelKHR.invokeExact(PFN_glGetObjectLabelKHR, identifier, name, bufSize, length, label);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetObjectLabelKHR", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetObjectLabelKHR"); }
+        if (Unmarshal.isNullPointer(PFN_glGetObjectLabelKHR)) throw new SymbolNotFoundError("Symbol not found: glGetObjectLabelKHR");
+        try { MH_glGetObjectLabelKHR.invokeExact(PFN_glGetObjectLabelKHR, identifier, name, bufSize, length, label); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetObjectLabelKHR", e); }
     }
 
     public void ObjectPtrLabelKHR(@CType("const void *") java.lang.foreign.MemorySegment ptr, @CType("GLsizei") int length, @CType("const GLchar *") java.lang.foreign.MemorySegment label) {
-        if (!Unmarshal.isNullPointer(PFN_glObjectPtrLabelKHR)) { try {
-            MH_glObjectPtrLabelKHR.invokeExact(PFN_glObjectPtrLabelKHR, ptr, length, label);
-        } catch (Throwable e) { throw new RuntimeException("error in glObjectPtrLabelKHR", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glObjectPtrLabelKHR"); }
+        if (Unmarshal.isNullPointer(PFN_glObjectPtrLabelKHR)) throw new SymbolNotFoundError("Symbol not found: glObjectPtrLabelKHR");
+        try { MH_glObjectPtrLabelKHR.invokeExact(PFN_glObjectPtrLabelKHR, ptr, length, label); }
+        catch (Throwable e) { throw new RuntimeException("error in glObjectPtrLabelKHR", e); }
     }
 
     public void GetObjectPtrLabelKHR(@CType("const void *") java.lang.foreign.MemorySegment ptr, @CType("GLsizei") int bufSize, @CType("GLsizei *") java.lang.foreign.MemorySegment length, @CType("GLchar *") java.lang.foreign.MemorySegment label) {
-        if (!Unmarshal.isNullPointer(PFN_glGetObjectPtrLabelKHR)) { try {
-            MH_glGetObjectPtrLabelKHR.invokeExact(PFN_glGetObjectPtrLabelKHR, ptr, bufSize, length, label);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetObjectPtrLabelKHR", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetObjectPtrLabelKHR"); }
+        if (Unmarshal.isNullPointer(PFN_glGetObjectPtrLabelKHR)) throw new SymbolNotFoundError("Symbol not found: glGetObjectPtrLabelKHR");
+        try { MH_glGetObjectPtrLabelKHR.invokeExact(PFN_glGetObjectPtrLabelKHR, ptr, bufSize, length, label); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetObjectPtrLabelKHR", e); }
     }
 
     public void GetPointervKHR(@CType("GLenum") int pname, @CType("void **") java.lang.foreign.MemorySegment params) {
-        if (!Unmarshal.isNullPointer(PFN_glGetPointervKHR)) { try {
-            MH_glGetPointervKHR.invokeExact(PFN_glGetPointervKHR, pname, params);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetPointervKHR", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetPointervKHR"); }
+        if (Unmarshal.isNullPointer(PFN_glGetPointervKHR)) throw new SymbolNotFoundError("Symbol not found: glGetPointervKHR");
+        try { MH_glGetPointervKHR.invokeExact(PFN_glGetPointervKHR, pname, params); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetPointervKHR", e); }
     }
 
 }

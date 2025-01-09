@@ -25,8 +25,8 @@ import overrungl.util.*;
 
 public final class GLARBTransformFeedbackInstanced {
     public static final MethodHandle MH_glDrawTransformFeedbackInstanced = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glDrawTransformFeedbackInstanced;
     public static final MethodHandle MH_glDrawTransformFeedbackStreamInstanced = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+    public final MemorySegment PFN_glDrawTransformFeedbackInstanced;
     public final MemorySegment PFN_glDrawTransformFeedbackStreamInstanced;
 
     public GLARBTransformFeedbackInstanced(overrungl.opengl.GLLoadFunc func) {
@@ -35,17 +35,15 @@ public final class GLARBTransformFeedbackInstanced {
     }
 
     public void DrawTransformFeedbackInstanced(@CType("GLenum") int mode, @CType("GLuint") int id, @CType("GLsizei") int instancecount) {
-        if (!Unmarshal.isNullPointer(PFN_glDrawTransformFeedbackInstanced)) { try {
-            MH_glDrawTransformFeedbackInstanced.invokeExact(PFN_glDrawTransformFeedbackInstanced, mode, id, instancecount);
-        } catch (Throwable e) { throw new RuntimeException("error in glDrawTransformFeedbackInstanced", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glDrawTransformFeedbackInstanced"); }
+        if (Unmarshal.isNullPointer(PFN_glDrawTransformFeedbackInstanced)) throw new SymbolNotFoundError("Symbol not found: glDrawTransformFeedbackInstanced");
+        try { MH_glDrawTransformFeedbackInstanced.invokeExact(PFN_glDrawTransformFeedbackInstanced, mode, id, instancecount); }
+        catch (Throwable e) { throw new RuntimeException("error in glDrawTransformFeedbackInstanced", e); }
     }
 
     public void DrawTransformFeedbackStreamInstanced(@CType("GLenum") int mode, @CType("GLuint") int id, @CType("GLuint") int stream, @CType("GLsizei") int instancecount) {
-        if (!Unmarshal.isNullPointer(PFN_glDrawTransformFeedbackStreamInstanced)) { try {
-            MH_glDrawTransformFeedbackStreamInstanced.invokeExact(PFN_glDrawTransformFeedbackStreamInstanced, mode, id, stream, instancecount);
-        } catch (Throwable e) { throw new RuntimeException("error in glDrawTransformFeedbackStreamInstanced", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glDrawTransformFeedbackStreamInstanced"); }
+        if (Unmarshal.isNullPointer(PFN_glDrawTransformFeedbackStreamInstanced)) throw new SymbolNotFoundError("Symbol not found: glDrawTransformFeedbackStreamInstanced");
+        try { MH_glDrawTransformFeedbackStreamInstanced.invokeExact(PFN_glDrawTransformFeedbackStreamInstanced, mode, id, stream, instancecount); }
+        catch (Throwable e) { throw new RuntimeException("error in glDrawTransformFeedbackStreamInstanced", e); }
     }
 
 }

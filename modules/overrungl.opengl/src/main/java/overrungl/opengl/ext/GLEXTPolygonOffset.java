@@ -35,10 +35,9 @@ public final class GLEXTPolygonOffset {
     }
 
     public void PolygonOffsetEXT(@CType("GLfloat") float factor, @CType("GLfloat") float bias) {
-        if (!Unmarshal.isNullPointer(PFN_glPolygonOffsetEXT)) { try {
-            MH_glPolygonOffsetEXT.invokeExact(PFN_glPolygonOffsetEXT, factor, bias);
-        } catch (Throwable e) { throw new RuntimeException("error in glPolygonOffsetEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glPolygonOffsetEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glPolygonOffsetEXT)) throw new SymbolNotFoundError("Symbol not found: glPolygonOffsetEXT");
+        try { MH_glPolygonOffsetEXT.invokeExact(PFN_glPolygonOffsetEXT, factor, bias); }
+        catch (Throwable e) { throw new RuntimeException("error in glPolygonOffsetEXT", e); }
     }
 
 }

@@ -36,10 +36,9 @@ public final class GLNVFramebufferMultisampleCoverage {
     }
 
     public void RenderbufferStorageMultisampleCoverageNV(@CType("GLenum") int target, @CType("GLsizei") int coverageSamples, @CType("GLsizei") int colorSamples, @CType("GLenum") int internalformat, @CType("GLsizei") int width, @CType("GLsizei") int height) {
-        if (!Unmarshal.isNullPointer(PFN_glRenderbufferStorageMultisampleCoverageNV)) { try {
-            MH_glRenderbufferStorageMultisampleCoverageNV.invokeExact(PFN_glRenderbufferStorageMultisampleCoverageNV, target, coverageSamples, colorSamples, internalformat, width, height);
-        } catch (Throwable e) { throw new RuntimeException("error in glRenderbufferStorageMultisampleCoverageNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glRenderbufferStorageMultisampleCoverageNV"); }
+        if (Unmarshal.isNullPointer(PFN_glRenderbufferStorageMultisampleCoverageNV)) throw new SymbolNotFoundError("Symbol not found: glRenderbufferStorageMultisampleCoverageNV");
+        try { MH_glRenderbufferStorageMultisampleCoverageNV.invokeExact(PFN_glRenderbufferStorageMultisampleCoverageNV, target, coverageSamples, colorSamples, internalformat, width, height); }
+        catch (Throwable e) { throw new RuntimeException("error in glRenderbufferStorageMultisampleCoverageNV", e); }
     }
 
 }

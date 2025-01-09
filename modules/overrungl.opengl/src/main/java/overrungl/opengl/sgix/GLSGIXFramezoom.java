@@ -35,10 +35,9 @@ public final class GLSGIXFramezoom {
     }
 
     public void FrameZoomSGIX(@CType("GLint") int factor) {
-        if (!Unmarshal.isNullPointer(PFN_glFrameZoomSGIX)) { try {
-            MH_glFrameZoomSGIX.invokeExact(PFN_glFrameZoomSGIX, factor);
-        } catch (Throwable e) { throw new RuntimeException("error in glFrameZoomSGIX", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glFrameZoomSGIX"); }
+        if (Unmarshal.isNullPointer(PFN_glFrameZoomSGIX)) throw new SymbolNotFoundError("Symbol not found: glFrameZoomSGIX");
+        try { MH_glFrameZoomSGIX.invokeExact(PFN_glFrameZoomSGIX, factor); }
+        catch (Throwable e) { throw new RuntimeException("error in glFrameZoomSGIX", e); }
     }
 
 }

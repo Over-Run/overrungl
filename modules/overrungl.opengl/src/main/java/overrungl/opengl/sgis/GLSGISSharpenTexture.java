@@ -29,8 +29,8 @@ public final class GLSGISSharpenTexture {
     public static final int GL_LINEAR_SHARPEN_COLOR_SGIS = 0x80AF;
     public static final int GL_SHARPEN_TEXTURE_FUNC_POINTS_SGIS = 0x80B0;
     public static final MethodHandle MH_glSharpenTexFuncSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glSharpenTexFuncSGIS;
     public static final MethodHandle MH_glGetSharpenTexFuncSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glSharpenTexFuncSGIS;
     public final MemorySegment PFN_glGetSharpenTexFuncSGIS;
 
     public GLSGISSharpenTexture(overrungl.opengl.GLLoadFunc func) {
@@ -39,17 +39,15 @@ public final class GLSGISSharpenTexture {
     }
 
     public void SharpenTexFuncSGIS(@CType("GLenum") int target, @CType("GLsizei") int n, @CType("const GLfloat *") java.lang.foreign.MemorySegment points) {
-        if (!Unmarshal.isNullPointer(PFN_glSharpenTexFuncSGIS)) { try {
-            MH_glSharpenTexFuncSGIS.invokeExact(PFN_glSharpenTexFuncSGIS, target, n, points);
-        } catch (Throwable e) { throw new RuntimeException("error in glSharpenTexFuncSGIS", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glSharpenTexFuncSGIS"); }
+        if (Unmarshal.isNullPointer(PFN_glSharpenTexFuncSGIS)) throw new SymbolNotFoundError("Symbol not found: glSharpenTexFuncSGIS");
+        try { MH_glSharpenTexFuncSGIS.invokeExact(PFN_glSharpenTexFuncSGIS, target, n, points); }
+        catch (Throwable e) { throw new RuntimeException("error in glSharpenTexFuncSGIS", e); }
     }
 
     public void GetSharpenTexFuncSGIS(@CType("GLenum") int target, @CType("GLfloat *") java.lang.foreign.MemorySegment points) {
-        if (!Unmarshal.isNullPointer(PFN_glGetSharpenTexFuncSGIS)) { try {
-            MH_glGetSharpenTexFuncSGIS.invokeExact(PFN_glGetSharpenTexFuncSGIS, target, points);
-        } catch (Throwable e) { throw new RuntimeException("error in glGetSharpenTexFuncSGIS", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGetSharpenTexFuncSGIS"); }
+        if (Unmarshal.isNullPointer(PFN_glGetSharpenTexFuncSGIS)) throw new SymbolNotFoundError("Symbol not found: glGetSharpenTexFuncSGIS");
+        try { MH_glGetSharpenTexFuncSGIS.invokeExact(PFN_glGetSharpenTexFuncSGIS, target, points); }
+        catch (Throwable e) { throw new RuntimeException("error in glGetSharpenTexFuncSGIS", e); }
     }
 
 }

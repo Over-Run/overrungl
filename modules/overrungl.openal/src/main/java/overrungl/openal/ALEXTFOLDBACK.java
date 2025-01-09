@@ -44,19 +44,17 @@ public final class ALEXTFOLDBACK {
     //endregion
 
     public static void alRequestFoldbackStart(@CType("ALenum") int mode, @CType("ALsizei") int count, @CType("ALsizei") int length, @CType("ALfloat *") java.lang.foreign.MemorySegment mem, @CType("LPALFOLDBACKCALLBACK") java.lang.foreign.MemorySegment callback) {
-        if (Handles.MH_alRequestFoldbackStart != null) {
+        if (Handles.MH_alRequestFoldbackStart == null) throw new SymbolNotFoundError("Symbol not found: alRequestFoldbackStart");
         try {
             Handles.MH_alRequestFoldbackStart.invokeExact(mode, count, length, mem, callback);
         } catch (Throwable e) { throw new RuntimeException("error in alRequestFoldbackStart", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alRequestFoldbackStart"); }
     }
 
     public static void alRequestFoldbackStop() {
-        if (Handles.MH_alRequestFoldbackStop != null) {
+        if (Handles.MH_alRequestFoldbackStop == null) throw new SymbolNotFoundError("Symbol not found: alRequestFoldbackStop");
         try {
             Handles.MH_alRequestFoldbackStop.invokeExact();
         } catch (Throwable e) { throw new RuntimeException("error in alRequestFoldbackStop", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alRequestFoldbackStop"); }
     }
 
     //@formatter:on

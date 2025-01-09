@@ -90,83 +90,73 @@ public final class ALEXTDebug {
     //endregion
 
     public static void alDebugMessageCallbackEXT(@CType("ALDEBUGPROCEXT") java.lang.foreign.MemorySegment callback, @CType("void*") java.lang.foreign.MemorySegment userParam) {
-        if (Handles.MH_alDebugMessageCallbackEXT != null) {
+        if (Handles.MH_alDebugMessageCallbackEXT == null) throw new SymbolNotFoundError("Symbol not found: alDebugMessageCallbackEXT");
         try {
             Handles.MH_alDebugMessageCallbackEXT.invokeExact(callback, userParam);
         } catch (Throwable e) { throw new RuntimeException("error in alDebugMessageCallbackEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alDebugMessageCallbackEXT"); }
     }
 
     public static void alDebugMessageInsertEXT(@CType("ALenum") int source, @CType("ALenum") int type, @CType("ALuint") int id, @CType("ALenum") int severity, @CType("ALsizei") int length, @CType("const ALchar*") java.lang.foreign.MemorySegment message) {
-        if (Handles.MH_alDebugMessageInsertEXT != null) {
+        if (Handles.MH_alDebugMessageInsertEXT == null) throw new SymbolNotFoundError("Symbol not found: alDebugMessageInsertEXT");
         try {
             Handles.MH_alDebugMessageInsertEXT.invokeExact(source, type, id, severity, length, message);
         } catch (Throwable e) { throw new RuntimeException("error in alDebugMessageInsertEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alDebugMessageInsertEXT"); }
     }
 
     public static void alDebugMessageControlEXT(@CType("ALenum") int source, @CType("ALenum") int type, @CType("ALenum") int severity, @CType("ALsizei") int count, @CType("const ALuint *") java.lang.foreign.MemorySegment ids, @CType("ALboolean") boolean enable) {
-        if (Handles.MH_alDebugMessageControlEXT != null) {
+        if (Handles.MH_alDebugMessageControlEXT == null) throw new SymbolNotFoundError("Symbol not found: alDebugMessageControlEXT");
         try {
             Handles.MH_alDebugMessageControlEXT.invokeExact(source, type, severity, count, ids, enable);
         } catch (Throwable e) { throw new RuntimeException("error in alDebugMessageControlEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alDebugMessageControlEXT"); }
     }
 
     public static void alPushDebugGroupEXT(@CType("ALenum") int source, @CType("ALuint") int id, @CType("ALsizei") int length, @CType("const ALchar*") java.lang.foreign.MemorySegment message) {
-        if (Handles.MH_alPushDebugGroupEXT != null) {
+        if (Handles.MH_alPushDebugGroupEXT == null) throw new SymbolNotFoundError("Symbol not found: alPushDebugGroupEXT");
         try {
             Handles.MH_alPushDebugGroupEXT.invokeExact(source, id, length, message);
         } catch (Throwable e) { throw new RuntimeException("error in alPushDebugGroupEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alPushDebugGroupEXT"); }
     }
 
     public static void alPopDebugGroupEXT() {
-        if (Handles.MH_alPopDebugGroupEXT != null) {
+        if (Handles.MH_alPopDebugGroupEXT == null) throw new SymbolNotFoundError("Symbol not found: alPopDebugGroupEXT");
         try {
             Handles.MH_alPopDebugGroupEXT.invokeExact();
         } catch (Throwable e) { throw new RuntimeException("error in alPopDebugGroupEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alPopDebugGroupEXT"); }
     }
 
     public static @CType("ALuint") int alGetDebugMessageLogEXT(@CType("ALuint") int count, @CType("ALsizei") int logBufSize, @CType("ALenum *") java.lang.foreign.MemorySegment sources, @CType("ALenum *") java.lang.foreign.MemorySegment types, @CType("ALuint *") java.lang.foreign.MemorySegment ids, @CType("ALenum *") java.lang.foreign.MemorySegment severities, @CType("ALsizei *") java.lang.foreign.MemorySegment lengths, @CType("ALchar*") java.lang.foreign.MemorySegment logBuf) {
-        if (Handles.MH_alGetDebugMessageLogEXT != null) {
+        if (Handles.MH_alGetDebugMessageLogEXT == null) throw new SymbolNotFoundError("Symbol not found: alGetDebugMessageLogEXT");
         try {
             return (int) Handles.MH_alGetDebugMessageLogEXT.invokeExact(count, logBufSize, sources, types, ids, severities, lengths, logBuf);
         } catch (Throwable e) { throw new RuntimeException("error in alGetDebugMessageLogEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alGetDebugMessageLogEXT"); }
     }
 
     public static void alObjectLabelEXT(@CType("ALenum") int identifier, @CType("ALuint") int name, @CType("ALsizei") int length, @CType("const ALchar*") java.lang.foreign.MemorySegment label) {
-        if (Handles.MH_alObjectLabelEXT != null) {
+        if (Handles.MH_alObjectLabelEXT == null) throw new SymbolNotFoundError("Symbol not found: alObjectLabelEXT");
         try {
             Handles.MH_alObjectLabelEXT.invokeExact(identifier, name, length, label);
         } catch (Throwable e) { throw new RuntimeException("error in alObjectLabelEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alObjectLabelEXT"); }
     }
 
     public static void alGetObjectLabelEXT(@CType("ALenum") int identifier, @CType("ALuint") int name, @CType("ALsizei") int bufSize, @CType("ALsizei *") java.lang.foreign.MemorySegment length, @CType("ALchar*") java.lang.foreign.MemorySegment label) {
-        if (Handles.MH_alGetObjectLabelEXT != null) {
+        if (Handles.MH_alGetObjectLabelEXT == null) throw new SymbolNotFoundError("Symbol not found: alGetObjectLabelEXT");
         try {
             Handles.MH_alGetObjectLabelEXT.invokeExact(identifier, name, bufSize, length, label);
         } catch (Throwable e) { throw new RuntimeException("error in alGetObjectLabelEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alGetObjectLabelEXT"); }
     }
 
     public static @CType("void*") java.lang.foreign.MemorySegment alGetPointerEXT(@CType("ALenum") int pname) {
-        if (Handles.MH_alGetPointerEXT != null) {
+        if (Handles.MH_alGetPointerEXT == null) throw new SymbolNotFoundError("Symbol not found: alGetPointerEXT");
         try {
             return (java.lang.foreign.MemorySegment) Handles.MH_alGetPointerEXT.invokeExact(pname);
         } catch (Throwable e) { throw new RuntimeException("error in alGetPointerEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alGetPointerEXT"); }
     }
 
     public static void alGetPointervEXT(@CType("ALenum") int pname, @CType("void**") java.lang.foreign.MemorySegment values) {
-        if (Handles.MH_alGetPointervEXT != null) {
+        if (Handles.MH_alGetPointervEXT == null) throw new SymbolNotFoundError("Symbol not found: alGetPointervEXT");
         try {
             Handles.MH_alGetPointervEXT.invokeExact(pname, values);
         } catch (Throwable e) { throw new RuntimeException("error in alGetPointervEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alGetPointervEXT"); }
     }
 
     //@formatter:on

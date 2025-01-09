@@ -30,10 +30,10 @@ public final class GLNVParameterBufferObject {
     public static final int GL_GEOMETRY_PROGRAM_PARAMETER_BUFFER_NV = 0x8DA3;
     public static final int GL_FRAGMENT_PROGRAM_PARAMETER_BUFFER_NV = 0x8DA4;
     public static final MethodHandle MH_glProgramBufferParametersfvNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glProgramBufferParametersfvNV;
     public static final MethodHandle MH_glProgramBufferParametersIivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glProgramBufferParametersIivNV;
     public static final MethodHandle MH_glProgramBufferParametersIuivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glProgramBufferParametersfvNV;
+    public final MemorySegment PFN_glProgramBufferParametersIivNV;
     public final MemorySegment PFN_glProgramBufferParametersIuivNV;
 
     public GLNVParameterBufferObject(overrungl.opengl.GLLoadFunc func) {
@@ -43,24 +43,21 @@ public final class GLNVParameterBufferObject {
     }
 
     public void ProgramBufferParametersfvNV(@CType("GLenum") int target, @CType("GLuint") int bindingIndex, @CType("GLuint") int wordIndex, @CType("GLsizei") int count, @CType("const GLfloat *") java.lang.foreign.MemorySegment params) {
-        if (!Unmarshal.isNullPointer(PFN_glProgramBufferParametersfvNV)) { try {
-            MH_glProgramBufferParametersfvNV.invokeExact(PFN_glProgramBufferParametersfvNV, target, bindingIndex, wordIndex, count, params);
-        } catch (Throwable e) { throw new RuntimeException("error in glProgramBufferParametersfvNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glProgramBufferParametersfvNV"); }
+        if (Unmarshal.isNullPointer(PFN_glProgramBufferParametersfvNV)) throw new SymbolNotFoundError("Symbol not found: glProgramBufferParametersfvNV");
+        try { MH_glProgramBufferParametersfvNV.invokeExact(PFN_glProgramBufferParametersfvNV, target, bindingIndex, wordIndex, count, params); }
+        catch (Throwable e) { throw new RuntimeException("error in glProgramBufferParametersfvNV", e); }
     }
 
     public void ProgramBufferParametersIivNV(@CType("GLenum") int target, @CType("GLuint") int bindingIndex, @CType("GLuint") int wordIndex, @CType("GLsizei") int count, @CType("const GLint *") java.lang.foreign.MemorySegment params) {
-        if (!Unmarshal.isNullPointer(PFN_glProgramBufferParametersIivNV)) { try {
-            MH_glProgramBufferParametersIivNV.invokeExact(PFN_glProgramBufferParametersIivNV, target, bindingIndex, wordIndex, count, params);
-        } catch (Throwable e) { throw new RuntimeException("error in glProgramBufferParametersIivNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glProgramBufferParametersIivNV"); }
+        if (Unmarshal.isNullPointer(PFN_glProgramBufferParametersIivNV)) throw new SymbolNotFoundError("Symbol not found: glProgramBufferParametersIivNV");
+        try { MH_glProgramBufferParametersIivNV.invokeExact(PFN_glProgramBufferParametersIivNV, target, bindingIndex, wordIndex, count, params); }
+        catch (Throwable e) { throw new RuntimeException("error in glProgramBufferParametersIivNV", e); }
     }
 
     public void ProgramBufferParametersIuivNV(@CType("GLenum") int target, @CType("GLuint") int bindingIndex, @CType("GLuint") int wordIndex, @CType("GLsizei") int count, @CType("const GLuint *") java.lang.foreign.MemorySegment params) {
-        if (!Unmarshal.isNullPointer(PFN_glProgramBufferParametersIuivNV)) { try {
-            MH_glProgramBufferParametersIuivNV.invokeExact(PFN_glProgramBufferParametersIuivNV, target, bindingIndex, wordIndex, count, params);
-        } catch (Throwable e) { throw new RuntimeException("error in glProgramBufferParametersIuivNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glProgramBufferParametersIuivNV"); }
+        if (Unmarshal.isNullPointer(PFN_glProgramBufferParametersIuivNV)) throw new SymbolNotFoundError("Symbol not found: glProgramBufferParametersIuivNV");
+        try { MH_glProgramBufferParametersIuivNV.invokeExact(PFN_glProgramBufferParametersIuivNV, target, bindingIndex, wordIndex, count, params); }
+        catch (Throwable e) { throw new RuntimeException("error in glProgramBufferParametersIuivNV", e); }
     }
 
 }

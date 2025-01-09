@@ -34,8 +34,8 @@ public final class GLAMDSparseTexture {
     public static final int GL_MIN_LOD_WARNING_AMD = 0x919C;
     public static final int GL_TEXTURE_STORAGE_SPARSE_BIT_AMD = 0x00000001;
     public static final MethodHandle MH_glTexStorageSparseAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glTexStorageSparseAMD;
     public static final MethodHandle MH_glTextureStorageSparseAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+    public final MemorySegment PFN_glTexStorageSparseAMD;
     public final MemorySegment PFN_glTextureStorageSparseAMD;
 
     public GLAMDSparseTexture(overrungl.opengl.GLLoadFunc func) {
@@ -44,17 +44,15 @@ public final class GLAMDSparseTexture {
     }
 
     public void TexStorageSparseAMD(@CType("GLenum") int target, @CType("GLenum") int internalFormat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth, @CType("GLsizei") int layers, @CType("GLbitfield") int flags) {
-        if (!Unmarshal.isNullPointer(PFN_glTexStorageSparseAMD)) { try {
-            MH_glTexStorageSparseAMD.invokeExact(PFN_glTexStorageSparseAMD, target, internalFormat, width, height, depth, layers, flags);
-        } catch (Throwable e) { throw new RuntimeException("error in glTexStorageSparseAMD", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glTexStorageSparseAMD"); }
+        if (Unmarshal.isNullPointer(PFN_glTexStorageSparseAMD)) throw new SymbolNotFoundError("Symbol not found: glTexStorageSparseAMD");
+        try { MH_glTexStorageSparseAMD.invokeExact(PFN_glTexStorageSparseAMD, target, internalFormat, width, height, depth, layers, flags); }
+        catch (Throwable e) { throw new RuntimeException("error in glTexStorageSparseAMD", e); }
     }
 
     public void TextureStorageSparseAMD(@CType("GLuint") int texture, @CType("GLenum") int target, @CType("GLenum") int internalFormat, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth, @CType("GLsizei") int layers, @CType("GLbitfield") int flags) {
-        if (!Unmarshal.isNullPointer(PFN_glTextureStorageSparseAMD)) { try {
-            MH_glTextureStorageSparseAMD.invokeExact(PFN_glTextureStorageSparseAMD, texture, target, internalFormat, width, height, depth, layers, flags);
-        } catch (Throwable e) { throw new RuntimeException("error in glTextureStorageSparseAMD", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glTextureStorageSparseAMD"); }
+        if (Unmarshal.isNullPointer(PFN_glTextureStorageSparseAMD)) throw new SymbolNotFoundError("Symbol not found: glTextureStorageSparseAMD");
+        try { MH_glTextureStorageSparseAMD.invokeExact(PFN_glTextureStorageSparseAMD, texture, target, internalFormat, width, height, depth, layers, flags); }
+        catch (Throwable e) { throw new RuntimeException("error in glTextureStorageSparseAMD", e); }
     }
 
 }

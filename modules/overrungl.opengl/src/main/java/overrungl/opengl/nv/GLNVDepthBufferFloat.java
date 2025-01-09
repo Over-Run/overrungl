@@ -29,10 +29,10 @@ public final class GLNVDepthBufferFloat {
     public static final int GL_FLOAT_32_UNSIGNED_INT_24_8_REV_NV = 0x8DAD;
     public static final int GL_DEPTH_BUFFER_FLOAT_MODE_NV = 0x8DAF;
     public static final MethodHandle MH_glDepthRangedNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
-    public final MemorySegment PFN_glDepthRangedNV;
     public static final MethodHandle MH_glClearDepthdNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE));
-    public final MemorySegment PFN_glClearDepthdNV;
     public static final MethodHandle MH_glDepthBoundsdNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
+    public final MemorySegment PFN_glDepthRangedNV;
+    public final MemorySegment PFN_glClearDepthdNV;
     public final MemorySegment PFN_glDepthBoundsdNV;
 
     public GLNVDepthBufferFloat(overrungl.opengl.GLLoadFunc func) {
@@ -42,24 +42,21 @@ public final class GLNVDepthBufferFloat {
     }
 
     public void DepthRangedNV(@CType("GLdouble") double zNear, @CType("GLdouble") double zFar) {
-        if (!Unmarshal.isNullPointer(PFN_glDepthRangedNV)) { try {
-            MH_glDepthRangedNV.invokeExact(PFN_glDepthRangedNV, zNear, zFar);
-        } catch (Throwable e) { throw new RuntimeException("error in glDepthRangedNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glDepthRangedNV"); }
+        if (Unmarshal.isNullPointer(PFN_glDepthRangedNV)) throw new SymbolNotFoundError("Symbol not found: glDepthRangedNV");
+        try { MH_glDepthRangedNV.invokeExact(PFN_glDepthRangedNV, zNear, zFar); }
+        catch (Throwable e) { throw new RuntimeException("error in glDepthRangedNV", e); }
     }
 
     public void ClearDepthdNV(@CType("GLdouble") double depth) {
-        if (!Unmarshal.isNullPointer(PFN_glClearDepthdNV)) { try {
-            MH_glClearDepthdNV.invokeExact(PFN_glClearDepthdNV, depth);
-        } catch (Throwable e) { throw new RuntimeException("error in glClearDepthdNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glClearDepthdNV"); }
+        if (Unmarshal.isNullPointer(PFN_glClearDepthdNV)) throw new SymbolNotFoundError("Symbol not found: glClearDepthdNV");
+        try { MH_glClearDepthdNV.invokeExact(PFN_glClearDepthdNV, depth); }
+        catch (Throwable e) { throw new RuntimeException("error in glClearDepthdNV", e); }
     }
 
     public void DepthBoundsdNV(@CType("GLdouble") double zmin, @CType("GLdouble") double zmax) {
-        if (!Unmarshal.isNullPointer(PFN_glDepthBoundsdNV)) { try {
-            MH_glDepthBoundsdNV.invokeExact(PFN_glDepthBoundsdNV, zmin, zmax);
-        } catch (Throwable e) { throw new RuntimeException("error in glDepthBoundsdNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glDepthBoundsdNV"); }
+        if (Unmarshal.isNullPointer(PFN_glDepthBoundsdNV)) throw new SymbolNotFoundError("Symbol not found: glDepthBoundsdNV");
+        try { MH_glDepthBoundsdNV.invokeExact(PFN_glDepthBoundsdNV, zmin, zmax); }
+        catch (Throwable e) { throw new RuntimeException("error in glDepthBoundsdNV", e); }
     }
 
 }

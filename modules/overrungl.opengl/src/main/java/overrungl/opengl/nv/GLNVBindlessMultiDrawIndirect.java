@@ -25,8 +25,8 @@ import overrungl.util.*;
 
 public final class GLNVBindlessMultiDrawIndirect {
     public static final MethodHandle MH_glMultiDrawArraysIndirectBindlessNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glMultiDrawArraysIndirectBindlessNV;
     public static final MethodHandle MH_glMultiDrawElementsIndirectBindlessNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+    public final MemorySegment PFN_glMultiDrawArraysIndirectBindlessNV;
     public final MemorySegment PFN_glMultiDrawElementsIndirectBindlessNV;
 
     public GLNVBindlessMultiDrawIndirect(overrungl.opengl.GLLoadFunc func) {
@@ -35,17 +35,15 @@ public final class GLNVBindlessMultiDrawIndirect {
     }
 
     public void MultiDrawArraysIndirectBindlessNV(@CType("GLenum") int mode, @CType("const void *") java.lang.foreign.MemorySegment indirect, @CType("GLsizei") int drawCount, @CType("GLsizei") int stride, @CType("GLint") int vertexBufferCount) {
-        if (!Unmarshal.isNullPointer(PFN_glMultiDrawArraysIndirectBindlessNV)) { try {
-            MH_glMultiDrawArraysIndirectBindlessNV.invokeExact(PFN_glMultiDrawArraysIndirectBindlessNV, mode, indirect, drawCount, stride, vertexBufferCount);
-        } catch (Throwable e) { throw new RuntimeException("error in glMultiDrawArraysIndirectBindlessNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glMultiDrawArraysIndirectBindlessNV"); }
+        if (Unmarshal.isNullPointer(PFN_glMultiDrawArraysIndirectBindlessNV)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawArraysIndirectBindlessNV");
+        try { MH_glMultiDrawArraysIndirectBindlessNV.invokeExact(PFN_glMultiDrawArraysIndirectBindlessNV, mode, indirect, drawCount, stride, vertexBufferCount); }
+        catch (Throwable e) { throw new RuntimeException("error in glMultiDrawArraysIndirectBindlessNV", e); }
     }
 
     public void MultiDrawElementsIndirectBindlessNV(@CType("GLenum") int mode, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment indirect, @CType("GLsizei") int drawCount, @CType("GLsizei") int stride, @CType("GLint") int vertexBufferCount) {
-        if (!Unmarshal.isNullPointer(PFN_glMultiDrawElementsIndirectBindlessNV)) { try {
-            MH_glMultiDrawElementsIndirectBindlessNV.invokeExact(PFN_glMultiDrawElementsIndirectBindlessNV, mode, type, indirect, drawCount, stride, vertexBufferCount);
-        } catch (Throwable e) { throw new RuntimeException("error in glMultiDrawElementsIndirectBindlessNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glMultiDrawElementsIndirectBindlessNV"); }
+        if (Unmarshal.isNullPointer(PFN_glMultiDrawElementsIndirectBindlessNV)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawElementsIndirectBindlessNV");
+        try { MH_glMultiDrawElementsIndirectBindlessNV.invokeExact(PFN_glMultiDrawElementsIndirectBindlessNV, mode, type, indirect, drawCount, stride, vertexBufferCount); }
+        catch (Throwable e) { throw new RuntimeException("error in glMultiDrawElementsIndirectBindlessNV", e); }
     }
 
 }

@@ -30,10 +30,10 @@ public final class GLAMDNameGenDelete {
     public static final int GL_VERTEX_ARRAY_OBJECT_AMD = 0x9154;
     public static final int GL_SAMPLER_OBJECT_AMD = 0x9155;
     public static final MethodHandle MH_glGenNamesAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glGenNamesAMD;
     public static final MethodHandle MH_glDeleteNamesAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glDeleteNamesAMD;
     public static final MethodHandle MH_glIsNameAMD = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+    public final MemorySegment PFN_glGenNamesAMD;
+    public final MemorySegment PFN_glDeleteNamesAMD;
     public final MemorySegment PFN_glIsNameAMD;
 
     public GLAMDNameGenDelete(overrungl.opengl.GLLoadFunc func) {
@@ -43,24 +43,21 @@ public final class GLAMDNameGenDelete {
     }
 
     public void GenNamesAMD(@CType("GLenum") int identifier, @CType("GLuint") int num, @CType("GLuint *") java.lang.foreign.MemorySegment names) {
-        if (!Unmarshal.isNullPointer(PFN_glGenNamesAMD)) { try {
-            MH_glGenNamesAMD.invokeExact(PFN_glGenNamesAMD, identifier, num, names);
-        } catch (Throwable e) { throw new RuntimeException("error in glGenNamesAMD", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glGenNamesAMD"); }
+        if (Unmarshal.isNullPointer(PFN_glGenNamesAMD)) throw new SymbolNotFoundError("Symbol not found: glGenNamesAMD");
+        try { MH_glGenNamesAMD.invokeExact(PFN_glGenNamesAMD, identifier, num, names); }
+        catch (Throwable e) { throw new RuntimeException("error in glGenNamesAMD", e); }
     }
 
     public void DeleteNamesAMD(@CType("GLenum") int identifier, @CType("GLuint") int num, @CType("const GLuint *") java.lang.foreign.MemorySegment names) {
-        if (!Unmarshal.isNullPointer(PFN_glDeleteNamesAMD)) { try {
-            MH_glDeleteNamesAMD.invokeExact(PFN_glDeleteNamesAMD, identifier, num, names);
-        } catch (Throwable e) { throw new RuntimeException("error in glDeleteNamesAMD", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glDeleteNamesAMD"); }
+        if (Unmarshal.isNullPointer(PFN_glDeleteNamesAMD)) throw new SymbolNotFoundError("Symbol not found: glDeleteNamesAMD");
+        try { MH_glDeleteNamesAMD.invokeExact(PFN_glDeleteNamesAMD, identifier, num, names); }
+        catch (Throwable e) { throw new RuntimeException("error in glDeleteNamesAMD", e); }
     }
 
     public @CType("GLboolean") boolean IsNameAMD(@CType("GLenum") int identifier, @CType("GLuint") int name) {
-        if (!Unmarshal.isNullPointer(PFN_glIsNameAMD)) { try {
-            return (boolean) MH_glIsNameAMD.invokeExact(PFN_glIsNameAMD, identifier, name);
-        } catch (Throwable e) { throw new RuntimeException("error in glIsNameAMD", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glIsNameAMD"); }
+        if (Unmarshal.isNullPointer(PFN_glIsNameAMD)) throw new SymbolNotFoundError("Symbol not found: glIsNameAMD");
+        try { return (boolean) MH_glIsNameAMD.invokeExact(PFN_glIsNameAMD, identifier, name); }
+        catch (Throwable e) { throw new RuntimeException("error in glIsNameAMD", e); }
     }
 
 }

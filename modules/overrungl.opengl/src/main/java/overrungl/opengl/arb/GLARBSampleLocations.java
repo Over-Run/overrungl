@@ -33,10 +33,10 @@ public final class GLARBSampleLocations {
     public static final int GL_FRAMEBUFFER_PROGRAMMABLE_SAMPLE_LOCATIONS_ARB = 0x9342;
     public static final int GL_FRAMEBUFFER_SAMPLE_LOCATION_PIXEL_GRID_ARB = 0x9343;
     public static final MethodHandle MH_glFramebufferSampleLocationsfvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glFramebufferSampleLocationsfvARB;
     public static final MethodHandle MH_glNamedFramebufferSampleLocationsfvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glNamedFramebufferSampleLocationsfvARB;
     public static final MethodHandle MH_glEvaluateDepthValuesARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
+    public final MemorySegment PFN_glFramebufferSampleLocationsfvARB;
+    public final MemorySegment PFN_glNamedFramebufferSampleLocationsfvARB;
     public final MemorySegment PFN_glEvaluateDepthValuesARB;
 
     public GLARBSampleLocations(overrungl.opengl.GLLoadFunc func) {
@@ -46,24 +46,21 @@ public final class GLARBSampleLocations {
     }
 
     public void FramebufferSampleLocationsfvARB(@CType("GLenum") int target, @CType("GLuint") int start, @CType("GLsizei") int count, @CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
-        if (!Unmarshal.isNullPointer(PFN_glFramebufferSampleLocationsfvARB)) { try {
-            MH_glFramebufferSampleLocationsfvARB.invokeExact(PFN_glFramebufferSampleLocationsfvARB, target, start, count, v);
-        } catch (Throwable e) { throw new RuntimeException("error in glFramebufferSampleLocationsfvARB", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glFramebufferSampleLocationsfvARB"); }
+        if (Unmarshal.isNullPointer(PFN_glFramebufferSampleLocationsfvARB)) throw new SymbolNotFoundError("Symbol not found: glFramebufferSampleLocationsfvARB");
+        try { MH_glFramebufferSampleLocationsfvARB.invokeExact(PFN_glFramebufferSampleLocationsfvARB, target, start, count, v); }
+        catch (Throwable e) { throw new RuntimeException("error in glFramebufferSampleLocationsfvARB", e); }
     }
 
     public void NamedFramebufferSampleLocationsfvARB(@CType("GLuint") int framebuffer, @CType("GLuint") int start, @CType("GLsizei") int count, @CType("const GLfloat *") java.lang.foreign.MemorySegment v) {
-        if (!Unmarshal.isNullPointer(PFN_glNamedFramebufferSampleLocationsfvARB)) { try {
-            MH_glNamedFramebufferSampleLocationsfvARB.invokeExact(PFN_glNamedFramebufferSampleLocationsfvARB, framebuffer, start, count, v);
-        } catch (Throwable e) { throw new RuntimeException("error in glNamedFramebufferSampleLocationsfvARB", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glNamedFramebufferSampleLocationsfvARB"); }
+        if (Unmarshal.isNullPointer(PFN_glNamedFramebufferSampleLocationsfvARB)) throw new SymbolNotFoundError("Symbol not found: glNamedFramebufferSampleLocationsfvARB");
+        try { MH_glNamedFramebufferSampleLocationsfvARB.invokeExact(PFN_glNamedFramebufferSampleLocationsfvARB, framebuffer, start, count, v); }
+        catch (Throwable e) { throw new RuntimeException("error in glNamedFramebufferSampleLocationsfvARB", e); }
     }
 
     public void EvaluateDepthValuesARB() {
-        if (!Unmarshal.isNullPointer(PFN_glEvaluateDepthValuesARB)) { try {
-            MH_glEvaluateDepthValuesARB.invokeExact(PFN_glEvaluateDepthValuesARB);
-        } catch (Throwable e) { throw new RuntimeException("error in glEvaluateDepthValuesARB", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glEvaluateDepthValuesARB"); }
+        if (Unmarshal.isNullPointer(PFN_glEvaluateDepthValuesARB)) throw new SymbolNotFoundError("Symbol not found: glEvaluateDepthValuesARB");
+        try { MH_glEvaluateDepthValuesARB.invokeExact(PFN_glEvaluateDepthValuesARB); }
+        catch (Throwable e) { throw new RuntimeException("error in glEvaluateDepthValuesARB", e); }
     }
 
 }

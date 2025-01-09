@@ -41,11 +41,10 @@ public final class ALCSOFTDeviceClock {
     //endregion
 
     public static void alcGetInteger64vSOFT(@CType("ALCdevice *") java.lang.foreign.MemorySegment device, @CType("ALCenum") int pname, @CType("ALsizei") int size, @CType("ALCint64SOFT *") java.lang.foreign.MemorySegment values) {
-        if (Handles.MH_alcGetInteger64vSOFT != null) {
+        if (Handles.MH_alcGetInteger64vSOFT == null) throw new SymbolNotFoundError("Symbol not found: alcGetInteger64vSOFT");
         try {
             Handles.MH_alcGetInteger64vSOFT.invokeExact(device, pname, size, values);
         } catch (Throwable e) { throw new RuntimeException("error in alcGetInteger64vSOFT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alcGetInteger64vSOFT"); }
     }
 
     //@formatter:on

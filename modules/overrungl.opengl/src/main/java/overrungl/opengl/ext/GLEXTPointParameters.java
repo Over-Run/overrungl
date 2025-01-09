@@ -29,8 +29,8 @@ public final class GLEXTPointParameters {
     public static final int GL_POINT_FADE_THRESHOLD_SIZE_EXT = 0x8128;
     public static final int GL_DISTANCE_ATTENUATION_EXT = 0x8129;
     public static final MethodHandle MH_glPointParameterfEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
-    public final MemorySegment PFN_glPointParameterfEXT;
     public static final MethodHandle MH_glPointParameterfvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glPointParameterfEXT;
     public final MemorySegment PFN_glPointParameterfvEXT;
 
     public GLEXTPointParameters(overrungl.opengl.GLLoadFunc func) {
@@ -39,17 +39,15 @@ public final class GLEXTPointParameters {
     }
 
     public void PointParameterfEXT(@CType("GLenum") int pname, @CType("GLfloat") float param) {
-        if (!Unmarshal.isNullPointer(PFN_glPointParameterfEXT)) { try {
-            MH_glPointParameterfEXT.invokeExact(PFN_glPointParameterfEXT, pname, param);
-        } catch (Throwable e) { throw new RuntimeException("error in glPointParameterfEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glPointParameterfEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glPointParameterfEXT)) throw new SymbolNotFoundError("Symbol not found: glPointParameterfEXT");
+        try { MH_glPointParameterfEXT.invokeExact(PFN_glPointParameterfEXT, pname, param); }
+        catch (Throwable e) { throw new RuntimeException("error in glPointParameterfEXT", e); }
     }
 
     public void PointParameterfvEXT(@CType("GLenum") int pname, @CType("const GLfloat *") java.lang.foreign.MemorySegment params) {
-        if (!Unmarshal.isNullPointer(PFN_glPointParameterfvEXT)) { try {
-            MH_glPointParameterfvEXT.invokeExact(PFN_glPointParameterfvEXT, pname, params);
-        } catch (Throwable e) { throw new RuntimeException("error in glPointParameterfvEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glPointParameterfvEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glPointParameterfvEXT)) throw new SymbolNotFoundError("Symbol not found: glPointParameterfvEXT");
+        try { MH_glPointParameterfvEXT.invokeExact(PFN_glPointParameterfvEXT, pname, params); }
+        catch (Throwable e) { throw new RuntimeException("error in glPointParameterfvEXT", e); }
     }
 
 }

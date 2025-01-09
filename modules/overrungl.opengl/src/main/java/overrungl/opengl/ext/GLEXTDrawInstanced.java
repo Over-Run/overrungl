@@ -25,8 +25,8 @@ import overrungl.util.*;
 
 public final class GLEXTDrawInstanced {
     public static final MethodHandle MH_glDrawArraysInstancedEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glDrawArraysInstancedEXT;
     public static final MethodHandle MH_glDrawElementsInstancedEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+    public final MemorySegment PFN_glDrawArraysInstancedEXT;
     public final MemorySegment PFN_glDrawElementsInstancedEXT;
 
     public GLEXTDrawInstanced(overrungl.opengl.GLLoadFunc func) {
@@ -35,17 +35,15 @@ public final class GLEXTDrawInstanced {
     }
 
     public void DrawArraysInstancedEXT(@CType("GLenum") int mode, @CType("GLint") int start, @CType("GLsizei") int count, @CType("GLsizei") int primcount) {
-        if (!Unmarshal.isNullPointer(PFN_glDrawArraysInstancedEXT)) { try {
-            MH_glDrawArraysInstancedEXT.invokeExact(PFN_glDrawArraysInstancedEXT, mode, start, count, primcount);
-        } catch (Throwable e) { throw new RuntimeException("error in glDrawArraysInstancedEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glDrawArraysInstancedEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glDrawArraysInstancedEXT)) throw new SymbolNotFoundError("Symbol not found: glDrawArraysInstancedEXT");
+        try { MH_glDrawArraysInstancedEXT.invokeExact(PFN_glDrawArraysInstancedEXT, mode, start, count, primcount); }
+        catch (Throwable e) { throw new RuntimeException("error in glDrawArraysInstancedEXT", e); }
     }
 
     public void DrawElementsInstancedEXT(@CType("GLenum") int mode, @CType("GLsizei") int count, @CType("GLenum") int type, @CType("const void *") java.lang.foreign.MemorySegment indices, @CType("GLsizei") int primcount) {
-        if (!Unmarshal.isNullPointer(PFN_glDrawElementsInstancedEXT)) { try {
-            MH_glDrawElementsInstancedEXT.invokeExact(PFN_glDrawElementsInstancedEXT, mode, count, type, indices, primcount);
-        } catch (Throwable e) { throw new RuntimeException("error in glDrawElementsInstancedEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glDrawElementsInstancedEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glDrawElementsInstancedEXT)) throw new SymbolNotFoundError("Symbol not found: glDrawElementsInstancedEXT");
+        try { MH_glDrawElementsInstancedEXT.invokeExact(PFN_glDrawElementsInstancedEXT, mode, count, type, indices, primcount); }
+        catch (Throwable e) { throw new RuntimeException("error in glDrawElementsInstancedEXT", e); }
     }
 
 }

@@ -55,27 +55,24 @@ public final class ALCSOFTLoopback {
     //endregion
 
     public static @CType("ALCdevice *") java.lang.foreign.MemorySegment alcLoopbackOpenDeviceSOFT(@CType("const ALCchar*") java.lang.foreign.MemorySegment deviceName) {
-        if (Handles.MH_alcLoopbackOpenDeviceSOFT != null) {
+        if (Handles.MH_alcLoopbackOpenDeviceSOFT == null) throw new SymbolNotFoundError("Symbol not found: alcLoopbackOpenDeviceSOFT");
         try {
             return (java.lang.foreign.MemorySegment) Handles.MH_alcLoopbackOpenDeviceSOFT.invokeExact(deviceName);
         } catch (Throwable e) { throw new RuntimeException("error in alcLoopbackOpenDeviceSOFT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alcLoopbackOpenDeviceSOFT"); }
     }
 
     public static @CType("ALCboolean") boolean alcIsRenderFormatSupportedSOFT(@CType("ALCdevice *") java.lang.foreign.MemorySegment device, @CType("ALCsizei") int freq, @CType("ALCenum") int channels, @CType("ALCenum") int type) {
-        if (Handles.MH_alcIsRenderFormatSupportedSOFT != null) {
+        if (Handles.MH_alcIsRenderFormatSupportedSOFT == null) throw new SymbolNotFoundError("Symbol not found: alcIsRenderFormatSupportedSOFT");
         try {
             return (boolean) Handles.MH_alcIsRenderFormatSupportedSOFT.invokeExact(device, freq, channels, type);
         } catch (Throwable e) { throw new RuntimeException("error in alcIsRenderFormatSupportedSOFT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alcIsRenderFormatSupportedSOFT"); }
     }
 
     public static void alcRenderSamplesSOFT(@CType("ALCdevice *") java.lang.foreign.MemorySegment device, @CType("ALCvoid *") java.lang.foreign.MemorySegment buffer, @CType("ALCsizei") int samples) {
-        if (Handles.MH_alcRenderSamplesSOFT != null) {
+        if (Handles.MH_alcRenderSamplesSOFT == null) throw new SymbolNotFoundError("Symbol not found: alcRenderSamplesSOFT");
         try {
             Handles.MH_alcRenderSamplesSOFT.invokeExact(device, buffer, samples);
         } catch (Throwable e) { throw new RuntimeException("error in alcRenderSamplesSOFT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alcRenderSamplesSOFT"); }
     }
 
     //@formatter:on

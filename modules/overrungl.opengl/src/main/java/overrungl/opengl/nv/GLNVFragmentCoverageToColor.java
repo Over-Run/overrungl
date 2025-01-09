@@ -34,10 +34,9 @@ public final class GLNVFragmentCoverageToColor {
     }
 
     public void FragmentCoverageColorNV(@CType("GLuint") int color) {
-        if (!Unmarshal.isNullPointer(PFN_glFragmentCoverageColorNV)) { try {
-            MH_glFragmentCoverageColorNV.invokeExact(PFN_glFragmentCoverageColorNV, color);
-        } catch (Throwable e) { throw new RuntimeException("error in glFragmentCoverageColorNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glFragmentCoverageColorNV"); }
+        if (Unmarshal.isNullPointer(PFN_glFragmentCoverageColorNV)) throw new SymbolNotFoundError("Symbol not found: glFragmentCoverageColorNV");
+        try { MH_glFragmentCoverageColorNV.invokeExact(PFN_glFragmentCoverageColorNV, color); }
+        catch (Throwable e) { throw new RuntimeException("error in glFragmentCoverageColorNV", e); }
     }
 
 }

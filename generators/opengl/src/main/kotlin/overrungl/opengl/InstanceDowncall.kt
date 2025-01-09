@@ -35,6 +35,8 @@ class InstanceDowncall(
     private val extends = mutableListOf<String>()
     private val permits = mutableListOf<String>()
     private val fields = mutableListOf<InstanceDowncallField>()
+    val handleFields = mutableListOf<InstanceDowncallField>()
+    val pfnFields = mutableListOf<InstanceDowncallField>()
     private val methods = mutableListOf<InstanceDowncallMethod>()
 
     init {
@@ -93,18 +95,23 @@ class InstanceDowncall(
         sb.appendLine(" {")
 
         // fields
-        fields.forEach {
-            sb.append("    public")
-            if (it.modifier != null) {
-                sb.append(" ")
-                sb.append(it.modifier)
+        fun writeFields(list: List<InstanceDowncallField>) {
+            list.forEach {
+                sb.append("    public")
+                if (it.modifier != null) {
+                    sb.append(" ")
+                    sb.append(it.modifier)
+                }
+                sb.append(" final ${it.type} ${it.name}")
+                if (it.value != null) {
+                    sb.append(" = ${it.value}")
+                }
+                sb.appendLine(";")
             }
-            sb.append(" final ${it.type} ${it.name}")
-            if (it.value != null) {
-                sb.append(" = ${it.value}")
-            }
-            sb.appendLine(";")
         }
+        writeFields(fields)
+        writeFields(handleFields)
+        writeFields(pfnFields)
 
         // constructor
         sb.appendLine()
@@ -130,8 +137,8 @@ class InstanceDowncall(
             sb.append(m.params.joinToString(", ") { p -> "${p.type.carrierWithC()} ${p.name}" })
             sb.appendLine(") {")
 
-            sb.appendLine("        if (!Unmarshal.isNullPointer(PFN_${m.entrypoint})) { try {")
-            sb.append("            ")
+            sb.appendLine("""        if (Unmarshal.isNullPointer(PFN_${m.entrypoint})) throw new SymbolNotFoundError("Symbol not found: ${m.entrypoint}");""")
+            sb.append("        try { ")
             if (m.returnType.carrier != TypeName.VOID) {
                 sb.append("return (${m.returnType.carrier}) ")
             }
@@ -139,9 +146,8 @@ class InstanceDowncall(
             m.params.forEach {
                 sb.append(", ${it.name}")
             }
-            sb.appendLine(");")
-            sb.appendLine("""        } catch (Throwable e) { throw new RuntimeException("error in ${m.entrypoint}", e); }""")
-            sb.appendLine("""        } else { throw new SymbolNotFoundError("Symbol not found: ${m.entrypoint}"); }""")
+            sb.appendLine("); }")
+            sb.appendLine("""        catch (Throwable e) { throw new RuntimeException("error in ${m.entrypoint}", e); }""")
 
             sb.appendLine("    }")
             sb.appendLine()

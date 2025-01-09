@@ -29,8 +29,8 @@ public final class GLSGISPointParameters {
     public static final int GL_POINT_FADE_THRESHOLD_SIZE_SGIS = 0x8128;
     public static final int GL_DISTANCE_ATTENUATION_SGIS = 0x8129;
     public static final MethodHandle MH_glPointParameterfSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
-    public final MemorySegment PFN_glPointParameterfSGIS;
     public static final MethodHandle MH_glPointParameterfvSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glPointParameterfSGIS;
     public final MemorySegment PFN_glPointParameterfvSGIS;
 
     public GLSGISPointParameters(overrungl.opengl.GLLoadFunc func) {
@@ -39,17 +39,15 @@ public final class GLSGISPointParameters {
     }
 
     public void PointParameterfSGIS(@CType("GLenum") int pname, @CType("GLfloat") float param) {
-        if (!Unmarshal.isNullPointer(PFN_glPointParameterfSGIS)) { try {
-            MH_glPointParameterfSGIS.invokeExact(PFN_glPointParameterfSGIS, pname, param);
-        } catch (Throwable e) { throw new RuntimeException("error in glPointParameterfSGIS", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glPointParameterfSGIS"); }
+        if (Unmarshal.isNullPointer(PFN_glPointParameterfSGIS)) throw new SymbolNotFoundError("Symbol not found: glPointParameterfSGIS");
+        try { MH_glPointParameterfSGIS.invokeExact(PFN_glPointParameterfSGIS, pname, param); }
+        catch (Throwable e) { throw new RuntimeException("error in glPointParameterfSGIS", e); }
     }
 
     public void PointParameterfvSGIS(@CType("GLenum") int pname, @CType("const GLfloat *") java.lang.foreign.MemorySegment params) {
-        if (!Unmarshal.isNullPointer(PFN_glPointParameterfvSGIS)) { try {
-            MH_glPointParameterfvSGIS.invokeExact(PFN_glPointParameterfvSGIS, pname, params);
-        } catch (Throwable e) { throw new RuntimeException("error in glPointParameterfvSGIS", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glPointParameterfvSGIS"); }
+        if (Unmarshal.isNullPointer(PFN_glPointParameterfvSGIS)) throw new SymbolNotFoundError("Symbol not found: glPointParameterfvSGIS");
+        try { MH_glPointParameterfvSGIS.invokeExact(PFN_glPointParameterfvSGIS, pname, params); }
+        catch (Throwable e) { throw new RuntimeException("error in glPointParameterfvSGIS", e); }
     }
 
 }

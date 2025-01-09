@@ -32,10 +32,9 @@ public final class GLNVCopyImage {
     }
 
     public void CopyImageSubDataNV(@CType("GLuint") int srcName, @CType("GLenum") int srcTarget, @CType("GLint") int srcLevel, @CType("GLint") int srcX, @CType("GLint") int srcY, @CType("GLint") int srcZ, @CType("GLuint") int dstName, @CType("GLenum") int dstTarget, @CType("GLint") int dstLevel, @CType("GLint") int dstX, @CType("GLint") int dstY, @CType("GLint") int dstZ, @CType("GLsizei") int width, @CType("GLsizei") int height, @CType("GLsizei") int depth) {
-        if (!Unmarshal.isNullPointer(PFN_glCopyImageSubDataNV)) { try {
-            MH_glCopyImageSubDataNV.invokeExact(PFN_glCopyImageSubDataNV, srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, width, height, depth);
-        } catch (Throwable e) { throw new RuntimeException("error in glCopyImageSubDataNV", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glCopyImageSubDataNV"); }
+        if (Unmarshal.isNullPointer(PFN_glCopyImageSubDataNV)) throw new SymbolNotFoundError("Symbol not found: glCopyImageSubDataNV");
+        try { MH_glCopyImageSubDataNV.invokeExact(PFN_glCopyImageSubDataNV, srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, width, height, depth); }
+        catch (Throwable e) { throw new RuntimeException("error in glCopyImageSubDataNV", e); }
     }
 
 }

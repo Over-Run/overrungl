@@ -577,267 +577,234 @@ public final class ALCEXTEFX {
     //endregion
 
     public static void alGenEffects(@CType("ALsizei") int n, @CType("ALuint *") java.lang.foreign.MemorySegment effects) {
-        if (Handles.MH_alGenEffects != null) {
+        if (Handles.MH_alGenEffects == null) throw new SymbolNotFoundError("Symbol not found: alGenEffects");
         try {
             Handles.MH_alGenEffects.invokeExact(n, effects);
         } catch (Throwable e) { throw new RuntimeException("error in alGenEffects", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alGenEffects"); }
     }
 
     public static void alDeleteEffects(@CType("ALsizei") int n, @CType("const ALuint *") java.lang.foreign.MemorySegment effects) {
-        if (Handles.MH_alDeleteEffects != null) {
+        if (Handles.MH_alDeleteEffects == null) throw new SymbolNotFoundError("Symbol not found: alDeleteEffects");
         try {
             Handles.MH_alDeleteEffects.invokeExact(n, effects);
         } catch (Throwable e) { throw new RuntimeException("error in alDeleteEffects", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alDeleteEffects"); }
     }
 
     public static @CType("ALboolean") boolean alIsEffect(@CType("ALuint") int effect) {
-        if (Handles.MH_alIsEffect != null) {
+        if (Handles.MH_alIsEffect == null) throw new SymbolNotFoundError("Symbol not found: alIsEffect");
         try {
             return (boolean) Handles.MH_alIsEffect.invokeExact(effect);
         } catch (Throwable e) { throw new RuntimeException("error in alIsEffect", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alIsEffect"); }
     }
 
     public static void alEffecti(@CType("ALuint") int effect, @CType("ALenum") int param, @CType("ALint") int iValue) {
-        if (Handles.MH_alEffecti != null) {
+        if (Handles.MH_alEffecti == null) throw new SymbolNotFoundError("Symbol not found: alEffecti");
         try {
             Handles.MH_alEffecti.invokeExact(effect, param, iValue);
         } catch (Throwable e) { throw new RuntimeException("error in alEffecti", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alEffecti"); }
     }
 
     public static void alEffectiv(@CType("ALuint") int effect, @CType("ALenum") int param, @CType("const ALint *") java.lang.foreign.MemorySegment piValues) {
-        if (Handles.MH_alEffectiv != null) {
+        if (Handles.MH_alEffectiv == null) throw new SymbolNotFoundError("Symbol not found: alEffectiv");
         try {
             Handles.MH_alEffectiv.invokeExact(effect, param, piValues);
         } catch (Throwable e) { throw new RuntimeException("error in alEffectiv", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alEffectiv"); }
     }
 
     public static void alEffectf(@CType("ALuint") int effect, @CType("ALenum") int param, @CType("ALfloat") float flValue) {
-        if (Handles.MH_alEffectf != null) {
+        if (Handles.MH_alEffectf == null) throw new SymbolNotFoundError("Symbol not found: alEffectf");
         try {
             Handles.MH_alEffectf.invokeExact(effect, param, flValue);
         } catch (Throwable e) { throw new RuntimeException("error in alEffectf", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alEffectf"); }
     }
 
     public static void alEffectfv(@CType("ALuint") int effect, @CType("ALenum") int param, @CType("const ALfloat *") java.lang.foreign.MemorySegment pflValues) {
-        if (Handles.MH_alEffectfv != null) {
+        if (Handles.MH_alEffectfv == null) throw new SymbolNotFoundError("Symbol not found: alEffectfv");
         try {
             Handles.MH_alEffectfv.invokeExact(effect, param, pflValues);
         } catch (Throwable e) { throw new RuntimeException("error in alEffectfv", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alEffectfv"); }
     }
 
     public static void alGetEffecti(@CType("ALuint") int effect, @CType("ALenum") int param, @CType("ALint *") java.lang.foreign.MemorySegment piValue) {
-        if (Handles.MH_alGetEffecti != null) {
+        if (Handles.MH_alGetEffecti == null) throw new SymbolNotFoundError("Symbol not found: alGetEffecti");
         try {
             Handles.MH_alGetEffecti.invokeExact(effect, param, piValue);
         } catch (Throwable e) { throw new RuntimeException("error in alGetEffecti", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alGetEffecti"); }
     }
 
     public static void alGetEffectiv(@CType("ALuint") int effect, @CType("ALenum") int param, @CType("ALint *") java.lang.foreign.MemorySegment piValues) {
-        if (Handles.MH_alGetEffectiv != null) {
+        if (Handles.MH_alGetEffectiv == null) throw new SymbolNotFoundError("Symbol not found: alGetEffectiv");
         try {
             Handles.MH_alGetEffectiv.invokeExact(effect, param, piValues);
         } catch (Throwable e) { throw new RuntimeException("error in alGetEffectiv", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alGetEffectiv"); }
     }
 
     public static void alGetEffectf(@CType("ALuint") int effect, @CType("ALenum") int param, @CType("ALfloat *") java.lang.foreign.MemorySegment pflValue) {
-        if (Handles.MH_alGetEffectf != null) {
+        if (Handles.MH_alGetEffectf == null) throw new SymbolNotFoundError("Symbol not found: alGetEffectf");
         try {
             Handles.MH_alGetEffectf.invokeExact(effect, param, pflValue);
         } catch (Throwable e) { throw new RuntimeException("error in alGetEffectf", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alGetEffectf"); }
     }
 
     public static void alGetEffectfv(@CType("ALuint") int effect, @CType("ALenum") int param, @CType("ALfloat *") java.lang.foreign.MemorySegment pflValues) {
-        if (Handles.MH_alGetEffectfv != null) {
+        if (Handles.MH_alGetEffectfv == null) throw new SymbolNotFoundError("Symbol not found: alGetEffectfv");
         try {
             Handles.MH_alGetEffectfv.invokeExact(effect, param, pflValues);
         } catch (Throwable e) { throw new RuntimeException("error in alGetEffectfv", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alGetEffectfv"); }
     }
 
     public static void alGenFilters(@CType("ALsizei") int n, @CType("ALuint *") java.lang.foreign.MemorySegment filters) {
-        if (Handles.MH_alGenFilters != null) {
+        if (Handles.MH_alGenFilters == null) throw new SymbolNotFoundError("Symbol not found: alGenFilters");
         try {
             Handles.MH_alGenFilters.invokeExact(n, filters);
         } catch (Throwable e) { throw new RuntimeException("error in alGenFilters", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alGenFilters"); }
     }
 
     public static void alDeleteFilters(@CType("ALsizei") int n, @CType("const ALuint *") java.lang.foreign.MemorySegment filters) {
-        if (Handles.MH_alDeleteFilters != null) {
+        if (Handles.MH_alDeleteFilters == null) throw new SymbolNotFoundError("Symbol not found: alDeleteFilters");
         try {
             Handles.MH_alDeleteFilters.invokeExact(n, filters);
         } catch (Throwable e) { throw new RuntimeException("error in alDeleteFilters", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alDeleteFilters"); }
     }
 
     public static @CType("ALboolean") boolean alIsFilter(@CType("ALuint") int filter) {
-        if (Handles.MH_alIsFilter != null) {
+        if (Handles.MH_alIsFilter == null) throw new SymbolNotFoundError("Symbol not found: alIsFilter");
         try {
             return (boolean) Handles.MH_alIsFilter.invokeExact(filter);
         } catch (Throwable e) { throw new RuntimeException("error in alIsFilter", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alIsFilter"); }
     }
 
     public static void alFilteri(@CType("ALuint") int filter, @CType("ALenum") int param, @CType("ALint") int iValue) {
-        if (Handles.MH_alFilteri != null) {
+        if (Handles.MH_alFilteri == null) throw new SymbolNotFoundError("Symbol not found: alFilteri");
         try {
             Handles.MH_alFilteri.invokeExact(filter, param, iValue);
         } catch (Throwable e) { throw new RuntimeException("error in alFilteri", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alFilteri"); }
     }
 
     public static void alFilteriv(@CType("ALuint") int filter, @CType("ALenum") int param, @CType("const ALint *") java.lang.foreign.MemorySegment piValues) {
-        if (Handles.MH_alFilteriv != null) {
+        if (Handles.MH_alFilteriv == null) throw new SymbolNotFoundError("Symbol not found: alFilteriv");
         try {
             Handles.MH_alFilteriv.invokeExact(filter, param, piValues);
         } catch (Throwable e) { throw new RuntimeException("error in alFilteriv", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alFilteriv"); }
     }
 
     public static void alFilterf(@CType("ALuint") int filter, @CType("ALenum") int param, @CType("ALfloat") float flValue) {
-        if (Handles.MH_alFilterf != null) {
+        if (Handles.MH_alFilterf == null) throw new SymbolNotFoundError("Symbol not found: alFilterf");
         try {
             Handles.MH_alFilterf.invokeExact(filter, param, flValue);
         } catch (Throwable e) { throw new RuntimeException("error in alFilterf", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alFilterf"); }
     }
 
     public static void alFilterfv(@CType("ALuint") int filter, @CType("ALenum") int param, @CType("const ALfloat *") java.lang.foreign.MemorySegment pflValues) {
-        if (Handles.MH_alFilterfv != null) {
+        if (Handles.MH_alFilterfv == null) throw new SymbolNotFoundError("Symbol not found: alFilterfv");
         try {
             Handles.MH_alFilterfv.invokeExact(filter, param, pflValues);
         } catch (Throwable e) { throw new RuntimeException("error in alFilterfv", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alFilterfv"); }
     }
 
     public static void alGetFilteri(@CType("ALuint") int filter, @CType("ALenum") int param, @CType("ALint *") java.lang.foreign.MemorySegment piValue) {
-        if (Handles.MH_alGetFilteri != null) {
+        if (Handles.MH_alGetFilteri == null) throw new SymbolNotFoundError("Symbol not found: alGetFilteri");
         try {
             Handles.MH_alGetFilteri.invokeExact(filter, param, piValue);
         } catch (Throwable e) { throw new RuntimeException("error in alGetFilteri", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alGetFilteri"); }
     }
 
     public static void alGetFilteriv(@CType("ALuint") int filter, @CType("ALenum") int param, @CType("ALint *") java.lang.foreign.MemorySegment piValues) {
-        if (Handles.MH_alGetFilteriv != null) {
+        if (Handles.MH_alGetFilteriv == null) throw new SymbolNotFoundError("Symbol not found: alGetFilteriv");
         try {
             Handles.MH_alGetFilteriv.invokeExact(filter, param, piValues);
         } catch (Throwable e) { throw new RuntimeException("error in alGetFilteriv", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alGetFilteriv"); }
     }
 
     public static void alGetFilterf(@CType("ALuint") int filter, @CType("ALenum") int param, @CType("ALfloat *") java.lang.foreign.MemorySegment pflValue) {
-        if (Handles.MH_alGetFilterf != null) {
+        if (Handles.MH_alGetFilterf == null) throw new SymbolNotFoundError("Symbol not found: alGetFilterf");
         try {
             Handles.MH_alGetFilterf.invokeExact(filter, param, pflValue);
         } catch (Throwable e) { throw new RuntimeException("error in alGetFilterf", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alGetFilterf"); }
     }
 
     public static void alGetFilterfv(@CType("ALuint") int filter, @CType("ALenum") int param, @CType("ALfloat *") java.lang.foreign.MemorySegment pflValues) {
-        if (Handles.MH_alGetFilterfv != null) {
+        if (Handles.MH_alGetFilterfv == null) throw new SymbolNotFoundError("Symbol not found: alGetFilterfv");
         try {
             Handles.MH_alGetFilterfv.invokeExact(filter, param, pflValues);
         } catch (Throwable e) { throw new RuntimeException("error in alGetFilterfv", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alGetFilterfv"); }
     }
 
     public static void alGenAuxiliaryEffectSlots(@CType("ALsizei") int n, @CType("ALuint *") java.lang.foreign.MemorySegment effectslots) {
-        if (Handles.MH_alGenAuxiliaryEffectSlots != null) {
+        if (Handles.MH_alGenAuxiliaryEffectSlots == null) throw new SymbolNotFoundError("Symbol not found: alGenAuxiliaryEffectSlots");
         try {
             Handles.MH_alGenAuxiliaryEffectSlots.invokeExact(n, effectslots);
         } catch (Throwable e) { throw new RuntimeException("error in alGenAuxiliaryEffectSlots", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alGenAuxiliaryEffectSlots"); }
     }
 
     public static void alDeleteAuxiliaryEffectSlots(@CType("ALsizei") int n, @CType("const ALuint *") java.lang.foreign.MemorySegment effectslots) {
-        if (Handles.MH_alDeleteAuxiliaryEffectSlots != null) {
+        if (Handles.MH_alDeleteAuxiliaryEffectSlots == null) throw new SymbolNotFoundError("Symbol not found: alDeleteAuxiliaryEffectSlots");
         try {
             Handles.MH_alDeleteAuxiliaryEffectSlots.invokeExact(n, effectslots);
         } catch (Throwable e) { throw new RuntimeException("error in alDeleteAuxiliaryEffectSlots", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alDeleteAuxiliaryEffectSlots"); }
     }
 
     public static @CType("ALboolean") boolean alIsAuxiliaryEffectSlot(@CType("ALuint") int effectslot) {
-        if (Handles.MH_alIsAuxiliaryEffectSlot != null) {
+        if (Handles.MH_alIsAuxiliaryEffectSlot == null) throw new SymbolNotFoundError("Symbol not found: alIsAuxiliaryEffectSlot");
         try {
             return (boolean) Handles.MH_alIsAuxiliaryEffectSlot.invokeExact(effectslot);
         } catch (Throwable e) { throw new RuntimeException("error in alIsAuxiliaryEffectSlot", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alIsAuxiliaryEffectSlot"); }
     }
 
     public static void alAuxiliaryEffectSloti(@CType("ALuint") int effectslot, @CType("ALenum") int param, @CType("ALint") int iValue) {
-        if (Handles.MH_alAuxiliaryEffectSloti != null) {
+        if (Handles.MH_alAuxiliaryEffectSloti == null) throw new SymbolNotFoundError("Symbol not found: alAuxiliaryEffectSloti");
         try {
             Handles.MH_alAuxiliaryEffectSloti.invokeExact(effectslot, param, iValue);
         } catch (Throwable e) { throw new RuntimeException("error in alAuxiliaryEffectSloti", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alAuxiliaryEffectSloti"); }
     }
 
     public static void alAuxiliaryEffectSlotiv(@CType("ALuint") int effectslot, @CType("ALenum") int param, @CType("const ALint *") java.lang.foreign.MemorySegment piValues) {
-        if (Handles.MH_alAuxiliaryEffectSlotiv != null) {
+        if (Handles.MH_alAuxiliaryEffectSlotiv == null) throw new SymbolNotFoundError("Symbol not found: alAuxiliaryEffectSlotiv");
         try {
             Handles.MH_alAuxiliaryEffectSlotiv.invokeExact(effectslot, param, piValues);
         } catch (Throwable e) { throw new RuntimeException("error in alAuxiliaryEffectSlotiv", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alAuxiliaryEffectSlotiv"); }
     }
 
     public static void alAuxiliaryEffectSlotf(@CType("ALuint") int effectslot, @CType("ALenum") int param, @CType("ALfloat") float flValue) {
-        if (Handles.MH_alAuxiliaryEffectSlotf != null) {
+        if (Handles.MH_alAuxiliaryEffectSlotf == null) throw new SymbolNotFoundError("Symbol not found: alAuxiliaryEffectSlotf");
         try {
             Handles.MH_alAuxiliaryEffectSlotf.invokeExact(effectslot, param, flValue);
         } catch (Throwable e) { throw new RuntimeException("error in alAuxiliaryEffectSlotf", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alAuxiliaryEffectSlotf"); }
     }
 
     public static void alAuxiliaryEffectSlotfv(@CType("ALuint") int effectslot, @CType("ALenum") int param, @CType("const ALfloat *") java.lang.foreign.MemorySegment pflValues) {
-        if (Handles.MH_alAuxiliaryEffectSlotfv != null) {
+        if (Handles.MH_alAuxiliaryEffectSlotfv == null) throw new SymbolNotFoundError("Symbol not found: alAuxiliaryEffectSlotfv");
         try {
             Handles.MH_alAuxiliaryEffectSlotfv.invokeExact(effectslot, param, pflValues);
         } catch (Throwable e) { throw new RuntimeException("error in alAuxiliaryEffectSlotfv", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alAuxiliaryEffectSlotfv"); }
     }
 
     public static void alGetAuxiliaryEffectSloti(@CType("ALuint") int effectslot, @CType("ALenum") int param, @CType("ALint *") java.lang.foreign.MemorySegment piValue) {
-        if (Handles.MH_alGetAuxiliaryEffectSloti != null) {
+        if (Handles.MH_alGetAuxiliaryEffectSloti == null) throw new SymbolNotFoundError("Symbol not found: alGetAuxiliaryEffectSloti");
         try {
             Handles.MH_alGetAuxiliaryEffectSloti.invokeExact(effectslot, param, piValue);
         } catch (Throwable e) { throw new RuntimeException("error in alGetAuxiliaryEffectSloti", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alGetAuxiliaryEffectSloti"); }
     }
 
     public static void alGetAuxiliaryEffectSlotiv(@CType("ALuint") int effectslot, @CType("ALenum") int param, @CType("ALint *") java.lang.foreign.MemorySegment piValues) {
-        if (Handles.MH_alGetAuxiliaryEffectSlotiv != null) {
+        if (Handles.MH_alGetAuxiliaryEffectSlotiv == null) throw new SymbolNotFoundError("Symbol not found: alGetAuxiliaryEffectSlotiv");
         try {
             Handles.MH_alGetAuxiliaryEffectSlotiv.invokeExact(effectslot, param, piValues);
         } catch (Throwable e) { throw new RuntimeException("error in alGetAuxiliaryEffectSlotiv", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alGetAuxiliaryEffectSlotiv"); }
     }
 
     public static void alGetAuxiliaryEffectSlotf(@CType("ALuint") int effectslot, @CType("ALenum") int param, @CType("ALfloat *") java.lang.foreign.MemorySegment pflValue) {
-        if (Handles.MH_alGetAuxiliaryEffectSlotf != null) {
+        if (Handles.MH_alGetAuxiliaryEffectSlotf == null) throw new SymbolNotFoundError("Symbol not found: alGetAuxiliaryEffectSlotf");
         try {
             Handles.MH_alGetAuxiliaryEffectSlotf.invokeExact(effectslot, param, pflValue);
         } catch (Throwable e) { throw new RuntimeException("error in alGetAuxiliaryEffectSlotf", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alGetAuxiliaryEffectSlotf"); }
     }
 
     public static void alGetAuxiliaryEffectSlotfv(@CType("ALuint") int effectslot, @CType("ALenum") int param, @CType("ALfloat *") java.lang.foreign.MemorySegment pflValues) {
-        if (Handles.MH_alGetAuxiliaryEffectSlotfv != null) {
+        if (Handles.MH_alGetAuxiliaryEffectSlotfv == null) throw new SymbolNotFoundError("Symbol not found: alGetAuxiliaryEffectSlotfv");
         try {
             Handles.MH_alGetAuxiliaryEffectSlotfv.invokeExact(effectslot, param, pflValues);
         } catch (Throwable e) { throw new RuntimeException("error in alGetAuxiliaryEffectSlotfv", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: alGetAuxiliaryEffectSlotfv"); }
     }
 
     //@formatter:on

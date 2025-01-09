@@ -25,8 +25,8 @@ import overrungl.util.*;
 
 public final class GLNVXConditionalRender {
     public static final MethodHandle MH_glBeginConditionalRenderNVX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glBeginConditionalRenderNVX;
     public static final MethodHandle MH_glEndConditionalRenderNVX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
+    public final MemorySegment PFN_glBeginConditionalRenderNVX;
     public final MemorySegment PFN_glEndConditionalRenderNVX;
 
     public GLNVXConditionalRender(overrungl.opengl.GLLoadFunc func) {
@@ -35,17 +35,15 @@ public final class GLNVXConditionalRender {
     }
 
     public void BeginConditionalRenderNVX(@CType("GLuint") int id) {
-        if (!Unmarshal.isNullPointer(PFN_glBeginConditionalRenderNVX)) { try {
-            MH_glBeginConditionalRenderNVX.invokeExact(PFN_glBeginConditionalRenderNVX, id);
-        } catch (Throwable e) { throw new RuntimeException("error in glBeginConditionalRenderNVX", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glBeginConditionalRenderNVX"); }
+        if (Unmarshal.isNullPointer(PFN_glBeginConditionalRenderNVX)) throw new SymbolNotFoundError("Symbol not found: glBeginConditionalRenderNVX");
+        try { MH_glBeginConditionalRenderNVX.invokeExact(PFN_glBeginConditionalRenderNVX, id); }
+        catch (Throwable e) { throw new RuntimeException("error in glBeginConditionalRenderNVX", e); }
     }
 
     public void EndConditionalRenderNVX() {
-        if (!Unmarshal.isNullPointer(PFN_glEndConditionalRenderNVX)) { try {
-            MH_glEndConditionalRenderNVX.invokeExact(PFN_glEndConditionalRenderNVX);
-        } catch (Throwable e) { throw new RuntimeException("error in glEndConditionalRenderNVX", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glEndConditionalRenderNVX"); }
+        if (Unmarshal.isNullPointer(PFN_glEndConditionalRenderNVX)) throw new SymbolNotFoundError("Symbol not found: glEndConditionalRenderNVX");
+        try { MH_glEndConditionalRenderNVX.invokeExact(PFN_glEndConditionalRenderNVX); }
+        catch (Throwable e) { throw new RuntimeException("error in glEndConditionalRenderNVX", e); }
     }
 
 }

@@ -200,7 +200,7 @@ class StaticDowncall(
 
                     // optional
                     if (m.optional) {
-                        sb.appendLine("        if (Handles.MH_${m.entrypoint} != null) {")
+                        sb.appendLine("""        if (Handles.MH_${m.entrypoint} == null) throw new SymbolNotFoundError("Symbol not found: ${m.entrypoint}");""")
                     }
 
                     // header
@@ -272,10 +272,6 @@ class StaticDowncall(
                     }
 
                     sb.appendLine("""        } catch (Throwable e) { throw new RuntimeException("error in ${m.entrypoint}", e); }""")
-
-                    if (m.optional) {
-                        sb.appendLine("""        } else { throw new SymbolNotFoundError("Symbol not found: ${m.entrypoint}"); }""")
-                    }
                 }
                 sb.appendLine("    }")
                 sb.appendLine()

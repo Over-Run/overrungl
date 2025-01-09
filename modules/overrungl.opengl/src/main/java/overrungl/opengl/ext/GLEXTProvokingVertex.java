@@ -36,10 +36,9 @@ public final class GLEXTProvokingVertex {
     }
 
     public void ProvokingVertexEXT(@CType("GLenum") int mode) {
-        if (!Unmarshal.isNullPointer(PFN_glProvokingVertexEXT)) { try {
-            MH_glProvokingVertexEXT.invokeExact(PFN_glProvokingVertexEXT, mode);
-        } catch (Throwable e) { throw new RuntimeException("error in glProvokingVertexEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glProvokingVertexEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glProvokingVertexEXT)) throw new SymbolNotFoundError("Symbol not found: glProvokingVertexEXT");
+        try { MH_glProvokingVertexEXT.invokeExact(PFN_glProvokingVertexEXT, mode); }
+        catch (Throwable e) { throw new RuntimeException("error in glProvokingVertexEXT", e); }
     }
 
 }

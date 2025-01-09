@@ -25,8 +25,8 @@ import overrungl.util.*;
 
 public final class GLEXTGpuProgramParameters {
     public static final MethodHandle MH_glProgramEnvParameters4fvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-    public final MemorySegment PFN_glProgramEnvParameters4fvEXT;
     public static final MethodHandle MH_glProgramLocalParameters4fvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+    public final MemorySegment PFN_glProgramEnvParameters4fvEXT;
     public final MemorySegment PFN_glProgramLocalParameters4fvEXT;
 
     public GLEXTGpuProgramParameters(overrungl.opengl.GLLoadFunc func) {
@@ -35,17 +35,15 @@ public final class GLEXTGpuProgramParameters {
     }
 
     public void ProgramEnvParameters4fvEXT(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLsizei") int count, @CType("const GLfloat *") java.lang.foreign.MemorySegment params) {
-        if (!Unmarshal.isNullPointer(PFN_glProgramEnvParameters4fvEXT)) { try {
-            MH_glProgramEnvParameters4fvEXT.invokeExact(PFN_glProgramEnvParameters4fvEXT, target, index, count, params);
-        } catch (Throwable e) { throw new RuntimeException("error in glProgramEnvParameters4fvEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glProgramEnvParameters4fvEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glProgramEnvParameters4fvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramEnvParameters4fvEXT");
+        try { MH_glProgramEnvParameters4fvEXT.invokeExact(PFN_glProgramEnvParameters4fvEXT, target, index, count, params); }
+        catch (Throwable e) { throw new RuntimeException("error in glProgramEnvParameters4fvEXT", e); }
     }
 
     public void ProgramLocalParameters4fvEXT(@CType("GLenum") int target, @CType("GLuint") int index, @CType("GLsizei") int count, @CType("const GLfloat *") java.lang.foreign.MemorySegment params) {
-        if (!Unmarshal.isNullPointer(PFN_glProgramLocalParameters4fvEXT)) { try {
-            MH_glProgramLocalParameters4fvEXT.invokeExact(PFN_glProgramLocalParameters4fvEXT, target, index, count, params);
-        } catch (Throwable e) { throw new RuntimeException("error in glProgramLocalParameters4fvEXT", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glProgramLocalParameters4fvEXT"); }
+        if (Unmarshal.isNullPointer(PFN_glProgramLocalParameters4fvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramLocalParameters4fvEXT");
+        try { MH_glProgramLocalParameters4fvEXT.invokeExact(PFN_glProgramLocalParameters4fvEXT, target, index, count, params); }
+        catch (Throwable e) { throw new RuntimeException("error in glProgramLocalParameters4fvEXT", e); }
     }
 
 }

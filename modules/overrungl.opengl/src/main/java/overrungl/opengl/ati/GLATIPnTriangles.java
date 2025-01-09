@@ -34,8 +34,8 @@ public final class GLATIPnTriangles {
     public static final int GL_PN_TRIANGLES_NORMAL_MODE_LINEAR_ATI = 0x87F7;
     public static final int GL_PN_TRIANGLES_NORMAL_MODE_QUADRATIC_ATI = 0x87F8;
     public static final MethodHandle MH_glPNTrianglesiATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-    public final MemorySegment PFN_glPNTrianglesiATI;
     public static final MethodHandle MH_glPNTrianglesfATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
+    public final MemorySegment PFN_glPNTrianglesiATI;
     public final MemorySegment PFN_glPNTrianglesfATI;
 
     public GLATIPnTriangles(overrungl.opengl.GLLoadFunc func) {
@@ -44,17 +44,15 @@ public final class GLATIPnTriangles {
     }
 
     public void PNTrianglesiATI(@CType("GLenum") int pname, @CType("GLint") int param) {
-        if (!Unmarshal.isNullPointer(PFN_glPNTrianglesiATI)) { try {
-            MH_glPNTrianglesiATI.invokeExact(PFN_glPNTrianglesiATI, pname, param);
-        } catch (Throwable e) { throw new RuntimeException("error in glPNTrianglesiATI", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glPNTrianglesiATI"); }
+        if (Unmarshal.isNullPointer(PFN_glPNTrianglesiATI)) throw new SymbolNotFoundError("Symbol not found: glPNTrianglesiATI");
+        try { MH_glPNTrianglesiATI.invokeExact(PFN_glPNTrianglesiATI, pname, param); }
+        catch (Throwable e) { throw new RuntimeException("error in glPNTrianglesiATI", e); }
     }
 
     public void PNTrianglesfATI(@CType("GLenum") int pname, @CType("GLfloat") float param) {
-        if (!Unmarshal.isNullPointer(PFN_glPNTrianglesfATI)) { try {
-            MH_glPNTrianglesfATI.invokeExact(PFN_glPNTrianglesfATI, pname, param);
-        } catch (Throwable e) { throw new RuntimeException("error in glPNTrianglesfATI", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glPNTrianglesfATI"); }
+        if (Unmarshal.isNullPointer(PFN_glPNTrianglesfATI)) throw new SymbolNotFoundError("Symbol not found: glPNTrianglesfATI");
+        try { MH_glPNTrianglesfATI.invokeExact(PFN_glPNTrianglesfATI, pname, param); }
+        catch (Throwable e) { throw new RuntimeException("error in glPNTrianglesfATI", e); }
     }
 
 }

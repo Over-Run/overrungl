@@ -38,10 +38,9 @@ public final class GLARBClipControl {
     }
 
     public void ClipControl(@CType("GLenum") int origin, @CType("GLenum") int depth) {
-        if (!Unmarshal.isNullPointer(PFN_glClipControl)) { try {
-            MH_glClipControl.invokeExact(PFN_glClipControl, origin, depth);
-        } catch (Throwable e) { throw new RuntimeException("error in glClipControl", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glClipControl"); }
+        if (Unmarshal.isNullPointer(PFN_glClipControl)) throw new SymbolNotFoundError("Symbol not found: glClipControl");
+        try { MH_glClipControl.invokeExact(PFN_glClipControl, origin, depth); }
+        catch (Throwable e) { throw new RuntimeException("error in glClipControl", e); }
     }
 
 }

@@ -33,10 +33,9 @@ public final class GLARBPolygonOffsetClamp {
     }
 
     public void PolygonOffsetClamp(@CType("GLfloat") float factor, @CType("GLfloat") float units, @CType("GLfloat") float clamp) {
-        if (!Unmarshal.isNullPointer(PFN_glPolygonOffsetClamp)) { try {
-            MH_glPolygonOffsetClamp.invokeExact(PFN_glPolygonOffsetClamp, factor, units, clamp);
-        } catch (Throwable e) { throw new RuntimeException("error in glPolygonOffsetClamp", e); }
-        } else { throw new SymbolNotFoundError("Symbol not found: glPolygonOffsetClamp"); }
+        if (Unmarshal.isNullPointer(PFN_glPolygonOffsetClamp)) throw new SymbolNotFoundError("Symbol not found: glPolygonOffsetClamp");
+        try { MH_glPolygonOffsetClamp.invokeExact(PFN_glPolygonOffsetClamp, factor, units, clamp); }
+        catch (Throwable e) { throw new RuntimeException("error in glPolygonOffsetClamp", e); }
     }
 
 }
