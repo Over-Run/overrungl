@@ -23,7 +23,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
-public sealed class GL33 extends GL32 permits GL40 {
+public class GL33 extends GL32 {
     public static final int GL_VERTEX_ATTRIB_ARRAY_DIVISOR = 0x88FE;
     public static final int GL_SRC1_COLOR = 0x88F9;
     public static final int GL_ONE_MINUS_SRC1_COLOR = 0x88FA;

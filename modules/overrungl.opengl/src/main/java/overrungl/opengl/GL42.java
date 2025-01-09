@@ -23,7 +23,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
-public sealed class GL42 extends GL41 permits GL43 {
+public class GL42 extends GL41 {
     public static final int GL_COPY_READ_BUFFER_BINDING = 0x8F36;
     public static final int GL_COPY_WRITE_BUFFER_BINDING = 0x8F37;
     public static final int GL_TRANSFORM_FEEDBACK_ACTIVE = 0x8E24;

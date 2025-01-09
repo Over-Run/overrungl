@@ -56,27 +56,6 @@ val featureExtends = mapOf(
     "4.5" to "44",
     "4.6" to "45",
 )
-val featurePermits = mapOf(
-    "1.0" to "11",
-    "1.1" to "12",
-    "1.2" to "13",
-    "1.3" to "14",
-    "1.4" to "15",
-    "1.5" to "20",
-    "2.0" to "21",
-    "2.1" to "30",
-    "3.0" to "31",
-    "3.1" to "32",
-    "3.2" to "33",
-    "3.3" to "40",
-    "4.0" to "41",
-    "4.1" to "42",
-    "4.2" to "43",
-    "4.3" to "44",
-    "4.4" to "45",
-    "4.5" to "46",
-    "4.6" to "",
-)
 
 private fun useStack(code: String): String =
     "try (var __stack = MemoryStack.pushLocal()) { $code }"
@@ -671,9 +650,7 @@ fun main() {
     val featureAddedCommands = mutableListOf<String>()
     features.forEach { feature ->
         InstanceDowncall(openglPackage, "GL${feature.number.replace(".", "")}") {
-            modifier = "sealed"
             featureExtends[feature.number]?.also { extends("GL${it}") }
-            featurePermits[feature.number]?.also { permits("GL${it}") }
             constructorParam = "GLLoadFunc func"
             constructorCode = buildString {
                 if (feature.number != "1.0") {

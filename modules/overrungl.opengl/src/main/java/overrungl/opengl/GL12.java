@@ -23,7 +23,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
-public sealed class GL12 extends GL11 permits GL13 {
+public class GL12 extends GL11 {
     public static final int GL_UNSIGNED_BYTE_3_3_2 = 0x8032;
     public static final int GL_UNSIGNED_SHORT_4_4_4_4 = 0x8033;
     public static final int GL_UNSIGNED_SHORT_5_5_5_1 = 0x8034;

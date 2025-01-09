@@ -23,7 +23,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
-public sealed class GL20 extends GL15 permits GL21 {
+public class GL20 extends GL15 {
     public static final int GL_BLEND_EQUATION_RGB = 0x8009;
     public static final int GL_VERTEX_ATTRIB_ARRAY_ENABLED = 0x8622;
     public static final int GL_VERTEX_ATTRIB_ARRAY_SIZE = 0x8623;

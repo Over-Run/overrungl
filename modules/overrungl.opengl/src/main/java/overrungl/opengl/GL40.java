@@ -23,7 +23,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
-public sealed class GL40 extends GL33 permits GL41 {
+public class GL40 extends GL33 {
     public static final int GL_SAMPLE_SHADING = 0x8C36;
     public static final int GL_MIN_SAMPLE_SHADING_VALUE = 0x8C37;
     public static final int GL_MIN_PROGRAM_TEXTURE_GATHER_OFFSET = 0x8E5E;

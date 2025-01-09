@@ -23,7 +23,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
-public sealed class GL31 extends GL30 permits GL32 {
+public class GL31 extends GL30 {
     public static final int GL_SAMPLER_2D_RECT = 0x8B63;
     public static final int GL_SAMPLER_2D_RECT_SHADOW = 0x8B64;
     public static final int GL_SAMPLER_BUFFER = 0x8DC2;

@@ -23,7 +23,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
-public sealed class GL15 extends GL14 permits GL20 {
+public class GL15 extends GL14 {
     public static final int GL_BUFFER_SIZE = 0x8764;
     public static final int GL_BUFFER_USAGE = 0x8765;
     public static final int GL_QUERY_COUNTER_BITS = 0x8864;

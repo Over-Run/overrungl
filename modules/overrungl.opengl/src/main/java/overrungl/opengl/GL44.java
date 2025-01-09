@@ -23,7 +23,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
-public sealed class GL44 extends GL43 permits GL45 {
+public class GL44 extends GL43 {
     public static final int GL_MAX_VERTEX_ATTRIB_STRIDE = 0x82E5;
     public static final int GL_PRIMITIVE_RESTART_FOR_PATCHES_SUPPORTED = 0x8221;
     public static final int GL_TEXTURE_BUFFER_BINDING = 0x8C2A;

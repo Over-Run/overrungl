@@ -23,7 +23,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
-public sealed class GL30 extends GL21 permits GL31 {
+public class GL30 extends GL21 {
     public static final int GL_COMPARE_REF_TO_TEXTURE = 0x884E;
     public static final int GL_CLIP_DISTANCE0 = 0x3000;
     public static final int GL_CLIP_DISTANCE1 = 0x3001;

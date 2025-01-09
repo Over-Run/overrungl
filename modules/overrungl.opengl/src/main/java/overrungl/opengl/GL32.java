@@ -23,7 +23,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
-public sealed class GL32 extends GL31 permits GL33 {
+public class GL32 extends GL31 {
     public static final int GL_CONTEXT_CORE_PROFILE_BIT = 0x00000001;
     public static final int GL_CONTEXT_COMPATIBILITY_PROFILE_BIT = 0x00000002;
     public static final int GL_LINES_ADJACENCY = 0x000A;

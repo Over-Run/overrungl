@@ -23,7 +23,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
-public sealed class GL21 extends GL20 permits GL30 {
+public class GL21 extends GL20 {
     public static final int GL_PIXEL_PACK_BUFFER = 0x88EB;
     public static final int GL_PIXEL_UNPACK_BUFFER = 0x88EC;
     public static final int GL_PIXEL_PACK_BUFFER_BINDING = 0x88ED;

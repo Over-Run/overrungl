@@ -23,7 +23,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
-public sealed class GL45 extends GL44 permits GL46 {
+public class GL45 extends GL44 {
     public static final int GL_CONTEXT_LOST = 0x0507;
     public static final int GL_NEGATIVE_ONE_TO_ONE = 0x935E;
     public static final int GL_ZERO_TO_ONE = 0x935F;

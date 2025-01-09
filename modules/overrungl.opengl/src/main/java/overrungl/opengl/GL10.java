@@ -23,7 +23,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
-public sealed class GL10 permits GL11 {
+public class GL10 {
     public static final int GL_DEPTH_BUFFER_BIT = 0x00000100;
     public static final int GL_STENCIL_BUFFER_BIT = 0x00000400;
     public static final int GL_COLOR_BUFFER_BIT = 0x00004000;
