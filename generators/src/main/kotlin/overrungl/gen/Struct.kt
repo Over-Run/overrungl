@@ -18,6 +18,7 @@ package overrungl.gen
 
 import com.palantir.javapoet.ArrayTypeName
 import com.palantir.javapoet.ClassName
+import java.nio.file.Files
 import kotlin.io.path.Path
 
 class Struct(
@@ -25,6 +26,7 @@ class Struct(
     private val name: String,
     private val cType: String? = null,
     private val opaque: Boolean = false,
+    private val union: Boolean = false,
     action: Struct.() -> Unit
 ) {
     private val members = mutableListOf<StructMember>()
@@ -51,6 +53,7 @@ class Struct(
     }
     private var doLast: (StringBuilder) -> Unit = {}
     val byValue: ByValueWrapper by lazy { ByValueWrapper(this) }
+    val imports = mutableListOf<String>()
 
     @JvmInline
     value class ByValueWrapper(val struct: Struct)
@@ -72,7 +75,7 @@ class Struct(
         members.add(ByValueStructStructMember(this.struct, name))
     }
 
-    fun fixedSize(type: CustomTypeSpec, name: String, size: Long) {
+    fun fixedSize(type: CustomTypeSpec, name: String, size: String) {
         members.add(FixedSizeStructMember(type, size, name))
     }
 
@@ -89,9 +92,12 @@ class Struct(
                 import overrungl.annotation.*;
                 import overrungl.struct.*;
                 import overrungl.util.*;
-
             """.trimIndent()
         )
+        imports.forEach {
+            sb.appendLine("import $it;")
+        }
+        sb.appendLine()
 
         // javadoc
         sb.appendLine("/// ## Members")
@@ -102,7 +108,7 @@ class Struct(
                     when (it) {
                         is ValueStructMember -> "/// [VarHandle][#VH_${it.name}] - [Getter][#${it.name}()] - [Setter][#${it.name}(${it.type.carrier})]"
                         is ByValueStructStructMember -> "/// [Byte offset][#OFFSET_${it.name}] - [Memory layout][#ML_${it.name}] - [Getter][#${it.name}()] - [Setter][#${it.name}(${it.type.carrier})]"
-                        is FixedSizeStructMember -> "/// [Byte offset handle][#MH_${it.name}] - [Memory layout][#ML_${it.name}] - Getter - Setter"
+                        is FixedSizeStructMember -> "/// [Byte offset handle][#MH_${it.name}] - [Memory layout][#ML_${it.name}] - [Getter][#${it.name}(long)] - [Setter][#${it.name}(long, ${it.type.carrier})]"
                     }
                 )
             }
@@ -112,7 +118,7 @@ class Struct(
                 /// ## Layout
                 /// [Java definition][#LAYOUT]
                 /// ```c
-                /// typedef struct ${if (cType != null) "$cType " else ""}{
+                /// typedef ${if (union) "union" else "struct"} ${if (cType != null) "$cType " else ""}{
             """.trimIndent()
         )
         members.forEach {
@@ -127,9 +133,9 @@ class Struct(
 
         sb.appendLine(
             """
-                public final class $name extends Struct {
-                    /// The struct layout of `$cType`.
-                    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+                public final class $name extends ${if (union) "Union" else "Struct"} {
+                    /// The ${if (union) "union" else "struct"} layout of `$cType`.
+                    public static final ${if (union) "Union" else "Struct"}Layout LAYOUT = ${if (union) "MemoryLayout.unionLayout" else "LayoutBuilder.struct"}(
             """.trimIndent()
         )
         sb.appendLine(members.joinToString(",\n") {
@@ -181,6 +187,21 @@ class Struct(
                 |    /// @param segment the memory segment
                 |    /// @return the created instance or `null` if the segment is `NULL`
                 |    public static $name of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new $name(segment); }
+                |
+                |    /// Creates `$name` with the given segment.
+                |    ///
+                |    /// Reinterprets the segment if zero-length.
+                |    /// @param segment the memory segment
+                |    /// @return the created instance or `null` if the segment is `NULL`
+                |    public static $name ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new $name(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+                |
+                |    /// Creates `$name` with the given segment.
+                |    ///
+                |    /// Reinterprets the segment if zero-length.
+                |    /// @param segment the memory segment
+                |    /// @param count   the count of the buffer
+                |    /// @return the created instance or `null` if the segment is `NULL`
+                |    public static $name ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new $name(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
                 |
             """.trimMargin()
         )
@@ -391,7 +412,9 @@ class Struct(
         doLast.invoke(sb)
         sb.appendLine("}")
 
-        writeString(Path(packageName.replace('.', '/'), "$name.java"), sb.toString())
+        val base = Path(packageName.replace('.', '/'))
+        Files.createDirectories(base)
+        writeString(base.resolve("$name.java"), sb.toString())
     }
 }
 
@@ -414,7 +437,7 @@ data class ByValueStructStructMember(
 
 data class FixedSizeStructMember(
     val componentType: CustomTypeSpec,
-    val size: Long,
+    val size: String,
     override val name: String
 ) : StructMember {
     override val type: CustomTypeSpec
@@ -422,7 +445,7 @@ data class FixedSizeStructMember(
             carrier = MemorySegment_,
             javaType = ArrayTypeName.of(componentType.javaType),
             processor = IdentityValueProcessor,
-            layout = "MemoryLayout.sequenceLayout(${size}L, ${componentType.layout})",
+            layout = "MemoryLayout.sequenceLayout(${size}, ${componentType.layout})",
             cType = "${componentType.cType}[$size]",
             allocatorRequirement = AllocatorRequirement.STACK
         )

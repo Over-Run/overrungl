@@ -29,7 +29,8 @@ module overrungl.core {
         overrungl.nfd,
         overrungl.openal,
         overrungl.opengl,
-        overrungl.stb;
+        overrungl.stb,
+        overrungl.vulkan;
 
     requires transitive io.github.overrun.platform;
     requires static org.jetbrains.annotations;

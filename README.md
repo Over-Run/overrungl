@@ -76,9 +76,10 @@ The customizer has already included this.
 
 ### Khronos APIs
 
-| Library                                   | Description                                                                                                                                 |
-|-------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
-| [OpenGL](https://www.khronos.org/opengl/) | The most widely adopted 2D and 3D graphics API in the industry, bringing thousands of applications to a wide variety of computer platforms. |
+| Library                                   | Description                                                                                                                                                                                                    |
+|-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [OpenGL](https://www.khronos.org/opengl/) | The most widely adopted 2D and 3D graphics API in the industry, bringing thousands of applications to a wide variety of computer platforms.                                                                    |
+| [Vulkan](https://www.khronos.org/vulkan/) | A new generation graphics and compute API that provides high-efficiency, cross-platform access to modern GPUs used in a wide variety of devices from PCs and consoles to mobile phones and embedded platforms. |
 
 ### Display and Input
 
@@ -89,9 +90,10 @@ The customizer has already included this.
 
 ### Audio
 
-| Library                           | Description                                                                                                            |
-|-----------------------------------|------------------------------------------------------------------------------------------------------------------------|
-| [OpenAL](https://www.openal.org/) | A cross-platform 3D audio API appropriate for use with gaming applications and many other types of audio applications. |
+| Library                                 | Description                                                                                                            |
+|-----------------------------------------|------------------------------------------------------------------------------------------------------------------------|
+| [OpenAL](https://www.openal.org/)       | A cross-platform 3D audio API appropriate for use with gaming applications and many other types of audio applications. |
+| [OpenAL Soft](https://openal-soft.org/) | An LGPL-licensed, cross-platform, software implementation of the OpenAL 3D audio API.                                  |
 
 ### [stb](https://github.com/nothings/stb) - single-file public domain libraries for C/C++
 

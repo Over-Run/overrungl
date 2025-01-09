@@ -1,0 +1,296 @@
+/*
+ * MIT License
+ *
+ * Copyright (c) 2022-2025 Overrun Organization
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ */
+
+// This file is auto-generated. DO NOT EDIT!
+package overrungl.vulkan.nv.struct;
+
+import java.lang.foreign.*;
+import java.lang.foreign.MemoryLayout.PathElement;
+import java.lang.invoke.*;
+import overrungl.annotation.*;
+import overrungl.struct.*;
+import overrungl.util.*;
+
+/// ## Members
+/// ### sType
+/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
+/// ### pNext
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// ### aabbData
+/// [VarHandle][#VH_aabbData] - [Getter][#aabbData()] - [Setter][#aabbData(java.lang.foreign.MemorySegment)]
+/// ### numAABBs
+/// [VarHandle][#VH_numAABBs] - [Getter][#numAABBs()] - [Setter][#numAABBs(int)]
+/// ### stride
+/// [VarHandle][#VH_stride] - [Getter][#stride()] - [Setter][#stride(int)]
+/// ### offset
+/// [VarHandle][#VH_offset] - [Getter][#offset()] - [Setter][#offset(long)]
+/// ## Layout
+/// [Java definition][#LAYOUT]
+/// ```c
+/// typedef struct VkGeometryAABBNV {
+///     VkStructureType sType;
+///     const void * pNext;
+///     VkBuffer aabbData;
+///     uint32_t numAABBs;
+///     uint32_t stride;
+///     VkDeviceSize offset;
+/// } VkGeometryAABBNV;
+/// ```
+public final class VkGeometryAABBNV extends Struct {
+    /// The struct layout of `VkGeometryAABBNV`.
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.ADDRESS.withName("aabbData"),
+        ValueLayout.JAVA_INT.withName("numAABBs"),
+        ValueLayout.JAVA_INT.withName("stride"),
+        ValueLayout.JAVA_LONG.withName("offset")
+    );
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `aabbData` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    public static final VarHandle VH_aabbData = LAYOUT.arrayElementVarHandle(PathElement.groupElement("aabbData"));
+    /// The [VarHandle] of `numAABBs` of type `(MemorySegment base, long baseOffset, long index)int`.
+    public static final VarHandle VH_numAABBs = LAYOUT.arrayElementVarHandle(PathElement.groupElement("numAABBs"));
+    /// The [VarHandle] of `stride` of type `(MemorySegment base, long baseOffset, long index)int`.
+    public static final VarHandle VH_stride = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stride"));
+    /// The [VarHandle] of `offset` of type `(MemorySegment base, long baseOffset, long index)long`.
+    public static final VarHandle VH_offset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("offset"));
+
+    /// Creates `VkGeometryAABBNV` with the given segment.
+    /// @param segment the memory segment
+    public VkGeometryAABBNV(MemorySegment segment) { super(segment, LAYOUT); }
+
+    /// Creates `VkGeometryAABBNV` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static VkGeometryAABBNV of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkGeometryAABBNV(segment); }
+
+    /// Creates `VkGeometryAABBNV` with the given segment.
+    ///
+    /// Reinterprets the segment if zero-length.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static VkGeometryAABBNV ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkGeometryAABBNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+
+    /// Creates `VkGeometryAABBNV` with the given segment.
+    ///
+    /// Reinterprets the segment if zero-length.
+    /// @param segment the memory segment
+    /// @param count   the count of the buffer
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static VkGeometryAABBNV ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkGeometryAABBNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+
+    /// Allocates a `VkGeometryAABBNV` with the given segment allocator.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkGeometryAABBNV`
+    public static VkGeometryAABBNV alloc(SegmentAllocator allocator) { return new VkGeometryAABBNV(allocator.allocate(LAYOUT)); }
+
+    /// Allocates a `VkGeometryAABBNV` with the given segment allocator and count.
+    /// @param allocator the segment allocator
+    /// @param count     the count
+    /// @return the allocated `VkGeometryAABBNV`
+    public static VkGeometryAABBNV alloc(SegmentAllocator allocator, long count) { return new VkGeometryAABBNV(allocator.allocate(LAYOUT, count)); }
+
+    /// {@return `sType` at the given index}
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// {@return `sType`}
+    /// @param segment the segment of the struct
+    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkGeometryAABBNV.get_sType(segment, 0L); }
+    /// {@return `sType` at the given index}
+    /// @param index the index
+    public @CType("VkStructureType") int sTypeAt(long index) { return VkGeometryAABBNV.get_sType(this.segment(), index); }
+    /// {@return `sType`}
+    public @CType("VkStructureType") int sType() { return VkGeometryAABBNV.get_sType(this.segment()); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
+    /// Sets `sType` with the given value.
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkGeometryAABBNV.set_sType(segment, 0L, value); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index
+    /// @param value the value
+    /// @return `this`
+    public VkGeometryAABBNV sTypeAt(long index, @CType("VkStructureType") int value) { VkGeometryAABBNV.set_sType(this.segment(), index, value); return this; }
+    /// Sets `sType` with the given value.
+    /// @param value the value
+    /// @return `this`
+    public VkGeometryAABBNV sType(@CType("VkStructureType") int value) { VkGeometryAABBNV.set_sType(this.segment(), value); return this; }
+
+    /// {@return `pNext` at the given index}
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// {@return `pNext`}
+    /// @param segment the segment of the struct
+    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkGeometryAABBNV.get_pNext(segment, 0L); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index
+    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkGeometryAABBNV.get_pNext(this.segment(), index); }
+    /// {@return `pNext`}
+    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkGeometryAABBNV.get_pNext(this.segment()); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    /// Sets `pNext` with the given value.
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkGeometryAABBNV.set_pNext(segment, 0L, value); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index
+    /// @param value the value
+    /// @return `this`
+    public VkGeometryAABBNV pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkGeometryAABBNV.set_pNext(this.segment(), index, value); return this; }
+    /// Sets `pNext` with the given value.
+    /// @param value the value
+    /// @return `this`
+    public VkGeometryAABBNV pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkGeometryAABBNV.set_pNext(this.segment(), value); return this; }
+
+    /// {@return `aabbData` at the given index}
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("VkBuffer") java.lang.foreign.MemorySegment get_aabbData(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_aabbData.get(segment, 0L, index); }
+    /// {@return `aabbData`}
+    /// @param segment the segment of the struct
+    public static @CType("VkBuffer") java.lang.foreign.MemorySegment get_aabbData(MemorySegment segment) { return VkGeometryAABBNV.get_aabbData(segment, 0L); }
+    /// {@return `aabbData` at the given index}
+    /// @param index the index
+    public @CType("VkBuffer") java.lang.foreign.MemorySegment aabbDataAt(long index) { return VkGeometryAABBNV.get_aabbData(this.segment(), index); }
+    /// {@return `aabbData`}
+    public @CType("VkBuffer") java.lang.foreign.MemorySegment aabbData() { return VkGeometryAABBNV.get_aabbData(this.segment()); }
+    /// Sets `aabbData` with the given value at the given index.
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_aabbData(MemorySegment segment, long index, @CType("VkBuffer") java.lang.foreign.MemorySegment value) { VH_aabbData.set(segment, 0L, index, value); }
+    /// Sets `aabbData` with the given value.
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_aabbData(MemorySegment segment, @CType("VkBuffer") java.lang.foreign.MemorySegment value) { VkGeometryAABBNV.set_aabbData(segment, 0L, value); }
+    /// Sets `aabbData` with the given value at the given index.
+    /// @param index the index
+    /// @param value the value
+    /// @return `this`
+    public VkGeometryAABBNV aabbDataAt(long index, @CType("VkBuffer") java.lang.foreign.MemorySegment value) { VkGeometryAABBNV.set_aabbData(this.segment(), index, value); return this; }
+    /// Sets `aabbData` with the given value.
+    /// @param value the value
+    /// @return `this`
+    public VkGeometryAABBNV aabbData(@CType("VkBuffer") java.lang.foreign.MemorySegment value) { VkGeometryAABBNV.set_aabbData(this.segment(), value); return this; }
+
+    /// {@return `numAABBs` at the given index}
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("uint32_t") int get_numAABBs(MemorySegment segment, long index) { return (int) VH_numAABBs.get(segment, 0L, index); }
+    /// {@return `numAABBs`}
+    /// @param segment the segment of the struct
+    public static @CType("uint32_t") int get_numAABBs(MemorySegment segment) { return VkGeometryAABBNV.get_numAABBs(segment, 0L); }
+    /// {@return `numAABBs` at the given index}
+    /// @param index the index
+    public @CType("uint32_t") int numAABBsAt(long index) { return VkGeometryAABBNV.get_numAABBs(this.segment(), index); }
+    /// {@return `numAABBs`}
+    public @CType("uint32_t") int numAABBs() { return VkGeometryAABBNV.get_numAABBs(this.segment()); }
+    /// Sets `numAABBs` with the given value at the given index.
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_numAABBs(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_numAABBs.set(segment, 0L, index, value); }
+    /// Sets `numAABBs` with the given value.
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_numAABBs(MemorySegment segment, @CType("uint32_t") int value) { VkGeometryAABBNV.set_numAABBs(segment, 0L, value); }
+    /// Sets `numAABBs` with the given value at the given index.
+    /// @param index the index
+    /// @param value the value
+    /// @return `this`
+    public VkGeometryAABBNV numAABBsAt(long index, @CType("uint32_t") int value) { VkGeometryAABBNV.set_numAABBs(this.segment(), index, value); return this; }
+    /// Sets `numAABBs` with the given value.
+    /// @param value the value
+    /// @return `this`
+    public VkGeometryAABBNV numAABBs(@CType("uint32_t") int value) { VkGeometryAABBNV.set_numAABBs(this.segment(), value); return this; }
+
+    /// {@return `stride` at the given index}
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("uint32_t") int get_stride(MemorySegment segment, long index) { return (int) VH_stride.get(segment, 0L, index); }
+    /// {@return `stride`}
+    /// @param segment the segment of the struct
+    public static @CType("uint32_t") int get_stride(MemorySegment segment) { return VkGeometryAABBNV.get_stride(segment, 0L); }
+    /// {@return `stride` at the given index}
+    /// @param index the index
+    public @CType("uint32_t") int strideAt(long index) { return VkGeometryAABBNV.get_stride(this.segment(), index); }
+    /// {@return `stride`}
+    public @CType("uint32_t") int stride() { return VkGeometryAABBNV.get_stride(this.segment()); }
+    /// Sets `stride` with the given value at the given index.
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_stride(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_stride.set(segment, 0L, index, value); }
+    /// Sets `stride` with the given value.
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_stride(MemorySegment segment, @CType("uint32_t") int value) { VkGeometryAABBNV.set_stride(segment, 0L, value); }
+    /// Sets `stride` with the given value at the given index.
+    /// @param index the index
+    /// @param value the value
+    /// @return `this`
+    public VkGeometryAABBNV strideAt(long index, @CType("uint32_t") int value) { VkGeometryAABBNV.set_stride(this.segment(), index, value); return this; }
+    /// Sets `stride` with the given value.
+    /// @param value the value
+    /// @return `this`
+    public VkGeometryAABBNV stride(@CType("uint32_t") int value) { VkGeometryAABBNV.set_stride(this.segment(), value); return this; }
+
+    /// {@return `offset` at the given index}
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("VkDeviceSize") long get_offset(MemorySegment segment, long index) { return (long) VH_offset.get(segment, 0L, index); }
+    /// {@return `offset`}
+    /// @param segment the segment of the struct
+    public static @CType("VkDeviceSize") long get_offset(MemorySegment segment) { return VkGeometryAABBNV.get_offset(segment, 0L); }
+    /// {@return `offset` at the given index}
+    /// @param index the index
+    public @CType("VkDeviceSize") long offsetAt(long index) { return VkGeometryAABBNV.get_offset(this.segment(), index); }
+    /// {@return `offset`}
+    public @CType("VkDeviceSize") long offset() { return VkGeometryAABBNV.get_offset(this.segment()); }
+    /// Sets `offset` with the given value at the given index.
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_offset(MemorySegment segment, long index, @CType("VkDeviceSize") long value) { VH_offset.set(segment, 0L, index, value); }
+    /// Sets `offset` with the given value.
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_offset(MemorySegment segment, @CType("VkDeviceSize") long value) { VkGeometryAABBNV.set_offset(segment, 0L, value); }
+    /// Sets `offset` with the given value at the given index.
+    /// @param index the index
+    /// @param value the value
+    /// @return `this`
+    public VkGeometryAABBNV offsetAt(long index, @CType("VkDeviceSize") long value) { VkGeometryAABBNV.set_offset(this.segment(), index, value); return this; }
+    /// Sets `offset` with the given value.
+    /// @param value the value
+    /// @return `this`
+    public VkGeometryAABBNV offset(@CType("VkDeviceSize") long value) { VkGeometryAABBNV.set_offset(this.segment(), value); return this; }
+
+}

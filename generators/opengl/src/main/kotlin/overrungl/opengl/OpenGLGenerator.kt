@@ -29,7 +29,7 @@ import kotlin.io.path.createDirectories
 
 private val recordingErrorType = mutableSetOf<String>()
 
-val openglPackage = "overrungl.opengl"
+const val openglPackage = "overrungl.opengl"
 fun extPackage(vendor: String): String {
     val lowercase = vendor.lowercase()
     if (lowercase == "3dfx") return "$openglPackage.threedfx"

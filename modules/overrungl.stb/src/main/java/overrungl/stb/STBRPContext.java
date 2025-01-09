@@ -60,7 +60,7 @@ public final class STBRPContext extends Struct {
         ValueLayout.JAVA_INT.withName("num_nodes"),
         ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBRPNode.LAYOUT).withName("active_head"),
         ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBRPNode.LAYOUT).withName("free_head"),
-        MemoryLayout.sequenceLayout(2L, overrungl.stb.STBRPNode.LAYOUT).withName("extra")
+        MemoryLayout.sequenceLayout(2, overrungl.stb.STBRPNode.LAYOUT).withName("extra")
     );
 
     /// Creates `STBRPContext` with the given segment.
@@ -71,6 +71,21 @@ public final class STBRPContext extends Struct {
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
     public static STBRPContext of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new STBRPContext(segment); }
+
+    /// Creates `STBRPContext` with the given segment.
+    ///
+    /// Reinterprets the segment if zero-length.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static STBRPContext ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new STBRPContext(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+
+    /// Creates `STBRPContext` with the given segment.
+    ///
+    /// Reinterprets the segment if zero-length.
+    /// @param segment the memory segment
+    /// @param count   the count of the buffer
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static STBRPContext ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new STBRPContext(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
 
     /// Allocates a `STBRPContext` with the given segment allocator.
     /// @param allocator the segment allocator

@@ -19,8 +19,8 @@ package overrungl.glfw
 import com.palantir.javapoet.TypeName
 import overrungl.gen.*
 
-val glfwPackage = "overrungl.glfw"
-val glfwLookup = "GLFWInternal.lookup()"
+const val glfwPackage = "overrungl.glfw"
+const val glfwLookup = "GLFWInternal.lookup()"
 
 val glfw_boolean = CustomTypeSpec(
     carrier = TypeName.INT,
@@ -186,8 +186,8 @@ fun main() {
     }.pointerType c "const GLFWimage*"
 
     val GLFWgamepadstate_ptr = Struct(glfwPackage, "GLFWGamepadState", cType = "GLFWgamepadstate") {
-        fixedSize(uchar, "buttons", 15)
-        fixedSize(float, "axes", 6)
+        fixedSize(uchar, "buttons", "15")
+        fixedSize(float, "axes", "6")
     }.pointerType c "GLFWgamepadstate*"
 
     val const_GLFWallocator_ptr = Struct(glfwPackage, "GLFWAllocator", cType = "GLFWallocator") {
@@ -1136,7 +1136,7 @@ fun main() {
         "glfwGetX11Display"(Display_ptr, entrypoint = "glfwGetX11Display", optional = true)
         "glfwGetX11Adapter"(RRCrtc, GLFWmonitor_ptr("monitor"), entrypoint = "glfwGetX11Adapter", optional = true)
         "glfwGetX11Monitor"(RROutput, GLFWmonitor_ptr("monitor"), entrypoint = "glfwGetX11Monitor", optional = true)
-        "glfwGetX11Window"(RROutput, GLFWwindow_ptr("window"), entrypoint = "glfwGetX11Window", optional = true)
+        "glfwGetX11Window"(Window, GLFWwindow_ptr("window"), entrypoint = "glfwGetX11Window", optional = true)
         +"glfwSetX11SelectionString"(
             void,
             const_char_ptr("string"),

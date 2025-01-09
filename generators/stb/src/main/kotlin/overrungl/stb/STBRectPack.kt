@@ -44,7 +44,7 @@ fun STBRectPack() {
         int("num_nodes")
         stbrp_node_ptr("active_head")
         stbrp_node_ptr("free_head")
-        fixedSize(stbrp_node.byValueType, "extra", 2)
+        fixedSize(stbrp_node.byValueType, "extra", "2")
     }.pointerType c "stbrp_context *"
 
     StaticDowncall(stbPackage, "STBRectPack", symbolLookup = stbLookup) {

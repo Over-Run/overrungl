@@ -1,0 +1,296 @@
+/*
+ * MIT License
+ *
+ * Copyright (c) 2022-2025 Overrun Organization
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ */
+
+// This file is auto-generated. DO NOT EDIT!
+package overrungl.vulkan.ext.struct;
+
+import java.lang.foreign.*;
+import java.lang.foreign.MemoryLayout.PathElement;
+import java.lang.invoke.*;
+import overrungl.annotation.*;
+import overrungl.struct.*;
+import overrungl.util.*;
+
+/// ## Members
+/// ### sType
+/// [VarHandle][#VH_sType] - [Getter][#sType()] - [Setter][#sType(int)]
+/// ### pNext
+/// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
+/// ### flags
+/// [VarHandle][#VH_flags] - [Getter][#flags()] - [Setter][#flags(int)]
+/// ### discardRectangleMode
+/// [VarHandle][#VH_discardRectangleMode] - [Getter][#discardRectangleMode()] - [Setter][#discardRectangleMode(int)]
+/// ### discardRectangleCount
+/// [VarHandle][#VH_discardRectangleCount] - [Getter][#discardRectangleCount()] - [Setter][#discardRectangleCount(int)]
+/// ### pDiscardRectangles
+/// [VarHandle][#VH_pDiscardRectangles] - [Getter][#pDiscardRectangles()] - [Setter][#pDiscardRectangles(java.lang.foreign.MemorySegment)]
+/// ## Layout
+/// [Java definition][#LAYOUT]
+/// ```c
+/// typedef struct VkPipelineDiscardRectangleStateCreateInfoEXT {
+///     VkStructureType sType;
+///     const void * pNext;
+///     VkPipelineDiscardRectangleStateCreateFlagsEXT flags;
+///     VkDiscardRectangleModeEXT discardRectangleMode;
+///     uint32_t discardRectangleCount;
+///     const VkRect2D * pDiscardRectangles;
+/// } VkPipelineDiscardRectangleStateCreateInfoEXT;
+/// ```
+public final class VkPipelineDiscardRectangleStateCreateInfoEXT extends Struct {
+    /// The struct layout of `VkPipelineDiscardRectangleStateCreateInfoEXT`.
+    public static final StructLayout LAYOUT = LayoutBuilder.struct(
+        ValueLayout.JAVA_INT.withName("sType"),
+        ValueLayout.ADDRESS.withName("pNext"),
+        ValueLayout.JAVA_INT.withName("flags"),
+        ValueLayout.JAVA_INT.withName("discardRectangleMode"),
+        ValueLayout.JAVA_INT.withName("discardRectangleCount"),
+        ValueLayout.ADDRESS.withName("pDiscardRectangles")
+    );
+    /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
+    public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
+    /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
+    /// The [VarHandle] of `flags` of type `(MemorySegment base, long baseOffset, long index)int`.
+    public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
+    /// The [VarHandle] of `discardRectangleMode` of type `(MemorySegment base, long baseOffset, long index)int`.
+    public static final VarHandle VH_discardRectangleMode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("discardRectangleMode"));
+    /// The [VarHandle] of `discardRectangleCount` of type `(MemorySegment base, long baseOffset, long index)int`.
+    public static final VarHandle VH_discardRectangleCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("discardRectangleCount"));
+    /// The [VarHandle] of `pDiscardRectangles` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
+    public static final VarHandle VH_pDiscardRectangles = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDiscardRectangles"));
+
+    /// Creates `VkPipelineDiscardRectangleStateCreateInfoEXT` with the given segment.
+    /// @param segment the memory segment
+    public VkPipelineDiscardRectangleStateCreateInfoEXT(MemorySegment segment) { super(segment, LAYOUT); }
+
+    /// Creates `VkPipelineDiscardRectangleStateCreateInfoEXT` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static VkPipelineDiscardRectangleStateCreateInfoEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineDiscardRectangleStateCreateInfoEXT(segment); }
+
+    /// Creates `VkPipelineDiscardRectangleStateCreateInfoEXT` with the given segment.
+    ///
+    /// Reinterprets the segment if zero-length.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static VkPipelineDiscardRectangleStateCreateInfoEXT ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineDiscardRectangleStateCreateInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+
+    /// Creates `VkPipelineDiscardRectangleStateCreateInfoEXT` with the given segment.
+    ///
+    /// Reinterprets the segment if zero-length.
+    /// @param segment the memory segment
+    /// @param count   the count of the buffer
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static VkPipelineDiscardRectangleStateCreateInfoEXT ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineDiscardRectangleStateCreateInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+
+    /// Allocates a `VkPipelineDiscardRectangleStateCreateInfoEXT` with the given segment allocator.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPipelineDiscardRectangleStateCreateInfoEXT`
+    public static VkPipelineDiscardRectangleStateCreateInfoEXT alloc(SegmentAllocator allocator) { return new VkPipelineDiscardRectangleStateCreateInfoEXT(allocator.allocate(LAYOUT)); }
+
+    /// Allocates a `VkPipelineDiscardRectangleStateCreateInfoEXT` with the given segment allocator and count.
+    /// @param allocator the segment allocator
+    /// @param count     the count
+    /// @return the allocated `VkPipelineDiscardRectangleStateCreateInfoEXT`
+    public static VkPipelineDiscardRectangleStateCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkPipelineDiscardRectangleStateCreateInfoEXT(allocator.allocate(LAYOUT, count)); }
+
+    /// {@return `sType` at the given index}
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("VkStructureType") int get_sType(MemorySegment segment, long index) { return (int) VH_sType.get(segment, 0L, index); }
+    /// {@return `sType`}
+    /// @param segment the segment of the struct
+    public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPipelineDiscardRectangleStateCreateInfoEXT.get_sType(segment, 0L); }
+    /// {@return `sType` at the given index}
+    /// @param index the index
+    public @CType("VkStructureType") int sTypeAt(long index) { return VkPipelineDiscardRectangleStateCreateInfoEXT.get_sType(this.segment(), index); }
+    /// {@return `sType`}
+    public @CType("VkStructureType") int sType() { return VkPipelineDiscardRectangleStateCreateInfoEXT.get_sType(this.segment()); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_sType(MemorySegment segment, long index, @CType("VkStructureType") int value) { VH_sType.set(segment, 0L, index, value); }
+    /// Sets `sType` with the given value.
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPipelineDiscardRectangleStateCreateInfoEXT.set_sType(segment, 0L, value); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineDiscardRectangleStateCreateInfoEXT sTypeAt(long index, @CType("VkStructureType") int value) { VkPipelineDiscardRectangleStateCreateInfoEXT.set_sType(this.segment(), index, value); return this; }
+    /// Sets `sType` with the given value.
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineDiscardRectangleStateCreateInfoEXT sType(@CType("VkStructureType") int value) { VkPipelineDiscardRectangleStateCreateInfoEXT.set_sType(this.segment(), value); return this; }
+
+    /// {@return `pNext` at the given index}
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pNext.get(segment, 0L, index); }
+    /// {@return `pNext`}
+    /// @param segment the segment of the struct
+    public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPipelineDiscardRectangleStateCreateInfoEXT.get_pNext(segment, 0L); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index
+    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPipelineDiscardRectangleStateCreateInfoEXT.get_pNext(this.segment(), index); }
+    /// {@return `pNext`}
+    public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkPipelineDiscardRectangleStateCreateInfoEXT.get_pNext(this.segment()); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_pNext(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_pNext.set(segment, 0L, index, value); }
+    /// Sets `pNext` with the given value.
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineDiscardRectangleStateCreateInfoEXT.set_pNext(segment, 0L, value); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineDiscardRectangleStateCreateInfoEXT pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineDiscardRectangleStateCreateInfoEXT.set_pNext(this.segment(), index, value); return this; }
+    /// Sets `pNext` with the given value.
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineDiscardRectangleStateCreateInfoEXT pNext(@CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineDiscardRectangleStateCreateInfoEXT.set_pNext(this.segment(), value); return this; }
+
+    /// {@return `flags` at the given index}
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("VkPipelineDiscardRectangleStateCreateFlagsEXT") int get_flags(MemorySegment segment, long index) { return (int) VH_flags.get(segment, 0L, index); }
+    /// {@return `flags`}
+    /// @param segment the segment of the struct
+    public static @CType("VkPipelineDiscardRectangleStateCreateFlagsEXT") int get_flags(MemorySegment segment) { return VkPipelineDiscardRectangleStateCreateInfoEXT.get_flags(segment, 0L); }
+    /// {@return `flags` at the given index}
+    /// @param index the index
+    public @CType("VkPipelineDiscardRectangleStateCreateFlagsEXT") int flagsAt(long index) { return VkPipelineDiscardRectangleStateCreateInfoEXT.get_flags(this.segment(), index); }
+    /// {@return `flags`}
+    public @CType("VkPipelineDiscardRectangleStateCreateFlagsEXT") int flags() { return VkPipelineDiscardRectangleStateCreateInfoEXT.get_flags(this.segment()); }
+    /// Sets `flags` with the given value at the given index.
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_flags(MemorySegment segment, long index, @CType("VkPipelineDiscardRectangleStateCreateFlagsEXT") int value) { VH_flags.set(segment, 0L, index, value); }
+    /// Sets `flags` with the given value.
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_flags(MemorySegment segment, @CType("VkPipelineDiscardRectangleStateCreateFlagsEXT") int value) { VkPipelineDiscardRectangleStateCreateInfoEXT.set_flags(segment, 0L, value); }
+    /// Sets `flags` with the given value at the given index.
+    /// @param index the index
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineDiscardRectangleStateCreateInfoEXT flagsAt(long index, @CType("VkPipelineDiscardRectangleStateCreateFlagsEXT") int value) { VkPipelineDiscardRectangleStateCreateInfoEXT.set_flags(this.segment(), index, value); return this; }
+    /// Sets `flags` with the given value.
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineDiscardRectangleStateCreateInfoEXT flags(@CType("VkPipelineDiscardRectangleStateCreateFlagsEXT") int value) { VkPipelineDiscardRectangleStateCreateInfoEXT.set_flags(this.segment(), value); return this; }
+
+    /// {@return `discardRectangleMode` at the given index}
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("VkDiscardRectangleModeEXT") int get_discardRectangleMode(MemorySegment segment, long index) { return (int) VH_discardRectangleMode.get(segment, 0L, index); }
+    /// {@return `discardRectangleMode`}
+    /// @param segment the segment of the struct
+    public static @CType("VkDiscardRectangleModeEXT") int get_discardRectangleMode(MemorySegment segment) { return VkPipelineDiscardRectangleStateCreateInfoEXT.get_discardRectangleMode(segment, 0L); }
+    /// {@return `discardRectangleMode` at the given index}
+    /// @param index the index
+    public @CType("VkDiscardRectangleModeEXT") int discardRectangleModeAt(long index) { return VkPipelineDiscardRectangleStateCreateInfoEXT.get_discardRectangleMode(this.segment(), index); }
+    /// {@return `discardRectangleMode`}
+    public @CType("VkDiscardRectangleModeEXT") int discardRectangleMode() { return VkPipelineDiscardRectangleStateCreateInfoEXT.get_discardRectangleMode(this.segment()); }
+    /// Sets `discardRectangleMode` with the given value at the given index.
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_discardRectangleMode(MemorySegment segment, long index, @CType("VkDiscardRectangleModeEXT") int value) { VH_discardRectangleMode.set(segment, 0L, index, value); }
+    /// Sets `discardRectangleMode` with the given value.
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_discardRectangleMode(MemorySegment segment, @CType("VkDiscardRectangleModeEXT") int value) { VkPipelineDiscardRectangleStateCreateInfoEXT.set_discardRectangleMode(segment, 0L, value); }
+    /// Sets `discardRectangleMode` with the given value at the given index.
+    /// @param index the index
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineDiscardRectangleStateCreateInfoEXT discardRectangleModeAt(long index, @CType("VkDiscardRectangleModeEXT") int value) { VkPipelineDiscardRectangleStateCreateInfoEXT.set_discardRectangleMode(this.segment(), index, value); return this; }
+    /// Sets `discardRectangleMode` with the given value.
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineDiscardRectangleStateCreateInfoEXT discardRectangleMode(@CType("VkDiscardRectangleModeEXT") int value) { VkPipelineDiscardRectangleStateCreateInfoEXT.set_discardRectangleMode(this.segment(), value); return this; }
+
+    /// {@return `discardRectangleCount` at the given index}
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("uint32_t") int get_discardRectangleCount(MemorySegment segment, long index) { return (int) VH_discardRectangleCount.get(segment, 0L, index); }
+    /// {@return `discardRectangleCount`}
+    /// @param segment the segment of the struct
+    public static @CType("uint32_t") int get_discardRectangleCount(MemorySegment segment) { return VkPipelineDiscardRectangleStateCreateInfoEXT.get_discardRectangleCount(segment, 0L); }
+    /// {@return `discardRectangleCount` at the given index}
+    /// @param index the index
+    public @CType("uint32_t") int discardRectangleCountAt(long index) { return VkPipelineDiscardRectangleStateCreateInfoEXT.get_discardRectangleCount(this.segment(), index); }
+    /// {@return `discardRectangleCount`}
+    public @CType("uint32_t") int discardRectangleCount() { return VkPipelineDiscardRectangleStateCreateInfoEXT.get_discardRectangleCount(this.segment()); }
+    /// Sets `discardRectangleCount` with the given value at the given index.
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_discardRectangleCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_discardRectangleCount.set(segment, 0L, index, value); }
+    /// Sets `discardRectangleCount` with the given value.
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_discardRectangleCount(MemorySegment segment, @CType("uint32_t") int value) { VkPipelineDiscardRectangleStateCreateInfoEXT.set_discardRectangleCount(segment, 0L, value); }
+    /// Sets `discardRectangleCount` with the given value at the given index.
+    /// @param index the index
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineDiscardRectangleStateCreateInfoEXT discardRectangleCountAt(long index, @CType("uint32_t") int value) { VkPipelineDiscardRectangleStateCreateInfoEXT.set_discardRectangleCount(this.segment(), index, value); return this; }
+    /// Sets `discardRectangleCount` with the given value.
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineDiscardRectangleStateCreateInfoEXT discardRectangleCount(@CType("uint32_t") int value) { VkPipelineDiscardRectangleStateCreateInfoEXT.set_discardRectangleCount(this.segment(), value); return this; }
+
+    /// {@return `pDiscardRectangles` at the given index}
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("const VkRect2D *") java.lang.foreign.MemorySegment get_pDiscardRectangles(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pDiscardRectangles.get(segment, 0L, index); }
+    /// {@return `pDiscardRectangles`}
+    /// @param segment the segment of the struct
+    public static @CType("const VkRect2D *") java.lang.foreign.MemorySegment get_pDiscardRectangles(MemorySegment segment) { return VkPipelineDiscardRectangleStateCreateInfoEXT.get_pDiscardRectangles(segment, 0L); }
+    /// {@return `pDiscardRectangles` at the given index}
+    /// @param index the index
+    public @CType("const VkRect2D *") java.lang.foreign.MemorySegment pDiscardRectanglesAt(long index) { return VkPipelineDiscardRectangleStateCreateInfoEXT.get_pDiscardRectangles(this.segment(), index); }
+    /// {@return `pDiscardRectangles`}
+    public @CType("const VkRect2D *") java.lang.foreign.MemorySegment pDiscardRectangles() { return VkPipelineDiscardRectangleStateCreateInfoEXT.get_pDiscardRectangles(this.segment()); }
+    /// Sets `pDiscardRectangles` with the given value at the given index.
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_pDiscardRectangles(MemorySegment segment, long index, @CType("const VkRect2D *") java.lang.foreign.MemorySegment value) { VH_pDiscardRectangles.set(segment, 0L, index, value); }
+    /// Sets `pDiscardRectangles` with the given value.
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_pDiscardRectangles(MemorySegment segment, @CType("const VkRect2D *") java.lang.foreign.MemorySegment value) { VkPipelineDiscardRectangleStateCreateInfoEXT.set_pDiscardRectangles(segment, 0L, value); }
+    /// Sets `pDiscardRectangles` with the given value at the given index.
+    /// @param index the index
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineDiscardRectangleStateCreateInfoEXT pDiscardRectanglesAt(long index, @CType("const VkRect2D *") java.lang.foreign.MemorySegment value) { VkPipelineDiscardRectangleStateCreateInfoEXT.set_pDiscardRectangles(this.segment(), index, value); return this; }
+    /// Sets `pDiscardRectangles` with the given value.
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineDiscardRectangleStateCreateInfoEXT pDiscardRectangles(@CType("const VkRect2D *") java.lang.foreign.MemorySegment value) { VkPipelineDiscardRectangleStateCreateInfoEXT.set_pDiscardRectangles(this.segment(), value); return this; }
+
+}
