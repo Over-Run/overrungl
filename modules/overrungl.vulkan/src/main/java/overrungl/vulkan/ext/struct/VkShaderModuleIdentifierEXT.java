@@ -33,7 +33,7 @@ import static overrungl.vulkan.ext.VKEXTShaderModuleIdentifier.*;
 /// ### identifierSize
 /// [VarHandle][#VH_identifierSize] - [Getter][#identifierSize()] - [Setter][#identifierSize(int)]
 /// ### identifier
-/// [Byte offset handle][#MH_identifier] - [Memory layout][#ML_identifier] - [Getter][#identifier(long)] - [Setter][#identifier(long, java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_identifier] - [Memory layout][#ML_identifier] - [Getter][#identifier()] - [Setter][#identifier(java.lang.foreign.MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -58,8 +58,8 @@ public final class VkShaderModuleIdentifierEXT extends Struct {
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `identifierSize` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_identifierSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("identifierSize"));
-    /// The byte offset handle of `identifier` of type `(long baseOffset, long elementIndex)long`.
-    public static final MethodHandle MH_identifier = LAYOUT.byteOffsetHandle(PathElement.groupElement("identifier"), PathElement.sequenceElement());
+    /// The byte offset of `identifier`.
+    public static final long OFFSET_identifier = LAYOUT.byteOffset(PathElement.groupElement("identifier"));
     /// The memory layout of `identifier`.
     public static final MemoryLayout ML_identifier = LAYOUT.select(PathElement.groupElement("identifier"));
 
@@ -97,6 +97,17 @@ public final class VkShaderModuleIdentifierEXT extends Struct {
     /// @param count     the count
     /// @return the allocated `VkShaderModuleIdentifierEXT`
     public static VkShaderModuleIdentifierEXT alloc(SegmentAllocator allocator, long count) { return new VkShaderModuleIdentifierEXT(allocator.allocate(LAYOUT, count)); }
+
+    /// Creates a slice of `VkShaderModuleIdentifierEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkShaderModuleIdentifierEXT`
+    public VkShaderModuleIdentifierEXT asSlice(long index) { return new VkShaderModuleIdentifierEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkShaderModuleIdentifierEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkShaderModuleIdentifierEXT`
+    public VkShaderModuleIdentifierEXT asSlice(long index, long count) { return new VkShaderModuleIdentifierEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -192,48 +203,34 @@ public final class VkShaderModuleIdentifierEXT extends Struct {
     public VkShaderModuleIdentifierEXT identifierSize(@CType("uint32_t") int value) { VkShaderModuleIdentifierEXT.set_identifierSize(this.segment(), value); return this; }
 
     /// {@return `identifier` at the given index}
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public static @CType("uint8_t[VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT]") java.lang.foreign.MemorySegment get_identifier(MemorySegment segment, long index, long elementIndex) {
-        try { return segment.asSlice(LAYOUT.scale((long) MH_identifier.invokeExact(0L, elementIndex), index), ML_identifier); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("uint8_t[VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT]") java.lang.foreign.MemorySegment get_identifier(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_identifier, index), ML_identifier); }
     /// {@return `identifier`}
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    public static @CType("uint8_t[VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT]") java.lang.foreign.MemorySegment get_identifier(MemorySegment segment, long elementIndex) { return VkShaderModuleIdentifierEXT.get_identifier(segment, 0L, elementIndex); }
+    /// @param segment the segment of the struct
+    public static @CType("uint8_t[VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT]") java.lang.foreign.MemorySegment get_identifier(MemorySegment segment) { return VkShaderModuleIdentifierEXT.get_identifier(segment, 0L); }
     /// {@return `identifier` at the given index}
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public @CType("uint8_t[VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT]") java.lang.foreign.MemorySegment identifierAt(long index, long elementIndex) { return VkShaderModuleIdentifierEXT.get_identifier(this.segment(), index, elementIndex); }
+    /// @param index the index
+    public @CType("uint8_t[VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT]") java.lang.foreign.MemorySegment identifierAt(long index) { return VkShaderModuleIdentifierEXT.get_identifier(this.segment(), index); }
     /// {@return `identifier`}
-    /// @param elementIndex the index of the element
-    public @CType("uint8_t[VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT]") java.lang.foreign.MemorySegment identifier(long elementIndex) { return VkShaderModuleIdentifierEXT.get_identifier(this.segment(), elementIndex); }
+    public @CType("uint8_t[VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT]") java.lang.foreign.MemorySegment identifier() { return VkShaderModuleIdentifierEXT.get_identifier(this.segment()); }
     /// Sets `identifier` with the given value at the given index.
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_identifier(MemorySegment segment, long index, long elementIndex, @CType("uint8_t[VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT]") java.lang.foreign.MemorySegment value) {
-        try { MemorySegment.copy(value, 0L, segment, LAYOUT.scale((long) MH_identifier.invokeExact(0L, elementIndex), index), ML_identifier.byteSize()); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_identifier(MemorySegment segment, long index, @CType("uint8_t[VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_identifier, index), ML_identifier.byteSize()); }
     /// Sets `identifier` with the given value.
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_identifier(MemorySegment segment, long elementIndex, @CType("uint8_t[VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT]") java.lang.foreign.MemorySegment value) { VkShaderModuleIdentifierEXT.set_identifier(segment, 0L, elementIndex, value); }
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_identifier(MemorySegment segment, @CType("uint8_t[VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT]") java.lang.foreign.MemorySegment value) { VkShaderModuleIdentifierEXT.set_identifier(segment, 0L, value); }
     /// Sets `identifier` with the given value at the given index.
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param index the index
+    /// @param value the value
     /// @return `this`
-    public VkShaderModuleIdentifierEXT identifierAt(long index, long elementIndex, @CType("uint8_t[VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT]") java.lang.foreign.MemorySegment value) { VkShaderModuleIdentifierEXT.set_identifier(this.segment(), index, elementIndex, value); return this; }
+    public VkShaderModuleIdentifierEXT identifierAt(long index, @CType("uint8_t[VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT]") java.lang.foreign.MemorySegment value) { VkShaderModuleIdentifierEXT.set_identifier(this.segment(), index, value); return this; }
     /// Sets `identifier` with the given value.
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param value the value
     /// @return `this`
-    public VkShaderModuleIdentifierEXT identifier(long elementIndex, @CType("uint8_t[VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT]") java.lang.foreign.MemorySegment value) { VkShaderModuleIdentifierEXT.set_identifier(this.segment(), elementIndex, value); return this; }
+    public VkShaderModuleIdentifierEXT identifier(@CType("uint8_t[VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT]") java.lang.foreign.MemorySegment value) { VkShaderModuleIdentifierEXT.set_identifier(this.segment(), value); return this; }
 
 }

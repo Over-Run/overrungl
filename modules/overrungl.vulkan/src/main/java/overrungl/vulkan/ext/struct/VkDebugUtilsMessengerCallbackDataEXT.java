@@ -143,6 +143,17 @@ public final class VkDebugUtilsMessengerCallbackDataEXT extends Struct {
     /// @return the allocated `VkDebugUtilsMessengerCallbackDataEXT`
     public static VkDebugUtilsMessengerCallbackDataEXT alloc(SegmentAllocator allocator, long count) { return new VkDebugUtilsMessengerCallbackDataEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkDebugUtilsMessengerCallbackDataEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDebugUtilsMessengerCallbackDataEXT`
+    public VkDebugUtilsMessengerCallbackDataEXT asSlice(long index) { return new VkDebugUtilsMessengerCallbackDataEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkDebugUtilsMessengerCallbackDataEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDebugUtilsMessengerCallbackDataEXT`
+    public VkDebugUtilsMessengerCallbackDataEXT asSlice(long index, long count) { return new VkDebugUtilsMessengerCallbackDataEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

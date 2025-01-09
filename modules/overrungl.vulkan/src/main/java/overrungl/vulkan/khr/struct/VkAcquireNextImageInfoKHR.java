@@ -113,6 +113,17 @@ public final class VkAcquireNextImageInfoKHR extends Struct {
     /// @return the allocated `VkAcquireNextImageInfoKHR`
     public static VkAcquireNextImageInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkAcquireNextImageInfoKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkAcquireNextImageInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkAcquireNextImageInfoKHR`
+    public VkAcquireNextImageInfoKHR asSlice(long index) { return new VkAcquireNextImageInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkAcquireNextImageInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkAcquireNextImageInfoKHR`
+    public VkAcquireNextImageInfoKHR asSlice(long index, long count) { return new VkAcquireNextImageInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

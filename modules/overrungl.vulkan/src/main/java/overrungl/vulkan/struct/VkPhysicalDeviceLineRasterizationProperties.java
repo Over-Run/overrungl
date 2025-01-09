@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceLineRasterizationProperties extends Struct {
     /// @return the allocated `VkPhysicalDeviceLineRasterizationProperties`
     public static VkPhysicalDeviceLineRasterizationProperties alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceLineRasterizationProperties(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceLineRasterizationProperties`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceLineRasterizationProperties`
+    public VkPhysicalDeviceLineRasterizationProperties asSlice(long index) { return new VkPhysicalDeviceLineRasterizationProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceLineRasterizationProperties`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceLineRasterizationProperties`
+    public VkPhysicalDeviceLineRasterizationProperties asSlice(long index, long count) { return new VkPhysicalDeviceLineRasterizationProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

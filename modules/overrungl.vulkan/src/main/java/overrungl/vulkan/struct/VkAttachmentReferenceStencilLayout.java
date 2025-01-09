@@ -89,6 +89,17 @@ public final class VkAttachmentReferenceStencilLayout extends Struct {
     /// @return the allocated `VkAttachmentReferenceStencilLayout`
     public static VkAttachmentReferenceStencilLayout alloc(SegmentAllocator allocator, long count) { return new VkAttachmentReferenceStencilLayout(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkAttachmentReferenceStencilLayout`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkAttachmentReferenceStencilLayout`
+    public VkAttachmentReferenceStencilLayout asSlice(long index) { return new VkAttachmentReferenceStencilLayout(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkAttachmentReferenceStencilLayout`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkAttachmentReferenceStencilLayout`
+    public VkAttachmentReferenceStencilLayout asSlice(long index, long count) { return new VkAttachmentReferenceStencilLayout(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -95,6 +95,17 @@ public final class VkPhysicalDeviceMemoryDecompressionPropertiesNV extends Struc
     /// @return the allocated `VkPhysicalDeviceMemoryDecompressionPropertiesNV`
     public static VkPhysicalDeviceMemoryDecompressionPropertiesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceMemoryDecompressionPropertiesNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceMemoryDecompressionPropertiesNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceMemoryDecompressionPropertiesNV`
+    public VkPhysicalDeviceMemoryDecompressionPropertiesNV asSlice(long index) { return new VkPhysicalDeviceMemoryDecompressionPropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceMemoryDecompressionPropertiesNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceMemoryDecompressionPropertiesNV`
+    public VkPhysicalDeviceMemoryDecompressionPropertiesNV asSlice(long index, long count) { return new VkPhysicalDeviceMemoryDecompressionPropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

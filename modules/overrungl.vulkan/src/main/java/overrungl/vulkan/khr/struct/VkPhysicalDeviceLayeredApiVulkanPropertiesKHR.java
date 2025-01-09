@@ -91,6 +91,17 @@ public final class VkPhysicalDeviceLayeredApiVulkanPropertiesKHR extends Struct 
     /// @return the allocated `VkPhysicalDeviceLayeredApiVulkanPropertiesKHR`
     public static VkPhysicalDeviceLayeredApiVulkanPropertiesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceLayeredApiVulkanPropertiesKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceLayeredApiVulkanPropertiesKHR`
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR asSlice(long index) { return new VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceLayeredApiVulkanPropertiesKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceLayeredApiVulkanPropertiesKHR`
+    public VkPhysicalDeviceLayeredApiVulkanPropertiesKHR asSlice(long index, long count) { return new VkPhysicalDeviceLayeredApiVulkanPropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

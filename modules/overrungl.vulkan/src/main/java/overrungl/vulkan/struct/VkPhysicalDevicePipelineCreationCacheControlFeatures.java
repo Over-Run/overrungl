@@ -89,6 +89,17 @@ public final class VkPhysicalDevicePipelineCreationCacheControlFeatures extends 
     /// @return the allocated `VkPhysicalDevicePipelineCreationCacheControlFeatures`
     public static VkPhysicalDevicePipelineCreationCacheControlFeatures alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDevicePipelineCreationCacheControlFeatures(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDevicePipelineCreationCacheControlFeatures`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDevicePipelineCreationCacheControlFeatures`
+    public VkPhysicalDevicePipelineCreationCacheControlFeatures asSlice(long index) { return new VkPhysicalDevicePipelineCreationCacheControlFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDevicePipelineCreationCacheControlFeatures`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDevicePipelineCreationCacheControlFeatures`
+    public VkPhysicalDevicePipelineCreationCacheControlFeatures asSlice(long index, long count) { return new VkPhysicalDevicePipelineCreationCacheControlFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -22,7 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKEXTDeviceMemoryReport {
+public final class VKEXTDeviceMemoryReport {
     public static final int VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_ALLOCATE_EXT = 0;
     public static final int VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_FREE_EXT = 1;
     public static final int VK_DEVICE_MEMORY_REPORT_EVENT_TYPE_IMPORT_EXT = 2;
@@ -34,7 +34,6 @@ public class VKEXTDeviceMemoryReport {
     public static final int VK_STRUCTURE_TYPE_DEVICE_DEVICE_MEMORY_REPORT_CREATE_INFO_EXT = 1000284001;
     public static final int VK_STRUCTURE_TYPE_DEVICE_MEMORY_REPORT_CALLBACK_DATA_EXT = 1000284002;
 
-    public VKEXTDeviceMemoryReport(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKEXTDeviceMemoryReport() { }
 
 }

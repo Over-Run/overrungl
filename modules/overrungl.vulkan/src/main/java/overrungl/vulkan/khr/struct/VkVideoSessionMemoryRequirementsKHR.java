@@ -97,6 +97,17 @@ public final class VkVideoSessionMemoryRequirementsKHR extends Struct {
     /// @return the allocated `VkVideoSessionMemoryRequirementsKHR`
     public static VkVideoSessionMemoryRequirementsKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoSessionMemoryRequirementsKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkVideoSessionMemoryRequirementsKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkVideoSessionMemoryRequirementsKHR`
+    public VkVideoSessionMemoryRequirementsKHR asSlice(long index) { return new VkVideoSessionMemoryRequirementsKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkVideoSessionMemoryRequirementsKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkVideoSessionMemoryRequirementsKHR`
+    public VkVideoSessionMemoryRequirementsKHR asSlice(long index, long count) { return new VkVideoSessionMemoryRequirementsKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

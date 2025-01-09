@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceHostQueryResetFeatures extends Struct {
     /// @return the allocated `VkPhysicalDeviceHostQueryResetFeatures`
     public static VkPhysicalDeviceHostQueryResetFeatures alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceHostQueryResetFeatures(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceHostQueryResetFeatures`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceHostQueryResetFeatures`
+    public VkPhysicalDeviceHostQueryResetFeatures asSlice(long index) { return new VkPhysicalDeviceHostQueryResetFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceHostQueryResetFeatures`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceHostQueryResetFeatures`
+    public VkPhysicalDeviceHostQueryResetFeatures asSlice(long index, long count) { return new VkPhysicalDeviceHostQueryResetFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

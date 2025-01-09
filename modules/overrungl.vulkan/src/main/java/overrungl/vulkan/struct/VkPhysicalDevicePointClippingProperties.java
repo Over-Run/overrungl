@@ -89,6 +89,17 @@ public final class VkPhysicalDevicePointClippingProperties extends Struct {
     /// @return the allocated `VkPhysicalDevicePointClippingProperties`
     public static VkPhysicalDevicePointClippingProperties alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDevicePointClippingProperties(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDevicePointClippingProperties`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDevicePointClippingProperties`
+    public VkPhysicalDevicePointClippingProperties asSlice(long index) { return new VkPhysicalDevicePointClippingProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDevicePointClippingProperties`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDevicePointClippingProperties`
+    public VkPhysicalDevicePointClippingProperties asSlice(long index, long count) { return new VkPhysicalDevicePointClippingProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

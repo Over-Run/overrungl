@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceCommandBufferInheritanceFeaturesNV extends St
     /// @return the allocated `VkPhysicalDeviceCommandBufferInheritanceFeaturesNV`
     public static VkPhysicalDeviceCommandBufferInheritanceFeaturesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceCommandBufferInheritanceFeaturesNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceCommandBufferInheritanceFeaturesNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceCommandBufferInheritanceFeaturesNV`
+    public VkPhysicalDeviceCommandBufferInheritanceFeaturesNV asSlice(long index) { return new VkPhysicalDeviceCommandBufferInheritanceFeaturesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceCommandBufferInheritanceFeaturesNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceCommandBufferInheritanceFeaturesNV`
+    public VkPhysicalDeviceCommandBufferInheritanceFeaturesNV asSlice(long index, long count) { return new VkPhysicalDeviceCommandBufferInheritanceFeaturesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

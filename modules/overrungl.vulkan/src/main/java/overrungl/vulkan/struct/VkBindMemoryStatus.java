@@ -89,6 +89,17 @@ public final class VkBindMemoryStatus extends Struct {
     /// @return the allocated `VkBindMemoryStatus`
     public static VkBindMemoryStatus alloc(SegmentAllocator allocator, long count) { return new VkBindMemoryStatus(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkBindMemoryStatus`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkBindMemoryStatus`
+    public VkBindMemoryStatus asSlice(long index) { return new VkBindMemoryStatus(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkBindMemoryStatus`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkBindMemoryStatus`
+    public VkBindMemoryStatus asSlice(long index, long count) { return new VkBindMemoryStatus(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

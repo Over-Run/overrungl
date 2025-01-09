@@ -101,6 +101,17 @@ public final class VkPhysicalDeviceExternalBufferInfo extends Struct {
     /// @return the allocated `VkPhysicalDeviceExternalBufferInfo`
     public static VkPhysicalDeviceExternalBufferInfo alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceExternalBufferInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceExternalBufferInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceExternalBufferInfo`
+    public VkPhysicalDeviceExternalBufferInfo asSlice(long index) { return new VkPhysicalDeviceExternalBufferInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceExternalBufferInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceExternalBufferInfo`
+    public VkPhysicalDeviceExternalBufferInfo asSlice(long index, long count) { return new VkPhysicalDeviceExternalBufferInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

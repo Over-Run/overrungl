@@ -101,6 +101,17 @@ public final class VkDeviceFaultCountsEXT extends Struct {
     /// @return the allocated `VkDeviceFaultCountsEXT`
     public static VkDeviceFaultCountsEXT alloc(SegmentAllocator allocator, long count) { return new VkDeviceFaultCountsEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkDeviceFaultCountsEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDeviceFaultCountsEXT`
+    public VkDeviceFaultCountsEXT asSlice(long index) { return new VkDeviceFaultCountsEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkDeviceFaultCountsEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDeviceFaultCountsEXT`
+    public VkDeviceFaultCountsEXT asSlice(long index, long count) { return new VkDeviceFaultCountsEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

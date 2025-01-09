@@ -22,14 +22,13 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKQCOMRenderPassTransform {
+public final class VKQCOMRenderPassTransform {
     public static final int VK_QCOM_RENDER_PASS_TRANSFORM_SPEC_VERSION = 4;
     public static final String VK_QCOM_RENDER_PASS_TRANSFORM_EXTENSION_NAME = "VK_QCOM_render_pass_transform";
     public static final int VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_RENDER_PASS_TRANSFORM_INFO_QCOM = 1000282000;
     public static final int VK_STRUCTURE_TYPE_RENDER_PASS_TRANSFORM_BEGIN_INFO_QCOM = 1000282001;
     public static final int VK_RENDER_PASS_CREATE_TRANSFORM_BIT_QCOM = 0x00000002;
 
-    public VKQCOMRenderPassTransform(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKQCOMRenderPassTransform() { }
 
 }

@@ -77,6 +77,17 @@ public final class VkIndirectCommandsVertexBufferTokenEXT extends Struct {
     /// @return the allocated `VkIndirectCommandsVertexBufferTokenEXT`
     public static VkIndirectCommandsVertexBufferTokenEXT alloc(SegmentAllocator allocator, long count) { return new VkIndirectCommandsVertexBufferTokenEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkIndirectCommandsVertexBufferTokenEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkIndirectCommandsVertexBufferTokenEXT`
+    public VkIndirectCommandsVertexBufferTokenEXT asSlice(long index) { return new VkIndirectCommandsVertexBufferTokenEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkIndirectCommandsVertexBufferTokenEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkIndirectCommandsVertexBufferTokenEXT`
+    public VkIndirectCommandsVertexBufferTokenEXT asSlice(long index, long count) { return new VkIndirectCommandsVertexBufferTokenEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `vertexBindingUnit` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

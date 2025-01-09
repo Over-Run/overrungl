@@ -89,6 +89,17 @@ public final class VkTraceRaysIndirectCommandKHR extends Struct {
     /// @return the allocated `VkTraceRaysIndirectCommandKHR`
     public static VkTraceRaysIndirectCommandKHR alloc(SegmentAllocator allocator, long count) { return new VkTraceRaysIndirectCommandKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkTraceRaysIndirectCommandKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkTraceRaysIndirectCommandKHR`
+    public VkTraceRaysIndirectCommandKHR asSlice(long index) { return new VkTraceRaysIndirectCommandKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkTraceRaysIndirectCommandKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkTraceRaysIndirectCommandKHR`
+    public VkTraceRaysIndirectCommandKHR asSlice(long index, long count) { return new VkTraceRaysIndirectCommandKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `width` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

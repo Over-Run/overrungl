@@ -139,6 +139,17 @@ public final class VkScreenBufferFormatPropertiesQNX extends Struct {
     /// @return the allocated `VkScreenBufferFormatPropertiesQNX`
     public static VkScreenBufferFormatPropertiesQNX alloc(SegmentAllocator allocator, long count) { return new VkScreenBufferFormatPropertiesQNX(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkScreenBufferFormatPropertiesQNX`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkScreenBufferFormatPropertiesQNX`
+    public VkScreenBufferFormatPropertiesQNX asSlice(long index) { return new VkScreenBufferFormatPropertiesQNX(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkScreenBufferFormatPropertiesQNX`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkScreenBufferFormatPropertiesQNX`
+    public VkScreenBufferFormatPropertiesQNX asSlice(long index, long count) { return new VkScreenBufferFormatPropertiesQNX(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

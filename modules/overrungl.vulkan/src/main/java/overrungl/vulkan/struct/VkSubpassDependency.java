@@ -113,6 +113,17 @@ public final class VkSubpassDependency extends Struct {
     /// @return the allocated `VkSubpassDependency`
     public static VkSubpassDependency alloc(SegmentAllocator allocator, long count) { return new VkSubpassDependency(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkSubpassDependency`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSubpassDependency`
+    public VkSubpassDependency asSlice(long index) { return new VkSubpassDependency(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkSubpassDependency`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSubpassDependency`
+    public VkSubpassDependency asSlice(long index, long count) { return new VkSubpassDependency(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `srcSubpass` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

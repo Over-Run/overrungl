@@ -133,6 +133,17 @@ public final class VkVideoEncodeH265QualityLevelPropertiesKHR extends Struct {
     /// @return the allocated `VkVideoEncodeH265QualityLevelPropertiesKHR`
     public static VkVideoEncodeH265QualityLevelPropertiesKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoEncodeH265QualityLevelPropertiesKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkVideoEncodeH265QualityLevelPropertiesKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkVideoEncodeH265QualityLevelPropertiesKHR`
+    public VkVideoEncodeH265QualityLevelPropertiesKHR asSlice(long index) { return new VkVideoEncodeH265QualityLevelPropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkVideoEncodeH265QualityLevelPropertiesKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkVideoEncodeH265QualityLevelPropertiesKHR`
+    public VkVideoEncodeH265QualityLevelPropertiesKHR asSlice(long index, long count) { return new VkVideoEncodeH265QualityLevelPropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

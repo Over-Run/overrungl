@@ -89,6 +89,17 @@ public final class VkQueueFamilyCheckpointPropertiesNV extends Struct {
     /// @return the allocated `VkQueueFamilyCheckpointPropertiesNV`
     public static VkQueueFamilyCheckpointPropertiesNV alloc(SegmentAllocator allocator, long count) { return new VkQueueFamilyCheckpointPropertiesNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkQueueFamilyCheckpointPropertiesNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkQueueFamilyCheckpointPropertiesNV`
+    public VkQueueFamilyCheckpointPropertiesNV asSlice(long index) { return new VkQueueFamilyCheckpointPropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkQueueFamilyCheckpointPropertiesNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkQueueFamilyCheckpointPropertiesNV`
+    public VkQueueFamilyCheckpointPropertiesNV asSlice(long index, long count) { return new VkQueueFamilyCheckpointPropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

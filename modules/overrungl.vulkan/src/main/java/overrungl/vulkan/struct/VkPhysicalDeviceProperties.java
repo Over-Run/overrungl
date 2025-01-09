@@ -38,9 +38,9 @@ import static overrungl.vulkan.VK10.*;
 /// ### deviceType
 /// [VarHandle][#VH_deviceType] - [Getter][#deviceType()] - [Setter][#deviceType(int)]
 /// ### deviceName
-/// [Byte offset handle][#MH_deviceName] - [Memory layout][#ML_deviceName] - [Getter][#deviceName(long)] - [Setter][#deviceName(long, java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_deviceName] - [Memory layout][#ML_deviceName] - [Getter][#deviceName()] - [Setter][#deviceName(java.lang.foreign.MemorySegment)]
 /// ### pipelineCacheUUID
-/// [Byte offset handle][#MH_pipelineCacheUUID] - [Memory layout][#ML_pipelineCacheUUID] - [Getter][#pipelineCacheUUID(long)] - [Setter][#pipelineCacheUUID(long, java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_pipelineCacheUUID] - [Memory layout][#ML_pipelineCacheUUID] - [Getter][#pipelineCacheUUID()] - [Setter][#pipelineCacheUUID(java.lang.foreign.MemorySegment)]
 /// ### limits
 /// [Byte offset][#OFFSET_limits] - [Memory layout][#ML_limits] - [Getter][#limits()] - [Setter][#limits(java.lang.foreign.MemorySegment)]
 /// ### sparseProperties
@@ -83,12 +83,12 @@ public final class VkPhysicalDeviceProperties extends Struct {
     public static final VarHandle VH_deviceID = LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceID"));
     /// The [VarHandle] of `deviceType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_deviceType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceType"));
-    /// The byte offset handle of `deviceName` of type `(long baseOffset, long elementIndex)long`.
-    public static final MethodHandle MH_deviceName = LAYOUT.byteOffsetHandle(PathElement.groupElement("deviceName"), PathElement.sequenceElement());
+    /// The byte offset of `deviceName`.
+    public static final long OFFSET_deviceName = LAYOUT.byteOffset(PathElement.groupElement("deviceName"));
     /// The memory layout of `deviceName`.
     public static final MemoryLayout ML_deviceName = LAYOUT.select(PathElement.groupElement("deviceName"));
-    /// The byte offset handle of `pipelineCacheUUID` of type `(long baseOffset, long elementIndex)long`.
-    public static final MethodHandle MH_pipelineCacheUUID = LAYOUT.byteOffsetHandle(PathElement.groupElement("pipelineCacheUUID"), PathElement.sequenceElement());
+    /// The byte offset of `pipelineCacheUUID`.
+    public static final long OFFSET_pipelineCacheUUID = LAYOUT.byteOffset(PathElement.groupElement("pipelineCacheUUID"));
     /// The memory layout of `pipelineCacheUUID`.
     public static final MemoryLayout ML_pipelineCacheUUID = LAYOUT.select(PathElement.groupElement("pipelineCacheUUID"));
     /// The byte offset of `limits`.
@@ -134,6 +134,17 @@ public final class VkPhysicalDeviceProperties extends Struct {
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceProperties`
     public static VkPhysicalDeviceProperties alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceProperties(allocator.allocate(LAYOUT, count)); }
+
+    /// Creates a slice of `VkPhysicalDeviceProperties`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceProperties`
+    public VkPhysicalDeviceProperties asSlice(long index) { return new VkPhysicalDeviceProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceProperties`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceProperties`
+    public VkPhysicalDeviceProperties asSlice(long index, long count) { return new VkPhysicalDeviceProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
 
     /// {@return `apiVersion` at the given index}
     /// @param segment the segment of the struct
@@ -291,94 +302,66 @@ public final class VkPhysicalDeviceProperties extends Struct {
     public VkPhysicalDeviceProperties deviceType(@CType("VkPhysicalDeviceType") int value) { VkPhysicalDeviceProperties.set_deviceType(this.segment(), value); return this; }
 
     /// {@return `deviceName` at the given index}
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public static @CType("char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]") java.lang.foreign.MemorySegment get_deviceName(MemorySegment segment, long index, long elementIndex) {
-        try { return segment.asSlice(LAYOUT.scale((long) MH_deviceName.invokeExact(0L, elementIndex), index), ML_deviceName); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]") java.lang.foreign.MemorySegment get_deviceName(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_deviceName, index), ML_deviceName); }
     /// {@return `deviceName`}
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    public static @CType("char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]") java.lang.foreign.MemorySegment get_deviceName(MemorySegment segment, long elementIndex) { return VkPhysicalDeviceProperties.get_deviceName(segment, 0L, elementIndex); }
+    /// @param segment the segment of the struct
+    public static @CType("char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]") java.lang.foreign.MemorySegment get_deviceName(MemorySegment segment) { return VkPhysicalDeviceProperties.get_deviceName(segment, 0L); }
     /// {@return `deviceName` at the given index}
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public @CType("char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]") java.lang.foreign.MemorySegment deviceNameAt(long index, long elementIndex) { return VkPhysicalDeviceProperties.get_deviceName(this.segment(), index, elementIndex); }
+    /// @param index the index
+    public @CType("char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]") java.lang.foreign.MemorySegment deviceNameAt(long index) { return VkPhysicalDeviceProperties.get_deviceName(this.segment(), index); }
     /// {@return `deviceName`}
-    /// @param elementIndex the index of the element
-    public @CType("char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]") java.lang.foreign.MemorySegment deviceName(long elementIndex) { return VkPhysicalDeviceProperties.get_deviceName(this.segment(), elementIndex); }
+    public @CType("char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]") java.lang.foreign.MemorySegment deviceName() { return VkPhysicalDeviceProperties.get_deviceName(this.segment()); }
     /// Sets `deviceName` with the given value at the given index.
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_deviceName(MemorySegment segment, long index, long elementIndex, @CType("char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]") java.lang.foreign.MemorySegment value) {
-        try { MemorySegment.copy(value, 0L, segment, LAYOUT.scale((long) MH_deviceName.invokeExact(0L, elementIndex), index), ML_deviceName.byteSize()); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_deviceName(MemorySegment segment, long index, @CType("char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_deviceName, index), ML_deviceName.byteSize()); }
     /// Sets `deviceName` with the given value.
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_deviceName(MemorySegment segment, long elementIndex, @CType("char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceProperties.set_deviceName(segment, 0L, elementIndex, value); }
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_deviceName(MemorySegment segment, @CType("char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceProperties.set_deviceName(segment, 0L, value); }
     /// Sets `deviceName` with the given value at the given index.
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param index the index
+    /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceProperties deviceNameAt(long index, long elementIndex, @CType("char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceProperties.set_deviceName(this.segment(), index, elementIndex, value); return this; }
+    public VkPhysicalDeviceProperties deviceNameAt(long index, @CType("char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceProperties.set_deviceName(this.segment(), index, value); return this; }
     /// Sets `deviceName` with the given value.
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceProperties deviceName(long elementIndex, @CType("char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceProperties.set_deviceName(this.segment(), elementIndex, value); return this; }
+    public VkPhysicalDeviceProperties deviceName(@CType("char[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceProperties.set_deviceName(this.segment(), value); return this; }
 
     /// {@return `pipelineCacheUUID` at the given index}
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public static @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment get_pipelineCacheUUID(MemorySegment segment, long index, long elementIndex) {
-        try { return segment.asSlice(LAYOUT.scale((long) MH_pipelineCacheUUID.invokeExact(0L, elementIndex), index), ML_pipelineCacheUUID); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment get_pipelineCacheUUID(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_pipelineCacheUUID, index), ML_pipelineCacheUUID); }
     /// {@return `pipelineCacheUUID`}
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    public static @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment get_pipelineCacheUUID(MemorySegment segment, long elementIndex) { return VkPhysicalDeviceProperties.get_pipelineCacheUUID(segment, 0L, elementIndex); }
+    /// @param segment the segment of the struct
+    public static @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment get_pipelineCacheUUID(MemorySegment segment) { return VkPhysicalDeviceProperties.get_pipelineCacheUUID(segment, 0L); }
     /// {@return `pipelineCacheUUID` at the given index}
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment pipelineCacheUUIDAt(long index, long elementIndex) { return VkPhysicalDeviceProperties.get_pipelineCacheUUID(this.segment(), index, elementIndex); }
+    /// @param index the index
+    public @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment pipelineCacheUUIDAt(long index) { return VkPhysicalDeviceProperties.get_pipelineCacheUUID(this.segment(), index); }
     /// {@return `pipelineCacheUUID`}
-    /// @param elementIndex the index of the element
-    public @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment pipelineCacheUUID(long elementIndex) { return VkPhysicalDeviceProperties.get_pipelineCacheUUID(this.segment(), elementIndex); }
+    public @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment pipelineCacheUUID() { return VkPhysicalDeviceProperties.get_pipelineCacheUUID(this.segment()); }
     /// Sets `pipelineCacheUUID` with the given value at the given index.
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_pipelineCacheUUID(MemorySegment segment, long index, long elementIndex, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) {
-        try { MemorySegment.copy(value, 0L, segment, LAYOUT.scale((long) MH_pipelineCacheUUID.invokeExact(0L, elementIndex), index), ML_pipelineCacheUUID.byteSize()); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_pipelineCacheUUID(MemorySegment segment, long index, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_pipelineCacheUUID, index), ML_pipelineCacheUUID.byteSize()); }
     /// Sets `pipelineCacheUUID` with the given value.
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_pipelineCacheUUID(MemorySegment segment, long elementIndex, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceProperties.set_pipelineCacheUUID(segment, 0L, elementIndex, value); }
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_pipelineCacheUUID(MemorySegment segment, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceProperties.set_pipelineCacheUUID(segment, 0L, value); }
     /// Sets `pipelineCacheUUID` with the given value at the given index.
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param index the index
+    /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceProperties pipelineCacheUUIDAt(long index, long elementIndex, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceProperties.set_pipelineCacheUUID(this.segment(), index, elementIndex, value); return this; }
+    public VkPhysicalDeviceProperties pipelineCacheUUIDAt(long index, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceProperties.set_pipelineCacheUUID(this.segment(), index, value); return this; }
     /// Sets `pipelineCacheUUID` with the given value.
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceProperties pipelineCacheUUID(long elementIndex, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceProperties.set_pipelineCacheUUID(this.segment(), elementIndex, value); return this; }
+    public VkPhysicalDeviceProperties pipelineCacheUUID(@CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceProperties.set_pipelineCacheUUID(this.segment(), value); return this; }
 
     /// {@return `limits` at the given index}
     /// @param segment the segment of the struct

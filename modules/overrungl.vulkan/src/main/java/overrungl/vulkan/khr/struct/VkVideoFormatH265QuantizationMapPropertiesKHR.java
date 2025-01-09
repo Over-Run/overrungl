@@ -89,6 +89,17 @@ public final class VkVideoFormatH265QuantizationMapPropertiesKHR extends Struct 
     /// @return the allocated `VkVideoFormatH265QuantizationMapPropertiesKHR`
     public static VkVideoFormatH265QuantizationMapPropertiesKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoFormatH265QuantizationMapPropertiesKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkVideoFormatH265QuantizationMapPropertiesKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkVideoFormatH265QuantizationMapPropertiesKHR`
+    public VkVideoFormatH265QuantizationMapPropertiesKHR asSlice(long index) { return new VkVideoFormatH265QuantizationMapPropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkVideoFormatH265QuantizationMapPropertiesKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkVideoFormatH265QuantizationMapPropertiesKHR`
+    public VkVideoFormatH265QuantizationMapPropertiesKHR asSlice(long index, long count) { return new VkVideoFormatH265QuantizationMapPropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

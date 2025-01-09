@@ -23,12 +23,11 @@ import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 import static overrungl.vulkan.VK13.*;
-public class VKKHRShaderTerminateInvocation {
+public final class VKKHRShaderTerminateInvocation {
     public static final int VK_KHR_SHADER_TERMINATE_INVOCATION_SPEC_VERSION = 1;
     public static final String VK_KHR_SHADER_TERMINATE_INVOCATION_EXTENSION_NAME = "VK_KHR_shader_terminate_invocation";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_TERMINATE_INVOCATION_FEATURES_KHR = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_TERMINATE_INVOCATION_FEATURES;
 
-    public VKKHRShaderTerminateInvocation(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKKHRShaderTerminateInvocation() { }
 
 }

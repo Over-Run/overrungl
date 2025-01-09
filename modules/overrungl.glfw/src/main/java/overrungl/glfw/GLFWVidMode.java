@@ -107,6 +107,17 @@ public final class GLFWVidMode extends Struct {
     /// @return the allocated `GLFWVidMode`
     public static GLFWVidMode alloc(SegmentAllocator allocator, long count) { return new GLFWVidMode(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `GLFWVidMode`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `GLFWVidMode`
+    public GLFWVidMode asSlice(long index) { return new GLFWVidMode(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `GLFWVidMode`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `GLFWVidMode`
+    public GLFWVidMode asSlice(long index, long count) { return new GLFWVidMode(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `width` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

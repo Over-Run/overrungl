@@ -89,6 +89,17 @@ public final class VkExternalMemoryBufferCreateInfo extends Struct {
     /// @return the allocated `VkExternalMemoryBufferCreateInfo`
     public static VkExternalMemoryBufferCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkExternalMemoryBufferCreateInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkExternalMemoryBufferCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkExternalMemoryBufferCreateInfo`
+    public VkExternalMemoryBufferCreateInfo asSlice(long index) { return new VkExternalMemoryBufferCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkExternalMemoryBufferCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkExternalMemoryBufferCreateInfo`
+    public VkExternalMemoryBufferCreateInfo asSlice(long index, long count) { return new VkExternalMemoryBufferCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

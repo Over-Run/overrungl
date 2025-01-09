@@ -89,6 +89,17 @@ public final class VkBufferDeviceAddressInfo extends Struct {
     /// @return the allocated `VkBufferDeviceAddressInfo`
     public static VkBufferDeviceAddressInfo alloc(SegmentAllocator allocator, long count) { return new VkBufferDeviceAddressInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkBufferDeviceAddressInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkBufferDeviceAddressInfo`
+    public VkBufferDeviceAddressInfo asSlice(long index) { return new VkBufferDeviceAddressInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkBufferDeviceAddressInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkBufferDeviceAddressInfo`
+    public VkBufferDeviceAddressInfo asSlice(long index, long count) { return new VkBufferDeviceAddressInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -22,11 +22,10 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKGOOGLEUserType {
+public final class VKGOOGLEUserType {
     public static final int VK_GOOGLE_USER_TYPE_SPEC_VERSION = 1;
     public static final String VK_GOOGLE_USER_TYPE_EXTENSION_NAME = "VK_GOOGLE_user_type";
 
-    public VKGOOGLEUserType(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKGOOGLEUserType() { }
 
 }

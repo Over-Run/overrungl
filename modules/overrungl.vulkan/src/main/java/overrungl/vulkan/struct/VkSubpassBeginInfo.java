@@ -89,6 +89,17 @@ public final class VkSubpassBeginInfo extends Struct {
     /// @return the allocated `VkSubpassBeginInfo`
     public static VkSubpassBeginInfo alloc(SegmentAllocator allocator, long count) { return new VkSubpassBeginInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkSubpassBeginInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSubpassBeginInfo`
+    public VkSubpassBeginInfo asSlice(long index) { return new VkSubpassBeginInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkSubpassBeginInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSubpassBeginInfo`
+    public VkSubpassBeginInfo asSlice(long index, long count) { return new VkSubpassBeginInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

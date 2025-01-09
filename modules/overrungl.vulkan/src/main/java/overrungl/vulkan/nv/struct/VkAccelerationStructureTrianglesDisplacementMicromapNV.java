@@ -187,6 +187,17 @@ public final class VkAccelerationStructureTrianglesDisplacementMicromapNV extend
     /// @return the allocated `VkAccelerationStructureTrianglesDisplacementMicromapNV`
     public static VkAccelerationStructureTrianglesDisplacementMicromapNV alloc(SegmentAllocator allocator, long count) { return new VkAccelerationStructureTrianglesDisplacementMicromapNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkAccelerationStructureTrianglesDisplacementMicromapNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkAccelerationStructureTrianglesDisplacementMicromapNV`
+    public VkAccelerationStructureTrianglesDisplacementMicromapNV asSlice(long index) { return new VkAccelerationStructureTrianglesDisplacementMicromapNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkAccelerationStructureTrianglesDisplacementMicromapNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkAccelerationStructureTrianglesDisplacementMicromapNV`
+    public VkAccelerationStructureTrianglesDisplacementMicromapNV asSlice(long index, long count) { return new VkAccelerationStructureTrianglesDisplacementMicromapNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

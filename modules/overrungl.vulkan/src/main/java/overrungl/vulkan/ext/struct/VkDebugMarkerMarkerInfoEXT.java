@@ -32,7 +32,7 @@ import overrungl.util.*;
 /// ### pMarkerName
 /// [VarHandle][#VH_pMarkerName] - [Getter][#pMarkerName()] - [Setter][#pMarkerName(java.lang.foreign.MemorySegment)]
 /// ### color
-/// [Byte offset handle][#MH_color] - [Memory layout][#ML_color] - [Getter][#color(long)] - [Setter][#color(long, java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_color] - [Memory layout][#ML_color] - [Getter][#color()] - [Setter][#color(java.lang.foreign.MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -57,8 +57,8 @@ public final class VkDebugMarkerMarkerInfoEXT extends Struct {
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pMarkerName` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
     public static final VarHandle VH_pMarkerName = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pMarkerName"));
-    /// The byte offset handle of `color` of type `(long baseOffset, long elementIndex)long`.
-    public static final MethodHandle MH_color = LAYOUT.byteOffsetHandle(PathElement.groupElement("color"), PathElement.sequenceElement());
+    /// The byte offset of `color`.
+    public static final long OFFSET_color = LAYOUT.byteOffset(PathElement.groupElement("color"));
     /// The memory layout of `color`.
     public static final MemoryLayout ML_color = LAYOUT.select(PathElement.groupElement("color"));
 
@@ -96,6 +96,17 @@ public final class VkDebugMarkerMarkerInfoEXT extends Struct {
     /// @param count     the count
     /// @return the allocated `VkDebugMarkerMarkerInfoEXT`
     public static VkDebugMarkerMarkerInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkDebugMarkerMarkerInfoEXT(allocator.allocate(LAYOUT, count)); }
+
+    /// Creates a slice of `VkDebugMarkerMarkerInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDebugMarkerMarkerInfoEXT`
+    public VkDebugMarkerMarkerInfoEXT asSlice(long index) { return new VkDebugMarkerMarkerInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkDebugMarkerMarkerInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDebugMarkerMarkerInfoEXT`
+    public VkDebugMarkerMarkerInfoEXT asSlice(long index, long count) { return new VkDebugMarkerMarkerInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -191,48 +202,34 @@ public final class VkDebugMarkerMarkerInfoEXT extends Struct {
     public VkDebugMarkerMarkerInfoEXT pMarkerName(@CType("const char *") java.lang.foreign.MemorySegment value) { VkDebugMarkerMarkerInfoEXT.set_pMarkerName(this.segment(), value); return this; }
 
     /// {@return `color` at the given index}
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public static @CType("float[4]") java.lang.foreign.MemorySegment get_color(MemorySegment segment, long index, long elementIndex) {
-        try { return segment.asSlice(LAYOUT.scale((long) MH_color.invokeExact(0L, elementIndex), index), ML_color); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("float[4]") java.lang.foreign.MemorySegment get_color(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_color, index), ML_color); }
     /// {@return `color`}
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    public static @CType("float[4]") java.lang.foreign.MemorySegment get_color(MemorySegment segment, long elementIndex) { return VkDebugMarkerMarkerInfoEXT.get_color(segment, 0L, elementIndex); }
+    /// @param segment the segment of the struct
+    public static @CType("float[4]") java.lang.foreign.MemorySegment get_color(MemorySegment segment) { return VkDebugMarkerMarkerInfoEXT.get_color(segment, 0L); }
     /// {@return `color` at the given index}
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public @CType("float[4]") java.lang.foreign.MemorySegment colorAt(long index, long elementIndex) { return VkDebugMarkerMarkerInfoEXT.get_color(this.segment(), index, elementIndex); }
+    /// @param index the index
+    public @CType("float[4]") java.lang.foreign.MemorySegment colorAt(long index) { return VkDebugMarkerMarkerInfoEXT.get_color(this.segment(), index); }
     /// {@return `color`}
-    /// @param elementIndex the index of the element
-    public @CType("float[4]") java.lang.foreign.MemorySegment color(long elementIndex) { return VkDebugMarkerMarkerInfoEXT.get_color(this.segment(), elementIndex); }
+    public @CType("float[4]") java.lang.foreign.MemorySegment color() { return VkDebugMarkerMarkerInfoEXT.get_color(this.segment()); }
     /// Sets `color` with the given value at the given index.
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_color(MemorySegment segment, long index, long elementIndex, @CType("float[4]") java.lang.foreign.MemorySegment value) {
-        try { MemorySegment.copy(value, 0L, segment, LAYOUT.scale((long) MH_color.invokeExact(0L, elementIndex), index), ML_color.byteSize()); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_color(MemorySegment segment, long index, @CType("float[4]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_color, index), ML_color.byteSize()); }
     /// Sets `color` with the given value.
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_color(MemorySegment segment, long elementIndex, @CType("float[4]") java.lang.foreign.MemorySegment value) { VkDebugMarkerMarkerInfoEXT.set_color(segment, 0L, elementIndex, value); }
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_color(MemorySegment segment, @CType("float[4]") java.lang.foreign.MemorySegment value) { VkDebugMarkerMarkerInfoEXT.set_color(segment, 0L, value); }
     /// Sets `color` with the given value at the given index.
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param index the index
+    /// @param value the value
     /// @return `this`
-    public VkDebugMarkerMarkerInfoEXT colorAt(long index, long elementIndex, @CType("float[4]") java.lang.foreign.MemorySegment value) { VkDebugMarkerMarkerInfoEXT.set_color(this.segment(), index, elementIndex, value); return this; }
+    public VkDebugMarkerMarkerInfoEXT colorAt(long index, @CType("float[4]") java.lang.foreign.MemorySegment value) { VkDebugMarkerMarkerInfoEXT.set_color(this.segment(), index, value); return this; }
     /// Sets `color` with the given value.
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param value the value
     /// @return `this`
-    public VkDebugMarkerMarkerInfoEXT color(long elementIndex, @CType("float[4]") java.lang.foreign.MemorySegment value) { VkDebugMarkerMarkerInfoEXT.set_color(this.segment(), elementIndex, value); return this; }
+    public VkDebugMarkerMarkerInfoEXT color(@CType("float[4]") java.lang.foreign.MemorySegment value) { VkDebugMarkerMarkerInfoEXT.set_color(this.segment(), value); return this; }
 
 }

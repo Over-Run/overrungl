@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT extends S
     /// @return the allocated `VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT`
     public static VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT`
+    public VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT asSlice(long index) { return new VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT`
+    public VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT asSlice(long index, long count) { return new VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

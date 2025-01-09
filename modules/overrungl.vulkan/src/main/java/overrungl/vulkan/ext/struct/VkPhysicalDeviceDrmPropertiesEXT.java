@@ -119,6 +119,17 @@ public final class VkPhysicalDeviceDrmPropertiesEXT extends Struct {
     /// @return the allocated `VkPhysicalDeviceDrmPropertiesEXT`
     public static VkPhysicalDeviceDrmPropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceDrmPropertiesEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceDrmPropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceDrmPropertiesEXT`
+    public VkPhysicalDeviceDrmPropertiesEXT asSlice(long index) { return new VkPhysicalDeviceDrmPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceDrmPropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceDrmPropertiesEXT`
+    public VkPhysicalDeviceDrmPropertiesEXT asSlice(long index, long count) { return new VkPhysicalDeviceDrmPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

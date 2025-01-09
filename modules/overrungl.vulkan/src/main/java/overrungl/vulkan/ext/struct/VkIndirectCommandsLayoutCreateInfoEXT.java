@@ -119,6 +119,17 @@ public final class VkIndirectCommandsLayoutCreateInfoEXT extends Struct {
     /// @return the allocated `VkIndirectCommandsLayoutCreateInfoEXT`
     public static VkIndirectCommandsLayoutCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkIndirectCommandsLayoutCreateInfoEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkIndirectCommandsLayoutCreateInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkIndirectCommandsLayoutCreateInfoEXT`
+    public VkIndirectCommandsLayoutCreateInfoEXT asSlice(long index) { return new VkIndirectCommandsLayoutCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkIndirectCommandsLayoutCreateInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkIndirectCommandsLayoutCreateInfoEXT`
+    public VkIndirectCommandsLayoutCreateInfoEXT asSlice(long index, long count) { return new VkIndirectCommandsLayoutCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

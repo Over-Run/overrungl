@@ -83,6 +83,17 @@ public final class VkMemoryHeap extends Struct {
     /// @return the allocated `VkMemoryHeap`
     public static VkMemoryHeap alloc(SegmentAllocator allocator, long count) { return new VkMemoryHeap(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkMemoryHeap`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkMemoryHeap`
+    public VkMemoryHeap asSlice(long index) { return new VkMemoryHeap(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkMemoryHeap`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkMemoryHeap`
+    public VkMemoryHeap asSlice(long index, long count) { return new VkMemoryHeap(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `size` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

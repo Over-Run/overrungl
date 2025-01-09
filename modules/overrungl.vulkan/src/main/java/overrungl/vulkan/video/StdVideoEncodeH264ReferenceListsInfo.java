@@ -143,6 +143,17 @@ public final class StdVideoEncodeH264ReferenceListsInfo extends Struct {
     /// @return the allocated `StdVideoEncodeH264ReferenceListsInfo`
     public static StdVideoEncodeH264ReferenceListsInfo alloc(SegmentAllocator allocator, long count) { return new StdVideoEncodeH264ReferenceListsInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `StdVideoEncodeH264ReferenceListsInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoEncodeH264ReferenceListsInfo`
+    public StdVideoEncodeH264ReferenceListsInfo asSlice(long index) { return new StdVideoEncodeH264ReferenceListsInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `StdVideoEncodeH264ReferenceListsInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoEncodeH264ReferenceListsInfo`
+    public StdVideoEncodeH264ReferenceListsInfo asSlice(long index, long count) { return new StdVideoEncodeH264ReferenceListsInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

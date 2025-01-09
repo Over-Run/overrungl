@@ -107,6 +107,17 @@ public final class VkImportFenceFdInfoKHR extends Struct {
     /// @return the allocated `VkImportFenceFdInfoKHR`
     public static VkImportFenceFdInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkImportFenceFdInfoKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkImportFenceFdInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkImportFenceFdInfoKHR`
+    public VkImportFenceFdInfoKHR asSlice(long index) { return new VkImportFenceFdInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkImportFenceFdInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkImportFenceFdInfoKHR`
+    public VkImportFenceFdInfoKHR asSlice(long index, long count) { return new VkImportFenceFdInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

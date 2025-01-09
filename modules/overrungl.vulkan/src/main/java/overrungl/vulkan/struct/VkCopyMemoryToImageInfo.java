@@ -113,6 +113,17 @@ public final class VkCopyMemoryToImageInfo extends Struct {
     /// @return the allocated `VkCopyMemoryToImageInfo`
     public static VkCopyMemoryToImageInfo alloc(SegmentAllocator allocator, long count) { return new VkCopyMemoryToImageInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkCopyMemoryToImageInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkCopyMemoryToImageInfo`
+    public VkCopyMemoryToImageInfo asSlice(long index) { return new VkCopyMemoryToImageInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkCopyMemoryToImageInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkCopyMemoryToImageInfo`
+    public VkCopyMemoryToImageInfo asSlice(long index, long count) { return new VkCopyMemoryToImageInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

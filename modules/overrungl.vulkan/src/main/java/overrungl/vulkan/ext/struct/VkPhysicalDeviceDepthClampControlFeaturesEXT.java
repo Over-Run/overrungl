@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceDepthClampControlFeaturesEXT extends Struct {
     /// @return the allocated `VkPhysicalDeviceDepthClampControlFeaturesEXT`
     public static VkPhysicalDeviceDepthClampControlFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceDepthClampControlFeaturesEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceDepthClampControlFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceDepthClampControlFeaturesEXT`
+    public VkPhysicalDeviceDepthClampControlFeaturesEXT asSlice(long index) { return new VkPhysicalDeviceDepthClampControlFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceDepthClampControlFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceDepthClampControlFeaturesEXT`
+    public VkPhysicalDeviceDepthClampControlFeaturesEXT asSlice(long index, long count) { return new VkPhysicalDeviceDepthClampControlFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

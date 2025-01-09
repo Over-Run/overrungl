@@ -98,4 +98,15 @@ public final class STBRPContext extends Struct {
     /// @return the allocated `STBRPContext`
     public static STBRPContext alloc(SegmentAllocator allocator, long count) { return new STBRPContext(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `STBRPContext`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `STBRPContext`
+    public STBRPContext asSlice(long index) { return new STBRPContext(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `STBRPContext`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `STBRPContext`
+    public STBRPContext asSlice(long index, long count) { return new STBRPContext(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
 }

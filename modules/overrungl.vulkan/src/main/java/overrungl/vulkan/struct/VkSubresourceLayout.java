@@ -101,6 +101,17 @@ public final class VkSubresourceLayout extends Struct {
     /// @return the allocated `VkSubresourceLayout`
     public static VkSubresourceLayout alloc(SegmentAllocator allocator, long count) { return new VkSubresourceLayout(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkSubresourceLayout`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSubresourceLayout`
+    public VkSubresourceLayout asSlice(long index) { return new VkSubresourceLayout(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkSubresourceLayout`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSubresourceLayout`
+    public VkSubresourceLayout asSlice(long index, long count) { return new VkSubresourceLayout(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `offset` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

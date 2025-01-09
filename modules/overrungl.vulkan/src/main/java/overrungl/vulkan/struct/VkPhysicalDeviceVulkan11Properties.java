@@ -33,11 +33,11 @@ import static overrungl.vulkan.VK11.*;
 /// ### pNext
 /// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
 /// ### deviceUUID
-/// [Byte offset handle][#MH_deviceUUID] - [Memory layout][#ML_deviceUUID] - [Getter][#deviceUUID(long)] - [Setter][#deviceUUID(long, java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_deviceUUID] - [Memory layout][#ML_deviceUUID] - [Getter][#deviceUUID()] - [Setter][#deviceUUID(java.lang.foreign.MemorySegment)]
 /// ### driverUUID
-/// [Byte offset handle][#MH_driverUUID] - [Memory layout][#ML_driverUUID] - [Getter][#driverUUID(long)] - [Setter][#driverUUID(long, java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_driverUUID] - [Memory layout][#ML_driverUUID] - [Getter][#driverUUID()] - [Setter][#driverUUID(java.lang.foreign.MemorySegment)]
 /// ### deviceLUID
-/// [Byte offset handle][#MH_deviceLUID] - [Memory layout][#ML_deviceLUID] - [Getter][#deviceLUID(long)] - [Setter][#deviceLUID(long, java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_deviceLUID] - [Memory layout][#ML_deviceLUID] - [Getter][#deviceLUID()] - [Setter][#deviceLUID(java.lang.foreign.MemorySegment)]
 /// ### deviceNodeMask
 /// [VarHandle][#VH_deviceNodeMask] - [Getter][#deviceNodeMask()] - [Setter][#deviceNodeMask(int)]
 /// ### deviceLUIDValid
@@ -110,16 +110,16 @@ public final class VkPhysicalDeviceVulkan11Properties extends Struct {
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset handle of `deviceUUID` of type `(long baseOffset, long elementIndex)long`.
-    public static final MethodHandle MH_deviceUUID = LAYOUT.byteOffsetHandle(PathElement.groupElement("deviceUUID"), PathElement.sequenceElement());
+    /// The byte offset of `deviceUUID`.
+    public static final long OFFSET_deviceUUID = LAYOUT.byteOffset(PathElement.groupElement("deviceUUID"));
     /// The memory layout of `deviceUUID`.
     public static final MemoryLayout ML_deviceUUID = LAYOUT.select(PathElement.groupElement("deviceUUID"));
-    /// The byte offset handle of `driverUUID` of type `(long baseOffset, long elementIndex)long`.
-    public static final MethodHandle MH_driverUUID = LAYOUT.byteOffsetHandle(PathElement.groupElement("driverUUID"), PathElement.sequenceElement());
+    /// The byte offset of `driverUUID`.
+    public static final long OFFSET_driverUUID = LAYOUT.byteOffset(PathElement.groupElement("driverUUID"));
     /// The memory layout of `driverUUID`.
     public static final MemoryLayout ML_driverUUID = LAYOUT.select(PathElement.groupElement("driverUUID"));
-    /// The byte offset handle of `deviceLUID` of type `(long baseOffset, long elementIndex)long`.
-    public static final MethodHandle MH_deviceLUID = LAYOUT.byteOffsetHandle(PathElement.groupElement("deviceLUID"), PathElement.sequenceElement());
+    /// The byte offset of `deviceLUID`.
+    public static final long OFFSET_deviceLUID = LAYOUT.byteOffset(PathElement.groupElement("deviceLUID"));
     /// The memory layout of `deviceLUID`.
     public static final MemoryLayout ML_deviceLUID = LAYOUT.select(PathElement.groupElement("deviceLUID"));
     /// The [VarHandle] of `deviceNodeMask` of type `(MemorySegment base, long baseOffset, long index)int`.
@@ -181,6 +181,17 @@ public final class VkPhysicalDeviceVulkan11Properties extends Struct {
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceVulkan11Properties`
     public static VkPhysicalDeviceVulkan11Properties alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceVulkan11Properties(allocator.allocate(LAYOUT, count)); }
+
+    /// Creates a slice of `VkPhysicalDeviceVulkan11Properties`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceVulkan11Properties`
+    public VkPhysicalDeviceVulkan11Properties asSlice(long index) { return new VkPhysicalDeviceVulkan11Properties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceVulkan11Properties`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceVulkan11Properties`
+    public VkPhysicalDeviceVulkan11Properties asSlice(long index, long count) { return new VkPhysicalDeviceVulkan11Properties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -245,139 +256,97 @@ public final class VkPhysicalDeviceVulkan11Properties extends Struct {
     public VkPhysicalDeviceVulkan11Properties pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan11Properties.set_pNext(this.segment(), value); return this; }
 
     /// {@return `deviceUUID` at the given index}
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public static @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment get_deviceUUID(MemorySegment segment, long index, long elementIndex) {
-        try { return segment.asSlice(LAYOUT.scale((long) MH_deviceUUID.invokeExact(0L, elementIndex), index), ML_deviceUUID); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment get_deviceUUID(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_deviceUUID, index), ML_deviceUUID); }
     /// {@return `deviceUUID`}
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    public static @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment get_deviceUUID(MemorySegment segment, long elementIndex) { return VkPhysicalDeviceVulkan11Properties.get_deviceUUID(segment, 0L, elementIndex); }
+    /// @param segment the segment of the struct
+    public static @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment get_deviceUUID(MemorySegment segment) { return VkPhysicalDeviceVulkan11Properties.get_deviceUUID(segment, 0L); }
     /// {@return `deviceUUID` at the given index}
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment deviceUUIDAt(long index, long elementIndex) { return VkPhysicalDeviceVulkan11Properties.get_deviceUUID(this.segment(), index, elementIndex); }
+    /// @param index the index
+    public @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment deviceUUIDAt(long index) { return VkPhysicalDeviceVulkan11Properties.get_deviceUUID(this.segment(), index); }
     /// {@return `deviceUUID`}
-    /// @param elementIndex the index of the element
-    public @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment deviceUUID(long elementIndex) { return VkPhysicalDeviceVulkan11Properties.get_deviceUUID(this.segment(), elementIndex); }
+    public @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment deviceUUID() { return VkPhysicalDeviceVulkan11Properties.get_deviceUUID(this.segment()); }
     /// Sets `deviceUUID` with the given value at the given index.
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_deviceUUID(MemorySegment segment, long index, long elementIndex, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) {
-        try { MemorySegment.copy(value, 0L, segment, LAYOUT.scale((long) MH_deviceUUID.invokeExact(0L, elementIndex), index), ML_deviceUUID.byteSize()); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_deviceUUID(MemorySegment segment, long index, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_deviceUUID, index), ML_deviceUUID.byteSize()); }
     /// Sets `deviceUUID` with the given value.
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_deviceUUID(MemorySegment segment, long elementIndex, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan11Properties.set_deviceUUID(segment, 0L, elementIndex, value); }
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_deviceUUID(MemorySegment segment, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan11Properties.set_deviceUUID(segment, 0L, value); }
     /// Sets `deviceUUID` with the given value at the given index.
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param index the index
+    /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan11Properties deviceUUIDAt(long index, long elementIndex, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan11Properties.set_deviceUUID(this.segment(), index, elementIndex, value); return this; }
+    public VkPhysicalDeviceVulkan11Properties deviceUUIDAt(long index, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan11Properties.set_deviceUUID(this.segment(), index, value); return this; }
     /// Sets `deviceUUID` with the given value.
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan11Properties deviceUUID(long elementIndex, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan11Properties.set_deviceUUID(this.segment(), elementIndex, value); return this; }
+    public VkPhysicalDeviceVulkan11Properties deviceUUID(@CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan11Properties.set_deviceUUID(this.segment(), value); return this; }
 
     /// {@return `driverUUID` at the given index}
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public static @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment get_driverUUID(MemorySegment segment, long index, long elementIndex) {
-        try { return segment.asSlice(LAYOUT.scale((long) MH_driverUUID.invokeExact(0L, elementIndex), index), ML_driverUUID); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment get_driverUUID(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_driverUUID, index), ML_driverUUID); }
     /// {@return `driverUUID`}
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    public static @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment get_driverUUID(MemorySegment segment, long elementIndex) { return VkPhysicalDeviceVulkan11Properties.get_driverUUID(segment, 0L, elementIndex); }
+    /// @param segment the segment of the struct
+    public static @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment get_driverUUID(MemorySegment segment) { return VkPhysicalDeviceVulkan11Properties.get_driverUUID(segment, 0L); }
     /// {@return `driverUUID` at the given index}
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment driverUUIDAt(long index, long elementIndex) { return VkPhysicalDeviceVulkan11Properties.get_driverUUID(this.segment(), index, elementIndex); }
+    /// @param index the index
+    public @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment driverUUIDAt(long index) { return VkPhysicalDeviceVulkan11Properties.get_driverUUID(this.segment(), index); }
     /// {@return `driverUUID`}
-    /// @param elementIndex the index of the element
-    public @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment driverUUID(long elementIndex) { return VkPhysicalDeviceVulkan11Properties.get_driverUUID(this.segment(), elementIndex); }
+    public @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment driverUUID() { return VkPhysicalDeviceVulkan11Properties.get_driverUUID(this.segment()); }
     /// Sets `driverUUID` with the given value at the given index.
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_driverUUID(MemorySegment segment, long index, long elementIndex, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) {
-        try { MemorySegment.copy(value, 0L, segment, LAYOUT.scale((long) MH_driverUUID.invokeExact(0L, elementIndex), index), ML_driverUUID.byteSize()); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_driverUUID(MemorySegment segment, long index, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_driverUUID, index), ML_driverUUID.byteSize()); }
     /// Sets `driverUUID` with the given value.
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_driverUUID(MemorySegment segment, long elementIndex, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan11Properties.set_driverUUID(segment, 0L, elementIndex, value); }
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_driverUUID(MemorySegment segment, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan11Properties.set_driverUUID(segment, 0L, value); }
     /// Sets `driverUUID` with the given value at the given index.
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param index the index
+    /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan11Properties driverUUIDAt(long index, long elementIndex, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan11Properties.set_driverUUID(this.segment(), index, elementIndex, value); return this; }
+    public VkPhysicalDeviceVulkan11Properties driverUUIDAt(long index, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan11Properties.set_driverUUID(this.segment(), index, value); return this; }
     /// Sets `driverUUID` with the given value.
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan11Properties driverUUID(long elementIndex, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan11Properties.set_driverUUID(this.segment(), elementIndex, value); return this; }
+    public VkPhysicalDeviceVulkan11Properties driverUUID(@CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan11Properties.set_driverUUID(this.segment(), value); return this; }
 
     /// {@return `deviceLUID` at the given index}
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public static @CType("uint8_t[VK_LUID_SIZE]") java.lang.foreign.MemorySegment get_deviceLUID(MemorySegment segment, long index, long elementIndex) {
-        try { return segment.asSlice(LAYOUT.scale((long) MH_deviceLUID.invokeExact(0L, elementIndex), index), ML_deviceLUID); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("uint8_t[VK_LUID_SIZE]") java.lang.foreign.MemorySegment get_deviceLUID(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_deviceLUID, index), ML_deviceLUID); }
     /// {@return `deviceLUID`}
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    public static @CType("uint8_t[VK_LUID_SIZE]") java.lang.foreign.MemorySegment get_deviceLUID(MemorySegment segment, long elementIndex) { return VkPhysicalDeviceVulkan11Properties.get_deviceLUID(segment, 0L, elementIndex); }
+    /// @param segment the segment of the struct
+    public static @CType("uint8_t[VK_LUID_SIZE]") java.lang.foreign.MemorySegment get_deviceLUID(MemorySegment segment) { return VkPhysicalDeviceVulkan11Properties.get_deviceLUID(segment, 0L); }
     /// {@return `deviceLUID` at the given index}
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public @CType("uint8_t[VK_LUID_SIZE]") java.lang.foreign.MemorySegment deviceLUIDAt(long index, long elementIndex) { return VkPhysicalDeviceVulkan11Properties.get_deviceLUID(this.segment(), index, elementIndex); }
+    /// @param index the index
+    public @CType("uint8_t[VK_LUID_SIZE]") java.lang.foreign.MemorySegment deviceLUIDAt(long index) { return VkPhysicalDeviceVulkan11Properties.get_deviceLUID(this.segment(), index); }
     /// {@return `deviceLUID`}
-    /// @param elementIndex the index of the element
-    public @CType("uint8_t[VK_LUID_SIZE]") java.lang.foreign.MemorySegment deviceLUID(long elementIndex) { return VkPhysicalDeviceVulkan11Properties.get_deviceLUID(this.segment(), elementIndex); }
+    public @CType("uint8_t[VK_LUID_SIZE]") java.lang.foreign.MemorySegment deviceLUID() { return VkPhysicalDeviceVulkan11Properties.get_deviceLUID(this.segment()); }
     /// Sets `deviceLUID` with the given value at the given index.
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_deviceLUID(MemorySegment segment, long index, long elementIndex, @CType("uint8_t[VK_LUID_SIZE]") java.lang.foreign.MemorySegment value) {
-        try { MemorySegment.copy(value, 0L, segment, LAYOUT.scale((long) MH_deviceLUID.invokeExact(0L, elementIndex), index), ML_deviceLUID.byteSize()); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_deviceLUID(MemorySegment segment, long index, @CType("uint8_t[VK_LUID_SIZE]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_deviceLUID, index), ML_deviceLUID.byteSize()); }
     /// Sets `deviceLUID` with the given value.
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_deviceLUID(MemorySegment segment, long elementIndex, @CType("uint8_t[VK_LUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan11Properties.set_deviceLUID(segment, 0L, elementIndex, value); }
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_deviceLUID(MemorySegment segment, @CType("uint8_t[VK_LUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan11Properties.set_deviceLUID(segment, 0L, value); }
     /// Sets `deviceLUID` with the given value at the given index.
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param index the index
+    /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan11Properties deviceLUIDAt(long index, long elementIndex, @CType("uint8_t[VK_LUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan11Properties.set_deviceLUID(this.segment(), index, elementIndex, value); return this; }
+    public VkPhysicalDeviceVulkan11Properties deviceLUIDAt(long index, @CType("uint8_t[VK_LUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan11Properties.set_deviceLUID(this.segment(), index, value); return this; }
     /// Sets `deviceLUID` with the given value.
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan11Properties deviceLUID(long elementIndex, @CType("uint8_t[VK_LUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan11Properties.set_deviceLUID(this.segment(), elementIndex, value); return this; }
+    public VkPhysicalDeviceVulkan11Properties deviceLUID(@CType("uint8_t[VK_LUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan11Properties.set_deviceLUID(this.segment(), value); return this; }
 
     /// {@return `deviceNodeMask` at the given index}
     /// @param segment the segment of the struct

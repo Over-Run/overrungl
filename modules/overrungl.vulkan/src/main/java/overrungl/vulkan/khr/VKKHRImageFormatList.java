@@ -23,12 +23,11 @@ import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 import static overrungl.vulkan.VK12.*;
-public class VKKHRImageFormatList {
+public final class VKKHRImageFormatList {
     public static final int VK_KHR_IMAGE_FORMAT_LIST_SPEC_VERSION = 1;
     public static final String VK_KHR_IMAGE_FORMAT_LIST_EXTENSION_NAME = "VK_KHR_image_format_list";
     public static final int VK_STRUCTURE_TYPE_IMAGE_FORMAT_LIST_CREATE_INFO_KHR = VK_STRUCTURE_TYPE_IMAGE_FORMAT_LIST_CREATE_INFO;
 
-    public VKKHRImageFormatList(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKKHRImageFormatList() { }
 
 }

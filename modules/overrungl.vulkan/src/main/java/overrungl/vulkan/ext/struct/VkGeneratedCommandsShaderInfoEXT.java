@@ -95,6 +95,17 @@ public final class VkGeneratedCommandsShaderInfoEXT extends Struct {
     /// @return the allocated `VkGeneratedCommandsShaderInfoEXT`
     public static VkGeneratedCommandsShaderInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkGeneratedCommandsShaderInfoEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkGeneratedCommandsShaderInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkGeneratedCommandsShaderInfoEXT`
+    public VkGeneratedCommandsShaderInfoEXT asSlice(long index) { return new VkGeneratedCommandsShaderInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkGeneratedCommandsShaderInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkGeneratedCommandsShaderInfoEXT`
+    public VkGeneratedCommandsShaderInfoEXT asSlice(long index, long count) { return new VkGeneratedCommandsShaderInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

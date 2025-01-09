@@ -101,6 +101,17 @@ public final class VkColorBlendAdvancedEXT extends Struct {
     /// @return the allocated `VkColorBlendAdvancedEXT`
     public static VkColorBlendAdvancedEXT alloc(SegmentAllocator allocator, long count) { return new VkColorBlendAdvancedEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkColorBlendAdvancedEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkColorBlendAdvancedEXT`
+    public VkColorBlendAdvancedEXT asSlice(long index) { return new VkColorBlendAdvancedEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkColorBlendAdvancedEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkColorBlendAdvancedEXT`
+    public VkColorBlendAdvancedEXT asSlice(long index, long count) { return new VkColorBlendAdvancedEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `advancedBlendOp` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

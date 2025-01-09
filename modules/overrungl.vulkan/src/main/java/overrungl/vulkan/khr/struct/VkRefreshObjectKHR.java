@@ -89,6 +89,17 @@ public final class VkRefreshObjectKHR extends Struct {
     /// @return the allocated `VkRefreshObjectKHR`
     public static VkRefreshObjectKHR alloc(SegmentAllocator allocator, long count) { return new VkRefreshObjectKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkRefreshObjectKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkRefreshObjectKHR`
+    public VkRefreshObjectKHR asSlice(long index) { return new VkRefreshObjectKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkRefreshObjectKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkRefreshObjectKHR`
+    public VkRefreshObjectKHR asSlice(long index, long count) { return new VkRefreshObjectKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `objectType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

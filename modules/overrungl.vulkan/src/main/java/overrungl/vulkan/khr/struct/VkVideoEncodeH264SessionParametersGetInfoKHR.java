@@ -107,6 +107,17 @@ public final class VkVideoEncodeH264SessionParametersGetInfoKHR extends Struct {
     /// @return the allocated `VkVideoEncodeH264SessionParametersGetInfoKHR`
     public static VkVideoEncodeH264SessionParametersGetInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoEncodeH264SessionParametersGetInfoKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkVideoEncodeH264SessionParametersGetInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkVideoEncodeH264SessionParametersGetInfoKHR`
+    public VkVideoEncodeH264SessionParametersGetInfoKHR asSlice(long index) { return new VkVideoEncodeH264SessionParametersGetInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkVideoEncodeH264SessionParametersGetInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkVideoEncodeH264SessionParametersGetInfoKHR`
+    public VkVideoEncodeH264SessionParametersGetInfoKHR asSlice(long index, long count) { return new VkVideoEncodeH264SessionParametersGetInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

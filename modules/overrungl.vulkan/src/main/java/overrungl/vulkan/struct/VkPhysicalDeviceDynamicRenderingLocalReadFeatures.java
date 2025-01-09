@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceDynamicRenderingLocalReadFeatures extends Str
     /// @return the allocated `VkPhysicalDeviceDynamicRenderingLocalReadFeatures`
     public static VkPhysicalDeviceDynamicRenderingLocalReadFeatures alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceDynamicRenderingLocalReadFeatures(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceDynamicRenderingLocalReadFeatures`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceDynamicRenderingLocalReadFeatures`
+    public VkPhysicalDeviceDynamicRenderingLocalReadFeatures asSlice(long index) { return new VkPhysicalDeviceDynamicRenderingLocalReadFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceDynamicRenderingLocalReadFeatures`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceDynamicRenderingLocalReadFeatures`
+    public VkPhysicalDeviceDynamicRenderingLocalReadFeatures asSlice(long index, long count) { return new VkPhysicalDeviceDynamicRenderingLocalReadFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

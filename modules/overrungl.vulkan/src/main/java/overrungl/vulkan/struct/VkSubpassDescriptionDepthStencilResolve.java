@@ -101,6 +101,17 @@ public final class VkSubpassDescriptionDepthStencilResolve extends Struct {
     /// @return the allocated `VkSubpassDescriptionDepthStencilResolve`
     public static VkSubpassDescriptionDepthStencilResolve alloc(SegmentAllocator allocator, long count) { return new VkSubpassDescriptionDepthStencilResolve(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkSubpassDescriptionDepthStencilResolve`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSubpassDescriptionDepthStencilResolve`
+    public VkSubpassDescriptionDepthStencilResolve asSlice(long index) { return new VkSubpassDescriptionDepthStencilResolve(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkSubpassDescriptionDepthStencilResolve`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSubpassDescriptionDepthStencilResolve`
+    public VkSubpassDescriptionDepthStencilResolve asSlice(long index, long count) { return new VkSubpassDescriptionDepthStencilResolve(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

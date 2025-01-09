@@ -83,6 +83,17 @@ public final class StdVideoAV1TileInfoFlags extends Struct {
     /// @return the allocated `StdVideoAV1TileInfoFlags`
     public static StdVideoAV1TileInfoFlags alloc(SegmentAllocator allocator, long count) { return new StdVideoAV1TileInfoFlags(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `StdVideoAV1TileInfoFlags`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoAV1TileInfoFlags`
+    public StdVideoAV1TileInfoFlags asSlice(long index) { return new StdVideoAV1TileInfoFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `StdVideoAV1TileInfoFlags`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoAV1TileInfoFlags`
+    public StdVideoAV1TileInfoFlags asSlice(long index, long count) { return new StdVideoAV1TileInfoFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `uniform_tile_spacing_flag` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

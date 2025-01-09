@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT exten
     /// @return the allocated `VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT`
     public static VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT`
+    public VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT asSlice(long index) { return new VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT`
+    public VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT asSlice(long index, long count) { return new VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

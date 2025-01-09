@@ -119,6 +119,17 @@ public final class STBTTAlignedQuad extends Struct {
     /// @return the allocated `STBTTAlignedQuad`
     public static STBTTAlignedQuad alloc(SegmentAllocator allocator, long count) { return new STBTTAlignedQuad(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `STBTTAlignedQuad`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `STBTTAlignedQuad`
+    public STBTTAlignedQuad asSlice(long index) { return new STBTTAlignedQuad(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `STBTTAlignedQuad`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `STBTTAlignedQuad`
+    public STBTTAlignedQuad asSlice(long index, long count) { return new STBTTAlignedQuad(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `x0` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

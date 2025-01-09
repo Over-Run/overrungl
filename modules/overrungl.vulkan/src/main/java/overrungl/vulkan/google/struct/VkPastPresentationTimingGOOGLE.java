@@ -101,6 +101,17 @@ public final class VkPastPresentationTimingGOOGLE extends Struct {
     /// @return the allocated `VkPastPresentationTimingGOOGLE`
     public static VkPastPresentationTimingGOOGLE alloc(SegmentAllocator allocator, long count) { return new VkPastPresentationTimingGOOGLE(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPastPresentationTimingGOOGLE`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPastPresentationTimingGOOGLE`
+    public VkPastPresentationTimingGOOGLE asSlice(long index) { return new VkPastPresentationTimingGOOGLE(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPastPresentationTimingGOOGLE`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPastPresentationTimingGOOGLE`
+    public VkPastPresentationTimingGOOGLE asSlice(long index, long count) { return new VkPastPresentationTimingGOOGLE(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `presentID` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

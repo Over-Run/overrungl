@@ -24,13 +24,12 @@ import overrungl.util.*;
 import overrungl.vulkan.*;
 import static overrungl.vulkan.VK11.*;
 import static overrungl.vulkan.khr.VKKHRVariablePointers.*;
-public class VKKHRVariablePointers {
+public final class VKKHRVariablePointers {
     public static final int VK_KHR_VARIABLE_POINTERS_SPEC_VERSION = 1;
     public static final String VK_KHR_VARIABLE_POINTERS_EXTENSION_NAME = "VK_KHR_variable_pointers";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTERS_FEATURES_KHR = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTERS_FEATURES;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTER_FEATURES_KHR = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTERS_FEATURES_KHR;
 
-    public VKKHRVariablePointers(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKKHRVariablePointers() { }
 
 }

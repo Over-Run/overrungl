@@ -97,6 +97,17 @@ public final class VkSamplerCustomBorderColorCreateInfoEXT extends Struct {
     /// @return the allocated `VkSamplerCustomBorderColorCreateInfoEXT`
     public static VkSamplerCustomBorderColorCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkSamplerCustomBorderColorCreateInfoEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkSamplerCustomBorderColorCreateInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSamplerCustomBorderColorCreateInfoEXT`
+    public VkSamplerCustomBorderColorCreateInfoEXT asSlice(long index) { return new VkSamplerCustomBorderColorCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkSamplerCustomBorderColorCreateInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSamplerCustomBorderColorCreateInfoEXT`
+    public VkSamplerCustomBorderColorCreateInfoEXT asSlice(long index, long count) { return new VkSamplerCustomBorderColorCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

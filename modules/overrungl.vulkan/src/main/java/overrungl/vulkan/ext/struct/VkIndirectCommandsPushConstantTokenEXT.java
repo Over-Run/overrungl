@@ -79,6 +79,17 @@ public final class VkIndirectCommandsPushConstantTokenEXT extends Struct {
     /// @return the allocated `VkIndirectCommandsPushConstantTokenEXT`
     public static VkIndirectCommandsPushConstantTokenEXT alloc(SegmentAllocator allocator, long count) { return new VkIndirectCommandsPushConstantTokenEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkIndirectCommandsPushConstantTokenEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkIndirectCommandsPushConstantTokenEXT`
+    public VkIndirectCommandsPushConstantTokenEXT asSlice(long index) { return new VkIndirectCommandsPushConstantTokenEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkIndirectCommandsPushConstantTokenEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkIndirectCommandsPushConstantTokenEXT`
+    public VkIndirectCommandsPushConstantTokenEXT asSlice(long index, long count) { return new VkIndirectCommandsPushConstantTokenEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `updateRange` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

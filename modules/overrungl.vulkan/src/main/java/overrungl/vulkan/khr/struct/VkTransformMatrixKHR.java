@@ -26,21 +26,23 @@ import overrungl.util.*;
 
 /// ## Members
 /// ### matrix
-/// [VarHandle][#VH_matrix] - [Getter][#matrix()] - [Setter][#matrix(float)]
+/// [Byte offset][#OFFSET_matrix] - [Memory layout][#ML_matrix] - [Getter][#matrix()] - [Setter][#matrix(java.lang.foreign.MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
 /// typedef struct VkTransformMatrixKHR {
-///     float matrix;
+///     float[3] matrix;
 /// } VkTransformMatrixKHR;
 /// ```
 public final class VkTransformMatrixKHR extends Struct {
     /// The struct layout of `VkTransformMatrixKHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
-        ValueLayout.JAVA_FLOAT.withName("matrix")
+        MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_FLOAT).withName("matrix")
     );
-    /// The [VarHandle] of `matrix` of type `(MemorySegment base, long baseOffset, long index)float`.
-    public static final VarHandle VH_matrix = LAYOUT.arrayElementVarHandle(PathElement.groupElement("matrix"));
+    /// The byte offset of `matrix`.
+    public static final long OFFSET_matrix = LAYOUT.byteOffset(PathElement.groupElement("matrix"));
+    /// The memory layout of `matrix`.
+    public static final MemoryLayout ML_matrix = LAYOUT.select(PathElement.groupElement("matrix"));
 
     /// Creates `VkTransformMatrixKHR` with the given segment.
     /// @param segment the memory segment
@@ -77,35 +79,46 @@ public final class VkTransformMatrixKHR extends Struct {
     /// @return the allocated `VkTransformMatrixKHR`
     public static VkTransformMatrixKHR alloc(SegmentAllocator allocator, long count) { return new VkTransformMatrixKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkTransformMatrixKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkTransformMatrixKHR`
+    public VkTransformMatrixKHR asSlice(long index) { return new VkTransformMatrixKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkTransformMatrixKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkTransformMatrixKHR`
+    public VkTransformMatrixKHR asSlice(long index, long count) { return new VkTransformMatrixKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `matrix` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("float") float get_matrix(MemorySegment segment, long index) { return (float) VH_matrix.get(segment, 0L, index); }
+    public static @CType("float[3]") java.lang.foreign.MemorySegment get_matrix(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_matrix, index), ML_matrix); }
     /// {@return `matrix`}
     /// @param segment the segment of the struct
-    public static @CType("float") float get_matrix(MemorySegment segment) { return VkTransformMatrixKHR.get_matrix(segment, 0L); }
+    public static @CType("float[3]") java.lang.foreign.MemorySegment get_matrix(MemorySegment segment) { return VkTransformMatrixKHR.get_matrix(segment, 0L); }
     /// {@return `matrix` at the given index}
     /// @param index the index
-    public @CType("float") float matrixAt(long index) { return VkTransformMatrixKHR.get_matrix(this.segment(), index); }
+    public @CType("float[3]") java.lang.foreign.MemorySegment matrixAt(long index) { return VkTransformMatrixKHR.get_matrix(this.segment(), index); }
     /// {@return `matrix`}
-    public @CType("float") float matrix() { return VkTransformMatrixKHR.get_matrix(this.segment()); }
+    public @CType("float[3]") java.lang.foreign.MemorySegment matrix() { return VkTransformMatrixKHR.get_matrix(this.segment()); }
     /// Sets `matrix` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_matrix(MemorySegment segment, long index, @CType("float") float value) { VH_matrix.set(segment, 0L, index, value); }
+    public static void set_matrix(MemorySegment segment, long index, @CType("float[3]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_matrix, index), ML_matrix.byteSize()); }
     /// Sets `matrix` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_matrix(MemorySegment segment, @CType("float") float value) { VkTransformMatrixKHR.set_matrix(segment, 0L, value); }
+    public static void set_matrix(MemorySegment segment, @CType("float[3]") java.lang.foreign.MemorySegment value) { VkTransformMatrixKHR.set_matrix(segment, 0L, value); }
     /// Sets `matrix` with the given value at the given index.
     /// @param index the index
     /// @param value the value
     /// @return `this`
-    public VkTransformMatrixKHR matrixAt(long index, @CType("float") float value) { VkTransformMatrixKHR.set_matrix(this.segment(), index, value); return this; }
+    public VkTransformMatrixKHR matrixAt(long index, @CType("float[3]") java.lang.foreign.MemorySegment value) { VkTransformMatrixKHR.set_matrix(this.segment(), index, value); return this; }
     /// Sets `matrix` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkTransformMatrixKHR matrix(@CType("float") float value) { VkTransformMatrixKHR.set_matrix(this.segment(), value); return this; }
+    public VkTransformMatrixKHR matrix(@CType("float[3]") java.lang.foreign.MemorySegment value) { VkTransformMatrixKHR.set_matrix(this.segment(), value); return this; }
 
 }

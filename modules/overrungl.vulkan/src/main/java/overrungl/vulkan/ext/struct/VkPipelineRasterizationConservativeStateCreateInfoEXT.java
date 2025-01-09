@@ -101,6 +101,17 @@ public final class VkPipelineRasterizationConservativeStateCreateInfoEXT extends
     /// @return the allocated `VkPipelineRasterizationConservativeStateCreateInfoEXT`
     public static VkPipelineRasterizationConservativeStateCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkPipelineRasterizationConservativeStateCreateInfoEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPipelineRasterizationConservativeStateCreateInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPipelineRasterizationConservativeStateCreateInfoEXT`
+    public VkPipelineRasterizationConservativeStateCreateInfoEXT asSlice(long index) { return new VkPipelineRasterizationConservativeStateCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPipelineRasterizationConservativeStateCreateInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPipelineRasterizationConservativeStateCreateInfoEXT`
+    public VkPipelineRasterizationConservativeStateCreateInfoEXT asSlice(long index, long count) { return new VkPipelineRasterizationConservativeStateCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

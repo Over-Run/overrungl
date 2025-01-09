@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceRawAccessChainsFeaturesNV extends Struct {
     /// @return the allocated `VkPhysicalDeviceRawAccessChainsFeaturesNV`
     public static VkPhysicalDeviceRawAccessChainsFeaturesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceRawAccessChainsFeaturesNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceRawAccessChainsFeaturesNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceRawAccessChainsFeaturesNV`
+    public VkPhysicalDeviceRawAccessChainsFeaturesNV asSlice(long index) { return new VkPhysicalDeviceRawAccessChainsFeaturesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceRawAccessChainsFeaturesNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceRawAccessChainsFeaturesNV`
+    public VkPhysicalDeviceRawAccessChainsFeaturesNV asSlice(long index, long count) { return new VkPhysicalDeviceRawAccessChainsFeaturesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

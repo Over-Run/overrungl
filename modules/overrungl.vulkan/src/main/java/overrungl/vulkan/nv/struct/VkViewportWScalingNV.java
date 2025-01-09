@@ -83,6 +83,17 @@ public final class VkViewportWScalingNV extends Struct {
     /// @return the allocated `VkViewportWScalingNV`
     public static VkViewportWScalingNV alloc(SegmentAllocator allocator, long count) { return new VkViewportWScalingNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkViewportWScalingNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkViewportWScalingNV`
+    public VkViewportWScalingNV asSlice(long index) { return new VkViewportWScalingNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkViewportWScalingNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkViewportWScalingNV`
+    public VkViewportWScalingNV asSlice(long index, long count) { return new VkViewportWScalingNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `xcoeff` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

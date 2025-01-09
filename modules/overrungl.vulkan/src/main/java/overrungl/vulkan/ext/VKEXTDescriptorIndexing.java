@@ -23,7 +23,7 @@ import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 import static overrungl.vulkan.VK12.*;
-public class VKEXTDescriptorIndexing {
+public final class VKEXTDescriptorIndexing {
     public static final int VK_EXT_DESCRIPTOR_INDEXING_SPEC_VERSION = 2;
     public static final String VK_EXT_DESCRIPTOR_INDEXING_EXTENSION_NAME = "VK_EXT_descriptor_indexing";
     public static final int VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_BINDING_FLAGS_CREATE_INFO_EXT = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_BINDING_FLAGS_CREATE_INFO;
@@ -39,7 +39,6 @@ public class VKEXTDescriptorIndexing {
     public static final int VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT_EXT = VK_DESCRIPTOR_SET_LAYOUT_CREATE_UPDATE_AFTER_BIND_POOL_BIT;
     public static final int VK_ERROR_FRAGMENTATION_EXT = VK_ERROR_FRAGMENTATION;
 
-    public VKEXTDescriptorIndexing(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKEXTDescriptorIndexing() { }
 
 }

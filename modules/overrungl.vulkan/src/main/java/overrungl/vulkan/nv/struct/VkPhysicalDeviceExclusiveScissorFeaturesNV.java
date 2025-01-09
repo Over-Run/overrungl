@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceExclusiveScissorFeaturesNV extends Struct {
     /// @return the allocated `VkPhysicalDeviceExclusiveScissorFeaturesNV`
     public static VkPhysicalDeviceExclusiveScissorFeaturesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceExclusiveScissorFeaturesNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceExclusiveScissorFeaturesNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceExclusiveScissorFeaturesNV`
+    public VkPhysicalDeviceExclusiveScissorFeaturesNV asSlice(long index) { return new VkPhysicalDeviceExclusiveScissorFeaturesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceExclusiveScissorFeaturesNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceExclusiveScissorFeaturesNV`
+    public VkPhysicalDeviceExclusiveScissorFeaturesNV asSlice(long index, long count) { return new VkPhysicalDeviceExclusiveScissorFeaturesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -101,6 +101,17 @@ public final class VkOpticalFlowSessionCreatePrivateDataInfoNV extends Struct {
     /// @return the allocated `VkOpticalFlowSessionCreatePrivateDataInfoNV`
     public static VkOpticalFlowSessionCreatePrivateDataInfoNV alloc(SegmentAllocator allocator, long count) { return new VkOpticalFlowSessionCreatePrivateDataInfoNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkOpticalFlowSessionCreatePrivateDataInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkOpticalFlowSessionCreatePrivateDataInfoNV`
+    public VkOpticalFlowSessionCreatePrivateDataInfoNV asSlice(long index) { return new VkOpticalFlowSessionCreatePrivateDataInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkOpticalFlowSessionCreatePrivateDataInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkOpticalFlowSessionCreatePrivateDataInfoNV`
+    public VkOpticalFlowSessionCreatePrivateDataInfoNV asSlice(long index, long count) { return new VkOpticalFlowSessionCreatePrivateDataInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -95,6 +95,17 @@ public final class VkFramebufferAttachmentsCreateInfo extends Struct {
     /// @return the allocated `VkFramebufferAttachmentsCreateInfo`
     public static VkFramebufferAttachmentsCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkFramebufferAttachmentsCreateInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkFramebufferAttachmentsCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkFramebufferAttachmentsCreateInfo`
+    public VkFramebufferAttachmentsCreateInfo asSlice(long index) { return new VkFramebufferAttachmentsCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkFramebufferAttachmentsCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkFramebufferAttachmentsCreateInfo`
+    public VkFramebufferAttachmentsCreateInfo asSlice(long index, long count) { return new VkFramebufferAttachmentsCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

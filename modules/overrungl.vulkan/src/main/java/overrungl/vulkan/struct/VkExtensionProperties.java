@@ -27,7 +27,7 @@ import static overrungl.vulkan.VK10.*;
 
 /// ## Members
 /// ### extensionName
-/// [Byte offset handle][#MH_extensionName] - [Memory layout][#ML_extensionName] - [Getter][#extensionName(long)] - [Setter][#extensionName(long, java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_extensionName] - [Memory layout][#ML_extensionName] - [Getter][#extensionName()] - [Setter][#extensionName(java.lang.foreign.MemorySegment)]
 /// ### specVersion
 /// [VarHandle][#VH_specVersion] - [Getter][#specVersion()] - [Setter][#specVersion(int)]
 /// ## Layout
@@ -44,8 +44,8 @@ public final class VkExtensionProperties extends Struct {
         MemoryLayout.sequenceLayout(VK_MAX_EXTENSION_NAME_SIZE, ValueLayout.JAVA_BYTE).withName("extensionName"),
         ValueLayout.JAVA_INT.withName("specVersion")
     );
-    /// The byte offset handle of `extensionName` of type `(long baseOffset, long elementIndex)long`.
-    public static final MethodHandle MH_extensionName = LAYOUT.byteOffsetHandle(PathElement.groupElement("extensionName"), PathElement.sequenceElement());
+    /// The byte offset of `extensionName`.
+    public static final long OFFSET_extensionName = LAYOUT.byteOffset(PathElement.groupElement("extensionName"));
     /// The memory layout of `extensionName`.
     public static final MemoryLayout ML_extensionName = LAYOUT.select(PathElement.groupElement("extensionName"));
     /// The [VarHandle] of `specVersion` of type `(MemorySegment base, long baseOffset, long index)int`.
@@ -86,50 +86,47 @@ public final class VkExtensionProperties extends Struct {
     /// @return the allocated `VkExtensionProperties`
     public static VkExtensionProperties alloc(SegmentAllocator allocator, long count) { return new VkExtensionProperties(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkExtensionProperties`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkExtensionProperties`
+    public VkExtensionProperties asSlice(long index) { return new VkExtensionProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkExtensionProperties`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkExtensionProperties`
+    public VkExtensionProperties asSlice(long index, long count) { return new VkExtensionProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `extensionName` at the given index}
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public static @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment get_extensionName(MemorySegment segment, long index, long elementIndex) {
-        try { return segment.asSlice(LAYOUT.scale((long) MH_extensionName.invokeExact(0L, elementIndex), index), ML_extensionName); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment get_extensionName(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_extensionName, index), ML_extensionName); }
     /// {@return `extensionName`}
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    public static @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment get_extensionName(MemorySegment segment, long elementIndex) { return VkExtensionProperties.get_extensionName(segment, 0L, elementIndex); }
+    /// @param segment the segment of the struct
+    public static @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment get_extensionName(MemorySegment segment) { return VkExtensionProperties.get_extensionName(segment, 0L); }
     /// {@return `extensionName` at the given index}
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment extensionNameAt(long index, long elementIndex) { return VkExtensionProperties.get_extensionName(this.segment(), index, elementIndex); }
+    /// @param index the index
+    public @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment extensionNameAt(long index) { return VkExtensionProperties.get_extensionName(this.segment(), index); }
     /// {@return `extensionName`}
-    /// @param elementIndex the index of the element
-    public @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment extensionName(long elementIndex) { return VkExtensionProperties.get_extensionName(this.segment(), elementIndex); }
+    public @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment extensionName() { return VkExtensionProperties.get_extensionName(this.segment()); }
     /// Sets `extensionName` with the given value at the given index.
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_extensionName(MemorySegment segment, long index, long elementIndex, @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment value) {
-        try { MemorySegment.copy(value, 0L, segment, LAYOUT.scale((long) MH_extensionName.invokeExact(0L, elementIndex), index), ML_extensionName.byteSize()); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_extensionName(MemorySegment segment, long index, @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_extensionName, index), ML_extensionName.byteSize()); }
     /// Sets `extensionName` with the given value.
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_extensionName(MemorySegment segment, long elementIndex, @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment value) { VkExtensionProperties.set_extensionName(segment, 0L, elementIndex, value); }
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_extensionName(MemorySegment segment, @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment value) { VkExtensionProperties.set_extensionName(segment, 0L, value); }
     /// Sets `extensionName` with the given value at the given index.
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param index the index
+    /// @param value the value
     /// @return `this`
-    public VkExtensionProperties extensionNameAt(long index, long elementIndex, @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment value) { VkExtensionProperties.set_extensionName(this.segment(), index, elementIndex, value); return this; }
+    public VkExtensionProperties extensionNameAt(long index, @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment value) { VkExtensionProperties.set_extensionName(this.segment(), index, value); return this; }
     /// Sets `extensionName` with the given value.
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param value the value
     /// @return `this`
-    public VkExtensionProperties extensionName(long elementIndex, @CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment value) { VkExtensionProperties.set_extensionName(this.segment(), elementIndex, value); return this; }
+    public VkExtensionProperties extensionName(@CType("char[VK_MAX_EXTENSION_NAME_SIZE]") java.lang.foreign.MemorySegment value) { VkExtensionProperties.set_extensionName(this.segment(), value); return this; }
 
     /// {@return `specVersion` at the given index}
     /// @param segment the segment of the struct

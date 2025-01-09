@@ -89,6 +89,17 @@ public final class VkBlitImageCubicWeightsInfoQCOM extends Struct {
     /// @return the allocated `VkBlitImageCubicWeightsInfoQCOM`
     public static VkBlitImageCubicWeightsInfoQCOM alloc(SegmentAllocator allocator, long count) { return new VkBlitImageCubicWeightsInfoQCOM(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkBlitImageCubicWeightsInfoQCOM`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkBlitImageCubicWeightsInfoQCOM`
+    public VkBlitImageCubicWeightsInfoQCOM asSlice(long index) { return new VkBlitImageCubicWeightsInfoQCOM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkBlitImageCubicWeightsInfoQCOM`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkBlitImageCubicWeightsInfoQCOM`
+    public VkBlitImageCubicWeightsInfoQCOM asSlice(long index, long count) { return new VkBlitImageCubicWeightsInfoQCOM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

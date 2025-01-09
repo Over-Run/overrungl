@@ -83,6 +83,17 @@ public final class VkIndirectCommandsStreamNV extends Struct {
     /// @return the allocated `VkIndirectCommandsStreamNV`
     public static VkIndirectCommandsStreamNV alloc(SegmentAllocator allocator, long count) { return new VkIndirectCommandsStreamNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkIndirectCommandsStreamNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkIndirectCommandsStreamNV`
+    public VkIndirectCommandsStreamNV asSlice(long index) { return new VkIndirectCommandsStreamNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkIndirectCommandsStreamNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkIndirectCommandsStreamNV`
+    public VkIndirectCommandsStreamNV asSlice(long index, long count) { return new VkIndirectCommandsStreamNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `buffer` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

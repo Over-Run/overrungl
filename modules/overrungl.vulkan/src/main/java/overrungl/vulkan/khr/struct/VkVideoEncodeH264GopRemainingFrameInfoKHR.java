@@ -107,6 +107,17 @@ public final class VkVideoEncodeH264GopRemainingFrameInfoKHR extends Struct {
     /// @return the allocated `VkVideoEncodeH264GopRemainingFrameInfoKHR`
     public static VkVideoEncodeH264GopRemainingFrameInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoEncodeH264GopRemainingFrameInfoKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkVideoEncodeH264GopRemainingFrameInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkVideoEncodeH264GopRemainingFrameInfoKHR`
+    public VkVideoEncodeH264GopRemainingFrameInfoKHR asSlice(long index) { return new VkVideoEncodeH264GopRemainingFrameInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkVideoEncodeH264GopRemainingFrameInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkVideoEncodeH264GopRemainingFrameInfoKHR`
+    public VkVideoEncodeH264GopRemainingFrameInfoKHR asSlice(long index, long count) { return new VkVideoEncodeH264GopRemainingFrameInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

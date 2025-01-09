@@ -167,6 +167,17 @@ public final class VkSRTDataNV extends Struct {
     /// @return the allocated `VkSRTDataNV`
     public static VkSRTDataNV alloc(SegmentAllocator allocator, long count) { return new VkSRTDataNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkSRTDataNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSRTDataNV`
+    public VkSRTDataNV asSlice(long index) { return new VkSRTDataNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkSRTDataNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSRTDataNV`
+    public VkSRTDataNV asSlice(long index, long count) { return new VkSRTDataNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sx` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

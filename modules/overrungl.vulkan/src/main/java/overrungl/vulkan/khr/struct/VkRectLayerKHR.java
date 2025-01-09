@@ -93,6 +93,17 @@ public final class VkRectLayerKHR extends Struct {
     /// @return the allocated `VkRectLayerKHR`
     public static VkRectLayerKHR alloc(SegmentAllocator allocator, long count) { return new VkRectLayerKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkRectLayerKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkRectLayerKHR`
+    public VkRectLayerKHR asSlice(long index) { return new VkRectLayerKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkRectLayerKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkRectLayerKHR`
+    public VkRectLayerKHR asSlice(long index, long count) { return new VkRectLayerKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `offset` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

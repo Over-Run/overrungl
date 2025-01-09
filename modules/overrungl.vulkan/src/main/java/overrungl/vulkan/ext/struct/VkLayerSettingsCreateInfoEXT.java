@@ -95,6 +95,17 @@ public final class VkLayerSettingsCreateInfoEXT extends Struct {
     /// @return the allocated `VkLayerSettingsCreateInfoEXT`
     public static VkLayerSettingsCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkLayerSettingsCreateInfoEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkLayerSettingsCreateInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkLayerSettingsCreateInfoEXT`
+    public VkLayerSettingsCreateInfoEXT asSlice(long index) { return new VkLayerSettingsCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkLayerSettingsCreateInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkLayerSettingsCreateInfoEXT`
+    public VkLayerSettingsCreateInfoEXT asSlice(long index, long count) { return new VkLayerSettingsCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

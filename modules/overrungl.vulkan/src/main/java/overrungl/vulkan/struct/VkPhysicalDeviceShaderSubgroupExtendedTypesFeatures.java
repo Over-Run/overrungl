@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures extends S
     /// @return the allocated `VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures`
     public static VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures`
+    public VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures asSlice(long index) { return new VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures`
+    public VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures asSlice(long index, long count) { return new VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

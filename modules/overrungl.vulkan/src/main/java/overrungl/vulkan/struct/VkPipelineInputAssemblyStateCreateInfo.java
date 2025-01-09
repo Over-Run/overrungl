@@ -101,6 +101,17 @@ public final class VkPipelineInputAssemblyStateCreateInfo extends Struct {
     /// @return the allocated `VkPipelineInputAssemblyStateCreateInfo`
     public static VkPipelineInputAssemblyStateCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkPipelineInputAssemblyStateCreateInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPipelineInputAssemblyStateCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPipelineInputAssemblyStateCreateInfo`
+    public VkPipelineInputAssemblyStateCreateInfo asSlice(long index) { return new VkPipelineInputAssemblyStateCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPipelineInputAssemblyStateCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPipelineInputAssemblyStateCreateInfo`
+    public VkPipelineInputAssemblyStateCreateInfo asSlice(long index, long count) { return new VkPipelineInputAssemblyStateCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

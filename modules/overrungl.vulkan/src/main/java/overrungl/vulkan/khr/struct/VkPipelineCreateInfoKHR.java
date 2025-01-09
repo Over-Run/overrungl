@@ -83,6 +83,17 @@ public final class VkPipelineCreateInfoKHR extends Struct {
     /// @return the allocated `VkPipelineCreateInfoKHR`
     public static VkPipelineCreateInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkPipelineCreateInfoKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPipelineCreateInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPipelineCreateInfoKHR`
+    public VkPipelineCreateInfoKHR asSlice(long index) { return new VkPipelineCreateInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPipelineCreateInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPipelineCreateInfoKHR`
+    public VkPipelineCreateInfoKHR asSlice(long index, long count) { return new VkPipelineCreateInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

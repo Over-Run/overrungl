@@ -30,9 +30,9 @@ import overrungl.util.*;
 /// ### pNext
 /// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
 /// ### maxWorkGroupCount
-/// [VarHandle][#VH_maxWorkGroupCount] - [Getter][#maxWorkGroupCount()] - [Setter][#maxWorkGroupCount(int)]
+/// [Byte offset][#OFFSET_maxWorkGroupCount] - [Memory layout][#ML_maxWorkGroupCount] - [Getter][#maxWorkGroupCount()] - [Setter][#maxWorkGroupCount(java.lang.foreign.MemorySegment)]
 /// ### maxWorkGroupSize
-/// [VarHandle][#VH_maxWorkGroupSize] - [Getter][#maxWorkGroupSize()] - [Setter][#maxWorkGroupSize(int)]
+/// [Byte offset][#OFFSET_maxWorkGroupSize] - [Memory layout][#ML_maxWorkGroupSize] - [Getter][#maxWorkGroupSize()] - [Setter][#maxWorkGroupSize(java.lang.foreign.MemorySegment)]
 /// ### maxOutputClusterCount
 /// [VarHandle][#VH_maxOutputClusterCount] - [Getter][#maxOutputClusterCount()] - [Setter][#maxOutputClusterCount(int)]
 /// ### indirectBufferOffsetAlignment
@@ -43,8 +43,8 @@ import overrungl.util.*;
 /// typedef struct VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI {
 ///     VkStructureType sType;
 ///     void * pNext;
-///     uint32_t maxWorkGroupCount;
-///     uint32_t maxWorkGroupSize;
+///     uint32_t[3] maxWorkGroupCount;
+///     uint32_t[3] maxWorkGroupSize;
 ///     uint32_t maxOutputClusterCount;
 ///     VkDeviceSize indirectBufferOffsetAlignment;
 /// } VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI;
@@ -54,8 +54,8 @@ public final class VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI extends 
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
-        ValueLayout.JAVA_INT.withName("maxWorkGroupCount"),
-        ValueLayout.JAVA_INT.withName("maxWorkGroupSize"),
+        MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_INT).withName("maxWorkGroupCount"),
+        MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_INT).withName("maxWorkGroupSize"),
         ValueLayout.JAVA_INT.withName("maxOutputClusterCount"),
         ValueLayout.JAVA_LONG.withName("indirectBufferOffsetAlignment")
     );
@@ -63,10 +63,14 @@ public final class VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI extends 
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The [VarHandle] of `maxWorkGroupCount` of type `(MemorySegment base, long baseOffset, long index)int`.
-    public static final VarHandle VH_maxWorkGroupCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxWorkGroupCount"));
-    /// The [VarHandle] of `maxWorkGroupSize` of type `(MemorySegment base, long baseOffset, long index)int`.
-    public static final VarHandle VH_maxWorkGroupSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxWorkGroupSize"));
+    /// The byte offset of `maxWorkGroupCount`.
+    public static final long OFFSET_maxWorkGroupCount = LAYOUT.byteOffset(PathElement.groupElement("maxWorkGroupCount"));
+    /// The memory layout of `maxWorkGroupCount`.
+    public static final MemoryLayout ML_maxWorkGroupCount = LAYOUT.select(PathElement.groupElement("maxWorkGroupCount"));
+    /// The byte offset of `maxWorkGroupSize`.
+    public static final long OFFSET_maxWorkGroupSize = LAYOUT.byteOffset(PathElement.groupElement("maxWorkGroupSize"));
+    /// The memory layout of `maxWorkGroupSize`.
+    public static final MemoryLayout ML_maxWorkGroupSize = LAYOUT.select(PathElement.groupElement("maxWorkGroupSize"));
     /// The [VarHandle] of `maxOutputClusterCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_maxOutputClusterCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxOutputClusterCount"));
     /// The [VarHandle] of `indirectBufferOffsetAlignment` of type `(MemorySegment base, long baseOffset, long index)long`.
@@ -106,6 +110,17 @@ public final class VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI extends 
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI`
     public static VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI(allocator.allocate(LAYOUT, count)); }
+
+    /// Creates a slice of `VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI`
+    public VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI asSlice(long index) { return new VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI`
+    public VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI asSlice(long index, long count) { return new VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -172,64 +187,64 @@ public final class VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI extends 
     /// {@return `maxWorkGroupCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("uint32_t") int get_maxWorkGroupCount(MemorySegment segment, long index) { return (int) VH_maxWorkGroupCount.get(segment, 0L, index); }
+    public static @CType("uint32_t[3]") java.lang.foreign.MemorySegment get_maxWorkGroupCount(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxWorkGroupCount, index), ML_maxWorkGroupCount); }
     /// {@return `maxWorkGroupCount`}
     /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxWorkGroupCount(MemorySegment segment) { return VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI.get_maxWorkGroupCount(segment, 0L); }
+    public static @CType("uint32_t[3]") java.lang.foreign.MemorySegment get_maxWorkGroupCount(MemorySegment segment) { return VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI.get_maxWorkGroupCount(segment, 0L); }
     /// {@return `maxWorkGroupCount` at the given index}
     /// @param index the index
-    public @CType("uint32_t") int maxWorkGroupCountAt(long index) { return VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI.get_maxWorkGroupCount(this.segment(), index); }
+    public @CType("uint32_t[3]") java.lang.foreign.MemorySegment maxWorkGroupCountAt(long index) { return VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI.get_maxWorkGroupCount(this.segment(), index); }
     /// {@return `maxWorkGroupCount`}
-    public @CType("uint32_t") int maxWorkGroupCount() { return VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI.get_maxWorkGroupCount(this.segment()); }
+    public @CType("uint32_t[3]") java.lang.foreign.MemorySegment maxWorkGroupCount() { return VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI.get_maxWorkGroupCount(this.segment()); }
     /// Sets `maxWorkGroupCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_maxWorkGroupCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxWorkGroupCount.set(segment, 0L, index, value); }
+    public static void set_maxWorkGroupCount(MemorySegment segment, long index, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxWorkGroupCount, index), ML_maxWorkGroupCount.byteSize()); }
     /// Sets `maxWorkGroupCount` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_maxWorkGroupCount(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI.set_maxWorkGroupCount(segment, 0L, value); }
+    public static void set_maxWorkGroupCount(MemorySegment segment, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI.set_maxWorkGroupCount(segment, 0L, value); }
     /// Sets `maxWorkGroupCount` with the given value at the given index.
     /// @param index the index
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI maxWorkGroupCountAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI.set_maxWorkGroupCount(this.segment(), index, value); return this; }
+    public VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI maxWorkGroupCountAt(long index, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI.set_maxWorkGroupCount(this.segment(), index, value); return this; }
     /// Sets `maxWorkGroupCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI maxWorkGroupCount(@CType("uint32_t") int value) { VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI.set_maxWorkGroupCount(this.segment(), value); return this; }
+    public VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI maxWorkGroupCount(@CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI.set_maxWorkGroupCount(this.segment(), value); return this; }
 
     /// {@return `maxWorkGroupSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("uint32_t") int get_maxWorkGroupSize(MemorySegment segment, long index) { return (int) VH_maxWorkGroupSize.get(segment, 0L, index); }
+    public static @CType("uint32_t[3]") java.lang.foreign.MemorySegment get_maxWorkGroupSize(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxWorkGroupSize, index), ML_maxWorkGroupSize); }
     /// {@return `maxWorkGroupSize`}
     /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxWorkGroupSize(MemorySegment segment) { return VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI.get_maxWorkGroupSize(segment, 0L); }
+    public static @CType("uint32_t[3]") java.lang.foreign.MemorySegment get_maxWorkGroupSize(MemorySegment segment) { return VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI.get_maxWorkGroupSize(segment, 0L); }
     /// {@return `maxWorkGroupSize` at the given index}
     /// @param index the index
-    public @CType("uint32_t") int maxWorkGroupSizeAt(long index) { return VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI.get_maxWorkGroupSize(this.segment(), index); }
+    public @CType("uint32_t[3]") java.lang.foreign.MemorySegment maxWorkGroupSizeAt(long index) { return VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI.get_maxWorkGroupSize(this.segment(), index); }
     /// {@return `maxWorkGroupSize`}
-    public @CType("uint32_t") int maxWorkGroupSize() { return VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI.get_maxWorkGroupSize(this.segment()); }
+    public @CType("uint32_t[3]") java.lang.foreign.MemorySegment maxWorkGroupSize() { return VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI.get_maxWorkGroupSize(this.segment()); }
     /// Sets `maxWorkGroupSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_maxWorkGroupSize(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxWorkGroupSize.set(segment, 0L, index, value); }
+    public static void set_maxWorkGroupSize(MemorySegment segment, long index, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxWorkGroupSize, index), ML_maxWorkGroupSize.byteSize()); }
     /// Sets `maxWorkGroupSize` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_maxWorkGroupSize(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI.set_maxWorkGroupSize(segment, 0L, value); }
+    public static void set_maxWorkGroupSize(MemorySegment segment, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI.set_maxWorkGroupSize(segment, 0L, value); }
     /// Sets `maxWorkGroupSize` with the given value at the given index.
     /// @param index the index
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI maxWorkGroupSizeAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI.set_maxWorkGroupSize(this.segment(), index, value); return this; }
+    public VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI maxWorkGroupSizeAt(long index, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI.set_maxWorkGroupSize(this.segment(), index, value); return this; }
     /// Sets `maxWorkGroupSize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI maxWorkGroupSize(@CType("uint32_t") int value) { VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI.set_maxWorkGroupSize(this.segment(), value); return this; }
+    public VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI maxWorkGroupSize(@CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI.set_maxWorkGroupSize(this.segment(), value); return this; }
 
     /// {@return `maxOutputClusterCount` at the given index}
     /// @param segment the segment of the struct

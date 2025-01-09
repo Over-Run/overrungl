@@ -133,6 +133,17 @@ public final class VkAndroidHardwareBufferFormatProperties2ANDROID extends Struc
     /// @return the allocated `VkAndroidHardwareBufferFormatProperties2ANDROID`
     public static VkAndroidHardwareBufferFormatProperties2ANDROID alloc(SegmentAllocator allocator, long count) { return new VkAndroidHardwareBufferFormatProperties2ANDROID(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkAndroidHardwareBufferFormatProperties2ANDROID`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkAndroidHardwareBufferFormatProperties2ANDROID`
+    public VkAndroidHardwareBufferFormatProperties2ANDROID asSlice(long index) { return new VkAndroidHardwareBufferFormatProperties2ANDROID(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkAndroidHardwareBufferFormatProperties2ANDROID`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkAndroidHardwareBufferFormatProperties2ANDROID`
+    public VkAndroidHardwareBufferFormatProperties2ANDROID asSlice(long index, long count) { return new VkAndroidHardwareBufferFormatProperties2ANDROID(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

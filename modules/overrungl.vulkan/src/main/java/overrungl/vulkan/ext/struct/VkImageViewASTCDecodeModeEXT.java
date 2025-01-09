@@ -89,6 +89,17 @@ public final class VkImageViewASTCDecodeModeEXT extends Struct {
     /// @return the allocated `VkImageViewASTCDecodeModeEXT`
     public static VkImageViewASTCDecodeModeEXT alloc(SegmentAllocator allocator, long count) { return new VkImageViewASTCDecodeModeEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkImageViewASTCDecodeModeEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkImageViewASTCDecodeModeEXT`
+    public VkImageViewASTCDecodeModeEXT asSlice(long index) { return new VkImageViewASTCDecodeModeEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkImageViewASTCDecodeModeEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkImageViewASTCDecodeModeEXT`
+    public VkImageViewASTCDecodeModeEXT asSlice(long index, long count) { return new VkImageViewASTCDecodeModeEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

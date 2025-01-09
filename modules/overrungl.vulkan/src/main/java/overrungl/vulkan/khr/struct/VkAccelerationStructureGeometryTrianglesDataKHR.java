@@ -131,6 +131,17 @@ public final class VkAccelerationStructureGeometryTrianglesDataKHR extends Struc
     /// @return the allocated `VkAccelerationStructureGeometryTrianglesDataKHR`
     public static VkAccelerationStructureGeometryTrianglesDataKHR alloc(SegmentAllocator allocator, long count) { return new VkAccelerationStructureGeometryTrianglesDataKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkAccelerationStructureGeometryTrianglesDataKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkAccelerationStructureGeometryTrianglesDataKHR`
+    public VkAccelerationStructureGeometryTrianglesDataKHR asSlice(long index) { return new VkAccelerationStructureGeometryTrianglesDataKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkAccelerationStructureGeometryTrianglesDataKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkAccelerationStructureGeometryTrianglesDataKHR`
+    public VkAccelerationStructureGeometryTrianglesDataKHR asSlice(long index, long count) { return new VkAccelerationStructureGeometryTrianglesDataKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

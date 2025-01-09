@@ -95,6 +95,17 @@ public final class VkViewportSwizzleNV extends Struct {
     /// @return the allocated `VkViewportSwizzleNV`
     public static VkViewportSwizzleNV alloc(SegmentAllocator allocator, long count) { return new VkViewportSwizzleNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkViewportSwizzleNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkViewportSwizzleNV`
+    public VkViewportSwizzleNV asSlice(long index) { return new VkViewportSwizzleNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkViewportSwizzleNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkViewportSwizzleNV`
+    public VkViewportSwizzleNV asSlice(long index, long count) { return new VkViewportSwizzleNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `x` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -23,7 +23,7 @@ import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 import static overrungl.vulkan.VK14.*;
-public class VKKHRGlobalPriority {
+public final class VKKHRGlobalPriority {
     public static final int VK_KHR_GLOBAL_PRIORITY_SPEC_VERSION = 1;
     public static final String VK_KHR_GLOBAL_PRIORITY_EXTENSION_NAME = "VK_KHR_global_priority";
     public static final int VK_STRUCTURE_TYPE_DEVICE_QUEUE_GLOBAL_PRIORITY_CREATE_INFO_KHR = VK_STRUCTURE_TYPE_DEVICE_QUEUE_GLOBAL_PRIORITY_CREATE_INFO;
@@ -36,7 +36,6 @@ public class VKKHRGlobalPriority {
     public static final int VK_QUEUE_GLOBAL_PRIORITY_HIGH_KHR = VK_QUEUE_GLOBAL_PRIORITY_HIGH;
     public static final int VK_QUEUE_GLOBAL_PRIORITY_REALTIME_KHR = VK_QUEUE_GLOBAL_PRIORITY_REALTIME;
 
-    public VKKHRGlobalPriority(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKKHRGlobalPriority() { }
 
 }

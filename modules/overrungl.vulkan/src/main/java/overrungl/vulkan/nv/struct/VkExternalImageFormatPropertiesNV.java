@@ -97,6 +97,17 @@ public final class VkExternalImageFormatPropertiesNV extends Struct {
     /// @return the allocated `VkExternalImageFormatPropertiesNV`
     public static VkExternalImageFormatPropertiesNV alloc(SegmentAllocator allocator, long count) { return new VkExternalImageFormatPropertiesNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkExternalImageFormatPropertiesNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkExternalImageFormatPropertiesNV`
+    public VkExternalImageFormatPropertiesNV asSlice(long index) { return new VkExternalImageFormatPropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkExternalImageFormatPropertiesNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkExternalImageFormatPropertiesNV`
+    public VkExternalImageFormatPropertiesNV asSlice(long index, long count) { return new VkExternalImageFormatPropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `imageFormatProperties` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

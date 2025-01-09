@@ -125,6 +125,17 @@ public final class VkWin32KeyedMutexAcquireReleaseInfoNV extends Struct {
     /// @return the allocated `VkWin32KeyedMutexAcquireReleaseInfoNV`
     public static VkWin32KeyedMutexAcquireReleaseInfoNV alloc(SegmentAllocator allocator, long count) { return new VkWin32KeyedMutexAcquireReleaseInfoNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkWin32KeyedMutexAcquireReleaseInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkWin32KeyedMutexAcquireReleaseInfoNV`
+    public VkWin32KeyedMutexAcquireReleaseInfoNV asSlice(long index) { return new VkWin32KeyedMutexAcquireReleaseInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkWin32KeyedMutexAcquireReleaseInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkWin32KeyedMutexAcquireReleaseInfoNV`
+    public VkWin32KeyedMutexAcquireReleaseInfoNV asSlice(long index, long count) { return new VkWin32KeyedMutexAcquireReleaseInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

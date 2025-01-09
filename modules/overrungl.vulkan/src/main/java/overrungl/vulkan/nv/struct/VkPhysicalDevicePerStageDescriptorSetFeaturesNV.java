@@ -95,6 +95,17 @@ public final class VkPhysicalDevicePerStageDescriptorSetFeaturesNV extends Struc
     /// @return the allocated `VkPhysicalDevicePerStageDescriptorSetFeaturesNV`
     public static VkPhysicalDevicePerStageDescriptorSetFeaturesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDevicePerStageDescriptorSetFeaturesNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDevicePerStageDescriptorSetFeaturesNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDevicePerStageDescriptorSetFeaturesNV`
+    public VkPhysicalDevicePerStageDescriptorSetFeaturesNV asSlice(long index) { return new VkPhysicalDevicePerStageDescriptorSetFeaturesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDevicePerStageDescriptorSetFeaturesNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDevicePerStageDescriptorSetFeaturesNV`
+    public VkPhysicalDevicePerStageDescriptorSetFeaturesNV asSlice(long index, long count) { return new VkPhysicalDevicePerStageDescriptorSetFeaturesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

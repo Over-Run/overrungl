@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceMapMemoryPlacedPropertiesEXT extends Struct {
     /// @return the allocated `VkPhysicalDeviceMapMemoryPlacedPropertiesEXT`
     public static VkPhysicalDeviceMapMemoryPlacedPropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceMapMemoryPlacedPropertiesEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceMapMemoryPlacedPropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceMapMemoryPlacedPropertiesEXT`
+    public VkPhysicalDeviceMapMemoryPlacedPropertiesEXT asSlice(long index) { return new VkPhysicalDeviceMapMemoryPlacedPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceMapMemoryPlacedPropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceMapMemoryPlacedPropertiesEXT`
+    public VkPhysicalDeviceMapMemoryPlacedPropertiesEXT asSlice(long index, long count) { return new VkPhysicalDeviceMapMemoryPlacedPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

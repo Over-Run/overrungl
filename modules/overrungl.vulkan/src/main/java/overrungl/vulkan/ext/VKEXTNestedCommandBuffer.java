@@ -23,7 +23,7 @@ import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 import static overrungl.vulkan.khr.VKKHRMaintenance7.*;
-public class VKEXTNestedCommandBuffer {
+public final class VKEXTNestedCommandBuffer {
     public static final int VK_EXT_NESTED_COMMAND_BUFFER_SPEC_VERSION = 1;
     public static final String VK_EXT_NESTED_COMMAND_BUFFER_EXTENSION_NAME = "VK_EXT_nested_command_buffer";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_NESTED_COMMAND_BUFFER_FEATURES_EXT = 1000451000;
@@ -31,7 +31,6 @@ public class VKEXTNestedCommandBuffer {
     public static final int VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_EXT = VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_KHR;
     public static final int VK_RENDERING_CONTENTS_INLINE_BIT_EXT = VK_RENDERING_CONTENTS_INLINE_BIT_KHR;
 
-    public VKEXTNestedCommandBuffer(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKEXTNestedCommandBuffer() { }
 
 }

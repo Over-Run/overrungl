@@ -101,6 +101,17 @@ public final class VkDescriptorSetLayoutCreateInfo extends Struct {
     /// @return the allocated `VkDescriptorSetLayoutCreateInfo`
     public static VkDescriptorSetLayoutCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkDescriptorSetLayoutCreateInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkDescriptorSetLayoutCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDescriptorSetLayoutCreateInfo`
+    public VkDescriptorSetLayoutCreateInfo asSlice(long index) { return new VkDescriptorSetLayoutCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkDescriptorSetLayoutCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDescriptorSetLayoutCreateInfo`
+    public VkDescriptorSetLayoutCreateInfo asSlice(long index, long count) { return new VkDescriptorSetLayoutCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

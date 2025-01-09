@@ -233,6 +233,17 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// @return the allocated `StdVideoEncodeAV1PictureInfo`
     public static StdVideoEncodeAV1PictureInfo alloc(SegmentAllocator allocator, long count) { return new StdVideoEncodeAV1PictureInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `StdVideoEncodeAV1PictureInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoEncodeAV1PictureInfo`
+    public StdVideoEncodeAV1PictureInfo asSlice(long index) { return new StdVideoEncodeAV1PictureInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `StdVideoEncodeAV1PictureInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoEncodeAV1PictureInfo`
+    public StdVideoEncodeAV1PictureInfo asSlice(long index, long count) { return new StdVideoEncodeAV1PictureInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

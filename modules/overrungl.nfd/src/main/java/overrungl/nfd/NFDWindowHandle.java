@@ -83,6 +83,17 @@ public final class NFDWindowHandle extends Struct {
     /// @return the allocated `NFDWindowHandle`
     public static NFDWindowHandle alloc(SegmentAllocator allocator, long count) { return new NFDWindowHandle(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `NFDWindowHandle`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `NFDWindowHandle`
+    public NFDWindowHandle asSlice(long index) { return new NFDWindowHandle(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `NFDWindowHandle`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `NFDWindowHandle`
+    public NFDWindowHandle asSlice(long index, long count) { return new NFDWindowHandle(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `type` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

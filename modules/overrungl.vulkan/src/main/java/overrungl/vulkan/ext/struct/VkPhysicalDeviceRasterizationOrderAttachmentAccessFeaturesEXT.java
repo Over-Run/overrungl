@@ -101,6 +101,17 @@ public final class VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT
     /// @return the allocated `VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT`
     public static VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT`
+    public VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT asSlice(long index) { return new VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT`
+    public VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT asSlice(long index, long count) { return new VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

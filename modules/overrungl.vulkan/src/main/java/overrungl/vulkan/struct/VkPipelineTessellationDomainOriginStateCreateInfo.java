@@ -89,6 +89,17 @@ public final class VkPipelineTessellationDomainOriginStateCreateInfo extends Str
     /// @return the allocated `VkPipelineTessellationDomainOriginStateCreateInfo`
     public static VkPipelineTessellationDomainOriginStateCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkPipelineTessellationDomainOriginStateCreateInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPipelineTessellationDomainOriginStateCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPipelineTessellationDomainOriginStateCreateInfo`
+    public VkPipelineTessellationDomainOriginStateCreateInfo asSlice(long index) { return new VkPipelineTessellationDomainOriginStateCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPipelineTessellationDomainOriginStateCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPipelineTessellationDomainOriginStateCreateInfo`
+    public VkPipelineTessellationDomainOriginStateCreateInfo asSlice(long index, long count) { return new VkPipelineTessellationDomainOriginStateCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

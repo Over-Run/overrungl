@@ -95,6 +95,17 @@ public final class VkRenderPassStripeSubmitInfoARM extends Struct {
     /// @return the allocated `VkRenderPassStripeSubmitInfoARM`
     public static VkRenderPassStripeSubmitInfoARM alloc(SegmentAllocator allocator, long count) { return new VkRenderPassStripeSubmitInfoARM(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkRenderPassStripeSubmitInfoARM`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkRenderPassStripeSubmitInfoARM`
+    public VkRenderPassStripeSubmitInfoARM asSlice(long index) { return new VkRenderPassStripeSubmitInfoARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkRenderPassStripeSubmitInfoARM`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkRenderPassStripeSubmitInfoARM`
+    public VkRenderPassStripeSubmitInfoARM asSlice(long index, long count) { return new VkRenderPassStripeSubmitInfoARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -95,6 +95,17 @@ public final class VkImageFormatListCreateInfo extends Struct {
     /// @return the allocated `VkImageFormatListCreateInfo`
     public static VkImageFormatListCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkImageFormatListCreateInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkImageFormatListCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkImageFormatListCreateInfo`
+    public VkImageFormatListCreateInfo asSlice(long index) { return new VkImageFormatListCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkImageFormatListCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkImageFormatListCreateInfo`
+    public VkImageFormatListCreateInfo asSlice(long index, long count) { return new VkImageFormatListCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

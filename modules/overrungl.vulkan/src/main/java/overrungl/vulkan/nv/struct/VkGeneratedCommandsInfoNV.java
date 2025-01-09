@@ -161,6 +161,17 @@ public final class VkGeneratedCommandsInfoNV extends Struct {
     /// @return the allocated `VkGeneratedCommandsInfoNV`
     public static VkGeneratedCommandsInfoNV alloc(SegmentAllocator allocator, long count) { return new VkGeneratedCommandsInfoNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkGeneratedCommandsInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkGeneratedCommandsInfoNV`
+    public VkGeneratedCommandsInfoNV asSlice(long index) { return new VkGeneratedCommandsInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkGeneratedCommandsInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkGeneratedCommandsInfoNV`
+    public VkGeneratedCommandsInfoNV asSlice(long index, long count) { return new VkGeneratedCommandsInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

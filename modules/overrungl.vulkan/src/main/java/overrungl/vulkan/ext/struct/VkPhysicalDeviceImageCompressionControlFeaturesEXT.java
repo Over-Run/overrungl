@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceImageCompressionControlFeaturesEXT extends St
     /// @return the allocated `VkPhysicalDeviceImageCompressionControlFeaturesEXT`
     public static VkPhysicalDeviceImageCompressionControlFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceImageCompressionControlFeaturesEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceImageCompressionControlFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceImageCompressionControlFeaturesEXT`
+    public VkPhysicalDeviceImageCompressionControlFeaturesEXT asSlice(long index) { return new VkPhysicalDeviceImageCompressionControlFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceImageCompressionControlFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceImageCompressionControlFeaturesEXT`
+    public VkPhysicalDeviceImageCompressionControlFeaturesEXT asSlice(long index, long count) { return new VkPhysicalDeviceImageCompressionControlFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

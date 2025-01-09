@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures extend
     /// @return the allocated `VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures`
     public static VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures`
+    public VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures asSlice(long index) { return new VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures`
+    public VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures asSlice(long index, long count) { return new VkPhysicalDeviceShaderDemoteToHelperInvocationFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

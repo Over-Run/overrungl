@@ -101,6 +101,17 @@ public final class VkExternalSemaphoreProperties extends Struct {
     /// @return the allocated `VkExternalSemaphoreProperties`
     public static VkExternalSemaphoreProperties alloc(SegmentAllocator allocator, long count) { return new VkExternalSemaphoreProperties(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkExternalSemaphoreProperties`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkExternalSemaphoreProperties`
+    public VkExternalSemaphoreProperties asSlice(long index) { return new VkExternalSemaphoreProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkExternalSemaphoreProperties`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkExternalSemaphoreProperties`
+    public VkExternalSemaphoreProperties asSlice(long index, long count) { return new VkExternalSemaphoreProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

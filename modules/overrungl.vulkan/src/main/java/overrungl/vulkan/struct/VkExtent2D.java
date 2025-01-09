@@ -83,6 +83,17 @@ public final class VkExtent2D extends Struct {
     /// @return the allocated `VkExtent2D`
     public static VkExtent2D alloc(SegmentAllocator allocator, long count) { return new VkExtent2D(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkExtent2D`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkExtent2D`
+    public VkExtent2D asSlice(long index) { return new VkExtent2D(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkExtent2D`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkExtent2D`
+    public VkExtent2D asSlice(long index, long count) { return new VkExtent2D(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `width` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

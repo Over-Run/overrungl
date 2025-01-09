@@ -97,6 +97,17 @@ public final class VkPhysicalDeviceFragmentShadingRateKHR extends Struct {
     /// @return the allocated `VkPhysicalDeviceFragmentShadingRateKHR`
     public static VkPhysicalDeviceFragmentShadingRateKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceFragmentShadingRateKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceFragmentShadingRateKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceFragmentShadingRateKHR`
+    public VkPhysicalDeviceFragmentShadingRateKHR asSlice(long index) { return new VkPhysicalDeviceFragmentShadingRateKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceFragmentShadingRateKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceFragmentShadingRateKHR`
+    public VkPhysicalDeviceFragmentShadingRateKHR asSlice(long index, long count) { return new VkPhysicalDeviceFragmentShadingRateKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

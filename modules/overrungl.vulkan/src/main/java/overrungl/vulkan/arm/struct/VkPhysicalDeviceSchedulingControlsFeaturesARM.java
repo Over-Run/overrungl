@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceSchedulingControlsFeaturesARM extends Struct 
     /// @return the allocated `VkPhysicalDeviceSchedulingControlsFeaturesARM`
     public static VkPhysicalDeviceSchedulingControlsFeaturesARM alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceSchedulingControlsFeaturesARM(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceSchedulingControlsFeaturesARM`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceSchedulingControlsFeaturesARM`
+    public VkPhysicalDeviceSchedulingControlsFeaturesARM asSlice(long index) { return new VkPhysicalDeviceSchedulingControlsFeaturesARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceSchedulingControlsFeaturesARM`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceSchedulingControlsFeaturesARM`
+    public VkPhysicalDeviceSchedulingControlsFeaturesARM asSlice(long index, long count) { return new VkPhysicalDeviceSchedulingControlsFeaturesARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

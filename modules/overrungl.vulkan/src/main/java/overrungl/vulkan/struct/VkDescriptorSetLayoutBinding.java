@@ -101,6 +101,17 @@ public final class VkDescriptorSetLayoutBinding extends Struct {
     /// @return the allocated `VkDescriptorSetLayoutBinding`
     public static VkDescriptorSetLayoutBinding alloc(SegmentAllocator allocator, long count) { return new VkDescriptorSetLayoutBinding(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkDescriptorSetLayoutBinding`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDescriptorSetLayoutBinding`
+    public VkDescriptorSetLayoutBinding asSlice(long index) { return new VkDescriptorSetLayoutBinding(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkDescriptorSetLayoutBinding`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDescriptorSetLayoutBinding`
+    public VkDescriptorSetLayoutBinding asSlice(long index, long count) { return new VkDescriptorSetLayoutBinding(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `binding` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

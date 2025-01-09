@@ -95,6 +95,17 @@ public final class VkRayTracingPipelineInterfaceCreateInfoKHR extends Struct {
     /// @return the allocated `VkRayTracingPipelineInterfaceCreateInfoKHR`
     public static VkRayTracingPipelineInterfaceCreateInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkRayTracingPipelineInterfaceCreateInfoKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkRayTracingPipelineInterfaceCreateInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkRayTracingPipelineInterfaceCreateInfoKHR`
+    public VkRayTracingPipelineInterfaceCreateInfoKHR asSlice(long index) { return new VkRayTracingPipelineInterfaceCreateInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkRayTracingPipelineInterfaceCreateInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkRayTracingPipelineInterfaceCreateInfoKHR`
+    public VkRayTracingPipelineInterfaceCreateInfoKHR asSlice(long index, long count) { return new VkRayTracingPipelineInterfaceCreateInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

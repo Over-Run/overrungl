@@ -22,13 +22,12 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKARMShaderCoreBuiltins {
+public final class VKARMShaderCoreBuiltins {
     public static final int VK_ARM_SHADER_CORE_BUILTINS_SPEC_VERSION = 2;
     public static final String VK_ARM_SHADER_CORE_BUILTINS_EXTENSION_NAME = "VK_ARM_shader_core_builtins";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_BUILTINS_FEATURES_ARM = 1000497000;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_BUILTINS_PROPERTIES_ARM = 1000497001;
 
-    public VKARMShaderCoreBuiltins(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKARMShaderCoreBuiltins() { }
 
 }

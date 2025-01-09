@@ -107,12 +107,23 @@ public final class VkPerformanceCounterResultKHR extends Union {
     /// @return the allocated `VkPerformanceCounterResultKHR`
     public static VkPerformanceCounterResultKHR alloc(SegmentAllocator allocator, long count) { return new VkPerformanceCounterResultKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPerformanceCounterResultKHR`.
+    /// @param index the index of the union buffer
+    /// @return the slice of `VkPerformanceCounterResultKHR`
+    public VkPerformanceCounterResultKHR asSlice(long index) { return new VkPerformanceCounterResultKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPerformanceCounterResultKHR`.
+    /// @param index the index of the union buffer
+    /// @param count the count
+    /// @return the slice of `VkPerformanceCounterResultKHR`
+    public VkPerformanceCounterResultKHR asSlice(long index, long count) { return new VkPerformanceCounterResultKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `int32` at the given index}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     public static @CType("int32_t") int get_int32(MemorySegment segment, long index) { return (int) VH_int32.get(segment, 0L, index); }
     /// {@return `int32`}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     public static @CType("int32_t") int get_int32(MemorySegment segment) { return VkPerformanceCounterResultKHR.get_int32(segment, 0L); }
     /// {@return `int32` at the given index}
     /// @param index the index
@@ -120,12 +131,12 @@ public final class VkPerformanceCounterResultKHR extends Union {
     /// {@return `int32`}
     public @CType("int32_t") int int32() { return VkPerformanceCounterResultKHR.get_int32(this.segment()); }
     /// Sets `int32` with the given value at the given index.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     /// @param value   the value
     public static void set_int32(MemorySegment segment, long index, @CType("int32_t") int value) { VH_int32.set(segment, 0L, index, value); }
     /// Sets `int32` with the given value.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param value   the value
     public static void set_int32(MemorySegment segment, @CType("int32_t") int value) { VkPerformanceCounterResultKHR.set_int32(segment, 0L, value); }
     /// Sets `int32` with the given value at the given index.
@@ -139,11 +150,11 @@ public final class VkPerformanceCounterResultKHR extends Union {
     public VkPerformanceCounterResultKHR int32(@CType("int32_t") int value) { VkPerformanceCounterResultKHR.set_int32(this.segment(), value); return this; }
 
     /// {@return `int64` at the given index}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     public static @CType("int64_t") long get_int64(MemorySegment segment, long index) { return (long) VH_int64.get(segment, 0L, index); }
     /// {@return `int64`}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     public static @CType("int64_t") long get_int64(MemorySegment segment) { return VkPerformanceCounterResultKHR.get_int64(segment, 0L); }
     /// {@return `int64` at the given index}
     /// @param index the index
@@ -151,12 +162,12 @@ public final class VkPerformanceCounterResultKHR extends Union {
     /// {@return `int64`}
     public @CType("int64_t") long int64() { return VkPerformanceCounterResultKHR.get_int64(this.segment()); }
     /// Sets `int64` with the given value at the given index.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     /// @param value   the value
     public static void set_int64(MemorySegment segment, long index, @CType("int64_t") long value) { VH_int64.set(segment, 0L, index, value); }
     /// Sets `int64` with the given value.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param value   the value
     public static void set_int64(MemorySegment segment, @CType("int64_t") long value) { VkPerformanceCounterResultKHR.set_int64(segment, 0L, value); }
     /// Sets `int64` with the given value at the given index.
@@ -170,11 +181,11 @@ public final class VkPerformanceCounterResultKHR extends Union {
     public VkPerformanceCounterResultKHR int64(@CType("int64_t") long value) { VkPerformanceCounterResultKHR.set_int64(this.segment(), value); return this; }
 
     /// {@return `uint32` at the given index}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     public static @CType("uint32_t") int get_uint32(MemorySegment segment, long index) { return (int) VH_uint32.get(segment, 0L, index); }
     /// {@return `uint32`}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     public static @CType("uint32_t") int get_uint32(MemorySegment segment) { return VkPerformanceCounterResultKHR.get_uint32(segment, 0L); }
     /// {@return `uint32` at the given index}
     /// @param index the index
@@ -182,12 +193,12 @@ public final class VkPerformanceCounterResultKHR extends Union {
     /// {@return `uint32`}
     public @CType("uint32_t") int uint32() { return VkPerformanceCounterResultKHR.get_uint32(this.segment()); }
     /// Sets `uint32` with the given value at the given index.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     /// @param value   the value
     public static void set_uint32(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_uint32.set(segment, 0L, index, value); }
     /// Sets `uint32` with the given value.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param value   the value
     public static void set_uint32(MemorySegment segment, @CType("uint32_t") int value) { VkPerformanceCounterResultKHR.set_uint32(segment, 0L, value); }
     /// Sets `uint32` with the given value at the given index.
@@ -201,11 +212,11 @@ public final class VkPerformanceCounterResultKHR extends Union {
     public VkPerformanceCounterResultKHR uint32(@CType("uint32_t") int value) { VkPerformanceCounterResultKHR.set_uint32(this.segment(), value); return this; }
 
     /// {@return `uint64` at the given index}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     public static @CType("uint64_t") long get_uint64(MemorySegment segment, long index) { return (long) VH_uint64.get(segment, 0L, index); }
     /// {@return `uint64`}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     public static @CType("uint64_t") long get_uint64(MemorySegment segment) { return VkPerformanceCounterResultKHR.get_uint64(segment, 0L); }
     /// {@return `uint64` at the given index}
     /// @param index the index
@@ -213,12 +224,12 @@ public final class VkPerformanceCounterResultKHR extends Union {
     /// {@return `uint64`}
     public @CType("uint64_t") long uint64() { return VkPerformanceCounterResultKHR.get_uint64(this.segment()); }
     /// Sets `uint64` with the given value at the given index.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     /// @param value   the value
     public static void set_uint64(MemorySegment segment, long index, @CType("uint64_t") long value) { VH_uint64.set(segment, 0L, index, value); }
     /// Sets `uint64` with the given value.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param value   the value
     public static void set_uint64(MemorySegment segment, @CType("uint64_t") long value) { VkPerformanceCounterResultKHR.set_uint64(segment, 0L, value); }
     /// Sets `uint64` with the given value at the given index.
@@ -232,11 +243,11 @@ public final class VkPerformanceCounterResultKHR extends Union {
     public VkPerformanceCounterResultKHR uint64(@CType("uint64_t") long value) { VkPerformanceCounterResultKHR.set_uint64(this.segment(), value); return this; }
 
     /// {@return `float32` at the given index}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     public static @CType("float") float get_float32(MemorySegment segment, long index) { return (float) VH_float32.get(segment, 0L, index); }
     /// {@return `float32`}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     public static @CType("float") float get_float32(MemorySegment segment) { return VkPerformanceCounterResultKHR.get_float32(segment, 0L); }
     /// {@return `float32` at the given index}
     /// @param index the index
@@ -244,12 +255,12 @@ public final class VkPerformanceCounterResultKHR extends Union {
     /// {@return `float32`}
     public @CType("float") float float32() { return VkPerformanceCounterResultKHR.get_float32(this.segment()); }
     /// Sets `float32` with the given value at the given index.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     /// @param value   the value
     public static void set_float32(MemorySegment segment, long index, @CType("float") float value) { VH_float32.set(segment, 0L, index, value); }
     /// Sets `float32` with the given value.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param value   the value
     public static void set_float32(MemorySegment segment, @CType("float") float value) { VkPerformanceCounterResultKHR.set_float32(segment, 0L, value); }
     /// Sets `float32` with the given value at the given index.
@@ -263,11 +274,11 @@ public final class VkPerformanceCounterResultKHR extends Union {
     public VkPerformanceCounterResultKHR float32(@CType("float") float value) { VkPerformanceCounterResultKHR.set_float32(this.segment(), value); return this; }
 
     /// {@return `float64` at the given index}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     public static @CType("double") double get_float64(MemorySegment segment, long index) { return (double) VH_float64.get(segment, 0L, index); }
     /// {@return `float64`}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     public static @CType("double") double get_float64(MemorySegment segment) { return VkPerformanceCounterResultKHR.get_float64(segment, 0L); }
     /// {@return `float64` at the given index}
     /// @param index the index
@@ -275,12 +286,12 @@ public final class VkPerformanceCounterResultKHR extends Union {
     /// {@return `float64`}
     public @CType("double") double float64() { return VkPerformanceCounterResultKHR.get_float64(this.segment()); }
     /// Sets `float64` with the given value at the given index.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     /// @param value   the value
     public static void set_float64(MemorySegment segment, long index, @CType("double") double value) { VH_float64.set(segment, 0L, index, value); }
     /// Sets `float64` with the given value.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param value   the value
     public static void set_float64(MemorySegment segment, @CType("double") double value) { VkPerformanceCounterResultKHR.set_float64(segment, 0L, value); }
     /// Sets `float64` with the given value at the given index.

@@ -33,7 +33,7 @@ import static overrungl.vulkan.VK14.*;
 /// ### priorityCount
 /// [VarHandle][#VH_priorityCount] - [Getter][#priorityCount()] - [Setter][#priorityCount(int)]
 /// ### priorities
-/// [Byte offset handle][#MH_priorities] - [Memory layout][#ML_priorities] - [Getter][#priorities(long)] - [Setter][#priorities(long, java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_priorities] - [Memory layout][#ML_priorities] - [Getter][#priorities()] - [Setter][#priorities(java.lang.foreign.MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -58,8 +58,8 @@ public final class VkQueueFamilyGlobalPriorityProperties extends Struct {
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `priorityCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_priorityCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("priorityCount"));
-    /// The byte offset handle of `priorities` of type `(long baseOffset, long elementIndex)long`.
-    public static final MethodHandle MH_priorities = LAYOUT.byteOffsetHandle(PathElement.groupElement("priorities"), PathElement.sequenceElement());
+    /// The byte offset of `priorities`.
+    public static final long OFFSET_priorities = LAYOUT.byteOffset(PathElement.groupElement("priorities"));
     /// The memory layout of `priorities`.
     public static final MemoryLayout ML_priorities = LAYOUT.select(PathElement.groupElement("priorities"));
 
@@ -97,6 +97,17 @@ public final class VkQueueFamilyGlobalPriorityProperties extends Struct {
     /// @param count     the count
     /// @return the allocated `VkQueueFamilyGlobalPriorityProperties`
     public static VkQueueFamilyGlobalPriorityProperties alloc(SegmentAllocator allocator, long count) { return new VkQueueFamilyGlobalPriorityProperties(allocator.allocate(LAYOUT, count)); }
+
+    /// Creates a slice of `VkQueueFamilyGlobalPriorityProperties`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkQueueFamilyGlobalPriorityProperties`
+    public VkQueueFamilyGlobalPriorityProperties asSlice(long index) { return new VkQueueFamilyGlobalPriorityProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkQueueFamilyGlobalPriorityProperties`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkQueueFamilyGlobalPriorityProperties`
+    public VkQueueFamilyGlobalPriorityProperties asSlice(long index, long count) { return new VkQueueFamilyGlobalPriorityProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -192,48 +203,34 @@ public final class VkQueueFamilyGlobalPriorityProperties extends Struct {
     public VkQueueFamilyGlobalPriorityProperties priorityCount(@CType("uint32_t") int value) { VkQueueFamilyGlobalPriorityProperties.set_priorityCount(this.segment(), value); return this; }
 
     /// {@return `priorities` at the given index}
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public static @CType("VkQueueGlobalPriority[VK_MAX_GLOBAL_PRIORITY_SIZE]") java.lang.foreign.MemorySegment get_priorities(MemorySegment segment, long index, long elementIndex) {
-        try { return segment.asSlice(LAYOUT.scale((long) MH_priorities.invokeExact(0L, elementIndex), index), ML_priorities); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("VkQueueGlobalPriority[VK_MAX_GLOBAL_PRIORITY_SIZE]") java.lang.foreign.MemorySegment get_priorities(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_priorities, index), ML_priorities); }
     /// {@return `priorities`}
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    public static @CType("VkQueueGlobalPriority[VK_MAX_GLOBAL_PRIORITY_SIZE]") java.lang.foreign.MemorySegment get_priorities(MemorySegment segment, long elementIndex) { return VkQueueFamilyGlobalPriorityProperties.get_priorities(segment, 0L, elementIndex); }
+    /// @param segment the segment of the struct
+    public static @CType("VkQueueGlobalPriority[VK_MAX_GLOBAL_PRIORITY_SIZE]") java.lang.foreign.MemorySegment get_priorities(MemorySegment segment) { return VkQueueFamilyGlobalPriorityProperties.get_priorities(segment, 0L); }
     /// {@return `priorities` at the given index}
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public @CType("VkQueueGlobalPriority[VK_MAX_GLOBAL_PRIORITY_SIZE]") java.lang.foreign.MemorySegment prioritiesAt(long index, long elementIndex) { return VkQueueFamilyGlobalPriorityProperties.get_priorities(this.segment(), index, elementIndex); }
+    /// @param index the index
+    public @CType("VkQueueGlobalPriority[VK_MAX_GLOBAL_PRIORITY_SIZE]") java.lang.foreign.MemorySegment prioritiesAt(long index) { return VkQueueFamilyGlobalPriorityProperties.get_priorities(this.segment(), index); }
     /// {@return `priorities`}
-    /// @param elementIndex the index of the element
-    public @CType("VkQueueGlobalPriority[VK_MAX_GLOBAL_PRIORITY_SIZE]") java.lang.foreign.MemorySegment priorities(long elementIndex) { return VkQueueFamilyGlobalPriorityProperties.get_priorities(this.segment(), elementIndex); }
+    public @CType("VkQueueGlobalPriority[VK_MAX_GLOBAL_PRIORITY_SIZE]") java.lang.foreign.MemorySegment priorities() { return VkQueueFamilyGlobalPriorityProperties.get_priorities(this.segment()); }
     /// Sets `priorities` with the given value at the given index.
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_priorities(MemorySegment segment, long index, long elementIndex, @CType("VkQueueGlobalPriority[VK_MAX_GLOBAL_PRIORITY_SIZE]") java.lang.foreign.MemorySegment value) {
-        try { MemorySegment.copy(value, 0L, segment, LAYOUT.scale((long) MH_priorities.invokeExact(0L, elementIndex), index), ML_priorities.byteSize()); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_priorities(MemorySegment segment, long index, @CType("VkQueueGlobalPriority[VK_MAX_GLOBAL_PRIORITY_SIZE]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_priorities, index), ML_priorities.byteSize()); }
     /// Sets `priorities` with the given value.
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_priorities(MemorySegment segment, long elementIndex, @CType("VkQueueGlobalPriority[VK_MAX_GLOBAL_PRIORITY_SIZE]") java.lang.foreign.MemorySegment value) { VkQueueFamilyGlobalPriorityProperties.set_priorities(segment, 0L, elementIndex, value); }
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_priorities(MemorySegment segment, @CType("VkQueueGlobalPriority[VK_MAX_GLOBAL_PRIORITY_SIZE]") java.lang.foreign.MemorySegment value) { VkQueueFamilyGlobalPriorityProperties.set_priorities(segment, 0L, value); }
     /// Sets `priorities` with the given value at the given index.
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param index the index
+    /// @param value the value
     /// @return `this`
-    public VkQueueFamilyGlobalPriorityProperties prioritiesAt(long index, long elementIndex, @CType("VkQueueGlobalPriority[VK_MAX_GLOBAL_PRIORITY_SIZE]") java.lang.foreign.MemorySegment value) { VkQueueFamilyGlobalPriorityProperties.set_priorities(this.segment(), index, elementIndex, value); return this; }
+    public VkQueueFamilyGlobalPriorityProperties prioritiesAt(long index, @CType("VkQueueGlobalPriority[VK_MAX_GLOBAL_PRIORITY_SIZE]") java.lang.foreign.MemorySegment value) { VkQueueFamilyGlobalPriorityProperties.set_priorities(this.segment(), index, value); return this; }
     /// Sets `priorities` with the given value.
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param value the value
     /// @return `this`
-    public VkQueueFamilyGlobalPriorityProperties priorities(long elementIndex, @CType("VkQueueGlobalPriority[VK_MAX_GLOBAL_PRIORITY_SIZE]") java.lang.foreign.MemorySegment value) { VkQueueFamilyGlobalPriorityProperties.set_priorities(this.segment(), elementIndex, value); return this; }
+    public VkQueueFamilyGlobalPriorityProperties priorities(@CType("VkQueueGlobalPriority[VK_MAX_GLOBAL_PRIORITY_SIZE]") java.lang.foreign.MemorySegment value) { VkQueueFamilyGlobalPriorityProperties.set_priorities(this.segment(), value); return this; }
 
 }

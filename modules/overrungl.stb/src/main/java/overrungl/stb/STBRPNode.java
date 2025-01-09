@@ -80,4 +80,15 @@ public final class STBRPNode extends Struct {
     /// @return the allocated `STBRPNode`
     public static STBRPNode alloc(SegmentAllocator allocator, long count) { return new STBRPNode(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `STBRPNode`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `STBRPNode`
+    public STBRPNode asSlice(long index) { return new STBRPNode(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `STBRPNode`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `STBRPNode`
+    public STBRPNode asSlice(long index, long count) { return new STBRPNode(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
 }

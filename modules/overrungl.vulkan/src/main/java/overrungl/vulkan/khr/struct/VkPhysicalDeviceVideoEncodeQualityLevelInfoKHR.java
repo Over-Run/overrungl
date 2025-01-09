@@ -95,6 +95,17 @@ public final class VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR extends Struct
     /// @return the allocated `VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR`
     public static VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR`
+    public VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR asSlice(long index) { return new VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR`
+    public VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR asSlice(long index, long count) { return new VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

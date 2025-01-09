@@ -123,6 +123,17 @@ public final class VkImageResolve2 extends Struct {
     /// @return the allocated `VkImageResolve2`
     public static VkImageResolve2 alloc(SegmentAllocator allocator, long count) { return new VkImageResolve2(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkImageResolve2`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkImageResolve2`
+    public VkImageResolve2 asSlice(long index) { return new VkImageResolve2(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkImageResolve2`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkImageResolve2`
+    public VkImageResolve2 asSlice(long index, long count) { return new VkImageResolve2(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

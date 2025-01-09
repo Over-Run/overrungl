@@ -27,7 +27,7 @@ import static overrungl.vulkan.VK10.*;
 
 /// ## Members
 /// ### pipelineIdentifier
-/// [Byte offset handle][#MH_pipelineIdentifier] - [Memory layout][#ML_pipelineIdentifier] - [Getter][#pipelineIdentifier(long)] - [Setter][#pipelineIdentifier(long, java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_pipelineIdentifier] - [Memory layout][#ML_pipelineIdentifier] - [Getter][#pipelineIdentifier()] - [Setter][#pipelineIdentifier(java.lang.foreign.MemorySegment)]
 /// ### pipelineMemorySize
 /// [VarHandle][#VH_pipelineMemorySize] - [Getter][#pipelineMemorySize()] - [Setter][#pipelineMemorySize(long)]
 /// ### jsonSize
@@ -64,8 +64,8 @@ public final class VkPipelineCacheSafetyCriticalIndexEntry extends Struct {
         ValueLayout.JAVA_INT.withName("stageIndexStride"),
         ValueLayout.JAVA_LONG.withName("stageIndexOffset")
     );
-    /// The byte offset handle of `pipelineIdentifier` of type `(long baseOffset, long elementIndex)long`.
-    public static final MethodHandle MH_pipelineIdentifier = LAYOUT.byteOffsetHandle(PathElement.groupElement("pipelineIdentifier"), PathElement.sequenceElement());
+    /// The byte offset of `pipelineIdentifier`.
+    public static final long OFFSET_pipelineIdentifier = LAYOUT.byteOffset(PathElement.groupElement("pipelineIdentifier"));
     /// The memory layout of `pipelineIdentifier`.
     public static final MemoryLayout ML_pipelineIdentifier = LAYOUT.select(PathElement.groupElement("pipelineIdentifier"));
     /// The [VarHandle] of `pipelineMemorySize` of type `(MemorySegment base, long baseOffset, long index)long`.
@@ -116,50 +116,47 @@ public final class VkPipelineCacheSafetyCriticalIndexEntry extends Struct {
     /// @return the allocated `VkPipelineCacheSafetyCriticalIndexEntry`
     public static VkPipelineCacheSafetyCriticalIndexEntry alloc(SegmentAllocator allocator, long count) { return new VkPipelineCacheSafetyCriticalIndexEntry(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPipelineCacheSafetyCriticalIndexEntry`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPipelineCacheSafetyCriticalIndexEntry`
+    public VkPipelineCacheSafetyCriticalIndexEntry asSlice(long index) { return new VkPipelineCacheSafetyCriticalIndexEntry(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPipelineCacheSafetyCriticalIndexEntry`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPipelineCacheSafetyCriticalIndexEntry`
+    public VkPipelineCacheSafetyCriticalIndexEntry asSlice(long index, long count) { return new VkPipelineCacheSafetyCriticalIndexEntry(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `pipelineIdentifier` at the given index}
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public static @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment get_pipelineIdentifier(MemorySegment segment, long index, long elementIndex) {
-        try { return segment.asSlice(LAYOUT.scale((long) MH_pipelineIdentifier.invokeExact(0L, elementIndex), index), ML_pipelineIdentifier); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment get_pipelineIdentifier(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_pipelineIdentifier, index), ML_pipelineIdentifier); }
     /// {@return `pipelineIdentifier`}
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    public static @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment get_pipelineIdentifier(MemorySegment segment, long elementIndex) { return VkPipelineCacheSafetyCriticalIndexEntry.get_pipelineIdentifier(segment, 0L, elementIndex); }
+    /// @param segment the segment of the struct
+    public static @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment get_pipelineIdentifier(MemorySegment segment) { return VkPipelineCacheSafetyCriticalIndexEntry.get_pipelineIdentifier(segment, 0L); }
     /// {@return `pipelineIdentifier` at the given index}
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment pipelineIdentifierAt(long index, long elementIndex) { return VkPipelineCacheSafetyCriticalIndexEntry.get_pipelineIdentifier(this.segment(), index, elementIndex); }
+    /// @param index the index
+    public @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment pipelineIdentifierAt(long index) { return VkPipelineCacheSafetyCriticalIndexEntry.get_pipelineIdentifier(this.segment(), index); }
     /// {@return `pipelineIdentifier`}
-    /// @param elementIndex the index of the element
-    public @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment pipelineIdentifier(long elementIndex) { return VkPipelineCacheSafetyCriticalIndexEntry.get_pipelineIdentifier(this.segment(), elementIndex); }
+    public @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment pipelineIdentifier() { return VkPipelineCacheSafetyCriticalIndexEntry.get_pipelineIdentifier(this.segment()); }
     /// Sets `pipelineIdentifier` with the given value at the given index.
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_pipelineIdentifier(MemorySegment segment, long index, long elementIndex, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) {
-        try { MemorySegment.copy(value, 0L, segment, LAYOUT.scale((long) MH_pipelineIdentifier.invokeExact(0L, elementIndex), index), ML_pipelineIdentifier.byteSize()); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_pipelineIdentifier(MemorySegment segment, long index, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_pipelineIdentifier, index), ML_pipelineIdentifier.byteSize()); }
     /// Sets `pipelineIdentifier` with the given value.
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_pipelineIdentifier(MemorySegment segment, long elementIndex, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPipelineCacheSafetyCriticalIndexEntry.set_pipelineIdentifier(segment, 0L, elementIndex, value); }
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_pipelineIdentifier(MemorySegment segment, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPipelineCacheSafetyCriticalIndexEntry.set_pipelineIdentifier(segment, 0L, value); }
     /// Sets `pipelineIdentifier` with the given value at the given index.
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param index the index
+    /// @param value the value
     /// @return `this`
-    public VkPipelineCacheSafetyCriticalIndexEntry pipelineIdentifierAt(long index, long elementIndex, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPipelineCacheSafetyCriticalIndexEntry.set_pipelineIdentifier(this.segment(), index, elementIndex, value); return this; }
+    public VkPipelineCacheSafetyCriticalIndexEntry pipelineIdentifierAt(long index, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPipelineCacheSafetyCriticalIndexEntry.set_pipelineIdentifier(this.segment(), index, value); return this; }
     /// Sets `pipelineIdentifier` with the given value.
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param value the value
     /// @return `this`
-    public VkPipelineCacheSafetyCriticalIndexEntry pipelineIdentifier(long elementIndex, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPipelineCacheSafetyCriticalIndexEntry.set_pipelineIdentifier(this.segment(), elementIndex, value); return this; }
+    public VkPipelineCacheSafetyCriticalIndexEntry pipelineIdentifier(@CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPipelineCacheSafetyCriticalIndexEntry.set_pipelineIdentifier(this.segment(), value); return this; }
 
     /// {@return `pipelineMemorySize` at the given index}
     /// @param segment the segment of the struct

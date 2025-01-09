@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT extends Stru
     /// @return the allocated `VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT`
     public static VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT`
+    public VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT asSlice(long index) { return new VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT`
+    public VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT asSlice(long index, long count) { return new VkPhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

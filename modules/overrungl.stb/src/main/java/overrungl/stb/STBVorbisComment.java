@@ -89,6 +89,17 @@ public final class STBVorbisComment extends Struct {
     /// @return the allocated `STBVorbisComment`
     public static STBVorbisComment alloc(SegmentAllocator allocator, long count) { return new STBVorbisComment(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `STBVorbisComment`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `STBVorbisComment`
+    public STBVorbisComment asSlice(long index) { return new STBVorbisComment(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `STBVorbisComment`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `STBVorbisComment`
+    public STBVorbisComment asSlice(long index, long count) { return new STBVorbisComment(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `vendor` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

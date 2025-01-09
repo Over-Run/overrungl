@@ -125,6 +125,17 @@ public final class VkWin32KeyedMutexAcquireReleaseInfoKHR extends Struct {
     /// @return the allocated `VkWin32KeyedMutexAcquireReleaseInfoKHR`
     public static VkWin32KeyedMutexAcquireReleaseInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkWin32KeyedMutexAcquireReleaseInfoKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkWin32KeyedMutexAcquireReleaseInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkWin32KeyedMutexAcquireReleaseInfoKHR`
+    public VkWin32KeyedMutexAcquireReleaseInfoKHR asSlice(long index) { return new VkWin32KeyedMutexAcquireReleaseInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkWin32KeyedMutexAcquireReleaseInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkWin32KeyedMutexAcquireReleaseInfoKHR`
+    public VkWin32KeyedMutexAcquireReleaseInfoKHR asSlice(long index, long count) { return new VkWin32KeyedMutexAcquireReleaseInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

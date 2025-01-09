@@ -107,6 +107,17 @@ public final class VkGraphicsShaderGroupCreateInfoNV extends Struct {
     /// @return the allocated `VkGraphicsShaderGroupCreateInfoNV`
     public static VkGraphicsShaderGroupCreateInfoNV alloc(SegmentAllocator allocator, long count) { return new VkGraphicsShaderGroupCreateInfoNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkGraphicsShaderGroupCreateInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkGraphicsShaderGroupCreateInfoNV`
+    public VkGraphicsShaderGroupCreateInfoNV asSlice(long index) { return new VkGraphicsShaderGroupCreateInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkGraphicsShaderGroupCreateInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkGraphicsShaderGroupCreateInfoNV`
+    public VkGraphicsShaderGroupCreateInfoNV asSlice(long index, long count) { return new VkGraphicsShaderGroupCreateInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

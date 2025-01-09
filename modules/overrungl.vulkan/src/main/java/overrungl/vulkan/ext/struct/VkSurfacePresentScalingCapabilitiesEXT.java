@@ -117,6 +117,17 @@ public final class VkSurfacePresentScalingCapabilitiesEXT extends Struct {
     /// @return the allocated `VkSurfacePresentScalingCapabilitiesEXT`
     public static VkSurfacePresentScalingCapabilitiesEXT alloc(SegmentAllocator allocator, long count) { return new VkSurfacePresentScalingCapabilitiesEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkSurfacePresentScalingCapabilitiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSurfacePresentScalingCapabilitiesEXT`
+    public VkSurfacePresentScalingCapabilitiesEXT asSlice(long index) { return new VkSurfacePresentScalingCapabilitiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkSurfacePresentScalingCapabilitiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSurfacePresentScalingCapabilitiesEXT`
+    public VkSurfacePresentScalingCapabilitiesEXT asSlice(long index, long count) { return new VkSurfacePresentScalingCapabilitiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

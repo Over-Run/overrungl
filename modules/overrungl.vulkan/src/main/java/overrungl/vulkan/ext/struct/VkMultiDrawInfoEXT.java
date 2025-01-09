@@ -83,6 +83,17 @@ public final class VkMultiDrawInfoEXT extends Struct {
     /// @return the allocated `VkMultiDrawInfoEXT`
     public static VkMultiDrawInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkMultiDrawInfoEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkMultiDrawInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkMultiDrawInfoEXT`
+    public VkMultiDrawInfoEXT asSlice(long index) { return new VkMultiDrawInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkMultiDrawInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkMultiDrawInfoEXT`
+    public VkMultiDrawInfoEXT asSlice(long index, long count) { return new VkMultiDrawInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `firstVertex` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

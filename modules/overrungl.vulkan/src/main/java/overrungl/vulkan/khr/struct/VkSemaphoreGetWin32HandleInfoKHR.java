@@ -95,6 +95,17 @@ public final class VkSemaphoreGetWin32HandleInfoKHR extends Struct {
     /// @return the allocated `VkSemaphoreGetWin32HandleInfoKHR`
     public static VkSemaphoreGetWin32HandleInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkSemaphoreGetWin32HandleInfoKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkSemaphoreGetWin32HandleInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSemaphoreGetWin32HandleInfoKHR`
+    public VkSemaphoreGetWin32HandleInfoKHR asSlice(long index) { return new VkSemaphoreGetWin32HandleInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkSemaphoreGetWin32HandleInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSemaphoreGetWin32HandleInfoKHR`
+    public VkSemaphoreGetWin32HandleInfoKHR asSlice(long index, long count) { return new VkSemaphoreGetWin32HandleInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -101,6 +101,17 @@ public final class VkShaderResourceUsageAMD extends Struct {
     /// @return the allocated `VkShaderResourceUsageAMD`
     public static VkShaderResourceUsageAMD alloc(SegmentAllocator allocator, long count) { return new VkShaderResourceUsageAMD(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkShaderResourceUsageAMD`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkShaderResourceUsageAMD`
+    public VkShaderResourceUsageAMD asSlice(long index) { return new VkShaderResourceUsageAMD(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkShaderResourceUsageAMD`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkShaderResourceUsageAMD`
+    public VkShaderResourceUsageAMD asSlice(long index, long count) { return new VkShaderResourceUsageAMD(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `numUsedVgprs` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

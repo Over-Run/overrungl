@@ -107,6 +107,17 @@ public final class VkPushDescriptorSetWithTemplateInfo extends Struct {
     /// @return the allocated `VkPushDescriptorSetWithTemplateInfo`
     public static VkPushDescriptorSetWithTemplateInfo alloc(SegmentAllocator allocator, long count) { return new VkPushDescriptorSetWithTemplateInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPushDescriptorSetWithTemplateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPushDescriptorSetWithTemplateInfo`
+    public VkPushDescriptorSetWithTemplateInfo asSlice(long index) { return new VkPushDescriptorSetWithTemplateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPushDescriptorSetWithTemplateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPushDescriptorSetWithTemplateInfo`
+    public VkPushDescriptorSetWithTemplateInfo asSlice(long index, long count) { return new VkPushDescriptorSetWithTemplateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

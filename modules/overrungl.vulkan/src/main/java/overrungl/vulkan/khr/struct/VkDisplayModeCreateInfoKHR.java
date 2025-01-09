@@ -97,6 +97,17 @@ public final class VkDisplayModeCreateInfoKHR extends Struct {
     /// @return the allocated `VkDisplayModeCreateInfoKHR`
     public static VkDisplayModeCreateInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkDisplayModeCreateInfoKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkDisplayModeCreateInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDisplayModeCreateInfoKHR`
+    public VkDisplayModeCreateInfoKHR asSlice(long index) { return new VkDisplayModeCreateInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkDisplayModeCreateInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDisplayModeCreateInfoKHR`
+    public VkDisplayModeCreateInfoKHR asSlice(long index, long count) { return new VkDisplayModeCreateInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -89,6 +89,17 @@ public final class VkCuModuleTexturingModeCreateInfoNVX extends Struct {
     /// @return the allocated `VkCuModuleTexturingModeCreateInfoNVX`
     public static VkCuModuleTexturingModeCreateInfoNVX alloc(SegmentAllocator allocator, long count) { return new VkCuModuleTexturingModeCreateInfoNVX(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkCuModuleTexturingModeCreateInfoNVX`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkCuModuleTexturingModeCreateInfoNVX`
+    public VkCuModuleTexturingModeCreateInfoNVX asSlice(long index) { return new VkCuModuleTexturingModeCreateInfoNVX(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkCuModuleTexturingModeCreateInfoNVX`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkCuModuleTexturingModeCreateInfoNVX`
+    public VkCuModuleTexturingModeCreateInfoNVX asSlice(long index, long count) { return new VkCuModuleTexturingModeCreateInfoNVX(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

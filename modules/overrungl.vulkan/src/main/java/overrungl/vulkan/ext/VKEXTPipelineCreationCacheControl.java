@@ -23,7 +23,7 @@ import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 import static overrungl.vulkan.VK13.*;
-public class VKEXTPipelineCreationCacheControl {
+public final class VKEXTPipelineCreationCacheControl {
     public static final int VK_EXT_PIPELINE_CREATION_CACHE_CONTROL_SPEC_VERSION = 3;
     public static final String VK_EXT_PIPELINE_CREATION_CACHE_CONTROL_EXTENSION_NAME = "VK_EXT_pipeline_creation_cache_control";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_CREATION_CACHE_CONTROL_FEATURES_EXT = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_CREATION_CACHE_CONTROL_FEATURES;
@@ -33,7 +33,6 @@ public class VKEXTPipelineCreationCacheControl {
     public static final int VK_ERROR_PIPELINE_COMPILE_REQUIRED_EXT = VK_PIPELINE_COMPILE_REQUIRED;
     public static final int VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT_EXT = VK_PIPELINE_CACHE_CREATE_EXTERNALLY_SYNCHRONIZED_BIT;
 
-    public VKEXTPipelineCreationCacheControl(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKEXTPipelineCreationCacheControl() { }
 
 }

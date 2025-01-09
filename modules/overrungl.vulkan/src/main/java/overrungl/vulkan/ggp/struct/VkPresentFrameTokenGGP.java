@@ -89,6 +89,17 @@ public final class VkPresentFrameTokenGGP extends Struct {
     /// @return the allocated `VkPresentFrameTokenGGP`
     public static VkPresentFrameTokenGGP alloc(SegmentAllocator allocator, long count) { return new VkPresentFrameTokenGGP(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPresentFrameTokenGGP`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPresentFrameTokenGGP`
+    public VkPresentFrameTokenGGP asSlice(long index) { return new VkPresentFrameTokenGGP(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPresentFrameTokenGGP`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPresentFrameTokenGGP`
+    public VkPresentFrameTokenGGP asSlice(long index, long count) { return new VkPresentFrameTokenGGP(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -83,6 +83,17 @@ public final class StdVideoEncodeAV1ExtensionHeader extends Struct {
     /// @return the allocated `StdVideoEncodeAV1ExtensionHeader`
     public static StdVideoEncodeAV1ExtensionHeader alloc(SegmentAllocator allocator, long count) { return new StdVideoEncodeAV1ExtensionHeader(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `StdVideoEncodeAV1ExtensionHeader`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoEncodeAV1ExtensionHeader`
+    public StdVideoEncodeAV1ExtensionHeader asSlice(long index) { return new StdVideoEncodeAV1ExtensionHeader(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `StdVideoEncodeAV1ExtensionHeader`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoEncodeAV1ExtensionHeader`
+    public StdVideoEncodeAV1ExtensionHeader asSlice(long index, long count) { return new StdVideoEncodeAV1ExtensionHeader(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `temporal_id` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

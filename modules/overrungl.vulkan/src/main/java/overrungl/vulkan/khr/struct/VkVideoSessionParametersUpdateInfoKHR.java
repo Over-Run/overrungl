@@ -89,6 +89,17 @@ public final class VkVideoSessionParametersUpdateInfoKHR extends Struct {
     /// @return the allocated `VkVideoSessionParametersUpdateInfoKHR`
     public static VkVideoSessionParametersUpdateInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoSessionParametersUpdateInfoKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkVideoSessionParametersUpdateInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkVideoSessionParametersUpdateInfoKHR`
+    public VkVideoSessionParametersUpdateInfoKHR asSlice(long index) { return new VkVideoSessionParametersUpdateInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkVideoSessionParametersUpdateInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkVideoSessionParametersUpdateInfoKHR`
+    public VkVideoSessionParametersUpdateInfoKHR asSlice(long index, long count) { return new VkVideoSessionParametersUpdateInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

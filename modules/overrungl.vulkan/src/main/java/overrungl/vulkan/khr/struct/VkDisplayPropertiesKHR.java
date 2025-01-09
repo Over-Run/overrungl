@@ -117,6 +117,17 @@ public final class VkDisplayPropertiesKHR extends Struct {
     /// @return the allocated `VkDisplayPropertiesKHR`
     public static VkDisplayPropertiesKHR alloc(SegmentAllocator allocator, long count) { return new VkDisplayPropertiesKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkDisplayPropertiesKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDisplayPropertiesKHR`
+    public VkDisplayPropertiesKHR asSlice(long index) { return new VkDisplayPropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkDisplayPropertiesKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDisplayPropertiesKHR`
+    public VkDisplayPropertiesKHR asSlice(long index, long count) { return new VkDisplayPropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `display` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

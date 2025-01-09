@@ -31,7 +31,7 @@ import static overrungl.vulkan.VK11.*;
 /// ### pNext
 /// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
 /// ### presentMask
-/// [Byte offset handle][#MH_presentMask] - [Memory layout][#ML_presentMask] - [Getter][#presentMask(long)] - [Setter][#presentMask(long, java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_presentMask] - [Memory layout][#ML_presentMask] - [Getter][#presentMask()] - [Setter][#presentMask(java.lang.foreign.MemorySegment)]
 /// ### modes
 /// [VarHandle][#VH_modes] - [Getter][#modes()] - [Setter][#modes(int)]
 /// ## Layout
@@ -56,8 +56,8 @@ public final class VkDeviceGroupPresentCapabilitiesKHR extends Struct {
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset handle of `presentMask` of type `(long baseOffset, long elementIndex)long`.
-    public static final MethodHandle MH_presentMask = LAYOUT.byteOffsetHandle(PathElement.groupElement("presentMask"), PathElement.sequenceElement());
+    /// The byte offset of `presentMask`.
+    public static final long OFFSET_presentMask = LAYOUT.byteOffset(PathElement.groupElement("presentMask"));
     /// The memory layout of `presentMask`.
     public static final MemoryLayout ML_presentMask = LAYOUT.select(PathElement.groupElement("presentMask"));
     /// The [VarHandle] of `modes` of type `(MemorySegment base, long baseOffset, long index)int`.
@@ -97,6 +97,17 @@ public final class VkDeviceGroupPresentCapabilitiesKHR extends Struct {
     /// @param count     the count
     /// @return the allocated `VkDeviceGroupPresentCapabilitiesKHR`
     public static VkDeviceGroupPresentCapabilitiesKHR alloc(SegmentAllocator allocator, long count) { return new VkDeviceGroupPresentCapabilitiesKHR(allocator.allocate(LAYOUT, count)); }
+
+    /// Creates a slice of `VkDeviceGroupPresentCapabilitiesKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDeviceGroupPresentCapabilitiesKHR`
+    public VkDeviceGroupPresentCapabilitiesKHR asSlice(long index) { return new VkDeviceGroupPresentCapabilitiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkDeviceGroupPresentCapabilitiesKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDeviceGroupPresentCapabilitiesKHR`
+    public VkDeviceGroupPresentCapabilitiesKHR asSlice(long index, long count) { return new VkDeviceGroupPresentCapabilitiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -161,49 +172,35 @@ public final class VkDeviceGroupPresentCapabilitiesKHR extends Struct {
     public VkDeviceGroupPresentCapabilitiesKHR pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkDeviceGroupPresentCapabilitiesKHR.set_pNext(this.segment(), value); return this; }
 
     /// {@return `presentMask` at the given index}
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public static @CType("uint32_t[VK_MAX_DEVICE_GROUP_SIZE]") java.lang.foreign.MemorySegment get_presentMask(MemorySegment segment, long index, long elementIndex) {
-        try { return segment.asSlice(LAYOUT.scale((long) MH_presentMask.invokeExact(0L, elementIndex), index), ML_presentMask); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("uint32_t[VK_MAX_DEVICE_GROUP_SIZE]") java.lang.foreign.MemorySegment get_presentMask(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_presentMask, index), ML_presentMask); }
     /// {@return `presentMask`}
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    public static @CType("uint32_t[VK_MAX_DEVICE_GROUP_SIZE]") java.lang.foreign.MemorySegment get_presentMask(MemorySegment segment, long elementIndex) { return VkDeviceGroupPresentCapabilitiesKHR.get_presentMask(segment, 0L, elementIndex); }
+    /// @param segment the segment of the struct
+    public static @CType("uint32_t[VK_MAX_DEVICE_GROUP_SIZE]") java.lang.foreign.MemorySegment get_presentMask(MemorySegment segment) { return VkDeviceGroupPresentCapabilitiesKHR.get_presentMask(segment, 0L); }
     /// {@return `presentMask` at the given index}
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public @CType("uint32_t[VK_MAX_DEVICE_GROUP_SIZE]") java.lang.foreign.MemorySegment presentMaskAt(long index, long elementIndex) { return VkDeviceGroupPresentCapabilitiesKHR.get_presentMask(this.segment(), index, elementIndex); }
+    /// @param index the index
+    public @CType("uint32_t[VK_MAX_DEVICE_GROUP_SIZE]") java.lang.foreign.MemorySegment presentMaskAt(long index) { return VkDeviceGroupPresentCapabilitiesKHR.get_presentMask(this.segment(), index); }
     /// {@return `presentMask`}
-    /// @param elementIndex the index of the element
-    public @CType("uint32_t[VK_MAX_DEVICE_GROUP_SIZE]") java.lang.foreign.MemorySegment presentMask(long elementIndex) { return VkDeviceGroupPresentCapabilitiesKHR.get_presentMask(this.segment(), elementIndex); }
+    public @CType("uint32_t[VK_MAX_DEVICE_GROUP_SIZE]") java.lang.foreign.MemorySegment presentMask() { return VkDeviceGroupPresentCapabilitiesKHR.get_presentMask(this.segment()); }
     /// Sets `presentMask` with the given value at the given index.
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_presentMask(MemorySegment segment, long index, long elementIndex, @CType("uint32_t[VK_MAX_DEVICE_GROUP_SIZE]") java.lang.foreign.MemorySegment value) {
-        try { MemorySegment.copy(value, 0L, segment, LAYOUT.scale((long) MH_presentMask.invokeExact(0L, elementIndex), index), ML_presentMask.byteSize()); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_presentMask(MemorySegment segment, long index, @CType("uint32_t[VK_MAX_DEVICE_GROUP_SIZE]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_presentMask, index), ML_presentMask.byteSize()); }
     /// Sets `presentMask` with the given value.
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_presentMask(MemorySegment segment, long elementIndex, @CType("uint32_t[VK_MAX_DEVICE_GROUP_SIZE]") java.lang.foreign.MemorySegment value) { VkDeviceGroupPresentCapabilitiesKHR.set_presentMask(segment, 0L, elementIndex, value); }
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_presentMask(MemorySegment segment, @CType("uint32_t[VK_MAX_DEVICE_GROUP_SIZE]") java.lang.foreign.MemorySegment value) { VkDeviceGroupPresentCapabilitiesKHR.set_presentMask(segment, 0L, value); }
     /// Sets `presentMask` with the given value at the given index.
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param index the index
+    /// @param value the value
     /// @return `this`
-    public VkDeviceGroupPresentCapabilitiesKHR presentMaskAt(long index, long elementIndex, @CType("uint32_t[VK_MAX_DEVICE_GROUP_SIZE]") java.lang.foreign.MemorySegment value) { VkDeviceGroupPresentCapabilitiesKHR.set_presentMask(this.segment(), index, elementIndex, value); return this; }
+    public VkDeviceGroupPresentCapabilitiesKHR presentMaskAt(long index, @CType("uint32_t[VK_MAX_DEVICE_GROUP_SIZE]") java.lang.foreign.MemorySegment value) { VkDeviceGroupPresentCapabilitiesKHR.set_presentMask(this.segment(), index, value); return this; }
     /// Sets `presentMask` with the given value.
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param value the value
     /// @return `this`
-    public VkDeviceGroupPresentCapabilitiesKHR presentMask(long elementIndex, @CType("uint32_t[VK_MAX_DEVICE_GROUP_SIZE]") java.lang.foreign.MemorySegment value) { VkDeviceGroupPresentCapabilitiesKHR.set_presentMask(this.segment(), elementIndex, value); return this; }
+    public VkDeviceGroupPresentCapabilitiesKHR presentMask(@CType("uint32_t[VK_MAX_DEVICE_GROUP_SIZE]") java.lang.foreign.MemorySegment value) { VkDeviceGroupPresentCapabilitiesKHR.set_presentMask(this.segment(), value); return this; }
 
     /// {@return `modes` at the given index}
     /// @param segment the segment of the struct

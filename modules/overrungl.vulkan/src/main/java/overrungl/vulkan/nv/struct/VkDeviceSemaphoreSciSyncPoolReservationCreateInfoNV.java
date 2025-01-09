@@ -89,6 +89,17 @@ public final class VkDeviceSemaphoreSciSyncPoolReservationCreateInfoNV extends S
     /// @return the allocated `VkDeviceSemaphoreSciSyncPoolReservationCreateInfoNV`
     public static VkDeviceSemaphoreSciSyncPoolReservationCreateInfoNV alloc(SegmentAllocator allocator, long count) { return new VkDeviceSemaphoreSciSyncPoolReservationCreateInfoNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkDeviceSemaphoreSciSyncPoolReservationCreateInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDeviceSemaphoreSciSyncPoolReservationCreateInfoNV`
+    public VkDeviceSemaphoreSciSyncPoolReservationCreateInfoNV asSlice(long index) { return new VkDeviceSemaphoreSciSyncPoolReservationCreateInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkDeviceSemaphoreSciSyncPoolReservationCreateInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDeviceSemaphoreSciSyncPoolReservationCreateInfoNV`
+    public VkDeviceSemaphoreSciSyncPoolReservationCreateInfoNV asSlice(long index, long count) { return new VkDeviceSemaphoreSciSyncPoolReservationCreateInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

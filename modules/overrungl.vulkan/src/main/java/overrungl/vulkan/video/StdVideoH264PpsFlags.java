@@ -119,6 +119,17 @@ public final class StdVideoH264PpsFlags extends Struct {
     /// @return the allocated `StdVideoH264PpsFlags`
     public static StdVideoH264PpsFlags alloc(SegmentAllocator allocator, long count) { return new StdVideoH264PpsFlags(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `StdVideoH264PpsFlags`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoH264PpsFlags`
+    public StdVideoH264PpsFlags asSlice(long index) { return new StdVideoH264PpsFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `StdVideoH264PpsFlags`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoH264PpsFlags`
+    public StdVideoH264PpsFlags asSlice(long index, long count) { return new StdVideoH264PpsFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `transform_8x8_mode_flag` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

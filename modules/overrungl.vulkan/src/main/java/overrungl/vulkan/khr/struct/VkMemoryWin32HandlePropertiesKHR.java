@@ -89,6 +89,17 @@ public final class VkMemoryWin32HandlePropertiesKHR extends Struct {
     /// @return the allocated `VkMemoryWin32HandlePropertiesKHR`
     public static VkMemoryWin32HandlePropertiesKHR alloc(SegmentAllocator allocator, long count) { return new VkMemoryWin32HandlePropertiesKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkMemoryWin32HandlePropertiesKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkMemoryWin32HandlePropertiesKHR`
+    public VkMemoryWin32HandlePropertiesKHR asSlice(long index) { return new VkMemoryWin32HandlePropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkMemoryWin32HandlePropertiesKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkMemoryWin32HandlePropertiesKHR`
+    public VkMemoryWin32HandlePropertiesKHR asSlice(long index, long count) { return new VkMemoryWin32HandlePropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

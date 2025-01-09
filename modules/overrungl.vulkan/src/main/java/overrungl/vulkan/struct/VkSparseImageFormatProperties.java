@@ -91,6 +91,17 @@ public final class VkSparseImageFormatProperties extends Struct {
     /// @return the allocated `VkSparseImageFormatProperties`
     public static VkSparseImageFormatProperties alloc(SegmentAllocator allocator, long count) { return new VkSparseImageFormatProperties(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkSparseImageFormatProperties`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSparseImageFormatProperties`
+    public VkSparseImageFormatProperties asSlice(long index) { return new VkSparseImageFormatProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkSparseImageFormatProperties`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSparseImageFormatProperties`
+    public VkSparseImageFormatProperties asSlice(long index, long count) { return new VkSparseImageFormatProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `aspectMask` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

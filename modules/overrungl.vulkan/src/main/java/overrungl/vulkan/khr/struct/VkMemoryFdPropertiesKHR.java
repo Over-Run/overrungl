@@ -89,6 +89,17 @@ public final class VkMemoryFdPropertiesKHR extends Struct {
     /// @return the allocated `VkMemoryFdPropertiesKHR`
     public static VkMemoryFdPropertiesKHR alloc(SegmentAllocator allocator, long count) { return new VkMemoryFdPropertiesKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkMemoryFdPropertiesKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkMemoryFdPropertiesKHR`
+    public VkMemoryFdPropertiesKHR asSlice(long index) { return new VkMemoryFdPropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkMemoryFdPropertiesKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkMemoryFdPropertiesKHR`
+    public VkMemoryFdPropertiesKHR asSlice(long index, long count) { return new VkMemoryFdPropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

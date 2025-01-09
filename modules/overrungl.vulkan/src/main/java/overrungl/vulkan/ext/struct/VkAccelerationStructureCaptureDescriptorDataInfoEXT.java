@@ -95,6 +95,17 @@ public final class VkAccelerationStructureCaptureDescriptorDataInfoEXT extends S
     /// @return the allocated `VkAccelerationStructureCaptureDescriptorDataInfoEXT`
     public static VkAccelerationStructureCaptureDescriptorDataInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkAccelerationStructureCaptureDescriptorDataInfoEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkAccelerationStructureCaptureDescriptorDataInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkAccelerationStructureCaptureDescriptorDataInfoEXT`
+    public VkAccelerationStructureCaptureDescriptorDataInfoEXT asSlice(long index) { return new VkAccelerationStructureCaptureDescriptorDataInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkAccelerationStructureCaptureDescriptorDataInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkAccelerationStructureCaptureDescriptorDataInfoEXT`
+    public VkAccelerationStructureCaptureDescriptorDataInfoEXT asSlice(long index, long count) { return new VkAccelerationStructureCaptureDescriptorDataInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

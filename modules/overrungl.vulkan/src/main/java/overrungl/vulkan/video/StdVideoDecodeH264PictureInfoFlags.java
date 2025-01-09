@@ -107,6 +107,17 @@ public final class StdVideoDecodeH264PictureInfoFlags extends Struct {
     /// @return the allocated `StdVideoDecodeH264PictureInfoFlags`
     public static StdVideoDecodeH264PictureInfoFlags alloc(SegmentAllocator allocator, long count) { return new StdVideoDecodeH264PictureInfoFlags(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `StdVideoDecodeH264PictureInfoFlags`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoDecodeH264PictureInfoFlags`
+    public StdVideoDecodeH264PictureInfoFlags asSlice(long index) { return new StdVideoDecodeH264PictureInfoFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `StdVideoDecodeH264PictureInfoFlags`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoDecodeH264PictureInfoFlags`
+    public StdVideoDecodeH264PictureInfoFlags asSlice(long index, long count) { return new StdVideoDecodeH264PictureInfoFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `field_pic_flag` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

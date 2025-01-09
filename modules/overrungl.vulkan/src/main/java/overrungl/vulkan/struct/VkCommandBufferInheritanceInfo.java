@@ -119,6 +119,17 @@ public final class VkCommandBufferInheritanceInfo extends Struct {
     /// @return the allocated `VkCommandBufferInheritanceInfo`
     public static VkCommandBufferInheritanceInfo alloc(SegmentAllocator allocator, long count) { return new VkCommandBufferInheritanceInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkCommandBufferInheritanceInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkCommandBufferInheritanceInfo`
+    public VkCommandBufferInheritanceInfo asSlice(long index) { return new VkCommandBufferInheritanceInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkCommandBufferInheritanceInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkCommandBufferInheritanceInfo`
+    public VkCommandBufferInheritanceInfo asSlice(long index, long count) { return new VkCommandBufferInheritanceInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

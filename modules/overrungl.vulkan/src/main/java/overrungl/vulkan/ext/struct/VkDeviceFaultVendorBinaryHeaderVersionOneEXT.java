@@ -37,7 +37,7 @@ import static overrungl.vulkan.VK10.*;
 /// ### driverVersion
 /// [VarHandle][#VH_driverVersion] - [Getter][#driverVersion()] - [Setter][#driverVersion(int)]
 /// ### pipelineCacheUUID
-/// [Byte offset handle][#MH_pipelineCacheUUID] - [Memory layout][#ML_pipelineCacheUUID] - [Getter][#pipelineCacheUUID(long)] - [Setter][#pipelineCacheUUID(long, java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_pipelineCacheUUID] - [Memory layout][#ML_pipelineCacheUUID] - [Getter][#pipelineCacheUUID()] - [Setter][#pipelineCacheUUID(java.lang.foreign.MemorySegment)]
 /// ### applicationNameOffset
 /// [VarHandle][#VH_applicationNameOffset] - [Getter][#applicationNameOffset()] - [Setter][#applicationNameOffset(int)]
 /// ### applicationVersion
@@ -90,8 +90,8 @@ public final class VkDeviceFaultVendorBinaryHeaderVersionOneEXT extends Struct {
     public static final VarHandle VH_deviceID = LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceID"));
     /// The [VarHandle] of `driverVersion` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_driverVersion = LAYOUT.arrayElementVarHandle(PathElement.groupElement("driverVersion"));
-    /// The byte offset handle of `pipelineCacheUUID` of type `(long baseOffset, long elementIndex)long`.
-    public static final MethodHandle MH_pipelineCacheUUID = LAYOUT.byteOffsetHandle(PathElement.groupElement("pipelineCacheUUID"), PathElement.sequenceElement());
+    /// The byte offset of `pipelineCacheUUID`.
+    public static final long OFFSET_pipelineCacheUUID = LAYOUT.byteOffset(PathElement.groupElement("pipelineCacheUUID"));
     /// The memory layout of `pipelineCacheUUID`.
     public static final MemoryLayout ML_pipelineCacheUUID = LAYOUT.select(PathElement.groupElement("pipelineCacheUUID"));
     /// The [VarHandle] of `applicationNameOffset` of type `(MemorySegment base, long baseOffset, long index)int`.
@@ -139,6 +139,17 @@ public final class VkDeviceFaultVendorBinaryHeaderVersionOneEXT extends Struct {
     /// @param count     the count
     /// @return the allocated `VkDeviceFaultVendorBinaryHeaderVersionOneEXT`
     public static VkDeviceFaultVendorBinaryHeaderVersionOneEXT alloc(SegmentAllocator allocator, long count) { return new VkDeviceFaultVendorBinaryHeaderVersionOneEXT(allocator.allocate(LAYOUT, count)); }
+
+    /// Creates a slice of `VkDeviceFaultVendorBinaryHeaderVersionOneEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDeviceFaultVendorBinaryHeaderVersionOneEXT`
+    public VkDeviceFaultVendorBinaryHeaderVersionOneEXT asSlice(long index) { return new VkDeviceFaultVendorBinaryHeaderVersionOneEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkDeviceFaultVendorBinaryHeaderVersionOneEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDeviceFaultVendorBinaryHeaderVersionOneEXT`
+    public VkDeviceFaultVendorBinaryHeaderVersionOneEXT asSlice(long index, long count) { return new VkDeviceFaultVendorBinaryHeaderVersionOneEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
 
     /// {@return `headerSize` at the given index}
     /// @param segment the segment of the struct
@@ -296,49 +307,35 @@ public final class VkDeviceFaultVendorBinaryHeaderVersionOneEXT extends Struct {
     public VkDeviceFaultVendorBinaryHeaderVersionOneEXT driverVersion(@CType("uint32_t") int value) { VkDeviceFaultVendorBinaryHeaderVersionOneEXT.set_driverVersion(this.segment(), value); return this; }
 
     /// {@return `pipelineCacheUUID` at the given index}
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public static @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment get_pipelineCacheUUID(MemorySegment segment, long index, long elementIndex) {
-        try { return segment.asSlice(LAYOUT.scale((long) MH_pipelineCacheUUID.invokeExact(0L, elementIndex), index), ML_pipelineCacheUUID); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment get_pipelineCacheUUID(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_pipelineCacheUUID, index), ML_pipelineCacheUUID); }
     /// {@return `pipelineCacheUUID`}
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    public static @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment get_pipelineCacheUUID(MemorySegment segment, long elementIndex) { return VkDeviceFaultVendorBinaryHeaderVersionOneEXT.get_pipelineCacheUUID(segment, 0L, elementIndex); }
+    /// @param segment the segment of the struct
+    public static @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment get_pipelineCacheUUID(MemorySegment segment) { return VkDeviceFaultVendorBinaryHeaderVersionOneEXT.get_pipelineCacheUUID(segment, 0L); }
     /// {@return `pipelineCacheUUID` at the given index}
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment pipelineCacheUUIDAt(long index, long elementIndex) { return VkDeviceFaultVendorBinaryHeaderVersionOneEXT.get_pipelineCacheUUID(this.segment(), index, elementIndex); }
+    /// @param index the index
+    public @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment pipelineCacheUUIDAt(long index) { return VkDeviceFaultVendorBinaryHeaderVersionOneEXT.get_pipelineCacheUUID(this.segment(), index); }
     /// {@return `pipelineCacheUUID`}
-    /// @param elementIndex the index of the element
-    public @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment pipelineCacheUUID(long elementIndex) { return VkDeviceFaultVendorBinaryHeaderVersionOneEXT.get_pipelineCacheUUID(this.segment(), elementIndex); }
+    public @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment pipelineCacheUUID() { return VkDeviceFaultVendorBinaryHeaderVersionOneEXT.get_pipelineCacheUUID(this.segment()); }
     /// Sets `pipelineCacheUUID` with the given value at the given index.
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_pipelineCacheUUID(MemorySegment segment, long index, long elementIndex, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) {
-        try { MemorySegment.copy(value, 0L, segment, LAYOUT.scale((long) MH_pipelineCacheUUID.invokeExact(0L, elementIndex), index), ML_pipelineCacheUUID.byteSize()); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_pipelineCacheUUID(MemorySegment segment, long index, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_pipelineCacheUUID, index), ML_pipelineCacheUUID.byteSize()); }
     /// Sets `pipelineCacheUUID` with the given value.
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_pipelineCacheUUID(MemorySegment segment, long elementIndex, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkDeviceFaultVendorBinaryHeaderVersionOneEXT.set_pipelineCacheUUID(segment, 0L, elementIndex, value); }
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_pipelineCacheUUID(MemorySegment segment, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkDeviceFaultVendorBinaryHeaderVersionOneEXT.set_pipelineCacheUUID(segment, 0L, value); }
     /// Sets `pipelineCacheUUID` with the given value at the given index.
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param index the index
+    /// @param value the value
     /// @return `this`
-    public VkDeviceFaultVendorBinaryHeaderVersionOneEXT pipelineCacheUUIDAt(long index, long elementIndex, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkDeviceFaultVendorBinaryHeaderVersionOneEXT.set_pipelineCacheUUID(this.segment(), index, elementIndex, value); return this; }
+    public VkDeviceFaultVendorBinaryHeaderVersionOneEXT pipelineCacheUUIDAt(long index, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkDeviceFaultVendorBinaryHeaderVersionOneEXT.set_pipelineCacheUUID(this.segment(), index, value); return this; }
     /// Sets `pipelineCacheUUID` with the given value.
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param value the value
     /// @return `this`
-    public VkDeviceFaultVendorBinaryHeaderVersionOneEXT pipelineCacheUUID(long elementIndex, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkDeviceFaultVendorBinaryHeaderVersionOneEXT.set_pipelineCacheUUID(this.segment(), elementIndex, value); return this; }
+    public VkDeviceFaultVendorBinaryHeaderVersionOneEXT pipelineCacheUUID(@CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkDeviceFaultVendorBinaryHeaderVersionOneEXT.set_pipelineCacheUUID(this.segment(), value); return this; }
 
     /// {@return `applicationNameOffset` at the given index}
     /// @param segment the segment of the struct

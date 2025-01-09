@@ -101,6 +101,17 @@ public final class VkCommandBufferInheritanceViewportScissorInfoNV extends Struc
     /// @return the allocated `VkCommandBufferInheritanceViewportScissorInfoNV`
     public static VkCommandBufferInheritanceViewportScissorInfoNV alloc(SegmentAllocator allocator, long count) { return new VkCommandBufferInheritanceViewportScissorInfoNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkCommandBufferInheritanceViewportScissorInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkCommandBufferInheritanceViewportScissorInfoNV`
+    public VkCommandBufferInheritanceViewportScissorInfoNV asSlice(long index) { return new VkCommandBufferInheritanceViewportScissorInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkCommandBufferInheritanceViewportScissorInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkCommandBufferInheritanceViewportScissorInfoNV`
+    public VkCommandBufferInheritanceViewportScissorInfoNV asSlice(long index, long count) { return new VkCommandBufferInheritanceViewportScissorInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

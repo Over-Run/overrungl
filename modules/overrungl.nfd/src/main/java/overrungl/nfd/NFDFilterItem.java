@@ -83,6 +83,17 @@ public final class NFDFilterItem extends Struct {
     /// @return the allocated `NFDFilterItem`
     public static NFDFilterItem alloc(SegmentAllocator allocator, long count) { return new NFDFilterItem(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `NFDFilterItem`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `NFDFilterItem`
+    public NFDFilterItem asSlice(long index) { return new NFDFilterItem(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `NFDFilterItem`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `NFDFilterItem`
+    public NFDFilterItem asSlice(long index, long count) { return new NFDFilterItem(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `name` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

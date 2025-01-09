@@ -95,6 +95,17 @@ public final class VkCommandPoolCreateInfo extends Struct {
     /// @return the allocated `VkCommandPoolCreateInfo`
     public static VkCommandPoolCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkCommandPoolCreateInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkCommandPoolCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkCommandPoolCreateInfo`
+    public VkCommandPoolCreateInfo asSlice(long index) { return new VkCommandPoolCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkCommandPoolCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkCommandPoolCreateInfo`
+    public VkCommandPoolCreateInfo asSlice(long index, long count) { return new VkCommandPoolCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

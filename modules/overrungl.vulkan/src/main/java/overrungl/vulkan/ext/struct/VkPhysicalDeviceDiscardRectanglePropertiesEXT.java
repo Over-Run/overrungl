@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceDiscardRectanglePropertiesEXT extends Struct 
     /// @return the allocated `VkPhysicalDeviceDiscardRectanglePropertiesEXT`
     public static VkPhysicalDeviceDiscardRectanglePropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceDiscardRectanglePropertiesEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceDiscardRectanglePropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceDiscardRectanglePropertiesEXT`
+    public VkPhysicalDeviceDiscardRectanglePropertiesEXT asSlice(long index) { return new VkPhysicalDeviceDiscardRectanglePropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceDiscardRectanglePropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceDiscardRectanglePropertiesEXT`
+    public VkPhysicalDeviceDiscardRectanglePropertiesEXT asSlice(long index, long count) { return new VkPhysicalDeviceDiscardRectanglePropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -143,6 +143,17 @@ public final class StdVideoEncodeH265PictureInfo extends Struct {
     /// @return the allocated `StdVideoEncodeH265PictureInfo`
     public static StdVideoEncodeH265PictureInfo alloc(SegmentAllocator allocator, long count) { return new StdVideoEncodeH265PictureInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `StdVideoEncodeH265PictureInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoEncodeH265PictureInfo`
+    public StdVideoEncodeH265PictureInfo asSlice(long index) { return new StdVideoEncodeH265PictureInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `StdVideoEncodeH265PictureInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoEncodeH265PictureInfo`
+    public StdVideoEncodeH265PictureInfo asSlice(long index, long count) { return new StdVideoEncodeH265PictureInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

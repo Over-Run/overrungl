@@ -23,13 +23,12 @@ import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 import static overrungl.vulkan.google.VKGOOGLEHlslFunctionality1.*;
-public class VKGOOGLEHlslFunctionality1 {
+public final class VKGOOGLEHlslFunctionality1 {
     public static final int VK_GOOGLE_HLSL_FUNCTIONALITY_1_SPEC_VERSION = 1;
     public static final String VK_GOOGLE_HLSL_FUNCTIONALITY_1_EXTENSION_NAME = "VK_GOOGLE_hlsl_functionality1";
     public static final int VK_GOOGLE_HLSL_FUNCTIONALITY1_SPEC_VERSION = VK_GOOGLE_HLSL_FUNCTIONALITY_1_SPEC_VERSION;
     public static final String VK_GOOGLE_HLSL_FUNCTIONALITY1_EXTENSION_NAME = VK_GOOGLE_HLSL_FUNCTIONALITY_1_EXTENSION_NAME;
 
-    public VKGOOGLEHlslFunctionality1(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKGOOGLEHlslFunctionality1() { }
 
 }

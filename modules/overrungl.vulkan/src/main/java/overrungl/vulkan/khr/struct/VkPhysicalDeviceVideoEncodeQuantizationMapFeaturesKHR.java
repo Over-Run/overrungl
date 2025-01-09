@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceVideoEncodeQuantizationMapFeaturesKHR extends
     /// @return the allocated `VkPhysicalDeviceVideoEncodeQuantizationMapFeaturesKHR`
     public static VkPhysicalDeviceVideoEncodeQuantizationMapFeaturesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceVideoEncodeQuantizationMapFeaturesKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceVideoEncodeQuantizationMapFeaturesKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceVideoEncodeQuantizationMapFeaturesKHR`
+    public VkPhysicalDeviceVideoEncodeQuantizationMapFeaturesKHR asSlice(long index) { return new VkPhysicalDeviceVideoEncodeQuantizationMapFeaturesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceVideoEncodeQuantizationMapFeaturesKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceVideoEncodeQuantizationMapFeaturesKHR`
+    public VkPhysicalDeviceVideoEncodeQuantizationMapFeaturesKHR asSlice(long index, long count) { return new VkPhysicalDeviceVideoEncodeQuantizationMapFeaturesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

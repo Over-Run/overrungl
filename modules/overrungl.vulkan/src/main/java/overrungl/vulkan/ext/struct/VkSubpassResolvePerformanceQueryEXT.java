@@ -89,6 +89,17 @@ public final class VkSubpassResolvePerformanceQueryEXT extends Struct {
     /// @return the allocated `VkSubpassResolvePerformanceQueryEXT`
     public static VkSubpassResolvePerformanceQueryEXT alloc(SegmentAllocator allocator, long count) { return new VkSubpassResolvePerformanceQueryEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkSubpassResolvePerformanceQueryEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSubpassResolvePerformanceQueryEXT`
+    public VkSubpassResolvePerformanceQueryEXT asSlice(long index) { return new VkSubpassResolvePerformanceQueryEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkSubpassResolvePerformanceQueryEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSubpassResolvePerformanceQueryEXT`
+    public VkSubpassResolvePerformanceQueryEXT asSlice(long index, long count) { return new VkSubpassResolvePerformanceQueryEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

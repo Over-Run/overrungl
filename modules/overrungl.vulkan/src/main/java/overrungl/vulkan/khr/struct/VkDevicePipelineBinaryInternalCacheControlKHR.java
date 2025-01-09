@@ -89,6 +89,17 @@ public final class VkDevicePipelineBinaryInternalCacheControlKHR extends Struct 
     /// @return the allocated `VkDevicePipelineBinaryInternalCacheControlKHR`
     public static VkDevicePipelineBinaryInternalCacheControlKHR alloc(SegmentAllocator allocator, long count) { return new VkDevicePipelineBinaryInternalCacheControlKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkDevicePipelineBinaryInternalCacheControlKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDevicePipelineBinaryInternalCacheControlKHR`
+    public VkDevicePipelineBinaryInternalCacheControlKHR asSlice(long index) { return new VkDevicePipelineBinaryInternalCacheControlKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkDevicePipelineBinaryInternalCacheControlKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDevicePipelineBinaryInternalCacheControlKHR`
+    public VkDevicePipelineBinaryInternalCacheControlKHR asSlice(long index, long count) { return new VkDevicePipelineBinaryInternalCacheControlKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

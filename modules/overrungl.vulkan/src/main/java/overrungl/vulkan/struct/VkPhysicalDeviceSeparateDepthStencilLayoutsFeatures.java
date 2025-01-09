@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures extends S
     /// @return the allocated `VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures`
     public static VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures`
+    public VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures asSlice(long index) { return new VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures`
+    public VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures asSlice(long index, long count) { return new VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

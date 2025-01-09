@@ -101,6 +101,17 @@ public final class StdVideoH265ProfileTierLevelFlags extends Struct {
     /// @return the allocated `StdVideoH265ProfileTierLevelFlags`
     public static StdVideoH265ProfileTierLevelFlags alloc(SegmentAllocator allocator, long count) { return new StdVideoH265ProfileTierLevelFlags(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `StdVideoH265ProfileTierLevelFlags`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoH265ProfileTierLevelFlags`
+    public StdVideoH265ProfileTierLevelFlags asSlice(long index) { return new StdVideoH265ProfileTierLevelFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `StdVideoH265ProfileTierLevelFlags`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoH265ProfileTierLevelFlags`
+    public StdVideoH265ProfileTierLevelFlags asSlice(long index, long count) { return new StdVideoH265ProfileTierLevelFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `general_tier_flag` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

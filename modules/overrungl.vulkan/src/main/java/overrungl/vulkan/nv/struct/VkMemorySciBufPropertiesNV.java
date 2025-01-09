@@ -89,6 +89,17 @@ public final class VkMemorySciBufPropertiesNV extends Struct {
     /// @return the allocated `VkMemorySciBufPropertiesNV`
     public static VkMemorySciBufPropertiesNV alloc(SegmentAllocator allocator, long count) { return new VkMemorySciBufPropertiesNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkMemorySciBufPropertiesNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkMemorySciBufPropertiesNV`
+    public VkMemorySciBufPropertiesNV asSlice(long index) { return new VkMemorySciBufPropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkMemorySciBufPropertiesNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkMemorySciBufPropertiesNV`
+    public VkMemorySciBufPropertiesNV asSlice(long index, long count) { return new VkMemorySciBufPropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

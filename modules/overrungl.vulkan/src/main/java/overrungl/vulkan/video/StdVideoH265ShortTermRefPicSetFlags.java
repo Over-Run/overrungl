@@ -83,6 +83,17 @@ public final class StdVideoH265ShortTermRefPicSetFlags extends Struct {
     /// @return the allocated `StdVideoH265ShortTermRefPicSetFlags`
     public static StdVideoH265ShortTermRefPicSetFlags alloc(SegmentAllocator allocator, long count) { return new StdVideoH265ShortTermRefPicSetFlags(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `StdVideoH265ShortTermRefPicSetFlags`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoH265ShortTermRefPicSetFlags`
+    public StdVideoH265ShortTermRefPicSetFlags asSlice(long index) { return new StdVideoH265ShortTermRefPicSetFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `StdVideoH265ShortTermRefPicSetFlags`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoH265ShortTermRefPicSetFlags`
+    public StdVideoH265ShortTermRefPicSetFlags asSlice(long index, long count) { return new StdVideoH265ShortTermRefPicSetFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `inter_ref_pic_set_prediction_flag` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

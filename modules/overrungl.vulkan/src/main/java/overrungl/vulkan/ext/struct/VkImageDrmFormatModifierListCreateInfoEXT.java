@@ -95,6 +95,17 @@ public final class VkImageDrmFormatModifierListCreateInfoEXT extends Struct {
     /// @return the allocated `VkImageDrmFormatModifierListCreateInfoEXT`
     public static VkImageDrmFormatModifierListCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkImageDrmFormatModifierListCreateInfoEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkImageDrmFormatModifierListCreateInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkImageDrmFormatModifierListCreateInfoEXT`
+    public VkImageDrmFormatModifierListCreateInfoEXT asSlice(long index) { return new VkImageDrmFormatModifierListCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkImageDrmFormatModifierListCreateInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkImageDrmFormatModifierListCreateInfoEXT`
+    public VkImageDrmFormatModifierListCreateInfoEXT asSlice(long index, long count) { return new VkImageDrmFormatModifierListCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

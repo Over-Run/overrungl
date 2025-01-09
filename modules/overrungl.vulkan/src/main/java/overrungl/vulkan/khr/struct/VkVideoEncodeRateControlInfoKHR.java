@@ -119,6 +119,17 @@ public final class VkVideoEncodeRateControlInfoKHR extends Struct {
     /// @return the allocated `VkVideoEncodeRateControlInfoKHR`
     public static VkVideoEncodeRateControlInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoEncodeRateControlInfoKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkVideoEncodeRateControlInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkVideoEncodeRateControlInfoKHR`
+    public VkVideoEncodeRateControlInfoKHR asSlice(long index) { return new VkVideoEncodeRateControlInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkVideoEncodeRateControlInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkVideoEncodeRateControlInfoKHR`
+    public VkVideoEncodeRateControlInfoKHR asSlice(long index, long count) { return new VkVideoEncodeRateControlInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

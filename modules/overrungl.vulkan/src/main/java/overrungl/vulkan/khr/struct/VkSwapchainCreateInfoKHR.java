@@ -181,6 +181,17 @@ public final class VkSwapchainCreateInfoKHR extends Struct {
     /// @return the allocated `VkSwapchainCreateInfoKHR`
     public static VkSwapchainCreateInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkSwapchainCreateInfoKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkSwapchainCreateInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSwapchainCreateInfoKHR`
+    public VkSwapchainCreateInfoKHR asSlice(long index) { return new VkSwapchainCreateInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkSwapchainCreateInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSwapchainCreateInfoKHR`
+    public VkSwapchainCreateInfoKHR asSlice(long index, long count) { return new VkSwapchainCreateInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

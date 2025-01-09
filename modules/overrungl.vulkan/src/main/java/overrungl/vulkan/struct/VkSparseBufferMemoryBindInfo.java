@@ -89,6 +89,17 @@ public final class VkSparseBufferMemoryBindInfo extends Struct {
     /// @return the allocated `VkSparseBufferMemoryBindInfo`
     public static VkSparseBufferMemoryBindInfo alloc(SegmentAllocator allocator, long count) { return new VkSparseBufferMemoryBindInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkSparseBufferMemoryBindInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSparseBufferMemoryBindInfo`
+    public VkSparseBufferMemoryBindInfo asSlice(long index) { return new VkSparseBufferMemoryBindInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkSparseBufferMemoryBindInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSparseBufferMemoryBindInfo`
+    public VkSparseBufferMemoryBindInfo asSlice(long index, long count) { return new VkSparseBufferMemoryBindInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `buffer` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -89,6 +89,17 @@ public final class VkSemaphoreCreateInfo extends Struct {
     /// @return the allocated `VkSemaphoreCreateInfo`
     public static VkSemaphoreCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkSemaphoreCreateInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkSemaphoreCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSemaphoreCreateInfo`
+    public VkSemaphoreCreateInfo asSlice(long index) { return new VkSemaphoreCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkSemaphoreCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSemaphoreCreateInfo`
+    public VkSemaphoreCreateInfo asSlice(long index, long count) { return new VkSemaphoreCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

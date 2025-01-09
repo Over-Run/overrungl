@@ -89,6 +89,17 @@ public final class VkPhysicalDevicePortabilitySubsetPropertiesKHR extends Struct
     /// @return the allocated `VkPhysicalDevicePortabilitySubsetPropertiesKHR`
     public static VkPhysicalDevicePortabilitySubsetPropertiesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDevicePortabilitySubsetPropertiesKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDevicePortabilitySubsetPropertiesKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDevicePortabilitySubsetPropertiesKHR`
+    public VkPhysicalDevicePortabilitySubsetPropertiesKHR asSlice(long index) { return new VkPhysicalDevicePortabilitySubsetPropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDevicePortabilitySubsetPropertiesKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDevicePortabilitySubsetPropertiesKHR`
+    public VkPhysicalDevicePortabilitySubsetPropertiesKHR asSlice(long index, long count) { return new VkPhysicalDevicePortabilitySubsetPropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

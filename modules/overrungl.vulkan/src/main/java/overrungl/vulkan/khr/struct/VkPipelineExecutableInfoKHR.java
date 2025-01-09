@@ -95,6 +95,17 @@ public final class VkPipelineExecutableInfoKHR extends Struct {
     /// @return the allocated `VkPipelineExecutableInfoKHR`
     public static VkPipelineExecutableInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkPipelineExecutableInfoKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPipelineExecutableInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPipelineExecutableInfoKHR`
+    public VkPipelineExecutableInfoKHR asSlice(long index) { return new VkPipelineExecutableInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPipelineExecutableInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPipelineExecutableInfoKHR`
+    public VkPipelineExecutableInfoKHR asSlice(long index, long count) { return new VkPipelineExecutableInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -89,6 +89,17 @@ public final class VkOffset3D extends Struct {
     /// @return the allocated `VkOffset3D`
     public static VkOffset3D alloc(SegmentAllocator allocator, long count) { return new VkOffset3D(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkOffset3D`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkOffset3D`
+    public VkOffset3D asSlice(long index) { return new VkOffset3D(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkOffset3D`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkOffset3D`
+    public VkOffset3D asSlice(long index, long count) { return new VkOffset3D(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `x` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

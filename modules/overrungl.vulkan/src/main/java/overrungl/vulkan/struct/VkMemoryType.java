@@ -83,6 +83,17 @@ public final class VkMemoryType extends Struct {
     /// @return the allocated `VkMemoryType`
     public static VkMemoryType alloc(SegmentAllocator allocator, long count) { return new VkMemoryType(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkMemoryType`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkMemoryType`
+    public VkMemoryType asSlice(long index) { return new VkMemoryType(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkMemoryType`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkMemoryType`
+    public VkMemoryType asSlice(long index, long count) { return new VkMemoryType(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `propertyFlags` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

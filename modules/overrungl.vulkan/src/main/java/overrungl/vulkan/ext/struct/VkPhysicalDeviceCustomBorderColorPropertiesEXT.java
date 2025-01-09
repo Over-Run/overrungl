@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceCustomBorderColorPropertiesEXT extends Struct
     /// @return the allocated `VkPhysicalDeviceCustomBorderColorPropertiesEXT`
     public static VkPhysicalDeviceCustomBorderColorPropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceCustomBorderColorPropertiesEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceCustomBorderColorPropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceCustomBorderColorPropertiesEXT`
+    public VkPhysicalDeviceCustomBorderColorPropertiesEXT asSlice(long index) { return new VkPhysicalDeviceCustomBorderColorPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceCustomBorderColorPropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceCustomBorderColorPropertiesEXT`
+    public VkPhysicalDeviceCustomBorderColorPropertiesEXT asSlice(long index, long count) { return new VkPhysicalDeviceCustomBorderColorPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

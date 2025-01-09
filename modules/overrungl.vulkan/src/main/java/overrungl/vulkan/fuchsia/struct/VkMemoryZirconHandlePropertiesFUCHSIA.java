@@ -89,6 +89,17 @@ public final class VkMemoryZirconHandlePropertiesFUCHSIA extends Struct {
     /// @return the allocated `VkMemoryZirconHandlePropertiesFUCHSIA`
     public static VkMemoryZirconHandlePropertiesFUCHSIA alloc(SegmentAllocator allocator, long count) { return new VkMemoryZirconHandlePropertiesFUCHSIA(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkMemoryZirconHandlePropertiesFUCHSIA`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkMemoryZirconHandlePropertiesFUCHSIA`
+    public VkMemoryZirconHandlePropertiesFUCHSIA asSlice(long index) { return new VkMemoryZirconHandlePropertiesFUCHSIA(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkMemoryZirconHandlePropertiesFUCHSIA`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkMemoryZirconHandlePropertiesFUCHSIA`
+    public VkMemoryZirconHandlePropertiesFUCHSIA asSlice(long index, long count) { return new VkMemoryZirconHandlePropertiesFUCHSIA(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

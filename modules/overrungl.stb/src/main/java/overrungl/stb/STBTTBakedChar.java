@@ -113,6 +113,17 @@ public final class STBTTBakedChar extends Struct {
     /// @return the allocated `STBTTBakedChar`
     public static STBTTBakedChar alloc(SegmentAllocator allocator, long count) { return new STBTTBakedChar(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `STBTTBakedChar`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `STBTTBakedChar`
+    public STBTTBakedChar asSlice(long index) { return new STBTTBakedChar(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `STBTTBakedChar`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `STBTTBakedChar`
+    public STBTTBakedChar asSlice(long index, long count) { return new STBTTBakedChar(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `x0` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -33,7 +33,7 @@ import static overrungl.vulkan.VK11.*;
 /// ### physicalDeviceCount
 /// [VarHandle][#VH_physicalDeviceCount] - [Getter][#physicalDeviceCount()] - [Setter][#physicalDeviceCount(int)]
 /// ### physicalDevices
-/// [Byte offset handle][#MH_physicalDevices] - [Memory layout][#ML_physicalDevices] - [Getter][#physicalDevices(long)] - [Setter][#physicalDevices(long, java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_physicalDevices] - [Memory layout][#ML_physicalDevices] - [Getter][#physicalDevices()] - [Setter][#physicalDevices(java.lang.foreign.MemorySegment)]
 /// ### subsetAllocation
 /// [VarHandle][#VH_subsetAllocation] - [Getter][#subsetAllocation()] - [Setter][#subsetAllocation(int)]
 /// ## Layout
@@ -62,8 +62,8 @@ public final class VkPhysicalDeviceGroupProperties extends Struct {
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `physicalDeviceCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_physicalDeviceCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("physicalDeviceCount"));
-    /// The byte offset handle of `physicalDevices` of type `(long baseOffset, long elementIndex)long`.
-    public static final MethodHandle MH_physicalDevices = LAYOUT.byteOffsetHandle(PathElement.groupElement("physicalDevices"), PathElement.sequenceElement());
+    /// The byte offset of `physicalDevices`.
+    public static final long OFFSET_physicalDevices = LAYOUT.byteOffset(PathElement.groupElement("physicalDevices"));
     /// The memory layout of `physicalDevices`.
     public static final MemoryLayout ML_physicalDevices = LAYOUT.select(PathElement.groupElement("physicalDevices"));
     /// The [VarHandle] of `subsetAllocation` of type `(MemorySegment base, long baseOffset, long index)int`.
@@ -103,6 +103,17 @@ public final class VkPhysicalDeviceGroupProperties extends Struct {
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceGroupProperties`
     public static VkPhysicalDeviceGroupProperties alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceGroupProperties(allocator.allocate(LAYOUT, count)); }
+
+    /// Creates a slice of `VkPhysicalDeviceGroupProperties`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceGroupProperties`
+    public VkPhysicalDeviceGroupProperties asSlice(long index) { return new VkPhysicalDeviceGroupProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceGroupProperties`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceGroupProperties`
+    public VkPhysicalDeviceGroupProperties asSlice(long index, long count) { return new VkPhysicalDeviceGroupProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -198,49 +209,35 @@ public final class VkPhysicalDeviceGroupProperties extends Struct {
     public VkPhysicalDeviceGroupProperties physicalDeviceCount(@CType("uint32_t") int value) { VkPhysicalDeviceGroupProperties.set_physicalDeviceCount(this.segment(), value); return this; }
 
     /// {@return `physicalDevices` at the given index}
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public static @CType("VkPhysicalDevice[VK_MAX_DEVICE_GROUP_SIZE]") java.lang.foreign.MemorySegment get_physicalDevices(MemorySegment segment, long index, long elementIndex) {
-        try { return segment.asSlice(LAYOUT.scale((long) MH_physicalDevices.invokeExact(0L, elementIndex), index), ML_physicalDevices); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("VkPhysicalDevice[VK_MAX_DEVICE_GROUP_SIZE]") java.lang.foreign.MemorySegment get_physicalDevices(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_physicalDevices, index), ML_physicalDevices); }
     /// {@return `physicalDevices`}
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    public static @CType("VkPhysicalDevice[VK_MAX_DEVICE_GROUP_SIZE]") java.lang.foreign.MemorySegment get_physicalDevices(MemorySegment segment, long elementIndex) { return VkPhysicalDeviceGroupProperties.get_physicalDevices(segment, 0L, elementIndex); }
+    /// @param segment the segment of the struct
+    public static @CType("VkPhysicalDevice[VK_MAX_DEVICE_GROUP_SIZE]") java.lang.foreign.MemorySegment get_physicalDevices(MemorySegment segment) { return VkPhysicalDeviceGroupProperties.get_physicalDevices(segment, 0L); }
     /// {@return `physicalDevices` at the given index}
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public @CType("VkPhysicalDevice[VK_MAX_DEVICE_GROUP_SIZE]") java.lang.foreign.MemorySegment physicalDevicesAt(long index, long elementIndex) { return VkPhysicalDeviceGroupProperties.get_physicalDevices(this.segment(), index, elementIndex); }
+    /// @param index the index
+    public @CType("VkPhysicalDevice[VK_MAX_DEVICE_GROUP_SIZE]") java.lang.foreign.MemorySegment physicalDevicesAt(long index) { return VkPhysicalDeviceGroupProperties.get_physicalDevices(this.segment(), index); }
     /// {@return `physicalDevices`}
-    /// @param elementIndex the index of the element
-    public @CType("VkPhysicalDevice[VK_MAX_DEVICE_GROUP_SIZE]") java.lang.foreign.MemorySegment physicalDevices(long elementIndex) { return VkPhysicalDeviceGroupProperties.get_physicalDevices(this.segment(), elementIndex); }
+    public @CType("VkPhysicalDevice[VK_MAX_DEVICE_GROUP_SIZE]") java.lang.foreign.MemorySegment physicalDevices() { return VkPhysicalDeviceGroupProperties.get_physicalDevices(this.segment()); }
     /// Sets `physicalDevices` with the given value at the given index.
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_physicalDevices(MemorySegment segment, long index, long elementIndex, @CType("VkPhysicalDevice[VK_MAX_DEVICE_GROUP_SIZE]") java.lang.foreign.MemorySegment value) {
-        try { MemorySegment.copy(value, 0L, segment, LAYOUT.scale((long) MH_physicalDevices.invokeExact(0L, elementIndex), index), ML_physicalDevices.byteSize()); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_physicalDevices(MemorySegment segment, long index, @CType("VkPhysicalDevice[VK_MAX_DEVICE_GROUP_SIZE]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_physicalDevices, index), ML_physicalDevices.byteSize()); }
     /// Sets `physicalDevices` with the given value.
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_physicalDevices(MemorySegment segment, long elementIndex, @CType("VkPhysicalDevice[VK_MAX_DEVICE_GROUP_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceGroupProperties.set_physicalDevices(segment, 0L, elementIndex, value); }
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_physicalDevices(MemorySegment segment, @CType("VkPhysicalDevice[VK_MAX_DEVICE_GROUP_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceGroupProperties.set_physicalDevices(segment, 0L, value); }
     /// Sets `physicalDevices` with the given value at the given index.
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param index the index
+    /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceGroupProperties physicalDevicesAt(long index, long elementIndex, @CType("VkPhysicalDevice[VK_MAX_DEVICE_GROUP_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceGroupProperties.set_physicalDevices(this.segment(), index, elementIndex, value); return this; }
+    public VkPhysicalDeviceGroupProperties physicalDevicesAt(long index, @CType("VkPhysicalDevice[VK_MAX_DEVICE_GROUP_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceGroupProperties.set_physicalDevices(this.segment(), index, value); return this; }
     /// Sets `physicalDevices` with the given value.
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceGroupProperties physicalDevices(long elementIndex, @CType("VkPhysicalDevice[VK_MAX_DEVICE_GROUP_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceGroupProperties.set_physicalDevices(this.segment(), elementIndex, value); return this; }
+    public VkPhysicalDeviceGroupProperties physicalDevices(@CType("VkPhysicalDevice[VK_MAX_DEVICE_GROUP_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceGroupProperties.set_physicalDevices(this.segment(), value); return this; }
 
     /// {@return `subsetAllocation` at the given index}
     /// @param segment the segment of the struct

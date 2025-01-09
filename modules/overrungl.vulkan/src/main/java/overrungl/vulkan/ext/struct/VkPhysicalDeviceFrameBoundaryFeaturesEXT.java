@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceFrameBoundaryFeaturesEXT extends Struct {
     /// @return the allocated `VkPhysicalDeviceFrameBoundaryFeaturesEXT`
     public static VkPhysicalDeviceFrameBoundaryFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceFrameBoundaryFeaturesEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceFrameBoundaryFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceFrameBoundaryFeaturesEXT`
+    public VkPhysicalDeviceFrameBoundaryFeaturesEXT asSlice(long index) { return new VkPhysicalDeviceFrameBoundaryFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceFrameBoundaryFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceFrameBoundaryFeaturesEXT`
+    public VkPhysicalDeviceFrameBoundaryFeaturesEXT asSlice(long index, long count) { return new VkPhysicalDeviceFrameBoundaryFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

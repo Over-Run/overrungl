@@ -89,6 +89,17 @@ public final class StdVideoEncodeH265ReferenceListsInfoFlags extends Struct {
     /// @return the allocated `StdVideoEncodeH265ReferenceListsInfoFlags`
     public static StdVideoEncodeH265ReferenceListsInfoFlags alloc(SegmentAllocator allocator, long count) { return new StdVideoEncodeH265ReferenceListsInfoFlags(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `StdVideoEncodeH265ReferenceListsInfoFlags`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoEncodeH265ReferenceListsInfoFlags`
+    public StdVideoEncodeH265ReferenceListsInfoFlags asSlice(long index) { return new StdVideoEncodeH265ReferenceListsInfoFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `StdVideoEncodeH265ReferenceListsInfoFlags`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoEncodeH265ReferenceListsInfoFlags`
+    public StdVideoEncodeH265ReferenceListsInfoFlags asSlice(long index, long count) { return new StdVideoEncodeH265ReferenceListsInfoFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `ref_pic_list_modification_flag_l0` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

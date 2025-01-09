@@ -115,6 +115,17 @@ public final class VkComputePipelineCreateInfo extends Struct {
     /// @return the allocated `VkComputePipelineCreateInfo`
     public static VkComputePipelineCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkComputePipelineCreateInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkComputePipelineCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkComputePipelineCreateInfo`
+    public VkComputePipelineCreateInfo asSlice(long index) { return new VkComputePipelineCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkComputePipelineCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkComputePipelineCreateInfo`
+    public VkComputePipelineCreateInfo asSlice(long index, long count) { return new VkComputePipelineCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

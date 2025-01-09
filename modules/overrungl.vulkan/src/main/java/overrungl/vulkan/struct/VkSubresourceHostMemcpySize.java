@@ -89,6 +89,17 @@ public final class VkSubresourceHostMemcpySize extends Struct {
     /// @return the allocated `VkSubresourceHostMemcpySize`
     public static VkSubresourceHostMemcpySize alloc(SegmentAllocator allocator, long count) { return new VkSubresourceHostMemcpySize(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkSubresourceHostMemcpySize`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSubresourceHostMemcpySize`
+    public VkSubresourceHostMemcpySize asSlice(long index) { return new VkSubresourceHostMemcpySize(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkSubresourceHostMemcpySize`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSubresourceHostMemcpySize`
+    public VkSubresourceHostMemcpySize asSlice(long index, long count) { return new VkSubresourceHostMemcpySize(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

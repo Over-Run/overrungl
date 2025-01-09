@@ -32,7 +32,7 @@ import overrungl.util.*;
 /// ### pLabelName
 /// [VarHandle][#VH_pLabelName] - [Getter][#pLabelName()] - [Setter][#pLabelName(java.lang.foreign.MemorySegment)]
 /// ### color
-/// [VarHandle][#VH_color] - [Getter][#color()] - [Setter][#color(float)]
+/// [Byte offset][#OFFSET_color] - [Memory layout][#ML_color] - [Getter][#color()] - [Setter][#color(java.lang.foreign.MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -40,7 +40,7 @@ import overrungl.util.*;
 ///     VkStructureType sType;
 ///     const void * pNext;
 ///     const char * pLabelName;
-///     float color;
+///     float[4] color;
 /// } VkDebugUtilsLabelEXT;
 /// ```
 public final class VkDebugUtilsLabelEXT extends Struct {
@@ -49,7 +49,7 @@ public final class VkDebugUtilsLabelEXT extends Struct {
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.ADDRESS.withName("pLabelName"),
-        ValueLayout.JAVA_FLOAT.withName("color")
+        MemoryLayout.sequenceLayout(4, ValueLayout.JAVA_FLOAT).withName("color")
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
@@ -57,8 +57,10 @@ public final class VkDebugUtilsLabelEXT extends Struct {
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `pLabelName` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
     public static final VarHandle VH_pLabelName = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pLabelName"));
-    /// The [VarHandle] of `color` of type `(MemorySegment base, long baseOffset, long index)float`.
-    public static final VarHandle VH_color = LAYOUT.arrayElementVarHandle(PathElement.groupElement("color"));
+    /// The byte offset of `color`.
+    public static final long OFFSET_color = LAYOUT.byteOffset(PathElement.groupElement("color"));
+    /// The memory layout of `color`.
+    public static final MemoryLayout ML_color = LAYOUT.select(PathElement.groupElement("color"));
 
     /// Creates `VkDebugUtilsLabelEXT` with the given segment.
     /// @param segment the memory segment
@@ -94,6 +96,17 @@ public final class VkDebugUtilsLabelEXT extends Struct {
     /// @param count     the count
     /// @return the allocated `VkDebugUtilsLabelEXT`
     public static VkDebugUtilsLabelEXT alloc(SegmentAllocator allocator, long count) { return new VkDebugUtilsLabelEXT(allocator.allocate(LAYOUT, count)); }
+
+    /// Creates a slice of `VkDebugUtilsLabelEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDebugUtilsLabelEXT`
+    public VkDebugUtilsLabelEXT asSlice(long index) { return new VkDebugUtilsLabelEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkDebugUtilsLabelEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDebugUtilsLabelEXT`
+    public VkDebugUtilsLabelEXT asSlice(long index, long count) { return new VkDebugUtilsLabelEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -191,32 +204,32 @@ public final class VkDebugUtilsLabelEXT extends Struct {
     /// {@return `color` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("float") float get_color(MemorySegment segment, long index) { return (float) VH_color.get(segment, 0L, index); }
+    public static @CType("float[4]") java.lang.foreign.MemorySegment get_color(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_color, index), ML_color); }
     /// {@return `color`}
     /// @param segment the segment of the struct
-    public static @CType("float") float get_color(MemorySegment segment) { return VkDebugUtilsLabelEXT.get_color(segment, 0L); }
+    public static @CType("float[4]") java.lang.foreign.MemorySegment get_color(MemorySegment segment) { return VkDebugUtilsLabelEXT.get_color(segment, 0L); }
     /// {@return `color` at the given index}
     /// @param index the index
-    public @CType("float") float colorAt(long index) { return VkDebugUtilsLabelEXT.get_color(this.segment(), index); }
+    public @CType("float[4]") java.lang.foreign.MemorySegment colorAt(long index) { return VkDebugUtilsLabelEXT.get_color(this.segment(), index); }
     /// {@return `color`}
-    public @CType("float") float color() { return VkDebugUtilsLabelEXT.get_color(this.segment()); }
+    public @CType("float[4]") java.lang.foreign.MemorySegment color() { return VkDebugUtilsLabelEXT.get_color(this.segment()); }
     /// Sets `color` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_color(MemorySegment segment, long index, @CType("float") float value) { VH_color.set(segment, 0L, index, value); }
+    public static void set_color(MemorySegment segment, long index, @CType("float[4]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_color, index), ML_color.byteSize()); }
     /// Sets `color` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_color(MemorySegment segment, @CType("float") float value) { VkDebugUtilsLabelEXT.set_color(segment, 0L, value); }
+    public static void set_color(MemorySegment segment, @CType("float[4]") java.lang.foreign.MemorySegment value) { VkDebugUtilsLabelEXT.set_color(segment, 0L, value); }
     /// Sets `color` with the given value at the given index.
     /// @param index the index
     /// @param value the value
     /// @return `this`
-    public VkDebugUtilsLabelEXT colorAt(long index, @CType("float") float value) { VkDebugUtilsLabelEXT.set_color(this.segment(), index, value); return this; }
+    public VkDebugUtilsLabelEXT colorAt(long index, @CType("float[4]") java.lang.foreign.MemorySegment value) { VkDebugUtilsLabelEXT.set_color(this.segment(), index, value); return this; }
     /// Sets `color` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkDebugUtilsLabelEXT color(@CType("float") float value) { VkDebugUtilsLabelEXT.set_color(this.segment(), value); return this; }
+    public VkDebugUtilsLabelEXT color(@CType("float[4]") java.lang.foreign.MemorySegment value) { VkDebugUtilsLabelEXT.set_color(this.segment(), value); return this; }
 
 }

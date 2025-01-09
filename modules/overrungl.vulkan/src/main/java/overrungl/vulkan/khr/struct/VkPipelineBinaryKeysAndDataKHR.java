@@ -89,6 +89,17 @@ public final class VkPipelineBinaryKeysAndDataKHR extends Struct {
     /// @return the allocated `VkPipelineBinaryKeysAndDataKHR`
     public static VkPipelineBinaryKeysAndDataKHR alloc(SegmentAllocator allocator, long count) { return new VkPipelineBinaryKeysAndDataKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPipelineBinaryKeysAndDataKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPipelineBinaryKeysAndDataKHR`
+    public VkPipelineBinaryKeysAndDataKHR asSlice(long index) { return new VkPipelineBinaryKeysAndDataKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPipelineBinaryKeysAndDataKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPipelineBinaryKeysAndDataKHR`
+    public VkPipelineBinaryKeysAndDataKHR asSlice(long index, long count) { return new VkPipelineBinaryKeysAndDataKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `binaryCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

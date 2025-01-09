@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceRayTracingValidationFeaturesNV extends Struct
     /// @return the allocated `VkPhysicalDeviceRayTracingValidationFeaturesNV`
     public static VkPhysicalDeviceRayTracingValidationFeaturesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceRayTracingValidationFeaturesNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceRayTracingValidationFeaturesNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceRayTracingValidationFeaturesNV`
+    public VkPhysicalDeviceRayTracingValidationFeaturesNV asSlice(long index) { return new VkPhysicalDeviceRayTracingValidationFeaturesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceRayTracingValidationFeaturesNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceRayTracingValidationFeaturesNV`
+    public VkPhysicalDeviceRayTracingValidationFeaturesNV asSlice(long index, long count) { return new VkPhysicalDeviceRayTracingValidationFeaturesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

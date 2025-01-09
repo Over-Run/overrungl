@@ -95,6 +95,17 @@ public final class VkIndirectExecutionSetShaderLayoutInfoEXT extends Struct {
     /// @return the allocated `VkIndirectExecutionSetShaderLayoutInfoEXT`
     public static VkIndirectExecutionSetShaderLayoutInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkIndirectExecutionSetShaderLayoutInfoEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkIndirectExecutionSetShaderLayoutInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkIndirectExecutionSetShaderLayoutInfoEXT`
+    public VkIndirectExecutionSetShaderLayoutInfoEXT asSlice(long index) { return new VkIndirectExecutionSetShaderLayoutInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkIndirectExecutionSetShaderLayoutInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkIndirectExecutionSetShaderLayoutInfoEXT`
+    public VkIndirectExecutionSetShaderLayoutInfoEXT asSlice(long index, long count) { return new VkIndirectExecutionSetShaderLayoutInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

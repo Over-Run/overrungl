@@ -83,4 +83,15 @@ public final class STBTT__bitmap extends Struct {
     /// @return the allocated `STBTT__bitmap`
     public static STBTT__bitmap alloc(SegmentAllocator allocator, long count) { return new STBTT__bitmap(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `STBTT__bitmap`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `STBTT__bitmap`
+    public STBTT__bitmap asSlice(long index) { return new STBTT__bitmap(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `STBTT__bitmap`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `STBTT__bitmap`
+    public STBTT__bitmap asSlice(long index, long count) { return new STBTT__bitmap(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
 }

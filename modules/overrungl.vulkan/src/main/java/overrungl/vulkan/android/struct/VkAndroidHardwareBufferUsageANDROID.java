@@ -89,6 +89,17 @@ public final class VkAndroidHardwareBufferUsageANDROID extends Struct {
     /// @return the allocated `VkAndroidHardwareBufferUsageANDROID`
     public static VkAndroidHardwareBufferUsageANDROID alloc(SegmentAllocator allocator, long count) { return new VkAndroidHardwareBufferUsageANDROID(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkAndroidHardwareBufferUsageANDROID`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkAndroidHardwareBufferUsageANDROID`
+    public VkAndroidHardwareBufferUsageANDROID asSlice(long index) { return new VkAndroidHardwareBufferUsageANDROID(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkAndroidHardwareBufferUsageANDROID`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkAndroidHardwareBufferUsageANDROID`
+    public VkAndroidHardwareBufferUsageANDROID asSlice(long index, long count) { return new VkAndroidHardwareBufferUsageANDROID(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

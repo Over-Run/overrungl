@@ -89,6 +89,17 @@ public final class VkQueueFamilyVideoPropertiesKHR extends Struct {
     /// @return the allocated `VkQueueFamilyVideoPropertiesKHR`
     public static VkQueueFamilyVideoPropertiesKHR alloc(SegmentAllocator allocator, long count) { return new VkQueueFamilyVideoPropertiesKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkQueueFamilyVideoPropertiesKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkQueueFamilyVideoPropertiesKHR`
+    public VkQueueFamilyVideoPropertiesKHR asSlice(long index) { return new VkQueueFamilyVideoPropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkQueueFamilyVideoPropertiesKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkQueueFamilyVideoPropertiesKHR`
+    public VkQueueFamilyVideoPropertiesKHR asSlice(long index, long count) { return new VkQueueFamilyVideoPropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

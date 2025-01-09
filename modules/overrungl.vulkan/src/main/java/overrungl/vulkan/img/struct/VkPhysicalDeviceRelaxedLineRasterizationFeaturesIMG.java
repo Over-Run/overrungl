@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG extends S
     /// @return the allocated `VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG`
     public static VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG`
+    public VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG asSlice(long index) { return new VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG`
+    public VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG asSlice(long index, long count) { return new VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

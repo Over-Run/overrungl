@@ -95,6 +95,17 @@ public final class VkVideoEncodeH265NaluSliceSegmentInfoKHR extends Struct {
     /// @return the allocated `VkVideoEncodeH265NaluSliceSegmentInfoKHR`
     public static VkVideoEncodeH265NaluSliceSegmentInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoEncodeH265NaluSliceSegmentInfoKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkVideoEncodeH265NaluSliceSegmentInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkVideoEncodeH265NaluSliceSegmentInfoKHR`
+    public VkVideoEncodeH265NaluSliceSegmentInfoKHR asSlice(long index) { return new VkVideoEncodeH265NaluSliceSegmentInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkVideoEncodeH265NaluSliceSegmentInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkVideoEncodeH265NaluSliceSegmentInfoKHR`
+    public VkVideoEncodeH265NaluSliceSegmentInfoKHR asSlice(long index, long count) { return new VkVideoEncodeH265NaluSliceSegmentInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

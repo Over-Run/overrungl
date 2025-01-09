@@ -163,6 +163,17 @@ public final class VkImageCreateInfo extends Struct {
     /// @return the allocated `VkImageCreateInfo`
     public static VkImageCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkImageCreateInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkImageCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkImageCreateInfo`
+    public VkImageCreateInfo asSlice(long index) { return new VkImageCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkImageCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkImageCreateInfo`
+    public VkImageCreateInfo asSlice(long index, long count) { return new VkImageCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

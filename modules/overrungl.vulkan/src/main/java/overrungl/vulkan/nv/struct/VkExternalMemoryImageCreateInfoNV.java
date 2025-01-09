@@ -89,6 +89,17 @@ public final class VkExternalMemoryImageCreateInfoNV extends Struct {
     /// @return the allocated `VkExternalMemoryImageCreateInfoNV`
     public static VkExternalMemoryImageCreateInfoNV alloc(SegmentAllocator allocator, long count) { return new VkExternalMemoryImageCreateInfoNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkExternalMemoryImageCreateInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkExternalMemoryImageCreateInfoNV`
+    public VkExternalMemoryImageCreateInfoNV asSlice(long index) { return new VkExternalMemoryImageCreateInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkExternalMemoryImageCreateInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkExternalMemoryImageCreateInfoNV`
+    public VkExternalMemoryImageCreateInfoNV asSlice(long index, long count) { return new VkExternalMemoryImageCreateInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

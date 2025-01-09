@@ -119,6 +119,17 @@ public final class STBTTVertex extends Struct {
     /// @return the allocated `STBTTVertex`
     public static STBTTVertex alloc(SegmentAllocator allocator, long count) { return new STBTTVertex(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `STBTTVertex`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `STBTTVertex`
+    public STBTTVertex asSlice(long index) { return new STBTTVertex(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `STBTTVertex`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `STBTTVertex`
+    public STBTTVertex asSlice(long index, long count) { return new STBTTVertex(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `x` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

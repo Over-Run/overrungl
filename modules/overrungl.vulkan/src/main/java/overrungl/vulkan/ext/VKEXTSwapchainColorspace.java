@@ -23,7 +23,7 @@ import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 import static overrungl.vulkan.ext.VKEXTSwapchainColorspace.*;
-public class VKEXTSwapchainColorspace {
+public final class VKEXTSwapchainColorspace {
     public static final int VK_EXT_SWAPCHAIN_COLOR_SPACE_SPEC_VERSION = 5;
     public static final String VK_EXT_SWAPCHAIN_COLOR_SPACE_EXTENSION_NAME = "VK_EXT_swapchain_colorspace";
     public static final int VK_COLOR_SPACE_DISPLAY_P3_NONLINEAR_EXT = 1000104001;
@@ -42,7 +42,6 @@ public class VKEXTSwapchainColorspace {
     public static final int VK_COLOR_SPACE_EXTENDED_SRGB_NONLINEAR_EXT = 1000104014;
     public static final int VK_COLOR_SPACE_DCI_P3_LINEAR_EXT = VK_COLOR_SPACE_DISPLAY_P3_LINEAR_EXT;
 
-    public VKEXTSwapchainColorspace(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
-    }
+    private VKEXTSwapchainColorspace() { }
 
 }

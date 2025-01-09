@@ -89,6 +89,17 @@ public final class VkDispatchIndirectCommand extends Struct {
     /// @return the allocated `VkDispatchIndirectCommand`
     public static VkDispatchIndirectCommand alloc(SegmentAllocator allocator, long count) { return new VkDispatchIndirectCommand(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkDispatchIndirectCommand`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDispatchIndirectCommand`
+    public VkDispatchIndirectCommand asSlice(long index) { return new VkDispatchIndirectCommand(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkDispatchIndirectCommand`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDispatchIndirectCommand`
+    public VkDispatchIndirectCommand asSlice(long index, long count) { return new VkDispatchIndirectCommand(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `x` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

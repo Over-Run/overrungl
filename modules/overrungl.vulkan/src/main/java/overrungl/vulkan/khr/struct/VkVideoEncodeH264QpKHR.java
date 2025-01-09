@@ -89,6 +89,17 @@ public final class VkVideoEncodeH264QpKHR extends Struct {
     /// @return the allocated `VkVideoEncodeH264QpKHR`
     public static VkVideoEncodeH264QpKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoEncodeH264QpKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkVideoEncodeH264QpKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkVideoEncodeH264QpKHR`
+    public VkVideoEncodeH264QpKHR asSlice(long index) { return new VkVideoEncodeH264QpKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkVideoEncodeH264QpKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkVideoEncodeH264QpKHR`
+    public VkVideoEncodeH264QpKHR asSlice(long index, long count) { return new VkVideoEncodeH264QpKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `qpI` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

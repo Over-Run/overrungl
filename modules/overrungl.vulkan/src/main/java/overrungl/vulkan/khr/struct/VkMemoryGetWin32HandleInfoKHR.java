@@ -95,6 +95,17 @@ public final class VkMemoryGetWin32HandleInfoKHR extends Struct {
     /// @return the allocated `VkMemoryGetWin32HandleInfoKHR`
     public static VkMemoryGetWin32HandleInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkMemoryGetWin32HandleInfoKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkMemoryGetWin32HandleInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkMemoryGetWin32HandleInfoKHR`
+    public VkMemoryGetWin32HandleInfoKHR asSlice(long index) { return new VkMemoryGetWin32HandleInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkMemoryGetWin32HandleInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkMemoryGetWin32HandleInfoKHR`
+    public VkMemoryGetWin32HandleInfoKHR asSlice(long index, long count) { return new VkMemoryGetWin32HandleInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

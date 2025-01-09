@@ -89,6 +89,17 @@ public final class VkImageSubresource extends Struct {
     /// @return the allocated `VkImageSubresource`
     public static VkImageSubresource alloc(SegmentAllocator allocator, long count) { return new VkImageSubresource(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkImageSubresource`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkImageSubresource`
+    public VkImageSubresource asSlice(long index) { return new VkImageSubresource(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkImageSubresource`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkImageSubresource`
+    public VkImageSubresource asSlice(long index, long count) { return new VkImageSubresource(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `aspectMask` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -22,11 +22,10 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKAMDShaderTrinaryMinmax {
+public final class VKAMDShaderTrinaryMinmax {
     public static final int VK_AMD_SHADER_TRINARY_MINMAX_SPEC_VERSION = 1;
     public static final String VK_AMD_SHADER_TRINARY_MINMAX_EXTENSION_NAME = "VK_AMD_shader_trinary_minmax";
 
-    public VKAMDShaderTrinaryMinmax(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKAMDShaderTrinaryMinmax() { }
 
 }

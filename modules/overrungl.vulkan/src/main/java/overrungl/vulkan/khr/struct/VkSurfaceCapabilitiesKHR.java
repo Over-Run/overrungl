@@ -137,6 +137,17 @@ public final class VkSurfaceCapabilitiesKHR extends Struct {
     /// @return the allocated `VkSurfaceCapabilitiesKHR`
     public static VkSurfaceCapabilitiesKHR alloc(SegmentAllocator allocator, long count) { return new VkSurfaceCapabilitiesKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkSurfaceCapabilitiesKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSurfaceCapabilitiesKHR`
+    public VkSurfaceCapabilitiesKHR asSlice(long index) { return new VkSurfaceCapabilitiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkSurfaceCapabilitiesKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSurfaceCapabilitiesKHR`
+    public VkSurfaceCapabilitiesKHR asSlice(long index, long count) { return new VkSurfaceCapabilitiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `minImageCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

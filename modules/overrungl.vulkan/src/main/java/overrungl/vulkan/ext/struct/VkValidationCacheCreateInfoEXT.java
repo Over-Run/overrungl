@@ -101,6 +101,17 @@ public final class VkValidationCacheCreateInfoEXT extends Struct {
     /// @return the allocated `VkValidationCacheCreateInfoEXT`
     public static VkValidationCacheCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkValidationCacheCreateInfoEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkValidationCacheCreateInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkValidationCacheCreateInfoEXT`
+    public VkValidationCacheCreateInfoEXT asSlice(long index) { return new VkValidationCacheCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkValidationCacheCreateInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkValidationCacheCreateInfoEXT`
+    public VkValidationCacheCreateInfoEXT asSlice(long index, long count) { return new VkValidationCacheCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

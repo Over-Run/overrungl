@@ -95,6 +95,17 @@ public final class VkPipelineViewportExclusiveScissorStateCreateInfoNV extends S
     /// @return the allocated `VkPipelineViewportExclusiveScissorStateCreateInfoNV`
     public static VkPipelineViewportExclusiveScissorStateCreateInfoNV alloc(SegmentAllocator allocator, long count) { return new VkPipelineViewportExclusiveScissorStateCreateInfoNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPipelineViewportExclusiveScissorStateCreateInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPipelineViewportExclusiveScissorStateCreateInfoNV`
+    public VkPipelineViewportExclusiveScissorStateCreateInfoNV asSlice(long index) { return new VkPipelineViewportExclusiveScissorStateCreateInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPipelineViewportExclusiveScissorStateCreateInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPipelineViewportExclusiveScissorStateCreateInfoNV`
+    public VkPipelineViewportExclusiveScissorStateCreateInfoNV asSlice(long index, long count) { return new VkPipelineViewportExclusiveScissorStateCreateInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

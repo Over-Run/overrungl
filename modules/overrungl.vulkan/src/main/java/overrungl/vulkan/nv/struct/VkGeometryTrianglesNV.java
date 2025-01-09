@@ -149,6 +149,17 @@ public final class VkGeometryTrianglesNV extends Struct {
     /// @return the allocated `VkGeometryTrianglesNV`
     public static VkGeometryTrianglesNV alloc(SegmentAllocator allocator, long count) { return new VkGeometryTrianglesNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkGeometryTrianglesNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkGeometryTrianglesNV`
+    public VkGeometryTrianglesNV asSlice(long index) { return new VkGeometryTrianglesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkGeometryTrianglesNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkGeometryTrianglesNV`
+    public VkGeometryTrianglesNV asSlice(long index, long count) { return new VkGeometryTrianglesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

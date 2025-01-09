@@ -95,6 +95,17 @@ public final class VkMemoryUnmapInfo extends Struct {
     /// @return the allocated `VkMemoryUnmapInfo`
     public static VkMemoryUnmapInfo alloc(SegmentAllocator allocator, long count) { return new VkMemoryUnmapInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkMemoryUnmapInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkMemoryUnmapInfo`
+    public VkMemoryUnmapInfo asSlice(long index) { return new VkMemoryUnmapInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkMemoryUnmapInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkMemoryUnmapInfo`
+    public VkMemoryUnmapInfo asSlice(long index, long count) { return new VkMemoryUnmapInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceMaintenance7FeaturesKHR extends Struct {
     /// @return the allocated `VkPhysicalDeviceMaintenance7FeaturesKHR`
     public static VkPhysicalDeviceMaintenance7FeaturesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceMaintenance7FeaturesKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceMaintenance7FeaturesKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceMaintenance7FeaturesKHR`
+    public VkPhysicalDeviceMaintenance7FeaturesKHR asSlice(long index) { return new VkPhysicalDeviceMaintenance7FeaturesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceMaintenance7FeaturesKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceMaintenance7FeaturesKHR`
+    public VkPhysicalDeviceMaintenance7FeaturesKHR asSlice(long index, long count) { return new VkPhysicalDeviceMaintenance7FeaturesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

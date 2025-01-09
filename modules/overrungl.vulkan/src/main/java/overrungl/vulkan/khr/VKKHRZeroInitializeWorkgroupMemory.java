@@ -23,12 +23,11 @@ import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 import static overrungl.vulkan.VK13.*;
-public class VKKHRZeroInitializeWorkgroupMemory {
+public final class VKKHRZeroInitializeWorkgroupMemory {
     public static final int VK_KHR_ZERO_INITIALIZE_WORKGROUP_MEMORY_SPEC_VERSION = 1;
     public static final String VK_KHR_ZERO_INITIALIZE_WORKGROUP_MEMORY_EXTENSION_NAME = "VK_KHR_zero_initialize_workgroup_memory";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ZERO_INITIALIZE_WORKGROUP_MEMORY_FEATURES_KHR = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ZERO_INITIALIZE_WORKGROUP_MEMORY_FEATURES;
 
-    public VKKHRZeroInitializeWorkgroupMemory(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKKHRZeroInitializeWorkgroupMemory() { }
 
 }

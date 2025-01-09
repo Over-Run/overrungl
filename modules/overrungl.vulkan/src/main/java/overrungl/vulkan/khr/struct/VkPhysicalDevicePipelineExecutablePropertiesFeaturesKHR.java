@@ -89,6 +89,17 @@ public final class VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR exten
     /// @return the allocated `VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR`
     public static VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR`
+    public VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR asSlice(long index) { return new VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR`
+    public VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR asSlice(long index, long count) { return new VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

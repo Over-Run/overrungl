@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL extends 
     /// @return the allocated `VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL`
     public static VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL`
+    public VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL asSlice(long index) { return new VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL`
+    public VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL asSlice(long index, long count) { return new VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

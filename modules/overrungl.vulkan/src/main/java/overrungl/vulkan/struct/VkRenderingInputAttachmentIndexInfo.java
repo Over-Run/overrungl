@@ -107,6 +107,17 @@ public final class VkRenderingInputAttachmentIndexInfo extends Struct {
     /// @return the allocated `VkRenderingInputAttachmentIndexInfo`
     public static VkRenderingInputAttachmentIndexInfo alloc(SegmentAllocator allocator, long count) { return new VkRenderingInputAttachmentIndexInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkRenderingInputAttachmentIndexInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkRenderingInputAttachmentIndexInfo`
+    public VkRenderingInputAttachmentIndexInfo asSlice(long index) { return new VkRenderingInputAttachmentIndexInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkRenderingInputAttachmentIndexInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkRenderingInputAttachmentIndexInfo`
+    public VkRenderingInputAttachmentIndexInfo asSlice(long index, long count) { return new VkRenderingInputAttachmentIndexInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

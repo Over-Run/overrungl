@@ -95,6 +95,17 @@ public final class VkPhysicalDeviceShaderCoreProperties2AMD extends Struct {
     /// @return the allocated `VkPhysicalDeviceShaderCoreProperties2AMD`
     public static VkPhysicalDeviceShaderCoreProperties2AMD alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceShaderCoreProperties2AMD(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceShaderCoreProperties2AMD`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceShaderCoreProperties2AMD`
+    public VkPhysicalDeviceShaderCoreProperties2AMD asSlice(long index) { return new VkPhysicalDeviceShaderCoreProperties2AMD(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceShaderCoreProperties2AMD`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceShaderCoreProperties2AMD`
+    public VkPhysicalDeviceShaderCoreProperties2AMD asSlice(long index, long count) { return new VkPhysicalDeviceShaderCoreProperties2AMD(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

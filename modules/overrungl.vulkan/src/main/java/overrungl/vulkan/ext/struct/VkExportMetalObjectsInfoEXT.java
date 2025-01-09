@@ -83,6 +83,17 @@ public final class VkExportMetalObjectsInfoEXT extends Struct {
     /// @return the allocated `VkExportMetalObjectsInfoEXT`
     public static VkExportMetalObjectsInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkExportMetalObjectsInfoEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkExportMetalObjectsInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkExportMetalObjectsInfoEXT`
+    public VkExportMetalObjectsInfoEXT asSlice(long index) { return new VkExportMetalObjectsInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkExportMetalObjectsInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkExportMetalObjectsInfoEXT`
+    public VkExportMetalObjectsInfoEXT asSlice(long index, long count) { return new VkExportMetalObjectsInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

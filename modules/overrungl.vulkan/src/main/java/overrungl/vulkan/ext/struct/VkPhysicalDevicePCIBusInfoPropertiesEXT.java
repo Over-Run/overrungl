@@ -107,6 +107,17 @@ public final class VkPhysicalDevicePCIBusInfoPropertiesEXT extends Struct {
     /// @return the allocated `VkPhysicalDevicePCIBusInfoPropertiesEXT`
     public static VkPhysicalDevicePCIBusInfoPropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDevicePCIBusInfoPropertiesEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDevicePCIBusInfoPropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDevicePCIBusInfoPropertiesEXT`
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT asSlice(long index) { return new VkPhysicalDevicePCIBusInfoPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDevicePCIBusInfoPropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDevicePCIBusInfoPropertiesEXT`
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT asSlice(long index, long count) { return new VkPhysicalDevicePCIBusInfoPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

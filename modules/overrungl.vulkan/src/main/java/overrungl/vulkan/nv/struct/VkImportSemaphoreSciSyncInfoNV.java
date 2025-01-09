@@ -101,6 +101,17 @@ public final class VkImportSemaphoreSciSyncInfoNV extends Struct {
     /// @return the allocated `VkImportSemaphoreSciSyncInfoNV`
     public static VkImportSemaphoreSciSyncInfoNV alloc(SegmentAllocator allocator, long count) { return new VkImportSemaphoreSciSyncInfoNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkImportSemaphoreSciSyncInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkImportSemaphoreSciSyncInfoNV`
+    public VkImportSemaphoreSciSyncInfoNV asSlice(long index) { return new VkImportSemaphoreSciSyncInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkImportSemaphoreSciSyncInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkImportSemaphoreSciSyncInfoNV`
+    public VkImportSemaphoreSciSyncInfoNV asSlice(long index, long count) { return new VkImportSemaphoreSciSyncInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

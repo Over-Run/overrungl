@@ -107,6 +107,17 @@ public final class VkPhysicalDeviceDescriptorBufferFeaturesEXT extends Struct {
     /// @return the allocated `VkPhysicalDeviceDescriptorBufferFeaturesEXT`
     public static VkPhysicalDeviceDescriptorBufferFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceDescriptorBufferFeaturesEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceDescriptorBufferFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceDescriptorBufferFeaturesEXT`
+    public VkPhysicalDeviceDescriptorBufferFeaturesEXT asSlice(long index) { return new VkPhysicalDeviceDescriptorBufferFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceDescriptorBufferFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceDescriptorBufferFeaturesEXT`
+    public VkPhysicalDeviceDescriptorBufferFeaturesEXT asSlice(long index, long count) { return new VkPhysicalDeviceDescriptorBufferFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

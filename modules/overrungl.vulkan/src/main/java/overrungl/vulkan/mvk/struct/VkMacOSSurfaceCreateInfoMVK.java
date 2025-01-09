@@ -95,6 +95,17 @@ public final class VkMacOSSurfaceCreateInfoMVK extends Struct {
     /// @return the allocated `VkMacOSSurfaceCreateInfoMVK`
     public static VkMacOSSurfaceCreateInfoMVK alloc(SegmentAllocator allocator, long count) { return new VkMacOSSurfaceCreateInfoMVK(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkMacOSSurfaceCreateInfoMVK`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkMacOSSurfaceCreateInfoMVK`
+    public VkMacOSSurfaceCreateInfoMVK asSlice(long index) { return new VkMacOSSurfaceCreateInfoMVK(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkMacOSSurfaceCreateInfoMVK`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkMacOSSurfaceCreateInfoMVK`
+    public VkMacOSSurfaceCreateInfoMVK asSlice(long index, long count) { return new VkMacOSSurfaceCreateInfoMVK(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

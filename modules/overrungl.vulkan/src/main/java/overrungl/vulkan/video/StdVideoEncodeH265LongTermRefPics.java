@@ -113,6 +113,17 @@ public final class StdVideoEncodeH265LongTermRefPics extends Struct {
     /// @return the allocated `StdVideoEncodeH265LongTermRefPics`
     public static StdVideoEncodeH265LongTermRefPics alloc(SegmentAllocator allocator, long count) { return new StdVideoEncodeH265LongTermRefPics(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `StdVideoEncodeH265LongTermRefPics`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoEncodeH265LongTermRefPics`
+    public StdVideoEncodeH265LongTermRefPics asSlice(long index) { return new StdVideoEncodeH265LongTermRefPics(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `StdVideoEncodeH265LongTermRefPics`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoEncodeH265LongTermRefPics`
+    public StdVideoEncodeH265LongTermRefPics asSlice(long index, long count) { return new StdVideoEncodeH265LongTermRefPics(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `num_long_term_sps` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

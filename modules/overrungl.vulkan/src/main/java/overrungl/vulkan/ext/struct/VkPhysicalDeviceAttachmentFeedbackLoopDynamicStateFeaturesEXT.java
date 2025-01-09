@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT
     /// @return the allocated `VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT`
     public static VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT`
+    public VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT asSlice(long index) { return new VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT`
+    public VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT asSlice(long index, long count) { return new VkPhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

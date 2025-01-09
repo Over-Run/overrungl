@@ -89,6 +89,17 @@ public final class VkVertexInputBindingDescription extends Struct {
     /// @return the allocated `VkVertexInputBindingDescription`
     public static VkVertexInputBindingDescription alloc(SegmentAllocator allocator, long count) { return new VkVertexInputBindingDescription(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkVertexInputBindingDescription`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkVertexInputBindingDescription`
+    public VkVertexInputBindingDescription asSlice(long index) { return new VkVertexInputBindingDescription(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkVertexInputBindingDescription`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkVertexInputBindingDescription`
+    public VkVertexInputBindingDescription asSlice(long index, long count) { return new VkVertexInputBindingDescription(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `binding` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

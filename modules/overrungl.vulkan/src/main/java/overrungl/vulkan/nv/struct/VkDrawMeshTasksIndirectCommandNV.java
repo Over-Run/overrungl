@@ -83,6 +83,17 @@ public final class VkDrawMeshTasksIndirectCommandNV extends Struct {
     /// @return the allocated `VkDrawMeshTasksIndirectCommandNV`
     public static VkDrawMeshTasksIndirectCommandNV alloc(SegmentAllocator allocator, long count) { return new VkDrawMeshTasksIndirectCommandNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkDrawMeshTasksIndirectCommandNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDrawMeshTasksIndirectCommandNV`
+    public VkDrawMeshTasksIndirectCommandNV asSlice(long index) { return new VkDrawMeshTasksIndirectCommandNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkDrawMeshTasksIndirectCommandNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDrawMeshTasksIndirectCommandNV`
+    public VkDrawMeshTasksIndirectCommandNV asSlice(long index, long count) { return new VkDrawMeshTasksIndirectCommandNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `taskCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

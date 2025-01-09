@@ -22,7 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKKHRVideoDecodeH264 {
+public final class VKKHRVideoDecodeH264 {
     public static final int VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_PROGRESSIVE_KHR = 0;
     public static final int VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_INTERLACED_INTERLEAVED_LINES_BIT_KHR = 0x00000001;
     public static final int VK_VIDEO_DECODE_H264_PICTURE_LAYOUT_INTERLACED_SEPARATE_PLANES_BIT_KHR = 0x00000002;
@@ -36,7 +36,6 @@ public class VKKHRVideoDecodeH264 {
     public static final int VK_STRUCTURE_TYPE_VIDEO_DECODE_H264_DPB_SLOT_INFO_KHR = 1000040006;
     public static final int VK_VIDEO_CODEC_OPERATION_DECODE_H264_BIT_KHR = 0x00000001;
 
-    public VKKHRVideoDecodeH264(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKKHRVideoDecodeH264() { }
 
 }

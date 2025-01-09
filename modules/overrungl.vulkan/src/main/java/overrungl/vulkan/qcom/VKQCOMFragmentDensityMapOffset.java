@@ -22,7 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKQCOMFragmentDensityMapOffset {
+public final class VKQCOMFragmentDensityMapOffset {
     public static final int VK_QCOM_FRAGMENT_DENSITY_MAP_OFFSET_SPEC_VERSION = 2;
     public static final String VK_QCOM_FRAGMENT_DENSITY_MAP_OFFSET_EXTENSION_NAME = "VK_QCOM_fragment_density_map_offset";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_OFFSET_FEATURES_QCOM = 1000425000;
@@ -30,7 +30,6 @@ public class VKQCOMFragmentDensityMapOffset {
     public static final int VK_STRUCTURE_TYPE_SUBPASS_FRAGMENT_DENSITY_MAP_OFFSET_END_INFO_QCOM = 1000425002;
     public static final int VK_IMAGE_CREATE_FRAGMENT_DENSITY_MAP_OFFSET_BIT_QCOM = 0x00008000;
 
-    public VKQCOMFragmentDensityMapOffset(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKQCOMFragmentDensityMapOffset() { }
 
 }

@@ -22,7 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKQCOMImageProcessing2 {
+public final class VKQCOMImageProcessing2 {
     public static final int VK_BLOCK_MATCH_WINDOW_COMPARE_MODE_MIN_QCOM = 0;
     public static final int VK_BLOCK_MATCH_WINDOW_COMPARE_MODE_MAX_QCOM = 1;
     public static final int VK_QCOM_IMAGE_PROCESSING_2_SPEC_VERSION = 1;
@@ -31,7 +31,6 @@ public class VKQCOMImageProcessing2 {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_PROCESSING_2_PROPERTIES_QCOM = 1000518001;
     public static final int VK_STRUCTURE_TYPE_SAMPLER_BLOCK_MATCH_WINDOW_CREATE_INFO_QCOM = 1000518002;
 
-    public VKQCOMImageProcessing2(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKQCOMImageProcessing2() { }
 
 }

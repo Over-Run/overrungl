@@ -89,6 +89,17 @@ public final class VkPipelineCreateFlags2CreateInfo extends Struct {
     /// @return the allocated `VkPipelineCreateFlags2CreateInfo`
     public static VkPipelineCreateFlags2CreateInfo alloc(SegmentAllocator allocator, long count) { return new VkPipelineCreateFlags2CreateInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPipelineCreateFlags2CreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPipelineCreateFlags2CreateInfo`
+    public VkPipelineCreateFlags2CreateInfo asSlice(long index) { return new VkPipelineCreateFlags2CreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPipelineCreateFlags2CreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPipelineCreateFlags2CreateInfo`
+    public VkPipelineCreateFlags2CreateInfo asSlice(long index, long count) { return new VkPipelineCreateFlags2CreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -89,6 +89,17 @@ public final class VkVideoEncodeH265DpbSlotInfoKHR extends Struct {
     /// @return the allocated `VkVideoEncodeH265DpbSlotInfoKHR`
     public static VkVideoEncodeH265DpbSlotInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoEncodeH265DpbSlotInfoKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkVideoEncodeH265DpbSlotInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkVideoEncodeH265DpbSlotInfoKHR`
+    public VkVideoEncodeH265DpbSlotInfoKHR asSlice(long index) { return new VkVideoEncodeH265DpbSlotInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkVideoEncodeH265DpbSlotInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkVideoEncodeH265DpbSlotInfoKHR`
+    public VkVideoEncodeH265DpbSlotInfoKHR asSlice(long index, long count) { return new VkVideoEncodeH265DpbSlotInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

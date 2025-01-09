@@ -101,6 +101,17 @@ public final class VkLatencySleepModeInfoNV extends Struct {
     /// @return the allocated `VkLatencySleepModeInfoNV`
     public static VkLatencySleepModeInfoNV alloc(SegmentAllocator allocator, long count) { return new VkLatencySleepModeInfoNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkLatencySleepModeInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkLatencySleepModeInfoNV`
+    public VkLatencySleepModeInfoNV asSlice(long index) { return new VkLatencySleepModeInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkLatencySleepModeInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkLatencySleepModeInfoNV`
+    public VkLatencySleepModeInfoNV asSlice(long index, long count) { return new VkLatencySleepModeInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

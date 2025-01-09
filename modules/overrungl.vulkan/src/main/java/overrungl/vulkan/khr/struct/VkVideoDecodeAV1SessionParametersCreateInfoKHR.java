@@ -89,6 +89,17 @@ public final class VkVideoDecodeAV1SessionParametersCreateInfoKHR extends Struct
     /// @return the allocated `VkVideoDecodeAV1SessionParametersCreateInfoKHR`
     public static VkVideoDecodeAV1SessionParametersCreateInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoDecodeAV1SessionParametersCreateInfoKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkVideoDecodeAV1SessionParametersCreateInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkVideoDecodeAV1SessionParametersCreateInfoKHR`
+    public VkVideoDecodeAV1SessionParametersCreateInfoKHR asSlice(long index) { return new VkVideoDecodeAV1SessionParametersCreateInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkVideoDecodeAV1SessionParametersCreateInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkVideoDecodeAV1SessionParametersCreateInfoKHR`
+    public VkVideoDecodeAV1SessionParametersCreateInfoKHR asSlice(long index, long count) { return new VkVideoDecodeAV1SessionParametersCreateInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

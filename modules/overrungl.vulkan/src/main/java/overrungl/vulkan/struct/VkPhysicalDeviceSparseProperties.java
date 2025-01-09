@@ -101,6 +101,17 @@ public final class VkPhysicalDeviceSparseProperties extends Struct {
     /// @return the allocated `VkPhysicalDeviceSparseProperties`
     public static VkPhysicalDeviceSparseProperties alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceSparseProperties(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceSparseProperties`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceSparseProperties`
+    public VkPhysicalDeviceSparseProperties asSlice(long index) { return new VkPhysicalDeviceSparseProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceSparseProperties`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceSparseProperties`
+    public VkPhysicalDeviceSparseProperties asSlice(long index, long count) { return new VkPhysicalDeviceSparseProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `residencyStandard2DBlockShape` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

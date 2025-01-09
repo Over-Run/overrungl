@@ -101,6 +101,17 @@ public final class StdVideoAV1FilmGrainFlags extends Struct {
     /// @return the allocated `StdVideoAV1FilmGrainFlags`
     public static StdVideoAV1FilmGrainFlags alloc(SegmentAllocator allocator, long count) { return new StdVideoAV1FilmGrainFlags(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `StdVideoAV1FilmGrainFlags`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoAV1FilmGrainFlags`
+    public StdVideoAV1FilmGrainFlags asSlice(long index) { return new StdVideoAV1FilmGrainFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `StdVideoAV1FilmGrainFlags`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoAV1FilmGrainFlags`
+    public StdVideoAV1FilmGrainFlags asSlice(long index, long count) { return new StdVideoAV1FilmGrainFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `chroma_scaling_from_luma` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

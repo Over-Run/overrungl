@@ -83,6 +83,17 @@ public final class StdVideoAV1LoopRestoration extends Struct {
     /// @return the allocated `StdVideoAV1LoopRestoration`
     public static StdVideoAV1LoopRestoration alloc(SegmentAllocator allocator, long count) { return new StdVideoAV1LoopRestoration(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `StdVideoAV1LoopRestoration`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoAV1LoopRestoration`
+    public StdVideoAV1LoopRestoration asSlice(long index) { return new StdVideoAV1LoopRestoration(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `StdVideoAV1LoopRestoration`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoAV1LoopRestoration`
+    public StdVideoAV1LoopRestoration asSlice(long index, long count) { return new StdVideoAV1LoopRestoration(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `FrameRestorationType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

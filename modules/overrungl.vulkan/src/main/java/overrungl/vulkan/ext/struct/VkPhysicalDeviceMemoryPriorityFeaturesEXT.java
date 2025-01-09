@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceMemoryPriorityFeaturesEXT extends Struct {
     /// @return the allocated `VkPhysicalDeviceMemoryPriorityFeaturesEXT`
     public static VkPhysicalDeviceMemoryPriorityFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceMemoryPriorityFeaturesEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceMemoryPriorityFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceMemoryPriorityFeaturesEXT`
+    public VkPhysicalDeviceMemoryPriorityFeaturesEXT asSlice(long index) { return new VkPhysicalDeviceMemoryPriorityFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceMemoryPriorityFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceMemoryPriorityFeaturesEXT`
+    public VkPhysicalDeviceMemoryPriorityFeaturesEXT asSlice(long index, long count) { return new VkPhysicalDeviceMemoryPriorityFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

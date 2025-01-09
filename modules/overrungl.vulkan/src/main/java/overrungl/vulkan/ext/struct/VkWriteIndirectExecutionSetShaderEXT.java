@@ -95,6 +95,17 @@ public final class VkWriteIndirectExecutionSetShaderEXT extends Struct {
     /// @return the allocated `VkWriteIndirectExecutionSetShaderEXT`
     public static VkWriteIndirectExecutionSetShaderEXT alloc(SegmentAllocator allocator, long count) { return new VkWriteIndirectExecutionSetShaderEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkWriteIndirectExecutionSetShaderEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkWriteIndirectExecutionSetShaderEXT`
+    public VkWriteIndirectExecutionSetShaderEXT asSlice(long index) { return new VkWriteIndirectExecutionSetShaderEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkWriteIndirectExecutionSetShaderEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkWriteIndirectExecutionSetShaderEXT`
+    public VkWriteIndirectExecutionSetShaderEXT asSlice(long index, long count) { return new VkWriteIndirectExecutionSetShaderEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

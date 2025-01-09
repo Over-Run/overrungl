@@ -95,6 +95,17 @@ public final class VkImageViewAddressPropertiesNVX extends Struct {
     /// @return the allocated `VkImageViewAddressPropertiesNVX`
     public static VkImageViewAddressPropertiesNVX alloc(SegmentAllocator allocator, long count) { return new VkImageViewAddressPropertiesNVX(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkImageViewAddressPropertiesNVX`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkImageViewAddressPropertiesNVX`
+    public VkImageViewAddressPropertiesNVX asSlice(long index) { return new VkImageViewAddressPropertiesNVX(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkImageViewAddressPropertiesNVX`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkImageViewAddressPropertiesNVX`
+    public VkImageViewAddressPropertiesNVX asSlice(long index, long count) { return new VkImageViewAddressPropertiesNVX(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

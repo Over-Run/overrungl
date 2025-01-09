@@ -125,6 +125,17 @@ public final class VkVideoEncodeH265RateControlLayerInfoKHR extends Struct {
     /// @return the allocated `VkVideoEncodeH265RateControlLayerInfoKHR`
     public static VkVideoEncodeH265RateControlLayerInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoEncodeH265RateControlLayerInfoKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkVideoEncodeH265RateControlLayerInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkVideoEncodeH265RateControlLayerInfoKHR`
+    public VkVideoEncodeH265RateControlLayerInfoKHR asSlice(long index) { return new VkVideoEncodeH265RateControlLayerInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkVideoEncodeH265RateControlLayerInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkVideoEncodeH265RateControlLayerInfoKHR`
+    public VkVideoEncodeH265RateControlLayerInfoKHR asSlice(long index, long count) { return new VkVideoEncodeH265RateControlLayerInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

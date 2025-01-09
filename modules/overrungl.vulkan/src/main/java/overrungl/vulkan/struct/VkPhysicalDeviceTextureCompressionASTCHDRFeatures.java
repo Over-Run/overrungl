@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceTextureCompressionASTCHDRFeatures extends Str
     /// @return the allocated `VkPhysicalDeviceTextureCompressionASTCHDRFeatures`
     public static VkPhysicalDeviceTextureCompressionASTCHDRFeatures alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceTextureCompressionASTCHDRFeatures(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceTextureCompressionASTCHDRFeatures`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceTextureCompressionASTCHDRFeatures`
+    public VkPhysicalDeviceTextureCompressionASTCHDRFeatures asSlice(long index) { return new VkPhysicalDeviceTextureCompressionASTCHDRFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceTextureCompressionASTCHDRFeatures`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceTextureCompressionASTCHDRFeatures`
+    public VkPhysicalDeviceTextureCompressionASTCHDRFeatures asSlice(long index, long count) { return new VkPhysicalDeviceTextureCompressionASTCHDRFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -89,6 +89,17 @@ public final class VkFormatProperties extends Struct {
     /// @return the allocated `VkFormatProperties`
     public static VkFormatProperties alloc(SegmentAllocator allocator, long count) { return new VkFormatProperties(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkFormatProperties`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkFormatProperties`
+    public VkFormatProperties asSlice(long index) { return new VkFormatProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkFormatProperties`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkFormatProperties`
+    public VkFormatProperties asSlice(long index, long count) { return new VkFormatProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `linearTilingFeatures` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -95,6 +95,17 @@ public final class VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT extends St
     /// @return the allocated `VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT`
     public static VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT`
+    public VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT asSlice(long index) { return new VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT`
+    public VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT asSlice(long index, long count) { return new VkPhysicalDeviceDeviceGeneratedCommandsFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

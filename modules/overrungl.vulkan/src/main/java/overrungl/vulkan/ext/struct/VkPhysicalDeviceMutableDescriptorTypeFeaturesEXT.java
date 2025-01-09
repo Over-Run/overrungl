@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT extends Stru
     /// @return the allocated `VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT`
     public static VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT`
+    public VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT asSlice(long index) { return new VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT`
+    public VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT asSlice(long index, long count) { return new VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

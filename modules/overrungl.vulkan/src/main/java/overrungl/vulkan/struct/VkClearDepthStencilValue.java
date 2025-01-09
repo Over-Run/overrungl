@@ -83,6 +83,17 @@ public final class VkClearDepthStencilValue extends Struct {
     /// @return the allocated `VkClearDepthStencilValue`
     public static VkClearDepthStencilValue alloc(SegmentAllocator allocator, long count) { return new VkClearDepthStencilValue(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkClearDepthStencilValue`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkClearDepthStencilValue`
+    public VkClearDepthStencilValue asSlice(long index) { return new VkClearDepthStencilValue(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkClearDepthStencilValue`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkClearDepthStencilValue`
+    public VkClearDepthStencilValue asSlice(long index, long count) { return new VkClearDepthStencilValue(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `depth` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -89,6 +89,17 @@ public final class VkImagePlaneMemoryRequirementsInfo extends Struct {
     /// @return the allocated `VkImagePlaneMemoryRequirementsInfo`
     public static VkImagePlaneMemoryRequirementsInfo alloc(SegmentAllocator allocator, long count) { return new VkImagePlaneMemoryRequirementsInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkImagePlaneMemoryRequirementsInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkImagePlaneMemoryRequirementsInfo`
+    public VkImagePlaneMemoryRequirementsInfo asSlice(long index) { return new VkImagePlaneMemoryRequirementsInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkImagePlaneMemoryRequirementsInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkImagePlaneMemoryRequirementsInfo`
+    public VkImagePlaneMemoryRequirementsInfo asSlice(long index, long count) { return new VkImagePlaneMemoryRequirementsInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

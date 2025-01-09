@@ -107,6 +107,17 @@ public final class STBRPRect extends Struct {
     /// @return the allocated `STBRPRect`
     public static STBRPRect alloc(SegmentAllocator allocator, long count) { return new STBRPRect(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `STBRPRect`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `STBRPRect`
+    public STBRPRect asSlice(long index) { return new STBRPRect(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `STBRPRect`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `STBRPRect`
+    public STBRPRect asSlice(long index, long count) { return new STBRPRect(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `id` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

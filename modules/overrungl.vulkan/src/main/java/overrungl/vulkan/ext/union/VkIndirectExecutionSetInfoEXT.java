@@ -83,12 +83,23 @@ public final class VkIndirectExecutionSetInfoEXT extends Union {
     /// @return the allocated `VkIndirectExecutionSetInfoEXT`
     public static VkIndirectExecutionSetInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkIndirectExecutionSetInfoEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkIndirectExecutionSetInfoEXT`.
+    /// @param index the index of the union buffer
+    /// @return the slice of `VkIndirectExecutionSetInfoEXT`
+    public VkIndirectExecutionSetInfoEXT asSlice(long index) { return new VkIndirectExecutionSetInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkIndirectExecutionSetInfoEXT`.
+    /// @param index the index of the union buffer
+    /// @param count the count
+    /// @return the slice of `VkIndirectExecutionSetInfoEXT`
+    public VkIndirectExecutionSetInfoEXT asSlice(long index, long count) { return new VkIndirectExecutionSetInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `pPipelineInfo` at the given index}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     public static @CType("const VkIndirectExecutionSetPipelineInfoEXT *") java.lang.foreign.MemorySegment get_pPipelineInfo(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pPipelineInfo.get(segment, 0L, index); }
     /// {@return `pPipelineInfo`}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     public static @CType("const VkIndirectExecutionSetPipelineInfoEXT *") java.lang.foreign.MemorySegment get_pPipelineInfo(MemorySegment segment) { return VkIndirectExecutionSetInfoEXT.get_pPipelineInfo(segment, 0L); }
     /// {@return `pPipelineInfo` at the given index}
     /// @param index the index
@@ -96,12 +107,12 @@ public final class VkIndirectExecutionSetInfoEXT extends Union {
     /// {@return `pPipelineInfo`}
     public @CType("const VkIndirectExecutionSetPipelineInfoEXT *") java.lang.foreign.MemorySegment pPipelineInfo() { return VkIndirectExecutionSetInfoEXT.get_pPipelineInfo(this.segment()); }
     /// Sets `pPipelineInfo` with the given value at the given index.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     /// @param value   the value
     public static void set_pPipelineInfo(MemorySegment segment, long index, @CType("const VkIndirectExecutionSetPipelineInfoEXT *") java.lang.foreign.MemorySegment value) { VH_pPipelineInfo.set(segment, 0L, index, value); }
     /// Sets `pPipelineInfo` with the given value.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param value   the value
     public static void set_pPipelineInfo(MemorySegment segment, @CType("const VkIndirectExecutionSetPipelineInfoEXT *") java.lang.foreign.MemorySegment value) { VkIndirectExecutionSetInfoEXT.set_pPipelineInfo(segment, 0L, value); }
     /// Sets `pPipelineInfo` with the given value at the given index.
@@ -115,11 +126,11 @@ public final class VkIndirectExecutionSetInfoEXT extends Union {
     public VkIndirectExecutionSetInfoEXT pPipelineInfo(@CType("const VkIndirectExecutionSetPipelineInfoEXT *") java.lang.foreign.MemorySegment value) { VkIndirectExecutionSetInfoEXT.set_pPipelineInfo(this.segment(), value); return this; }
 
     /// {@return `pShaderInfo` at the given index}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     public static @CType("const VkIndirectExecutionSetShaderInfoEXT *") java.lang.foreign.MemorySegment get_pShaderInfo(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pShaderInfo.get(segment, 0L, index); }
     /// {@return `pShaderInfo`}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     public static @CType("const VkIndirectExecutionSetShaderInfoEXT *") java.lang.foreign.MemorySegment get_pShaderInfo(MemorySegment segment) { return VkIndirectExecutionSetInfoEXT.get_pShaderInfo(segment, 0L); }
     /// {@return `pShaderInfo` at the given index}
     /// @param index the index
@@ -127,12 +138,12 @@ public final class VkIndirectExecutionSetInfoEXT extends Union {
     /// {@return `pShaderInfo`}
     public @CType("const VkIndirectExecutionSetShaderInfoEXT *") java.lang.foreign.MemorySegment pShaderInfo() { return VkIndirectExecutionSetInfoEXT.get_pShaderInfo(this.segment()); }
     /// Sets `pShaderInfo` with the given value at the given index.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     /// @param value   the value
     public static void set_pShaderInfo(MemorySegment segment, long index, @CType("const VkIndirectExecutionSetShaderInfoEXT *") java.lang.foreign.MemorySegment value) { VH_pShaderInfo.set(segment, 0L, index, value); }
     /// Sets `pShaderInfo` with the given value.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param value   the value
     public static void set_pShaderInfo(MemorySegment segment, @CType("const VkIndirectExecutionSetShaderInfoEXT *") java.lang.foreign.MemorySegment value) { VkIndirectExecutionSetInfoEXT.set_pShaderInfo(segment, 0L, value); }
     /// Sets `pShaderInfo` with the given value at the given index.

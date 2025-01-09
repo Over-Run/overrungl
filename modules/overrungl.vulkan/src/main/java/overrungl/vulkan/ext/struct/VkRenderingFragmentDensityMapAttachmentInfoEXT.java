@@ -95,6 +95,17 @@ public final class VkRenderingFragmentDensityMapAttachmentInfoEXT extends Struct
     /// @return the allocated `VkRenderingFragmentDensityMapAttachmentInfoEXT`
     public static VkRenderingFragmentDensityMapAttachmentInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkRenderingFragmentDensityMapAttachmentInfoEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkRenderingFragmentDensityMapAttachmentInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkRenderingFragmentDensityMapAttachmentInfoEXT`
+    public VkRenderingFragmentDensityMapAttachmentInfoEXT asSlice(long index) { return new VkRenderingFragmentDensityMapAttachmentInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkRenderingFragmentDensityMapAttachmentInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkRenderingFragmentDensityMapAttachmentInfoEXT`
+    public VkRenderingFragmentDensityMapAttachmentInfoEXT asSlice(long index, long count) { return new VkRenderingFragmentDensityMapAttachmentInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

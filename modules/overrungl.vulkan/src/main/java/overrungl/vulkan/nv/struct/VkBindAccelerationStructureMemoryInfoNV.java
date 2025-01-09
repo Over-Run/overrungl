@@ -113,6 +113,17 @@ public final class VkBindAccelerationStructureMemoryInfoNV extends Struct {
     /// @return the allocated `VkBindAccelerationStructureMemoryInfoNV`
     public static VkBindAccelerationStructureMemoryInfoNV alloc(SegmentAllocator allocator, long count) { return new VkBindAccelerationStructureMemoryInfoNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkBindAccelerationStructureMemoryInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkBindAccelerationStructureMemoryInfoNV`
+    public VkBindAccelerationStructureMemoryInfoNV asSlice(long index) { return new VkBindAccelerationStructureMemoryInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkBindAccelerationStructureMemoryInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkBindAccelerationStructureMemoryInfoNV`
+    public VkBindAccelerationStructureMemoryInfoNV asSlice(long index, long count) { return new VkBindAccelerationStructureMemoryInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

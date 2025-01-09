@@ -113,6 +113,17 @@ public final class STBTTPackRange extends Struct {
     /// @return the allocated `STBTTPackRange`
     public static STBTTPackRange alloc(SegmentAllocator allocator, long count) { return new STBTTPackRange(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `STBTTPackRange`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `STBTTPackRange`
+    public STBTTPackRange asSlice(long index) { return new STBTTPackRange(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `STBTTPackRange`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `STBTTPackRange`
+    public STBTTPackRange asSlice(long index, long count) { return new STBTTPackRange(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `font_size` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

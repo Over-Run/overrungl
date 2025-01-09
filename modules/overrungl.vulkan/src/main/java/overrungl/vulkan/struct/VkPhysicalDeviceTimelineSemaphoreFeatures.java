@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceTimelineSemaphoreFeatures extends Struct {
     /// @return the allocated `VkPhysicalDeviceTimelineSemaphoreFeatures`
     public static VkPhysicalDeviceTimelineSemaphoreFeatures alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceTimelineSemaphoreFeatures(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceTimelineSemaphoreFeatures`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceTimelineSemaphoreFeatures`
+    public VkPhysicalDeviceTimelineSemaphoreFeatures asSlice(long index) { return new VkPhysicalDeviceTimelineSemaphoreFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceTimelineSemaphoreFeatures`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceTimelineSemaphoreFeatures`
+    public VkPhysicalDeviceTimelineSemaphoreFeatures asSlice(long index, long count) { return new VkPhysicalDeviceTimelineSemaphoreFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

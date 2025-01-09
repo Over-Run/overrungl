@@ -119,6 +119,17 @@ public final class VkSetDescriptorBufferOffsetsInfoEXT extends Struct {
     /// @return the allocated `VkSetDescriptorBufferOffsetsInfoEXT`
     public static VkSetDescriptorBufferOffsetsInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkSetDescriptorBufferOffsetsInfoEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkSetDescriptorBufferOffsetsInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSetDescriptorBufferOffsetsInfoEXT`
+    public VkSetDescriptorBufferOffsetsInfoEXT asSlice(long index) { return new VkSetDescriptorBufferOffsetsInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkSetDescriptorBufferOffsetsInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSetDescriptorBufferOffsetsInfoEXT`
+    public VkSetDescriptorBufferOffsetsInfoEXT asSlice(long index, long count) { return new VkSetDescriptorBufferOffsetsInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

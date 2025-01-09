@@ -95,6 +95,17 @@ public final class VkPhysicalDeviceProvokingVertexPropertiesEXT extends Struct {
     /// @return the allocated `VkPhysicalDeviceProvokingVertexPropertiesEXT`
     public static VkPhysicalDeviceProvokingVertexPropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceProvokingVertexPropertiesEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceProvokingVertexPropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceProvokingVertexPropertiesEXT`
+    public VkPhysicalDeviceProvokingVertexPropertiesEXT asSlice(long index) { return new VkPhysicalDeviceProvokingVertexPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceProvokingVertexPropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceProvokingVertexPropertiesEXT`
+    public VkPhysicalDeviceProvokingVertexPropertiesEXT asSlice(long index, long count) { return new VkPhysicalDeviceProvokingVertexPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

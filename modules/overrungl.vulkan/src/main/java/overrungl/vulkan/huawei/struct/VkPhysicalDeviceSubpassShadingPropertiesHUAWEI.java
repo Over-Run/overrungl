@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceSubpassShadingPropertiesHUAWEI extends Struct
     /// @return the allocated `VkPhysicalDeviceSubpassShadingPropertiesHUAWEI`
     public static VkPhysicalDeviceSubpassShadingPropertiesHUAWEI alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceSubpassShadingPropertiesHUAWEI(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceSubpassShadingPropertiesHUAWEI`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceSubpassShadingPropertiesHUAWEI`
+    public VkPhysicalDeviceSubpassShadingPropertiesHUAWEI asSlice(long index) { return new VkPhysicalDeviceSubpassShadingPropertiesHUAWEI(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceSubpassShadingPropertiesHUAWEI`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceSubpassShadingPropertiesHUAWEI`
+    public VkPhysicalDeviceSubpassShadingPropertiesHUAWEI asSlice(long index, long count) { return new VkPhysicalDeviceSubpassShadingPropertiesHUAWEI(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

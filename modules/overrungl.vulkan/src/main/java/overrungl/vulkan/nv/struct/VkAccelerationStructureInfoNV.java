@@ -113,6 +113,17 @@ public final class VkAccelerationStructureInfoNV extends Struct {
     /// @return the allocated `VkAccelerationStructureInfoNV`
     public static VkAccelerationStructureInfoNV alloc(SegmentAllocator allocator, long count) { return new VkAccelerationStructureInfoNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkAccelerationStructureInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkAccelerationStructureInfoNV`
+    public VkAccelerationStructureInfoNV asSlice(long index) { return new VkAccelerationStructureInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkAccelerationStructureInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkAccelerationStructureInfoNV`
+    public VkAccelerationStructureInfoNV asSlice(long index, long count) { return new VkAccelerationStructureInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

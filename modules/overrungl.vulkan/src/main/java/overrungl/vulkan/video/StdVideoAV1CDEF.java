@@ -107,6 +107,17 @@ public final class StdVideoAV1CDEF extends Struct {
     /// @return the allocated `StdVideoAV1CDEF`
     public static StdVideoAV1CDEF alloc(SegmentAllocator allocator, long count) { return new StdVideoAV1CDEF(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `StdVideoAV1CDEF`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoAV1CDEF`
+    public StdVideoAV1CDEF asSlice(long index) { return new StdVideoAV1CDEF(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `StdVideoAV1CDEF`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoAV1CDEF`
+    public StdVideoAV1CDEF asSlice(long index, long count) { return new StdVideoAV1CDEF(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `cdef_damping_minus_3` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

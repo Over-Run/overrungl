@@ -89,6 +89,17 @@ public final class VkSamplerReductionModeCreateInfo extends Struct {
     /// @return the allocated `VkSamplerReductionModeCreateInfo`
     public static VkSamplerReductionModeCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkSamplerReductionModeCreateInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkSamplerReductionModeCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSamplerReductionModeCreateInfo`
+    public VkSamplerReductionModeCreateInfo asSlice(long index) { return new VkSamplerReductionModeCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkSamplerReductionModeCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSamplerReductionModeCreateInfo`
+    public VkSamplerReductionModeCreateInfo asSlice(long index, long count) { return new VkSamplerReductionModeCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

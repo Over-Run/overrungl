@@ -113,6 +113,17 @@ public final class VkDebugUtilsMessengerCreateInfoEXT extends Struct {
     /// @return the allocated `VkDebugUtilsMessengerCreateInfoEXT`
     public static VkDebugUtilsMessengerCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkDebugUtilsMessengerCreateInfoEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkDebugUtilsMessengerCreateInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDebugUtilsMessengerCreateInfoEXT`
+    public VkDebugUtilsMessengerCreateInfoEXT asSlice(long index) { return new VkDebugUtilsMessengerCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkDebugUtilsMessengerCreateInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDebugUtilsMessengerCreateInfoEXT`
+    public VkDebugUtilsMessengerCreateInfoEXT asSlice(long index, long count) { return new VkDebugUtilsMessengerCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

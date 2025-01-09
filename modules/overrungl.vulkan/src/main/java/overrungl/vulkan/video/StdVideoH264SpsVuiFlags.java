@@ -143,6 +143,17 @@ public final class StdVideoH264SpsVuiFlags extends Struct {
     /// @return the allocated `StdVideoH264SpsVuiFlags`
     public static StdVideoH264SpsVuiFlags alloc(SegmentAllocator allocator, long count) { return new StdVideoH264SpsVuiFlags(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `StdVideoH264SpsVuiFlags`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoH264SpsVuiFlags`
+    public StdVideoH264SpsVuiFlags asSlice(long index) { return new StdVideoH264SpsVuiFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `StdVideoH264SpsVuiFlags`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoH264SpsVuiFlags`
+    public StdVideoH264SpsVuiFlags asSlice(long index, long count) { return new StdVideoH264SpsVuiFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `aspect_ratio_info_present_flag` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

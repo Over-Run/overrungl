@@ -101,6 +101,17 @@ public final class VkShaderModuleCreateInfo extends Struct {
     /// @return the allocated `VkShaderModuleCreateInfo`
     public static VkShaderModuleCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkShaderModuleCreateInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkShaderModuleCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkShaderModuleCreateInfo`
+    public VkShaderModuleCreateInfo asSlice(long index) { return new VkShaderModuleCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkShaderModuleCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkShaderModuleCreateInfo`
+    public VkShaderModuleCreateInfo asSlice(long index, long count) { return new VkShaderModuleCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

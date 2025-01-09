@@ -89,6 +89,17 @@ public final class VkDisplayNativeHdrSurfaceCapabilitiesAMD extends Struct {
     /// @return the allocated `VkDisplayNativeHdrSurfaceCapabilitiesAMD`
     public static VkDisplayNativeHdrSurfaceCapabilitiesAMD alloc(SegmentAllocator allocator, long count) { return new VkDisplayNativeHdrSurfaceCapabilitiesAMD(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkDisplayNativeHdrSurfaceCapabilitiesAMD`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDisplayNativeHdrSurfaceCapabilitiesAMD`
+    public VkDisplayNativeHdrSurfaceCapabilitiesAMD asSlice(long index) { return new VkDisplayNativeHdrSurfaceCapabilitiesAMD(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkDisplayNativeHdrSurfaceCapabilitiesAMD`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDisplayNativeHdrSurfaceCapabilitiesAMD`
+    public VkDisplayNativeHdrSurfaceCapabilitiesAMD asSlice(long index, long count) { return new VkDisplayNativeHdrSurfaceCapabilitiesAMD(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

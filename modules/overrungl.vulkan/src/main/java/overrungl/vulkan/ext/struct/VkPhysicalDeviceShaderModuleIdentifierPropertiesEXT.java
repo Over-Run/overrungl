@@ -31,7 +31,7 @@ import static overrungl.vulkan.VK10.*;
 /// ### pNext
 /// [VarHandle][#VH_pNext] - [Getter][#pNext()] - [Setter][#pNext(java.lang.foreign.MemorySegment)]
 /// ### shaderModuleIdentifierAlgorithmUUID
-/// [Byte offset handle][#MH_shaderModuleIdentifierAlgorithmUUID] - [Memory layout][#ML_shaderModuleIdentifierAlgorithmUUID] - [Getter][#shaderModuleIdentifierAlgorithmUUID(long)] - [Setter][#shaderModuleIdentifierAlgorithmUUID(long, java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_shaderModuleIdentifierAlgorithmUUID] - [Memory layout][#ML_shaderModuleIdentifierAlgorithmUUID] - [Getter][#shaderModuleIdentifierAlgorithmUUID()] - [Setter][#shaderModuleIdentifierAlgorithmUUID(java.lang.foreign.MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -52,8 +52,8 @@ public final class VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT extends S
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
     /// The [VarHandle] of `pNext` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
-    /// The byte offset handle of `shaderModuleIdentifierAlgorithmUUID` of type `(long baseOffset, long elementIndex)long`.
-    public static final MethodHandle MH_shaderModuleIdentifierAlgorithmUUID = LAYOUT.byteOffsetHandle(PathElement.groupElement("shaderModuleIdentifierAlgorithmUUID"), PathElement.sequenceElement());
+    /// The byte offset of `shaderModuleIdentifierAlgorithmUUID`.
+    public static final long OFFSET_shaderModuleIdentifierAlgorithmUUID = LAYOUT.byteOffset(PathElement.groupElement("shaderModuleIdentifierAlgorithmUUID"));
     /// The memory layout of `shaderModuleIdentifierAlgorithmUUID`.
     public static final MemoryLayout ML_shaderModuleIdentifierAlgorithmUUID = LAYOUT.select(PathElement.groupElement("shaderModuleIdentifierAlgorithmUUID"));
 
@@ -91,6 +91,17 @@ public final class VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT extends S
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT`
     public static VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT(allocator.allocate(LAYOUT, count)); }
+
+    /// Creates a slice of `VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT`
+    public VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT asSlice(long index) { return new VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT`
+    public VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT asSlice(long index, long count) { return new VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -155,48 +166,34 @@ public final class VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT extends S
     public VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT pNext(@CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT.set_pNext(this.segment(), value); return this; }
 
     /// {@return `shaderModuleIdentifierAlgorithmUUID` at the given index}
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public static @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment get_shaderModuleIdentifierAlgorithmUUID(MemorySegment segment, long index, long elementIndex) {
-        try { return segment.asSlice(LAYOUT.scale((long) MH_shaderModuleIdentifierAlgorithmUUID.invokeExact(0L, elementIndex), index), ML_shaderModuleIdentifierAlgorithmUUID); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment get_shaderModuleIdentifierAlgorithmUUID(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_shaderModuleIdentifierAlgorithmUUID, index), ML_shaderModuleIdentifierAlgorithmUUID); }
     /// {@return `shaderModuleIdentifierAlgorithmUUID`}
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    public static @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment get_shaderModuleIdentifierAlgorithmUUID(MemorySegment segment, long elementIndex) { return VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT.get_shaderModuleIdentifierAlgorithmUUID(segment, 0L, elementIndex); }
+    /// @param segment the segment of the struct
+    public static @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment get_shaderModuleIdentifierAlgorithmUUID(MemorySegment segment) { return VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT.get_shaderModuleIdentifierAlgorithmUUID(segment, 0L); }
     /// {@return `shaderModuleIdentifierAlgorithmUUID` at the given index}
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment shaderModuleIdentifierAlgorithmUUIDAt(long index, long elementIndex) { return VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT.get_shaderModuleIdentifierAlgorithmUUID(this.segment(), index, elementIndex); }
+    /// @param index the index
+    public @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment shaderModuleIdentifierAlgorithmUUIDAt(long index) { return VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT.get_shaderModuleIdentifierAlgorithmUUID(this.segment(), index); }
     /// {@return `shaderModuleIdentifierAlgorithmUUID`}
-    /// @param elementIndex the index of the element
-    public @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment shaderModuleIdentifierAlgorithmUUID(long elementIndex) { return VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT.get_shaderModuleIdentifierAlgorithmUUID(this.segment(), elementIndex); }
+    public @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment shaderModuleIdentifierAlgorithmUUID() { return VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT.get_shaderModuleIdentifierAlgorithmUUID(this.segment()); }
     /// Sets `shaderModuleIdentifierAlgorithmUUID` with the given value at the given index.
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_shaderModuleIdentifierAlgorithmUUID(MemorySegment segment, long index, long elementIndex, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) {
-        try { MemorySegment.copy(value, 0L, segment, LAYOUT.scale((long) MH_shaderModuleIdentifierAlgorithmUUID.invokeExact(0L, elementIndex), index), ML_shaderModuleIdentifierAlgorithmUUID.byteSize()); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_shaderModuleIdentifierAlgorithmUUID(MemorySegment segment, long index, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_shaderModuleIdentifierAlgorithmUUID, index), ML_shaderModuleIdentifierAlgorithmUUID.byteSize()); }
     /// Sets `shaderModuleIdentifierAlgorithmUUID` with the given value.
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_shaderModuleIdentifierAlgorithmUUID(MemorySegment segment, long elementIndex, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT.set_shaderModuleIdentifierAlgorithmUUID(segment, 0L, elementIndex, value); }
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_shaderModuleIdentifierAlgorithmUUID(MemorySegment segment, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT.set_shaderModuleIdentifierAlgorithmUUID(segment, 0L, value); }
     /// Sets `shaderModuleIdentifierAlgorithmUUID` with the given value at the given index.
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param index the index
+    /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT shaderModuleIdentifierAlgorithmUUIDAt(long index, long elementIndex, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT.set_shaderModuleIdentifierAlgorithmUUID(this.segment(), index, elementIndex, value); return this; }
+    public VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT shaderModuleIdentifierAlgorithmUUIDAt(long index, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT.set_shaderModuleIdentifierAlgorithmUUID(this.segment(), index, value); return this; }
     /// Sets `shaderModuleIdentifierAlgorithmUUID` with the given value.
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT shaderModuleIdentifierAlgorithmUUID(long elementIndex, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT.set_shaderModuleIdentifierAlgorithmUUID(this.segment(), elementIndex, value); return this; }
+    public VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT shaderModuleIdentifierAlgorithmUUID(@CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT.set_shaderModuleIdentifierAlgorithmUUID(this.segment(), value); return this; }
 
 }

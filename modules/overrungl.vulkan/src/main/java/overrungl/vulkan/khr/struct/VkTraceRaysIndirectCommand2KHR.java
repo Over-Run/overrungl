@@ -155,6 +155,17 @@ public final class VkTraceRaysIndirectCommand2KHR extends Struct {
     /// @return the allocated `VkTraceRaysIndirectCommand2KHR`
     public static VkTraceRaysIndirectCommand2KHR alloc(SegmentAllocator allocator, long count) { return new VkTraceRaysIndirectCommand2KHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkTraceRaysIndirectCommand2KHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkTraceRaysIndirectCommand2KHR`
+    public VkTraceRaysIndirectCommand2KHR asSlice(long index) { return new VkTraceRaysIndirectCommand2KHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkTraceRaysIndirectCommand2KHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkTraceRaysIndirectCommand2KHR`
+    public VkTraceRaysIndirectCommand2KHR asSlice(long index, long count) { return new VkTraceRaysIndirectCommand2KHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `raygenShaderRecordAddress` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

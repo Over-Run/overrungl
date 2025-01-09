@@ -95,6 +95,17 @@ public final class VkPipelineRasterizationDepthClipStateCreateInfoEXT extends St
     /// @return the allocated `VkPipelineRasterizationDepthClipStateCreateInfoEXT`
     public static VkPipelineRasterizationDepthClipStateCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkPipelineRasterizationDepthClipStateCreateInfoEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPipelineRasterizationDepthClipStateCreateInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPipelineRasterizationDepthClipStateCreateInfoEXT`
+    public VkPipelineRasterizationDepthClipStateCreateInfoEXT asSlice(long index) { return new VkPipelineRasterizationDepthClipStateCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPipelineRasterizationDepthClipStateCreateInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPipelineRasterizationDepthClipStateCreateInfoEXT`
+    public VkPipelineRasterizationDepthClipStateCreateInfoEXT asSlice(long index, long count) { return new VkPipelineRasterizationDepthClipStateCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

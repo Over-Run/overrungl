@@ -131,12 +131,23 @@ public final class VkDescriptorDataEXT extends Union {
     /// @return the allocated `VkDescriptorDataEXT`
     public static VkDescriptorDataEXT alloc(SegmentAllocator allocator, long count) { return new VkDescriptorDataEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkDescriptorDataEXT`.
+    /// @param index the index of the union buffer
+    /// @return the slice of `VkDescriptorDataEXT`
+    public VkDescriptorDataEXT asSlice(long index) { return new VkDescriptorDataEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkDescriptorDataEXT`.
+    /// @param index the index of the union buffer
+    /// @param count the count
+    /// @return the slice of `VkDescriptorDataEXT`
+    public VkDescriptorDataEXT asSlice(long index, long count) { return new VkDescriptorDataEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `pSampler` at the given index}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     public static @CType("const VkSampler *") java.lang.foreign.MemorySegment get_pSampler(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pSampler.get(segment, 0L, index); }
     /// {@return `pSampler`}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     public static @CType("const VkSampler *") java.lang.foreign.MemorySegment get_pSampler(MemorySegment segment) { return VkDescriptorDataEXT.get_pSampler(segment, 0L); }
     /// {@return `pSampler` at the given index}
     /// @param index the index
@@ -144,12 +155,12 @@ public final class VkDescriptorDataEXT extends Union {
     /// {@return `pSampler`}
     public @CType("const VkSampler *") java.lang.foreign.MemorySegment pSampler() { return VkDescriptorDataEXT.get_pSampler(this.segment()); }
     /// Sets `pSampler` with the given value at the given index.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     /// @param value   the value
     public static void set_pSampler(MemorySegment segment, long index, @CType("const VkSampler *") java.lang.foreign.MemorySegment value) { VH_pSampler.set(segment, 0L, index, value); }
     /// Sets `pSampler` with the given value.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param value   the value
     public static void set_pSampler(MemorySegment segment, @CType("const VkSampler *") java.lang.foreign.MemorySegment value) { VkDescriptorDataEXT.set_pSampler(segment, 0L, value); }
     /// Sets `pSampler` with the given value at the given index.
@@ -163,11 +174,11 @@ public final class VkDescriptorDataEXT extends Union {
     public VkDescriptorDataEXT pSampler(@CType("const VkSampler *") java.lang.foreign.MemorySegment value) { VkDescriptorDataEXT.set_pSampler(this.segment(), value); return this; }
 
     /// {@return `pCombinedImageSampler` at the given index}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     public static @CType("const VkDescriptorImageInfo *") java.lang.foreign.MemorySegment get_pCombinedImageSampler(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pCombinedImageSampler.get(segment, 0L, index); }
     /// {@return `pCombinedImageSampler`}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     public static @CType("const VkDescriptorImageInfo *") java.lang.foreign.MemorySegment get_pCombinedImageSampler(MemorySegment segment) { return VkDescriptorDataEXT.get_pCombinedImageSampler(segment, 0L); }
     /// {@return `pCombinedImageSampler` at the given index}
     /// @param index the index
@@ -175,12 +186,12 @@ public final class VkDescriptorDataEXT extends Union {
     /// {@return `pCombinedImageSampler`}
     public @CType("const VkDescriptorImageInfo *") java.lang.foreign.MemorySegment pCombinedImageSampler() { return VkDescriptorDataEXT.get_pCombinedImageSampler(this.segment()); }
     /// Sets `pCombinedImageSampler` with the given value at the given index.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     /// @param value   the value
     public static void set_pCombinedImageSampler(MemorySegment segment, long index, @CType("const VkDescriptorImageInfo *") java.lang.foreign.MemorySegment value) { VH_pCombinedImageSampler.set(segment, 0L, index, value); }
     /// Sets `pCombinedImageSampler` with the given value.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param value   the value
     public static void set_pCombinedImageSampler(MemorySegment segment, @CType("const VkDescriptorImageInfo *") java.lang.foreign.MemorySegment value) { VkDescriptorDataEXT.set_pCombinedImageSampler(segment, 0L, value); }
     /// Sets `pCombinedImageSampler` with the given value at the given index.
@@ -194,11 +205,11 @@ public final class VkDescriptorDataEXT extends Union {
     public VkDescriptorDataEXT pCombinedImageSampler(@CType("const VkDescriptorImageInfo *") java.lang.foreign.MemorySegment value) { VkDescriptorDataEXT.set_pCombinedImageSampler(this.segment(), value); return this; }
 
     /// {@return `pInputAttachmentImage` at the given index}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     public static @CType("const VkDescriptorImageInfo *") java.lang.foreign.MemorySegment get_pInputAttachmentImage(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pInputAttachmentImage.get(segment, 0L, index); }
     /// {@return `pInputAttachmentImage`}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     public static @CType("const VkDescriptorImageInfo *") java.lang.foreign.MemorySegment get_pInputAttachmentImage(MemorySegment segment) { return VkDescriptorDataEXT.get_pInputAttachmentImage(segment, 0L); }
     /// {@return `pInputAttachmentImage` at the given index}
     /// @param index the index
@@ -206,12 +217,12 @@ public final class VkDescriptorDataEXT extends Union {
     /// {@return `pInputAttachmentImage`}
     public @CType("const VkDescriptorImageInfo *") java.lang.foreign.MemorySegment pInputAttachmentImage() { return VkDescriptorDataEXT.get_pInputAttachmentImage(this.segment()); }
     /// Sets `pInputAttachmentImage` with the given value at the given index.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     /// @param value   the value
     public static void set_pInputAttachmentImage(MemorySegment segment, long index, @CType("const VkDescriptorImageInfo *") java.lang.foreign.MemorySegment value) { VH_pInputAttachmentImage.set(segment, 0L, index, value); }
     /// Sets `pInputAttachmentImage` with the given value.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param value   the value
     public static void set_pInputAttachmentImage(MemorySegment segment, @CType("const VkDescriptorImageInfo *") java.lang.foreign.MemorySegment value) { VkDescriptorDataEXT.set_pInputAttachmentImage(segment, 0L, value); }
     /// Sets `pInputAttachmentImage` with the given value at the given index.
@@ -225,11 +236,11 @@ public final class VkDescriptorDataEXT extends Union {
     public VkDescriptorDataEXT pInputAttachmentImage(@CType("const VkDescriptorImageInfo *") java.lang.foreign.MemorySegment value) { VkDescriptorDataEXT.set_pInputAttachmentImage(this.segment(), value); return this; }
 
     /// {@return `pSampledImage` at the given index}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     public static @CType("const VkDescriptorImageInfo *") java.lang.foreign.MemorySegment get_pSampledImage(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pSampledImage.get(segment, 0L, index); }
     /// {@return `pSampledImage`}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     public static @CType("const VkDescriptorImageInfo *") java.lang.foreign.MemorySegment get_pSampledImage(MemorySegment segment) { return VkDescriptorDataEXT.get_pSampledImage(segment, 0L); }
     /// {@return `pSampledImage` at the given index}
     /// @param index the index
@@ -237,12 +248,12 @@ public final class VkDescriptorDataEXT extends Union {
     /// {@return `pSampledImage`}
     public @CType("const VkDescriptorImageInfo *") java.lang.foreign.MemorySegment pSampledImage() { return VkDescriptorDataEXT.get_pSampledImage(this.segment()); }
     /// Sets `pSampledImage` with the given value at the given index.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     /// @param value   the value
     public static void set_pSampledImage(MemorySegment segment, long index, @CType("const VkDescriptorImageInfo *") java.lang.foreign.MemorySegment value) { VH_pSampledImage.set(segment, 0L, index, value); }
     /// Sets `pSampledImage` with the given value.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param value   the value
     public static void set_pSampledImage(MemorySegment segment, @CType("const VkDescriptorImageInfo *") java.lang.foreign.MemorySegment value) { VkDescriptorDataEXT.set_pSampledImage(segment, 0L, value); }
     /// Sets `pSampledImage` with the given value at the given index.
@@ -256,11 +267,11 @@ public final class VkDescriptorDataEXT extends Union {
     public VkDescriptorDataEXT pSampledImage(@CType("const VkDescriptorImageInfo *") java.lang.foreign.MemorySegment value) { VkDescriptorDataEXT.set_pSampledImage(this.segment(), value); return this; }
 
     /// {@return `pStorageImage` at the given index}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     public static @CType("const VkDescriptorImageInfo *") java.lang.foreign.MemorySegment get_pStorageImage(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pStorageImage.get(segment, 0L, index); }
     /// {@return `pStorageImage`}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     public static @CType("const VkDescriptorImageInfo *") java.lang.foreign.MemorySegment get_pStorageImage(MemorySegment segment) { return VkDescriptorDataEXT.get_pStorageImage(segment, 0L); }
     /// {@return `pStorageImage` at the given index}
     /// @param index the index
@@ -268,12 +279,12 @@ public final class VkDescriptorDataEXT extends Union {
     /// {@return `pStorageImage`}
     public @CType("const VkDescriptorImageInfo *") java.lang.foreign.MemorySegment pStorageImage() { return VkDescriptorDataEXT.get_pStorageImage(this.segment()); }
     /// Sets `pStorageImage` with the given value at the given index.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     /// @param value   the value
     public static void set_pStorageImage(MemorySegment segment, long index, @CType("const VkDescriptorImageInfo *") java.lang.foreign.MemorySegment value) { VH_pStorageImage.set(segment, 0L, index, value); }
     /// Sets `pStorageImage` with the given value.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param value   the value
     public static void set_pStorageImage(MemorySegment segment, @CType("const VkDescriptorImageInfo *") java.lang.foreign.MemorySegment value) { VkDescriptorDataEXT.set_pStorageImage(segment, 0L, value); }
     /// Sets `pStorageImage` with the given value at the given index.
@@ -287,11 +298,11 @@ public final class VkDescriptorDataEXT extends Union {
     public VkDescriptorDataEXT pStorageImage(@CType("const VkDescriptorImageInfo *") java.lang.foreign.MemorySegment value) { VkDescriptorDataEXT.set_pStorageImage(this.segment(), value); return this; }
 
     /// {@return `pUniformTexelBuffer` at the given index}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     public static @CType("const VkDescriptorAddressInfoEXT *") java.lang.foreign.MemorySegment get_pUniformTexelBuffer(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pUniformTexelBuffer.get(segment, 0L, index); }
     /// {@return `pUniformTexelBuffer`}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     public static @CType("const VkDescriptorAddressInfoEXT *") java.lang.foreign.MemorySegment get_pUniformTexelBuffer(MemorySegment segment) { return VkDescriptorDataEXT.get_pUniformTexelBuffer(segment, 0L); }
     /// {@return `pUniformTexelBuffer` at the given index}
     /// @param index the index
@@ -299,12 +310,12 @@ public final class VkDescriptorDataEXT extends Union {
     /// {@return `pUniformTexelBuffer`}
     public @CType("const VkDescriptorAddressInfoEXT *") java.lang.foreign.MemorySegment pUniformTexelBuffer() { return VkDescriptorDataEXT.get_pUniformTexelBuffer(this.segment()); }
     /// Sets `pUniformTexelBuffer` with the given value at the given index.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     /// @param value   the value
     public static void set_pUniformTexelBuffer(MemorySegment segment, long index, @CType("const VkDescriptorAddressInfoEXT *") java.lang.foreign.MemorySegment value) { VH_pUniformTexelBuffer.set(segment, 0L, index, value); }
     /// Sets `pUniformTexelBuffer` with the given value.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param value   the value
     public static void set_pUniformTexelBuffer(MemorySegment segment, @CType("const VkDescriptorAddressInfoEXT *") java.lang.foreign.MemorySegment value) { VkDescriptorDataEXT.set_pUniformTexelBuffer(segment, 0L, value); }
     /// Sets `pUniformTexelBuffer` with the given value at the given index.
@@ -318,11 +329,11 @@ public final class VkDescriptorDataEXT extends Union {
     public VkDescriptorDataEXT pUniformTexelBuffer(@CType("const VkDescriptorAddressInfoEXT *") java.lang.foreign.MemorySegment value) { VkDescriptorDataEXT.set_pUniformTexelBuffer(this.segment(), value); return this; }
 
     /// {@return `pStorageTexelBuffer` at the given index}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     public static @CType("const VkDescriptorAddressInfoEXT *") java.lang.foreign.MemorySegment get_pStorageTexelBuffer(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pStorageTexelBuffer.get(segment, 0L, index); }
     /// {@return `pStorageTexelBuffer`}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     public static @CType("const VkDescriptorAddressInfoEXT *") java.lang.foreign.MemorySegment get_pStorageTexelBuffer(MemorySegment segment) { return VkDescriptorDataEXT.get_pStorageTexelBuffer(segment, 0L); }
     /// {@return `pStorageTexelBuffer` at the given index}
     /// @param index the index
@@ -330,12 +341,12 @@ public final class VkDescriptorDataEXT extends Union {
     /// {@return `pStorageTexelBuffer`}
     public @CType("const VkDescriptorAddressInfoEXT *") java.lang.foreign.MemorySegment pStorageTexelBuffer() { return VkDescriptorDataEXT.get_pStorageTexelBuffer(this.segment()); }
     /// Sets `pStorageTexelBuffer` with the given value at the given index.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     /// @param value   the value
     public static void set_pStorageTexelBuffer(MemorySegment segment, long index, @CType("const VkDescriptorAddressInfoEXT *") java.lang.foreign.MemorySegment value) { VH_pStorageTexelBuffer.set(segment, 0L, index, value); }
     /// Sets `pStorageTexelBuffer` with the given value.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param value   the value
     public static void set_pStorageTexelBuffer(MemorySegment segment, @CType("const VkDescriptorAddressInfoEXT *") java.lang.foreign.MemorySegment value) { VkDescriptorDataEXT.set_pStorageTexelBuffer(segment, 0L, value); }
     /// Sets `pStorageTexelBuffer` with the given value at the given index.
@@ -349,11 +360,11 @@ public final class VkDescriptorDataEXT extends Union {
     public VkDescriptorDataEXT pStorageTexelBuffer(@CType("const VkDescriptorAddressInfoEXT *") java.lang.foreign.MemorySegment value) { VkDescriptorDataEXT.set_pStorageTexelBuffer(this.segment(), value); return this; }
 
     /// {@return `pUniformBuffer` at the given index}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     public static @CType("const VkDescriptorAddressInfoEXT *") java.lang.foreign.MemorySegment get_pUniformBuffer(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pUniformBuffer.get(segment, 0L, index); }
     /// {@return `pUniformBuffer`}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     public static @CType("const VkDescriptorAddressInfoEXT *") java.lang.foreign.MemorySegment get_pUniformBuffer(MemorySegment segment) { return VkDescriptorDataEXT.get_pUniformBuffer(segment, 0L); }
     /// {@return `pUniformBuffer` at the given index}
     /// @param index the index
@@ -361,12 +372,12 @@ public final class VkDescriptorDataEXT extends Union {
     /// {@return `pUniformBuffer`}
     public @CType("const VkDescriptorAddressInfoEXT *") java.lang.foreign.MemorySegment pUniformBuffer() { return VkDescriptorDataEXT.get_pUniformBuffer(this.segment()); }
     /// Sets `pUniformBuffer` with the given value at the given index.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     /// @param value   the value
     public static void set_pUniformBuffer(MemorySegment segment, long index, @CType("const VkDescriptorAddressInfoEXT *") java.lang.foreign.MemorySegment value) { VH_pUniformBuffer.set(segment, 0L, index, value); }
     /// Sets `pUniformBuffer` with the given value.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param value   the value
     public static void set_pUniformBuffer(MemorySegment segment, @CType("const VkDescriptorAddressInfoEXT *") java.lang.foreign.MemorySegment value) { VkDescriptorDataEXT.set_pUniformBuffer(segment, 0L, value); }
     /// Sets `pUniformBuffer` with the given value at the given index.
@@ -380,11 +391,11 @@ public final class VkDescriptorDataEXT extends Union {
     public VkDescriptorDataEXT pUniformBuffer(@CType("const VkDescriptorAddressInfoEXT *") java.lang.foreign.MemorySegment value) { VkDescriptorDataEXT.set_pUniformBuffer(this.segment(), value); return this; }
 
     /// {@return `pStorageBuffer` at the given index}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     public static @CType("const VkDescriptorAddressInfoEXT *") java.lang.foreign.MemorySegment get_pStorageBuffer(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pStorageBuffer.get(segment, 0L, index); }
     /// {@return `pStorageBuffer`}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     public static @CType("const VkDescriptorAddressInfoEXT *") java.lang.foreign.MemorySegment get_pStorageBuffer(MemorySegment segment) { return VkDescriptorDataEXT.get_pStorageBuffer(segment, 0L); }
     /// {@return `pStorageBuffer` at the given index}
     /// @param index the index
@@ -392,12 +403,12 @@ public final class VkDescriptorDataEXT extends Union {
     /// {@return `pStorageBuffer`}
     public @CType("const VkDescriptorAddressInfoEXT *") java.lang.foreign.MemorySegment pStorageBuffer() { return VkDescriptorDataEXT.get_pStorageBuffer(this.segment()); }
     /// Sets `pStorageBuffer` with the given value at the given index.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     /// @param value   the value
     public static void set_pStorageBuffer(MemorySegment segment, long index, @CType("const VkDescriptorAddressInfoEXT *") java.lang.foreign.MemorySegment value) { VH_pStorageBuffer.set(segment, 0L, index, value); }
     /// Sets `pStorageBuffer` with the given value.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param value   the value
     public static void set_pStorageBuffer(MemorySegment segment, @CType("const VkDescriptorAddressInfoEXT *") java.lang.foreign.MemorySegment value) { VkDescriptorDataEXT.set_pStorageBuffer(segment, 0L, value); }
     /// Sets `pStorageBuffer` with the given value at the given index.
@@ -411,11 +422,11 @@ public final class VkDescriptorDataEXT extends Union {
     public VkDescriptorDataEXT pStorageBuffer(@CType("const VkDescriptorAddressInfoEXT *") java.lang.foreign.MemorySegment value) { VkDescriptorDataEXT.set_pStorageBuffer(this.segment(), value); return this; }
 
     /// {@return `accelerationStructure` at the given index}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     public static @CType("VkDeviceAddress") long get_accelerationStructure(MemorySegment segment, long index) { return (long) VH_accelerationStructure.get(segment, 0L, index); }
     /// {@return `accelerationStructure`}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     public static @CType("VkDeviceAddress") long get_accelerationStructure(MemorySegment segment) { return VkDescriptorDataEXT.get_accelerationStructure(segment, 0L); }
     /// {@return `accelerationStructure` at the given index}
     /// @param index the index
@@ -423,12 +434,12 @@ public final class VkDescriptorDataEXT extends Union {
     /// {@return `accelerationStructure`}
     public @CType("VkDeviceAddress") long accelerationStructure() { return VkDescriptorDataEXT.get_accelerationStructure(this.segment()); }
     /// Sets `accelerationStructure` with the given value at the given index.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     /// @param value   the value
     public static void set_accelerationStructure(MemorySegment segment, long index, @CType("VkDeviceAddress") long value) { VH_accelerationStructure.set(segment, 0L, index, value); }
     /// Sets `accelerationStructure` with the given value.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param value   the value
     public static void set_accelerationStructure(MemorySegment segment, @CType("VkDeviceAddress") long value) { VkDescriptorDataEXT.set_accelerationStructure(segment, 0L, value); }
     /// Sets `accelerationStructure` with the given value at the given index.

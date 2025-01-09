@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT extends Struct {
     /// @return the allocated `VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT`
     public static VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT`
+    public VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT asSlice(long index) { return new VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT`
+    public VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT asSlice(long index, long count) { return new VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

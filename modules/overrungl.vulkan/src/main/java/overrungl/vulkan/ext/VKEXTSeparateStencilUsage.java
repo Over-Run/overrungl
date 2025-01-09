@@ -23,12 +23,11 @@ import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 import static overrungl.vulkan.VK12.*;
-public class VKEXTSeparateStencilUsage {
+public final class VKEXTSeparateStencilUsage {
     public static final int VK_EXT_SEPARATE_STENCIL_USAGE_SPEC_VERSION = 1;
     public static final String VK_EXT_SEPARATE_STENCIL_USAGE_EXTENSION_NAME = "VK_EXT_separate_stencil_usage";
     public static final int VK_STRUCTURE_TYPE_IMAGE_STENCIL_USAGE_CREATE_INFO_EXT = VK_STRUCTURE_TYPE_IMAGE_STENCIL_USAGE_CREATE_INFO;
 
-    public VKEXTSeparateStencilUsage(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKEXTSeparateStencilUsage() { }
 
 }

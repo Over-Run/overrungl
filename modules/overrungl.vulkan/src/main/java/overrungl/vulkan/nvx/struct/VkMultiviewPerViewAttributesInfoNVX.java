@@ -95,6 +95,17 @@ public final class VkMultiviewPerViewAttributesInfoNVX extends Struct {
     /// @return the allocated `VkMultiviewPerViewAttributesInfoNVX`
     public static VkMultiviewPerViewAttributesInfoNVX alloc(SegmentAllocator allocator, long count) { return new VkMultiviewPerViewAttributesInfoNVX(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkMultiviewPerViewAttributesInfoNVX`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkMultiviewPerViewAttributesInfoNVX`
+    public VkMultiviewPerViewAttributesInfoNVX asSlice(long index) { return new VkMultiviewPerViewAttributesInfoNVX(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkMultiviewPerViewAttributesInfoNVX`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkMultiviewPerViewAttributesInfoNVX`
+    public VkMultiviewPerViewAttributesInfoNVX asSlice(long index, long count) { return new VkMultiviewPerViewAttributesInfoNVX(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

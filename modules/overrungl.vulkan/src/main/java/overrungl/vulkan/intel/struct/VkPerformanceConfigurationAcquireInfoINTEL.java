@@ -89,6 +89,17 @@ public final class VkPerformanceConfigurationAcquireInfoINTEL extends Struct {
     /// @return the allocated `VkPerformanceConfigurationAcquireInfoINTEL`
     public static VkPerformanceConfigurationAcquireInfoINTEL alloc(SegmentAllocator allocator, long count) { return new VkPerformanceConfigurationAcquireInfoINTEL(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPerformanceConfigurationAcquireInfoINTEL`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPerformanceConfigurationAcquireInfoINTEL`
+    public VkPerformanceConfigurationAcquireInfoINTEL asSlice(long index) { return new VkPerformanceConfigurationAcquireInfoINTEL(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPerformanceConfigurationAcquireInfoINTEL`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPerformanceConfigurationAcquireInfoINTEL`
+    public VkPerformanceConfigurationAcquireInfoINTEL asSlice(long index, long count) { return new VkPerformanceConfigurationAcquireInfoINTEL(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

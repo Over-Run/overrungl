@@ -95,6 +95,17 @@ public final class VkDescriptorSetLayoutBindingFlagsCreateInfo extends Struct {
     /// @return the allocated `VkDescriptorSetLayoutBindingFlagsCreateInfo`
     public static VkDescriptorSetLayoutBindingFlagsCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkDescriptorSetLayoutBindingFlagsCreateInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkDescriptorSetLayoutBindingFlagsCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDescriptorSetLayoutBindingFlagsCreateInfo`
+    public VkDescriptorSetLayoutBindingFlagsCreateInfo asSlice(long index) { return new VkDescriptorSetLayoutBindingFlagsCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkDescriptorSetLayoutBindingFlagsCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDescriptorSetLayoutBindingFlagsCreateInfo`
+    public VkDescriptorSetLayoutBindingFlagsCreateInfo asSlice(long index, long count) { return new VkDescriptorSetLayoutBindingFlagsCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

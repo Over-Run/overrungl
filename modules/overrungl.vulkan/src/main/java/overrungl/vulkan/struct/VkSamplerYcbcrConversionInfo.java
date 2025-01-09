@@ -89,6 +89,17 @@ public final class VkSamplerYcbcrConversionInfo extends Struct {
     /// @return the allocated `VkSamplerYcbcrConversionInfo`
     public static VkSamplerYcbcrConversionInfo alloc(SegmentAllocator allocator, long count) { return new VkSamplerYcbcrConversionInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkSamplerYcbcrConversionInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSamplerYcbcrConversionInfo`
+    public VkSamplerYcbcrConversionInfo asSlice(long index) { return new VkSamplerYcbcrConversionInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkSamplerYcbcrConversionInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSamplerYcbcrConversionInfo`
+    public VkSamplerYcbcrConversionInfo asSlice(long index, long count) { return new VkSamplerYcbcrConversionInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

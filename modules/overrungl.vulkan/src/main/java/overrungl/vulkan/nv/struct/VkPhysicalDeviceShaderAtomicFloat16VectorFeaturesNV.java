@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV extends S
     /// @return the allocated `VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV`
     public static VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV`
+    public VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV asSlice(long index) { return new VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV`
+    public VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV asSlice(long index, long count) { return new VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -22,11 +22,10 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKAMDGpuShaderInt16 {
+public final class VKAMDGpuShaderInt16 {
     public static final int VK_AMD_GPU_SHADER_INT16_SPEC_VERSION = 2;
     public static final String VK_AMD_GPU_SHADER_INT16_EXTENSION_NAME = "VK_AMD_gpu_shader_int16";
 
-    public VKAMDGpuShaderInt16(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKAMDGpuShaderInt16() { }
 
 }

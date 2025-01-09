@@ -89,6 +89,17 @@ public final class VkDeviceGroupSwapchainCreateInfoKHR extends Struct {
     /// @return the allocated `VkDeviceGroupSwapchainCreateInfoKHR`
     public static VkDeviceGroupSwapchainCreateInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkDeviceGroupSwapchainCreateInfoKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkDeviceGroupSwapchainCreateInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDeviceGroupSwapchainCreateInfoKHR`
+    public VkDeviceGroupSwapchainCreateInfoKHR asSlice(long index) { return new VkDeviceGroupSwapchainCreateInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkDeviceGroupSwapchainCreateInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDeviceGroupSwapchainCreateInfoKHR`
+    public VkDeviceGroupSwapchainCreateInfoKHR asSlice(long index, long count) { return new VkDeviceGroupSwapchainCreateInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -107,6 +107,17 @@ public final class VkColorBlendEquationEXT extends Struct {
     /// @return the allocated `VkColorBlendEquationEXT`
     public static VkColorBlendEquationEXT alloc(SegmentAllocator allocator, long count) { return new VkColorBlendEquationEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkColorBlendEquationEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkColorBlendEquationEXT`
+    public VkColorBlendEquationEXT asSlice(long index) { return new VkColorBlendEquationEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkColorBlendEquationEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkColorBlendEquationEXT`
+    public VkColorBlendEquationEXT asSlice(long index, long count) { return new VkColorBlendEquationEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `srcColorBlendFactor` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

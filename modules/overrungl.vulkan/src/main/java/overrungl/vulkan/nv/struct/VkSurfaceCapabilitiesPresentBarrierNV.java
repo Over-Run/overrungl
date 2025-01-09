@@ -89,6 +89,17 @@ public final class VkSurfaceCapabilitiesPresentBarrierNV extends Struct {
     /// @return the allocated `VkSurfaceCapabilitiesPresentBarrierNV`
     public static VkSurfaceCapabilitiesPresentBarrierNV alloc(SegmentAllocator allocator, long count) { return new VkSurfaceCapabilitiesPresentBarrierNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkSurfaceCapabilitiesPresentBarrierNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSurfaceCapabilitiesPresentBarrierNV`
+    public VkSurfaceCapabilitiesPresentBarrierNV asSlice(long index) { return new VkSurfaceCapabilitiesPresentBarrierNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkSurfaceCapabilitiesPresentBarrierNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSurfaceCapabilitiesPresentBarrierNV`
+    public VkSurfaceCapabilitiesPresentBarrierNV asSlice(long index, long count) { return new VkSurfaceCapabilitiesPresentBarrierNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

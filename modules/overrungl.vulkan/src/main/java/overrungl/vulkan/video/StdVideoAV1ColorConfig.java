@@ -125,6 +125,17 @@ public final class StdVideoAV1ColorConfig extends Struct {
     /// @return the allocated `StdVideoAV1ColorConfig`
     public static StdVideoAV1ColorConfig alloc(SegmentAllocator allocator, long count) { return new StdVideoAV1ColorConfig(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `StdVideoAV1ColorConfig`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoAV1ColorConfig`
+    public StdVideoAV1ColorConfig asSlice(long index) { return new StdVideoAV1ColorConfig(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `StdVideoAV1ColorConfig`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoAV1ColorConfig`
+    public StdVideoAV1ColorConfig asSlice(long index, long count) { return new StdVideoAV1ColorConfig(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

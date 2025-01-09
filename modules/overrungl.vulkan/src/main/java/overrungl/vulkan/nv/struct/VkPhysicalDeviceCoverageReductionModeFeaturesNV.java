@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceCoverageReductionModeFeaturesNV extends Struc
     /// @return the allocated `VkPhysicalDeviceCoverageReductionModeFeaturesNV`
     public static VkPhysicalDeviceCoverageReductionModeFeaturesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceCoverageReductionModeFeaturesNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceCoverageReductionModeFeaturesNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceCoverageReductionModeFeaturesNV`
+    public VkPhysicalDeviceCoverageReductionModeFeaturesNV asSlice(long index) { return new VkPhysicalDeviceCoverageReductionModeFeaturesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceCoverageReductionModeFeaturesNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceCoverageReductionModeFeaturesNV`
+    public VkPhysicalDeviceCoverageReductionModeFeaturesNV asSlice(long index, long count) { return new VkPhysicalDeviceCoverageReductionModeFeaturesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -284,7 +284,7 @@ fun main() {
                             }
                         }
                         nameIndex++
-                        if (nameIndex < childNodeList.length - 1) {
+                        if (nameIndex < childNodeList.length) {
                             // scan fixed size array
                             val sb = StringBuilder()
                             for (i2 in nameIndex until childNodeList.length) {
@@ -297,7 +297,9 @@ fun main() {
                                     }
                                 }
                             }
-                            fixedSize = sb.split('[', ']')[1]
+                            if (sb.startsWith("[")) {
+                                fixedSize = sb.split('[', ']')[1]
+                            }
                         }
                         members.add(VkStructMember(typeComp, memberName!!, fixedSize))
                         if (fixedSize != null && fixedSize.startsWith("VK_")) {
@@ -575,6 +577,8 @@ fun main() {
 
                 if (featureNumber == "1.0") {
                     customCode = """
+                        public static final MemorySegment VK_NULL_HANDLE = MemorySegment.NULL;
+
                         public static int VK_MAKE_API_VERSION(int variant, int major, int minor, int patch) {
                             return (variant << 29) | (major << 22) | (minor << 12) | patch;
                         }
@@ -671,19 +675,24 @@ fun main() {
                 addReqEnums(extReqEnums)
                 addReqCommand(extReqCommands, commandMap, commandAliasMap)
 
-                constructor = buildString {
-                    append("public $extName(")
-                    when (extType) {
-                        "device" -> append("""@CType("VkDevice") MemorySegment device""")
-                        "instance" -> append("""@CType("VkInstance") MemorySegment instance""")
+                if (extReqCommands.isEmpty()){
+                    modifier = "final"
+                    constructor = "private $extName() { }"
+                }else {
+                    constructor = buildString {
+                        append("public $extName(")
+                        when (extType) {
+                            "device" -> append("""@CType("VkDevice") MemorySegment device""")
+                            "instance" -> append("""@CType("VkInstance") MemorySegment instance""")
+                        }
+                        appendLine(", VKLoadFunc func) {")
+                        extReqCommands.forEach { command ->
+                            append("""    PFN_$command = func.invoke($extType, "$command"""")
+                            commandAliasMap[command]?.onEach { append(""", "$it"""") }
+                            appendLine(");")
+                        }
+                        append("}")
                     }
-                    appendLine(", VKLoadFunc func) {")
-                    extReqCommands.forEach { command ->
-                        append("""    PFN_$command = func.invoke($extType, "$command"""")
-                        commandAliasMap[command]?.onEach { append(""", "$it"""") }
-                        appendLine(");")
-                    }
-                    append("}")
                 }
             }
             extensionDowncalls[rawName] = downcall

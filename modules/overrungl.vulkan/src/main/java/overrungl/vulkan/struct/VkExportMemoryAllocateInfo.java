@@ -89,6 +89,17 @@ public final class VkExportMemoryAllocateInfo extends Struct {
     /// @return the allocated `VkExportMemoryAllocateInfo`
     public static VkExportMemoryAllocateInfo alloc(SegmentAllocator allocator, long count) { return new VkExportMemoryAllocateInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkExportMemoryAllocateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkExportMemoryAllocateInfo`
+    public VkExportMemoryAllocateInfo asSlice(long index) { return new VkExportMemoryAllocateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkExportMemoryAllocateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkExportMemoryAllocateInfo`
+    public VkExportMemoryAllocateInfo asSlice(long index, long count) { return new VkExportMemoryAllocateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

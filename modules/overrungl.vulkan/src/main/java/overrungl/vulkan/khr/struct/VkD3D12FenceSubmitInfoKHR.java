@@ -107,6 +107,17 @@ public final class VkD3D12FenceSubmitInfoKHR extends Struct {
     /// @return the allocated `VkD3D12FenceSubmitInfoKHR`
     public static VkD3D12FenceSubmitInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkD3D12FenceSubmitInfoKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkD3D12FenceSubmitInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkD3D12FenceSubmitInfoKHR`
+    public VkD3D12FenceSubmitInfoKHR asSlice(long index) { return new VkD3D12FenceSubmitInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkD3D12FenceSubmitInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkD3D12FenceSubmitInfoKHR`
+    public VkD3D12FenceSubmitInfoKHR asSlice(long index, long count) { return new VkD3D12FenceSubmitInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -113,6 +113,17 @@ public final class VkPushConstantsInfo extends Struct {
     /// @return the allocated `VkPushConstantsInfo`
     public static VkPushConstantsInfo alloc(SegmentAllocator allocator, long count) { return new VkPushConstantsInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPushConstantsInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPushConstantsInfo`
+    public VkPushConstantsInfo asSlice(long index) { return new VkPushConstantsInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPushConstantsInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPushConstantsInfo`
+    public VkPushConstantsInfo asSlice(long index, long count) { return new VkPushConstantsInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

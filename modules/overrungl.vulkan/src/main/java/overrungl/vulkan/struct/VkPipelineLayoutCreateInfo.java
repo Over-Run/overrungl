@@ -113,6 +113,17 @@ public final class VkPipelineLayoutCreateInfo extends Struct {
     /// @return the allocated `VkPipelineLayoutCreateInfo`
     public static VkPipelineLayoutCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkPipelineLayoutCreateInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPipelineLayoutCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPipelineLayoutCreateInfo`
+    public VkPipelineLayoutCreateInfo asSlice(long index) { return new VkPipelineLayoutCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPipelineLayoutCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPipelineLayoutCreateInfo`
+    public VkPipelineLayoutCreateInfo asSlice(long index, long count) { return new VkPipelineLayoutCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

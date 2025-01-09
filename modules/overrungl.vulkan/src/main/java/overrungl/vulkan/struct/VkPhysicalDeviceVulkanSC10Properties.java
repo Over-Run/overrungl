@@ -191,6 +191,17 @@ public final class VkPhysicalDeviceVulkanSC10Properties extends Struct {
     /// @return the allocated `VkPhysicalDeviceVulkanSC10Properties`
     public static VkPhysicalDeviceVulkanSC10Properties alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceVulkanSC10Properties(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceVulkanSC10Properties`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceVulkanSC10Properties`
+    public VkPhysicalDeviceVulkanSC10Properties asSlice(long index) { return new VkPhysicalDeviceVulkanSC10Properties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceVulkanSC10Properties`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceVulkanSC10Properties`
+    public VkPhysicalDeviceVulkanSC10Properties asSlice(long index, long count) { return new VkPhysicalDeviceVulkanSC10Properties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

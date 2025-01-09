@@ -95,6 +95,17 @@ public final class VkIndirectExecutionSetPipelineInfoEXT extends Struct {
     /// @return the allocated `VkIndirectExecutionSetPipelineInfoEXT`
     public static VkIndirectExecutionSetPipelineInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkIndirectExecutionSetPipelineInfoEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkIndirectExecutionSetPipelineInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkIndirectExecutionSetPipelineInfoEXT`
+    public VkIndirectExecutionSetPipelineInfoEXT asSlice(long index) { return new VkIndirectExecutionSetPipelineInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkIndirectExecutionSetPipelineInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkIndirectExecutionSetPipelineInfoEXT`
+    public VkIndirectExecutionSetPipelineInfoEXT asSlice(long index, long count) { return new VkIndirectExecutionSetPipelineInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

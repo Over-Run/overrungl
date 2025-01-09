@@ -95,6 +95,17 @@ public final class VkPresentTimesInfoGOOGLE extends Struct {
     /// @return the allocated `VkPresentTimesInfoGOOGLE`
     public static VkPresentTimesInfoGOOGLE alloc(SegmentAllocator allocator, long count) { return new VkPresentTimesInfoGOOGLE(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPresentTimesInfoGOOGLE`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPresentTimesInfoGOOGLE`
+    public VkPresentTimesInfoGOOGLE asSlice(long index) { return new VkPresentTimesInfoGOOGLE(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPresentTimesInfoGOOGLE`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPresentTimesInfoGOOGLE`
+    public VkPresentTimesInfoGOOGLE asSlice(long index, long count) { return new VkPresentTimesInfoGOOGLE(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

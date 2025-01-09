@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceRenderPassStripedFeaturesARM extends Struct {
     /// @return the allocated `VkPhysicalDeviceRenderPassStripedFeaturesARM`
     public static VkPhysicalDeviceRenderPassStripedFeaturesARM alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceRenderPassStripedFeaturesARM(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceRenderPassStripedFeaturesARM`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceRenderPassStripedFeaturesARM`
+    public VkPhysicalDeviceRenderPassStripedFeaturesARM asSlice(long index) { return new VkPhysicalDeviceRenderPassStripedFeaturesARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceRenderPassStripedFeaturesARM`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceRenderPassStripedFeaturesARM`
+    public VkPhysicalDeviceRenderPassStripedFeaturesARM asSlice(long index, long count) { return new VkPhysicalDeviceRenderPassStripedFeaturesARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

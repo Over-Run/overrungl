@@ -107,6 +107,17 @@ public final class VkPhysicalDevice16BitStorageFeatures extends Struct {
     /// @return the allocated `VkPhysicalDevice16BitStorageFeatures`
     public static VkPhysicalDevice16BitStorageFeatures alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDevice16BitStorageFeatures(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDevice16BitStorageFeatures`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDevice16BitStorageFeatures`
+    public VkPhysicalDevice16BitStorageFeatures asSlice(long index) { return new VkPhysicalDevice16BitStorageFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDevice16BitStorageFeatures`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDevice16BitStorageFeatures`
+    public VkPhysicalDevice16BitStorageFeatures asSlice(long index, long count) { return new VkPhysicalDevice16BitStorageFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

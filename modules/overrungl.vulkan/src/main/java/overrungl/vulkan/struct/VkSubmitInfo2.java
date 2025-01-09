@@ -125,6 +125,17 @@ public final class VkSubmitInfo2 extends Struct {
     /// @return the allocated `VkSubmitInfo2`
     public static VkSubmitInfo2 alloc(SegmentAllocator allocator, long count) { return new VkSubmitInfo2(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkSubmitInfo2`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSubmitInfo2`
+    public VkSubmitInfo2 asSlice(long index) { return new VkSubmitInfo2(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkSubmitInfo2`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSubmitInfo2`
+    public VkSubmitInfo2 asSlice(long index, long count) { return new VkSubmitInfo2(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

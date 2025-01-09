@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR extends 
     /// @return the allocated `VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR`
     public static VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR`
+    public VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR asSlice(long index) { return new VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR`
+    public VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR asSlice(long index, long count) { return new VkPhysicalDeviceFragmentShaderBarycentricFeaturesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

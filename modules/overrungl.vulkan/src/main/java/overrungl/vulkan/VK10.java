@@ -1880,6 +1880,8 @@ public class VK10 {
     }
 
     // --- OverrunGL custom code ---
+    public static final MemorySegment VK_NULL_HANDLE = MemorySegment.NULL;
+    
     public static int VK_MAKE_API_VERSION(int variant, int major, int minor, int patch) {
         return (variant << 29) | (major << 22) | (minor << 12) | patch;
     }

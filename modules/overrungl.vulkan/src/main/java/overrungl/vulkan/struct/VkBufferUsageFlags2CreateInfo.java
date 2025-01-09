@@ -89,6 +89,17 @@ public final class VkBufferUsageFlags2CreateInfo extends Struct {
     /// @return the allocated `VkBufferUsageFlags2CreateInfo`
     public static VkBufferUsageFlags2CreateInfo alloc(SegmentAllocator allocator, long count) { return new VkBufferUsageFlags2CreateInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkBufferUsageFlags2CreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkBufferUsageFlags2CreateInfo`
+    public VkBufferUsageFlags2CreateInfo asSlice(long index) { return new VkBufferUsageFlags2CreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkBufferUsageFlags2CreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkBufferUsageFlags2CreateInfo`
+    public VkBufferUsageFlags2CreateInfo asSlice(long index, long count) { return new VkBufferUsageFlags2CreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

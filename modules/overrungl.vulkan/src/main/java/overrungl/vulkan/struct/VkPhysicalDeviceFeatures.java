@@ -401,6 +401,17 @@ public final class VkPhysicalDeviceFeatures extends Struct {
     /// @return the allocated `VkPhysicalDeviceFeatures`
     public static VkPhysicalDeviceFeatures alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceFeatures(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceFeatures`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceFeatures`
+    public VkPhysicalDeviceFeatures asSlice(long index) { return new VkPhysicalDeviceFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceFeatures`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceFeatures`
+    public VkPhysicalDeviceFeatures asSlice(long index, long count) { return new VkPhysicalDeviceFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `robustBufferAccess` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

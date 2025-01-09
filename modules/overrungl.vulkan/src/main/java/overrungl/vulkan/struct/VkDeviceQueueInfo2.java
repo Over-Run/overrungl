@@ -101,6 +101,17 @@ public final class VkDeviceQueueInfo2 extends Struct {
     /// @return the allocated `VkDeviceQueueInfo2`
     public static VkDeviceQueueInfo2 alloc(SegmentAllocator allocator, long count) { return new VkDeviceQueueInfo2(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkDeviceQueueInfo2`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDeviceQueueInfo2`
+    public VkDeviceQueueInfo2 asSlice(long index) { return new VkDeviceQueueInfo2(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkDeviceQueueInfo2`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDeviceQueueInfo2`
+    public VkDeviceQueueInfo2 asSlice(long index, long count) { return new VkDeviceQueueInfo2(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

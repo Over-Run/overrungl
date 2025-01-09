@@ -125,6 +125,17 @@ public final class STBTTPackedChar extends Struct {
     /// @return the allocated `STBTTPackedChar`
     public static STBTTPackedChar alloc(SegmentAllocator allocator, long count) { return new STBTTPackedChar(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `STBTTPackedChar`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `STBTTPackedChar`
+    public STBTTPackedChar asSlice(long index) { return new STBTTPackedChar(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `STBTTPackedChar`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `STBTTPackedChar`
+    public STBTTPackedChar asSlice(long index, long count) { return new STBTTPackedChar(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `x0` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

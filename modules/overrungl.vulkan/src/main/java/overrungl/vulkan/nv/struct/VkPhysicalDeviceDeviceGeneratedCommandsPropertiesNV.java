@@ -137,6 +137,17 @@ public final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV extends S
     /// @return the allocated `VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV`
     public static VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV`
+    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV asSlice(long index) { return new VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV`
+    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV asSlice(long index, long count) { return new VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceYcbcrImageArraysFeaturesEXT extends Struct {
     /// @return the allocated `VkPhysicalDeviceYcbcrImageArraysFeaturesEXT`
     public static VkPhysicalDeviceYcbcrImageArraysFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceYcbcrImageArraysFeaturesEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceYcbcrImageArraysFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceYcbcrImageArraysFeaturesEXT`
+    public VkPhysicalDeviceYcbcrImageArraysFeaturesEXT asSlice(long index) { return new VkPhysicalDeviceYcbcrImageArraysFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceYcbcrImageArraysFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceYcbcrImageArraysFeaturesEXT`
+    public VkPhysicalDeviceYcbcrImageArraysFeaturesEXT asSlice(long index, long count) { return new VkPhysicalDeviceYcbcrImageArraysFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

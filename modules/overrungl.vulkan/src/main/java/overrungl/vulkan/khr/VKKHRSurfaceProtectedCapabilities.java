@@ -22,12 +22,11 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKKHRSurfaceProtectedCapabilities {
+public final class VKKHRSurfaceProtectedCapabilities {
     public static final int VK_KHR_SURFACE_PROTECTED_CAPABILITIES_SPEC_VERSION = 1;
     public static final String VK_KHR_SURFACE_PROTECTED_CAPABILITIES_EXTENSION_NAME = "VK_KHR_surface_protected_capabilities";
     public static final int VK_STRUCTURE_TYPE_SURFACE_PROTECTED_CAPABILITIES_KHR = 1000239000;
 
-    public VKKHRSurfaceProtectedCapabilities(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
-    }
+    private VKKHRSurfaceProtectedCapabilities() { }
 
 }

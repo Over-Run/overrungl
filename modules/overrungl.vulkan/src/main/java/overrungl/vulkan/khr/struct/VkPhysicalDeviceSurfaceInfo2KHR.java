@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceSurfaceInfo2KHR extends Struct {
     /// @return the allocated `VkPhysicalDeviceSurfaceInfo2KHR`
     public static VkPhysicalDeviceSurfaceInfo2KHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceSurfaceInfo2KHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceSurfaceInfo2KHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceSurfaceInfo2KHR`
+    public VkPhysicalDeviceSurfaceInfo2KHR asSlice(long index) { return new VkPhysicalDeviceSurfaceInfo2KHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceSurfaceInfo2KHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceSurfaceInfo2KHR`
+    public VkPhysicalDeviceSurfaceInfo2KHR asSlice(long index, long count) { return new VkPhysicalDeviceSurfaceInfo2KHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -83,6 +83,17 @@ public final class VkDepthClampRangeEXT extends Struct {
     /// @return the allocated `VkDepthClampRangeEXT`
     public static VkDepthClampRangeEXT alloc(SegmentAllocator allocator, long count) { return new VkDepthClampRangeEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkDepthClampRangeEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDepthClampRangeEXT`
+    public VkDepthClampRangeEXT asSlice(long index) { return new VkDepthClampRangeEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkDepthClampRangeEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDepthClampRangeEXT`
+    public VkDepthClampRangeEXT asSlice(long index, long count) { return new VkDepthClampRangeEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `minDepthClamp` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

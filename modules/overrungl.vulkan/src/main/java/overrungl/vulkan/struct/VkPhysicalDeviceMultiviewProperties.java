@@ -95,6 +95,17 @@ public final class VkPhysicalDeviceMultiviewProperties extends Struct {
     /// @return the allocated `VkPhysicalDeviceMultiviewProperties`
     public static VkPhysicalDeviceMultiviewProperties alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceMultiviewProperties(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceMultiviewProperties`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceMultiviewProperties`
+    public VkPhysicalDeviceMultiviewProperties asSlice(long index) { return new VkPhysicalDeviceMultiviewProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceMultiviewProperties`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceMultiviewProperties`
+    public VkPhysicalDeviceMultiviewProperties asSlice(long index, long count) { return new VkPhysicalDeviceMultiviewProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

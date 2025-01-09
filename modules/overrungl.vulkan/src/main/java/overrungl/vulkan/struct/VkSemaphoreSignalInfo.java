@@ -95,6 +95,17 @@ public final class VkSemaphoreSignalInfo extends Struct {
     /// @return the allocated `VkSemaphoreSignalInfo`
     public static VkSemaphoreSignalInfo alloc(SegmentAllocator allocator, long count) { return new VkSemaphoreSignalInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkSemaphoreSignalInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSemaphoreSignalInfo`
+    public VkSemaphoreSignalInfo asSlice(long index) { return new VkSemaphoreSignalInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkSemaphoreSignalInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSemaphoreSignalInfo`
+    public VkSemaphoreSignalInfo asSlice(long index, long count) { return new VkSemaphoreSignalInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

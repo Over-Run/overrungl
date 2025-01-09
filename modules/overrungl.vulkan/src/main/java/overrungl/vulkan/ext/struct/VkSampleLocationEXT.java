@@ -83,6 +83,17 @@ public final class VkSampleLocationEXT extends Struct {
     /// @return the allocated `VkSampleLocationEXT`
     public static VkSampleLocationEXT alloc(SegmentAllocator allocator, long count) { return new VkSampleLocationEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkSampleLocationEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSampleLocationEXT`
+    public VkSampleLocationEXT asSlice(long index) { return new VkSampleLocationEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkSampleLocationEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSampleLocationEXT`
+    public VkSampleLocationEXT asSlice(long index, long count) { return new VkSampleLocationEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `x` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -95,6 +95,17 @@ public final class GLFWGammaRamp extends Struct {
     /// @return the allocated `GLFWGammaRamp`
     public static GLFWGammaRamp alloc(SegmentAllocator allocator, long count) { return new GLFWGammaRamp(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `GLFWGammaRamp`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `GLFWGammaRamp`
+    public GLFWGammaRamp asSlice(long index) { return new GLFWGammaRamp(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `GLFWGammaRamp`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `GLFWGammaRamp`
+    public GLFWGammaRamp asSlice(long index, long count) { return new GLFWGammaRamp(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `red` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

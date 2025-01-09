@@ -145,6 +145,17 @@ public final class VkVideoCapabilitiesKHR extends Struct {
     /// @return the allocated `VkVideoCapabilitiesKHR`
     public static VkVideoCapabilitiesKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoCapabilitiesKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkVideoCapabilitiesKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkVideoCapabilitiesKHR`
+    public VkVideoCapabilitiesKHR asSlice(long index) { return new VkVideoCapabilitiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkVideoCapabilitiesKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkVideoCapabilitiesKHR`
+    public VkVideoCapabilitiesKHR asSlice(long index, long count) { return new VkVideoCapabilitiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

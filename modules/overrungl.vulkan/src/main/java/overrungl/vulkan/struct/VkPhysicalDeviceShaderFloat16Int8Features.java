@@ -95,6 +95,17 @@ public final class VkPhysicalDeviceShaderFloat16Int8Features extends Struct {
     /// @return the allocated `VkPhysicalDeviceShaderFloat16Int8Features`
     public static VkPhysicalDeviceShaderFloat16Int8Features alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceShaderFloat16Int8Features(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceShaderFloat16Int8Features`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceShaderFloat16Int8Features`
+    public VkPhysicalDeviceShaderFloat16Int8Features asSlice(long index) { return new VkPhysicalDeviceShaderFloat16Int8Features(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceShaderFloat16Int8Features`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceShaderFloat16Int8Features`
+    public VkPhysicalDeviceShaderFloat16Int8Features asSlice(long index, long count) { return new VkPhysicalDeviceShaderFloat16Int8Features(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

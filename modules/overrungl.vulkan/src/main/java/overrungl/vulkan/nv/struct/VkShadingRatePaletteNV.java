@@ -83,6 +83,17 @@ public final class VkShadingRatePaletteNV extends Struct {
     /// @return the allocated `VkShadingRatePaletteNV`
     public static VkShadingRatePaletteNV alloc(SegmentAllocator allocator, long count) { return new VkShadingRatePaletteNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkShadingRatePaletteNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkShadingRatePaletteNV`
+    public VkShadingRatePaletteNV asSlice(long index) { return new VkShadingRatePaletteNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkShadingRatePaletteNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkShadingRatePaletteNV`
+    public VkShadingRatePaletteNV asSlice(long index, long count) { return new VkShadingRatePaletteNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `shadingRatePaletteEntryCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

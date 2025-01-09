@@ -77,6 +77,17 @@ public final class VkRenderPassCreationFeedbackInfoEXT extends Struct {
     /// @return the allocated `VkRenderPassCreationFeedbackInfoEXT`
     public static VkRenderPassCreationFeedbackInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkRenderPassCreationFeedbackInfoEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkRenderPassCreationFeedbackInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkRenderPassCreationFeedbackInfoEXT`
+    public VkRenderPassCreationFeedbackInfoEXT asSlice(long index) { return new VkRenderPassCreationFeedbackInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkRenderPassCreationFeedbackInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkRenderPassCreationFeedbackInfoEXT`
+    public VkRenderPassCreationFeedbackInfoEXT asSlice(long index, long count) { return new VkRenderPassCreationFeedbackInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `postMergeSubpassCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

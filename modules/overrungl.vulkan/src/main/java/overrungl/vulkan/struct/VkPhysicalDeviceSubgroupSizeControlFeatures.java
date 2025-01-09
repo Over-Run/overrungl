@@ -95,6 +95,17 @@ public final class VkPhysicalDeviceSubgroupSizeControlFeatures extends Struct {
     /// @return the allocated `VkPhysicalDeviceSubgroupSizeControlFeatures`
     public static VkPhysicalDeviceSubgroupSizeControlFeatures alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceSubgroupSizeControlFeatures(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceSubgroupSizeControlFeatures`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceSubgroupSizeControlFeatures`
+    public VkPhysicalDeviceSubgroupSizeControlFeatures asSlice(long index) { return new VkPhysicalDeviceSubgroupSizeControlFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceSubgroupSizeControlFeatures`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceSubgroupSizeControlFeatures`
+    public VkPhysicalDeviceSubgroupSizeControlFeatures asSlice(long index, long count) { return new VkPhysicalDeviceSubgroupSizeControlFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

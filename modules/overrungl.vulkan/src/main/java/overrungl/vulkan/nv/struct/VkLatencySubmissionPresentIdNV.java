@@ -89,6 +89,17 @@ public final class VkLatencySubmissionPresentIdNV extends Struct {
     /// @return the allocated `VkLatencySubmissionPresentIdNV`
     public static VkLatencySubmissionPresentIdNV alloc(SegmentAllocator allocator, long count) { return new VkLatencySubmissionPresentIdNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkLatencySubmissionPresentIdNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkLatencySubmissionPresentIdNV`
+    public VkLatencySubmissionPresentIdNV asSlice(long index) { return new VkLatencySubmissionPresentIdNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkLatencySubmissionPresentIdNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkLatencySubmissionPresentIdNV`
+    public VkLatencySubmissionPresentIdNV asSlice(long index, long count) { return new VkLatencySubmissionPresentIdNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

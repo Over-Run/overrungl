@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT extends Struc
     /// @return the allocated `VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT`
     public static VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT`
+    public VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT asSlice(long index) { return new VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT`
+    public VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT asSlice(long index, long count) { return new VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

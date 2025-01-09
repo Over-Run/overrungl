@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceExternalImageFormatInfo extends Struct {
     /// @return the allocated `VkPhysicalDeviceExternalImageFormatInfo`
     public static VkPhysicalDeviceExternalImageFormatInfo alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceExternalImageFormatInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceExternalImageFormatInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceExternalImageFormatInfo`
+    public VkPhysicalDeviceExternalImageFormatInfo asSlice(long index) { return new VkPhysicalDeviceExternalImageFormatInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceExternalImageFormatInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceExternalImageFormatInfo`
+    public VkPhysicalDeviceExternalImageFormatInfo asSlice(long index, long count) { return new VkPhysicalDeviceExternalImageFormatInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

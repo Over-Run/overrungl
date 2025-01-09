@@ -77,7 +77,7 @@ import static overrungl.vulkan.VK10.*;
 /// ### pCopyDstLayouts
 /// [VarHandle][#VH_pCopyDstLayouts] - [Getter][#pCopyDstLayouts()] - [Setter][#pCopyDstLayouts(java.lang.foreign.MemorySegment)]
 /// ### optimalTilingLayoutUUID
-/// [Byte offset handle][#MH_optimalTilingLayoutUUID] - [Memory layout][#ML_optimalTilingLayoutUUID] - [Getter][#optimalTilingLayoutUUID(long)] - [Setter][#optimalTilingLayoutUUID(long, java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_optimalTilingLayoutUUID] - [Memory layout][#ML_optimalTilingLayoutUUID] - [Getter][#optimalTilingLayoutUUID()] - [Setter][#optimalTilingLayoutUUID(java.lang.foreign.MemorySegment)]
 /// ### identicalMemoryTypeRequirements
 /// [VarHandle][#VH_identicalMemoryTypeRequirements] - [Getter][#identicalMemoryTypeRequirements()] - [Setter][#identicalMemoryTypeRequirements(int)]
 /// ## Layout
@@ -194,8 +194,8 @@ public final class VkPhysicalDeviceVulkan14Properties extends Struct {
     public static final VarHandle VH_copyDstLayoutCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("copyDstLayoutCount"));
     /// The [VarHandle] of `pCopyDstLayouts` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
     public static final VarHandle VH_pCopyDstLayouts = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pCopyDstLayouts"));
-    /// The byte offset handle of `optimalTilingLayoutUUID` of type `(long baseOffset, long elementIndex)long`.
-    public static final MethodHandle MH_optimalTilingLayoutUUID = LAYOUT.byteOffsetHandle(PathElement.groupElement("optimalTilingLayoutUUID"), PathElement.sequenceElement());
+    /// The byte offset of `optimalTilingLayoutUUID`.
+    public static final long OFFSET_optimalTilingLayoutUUID = LAYOUT.byteOffset(PathElement.groupElement("optimalTilingLayoutUUID"));
     /// The memory layout of `optimalTilingLayoutUUID`.
     public static final MemoryLayout ML_optimalTilingLayoutUUID = LAYOUT.select(PathElement.groupElement("optimalTilingLayoutUUID"));
     /// The [VarHandle] of `identicalMemoryTypeRequirements` of type `(MemorySegment base, long baseOffset, long index)int`.
@@ -235,6 +235,17 @@ public final class VkPhysicalDeviceVulkan14Properties extends Struct {
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceVulkan14Properties`
     public static VkPhysicalDeviceVulkan14Properties alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceVulkan14Properties(allocator.allocate(LAYOUT, count)); }
+
+    /// Creates a slice of `VkPhysicalDeviceVulkan14Properties`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceVulkan14Properties`
+    public VkPhysicalDeviceVulkan14Properties asSlice(long index) { return new VkPhysicalDeviceVulkan14Properties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceVulkan14Properties`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceVulkan14Properties`
+    public VkPhysicalDeviceVulkan14Properties asSlice(long index, long count) { return new VkPhysicalDeviceVulkan14Properties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -1012,49 +1023,35 @@ public final class VkPhysicalDeviceVulkan14Properties extends Struct {
     public VkPhysicalDeviceVulkan14Properties pCopyDstLayouts(@CType("VkImageLayout *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan14Properties.set_pCopyDstLayouts(this.segment(), value); return this; }
 
     /// {@return `optimalTilingLayoutUUID` at the given index}
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public static @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment get_optimalTilingLayoutUUID(MemorySegment segment, long index, long elementIndex) {
-        try { return segment.asSlice(LAYOUT.scale((long) MH_optimalTilingLayoutUUID.invokeExact(0L, elementIndex), index), ML_optimalTilingLayoutUUID); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment get_optimalTilingLayoutUUID(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_optimalTilingLayoutUUID, index), ML_optimalTilingLayoutUUID); }
     /// {@return `optimalTilingLayoutUUID`}
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    public static @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment get_optimalTilingLayoutUUID(MemorySegment segment, long elementIndex) { return VkPhysicalDeviceVulkan14Properties.get_optimalTilingLayoutUUID(segment, 0L, elementIndex); }
+    /// @param segment the segment of the struct
+    public static @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment get_optimalTilingLayoutUUID(MemorySegment segment) { return VkPhysicalDeviceVulkan14Properties.get_optimalTilingLayoutUUID(segment, 0L); }
     /// {@return `optimalTilingLayoutUUID` at the given index}
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment optimalTilingLayoutUUIDAt(long index, long elementIndex) { return VkPhysicalDeviceVulkan14Properties.get_optimalTilingLayoutUUID(this.segment(), index, elementIndex); }
+    /// @param index the index
+    public @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment optimalTilingLayoutUUIDAt(long index) { return VkPhysicalDeviceVulkan14Properties.get_optimalTilingLayoutUUID(this.segment(), index); }
     /// {@return `optimalTilingLayoutUUID`}
-    /// @param elementIndex the index of the element
-    public @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment optimalTilingLayoutUUID(long elementIndex) { return VkPhysicalDeviceVulkan14Properties.get_optimalTilingLayoutUUID(this.segment(), elementIndex); }
+    public @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment optimalTilingLayoutUUID() { return VkPhysicalDeviceVulkan14Properties.get_optimalTilingLayoutUUID(this.segment()); }
     /// Sets `optimalTilingLayoutUUID` with the given value at the given index.
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_optimalTilingLayoutUUID(MemorySegment segment, long index, long elementIndex, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) {
-        try { MemorySegment.copy(value, 0L, segment, LAYOUT.scale((long) MH_optimalTilingLayoutUUID.invokeExact(0L, elementIndex), index), ML_optimalTilingLayoutUUID.byteSize()); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_optimalTilingLayoutUUID(MemorySegment segment, long index, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_optimalTilingLayoutUUID, index), ML_optimalTilingLayoutUUID.byteSize()); }
     /// Sets `optimalTilingLayoutUUID` with the given value.
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_optimalTilingLayoutUUID(MemorySegment segment, long elementIndex, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan14Properties.set_optimalTilingLayoutUUID(segment, 0L, elementIndex, value); }
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_optimalTilingLayoutUUID(MemorySegment segment, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan14Properties.set_optimalTilingLayoutUUID(segment, 0L, value); }
     /// Sets `optimalTilingLayoutUUID` with the given value at the given index.
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param index the index
+    /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan14Properties optimalTilingLayoutUUIDAt(long index, long elementIndex, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan14Properties.set_optimalTilingLayoutUUID(this.segment(), index, elementIndex, value); return this; }
+    public VkPhysicalDeviceVulkan14Properties optimalTilingLayoutUUIDAt(long index, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan14Properties.set_optimalTilingLayoutUUID(this.segment(), index, value); return this; }
     /// Sets `optimalTilingLayoutUUID` with the given value.
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan14Properties optimalTilingLayoutUUID(long elementIndex, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan14Properties.set_optimalTilingLayoutUUID(this.segment(), elementIndex, value); return this; }
+    public VkPhysicalDeviceVulkan14Properties optimalTilingLayoutUUID(@CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan14Properties.set_optimalTilingLayoutUUID(this.segment(), value); return this; }
 
     /// {@return `identicalMemoryTypeRequirements` at the given index}
     /// @param segment the segment of the struct

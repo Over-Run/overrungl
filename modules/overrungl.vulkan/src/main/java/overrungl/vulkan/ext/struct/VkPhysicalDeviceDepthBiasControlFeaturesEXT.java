@@ -107,6 +107,17 @@ public final class VkPhysicalDeviceDepthBiasControlFeaturesEXT extends Struct {
     /// @return the allocated `VkPhysicalDeviceDepthBiasControlFeaturesEXT`
     public static VkPhysicalDeviceDepthBiasControlFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceDepthBiasControlFeaturesEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceDepthBiasControlFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceDepthBiasControlFeaturesEXT`
+    public VkPhysicalDeviceDepthBiasControlFeaturesEXT asSlice(long index) { return new VkPhysicalDeviceDepthBiasControlFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceDepthBiasControlFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceDepthBiasControlFeaturesEXT`
+    public VkPhysicalDeviceDepthBiasControlFeaturesEXT asSlice(long index, long count) { return new VkPhysicalDeviceDepthBiasControlFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

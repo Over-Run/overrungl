@@ -95,6 +95,17 @@ public final class StdVideoEncodeH265WeightTableFlags extends Struct {
     /// @return the allocated `StdVideoEncodeH265WeightTableFlags`
     public static StdVideoEncodeH265WeightTableFlags alloc(SegmentAllocator allocator, long count) { return new StdVideoEncodeH265WeightTableFlags(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `StdVideoEncodeH265WeightTableFlags`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoEncodeH265WeightTableFlags`
+    public StdVideoEncodeH265WeightTableFlags asSlice(long index) { return new StdVideoEncodeH265WeightTableFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `StdVideoEncodeH265WeightTableFlags`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoEncodeH265WeightTableFlags`
+    public StdVideoEncodeH265WeightTableFlags asSlice(long index, long count) { return new StdVideoEncodeH265WeightTableFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `luma_weight_l0_flag` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

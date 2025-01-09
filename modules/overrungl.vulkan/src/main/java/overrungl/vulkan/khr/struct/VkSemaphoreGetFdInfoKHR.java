@@ -95,6 +95,17 @@ public final class VkSemaphoreGetFdInfoKHR extends Struct {
     /// @return the allocated `VkSemaphoreGetFdInfoKHR`
     public static VkSemaphoreGetFdInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkSemaphoreGetFdInfoKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkSemaphoreGetFdInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSemaphoreGetFdInfoKHR`
+    public VkSemaphoreGetFdInfoKHR asSlice(long index) { return new VkSemaphoreGetFdInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkSemaphoreGetFdInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSemaphoreGetFdInfoKHR`
+    public VkSemaphoreGetFdInfoKHR asSlice(long index, long count) { return new VkSemaphoreGetFdInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

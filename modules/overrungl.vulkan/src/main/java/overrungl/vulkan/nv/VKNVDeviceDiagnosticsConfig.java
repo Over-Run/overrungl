@@ -22,7 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKNVDeviceDiagnosticsConfig {
+public final class VKNVDeviceDiagnosticsConfig {
     public static final int VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_SHADER_DEBUG_INFO_BIT_NV = 0x00000001;
     public static final int VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_RESOURCE_TRACKING_BIT_NV = 0x00000002;
     public static final int VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_AUTOMATIC_CHECKPOINTS_BIT_NV = 0x00000004;
@@ -32,7 +32,6 @@ public class VKNVDeviceDiagnosticsConfig {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DIAGNOSTICS_CONFIG_FEATURES_NV = 1000300000;
     public static final int VK_STRUCTURE_TYPE_DEVICE_DIAGNOSTICS_CONFIG_CREATE_INFO_NV = 1000300001;
 
-    public VKNVDeviceDiagnosticsConfig(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKNVDeviceDiagnosticsConfig() { }
 
 }

@@ -23,7 +23,7 @@ import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 import static overrungl.vulkan.VK13.*;
-public class VKKHRFormatFeatureFlags2 {
+public final class VKKHRFormatFeatureFlags2 {
     public static final int VK_KHR_FORMAT_FEATURE_FLAGS_2_SPEC_VERSION = 2;
     public static final String VK_KHR_FORMAT_FEATURE_FLAGS_2_EXTENSION_NAME = "VK_KHR_format_feature_flags2";
     public static final int VK_STRUCTURE_TYPE_FORMAT_PROPERTIES_3_KHR = VK_STRUCTURE_TYPE_FORMAT_PROPERTIES_3;
@@ -55,7 +55,6 @@ public class VKKHRFormatFeatureFlags2 {
     public static final long VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_FILTER_MINMAX_BIT_KHR = VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_FILTER_MINMAX_BIT;
     public static final long VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_FILTER_CUBIC_BIT_EXT = VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_FILTER_CUBIC_BIT;
 
-    public VKKHRFormatFeatureFlags2(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKKHRFormatFeatureFlags2() { }
 
 }

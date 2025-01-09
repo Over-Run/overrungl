@@ -137,6 +137,17 @@ public final class StdVideoH264PictureParameterSet extends Struct {
     /// @return the allocated `StdVideoH264PictureParameterSet`
     public static StdVideoH264PictureParameterSet alloc(SegmentAllocator allocator, long count) { return new StdVideoH264PictureParameterSet(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `StdVideoH264PictureParameterSet`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoH264PictureParameterSet`
+    public StdVideoH264PictureParameterSet asSlice(long index) { return new StdVideoH264PictureParameterSet(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `StdVideoH264PictureParameterSet`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoH264PictureParameterSet`
+    public StdVideoH264PictureParameterSet asSlice(long index, long count) { return new StdVideoH264PictureParameterSet(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

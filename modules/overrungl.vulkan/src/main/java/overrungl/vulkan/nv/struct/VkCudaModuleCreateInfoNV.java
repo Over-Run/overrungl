@@ -95,6 +95,17 @@ public final class VkCudaModuleCreateInfoNV extends Struct {
     /// @return the allocated `VkCudaModuleCreateInfoNV`
     public static VkCudaModuleCreateInfoNV alloc(SegmentAllocator allocator, long count) { return new VkCudaModuleCreateInfoNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkCudaModuleCreateInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkCudaModuleCreateInfoNV`
+    public VkCudaModuleCreateInfoNV asSlice(long index) { return new VkCudaModuleCreateInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkCudaModuleCreateInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkCudaModuleCreateInfoNV`
+    public VkCudaModuleCreateInfoNV asSlice(long index, long count) { return new VkCudaModuleCreateInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

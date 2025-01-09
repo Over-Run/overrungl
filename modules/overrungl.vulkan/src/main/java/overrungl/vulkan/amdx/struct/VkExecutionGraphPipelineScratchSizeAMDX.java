@@ -101,6 +101,17 @@ public final class VkExecutionGraphPipelineScratchSizeAMDX extends Struct {
     /// @return the allocated `VkExecutionGraphPipelineScratchSizeAMDX`
     public static VkExecutionGraphPipelineScratchSizeAMDX alloc(SegmentAllocator allocator, long count) { return new VkExecutionGraphPipelineScratchSizeAMDX(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkExecutionGraphPipelineScratchSizeAMDX`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkExecutionGraphPipelineScratchSizeAMDX`
+    public VkExecutionGraphPipelineScratchSizeAMDX asSlice(long index) { return new VkExecutionGraphPipelineScratchSizeAMDX(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkExecutionGraphPipelineScratchSizeAMDX`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkExecutionGraphPipelineScratchSizeAMDX`
+    public VkExecutionGraphPipelineScratchSizeAMDX asSlice(long index, long count) { return new VkExecutionGraphPipelineScratchSizeAMDX(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -89,6 +89,17 @@ public final class VkSurfaceCapabilitiesFullScreenExclusiveEXT extends Struct {
     /// @return the allocated `VkSurfaceCapabilitiesFullScreenExclusiveEXT`
     public static VkSurfaceCapabilitiesFullScreenExclusiveEXT alloc(SegmentAllocator allocator, long count) { return new VkSurfaceCapabilitiesFullScreenExclusiveEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkSurfaceCapabilitiesFullScreenExclusiveEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSurfaceCapabilitiesFullScreenExclusiveEXT`
+    public VkSurfaceCapabilitiesFullScreenExclusiveEXT asSlice(long index) { return new VkSurfaceCapabilitiesFullScreenExclusiveEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkSurfaceCapabilitiesFullScreenExclusiveEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSurfaceCapabilitiesFullScreenExclusiveEXT`
+    public VkSurfaceCapabilitiesFullScreenExclusiveEXT asSlice(long index, long count) { return new VkSurfaceCapabilitiesFullScreenExclusiveEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

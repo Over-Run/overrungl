@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceHdrVividFeaturesHUAWEI extends Struct {
     /// @return the allocated `VkPhysicalDeviceHdrVividFeaturesHUAWEI`
     public static VkPhysicalDeviceHdrVividFeaturesHUAWEI alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceHdrVividFeaturesHUAWEI(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceHdrVividFeaturesHUAWEI`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceHdrVividFeaturesHUAWEI`
+    public VkPhysicalDeviceHdrVividFeaturesHUAWEI asSlice(long index) { return new VkPhysicalDeviceHdrVividFeaturesHUAWEI(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceHdrVividFeaturesHUAWEI`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceHdrVividFeaturesHUAWEI`
+    public VkPhysicalDeviceHdrVividFeaturesHUAWEI asSlice(long index, long count) { return new VkPhysicalDeviceHdrVividFeaturesHUAWEI(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

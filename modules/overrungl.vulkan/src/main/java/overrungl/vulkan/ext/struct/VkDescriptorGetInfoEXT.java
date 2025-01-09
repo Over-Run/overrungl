@@ -97,6 +97,17 @@ public final class VkDescriptorGetInfoEXT extends Struct {
     /// @return the allocated `VkDescriptorGetInfoEXT`
     public static VkDescriptorGetInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkDescriptorGetInfoEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkDescriptorGetInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDescriptorGetInfoEXT`
+    public VkDescriptorGetInfoEXT asSlice(long index) { return new VkDescriptorGetInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkDescriptorGetInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDescriptorGetInfoEXT`
+    public VkDescriptorGetInfoEXT asSlice(long index, long count) { return new VkDescriptorGetInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

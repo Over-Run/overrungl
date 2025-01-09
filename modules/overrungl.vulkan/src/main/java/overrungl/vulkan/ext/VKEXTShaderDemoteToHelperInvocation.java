@@ -23,12 +23,11 @@ import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 import static overrungl.vulkan.VK13.*;
-public class VKEXTShaderDemoteToHelperInvocation {
+public final class VKEXTShaderDemoteToHelperInvocation {
     public static final int VK_EXT_SHADER_DEMOTE_TO_HELPER_INVOCATION_SPEC_VERSION = 1;
     public static final String VK_EXT_SHADER_DEMOTE_TO_HELPER_INVOCATION_EXTENSION_NAME = "VK_EXT_shader_demote_to_helper_invocation";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DEMOTE_TO_HELPER_INVOCATION_FEATURES_EXT = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DEMOTE_TO_HELPER_INVOCATION_FEATURES;
 
-    public VKEXTShaderDemoteToHelperInvocation(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKEXTShaderDemoteToHelperInvocation() { }
 
 }

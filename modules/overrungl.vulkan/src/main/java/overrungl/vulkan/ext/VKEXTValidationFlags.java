@@ -22,14 +22,13 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKEXTValidationFlags {
+public final class VKEXTValidationFlags {
     public static final int VK_VALIDATION_CHECK_ALL_EXT = 0;
     public static final int VK_VALIDATION_CHECK_SHADERS_EXT = 1;
     public static final int VK_EXT_VALIDATION_FLAGS_SPEC_VERSION = 3;
     public static final String VK_EXT_VALIDATION_FLAGS_EXTENSION_NAME = "VK_EXT_validation_flags";
     public static final int VK_STRUCTURE_TYPE_VALIDATION_FLAGS_EXT = 1000061000;
 
-    public VKEXTValidationFlags(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
-    }
+    private VKEXTValidationFlags() { }
 
 }

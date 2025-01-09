@@ -32,11 +32,11 @@ import overrungl.util.*;
 /// ### maxTaskWorkGroupTotalCount
 /// [VarHandle][#VH_maxTaskWorkGroupTotalCount] - [Getter][#maxTaskWorkGroupTotalCount()] - [Setter][#maxTaskWorkGroupTotalCount(int)]
 /// ### maxTaskWorkGroupCount
-/// [VarHandle][#VH_maxTaskWorkGroupCount] - [Getter][#maxTaskWorkGroupCount()] - [Setter][#maxTaskWorkGroupCount(int)]
+/// [Byte offset][#OFFSET_maxTaskWorkGroupCount] - [Memory layout][#ML_maxTaskWorkGroupCount] - [Getter][#maxTaskWorkGroupCount()] - [Setter][#maxTaskWorkGroupCount(java.lang.foreign.MemorySegment)]
 /// ### maxTaskWorkGroupInvocations
 /// [VarHandle][#VH_maxTaskWorkGroupInvocations] - [Getter][#maxTaskWorkGroupInvocations()] - [Setter][#maxTaskWorkGroupInvocations(int)]
 /// ### maxTaskWorkGroupSize
-/// [VarHandle][#VH_maxTaskWorkGroupSize] - [Getter][#maxTaskWorkGroupSize()] - [Setter][#maxTaskWorkGroupSize(int)]
+/// [Byte offset][#OFFSET_maxTaskWorkGroupSize] - [Memory layout][#ML_maxTaskWorkGroupSize] - [Getter][#maxTaskWorkGroupSize()] - [Setter][#maxTaskWorkGroupSize(java.lang.foreign.MemorySegment)]
 /// ### maxTaskPayloadSize
 /// [VarHandle][#VH_maxTaskPayloadSize] - [Getter][#maxTaskPayloadSize()] - [Setter][#maxTaskPayloadSize(int)]
 /// ### maxTaskSharedMemorySize
@@ -46,11 +46,11 @@ import overrungl.util.*;
 /// ### maxMeshWorkGroupTotalCount
 /// [VarHandle][#VH_maxMeshWorkGroupTotalCount] - [Getter][#maxMeshWorkGroupTotalCount()] - [Setter][#maxMeshWorkGroupTotalCount(int)]
 /// ### maxMeshWorkGroupCount
-/// [VarHandle][#VH_maxMeshWorkGroupCount] - [Getter][#maxMeshWorkGroupCount()] - [Setter][#maxMeshWorkGroupCount(int)]
+/// [Byte offset][#OFFSET_maxMeshWorkGroupCount] - [Memory layout][#ML_maxMeshWorkGroupCount] - [Getter][#maxMeshWorkGroupCount()] - [Setter][#maxMeshWorkGroupCount(java.lang.foreign.MemorySegment)]
 /// ### maxMeshWorkGroupInvocations
 /// [VarHandle][#VH_maxMeshWorkGroupInvocations] - [Getter][#maxMeshWorkGroupInvocations()] - [Setter][#maxMeshWorkGroupInvocations(int)]
 /// ### maxMeshWorkGroupSize
-/// [VarHandle][#VH_maxMeshWorkGroupSize] - [Getter][#maxMeshWorkGroupSize()] - [Setter][#maxMeshWorkGroupSize(int)]
+/// [Byte offset][#OFFSET_maxMeshWorkGroupSize] - [Memory layout][#ML_maxMeshWorkGroupSize] - [Getter][#maxMeshWorkGroupSize()] - [Setter][#maxMeshWorkGroupSize(java.lang.foreign.MemorySegment)]
 /// ### maxMeshSharedMemorySize
 /// [VarHandle][#VH_maxMeshSharedMemorySize] - [Getter][#maxMeshSharedMemorySize()] - [Setter][#maxMeshSharedMemorySize(int)]
 /// ### maxMeshPayloadAndSharedMemorySize
@@ -92,16 +92,16 @@ import overrungl.util.*;
 ///     VkStructureType sType;
 ///     void * pNext;
 ///     uint32_t maxTaskWorkGroupTotalCount;
-///     uint32_t maxTaskWorkGroupCount;
+///     uint32_t[3] maxTaskWorkGroupCount;
 ///     uint32_t maxTaskWorkGroupInvocations;
-///     uint32_t maxTaskWorkGroupSize;
+///     uint32_t[3] maxTaskWorkGroupSize;
 ///     uint32_t maxTaskPayloadSize;
 ///     uint32_t maxTaskSharedMemorySize;
 ///     uint32_t maxTaskPayloadAndSharedMemorySize;
 ///     uint32_t maxMeshWorkGroupTotalCount;
-///     uint32_t maxMeshWorkGroupCount;
+///     uint32_t[3] maxMeshWorkGroupCount;
 ///     uint32_t maxMeshWorkGroupInvocations;
-///     uint32_t maxMeshWorkGroupSize;
+///     uint32_t[3] maxMeshWorkGroupSize;
 ///     uint32_t maxMeshSharedMemorySize;
 ///     uint32_t maxMeshPayloadAndSharedMemorySize;
 ///     uint32_t maxMeshOutputMemorySize;
@@ -127,16 +127,16 @@ public final class VkPhysicalDeviceMeshShaderPropertiesEXT extends Struct {
         ValueLayout.JAVA_INT.withName("sType"),
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("maxTaskWorkGroupTotalCount"),
-        ValueLayout.JAVA_INT.withName("maxTaskWorkGroupCount"),
+        MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_INT).withName("maxTaskWorkGroupCount"),
         ValueLayout.JAVA_INT.withName("maxTaskWorkGroupInvocations"),
-        ValueLayout.JAVA_INT.withName("maxTaskWorkGroupSize"),
+        MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_INT).withName("maxTaskWorkGroupSize"),
         ValueLayout.JAVA_INT.withName("maxTaskPayloadSize"),
         ValueLayout.JAVA_INT.withName("maxTaskSharedMemorySize"),
         ValueLayout.JAVA_INT.withName("maxTaskPayloadAndSharedMemorySize"),
         ValueLayout.JAVA_INT.withName("maxMeshWorkGroupTotalCount"),
-        ValueLayout.JAVA_INT.withName("maxMeshWorkGroupCount"),
+        MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_INT).withName("maxMeshWorkGroupCount"),
         ValueLayout.JAVA_INT.withName("maxMeshWorkGroupInvocations"),
-        ValueLayout.JAVA_INT.withName("maxMeshWorkGroupSize"),
+        MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_INT).withName("maxMeshWorkGroupSize"),
         ValueLayout.JAVA_INT.withName("maxMeshSharedMemorySize"),
         ValueLayout.JAVA_INT.withName("maxMeshPayloadAndSharedMemorySize"),
         ValueLayout.JAVA_INT.withName("maxMeshOutputMemorySize"),
@@ -161,12 +161,16 @@ public final class VkPhysicalDeviceMeshShaderPropertiesEXT extends Struct {
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `maxTaskWorkGroupTotalCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_maxTaskWorkGroupTotalCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxTaskWorkGroupTotalCount"));
-    /// The [VarHandle] of `maxTaskWorkGroupCount` of type `(MemorySegment base, long baseOffset, long index)int`.
-    public static final VarHandle VH_maxTaskWorkGroupCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxTaskWorkGroupCount"));
+    /// The byte offset of `maxTaskWorkGroupCount`.
+    public static final long OFFSET_maxTaskWorkGroupCount = LAYOUT.byteOffset(PathElement.groupElement("maxTaskWorkGroupCount"));
+    /// The memory layout of `maxTaskWorkGroupCount`.
+    public static final MemoryLayout ML_maxTaskWorkGroupCount = LAYOUT.select(PathElement.groupElement("maxTaskWorkGroupCount"));
     /// The [VarHandle] of `maxTaskWorkGroupInvocations` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_maxTaskWorkGroupInvocations = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxTaskWorkGroupInvocations"));
-    /// The [VarHandle] of `maxTaskWorkGroupSize` of type `(MemorySegment base, long baseOffset, long index)int`.
-    public static final VarHandle VH_maxTaskWorkGroupSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxTaskWorkGroupSize"));
+    /// The byte offset of `maxTaskWorkGroupSize`.
+    public static final long OFFSET_maxTaskWorkGroupSize = LAYOUT.byteOffset(PathElement.groupElement("maxTaskWorkGroupSize"));
+    /// The memory layout of `maxTaskWorkGroupSize`.
+    public static final MemoryLayout ML_maxTaskWorkGroupSize = LAYOUT.select(PathElement.groupElement("maxTaskWorkGroupSize"));
     /// The [VarHandle] of `maxTaskPayloadSize` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_maxTaskPayloadSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxTaskPayloadSize"));
     /// The [VarHandle] of `maxTaskSharedMemorySize` of type `(MemorySegment base, long baseOffset, long index)int`.
@@ -175,12 +179,16 @@ public final class VkPhysicalDeviceMeshShaderPropertiesEXT extends Struct {
     public static final VarHandle VH_maxTaskPayloadAndSharedMemorySize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxTaskPayloadAndSharedMemorySize"));
     /// The [VarHandle] of `maxMeshWorkGroupTotalCount` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_maxMeshWorkGroupTotalCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxMeshWorkGroupTotalCount"));
-    /// The [VarHandle] of `maxMeshWorkGroupCount` of type `(MemorySegment base, long baseOffset, long index)int`.
-    public static final VarHandle VH_maxMeshWorkGroupCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxMeshWorkGroupCount"));
+    /// The byte offset of `maxMeshWorkGroupCount`.
+    public static final long OFFSET_maxMeshWorkGroupCount = LAYOUT.byteOffset(PathElement.groupElement("maxMeshWorkGroupCount"));
+    /// The memory layout of `maxMeshWorkGroupCount`.
+    public static final MemoryLayout ML_maxMeshWorkGroupCount = LAYOUT.select(PathElement.groupElement("maxMeshWorkGroupCount"));
     /// The [VarHandle] of `maxMeshWorkGroupInvocations` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_maxMeshWorkGroupInvocations = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxMeshWorkGroupInvocations"));
-    /// The [VarHandle] of `maxMeshWorkGroupSize` of type `(MemorySegment base, long baseOffset, long index)int`.
-    public static final VarHandle VH_maxMeshWorkGroupSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxMeshWorkGroupSize"));
+    /// The byte offset of `maxMeshWorkGroupSize`.
+    public static final long OFFSET_maxMeshWorkGroupSize = LAYOUT.byteOffset(PathElement.groupElement("maxMeshWorkGroupSize"));
+    /// The memory layout of `maxMeshWorkGroupSize`.
+    public static final MemoryLayout ML_maxMeshWorkGroupSize = LAYOUT.select(PathElement.groupElement("maxMeshWorkGroupSize"));
     /// The [VarHandle] of `maxMeshSharedMemorySize` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_maxMeshSharedMemorySize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxMeshSharedMemorySize"));
     /// The [VarHandle] of `maxMeshPayloadAndSharedMemorySize` of type `(MemorySegment base, long baseOffset, long index)int`.
@@ -250,6 +258,17 @@ public final class VkPhysicalDeviceMeshShaderPropertiesEXT extends Struct {
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceMeshShaderPropertiesEXT`
     public static VkPhysicalDeviceMeshShaderPropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceMeshShaderPropertiesEXT(allocator.allocate(LAYOUT, count)); }
+
+    /// Creates a slice of `VkPhysicalDeviceMeshShaderPropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceMeshShaderPropertiesEXT`
+    public VkPhysicalDeviceMeshShaderPropertiesEXT asSlice(long index) { return new VkPhysicalDeviceMeshShaderPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceMeshShaderPropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceMeshShaderPropertiesEXT`
+    public VkPhysicalDeviceMeshShaderPropertiesEXT asSlice(long index, long count) { return new VkPhysicalDeviceMeshShaderPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -347,33 +366,33 @@ public final class VkPhysicalDeviceMeshShaderPropertiesEXT extends Struct {
     /// {@return `maxTaskWorkGroupCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("uint32_t") int get_maxTaskWorkGroupCount(MemorySegment segment, long index) { return (int) VH_maxTaskWorkGroupCount.get(segment, 0L, index); }
+    public static @CType("uint32_t[3]") java.lang.foreign.MemorySegment get_maxTaskWorkGroupCount(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxTaskWorkGroupCount, index), ML_maxTaskWorkGroupCount); }
     /// {@return `maxTaskWorkGroupCount`}
     /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxTaskWorkGroupCount(MemorySegment segment) { return VkPhysicalDeviceMeshShaderPropertiesEXT.get_maxTaskWorkGroupCount(segment, 0L); }
+    public static @CType("uint32_t[3]") java.lang.foreign.MemorySegment get_maxTaskWorkGroupCount(MemorySegment segment) { return VkPhysicalDeviceMeshShaderPropertiesEXT.get_maxTaskWorkGroupCount(segment, 0L); }
     /// {@return `maxTaskWorkGroupCount` at the given index}
     /// @param index the index
-    public @CType("uint32_t") int maxTaskWorkGroupCountAt(long index) { return VkPhysicalDeviceMeshShaderPropertiesEXT.get_maxTaskWorkGroupCount(this.segment(), index); }
+    public @CType("uint32_t[3]") java.lang.foreign.MemorySegment maxTaskWorkGroupCountAt(long index) { return VkPhysicalDeviceMeshShaderPropertiesEXT.get_maxTaskWorkGroupCount(this.segment(), index); }
     /// {@return `maxTaskWorkGroupCount`}
-    public @CType("uint32_t") int maxTaskWorkGroupCount() { return VkPhysicalDeviceMeshShaderPropertiesEXT.get_maxTaskWorkGroupCount(this.segment()); }
+    public @CType("uint32_t[3]") java.lang.foreign.MemorySegment maxTaskWorkGroupCount() { return VkPhysicalDeviceMeshShaderPropertiesEXT.get_maxTaskWorkGroupCount(this.segment()); }
     /// Sets `maxTaskWorkGroupCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_maxTaskWorkGroupCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxTaskWorkGroupCount.set(segment, 0L, index, value); }
+    public static void set_maxTaskWorkGroupCount(MemorySegment segment, long index, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxTaskWorkGroupCount, index), ML_maxTaskWorkGroupCount.byteSize()); }
     /// Sets `maxTaskWorkGroupCount` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_maxTaskWorkGroupCount(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceMeshShaderPropertiesEXT.set_maxTaskWorkGroupCount(segment, 0L, value); }
+    public static void set_maxTaskWorkGroupCount(MemorySegment segment, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceMeshShaderPropertiesEXT.set_maxTaskWorkGroupCount(segment, 0L, value); }
     /// Sets `maxTaskWorkGroupCount` with the given value at the given index.
     /// @param index the index
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceMeshShaderPropertiesEXT maxTaskWorkGroupCountAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceMeshShaderPropertiesEXT.set_maxTaskWorkGroupCount(this.segment(), index, value); return this; }
+    public VkPhysicalDeviceMeshShaderPropertiesEXT maxTaskWorkGroupCountAt(long index, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceMeshShaderPropertiesEXT.set_maxTaskWorkGroupCount(this.segment(), index, value); return this; }
     /// Sets `maxTaskWorkGroupCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceMeshShaderPropertiesEXT maxTaskWorkGroupCount(@CType("uint32_t") int value) { VkPhysicalDeviceMeshShaderPropertiesEXT.set_maxTaskWorkGroupCount(this.segment(), value); return this; }
+    public VkPhysicalDeviceMeshShaderPropertiesEXT maxTaskWorkGroupCount(@CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceMeshShaderPropertiesEXT.set_maxTaskWorkGroupCount(this.segment(), value); return this; }
 
     /// {@return `maxTaskWorkGroupInvocations` at the given index}
     /// @param segment the segment of the struct
@@ -409,33 +428,33 @@ public final class VkPhysicalDeviceMeshShaderPropertiesEXT extends Struct {
     /// {@return `maxTaskWorkGroupSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("uint32_t") int get_maxTaskWorkGroupSize(MemorySegment segment, long index) { return (int) VH_maxTaskWorkGroupSize.get(segment, 0L, index); }
+    public static @CType("uint32_t[3]") java.lang.foreign.MemorySegment get_maxTaskWorkGroupSize(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxTaskWorkGroupSize, index), ML_maxTaskWorkGroupSize); }
     /// {@return `maxTaskWorkGroupSize`}
     /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxTaskWorkGroupSize(MemorySegment segment) { return VkPhysicalDeviceMeshShaderPropertiesEXT.get_maxTaskWorkGroupSize(segment, 0L); }
+    public static @CType("uint32_t[3]") java.lang.foreign.MemorySegment get_maxTaskWorkGroupSize(MemorySegment segment) { return VkPhysicalDeviceMeshShaderPropertiesEXT.get_maxTaskWorkGroupSize(segment, 0L); }
     /// {@return `maxTaskWorkGroupSize` at the given index}
     /// @param index the index
-    public @CType("uint32_t") int maxTaskWorkGroupSizeAt(long index) { return VkPhysicalDeviceMeshShaderPropertiesEXT.get_maxTaskWorkGroupSize(this.segment(), index); }
+    public @CType("uint32_t[3]") java.lang.foreign.MemorySegment maxTaskWorkGroupSizeAt(long index) { return VkPhysicalDeviceMeshShaderPropertiesEXT.get_maxTaskWorkGroupSize(this.segment(), index); }
     /// {@return `maxTaskWorkGroupSize`}
-    public @CType("uint32_t") int maxTaskWorkGroupSize() { return VkPhysicalDeviceMeshShaderPropertiesEXT.get_maxTaskWorkGroupSize(this.segment()); }
+    public @CType("uint32_t[3]") java.lang.foreign.MemorySegment maxTaskWorkGroupSize() { return VkPhysicalDeviceMeshShaderPropertiesEXT.get_maxTaskWorkGroupSize(this.segment()); }
     /// Sets `maxTaskWorkGroupSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_maxTaskWorkGroupSize(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxTaskWorkGroupSize.set(segment, 0L, index, value); }
+    public static void set_maxTaskWorkGroupSize(MemorySegment segment, long index, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxTaskWorkGroupSize, index), ML_maxTaskWorkGroupSize.byteSize()); }
     /// Sets `maxTaskWorkGroupSize` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_maxTaskWorkGroupSize(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceMeshShaderPropertiesEXT.set_maxTaskWorkGroupSize(segment, 0L, value); }
+    public static void set_maxTaskWorkGroupSize(MemorySegment segment, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceMeshShaderPropertiesEXT.set_maxTaskWorkGroupSize(segment, 0L, value); }
     /// Sets `maxTaskWorkGroupSize` with the given value at the given index.
     /// @param index the index
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceMeshShaderPropertiesEXT maxTaskWorkGroupSizeAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceMeshShaderPropertiesEXT.set_maxTaskWorkGroupSize(this.segment(), index, value); return this; }
+    public VkPhysicalDeviceMeshShaderPropertiesEXT maxTaskWorkGroupSizeAt(long index, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceMeshShaderPropertiesEXT.set_maxTaskWorkGroupSize(this.segment(), index, value); return this; }
     /// Sets `maxTaskWorkGroupSize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceMeshShaderPropertiesEXT maxTaskWorkGroupSize(@CType("uint32_t") int value) { VkPhysicalDeviceMeshShaderPropertiesEXT.set_maxTaskWorkGroupSize(this.segment(), value); return this; }
+    public VkPhysicalDeviceMeshShaderPropertiesEXT maxTaskWorkGroupSize(@CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceMeshShaderPropertiesEXT.set_maxTaskWorkGroupSize(this.segment(), value); return this; }
 
     /// {@return `maxTaskPayloadSize` at the given index}
     /// @param segment the segment of the struct
@@ -564,33 +583,33 @@ public final class VkPhysicalDeviceMeshShaderPropertiesEXT extends Struct {
     /// {@return `maxMeshWorkGroupCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("uint32_t") int get_maxMeshWorkGroupCount(MemorySegment segment, long index) { return (int) VH_maxMeshWorkGroupCount.get(segment, 0L, index); }
+    public static @CType("uint32_t[3]") java.lang.foreign.MemorySegment get_maxMeshWorkGroupCount(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxMeshWorkGroupCount, index), ML_maxMeshWorkGroupCount); }
     /// {@return `maxMeshWorkGroupCount`}
     /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxMeshWorkGroupCount(MemorySegment segment) { return VkPhysicalDeviceMeshShaderPropertiesEXT.get_maxMeshWorkGroupCount(segment, 0L); }
+    public static @CType("uint32_t[3]") java.lang.foreign.MemorySegment get_maxMeshWorkGroupCount(MemorySegment segment) { return VkPhysicalDeviceMeshShaderPropertiesEXT.get_maxMeshWorkGroupCount(segment, 0L); }
     /// {@return `maxMeshWorkGroupCount` at the given index}
     /// @param index the index
-    public @CType("uint32_t") int maxMeshWorkGroupCountAt(long index) { return VkPhysicalDeviceMeshShaderPropertiesEXT.get_maxMeshWorkGroupCount(this.segment(), index); }
+    public @CType("uint32_t[3]") java.lang.foreign.MemorySegment maxMeshWorkGroupCountAt(long index) { return VkPhysicalDeviceMeshShaderPropertiesEXT.get_maxMeshWorkGroupCount(this.segment(), index); }
     /// {@return `maxMeshWorkGroupCount`}
-    public @CType("uint32_t") int maxMeshWorkGroupCount() { return VkPhysicalDeviceMeshShaderPropertiesEXT.get_maxMeshWorkGroupCount(this.segment()); }
+    public @CType("uint32_t[3]") java.lang.foreign.MemorySegment maxMeshWorkGroupCount() { return VkPhysicalDeviceMeshShaderPropertiesEXT.get_maxMeshWorkGroupCount(this.segment()); }
     /// Sets `maxMeshWorkGroupCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_maxMeshWorkGroupCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxMeshWorkGroupCount.set(segment, 0L, index, value); }
+    public static void set_maxMeshWorkGroupCount(MemorySegment segment, long index, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxMeshWorkGroupCount, index), ML_maxMeshWorkGroupCount.byteSize()); }
     /// Sets `maxMeshWorkGroupCount` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_maxMeshWorkGroupCount(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceMeshShaderPropertiesEXT.set_maxMeshWorkGroupCount(segment, 0L, value); }
+    public static void set_maxMeshWorkGroupCount(MemorySegment segment, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceMeshShaderPropertiesEXT.set_maxMeshWorkGroupCount(segment, 0L, value); }
     /// Sets `maxMeshWorkGroupCount` with the given value at the given index.
     /// @param index the index
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceMeshShaderPropertiesEXT maxMeshWorkGroupCountAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceMeshShaderPropertiesEXT.set_maxMeshWorkGroupCount(this.segment(), index, value); return this; }
+    public VkPhysicalDeviceMeshShaderPropertiesEXT maxMeshWorkGroupCountAt(long index, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceMeshShaderPropertiesEXT.set_maxMeshWorkGroupCount(this.segment(), index, value); return this; }
     /// Sets `maxMeshWorkGroupCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceMeshShaderPropertiesEXT maxMeshWorkGroupCount(@CType("uint32_t") int value) { VkPhysicalDeviceMeshShaderPropertiesEXT.set_maxMeshWorkGroupCount(this.segment(), value); return this; }
+    public VkPhysicalDeviceMeshShaderPropertiesEXT maxMeshWorkGroupCount(@CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceMeshShaderPropertiesEXT.set_maxMeshWorkGroupCount(this.segment(), value); return this; }
 
     /// {@return `maxMeshWorkGroupInvocations` at the given index}
     /// @param segment the segment of the struct
@@ -626,33 +645,33 @@ public final class VkPhysicalDeviceMeshShaderPropertiesEXT extends Struct {
     /// {@return `maxMeshWorkGroupSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("uint32_t") int get_maxMeshWorkGroupSize(MemorySegment segment, long index) { return (int) VH_maxMeshWorkGroupSize.get(segment, 0L, index); }
+    public static @CType("uint32_t[3]") java.lang.foreign.MemorySegment get_maxMeshWorkGroupSize(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxMeshWorkGroupSize, index), ML_maxMeshWorkGroupSize); }
     /// {@return `maxMeshWorkGroupSize`}
     /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxMeshWorkGroupSize(MemorySegment segment) { return VkPhysicalDeviceMeshShaderPropertiesEXT.get_maxMeshWorkGroupSize(segment, 0L); }
+    public static @CType("uint32_t[3]") java.lang.foreign.MemorySegment get_maxMeshWorkGroupSize(MemorySegment segment) { return VkPhysicalDeviceMeshShaderPropertiesEXT.get_maxMeshWorkGroupSize(segment, 0L); }
     /// {@return `maxMeshWorkGroupSize` at the given index}
     /// @param index the index
-    public @CType("uint32_t") int maxMeshWorkGroupSizeAt(long index) { return VkPhysicalDeviceMeshShaderPropertiesEXT.get_maxMeshWorkGroupSize(this.segment(), index); }
+    public @CType("uint32_t[3]") java.lang.foreign.MemorySegment maxMeshWorkGroupSizeAt(long index) { return VkPhysicalDeviceMeshShaderPropertiesEXT.get_maxMeshWorkGroupSize(this.segment(), index); }
     /// {@return `maxMeshWorkGroupSize`}
-    public @CType("uint32_t") int maxMeshWorkGroupSize() { return VkPhysicalDeviceMeshShaderPropertiesEXT.get_maxMeshWorkGroupSize(this.segment()); }
+    public @CType("uint32_t[3]") java.lang.foreign.MemorySegment maxMeshWorkGroupSize() { return VkPhysicalDeviceMeshShaderPropertiesEXT.get_maxMeshWorkGroupSize(this.segment()); }
     /// Sets `maxMeshWorkGroupSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_maxMeshWorkGroupSize(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxMeshWorkGroupSize.set(segment, 0L, index, value); }
+    public static void set_maxMeshWorkGroupSize(MemorySegment segment, long index, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxMeshWorkGroupSize, index), ML_maxMeshWorkGroupSize.byteSize()); }
     /// Sets `maxMeshWorkGroupSize` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_maxMeshWorkGroupSize(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceMeshShaderPropertiesEXT.set_maxMeshWorkGroupSize(segment, 0L, value); }
+    public static void set_maxMeshWorkGroupSize(MemorySegment segment, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceMeshShaderPropertiesEXT.set_maxMeshWorkGroupSize(segment, 0L, value); }
     /// Sets `maxMeshWorkGroupSize` with the given value at the given index.
     /// @param index the index
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceMeshShaderPropertiesEXT maxMeshWorkGroupSizeAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceMeshShaderPropertiesEXT.set_maxMeshWorkGroupSize(this.segment(), index, value); return this; }
+    public VkPhysicalDeviceMeshShaderPropertiesEXT maxMeshWorkGroupSizeAt(long index, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceMeshShaderPropertiesEXT.set_maxMeshWorkGroupSize(this.segment(), index, value); return this; }
     /// Sets `maxMeshWorkGroupSize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceMeshShaderPropertiesEXT maxMeshWorkGroupSize(@CType("uint32_t") int value) { VkPhysicalDeviceMeshShaderPropertiesEXT.set_maxMeshWorkGroupSize(this.segment(), value); return this; }
+    public VkPhysicalDeviceMeshShaderPropertiesEXT maxMeshWorkGroupSize(@CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceMeshShaderPropertiesEXT.set_maxMeshWorkGroupSize(this.segment(), value); return this; }
 
     /// {@return `maxMeshSharedMemorySize` at the given index}
     /// @param segment the segment of the struct

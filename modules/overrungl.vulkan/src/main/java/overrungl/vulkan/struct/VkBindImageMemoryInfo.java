@@ -101,6 +101,17 @@ public final class VkBindImageMemoryInfo extends Struct {
     /// @return the allocated `VkBindImageMemoryInfo`
     public static VkBindImageMemoryInfo alloc(SegmentAllocator allocator, long count) { return new VkBindImageMemoryInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkBindImageMemoryInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkBindImageMemoryInfo`
+    public VkBindImageMemoryInfo asSlice(long index) { return new VkBindImageMemoryInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkBindImageMemoryInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkBindImageMemoryInfo`
+    public VkBindImageMemoryInfo asSlice(long index, long count) { return new VkBindImageMemoryInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

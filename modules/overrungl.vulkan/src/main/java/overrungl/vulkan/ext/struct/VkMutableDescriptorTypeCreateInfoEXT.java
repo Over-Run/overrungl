@@ -95,6 +95,17 @@ public final class VkMutableDescriptorTypeCreateInfoEXT extends Struct {
     /// @return the allocated `VkMutableDescriptorTypeCreateInfoEXT`
     public static VkMutableDescriptorTypeCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkMutableDescriptorTypeCreateInfoEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkMutableDescriptorTypeCreateInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkMutableDescriptorTypeCreateInfoEXT`
+    public VkMutableDescriptorTypeCreateInfoEXT asSlice(long index) { return new VkMutableDescriptorTypeCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkMutableDescriptorTypeCreateInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkMutableDescriptorTypeCreateInfoEXT`
+    public VkMutableDescriptorTypeCreateInfoEXT asSlice(long index, long count) { return new VkMutableDescriptorTypeCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

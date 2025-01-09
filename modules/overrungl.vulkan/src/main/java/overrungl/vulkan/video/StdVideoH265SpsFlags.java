@@ -251,6 +251,17 @@ public final class StdVideoH265SpsFlags extends Struct {
     /// @return the allocated `StdVideoH265SpsFlags`
     public static StdVideoH265SpsFlags alloc(SegmentAllocator allocator, long count) { return new StdVideoH265SpsFlags(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `StdVideoH265SpsFlags`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoH265SpsFlags`
+    public StdVideoH265SpsFlags asSlice(long index) { return new StdVideoH265SpsFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `StdVideoH265SpsFlags`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoH265SpsFlags`
+    public StdVideoH265SpsFlags asSlice(long index, long count) { return new StdVideoH265SpsFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sps_temporal_id_nesting_flag` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -91,6 +91,17 @@ public final class VkAccelerationStructureGeometryMotionTrianglesDataNV extends 
     /// @return the allocated `VkAccelerationStructureGeometryMotionTrianglesDataNV`
     public static VkAccelerationStructureGeometryMotionTrianglesDataNV alloc(SegmentAllocator allocator, long count) { return new VkAccelerationStructureGeometryMotionTrianglesDataNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkAccelerationStructureGeometryMotionTrianglesDataNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkAccelerationStructureGeometryMotionTrianglesDataNV`
+    public VkAccelerationStructureGeometryMotionTrianglesDataNV asSlice(long index) { return new VkAccelerationStructureGeometryMotionTrianglesDataNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkAccelerationStructureGeometryMotionTrianglesDataNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkAccelerationStructureGeometryMotionTrianglesDataNV`
+    public VkAccelerationStructureGeometryMotionTrianglesDataNV asSlice(long index, long count) { return new VkAccelerationStructureGeometryMotionTrianglesDataNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

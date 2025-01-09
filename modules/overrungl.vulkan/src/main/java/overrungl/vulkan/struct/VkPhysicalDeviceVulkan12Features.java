@@ -365,6 +365,17 @@ public final class VkPhysicalDeviceVulkan12Features extends Struct {
     /// @return the allocated `VkPhysicalDeviceVulkan12Features`
     public static VkPhysicalDeviceVulkan12Features alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceVulkan12Features(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceVulkan12Features`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceVulkan12Features`
+    public VkPhysicalDeviceVulkan12Features asSlice(long index) { return new VkPhysicalDeviceVulkan12Features(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceVulkan12Features`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceVulkan12Features`
+    public VkPhysicalDeviceVulkan12Features asSlice(long index, long count) { return new VkPhysicalDeviceVulkan12Features(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

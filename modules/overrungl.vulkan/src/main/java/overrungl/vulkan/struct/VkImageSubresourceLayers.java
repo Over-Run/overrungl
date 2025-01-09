@@ -95,6 +95,17 @@ public final class VkImageSubresourceLayers extends Struct {
     /// @return the allocated `VkImageSubresourceLayers`
     public static VkImageSubresourceLayers alloc(SegmentAllocator allocator, long count) { return new VkImageSubresourceLayers(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkImageSubresourceLayers`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkImageSubresourceLayers`
+    public VkImageSubresourceLayers asSlice(long index) { return new VkImageSubresourceLayers(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkImageSubresourceLayers`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkImageSubresourceLayers`
+    public VkImageSubresourceLayers asSlice(long index, long count) { return new VkImageSubresourceLayers(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `aspectMask` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

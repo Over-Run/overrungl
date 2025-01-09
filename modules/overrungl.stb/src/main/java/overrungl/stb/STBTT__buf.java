@@ -80,4 +80,15 @@ public final class STBTT__buf extends Struct {
     /// @return the allocated `STBTT__buf`
     public static STBTT__buf alloc(SegmentAllocator allocator, long count) { return new STBTT__buf(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `STBTT__buf`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `STBTT__buf`
+    public STBTT__buf asSlice(long index) { return new STBTT__buf(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `STBTT__buf`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `STBTT__buf`
+    public STBTT__buf asSlice(long index, long count) { return new STBTT__buf(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
 }

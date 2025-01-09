@@ -125,6 +125,17 @@ public final class VkPhysicalDeviceCooperativeMatrix2FeaturesNV extends Struct {
     /// @return the allocated `VkPhysicalDeviceCooperativeMatrix2FeaturesNV`
     public static VkPhysicalDeviceCooperativeMatrix2FeaturesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceCooperativeMatrix2FeaturesNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceCooperativeMatrix2FeaturesNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceCooperativeMatrix2FeaturesNV`
+    public VkPhysicalDeviceCooperativeMatrix2FeaturesNV asSlice(long index) { return new VkPhysicalDeviceCooperativeMatrix2FeaturesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceCooperativeMatrix2FeaturesNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceCooperativeMatrix2FeaturesNV`
+    public VkPhysicalDeviceCooperativeMatrix2FeaturesNV asSlice(long index, long count) { return new VkPhysicalDeviceCooperativeMatrix2FeaturesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -95,6 +95,17 @@ public final class VkPhysicalDeviceInlineUniformBlockFeatures extends Struct {
     /// @return the allocated `VkPhysicalDeviceInlineUniformBlockFeatures`
     public static VkPhysicalDeviceInlineUniformBlockFeatures alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceInlineUniformBlockFeatures(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceInlineUniformBlockFeatures`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceInlineUniformBlockFeatures`
+    public VkPhysicalDeviceInlineUniformBlockFeatures asSlice(long index) { return new VkPhysicalDeviceInlineUniformBlockFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceInlineUniformBlockFeatures`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceInlineUniformBlockFeatures`
+    public VkPhysicalDeviceInlineUniformBlockFeatures asSlice(long index, long count) { return new VkPhysicalDeviceInlineUniformBlockFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

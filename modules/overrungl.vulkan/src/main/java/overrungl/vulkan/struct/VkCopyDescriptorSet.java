@@ -125,6 +125,17 @@ public final class VkCopyDescriptorSet extends Struct {
     /// @return the allocated `VkCopyDescriptorSet`
     public static VkCopyDescriptorSet alloc(SegmentAllocator allocator, long count) { return new VkCopyDescriptorSet(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkCopyDescriptorSet`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkCopyDescriptorSet`
+    public VkCopyDescriptorSet asSlice(long index) { return new VkCopyDescriptorSet(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkCopyDescriptorSet`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkCopyDescriptorSet`
+    public VkCopyDescriptorSet asSlice(long index, long count) { return new VkCopyDescriptorSet(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

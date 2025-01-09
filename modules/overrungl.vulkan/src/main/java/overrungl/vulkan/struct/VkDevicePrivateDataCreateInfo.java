@@ -89,6 +89,17 @@ public final class VkDevicePrivateDataCreateInfo extends Struct {
     /// @return the allocated `VkDevicePrivateDataCreateInfo`
     public static VkDevicePrivateDataCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkDevicePrivateDataCreateInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkDevicePrivateDataCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDevicePrivateDataCreateInfo`
+    public VkDevicePrivateDataCreateInfo asSlice(long index) { return new VkDevicePrivateDataCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkDevicePrivateDataCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDevicePrivateDataCreateInfo`
+    public VkDevicePrivateDataCreateInfo asSlice(long index, long count) { return new VkDevicePrivateDataCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

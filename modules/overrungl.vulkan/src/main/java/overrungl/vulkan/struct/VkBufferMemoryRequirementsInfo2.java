@@ -89,6 +89,17 @@ public final class VkBufferMemoryRequirementsInfo2 extends Struct {
     /// @return the allocated `VkBufferMemoryRequirementsInfo2`
     public static VkBufferMemoryRequirementsInfo2 alloc(SegmentAllocator allocator, long count) { return new VkBufferMemoryRequirementsInfo2(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkBufferMemoryRequirementsInfo2`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkBufferMemoryRequirementsInfo2`
+    public VkBufferMemoryRequirementsInfo2 asSlice(long index) { return new VkBufferMemoryRequirementsInfo2(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkBufferMemoryRequirementsInfo2`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkBufferMemoryRequirementsInfo2`
+    public VkBufferMemoryRequirementsInfo2 asSlice(long index, long count) { return new VkBufferMemoryRequirementsInfo2(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

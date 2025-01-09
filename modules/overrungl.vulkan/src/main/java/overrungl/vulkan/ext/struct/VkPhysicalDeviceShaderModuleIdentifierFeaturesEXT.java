@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT extends Str
     /// @return the allocated `VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT`
     public static VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT`
+    public VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT asSlice(long index) { return new VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT`
+    public VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT asSlice(long index, long count) { return new VkPhysicalDeviceShaderModuleIdentifierFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

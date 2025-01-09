@@ -83,6 +83,17 @@ public final class StdVideoAV1GlobalMotion extends Struct {
     /// @return the allocated `StdVideoAV1GlobalMotion`
     public static StdVideoAV1GlobalMotion alloc(SegmentAllocator allocator, long count) { return new StdVideoAV1GlobalMotion(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `StdVideoAV1GlobalMotion`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoAV1GlobalMotion`
+    public StdVideoAV1GlobalMotion asSlice(long index) { return new StdVideoAV1GlobalMotion(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `StdVideoAV1GlobalMotion`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoAV1GlobalMotion`
+    public StdVideoAV1GlobalMotion asSlice(long index, long count) { return new StdVideoAV1GlobalMotion(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `GmType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

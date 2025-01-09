@@ -95,6 +95,17 @@ public final class VkAccelerationStructureBuildRangeInfoKHR extends Struct {
     /// @return the allocated `VkAccelerationStructureBuildRangeInfoKHR`
     public static VkAccelerationStructureBuildRangeInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkAccelerationStructureBuildRangeInfoKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkAccelerationStructureBuildRangeInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkAccelerationStructureBuildRangeInfoKHR`
+    public VkAccelerationStructureBuildRangeInfoKHR asSlice(long index) { return new VkAccelerationStructureBuildRangeInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkAccelerationStructureBuildRangeInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkAccelerationStructureBuildRangeInfoKHR`
+    public VkAccelerationStructureBuildRangeInfoKHR asSlice(long index, long count) { return new VkAccelerationStructureBuildRangeInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `primitiveCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

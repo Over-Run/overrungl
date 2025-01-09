@@ -131,6 +131,17 @@ public final class VkDeviceCreateInfo extends Struct {
     /// @return the allocated `VkDeviceCreateInfo`
     public static VkDeviceCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkDeviceCreateInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkDeviceCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDeviceCreateInfo`
+    public VkDeviceCreateInfo asSlice(long index) { return new VkDeviceCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkDeviceCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDeviceCreateInfo`
+    public VkDeviceCreateInfo asSlice(long index, long count) { return new VkDeviceCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

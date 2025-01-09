@@ -95,6 +95,17 @@ public final class VkDirectDriverLoadingInfoLUNARG extends Struct {
     /// @return the allocated `VkDirectDriverLoadingInfoLUNARG`
     public static VkDirectDriverLoadingInfoLUNARG alloc(SegmentAllocator allocator, long count) { return new VkDirectDriverLoadingInfoLUNARG(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkDirectDriverLoadingInfoLUNARG`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDirectDriverLoadingInfoLUNARG`
+    public VkDirectDriverLoadingInfoLUNARG asSlice(long index) { return new VkDirectDriverLoadingInfoLUNARG(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkDirectDriverLoadingInfoLUNARG`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDirectDriverLoadingInfoLUNARG`
+    public VkDirectDriverLoadingInfoLUNARG asSlice(long index, long count) { return new VkDirectDriverLoadingInfoLUNARG(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

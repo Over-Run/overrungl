@@ -91,6 +91,17 @@ public final class VkRenderPassStripeInfoARM extends Struct {
     /// @return the allocated `VkRenderPassStripeInfoARM`
     public static VkRenderPassStripeInfoARM alloc(SegmentAllocator allocator, long count) { return new VkRenderPassStripeInfoARM(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkRenderPassStripeInfoARM`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkRenderPassStripeInfoARM`
+    public VkRenderPassStripeInfoARM asSlice(long index) { return new VkRenderPassStripeInfoARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkRenderPassStripeInfoARM`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkRenderPassStripeInfoARM`
+    public VkRenderPassStripeInfoARM asSlice(long index, long count) { return new VkRenderPassStripeInfoARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -137,6 +137,17 @@ public final class StdVideoH264HrdParameters extends Struct {
     /// @return the allocated `StdVideoH264HrdParameters`
     public static StdVideoH264HrdParameters alloc(SegmentAllocator allocator, long count) { return new StdVideoH264HrdParameters(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `StdVideoH264HrdParameters`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoH264HrdParameters`
+    public StdVideoH264HrdParameters asSlice(long index) { return new StdVideoH264HrdParameters(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `StdVideoH264HrdParameters`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoH264HrdParameters`
+    public StdVideoH264HrdParameters asSlice(long index, long count) { return new StdVideoH264HrdParameters(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `cpb_cnt_minus1` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

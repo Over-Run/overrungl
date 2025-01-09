@@ -97,6 +97,17 @@ public final class NFDOpenDialogArgs extends Struct {
     /// @return the allocated `NFDOpenDialogArgs`
     public static NFDOpenDialogArgs alloc(SegmentAllocator allocator, long count) { return new NFDOpenDialogArgs(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `NFDOpenDialogArgs`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `NFDOpenDialogArgs`
+    public NFDOpenDialogArgs asSlice(long index) { return new NFDOpenDialogArgs(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `NFDOpenDialogArgs`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `NFDOpenDialogArgs`
+    public NFDOpenDialogArgs asSlice(long index, long count) { return new NFDOpenDialogArgs(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `filterList` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

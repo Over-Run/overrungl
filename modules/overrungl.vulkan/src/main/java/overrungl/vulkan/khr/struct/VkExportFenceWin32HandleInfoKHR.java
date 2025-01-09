@@ -101,6 +101,17 @@ public final class VkExportFenceWin32HandleInfoKHR extends Struct {
     /// @return the allocated `VkExportFenceWin32HandleInfoKHR`
     public static VkExportFenceWin32HandleInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkExportFenceWin32HandleInfoKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkExportFenceWin32HandleInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkExportFenceWin32HandleInfoKHR`
+    public VkExportFenceWin32HandleInfoKHR asSlice(long index) { return new VkExportFenceWin32HandleInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkExportFenceWin32HandleInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkExportFenceWin32HandleInfoKHR`
+    public VkExportFenceWin32HandleInfoKHR asSlice(long index, long count) { return new VkExportFenceWin32HandleInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

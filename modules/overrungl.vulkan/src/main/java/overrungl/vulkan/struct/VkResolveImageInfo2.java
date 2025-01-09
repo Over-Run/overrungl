@@ -119,6 +119,17 @@ public final class VkResolveImageInfo2 extends Struct {
     /// @return the allocated `VkResolveImageInfo2`
     public static VkResolveImageInfo2 alloc(SegmentAllocator allocator, long count) { return new VkResolveImageInfo2(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkResolveImageInfo2`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkResolveImageInfo2`
+    public VkResolveImageInfo2 asSlice(long index) { return new VkResolveImageInfo2(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkResolveImageInfo2`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkResolveImageInfo2`
+    public VkResolveImageInfo2 asSlice(long index, long count) { return new VkResolveImageInfo2(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

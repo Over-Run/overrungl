@@ -89,6 +89,17 @@ public final class VkImageCaptureDescriptorDataInfoEXT extends Struct {
     /// @return the allocated `VkImageCaptureDescriptorDataInfoEXT`
     public static VkImageCaptureDescriptorDataInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkImageCaptureDescriptorDataInfoEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkImageCaptureDescriptorDataInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkImageCaptureDescriptorDataInfoEXT`
+    public VkImageCaptureDescriptorDataInfoEXT asSlice(long index) { return new VkImageCaptureDescriptorDataInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkImageCaptureDescriptorDataInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkImageCaptureDescriptorDataInfoEXT`
+    public VkImageCaptureDescriptorDataInfoEXT asSlice(long index, long count) { return new VkImageCaptureDescriptorDataInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

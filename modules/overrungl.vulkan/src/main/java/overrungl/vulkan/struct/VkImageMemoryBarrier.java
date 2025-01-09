@@ -133,6 +133,17 @@ public final class VkImageMemoryBarrier extends Struct {
     /// @return the allocated `VkImageMemoryBarrier`
     public static VkImageMemoryBarrier alloc(SegmentAllocator allocator, long count) { return new VkImageMemoryBarrier(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkImageMemoryBarrier`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkImageMemoryBarrier`
+    public VkImageMemoryBarrier asSlice(long index) { return new VkImageMemoryBarrier(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkImageMemoryBarrier`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkImageMemoryBarrier`
+    public VkImageMemoryBarrier asSlice(long index, long count) { return new VkImageMemoryBarrier(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

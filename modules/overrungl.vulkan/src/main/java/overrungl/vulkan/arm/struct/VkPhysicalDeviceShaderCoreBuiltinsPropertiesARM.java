@@ -101,6 +101,17 @@ public final class VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM extends Struc
     /// @return the allocated `VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM`
     public static VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM`
+    public VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM asSlice(long index) { return new VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM`
+    public VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM asSlice(long index, long count) { return new VkPhysicalDeviceShaderCoreBuiltinsPropertiesARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

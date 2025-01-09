@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceImageRobustnessFeatures extends Struct {
     /// @return the allocated `VkPhysicalDeviceImageRobustnessFeatures`
     public static VkPhysicalDeviceImageRobustnessFeatures alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceImageRobustnessFeatures(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceImageRobustnessFeatures`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceImageRobustnessFeatures`
+    public VkPhysicalDeviceImageRobustnessFeatures asSlice(long index) { return new VkPhysicalDeviceImageRobustnessFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceImageRobustnessFeatures`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceImageRobustnessFeatures`
+    public VkPhysicalDeviceImageRobustnessFeatures asSlice(long index, long count) { return new VkPhysicalDeviceImageRobustnessFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

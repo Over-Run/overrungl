@@ -83,6 +83,17 @@ public final class VkSubpassEndInfo extends Struct {
     /// @return the allocated `VkSubpassEndInfo`
     public static VkSubpassEndInfo alloc(SegmentAllocator allocator, long count) { return new VkSubpassEndInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkSubpassEndInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSubpassEndInfo`
+    public VkSubpassEndInfo asSlice(long index) { return new VkSubpassEndInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkSubpassEndInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSubpassEndInfo`
+    public VkSubpassEndInfo asSlice(long index, long count) { return new VkSubpassEndInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

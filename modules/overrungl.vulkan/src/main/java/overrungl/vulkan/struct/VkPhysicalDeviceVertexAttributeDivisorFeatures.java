@@ -95,6 +95,17 @@ public final class VkPhysicalDeviceVertexAttributeDivisorFeatures extends Struct
     /// @return the allocated `VkPhysicalDeviceVertexAttributeDivisorFeatures`
     public static VkPhysicalDeviceVertexAttributeDivisorFeatures alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceVertexAttributeDivisorFeatures(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceVertexAttributeDivisorFeatures`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceVertexAttributeDivisorFeatures`
+    public VkPhysicalDeviceVertexAttributeDivisorFeatures asSlice(long index) { return new VkPhysicalDeviceVertexAttributeDivisorFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceVertexAttributeDivisorFeatures`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceVertexAttributeDivisorFeatures`
+    public VkPhysicalDeviceVertexAttributeDivisorFeatures asSlice(long index, long count) { return new VkPhysicalDeviceVertexAttributeDivisorFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

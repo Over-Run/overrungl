@@ -95,6 +95,17 @@ public final class VkImagePipeSurfaceCreateInfoFUCHSIA extends Struct {
     /// @return the allocated `VkImagePipeSurfaceCreateInfoFUCHSIA`
     public static VkImagePipeSurfaceCreateInfoFUCHSIA alloc(SegmentAllocator allocator, long count) { return new VkImagePipeSurfaceCreateInfoFUCHSIA(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkImagePipeSurfaceCreateInfoFUCHSIA`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkImagePipeSurfaceCreateInfoFUCHSIA`
+    public VkImagePipeSurfaceCreateInfoFUCHSIA asSlice(long index) { return new VkImagePipeSurfaceCreateInfoFUCHSIA(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkImagePipeSurfaceCreateInfoFUCHSIA`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkImagePipeSurfaceCreateInfoFUCHSIA`
+    public VkImagePipeSurfaceCreateInfoFUCHSIA asSlice(long index, long count) { return new VkImagePipeSurfaceCreateInfoFUCHSIA(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

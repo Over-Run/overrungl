@@ -89,6 +89,17 @@ public final class VkMicromapUsageEXT extends Struct {
     /// @return the allocated `VkMicromapUsageEXT`
     public static VkMicromapUsageEXT alloc(SegmentAllocator allocator, long count) { return new VkMicromapUsageEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkMicromapUsageEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkMicromapUsageEXT`
+    public VkMicromapUsageEXT asSlice(long index) { return new VkMicromapUsageEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkMicromapUsageEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkMicromapUsageEXT`
+    public VkMicromapUsageEXT asSlice(long index, long count) { return new VkMicromapUsageEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `count` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

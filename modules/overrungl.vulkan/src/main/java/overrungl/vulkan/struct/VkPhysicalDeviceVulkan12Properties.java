@@ -34,9 +34,9 @@ import static overrungl.vulkan.VK12.*;
 /// ### driverID
 /// [VarHandle][#VH_driverID] - [Getter][#driverID()] - [Setter][#driverID(int)]
 /// ### driverName
-/// [Byte offset handle][#MH_driverName] - [Memory layout][#ML_driverName] - [Getter][#driverName(long)] - [Setter][#driverName(long, java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_driverName] - [Memory layout][#ML_driverName] - [Getter][#driverName()] - [Setter][#driverName(java.lang.foreign.MemorySegment)]
 /// ### driverInfo
-/// [Byte offset handle][#MH_driverInfo] - [Memory layout][#ML_driverInfo] - [Getter][#driverInfo(long)] - [Setter][#driverInfo(long, java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_driverInfo] - [Memory layout][#ML_driverInfo] - [Getter][#driverInfo()] - [Setter][#driverInfo(java.lang.foreign.MemorySegment)]
 /// ### conformanceVersion
 /// [Byte offset][#OFFSET_conformanceVersion] - [Memory layout][#ML_conformanceVersion] - [Getter][#conformanceVersion()] - [Setter][#conformanceVersion(java.lang.foreign.MemorySegment)]
 /// ### denormBehaviorIndependence
@@ -259,12 +259,12 @@ public final class VkPhysicalDeviceVulkan12Properties extends Struct {
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `driverID` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_driverID = LAYOUT.arrayElementVarHandle(PathElement.groupElement("driverID"));
-    /// The byte offset handle of `driverName` of type `(long baseOffset, long elementIndex)long`.
-    public static final MethodHandle MH_driverName = LAYOUT.byteOffsetHandle(PathElement.groupElement("driverName"), PathElement.sequenceElement());
+    /// The byte offset of `driverName`.
+    public static final long OFFSET_driverName = LAYOUT.byteOffset(PathElement.groupElement("driverName"));
     /// The memory layout of `driverName`.
     public static final MemoryLayout ML_driverName = LAYOUT.select(PathElement.groupElement("driverName"));
-    /// The byte offset handle of `driverInfo` of type `(long baseOffset, long elementIndex)long`.
-    public static final MethodHandle MH_driverInfo = LAYOUT.byteOffsetHandle(PathElement.groupElement("driverInfo"), PathElement.sequenceElement());
+    /// The byte offset of `driverInfo`.
+    public static final long OFFSET_driverInfo = LAYOUT.byteOffset(PathElement.groupElement("driverInfo"));
     /// The memory layout of `driverInfo`.
     public static final MemoryLayout ML_driverInfo = LAYOUT.select(PathElement.groupElement("driverInfo"));
     /// The byte offset of `conformanceVersion`.
@@ -403,6 +403,17 @@ public final class VkPhysicalDeviceVulkan12Properties extends Struct {
     /// @return the allocated `VkPhysicalDeviceVulkan12Properties`
     public static VkPhysicalDeviceVulkan12Properties alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceVulkan12Properties(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceVulkan12Properties`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceVulkan12Properties`
+    public VkPhysicalDeviceVulkan12Properties asSlice(long index) { return new VkPhysicalDeviceVulkan12Properties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceVulkan12Properties`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceVulkan12Properties`
+    public VkPhysicalDeviceVulkan12Properties asSlice(long index, long count) { return new VkPhysicalDeviceVulkan12Properties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
@@ -497,94 +508,66 @@ public final class VkPhysicalDeviceVulkan12Properties extends Struct {
     public VkPhysicalDeviceVulkan12Properties driverID(@CType("VkDriverId") int value) { VkPhysicalDeviceVulkan12Properties.set_driverID(this.segment(), value); return this; }
 
     /// {@return `driverName` at the given index}
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public static @CType("char[VK_MAX_DRIVER_NAME_SIZE]") java.lang.foreign.MemorySegment get_driverName(MemorySegment segment, long index, long elementIndex) {
-        try { return segment.asSlice(LAYOUT.scale((long) MH_driverName.invokeExact(0L, elementIndex), index), ML_driverName); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("char[VK_MAX_DRIVER_NAME_SIZE]") java.lang.foreign.MemorySegment get_driverName(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_driverName, index), ML_driverName); }
     /// {@return `driverName`}
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    public static @CType("char[VK_MAX_DRIVER_NAME_SIZE]") java.lang.foreign.MemorySegment get_driverName(MemorySegment segment, long elementIndex) { return VkPhysicalDeviceVulkan12Properties.get_driverName(segment, 0L, elementIndex); }
+    /// @param segment the segment of the struct
+    public static @CType("char[VK_MAX_DRIVER_NAME_SIZE]") java.lang.foreign.MemorySegment get_driverName(MemorySegment segment) { return VkPhysicalDeviceVulkan12Properties.get_driverName(segment, 0L); }
     /// {@return `driverName` at the given index}
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public @CType("char[VK_MAX_DRIVER_NAME_SIZE]") java.lang.foreign.MemorySegment driverNameAt(long index, long elementIndex) { return VkPhysicalDeviceVulkan12Properties.get_driverName(this.segment(), index, elementIndex); }
+    /// @param index the index
+    public @CType("char[VK_MAX_DRIVER_NAME_SIZE]") java.lang.foreign.MemorySegment driverNameAt(long index) { return VkPhysicalDeviceVulkan12Properties.get_driverName(this.segment(), index); }
     /// {@return `driverName`}
-    /// @param elementIndex the index of the element
-    public @CType("char[VK_MAX_DRIVER_NAME_SIZE]") java.lang.foreign.MemorySegment driverName(long elementIndex) { return VkPhysicalDeviceVulkan12Properties.get_driverName(this.segment(), elementIndex); }
+    public @CType("char[VK_MAX_DRIVER_NAME_SIZE]") java.lang.foreign.MemorySegment driverName() { return VkPhysicalDeviceVulkan12Properties.get_driverName(this.segment()); }
     /// Sets `driverName` with the given value at the given index.
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_driverName(MemorySegment segment, long index, long elementIndex, @CType("char[VK_MAX_DRIVER_NAME_SIZE]") java.lang.foreign.MemorySegment value) {
-        try { MemorySegment.copy(value, 0L, segment, LAYOUT.scale((long) MH_driverName.invokeExact(0L, elementIndex), index), ML_driverName.byteSize()); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_driverName(MemorySegment segment, long index, @CType("char[VK_MAX_DRIVER_NAME_SIZE]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_driverName, index), ML_driverName.byteSize()); }
     /// Sets `driverName` with the given value.
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_driverName(MemorySegment segment, long elementIndex, @CType("char[VK_MAX_DRIVER_NAME_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan12Properties.set_driverName(segment, 0L, elementIndex, value); }
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_driverName(MemorySegment segment, @CType("char[VK_MAX_DRIVER_NAME_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan12Properties.set_driverName(segment, 0L, value); }
     /// Sets `driverName` with the given value at the given index.
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param index the index
+    /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan12Properties driverNameAt(long index, long elementIndex, @CType("char[VK_MAX_DRIVER_NAME_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan12Properties.set_driverName(this.segment(), index, elementIndex, value); return this; }
+    public VkPhysicalDeviceVulkan12Properties driverNameAt(long index, @CType("char[VK_MAX_DRIVER_NAME_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan12Properties.set_driverName(this.segment(), index, value); return this; }
     /// Sets `driverName` with the given value.
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan12Properties driverName(long elementIndex, @CType("char[VK_MAX_DRIVER_NAME_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan12Properties.set_driverName(this.segment(), elementIndex, value); return this; }
+    public VkPhysicalDeviceVulkan12Properties driverName(@CType("char[VK_MAX_DRIVER_NAME_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan12Properties.set_driverName(this.segment(), value); return this; }
 
     /// {@return `driverInfo` at the given index}
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public static @CType("char[VK_MAX_DRIVER_INFO_SIZE]") java.lang.foreign.MemorySegment get_driverInfo(MemorySegment segment, long index, long elementIndex) {
-        try { return segment.asSlice(LAYOUT.scale((long) MH_driverInfo.invokeExact(0L, elementIndex), index), ML_driverInfo); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("char[VK_MAX_DRIVER_INFO_SIZE]") java.lang.foreign.MemorySegment get_driverInfo(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_driverInfo, index), ML_driverInfo); }
     /// {@return `driverInfo`}
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    public static @CType("char[VK_MAX_DRIVER_INFO_SIZE]") java.lang.foreign.MemorySegment get_driverInfo(MemorySegment segment, long elementIndex) { return VkPhysicalDeviceVulkan12Properties.get_driverInfo(segment, 0L, elementIndex); }
+    /// @param segment the segment of the struct
+    public static @CType("char[VK_MAX_DRIVER_INFO_SIZE]") java.lang.foreign.MemorySegment get_driverInfo(MemorySegment segment) { return VkPhysicalDeviceVulkan12Properties.get_driverInfo(segment, 0L); }
     /// {@return `driverInfo` at the given index}
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public @CType("char[VK_MAX_DRIVER_INFO_SIZE]") java.lang.foreign.MemorySegment driverInfoAt(long index, long elementIndex) { return VkPhysicalDeviceVulkan12Properties.get_driverInfo(this.segment(), index, elementIndex); }
+    /// @param index the index
+    public @CType("char[VK_MAX_DRIVER_INFO_SIZE]") java.lang.foreign.MemorySegment driverInfoAt(long index) { return VkPhysicalDeviceVulkan12Properties.get_driverInfo(this.segment(), index); }
     /// {@return `driverInfo`}
-    /// @param elementIndex the index of the element
-    public @CType("char[VK_MAX_DRIVER_INFO_SIZE]") java.lang.foreign.MemorySegment driverInfo(long elementIndex) { return VkPhysicalDeviceVulkan12Properties.get_driverInfo(this.segment(), elementIndex); }
+    public @CType("char[VK_MAX_DRIVER_INFO_SIZE]") java.lang.foreign.MemorySegment driverInfo() { return VkPhysicalDeviceVulkan12Properties.get_driverInfo(this.segment()); }
     /// Sets `driverInfo` with the given value at the given index.
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_driverInfo(MemorySegment segment, long index, long elementIndex, @CType("char[VK_MAX_DRIVER_INFO_SIZE]") java.lang.foreign.MemorySegment value) {
-        try { MemorySegment.copy(value, 0L, segment, LAYOUT.scale((long) MH_driverInfo.invokeExact(0L, elementIndex), index), ML_driverInfo.byteSize()); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_driverInfo(MemorySegment segment, long index, @CType("char[VK_MAX_DRIVER_INFO_SIZE]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_driverInfo, index), ML_driverInfo.byteSize()); }
     /// Sets `driverInfo` with the given value.
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_driverInfo(MemorySegment segment, long elementIndex, @CType("char[VK_MAX_DRIVER_INFO_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan12Properties.set_driverInfo(segment, 0L, elementIndex, value); }
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_driverInfo(MemorySegment segment, @CType("char[VK_MAX_DRIVER_INFO_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan12Properties.set_driverInfo(segment, 0L, value); }
     /// Sets `driverInfo` with the given value at the given index.
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param index the index
+    /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan12Properties driverInfoAt(long index, long elementIndex, @CType("char[VK_MAX_DRIVER_INFO_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan12Properties.set_driverInfo(this.segment(), index, elementIndex, value); return this; }
+    public VkPhysicalDeviceVulkan12Properties driverInfoAt(long index, @CType("char[VK_MAX_DRIVER_INFO_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan12Properties.set_driverInfo(this.segment(), index, value); return this; }
     /// Sets `driverInfo` with the given value.
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceVulkan12Properties driverInfo(long elementIndex, @CType("char[VK_MAX_DRIVER_INFO_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan12Properties.set_driverInfo(this.segment(), elementIndex, value); return this; }
+    public VkPhysicalDeviceVulkan12Properties driverInfo(@CType("char[VK_MAX_DRIVER_INFO_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan12Properties.set_driverInfo(this.segment(), value); return this; }
 
     /// {@return `conformanceVersion` at the given index}
     /// @param segment the segment of the struct

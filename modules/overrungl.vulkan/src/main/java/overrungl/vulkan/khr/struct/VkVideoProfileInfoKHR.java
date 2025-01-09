@@ -107,6 +107,17 @@ public final class VkVideoProfileInfoKHR extends Struct {
     /// @return the allocated `VkVideoProfileInfoKHR`
     public static VkVideoProfileInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoProfileInfoKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkVideoProfileInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkVideoProfileInfoKHR`
+    public VkVideoProfileInfoKHR asSlice(long index) { return new VkVideoProfileInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkVideoProfileInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkVideoProfileInfoKHR`
+    public VkVideoProfileInfoKHR asSlice(long index, long count) { return new VkVideoProfileInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

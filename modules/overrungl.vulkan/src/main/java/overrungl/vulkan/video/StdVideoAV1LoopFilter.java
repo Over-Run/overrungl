@@ -113,6 +113,17 @@ public final class StdVideoAV1LoopFilter extends Struct {
     /// @return the allocated `StdVideoAV1LoopFilter`
     public static StdVideoAV1LoopFilter alloc(SegmentAllocator allocator, long count) { return new StdVideoAV1LoopFilter(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `StdVideoAV1LoopFilter`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoAV1LoopFilter`
+    public StdVideoAV1LoopFilter asSlice(long index) { return new StdVideoAV1LoopFilter(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `StdVideoAV1LoopFilter`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoAV1LoopFilter`
+    public StdVideoAV1LoopFilter asSlice(long index, long count) { return new StdVideoAV1LoopFilter(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

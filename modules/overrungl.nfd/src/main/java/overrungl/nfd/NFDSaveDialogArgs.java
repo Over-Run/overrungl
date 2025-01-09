@@ -103,6 +103,17 @@ public final class NFDSaveDialogArgs extends Struct {
     /// @return the allocated `NFDSaveDialogArgs`
     public static NFDSaveDialogArgs alloc(SegmentAllocator allocator, long count) { return new NFDSaveDialogArgs(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `NFDSaveDialogArgs`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `NFDSaveDialogArgs`
+    public NFDSaveDialogArgs asSlice(long index) { return new NFDSaveDialogArgs(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `NFDSaveDialogArgs`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `NFDSaveDialogArgs`
+    public NFDSaveDialogArgs asSlice(long index, long count) { return new NFDSaveDialogArgs(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `filterList` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

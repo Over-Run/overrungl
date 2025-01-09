@@ -83,6 +83,17 @@ public final class VkOffset2D extends Struct {
     /// @return the allocated `VkOffset2D`
     public static VkOffset2D alloc(SegmentAllocator allocator, long count) { return new VkOffset2D(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkOffset2D`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkOffset2D`
+    public VkOffset2D asSlice(long index) { return new VkOffset2D(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkOffset2D`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkOffset2D`
+    public VkOffset2D asSlice(long index, long count) { return new VkOffset2D(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `x` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

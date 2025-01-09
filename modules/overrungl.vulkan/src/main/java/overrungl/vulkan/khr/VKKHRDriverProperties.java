@@ -23,7 +23,7 @@ import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 import static overrungl.vulkan.VK12.*;
-public class VKKHRDriverProperties {
+public final class VKKHRDriverProperties {
     public static final int VK_KHR_DRIVER_PROPERTIES_SPEC_VERSION = 1;
     public static final String VK_KHR_DRIVER_PROPERTIES_EXTENSION_NAME = "VK_KHR_driver_properties";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRIVER_PROPERTIES_KHR = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRIVER_PROPERTIES;
@@ -42,7 +42,6 @@ public class VKKHRDriverProperties {
     public static final int VK_DRIVER_ID_GGP_PROPRIETARY_KHR = VK_DRIVER_ID_GGP_PROPRIETARY;
     public static final int VK_DRIVER_ID_BROADCOM_PROPRIETARY_KHR = VK_DRIVER_ID_BROADCOM_PROPRIETARY;
 
-    public VKKHRDriverProperties(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKKHRDriverProperties() { }
 
 }

@@ -95,6 +95,17 @@ public final class VkVideoEncodeAV1SessionCreateInfoKHR extends Struct {
     /// @return the allocated `VkVideoEncodeAV1SessionCreateInfoKHR`
     public static VkVideoEncodeAV1SessionCreateInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoEncodeAV1SessionCreateInfoKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkVideoEncodeAV1SessionCreateInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkVideoEncodeAV1SessionCreateInfoKHR`
+    public VkVideoEncodeAV1SessionCreateInfoKHR asSlice(long index) { return new VkVideoEncodeAV1SessionCreateInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkVideoEncodeAV1SessionCreateInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkVideoEncodeAV1SessionCreateInfoKHR`
+    public VkVideoEncodeAV1SessionCreateInfoKHR asSlice(long index, long count) { return new VkVideoEncodeAV1SessionCreateInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

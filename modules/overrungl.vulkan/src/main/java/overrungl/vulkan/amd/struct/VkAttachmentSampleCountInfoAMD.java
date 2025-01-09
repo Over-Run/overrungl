@@ -101,6 +101,17 @@ public final class VkAttachmentSampleCountInfoAMD extends Struct {
     /// @return the allocated `VkAttachmentSampleCountInfoAMD`
     public static VkAttachmentSampleCountInfoAMD alloc(SegmentAllocator allocator, long count) { return new VkAttachmentSampleCountInfoAMD(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkAttachmentSampleCountInfoAMD`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkAttachmentSampleCountInfoAMD`
+    public VkAttachmentSampleCountInfoAMD asSlice(long index) { return new VkAttachmentSampleCountInfoAMD(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkAttachmentSampleCountInfoAMD`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkAttachmentSampleCountInfoAMD`
+    public VkAttachmentSampleCountInfoAMD asSlice(long index, long count) { return new VkAttachmentSampleCountInfoAMD(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

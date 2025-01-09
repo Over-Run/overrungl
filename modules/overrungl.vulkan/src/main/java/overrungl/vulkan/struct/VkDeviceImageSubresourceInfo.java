@@ -95,6 +95,17 @@ public final class VkDeviceImageSubresourceInfo extends Struct {
     /// @return the allocated `VkDeviceImageSubresourceInfo`
     public static VkDeviceImageSubresourceInfo alloc(SegmentAllocator allocator, long count) { return new VkDeviceImageSubresourceInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkDeviceImageSubresourceInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDeviceImageSubresourceInfo`
+    public VkDeviceImageSubresourceInfo asSlice(long index) { return new VkDeviceImageSubresourceInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkDeviceImageSubresourceInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDeviceImageSubresourceInfo`
+    public VkDeviceImageSubresourceInfo asSlice(long index, long count) { return new VkDeviceImageSubresourceInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -89,6 +89,17 @@ public final class VkBindVertexBufferIndirectCommandEXT extends Struct {
     /// @return the allocated `VkBindVertexBufferIndirectCommandEXT`
     public static VkBindVertexBufferIndirectCommandEXT alloc(SegmentAllocator allocator, long count) { return new VkBindVertexBufferIndirectCommandEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkBindVertexBufferIndirectCommandEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkBindVertexBufferIndirectCommandEXT`
+    public VkBindVertexBufferIndirectCommandEXT asSlice(long index) { return new VkBindVertexBufferIndirectCommandEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkBindVertexBufferIndirectCommandEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkBindVertexBufferIndirectCommandEXT`
+    public VkBindVertexBufferIndirectCommandEXT asSlice(long index, long count) { return new VkBindVertexBufferIndirectCommandEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `bufferAddress` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

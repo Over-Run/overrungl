@@ -87,12 +87,23 @@ public final class VkClearValue extends Union {
     /// @return the allocated `VkClearValue`
     public static VkClearValue alloc(SegmentAllocator allocator, long count) { return new VkClearValue(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkClearValue`.
+    /// @param index the index of the union buffer
+    /// @return the slice of `VkClearValue`
+    public VkClearValue asSlice(long index) { return new VkClearValue(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkClearValue`.
+    /// @param index the index of the union buffer
+    /// @param count the count
+    /// @return the slice of `VkClearValue`
+    public VkClearValue asSlice(long index, long count) { return new VkClearValue(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `color` at the given index}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     public static @CType("VkClearColorValue") java.lang.foreign.MemorySegment get_color(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_color, index), ML_color); }
     /// {@return `color`}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     public static @CType("VkClearColorValue") java.lang.foreign.MemorySegment get_color(MemorySegment segment) { return VkClearValue.get_color(segment, 0L); }
     /// {@return `color` at the given index}
     /// @param index the index
@@ -100,12 +111,12 @@ public final class VkClearValue extends Union {
     /// {@return `color`}
     public @CType("VkClearColorValue") java.lang.foreign.MemorySegment color() { return VkClearValue.get_color(this.segment()); }
     /// Sets `color` with the given value at the given index.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     /// @param value   the value
     public static void set_color(MemorySegment segment, long index, @CType("VkClearColorValue") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_color, index), ML_color.byteSize()); }
     /// Sets `color` with the given value.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param value   the value
     public static void set_color(MemorySegment segment, @CType("VkClearColorValue") java.lang.foreign.MemorySegment value) { VkClearValue.set_color(segment, 0L, value); }
     /// Sets `color` with the given value at the given index.
@@ -119,11 +130,11 @@ public final class VkClearValue extends Union {
     public VkClearValue color(@CType("VkClearColorValue") java.lang.foreign.MemorySegment value) { VkClearValue.set_color(this.segment(), value); return this; }
 
     /// {@return `depthStencil` at the given index}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     public static @CType("VkClearDepthStencilValue") java.lang.foreign.MemorySegment get_depthStencil(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_depthStencil, index), ML_depthStencil); }
     /// {@return `depthStencil`}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     public static @CType("VkClearDepthStencilValue") java.lang.foreign.MemorySegment get_depthStencil(MemorySegment segment) { return VkClearValue.get_depthStencil(segment, 0L); }
     /// {@return `depthStencil` at the given index}
     /// @param index the index
@@ -131,12 +142,12 @@ public final class VkClearValue extends Union {
     /// {@return `depthStencil`}
     public @CType("VkClearDepthStencilValue") java.lang.foreign.MemorySegment depthStencil() { return VkClearValue.get_depthStencil(this.segment()); }
     /// Sets `depthStencil` with the given value at the given index.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     /// @param value   the value
     public static void set_depthStencil(MemorySegment segment, long index, @CType("VkClearDepthStencilValue") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_depthStencil, index), ML_depthStencil.byteSize()); }
     /// Sets `depthStencil` with the given value.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param value   the value
     public static void set_depthStencil(MemorySegment segment, @CType("VkClearDepthStencilValue") java.lang.foreign.MemorySegment value) { VkClearValue.set_depthStencil(segment, 0L, value); }
     /// Sets `depthStencil` with the given value at the given index.

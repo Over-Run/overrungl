@@ -95,6 +95,17 @@ public final class VkViSurfaceCreateInfoNN extends Struct {
     /// @return the allocated `VkViSurfaceCreateInfoNN`
     public static VkViSurfaceCreateInfoNN alloc(SegmentAllocator allocator, long count) { return new VkViSurfaceCreateInfoNN(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkViSurfaceCreateInfoNN`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkViSurfaceCreateInfoNN`
+    public VkViSurfaceCreateInfoNN asSlice(long index) { return new VkViSurfaceCreateInfoNN(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkViSurfaceCreateInfoNN`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkViSurfaceCreateInfoNN`
+    public VkViSurfaceCreateInfoNN asSlice(long index, long count) { return new VkViSurfaceCreateInfoNN(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

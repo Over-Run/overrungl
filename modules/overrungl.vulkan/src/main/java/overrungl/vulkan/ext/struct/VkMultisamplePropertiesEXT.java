@@ -91,6 +91,17 @@ public final class VkMultisamplePropertiesEXT extends Struct {
     /// @return the allocated `VkMultisamplePropertiesEXT`
     public static VkMultisamplePropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkMultisamplePropertiesEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkMultisamplePropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkMultisamplePropertiesEXT`
+    public VkMultisamplePropertiesEXT asSlice(long index) { return new VkMultisamplePropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkMultisamplePropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkMultisamplePropertiesEXT`
+    public VkMultisamplePropertiesEXT asSlice(long index, long count) { return new VkMultisamplePropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

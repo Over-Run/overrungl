@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceShaderFloatControls2Features extends Struct {
     /// @return the allocated `VkPhysicalDeviceShaderFloatControls2Features`
     public static VkPhysicalDeviceShaderFloatControls2Features alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceShaderFloatControls2Features(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceShaderFloatControls2Features`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceShaderFloatControls2Features`
+    public VkPhysicalDeviceShaderFloatControls2Features asSlice(long index) { return new VkPhysicalDeviceShaderFloatControls2Features(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceShaderFloatControls2Features`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceShaderFloatControls2Features`
+    public VkPhysicalDeviceShaderFloatControls2Features asSlice(long index, long count) { return new VkPhysicalDeviceShaderFloatControls2Features(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

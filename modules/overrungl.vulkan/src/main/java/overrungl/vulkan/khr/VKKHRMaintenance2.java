@@ -24,7 +24,7 @@ import overrungl.util.*;
 import overrungl.vulkan.*;
 import static overrungl.vulkan.VK11.*;
 import static overrungl.vulkan.khr.VKKHRMaintenance2.*;
-public class VKKHRMaintenance2 {
+public final class VKKHRMaintenance2 {
     public static final int VK_KHR_MAINTENANCE_2_SPEC_VERSION = 1;
     public static final String VK_KHR_MAINTENANCE_2_EXTENSION_NAME = "VK_KHR_maintenance2";
     public static final int VK_KHR_MAINTENANCE2_SPEC_VERSION = VK_KHR_MAINTENANCE_2_SPEC_VERSION;
@@ -42,7 +42,6 @@ public class VKKHRMaintenance2 {
     public static final int VK_TESSELLATION_DOMAIN_ORIGIN_UPPER_LEFT_KHR = VK_TESSELLATION_DOMAIN_ORIGIN_UPPER_LEFT;
     public static final int VK_TESSELLATION_DOMAIN_ORIGIN_LOWER_LEFT_KHR = VK_TESSELLATION_DOMAIN_ORIGIN_LOWER_LEFT;
 
-    public VKKHRMaintenance2(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKKHRMaintenance2() { }
 
 }

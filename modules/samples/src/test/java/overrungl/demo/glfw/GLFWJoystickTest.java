@@ -128,11 +128,11 @@ public final class GLFWJoystickTest {
     }
 
     private static byte gpsButton(GLFWGamepadState state, int button) {
-        return state.buttons(button).get(ValueLayout.JAVA_BYTE, 0);
+        return state.buttons().getAtIndex(ValueLayout.JAVA_BYTE, button);
     }
 
     private static float gpsAxe(GLFWGamepadState state, int axis) {
-        return state.axes(axis).get(ValueLayout.JAVA_FLOAT, 0);
+        return state.axes().getAtIndex(ValueLayout.JAVA_FLOAT, axis);
     }
 
     public static void main(String[] args) {

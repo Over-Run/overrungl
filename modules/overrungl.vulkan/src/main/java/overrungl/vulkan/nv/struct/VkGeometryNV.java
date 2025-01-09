@@ -103,6 +103,17 @@ public final class VkGeometryNV extends Struct {
     /// @return the allocated `VkGeometryNV`
     public static VkGeometryNV alloc(SegmentAllocator allocator, long count) { return new VkGeometryNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkGeometryNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkGeometryNV`
+    public VkGeometryNV asSlice(long index) { return new VkGeometryNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkGeometryNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkGeometryNV`
+    public VkGeometryNV asSlice(long index, long count) { return new VkGeometryNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

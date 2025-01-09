@@ -95,6 +95,17 @@ public final class VkVertexInputAttributeDescription extends Struct {
     /// @return the allocated `VkVertexInputAttributeDescription`
     public static VkVertexInputAttributeDescription alloc(SegmentAllocator allocator, long count) { return new VkVertexInputAttributeDescription(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkVertexInputAttributeDescription`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkVertexInputAttributeDescription`
+    public VkVertexInputAttributeDescription asSlice(long index) { return new VkVertexInputAttributeDescription(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkVertexInputAttributeDescription`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkVertexInputAttributeDescription`
+    public VkVertexInputAttributeDescription asSlice(long index, long count) { return new VkVertexInputAttributeDescription(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `location` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

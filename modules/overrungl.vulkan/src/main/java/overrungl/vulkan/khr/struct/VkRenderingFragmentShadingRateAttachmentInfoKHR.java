@@ -103,6 +103,17 @@ public final class VkRenderingFragmentShadingRateAttachmentInfoKHR extends Struc
     /// @return the allocated `VkRenderingFragmentShadingRateAttachmentInfoKHR`
     public static VkRenderingFragmentShadingRateAttachmentInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkRenderingFragmentShadingRateAttachmentInfoKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkRenderingFragmentShadingRateAttachmentInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkRenderingFragmentShadingRateAttachmentInfoKHR`
+    public VkRenderingFragmentShadingRateAttachmentInfoKHR asSlice(long index) { return new VkRenderingFragmentShadingRateAttachmentInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkRenderingFragmentShadingRateAttachmentInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkRenderingFragmentShadingRateAttachmentInfoKHR`
+    public VkRenderingFragmentShadingRateAttachmentInfoKHR asSlice(long index, long count) { return new VkRenderingFragmentShadingRateAttachmentInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

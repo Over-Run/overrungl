@@ -95,6 +95,17 @@ public final class VkPhysicalDevice4444FormatsFeaturesEXT extends Struct {
     /// @return the allocated `VkPhysicalDevice4444FormatsFeaturesEXT`
     public static VkPhysicalDevice4444FormatsFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDevice4444FormatsFeaturesEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDevice4444FormatsFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDevice4444FormatsFeaturesEXT`
+    public VkPhysicalDevice4444FormatsFeaturesEXT asSlice(long index) { return new VkPhysicalDevice4444FormatsFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDevice4444FormatsFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDevice4444FormatsFeaturesEXT`
+    public VkPhysicalDevice4444FormatsFeaturesEXT asSlice(long index, long count) { return new VkPhysicalDevice4444FormatsFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -22,14 +22,13 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKAMDRasterizationOrder {
+public final class VKAMDRasterizationOrder {
     public static final int VK_RASTERIZATION_ORDER_STRICT_AMD = 0;
     public static final int VK_RASTERIZATION_ORDER_RELAXED_AMD = 1;
     public static final int VK_AMD_RASTERIZATION_ORDER_SPEC_VERSION = 1;
     public static final String VK_AMD_RASTERIZATION_ORDER_EXTENSION_NAME = "VK_AMD_rasterization_order";
     public static final int VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_RASTERIZATION_ORDER_AMD = 1000018000;
 
-    public VKAMDRasterizationOrder(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKAMDRasterizationOrder() { }
 
 }

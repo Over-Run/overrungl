@@ -95,6 +95,17 @@ public final class VkPhysicalDeviceShaderAtomicInt64Features extends Struct {
     /// @return the allocated `VkPhysicalDeviceShaderAtomicInt64Features`
     public static VkPhysicalDeviceShaderAtomicInt64Features alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceShaderAtomicInt64Features(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceShaderAtomicInt64Features`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceShaderAtomicInt64Features`
+    public VkPhysicalDeviceShaderAtomicInt64Features asSlice(long index) { return new VkPhysicalDeviceShaderAtomicInt64Features(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceShaderAtomicInt64Features`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceShaderAtomicInt64Features`
+    public VkPhysicalDeviceShaderAtomicInt64Features asSlice(long index, long count) { return new VkPhysicalDeviceShaderAtomicInt64Features(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

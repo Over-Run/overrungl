@@ -22,7 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKKHRMaintenance7 {
+public final class VKKHRMaintenance7 {
     public static final int VK_PHYSICAL_DEVICE_LAYERED_API_VULKAN_KHR = 0;
     public static final int VK_PHYSICAL_DEVICE_LAYERED_API_D3D12_KHR = 1;
     public static final int VK_PHYSICAL_DEVICE_LAYERED_API_METAL_KHR = 2;
@@ -38,7 +38,6 @@ public class VKKHRMaintenance7 {
     public static final int VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_KHR = 1000562000;
     public static final int VK_RENDERING_CONTENTS_INLINE_BIT_KHR = 0x00000010;
 
-    public VKKHRMaintenance7(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKKHRMaintenance7() { }
 
 }

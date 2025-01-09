@@ -89,6 +89,17 @@ public final class VkMicromapVersionInfoEXT extends Struct {
     /// @return the allocated `VkMicromapVersionInfoEXT`
     public static VkMicromapVersionInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkMicromapVersionInfoEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkMicromapVersionInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkMicromapVersionInfoEXT`
+    public VkMicromapVersionInfoEXT asSlice(long index) { return new VkMicromapVersionInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkMicromapVersionInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkMicromapVersionInfoEXT`
+    public VkMicromapVersionInfoEXT asSlice(long index, long count) { return new VkMicromapVersionInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

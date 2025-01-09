@@ -22,12 +22,11 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKNVCommandBufferInheritance {
+public final class VKNVCommandBufferInheritance {
     public static final int VK_NV_COMMAND_BUFFER_INHERITANCE_SPEC_VERSION = 1;
     public static final String VK_NV_COMMAND_BUFFER_INHERITANCE_EXTENSION_NAME = "VK_NV_command_buffer_inheritance";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMMAND_BUFFER_INHERITANCE_FEATURES_NV = 1000559000;
 
-    public VKNVCommandBufferInheritance(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKNVCommandBufferInheritance() { }
 
 }

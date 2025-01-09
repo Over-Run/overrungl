@@ -83,6 +83,17 @@ public final class VkDescriptorPoolSize extends Struct {
     /// @return the allocated `VkDescriptorPoolSize`
     public static VkDescriptorPoolSize alloc(SegmentAllocator allocator, long count) { return new VkDescriptorPoolSize(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkDescriptorPoolSize`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDescriptorPoolSize`
+    public VkDescriptorPoolSize asSlice(long index) { return new VkDescriptorPoolSize(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkDescriptorPoolSize`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDescriptorPoolSize`
+    public VkDescriptorPoolSize asSlice(long index, long count) { return new VkDescriptorPoolSize(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `type` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

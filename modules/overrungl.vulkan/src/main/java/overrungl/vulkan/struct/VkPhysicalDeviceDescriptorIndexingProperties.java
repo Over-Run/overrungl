@@ -221,6 +221,17 @@ public final class VkPhysicalDeviceDescriptorIndexingProperties extends Struct {
     /// @return the allocated `VkPhysicalDeviceDescriptorIndexingProperties`
     public static VkPhysicalDeviceDescriptorIndexingProperties alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceDescriptorIndexingProperties(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceDescriptorIndexingProperties`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceDescriptorIndexingProperties`
+    public VkPhysicalDeviceDescriptorIndexingProperties asSlice(long index) { return new VkPhysicalDeviceDescriptorIndexingProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceDescriptorIndexingProperties`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceDescriptorIndexingProperties`
+    public VkPhysicalDeviceDescriptorIndexingProperties asSlice(long index, long count) { return new VkPhysicalDeviceDescriptorIndexingProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

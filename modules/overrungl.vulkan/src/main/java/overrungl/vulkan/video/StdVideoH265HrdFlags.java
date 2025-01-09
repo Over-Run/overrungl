@@ -113,6 +113,17 @@ public final class StdVideoH265HrdFlags extends Struct {
     /// @return the allocated `StdVideoH265HrdFlags`
     public static StdVideoH265HrdFlags alloc(SegmentAllocator allocator, long count) { return new StdVideoH265HrdFlags(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `StdVideoH265HrdFlags`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoH265HrdFlags`
+    public StdVideoH265HrdFlags asSlice(long index) { return new StdVideoH265HrdFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `StdVideoH265HrdFlags`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoH265HrdFlags`
+    public StdVideoH265HrdFlags asSlice(long index, long count) { return new StdVideoH265HrdFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `nal_hrd_parameters_present_flag` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

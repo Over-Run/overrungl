@@ -95,6 +95,17 @@ public final class VkHdrVividDynamicMetadataHUAWEI extends Struct {
     /// @return the allocated `VkHdrVividDynamicMetadataHUAWEI`
     public static VkHdrVividDynamicMetadataHUAWEI alloc(SegmentAllocator allocator, long count) { return new VkHdrVividDynamicMetadataHUAWEI(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkHdrVividDynamicMetadataHUAWEI`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkHdrVividDynamicMetadataHUAWEI`
+    public VkHdrVividDynamicMetadataHUAWEI asSlice(long index) { return new VkHdrVividDynamicMetadataHUAWEI(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkHdrVividDynamicMetadataHUAWEI`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkHdrVividDynamicMetadataHUAWEI`
+    public VkHdrVividDynamicMetadataHUAWEI asSlice(long index, long count) { return new VkHdrVividDynamicMetadataHUAWEI(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

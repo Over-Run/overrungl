@@ -107,6 +107,17 @@ public final class VkViewport extends Struct {
     /// @return the allocated `VkViewport`
     public static VkViewport alloc(SegmentAllocator allocator, long count) { return new VkViewport(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkViewport`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkViewport`
+    public VkViewport asSlice(long index) { return new VkViewport(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkViewport`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkViewport`
+    public VkViewport asSlice(long index, long count) { return new VkViewport(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `x` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

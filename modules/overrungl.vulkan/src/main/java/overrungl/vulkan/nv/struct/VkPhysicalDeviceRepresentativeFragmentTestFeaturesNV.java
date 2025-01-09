@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV extends 
     /// @return the allocated `VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV`
     public static VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV`
+    public VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV asSlice(long index) { return new VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV`
+    public VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV asSlice(long index, long count) { return new VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

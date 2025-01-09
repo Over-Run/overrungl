@@ -22,14 +22,13 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKMESAImageAlignmentControl {
+public final class VKMESAImageAlignmentControl {
     public static final int VK_MESA_IMAGE_ALIGNMENT_CONTROL_SPEC_VERSION = 1;
     public static final String VK_MESA_IMAGE_ALIGNMENT_CONTROL_EXTENSION_NAME = "VK_MESA_image_alignment_control";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_FEATURES_MESA = 1000575000;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_ALIGNMENT_CONTROL_PROPERTIES_MESA = 1000575001;
     public static final int VK_STRUCTURE_TYPE_IMAGE_ALIGNMENT_CONTROL_CREATE_INFO_MESA = 1000575002;
 
-    public VKMESAImageAlignmentControl(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKMESAImageAlignmentControl() { }
 
 }

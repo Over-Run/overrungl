@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT extends Stru
     /// @return the allocated `VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT`
     public static VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT`
+    public VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT asSlice(long index) { return new VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT`
+    public VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT asSlice(long index, long count) { return new VkPhysicalDeviceSwapchainMaintenance1FeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -89,6 +89,17 @@ public final class VkDrmFormatModifierProperties2EXT extends Struct {
     /// @return the allocated `VkDrmFormatModifierProperties2EXT`
     public static VkDrmFormatModifierProperties2EXT alloc(SegmentAllocator allocator, long count) { return new VkDrmFormatModifierProperties2EXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkDrmFormatModifierProperties2EXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDrmFormatModifierProperties2EXT`
+    public VkDrmFormatModifierProperties2EXT asSlice(long index) { return new VkDrmFormatModifierProperties2EXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkDrmFormatModifierProperties2EXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDrmFormatModifierProperties2EXT`
+    public VkDrmFormatModifierProperties2EXT asSlice(long index, long count) { return new VkDrmFormatModifierProperties2EXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `drmFormatModifier` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -89,6 +89,17 @@ public final class VkDisplaySurfaceStereoCreateInfoNV extends Struct {
     /// @return the allocated `VkDisplaySurfaceStereoCreateInfoNV`
     public static VkDisplaySurfaceStereoCreateInfoNV alloc(SegmentAllocator allocator, long count) { return new VkDisplaySurfaceStereoCreateInfoNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkDisplaySurfaceStereoCreateInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDisplaySurfaceStereoCreateInfoNV`
+    public VkDisplaySurfaceStereoCreateInfoNV asSlice(long index) { return new VkDisplaySurfaceStereoCreateInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkDisplaySurfaceStereoCreateInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDisplaySurfaceStereoCreateInfoNV`
+    public VkDisplaySurfaceStereoCreateInfoNV asSlice(long index, long count) { return new VkDisplaySurfaceStereoCreateInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceShaderExpectAssumeFeatures extends Struct {
     /// @return the allocated `VkPhysicalDeviceShaderExpectAssumeFeatures`
     public static VkPhysicalDeviceShaderExpectAssumeFeatures alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceShaderExpectAssumeFeatures(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceShaderExpectAssumeFeatures`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceShaderExpectAssumeFeatures`
+    public VkPhysicalDeviceShaderExpectAssumeFeatures asSlice(long index) { return new VkPhysicalDeviceShaderExpectAssumeFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceShaderExpectAssumeFeatures`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceShaderExpectAssumeFeatures`
+    public VkPhysicalDeviceShaderExpectAssumeFeatures asSlice(long index, long count) { return new VkPhysicalDeviceShaderExpectAssumeFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

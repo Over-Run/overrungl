@@ -95,6 +95,17 @@ public final class StdVideoH264ScalingLists extends Struct {
     /// @return the allocated `StdVideoH264ScalingLists`
     public static StdVideoH264ScalingLists alloc(SegmentAllocator allocator, long count) { return new StdVideoH264ScalingLists(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `StdVideoH264ScalingLists`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoH264ScalingLists`
+    public StdVideoH264ScalingLists asSlice(long index) { return new StdVideoH264ScalingLists(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `StdVideoH264ScalingLists`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoH264ScalingLists`
+    public StdVideoH264ScalingLists asSlice(long index, long count) { return new StdVideoH264ScalingLists(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `scaling_list_present_mask` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

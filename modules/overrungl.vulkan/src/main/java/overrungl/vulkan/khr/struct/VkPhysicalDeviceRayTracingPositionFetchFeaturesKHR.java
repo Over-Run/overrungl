@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR extends St
     /// @return the allocated `VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR`
     public static VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR`
+    public VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR asSlice(long index) { return new VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR`
+    public VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR asSlice(long index, long count) { return new VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

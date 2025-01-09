@@ -89,6 +89,17 @@ public final class VkVideoEncodeAV1FrameSizeKHR extends Struct {
     /// @return the allocated `VkVideoEncodeAV1FrameSizeKHR`
     public static VkVideoEncodeAV1FrameSizeKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoEncodeAV1FrameSizeKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkVideoEncodeAV1FrameSizeKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkVideoEncodeAV1FrameSizeKHR`
+    public VkVideoEncodeAV1FrameSizeKHR asSlice(long index) { return new VkVideoEncodeAV1FrameSizeKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkVideoEncodeAV1FrameSizeKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkVideoEncodeAV1FrameSizeKHR`
+    public VkVideoEncodeAV1FrameSizeKHR asSlice(long index, long count) { return new VkVideoEncodeAV1FrameSizeKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `intraFrameSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

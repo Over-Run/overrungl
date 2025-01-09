@@ -95,6 +95,17 @@ public final class StdVideoAV1TimingInfo extends Struct {
     /// @return the allocated `StdVideoAV1TimingInfo`
     public static StdVideoAV1TimingInfo alloc(SegmentAllocator allocator, long count) { return new StdVideoAV1TimingInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `StdVideoAV1TimingInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoAV1TimingInfo`
+    public StdVideoAV1TimingInfo asSlice(long index) { return new StdVideoAV1TimingInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `StdVideoAV1TimingInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoAV1TimingInfo`
+    public StdVideoAV1TimingInfo asSlice(long index, long count) { return new StdVideoAV1TimingInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -95,6 +95,17 @@ public final class VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM extends 
     /// @return the allocated `VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM`
     public static VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM alloc(SegmentAllocator allocator, long count) { return new VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM`
+    public VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM asSlice(long index) { return new VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM`
+    public VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM asSlice(long index, long count) { return new VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

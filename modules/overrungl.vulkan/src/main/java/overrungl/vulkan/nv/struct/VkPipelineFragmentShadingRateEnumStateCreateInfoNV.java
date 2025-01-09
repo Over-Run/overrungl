@@ -34,7 +34,7 @@ import overrungl.util.*;
 /// ### shadingRate
 /// [VarHandle][#VH_shadingRate] - [Getter][#shadingRate()] - [Setter][#shadingRate(int)]
 /// ### combinerOps
-/// [VarHandle][#VH_combinerOps] - [Getter][#combinerOps()] - [Setter][#combinerOps(int)]
+/// [Byte offset][#OFFSET_combinerOps] - [Memory layout][#ML_combinerOps] - [Getter][#combinerOps()] - [Setter][#combinerOps(java.lang.foreign.MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -43,7 +43,7 @@ import overrungl.util.*;
 ///     const void * pNext;
 ///     VkFragmentShadingRateTypeNV shadingRateType;
 ///     VkFragmentShadingRateNV shadingRate;
-///     VkFragmentShadingRateCombinerOpKHR combinerOps;
+///     VkFragmentShadingRateCombinerOpKHR[2] combinerOps;
 /// } VkPipelineFragmentShadingRateEnumStateCreateInfoNV;
 /// ```
 public final class VkPipelineFragmentShadingRateEnumStateCreateInfoNV extends Struct {
@@ -53,7 +53,7 @@ public final class VkPipelineFragmentShadingRateEnumStateCreateInfoNV extends St
         ValueLayout.ADDRESS.withName("pNext"),
         ValueLayout.JAVA_INT.withName("shadingRateType"),
         ValueLayout.JAVA_INT.withName("shadingRate"),
-        ValueLayout.JAVA_INT.withName("combinerOps")
+        MemoryLayout.sequenceLayout(2, ValueLayout.JAVA_INT).withName("combinerOps")
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
@@ -63,8 +63,10 @@ public final class VkPipelineFragmentShadingRateEnumStateCreateInfoNV extends St
     public static final VarHandle VH_shadingRateType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shadingRateType"));
     /// The [VarHandle] of `shadingRate` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_shadingRate = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shadingRate"));
-    /// The [VarHandle] of `combinerOps` of type `(MemorySegment base, long baseOffset, long index)int`.
-    public static final VarHandle VH_combinerOps = LAYOUT.arrayElementVarHandle(PathElement.groupElement("combinerOps"));
+    /// The byte offset of `combinerOps`.
+    public static final long OFFSET_combinerOps = LAYOUT.byteOffset(PathElement.groupElement("combinerOps"));
+    /// The memory layout of `combinerOps`.
+    public static final MemoryLayout ML_combinerOps = LAYOUT.select(PathElement.groupElement("combinerOps"));
 
     /// Creates `VkPipelineFragmentShadingRateEnumStateCreateInfoNV` with the given segment.
     /// @param segment the memory segment
@@ -100,6 +102,17 @@ public final class VkPipelineFragmentShadingRateEnumStateCreateInfoNV extends St
     /// @param count     the count
     /// @return the allocated `VkPipelineFragmentShadingRateEnumStateCreateInfoNV`
     public static VkPipelineFragmentShadingRateEnumStateCreateInfoNV alloc(SegmentAllocator allocator, long count) { return new VkPipelineFragmentShadingRateEnumStateCreateInfoNV(allocator.allocate(LAYOUT, count)); }
+
+    /// Creates a slice of `VkPipelineFragmentShadingRateEnumStateCreateInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPipelineFragmentShadingRateEnumStateCreateInfoNV`
+    public VkPipelineFragmentShadingRateEnumStateCreateInfoNV asSlice(long index) { return new VkPipelineFragmentShadingRateEnumStateCreateInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPipelineFragmentShadingRateEnumStateCreateInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPipelineFragmentShadingRateEnumStateCreateInfoNV`
+    public VkPipelineFragmentShadingRateEnumStateCreateInfoNV asSlice(long index, long count) { return new VkPipelineFragmentShadingRateEnumStateCreateInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -228,32 +241,32 @@ public final class VkPipelineFragmentShadingRateEnumStateCreateInfoNV extends St
     /// {@return `combinerOps` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("VkFragmentShadingRateCombinerOpKHR") int get_combinerOps(MemorySegment segment, long index) { return (int) VH_combinerOps.get(segment, 0L, index); }
+    public static @CType("VkFragmentShadingRateCombinerOpKHR[2]") java.lang.foreign.MemorySegment get_combinerOps(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_combinerOps, index), ML_combinerOps); }
     /// {@return `combinerOps`}
     /// @param segment the segment of the struct
-    public static @CType("VkFragmentShadingRateCombinerOpKHR") int get_combinerOps(MemorySegment segment) { return VkPipelineFragmentShadingRateEnumStateCreateInfoNV.get_combinerOps(segment, 0L); }
+    public static @CType("VkFragmentShadingRateCombinerOpKHR[2]") java.lang.foreign.MemorySegment get_combinerOps(MemorySegment segment) { return VkPipelineFragmentShadingRateEnumStateCreateInfoNV.get_combinerOps(segment, 0L); }
     /// {@return `combinerOps` at the given index}
     /// @param index the index
-    public @CType("VkFragmentShadingRateCombinerOpKHR") int combinerOpsAt(long index) { return VkPipelineFragmentShadingRateEnumStateCreateInfoNV.get_combinerOps(this.segment(), index); }
+    public @CType("VkFragmentShadingRateCombinerOpKHR[2]") java.lang.foreign.MemorySegment combinerOpsAt(long index) { return VkPipelineFragmentShadingRateEnumStateCreateInfoNV.get_combinerOps(this.segment(), index); }
     /// {@return `combinerOps`}
-    public @CType("VkFragmentShadingRateCombinerOpKHR") int combinerOps() { return VkPipelineFragmentShadingRateEnumStateCreateInfoNV.get_combinerOps(this.segment()); }
+    public @CType("VkFragmentShadingRateCombinerOpKHR[2]") java.lang.foreign.MemorySegment combinerOps() { return VkPipelineFragmentShadingRateEnumStateCreateInfoNV.get_combinerOps(this.segment()); }
     /// Sets `combinerOps` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_combinerOps(MemorySegment segment, long index, @CType("VkFragmentShadingRateCombinerOpKHR") int value) { VH_combinerOps.set(segment, 0L, index, value); }
+    public static void set_combinerOps(MemorySegment segment, long index, @CType("VkFragmentShadingRateCombinerOpKHR[2]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_combinerOps, index), ML_combinerOps.byteSize()); }
     /// Sets `combinerOps` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_combinerOps(MemorySegment segment, @CType("VkFragmentShadingRateCombinerOpKHR") int value) { VkPipelineFragmentShadingRateEnumStateCreateInfoNV.set_combinerOps(segment, 0L, value); }
+    public static void set_combinerOps(MemorySegment segment, @CType("VkFragmentShadingRateCombinerOpKHR[2]") java.lang.foreign.MemorySegment value) { VkPipelineFragmentShadingRateEnumStateCreateInfoNV.set_combinerOps(segment, 0L, value); }
     /// Sets `combinerOps` with the given value at the given index.
     /// @param index the index
     /// @param value the value
     /// @return `this`
-    public VkPipelineFragmentShadingRateEnumStateCreateInfoNV combinerOpsAt(long index, @CType("VkFragmentShadingRateCombinerOpKHR") int value) { VkPipelineFragmentShadingRateEnumStateCreateInfoNV.set_combinerOps(this.segment(), index, value); return this; }
+    public VkPipelineFragmentShadingRateEnumStateCreateInfoNV combinerOpsAt(long index, @CType("VkFragmentShadingRateCombinerOpKHR[2]") java.lang.foreign.MemorySegment value) { VkPipelineFragmentShadingRateEnumStateCreateInfoNV.set_combinerOps(this.segment(), index, value); return this; }
     /// Sets `combinerOps` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineFragmentShadingRateEnumStateCreateInfoNV combinerOps(@CType("VkFragmentShadingRateCombinerOpKHR") int value) { VkPipelineFragmentShadingRateEnumStateCreateInfoNV.set_combinerOps(this.segment(), value); return this; }
+    public VkPipelineFragmentShadingRateEnumStateCreateInfoNV combinerOps(@CType("VkFragmentShadingRateCombinerOpKHR[2]") java.lang.foreign.MemorySegment value) { VkPipelineFragmentShadingRateEnumStateCreateInfoNV.set_combinerOps(this.segment(), value); return this; }
 
 }

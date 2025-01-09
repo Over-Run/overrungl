@@ -95,6 +95,17 @@ public final class VkImportMemoryFdInfoKHR extends Struct {
     /// @return the allocated `VkImportMemoryFdInfoKHR`
     public static VkImportMemoryFdInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkImportMemoryFdInfoKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkImportMemoryFdInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkImportMemoryFdInfoKHR`
+    public VkImportMemoryFdInfoKHR asSlice(long index) { return new VkImportMemoryFdInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkImportMemoryFdInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkImportMemoryFdInfoKHR`
+    public VkImportMemoryFdInfoKHR asSlice(long index, long count) { return new VkImportMemoryFdInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

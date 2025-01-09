@@ -95,6 +95,17 @@ public final class VkMemoryDedicatedRequirements extends Struct {
     /// @return the allocated `VkMemoryDedicatedRequirements`
     public static VkMemoryDedicatedRequirements alloc(SegmentAllocator allocator, long count) { return new VkMemoryDedicatedRequirements(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkMemoryDedicatedRequirements`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkMemoryDedicatedRequirements`
+    public VkMemoryDedicatedRequirements asSlice(long index) { return new VkMemoryDedicatedRequirements(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkMemoryDedicatedRequirements`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkMemoryDedicatedRequirements`
+    public VkMemoryDedicatedRequirements asSlice(long index, long count) { return new VkMemoryDedicatedRequirements(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

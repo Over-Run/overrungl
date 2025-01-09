@@ -131,4 +131,15 @@ public final class STBTTFontInfo extends Struct {
     /// @return the allocated `STBTTFontInfo`
     public static STBTTFontInfo alloc(SegmentAllocator allocator, long count) { return new STBTTFontInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `STBTTFontInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `STBTTFontInfo`
+    public STBTTFontInfo asSlice(long index) { return new STBTTFontInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `STBTTFontInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `STBTTFontInfo`
+    public STBTTFontInfo asSlice(long index, long count) { return new STBTTFontInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
 }

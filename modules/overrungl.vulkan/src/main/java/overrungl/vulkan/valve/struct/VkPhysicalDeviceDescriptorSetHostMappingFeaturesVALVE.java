@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE extends
     /// @return the allocated `VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE`
     public static VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE`
+    public VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE asSlice(long index) { return new VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE`
+    public VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE asSlice(long index, long count) { return new VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -95,6 +95,17 @@ public final class VkPhysicalDeviceImage2DViewOf3DFeaturesEXT extends Struct {
     /// @return the allocated `VkPhysicalDeviceImage2DViewOf3DFeaturesEXT`
     public static VkPhysicalDeviceImage2DViewOf3DFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceImage2DViewOf3DFeaturesEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceImage2DViewOf3DFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceImage2DViewOf3DFeaturesEXT`
+    public VkPhysicalDeviceImage2DViewOf3DFeaturesEXT asSlice(long index) { return new VkPhysicalDeviceImage2DViewOf3DFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceImage2DViewOf3DFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceImage2DViewOf3DFeaturesEXT`
+    public VkPhysicalDeviceImage2DViewOf3DFeaturesEXT asSlice(long index, long count) { return new VkPhysicalDeviceImage2DViewOf3DFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

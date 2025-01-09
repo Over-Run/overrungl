@@ -115,6 +115,17 @@ public final class VkNativeBufferANDROID extends Struct {
     /// @return the allocated `VkNativeBufferANDROID`
     public static VkNativeBufferANDROID alloc(SegmentAllocator allocator, long count) { return new VkNativeBufferANDROID(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkNativeBufferANDROID`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkNativeBufferANDROID`
+    public VkNativeBufferANDROID asSlice(long index) { return new VkNativeBufferANDROID(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkNativeBufferANDROID`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkNativeBufferANDROID`
+    public VkNativeBufferANDROID asSlice(long index, long count) { return new VkNativeBufferANDROID(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

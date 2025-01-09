@@ -95,6 +95,17 @@ public final class VkRenderingAttachmentLocationInfo extends Struct {
     /// @return the allocated `VkRenderingAttachmentLocationInfo`
     public static VkRenderingAttachmentLocationInfo alloc(SegmentAllocator allocator, long count) { return new VkRenderingAttachmentLocationInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkRenderingAttachmentLocationInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkRenderingAttachmentLocationInfo`
+    public VkRenderingAttachmentLocationInfo asSlice(long index) { return new VkRenderingAttachmentLocationInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkRenderingAttachmentLocationInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkRenderingAttachmentLocationInfo`
+    public VkRenderingAttachmentLocationInfo asSlice(long index, long count) { return new VkRenderingAttachmentLocationInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

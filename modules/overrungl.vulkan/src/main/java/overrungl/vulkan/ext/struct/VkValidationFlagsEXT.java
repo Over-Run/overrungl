@@ -95,6 +95,17 @@ public final class VkValidationFlagsEXT extends Struct {
     /// @return the allocated `VkValidationFlagsEXT`
     public static VkValidationFlagsEXT alloc(SegmentAllocator allocator, long count) { return new VkValidationFlagsEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkValidationFlagsEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkValidationFlagsEXT`
+    public VkValidationFlagsEXT asSlice(long index) { return new VkValidationFlagsEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkValidationFlagsEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkValidationFlagsEXT`
+    public VkValidationFlagsEXT asSlice(long index, long count) { return new VkValidationFlagsEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -101,6 +101,17 @@ public final class VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV extend
     /// @return the allocated `VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV`
     public static VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV`
+    public VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV asSlice(long index) { return new VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV`
+    public VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV asSlice(long index, long count) { return new VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

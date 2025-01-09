@@ -89,6 +89,17 @@ public final class VkDescriptorPoolInlineUniformBlockCreateInfo extends Struct {
     /// @return the allocated `VkDescriptorPoolInlineUniformBlockCreateInfo`
     public static VkDescriptorPoolInlineUniformBlockCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkDescriptorPoolInlineUniformBlockCreateInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkDescriptorPoolInlineUniformBlockCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDescriptorPoolInlineUniformBlockCreateInfo`
+    public VkDescriptorPoolInlineUniformBlockCreateInfo asSlice(long index) { return new VkDescriptorPoolInlineUniformBlockCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkDescriptorPoolInlineUniformBlockCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDescriptorPoolInlineUniformBlockCreateInfo`
+    public VkDescriptorPoolInlineUniformBlockCreateInfo asSlice(long index, long count) { return new VkDescriptorPoolInlineUniformBlockCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

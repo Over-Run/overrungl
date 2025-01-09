@@ -119,6 +119,17 @@ public final class VkPresentInfoKHR extends Struct {
     /// @return the allocated `VkPresentInfoKHR`
     public static VkPresentInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkPresentInfoKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPresentInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPresentInfoKHR`
+    public VkPresentInfoKHR asSlice(long index) { return new VkPresentInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPresentInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPresentInfoKHR`
+    public VkPresentInfoKHR asSlice(long index, long count) { return new VkPresentInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

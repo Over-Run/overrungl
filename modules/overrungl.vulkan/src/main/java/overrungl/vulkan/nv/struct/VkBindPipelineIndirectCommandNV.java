@@ -77,6 +77,17 @@ public final class VkBindPipelineIndirectCommandNV extends Struct {
     /// @return the allocated `VkBindPipelineIndirectCommandNV`
     public static VkBindPipelineIndirectCommandNV alloc(SegmentAllocator allocator, long count) { return new VkBindPipelineIndirectCommandNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkBindPipelineIndirectCommandNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkBindPipelineIndirectCommandNV`
+    public VkBindPipelineIndirectCommandNV asSlice(long index) { return new VkBindPipelineIndirectCommandNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkBindPipelineIndirectCommandNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkBindPipelineIndirectCommandNV`
+    public VkBindPipelineIndirectCommandNV asSlice(long index, long count) { return new VkBindPipelineIndirectCommandNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `pipelineAddress` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

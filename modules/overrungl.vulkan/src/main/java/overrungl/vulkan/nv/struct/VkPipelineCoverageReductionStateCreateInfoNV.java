@@ -95,6 +95,17 @@ public final class VkPipelineCoverageReductionStateCreateInfoNV extends Struct {
     /// @return the allocated `VkPipelineCoverageReductionStateCreateInfoNV`
     public static VkPipelineCoverageReductionStateCreateInfoNV alloc(SegmentAllocator allocator, long count) { return new VkPipelineCoverageReductionStateCreateInfoNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPipelineCoverageReductionStateCreateInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPipelineCoverageReductionStateCreateInfoNV`
+    public VkPipelineCoverageReductionStateCreateInfoNV asSlice(long index) { return new VkPipelineCoverageReductionStateCreateInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPipelineCoverageReductionStateCreateInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPipelineCoverageReductionStateCreateInfoNV`
+    public VkPipelineCoverageReductionStateCreateInfoNV asSlice(long index, long count) { return new VkPipelineCoverageReductionStateCreateInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

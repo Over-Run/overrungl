@@ -103,6 +103,17 @@ public final class VkImageFormatProperties extends Struct {
     /// @return the allocated `VkImageFormatProperties`
     public static VkImageFormatProperties alloc(SegmentAllocator allocator, long count) { return new VkImageFormatProperties(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkImageFormatProperties`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkImageFormatProperties`
+    public VkImageFormatProperties asSlice(long index) { return new VkImageFormatProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkImageFormatProperties`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkImageFormatProperties`
+    public VkImageFormatProperties asSlice(long index, long count) { return new VkImageFormatProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `maxExtent` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

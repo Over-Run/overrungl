@@ -85,6 +85,17 @@ public final class NFDPickFolderArgs extends Struct {
     /// @return the allocated `NFDPickFolderArgs`
     public static NFDPickFolderArgs alloc(SegmentAllocator allocator, long count) { return new NFDPickFolderArgs(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `NFDPickFolderArgs`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `NFDPickFolderArgs`
+    public NFDPickFolderArgs asSlice(long index) { return new NFDPickFolderArgs(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `NFDPickFolderArgs`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `NFDPickFolderArgs`
+    public NFDPickFolderArgs asSlice(long index, long count) { return new NFDPickFolderArgs(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `defaultPath` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT 
     /// @return the allocated `VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT`
     public static VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT`
+    public VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT asSlice(long index) { return new VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT`
+    public VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT asSlice(long index, long count) { return new VkPhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

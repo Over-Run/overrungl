@@ -113,6 +113,17 @@ public final class VkBufferImageCopy extends Struct {
     /// @return the allocated `VkBufferImageCopy`
     public static VkBufferImageCopy alloc(SegmentAllocator allocator, long count) { return new VkBufferImageCopy(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkBufferImageCopy`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkBufferImageCopy`
+    public VkBufferImageCopy asSlice(long index) { return new VkBufferImageCopy(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkBufferImageCopy`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkBufferImageCopy`
+    public VkBufferImageCopy asSlice(long index, long count) { return new VkBufferImageCopy(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `bufferOffset` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -89,6 +89,17 @@ public final class VkPipelineRasterizationProvokingVertexStateCreateInfoEXT exte
     /// @return the allocated `VkPipelineRasterizationProvokingVertexStateCreateInfoEXT`
     public static VkPipelineRasterizationProvokingVertexStateCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPipelineRasterizationProvokingVertexStateCreateInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPipelineRasterizationProvokingVertexStateCreateInfoEXT`
+    public VkPipelineRasterizationProvokingVertexStateCreateInfoEXT asSlice(long index) { return new VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPipelineRasterizationProvokingVertexStateCreateInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPipelineRasterizationProvokingVertexStateCreateInfoEXT`
+    public VkPipelineRasterizationProvokingVertexStateCreateInfoEXT asSlice(long index, long count) { return new VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

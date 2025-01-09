@@ -101,6 +101,17 @@ public final class VkScreenSurfaceCreateInfoQNX extends Struct {
     /// @return the allocated `VkScreenSurfaceCreateInfoQNX`
     public static VkScreenSurfaceCreateInfoQNX alloc(SegmentAllocator allocator, long count) { return new VkScreenSurfaceCreateInfoQNX(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkScreenSurfaceCreateInfoQNX`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkScreenSurfaceCreateInfoQNX`
+    public VkScreenSurfaceCreateInfoQNX asSlice(long index) { return new VkScreenSurfaceCreateInfoQNX(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkScreenSurfaceCreateInfoQNX`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkScreenSurfaceCreateInfoQNX`
+    public VkScreenSurfaceCreateInfoQNX asSlice(long index, long count) { return new VkScreenSurfaceCreateInfoQNX(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

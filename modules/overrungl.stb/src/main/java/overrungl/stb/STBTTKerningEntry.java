@@ -89,6 +89,17 @@ public final class STBTTKerningEntry extends Struct {
     /// @return the allocated `STBTTKerningEntry`
     public static STBTTKerningEntry alloc(SegmentAllocator allocator, long count) { return new STBTTKerningEntry(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `STBTTKerningEntry`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `STBTTKerningEntry`
+    public STBTTKerningEntry asSlice(long index) { return new STBTTKerningEntry(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `STBTTKerningEntry`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `STBTTKerningEntry`
+    public STBTTKerningEntry asSlice(long index, long count) { return new STBTTKerningEntry(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `glyph1` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

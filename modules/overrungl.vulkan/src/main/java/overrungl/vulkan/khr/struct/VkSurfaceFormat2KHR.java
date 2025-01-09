@@ -91,6 +91,17 @@ public final class VkSurfaceFormat2KHR extends Struct {
     /// @return the allocated `VkSurfaceFormat2KHR`
     public static VkSurfaceFormat2KHR alloc(SegmentAllocator allocator, long count) { return new VkSurfaceFormat2KHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkSurfaceFormat2KHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSurfaceFormat2KHR`
+    public VkSurfaceFormat2KHR asSlice(long index) { return new VkSurfaceFormat2KHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkSurfaceFormat2KHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSurfaceFormat2KHR`
+    public VkSurfaceFormat2KHR asSlice(long index, long count) { return new VkSurfaceFormat2KHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

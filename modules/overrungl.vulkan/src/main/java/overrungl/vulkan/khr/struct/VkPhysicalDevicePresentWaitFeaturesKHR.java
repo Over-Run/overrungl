@@ -89,6 +89,17 @@ public final class VkPhysicalDevicePresentWaitFeaturesKHR extends Struct {
     /// @return the allocated `VkPhysicalDevicePresentWaitFeaturesKHR`
     public static VkPhysicalDevicePresentWaitFeaturesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDevicePresentWaitFeaturesKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDevicePresentWaitFeaturesKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDevicePresentWaitFeaturesKHR`
+    public VkPhysicalDevicePresentWaitFeaturesKHR asSlice(long index) { return new VkPhysicalDevicePresentWaitFeaturesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDevicePresentWaitFeaturesKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDevicePresentWaitFeaturesKHR`
+    public VkPhysicalDevicePresentWaitFeaturesKHR asSlice(long index, long count) { return new VkPhysicalDevicePresentWaitFeaturesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

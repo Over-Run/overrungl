@@ -89,6 +89,17 @@ public final class VkCopyMemoryIndirectCommandNV extends Struct {
     /// @return the allocated `VkCopyMemoryIndirectCommandNV`
     public static VkCopyMemoryIndirectCommandNV alloc(SegmentAllocator allocator, long count) { return new VkCopyMemoryIndirectCommandNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkCopyMemoryIndirectCommandNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkCopyMemoryIndirectCommandNV`
+    public VkCopyMemoryIndirectCommandNV asSlice(long index) { return new VkCopyMemoryIndirectCommandNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkCopyMemoryIndirectCommandNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkCopyMemoryIndirectCommandNV`
+    public VkCopyMemoryIndirectCommandNV asSlice(long index, long count) { return new VkCopyMemoryIndirectCommandNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `srcAddress` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

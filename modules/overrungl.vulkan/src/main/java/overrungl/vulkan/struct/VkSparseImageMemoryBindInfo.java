@@ -89,6 +89,17 @@ public final class VkSparseImageMemoryBindInfo extends Struct {
     /// @return the allocated `VkSparseImageMemoryBindInfo`
     public static VkSparseImageMemoryBindInfo alloc(SegmentAllocator allocator, long count) { return new VkSparseImageMemoryBindInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkSparseImageMemoryBindInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSparseImageMemoryBindInfo`
+    public VkSparseImageMemoryBindInfo asSlice(long index) { return new VkSparseImageMemoryBindInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkSparseImageMemoryBindInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSparseImageMemoryBindInfo`
+    public VkSparseImageMemoryBindInfo asSlice(long index, long count) { return new VkSparseImageMemoryBindInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `image` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -251,6 +251,17 @@ public final class StdVideoDecodeAV1PictureInfoFlags extends Struct {
     /// @return the allocated `StdVideoDecodeAV1PictureInfoFlags`
     public static StdVideoDecodeAV1PictureInfoFlags alloc(SegmentAllocator allocator, long count) { return new StdVideoDecodeAV1PictureInfoFlags(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `StdVideoDecodeAV1PictureInfoFlags`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoDecodeAV1PictureInfoFlags`
+    public StdVideoDecodeAV1PictureInfoFlags asSlice(long index) { return new StdVideoDecodeAV1PictureInfoFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `StdVideoDecodeAV1PictureInfoFlags`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoDecodeAV1PictureInfoFlags`
+    public StdVideoDecodeAV1PictureInfoFlags asSlice(long index, long count) { return new StdVideoDecodeAV1PictureInfoFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `error_resilient_mode` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

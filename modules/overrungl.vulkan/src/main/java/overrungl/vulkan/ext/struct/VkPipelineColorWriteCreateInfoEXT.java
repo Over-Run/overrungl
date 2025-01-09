@@ -95,6 +95,17 @@ public final class VkPipelineColorWriteCreateInfoEXT extends Struct {
     /// @return the allocated `VkPipelineColorWriteCreateInfoEXT`
     public static VkPipelineColorWriteCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkPipelineColorWriteCreateInfoEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPipelineColorWriteCreateInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPipelineColorWriteCreateInfoEXT`
+    public VkPipelineColorWriteCreateInfoEXT asSlice(long index) { return new VkPipelineColorWriteCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPipelineColorWriteCreateInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPipelineColorWriteCreateInfoEXT`
+    public VkPipelineColorWriteCreateInfoEXT asSlice(long index, long count) { return new VkPipelineColorWriteCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

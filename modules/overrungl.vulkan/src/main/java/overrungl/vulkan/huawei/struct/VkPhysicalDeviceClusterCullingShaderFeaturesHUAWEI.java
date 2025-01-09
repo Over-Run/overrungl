@@ -95,6 +95,17 @@ public final class VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI extends St
     /// @return the allocated `VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI`
     public static VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI`
+    public VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI asSlice(long index) { return new VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI`
+    public VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI asSlice(long index, long count) { return new VkPhysicalDeviceClusterCullingShaderFeaturesHUAWEI(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

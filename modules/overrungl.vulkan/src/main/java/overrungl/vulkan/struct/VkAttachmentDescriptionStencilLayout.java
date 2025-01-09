@@ -95,6 +95,17 @@ public final class VkAttachmentDescriptionStencilLayout extends Struct {
     /// @return the allocated `VkAttachmentDescriptionStencilLayout`
     public static VkAttachmentDescriptionStencilLayout alloc(SegmentAllocator allocator, long count) { return new VkAttachmentDescriptionStencilLayout(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkAttachmentDescriptionStencilLayout`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkAttachmentDescriptionStencilLayout`
+    public VkAttachmentDescriptionStencilLayout asSlice(long index) { return new VkAttachmentDescriptionStencilLayout(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkAttachmentDescriptionStencilLayout`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkAttachmentDescriptionStencilLayout`
+    public VkAttachmentDescriptionStencilLayout asSlice(long index, long count) { return new VkAttachmentDescriptionStencilLayout(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

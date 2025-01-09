@@ -101,6 +101,17 @@ public final class StdVideoAV1ColorConfigFlags extends Struct {
     /// @return the allocated `StdVideoAV1ColorConfigFlags`
     public static StdVideoAV1ColorConfigFlags alloc(SegmentAllocator allocator, long count) { return new StdVideoAV1ColorConfigFlags(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `StdVideoAV1ColorConfigFlags`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoAV1ColorConfigFlags`
+    public StdVideoAV1ColorConfigFlags asSlice(long index) { return new StdVideoAV1ColorConfigFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `StdVideoAV1ColorConfigFlags`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoAV1ColorConfigFlags`
+    public StdVideoAV1ColorConfigFlags asSlice(long index, long count) { return new StdVideoAV1ColorConfigFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `mono_chrome` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

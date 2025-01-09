@@ -89,6 +89,17 @@ public final class StdVideoAV1LoopFilterFlags extends Struct {
     /// @return the allocated `StdVideoAV1LoopFilterFlags`
     public static StdVideoAV1LoopFilterFlags alloc(SegmentAllocator allocator, long count) { return new StdVideoAV1LoopFilterFlags(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `StdVideoAV1LoopFilterFlags`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoAV1LoopFilterFlags`
+    public StdVideoAV1LoopFilterFlags asSlice(long index) { return new StdVideoAV1LoopFilterFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `StdVideoAV1LoopFilterFlags`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoAV1LoopFilterFlags`
+    public StdVideoAV1LoopFilterFlags asSlice(long index, long count) { return new StdVideoAV1LoopFilterFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `loop_filter_delta_enabled` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

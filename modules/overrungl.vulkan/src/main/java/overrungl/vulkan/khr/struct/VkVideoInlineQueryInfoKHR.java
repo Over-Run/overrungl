@@ -101,6 +101,17 @@ public final class VkVideoInlineQueryInfoKHR extends Struct {
     /// @return the allocated `VkVideoInlineQueryInfoKHR`
     public static VkVideoInlineQueryInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoInlineQueryInfoKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkVideoInlineQueryInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkVideoInlineQueryInfoKHR`
+    public VkVideoInlineQueryInfoKHR asSlice(long index) { return new VkVideoInlineQueryInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkVideoInlineQueryInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkVideoInlineQueryInfoKHR`
+    public VkVideoInlineQueryInfoKHR asSlice(long index, long count) { return new VkVideoInlineQueryInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

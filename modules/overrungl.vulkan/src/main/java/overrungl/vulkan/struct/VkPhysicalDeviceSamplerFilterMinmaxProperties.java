@@ -95,6 +95,17 @@ public final class VkPhysicalDeviceSamplerFilterMinmaxProperties extends Struct 
     /// @return the allocated `VkPhysicalDeviceSamplerFilterMinmaxProperties`
     public static VkPhysicalDeviceSamplerFilterMinmaxProperties alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceSamplerFilterMinmaxProperties(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceSamplerFilterMinmaxProperties`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceSamplerFilterMinmaxProperties`
+    public VkPhysicalDeviceSamplerFilterMinmaxProperties asSlice(long index) { return new VkPhysicalDeviceSamplerFilterMinmaxProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceSamplerFilterMinmaxProperties`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceSamplerFilterMinmaxProperties`
+    public VkPhysicalDeviceSamplerFilterMinmaxProperties asSlice(long index, long count) { return new VkPhysicalDeviceSamplerFilterMinmaxProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

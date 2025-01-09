@@ -89,6 +89,17 @@ public final class VkPipelineRasterizationStateRasterizationOrderAMD extends Str
     /// @return the allocated `VkPipelineRasterizationStateRasterizationOrderAMD`
     public static VkPipelineRasterizationStateRasterizationOrderAMD alloc(SegmentAllocator allocator, long count) { return new VkPipelineRasterizationStateRasterizationOrderAMD(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPipelineRasterizationStateRasterizationOrderAMD`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPipelineRasterizationStateRasterizationOrderAMD`
+    public VkPipelineRasterizationStateRasterizationOrderAMD asSlice(long index) { return new VkPipelineRasterizationStateRasterizationOrderAMD(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPipelineRasterizationStateRasterizationOrderAMD`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPipelineRasterizationStateRasterizationOrderAMD`
+    public VkPipelineRasterizationStateRasterizationOrderAMD asSlice(long index, long count) { return new VkPipelineRasterizationStateRasterizationOrderAMD(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

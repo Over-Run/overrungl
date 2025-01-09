@@ -97,6 +97,17 @@ public final class VkQueueFamilyProperties extends Struct {
     /// @return the allocated `VkQueueFamilyProperties`
     public static VkQueueFamilyProperties alloc(SegmentAllocator allocator, long count) { return new VkQueueFamilyProperties(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkQueueFamilyProperties`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkQueueFamilyProperties`
+    public VkQueueFamilyProperties asSlice(long index) { return new VkQueueFamilyProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkQueueFamilyProperties`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkQueueFamilyProperties`
+    public VkQueueFamilyProperties asSlice(long index, long count) { return new VkQueueFamilyProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `queueFlags` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

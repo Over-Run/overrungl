@@ -91,6 +91,17 @@ public final class VkDispatchGraphCountInfoAMDX extends Struct {
     /// @return the allocated `VkDispatchGraphCountInfoAMDX`
     public static VkDispatchGraphCountInfoAMDX alloc(SegmentAllocator allocator, long count) { return new VkDispatchGraphCountInfoAMDX(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkDispatchGraphCountInfoAMDX`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDispatchGraphCountInfoAMDX`
+    public VkDispatchGraphCountInfoAMDX asSlice(long index) { return new VkDispatchGraphCountInfoAMDX(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkDispatchGraphCountInfoAMDX`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDispatchGraphCountInfoAMDX`
+    public VkDispatchGraphCountInfoAMDX asSlice(long index, long count) { return new VkDispatchGraphCountInfoAMDX(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `count` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

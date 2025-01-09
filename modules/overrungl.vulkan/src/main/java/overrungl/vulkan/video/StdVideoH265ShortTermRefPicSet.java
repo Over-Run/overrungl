@@ -155,6 +155,17 @@ public final class StdVideoH265ShortTermRefPicSet extends Struct {
     /// @return the allocated `StdVideoH265ShortTermRefPicSet`
     public static StdVideoH265ShortTermRefPicSet alloc(SegmentAllocator allocator, long count) { return new StdVideoH265ShortTermRefPicSet(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `StdVideoH265ShortTermRefPicSet`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoH265ShortTermRefPicSet`
+    public StdVideoH265ShortTermRefPicSet asSlice(long index) { return new StdVideoH265ShortTermRefPicSet(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `StdVideoH265ShortTermRefPicSet`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoH265ShortTermRefPicSet`
+    public StdVideoH265ShortTermRefPicSet asSlice(long index, long count) { return new StdVideoH265ShortTermRefPicSet(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

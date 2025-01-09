@@ -33,7 +33,7 @@ import static overrungl.vulkan.khr.VKKHRPipelineBinary.*;
 /// ### keySize
 /// [VarHandle][#VH_keySize] - [Getter][#keySize()] - [Setter][#keySize(int)]
 /// ### key
-/// [Byte offset handle][#MH_key] - [Memory layout][#ML_key] - [Getter][#key(long)] - [Setter][#key(long, java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_key] - [Memory layout][#ML_key] - [Getter][#key()] - [Setter][#key(java.lang.foreign.MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -58,8 +58,8 @@ public final class VkPipelineBinaryKeyKHR extends Struct {
     public static final VarHandle VH_pNext = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pNext"));
     /// The [VarHandle] of `keySize` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_keySize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("keySize"));
-    /// The byte offset handle of `key` of type `(long baseOffset, long elementIndex)long`.
-    public static final MethodHandle MH_key = LAYOUT.byteOffsetHandle(PathElement.groupElement("key"), PathElement.sequenceElement());
+    /// The byte offset of `key`.
+    public static final long OFFSET_key = LAYOUT.byteOffset(PathElement.groupElement("key"));
     /// The memory layout of `key`.
     public static final MemoryLayout ML_key = LAYOUT.select(PathElement.groupElement("key"));
 
@@ -97,6 +97,17 @@ public final class VkPipelineBinaryKeyKHR extends Struct {
     /// @param count     the count
     /// @return the allocated `VkPipelineBinaryKeyKHR`
     public static VkPipelineBinaryKeyKHR alloc(SegmentAllocator allocator, long count) { return new VkPipelineBinaryKeyKHR(allocator.allocate(LAYOUT, count)); }
+
+    /// Creates a slice of `VkPipelineBinaryKeyKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPipelineBinaryKeyKHR`
+    public VkPipelineBinaryKeyKHR asSlice(long index) { return new VkPipelineBinaryKeyKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPipelineBinaryKeyKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPipelineBinaryKeyKHR`
+    public VkPipelineBinaryKeyKHR asSlice(long index, long count) { return new VkPipelineBinaryKeyKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -192,48 +203,34 @@ public final class VkPipelineBinaryKeyKHR extends Struct {
     public VkPipelineBinaryKeyKHR keySize(@CType("uint32_t") int value) { VkPipelineBinaryKeyKHR.set_keySize(this.segment(), value); return this; }
 
     /// {@return `key` at the given index}
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public static @CType("uint8_t[VK_MAX_PIPELINE_BINARY_KEY_SIZE_KHR]") java.lang.foreign.MemorySegment get_key(MemorySegment segment, long index, long elementIndex) {
-        try { return segment.asSlice(LAYOUT.scale((long) MH_key.invokeExact(0L, elementIndex), index), ML_key); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("uint8_t[VK_MAX_PIPELINE_BINARY_KEY_SIZE_KHR]") java.lang.foreign.MemorySegment get_key(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_key, index), ML_key); }
     /// {@return `key`}
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    public static @CType("uint8_t[VK_MAX_PIPELINE_BINARY_KEY_SIZE_KHR]") java.lang.foreign.MemorySegment get_key(MemorySegment segment, long elementIndex) { return VkPipelineBinaryKeyKHR.get_key(segment, 0L, elementIndex); }
+    /// @param segment the segment of the struct
+    public static @CType("uint8_t[VK_MAX_PIPELINE_BINARY_KEY_SIZE_KHR]") java.lang.foreign.MemorySegment get_key(MemorySegment segment) { return VkPipelineBinaryKeyKHR.get_key(segment, 0L); }
     /// {@return `key` at the given index}
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public @CType("uint8_t[VK_MAX_PIPELINE_BINARY_KEY_SIZE_KHR]") java.lang.foreign.MemorySegment keyAt(long index, long elementIndex) { return VkPipelineBinaryKeyKHR.get_key(this.segment(), index, elementIndex); }
+    /// @param index the index
+    public @CType("uint8_t[VK_MAX_PIPELINE_BINARY_KEY_SIZE_KHR]") java.lang.foreign.MemorySegment keyAt(long index) { return VkPipelineBinaryKeyKHR.get_key(this.segment(), index); }
     /// {@return `key`}
-    /// @param elementIndex the index of the element
-    public @CType("uint8_t[VK_MAX_PIPELINE_BINARY_KEY_SIZE_KHR]") java.lang.foreign.MemorySegment key(long elementIndex) { return VkPipelineBinaryKeyKHR.get_key(this.segment(), elementIndex); }
+    public @CType("uint8_t[VK_MAX_PIPELINE_BINARY_KEY_SIZE_KHR]") java.lang.foreign.MemorySegment key() { return VkPipelineBinaryKeyKHR.get_key(this.segment()); }
     /// Sets `key` with the given value at the given index.
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_key(MemorySegment segment, long index, long elementIndex, @CType("uint8_t[VK_MAX_PIPELINE_BINARY_KEY_SIZE_KHR]") java.lang.foreign.MemorySegment value) {
-        try { MemorySegment.copy(value, 0L, segment, LAYOUT.scale((long) MH_key.invokeExact(0L, elementIndex), index), ML_key.byteSize()); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_key(MemorySegment segment, long index, @CType("uint8_t[VK_MAX_PIPELINE_BINARY_KEY_SIZE_KHR]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_key, index), ML_key.byteSize()); }
     /// Sets `key` with the given value.
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_key(MemorySegment segment, long elementIndex, @CType("uint8_t[VK_MAX_PIPELINE_BINARY_KEY_SIZE_KHR]") java.lang.foreign.MemorySegment value) { VkPipelineBinaryKeyKHR.set_key(segment, 0L, elementIndex, value); }
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_key(MemorySegment segment, @CType("uint8_t[VK_MAX_PIPELINE_BINARY_KEY_SIZE_KHR]") java.lang.foreign.MemorySegment value) { VkPipelineBinaryKeyKHR.set_key(segment, 0L, value); }
     /// Sets `key` with the given value at the given index.
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param index the index
+    /// @param value the value
     /// @return `this`
-    public VkPipelineBinaryKeyKHR keyAt(long index, long elementIndex, @CType("uint8_t[VK_MAX_PIPELINE_BINARY_KEY_SIZE_KHR]") java.lang.foreign.MemorySegment value) { VkPipelineBinaryKeyKHR.set_key(this.segment(), index, elementIndex, value); return this; }
+    public VkPipelineBinaryKeyKHR keyAt(long index, @CType("uint8_t[VK_MAX_PIPELINE_BINARY_KEY_SIZE_KHR]") java.lang.foreign.MemorySegment value) { VkPipelineBinaryKeyKHR.set_key(this.segment(), index, value); return this; }
     /// Sets `key` with the given value.
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param value the value
     /// @return `this`
-    public VkPipelineBinaryKeyKHR key(long elementIndex, @CType("uint8_t[VK_MAX_PIPELINE_BINARY_KEY_SIZE_KHR]") java.lang.foreign.MemorySegment value) { VkPipelineBinaryKeyKHR.set_key(this.segment(), elementIndex, value); return this; }
+    public VkPipelineBinaryKeyKHR key(@CType("uint8_t[VK_MAX_PIPELINE_BINARY_KEY_SIZE_KHR]") java.lang.foreign.MemorySegment value) { VkPipelineBinaryKeyKHR.set_key(this.segment(), value); return this; }
 
 }

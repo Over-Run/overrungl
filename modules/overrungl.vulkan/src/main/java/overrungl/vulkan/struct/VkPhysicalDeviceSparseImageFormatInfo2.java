@@ -113,6 +113,17 @@ public final class VkPhysicalDeviceSparseImageFormatInfo2 extends Struct {
     /// @return the allocated `VkPhysicalDeviceSparseImageFormatInfo2`
     public static VkPhysicalDeviceSparseImageFormatInfo2 alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceSparseImageFormatInfo2(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceSparseImageFormatInfo2`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceSparseImageFormatInfo2`
+    public VkPhysicalDeviceSparseImageFormatInfo2 asSlice(long index) { return new VkPhysicalDeviceSparseImageFormatInfo2(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceSparseImageFormatInfo2`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceSparseImageFormatInfo2`
+    public VkPhysicalDeviceSparseImageFormatInfo2 asSlice(long index, long count) { return new VkPhysicalDeviceSparseImageFormatInfo2(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

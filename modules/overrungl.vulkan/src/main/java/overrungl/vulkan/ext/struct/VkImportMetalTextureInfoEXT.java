@@ -95,6 +95,17 @@ public final class VkImportMetalTextureInfoEXT extends Struct {
     /// @return the allocated `VkImportMetalTextureInfoEXT`
     public static VkImportMetalTextureInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkImportMetalTextureInfoEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkImportMetalTextureInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkImportMetalTextureInfoEXT`
+    public VkImportMetalTextureInfoEXT asSlice(long index) { return new VkImportMetalTextureInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkImportMetalTextureInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkImportMetalTextureInfoEXT`
+    public VkImportMetalTextureInfoEXT asSlice(long index, long count) { return new VkImportMetalTextureInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -91,6 +91,17 @@ public final class VkPhysicalDeviceImageProcessing2PropertiesQCOM extends Struct
     /// @return the allocated `VkPhysicalDeviceImageProcessing2PropertiesQCOM`
     public static VkPhysicalDeviceImageProcessing2PropertiesQCOM alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceImageProcessing2PropertiesQCOM(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceImageProcessing2PropertiesQCOM`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceImageProcessing2PropertiesQCOM`
+    public VkPhysicalDeviceImageProcessing2PropertiesQCOM asSlice(long index) { return new VkPhysicalDeviceImageProcessing2PropertiesQCOM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceImageProcessing2PropertiesQCOM`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceImageProcessing2PropertiesQCOM`
+    public VkPhysicalDeviceImageProcessing2PropertiesQCOM asSlice(long index, long count) { return new VkPhysicalDeviceImageProcessing2PropertiesQCOM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

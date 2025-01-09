@@ -107,6 +107,17 @@ public final class VkBindVideoSessionMemoryInfoKHR extends Struct {
     /// @return the allocated `VkBindVideoSessionMemoryInfoKHR`
     public static VkBindVideoSessionMemoryInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkBindVideoSessionMemoryInfoKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkBindVideoSessionMemoryInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkBindVideoSessionMemoryInfoKHR`
+    public VkBindVideoSessionMemoryInfoKHR asSlice(long index) { return new VkBindVideoSessionMemoryInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkBindVideoSessionMemoryInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkBindVideoSessionMemoryInfoKHR`
+    public VkBindVideoSessionMemoryInfoKHR asSlice(long index, long count) { return new VkBindVideoSessionMemoryInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

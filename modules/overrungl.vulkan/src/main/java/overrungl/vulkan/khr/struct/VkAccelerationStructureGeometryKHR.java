@@ -103,6 +103,17 @@ public final class VkAccelerationStructureGeometryKHR extends Struct {
     /// @return the allocated `VkAccelerationStructureGeometryKHR`
     public static VkAccelerationStructureGeometryKHR alloc(SegmentAllocator allocator, long count) { return new VkAccelerationStructureGeometryKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkAccelerationStructureGeometryKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkAccelerationStructureGeometryKHR`
+    public VkAccelerationStructureGeometryKHR asSlice(long index) { return new VkAccelerationStructureGeometryKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkAccelerationStructureGeometryKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkAccelerationStructureGeometryKHR`
+    public VkAccelerationStructureGeometryKHR asSlice(long index, long count) { return new VkAccelerationStructureGeometryKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

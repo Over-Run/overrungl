@@ -287,6 +287,17 @@ public final class STBIR_RESIZE extends Struct {
     /// @return the allocated `STBIR_RESIZE`
     public static STBIR_RESIZE alloc(SegmentAllocator allocator, long count) { return new STBIR_RESIZE(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `STBIR_RESIZE`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `STBIR_RESIZE`
+    public STBIR_RESIZE asSlice(long index) { return new STBIR_RESIZE(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `STBIR_RESIZE`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `STBIR_RESIZE`
+    public STBIR_RESIZE asSlice(long index, long count) { return new STBIR_RESIZE(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `user_data` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

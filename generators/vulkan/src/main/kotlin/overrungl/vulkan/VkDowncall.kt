@@ -26,6 +26,7 @@ class VkDowncall(
     write: Boolean = true,
     action: VkDowncall.() -> Unit
 ) {
+    var modifier: String? = null
     val imports = mutableSetOf<String>()
     val extends = mutableListOf<String>()
     val fields = mutableListOf<VkDowncallField>()
@@ -192,7 +193,11 @@ class VkDowncall(
         )
         if (packageName != vulkanPackage) sb.appendLine("import overrungl.vulkan.*;")
         imports.sorted().forEach { sb.appendLine("import $it;") }
-        sb.append("public class $className")
+        sb.append("public ")
+        if (modifier != null) {
+            sb.append("$modifier ")
+        }
+        sb.append("class $className")
         if (extends.isNotEmpty()) {
             sb.append(" extends ${extends.joinToString(", ")}")
         }

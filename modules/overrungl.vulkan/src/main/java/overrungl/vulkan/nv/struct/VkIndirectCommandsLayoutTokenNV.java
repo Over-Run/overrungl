@@ -161,6 +161,17 @@ public final class VkIndirectCommandsLayoutTokenNV extends Struct {
     /// @return the allocated `VkIndirectCommandsLayoutTokenNV`
     public static VkIndirectCommandsLayoutTokenNV alloc(SegmentAllocator allocator, long count) { return new VkIndirectCommandsLayoutTokenNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkIndirectCommandsLayoutTokenNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkIndirectCommandsLayoutTokenNV`
+    public VkIndirectCommandsLayoutTokenNV asSlice(long index) { return new VkIndirectCommandsLayoutTokenNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkIndirectCommandsLayoutTokenNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkIndirectCommandsLayoutTokenNV`
+    public VkIndirectCommandsLayoutTokenNV asSlice(long index, long count) { return new VkIndirectCommandsLayoutTokenNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

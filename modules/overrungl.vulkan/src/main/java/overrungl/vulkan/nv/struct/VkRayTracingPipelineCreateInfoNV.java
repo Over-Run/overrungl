@@ -137,6 +137,17 @@ public final class VkRayTracingPipelineCreateInfoNV extends Struct {
     /// @return the allocated `VkRayTracingPipelineCreateInfoNV`
     public static VkRayTracingPipelineCreateInfoNV alloc(SegmentAllocator allocator, long count) { return new VkRayTracingPipelineCreateInfoNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkRayTracingPipelineCreateInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkRayTracingPipelineCreateInfoNV`
+    public VkRayTracingPipelineCreateInfoNV asSlice(long index) { return new VkRayTracingPipelineCreateInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkRayTracingPipelineCreateInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkRayTracingPipelineCreateInfoNV`
+    public VkRayTracingPipelineCreateInfoNV asSlice(long index, long count) { return new VkRayTracingPipelineCreateInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -95,6 +95,17 @@ public final class VkFilterCubicImageViewImageFormatPropertiesEXT extends Struct
     /// @return the allocated `VkFilterCubicImageViewImageFormatPropertiesEXT`
     public static VkFilterCubicImageViewImageFormatPropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkFilterCubicImageViewImageFormatPropertiesEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkFilterCubicImageViewImageFormatPropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkFilterCubicImageViewImageFormatPropertiesEXT`
+    public VkFilterCubicImageViewImageFormatPropertiesEXT asSlice(long index) { return new VkFilterCubicImageViewImageFormatPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkFilterCubicImageViewImageFormatPropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkFilterCubicImageViewImageFormatPropertiesEXT`
+    public VkFilterCubicImageViewImageFormatPropertiesEXT asSlice(long index, long count) { return new VkFilterCubicImageViewImageFormatPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

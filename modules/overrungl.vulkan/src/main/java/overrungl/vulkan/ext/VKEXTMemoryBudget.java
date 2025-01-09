@@ -22,12 +22,11 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKEXTMemoryBudget {
+public final class VKEXTMemoryBudget {
     public static final int VK_EXT_MEMORY_BUDGET_SPEC_VERSION = 1;
     public static final String VK_EXT_MEMORY_BUDGET_EXTENSION_NAME = "VK_EXT_memory_budget";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_BUDGET_PROPERTIES_EXT = 1000237000;
 
-    public VKEXTMemoryBudget(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKEXTMemoryBudget() { }
 
 }

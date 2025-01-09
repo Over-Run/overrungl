@@ -89,6 +89,17 @@ public final class StdVideoH265DecPicBufMgr extends Struct {
     /// @return the allocated `StdVideoH265DecPicBufMgr`
     public static StdVideoH265DecPicBufMgr alloc(SegmentAllocator allocator, long count) { return new StdVideoH265DecPicBufMgr(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `StdVideoH265DecPicBufMgr`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoH265DecPicBufMgr`
+    public StdVideoH265DecPicBufMgr asSlice(long index) { return new StdVideoH265DecPicBufMgr(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `StdVideoH265DecPicBufMgr`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoH265DecPicBufMgr`
+    public StdVideoH265DecPicBufMgr asSlice(long index, long count) { return new StdVideoH265DecPicBufMgr(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `max_latency_increase_plus1` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

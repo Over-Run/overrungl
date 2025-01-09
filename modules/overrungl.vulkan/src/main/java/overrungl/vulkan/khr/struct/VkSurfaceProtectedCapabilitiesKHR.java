@@ -89,6 +89,17 @@ public final class VkSurfaceProtectedCapabilitiesKHR extends Struct {
     /// @return the allocated `VkSurfaceProtectedCapabilitiesKHR`
     public static VkSurfaceProtectedCapabilitiesKHR alloc(SegmentAllocator allocator, long count) { return new VkSurfaceProtectedCapabilitiesKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkSurfaceProtectedCapabilitiesKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSurfaceProtectedCapabilitiesKHR`
+    public VkSurfaceProtectedCapabilitiesKHR asSlice(long index) { return new VkSurfaceProtectedCapabilitiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkSurfaceProtectedCapabilitiesKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSurfaceProtectedCapabilitiesKHR`
+    public VkSurfaceProtectedCapabilitiesKHR asSlice(long index, long count) { return new VkSurfaceProtectedCapabilitiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

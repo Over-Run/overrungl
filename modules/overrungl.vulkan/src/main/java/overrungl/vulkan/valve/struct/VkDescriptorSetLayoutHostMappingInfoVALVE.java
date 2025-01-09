@@ -95,6 +95,17 @@ public final class VkDescriptorSetLayoutHostMappingInfoVALVE extends Struct {
     /// @return the allocated `VkDescriptorSetLayoutHostMappingInfoVALVE`
     public static VkDescriptorSetLayoutHostMappingInfoVALVE alloc(SegmentAllocator allocator, long count) { return new VkDescriptorSetLayoutHostMappingInfoVALVE(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkDescriptorSetLayoutHostMappingInfoVALVE`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDescriptorSetLayoutHostMappingInfoVALVE`
+    public VkDescriptorSetLayoutHostMappingInfoVALVE asSlice(long index) { return new VkDescriptorSetLayoutHostMappingInfoVALVE(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkDescriptorSetLayoutHostMappingInfoVALVE`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDescriptorSetLayoutHostMappingInfoVALVE`
+    public VkDescriptorSetLayoutHostMappingInfoVALVE asSlice(long index, long count) { return new VkDescriptorSetLayoutHostMappingInfoVALVE(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

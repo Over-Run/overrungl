@@ -89,6 +89,17 @@ public final class VkMemoryPriorityAllocateInfoEXT extends Struct {
     /// @return the allocated `VkMemoryPriorityAllocateInfoEXT`
     public static VkMemoryPriorityAllocateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkMemoryPriorityAllocateInfoEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkMemoryPriorityAllocateInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkMemoryPriorityAllocateInfoEXT`
+    public VkMemoryPriorityAllocateInfoEXT asSlice(long index) { return new VkMemoryPriorityAllocateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkMemoryPriorityAllocateInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkMemoryPriorityAllocateInfoEXT`
+    public VkMemoryPriorityAllocateInfoEXT asSlice(long index, long count) { return new VkMemoryPriorityAllocateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -95,6 +95,17 @@ public final class VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT exten
     /// @return the allocated `VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT`
     public static VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT`
+    public VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT asSlice(long index) { return new VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT`
+    public VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT asSlice(long index, long count) { return new VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

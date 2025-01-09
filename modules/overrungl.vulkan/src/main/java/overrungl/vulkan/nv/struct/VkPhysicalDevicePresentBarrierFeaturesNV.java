@@ -89,6 +89,17 @@ public final class VkPhysicalDevicePresentBarrierFeaturesNV extends Struct {
     /// @return the allocated `VkPhysicalDevicePresentBarrierFeaturesNV`
     public static VkPhysicalDevicePresentBarrierFeaturesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDevicePresentBarrierFeaturesNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDevicePresentBarrierFeaturesNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDevicePresentBarrierFeaturesNV`
+    public VkPhysicalDevicePresentBarrierFeaturesNV asSlice(long index) { return new VkPhysicalDevicePresentBarrierFeaturesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDevicePresentBarrierFeaturesNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDevicePresentBarrierFeaturesNV`
+    public VkPhysicalDevicePresentBarrierFeaturesNV asSlice(long index, long count) { return new VkPhysicalDevicePresentBarrierFeaturesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceGlobalPriorityQueryFeatures extends Struct {
     /// @return the allocated `VkPhysicalDeviceGlobalPriorityQueryFeatures`
     public static VkPhysicalDeviceGlobalPriorityQueryFeatures alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceGlobalPriorityQueryFeatures(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceGlobalPriorityQueryFeatures`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceGlobalPriorityQueryFeatures`
+    public VkPhysicalDeviceGlobalPriorityQueryFeatures asSlice(long index) { return new VkPhysicalDeviceGlobalPriorityQueryFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceGlobalPriorityQueryFeatures`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceGlobalPriorityQueryFeatures`
+    public VkPhysicalDeviceGlobalPriorityQueryFeatures asSlice(long index, long count) { return new VkPhysicalDeviceGlobalPriorityQueryFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

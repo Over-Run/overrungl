@@ -95,6 +95,17 @@ public final class VkPipelineRasterizationStateStreamCreateInfoEXT extends Struc
     /// @return the allocated `VkPipelineRasterizationStateStreamCreateInfoEXT`
     public static VkPipelineRasterizationStateStreamCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkPipelineRasterizationStateStreamCreateInfoEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPipelineRasterizationStateStreamCreateInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPipelineRasterizationStateStreamCreateInfoEXT`
+    public VkPipelineRasterizationStateStreamCreateInfoEXT asSlice(long index) { return new VkPipelineRasterizationStateStreamCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPipelineRasterizationStateStreamCreateInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPipelineRasterizationStateStreamCreateInfoEXT`
+    public VkPipelineRasterizationStateStreamCreateInfoEXT asSlice(long index, long count) { return new VkPipelineRasterizationStateStreamCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

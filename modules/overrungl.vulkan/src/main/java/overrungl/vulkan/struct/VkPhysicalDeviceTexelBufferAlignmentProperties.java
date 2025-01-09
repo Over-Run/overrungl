@@ -107,6 +107,17 @@ public final class VkPhysicalDeviceTexelBufferAlignmentProperties extends Struct
     /// @return the allocated `VkPhysicalDeviceTexelBufferAlignmentProperties`
     public static VkPhysicalDeviceTexelBufferAlignmentProperties alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceTexelBufferAlignmentProperties(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceTexelBufferAlignmentProperties`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceTexelBufferAlignmentProperties`
+    public VkPhysicalDeviceTexelBufferAlignmentProperties asSlice(long index) { return new VkPhysicalDeviceTexelBufferAlignmentProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceTexelBufferAlignmentProperties`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceTexelBufferAlignmentProperties`
+    public VkPhysicalDeviceTexelBufferAlignmentProperties asSlice(long index, long count) { return new VkPhysicalDeviceTexelBufferAlignmentProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

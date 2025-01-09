@@ -167,6 +167,17 @@ public final class StdVideoH264SequenceParameterSetVui extends Struct {
     /// @return the allocated `StdVideoH264SequenceParameterSetVui`
     public static StdVideoH264SequenceParameterSetVui alloc(SegmentAllocator allocator, long count) { return new StdVideoH264SequenceParameterSetVui(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `StdVideoH264SequenceParameterSetVui`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoH264SequenceParameterSetVui`
+    public StdVideoH264SequenceParameterSetVui asSlice(long index) { return new StdVideoH264SequenceParameterSetVui(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `StdVideoH264SequenceParameterSetVui`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoH264SequenceParameterSetVui`
+    public StdVideoH264SequenceParameterSetVui asSlice(long index, long count) { return new StdVideoH264SequenceParameterSetVui(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

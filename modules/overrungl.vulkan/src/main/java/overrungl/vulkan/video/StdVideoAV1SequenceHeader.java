@@ -155,6 +155,17 @@ public final class StdVideoAV1SequenceHeader extends Struct {
     /// @return the allocated `StdVideoAV1SequenceHeader`
     public static StdVideoAV1SequenceHeader alloc(SegmentAllocator allocator, long count) { return new StdVideoAV1SequenceHeader(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `StdVideoAV1SequenceHeader`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoAV1SequenceHeader`
+    public StdVideoAV1SequenceHeader asSlice(long index) { return new StdVideoAV1SequenceHeader(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `StdVideoAV1SequenceHeader`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoAV1SequenceHeader`
+    public StdVideoAV1SequenceHeader asSlice(long index, long count) { return new StdVideoAV1SequenceHeader(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

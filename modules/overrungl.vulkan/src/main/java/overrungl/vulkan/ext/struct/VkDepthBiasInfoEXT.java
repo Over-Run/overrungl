@@ -101,6 +101,17 @@ public final class VkDepthBiasInfoEXT extends Struct {
     /// @return the allocated `VkDepthBiasInfoEXT`
     public static VkDepthBiasInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkDepthBiasInfoEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkDepthBiasInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDepthBiasInfoEXT`
+    public VkDepthBiasInfoEXT asSlice(long index) { return new VkDepthBiasInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkDepthBiasInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDepthBiasInfoEXT`
+    public VkDepthBiasInfoEXT asSlice(long index, long count) { return new VkDepthBiasInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

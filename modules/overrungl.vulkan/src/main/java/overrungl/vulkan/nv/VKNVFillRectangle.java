@@ -22,12 +22,11 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKNVFillRectangle {
+public final class VKNVFillRectangle {
     public static final int VK_NV_FILL_RECTANGLE_SPEC_VERSION = 1;
     public static final String VK_NV_FILL_RECTANGLE_EXTENSION_NAME = "VK_NV_fill_rectangle";
     public static final int VK_POLYGON_MODE_FILL_RECTANGLE_NV = 1000153000;
 
-    public VKNVFillRectangle(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKNVFillRectangle() { }
 
 }

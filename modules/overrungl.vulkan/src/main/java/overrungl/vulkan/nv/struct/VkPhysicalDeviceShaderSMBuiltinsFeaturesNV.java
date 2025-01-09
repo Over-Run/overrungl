@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceShaderSMBuiltinsFeaturesNV extends Struct {
     /// @return the allocated `VkPhysicalDeviceShaderSMBuiltinsFeaturesNV`
     public static VkPhysicalDeviceShaderSMBuiltinsFeaturesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceShaderSMBuiltinsFeaturesNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceShaderSMBuiltinsFeaturesNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceShaderSMBuiltinsFeaturesNV`
+    public VkPhysicalDeviceShaderSMBuiltinsFeaturesNV asSlice(long index) { return new VkPhysicalDeviceShaderSMBuiltinsFeaturesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceShaderSMBuiltinsFeaturesNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceShaderSMBuiltinsFeaturesNV`
+    public VkPhysicalDeviceShaderSMBuiltinsFeaturesNV asSlice(long index, long count) { return new VkPhysicalDeviceShaderSMBuiltinsFeaturesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

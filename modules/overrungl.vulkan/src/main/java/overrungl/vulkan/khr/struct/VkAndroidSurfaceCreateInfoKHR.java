@@ -95,6 +95,17 @@ public final class VkAndroidSurfaceCreateInfoKHR extends Struct {
     /// @return the allocated `VkAndroidSurfaceCreateInfoKHR`
     public static VkAndroidSurfaceCreateInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkAndroidSurfaceCreateInfoKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkAndroidSurfaceCreateInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkAndroidSurfaceCreateInfoKHR`
+    public VkAndroidSurfaceCreateInfoKHR asSlice(long index) { return new VkAndroidSurfaceCreateInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkAndroidSurfaceCreateInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkAndroidSurfaceCreateInfoKHR`
+    public VkAndroidSurfaceCreateInfoKHR asSlice(long index, long count) { return new VkAndroidSurfaceCreateInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

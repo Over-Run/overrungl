@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT extends St
     /// @return the allocated `VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT`
     public static VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT`
+    public VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT asSlice(long index) { return new VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT`
+    public VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT asSlice(long index, long count) { return new VkPhysicalDeviceGraphicsPipelineLibraryFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

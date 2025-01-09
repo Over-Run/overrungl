@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceMultiDrawFeaturesEXT extends Struct {
     /// @return the allocated `VkPhysicalDeviceMultiDrawFeaturesEXT`
     public static VkPhysicalDeviceMultiDrawFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceMultiDrawFeaturesEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceMultiDrawFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceMultiDrawFeaturesEXT`
+    public VkPhysicalDeviceMultiDrawFeaturesEXT asSlice(long index) { return new VkPhysicalDeviceMultiDrawFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceMultiDrawFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceMultiDrawFeaturesEXT`
+    public VkPhysicalDeviceMultiDrawFeaturesEXT asSlice(long index, long count) { return new VkPhysicalDeviceMultiDrawFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -89,6 +89,17 @@ public final class VkDeviceGroupCommandBufferBeginInfo extends Struct {
     /// @return the allocated `VkDeviceGroupCommandBufferBeginInfo`
     public static VkDeviceGroupCommandBufferBeginInfo alloc(SegmentAllocator allocator, long count) { return new VkDeviceGroupCommandBufferBeginInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkDeviceGroupCommandBufferBeginInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDeviceGroupCommandBufferBeginInfo`
+    public VkDeviceGroupCommandBufferBeginInfo asSlice(long index) { return new VkDeviceGroupCommandBufferBeginInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkDeviceGroupCommandBufferBeginInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDeviceGroupCommandBufferBeginInfo`
+    public VkDeviceGroupCommandBufferBeginInfo asSlice(long index, long count) { return new VkDeviceGroupCommandBufferBeginInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

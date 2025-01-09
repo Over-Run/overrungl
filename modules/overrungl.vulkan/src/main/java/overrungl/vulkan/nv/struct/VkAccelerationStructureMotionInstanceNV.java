@@ -91,6 +91,17 @@ public final class VkAccelerationStructureMotionInstanceNV extends Struct {
     /// @return the allocated `VkAccelerationStructureMotionInstanceNV`
     public static VkAccelerationStructureMotionInstanceNV alloc(SegmentAllocator allocator, long count) { return new VkAccelerationStructureMotionInstanceNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkAccelerationStructureMotionInstanceNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkAccelerationStructureMotionInstanceNV`
+    public VkAccelerationStructureMotionInstanceNV asSlice(long index) { return new VkAccelerationStructureMotionInstanceNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkAccelerationStructureMotionInstanceNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkAccelerationStructureMotionInstanceNV`
+    public VkAccelerationStructureMotionInstanceNV asSlice(long index, long count) { return new VkAccelerationStructureMotionInstanceNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `type` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

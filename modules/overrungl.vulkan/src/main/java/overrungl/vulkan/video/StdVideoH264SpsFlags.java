@@ -167,6 +167,17 @@ public final class StdVideoH264SpsFlags extends Struct {
     /// @return the allocated `StdVideoH264SpsFlags`
     public static StdVideoH264SpsFlags alloc(SegmentAllocator allocator, long count) { return new StdVideoH264SpsFlags(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `StdVideoH264SpsFlags`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoH264SpsFlags`
+    public StdVideoH264SpsFlags asSlice(long index) { return new StdVideoH264SpsFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `StdVideoH264SpsFlags`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoH264SpsFlags`
+    public StdVideoH264SpsFlags asSlice(long index, long count) { return new StdVideoH264SpsFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `constraint_set0_flag` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

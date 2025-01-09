@@ -95,12 +95,23 @@ public final class VkIndirectCommandsTokenDataEXT extends Union {
     /// @return the allocated `VkIndirectCommandsTokenDataEXT`
     public static VkIndirectCommandsTokenDataEXT alloc(SegmentAllocator allocator, long count) { return new VkIndirectCommandsTokenDataEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkIndirectCommandsTokenDataEXT`.
+    /// @param index the index of the union buffer
+    /// @return the slice of `VkIndirectCommandsTokenDataEXT`
+    public VkIndirectCommandsTokenDataEXT asSlice(long index) { return new VkIndirectCommandsTokenDataEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkIndirectCommandsTokenDataEXT`.
+    /// @param index the index of the union buffer
+    /// @param count the count
+    /// @return the slice of `VkIndirectCommandsTokenDataEXT`
+    public VkIndirectCommandsTokenDataEXT asSlice(long index, long count) { return new VkIndirectCommandsTokenDataEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `pPushConstant` at the given index}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     public static @CType("const VkIndirectCommandsPushConstantTokenEXT *") java.lang.foreign.MemorySegment get_pPushConstant(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pPushConstant.get(segment, 0L, index); }
     /// {@return `pPushConstant`}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     public static @CType("const VkIndirectCommandsPushConstantTokenEXT *") java.lang.foreign.MemorySegment get_pPushConstant(MemorySegment segment) { return VkIndirectCommandsTokenDataEXT.get_pPushConstant(segment, 0L); }
     /// {@return `pPushConstant` at the given index}
     /// @param index the index
@@ -108,12 +119,12 @@ public final class VkIndirectCommandsTokenDataEXT extends Union {
     /// {@return `pPushConstant`}
     public @CType("const VkIndirectCommandsPushConstantTokenEXT *") java.lang.foreign.MemorySegment pPushConstant() { return VkIndirectCommandsTokenDataEXT.get_pPushConstant(this.segment()); }
     /// Sets `pPushConstant` with the given value at the given index.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     /// @param value   the value
     public static void set_pPushConstant(MemorySegment segment, long index, @CType("const VkIndirectCommandsPushConstantTokenEXT *") java.lang.foreign.MemorySegment value) { VH_pPushConstant.set(segment, 0L, index, value); }
     /// Sets `pPushConstant` with the given value.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param value   the value
     public static void set_pPushConstant(MemorySegment segment, @CType("const VkIndirectCommandsPushConstantTokenEXT *") java.lang.foreign.MemorySegment value) { VkIndirectCommandsTokenDataEXT.set_pPushConstant(segment, 0L, value); }
     /// Sets `pPushConstant` with the given value at the given index.
@@ -127,11 +138,11 @@ public final class VkIndirectCommandsTokenDataEXT extends Union {
     public VkIndirectCommandsTokenDataEXT pPushConstant(@CType("const VkIndirectCommandsPushConstantTokenEXT *") java.lang.foreign.MemorySegment value) { VkIndirectCommandsTokenDataEXT.set_pPushConstant(this.segment(), value); return this; }
 
     /// {@return `pVertexBuffer` at the given index}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     public static @CType("const VkIndirectCommandsVertexBufferTokenEXT *") java.lang.foreign.MemorySegment get_pVertexBuffer(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pVertexBuffer.get(segment, 0L, index); }
     /// {@return `pVertexBuffer`}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     public static @CType("const VkIndirectCommandsVertexBufferTokenEXT *") java.lang.foreign.MemorySegment get_pVertexBuffer(MemorySegment segment) { return VkIndirectCommandsTokenDataEXT.get_pVertexBuffer(segment, 0L); }
     /// {@return `pVertexBuffer` at the given index}
     /// @param index the index
@@ -139,12 +150,12 @@ public final class VkIndirectCommandsTokenDataEXT extends Union {
     /// {@return `pVertexBuffer`}
     public @CType("const VkIndirectCommandsVertexBufferTokenEXT *") java.lang.foreign.MemorySegment pVertexBuffer() { return VkIndirectCommandsTokenDataEXT.get_pVertexBuffer(this.segment()); }
     /// Sets `pVertexBuffer` with the given value at the given index.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     /// @param value   the value
     public static void set_pVertexBuffer(MemorySegment segment, long index, @CType("const VkIndirectCommandsVertexBufferTokenEXT *") java.lang.foreign.MemorySegment value) { VH_pVertexBuffer.set(segment, 0L, index, value); }
     /// Sets `pVertexBuffer` with the given value.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param value   the value
     public static void set_pVertexBuffer(MemorySegment segment, @CType("const VkIndirectCommandsVertexBufferTokenEXT *") java.lang.foreign.MemorySegment value) { VkIndirectCommandsTokenDataEXT.set_pVertexBuffer(segment, 0L, value); }
     /// Sets `pVertexBuffer` with the given value at the given index.
@@ -158,11 +169,11 @@ public final class VkIndirectCommandsTokenDataEXT extends Union {
     public VkIndirectCommandsTokenDataEXT pVertexBuffer(@CType("const VkIndirectCommandsVertexBufferTokenEXT *") java.lang.foreign.MemorySegment value) { VkIndirectCommandsTokenDataEXT.set_pVertexBuffer(this.segment(), value); return this; }
 
     /// {@return `pIndexBuffer` at the given index}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     public static @CType("const VkIndirectCommandsIndexBufferTokenEXT *") java.lang.foreign.MemorySegment get_pIndexBuffer(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pIndexBuffer.get(segment, 0L, index); }
     /// {@return `pIndexBuffer`}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     public static @CType("const VkIndirectCommandsIndexBufferTokenEXT *") java.lang.foreign.MemorySegment get_pIndexBuffer(MemorySegment segment) { return VkIndirectCommandsTokenDataEXT.get_pIndexBuffer(segment, 0L); }
     /// {@return `pIndexBuffer` at the given index}
     /// @param index the index
@@ -170,12 +181,12 @@ public final class VkIndirectCommandsTokenDataEXT extends Union {
     /// {@return `pIndexBuffer`}
     public @CType("const VkIndirectCommandsIndexBufferTokenEXT *") java.lang.foreign.MemorySegment pIndexBuffer() { return VkIndirectCommandsTokenDataEXT.get_pIndexBuffer(this.segment()); }
     /// Sets `pIndexBuffer` with the given value at the given index.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     /// @param value   the value
     public static void set_pIndexBuffer(MemorySegment segment, long index, @CType("const VkIndirectCommandsIndexBufferTokenEXT *") java.lang.foreign.MemorySegment value) { VH_pIndexBuffer.set(segment, 0L, index, value); }
     /// Sets `pIndexBuffer` with the given value.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param value   the value
     public static void set_pIndexBuffer(MemorySegment segment, @CType("const VkIndirectCommandsIndexBufferTokenEXT *") java.lang.foreign.MemorySegment value) { VkIndirectCommandsTokenDataEXT.set_pIndexBuffer(segment, 0L, value); }
     /// Sets `pIndexBuffer` with the given value at the given index.
@@ -189,11 +200,11 @@ public final class VkIndirectCommandsTokenDataEXT extends Union {
     public VkIndirectCommandsTokenDataEXT pIndexBuffer(@CType("const VkIndirectCommandsIndexBufferTokenEXT *") java.lang.foreign.MemorySegment value) { VkIndirectCommandsTokenDataEXT.set_pIndexBuffer(this.segment(), value); return this; }
 
     /// {@return `pExecutionSet` at the given index}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     public static @CType("const VkIndirectCommandsExecutionSetTokenEXT *") java.lang.foreign.MemorySegment get_pExecutionSet(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_pExecutionSet.get(segment, 0L, index); }
     /// {@return `pExecutionSet`}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     public static @CType("const VkIndirectCommandsExecutionSetTokenEXT *") java.lang.foreign.MemorySegment get_pExecutionSet(MemorySegment segment) { return VkIndirectCommandsTokenDataEXT.get_pExecutionSet(segment, 0L); }
     /// {@return `pExecutionSet` at the given index}
     /// @param index the index
@@ -201,12 +212,12 @@ public final class VkIndirectCommandsTokenDataEXT extends Union {
     /// {@return `pExecutionSet`}
     public @CType("const VkIndirectCommandsExecutionSetTokenEXT *") java.lang.foreign.MemorySegment pExecutionSet() { return VkIndirectCommandsTokenDataEXT.get_pExecutionSet(this.segment()); }
     /// Sets `pExecutionSet` with the given value at the given index.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     /// @param value   the value
     public static void set_pExecutionSet(MemorySegment segment, long index, @CType("const VkIndirectCommandsExecutionSetTokenEXT *") java.lang.foreign.MemorySegment value) { VH_pExecutionSet.set(segment, 0L, index, value); }
     /// Sets `pExecutionSet` with the given value.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param value   the value
     public static void set_pExecutionSet(MemorySegment segment, @CType("const VkIndirectCommandsExecutionSetTokenEXT *") java.lang.foreign.MemorySegment value) { VkIndirectCommandsTokenDataEXT.set_pExecutionSet(segment, 0L, value); }
     /// Sets `pExecutionSet` with the given value at the given index.

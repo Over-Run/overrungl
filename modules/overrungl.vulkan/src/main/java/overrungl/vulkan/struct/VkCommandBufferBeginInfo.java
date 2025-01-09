@@ -95,6 +95,17 @@ public final class VkCommandBufferBeginInfo extends Struct {
     /// @return the allocated `VkCommandBufferBeginInfo`
     public static VkCommandBufferBeginInfo alloc(SegmentAllocator allocator, long count) { return new VkCommandBufferBeginInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkCommandBufferBeginInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkCommandBufferBeginInfo`
+    public VkCommandBufferBeginInfo asSlice(long index) { return new VkCommandBufferBeginInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkCommandBufferBeginInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkCommandBufferBeginInfo`
+    public VkCommandBufferBeginInfo asSlice(long index, long count) { return new VkCommandBufferBeginInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

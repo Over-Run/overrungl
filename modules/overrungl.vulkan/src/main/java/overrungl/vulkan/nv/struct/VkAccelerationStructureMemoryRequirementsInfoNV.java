@@ -95,6 +95,17 @@ public final class VkAccelerationStructureMemoryRequirementsInfoNV extends Struc
     /// @return the allocated `VkAccelerationStructureMemoryRequirementsInfoNV`
     public static VkAccelerationStructureMemoryRequirementsInfoNV alloc(SegmentAllocator allocator, long count) { return new VkAccelerationStructureMemoryRequirementsInfoNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkAccelerationStructureMemoryRequirementsInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkAccelerationStructureMemoryRequirementsInfoNV`
+    public VkAccelerationStructureMemoryRequirementsInfoNV asSlice(long index) { return new VkAccelerationStructureMemoryRequirementsInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkAccelerationStructureMemoryRequirementsInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkAccelerationStructureMemoryRequirementsInfoNV`
+    public VkAccelerationStructureMemoryRequirementsInfoNV asSlice(long index, long count) { return new VkAccelerationStructureMemoryRequirementsInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

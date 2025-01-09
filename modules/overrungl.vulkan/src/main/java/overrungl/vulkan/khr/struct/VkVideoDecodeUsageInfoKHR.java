@@ -89,6 +89,17 @@ public final class VkVideoDecodeUsageInfoKHR extends Struct {
     /// @return the allocated `VkVideoDecodeUsageInfoKHR`
     public static VkVideoDecodeUsageInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoDecodeUsageInfoKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkVideoDecodeUsageInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkVideoDecodeUsageInfoKHR`
+    public VkVideoDecodeUsageInfoKHR asSlice(long index) { return new VkVideoDecodeUsageInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkVideoDecodeUsageInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkVideoDecodeUsageInfoKHR`
+    public VkVideoDecodeUsageInfoKHR asSlice(long index, long count) { return new VkVideoDecodeUsageInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

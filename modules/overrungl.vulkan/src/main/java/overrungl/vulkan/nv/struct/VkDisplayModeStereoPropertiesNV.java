@@ -89,6 +89,17 @@ public final class VkDisplayModeStereoPropertiesNV extends Struct {
     /// @return the allocated `VkDisplayModeStereoPropertiesNV`
     public static VkDisplayModeStereoPropertiesNV alloc(SegmentAllocator allocator, long count) { return new VkDisplayModeStereoPropertiesNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkDisplayModeStereoPropertiesNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDisplayModeStereoPropertiesNV`
+    public VkDisplayModeStereoPropertiesNV asSlice(long index) { return new VkDisplayModeStereoPropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkDisplayModeStereoPropertiesNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDisplayModeStereoPropertiesNV`
+    public VkDisplayModeStereoPropertiesNV asSlice(long index, long count) { return new VkDisplayModeStereoPropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

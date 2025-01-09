@@ -85,6 +85,17 @@ public final class VkAttachmentSampleLocationsEXT extends Struct {
     /// @return the allocated `VkAttachmentSampleLocationsEXT`
     public static VkAttachmentSampleLocationsEXT alloc(SegmentAllocator allocator, long count) { return new VkAttachmentSampleLocationsEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkAttachmentSampleLocationsEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkAttachmentSampleLocationsEXT`
+    public VkAttachmentSampleLocationsEXT asSlice(long index) { return new VkAttachmentSampleLocationsEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkAttachmentSampleLocationsEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkAttachmentSampleLocationsEXT`
+    public VkAttachmentSampleLocationsEXT asSlice(long index, long count) { return new VkAttachmentSampleLocationsEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `attachmentIndex` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

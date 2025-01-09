@@ -113,6 +113,17 @@ public final class VkRenderingAreaInfo extends Struct {
     /// @return the allocated `VkRenderingAreaInfo`
     public static VkRenderingAreaInfo alloc(SegmentAllocator allocator, long count) { return new VkRenderingAreaInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkRenderingAreaInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkRenderingAreaInfo`
+    public VkRenderingAreaInfo asSlice(long index) { return new VkRenderingAreaInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkRenderingAreaInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkRenderingAreaInfo`
+    public VkRenderingAreaInfo asSlice(long index, long count) { return new VkRenderingAreaInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

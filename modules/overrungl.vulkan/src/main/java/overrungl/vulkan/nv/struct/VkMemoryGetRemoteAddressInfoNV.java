@@ -95,6 +95,17 @@ public final class VkMemoryGetRemoteAddressInfoNV extends Struct {
     /// @return the allocated `VkMemoryGetRemoteAddressInfoNV`
     public static VkMemoryGetRemoteAddressInfoNV alloc(SegmentAllocator allocator, long count) { return new VkMemoryGetRemoteAddressInfoNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkMemoryGetRemoteAddressInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkMemoryGetRemoteAddressInfoNV`
+    public VkMemoryGetRemoteAddressInfoNV asSlice(long index) { return new VkMemoryGetRemoteAddressInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkMemoryGetRemoteAddressInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkMemoryGetRemoteAddressInfoNV`
+    public VkMemoryGetRemoteAddressInfoNV asSlice(long index, long count) { return new VkMemoryGetRemoteAddressInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

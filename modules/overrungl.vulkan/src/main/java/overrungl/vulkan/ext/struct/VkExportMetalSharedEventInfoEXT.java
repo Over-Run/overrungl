@@ -101,6 +101,17 @@ public final class VkExportMetalSharedEventInfoEXT extends Struct {
     /// @return the allocated `VkExportMetalSharedEventInfoEXT`
     public static VkExportMetalSharedEventInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkExportMetalSharedEventInfoEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkExportMetalSharedEventInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkExportMetalSharedEventInfoEXT`
+    public VkExportMetalSharedEventInfoEXT asSlice(long index) { return new VkExportMetalSharedEventInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkExportMetalSharedEventInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkExportMetalSharedEventInfoEXT`
+    public VkExportMetalSharedEventInfoEXT asSlice(long index, long count) { return new VkExportMetalSharedEventInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

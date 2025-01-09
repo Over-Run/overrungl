@@ -89,6 +89,17 @@ public final class VkVideoEncodeH264FrameSizeKHR extends Struct {
     /// @return the allocated `VkVideoEncodeH264FrameSizeKHR`
     public static VkVideoEncodeH264FrameSizeKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoEncodeH264FrameSizeKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkVideoEncodeH264FrameSizeKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkVideoEncodeH264FrameSizeKHR`
+    public VkVideoEncodeH264FrameSizeKHR asSlice(long index) { return new VkVideoEncodeH264FrameSizeKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkVideoEncodeH264FrameSizeKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkVideoEncodeH264FrameSizeKHR`
+    public VkVideoEncodeH264FrameSizeKHR asSlice(long index, long count) { return new VkVideoEncodeH264FrameSizeKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `frameISize` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -95,6 +95,17 @@ public final class VkConformanceVersion extends Struct {
     /// @return the allocated `VkConformanceVersion`
     public static VkConformanceVersion alloc(SegmentAllocator allocator, long count) { return new VkConformanceVersion(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkConformanceVersion`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkConformanceVersion`
+    public VkConformanceVersion asSlice(long index) { return new VkConformanceVersion(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkConformanceVersion`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkConformanceVersion`
+    public VkConformanceVersion asSlice(long index, long count) { return new VkConformanceVersion(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `major` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

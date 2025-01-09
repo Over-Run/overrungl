@@ -89,6 +89,17 @@ public final class VkSamplerCaptureDescriptorDataInfoEXT extends Struct {
     /// @return the allocated `VkSamplerCaptureDescriptorDataInfoEXT`
     public static VkSamplerCaptureDescriptorDataInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkSamplerCaptureDescriptorDataInfoEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkSamplerCaptureDescriptorDataInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSamplerCaptureDescriptorDataInfoEXT`
+    public VkSamplerCaptureDescriptorDataInfoEXT asSlice(long index) { return new VkSamplerCaptureDescriptorDataInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkSamplerCaptureDescriptorDataInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSamplerCaptureDescriptorDataInfoEXT`
+    public VkSamplerCaptureDescriptorDataInfoEXT asSlice(long index, long count) { return new VkSamplerCaptureDescriptorDataInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

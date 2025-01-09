@@ -23,14 +23,13 @@ import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 import static overrungl.vulkan.VK14.*;
-public class VKKHRShaderSubgroupRotate {
+public final class VKKHRShaderSubgroupRotate {
     public static final int VK_KHR_SHADER_SUBGROUP_ROTATE_SPEC_VERSION = 2;
     public static final String VK_KHR_SHADER_SUBGROUP_ROTATE_EXTENSION_NAME = "VK_KHR_shader_subgroup_rotate";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_ROTATE_FEATURES_KHR = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_ROTATE_FEATURES;
     public static final int VK_SUBGROUP_FEATURE_ROTATE_BIT_KHR = VK_SUBGROUP_FEATURE_ROTATE_BIT;
     public static final int VK_SUBGROUP_FEATURE_ROTATE_CLUSTERED_BIT_KHR = VK_SUBGROUP_FEATURE_ROTATE_CLUSTERED_BIT;
 
-    public VKKHRShaderSubgroupRotate(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKKHRShaderSubgroupRotate() { }
 
 }

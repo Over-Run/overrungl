@@ -101,6 +101,17 @@ public final class VkBindDescriptorBufferEmbeddedSamplersInfoEXT extends Struct 
     /// @return the allocated `VkBindDescriptorBufferEmbeddedSamplersInfoEXT`
     public static VkBindDescriptorBufferEmbeddedSamplersInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkBindDescriptorBufferEmbeddedSamplersInfoEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkBindDescriptorBufferEmbeddedSamplersInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkBindDescriptorBufferEmbeddedSamplersInfoEXT`
+    public VkBindDescriptorBufferEmbeddedSamplersInfoEXT asSlice(long index) { return new VkBindDescriptorBufferEmbeddedSamplersInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkBindDescriptorBufferEmbeddedSamplersInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkBindDescriptorBufferEmbeddedSamplersInfoEXT`
+    public VkBindDescriptorBufferEmbeddedSamplersInfoEXT asSlice(long index, long count) { return new VkBindDescriptorBufferEmbeddedSamplersInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

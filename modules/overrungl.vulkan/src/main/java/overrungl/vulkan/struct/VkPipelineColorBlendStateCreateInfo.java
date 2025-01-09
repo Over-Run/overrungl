@@ -40,7 +40,7 @@ import overrungl.util.*;
 /// ### pAttachments
 /// [VarHandle][#VH_pAttachments] - [Getter][#pAttachments()] - [Setter][#pAttachments(java.lang.foreign.MemorySegment)]
 /// ### blendConstants
-/// [VarHandle][#VH_blendConstants] - [Getter][#blendConstants()] - [Setter][#blendConstants(float)]
+/// [Byte offset][#OFFSET_blendConstants] - [Memory layout][#ML_blendConstants] - [Getter][#blendConstants()] - [Setter][#blendConstants(java.lang.foreign.MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -52,7 +52,7 @@ import overrungl.util.*;
 ///     VkLogicOp logicOp;
 ///     uint32_t attachmentCount;
 ///     const VkPipelineColorBlendAttachmentState * pAttachments;
-///     float blendConstants;
+///     float[4] blendConstants;
 /// } VkPipelineColorBlendStateCreateInfo;
 /// ```
 public final class VkPipelineColorBlendStateCreateInfo extends Struct {
@@ -65,7 +65,7 @@ public final class VkPipelineColorBlendStateCreateInfo extends Struct {
         ValueLayout.JAVA_INT.withName("logicOp"),
         ValueLayout.JAVA_INT.withName("attachmentCount"),
         ValueLayout.ADDRESS.withName("pAttachments"),
-        ValueLayout.JAVA_FLOAT.withName("blendConstants")
+        MemoryLayout.sequenceLayout(4, ValueLayout.JAVA_FLOAT).withName("blendConstants")
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_sType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sType"));
@@ -81,8 +81,10 @@ public final class VkPipelineColorBlendStateCreateInfo extends Struct {
     public static final VarHandle VH_attachmentCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("attachmentCount"));
     /// The [VarHandle] of `pAttachments` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
     public static final VarHandle VH_pAttachments = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pAttachments"));
-    /// The [VarHandle] of `blendConstants` of type `(MemorySegment base, long baseOffset, long index)float`.
-    public static final VarHandle VH_blendConstants = LAYOUT.arrayElementVarHandle(PathElement.groupElement("blendConstants"));
+    /// The byte offset of `blendConstants`.
+    public static final long OFFSET_blendConstants = LAYOUT.byteOffset(PathElement.groupElement("blendConstants"));
+    /// The memory layout of `blendConstants`.
+    public static final MemoryLayout ML_blendConstants = LAYOUT.select(PathElement.groupElement("blendConstants"));
 
     /// Creates `VkPipelineColorBlendStateCreateInfo` with the given segment.
     /// @param segment the memory segment
@@ -118,6 +120,17 @@ public final class VkPipelineColorBlendStateCreateInfo extends Struct {
     /// @param count     the count
     /// @return the allocated `VkPipelineColorBlendStateCreateInfo`
     public static VkPipelineColorBlendStateCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkPipelineColorBlendStateCreateInfo(allocator.allocate(LAYOUT, count)); }
+
+    /// Creates a slice of `VkPipelineColorBlendStateCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPipelineColorBlendStateCreateInfo`
+    public VkPipelineColorBlendStateCreateInfo asSlice(long index) { return new VkPipelineColorBlendStateCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPipelineColorBlendStateCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPipelineColorBlendStateCreateInfo`
+    public VkPipelineColorBlendStateCreateInfo asSlice(long index, long count) { return new VkPipelineColorBlendStateCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -339,32 +352,32 @@ public final class VkPipelineColorBlendStateCreateInfo extends Struct {
     /// {@return `blendConstants` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("float") float get_blendConstants(MemorySegment segment, long index) { return (float) VH_blendConstants.get(segment, 0L, index); }
+    public static @CType("float[4]") java.lang.foreign.MemorySegment get_blendConstants(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_blendConstants, index), ML_blendConstants); }
     /// {@return `blendConstants`}
     /// @param segment the segment of the struct
-    public static @CType("float") float get_blendConstants(MemorySegment segment) { return VkPipelineColorBlendStateCreateInfo.get_blendConstants(segment, 0L); }
+    public static @CType("float[4]") java.lang.foreign.MemorySegment get_blendConstants(MemorySegment segment) { return VkPipelineColorBlendStateCreateInfo.get_blendConstants(segment, 0L); }
     /// {@return `blendConstants` at the given index}
     /// @param index the index
-    public @CType("float") float blendConstantsAt(long index) { return VkPipelineColorBlendStateCreateInfo.get_blendConstants(this.segment(), index); }
+    public @CType("float[4]") java.lang.foreign.MemorySegment blendConstantsAt(long index) { return VkPipelineColorBlendStateCreateInfo.get_blendConstants(this.segment(), index); }
     /// {@return `blendConstants`}
-    public @CType("float") float blendConstants() { return VkPipelineColorBlendStateCreateInfo.get_blendConstants(this.segment()); }
+    public @CType("float[4]") java.lang.foreign.MemorySegment blendConstants() { return VkPipelineColorBlendStateCreateInfo.get_blendConstants(this.segment()); }
     /// Sets `blendConstants` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_blendConstants(MemorySegment segment, long index, @CType("float") float value) { VH_blendConstants.set(segment, 0L, index, value); }
+    public static void set_blendConstants(MemorySegment segment, long index, @CType("float[4]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_blendConstants, index), ML_blendConstants.byteSize()); }
     /// Sets `blendConstants` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_blendConstants(MemorySegment segment, @CType("float") float value) { VkPipelineColorBlendStateCreateInfo.set_blendConstants(segment, 0L, value); }
+    public static void set_blendConstants(MemorySegment segment, @CType("float[4]") java.lang.foreign.MemorySegment value) { VkPipelineColorBlendStateCreateInfo.set_blendConstants(segment, 0L, value); }
     /// Sets `blendConstants` with the given value at the given index.
     /// @param index the index
     /// @param value the value
     /// @return `this`
-    public VkPipelineColorBlendStateCreateInfo blendConstantsAt(long index, @CType("float") float value) { VkPipelineColorBlendStateCreateInfo.set_blendConstants(this.segment(), index, value); return this; }
+    public VkPipelineColorBlendStateCreateInfo blendConstantsAt(long index, @CType("float[4]") java.lang.foreign.MemorySegment value) { VkPipelineColorBlendStateCreateInfo.set_blendConstants(this.segment(), index, value); return this; }
     /// Sets `blendConstants` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPipelineColorBlendStateCreateInfo blendConstants(@CType("float") float value) { VkPipelineColorBlendStateCreateInfo.set_blendConstants(this.segment(), value); return this; }
+    public VkPipelineColorBlendStateCreateInfo blendConstants(@CType("float[4]") java.lang.foreign.MemorySegment value) { VkPipelineColorBlendStateCreateInfo.set_blendConstants(this.segment(), value); return this; }
 
 }

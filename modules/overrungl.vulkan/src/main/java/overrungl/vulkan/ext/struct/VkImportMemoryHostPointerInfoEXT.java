@@ -95,6 +95,17 @@ public final class VkImportMemoryHostPointerInfoEXT extends Struct {
     /// @return the allocated `VkImportMemoryHostPointerInfoEXT`
     public static VkImportMemoryHostPointerInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkImportMemoryHostPointerInfoEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkImportMemoryHostPointerInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkImportMemoryHostPointerInfoEXT`
+    public VkImportMemoryHostPointerInfoEXT asSlice(long index) { return new VkImportMemoryHostPointerInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkImportMemoryHostPointerInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkImportMemoryHostPointerInfoEXT`
+    public VkImportMemoryHostPointerInfoEXT asSlice(long index, long count) { return new VkImportMemoryHostPointerInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

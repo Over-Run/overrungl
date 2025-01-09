@@ -89,6 +89,17 @@ public final class VkSwapchainCounterCreateInfoEXT extends Struct {
     /// @return the allocated `VkSwapchainCounterCreateInfoEXT`
     public static VkSwapchainCounterCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkSwapchainCounterCreateInfoEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkSwapchainCounterCreateInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSwapchainCounterCreateInfoEXT`
+    public VkSwapchainCounterCreateInfoEXT asSlice(long index) { return new VkSwapchainCounterCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkSwapchainCounterCreateInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSwapchainCounterCreateInfoEXT`
+    public VkSwapchainCounterCreateInfoEXT asSlice(long index, long count) { return new VkSwapchainCounterCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

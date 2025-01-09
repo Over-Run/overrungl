@@ -89,6 +89,17 @@ public final class VkDeviceMemoryOverallocationCreateInfoAMD extends Struct {
     /// @return the allocated `VkDeviceMemoryOverallocationCreateInfoAMD`
     public static VkDeviceMemoryOverallocationCreateInfoAMD alloc(SegmentAllocator allocator, long count) { return new VkDeviceMemoryOverallocationCreateInfoAMD(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkDeviceMemoryOverallocationCreateInfoAMD`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDeviceMemoryOverallocationCreateInfoAMD`
+    public VkDeviceMemoryOverallocationCreateInfoAMD asSlice(long index) { return new VkDeviceMemoryOverallocationCreateInfoAMD(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkDeviceMemoryOverallocationCreateInfoAMD`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDeviceMemoryOverallocationCreateInfoAMD`
+    public VkDeviceMemoryOverallocationCreateInfoAMD asSlice(long index, long count) { return new VkDeviceMemoryOverallocationCreateInfoAMD(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

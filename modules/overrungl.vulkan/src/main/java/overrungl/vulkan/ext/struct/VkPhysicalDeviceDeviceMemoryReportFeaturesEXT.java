@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceDeviceMemoryReportFeaturesEXT extends Struct 
     /// @return the allocated `VkPhysicalDeviceDeviceMemoryReportFeaturesEXT`
     public static VkPhysicalDeviceDeviceMemoryReportFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceDeviceMemoryReportFeaturesEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceDeviceMemoryReportFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceDeviceMemoryReportFeaturesEXT`
+    public VkPhysicalDeviceDeviceMemoryReportFeaturesEXT asSlice(long index) { return new VkPhysicalDeviceDeviceMemoryReportFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceDeviceMemoryReportFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceDeviceMemoryReportFeaturesEXT`
+    public VkPhysicalDeviceDeviceMemoryReportFeaturesEXT asSlice(long index, long count) { return new VkPhysicalDeviceDeviceMemoryReportFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

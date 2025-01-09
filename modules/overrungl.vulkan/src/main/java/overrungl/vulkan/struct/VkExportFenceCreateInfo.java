@@ -89,6 +89,17 @@ public final class VkExportFenceCreateInfo extends Struct {
     /// @return the allocated `VkExportFenceCreateInfo`
     public static VkExportFenceCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkExportFenceCreateInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkExportFenceCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkExportFenceCreateInfo`
+    public VkExportFenceCreateInfo asSlice(long index) { return new VkExportFenceCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkExportFenceCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkExportFenceCreateInfo`
+    public VkExportFenceCreateInfo asSlice(long index, long count) { return new VkExportFenceCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

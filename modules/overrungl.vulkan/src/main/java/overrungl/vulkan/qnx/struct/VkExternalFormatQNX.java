@@ -89,6 +89,17 @@ public final class VkExternalFormatQNX extends Struct {
     /// @return the allocated `VkExternalFormatQNX`
     public static VkExternalFormatQNX alloc(SegmentAllocator allocator, long count) { return new VkExternalFormatQNX(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkExternalFormatQNX`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkExternalFormatQNX`
+    public VkExternalFormatQNX asSlice(long index) { return new VkExternalFormatQNX(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkExternalFormatQNX`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkExternalFormatQNX`
+    public VkExternalFormatQNX asSlice(long index, long count) { return new VkExternalFormatQNX(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

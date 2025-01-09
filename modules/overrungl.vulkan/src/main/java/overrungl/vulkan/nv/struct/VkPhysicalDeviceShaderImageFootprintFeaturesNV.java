@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceShaderImageFootprintFeaturesNV extends Struct
     /// @return the allocated `VkPhysicalDeviceShaderImageFootprintFeaturesNV`
     public static VkPhysicalDeviceShaderImageFootprintFeaturesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceShaderImageFootprintFeaturesNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceShaderImageFootprintFeaturesNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceShaderImageFootprintFeaturesNV`
+    public VkPhysicalDeviceShaderImageFootprintFeaturesNV asSlice(long index) { return new VkPhysicalDeviceShaderImageFootprintFeaturesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceShaderImageFootprintFeaturesNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceShaderImageFootprintFeaturesNV`
+    public VkPhysicalDeviceShaderImageFootprintFeaturesNV asSlice(long index, long count) { return new VkPhysicalDeviceShaderImageFootprintFeaturesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

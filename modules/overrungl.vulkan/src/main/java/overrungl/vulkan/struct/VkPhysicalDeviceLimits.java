@@ -130,11 +130,11 @@ import overrungl.util.*;
 /// ### maxComputeSharedMemorySize
 /// [VarHandle][#VH_maxComputeSharedMemorySize] - [Getter][#maxComputeSharedMemorySize()] - [Setter][#maxComputeSharedMemorySize(int)]
 /// ### maxComputeWorkGroupCount
-/// [Byte offset handle][#MH_maxComputeWorkGroupCount] - [Memory layout][#ML_maxComputeWorkGroupCount] - [Getter][#maxComputeWorkGroupCount(long)] - [Setter][#maxComputeWorkGroupCount(long, java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_maxComputeWorkGroupCount] - [Memory layout][#ML_maxComputeWorkGroupCount] - [Getter][#maxComputeWorkGroupCount()] - [Setter][#maxComputeWorkGroupCount(java.lang.foreign.MemorySegment)]
 /// ### maxComputeWorkGroupInvocations
 /// [VarHandle][#VH_maxComputeWorkGroupInvocations] - [Getter][#maxComputeWorkGroupInvocations()] - [Setter][#maxComputeWorkGroupInvocations(int)]
 /// ### maxComputeWorkGroupSize
-/// [Byte offset handle][#MH_maxComputeWorkGroupSize] - [Memory layout][#ML_maxComputeWorkGroupSize] - [Getter][#maxComputeWorkGroupSize(long)] - [Setter][#maxComputeWorkGroupSize(long, java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_maxComputeWorkGroupSize] - [Memory layout][#ML_maxComputeWorkGroupSize] - [Getter][#maxComputeWorkGroupSize()] - [Setter][#maxComputeWorkGroupSize(java.lang.foreign.MemorySegment)]
 /// ### subPixelPrecisionBits
 /// [VarHandle][#VH_subPixelPrecisionBits] - [Getter][#subPixelPrecisionBits()] - [Setter][#subPixelPrecisionBits(int)]
 /// ### subTexelPrecisionBits
@@ -152,9 +152,9 @@ import overrungl.util.*;
 /// ### maxViewports
 /// [VarHandle][#VH_maxViewports] - [Getter][#maxViewports()] - [Setter][#maxViewports(int)]
 /// ### maxViewportDimensions
-/// [Byte offset handle][#MH_maxViewportDimensions] - [Memory layout][#ML_maxViewportDimensions] - [Getter][#maxViewportDimensions(long)] - [Setter][#maxViewportDimensions(long, java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_maxViewportDimensions] - [Memory layout][#ML_maxViewportDimensions] - [Getter][#maxViewportDimensions()] - [Setter][#maxViewportDimensions(java.lang.foreign.MemorySegment)]
 /// ### viewportBoundsRange
-/// [Byte offset handle][#MH_viewportBoundsRange] - [Memory layout][#ML_viewportBoundsRange] - [Getter][#viewportBoundsRange(long)] - [Setter][#viewportBoundsRange(long, java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_viewportBoundsRange] - [Memory layout][#ML_viewportBoundsRange] - [Getter][#viewportBoundsRange()] - [Setter][#viewportBoundsRange(java.lang.foreign.MemorySegment)]
 /// ### viewportSubPixelBits
 /// [VarHandle][#VH_viewportSubPixelBits] - [Getter][#viewportSubPixelBits()] - [Setter][#viewportSubPixelBits(int)]
 /// ### minMemoryMapAlignment
@@ -220,9 +220,9 @@ import overrungl.util.*;
 /// ### discreteQueuePriorities
 /// [VarHandle][#VH_discreteQueuePriorities] - [Getter][#discreteQueuePriorities()] - [Setter][#discreteQueuePriorities(int)]
 /// ### pointSizeRange
-/// [Byte offset handle][#MH_pointSizeRange] - [Memory layout][#ML_pointSizeRange] - [Getter][#pointSizeRange(long)] - [Setter][#pointSizeRange(long, java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_pointSizeRange] - [Memory layout][#ML_pointSizeRange] - [Getter][#pointSizeRange()] - [Setter][#pointSizeRange(java.lang.foreign.MemorySegment)]
 /// ### lineWidthRange
-/// [Byte offset handle][#MH_lineWidthRange] - [Memory layout][#ML_lineWidthRange] - [Getter][#lineWidthRange(long)] - [Setter][#lineWidthRange(long, java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_lineWidthRange] - [Memory layout][#ML_lineWidthRange] - [Getter][#lineWidthRange()] - [Setter][#lineWidthRange(java.lang.foreign.MemorySegment)]
 /// ### pointSizeGranularity
 /// [VarHandle][#VH_pointSizeGranularity] - [Getter][#pointSizeGranularity()] - [Setter][#pointSizeGranularity(float)]
 /// ### lineWidthGranularity
@@ -563,14 +563,14 @@ public final class VkPhysicalDeviceLimits extends Struct {
     public static final VarHandle VH_maxFragmentCombinedOutputResources = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxFragmentCombinedOutputResources"));
     /// The [VarHandle] of `maxComputeSharedMemorySize` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_maxComputeSharedMemorySize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxComputeSharedMemorySize"));
-    /// The byte offset handle of `maxComputeWorkGroupCount` of type `(long baseOffset, long elementIndex)long`.
-    public static final MethodHandle MH_maxComputeWorkGroupCount = LAYOUT.byteOffsetHandle(PathElement.groupElement("maxComputeWorkGroupCount"), PathElement.sequenceElement());
+    /// The byte offset of `maxComputeWorkGroupCount`.
+    public static final long OFFSET_maxComputeWorkGroupCount = LAYOUT.byteOffset(PathElement.groupElement("maxComputeWorkGroupCount"));
     /// The memory layout of `maxComputeWorkGroupCount`.
     public static final MemoryLayout ML_maxComputeWorkGroupCount = LAYOUT.select(PathElement.groupElement("maxComputeWorkGroupCount"));
     /// The [VarHandle] of `maxComputeWorkGroupInvocations` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_maxComputeWorkGroupInvocations = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxComputeWorkGroupInvocations"));
-    /// The byte offset handle of `maxComputeWorkGroupSize` of type `(long baseOffset, long elementIndex)long`.
-    public static final MethodHandle MH_maxComputeWorkGroupSize = LAYOUT.byteOffsetHandle(PathElement.groupElement("maxComputeWorkGroupSize"), PathElement.sequenceElement());
+    /// The byte offset of `maxComputeWorkGroupSize`.
+    public static final long OFFSET_maxComputeWorkGroupSize = LAYOUT.byteOffset(PathElement.groupElement("maxComputeWorkGroupSize"));
     /// The memory layout of `maxComputeWorkGroupSize`.
     public static final MemoryLayout ML_maxComputeWorkGroupSize = LAYOUT.select(PathElement.groupElement("maxComputeWorkGroupSize"));
     /// The [VarHandle] of `subPixelPrecisionBits` of type `(MemorySegment base, long baseOffset, long index)int`.
@@ -589,12 +589,12 @@ public final class VkPhysicalDeviceLimits extends Struct {
     public static final VarHandle VH_maxSamplerAnisotropy = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxSamplerAnisotropy"));
     /// The [VarHandle] of `maxViewports` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_maxViewports = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxViewports"));
-    /// The byte offset handle of `maxViewportDimensions` of type `(long baseOffset, long elementIndex)long`.
-    public static final MethodHandle MH_maxViewportDimensions = LAYOUT.byteOffsetHandle(PathElement.groupElement("maxViewportDimensions"), PathElement.sequenceElement());
+    /// The byte offset of `maxViewportDimensions`.
+    public static final long OFFSET_maxViewportDimensions = LAYOUT.byteOffset(PathElement.groupElement("maxViewportDimensions"));
     /// The memory layout of `maxViewportDimensions`.
     public static final MemoryLayout ML_maxViewportDimensions = LAYOUT.select(PathElement.groupElement("maxViewportDimensions"));
-    /// The byte offset handle of `viewportBoundsRange` of type `(long baseOffset, long elementIndex)long`.
-    public static final MethodHandle MH_viewportBoundsRange = LAYOUT.byteOffsetHandle(PathElement.groupElement("viewportBoundsRange"), PathElement.sequenceElement());
+    /// The byte offset of `viewportBoundsRange`.
+    public static final long OFFSET_viewportBoundsRange = LAYOUT.byteOffset(PathElement.groupElement("viewportBoundsRange"));
     /// The memory layout of `viewportBoundsRange`.
     public static final MemoryLayout ML_viewportBoundsRange = LAYOUT.select(PathElement.groupElement("viewportBoundsRange"));
     /// The [VarHandle] of `viewportSubPixelBits` of type `(MemorySegment base, long baseOffset, long index)int`.
@@ -661,12 +661,12 @@ public final class VkPhysicalDeviceLimits extends Struct {
     public static final VarHandle VH_maxCombinedClipAndCullDistances = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxCombinedClipAndCullDistances"));
     /// The [VarHandle] of `discreteQueuePriorities` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_discreteQueuePriorities = LAYOUT.arrayElementVarHandle(PathElement.groupElement("discreteQueuePriorities"));
-    /// The byte offset handle of `pointSizeRange` of type `(long baseOffset, long elementIndex)long`.
-    public static final MethodHandle MH_pointSizeRange = LAYOUT.byteOffsetHandle(PathElement.groupElement("pointSizeRange"), PathElement.sequenceElement());
+    /// The byte offset of `pointSizeRange`.
+    public static final long OFFSET_pointSizeRange = LAYOUT.byteOffset(PathElement.groupElement("pointSizeRange"));
     /// The memory layout of `pointSizeRange`.
     public static final MemoryLayout ML_pointSizeRange = LAYOUT.select(PathElement.groupElement("pointSizeRange"));
-    /// The byte offset handle of `lineWidthRange` of type `(long baseOffset, long elementIndex)long`.
-    public static final MethodHandle MH_lineWidthRange = LAYOUT.byteOffsetHandle(PathElement.groupElement("lineWidthRange"), PathElement.sequenceElement());
+    /// The byte offset of `lineWidthRange`.
+    public static final long OFFSET_lineWidthRange = LAYOUT.byteOffset(PathElement.groupElement("lineWidthRange"));
     /// The memory layout of `lineWidthRange`.
     public static final MemoryLayout ML_lineWidthRange = LAYOUT.select(PathElement.groupElement("lineWidthRange"));
     /// The [VarHandle] of `pointSizeGranularity` of type `(MemorySegment base, long baseOffset, long index)float`.
@@ -718,6 +718,17 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceLimits`
     public static VkPhysicalDeviceLimits alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceLimits(allocator.allocate(LAYOUT, count)); }
+
+    /// Creates a slice of `VkPhysicalDeviceLimits`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceLimits`
+    public VkPhysicalDeviceLimits asSlice(long index) { return new VkPhysicalDeviceLimits(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceLimits`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceLimits`
+    public VkPhysicalDeviceLimits asSlice(long index, long count) { return new VkPhysicalDeviceLimits(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
 
     /// {@return `maxImageDimension1D` at the given index}
     /// @param segment the segment of the struct
@@ -2332,49 +2343,35 @@ public final class VkPhysicalDeviceLimits extends Struct {
     public VkPhysicalDeviceLimits maxComputeSharedMemorySize(@CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxComputeSharedMemorySize(this.segment(), value); return this; }
 
     /// {@return `maxComputeWorkGroupCount` at the given index}
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public static @CType("uint32_t[3]") java.lang.foreign.MemorySegment get_maxComputeWorkGroupCount(MemorySegment segment, long index, long elementIndex) {
-        try { return segment.asSlice(LAYOUT.scale((long) MH_maxComputeWorkGroupCount.invokeExact(0L, elementIndex), index), ML_maxComputeWorkGroupCount); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("uint32_t[3]") java.lang.foreign.MemorySegment get_maxComputeWorkGroupCount(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxComputeWorkGroupCount, index), ML_maxComputeWorkGroupCount); }
     /// {@return `maxComputeWorkGroupCount`}
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    public static @CType("uint32_t[3]") java.lang.foreign.MemorySegment get_maxComputeWorkGroupCount(MemorySegment segment, long elementIndex) { return VkPhysicalDeviceLimits.get_maxComputeWorkGroupCount(segment, 0L, elementIndex); }
+    /// @param segment the segment of the struct
+    public static @CType("uint32_t[3]") java.lang.foreign.MemorySegment get_maxComputeWorkGroupCount(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxComputeWorkGroupCount(segment, 0L); }
     /// {@return `maxComputeWorkGroupCount` at the given index}
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public @CType("uint32_t[3]") java.lang.foreign.MemorySegment maxComputeWorkGroupCountAt(long index, long elementIndex) { return VkPhysicalDeviceLimits.get_maxComputeWorkGroupCount(this.segment(), index, elementIndex); }
+    /// @param index the index
+    public @CType("uint32_t[3]") java.lang.foreign.MemorySegment maxComputeWorkGroupCountAt(long index) { return VkPhysicalDeviceLimits.get_maxComputeWorkGroupCount(this.segment(), index); }
     /// {@return `maxComputeWorkGroupCount`}
-    /// @param elementIndex the index of the element
-    public @CType("uint32_t[3]") java.lang.foreign.MemorySegment maxComputeWorkGroupCount(long elementIndex) { return VkPhysicalDeviceLimits.get_maxComputeWorkGroupCount(this.segment(), elementIndex); }
+    public @CType("uint32_t[3]") java.lang.foreign.MemorySegment maxComputeWorkGroupCount() { return VkPhysicalDeviceLimits.get_maxComputeWorkGroupCount(this.segment()); }
     /// Sets `maxComputeWorkGroupCount` with the given value at the given index.
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_maxComputeWorkGroupCount(MemorySegment segment, long index, long elementIndex, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) {
-        try { MemorySegment.copy(value, 0L, segment, LAYOUT.scale((long) MH_maxComputeWorkGroupCount.invokeExact(0L, elementIndex), index), ML_maxComputeWorkGroupCount.byteSize()); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_maxComputeWorkGroupCount(MemorySegment segment, long index, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxComputeWorkGroupCount, index), ML_maxComputeWorkGroupCount.byteSize()); }
     /// Sets `maxComputeWorkGroupCount` with the given value.
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_maxComputeWorkGroupCount(MemorySegment segment, long elementIndex, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_maxComputeWorkGroupCount(segment, 0L, elementIndex, value); }
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_maxComputeWorkGroupCount(MemorySegment segment, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_maxComputeWorkGroupCount(segment, 0L, value); }
     /// Sets `maxComputeWorkGroupCount` with the given value at the given index.
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param index the index
+    /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceLimits maxComputeWorkGroupCountAt(long index, long elementIndex, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_maxComputeWorkGroupCount(this.segment(), index, elementIndex, value); return this; }
+    public VkPhysicalDeviceLimits maxComputeWorkGroupCountAt(long index, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_maxComputeWorkGroupCount(this.segment(), index, value); return this; }
     /// Sets `maxComputeWorkGroupCount` with the given value.
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceLimits maxComputeWorkGroupCount(long elementIndex, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_maxComputeWorkGroupCount(this.segment(), elementIndex, value); return this; }
+    public VkPhysicalDeviceLimits maxComputeWorkGroupCount(@CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_maxComputeWorkGroupCount(this.segment(), value); return this; }
 
     /// {@return `maxComputeWorkGroupInvocations` at the given index}
     /// @param segment the segment of the struct
@@ -2408,49 +2405,35 @@ public final class VkPhysicalDeviceLimits extends Struct {
     public VkPhysicalDeviceLimits maxComputeWorkGroupInvocations(@CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxComputeWorkGroupInvocations(this.segment(), value); return this; }
 
     /// {@return `maxComputeWorkGroupSize` at the given index}
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public static @CType("uint32_t[3]") java.lang.foreign.MemorySegment get_maxComputeWorkGroupSize(MemorySegment segment, long index, long elementIndex) {
-        try { return segment.asSlice(LAYOUT.scale((long) MH_maxComputeWorkGroupSize.invokeExact(0L, elementIndex), index), ML_maxComputeWorkGroupSize); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("uint32_t[3]") java.lang.foreign.MemorySegment get_maxComputeWorkGroupSize(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxComputeWorkGroupSize, index), ML_maxComputeWorkGroupSize); }
     /// {@return `maxComputeWorkGroupSize`}
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    public static @CType("uint32_t[3]") java.lang.foreign.MemorySegment get_maxComputeWorkGroupSize(MemorySegment segment, long elementIndex) { return VkPhysicalDeviceLimits.get_maxComputeWorkGroupSize(segment, 0L, elementIndex); }
+    /// @param segment the segment of the struct
+    public static @CType("uint32_t[3]") java.lang.foreign.MemorySegment get_maxComputeWorkGroupSize(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxComputeWorkGroupSize(segment, 0L); }
     /// {@return `maxComputeWorkGroupSize` at the given index}
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public @CType("uint32_t[3]") java.lang.foreign.MemorySegment maxComputeWorkGroupSizeAt(long index, long elementIndex) { return VkPhysicalDeviceLimits.get_maxComputeWorkGroupSize(this.segment(), index, elementIndex); }
+    /// @param index the index
+    public @CType("uint32_t[3]") java.lang.foreign.MemorySegment maxComputeWorkGroupSizeAt(long index) { return VkPhysicalDeviceLimits.get_maxComputeWorkGroupSize(this.segment(), index); }
     /// {@return `maxComputeWorkGroupSize`}
-    /// @param elementIndex the index of the element
-    public @CType("uint32_t[3]") java.lang.foreign.MemorySegment maxComputeWorkGroupSize(long elementIndex) { return VkPhysicalDeviceLimits.get_maxComputeWorkGroupSize(this.segment(), elementIndex); }
+    public @CType("uint32_t[3]") java.lang.foreign.MemorySegment maxComputeWorkGroupSize() { return VkPhysicalDeviceLimits.get_maxComputeWorkGroupSize(this.segment()); }
     /// Sets `maxComputeWorkGroupSize` with the given value at the given index.
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_maxComputeWorkGroupSize(MemorySegment segment, long index, long elementIndex, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) {
-        try { MemorySegment.copy(value, 0L, segment, LAYOUT.scale((long) MH_maxComputeWorkGroupSize.invokeExact(0L, elementIndex), index), ML_maxComputeWorkGroupSize.byteSize()); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_maxComputeWorkGroupSize(MemorySegment segment, long index, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxComputeWorkGroupSize, index), ML_maxComputeWorkGroupSize.byteSize()); }
     /// Sets `maxComputeWorkGroupSize` with the given value.
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_maxComputeWorkGroupSize(MemorySegment segment, long elementIndex, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_maxComputeWorkGroupSize(segment, 0L, elementIndex, value); }
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_maxComputeWorkGroupSize(MemorySegment segment, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_maxComputeWorkGroupSize(segment, 0L, value); }
     /// Sets `maxComputeWorkGroupSize` with the given value at the given index.
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param index the index
+    /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceLimits maxComputeWorkGroupSizeAt(long index, long elementIndex, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_maxComputeWorkGroupSize(this.segment(), index, elementIndex, value); return this; }
+    public VkPhysicalDeviceLimits maxComputeWorkGroupSizeAt(long index, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_maxComputeWorkGroupSize(this.segment(), index, value); return this; }
     /// Sets `maxComputeWorkGroupSize` with the given value.
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceLimits maxComputeWorkGroupSize(long elementIndex, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_maxComputeWorkGroupSize(this.segment(), elementIndex, value); return this; }
+    public VkPhysicalDeviceLimits maxComputeWorkGroupSize(@CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_maxComputeWorkGroupSize(this.segment(), value); return this; }
 
     /// {@return `subPixelPrecisionBits` at the given index}
     /// @param segment the segment of the struct
@@ -2701,94 +2684,66 @@ public final class VkPhysicalDeviceLimits extends Struct {
     public VkPhysicalDeviceLimits maxViewports(@CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxViewports(this.segment(), value); return this; }
 
     /// {@return `maxViewportDimensions` at the given index}
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public static @CType("uint32_t[2]") java.lang.foreign.MemorySegment get_maxViewportDimensions(MemorySegment segment, long index, long elementIndex) {
-        try { return segment.asSlice(LAYOUT.scale((long) MH_maxViewportDimensions.invokeExact(0L, elementIndex), index), ML_maxViewportDimensions); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("uint32_t[2]") java.lang.foreign.MemorySegment get_maxViewportDimensions(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxViewportDimensions, index), ML_maxViewportDimensions); }
     /// {@return `maxViewportDimensions`}
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    public static @CType("uint32_t[2]") java.lang.foreign.MemorySegment get_maxViewportDimensions(MemorySegment segment, long elementIndex) { return VkPhysicalDeviceLimits.get_maxViewportDimensions(segment, 0L, elementIndex); }
+    /// @param segment the segment of the struct
+    public static @CType("uint32_t[2]") java.lang.foreign.MemorySegment get_maxViewportDimensions(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxViewportDimensions(segment, 0L); }
     /// {@return `maxViewportDimensions` at the given index}
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public @CType("uint32_t[2]") java.lang.foreign.MemorySegment maxViewportDimensionsAt(long index, long elementIndex) { return VkPhysicalDeviceLimits.get_maxViewportDimensions(this.segment(), index, elementIndex); }
+    /// @param index the index
+    public @CType("uint32_t[2]") java.lang.foreign.MemorySegment maxViewportDimensionsAt(long index) { return VkPhysicalDeviceLimits.get_maxViewportDimensions(this.segment(), index); }
     /// {@return `maxViewportDimensions`}
-    /// @param elementIndex the index of the element
-    public @CType("uint32_t[2]") java.lang.foreign.MemorySegment maxViewportDimensions(long elementIndex) { return VkPhysicalDeviceLimits.get_maxViewportDimensions(this.segment(), elementIndex); }
+    public @CType("uint32_t[2]") java.lang.foreign.MemorySegment maxViewportDimensions() { return VkPhysicalDeviceLimits.get_maxViewportDimensions(this.segment()); }
     /// Sets `maxViewportDimensions` with the given value at the given index.
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_maxViewportDimensions(MemorySegment segment, long index, long elementIndex, @CType("uint32_t[2]") java.lang.foreign.MemorySegment value) {
-        try { MemorySegment.copy(value, 0L, segment, LAYOUT.scale((long) MH_maxViewportDimensions.invokeExact(0L, elementIndex), index), ML_maxViewportDimensions.byteSize()); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_maxViewportDimensions(MemorySegment segment, long index, @CType("uint32_t[2]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxViewportDimensions, index), ML_maxViewportDimensions.byteSize()); }
     /// Sets `maxViewportDimensions` with the given value.
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_maxViewportDimensions(MemorySegment segment, long elementIndex, @CType("uint32_t[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_maxViewportDimensions(segment, 0L, elementIndex, value); }
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_maxViewportDimensions(MemorySegment segment, @CType("uint32_t[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_maxViewportDimensions(segment, 0L, value); }
     /// Sets `maxViewportDimensions` with the given value at the given index.
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param index the index
+    /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceLimits maxViewportDimensionsAt(long index, long elementIndex, @CType("uint32_t[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_maxViewportDimensions(this.segment(), index, elementIndex, value); return this; }
+    public VkPhysicalDeviceLimits maxViewportDimensionsAt(long index, @CType("uint32_t[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_maxViewportDimensions(this.segment(), index, value); return this; }
     /// Sets `maxViewportDimensions` with the given value.
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceLimits maxViewportDimensions(long elementIndex, @CType("uint32_t[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_maxViewportDimensions(this.segment(), elementIndex, value); return this; }
+    public VkPhysicalDeviceLimits maxViewportDimensions(@CType("uint32_t[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_maxViewportDimensions(this.segment(), value); return this; }
 
     /// {@return `viewportBoundsRange` at the given index}
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public static @CType("float[2]") java.lang.foreign.MemorySegment get_viewportBoundsRange(MemorySegment segment, long index, long elementIndex) {
-        try { return segment.asSlice(LAYOUT.scale((long) MH_viewportBoundsRange.invokeExact(0L, elementIndex), index), ML_viewportBoundsRange); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("float[2]") java.lang.foreign.MemorySegment get_viewportBoundsRange(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_viewportBoundsRange, index), ML_viewportBoundsRange); }
     /// {@return `viewportBoundsRange`}
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    public static @CType("float[2]") java.lang.foreign.MemorySegment get_viewportBoundsRange(MemorySegment segment, long elementIndex) { return VkPhysicalDeviceLimits.get_viewportBoundsRange(segment, 0L, elementIndex); }
+    /// @param segment the segment of the struct
+    public static @CType("float[2]") java.lang.foreign.MemorySegment get_viewportBoundsRange(MemorySegment segment) { return VkPhysicalDeviceLimits.get_viewportBoundsRange(segment, 0L); }
     /// {@return `viewportBoundsRange` at the given index}
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public @CType("float[2]") java.lang.foreign.MemorySegment viewportBoundsRangeAt(long index, long elementIndex) { return VkPhysicalDeviceLimits.get_viewportBoundsRange(this.segment(), index, elementIndex); }
+    /// @param index the index
+    public @CType("float[2]") java.lang.foreign.MemorySegment viewportBoundsRangeAt(long index) { return VkPhysicalDeviceLimits.get_viewportBoundsRange(this.segment(), index); }
     /// {@return `viewportBoundsRange`}
-    /// @param elementIndex the index of the element
-    public @CType("float[2]") java.lang.foreign.MemorySegment viewportBoundsRange(long elementIndex) { return VkPhysicalDeviceLimits.get_viewportBoundsRange(this.segment(), elementIndex); }
+    public @CType("float[2]") java.lang.foreign.MemorySegment viewportBoundsRange() { return VkPhysicalDeviceLimits.get_viewportBoundsRange(this.segment()); }
     /// Sets `viewportBoundsRange` with the given value at the given index.
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_viewportBoundsRange(MemorySegment segment, long index, long elementIndex, @CType("float[2]") java.lang.foreign.MemorySegment value) {
-        try { MemorySegment.copy(value, 0L, segment, LAYOUT.scale((long) MH_viewportBoundsRange.invokeExact(0L, elementIndex), index), ML_viewportBoundsRange.byteSize()); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_viewportBoundsRange(MemorySegment segment, long index, @CType("float[2]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_viewportBoundsRange, index), ML_viewportBoundsRange.byteSize()); }
     /// Sets `viewportBoundsRange` with the given value.
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_viewportBoundsRange(MemorySegment segment, long elementIndex, @CType("float[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_viewportBoundsRange(segment, 0L, elementIndex, value); }
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_viewportBoundsRange(MemorySegment segment, @CType("float[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_viewportBoundsRange(segment, 0L, value); }
     /// Sets `viewportBoundsRange` with the given value at the given index.
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param index the index
+    /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceLimits viewportBoundsRangeAt(long index, long elementIndex, @CType("float[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_viewportBoundsRange(this.segment(), index, elementIndex, value); return this; }
+    public VkPhysicalDeviceLimits viewportBoundsRangeAt(long index, @CType("float[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_viewportBoundsRange(this.segment(), index, value); return this; }
     /// Sets `viewportBoundsRange` with the given value.
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceLimits viewportBoundsRange(long elementIndex, @CType("float[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_viewportBoundsRange(this.segment(), elementIndex, value); return this; }
+    public VkPhysicalDeviceLimits viewportBoundsRange(@CType("float[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_viewportBoundsRange(this.segment(), value); return this; }
 
     /// {@return `viewportSubPixelBits` at the given index}
     /// @param segment the segment of the struct
@@ -3783,94 +3738,66 @@ public final class VkPhysicalDeviceLimits extends Struct {
     public VkPhysicalDeviceLimits discreteQueuePriorities(@CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_discreteQueuePriorities(this.segment(), value); return this; }
 
     /// {@return `pointSizeRange` at the given index}
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public static @CType("float[2]") java.lang.foreign.MemorySegment get_pointSizeRange(MemorySegment segment, long index, long elementIndex) {
-        try { return segment.asSlice(LAYOUT.scale((long) MH_pointSizeRange.invokeExact(0L, elementIndex), index), ML_pointSizeRange); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("float[2]") java.lang.foreign.MemorySegment get_pointSizeRange(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_pointSizeRange, index), ML_pointSizeRange); }
     /// {@return `pointSizeRange`}
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    public static @CType("float[2]") java.lang.foreign.MemorySegment get_pointSizeRange(MemorySegment segment, long elementIndex) { return VkPhysicalDeviceLimits.get_pointSizeRange(segment, 0L, elementIndex); }
+    /// @param segment the segment of the struct
+    public static @CType("float[2]") java.lang.foreign.MemorySegment get_pointSizeRange(MemorySegment segment) { return VkPhysicalDeviceLimits.get_pointSizeRange(segment, 0L); }
     /// {@return `pointSizeRange` at the given index}
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public @CType("float[2]") java.lang.foreign.MemorySegment pointSizeRangeAt(long index, long elementIndex) { return VkPhysicalDeviceLimits.get_pointSizeRange(this.segment(), index, elementIndex); }
+    /// @param index the index
+    public @CType("float[2]") java.lang.foreign.MemorySegment pointSizeRangeAt(long index) { return VkPhysicalDeviceLimits.get_pointSizeRange(this.segment(), index); }
     /// {@return `pointSizeRange`}
-    /// @param elementIndex the index of the element
-    public @CType("float[2]") java.lang.foreign.MemorySegment pointSizeRange(long elementIndex) { return VkPhysicalDeviceLimits.get_pointSizeRange(this.segment(), elementIndex); }
+    public @CType("float[2]") java.lang.foreign.MemorySegment pointSizeRange() { return VkPhysicalDeviceLimits.get_pointSizeRange(this.segment()); }
     /// Sets `pointSizeRange` with the given value at the given index.
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_pointSizeRange(MemorySegment segment, long index, long elementIndex, @CType("float[2]") java.lang.foreign.MemorySegment value) {
-        try { MemorySegment.copy(value, 0L, segment, LAYOUT.scale((long) MH_pointSizeRange.invokeExact(0L, elementIndex), index), ML_pointSizeRange.byteSize()); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_pointSizeRange(MemorySegment segment, long index, @CType("float[2]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_pointSizeRange, index), ML_pointSizeRange.byteSize()); }
     /// Sets `pointSizeRange` with the given value.
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_pointSizeRange(MemorySegment segment, long elementIndex, @CType("float[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_pointSizeRange(segment, 0L, elementIndex, value); }
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_pointSizeRange(MemorySegment segment, @CType("float[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_pointSizeRange(segment, 0L, value); }
     /// Sets `pointSizeRange` with the given value at the given index.
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param index the index
+    /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceLimits pointSizeRangeAt(long index, long elementIndex, @CType("float[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_pointSizeRange(this.segment(), index, elementIndex, value); return this; }
+    public VkPhysicalDeviceLimits pointSizeRangeAt(long index, @CType("float[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_pointSizeRange(this.segment(), index, value); return this; }
     /// Sets `pointSizeRange` with the given value.
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceLimits pointSizeRange(long elementIndex, @CType("float[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_pointSizeRange(this.segment(), elementIndex, value); return this; }
+    public VkPhysicalDeviceLimits pointSizeRange(@CType("float[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_pointSizeRange(this.segment(), value); return this; }
 
     /// {@return `lineWidthRange` at the given index}
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public static @CType("float[2]") java.lang.foreign.MemorySegment get_lineWidthRange(MemorySegment segment, long index, long elementIndex) {
-        try { return segment.asSlice(LAYOUT.scale((long) MH_lineWidthRange.invokeExact(0L, elementIndex), index), ML_lineWidthRange); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("float[2]") java.lang.foreign.MemorySegment get_lineWidthRange(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_lineWidthRange, index), ML_lineWidthRange); }
     /// {@return `lineWidthRange`}
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    public static @CType("float[2]") java.lang.foreign.MemorySegment get_lineWidthRange(MemorySegment segment, long elementIndex) { return VkPhysicalDeviceLimits.get_lineWidthRange(segment, 0L, elementIndex); }
+    /// @param segment the segment of the struct
+    public static @CType("float[2]") java.lang.foreign.MemorySegment get_lineWidthRange(MemorySegment segment) { return VkPhysicalDeviceLimits.get_lineWidthRange(segment, 0L); }
     /// {@return `lineWidthRange` at the given index}
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public @CType("float[2]") java.lang.foreign.MemorySegment lineWidthRangeAt(long index, long elementIndex) { return VkPhysicalDeviceLimits.get_lineWidthRange(this.segment(), index, elementIndex); }
+    /// @param index the index
+    public @CType("float[2]") java.lang.foreign.MemorySegment lineWidthRangeAt(long index) { return VkPhysicalDeviceLimits.get_lineWidthRange(this.segment(), index); }
     /// {@return `lineWidthRange`}
-    /// @param elementIndex the index of the element
-    public @CType("float[2]") java.lang.foreign.MemorySegment lineWidthRange(long elementIndex) { return VkPhysicalDeviceLimits.get_lineWidthRange(this.segment(), elementIndex); }
+    public @CType("float[2]") java.lang.foreign.MemorySegment lineWidthRange() { return VkPhysicalDeviceLimits.get_lineWidthRange(this.segment()); }
     /// Sets `lineWidthRange` with the given value at the given index.
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_lineWidthRange(MemorySegment segment, long index, long elementIndex, @CType("float[2]") java.lang.foreign.MemorySegment value) {
-        try { MemorySegment.copy(value, 0L, segment, LAYOUT.scale((long) MH_lineWidthRange.invokeExact(0L, elementIndex), index), ML_lineWidthRange.byteSize()); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_lineWidthRange(MemorySegment segment, long index, @CType("float[2]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_lineWidthRange, index), ML_lineWidthRange.byteSize()); }
     /// Sets `lineWidthRange` with the given value.
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_lineWidthRange(MemorySegment segment, long elementIndex, @CType("float[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_lineWidthRange(segment, 0L, elementIndex, value); }
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_lineWidthRange(MemorySegment segment, @CType("float[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_lineWidthRange(segment, 0L, value); }
     /// Sets `lineWidthRange` with the given value at the given index.
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param index the index
+    /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceLimits lineWidthRangeAt(long index, long elementIndex, @CType("float[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_lineWidthRange(this.segment(), index, elementIndex, value); return this; }
+    public VkPhysicalDeviceLimits lineWidthRangeAt(long index, @CType("float[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_lineWidthRange(this.segment(), index, value); return this; }
     /// Sets `lineWidthRange` with the given value.
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceLimits lineWidthRange(long elementIndex, @CType("float[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_lineWidthRange(this.segment(), elementIndex, value); return this; }
+    public VkPhysicalDeviceLimits lineWidthRange(@CType("float[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_lineWidthRange(this.segment(), value); return this; }
 
     /// {@return `pointSizeGranularity` at the given index}
     /// @param segment the segment of the struct

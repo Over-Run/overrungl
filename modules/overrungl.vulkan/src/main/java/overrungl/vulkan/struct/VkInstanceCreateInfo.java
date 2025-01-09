@@ -119,6 +119,17 @@ public final class VkInstanceCreateInfo extends Struct {
     /// @return the allocated `VkInstanceCreateInfo`
     public static VkInstanceCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkInstanceCreateInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkInstanceCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkInstanceCreateInfo`
+    public VkInstanceCreateInfo asSlice(long index) { return new VkInstanceCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkInstanceCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkInstanceCreateInfo`
+    public VkInstanceCreateInfo asSlice(long index, long count) { return new VkInstanceCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

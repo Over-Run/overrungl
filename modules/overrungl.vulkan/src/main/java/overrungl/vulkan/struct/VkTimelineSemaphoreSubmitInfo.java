@@ -107,6 +107,17 @@ public final class VkTimelineSemaphoreSubmitInfo extends Struct {
     /// @return the allocated `VkTimelineSemaphoreSubmitInfo`
     public static VkTimelineSemaphoreSubmitInfo alloc(SegmentAllocator allocator, long count) { return new VkTimelineSemaphoreSubmitInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkTimelineSemaphoreSubmitInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkTimelineSemaphoreSubmitInfo`
+    public VkTimelineSemaphoreSubmitInfo asSlice(long index) { return new VkTimelineSemaphoreSubmitInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkTimelineSemaphoreSubmitInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkTimelineSemaphoreSubmitInfo`
+    public VkTimelineSemaphoreSubmitInfo asSlice(long index, long count) { return new VkTimelineSemaphoreSubmitInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

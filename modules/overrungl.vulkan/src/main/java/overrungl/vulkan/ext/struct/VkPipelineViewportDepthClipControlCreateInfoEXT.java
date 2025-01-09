@@ -89,6 +89,17 @@ public final class VkPipelineViewportDepthClipControlCreateInfoEXT extends Struc
     /// @return the allocated `VkPipelineViewportDepthClipControlCreateInfoEXT`
     public static VkPipelineViewportDepthClipControlCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkPipelineViewportDepthClipControlCreateInfoEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPipelineViewportDepthClipControlCreateInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPipelineViewportDepthClipControlCreateInfoEXT`
+    public VkPipelineViewportDepthClipControlCreateInfoEXT asSlice(long index) { return new VkPipelineViewportDepthClipControlCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPipelineViewportDepthClipControlCreateInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPipelineViewportDepthClipControlCreateInfoEXT`
+    public VkPipelineViewportDepthClipControlCreateInfoEXT asSlice(long index, long count) { return new VkPipelineViewportDepthClipControlCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

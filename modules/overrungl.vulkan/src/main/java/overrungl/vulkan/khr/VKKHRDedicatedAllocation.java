@@ -23,13 +23,12 @@ import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 import static overrungl.vulkan.VK11.*;
-public class VKKHRDedicatedAllocation {
+public final class VKKHRDedicatedAllocation {
     public static final int VK_KHR_DEDICATED_ALLOCATION_SPEC_VERSION = 3;
     public static final String VK_KHR_DEDICATED_ALLOCATION_EXTENSION_NAME = "VK_KHR_dedicated_allocation";
     public static final int VK_STRUCTURE_TYPE_MEMORY_DEDICATED_REQUIREMENTS_KHR = VK_STRUCTURE_TYPE_MEMORY_DEDICATED_REQUIREMENTS;
     public static final int VK_STRUCTURE_TYPE_MEMORY_DEDICATED_ALLOCATE_INFO_KHR = VK_STRUCTURE_TYPE_MEMORY_DEDICATED_ALLOCATE_INFO;
 
-    public VKKHRDedicatedAllocation(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKKHRDedicatedAllocation() { }
 
 }

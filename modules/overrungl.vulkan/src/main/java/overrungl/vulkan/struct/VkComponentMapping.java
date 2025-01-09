@@ -95,6 +95,17 @@ public final class VkComponentMapping extends Struct {
     /// @return the allocated `VkComponentMapping`
     public static VkComponentMapping alloc(SegmentAllocator allocator, long count) { return new VkComponentMapping(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkComponentMapping`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkComponentMapping`
+    public VkComponentMapping asSlice(long index) { return new VkComponentMapping(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkComponentMapping`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkComponentMapping`
+    public VkComponentMapping asSlice(long index, long count) { return new VkComponentMapping(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `r` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

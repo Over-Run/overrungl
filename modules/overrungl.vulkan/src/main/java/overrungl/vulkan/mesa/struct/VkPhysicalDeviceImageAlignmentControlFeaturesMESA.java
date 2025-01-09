@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceImageAlignmentControlFeaturesMESA extends Str
     /// @return the allocated `VkPhysicalDeviceImageAlignmentControlFeaturesMESA`
     public static VkPhysicalDeviceImageAlignmentControlFeaturesMESA alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceImageAlignmentControlFeaturesMESA(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceImageAlignmentControlFeaturesMESA`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceImageAlignmentControlFeaturesMESA`
+    public VkPhysicalDeviceImageAlignmentControlFeaturesMESA asSlice(long index) { return new VkPhysicalDeviceImageAlignmentControlFeaturesMESA(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceImageAlignmentControlFeaturesMESA`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceImageAlignmentControlFeaturesMESA`
+    public VkPhysicalDeviceImageAlignmentControlFeaturesMESA asSlice(long index, long count) { return new VkPhysicalDeviceImageAlignmentControlFeaturesMESA(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

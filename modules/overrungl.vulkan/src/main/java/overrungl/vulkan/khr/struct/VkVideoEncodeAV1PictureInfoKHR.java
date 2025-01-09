@@ -39,7 +39,7 @@ import static overrungl.vulkan.khr.VKKHRVideoDecodeAv1.*;
 /// ### pStdPictureInfo
 /// [VarHandle][#VH_pStdPictureInfo] - [Getter][#pStdPictureInfo()] - [Setter][#pStdPictureInfo(java.lang.foreign.MemorySegment)]
 /// ### referenceNameSlotIndices
-/// [Byte offset handle][#MH_referenceNameSlotIndices] - [Memory layout][#ML_referenceNameSlotIndices] - [Getter][#referenceNameSlotIndices(long)] - [Setter][#referenceNameSlotIndices(long, java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_referenceNameSlotIndices] - [Memory layout][#ML_referenceNameSlotIndices] - [Getter][#referenceNameSlotIndices()] - [Setter][#referenceNameSlotIndices(java.lang.foreign.MemorySegment)]
 /// ### primaryReferenceCdfOnly
 /// [VarHandle][#VH_primaryReferenceCdfOnly] - [Getter][#primaryReferenceCdfOnly()] - [Setter][#primaryReferenceCdfOnly(int)]
 /// ### generateObuExtensionHeader
@@ -84,8 +84,8 @@ public final class VkVideoEncodeAV1PictureInfoKHR extends Struct {
     public static final VarHandle VH_constantQIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("constantQIndex"));
     /// The [VarHandle] of `pStdPictureInfo` of type `(MemorySegment base, long baseOffset, long index)java.lang.foreign.MemorySegment`.
     public static final VarHandle VH_pStdPictureInfo = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pStdPictureInfo"));
-    /// The byte offset handle of `referenceNameSlotIndices` of type `(long baseOffset, long elementIndex)long`.
-    public static final MethodHandle MH_referenceNameSlotIndices = LAYOUT.byteOffsetHandle(PathElement.groupElement("referenceNameSlotIndices"), PathElement.sequenceElement());
+    /// The byte offset of `referenceNameSlotIndices`.
+    public static final long OFFSET_referenceNameSlotIndices = LAYOUT.byteOffset(PathElement.groupElement("referenceNameSlotIndices"));
     /// The memory layout of `referenceNameSlotIndices`.
     public static final MemoryLayout ML_referenceNameSlotIndices = LAYOUT.select(PathElement.groupElement("referenceNameSlotIndices"));
     /// The [VarHandle] of `primaryReferenceCdfOnly` of type `(MemorySegment base, long baseOffset, long index)int`.
@@ -127,6 +127,17 @@ public final class VkVideoEncodeAV1PictureInfoKHR extends Struct {
     /// @param count     the count
     /// @return the allocated `VkVideoEncodeAV1PictureInfoKHR`
     public static VkVideoEncodeAV1PictureInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoEncodeAV1PictureInfoKHR(allocator.allocate(LAYOUT, count)); }
+
+    /// Creates a slice of `VkVideoEncodeAV1PictureInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkVideoEncodeAV1PictureInfoKHR`
+    public VkVideoEncodeAV1PictureInfoKHR asSlice(long index) { return new VkVideoEncodeAV1PictureInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkVideoEncodeAV1PictureInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkVideoEncodeAV1PictureInfoKHR`
+    public VkVideoEncodeAV1PictureInfoKHR asSlice(long index, long count) { return new VkVideoEncodeAV1PictureInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -315,49 +326,35 @@ public final class VkVideoEncodeAV1PictureInfoKHR extends Struct {
     public VkVideoEncodeAV1PictureInfoKHR pStdPictureInfo(@CType("const StdVideoEncodeAV1PictureInfo *") java.lang.foreign.MemorySegment value) { VkVideoEncodeAV1PictureInfoKHR.set_pStdPictureInfo(this.segment(), value); return this; }
 
     /// {@return `referenceNameSlotIndices` at the given index}
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public static @CType("int32_t[VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR]") java.lang.foreign.MemorySegment get_referenceNameSlotIndices(MemorySegment segment, long index, long elementIndex) {
-        try { return segment.asSlice(LAYOUT.scale((long) MH_referenceNameSlotIndices.invokeExact(0L, elementIndex), index), ML_referenceNameSlotIndices); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("int32_t[VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR]") java.lang.foreign.MemorySegment get_referenceNameSlotIndices(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_referenceNameSlotIndices, index), ML_referenceNameSlotIndices); }
     /// {@return `referenceNameSlotIndices`}
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    public static @CType("int32_t[VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR]") java.lang.foreign.MemorySegment get_referenceNameSlotIndices(MemorySegment segment, long elementIndex) { return VkVideoEncodeAV1PictureInfoKHR.get_referenceNameSlotIndices(segment, 0L, elementIndex); }
+    /// @param segment the segment of the struct
+    public static @CType("int32_t[VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR]") java.lang.foreign.MemorySegment get_referenceNameSlotIndices(MemorySegment segment) { return VkVideoEncodeAV1PictureInfoKHR.get_referenceNameSlotIndices(segment, 0L); }
     /// {@return `referenceNameSlotIndices` at the given index}
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public @CType("int32_t[VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR]") java.lang.foreign.MemorySegment referenceNameSlotIndicesAt(long index, long elementIndex) { return VkVideoEncodeAV1PictureInfoKHR.get_referenceNameSlotIndices(this.segment(), index, elementIndex); }
+    /// @param index the index
+    public @CType("int32_t[VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR]") java.lang.foreign.MemorySegment referenceNameSlotIndicesAt(long index) { return VkVideoEncodeAV1PictureInfoKHR.get_referenceNameSlotIndices(this.segment(), index); }
     /// {@return `referenceNameSlotIndices`}
-    /// @param elementIndex the index of the element
-    public @CType("int32_t[VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR]") java.lang.foreign.MemorySegment referenceNameSlotIndices(long elementIndex) { return VkVideoEncodeAV1PictureInfoKHR.get_referenceNameSlotIndices(this.segment(), elementIndex); }
+    public @CType("int32_t[VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR]") java.lang.foreign.MemorySegment referenceNameSlotIndices() { return VkVideoEncodeAV1PictureInfoKHR.get_referenceNameSlotIndices(this.segment()); }
     /// Sets `referenceNameSlotIndices` with the given value at the given index.
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_referenceNameSlotIndices(MemorySegment segment, long index, long elementIndex, @CType("int32_t[VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR]") java.lang.foreign.MemorySegment value) {
-        try { MemorySegment.copy(value, 0L, segment, LAYOUT.scale((long) MH_referenceNameSlotIndices.invokeExact(0L, elementIndex), index), ML_referenceNameSlotIndices.byteSize()); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_referenceNameSlotIndices(MemorySegment segment, long index, @CType("int32_t[VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_referenceNameSlotIndices, index), ML_referenceNameSlotIndices.byteSize()); }
     /// Sets `referenceNameSlotIndices` with the given value.
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_referenceNameSlotIndices(MemorySegment segment, long elementIndex, @CType("int32_t[VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR]") java.lang.foreign.MemorySegment value) { VkVideoEncodeAV1PictureInfoKHR.set_referenceNameSlotIndices(segment, 0L, elementIndex, value); }
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_referenceNameSlotIndices(MemorySegment segment, @CType("int32_t[VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR]") java.lang.foreign.MemorySegment value) { VkVideoEncodeAV1PictureInfoKHR.set_referenceNameSlotIndices(segment, 0L, value); }
     /// Sets `referenceNameSlotIndices` with the given value at the given index.
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param index the index
+    /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1PictureInfoKHR referenceNameSlotIndicesAt(long index, long elementIndex, @CType("int32_t[VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR]") java.lang.foreign.MemorySegment value) { VkVideoEncodeAV1PictureInfoKHR.set_referenceNameSlotIndices(this.segment(), index, elementIndex, value); return this; }
+    public VkVideoEncodeAV1PictureInfoKHR referenceNameSlotIndicesAt(long index, @CType("int32_t[VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR]") java.lang.foreign.MemorySegment value) { VkVideoEncodeAV1PictureInfoKHR.set_referenceNameSlotIndices(this.segment(), index, value); return this; }
     /// Sets `referenceNameSlotIndices` with the given value.
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param value the value
     /// @return `this`
-    public VkVideoEncodeAV1PictureInfoKHR referenceNameSlotIndices(long elementIndex, @CType("int32_t[VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR]") java.lang.foreign.MemorySegment value) { VkVideoEncodeAV1PictureInfoKHR.set_referenceNameSlotIndices(this.segment(), elementIndex, value); return this; }
+    public VkVideoEncodeAV1PictureInfoKHR referenceNameSlotIndices(@CType("int32_t[VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR]") java.lang.foreign.MemorySegment value) { VkVideoEncodeAV1PictureInfoKHR.set_referenceNameSlotIndices(this.segment(), value); return this; }
 
     /// {@return `primaryReferenceCdfOnly` at the given index}
     /// @param segment the segment of the struct

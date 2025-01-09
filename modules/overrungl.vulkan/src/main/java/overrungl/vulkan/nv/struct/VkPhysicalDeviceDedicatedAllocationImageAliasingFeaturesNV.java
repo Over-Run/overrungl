@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV ex
     /// @return the allocated `VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV`
     public static VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV`
+    public VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV asSlice(long index) { return new VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV`
+    public VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV asSlice(long index, long count) { return new VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

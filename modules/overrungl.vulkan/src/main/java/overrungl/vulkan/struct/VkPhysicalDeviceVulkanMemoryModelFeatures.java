@@ -101,6 +101,17 @@ public final class VkPhysicalDeviceVulkanMemoryModelFeatures extends Struct {
     /// @return the allocated `VkPhysicalDeviceVulkanMemoryModelFeatures`
     public static VkPhysicalDeviceVulkanMemoryModelFeatures alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceVulkanMemoryModelFeatures(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceVulkanMemoryModelFeatures`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceVulkanMemoryModelFeatures`
+    public VkPhysicalDeviceVulkanMemoryModelFeatures asSlice(long index) { return new VkPhysicalDeviceVulkanMemoryModelFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceVulkanMemoryModelFeatures`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceVulkanMemoryModelFeatures`
+    public VkPhysicalDeviceVulkanMemoryModelFeatures asSlice(long index, long count) { return new VkPhysicalDeviceVulkanMemoryModelFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

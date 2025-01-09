@@ -77,6 +77,17 @@ public final class VkRefreshCycleDurationGOOGLE extends Struct {
     /// @return the allocated `VkRefreshCycleDurationGOOGLE`
     public static VkRefreshCycleDurationGOOGLE alloc(SegmentAllocator allocator, long count) { return new VkRefreshCycleDurationGOOGLE(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkRefreshCycleDurationGOOGLE`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkRefreshCycleDurationGOOGLE`
+    public VkRefreshCycleDurationGOOGLE asSlice(long index) { return new VkRefreshCycleDurationGOOGLE(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkRefreshCycleDurationGOOGLE`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkRefreshCycleDurationGOOGLE`
+    public VkRefreshCycleDurationGOOGLE asSlice(long index, long count) { return new VkRefreshCycleDurationGOOGLE(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `refreshDuration` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

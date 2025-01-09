@@ -95,6 +95,17 @@ public final class VkCommandBufferSubmitInfo extends Struct {
     /// @return the allocated `VkCommandBufferSubmitInfo`
     public static VkCommandBufferSubmitInfo alloc(SegmentAllocator allocator, long count) { return new VkCommandBufferSubmitInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkCommandBufferSubmitInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkCommandBufferSubmitInfo`
+    public VkCommandBufferSubmitInfo asSlice(long index) { return new VkCommandBufferSubmitInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkCommandBufferSubmitInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkCommandBufferSubmitInfo`
+    public VkCommandBufferSubmitInfo asSlice(long index, long count) { return new VkCommandBufferSubmitInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

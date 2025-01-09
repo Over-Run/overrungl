@@ -22,7 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKEXTSubpassMergeFeedback {
+public final class VKEXTSubpassMergeFeedback {
     public static final int VK_SUBPASS_MERGE_STATUS_MERGED_EXT = 0;
     public static final int VK_SUBPASS_MERGE_STATUS_DISALLOWED_EXT = 1;
     public static final int VK_SUBPASS_MERGE_STATUS_NOT_MERGED_SIDE_EFFECTS_EXT = 2;
@@ -44,7 +44,6 @@ public class VKEXTSubpassMergeFeedback {
     public static final int VK_STRUCTURE_TYPE_RENDER_PASS_CREATION_FEEDBACK_CREATE_INFO_EXT = 1000458002;
     public static final int VK_STRUCTURE_TYPE_RENDER_PASS_SUBPASS_FEEDBACK_CREATE_INFO_EXT = 1000458003;
 
-    public VKEXTSubpassMergeFeedback(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKEXTSubpassMergeFeedback() { }
 
 }

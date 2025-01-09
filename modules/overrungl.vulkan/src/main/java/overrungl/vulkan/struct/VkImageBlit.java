@@ -28,11 +28,11 @@ import overrungl.util.*;
 /// ### srcSubresource
 /// [Byte offset][#OFFSET_srcSubresource] - [Memory layout][#ML_srcSubresource] - [Getter][#srcSubresource()] - [Setter][#srcSubresource(java.lang.foreign.MemorySegment)]
 /// ### srcOffsets
-/// [Byte offset handle][#MH_srcOffsets] - [Memory layout][#ML_srcOffsets] - [Getter][#srcOffsets(long)] - [Setter][#srcOffsets(long, java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_srcOffsets] - [Memory layout][#ML_srcOffsets] - [Getter][#srcOffsets()] - [Setter][#srcOffsets(java.lang.foreign.MemorySegment)]
 /// ### dstSubresource
 /// [Byte offset][#OFFSET_dstSubresource] - [Memory layout][#ML_dstSubresource] - [Getter][#dstSubresource()] - [Setter][#dstSubresource(java.lang.foreign.MemorySegment)]
 /// ### dstOffsets
-/// [Byte offset handle][#MH_dstOffsets] - [Memory layout][#ML_dstOffsets] - [Getter][#dstOffsets(long)] - [Setter][#dstOffsets(long, java.lang.foreign.MemorySegment)]
+/// [Byte offset][#OFFSET_dstOffsets] - [Memory layout][#ML_dstOffsets] - [Getter][#dstOffsets()] - [Setter][#dstOffsets(java.lang.foreign.MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -55,16 +55,16 @@ public final class VkImageBlit extends Struct {
     public static final long OFFSET_srcSubresource = LAYOUT.byteOffset(PathElement.groupElement("srcSubresource"));
     /// The memory layout of `srcSubresource`.
     public static final MemoryLayout ML_srcSubresource = LAYOUT.select(PathElement.groupElement("srcSubresource"));
-    /// The byte offset handle of `srcOffsets` of type `(long baseOffset, long elementIndex)long`.
-    public static final MethodHandle MH_srcOffsets = LAYOUT.byteOffsetHandle(PathElement.groupElement("srcOffsets"), PathElement.sequenceElement());
+    /// The byte offset of `srcOffsets`.
+    public static final long OFFSET_srcOffsets = LAYOUT.byteOffset(PathElement.groupElement("srcOffsets"));
     /// The memory layout of `srcOffsets`.
     public static final MemoryLayout ML_srcOffsets = LAYOUT.select(PathElement.groupElement("srcOffsets"));
     /// The byte offset of `dstSubresource`.
     public static final long OFFSET_dstSubresource = LAYOUT.byteOffset(PathElement.groupElement("dstSubresource"));
     /// The memory layout of `dstSubresource`.
     public static final MemoryLayout ML_dstSubresource = LAYOUT.select(PathElement.groupElement("dstSubresource"));
-    /// The byte offset handle of `dstOffsets` of type `(long baseOffset, long elementIndex)long`.
-    public static final MethodHandle MH_dstOffsets = LAYOUT.byteOffsetHandle(PathElement.groupElement("dstOffsets"), PathElement.sequenceElement());
+    /// The byte offset of `dstOffsets`.
+    public static final long OFFSET_dstOffsets = LAYOUT.byteOffset(PathElement.groupElement("dstOffsets"));
     /// The memory layout of `dstOffsets`.
     public static final MemoryLayout ML_dstOffsets = LAYOUT.select(PathElement.groupElement("dstOffsets"));
 
@@ -103,6 +103,17 @@ public final class VkImageBlit extends Struct {
     /// @return the allocated `VkImageBlit`
     public static VkImageBlit alloc(SegmentAllocator allocator, long count) { return new VkImageBlit(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkImageBlit`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkImageBlit`
+    public VkImageBlit asSlice(long index) { return new VkImageBlit(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkImageBlit`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkImageBlit`
+    public VkImageBlit asSlice(long index, long count) { return new VkImageBlit(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `srcSubresource` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
@@ -135,49 +146,35 @@ public final class VkImageBlit extends Struct {
     public VkImageBlit srcSubresource(@CType("VkImageSubresourceLayers") java.lang.foreign.MemorySegment value) { VkImageBlit.set_srcSubresource(this.segment(), value); return this; }
 
     /// {@return `srcOffsets` at the given index}
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public static @CType("VkOffset3D[2]") java.lang.foreign.MemorySegment get_srcOffsets(MemorySegment segment, long index, long elementIndex) {
-        try { return segment.asSlice(LAYOUT.scale((long) MH_srcOffsets.invokeExact(0L, elementIndex), index), ML_srcOffsets); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("VkOffset3D[2]") java.lang.foreign.MemorySegment get_srcOffsets(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_srcOffsets, index), ML_srcOffsets); }
     /// {@return `srcOffsets`}
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    public static @CType("VkOffset3D[2]") java.lang.foreign.MemorySegment get_srcOffsets(MemorySegment segment, long elementIndex) { return VkImageBlit.get_srcOffsets(segment, 0L, elementIndex); }
+    /// @param segment the segment of the struct
+    public static @CType("VkOffset3D[2]") java.lang.foreign.MemorySegment get_srcOffsets(MemorySegment segment) { return VkImageBlit.get_srcOffsets(segment, 0L); }
     /// {@return `srcOffsets` at the given index}
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public @CType("VkOffset3D[2]") java.lang.foreign.MemorySegment srcOffsetsAt(long index, long elementIndex) { return VkImageBlit.get_srcOffsets(this.segment(), index, elementIndex); }
+    /// @param index the index
+    public @CType("VkOffset3D[2]") java.lang.foreign.MemorySegment srcOffsetsAt(long index) { return VkImageBlit.get_srcOffsets(this.segment(), index); }
     /// {@return `srcOffsets`}
-    /// @param elementIndex the index of the element
-    public @CType("VkOffset3D[2]") java.lang.foreign.MemorySegment srcOffsets(long elementIndex) { return VkImageBlit.get_srcOffsets(this.segment(), elementIndex); }
+    public @CType("VkOffset3D[2]") java.lang.foreign.MemorySegment srcOffsets() { return VkImageBlit.get_srcOffsets(this.segment()); }
     /// Sets `srcOffsets` with the given value at the given index.
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_srcOffsets(MemorySegment segment, long index, long elementIndex, @CType("VkOffset3D[2]") java.lang.foreign.MemorySegment value) {
-        try { MemorySegment.copy(value, 0L, segment, LAYOUT.scale((long) MH_srcOffsets.invokeExact(0L, elementIndex), index), ML_srcOffsets.byteSize()); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_srcOffsets(MemorySegment segment, long index, @CType("VkOffset3D[2]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_srcOffsets, index), ML_srcOffsets.byteSize()); }
     /// Sets `srcOffsets` with the given value.
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_srcOffsets(MemorySegment segment, long elementIndex, @CType("VkOffset3D[2]") java.lang.foreign.MemorySegment value) { VkImageBlit.set_srcOffsets(segment, 0L, elementIndex, value); }
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_srcOffsets(MemorySegment segment, @CType("VkOffset3D[2]") java.lang.foreign.MemorySegment value) { VkImageBlit.set_srcOffsets(segment, 0L, value); }
     /// Sets `srcOffsets` with the given value at the given index.
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param index the index
+    /// @param value the value
     /// @return `this`
-    public VkImageBlit srcOffsetsAt(long index, long elementIndex, @CType("VkOffset3D[2]") java.lang.foreign.MemorySegment value) { VkImageBlit.set_srcOffsets(this.segment(), index, elementIndex, value); return this; }
+    public VkImageBlit srcOffsetsAt(long index, @CType("VkOffset3D[2]") java.lang.foreign.MemorySegment value) { VkImageBlit.set_srcOffsets(this.segment(), index, value); return this; }
     /// Sets `srcOffsets` with the given value.
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param value the value
     /// @return `this`
-    public VkImageBlit srcOffsets(long elementIndex, @CType("VkOffset3D[2]") java.lang.foreign.MemorySegment value) { VkImageBlit.set_srcOffsets(this.segment(), elementIndex, value); return this; }
+    public VkImageBlit srcOffsets(@CType("VkOffset3D[2]") java.lang.foreign.MemorySegment value) { VkImageBlit.set_srcOffsets(this.segment(), value); return this; }
 
     /// {@return `dstSubresource` at the given index}
     /// @param segment the segment of the struct
@@ -211,48 +208,34 @@ public final class VkImageBlit extends Struct {
     public VkImageBlit dstSubresource(@CType("VkImageSubresourceLayers") java.lang.foreign.MemorySegment value) { VkImageBlit.set_dstSubresource(this.segment(), value); return this; }
 
     /// {@return `dstOffsets` at the given index}
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public static @CType("VkOffset3D[2]") java.lang.foreign.MemorySegment get_dstOffsets(MemorySegment segment, long index, long elementIndex) {
-        try { return segment.asSlice(LAYOUT.scale((long) MH_dstOffsets.invokeExact(0L, elementIndex), index), ML_dstOffsets); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    public static @CType("VkOffset3D[2]") java.lang.foreign.MemorySegment get_dstOffsets(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_dstOffsets, index), ML_dstOffsets); }
     /// {@return `dstOffsets`}
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    public static @CType("VkOffset3D[2]") java.lang.foreign.MemorySegment get_dstOffsets(MemorySegment segment, long elementIndex) { return VkImageBlit.get_dstOffsets(segment, 0L, elementIndex); }
+    /// @param segment the segment of the struct
+    public static @CType("VkOffset3D[2]") java.lang.foreign.MemorySegment get_dstOffsets(MemorySegment segment) { return VkImageBlit.get_dstOffsets(segment, 0L); }
     /// {@return `dstOffsets` at the given index}
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    public @CType("VkOffset3D[2]") java.lang.foreign.MemorySegment dstOffsetsAt(long index, long elementIndex) { return VkImageBlit.get_dstOffsets(this.segment(), index, elementIndex); }
+    /// @param index the index
+    public @CType("VkOffset3D[2]") java.lang.foreign.MemorySegment dstOffsetsAt(long index) { return VkImageBlit.get_dstOffsets(this.segment(), index); }
     /// {@return `dstOffsets`}
-    /// @param elementIndex the index of the element
-    public @CType("VkOffset3D[2]") java.lang.foreign.MemorySegment dstOffsets(long elementIndex) { return VkImageBlit.get_dstOffsets(this.segment(), elementIndex); }
+    public @CType("VkOffset3D[2]") java.lang.foreign.MemorySegment dstOffsets() { return VkImageBlit.get_dstOffsets(this.segment()); }
     /// Sets `dstOffsets` with the given value at the given index.
-    /// @param segment      the segment of the struct
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_dstOffsets(MemorySegment segment, long index, long elementIndex, @CType("VkOffset3D[2]") java.lang.foreign.MemorySegment value) {
-        try { MemorySegment.copy(value, 0L, segment, LAYOUT.scale((long) MH_dstOffsets.invokeExact(0L, elementIndex), index), ML_dstOffsets.byteSize()); }
-        catch (Throwable e) { throw new RuntimeException(e); }
-    }
+    /// @param segment the segment of the struct
+    /// @param index   the index
+    /// @param value   the value
+    public static void set_dstOffsets(MemorySegment segment, long index, @CType("VkOffset3D[2]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_dstOffsets, index), ML_dstOffsets.byteSize()); }
     /// Sets `dstOffsets` with the given value.
-    /// @param segment      the segment of the struct
-    /// @param elementIndex the index of the element
-    /// @param value        the value
-    public static void set_dstOffsets(MemorySegment segment, long elementIndex, @CType("VkOffset3D[2]") java.lang.foreign.MemorySegment value) { VkImageBlit.set_dstOffsets(segment, 0L, elementIndex, value); }
+    /// @param segment the segment of the struct
+    /// @param value   the value
+    public static void set_dstOffsets(MemorySegment segment, @CType("VkOffset3D[2]") java.lang.foreign.MemorySegment value) { VkImageBlit.set_dstOffsets(segment, 0L, value); }
     /// Sets `dstOffsets` with the given value at the given index.
-    /// @param index        the index of the struct buffer
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param index the index
+    /// @param value the value
     /// @return `this`
-    public VkImageBlit dstOffsetsAt(long index, long elementIndex, @CType("VkOffset3D[2]") java.lang.foreign.MemorySegment value) { VkImageBlit.set_dstOffsets(this.segment(), index, elementIndex, value); return this; }
+    public VkImageBlit dstOffsetsAt(long index, @CType("VkOffset3D[2]") java.lang.foreign.MemorySegment value) { VkImageBlit.set_dstOffsets(this.segment(), index, value); return this; }
     /// Sets `dstOffsets` with the given value.
-    /// @param elementIndex the index of the element
-    /// @param value        the value
+    /// @param value the value
     /// @return `this`
-    public VkImageBlit dstOffsets(long elementIndex, @CType("VkOffset3D[2]") java.lang.foreign.MemorySegment value) { VkImageBlit.set_dstOffsets(this.segment(), elementIndex, value); return this; }
+    public VkImageBlit dstOffsets(@CType("VkOffset3D[2]") java.lang.foreign.MemorySegment value) { VkImageBlit.set_dstOffsets(this.segment(), value); return this; }
 
 }

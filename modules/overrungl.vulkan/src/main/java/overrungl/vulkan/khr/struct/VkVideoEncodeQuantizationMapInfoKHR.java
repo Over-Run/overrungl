@@ -97,6 +97,17 @@ public final class VkVideoEncodeQuantizationMapInfoKHR extends Struct {
     /// @return the allocated `VkVideoEncodeQuantizationMapInfoKHR`
     public static VkVideoEncodeQuantizationMapInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoEncodeQuantizationMapInfoKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkVideoEncodeQuantizationMapInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkVideoEncodeQuantizationMapInfoKHR`
+    public VkVideoEncodeQuantizationMapInfoKHR asSlice(long index) { return new VkVideoEncodeQuantizationMapInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkVideoEncodeQuantizationMapInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkVideoEncodeQuantizationMapInfoKHR`
+    public VkVideoEncodeQuantizationMapInfoKHR asSlice(long index, long count) { return new VkVideoEncodeQuantizationMapInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

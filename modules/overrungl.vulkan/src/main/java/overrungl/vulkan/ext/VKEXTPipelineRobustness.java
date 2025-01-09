@@ -23,7 +23,7 @@ import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 import static overrungl.vulkan.VK14.*;
-public class VKEXTPipelineRobustness {
+public final class VKEXTPipelineRobustness {
     public static final int VK_EXT_PIPELINE_ROBUSTNESS_SPEC_VERSION = 1;
     public static final String VK_EXT_PIPELINE_ROBUSTNESS_EXTENSION_NAME = "VK_EXT_pipeline_robustness";
     public static final int VK_STRUCTURE_TYPE_PIPELINE_ROBUSTNESS_CREATE_INFO_EXT = VK_STRUCTURE_TYPE_PIPELINE_ROBUSTNESS_CREATE_INFO;
@@ -38,7 +38,6 @@ public class VKEXTPipelineRobustness {
     public static final int VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_ROBUST_IMAGE_ACCESS_EXT = VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_ROBUST_IMAGE_ACCESS;
     public static final int VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_ROBUST_IMAGE_ACCESS_2_EXT = VK_PIPELINE_ROBUSTNESS_IMAGE_BEHAVIOR_ROBUST_IMAGE_ACCESS_2;
 
-    public VKEXTPipelineRobustness(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKEXTPipelineRobustness() { }
 
 }

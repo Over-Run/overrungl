@@ -101,6 +101,17 @@ public final class VkMicromapBuildSizesInfoEXT extends Struct {
     /// @return the allocated `VkMicromapBuildSizesInfoEXT`
     public static VkMicromapBuildSizesInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkMicromapBuildSizesInfoEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkMicromapBuildSizesInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkMicromapBuildSizesInfoEXT`
+    public VkMicromapBuildSizesInfoEXT asSlice(long index) { return new VkMicromapBuildSizesInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkMicromapBuildSizesInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkMicromapBuildSizesInfoEXT`
+    public VkMicromapBuildSizesInfoEXT asSlice(long index, long count) { return new VkMicromapBuildSizesInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

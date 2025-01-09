@@ -89,6 +89,17 @@ public final class StdVideoAV1QuantizationFlags extends Struct {
     /// @return the allocated `StdVideoAV1QuantizationFlags`
     public static StdVideoAV1QuantizationFlags alloc(SegmentAllocator allocator, long count) { return new StdVideoAV1QuantizationFlags(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `StdVideoAV1QuantizationFlags`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoAV1QuantizationFlags`
+    public StdVideoAV1QuantizationFlags asSlice(long index) { return new StdVideoAV1QuantizationFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `StdVideoAV1QuantizationFlags`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoAV1QuantizationFlags`
+    public StdVideoAV1QuantizationFlags asSlice(long index, long count) { return new StdVideoAV1QuantizationFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `using_qmatrix` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

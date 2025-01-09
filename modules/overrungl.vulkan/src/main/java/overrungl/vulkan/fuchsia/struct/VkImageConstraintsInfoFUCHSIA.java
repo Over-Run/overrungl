@@ -109,6 +109,17 @@ public final class VkImageConstraintsInfoFUCHSIA extends Struct {
     /// @return the allocated `VkImageConstraintsInfoFUCHSIA`
     public static VkImageConstraintsInfoFUCHSIA alloc(SegmentAllocator allocator, long count) { return new VkImageConstraintsInfoFUCHSIA(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkImageConstraintsInfoFUCHSIA`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkImageConstraintsInfoFUCHSIA`
+    public VkImageConstraintsInfoFUCHSIA asSlice(long index) { return new VkImageConstraintsInfoFUCHSIA(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkImageConstraintsInfoFUCHSIA`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkImageConstraintsInfoFUCHSIA`
+    public VkImageConstraintsInfoFUCHSIA asSlice(long index, long count) { return new VkImageConstraintsInfoFUCHSIA(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

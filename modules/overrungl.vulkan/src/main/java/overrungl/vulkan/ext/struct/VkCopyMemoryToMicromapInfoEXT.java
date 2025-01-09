@@ -103,6 +103,17 @@ public final class VkCopyMemoryToMicromapInfoEXT extends Struct {
     /// @return the allocated `VkCopyMemoryToMicromapInfoEXT`
     public static VkCopyMemoryToMicromapInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkCopyMemoryToMicromapInfoEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkCopyMemoryToMicromapInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkCopyMemoryToMicromapInfoEXT`
+    public VkCopyMemoryToMicromapInfoEXT asSlice(long index) { return new VkCopyMemoryToMicromapInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkCopyMemoryToMicromapInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkCopyMemoryToMicromapInfoEXT`
+    public VkCopyMemoryToMicromapInfoEXT asSlice(long index, long count) { return new VkCopyMemoryToMicromapInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

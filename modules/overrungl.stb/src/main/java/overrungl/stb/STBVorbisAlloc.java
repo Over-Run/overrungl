@@ -83,6 +83,17 @@ public final class STBVorbisAlloc extends Struct {
     /// @return the allocated `STBVorbisAlloc`
     public static STBVorbisAlloc alloc(SegmentAllocator allocator, long count) { return new STBVorbisAlloc(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `STBVorbisAlloc`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `STBVorbisAlloc`
+    public STBVorbisAlloc asSlice(long index) { return new STBVorbisAlloc(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `STBVorbisAlloc`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `STBVorbisAlloc`
+    public STBVorbisAlloc asSlice(long index, long count) { return new STBVorbisAlloc(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `alloc_buffer` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

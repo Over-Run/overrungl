@@ -95,6 +95,17 @@ public final class VkRenderPassInputAttachmentAspectCreateInfo extends Struct {
     /// @return the allocated `VkRenderPassInputAttachmentAspectCreateInfo`
     public static VkRenderPassInputAttachmentAspectCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkRenderPassInputAttachmentAspectCreateInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkRenderPassInputAttachmentAspectCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkRenderPassInputAttachmentAspectCreateInfo`
+    public VkRenderPassInputAttachmentAspectCreateInfo asSlice(long index) { return new VkRenderPassInputAttachmentAspectCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkRenderPassInputAttachmentAspectCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkRenderPassInputAttachmentAspectCreateInfo`
+    public VkRenderPassInputAttachmentAspectCreateInfo asSlice(long index, long count) { return new VkRenderPassInputAttachmentAspectCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

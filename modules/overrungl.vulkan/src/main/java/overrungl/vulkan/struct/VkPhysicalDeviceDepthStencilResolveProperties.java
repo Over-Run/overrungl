@@ -107,6 +107,17 @@ public final class VkPhysicalDeviceDepthStencilResolveProperties extends Struct 
     /// @return the allocated `VkPhysicalDeviceDepthStencilResolveProperties`
     public static VkPhysicalDeviceDepthStencilResolveProperties alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceDepthStencilResolveProperties(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceDepthStencilResolveProperties`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceDepthStencilResolveProperties`
+    public VkPhysicalDeviceDepthStencilResolveProperties asSlice(long index) { return new VkPhysicalDeviceDepthStencilResolveProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceDepthStencilResolveProperties`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceDepthStencilResolveProperties`
+    public VkPhysicalDeviceDepthStencilResolveProperties asSlice(long index, long count) { return new VkPhysicalDeviceDepthStencilResolveProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

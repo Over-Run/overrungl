@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceIndexTypeUint8Features extends Struct {
     /// @return the allocated `VkPhysicalDeviceIndexTypeUint8Features`
     public static VkPhysicalDeviceIndexTypeUint8Features alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceIndexTypeUint8Features(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceIndexTypeUint8Features`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceIndexTypeUint8Features`
+    public VkPhysicalDeviceIndexTypeUint8Features asSlice(long index) { return new VkPhysicalDeviceIndexTypeUint8Features(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceIndexTypeUint8Features`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceIndexTypeUint8Features`
+    public VkPhysicalDeviceIndexTypeUint8Features asSlice(long index, long count) { return new VkPhysicalDeviceIndexTypeUint8Features(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

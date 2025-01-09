@@ -22,12 +22,11 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKEXTQueueFamilyForeign {
+public final class VKEXTQueueFamilyForeign {
     public static final int VK_EXT_QUEUE_FAMILY_FOREIGN_SPEC_VERSION = 1;
     public static final String VK_EXT_QUEUE_FAMILY_FOREIGN_EXTENSION_NAME = "VK_EXT_queue_family_foreign";
     public static final int VK_QUEUE_FAMILY_FOREIGN_EXT = (~2);
 
-    public VKEXTQueueFamilyForeign(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKEXTQueueFamilyForeign() { }
 
 }

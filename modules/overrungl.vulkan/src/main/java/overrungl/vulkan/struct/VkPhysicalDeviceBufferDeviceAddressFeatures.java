@@ -101,6 +101,17 @@ public final class VkPhysicalDeviceBufferDeviceAddressFeatures extends Struct {
     /// @return the allocated `VkPhysicalDeviceBufferDeviceAddressFeatures`
     public static VkPhysicalDeviceBufferDeviceAddressFeatures alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceBufferDeviceAddressFeatures(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceBufferDeviceAddressFeatures`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceBufferDeviceAddressFeatures`
+    public VkPhysicalDeviceBufferDeviceAddressFeatures asSlice(long index) { return new VkPhysicalDeviceBufferDeviceAddressFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceBufferDeviceAddressFeatures`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceBufferDeviceAddressFeatures`
+    public VkPhysicalDeviceBufferDeviceAddressFeatures asSlice(long index, long count) { return new VkPhysicalDeviceBufferDeviceAddressFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

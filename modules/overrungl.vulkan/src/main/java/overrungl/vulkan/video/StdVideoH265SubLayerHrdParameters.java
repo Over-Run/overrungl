@@ -101,6 +101,17 @@ public final class StdVideoH265SubLayerHrdParameters extends Struct {
     /// @return the allocated `StdVideoH265SubLayerHrdParameters`
     public static StdVideoH265SubLayerHrdParameters alloc(SegmentAllocator allocator, long count) { return new StdVideoH265SubLayerHrdParameters(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `StdVideoH265SubLayerHrdParameters`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoH265SubLayerHrdParameters`
+    public StdVideoH265SubLayerHrdParameters asSlice(long index) { return new StdVideoH265SubLayerHrdParameters(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `StdVideoH265SubLayerHrdParameters`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoH265SubLayerHrdParameters`
+    public StdVideoH265SubLayerHrdParameters asSlice(long index, long count) { return new StdVideoH265SubLayerHrdParameters(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `bit_rate_value_minus1` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

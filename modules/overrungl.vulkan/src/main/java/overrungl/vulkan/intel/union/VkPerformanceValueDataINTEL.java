@@ -101,12 +101,23 @@ public final class VkPerformanceValueDataINTEL extends Union {
     /// @return the allocated `VkPerformanceValueDataINTEL`
     public static VkPerformanceValueDataINTEL alloc(SegmentAllocator allocator, long count) { return new VkPerformanceValueDataINTEL(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPerformanceValueDataINTEL`.
+    /// @param index the index of the union buffer
+    /// @return the slice of `VkPerformanceValueDataINTEL`
+    public VkPerformanceValueDataINTEL asSlice(long index) { return new VkPerformanceValueDataINTEL(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPerformanceValueDataINTEL`.
+    /// @param index the index of the union buffer
+    /// @param count the count
+    /// @return the slice of `VkPerformanceValueDataINTEL`
+    public VkPerformanceValueDataINTEL asSlice(long index, long count) { return new VkPerformanceValueDataINTEL(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `value32` at the given index}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     public static @CType("uint32_t") int get_value32(MemorySegment segment, long index) { return (int) VH_value32.get(segment, 0L, index); }
     /// {@return `value32`}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     public static @CType("uint32_t") int get_value32(MemorySegment segment) { return VkPerformanceValueDataINTEL.get_value32(segment, 0L); }
     /// {@return `value32` at the given index}
     /// @param index the index
@@ -114,12 +125,12 @@ public final class VkPerformanceValueDataINTEL extends Union {
     /// {@return `value32`}
     public @CType("uint32_t") int value32() { return VkPerformanceValueDataINTEL.get_value32(this.segment()); }
     /// Sets `value32` with the given value at the given index.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     /// @param value   the value
     public static void set_value32(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_value32.set(segment, 0L, index, value); }
     /// Sets `value32` with the given value.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param value   the value
     public static void set_value32(MemorySegment segment, @CType("uint32_t") int value) { VkPerformanceValueDataINTEL.set_value32(segment, 0L, value); }
     /// Sets `value32` with the given value at the given index.
@@ -133,11 +144,11 @@ public final class VkPerformanceValueDataINTEL extends Union {
     public VkPerformanceValueDataINTEL value32(@CType("uint32_t") int value) { VkPerformanceValueDataINTEL.set_value32(this.segment(), value); return this; }
 
     /// {@return `value64` at the given index}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     public static @CType("uint64_t") long get_value64(MemorySegment segment, long index) { return (long) VH_value64.get(segment, 0L, index); }
     /// {@return `value64`}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     public static @CType("uint64_t") long get_value64(MemorySegment segment) { return VkPerformanceValueDataINTEL.get_value64(segment, 0L); }
     /// {@return `value64` at the given index}
     /// @param index the index
@@ -145,12 +156,12 @@ public final class VkPerformanceValueDataINTEL extends Union {
     /// {@return `value64`}
     public @CType("uint64_t") long value64() { return VkPerformanceValueDataINTEL.get_value64(this.segment()); }
     /// Sets `value64` with the given value at the given index.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     /// @param value   the value
     public static void set_value64(MemorySegment segment, long index, @CType("uint64_t") long value) { VH_value64.set(segment, 0L, index, value); }
     /// Sets `value64` with the given value.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param value   the value
     public static void set_value64(MemorySegment segment, @CType("uint64_t") long value) { VkPerformanceValueDataINTEL.set_value64(segment, 0L, value); }
     /// Sets `value64` with the given value at the given index.
@@ -164,11 +175,11 @@ public final class VkPerformanceValueDataINTEL extends Union {
     public VkPerformanceValueDataINTEL value64(@CType("uint64_t") long value) { VkPerformanceValueDataINTEL.set_value64(this.segment(), value); return this; }
 
     /// {@return `valueFloat` at the given index}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     public static @CType("float") float get_valueFloat(MemorySegment segment, long index) { return (float) VH_valueFloat.get(segment, 0L, index); }
     /// {@return `valueFloat`}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     public static @CType("float") float get_valueFloat(MemorySegment segment) { return VkPerformanceValueDataINTEL.get_valueFloat(segment, 0L); }
     /// {@return `valueFloat` at the given index}
     /// @param index the index
@@ -176,12 +187,12 @@ public final class VkPerformanceValueDataINTEL extends Union {
     /// {@return `valueFloat`}
     public @CType("float") float valueFloat() { return VkPerformanceValueDataINTEL.get_valueFloat(this.segment()); }
     /// Sets `valueFloat` with the given value at the given index.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     /// @param value   the value
     public static void set_valueFloat(MemorySegment segment, long index, @CType("float") float value) { VH_valueFloat.set(segment, 0L, index, value); }
     /// Sets `valueFloat` with the given value.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param value   the value
     public static void set_valueFloat(MemorySegment segment, @CType("float") float value) { VkPerformanceValueDataINTEL.set_valueFloat(segment, 0L, value); }
     /// Sets `valueFloat` with the given value at the given index.
@@ -195,11 +206,11 @@ public final class VkPerformanceValueDataINTEL extends Union {
     public VkPerformanceValueDataINTEL valueFloat(@CType("float") float value) { VkPerformanceValueDataINTEL.set_valueFloat(this.segment(), value); return this; }
 
     /// {@return `valueBool` at the given index}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     public static @CType("VkBool32") int get_valueBool(MemorySegment segment, long index) { return (int) VH_valueBool.get(segment, 0L, index); }
     /// {@return `valueBool`}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     public static @CType("VkBool32") int get_valueBool(MemorySegment segment) { return VkPerformanceValueDataINTEL.get_valueBool(segment, 0L); }
     /// {@return `valueBool` at the given index}
     /// @param index the index
@@ -207,12 +218,12 @@ public final class VkPerformanceValueDataINTEL extends Union {
     /// {@return `valueBool`}
     public @CType("VkBool32") int valueBool() { return VkPerformanceValueDataINTEL.get_valueBool(this.segment()); }
     /// Sets `valueBool` with the given value at the given index.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     /// @param value   the value
     public static void set_valueBool(MemorySegment segment, long index, @CType("VkBool32") int value) { VH_valueBool.set(segment, 0L, index, value); }
     /// Sets `valueBool` with the given value.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param value   the value
     public static void set_valueBool(MemorySegment segment, @CType("VkBool32") int value) { VkPerformanceValueDataINTEL.set_valueBool(segment, 0L, value); }
     /// Sets `valueBool` with the given value at the given index.
@@ -226,11 +237,11 @@ public final class VkPerformanceValueDataINTEL extends Union {
     public VkPerformanceValueDataINTEL valueBool(@CType("VkBool32") int value) { VkPerformanceValueDataINTEL.set_valueBool(this.segment(), value); return this; }
 
     /// {@return `valueString` at the given index}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     public static @CType("const char *") java.lang.foreign.MemorySegment get_valueString(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_valueString.get(segment, 0L, index); }
     /// {@return `valueString`}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     public static @CType("const char *") java.lang.foreign.MemorySegment get_valueString(MemorySegment segment) { return VkPerformanceValueDataINTEL.get_valueString(segment, 0L); }
     /// {@return `valueString` at the given index}
     /// @param index the index
@@ -238,12 +249,12 @@ public final class VkPerformanceValueDataINTEL extends Union {
     /// {@return `valueString`}
     public @CType("const char *") java.lang.foreign.MemorySegment valueString() { return VkPerformanceValueDataINTEL.get_valueString(this.segment()); }
     /// Sets `valueString` with the given value at the given index.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     /// @param value   the value
     public static void set_valueString(MemorySegment segment, long index, @CType("const char *") java.lang.foreign.MemorySegment value) { VH_valueString.set(segment, 0L, index, value); }
     /// Sets `valueString` with the given value.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param value   the value
     public static void set_valueString(MemorySegment segment, @CType("const char *") java.lang.foreign.MemorySegment value) { VkPerformanceValueDataINTEL.set_valueString(segment, 0L, value); }
     /// Sets `valueString` with the given value at the given index.

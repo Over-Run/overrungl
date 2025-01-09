@@ -179,6 +179,17 @@ public final class VkSamplerCreateInfo extends Struct {
     /// @return the allocated `VkSamplerCreateInfo`
     public static VkSamplerCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkSamplerCreateInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkSamplerCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSamplerCreateInfo`
+    public VkSamplerCreateInfo asSlice(long index) { return new VkSamplerCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkSamplerCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSamplerCreateInfo`
+    public VkSamplerCreateInfo asSlice(long index, long count) { return new VkSamplerCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

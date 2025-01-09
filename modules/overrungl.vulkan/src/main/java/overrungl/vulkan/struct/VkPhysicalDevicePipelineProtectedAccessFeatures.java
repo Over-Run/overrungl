@@ -89,6 +89,17 @@ public final class VkPhysicalDevicePipelineProtectedAccessFeatures extends Struc
     /// @return the allocated `VkPhysicalDevicePipelineProtectedAccessFeatures`
     public static VkPhysicalDevicePipelineProtectedAccessFeatures alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDevicePipelineProtectedAccessFeatures(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDevicePipelineProtectedAccessFeatures`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDevicePipelineProtectedAccessFeatures`
+    public VkPhysicalDevicePipelineProtectedAccessFeatures asSlice(long index) { return new VkPhysicalDevicePipelineProtectedAccessFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDevicePipelineProtectedAccessFeatures`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDevicePipelineProtectedAccessFeatures`
+    public VkPhysicalDevicePipelineProtectedAccessFeatures asSlice(long index, long count) { return new VkPhysicalDevicePipelineProtectedAccessFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

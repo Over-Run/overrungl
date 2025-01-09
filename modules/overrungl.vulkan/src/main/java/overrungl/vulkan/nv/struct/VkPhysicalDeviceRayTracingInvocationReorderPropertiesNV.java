@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV exten
     /// @return the allocated `VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV`
     public static VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV`
+    public VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV asSlice(long index) { return new VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV`
+    public VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV asSlice(long index, long count) { return new VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

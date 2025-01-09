@@ -101,6 +101,17 @@ public final class VkSparseMemoryBind extends Struct {
     /// @return the allocated `VkSparseMemoryBind`
     public static VkSparseMemoryBind alloc(SegmentAllocator allocator, long count) { return new VkSparseMemoryBind(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkSparseMemoryBind`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSparseMemoryBind`
+    public VkSparseMemoryBind asSlice(long index) { return new VkSparseMemoryBind(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkSparseMemoryBind`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSparseMemoryBind`
+    public VkSparseMemoryBind asSlice(long index, long count) { return new VkSparseMemoryBind(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `resourceOffset` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

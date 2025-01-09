@@ -91,6 +91,17 @@ public final class VkDisplayPlaneCapabilities2KHR extends Struct {
     /// @return the allocated `VkDisplayPlaneCapabilities2KHR`
     public static VkDisplayPlaneCapabilities2KHR alloc(SegmentAllocator allocator, long count) { return new VkDisplayPlaneCapabilities2KHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkDisplayPlaneCapabilities2KHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDisplayPlaneCapabilities2KHR`
+    public VkDisplayPlaneCapabilities2KHR asSlice(long index) { return new VkDisplayPlaneCapabilities2KHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkDisplayPlaneCapabilities2KHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDisplayPlaneCapabilities2KHR`
+    public VkDisplayPlaneCapabilities2KHR asSlice(long index, long count) { return new VkDisplayPlaneCapabilities2KHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

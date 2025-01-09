@@ -89,6 +89,17 @@ public final class VkInputAttachmentAspectReference extends Struct {
     /// @return the allocated `VkInputAttachmentAspectReference`
     public static VkInputAttachmentAspectReference alloc(SegmentAllocator allocator, long count) { return new VkInputAttachmentAspectReference(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkInputAttachmentAspectReference`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkInputAttachmentAspectReference`
+    public VkInputAttachmentAspectReference asSlice(long index) { return new VkInputAttachmentAspectReference(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkInputAttachmentAspectReference`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkInputAttachmentAspectReference`
+    public VkInputAttachmentAspectReference asSlice(long index, long count) { return new VkInputAttachmentAspectReference(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `subpass` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

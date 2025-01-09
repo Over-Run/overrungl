@@ -23,7 +23,7 @@ import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 import static overrungl.vulkan.VK12.*;
-public class VKKHRImagelessFramebuffer {
+public final class VKKHRImagelessFramebuffer {
     public static final int VK_KHR_IMAGELESS_FRAMEBUFFER_SPEC_VERSION = 1;
     public static final String VK_KHR_IMAGELESS_FRAMEBUFFER_EXTENSION_NAME = "VK_KHR_imageless_framebuffer";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGELESS_FRAMEBUFFER_FEATURES_KHR = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGELESS_FRAMEBUFFER_FEATURES;
@@ -32,7 +32,6 @@ public class VKKHRImagelessFramebuffer {
     public static final int VK_STRUCTURE_TYPE_RENDER_PASS_ATTACHMENT_BEGIN_INFO_KHR = VK_STRUCTURE_TYPE_RENDER_PASS_ATTACHMENT_BEGIN_INFO;
     public static final int VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT_KHR = VK_FRAMEBUFFER_CREATE_IMAGELESS_BIT;
 
-    public VKKHRImagelessFramebuffer(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKKHRImagelessFramebuffer() { }
 
 }

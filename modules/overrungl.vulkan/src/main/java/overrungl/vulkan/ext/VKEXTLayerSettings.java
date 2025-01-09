@@ -22,7 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKEXTLayerSettings {
+public final class VKEXTLayerSettings {
     public static final int VK_LAYER_SETTING_TYPE_BOOL32_EXT = 0;
     public static final int VK_LAYER_SETTING_TYPE_INT32_EXT = 1;
     public static final int VK_LAYER_SETTING_TYPE_INT64_EXT = 2;
@@ -35,7 +35,6 @@ public class VKEXTLayerSettings {
     public static final String VK_EXT_LAYER_SETTINGS_EXTENSION_NAME = "VK_EXT_layer_settings";
     public static final int VK_STRUCTURE_TYPE_LAYER_SETTINGS_CREATE_INFO_EXT = 1000496000;
 
-    public VKEXTLayerSettings(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
-    }
+    private VKEXTLayerSettings() { }
 
 }

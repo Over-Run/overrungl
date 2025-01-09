@@ -143,6 +143,17 @@ public final class StdVideoH265VideoParameterSet extends Struct {
     /// @return the allocated `StdVideoH265VideoParameterSet`
     public static StdVideoH265VideoParameterSet alloc(SegmentAllocator allocator, long count) { return new StdVideoH265VideoParameterSet(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `StdVideoH265VideoParameterSet`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoH265VideoParameterSet`
+    public StdVideoH265VideoParameterSet asSlice(long index) { return new StdVideoH265VideoParameterSet(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `StdVideoH265VideoParameterSet`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoH265VideoParameterSet`
+    public StdVideoH265VideoParameterSet asSlice(long index, long count) { return new StdVideoH265VideoParameterSet(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -95,6 +95,17 @@ public final class VkSubpassShadingPipelineCreateInfoHUAWEI extends Struct {
     /// @return the allocated `VkSubpassShadingPipelineCreateInfoHUAWEI`
     public static VkSubpassShadingPipelineCreateInfoHUAWEI alloc(SegmentAllocator allocator, long count) { return new VkSubpassShadingPipelineCreateInfoHUAWEI(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkSubpassShadingPipelineCreateInfoHUAWEI`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSubpassShadingPipelineCreateInfoHUAWEI`
+    public VkSubpassShadingPipelineCreateInfoHUAWEI asSlice(long index) { return new VkSubpassShadingPipelineCreateInfoHUAWEI(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkSubpassShadingPipelineCreateInfoHUAWEI`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSubpassShadingPipelineCreateInfoHUAWEI`
+    public VkSubpassShadingPipelineCreateInfoHUAWEI asSlice(long index, long count) { return new VkSubpassShadingPipelineCreateInfoHUAWEI(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

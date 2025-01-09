@@ -89,6 +89,17 @@ public final class VkDeviceQueueGlobalPriorityCreateInfo extends Struct {
     /// @return the allocated `VkDeviceQueueGlobalPriorityCreateInfo`
     public static VkDeviceQueueGlobalPriorityCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkDeviceQueueGlobalPriorityCreateInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkDeviceQueueGlobalPriorityCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDeviceQueueGlobalPriorityCreateInfo`
+    public VkDeviceQueueGlobalPriorityCreateInfo asSlice(long index) { return new VkDeviceQueueGlobalPriorityCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkDeviceQueueGlobalPriorityCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDeviceQueueGlobalPriorityCreateInfo`
+    public VkDeviceQueueGlobalPriorityCreateInfo asSlice(long index, long count) { return new VkDeviceQueueGlobalPriorityCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

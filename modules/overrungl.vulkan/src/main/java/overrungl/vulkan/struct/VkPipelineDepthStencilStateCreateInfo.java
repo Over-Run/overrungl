@@ -147,6 +147,17 @@ public final class VkPipelineDepthStencilStateCreateInfo extends Struct {
     /// @return the allocated `VkPipelineDepthStencilStateCreateInfo`
     public static VkPipelineDepthStencilStateCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkPipelineDepthStencilStateCreateInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPipelineDepthStencilStateCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPipelineDepthStencilStateCreateInfo`
+    public VkPipelineDepthStencilStateCreateInfo asSlice(long index) { return new VkPipelineDepthStencilStateCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPipelineDepthStencilStateCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPipelineDepthStencilStateCreateInfo`
+    public VkPipelineDepthStencilStateCreateInfo asSlice(long index, long count) { return new VkPipelineDepthStencilStateCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

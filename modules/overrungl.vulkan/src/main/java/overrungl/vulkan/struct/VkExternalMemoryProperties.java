@@ -89,6 +89,17 @@ public final class VkExternalMemoryProperties extends Struct {
     /// @return the allocated `VkExternalMemoryProperties`
     public static VkExternalMemoryProperties alloc(SegmentAllocator allocator, long count) { return new VkExternalMemoryProperties(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkExternalMemoryProperties`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkExternalMemoryProperties`
+    public VkExternalMemoryProperties asSlice(long index) { return new VkExternalMemoryProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkExternalMemoryProperties`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkExternalMemoryProperties`
+    public VkExternalMemoryProperties asSlice(long index, long count) { return new VkExternalMemoryProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `externalMemoryFeatures` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

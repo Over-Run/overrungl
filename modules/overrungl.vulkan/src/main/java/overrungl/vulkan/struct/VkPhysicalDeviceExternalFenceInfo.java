@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceExternalFenceInfo extends Struct {
     /// @return the allocated `VkPhysicalDeviceExternalFenceInfo`
     public static VkPhysicalDeviceExternalFenceInfo alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceExternalFenceInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceExternalFenceInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceExternalFenceInfo`
+    public VkPhysicalDeviceExternalFenceInfo asSlice(long index) { return new VkPhysicalDeviceExternalFenceInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceExternalFenceInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceExternalFenceInfo`
+    public VkPhysicalDeviceExternalFenceInfo asSlice(long index, long count) { return new VkPhysicalDeviceExternalFenceInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

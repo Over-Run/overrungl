@@ -101,6 +101,17 @@ public final class VkXcbSurfaceCreateInfoKHR extends Struct {
     /// @return the allocated `VkXcbSurfaceCreateInfoKHR`
     public static VkXcbSurfaceCreateInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkXcbSurfaceCreateInfoKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkXcbSurfaceCreateInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkXcbSurfaceCreateInfoKHR`
+    public VkXcbSurfaceCreateInfoKHR asSlice(long index) { return new VkXcbSurfaceCreateInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkXcbSurfaceCreateInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkXcbSurfaceCreateInfoKHR`
+    public VkXcbSurfaceCreateInfoKHR asSlice(long index, long count) { return new VkXcbSurfaceCreateInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

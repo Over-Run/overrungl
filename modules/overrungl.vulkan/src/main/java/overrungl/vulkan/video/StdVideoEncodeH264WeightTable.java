@@ -137,6 +137,17 @@ public final class StdVideoEncodeH264WeightTable extends Struct {
     /// @return the allocated `StdVideoEncodeH264WeightTable`
     public static StdVideoEncodeH264WeightTable alloc(SegmentAllocator allocator, long count) { return new StdVideoEncodeH264WeightTable(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `StdVideoEncodeH264WeightTable`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoEncodeH264WeightTable`
+    public StdVideoEncodeH264WeightTable asSlice(long index) { return new StdVideoEncodeH264WeightTable(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `StdVideoEncodeH264WeightTable`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoEncodeH264WeightTable`
+    public StdVideoEncodeH264WeightTable asSlice(long index, long count) { return new StdVideoEncodeH264WeightTable(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

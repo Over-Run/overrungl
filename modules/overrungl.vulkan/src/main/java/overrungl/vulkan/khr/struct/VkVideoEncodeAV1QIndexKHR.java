@@ -89,6 +89,17 @@ public final class VkVideoEncodeAV1QIndexKHR extends Struct {
     /// @return the allocated `VkVideoEncodeAV1QIndexKHR`
     public static VkVideoEncodeAV1QIndexKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoEncodeAV1QIndexKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkVideoEncodeAV1QIndexKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkVideoEncodeAV1QIndexKHR`
+    public VkVideoEncodeAV1QIndexKHR asSlice(long index) { return new VkVideoEncodeAV1QIndexKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkVideoEncodeAV1QIndexKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkVideoEncodeAV1QIndexKHR`
+    public VkVideoEncodeAV1QIndexKHR asSlice(long index, long count) { return new VkVideoEncodeAV1QIndexKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `intraQIndex` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

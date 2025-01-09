@@ -107,6 +107,17 @@ public final class VkPhysicalDeviceFragmentDensityMap2PropertiesEXT extends Stru
     /// @return the allocated `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT`
     public static VkPhysicalDeviceFragmentDensityMap2PropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceFragmentDensityMap2PropertiesEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT`
+    public VkPhysicalDeviceFragmentDensityMap2PropertiesEXT asSlice(long index) { return new VkPhysicalDeviceFragmentDensityMap2PropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT`
+    public VkPhysicalDeviceFragmentDensityMap2PropertiesEXT asSlice(long index, long count) { return new VkPhysicalDeviceFragmentDensityMap2PropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

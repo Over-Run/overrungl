@@ -101,6 +101,17 @@ public final class VkDeviceGroupPresentInfoKHR extends Struct {
     /// @return the allocated `VkDeviceGroupPresentInfoKHR`
     public static VkDeviceGroupPresentInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkDeviceGroupPresentInfoKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkDeviceGroupPresentInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDeviceGroupPresentInfoKHR`
+    public VkDeviceGroupPresentInfoKHR asSlice(long index) { return new VkDeviceGroupPresentInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkDeviceGroupPresentInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDeviceGroupPresentInfoKHR`
+    public VkDeviceGroupPresentInfoKHR asSlice(long index, long count) { return new VkDeviceGroupPresentInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

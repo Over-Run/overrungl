@@ -89,6 +89,17 @@ public final class VkExternalMemoryAcquireUnmodifiedEXT extends Struct {
     /// @return the allocated `VkExternalMemoryAcquireUnmodifiedEXT`
     public static VkExternalMemoryAcquireUnmodifiedEXT alloc(SegmentAllocator allocator, long count) { return new VkExternalMemoryAcquireUnmodifiedEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkExternalMemoryAcquireUnmodifiedEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkExternalMemoryAcquireUnmodifiedEXT`
+    public VkExternalMemoryAcquireUnmodifiedEXT asSlice(long index) { return new VkExternalMemoryAcquireUnmodifiedEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkExternalMemoryAcquireUnmodifiedEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkExternalMemoryAcquireUnmodifiedEXT`
+    public VkExternalMemoryAcquireUnmodifiedEXT asSlice(long index, long count) { return new VkExternalMemoryAcquireUnmodifiedEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

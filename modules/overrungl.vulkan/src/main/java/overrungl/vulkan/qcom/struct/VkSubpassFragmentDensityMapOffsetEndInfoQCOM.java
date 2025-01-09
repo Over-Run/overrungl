@@ -95,6 +95,17 @@ public final class VkSubpassFragmentDensityMapOffsetEndInfoQCOM extends Struct {
     /// @return the allocated `VkSubpassFragmentDensityMapOffsetEndInfoQCOM`
     public static VkSubpassFragmentDensityMapOffsetEndInfoQCOM alloc(SegmentAllocator allocator, long count) { return new VkSubpassFragmentDensityMapOffsetEndInfoQCOM(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkSubpassFragmentDensityMapOffsetEndInfoQCOM`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSubpassFragmentDensityMapOffsetEndInfoQCOM`
+    public VkSubpassFragmentDensityMapOffsetEndInfoQCOM asSlice(long index) { return new VkSubpassFragmentDensityMapOffsetEndInfoQCOM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkSubpassFragmentDensityMapOffsetEndInfoQCOM`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSubpassFragmentDensityMapOffsetEndInfoQCOM`
+    public VkSubpassFragmentDensityMapOffsetEndInfoQCOM asSlice(long index, long count) { return new VkSubpassFragmentDensityMapOffsetEndInfoQCOM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

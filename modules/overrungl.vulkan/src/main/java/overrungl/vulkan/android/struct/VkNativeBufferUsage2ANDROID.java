@@ -83,6 +83,17 @@ public final class VkNativeBufferUsage2ANDROID extends Struct {
     /// @return the allocated `VkNativeBufferUsage2ANDROID`
     public static VkNativeBufferUsage2ANDROID alloc(SegmentAllocator allocator, long count) { return new VkNativeBufferUsage2ANDROID(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkNativeBufferUsage2ANDROID`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkNativeBufferUsage2ANDROID`
+    public VkNativeBufferUsage2ANDROID asSlice(long index) { return new VkNativeBufferUsage2ANDROID(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkNativeBufferUsage2ANDROID`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkNativeBufferUsage2ANDROID`
+    public VkNativeBufferUsage2ANDROID asSlice(long index, long count) { return new VkNativeBufferUsage2ANDROID(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `consumer` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

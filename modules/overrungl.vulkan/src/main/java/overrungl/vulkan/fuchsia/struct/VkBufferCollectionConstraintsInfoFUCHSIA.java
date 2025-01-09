@@ -113,6 +113,17 @@ public final class VkBufferCollectionConstraintsInfoFUCHSIA extends Struct {
     /// @return the allocated `VkBufferCollectionConstraintsInfoFUCHSIA`
     public static VkBufferCollectionConstraintsInfoFUCHSIA alloc(SegmentAllocator allocator, long count) { return new VkBufferCollectionConstraintsInfoFUCHSIA(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkBufferCollectionConstraintsInfoFUCHSIA`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkBufferCollectionConstraintsInfoFUCHSIA`
+    public VkBufferCollectionConstraintsInfoFUCHSIA asSlice(long index) { return new VkBufferCollectionConstraintsInfoFUCHSIA(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkBufferCollectionConstraintsInfoFUCHSIA`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkBufferCollectionConstraintsInfoFUCHSIA`
+    public VkBufferCollectionConstraintsInfoFUCHSIA asSlice(long index, long count) { return new VkBufferCollectionConstraintsInfoFUCHSIA(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

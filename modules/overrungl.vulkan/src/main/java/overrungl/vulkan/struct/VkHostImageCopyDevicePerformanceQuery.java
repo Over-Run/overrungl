@@ -95,6 +95,17 @@ public final class VkHostImageCopyDevicePerformanceQuery extends Struct {
     /// @return the allocated `VkHostImageCopyDevicePerformanceQuery`
     public static VkHostImageCopyDevicePerformanceQuery alloc(SegmentAllocator allocator, long count) { return new VkHostImageCopyDevicePerformanceQuery(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkHostImageCopyDevicePerformanceQuery`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkHostImageCopyDevicePerformanceQuery`
+    public VkHostImageCopyDevicePerformanceQuery asSlice(long index) { return new VkHostImageCopyDevicePerformanceQuery(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkHostImageCopyDevicePerformanceQuery`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkHostImageCopyDevicePerformanceQuery`
+    public VkHostImageCopyDevicePerformanceQuery asSlice(long index, long count) { return new VkHostImageCopyDevicePerformanceQuery(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

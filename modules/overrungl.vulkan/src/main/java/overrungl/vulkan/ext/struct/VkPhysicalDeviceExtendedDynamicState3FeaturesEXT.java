@@ -269,6 +269,17 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// @return the allocated `VkPhysicalDeviceExtendedDynamicState3FeaturesEXT`
     public static VkPhysicalDeviceExtendedDynamicState3FeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceExtendedDynamicState3FeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceExtendedDynamicState3FeaturesEXT`
+    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT asSlice(long index) { return new VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceExtendedDynamicState3FeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceExtendedDynamicState3FeaturesEXT`
+    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT asSlice(long index, long count) { return new VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -107,6 +107,17 @@ public final class VkDescriptorPoolCreateInfo extends Struct {
     /// @return the allocated `VkDescriptorPoolCreateInfo`
     public static VkDescriptorPoolCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkDescriptorPoolCreateInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkDescriptorPoolCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDescriptorPoolCreateInfo`
+    public VkDescriptorPoolCreateInfo asSlice(long index) { return new VkDescriptorPoolCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkDescriptorPoolCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDescriptorPoolCreateInfo`
+    public VkDescriptorPoolCreateInfo asSlice(long index, long count) { return new VkDescriptorPoolCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

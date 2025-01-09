@@ -95,6 +95,17 @@ public final class VkPhysicalDeviceFaultFeaturesEXT extends Struct {
     /// @return the allocated `VkPhysicalDeviceFaultFeaturesEXT`
     public static VkPhysicalDeviceFaultFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceFaultFeaturesEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceFaultFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceFaultFeaturesEXT`
+    public VkPhysicalDeviceFaultFeaturesEXT asSlice(long index) { return new VkPhysicalDeviceFaultFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceFaultFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceFaultFeaturesEXT`
+    public VkPhysicalDeviceFaultFeaturesEXT asSlice(long index, long count) { return new VkPhysicalDeviceFaultFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

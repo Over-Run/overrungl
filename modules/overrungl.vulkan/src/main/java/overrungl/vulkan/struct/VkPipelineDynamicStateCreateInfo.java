@@ -101,6 +101,17 @@ public final class VkPipelineDynamicStateCreateInfo extends Struct {
     /// @return the allocated `VkPipelineDynamicStateCreateInfo`
     public static VkPipelineDynamicStateCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkPipelineDynamicStateCreateInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPipelineDynamicStateCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPipelineDynamicStateCreateInfo`
+    public VkPipelineDynamicStateCreateInfo asSlice(long index) { return new VkPipelineDynamicStateCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPipelineDynamicStateCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPipelineDynamicStateCreateInfo`
+    public VkPipelineDynamicStateCreateInfo asSlice(long index, long count) { return new VkPipelineDynamicStateCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

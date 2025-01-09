@@ -23,7 +23,7 @@ import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 import static overrungl.vulkan.VK12.*;
-public class VKEXTSamplerFilterMinmax {
+public final class VKEXTSamplerFilterMinmax {
     public static final int VK_EXT_SAMPLER_FILTER_MINMAX_SPEC_VERSION = 2;
     public static final String VK_EXT_SAMPLER_FILTER_MINMAX_EXTENSION_NAME = "VK_EXT_sampler_filter_minmax";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLER_FILTER_MINMAX_PROPERTIES_EXT = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLER_FILTER_MINMAX_PROPERTIES;
@@ -33,7 +33,6 @@ public class VKEXTSamplerFilterMinmax {
     public static final int VK_SAMPLER_REDUCTION_MODE_MIN_EXT = VK_SAMPLER_REDUCTION_MODE_MIN;
     public static final int VK_SAMPLER_REDUCTION_MODE_MAX_EXT = VK_SAMPLER_REDUCTION_MODE_MAX;
 
-    public VKEXTSamplerFilterMinmax(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKEXTSamplerFilterMinmax() { }
 
 }

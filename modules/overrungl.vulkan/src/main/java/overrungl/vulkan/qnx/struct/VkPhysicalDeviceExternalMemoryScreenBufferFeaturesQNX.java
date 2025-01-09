@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX extends
     /// @return the allocated `VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX`
     public static VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX`
+    public VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX asSlice(long index) { return new VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX`
+    public VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX asSlice(long index, long count) { return new VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

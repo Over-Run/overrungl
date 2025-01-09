@@ -83,6 +83,17 @@ public final class VkPipelineCreationFeedback extends Struct {
     /// @return the allocated `VkPipelineCreationFeedback`
     public static VkPipelineCreationFeedback alloc(SegmentAllocator allocator, long count) { return new VkPipelineCreationFeedback(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPipelineCreationFeedback`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPipelineCreationFeedback`
+    public VkPipelineCreationFeedback asSlice(long index) { return new VkPipelineCreationFeedback(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPipelineCreationFeedback`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPipelineCreationFeedback`
+    public VkPipelineCreationFeedback asSlice(long index, long count) { return new VkPipelineCreationFeedback(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

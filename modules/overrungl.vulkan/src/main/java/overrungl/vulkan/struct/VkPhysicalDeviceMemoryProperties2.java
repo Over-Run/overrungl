@@ -91,6 +91,17 @@ public final class VkPhysicalDeviceMemoryProperties2 extends Struct {
     /// @return the allocated `VkPhysicalDeviceMemoryProperties2`
     public static VkPhysicalDeviceMemoryProperties2 alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceMemoryProperties2(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceMemoryProperties2`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceMemoryProperties2`
+    public VkPhysicalDeviceMemoryProperties2 asSlice(long index) { return new VkPhysicalDeviceMemoryProperties2(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceMemoryProperties2`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceMemoryProperties2`
+    public VkPhysicalDeviceMemoryProperties2 asSlice(long index, long count) { return new VkPhysicalDeviceMemoryProperties2(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

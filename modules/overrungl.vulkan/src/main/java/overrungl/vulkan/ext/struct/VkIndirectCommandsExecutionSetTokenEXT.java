@@ -83,6 +83,17 @@ public final class VkIndirectCommandsExecutionSetTokenEXT extends Struct {
     /// @return the allocated `VkIndirectCommandsExecutionSetTokenEXT`
     public static VkIndirectCommandsExecutionSetTokenEXT alloc(SegmentAllocator allocator, long count) { return new VkIndirectCommandsExecutionSetTokenEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkIndirectCommandsExecutionSetTokenEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkIndirectCommandsExecutionSetTokenEXT`
+    public VkIndirectCommandsExecutionSetTokenEXT asSlice(long index) { return new VkIndirectCommandsExecutionSetTokenEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkIndirectCommandsExecutionSetTokenEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkIndirectCommandsExecutionSetTokenEXT`
+    public VkIndirectCommandsExecutionSetTokenEXT asSlice(long index, long count) { return new VkIndirectCommandsExecutionSetTokenEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `type` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

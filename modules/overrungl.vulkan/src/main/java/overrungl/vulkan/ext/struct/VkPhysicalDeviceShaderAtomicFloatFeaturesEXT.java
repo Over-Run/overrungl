@@ -155,6 +155,17 @@ public final class VkPhysicalDeviceShaderAtomicFloatFeaturesEXT extends Struct {
     /// @return the allocated `VkPhysicalDeviceShaderAtomicFloatFeaturesEXT`
     public static VkPhysicalDeviceShaderAtomicFloatFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceShaderAtomicFloatFeaturesEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceShaderAtomicFloatFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceShaderAtomicFloatFeaturesEXT`
+    public VkPhysicalDeviceShaderAtomicFloatFeaturesEXT asSlice(long index) { return new VkPhysicalDeviceShaderAtomicFloatFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceShaderAtomicFloatFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceShaderAtomicFloatFeaturesEXT`
+    public VkPhysicalDeviceShaderAtomicFloatFeaturesEXT asSlice(long index, long count) { return new VkPhysicalDeviceShaderAtomicFloatFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

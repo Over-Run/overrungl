@@ -22,12 +22,11 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKNVWin32KeyedMutex {
+public final class VKNVWin32KeyedMutex {
     public static final int VK_NV_WIN32_KEYED_MUTEX_SPEC_VERSION = 2;
     public static final String VK_NV_WIN32_KEYED_MUTEX_EXTENSION_NAME = "VK_NV_win32_keyed_mutex";
     public static final int VK_STRUCTURE_TYPE_WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_NV = 1000058000;
 
-    public VKNVWin32KeyedMutex(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKNVWin32KeyedMutex() { }
 
 }

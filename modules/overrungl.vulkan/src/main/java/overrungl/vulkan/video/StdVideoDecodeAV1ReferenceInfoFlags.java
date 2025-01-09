@@ -89,6 +89,17 @@ public final class StdVideoDecodeAV1ReferenceInfoFlags extends Struct {
     /// @return the allocated `StdVideoDecodeAV1ReferenceInfoFlags`
     public static StdVideoDecodeAV1ReferenceInfoFlags alloc(SegmentAllocator allocator, long count) { return new StdVideoDecodeAV1ReferenceInfoFlags(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `StdVideoDecodeAV1ReferenceInfoFlags`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoDecodeAV1ReferenceInfoFlags`
+    public StdVideoDecodeAV1ReferenceInfoFlags asSlice(long index) { return new StdVideoDecodeAV1ReferenceInfoFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `StdVideoDecodeAV1ReferenceInfoFlags`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoDecodeAV1ReferenceInfoFlags`
+    public StdVideoDecodeAV1ReferenceInfoFlags asSlice(long index, long count) { return new StdVideoDecodeAV1ReferenceInfoFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `disable_frame_end_update_cdf` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

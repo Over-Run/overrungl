@@ -107,6 +107,17 @@ public final class VkDescriptorUpdateTemplateEntry extends Struct {
     /// @return the allocated `VkDescriptorUpdateTemplateEntry`
     public static VkDescriptorUpdateTemplateEntry alloc(SegmentAllocator allocator, long count) { return new VkDescriptorUpdateTemplateEntry(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkDescriptorUpdateTemplateEntry`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDescriptorUpdateTemplateEntry`
+    public VkDescriptorUpdateTemplateEntry asSlice(long index) { return new VkDescriptorUpdateTemplateEntry(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkDescriptorUpdateTemplateEntry`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDescriptorUpdateTemplateEntry`
+    public VkDescriptorUpdateTemplateEntry asSlice(long index, long count) { return new VkDescriptorUpdateTemplateEntry(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `dstBinding` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

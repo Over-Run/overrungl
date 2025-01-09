@@ -95,6 +95,17 @@ public final class VkCuModuleCreateInfoNVX extends Struct {
     /// @return the allocated `VkCuModuleCreateInfoNVX`
     public static VkCuModuleCreateInfoNVX alloc(SegmentAllocator allocator, long count) { return new VkCuModuleCreateInfoNVX(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkCuModuleCreateInfoNVX`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkCuModuleCreateInfoNVX`
+    public VkCuModuleCreateInfoNVX asSlice(long index) { return new VkCuModuleCreateInfoNVX(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkCuModuleCreateInfoNVX`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkCuModuleCreateInfoNVX`
+    public VkCuModuleCreateInfoNVX asSlice(long index, long count) { return new VkCuModuleCreateInfoNVX(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

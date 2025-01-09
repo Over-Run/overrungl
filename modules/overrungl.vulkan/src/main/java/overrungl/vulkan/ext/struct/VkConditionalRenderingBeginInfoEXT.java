@@ -101,6 +101,17 @@ public final class VkConditionalRenderingBeginInfoEXT extends Struct {
     /// @return the allocated `VkConditionalRenderingBeginInfoEXT`
     public static VkConditionalRenderingBeginInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkConditionalRenderingBeginInfoEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkConditionalRenderingBeginInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkConditionalRenderingBeginInfoEXT`
+    public VkConditionalRenderingBeginInfoEXT asSlice(long index) { return new VkConditionalRenderingBeginInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkConditionalRenderingBeginInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkConditionalRenderingBeginInfoEXT`
+    public VkConditionalRenderingBeginInfoEXT asSlice(long index, long count) { return new VkConditionalRenderingBeginInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

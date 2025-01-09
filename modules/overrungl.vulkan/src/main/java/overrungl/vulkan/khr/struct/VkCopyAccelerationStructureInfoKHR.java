@@ -101,6 +101,17 @@ public final class VkCopyAccelerationStructureInfoKHR extends Struct {
     /// @return the allocated `VkCopyAccelerationStructureInfoKHR`
     public static VkCopyAccelerationStructureInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkCopyAccelerationStructureInfoKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkCopyAccelerationStructureInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkCopyAccelerationStructureInfoKHR`
+    public VkCopyAccelerationStructureInfoKHR asSlice(long index) { return new VkCopyAccelerationStructureInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkCopyAccelerationStructureInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkCopyAccelerationStructureInfoKHR`
+    public VkCopyAccelerationStructureInfoKHR asSlice(long index, long count) { return new VkCopyAccelerationStructureInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

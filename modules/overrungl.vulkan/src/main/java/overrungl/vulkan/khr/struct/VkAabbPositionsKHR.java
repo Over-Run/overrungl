@@ -107,6 +107,17 @@ public final class VkAabbPositionsKHR extends Struct {
     /// @return the allocated `VkAabbPositionsKHR`
     public static VkAabbPositionsKHR alloc(SegmentAllocator allocator, long count) { return new VkAabbPositionsKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkAabbPositionsKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkAabbPositionsKHR`
+    public VkAabbPositionsKHR asSlice(long index) { return new VkAabbPositionsKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkAabbPositionsKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkAabbPositionsKHR`
+    public VkAabbPositionsKHR asSlice(long index, long count) { return new VkAabbPositionsKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `minX` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

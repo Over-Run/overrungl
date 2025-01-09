@@ -89,6 +89,17 @@ public final class VkPerformanceMarkerInfoINTEL extends Struct {
     /// @return the allocated `VkPerformanceMarkerInfoINTEL`
     public static VkPerformanceMarkerInfoINTEL alloc(SegmentAllocator allocator, long count) { return new VkPerformanceMarkerInfoINTEL(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPerformanceMarkerInfoINTEL`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPerformanceMarkerInfoINTEL`
+    public VkPerformanceMarkerInfoINTEL asSlice(long index) { return new VkPerformanceMarkerInfoINTEL(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPerformanceMarkerInfoINTEL`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPerformanceMarkerInfoINTEL`
+    public VkPerformanceMarkerInfoINTEL asSlice(long index, long count) { return new VkPerformanceMarkerInfoINTEL(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

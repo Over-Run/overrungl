@@ -95,6 +95,17 @@ public final class VkMemoryAllocateInfo extends Struct {
     /// @return the allocated `VkMemoryAllocateInfo`
     public static VkMemoryAllocateInfo alloc(SegmentAllocator allocator, long count) { return new VkMemoryAllocateInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkMemoryAllocateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkMemoryAllocateInfo`
+    public VkMemoryAllocateInfo asSlice(long index) { return new VkMemoryAllocateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkMemoryAllocateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkMemoryAllocateInfo`
+    public VkMemoryAllocateInfo asSlice(long index, long count) { return new VkMemoryAllocateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

@@ -89,6 +89,17 @@ public final class VkStridedDeviceAddressRegionKHR extends Struct {
     /// @return the allocated `VkStridedDeviceAddressRegionKHR`
     public static VkStridedDeviceAddressRegionKHR alloc(SegmentAllocator allocator, long count) { return new VkStridedDeviceAddressRegionKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkStridedDeviceAddressRegionKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkStridedDeviceAddressRegionKHR`
+    public VkStridedDeviceAddressRegionKHR asSlice(long index) { return new VkStridedDeviceAddressRegionKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkStridedDeviceAddressRegionKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkStridedDeviceAddressRegionKHR`
+    public VkStridedDeviceAddressRegionKHR asSlice(long index, long count) { return new VkStridedDeviceAddressRegionKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `deviceAddress` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

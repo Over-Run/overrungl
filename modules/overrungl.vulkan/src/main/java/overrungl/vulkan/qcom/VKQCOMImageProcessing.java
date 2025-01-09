@@ -22,7 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKQCOMImageProcessing {
+public final class VKQCOMImageProcessing {
     public static final int VK_QCOM_IMAGE_PROCESSING_SPEC_VERSION = 1;
     public static final String VK_QCOM_IMAGE_PROCESSING_EXTENSION_NAME = "VK_QCOM_image_processing";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_PROCESSING_FEATURES_QCOM = 1000440000;
@@ -38,7 +38,6 @@ public class VKQCOMImageProcessing {
     public static final long VK_FORMAT_FEATURE_2_BLOCK_MATCHING_BIT_QCOM = 0x1000000000L;
     public static final long VK_FORMAT_FEATURE_2_BOX_FILTER_SAMPLED_BIT_QCOM = 0x2000000000L;
 
-    public VKQCOMImageProcessing(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKQCOMImageProcessing() { }
 
 }

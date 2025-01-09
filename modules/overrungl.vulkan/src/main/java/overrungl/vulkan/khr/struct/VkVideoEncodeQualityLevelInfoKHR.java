@@ -89,6 +89,17 @@ public final class VkVideoEncodeQualityLevelInfoKHR extends Struct {
     /// @return the allocated `VkVideoEncodeQualityLevelInfoKHR`
     public static VkVideoEncodeQualityLevelInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoEncodeQualityLevelInfoKHR(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkVideoEncodeQualityLevelInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkVideoEncodeQualityLevelInfoKHR`
+    public VkVideoEncodeQualityLevelInfoKHR asSlice(long index) { return new VkVideoEncodeQualityLevelInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkVideoEncodeQualityLevelInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkVideoEncodeQualityLevelInfoKHR`
+    public VkVideoEncodeQualityLevelInfoKHR asSlice(long index, long count) { return new VkVideoEncodeQualityLevelInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

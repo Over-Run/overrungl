@@ -89,6 +89,17 @@ public final class VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT exten
     /// @return the allocated `VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT`
     public static VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT`
+    public VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT asSlice(long index) { return new VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT`
+    public VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT asSlice(long index, long count) { return new VkPhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

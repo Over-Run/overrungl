@@ -89,6 +89,17 @@ public final class StdVideoEncodeH264SliceHeaderFlags extends Struct {
     /// @return the allocated `StdVideoEncodeH264SliceHeaderFlags`
     public static StdVideoEncodeH264SliceHeaderFlags alloc(SegmentAllocator allocator, long count) { return new StdVideoEncodeH264SliceHeaderFlags(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `StdVideoEncodeH264SliceHeaderFlags`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoEncodeH264SliceHeaderFlags`
+    public StdVideoEncodeH264SliceHeaderFlags asSlice(long index) { return new StdVideoEncodeH264SliceHeaderFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `StdVideoEncodeH264SliceHeaderFlags`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoEncodeH264SliceHeaderFlags`
+    public StdVideoEncodeH264SliceHeaderFlags asSlice(long index, long count) { return new StdVideoEncodeH264SliceHeaderFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `direct_spatial_mv_pred_flag` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

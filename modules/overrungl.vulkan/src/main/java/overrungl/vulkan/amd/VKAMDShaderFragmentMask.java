@@ -22,11 +22,10 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKAMDShaderFragmentMask {
+public final class VKAMDShaderFragmentMask {
     public static final int VK_AMD_SHADER_FRAGMENT_MASK_SPEC_VERSION = 1;
     public static final String VK_AMD_SHADER_FRAGMENT_MASK_EXTENSION_NAME = "VK_AMD_shader_fragment_mask";
 
-    public VKAMDShaderFragmentMask(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKAMDShaderFragmentMask() { }
 
 }

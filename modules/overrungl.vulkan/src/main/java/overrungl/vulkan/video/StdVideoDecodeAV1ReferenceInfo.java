@@ -101,6 +101,17 @@ public final class StdVideoDecodeAV1ReferenceInfo extends Struct {
     /// @return the allocated `StdVideoDecodeAV1ReferenceInfo`
     public static StdVideoDecodeAV1ReferenceInfo alloc(SegmentAllocator allocator, long count) { return new StdVideoDecodeAV1ReferenceInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `StdVideoDecodeAV1ReferenceInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoDecodeAV1ReferenceInfo`
+    public StdVideoDecodeAV1ReferenceInfo asSlice(long index) { return new StdVideoDecodeAV1ReferenceInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `StdVideoDecodeAV1ReferenceInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoDecodeAV1ReferenceInfo`
+    public StdVideoDecodeAV1ReferenceInfo asSlice(long index, long count) { return new StdVideoDecodeAV1ReferenceInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

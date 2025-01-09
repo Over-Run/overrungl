@@ -107,6 +107,17 @@ public final class VkPipelineDiscardRectangleStateCreateInfoEXT extends Struct {
     /// @return the allocated `VkPipelineDiscardRectangleStateCreateInfoEXT`
     public static VkPipelineDiscardRectangleStateCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkPipelineDiscardRectangleStateCreateInfoEXT(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkPipelineDiscardRectangleStateCreateInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPipelineDiscardRectangleStateCreateInfoEXT`
+    public VkPipelineDiscardRectangleStateCreateInfoEXT asSlice(long index) { return new VkPipelineDiscardRectangleStateCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkPipelineDiscardRectangleStateCreateInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPipelineDiscardRectangleStateCreateInfoEXT`
+    public VkPipelineDiscardRectangleStateCreateInfoEXT asSlice(long index, long count) { return new VkPipelineDiscardRectangleStateCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

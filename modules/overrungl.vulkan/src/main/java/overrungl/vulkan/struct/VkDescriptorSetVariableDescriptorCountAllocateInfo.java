@@ -95,6 +95,17 @@ public final class VkDescriptorSetVariableDescriptorCountAllocateInfo extends St
     /// @return the allocated `VkDescriptorSetVariableDescriptorCountAllocateInfo`
     public static VkDescriptorSetVariableDescriptorCountAllocateInfo alloc(SegmentAllocator allocator, long count) { return new VkDescriptorSetVariableDescriptorCountAllocateInfo(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkDescriptorSetVariableDescriptorCountAllocateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDescriptorSetVariableDescriptorCountAllocateInfo`
+    public VkDescriptorSetVariableDescriptorCountAllocateInfo asSlice(long index) { return new VkDescriptorSetVariableDescriptorCountAllocateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkDescriptorSetVariableDescriptorCountAllocateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDescriptorSetVariableDescriptorCountAllocateInfo`
+    public VkDescriptorSetVariableDescriptorCountAllocateInfo asSlice(long index, long count) { return new VkDescriptorSetVariableDescriptorCountAllocateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index

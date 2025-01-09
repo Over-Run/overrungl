@@ -95,6 +95,17 @@ public final class VkImportMemoryWin32HandleInfoNV extends Struct {
     /// @return the allocated `VkImportMemoryWin32HandleInfoNV`
     public static VkImportMemoryWin32HandleInfoNV alloc(SegmentAllocator allocator, long count) { return new VkImportMemoryWin32HandleInfoNV(allocator.allocate(LAYOUT, count)); }
 
+    /// Creates a slice of `VkImportMemoryWin32HandleInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkImportMemoryWin32HandleInfoNV`
+    public VkImportMemoryWin32HandleInfoNV asSlice(long index) { return new VkImportMemoryWin32HandleInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+    /// Creates a slice of `VkImportMemoryWin32HandleInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkImportMemoryWin32HandleInfoNV`
+    public VkImportMemoryWin32HandleInfoNV asSlice(long index, long count) { return new VkImportMemoryWin32HandleInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
