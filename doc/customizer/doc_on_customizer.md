@@ -1,12 +1,14 @@
 # The Modules Customizer
 
+This documentation is for customizer in version 0.6.0.
+
 ## Introduction
 
 The modules customizer is provided in order to comfort the start of users' development.
 
 ## Selecting Version
 
-Only the latest snapshot version is provided.
+The latest pre-release and snapshot version are provided.
 
 ## Selecting Modules
 

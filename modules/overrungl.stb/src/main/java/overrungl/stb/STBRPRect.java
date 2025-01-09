@@ -81,6 +81,21 @@ public final class STBRPRect extends Struct {
     /// @return the created instance or `null` if the segment is `NULL`
     public static STBRPRect of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new STBRPRect(segment); }
 
+    /// Creates `STBRPRect` with the given segment.
+    ///
+    /// Reinterprets the segment if zero-length.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static STBRPRect ofNative(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new STBRPRect(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.byteSize()) : segment); }
+
+    /// Creates `STBRPRect` with the given segment.
+    ///
+    /// Reinterprets the segment if zero-length.
+    /// @param segment the memory segment
+    /// @param count   the count of the buffer
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static STBRPRect ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new STBRPRect(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+
     /// Allocates a `STBRPRect` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `STBRPRect`

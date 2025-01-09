@@ -203,7 +203,7 @@ public final class GLFWNative {
         } else { throw new SymbolNotFoundError("Symbol not found: glfwGetX11Monitor"); }
     }
 
-    public static @CType("RROutput") long glfwGetX11Window(@CType("GLFWwindow*") java.lang.foreign.MemorySegment window) {
+    public static @CType("Window") long glfwGetX11Window(@CType("GLFWwindow*") java.lang.foreign.MemorySegment window) {
         if (Handles.MH_glfwGetX11Window != null) {
         try {
             return (long) Handles.MH_glfwGetX11Window.invokeExact(window);

@@ -18,6 +18,7 @@ package overrungl.gen
 
 import com.palantir.javapoet.ClassName
 import com.palantir.javapoet.TypeName
+import java.nio.file.Files
 import kotlin.io.path.Path
 
 fun generateUpcallType(packageName: String, name: String): CustomTypeSpec {
@@ -74,7 +75,6 @@ class Upcall(
             .reduceOrNull(AllocatorRequirement::stricter)
             ?: AllocatorRequirement.NO
 
-        val path = Path("${packageName.replace('.', '/')}/$name.java")
         val sb = StringBuilder()
 
         sb.appendLine(commentedFileHeader)
@@ -301,6 +301,9 @@ class Upcall(
 
         sb.appendLine("}")
 
+        val base = Path(packageName.replace('.', '/'))
+        Files.createDirectories(base)
+        val path = base.resolve("$name.java")
         writeString(path, sb.toString())
     }
 }
