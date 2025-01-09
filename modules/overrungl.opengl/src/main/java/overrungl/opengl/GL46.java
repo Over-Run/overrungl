@@ -23,7 +23,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
-public sealed class GL46 extends GL45 permits GL {
+public class GL46 extends GL45 {
     public static final int GL_SHADER_BINARY_FORMAT_SPIR_V = 0x9551;
     public static final int GL_SPIR_V_BINARY = 0x9552;
     public static final int GL_PARAMETER_BUFFER = 0x80EE;

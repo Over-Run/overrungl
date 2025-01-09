@@ -23,7 +23,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
-public sealed class GL11 extends GL10 permits GL12 {
+public class GL11 extends GL10 {
     public static final int GL_COLOR_LOGIC_OP = 0x0BF2;
     public static final int GL_POLYGON_OFFSET_UNITS = 0x2A00;
     public static final int GL_POLYGON_OFFSET_POINT = 0x2A01;

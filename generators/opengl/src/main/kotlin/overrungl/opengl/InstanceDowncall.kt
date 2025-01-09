@@ -33,7 +33,6 @@ class InstanceDowncall(
     var constructorCode: String? = null
     var customCode: String? = null
     private val extends = mutableListOf<String>()
-    private val permits = mutableListOf<String>()
     private val fields = mutableListOf<InstanceDowncallField>()
     val handleFields = mutableListOf<InstanceDowncallField>()
     val pfnFields = mutableListOf<InstanceDowncallField>()
@@ -46,10 +45,6 @@ class InstanceDowncall(
 
     fun extends(name: String) {
         extends.add(name)
-    }
-
-    fun permits(name: String) {
-        permits.add(name)
     }
 
     fun field(field: InstanceDowncallField) {
@@ -87,10 +82,6 @@ class InstanceDowncall(
         if (extends.isNotEmpty()) {
             sb.append(" extends ")
             sb.append(extends.joinToString(", "))
-        }
-        if (permits.isNotEmpty()) {
-            sb.append(" permits ")
-            sb.append(permits.joinToString(", "))
         }
         sb.appendLine(" {")
 

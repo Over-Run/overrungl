@@ -23,7 +23,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
-public sealed class GL14 extends GL13 permits GL15 {
+public class GL14 extends GL13 {
     public static final int GL_BLEND_DST_RGB = 0x80C8;
     public static final int GL_BLEND_SRC_RGB = 0x80C9;
     public static final int GL_BLEND_DST_ALPHA = 0x80CA;

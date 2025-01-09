@@ -23,7 +23,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
-public sealed class GL43 extends GL42 permits GL44 {
+public class GL43 extends GL42 {
     public static final int GL_NUM_SHADING_LANGUAGE_VERSIONS = 0x82E9;
     public static final int GL_VERTEX_ATTRIB_ARRAY_LONG = 0x874E;
     public static final int GL_COMPRESSED_RGB8_ETC2 = 0x9274;

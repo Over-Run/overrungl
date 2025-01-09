@@ -23,7 +23,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
-public sealed class GL13 extends GL12 permits GL14 {
+public class GL13 extends GL12 {
     public static final int GL_TEXTURE0 = 0x84C0;
     public static final int GL_TEXTURE1 = 0x84C1;
     public static final int GL_TEXTURE2 = 0x84C2;

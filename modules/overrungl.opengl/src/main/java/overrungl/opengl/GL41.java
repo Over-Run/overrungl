@@ -23,7 +23,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 
-public sealed class GL41 extends GL40 permits GL42 {
+public class GL41 extends GL40 {
     public static final int GL_FIXED = 0x140C;
     public static final int GL_IMPLEMENTATION_COLOR_READ_TYPE = 0x8B9A;
     public static final int GL_IMPLEMENTATION_COLOR_READ_FORMAT = 0x8B9B;
