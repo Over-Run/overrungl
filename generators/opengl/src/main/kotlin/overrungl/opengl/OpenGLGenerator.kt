@@ -170,13 +170,13 @@ fun featureCustomCode(number: String): String? {
             public int GetProgramiv(@CType("GLuint") int program, @CType("GLenum") int pname) { ${useStack("var p = __stack.ints(0); GetProgramiv(program, pname, p); return p.${GLDataType.INTEGER.segmentGet};")} }
             public String GetProgramInfoLog(@CType("GLuint") int program) { ${
             useStack(
-                "int sz = GetProgramiv(program, GL_INFO_LOG_LENGTH); var p = __stack.allocate(ValueLayout.JAVA_BYTE, sz); GetProgramInfoLog(program, sz, MemorySegment.NULL, p); return Unmarshal.unmarshalStringPointer(p);"
+                "int sz = GetProgramiv(program, GL_INFO_LOG_LENGTH); if (sz == 0) return null; var p = __stack.allocate(ValueLayout.JAVA_BYTE, sz); GetProgramInfoLog(program, sz, MemorySegment.NULL, p); return Unmarshal.unmarshalAsString(p);"
             )
         } }
             public int GetShaderiv(@CType("GLuint") int shader, @CType("GLenum") int pname) { ${useStack("var p = __stack.ints(0); GetShaderiv(shader, pname, p); return p.${GLDataType.INTEGER.segmentGet};")} }
             public String GetShaderInfoLog(@CType("GLuint") int shader) { ${
             useStack(
-                "int sz = GetShaderiv(shader, GL_INFO_LOG_LENGTH); var p = __stack.allocate(ValueLayout.JAVA_BYTE, sz); GetShaderInfoLog(shader, sz, MemorySegment.NULL, p); return Unmarshal.unmarshalStringPointer(p);"
+                "int sz = GetShaderiv(shader, GL_INFO_LOG_LENGTH); if (sz == 0) return null; var p = __stack.allocate(ValueLayout.JAVA_BYTE, sz); GetShaderInfoLog(shader, sz, MemorySegment.NULL, p); return Unmarshal.unmarshalAsString(p);"
             )
         } }
             public int GetUniformLocation(@CType("GLuint") int program, @CType("const GLchar *") String name) { ${
