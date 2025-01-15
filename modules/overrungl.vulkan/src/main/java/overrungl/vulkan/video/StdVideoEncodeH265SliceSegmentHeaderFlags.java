@@ -70,7 +70,7 @@ import overrungl.util.*;
 ///     uint32_t : 20 reserved;
 /// } StdVideoEncodeH265SliceSegmentHeaderFlags;
 /// ```
-public final class StdVideoEncodeH265SliceSegmentHeaderFlags extends Struct {
+public sealed class StdVideoEncodeH265SliceSegmentHeaderFlags extends Struct {
     /// The struct layout of `StdVideoEncodeH265SliceSegmentHeaderFlags`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("first_slice_segment_in_pic_flag"),
@@ -124,6 +124,11 @@ public final class StdVideoEncodeH265SliceSegmentHeaderFlags extends Struct {
     public static StdVideoEncodeH265SliceSegmentHeaderFlags of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoEncodeH265SliceSegmentHeaderFlags(segment); }
 
     /// Creates `StdVideoEncodeH265SliceSegmentHeaderFlags` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `StdVideoEncodeH265SliceSegmentHeaderFlags` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -136,7 +141,7 @@ public final class StdVideoEncodeH265SliceSegmentHeaderFlags extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoEncodeH265SliceSegmentHeaderFlags ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoEncodeH265SliceSegmentHeaderFlags(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `StdVideoEncodeH265SliceSegmentHeaderFlags` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -147,7 +152,21 @@ public final class StdVideoEncodeH265SliceSegmentHeaderFlags extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `StdVideoEncodeH265SliceSegmentHeaderFlags`
-    public static StdVideoEncodeH265SliceSegmentHeaderFlags alloc(SegmentAllocator allocator, long count) { return new StdVideoEncodeH265SliceSegmentHeaderFlags(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `StdVideoEncodeH265SliceSegmentHeaderFlags` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `StdVideoEncodeH265SliceSegmentHeaderFlags`
+    public static StdVideoEncodeH265SliceSegmentHeaderFlags allocInit(SegmentAllocator allocator, @CType("uint32_t : 1") int first_slice_segment_in_pic_flag, @CType("uint32_t : 1") int dependent_slice_segment_flag, @CType("uint32_t : 1") int slice_sao_luma_flag, @CType("uint32_t : 1") int slice_sao_chroma_flag, @CType("uint32_t : 1") int num_ref_idx_active_override_flag, @CType("uint32_t : 1") int mvd_l1_zero_flag, @CType("uint32_t : 1") int cabac_init_flag, @CType("uint32_t : 1") int cu_chroma_qp_offset_enabled_flag, @CType("uint32_t : 1") int deblocking_filter_override_flag, @CType("uint32_t : 1") int slice_deblocking_filter_disabled_flag, @CType("uint32_t : 1") int collocated_from_l0_flag, @CType("uint32_t : 1") int slice_loop_filter_across_slices_enabled_flag, @CType("uint32_t : 20") int reserved) { return alloc(allocator).first_slice_segment_in_pic_flag(first_slice_segment_in_pic_flag).dependent_slice_segment_flag(dependent_slice_segment_flag).slice_sao_luma_flag(slice_sao_luma_flag).slice_sao_chroma_flag(slice_sao_chroma_flag).num_ref_idx_active_override_flag(num_ref_idx_active_override_flag).mvd_l1_zero_flag(mvd_l1_zero_flag).cabac_init_flag(cabac_init_flag).cu_chroma_qp_offset_enabled_flag(cu_chroma_qp_offset_enabled_flag).deblocking_filter_override_flag(deblocking_filter_override_flag).slice_deblocking_filter_disabled_flag(slice_deblocking_filter_disabled_flag).collocated_from_l0_flag(collocated_from_l0_flag).slice_loop_filter_across_slices_enabled_flag(slice_loop_filter_across_slices_enabled_flag).reserved(reserved); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public StdVideoEncodeH265SliceSegmentHeaderFlags copyFrom(StdVideoEncodeH265SliceSegmentHeaderFlags src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `first_slice_segment_in_pic_flag` at the given index}
     /// @param segment the segment of the struct
@@ -156,9 +175,6 @@ public final class StdVideoEncodeH265SliceSegmentHeaderFlags extends Struct {
     /// {@return `first_slice_segment_in_pic_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_first_slice_segment_in_pic_flag(MemorySegment segment) { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_first_slice_segment_in_pic_flag(segment, 0L); }
-    /// {@return `first_slice_segment_in_pic_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int first_slice_segment_in_pic_flagAt(long index) { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_first_slice_segment_in_pic_flag(this.segment(), index); }
     /// {@return `first_slice_segment_in_pic_flag`}
     public @CType("uint32_t : 1") int first_slice_segment_in_pic_flag() { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_first_slice_segment_in_pic_flag(this.segment()); }
     /// Sets `first_slice_segment_in_pic_flag` with the given value at the given index.
@@ -170,11 +186,6 @@ public final class StdVideoEncodeH265SliceSegmentHeaderFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_first_slice_segment_in_pic_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoEncodeH265SliceSegmentHeaderFlags.set_first_slice_segment_in_pic_flag(segment, 0L, value); }
-    /// Sets `first_slice_segment_in_pic_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeH265SliceSegmentHeaderFlags first_slice_segment_in_pic_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoEncodeH265SliceSegmentHeaderFlags.set_first_slice_segment_in_pic_flag(this.segment(), index, value); return this; }
     /// Sets `first_slice_segment_in_pic_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -187,9 +198,6 @@ public final class StdVideoEncodeH265SliceSegmentHeaderFlags extends Struct {
     /// {@return `dependent_slice_segment_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_dependent_slice_segment_flag(MemorySegment segment) { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_dependent_slice_segment_flag(segment, 0L); }
-    /// {@return `dependent_slice_segment_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int dependent_slice_segment_flagAt(long index) { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_dependent_slice_segment_flag(this.segment(), index); }
     /// {@return `dependent_slice_segment_flag`}
     public @CType("uint32_t : 1") int dependent_slice_segment_flag() { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_dependent_slice_segment_flag(this.segment()); }
     /// Sets `dependent_slice_segment_flag` with the given value at the given index.
@@ -201,11 +209,6 @@ public final class StdVideoEncodeH265SliceSegmentHeaderFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_dependent_slice_segment_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoEncodeH265SliceSegmentHeaderFlags.set_dependent_slice_segment_flag(segment, 0L, value); }
-    /// Sets `dependent_slice_segment_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeH265SliceSegmentHeaderFlags dependent_slice_segment_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoEncodeH265SliceSegmentHeaderFlags.set_dependent_slice_segment_flag(this.segment(), index, value); return this; }
     /// Sets `dependent_slice_segment_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -218,9 +221,6 @@ public final class StdVideoEncodeH265SliceSegmentHeaderFlags extends Struct {
     /// {@return `slice_sao_luma_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_slice_sao_luma_flag(MemorySegment segment) { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_slice_sao_luma_flag(segment, 0L); }
-    /// {@return `slice_sao_luma_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int slice_sao_luma_flagAt(long index) { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_slice_sao_luma_flag(this.segment(), index); }
     /// {@return `slice_sao_luma_flag`}
     public @CType("uint32_t : 1") int slice_sao_luma_flag() { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_slice_sao_luma_flag(this.segment()); }
     /// Sets `slice_sao_luma_flag` with the given value at the given index.
@@ -232,11 +232,6 @@ public final class StdVideoEncodeH265SliceSegmentHeaderFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_slice_sao_luma_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoEncodeH265SliceSegmentHeaderFlags.set_slice_sao_luma_flag(segment, 0L, value); }
-    /// Sets `slice_sao_luma_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeH265SliceSegmentHeaderFlags slice_sao_luma_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoEncodeH265SliceSegmentHeaderFlags.set_slice_sao_luma_flag(this.segment(), index, value); return this; }
     /// Sets `slice_sao_luma_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -249,9 +244,6 @@ public final class StdVideoEncodeH265SliceSegmentHeaderFlags extends Struct {
     /// {@return `slice_sao_chroma_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_slice_sao_chroma_flag(MemorySegment segment) { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_slice_sao_chroma_flag(segment, 0L); }
-    /// {@return `slice_sao_chroma_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int slice_sao_chroma_flagAt(long index) { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_slice_sao_chroma_flag(this.segment(), index); }
     /// {@return `slice_sao_chroma_flag`}
     public @CType("uint32_t : 1") int slice_sao_chroma_flag() { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_slice_sao_chroma_flag(this.segment()); }
     /// Sets `slice_sao_chroma_flag` with the given value at the given index.
@@ -263,11 +255,6 @@ public final class StdVideoEncodeH265SliceSegmentHeaderFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_slice_sao_chroma_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoEncodeH265SliceSegmentHeaderFlags.set_slice_sao_chroma_flag(segment, 0L, value); }
-    /// Sets `slice_sao_chroma_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeH265SliceSegmentHeaderFlags slice_sao_chroma_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoEncodeH265SliceSegmentHeaderFlags.set_slice_sao_chroma_flag(this.segment(), index, value); return this; }
     /// Sets `slice_sao_chroma_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -280,9 +267,6 @@ public final class StdVideoEncodeH265SliceSegmentHeaderFlags extends Struct {
     /// {@return `num_ref_idx_active_override_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_num_ref_idx_active_override_flag(MemorySegment segment) { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_num_ref_idx_active_override_flag(segment, 0L); }
-    /// {@return `num_ref_idx_active_override_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int num_ref_idx_active_override_flagAt(long index) { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_num_ref_idx_active_override_flag(this.segment(), index); }
     /// {@return `num_ref_idx_active_override_flag`}
     public @CType("uint32_t : 1") int num_ref_idx_active_override_flag() { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_num_ref_idx_active_override_flag(this.segment()); }
     /// Sets `num_ref_idx_active_override_flag` with the given value at the given index.
@@ -294,11 +278,6 @@ public final class StdVideoEncodeH265SliceSegmentHeaderFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_num_ref_idx_active_override_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoEncodeH265SliceSegmentHeaderFlags.set_num_ref_idx_active_override_flag(segment, 0L, value); }
-    /// Sets `num_ref_idx_active_override_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeH265SliceSegmentHeaderFlags num_ref_idx_active_override_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoEncodeH265SliceSegmentHeaderFlags.set_num_ref_idx_active_override_flag(this.segment(), index, value); return this; }
     /// Sets `num_ref_idx_active_override_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -311,9 +290,6 @@ public final class StdVideoEncodeH265SliceSegmentHeaderFlags extends Struct {
     /// {@return `mvd_l1_zero_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_mvd_l1_zero_flag(MemorySegment segment) { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_mvd_l1_zero_flag(segment, 0L); }
-    /// {@return `mvd_l1_zero_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int mvd_l1_zero_flagAt(long index) { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_mvd_l1_zero_flag(this.segment(), index); }
     /// {@return `mvd_l1_zero_flag`}
     public @CType("uint32_t : 1") int mvd_l1_zero_flag() { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_mvd_l1_zero_flag(this.segment()); }
     /// Sets `mvd_l1_zero_flag` with the given value at the given index.
@@ -325,11 +301,6 @@ public final class StdVideoEncodeH265SliceSegmentHeaderFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_mvd_l1_zero_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoEncodeH265SliceSegmentHeaderFlags.set_mvd_l1_zero_flag(segment, 0L, value); }
-    /// Sets `mvd_l1_zero_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeH265SliceSegmentHeaderFlags mvd_l1_zero_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoEncodeH265SliceSegmentHeaderFlags.set_mvd_l1_zero_flag(this.segment(), index, value); return this; }
     /// Sets `mvd_l1_zero_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -342,9 +313,6 @@ public final class StdVideoEncodeH265SliceSegmentHeaderFlags extends Struct {
     /// {@return `cabac_init_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_cabac_init_flag(MemorySegment segment) { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_cabac_init_flag(segment, 0L); }
-    /// {@return `cabac_init_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int cabac_init_flagAt(long index) { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_cabac_init_flag(this.segment(), index); }
     /// {@return `cabac_init_flag`}
     public @CType("uint32_t : 1") int cabac_init_flag() { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_cabac_init_flag(this.segment()); }
     /// Sets `cabac_init_flag` with the given value at the given index.
@@ -356,11 +324,6 @@ public final class StdVideoEncodeH265SliceSegmentHeaderFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_cabac_init_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoEncodeH265SliceSegmentHeaderFlags.set_cabac_init_flag(segment, 0L, value); }
-    /// Sets `cabac_init_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeH265SliceSegmentHeaderFlags cabac_init_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoEncodeH265SliceSegmentHeaderFlags.set_cabac_init_flag(this.segment(), index, value); return this; }
     /// Sets `cabac_init_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -373,9 +336,6 @@ public final class StdVideoEncodeH265SliceSegmentHeaderFlags extends Struct {
     /// {@return `cu_chroma_qp_offset_enabled_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_cu_chroma_qp_offset_enabled_flag(MemorySegment segment) { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_cu_chroma_qp_offset_enabled_flag(segment, 0L); }
-    /// {@return `cu_chroma_qp_offset_enabled_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int cu_chroma_qp_offset_enabled_flagAt(long index) { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_cu_chroma_qp_offset_enabled_flag(this.segment(), index); }
     /// {@return `cu_chroma_qp_offset_enabled_flag`}
     public @CType("uint32_t : 1") int cu_chroma_qp_offset_enabled_flag() { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_cu_chroma_qp_offset_enabled_flag(this.segment()); }
     /// Sets `cu_chroma_qp_offset_enabled_flag` with the given value at the given index.
@@ -387,11 +347,6 @@ public final class StdVideoEncodeH265SliceSegmentHeaderFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_cu_chroma_qp_offset_enabled_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoEncodeH265SliceSegmentHeaderFlags.set_cu_chroma_qp_offset_enabled_flag(segment, 0L, value); }
-    /// Sets `cu_chroma_qp_offset_enabled_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeH265SliceSegmentHeaderFlags cu_chroma_qp_offset_enabled_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoEncodeH265SliceSegmentHeaderFlags.set_cu_chroma_qp_offset_enabled_flag(this.segment(), index, value); return this; }
     /// Sets `cu_chroma_qp_offset_enabled_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -404,9 +359,6 @@ public final class StdVideoEncodeH265SliceSegmentHeaderFlags extends Struct {
     /// {@return `deblocking_filter_override_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_deblocking_filter_override_flag(MemorySegment segment) { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_deblocking_filter_override_flag(segment, 0L); }
-    /// {@return `deblocking_filter_override_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int deblocking_filter_override_flagAt(long index) { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_deblocking_filter_override_flag(this.segment(), index); }
     /// {@return `deblocking_filter_override_flag`}
     public @CType("uint32_t : 1") int deblocking_filter_override_flag() { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_deblocking_filter_override_flag(this.segment()); }
     /// Sets `deblocking_filter_override_flag` with the given value at the given index.
@@ -418,11 +370,6 @@ public final class StdVideoEncodeH265SliceSegmentHeaderFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_deblocking_filter_override_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoEncodeH265SliceSegmentHeaderFlags.set_deblocking_filter_override_flag(segment, 0L, value); }
-    /// Sets `deblocking_filter_override_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeH265SliceSegmentHeaderFlags deblocking_filter_override_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoEncodeH265SliceSegmentHeaderFlags.set_deblocking_filter_override_flag(this.segment(), index, value); return this; }
     /// Sets `deblocking_filter_override_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -435,9 +382,6 @@ public final class StdVideoEncodeH265SliceSegmentHeaderFlags extends Struct {
     /// {@return `slice_deblocking_filter_disabled_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_slice_deblocking_filter_disabled_flag(MemorySegment segment) { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_slice_deblocking_filter_disabled_flag(segment, 0L); }
-    /// {@return `slice_deblocking_filter_disabled_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int slice_deblocking_filter_disabled_flagAt(long index) { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_slice_deblocking_filter_disabled_flag(this.segment(), index); }
     /// {@return `slice_deblocking_filter_disabled_flag`}
     public @CType("uint32_t : 1") int slice_deblocking_filter_disabled_flag() { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_slice_deblocking_filter_disabled_flag(this.segment()); }
     /// Sets `slice_deblocking_filter_disabled_flag` with the given value at the given index.
@@ -449,11 +393,6 @@ public final class StdVideoEncodeH265SliceSegmentHeaderFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_slice_deblocking_filter_disabled_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoEncodeH265SliceSegmentHeaderFlags.set_slice_deblocking_filter_disabled_flag(segment, 0L, value); }
-    /// Sets `slice_deblocking_filter_disabled_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeH265SliceSegmentHeaderFlags slice_deblocking_filter_disabled_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoEncodeH265SliceSegmentHeaderFlags.set_slice_deblocking_filter_disabled_flag(this.segment(), index, value); return this; }
     /// Sets `slice_deblocking_filter_disabled_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -466,9 +405,6 @@ public final class StdVideoEncodeH265SliceSegmentHeaderFlags extends Struct {
     /// {@return `collocated_from_l0_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_collocated_from_l0_flag(MemorySegment segment) { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_collocated_from_l0_flag(segment, 0L); }
-    /// {@return `collocated_from_l0_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int collocated_from_l0_flagAt(long index) { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_collocated_from_l0_flag(this.segment(), index); }
     /// {@return `collocated_from_l0_flag`}
     public @CType("uint32_t : 1") int collocated_from_l0_flag() { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_collocated_from_l0_flag(this.segment()); }
     /// Sets `collocated_from_l0_flag` with the given value at the given index.
@@ -480,11 +416,6 @@ public final class StdVideoEncodeH265SliceSegmentHeaderFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_collocated_from_l0_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoEncodeH265SliceSegmentHeaderFlags.set_collocated_from_l0_flag(segment, 0L, value); }
-    /// Sets `collocated_from_l0_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeH265SliceSegmentHeaderFlags collocated_from_l0_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoEncodeH265SliceSegmentHeaderFlags.set_collocated_from_l0_flag(this.segment(), index, value); return this; }
     /// Sets `collocated_from_l0_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -497,9 +428,6 @@ public final class StdVideoEncodeH265SliceSegmentHeaderFlags extends Struct {
     /// {@return `slice_loop_filter_across_slices_enabled_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_slice_loop_filter_across_slices_enabled_flag(MemorySegment segment) { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_slice_loop_filter_across_slices_enabled_flag(segment, 0L); }
-    /// {@return `slice_loop_filter_across_slices_enabled_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int slice_loop_filter_across_slices_enabled_flagAt(long index) { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_slice_loop_filter_across_slices_enabled_flag(this.segment(), index); }
     /// {@return `slice_loop_filter_across_slices_enabled_flag`}
     public @CType("uint32_t : 1") int slice_loop_filter_across_slices_enabled_flag() { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_slice_loop_filter_across_slices_enabled_flag(this.segment()); }
     /// Sets `slice_loop_filter_across_slices_enabled_flag` with the given value at the given index.
@@ -511,11 +439,6 @@ public final class StdVideoEncodeH265SliceSegmentHeaderFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_slice_loop_filter_across_slices_enabled_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoEncodeH265SliceSegmentHeaderFlags.set_slice_loop_filter_across_slices_enabled_flag(segment, 0L, value); }
-    /// Sets `slice_loop_filter_across_slices_enabled_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeH265SliceSegmentHeaderFlags slice_loop_filter_across_slices_enabled_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoEncodeH265SliceSegmentHeaderFlags.set_slice_loop_filter_across_slices_enabled_flag(this.segment(), index, value); return this; }
     /// Sets `slice_loop_filter_across_slices_enabled_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -528,9 +451,6 @@ public final class StdVideoEncodeH265SliceSegmentHeaderFlags extends Struct {
     /// {@return `reserved`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 20") int get_reserved(MemorySegment segment) { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_reserved(segment, 0L); }
-    /// {@return `reserved` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 20") int reservedAt(long index) { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_reserved(this.segment(), index); }
     /// {@return `reserved`}
     public @CType("uint32_t : 20") int reserved() { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_reserved(this.segment()); }
     /// Sets `reserved` with the given value at the given index.
@@ -542,14 +462,149 @@ public final class StdVideoEncodeH265SliceSegmentHeaderFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_reserved(MemorySegment segment, @CType("uint32_t : 20") int value) { StdVideoEncodeH265SliceSegmentHeaderFlags.set_reserved(segment, 0L, value); }
-    /// Sets `reserved` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeH265SliceSegmentHeaderFlags reservedAt(long index, @CType("uint32_t : 20") int value) { StdVideoEncodeH265SliceSegmentHeaderFlags.set_reserved(this.segment(), index, value); return this; }
     /// Sets `reserved` with the given value.
     /// @param value the value
     /// @return `this`
     public StdVideoEncodeH265SliceSegmentHeaderFlags reserved(@CType("uint32_t : 20") int value) { StdVideoEncodeH265SliceSegmentHeaderFlags.set_reserved(this.segment(), value); return this; }
 
+    /// A buffer of [StdVideoEncodeH265SliceSegmentHeaderFlags].
+    public static final class Buffer extends StdVideoEncodeH265SliceSegmentHeaderFlags {
+        private final long elementCount;
+
+        /// Creates `StdVideoEncodeH265SliceSegmentHeaderFlags.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `StdVideoEncodeH265SliceSegmentHeaderFlags`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `StdVideoEncodeH265SliceSegmentHeaderFlags`
+        public StdVideoEncodeH265SliceSegmentHeaderFlags asSlice(long index) { return new StdVideoEncodeH265SliceSegmentHeaderFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `StdVideoEncodeH265SliceSegmentHeaderFlags`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `StdVideoEncodeH265SliceSegmentHeaderFlags`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `first_slice_segment_in_pic_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int first_slice_segment_in_pic_flagAt(long index) { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_first_slice_segment_in_pic_flag(this.segment(), index); }
+        /// Sets `first_slice_segment_in_pic_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer first_slice_segment_in_pic_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoEncodeH265SliceSegmentHeaderFlags.set_first_slice_segment_in_pic_flag(this.segment(), index, value); return this; }
+
+        /// {@return `dependent_slice_segment_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int dependent_slice_segment_flagAt(long index) { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_dependent_slice_segment_flag(this.segment(), index); }
+        /// Sets `dependent_slice_segment_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer dependent_slice_segment_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoEncodeH265SliceSegmentHeaderFlags.set_dependent_slice_segment_flag(this.segment(), index, value); return this; }
+
+        /// {@return `slice_sao_luma_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int slice_sao_luma_flagAt(long index) { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_slice_sao_luma_flag(this.segment(), index); }
+        /// Sets `slice_sao_luma_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer slice_sao_luma_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoEncodeH265SliceSegmentHeaderFlags.set_slice_sao_luma_flag(this.segment(), index, value); return this; }
+
+        /// {@return `slice_sao_chroma_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int slice_sao_chroma_flagAt(long index) { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_slice_sao_chroma_flag(this.segment(), index); }
+        /// Sets `slice_sao_chroma_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer slice_sao_chroma_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoEncodeH265SliceSegmentHeaderFlags.set_slice_sao_chroma_flag(this.segment(), index, value); return this; }
+
+        /// {@return `num_ref_idx_active_override_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int num_ref_idx_active_override_flagAt(long index) { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_num_ref_idx_active_override_flag(this.segment(), index); }
+        /// Sets `num_ref_idx_active_override_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer num_ref_idx_active_override_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoEncodeH265SliceSegmentHeaderFlags.set_num_ref_idx_active_override_flag(this.segment(), index, value); return this; }
+
+        /// {@return `mvd_l1_zero_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int mvd_l1_zero_flagAt(long index) { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_mvd_l1_zero_flag(this.segment(), index); }
+        /// Sets `mvd_l1_zero_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer mvd_l1_zero_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoEncodeH265SliceSegmentHeaderFlags.set_mvd_l1_zero_flag(this.segment(), index, value); return this; }
+
+        /// {@return `cabac_init_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int cabac_init_flagAt(long index) { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_cabac_init_flag(this.segment(), index); }
+        /// Sets `cabac_init_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer cabac_init_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoEncodeH265SliceSegmentHeaderFlags.set_cabac_init_flag(this.segment(), index, value); return this; }
+
+        /// {@return `cu_chroma_qp_offset_enabled_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int cu_chroma_qp_offset_enabled_flagAt(long index) { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_cu_chroma_qp_offset_enabled_flag(this.segment(), index); }
+        /// Sets `cu_chroma_qp_offset_enabled_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer cu_chroma_qp_offset_enabled_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoEncodeH265SliceSegmentHeaderFlags.set_cu_chroma_qp_offset_enabled_flag(this.segment(), index, value); return this; }
+
+        /// {@return `deblocking_filter_override_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int deblocking_filter_override_flagAt(long index) { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_deblocking_filter_override_flag(this.segment(), index); }
+        /// Sets `deblocking_filter_override_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer deblocking_filter_override_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoEncodeH265SliceSegmentHeaderFlags.set_deblocking_filter_override_flag(this.segment(), index, value); return this; }
+
+        /// {@return `slice_deblocking_filter_disabled_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int slice_deblocking_filter_disabled_flagAt(long index) { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_slice_deblocking_filter_disabled_flag(this.segment(), index); }
+        /// Sets `slice_deblocking_filter_disabled_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer slice_deblocking_filter_disabled_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoEncodeH265SliceSegmentHeaderFlags.set_slice_deblocking_filter_disabled_flag(this.segment(), index, value); return this; }
+
+        /// {@return `collocated_from_l0_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int collocated_from_l0_flagAt(long index) { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_collocated_from_l0_flag(this.segment(), index); }
+        /// Sets `collocated_from_l0_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer collocated_from_l0_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoEncodeH265SliceSegmentHeaderFlags.set_collocated_from_l0_flag(this.segment(), index, value); return this; }
+
+        /// {@return `slice_loop_filter_across_slices_enabled_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int slice_loop_filter_across_slices_enabled_flagAt(long index) { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_slice_loop_filter_across_slices_enabled_flag(this.segment(), index); }
+        /// Sets `slice_loop_filter_across_slices_enabled_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer slice_loop_filter_across_slices_enabled_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoEncodeH265SliceSegmentHeaderFlags.set_slice_loop_filter_across_slices_enabled_flag(this.segment(), index, value); return this; }
+
+        /// {@return `reserved` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 20") int reservedAt(long index) { return StdVideoEncodeH265SliceSegmentHeaderFlags.get_reserved(this.segment(), index); }
+        /// Sets `reserved` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer reservedAt(long index, @CType("uint32_t : 20") int value) { StdVideoEncodeH265SliceSegmentHeaderFlags.set_reserved(this.segment(), index, value); return this; }
+
+    }
 }

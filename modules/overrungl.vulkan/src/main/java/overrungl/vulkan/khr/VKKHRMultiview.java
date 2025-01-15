@@ -23,7 +23,7 @@ import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 import static overrungl.vulkan.VK11.*;
-public class VKKHRMultiview {
+public final class VKKHRMultiview {
     public static final int VK_KHR_MULTIVIEW_SPEC_VERSION = 1;
     public static final String VK_KHR_MULTIVIEW_EXTENSION_NAME = "VK_KHR_multiview";
     public static final int VK_STRUCTURE_TYPE_RENDER_PASS_MULTIVIEW_CREATE_INFO_KHR = VK_STRUCTURE_TYPE_RENDER_PASS_MULTIVIEW_CREATE_INFO;
@@ -31,7 +31,6 @@ public class VKKHRMultiview {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PROPERTIES_KHR = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PROPERTIES;
     public static final int VK_DEPENDENCY_VIEW_LOCAL_BIT_KHR = VK_DEPENDENCY_VIEW_LOCAL_BIT;
 
-    public VKKHRMultiview(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKKHRMultiview() { }
 
 }

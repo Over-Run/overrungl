@@ -22,12 +22,11 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKNVRawAccessChains {
+public final class VKNVRawAccessChains {
     public static final int VK_NV_RAW_ACCESS_CHAINS_SPEC_VERSION = 1;
     public static final String VK_NV_RAW_ACCESS_CHAINS_EXTENSION_NAME = "VK_NV_raw_access_chains";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAW_ACCESS_CHAINS_FEATURES_NV = 1000555000;
 
-    public VKNVRawAccessChains(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKNVRawAccessChains() { }
 
 }

@@ -22,11 +22,10 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKKHRSpirv14 {
+public final class VKKHRSpirv14 {
     public static final int VK_KHR_SPIRV_1_4_SPEC_VERSION = 1;
     public static final String VK_KHR_SPIRV_1_4_EXTENSION_NAME = "VK_KHR_spirv_1_4";
 
-    public VKKHRSpirv14(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKKHRSpirv14() { }
 
 }

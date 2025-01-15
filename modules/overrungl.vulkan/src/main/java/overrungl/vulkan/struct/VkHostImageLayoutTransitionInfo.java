@@ -49,7 +49,7 @@ import overrungl.util.*;
 ///     VkImageSubresourceRange subresourceRange;
 /// } VkHostImageLayoutTransitionInfo;
 /// ```
-public final class VkHostImageLayoutTransitionInfo extends Struct {
+public sealed class VkHostImageLayoutTransitionInfo extends Struct {
     /// The struct layout of `VkHostImageLayoutTransitionInfo`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -84,6 +84,11 @@ public final class VkHostImageLayoutTransitionInfo extends Struct {
     public static VkHostImageLayoutTransitionInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkHostImageLayoutTransitionInfo(segment); }
 
     /// Creates `VkHostImageLayoutTransitionInfo` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkHostImageLayoutTransitionInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -96,7 +101,7 @@ public final class VkHostImageLayoutTransitionInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkHostImageLayoutTransitionInfo ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkHostImageLayoutTransitionInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkHostImageLayoutTransitionInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -107,7 +112,21 @@ public final class VkHostImageLayoutTransitionInfo extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkHostImageLayoutTransitionInfo`
-    public static VkHostImageLayoutTransitionInfo alloc(SegmentAllocator allocator, long count) { return new VkHostImageLayoutTransitionInfo(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkHostImageLayoutTransitionInfo` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkHostImageLayoutTransitionInfo`
+    public static VkHostImageLayoutTransitionInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkImage") java.lang.foreign.MemorySegment image, @CType("VkImageLayout") int oldLayout, @CType("VkImageLayout") int newLayout, @CType("VkImageSubresourceRange") java.lang.foreign.MemorySegment subresourceRange) { return alloc(allocator).sType(sType).pNext(pNext).image(image).oldLayout(oldLayout).newLayout(newLayout).subresourceRange(subresourceRange); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkHostImageLayoutTransitionInfo copyFrom(VkHostImageLayoutTransitionInfo src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -116,9 +135,6 @@ public final class VkHostImageLayoutTransitionInfo extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkHostImageLayoutTransitionInfo.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkHostImageLayoutTransitionInfo.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkHostImageLayoutTransitionInfo.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -130,11 +146,6 @@ public final class VkHostImageLayoutTransitionInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkHostImageLayoutTransitionInfo.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkHostImageLayoutTransitionInfo sTypeAt(long index, @CType("VkStructureType") int value) { VkHostImageLayoutTransitionInfo.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -147,9 +158,6 @@ public final class VkHostImageLayoutTransitionInfo extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkHostImageLayoutTransitionInfo.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkHostImageLayoutTransitionInfo.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkHostImageLayoutTransitionInfo.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -161,11 +169,6 @@ public final class VkHostImageLayoutTransitionInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkHostImageLayoutTransitionInfo.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkHostImageLayoutTransitionInfo pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkHostImageLayoutTransitionInfo.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -178,9 +181,6 @@ public final class VkHostImageLayoutTransitionInfo extends Struct {
     /// {@return `image`}
     /// @param segment the segment of the struct
     public static @CType("VkImage") java.lang.foreign.MemorySegment get_image(MemorySegment segment) { return VkHostImageLayoutTransitionInfo.get_image(segment, 0L); }
-    /// {@return `image` at the given index}
-    /// @param index the index
-    public @CType("VkImage") java.lang.foreign.MemorySegment imageAt(long index) { return VkHostImageLayoutTransitionInfo.get_image(this.segment(), index); }
     /// {@return `image`}
     public @CType("VkImage") java.lang.foreign.MemorySegment image() { return VkHostImageLayoutTransitionInfo.get_image(this.segment()); }
     /// Sets `image` with the given value at the given index.
@@ -192,11 +192,6 @@ public final class VkHostImageLayoutTransitionInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_image(MemorySegment segment, @CType("VkImage") java.lang.foreign.MemorySegment value) { VkHostImageLayoutTransitionInfo.set_image(segment, 0L, value); }
-    /// Sets `image` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkHostImageLayoutTransitionInfo imageAt(long index, @CType("VkImage") java.lang.foreign.MemorySegment value) { VkHostImageLayoutTransitionInfo.set_image(this.segment(), index, value); return this; }
     /// Sets `image` with the given value.
     /// @param value the value
     /// @return `this`
@@ -209,9 +204,6 @@ public final class VkHostImageLayoutTransitionInfo extends Struct {
     /// {@return `oldLayout`}
     /// @param segment the segment of the struct
     public static @CType("VkImageLayout") int get_oldLayout(MemorySegment segment) { return VkHostImageLayoutTransitionInfo.get_oldLayout(segment, 0L); }
-    /// {@return `oldLayout` at the given index}
-    /// @param index the index
-    public @CType("VkImageLayout") int oldLayoutAt(long index) { return VkHostImageLayoutTransitionInfo.get_oldLayout(this.segment(), index); }
     /// {@return `oldLayout`}
     public @CType("VkImageLayout") int oldLayout() { return VkHostImageLayoutTransitionInfo.get_oldLayout(this.segment()); }
     /// Sets `oldLayout` with the given value at the given index.
@@ -223,11 +215,6 @@ public final class VkHostImageLayoutTransitionInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_oldLayout(MemorySegment segment, @CType("VkImageLayout") int value) { VkHostImageLayoutTransitionInfo.set_oldLayout(segment, 0L, value); }
-    /// Sets `oldLayout` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkHostImageLayoutTransitionInfo oldLayoutAt(long index, @CType("VkImageLayout") int value) { VkHostImageLayoutTransitionInfo.set_oldLayout(this.segment(), index, value); return this; }
     /// Sets `oldLayout` with the given value.
     /// @param value the value
     /// @return `this`
@@ -240,9 +227,6 @@ public final class VkHostImageLayoutTransitionInfo extends Struct {
     /// {@return `newLayout`}
     /// @param segment the segment of the struct
     public static @CType("VkImageLayout") int get_newLayout(MemorySegment segment) { return VkHostImageLayoutTransitionInfo.get_newLayout(segment, 0L); }
-    /// {@return `newLayout` at the given index}
-    /// @param index the index
-    public @CType("VkImageLayout") int newLayoutAt(long index) { return VkHostImageLayoutTransitionInfo.get_newLayout(this.segment(), index); }
     /// {@return `newLayout`}
     public @CType("VkImageLayout") int newLayout() { return VkHostImageLayoutTransitionInfo.get_newLayout(this.segment()); }
     /// Sets `newLayout` with the given value at the given index.
@@ -254,11 +238,6 @@ public final class VkHostImageLayoutTransitionInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_newLayout(MemorySegment segment, @CType("VkImageLayout") int value) { VkHostImageLayoutTransitionInfo.set_newLayout(segment, 0L, value); }
-    /// Sets `newLayout` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkHostImageLayoutTransitionInfo newLayoutAt(long index, @CType("VkImageLayout") int value) { VkHostImageLayoutTransitionInfo.set_newLayout(this.segment(), index, value); return this; }
     /// Sets `newLayout` with the given value.
     /// @param value the value
     /// @return `this`
@@ -271,9 +250,6 @@ public final class VkHostImageLayoutTransitionInfo extends Struct {
     /// {@return `subresourceRange`}
     /// @param segment the segment of the struct
     public static @CType("VkImageSubresourceRange") java.lang.foreign.MemorySegment get_subresourceRange(MemorySegment segment) { return VkHostImageLayoutTransitionInfo.get_subresourceRange(segment, 0L); }
-    /// {@return `subresourceRange` at the given index}
-    /// @param index the index
-    public @CType("VkImageSubresourceRange") java.lang.foreign.MemorySegment subresourceRangeAt(long index) { return VkHostImageLayoutTransitionInfo.get_subresourceRange(this.segment(), index); }
     /// {@return `subresourceRange`}
     public @CType("VkImageSubresourceRange") java.lang.foreign.MemorySegment subresourceRange() { return VkHostImageLayoutTransitionInfo.get_subresourceRange(this.segment()); }
     /// Sets `subresourceRange` with the given value at the given index.
@@ -285,14 +261,86 @@ public final class VkHostImageLayoutTransitionInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_subresourceRange(MemorySegment segment, @CType("VkImageSubresourceRange") java.lang.foreign.MemorySegment value) { VkHostImageLayoutTransitionInfo.set_subresourceRange(segment, 0L, value); }
-    /// Sets `subresourceRange` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkHostImageLayoutTransitionInfo subresourceRangeAt(long index, @CType("VkImageSubresourceRange") java.lang.foreign.MemorySegment value) { VkHostImageLayoutTransitionInfo.set_subresourceRange(this.segment(), index, value); return this; }
     /// Sets `subresourceRange` with the given value.
     /// @param value the value
     /// @return `this`
     public VkHostImageLayoutTransitionInfo subresourceRange(@CType("VkImageSubresourceRange") java.lang.foreign.MemorySegment value) { VkHostImageLayoutTransitionInfo.set_subresourceRange(this.segment(), value); return this; }
 
+    /// A buffer of [VkHostImageLayoutTransitionInfo].
+    public static final class Buffer extends VkHostImageLayoutTransitionInfo {
+        private final long elementCount;
+
+        /// Creates `VkHostImageLayoutTransitionInfo.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkHostImageLayoutTransitionInfo`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkHostImageLayoutTransitionInfo`
+        public VkHostImageLayoutTransitionInfo asSlice(long index) { return new VkHostImageLayoutTransitionInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkHostImageLayoutTransitionInfo`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkHostImageLayoutTransitionInfo`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkHostImageLayoutTransitionInfo.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkHostImageLayoutTransitionInfo.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkHostImageLayoutTransitionInfo.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkHostImageLayoutTransitionInfo.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `image` at the given index}
+        /// @param index the index
+        public @CType("VkImage") java.lang.foreign.MemorySegment imageAt(long index) { return VkHostImageLayoutTransitionInfo.get_image(this.segment(), index); }
+        /// Sets `image` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer imageAt(long index, @CType("VkImage") java.lang.foreign.MemorySegment value) { VkHostImageLayoutTransitionInfo.set_image(this.segment(), index, value); return this; }
+
+        /// {@return `oldLayout` at the given index}
+        /// @param index the index
+        public @CType("VkImageLayout") int oldLayoutAt(long index) { return VkHostImageLayoutTransitionInfo.get_oldLayout(this.segment(), index); }
+        /// Sets `oldLayout` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer oldLayoutAt(long index, @CType("VkImageLayout") int value) { VkHostImageLayoutTransitionInfo.set_oldLayout(this.segment(), index, value); return this; }
+
+        /// {@return `newLayout` at the given index}
+        /// @param index the index
+        public @CType("VkImageLayout") int newLayoutAt(long index) { return VkHostImageLayoutTransitionInfo.get_newLayout(this.segment(), index); }
+        /// Sets `newLayout` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer newLayoutAt(long index, @CType("VkImageLayout") int value) { VkHostImageLayoutTransitionInfo.set_newLayout(this.segment(), index, value); return this; }
+
+        /// {@return `subresourceRange` at the given index}
+        /// @param index the index
+        public @CType("VkImageSubresourceRange") java.lang.foreign.MemorySegment subresourceRangeAt(long index) { return VkHostImageLayoutTransitionInfo.get_subresourceRange(this.segment(), index); }
+        /// Sets `subresourceRange` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer subresourceRangeAt(long index, @CType("VkImageSubresourceRange") java.lang.foreign.MemorySegment value) { VkHostImageLayoutTransitionInfo.set_subresourceRange(this.segment(), index, value); return this; }
+
+    }
 }

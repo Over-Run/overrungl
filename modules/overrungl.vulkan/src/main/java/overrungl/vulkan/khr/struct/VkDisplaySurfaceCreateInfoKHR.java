@@ -61,7 +61,7 @@ import overrungl.util.*;
 ///     VkExtent2D imageExtent;
 /// } VkDisplaySurfaceCreateInfoKHR;
 /// ```
-public final class VkDisplaySurfaceCreateInfoKHR extends Struct {
+public sealed class VkDisplaySurfaceCreateInfoKHR extends Struct {
     /// The struct layout of `VkDisplaySurfaceCreateInfoKHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -108,6 +108,11 @@ public final class VkDisplaySurfaceCreateInfoKHR extends Struct {
     public static VkDisplaySurfaceCreateInfoKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDisplaySurfaceCreateInfoKHR(segment); }
 
     /// Creates `VkDisplaySurfaceCreateInfoKHR` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkDisplaySurfaceCreateInfoKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -120,7 +125,7 @@ public final class VkDisplaySurfaceCreateInfoKHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDisplaySurfaceCreateInfoKHR ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkDisplaySurfaceCreateInfoKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkDisplaySurfaceCreateInfoKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -131,7 +136,21 @@ public final class VkDisplaySurfaceCreateInfoKHR extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDisplaySurfaceCreateInfoKHR`
-    public static VkDisplaySurfaceCreateInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkDisplaySurfaceCreateInfoKHR(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkDisplaySurfaceCreateInfoKHR` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkDisplaySurfaceCreateInfoKHR`
+    public static VkDisplaySurfaceCreateInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkDisplaySurfaceCreateFlagsKHR") int flags, @CType("VkDisplayModeKHR") java.lang.foreign.MemorySegment displayMode, @CType("uint32_t") int planeIndex, @CType("uint32_t") int planeStackIndex, @CType("VkSurfaceTransformFlagBitsKHR") int transform, @CType("float") float globalAlpha, @CType("VkDisplayPlaneAlphaFlagBitsKHR") int alphaMode, @CType("VkExtent2D") java.lang.foreign.MemorySegment imageExtent) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).displayMode(displayMode).planeIndex(planeIndex).planeStackIndex(planeStackIndex).transform(transform).globalAlpha(globalAlpha).alphaMode(alphaMode).imageExtent(imageExtent); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkDisplaySurfaceCreateInfoKHR copyFrom(VkDisplaySurfaceCreateInfoKHR src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -140,9 +159,6 @@ public final class VkDisplaySurfaceCreateInfoKHR extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkDisplaySurfaceCreateInfoKHR.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkDisplaySurfaceCreateInfoKHR.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkDisplaySurfaceCreateInfoKHR.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -154,11 +170,6 @@ public final class VkDisplaySurfaceCreateInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkDisplaySurfaceCreateInfoKHR.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDisplaySurfaceCreateInfoKHR sTypeAt(long index, @CType("VkStructureType") int value) { VkDisplaySurfaceCreateInfoKHR.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -171,9 +182,6 @@ public final class VkDisplaySurfaceCreateInfoKHR extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkDisplaySurfaceCreateInfoKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkDisplaySurfaceCreateInfoKHR.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkDisplaySurfaceCreateInfoKHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -185,11 +193,6 @@ public final class VkDisplaySurfaceCreateInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDisplaySurfaceCreateInfoKHR.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDisplaySurfaceCreateInfoKHR pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDisplaySurfaceCreateInfoKHR.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -202,9 +205,6 @@ public final class VkDisplaySurfaceCreateInfoKHR extends Struct {
     /// {@return `flags`}
     /// @param segment the segment of the struct
     public static @CType("VkDisplaySurfaceCreateFlagsKHR") int get_flags(MemorySegment segment) { return VkDisplaySurfaceCreateInfoKHR.get_flags(segment, 0L); }
-    /// {@return `flags` at the given index}
-    /// @param index the index
-    public @CType("VkDisplaySurfaceCreateFlagsKHR") int flagsAt(long index) { return VkDisplaySurfaceCreateInfoKHR.get_flags(this.segment(), index); }
     /// {@return `flags`}
     public @CType("VkDisplaySurfaceCreateFlagsKHR") int flags() { return VkDisplaySurfaceCreateInfoKHR.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
@@ -216,11 +216,6 @@ public final class VkDisplaySurfaceCreateInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_flags(MemorySegment segment, @CType("VkDisplaySurfaceCreateFlagsKHR") int value) { VkDisplaySurfaceCreateInfoKHR.set_flags(segment, 0L, value); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDisplaySurfaceCreateInfoKHR flagsAt(long index, @CType("VkDisplaySurfaceCreateFlagsKHR") int value) { VkDisplaySurfaceCreateInfoKHR.set_flags(this.segment(), index, value); return this; }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -233,9 +228,6 @@ public final class VkDisplaySurfaceCreateInfoKHR extends Struct {
     /// {@return `displayMode`}
     /// @param segment the segment of the struct
     public static @CType("VkDisplayModeKHR") java.lang.foreign.MemorySegment get_displayMode(MemorySegment segment) { return VkDisplaySurfaceCreateInfoKHR.get_displayMode(segment, 0L); }
-    /// {@return `displayMode` at the given index}
-    /// @param index the index
-    public @CType("VkDisplayModeKHR") java.lang.foreign.MemorySegment displayModeAt(long index) { return VkDisplaySurfaceCreateInfoKHR.get_displayMode(this.segment(), index); }
     /// {@return `displayMode`}
     public @CType("VkDisplayModeKHR") java.lang.foreign.MemorySegment displayMode() { return VkDisplaySurfaceCreateInfoKHR.get_displayMode(this.segment()); }
     /// Sets `displayMode` with the given value at the given index.
@@ -247,11 +239,6 @@ public final class VkDisplaySurfaceCreateInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_displayMode(MemorySegment segment, @CType("VkDisplayModeKHR") java.lang.foreign.MemorySegment value) { VkDisplaySurfaceCreateInfoKHR.set_displayMode(segment, 0L, value); }
-    /// Sets `displayMode` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDisplaySurfaceCreateInfoKHR displayModeAt(long index, @CType("VkDisplayModeKHR") java.lang.foreign.MemorySegment value) { VkDisplaySurfaceCreateInfoKHR.set_displayMode(this.segment(), index, value); return this; }
     /// Sets `displayMode` with the given value.
     /// @param value the value
     /// @return `this`
@@ -264,9 +251,6 @@ public final class VkDisplaySurfaceCreateInfoKHR extends Struct {
     /// {@return `planeIndex`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_planeIndex(MemorySegment segment) { return VkDisplaySurfaceCreateInfoKHR.get_planeIndex(segment, 0L); }
-    /// {@return `planeIndex` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int planeIndexAt(long index) { return VkDisplaySurfaceCreateInfoKHR.get_planeIndex(this.segment(), index); }
     /// {@return `planeIndex`}
     public @CType("uint32_t") int planeIndex() { return VkDisplaySurfaceCreateInfoKHR.get_planeIndex(this.segment()); }
     /// Sets `planeIndex` with the given value at the given index.
@@ -278,11 +262,6 @@ public final class VkDisplaySurfaceCreateInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_planeIndex(MemorySegment segment, @CType("uint32_t") int value) { VkDisplaySurfaceCreateInfoKHR.set_planeIndex(segment, 0L, value); }
-    /// Sets `planeIndex` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDisplaySurfaceCreateInfoKHR planeIndexAt(long index, @CType("uint32_t") int value) { VkDisplaySurfaceCreateInfoKHR.set_planeIndex(this.segment(), index, value); return this; }
     /// Sets `planeIndex` with the given value.
     /// @param value the value
     /// @return `this`
@@ -295,9 +274,6 @@ public final class VkDisplaySurfaceCreateInfoKHR extends Struct {
     /// {@return `planeStackIndex`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_planeStackIndex(MemorySegment segment) { return VkDisplaySurfaceCreateInfoKHR.get_planeStackIndex(segment, 0L); }
-    /// {@return `planeStackIndex` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int planeStackIndexAt(long index) { return VkDisplaySurfaceCreateInfoKHR.get_planeStackIndex(this.segment(), index); }
     /// {@return `planeStackIndex`}
     public @CType("uint32_t") int planeStackIndex() { return VkDisplaySurfaceCreateInfoKHR.get_planeStackIndex(this.segment()); }
     /// Sets `planeStackIndex` with the given value at the given index.
@@ -309,11 +285,6 @@ public final class VkDisplaySurfaceCreateInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_planeStackIndex(MemorySegment segment, @CType("uint32_t") int value) { VkDisplaySurfaceCreateInfoKHR.set_planeStackIndex(segment, 0L, value); }
-    /// Sets `planeStackIndex` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDisplaySurfaceCreateInfoKHR planeStackIndexAt(long index, @CType("uint32_t") int value) { VkDisplaySurfaceCreateInfoKHR.set_planeStackIndex(this.segment(), index, value); return this; }
     /// Sets `planeStackIndex` with the given value.
     /// @param value the value
     /// @return `this`
@@ -326,9 +297,6 @@ public final class VkDisplaySurfaceCreateInfoKHR extends Struct {
     /// {@return `transform`}
     /// @param segment the segment of the struct
     public static @CType("VkSurfaceTransformFlagBitsKHR") int get_transform(MemorySegment segment) { return VkDisplaySurfaceCreateInfoKHR.get_transform(segment, 0L); }
-    /// {@return `transform` at the given index}
-    /// @param index the index
-    public @CType("VkSurfaceTransformFlagBitsKHR") int transformAt(long index) { return VkDisplaySurfaceCreateInfoKHR.get_transform(this.segment(), index); }
     /// {@return `transform`}
     public @CType("VkSurfaceTransformFlagBitsKHR") int transform() { return VkDisplaySurfaceCreateInfoKHR.get_transform(this.segment()); }
     /// Sets `transform` with the given value at the given index.
@@ -340,11 +308,6 @@ public final class VkDisplaySurfaceCreateInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_transform(MemorySegment segment, @CType("VkSurfaceTransformFlagBitsKHR") int value) { VkDisplaySurfaceCreateInfoKHR.set_transform(segment, 0L, value); }
-    /// Sets `transform` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDisplaySurfaceCreateInfoKHR transformAt(long index, @CType("VkSurfaceTransformFlagBitsKHR") int value) { VkDisplaySurfaceCreateInfoKHR.set_transform(this.segment(), index, value); return this; }
     /// Sets `transform` with the given value.
     /// @param value the value
     /// @return `this`
@@ -357,9 +320,6 @@ public final class VkDisplaySurfaceCreateInfoKHR extends Struct {
     /// {@return `globalAlpha`}
     /// @param segment the segment of the struct
     public static @CType("float") float get_globalAlpha(MemorySegment segment) { return VkDisplaySurfaceCreateInfoKHR.get_globalAlpha(segment, 0L); }
-    /// {@return `globalAlpha` at the given index}
-    /// @param index the index
-    public @CType("float") float globalAlphaAt(long index) { return VkDisplaySurfaceCreateInfoKHR.get_globalAlpha(this.segment(), index); }
     /// {@return `globalAlpha`}
     public @CType("float") float globalAlpha() { return VkDisplaySurfaceCreateInfoKHR.get_globalAlpha(this.segment()); }
     /// Sets `globalAlpha` with the given value at the given index.
@@ -371,11 +331,6 @@ public final class VkDisplaySurfaceCreateInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_globalAlpha(MemorySegment segment, @CType("float") float value) { VkDisplaySurfaceCreateInfoKHR.set_globalAlpha(segment, 0L, value); }
-    /// Sets `globalAlpha` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDisplaySurfaceCreateInfoKHR globalAlphaAt(long index, @CType("float") float value) { VkDisplaySurfaceCreateInfoKHR.set_globalAlpha(this.segment(), index, value); return this; }
     /// Sets `globalAlpha` with the given value.
     /// @param value the value
     /// @return `this`
@@ -388,9 +343,6 @@ public final class VkDisplaySurfaceCreateInfoKHR extends Struct {
     /// {@return `alphaMode`}
     /// @param segment the segment of the struct
     public static @CType("VkDisplayPlaneAlphaFlagBitsKHR") int get_alphaMode(MemorySegment segment) { return VkDisplaySurfaceCreateInfoKHR.get_alphaMode(segment, 0L); }
-    /// {@return `alphaMode` at the given index}
-    /// @param index the index
-    public @CType("VkDisplayPlaneAlphaFlagBitsKHR") int alphaModeAt(long index) { return VkDisplaySurfaceCreateInfoKHR.get_alphaMode(this.segment(), index); }
     /// {@return `alphaMode`}
     public @CType("VkDisplayPlaneAlphaFlagBitsKHR") int alphaMode() { return VkDisplaySurfaceCreateInfoKHR.get_alphaMode(this.segment()); }
     /// Sets `alphaMode` with the given value at the given index.
@@ -402,11 +354,6 @@ public final class VkDisplaySurfaceCreateInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_alphaMode(MemorySegment segment, @CType("VkDisplayPlaneAlphaFlagBitsKHR") int value) { VkDisplaySurfaceCreateInfoKHR.set_alphaMode(segment, 0L, value); }
-    /// Sets `alphaMode` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDisplaySurfaceCreateInfoKHR alphaModeAt(long index, @CType("VkDisplayPlaneAlphaFlagBitsKHR") int value) { VkDisplaySurfaceCreateInfoKHR.set_alphaMode(this.segment(), index, value); return this; }
     /// Sets `alphaMode` with the given value.
     /// @param value the value
     /// @return `this`
@@ -419,9 +366,6 @@ public final class VkDisplaySurfaceCreateInfoKHR extends Struct {
     /// {@return `imageExtent`}
     /// @param segment the segment of the struct
     public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_imageExtent(MemorySegment segment) { return VkDisplaySurfaceCreateInfoKHR.get_imageExtent(segment, 0L); }
-    /// {@return `imageExtent` at the given index}
-    /// @param index the index
-    public @CType("VkExtent2D") java.lang.foreign.MemorySegment imageExtentAt(long index) { return VkDisplaySurfaceCreateInfoKHR.get_imageExtent(this.segment(), index); }
     /// {@return `imageExtent`}
     public @CType("VkExtent2D") java.lang.foreign.MemorySegment imageExtent() { return VkDisplaySurfaceCreateInfoKHR.get_imageExtent(this.segment()); }
     /// Sets `imageExtent` with the given value at the given index.
@@ -433,14 +377,122 @@ public final class VkDisplaySurfaceCreateInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_imageExtent(MemorySegment segment, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkDisplaySurfaceCreateInfoKHR.set_imageExtent(segment, 0L, value); }
-    /// Sets `imageExtent` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDisplaySurfaceCreateInfoKHR imageExtentAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkDisplaySurfaceCreateInfoKHR.set_imageExtent(this.segment(), index, value); return this; }
     /// Sets `imageExtent` with the given value.
     /// @param value the value
     /// @return `this`
     public VkDisplaySurfaceCreateInfoKHR imageExtent(@CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkDisplaySurfaceCreateInfoKHR.set_imageExtent(this.segment(), value); return this; }
 
+    /// A buffer of [VkDisplaySurfaceCreateInfoKHR].
+    public static final class Buffer extends VkDisplaySurfaceCreateInfoKHR {
+        private final long elementCount;
+
+        /// Creates `VkDisplaySurfaceCreateInfoKHR.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkDisplaySurfaceCreateInfoKHR`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkDisplaySurfaceCreateInfoKHR`
+        public VkDisplaySurfaceCreateInfoKHR asSlice(long index) { return new VkDisplaySurfaceCreateInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkDisplaySurfaceCreateInfoKHR`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkDisplaySurfaceCreateInfoKHR`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkDisplaySurfaceCreateInfoKHR.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkDisplaySurfaceCreateInfoKHR.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkDisplaySurfaceCreateInfoKHR.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDisplaySurfaceCreateInfoKHR.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `flags` at the given index}
+        /// @param index the index
+        public @CType("VkDisplaySurfaceCreateFlagsKHR") int flagsAt(long index) { return VkDisplaySurfaceCreateInfoKHR.get_flags(this.segment(), index); }
+        /// Sets `flags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer flagsAt(long index, @CType("VkDisplaySurfaceCreateFlagsKHR") int value) { VkDisplaySurfaceCreateInfoKHR.set_flags(this.segment(), index, value); return this; }
+
+        /// {@return `displayMode` at the given index}
+        /// @param index the index
+        public @CType("VkDisplayModeKHR") java.lang.foreign.MemorySegment displayModeAt(long index) { return VkDisplaySurfaceCreateInfoKHR.get_displayMode(this.segment(), index); }
+        /// Sets `displayMode` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer displayModeAt(long index, @CType("VkDisplayModeKHR") java.lang.foreign.MemorySegment value) { VkDisplaySurfaceCreateInfoKHR.set_displayMode(this.segment(), index, value); return this; }
+
+        /// {@return `planeIndex` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int planeIndexAt(long index) { return VkDisplaySurfaceCreateInfoKHR.get_planeIndex(this.segment(), index); }
+        /// Sets `planeIndex` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer planeIndexAt(long index, @CType("uint32_t") int value) { VkDisplaySurfaceCreateInfoKHR.set_planeIndex(this.segment(), index, value); return this; }
+
+        /// {@return `planeStackIndex` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int planeStackIndexAt(long index) { return VkDisplaySurfaceCreateInfoKHR.get_planeStackIndex(this.segment(), index); }
+        /// Sets `planeStackIndex` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer planeStackIndexAt(long index, @CType("uint32_t") int value) { VkDisplaySurfaceCreateInfoKHR.set_planeStackIndex(this.segment(), index, value); return this; }
+
+        /// {@return `transform` at the given index}
+        /// @param index the index
+        public @CType("VkSurfaceTransformFlagBitsKHR") int transformAt(long index) { return VkDisplaySurfaceCreateInfoKHR.get_transform(this.segment(), index); }
+        /// Sets `transform` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer transformAt(long index, @CType("VkSurfaceTransformFlagBitsKHR") int value) { VkDisplaySurfaceCreateInfoKHR.set_transform(this.segment(), index, value); return this; }
+
+        /// {@return `globalAlpha` at the given index}
+        /// @param index the index
+        public @CType("float") float globalAlphaAt(long index) { return VkDisplaySurfaceCreateInfoKHR.get_globalAlpha(this.segment(), index); }
+        /// Sets `globalAlpha` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer globalAlphaAt(long index, @CType("float") float value) { VkDisplaySurfaceCreateInfoKHR.set_globalAlpha(this.segment(), index, value); return this; }
+
+        /// {@return `alphaMode` at the given index}
+        /// @param index the index
+        public @CType("VkDisplayPlaneAlphaFlagBitsKHR") int alphaModeAt(long index) { return VkDisplaySurfaceCreateInfoKHR.get_alphaMode(this.segment(), index); }
+        /// Sets `alphaMode` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer alphaModeAt(long index, @CType("VkDisplayPlaneAlphaFlagBitsKHR") int value) { VkDisplaySurfaceCreateInfoKHR.set_alphaMode(this.segment(), index, value); return this; }
+
+        /// {@return `imageExtent` at the given index}
+        /// @param index the index
+        public @CType("VkExtent2D") java.lang.foreign.MemorySegment imageExtentAt(long index) { return VkDisplaySurfaceCreateInfoKHR.get_imageExtent(this.segment(), index); }
+        /// Sets `imageExtent` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer imageExtentAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkDisplaySurfaceCreateInfoKHR.set_imageExtent(this.segment(), index, value); return this; }
+
+    }
 }

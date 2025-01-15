@@ -22,7 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKAMDMemoryOverallocationBehavior {
+public final class VKAMDMemoryOverallocationBehavior {
     public static final int VK_MEMORY_OVERALLOCATION_BEHAVIOR_DEFAULT_AMD = 0;
     public static final int VK_MEMORY_OVERALLOCATION_BEHAVIOR_ALLOWED_AMD = 1;
     public static final int VK_MEMORY_OVERALLOCATION_BEHAVIOR_DISALLOWED_AMD = 2;
@@ -30,7 +30,6 @@ public class VKAMDMemoryOverallocationBehavior {
     public static final String VK_AMD_MEMORY_OVERALLOCATION_BEHAVIOR_EXTENSION_NAME = "VK_AMD_memory_overallocation_behavior";
     public static final int VK_STRUCTURE_TYPE_DEVICE_MEMORY_OVERALLOCATION_CREATE_INFO_AMD = 1000189000;
 
-    public VKAMDMemoryOverallocationBehavior(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKAMDMemoryOverallocationBehavior() { }
 
 }

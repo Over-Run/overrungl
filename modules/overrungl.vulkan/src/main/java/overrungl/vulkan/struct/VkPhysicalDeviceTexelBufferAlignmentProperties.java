@@ -49,7 +49,7 @@ import overrungl.util.*;
 ///     VkBool32 uniformTexelBufferOffsetSingleTexelAlignment;
 /// } VkPhysicalDeviceTexelBufferAlignmentProperties;
 /// ```
-public final class VkPhysicalDeviceTexelBufferAlignmentProperties extends Struct {
+public sealed class VkPhysicalDeviceTexelBufferAlignmentProperties extends Struct {
     /// The struct layout of `VkPhysicalDeviceTexelBufferAlignmentProperties`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -82,6 +82,11 @@ public final class VkPhysicalDeviceTexelBufferAlignmentProperties extends Struct
     public static VkPhysicalDeviceTexelBufferAlignmentProperties of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceTexelBufferAlignmentProperties(segment); }
 
     /// Creates `VkPhysicalDeviceTexelBufferAlignmentProperties` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPhysicalDeviceTexelBufferAlignmentProperties` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -94,7 +99,7 @@ public final class VkPhysicalDeviceTexelBufferAlignmentProperties extends Struct
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceTexelBufferAlignmentProperties ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceTexelBufferAlignmentProperties(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceTexelBufferAlignmentProperties` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -105,7 +110,21 @@ public final class VkPhysicalDeviceTexelBufferAlignmentProperties extends Struct
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceTexelBufferAlignmentProperties`
-    public static VkPhysicalDeviceTexelBufferAlignmentProperties alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceTexelBufferAlignmentProperties(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkPhysicalDeviceTexelBufferAlignmentProperties` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDeviceTexelBufferAlignmentProperties`
+    public static VkPhysicalDeviceTexelBufferAlignmentProperties allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkDeviceSize") long storageTexelBufferOffsetAlignmentBytes, @CType("VkBool32") int storageTexelBufferOffsetSingleTexelAlignment, @CType("VkDeviceSize") long uniformTexelBufferOffsetAlignmentBytes, @CType("VkBool32") int uniformTexelBufferOffsetSingleTexelAlignment) { return alloc(allocator).sType(sType).pNext(pNext).storageTexelBufferOffsetAlignmentBytes(storageTexelBufferOffsetAlignmentBytes).storageTexelBufferOffsetSingleTexelAlignment(storageTexelBufferOffsetSingleTexelAlignment).uniformTexelBufferOffsetAlignmentBytes(uniformTexelBufferOffsetAlignmentBytes).uniformTexelBufferOffsetSingleTexelAlignment(uniformTexelBufferOffsetSingleTexelAlignment); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDeviceTexelBufferAlignmentProperties copyFrom(VkPhysicalDeviceTexelBufferAlignmentProperties src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -114,9 +133,6 @@ public final class VkPhysicalDeviceTexelBufferAlignmentProperties extends Struct
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceTexelBufferAlignmentProperties.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceTexelBufferAlignmentProperties.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPhysicalDeviceTexelBufferAlignmentProperties.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -128,11 +144,6 @@ public final class VkPhysicalDeviceTexelBufferAlignmentProperties extends Struct
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceTexelBufferAlignmentProperties.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceTexelBufferAlignmentProperties sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceTexelBufferAlignmentProperties.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -145,9 +156,6 @@ public final class VkPhysicalDeviceTexelBufferAlignmentProperties extends Struct
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceTexelBufferAlignmentProperties.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceTexelBufferAlignmentProperties.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceTexelBufferAlignmentProperties.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -159,11 +167,6 @@ public final class VkPhysicalDeviceTexelBufferAlignmentProperties extends Struct
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceTexelBufferAlignmentProperties.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceTexelBufferAlignmentProperties pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceTexelBufferAlignmentProperties.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -176,9 +179,6 @@ public final class VkPhysicalDeviceTexelBufferAlignmentProperties extends Struct
     /// {@return `storageTexelBufferOffsetAlignmentBytes`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_storageTexelBufferOffsetAlignmentBytes(MemorySegment segment) { return VkPhysicalDeviceTexelBufferAlignmentProperties.get_storageTexelBufferOffsetAlignmentBytes(segment, 0L); }
-    /// {@return `storageTexelBufferOffsetAlignmentBytes` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long storageTexelBufferOffsetAlignmentBytesAt(long index) { return VkPhysicalDeviceTexelBufferAlignmentProperties.get_storageTexelBufferOffsetAlignmentBytes(this.segment(), index); }
     /// {@return `storageTexelBufferOffsetAlignmentBytes`}
     public @CType("VkDeviceSize") long storageTexelBufferOffsetAlignmentBytes() { return VkPhysicalDeviceTexelBufferAlignmentProperties.get_storageTexelBufferOffsetAlignmentBytes(this.segment()); }
     /// Sets `storageTexelBufferOffsetAlignmentBytes` with the given value at the given index.
@@ -190,11 +190,6 @@ public final class VkPhysicalDeviceTexelBufferAlignmentProperties extends Struct
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_storageTexelBufferOffsetAlignmentBytes(MemorySegment segment, @CType("VkDeviceSize") long value) { VkPhysicalDeviceTexelBufferAlignmentProperties.set_storageTexelBufferOffsetAlignmentBytes(segment, 0L, value); }
-    /// Sets `storageTexelBufferOffsetAlignmentBytes` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceTexelBufferAlignmentProperties storageTexelBufferOffsetAlignmentBytesAt(long index, @CType("VkDeviceSize") long value) { VkPhysicalDeviceTexelBufferAlignmentProperties.set_storageTexelBufferOffsetAlignmentBytes(this.segment(), index, value); return this; }
     /// Sets `storageTexelBufferOffsetAlignmentBytes` with the given value.
     /// @param value the value
     /// @return `this`
@@ -207,9 +202,6 @@ public final class VkPhysicalDeviceTexelBufferAlignmentProperties extends Struct
     /// {@return `storageTexelBufferOffsetSingleTexelAlignment`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_storageTexelBufferOffsetSingleTexelAlignment(MemorySegment segment) { return VkPhysicalDeviceTexelBufferAlignmentProperties.get_storageTexelBufferOffsetSingleTexelAlignment(segment, 0L); }
-    /// {@return `storageTexelBufferOffsetSingleTexelAlignment` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int storageTexelBufferOffsetSingleTexelAlignmentAt(long index) { return VkPhysicalDeviceTexelBufferAlignmentProperties.get_storageTexelBufferOffsetSingleTexelAlignment(this.segment(), index); }
     /// {@return `storageTexelBufferOffsetSingleTexelAlignment`}
     public @CType("VkBool32") int storageTexelBufferOffsetSingleTexelAlignment() { return VkPhysicalDeviceTexelBufferAlignmentProperties.get_storageTexelBufferOffsetSingleTexelAlignment(this.segment()); }
     /// Sets `storageTexelBufferOffsetSingleTexelAlignment` with the given value at the given index.
@@ -221,11 +213,6 @@ public final class VkPhysicalDeviceTexelBufferAlignmentProperties extends Struct
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_storageTexelBufferOffsetSingleTexelAlignment(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceTexelBufferAlignmentProperties.set_storageTexelBufferOffsetSingleTexelAlignment(segment, 0L, value); }
-    /// Sets `storageTexelBufferOffsetSingleTexelAlignment` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceTexelBufferAlignmentProperties storageTexelBufferOffsetSingleTexelAlignmentAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceTexelBufferAlignmentProperties.set_storageTexelBufferOffsetSingleTexelAlignment(this.segment(), index, value); return this; }
     /// Sets `storageTexelBufferOffsetSingleTexelAlignment` with the given value.
     /// @param value the value
     /// @return `this`
@@ -238,9 +225,6 @@ public final class VkPhysicalDeviceTexelBufferAlignmentProperties extends Struct
     /// {@return `uniformTexelBufferOffsetAlignmentBytes`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_uniformTexelBufferOffsetAlignmentBytes(MemorySegment segment) { return VkPhysicalDeviceTexelBufferAlignmentProperties.get_uniformTexelBufferOffsetAlignmentBytes(segment, 0L); }
-    /// {@return `uniformTexelBufferOffsetAlignmentBytes` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long uniformTexelBufferOffsetAlignmentBytesAt(long index) { return VkPhysicalDeviceTexelBufferAlignmentProperties.get_uniformTexelBufferOffsetAlignmentBytes(this.segment(), index); }
     /// {@return `uniformTexelBufferOffsetAlignmentBytes`}
     public @CType("VkDeviceSize") long uniformTexelBufferOffsetAlignmentBytes() { return VkPhysicalDeviceTexelBufferAlignmentProperties.get_uniformTexelBufferOffsetAlignmentBytes(this.segment()); }
     /// Sets `uniformTexelBufferOffsetAlignmentBytes` with the given value at the given index.
@@ -252,11 +236,6 @@ public final class VkPhysicalDeviceTexelBufferAlignmentProperties extends Struct
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_uniformTexelBufferOffsetAlignmentBytes(MemorySegment segment, @CType("VkDeviceSize") long value) { VkPhysicalDeviceTexelBufferAlignmentProperties.set_uniformTexelBufferOffsetAlignmentBytes(segment, 0L, value); }
-    /// Sets `uniformTexelBufferOffsetAlignmentBytes` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceTexelBufferAlignmentProperties uniformTexelBufferOffsetAlignmentBytesAt(long index, @CType("VkDeviceSize") long value) { VkPhysicalDeviceTexelBufferAlignmentProperties.set_uniformTexelBufferOffsetAlignmentBytes(this.segment(), index, value); return this; }
     /// Sets `uniformTexelBufferOffsetAlignmentBytes` with the given value.
     /// @param value the value
     /// @return `this`
@@ -269,9 +248,6 @@ public final class VkPhysicalDeviceTexelBufferAlignmentProperties extends Struct
     /// {@return `uniformTexelBufferOffsetSingleTexelAlignment`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_uniformTexelBufferOffsetSingleTexelAlignment(MemorySegment segment) { return VkPhysicalDeviceTexelBufferAlignmentProperties.get_uniformTexelBufferOffsetSingleTexelAlignment(segment, 0L); }
-    /// {@return `uniformTexelBufferOffsetSingleTexelAlignment` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int uniformTexelBufferOffsetSingleTexelAlignmentAt(long index) { return VkPhysicalDeviceTexelBufferAlignmentProperties.get_uniformTexelBufferOffsetSingleTexelAlignment(this.segment(), index); }
     /// {@return `uniformTexelBufferOffsetSingleTexelAlignment`}
     public @CType("VkBool32") int uniformTexelBufferOffsetSingleTexelAlignment() { return VkPhysicalDeviceTexelBufferAlignmentProperties.get_uniformTexelBufferOffsetSingleTexelAlignment(this.segment()); }
     /// Sets `uniformTexelBufferOffsetSingleTexelAlignment` with the given value at the given index.
@@ -283,14 +259,86 @@ public final class VkPhysicalDeviceTexelBufferAlignmentProperties extends Struct
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_uniformTexelBufferOffsetSingleTexelAlignment(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceTexelBufferAlignmentProperties.set_uniformTexelBufferOffsetSingleTexelAlignment(segment, 0L, value); }
-    /// Sets `uniformTexelBufferOffsetSingleTexelAlignment` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceTexelBufferAlignmentProperties uniformTexelBufferOffsetSingleTexelAlignmentAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceTexelBufferAlignmentProperties.set_uniformTexelBufferOffsetSingleTexelAlignment(this.segment(), index, value); return this; }
     /// Sets `uniformTexelBufferOffsetSingleTexelAlignment` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceTexelBufferAlignmentProperties uniformTexelBufferOffsetSingleTexelAlignment(@CType("VkBool32") int value) { VkPhysicalDeviceTexelBufferAlignmentProperties.set_uniformTexelBufferOffsetSingleTexelAlignment(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDeviceTexelBufferAlignmentProperties].
+    public static final class Buffer extends VkPhysicalDeviceTexelBufferAlignmentProperties {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDeviceTexelBufferAlignmentProperties.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDeviceTexelBufferAlignmentProperties`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDeviceTexelBufferAlignmentProperties`
+        public VkPhysicalDeviceTexelBufferAlignmentProperties asSlice(long index) { return new VkPhysicalDeviceTexelBufferAlignmentProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDeviceTexelBufferAlignmentProperties`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDeviceTexelBufferAlignmentProperties`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceTexelBufferAlignmentProperties.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceTexelBufferAlignmentProperties.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceTexelBufferAlignmentProperties.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceTexelBufferAlignmentProperties.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `storageTexelBufferOffsetAlignmentBytes` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long storageTexelBufferOffsetAlignmentBytesAt(long index) { return VkPhysicalDeviceTexelBufferAlignmentProperties.get_storageTexelBufferOffsetAlignmentBytes(this.segment(), index); }
+        /// Sets `storageTexelBufferOffsetAlignmentBytes` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer storageTexelBufferOffsetAlignmentBytesAt(long index, @CType("VkDeviceSize") long value) { VkPhysicalDeviceTexelBufferAlignmentProperties.set_storageTexelBufferOffsetAlignmentBytes(this.segment(), index, value); return this; }
+
+        /// {@return `storageTexelBufferOffsetSingleTexelAlignment` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int storageTexelBufferOffsetSingleTexelAlignmentAt(long index) { return VkPhysicalDeviceTexelBufferAlignmentProperties.get_storageTexelBufferOffsetSingleTexelAlignment(this.segment(), index); }
+        /// Sets `storageTexelBufferOffsetSingleTexelAlignment` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer storageTexelBufferOffsetSingleTexelAlignmentAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceTexelBufferAlignmentProperties.set_storageTexelBufferOffsetSingleTexelAlignment(this.segment(), index, value); return this; }
+
+        /// {@return `uniformTexelBufferOffsetAlignmentBytes` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long uniformTexelBufferOffsetAlignmentBytesAt(long index) { return VkPhysicalDeviceTexelBufferAlignmentProperties.get_uniformTexelBufferOffsetAlignmentBytes(this.segment(), index); }
+        /// Sets `uniformTexelBufferOffsetAlignmentBytes` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer uniformTexelBufferOffsetAlignmentBytesAt(long index, @CType("VkDeviceSize") long value) { VkPhysicalDeviceTexelBufferAlignmentProperties.set_uniformTexelBufferOffsetAlignmentBytes(this.segment(), index, value); return this; }
+
+        /// {@return `uniformTexelBufferOffsetSingleTexelAlignment` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int uniformTexelBufferOffsetSingleTexelAlignmentAt(long index) { return VkPhysicalDeviceTexelBufferAlignmentProperties.get_uniformTexelBufferOffsetSingleTexelAlignment(this.segment(), index); }
+        /// Sets `uniformTexelBufferOffsetSingleTexelAlignment` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer uniformTexelBufferOffsetSingleTexelAlignmentAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceTexelBufferAlignmentProperties.set_uniformTexelBufferOffsetSingleTexelAlignment(this.segment(), index, value); return this; }
+
+    }
 }

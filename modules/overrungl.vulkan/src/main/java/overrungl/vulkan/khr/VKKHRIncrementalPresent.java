@@ -22,12 +22,11 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKKHRIncrementalPresent {
+public final class VKKHRIncrementalPresent {
     public static final int VK_KHR_INCREMENTAL_PRESENT_SPEC_VERSION = 2;
     public static final String VK_KHR_INCREMENTAL_PRESENT_EXTENSION_NAME = "VK_KHR_incremental_present";
     public static final int VK_STRUCTURE_TYPE_PRESENT_REGIONS_KHR = 1000084000;
 
-    public VKKHRIncrementalPresent(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKKHRIncrementalPresent() { }
 
 }

@@ -22,11 +22,10 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKGOOGLESurfacelessQuery {
+public final class VKGOOGLESurfacelessQuery {
     public static final int VK_GOOGLE_SURFACELESS_QUERY_SPEC_VERSION = 2;
     public static final String VK_GOOGLE_SURFACELESS_QUERY_EXTENSION_NAME = "VK_GOOGLE_surfaceless_query";
 
-    public VKGOOGLESurfacelessQuery(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
-    }
+    private VKGOOGLESurfacelessQuery() { }
 
 }

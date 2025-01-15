@@ -37,7 +37,7 @@ import overrungl.util.*;
 ///     uint32_t : 31 reserved;
 /// } StdVideoAV1TimingInfoFlags;
 /// ```
-public final class StdVideoAV1TimingInfoFlags extends Struct {
+public sealed class StdVideoAV1TimingInfoFlags extends Struct {
     /// The struct layout of `StdVideoAV1TimingInfoFlags`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("equal_picture_interval"),
@@ -58,6 +58,11 @@ public final class StdVideoAV1TimingInfoFlags extends Struct {
     public static StdVideoAV1TimingInfoFlags of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoAV1TimingInfoFlags(segment); }
 
     /// Creates `StdVideoAV1TimingInfoFlags` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `StdVideoAV1TimingInfoFlags` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -70,7 +75,7 @@ public final class StdVideoAV1TimingInfoFlags extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoAV1TimingInfoFlags ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoAV1TimingInfoFlags(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `StdVideoAV1TimingInfoFlags` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -81,7 +86,21 @@ public final class StdVideoAV1TimingInfoFlags extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `StdVideoAV1TimingInfoFlags`
-    public static StdVideoAV1TimingInfoFlags alloc(SegmentAllocator allocator, long count) { return new StdVideoAV1TimingInfoFlags(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `StdVideoAV1TimingInfoFlags` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `StdVideoAV1TimingInfoFlags`
+    public static StdVideoAV1TimingInfoFlags allocInit(SegmentAllocator allocator, @CType("uint32_t : 1") int equal_picture_interval, @CType("uint32_t : 31") int reserved) { return alloc(allocator).equal_picture_interval(equal_picture_interval).reserved(reserved); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public StdVideoAV1TimingInfoFlags copyFrom(StdVideoAV1TimingInfoFlags src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `equal_picture_interval` at the given index}
     /// @param segment the segment of the struct
@@ -90,9 +109,6 @@ public final class StdVideoAV1TimingInfoFlags extends Struct {
     /// {@return `equal_picture_interval`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_equal_picture_interval(MemorySegment segment) { return StdVideoAV1TimingInfoFlags.get_equal_picture_interval(segment, 0L); }
-    /// {@return `equal_picture_interval` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int equal_picture_intervalAt(long index) { return StdVideoAV1TimingInfoFlags.get_equal_picture_interval(this.segment(), index); }
     /// {@return `equal_picture_interval`}
     public @CType("uint32_t : 1") int equal_picture_interval() { return StdVideoAV1TimingInfoFlags.get_equal_picture_interval(this.segment()); }
     /// Sets `equal_picture_interval` with the given value at the given index.
@@ -104,11 +120,6 @@ public final class StdVideoAV1TimingInfoFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_equal_picture_interval(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoAV1TimingInfoFlags.set_equal_picture_interval(segment, 0L, value); }
-    /// Sets `equal_picture_interval` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1TimingInfoFlags equal_picture_intervalAt(long index, @CType("uint32_t : 1") int value) { StdVideoAV1TimingInfoFlags.set_equal_picture_interval(this.segment(), index, value); return this; }
     /// Sets `equal_picture_interval` with the given value.
     /// @param value the value
     /// @return `this`
@@ -121,9 +132,6 @@ public final class StdVideoAV1TimingInfoFlags extends Struct {
     /// {@return `reserved`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 31") int get_reserved(MemorySegment segment) { return StdVideoAV1TimingInfoFlags.get_reserved(segment, 0L); }
-    /// {@return `reserved` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 31") int reservedAt(long index) { return StdVideoAV1TimingInfoFlags.get_reserved(this.segment(), index); }
     /// {@return `reserved`}
     public @CType("uint32_t : 31") int reserved() { return StdVideoAV1TimingInfoFlags.get_reserved(this.segment()); }
     /// Sets `reserved` with the given value at the given index.
@@ -135,14 +143,50 @@ public final class StdVideoAV1TimingInfoFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_reserved(MemorySegment segment, @CType("uint32_t : 31") int value) { StdVideoAV1TimingInfoFlags.set_reserved(segment, 0L, value); }
-    /// Sets `reserved` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1TimingInfoFlags reservedAt(long index, @CType("uint32_t : 31") int value) { StdVideoAV1TimingInfoFlags.set_reserved(this.segment(), index, value); return this; }
     /// Sets `reserved` with the given value.
     /// @param value the value
     /// @return `this`
     public StdVideoAV1TimingInfoFlags reserved(@CType("uint32_t : 31") int value) { StdVideoAV1TimingInfoFlags.set_reserved(this.segment(), value); return this; }
 
+    /// A buffer of [StdVideoAV1TimingInfoFlags].
+    public static final class Buffer extends StdVideoAV1TimingInfoFlags {
+        private final long elementCount;
+
+        /// Creates `StdVideoAV1TimingInfoFlags.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `StdVideoAV1TimingInfoFlags`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `StdVideoAV1TimingInfoFlags`
+        public StdVideoAV1TimingInfoFlags asSlice(long index) { return new StdVideoAV1TimingInfoFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `StdVideoAV1TimingInfoFlags`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `StdVideoAV1TimingInfoFlags`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `equal_picture_interval` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int equal_picture_intervalAt(long index) { return StdVideoAV1TimingInfoFlags.get_equal_picture_interval(this.segment(), index); }
+        /// Sets `equal_picture_interval` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer equal_picture_intervalAt(long index, @CType("uint32_t : 1") int value) { StdVideoAV1TimingInfoFlags.set_equal_picture_interval(this.segment(), index, value); return this; }
+
+        /// {@return `reserved` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 31") int reservedAt(long index) { return StdVideoAV1TimingInfoFlags.get_reserved(this.segment(), index); }
+        /// Sets `reserved` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer reservedAt(long index, @CType("uint32_t : 31") int value) { StdVideoAV1TimingInfoFlags.set_reserved(this.segment(), index, value); return this; }
+
+    }
 }

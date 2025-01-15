@@ -46,7 +46,7 @@ import overrungl.util.*;
 ///     VkConditionalRenderingFlagsEXT flags;
 /// } VkConditionalRenderingBeginInfoEXT;
 /// ```
-public final class VkConditionalRenderingBeginInfoEXT extends Struct {
+public sealed class VkConditionalRenderingBeginInfoEXT extends Struct {
     /// The struct layout of `VkConditionalRenderingBeginInfoEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -76,6 +76,11 @@ public final class VkConditionalRenderingBeginInfoEXT extends Struct {
     public static VkConditionalRenderingBeginInfoEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkConditionalRenderingBeginInfoEXT(segment); }
 
     /// Creates `VkConditionalRenderingBeginInfoEXT` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkConditionalRenderingBeginInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -88,7 +93,7 @@ public final class VkConditionalRenderingBeginInfoEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkConditionalRenderingBeginInfoEXT ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkConditionalRenderingBeginInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkConditionalRenderingBeginInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -99,7 +104,21 @@ public final class VkConditionalRenderingBeginInfoEXT extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkConditionalRenderingBeginInfoEXT`
-    public static VkConditionalRenderingBeginInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkConditionalRenderingBeginInfoEXT(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkConditionalRenderingBeginInfoEXT` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkConditionalRenderingBeginInfoEXT`
+    public static VkConditionalRenderingBeginInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkBuffer") java.lang.foreign.MemorySegment buffer, @CType("VkDeviceSize") long offset, @CType("VkConditionalRenderingFlagsEXT") int flags) { return alloc(allocator).sType(sType).pNext(pNext).buffer(buffer).offset(offset).flags(flags); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkConditionalRenderingBeginInfoEXT copyFrom(VkConditionalRenderingBeginInfoEXT src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -108,9 +127,6 @@ public final class VkConditionalRenderingBeginInfoEXT extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkConditionalRenderingBeginInfoEXT.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkConditionalRenderingBeginInfoEXT.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkConditionalRenderingBeginInfoEXT.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -122,11 +138,6 @@ public final class VkConditionalRenderingBeginInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkConditionalRenderingBeginInfoEXT.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkConditionalRenderingBeginInfoEXT sTypeAt(long index, @CType("VkStructureType") int value) { VkConditionalRenderingBeginInfoEXT.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -139,9 +150,6 @@ public final class VkConditionalRenderingBeginInfoEXT extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkConditionalRenderingBeginInfoEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkConditionalRenderingBeginInfoEXT.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkConditionalRenderingBeginInfoEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -153,11 +161,6 @@ public final class VkConditionalRenderingBeginInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkConditionalRenderingBeginInfoEXT.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkConditionalRenderingBeginInfoEXT pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkConditionalRenderingBeginInfoEXT.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -170,9 +173,6 @@ public final class VkConditionalRenderingBeginInfoEXT extends Struct {
     /// {@return `buffer`}
     /// @param segment the segment of the struct
     public static @CType("VkBuffer") java.lang.foreign.MemorySegment get_buffer(MemorySegment segment) { return VkConditionalRenderingBeginInfoEXT.get_buffer(segment, 0L); }
-    /// {@return `buffer` at the given index}
-    /// @param index the index
-    public @CType("VkBuffer") java.lang.foreign.MemorySegment bufferAt(long index) { return VkConditionalRenderingBeginInfoEXT.get_buffer(this.segment(), index); }
     /// {@return `buffer`}
     public @CType("VkBuffer") java.lang.foreign.MemorySegment buffer() { return VkConditionalRenderingBeginInfoEXT.get_buffer(this.segment()); }
     /// Sets `buffer` with the given value at the given index.
@@ -184,11 +184,6 @@ public final class VkConditionalRenderingBeginInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_buffer(MemorySegment segment, @CType("VkBuffer") java.lang.foreign.MemorySegment value) { VkConditionalRenderingBeginInfoEXT.set_buffer(segment, 0L, value); }
-    /// Sets `buffer` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkConditionalRenderingBeginInfoEXT bufferAt(long index, @CType("VkBuffer") java.lang.foreign.MemorySegment value) { VkConditionalRenderingBeginInfoEXT.set_buffer(this.segment(), index, value); return this; }
     /// Sets `buffer` with the given value.
     /// @param value the value
     /// @return `this`
@@ -201,9 +196,6 @@ public final class VkConditionalRenderingBeginInfoEXT extends Struct {
     /// {@return `offset`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_offset(MemorySegment segment) { return VkConditionalRenderingBeginInfoEXT.get_offset(segment, 0L); }
-    /// {@return `offset` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long offsetAt(long index) { return VkConditionalRenderingBeginInfoEXT.get_offset(this.segment(), index); }
     /// {@return `offset`}
     public @CType("VkDeviceSize") long offset() { return VkConditionalRenderingBeginInfoEXT.get_offset(this.segment()); }
     /// Sets `offset` with the given value at the given index.
@@ -215,11 +207,6 @@ public final class VkConditionalRenderingBeginInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_offset(MemorySegment segment, @CType("VkDeviceSize") long value) { VkConditionalRenderingBeginInfoEXT.set_offset(segment, 0L, value); }
-    /// Sets `offset` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkConditionalRenderingBeginInfoEXT offsetAt(long index, @CType("VkDeviceSize") long value) { VkConditionalRenderingBeginInfoEXT.set_offset(this.segment(), index, value); return this; }
     /// Sets `offset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -232,9 +219,6 @@ public final class VkConditionalRenderingBeginInfoEXT extends Struct {
     /// {@return `flags`}
     /// @param segment the segment of the struct
     public static @CType("VkConditionalRenderingFlagsEXT") int get_flags(MemorySegment segment) { return VkConditionalRenderingBeginInfoEXT.get_flags(segment, 0L); }
-    /// {@return `flags` at the given index}
-    /// @param index the index
-    public @CType("VkConditionalRenderingFlagsEXT") int flagsAt(long index) { return VkConditionalRenderingBeginInfoEXT.get_flags(this.segment(), index); }
     /// {@return `flags`}
     public @CType("VkConditionalRenderingFlagsEXT") int flags() { return VkConditionalRenderingBeginInfoEXT.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
@@ -246,14 +230,77 @@ public final class VkConditionalRenderingBeginInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_flags(MemorySegment segment, @CType("VkConditionalRenderingFlagsEXT") int value) { VkConditionalRenderingBeginInfoEXT.set_flags(segment, 0L, value); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkConditionalRenderingBeginInfoEXT flagsAt(long index, @CType("VkConditionalRenderingFlagsEXT") int value) { VkConditionalRenderingBeginInfoEXT.set_flags(this.segment(), index, value); return this; }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
     public VkConditionalRenderingBeginInfoEXT flags(@CType("VkConditionalRenderingFlagsEXT") int value) { VkConditionalRenderingBeginInfoEXT.set_flags(this.segment(), value); return this; }
 
+    /// A buffer of [VkConditionalRenderingBeginInfoEXT].
+    public static final class Buffer extends VkConditionalRenderingBeginInfoEXT {
+        private final long elementCount;
+
+        /// Creates `VkConditionalRenderingBeginInfoEXT.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkConditionalRenderingBeginInfoEXT`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkConditionalRenderingBeginInfoEXT`
+        public VkConditionalRenderingBeginInfoEXT asSlice(long index) { return new VkConditionalRenderingBeginInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkConditionalRenderingBeginInfoEXT`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkConditionalRenderingBeginInfoEXT`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkConditionalRenderingBeginInfoEXT.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkConditionalRenderingBeginInfoEXT.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkConditionalRenderingBeginInfoEXT.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkConditionalRenderingBeginInfoEXT.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `buffer` at the given index}
+        /// @param index the index
+        public @CType("VkBuffer") java.lang.foreign.MemorySegment bufferAt(long index) { return VkConditionalRenderingBeginInfoEXT.get_buffer(this.segment(), index); }
+        /// Sets `buffer` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer bufferAt(long index, @CType("VkBuffer") java.lang.foreign.MemorySegment value) { VkConditionalRenderingBeginInfoEXT.set_buffer(this.segment(), index, value); return this; }
+
+        /// {@return `offset` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long offsetAt(long index) { return VkConditionalRenderingBeginInfoEXT.get_offset(this.segment(), index); }
+        /// Sets `offset` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer offsetAt(long index, @CType("VkDeviceSize") long value) { VkConditionalRenderingBeginInfoEXT.set_offset(this.segment(), index, value); return this; }
+
+        /// {@return `flags` at the given index}
+        /// @param index the index
+        public @CType("VkConditionalRenderingFlagsEXT") int flagsAt(long index) { return VkConditionalRenderingBeginInfoEXT.get_flags(this.segment(), index); }
+        /// Sets `flags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer flagsAt(long index, @CType("VkConditionalRenderingFlagsEXT") int value) { VkConditionalRenderingBeginInfoEXT.set_flags(this.segment(), index, value); return this; }
+
+    }
 }

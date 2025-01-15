@@ -40,7 +40,7 @@ import overrungl.util.*;
 /// ### executionGraphDispatchAddressAlignment
 /// [VarHandle][#VH_executionGraphDispatchAddressAlignment] - [Getter][#executionGraphDispatchAddressAlignment()] - [Setter][#executionGraphDispatchAddressAlignment(int)]
 /// ### maxExecutionGraphWorkgroupCount
-/// [VarHandle][#VH_maxExecutionGraphWorkgroupCount] - [Getter][#maxExecutionGraphWorkgroupCount()] - [Setter][#maxExecutionGraphWorkgroupCount(int)]
+/// [Byte offset][#OFFSET_maxExecutionGraphWorkgroupCount] - [Memory layout][#ML_maxExecutionGraphWorkgroupCount] - [Getter][#maxExecutionGraphWorkgroupCount()] - [Setter][#maxExecutionGraphWorkgroupCount(java.lang.foreign.MemorySegment)]
 /// ### maxExecutionGraphWorkgroups
 /// [VarHandle][#VH_maxExecutionGraphWorkgroups] - [Getter][#maxExecutionGraphWorkgroups()] - [Setter][#maxExecutionGraphWorkgroups(int)]
 /// ## Layout
@@ -54,11 +54,11 @@ import overrungl.util.*;
 ///     uint32_t maxExecutionGraphShaderPayloadSize;
 ///     uint32_t maxExecutionGraphShaderPayloadCount;
 ///     uint32_t executionGraphDispatchAddressAlignment;
-///     uint32_t maxExecutionGraphWorkgroupCount;
+///     uint32_t[3] maxExecutionGraphWorkgroupCount;
 ///     uint32_t maxExecutionGraphWorkgroups;
 /// } VkPhysicalDeviceShaderEnqueuePropertiesAMDX;
 /// ```
-public final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX extends Struct {
+public sealed class VkPhysicalDeviceShaderEnqueuePropertiesAMDX extends Struct {
     /// The struct layout of `VkPhysicalDeviceShaderEnqueuePropertiesAMDX`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -68,7 +68,7 @@ public final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX extends Struct {
         ValueLayout.JAVA_INT.withName("maxExecutionGraphShaderPayloadSize"),
         ValueLayout.JAVA_INT.withName("maxExecutionGraphShaderPayloadCount"),
         ValueLayout.JAVA_INT.withName("executionGraphDispatchAddressAlignment"),
-        ValueLayout.JAVA_INT.withName("maxExecutionGraphWorkgroupCount"),
+        MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_INT).withName("maxExecutionGraphWorkgroupCount"),
         ValueLayout.JAVA_INT.withName("maxExecutionGraphWorkgroups")
     );
     /// The [VarHandle] of `sType` of type `(MemorySegment base, long baseOffset, long index)int`.
@@ -85,8 +85,10 @@ public final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX extends Struct {
     public static final VarHandle VH_maxExecutionGraphShaderPayloadCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxExecutionGraphShaderPayloadCount"));
     /// The [VarHandle] of `executionGraphDispatchAddressAlignment` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_executionGraphDispatchAddressAlignment = LAYOUT.arrayElementVarHandle(PathElement.groupElement("executionGraphDispatchAddressAlignment"));
-    /// The [VarHandle] of `maxExecutionGraphWorkgroupCount` of type `(MemorySegment base, long baseOffset, long index)int`.
-    public static final VarHandle VH_maxExecutionGraphWorkgroupCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxExecutionGraphWorkgroupCount"));
+    /// The byte offset of `maxExecutionGraphWorkgroupCount`.
+    public static final long OFFSET_maxExecutionGraphWorkgroupCount = LAYOUT.byteOffset(PathElement.groupElement("maxExecutionGraphWorkgroupCount"));
+    /// The memory layout of `maxExecutionGraphWorkgroupCount`.
+    public static final MemoryLayout ML_maxExecutionGraphWorkgroupCount = LAYOUT.select(PathElement.groupElement("maxExecutionGraphWorkgroupCount"));
     /// The [VarHandle] of `maxExecutionGraphWorkgroups` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_maxExecutionGraphWorkgroups = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxExecutionGraphWorkgroups"));
 
@@ -98,6 +100,11 @@ public final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX extends Struct {
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
     public static VkPhysicalDeviceShaderEnqueuePropertiesAMDX of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderEnqueuePropertiesAMDX(segment); }
+
+    /// Creates `VkPhysicalDeviceShaderEnqueuePropertiesAMDX` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceShaderEnqueuePropertiesAMDX` with the given segment.
     ///
@@ -112,7 +119,7 @@ public final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceShaderEnqueuePropertiesAMDX ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderEnqueuePropertiesAMDX(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceShaderEnqueuePropertiesAMDX` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -123,7 +130,21 @@ public final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceShaderEnqueuePropertiesAMDX`
-    public static VkPhysicalDeviceShaderEnqueuePropertiesAMDX alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceShaderEnqueuePropertiesAMDX(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkPhysicalDeviceShaderEnqueuePropertiesAMDX` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDeviceShaderEnqueuePropertiesAMDX`
+    public static VkPhysicalDeviceShaderEnqueuePropertiesAMDX allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int maxExecutionGraphDepth, @CType("uint32_t") int maxExecutionGraphShaderOutputNodes, @CType("uint32_t") int maxExecutionGraphShaderPayloadSize, @CType("uint32_t") int maxExecutionGraphShaderPayloadCount, @CType("uint32_t") int executionGraphDispatchAddressAlignment, @CType("uint32_t[3]") java.lang.foreign.MemorySegment maxExecutionGraphWorkgroupCount, @CType("uint32_t") int maxExecutionGraphWorkgroups) { return alloc(allocator).sType(sType).pNext(pNext).maxExecutionGraphDepth(maxExecutionGraphDepth).maxExecutionGraphShaderOutputNodes(maxExecutionGraphShaderOutputNodes).maxExecutionGraphShaderPayloadSize(maxExecutionGraphShaderPayloadSize).maxExecutionGraphShaderPayloadCount(maxExecutionGraphShaderPayloadCount).executionGraphDispatchAddressAlignment(executionGraphDispatchAddressAlignment).maxExecutionGraphWorkgroupCount(maxExecutionGraphWorkgroupCount).maxExecutionGraphWorkgroups(maxExecutionGraphWorkgroups); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDeviceShaderEnqueuePropertiesAMDX copyFrom(VkPhysicalDeviceShaderEnqueuePropertiesAMDX src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -132,9 +153,6 @@ public final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceShaderEnqueuePropertiesAMDX.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceShaderEnqueuePropertiesAMDX.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPhysicalDeviceShaderEnqueuePropertiesAMDX.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -146,11 +164,6 @@ public final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceShaderEnqueuePropertiesAMDX.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderEnqueuePropertiesAMDX sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceShaderEnqueuePropertiesAMDX.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -163,9 +176,6 @@ public final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceShaderEnqueuePropertiesAMDX.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceShaderEnqueuePropertiesAMDX.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceShaderEnqueuePropertiesAMDX.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -177,11 +187,6 @@ public final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceShaderEnqueuePropertiesAMDX.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderEnqueuePropertiesAMDX pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceShaderEnqueuePropertiesAMDX.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -194,9 +199,6 @@ public final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX extends Struct {
     /// {@return `maxExecutionGraphDepth`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxExecutionGraphDepth(MemorySegment segment) { return VkPhysicalDeviceShaderEnqueuePropertiesAMDX.get_maxExecutionGraphDepth(segment, 0L); }
-    /// {@return `maxExecutionGraphDepth` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxExecutionGraphDepthAt(long index) { return VkPhysicalDeviceShaderEnqueuePropertiesAMDX.get_maxExecutionGraphDepth(this.segment(), index); }
     /// {@return `maxExecutionGraphDepth`}
     public @CType("uint32_t") int maxExecutionGraphDepth() { return VkPhysicalDeviceShaderEnqueuePropertiesAMDX.get_maxExecutionGraphDepth(this.segment()); }
     /// Sets `maxExecutionGraphDepth` with the given value at the given index.
@@ -208,11 +210,6 @@ public final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxExecutionGraphDepth(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceShaderEnqueuePropertiesAMDX.set_maxExecutionGraphDepth(segment, 0L, value); }
-    /// Sets `maxExecutionGraphDepth` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderEnqueuePropertiesAMDX maxExecutionGraphDepthAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceShaderEnqueuePropertiesAMDX.set_maxExecutionGraphDepth(this.segment(), index, value); return this; }
     /// Sets `maxExecutionGraphDepth` with the given value.
     /// @param value the value
     /// @return `this`
@@ -225,9 +222,6 @@ public final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX extends Struct {
     /// {@return `maxExecutionGraphShaderOutputNodes`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxExecutionGraphShaderOutputNodes(MemorySegment segment) { return VkPhysicalDeviceShaderEnqueuePropertiesAMDX.get_maxExecutionGraphShaderOutputNodes(segment, 0L); }
-    /// {@return `maxExecutionGraphShaderOutputNodes` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxExecutionGraphShaderOutputNodesAt(long index) { return VkPhysicalDeviceShaderEnqueuePropertiesAMDX.get_maxExecutionGraphShaderOutputNodes(this.segment(), index); }
     /// {@return `maxExecutionGraphShaderOutputNodes`}
     public @CType("uint32_t") int maxExecutionGraphShaderOutputNodes() { return VkPhysicalDeviceShaderEnqueuePropertiesAMDX.get_maxExecutionGraphShaderOutputNodes(this.segment()); }
     /// Sets `maxExecutionGraphShaderOutputNodes` with the given value at the given index.
@@ -239,11 +233,6 @@ public final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxExecutionGraphShaderOutputNodes(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceShaderEnqueuePropertiesAMDX.set_maxExecutionGraphShaderOutputNodes(segment, 0L, value); }
-    /// Sets `maxExecutionGraphShaderOutputNodes` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderEnqueuePropertiesAMDX maxExecutionGraphShaderOutputNodesAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceShaderEnqueuePropertiesAMDX.set_maxExecutionGraphShaderOutputNodes(this.segment(), index, value); return this; }
     /// Sets `maxExecutionGraphShaderOutputNodes` with the given value.
     /// @param value the value
     /// @return `this`
@@ -256,9 +245,6 @@ public final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX extends Struct {
     /// {@return `maxExecutionGraphShaderPayloadSize`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxExecutionGraphShaderPayloadSize(MemorySegment segment) { return VkPhysicalDeviceShaderEnqueuePropertiesAMDX.get_maxExecutionGraphShaderPayloadSize(segment, 0L); }
-    /// {@return `maxExecutionGraphShaderPayloadSize` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxExecutionGraphShaderPayloadSizeAt(long index) { return VkPhysicalDeviceShaderEnqueuePropertiesAMDX.get_maxExecutionGraphShaderPayloadSize(this.segment(), index); }
     /// {@return `maxExecutionGraphShaderPayloadSize`}
     public @CType("uint32_t") int maxExecutionGraphShaderPayloadSize() { return VkPhysicalDeviceShaderEnqueuePropertiesAMDX.get_maxExecutionGraphShaderPayloadSize(this.segment()); }
     /// Sets `maxExecutionGraphShaderPayloadSize` with the given value at the given index.
@@ -270,11 +256,6 @@ public final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxExecutionGraphShaderPayloadSize(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceShaderEnqueuePropertiesAMDX.set_maxExecutionGraphShaderPayloadSize(segment, 0L, value); }
-    /// Sets `maxExecutionGraphShaderPayloadSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderEnqueuePropertiesAMDX maxExecutionGraphShaderPayloadSizeAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceShaderEnqueuePropertiesAMDX.set_maxExecutionGraphShaderPayloadSize(this.segment(), index, value); return this; }
     /// Sets `maxExecutionGraphShaderPayloadSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -287,9 +268,6 @@ public final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX extends Struct {
     /// {@return `maxExecutionGraphShaderPayloadCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxExecutionGraphShaderPayloadCount(MemorySegment segment) { return VkPhysicalDeviceShaderEnqueuePropertiesAMDX.get_maxExecutionGraphShaderPayloadCount(segment, 0L); }
-    /// {@return `maxExecutionGraphShaderPayloadCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxExecutionGraphShaderPayloadCountAt(long index) { return VkPhysicalDeviceShaderEnqueuePropertiesAMDX.get_maxExecutionGraphShaderPayloadCount(this.segment(), index); }
     /// {@return `maxExecutionGraphShaderPayloadCount`}
     public @CType("uint32_t") int maxExecutionGraphShaderPayloadCount() { return VkPhysicalDeviceShaderEnqueuePropertiesAMDX.get_maxExecutionGraphShaderPayloadCount(this.segment()); }
     /// Sets `maxExecutionGraphShaderPayloadCount` with the given value at the given index.
@@ -301,11 +279,6 @@ public final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxExecutionGraphShaderPayloadCount(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceShaderEnqueuePropertiesAMDX.set_maxExecutionGraphShaderPayloadCount(segment, 0L, value); }
-    /// Sets `maxExecutionGraphShaderPayloadCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderEnqueuePropertiesAMDX maxExecutionGraphShaderPayloadCountAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceShaderEnqueuePropertiesAMDX.set_maxExecutionGraphShaderPayloadCount(this.segment(), index, value); return this; }
     /// Sets `maxExecutionGraphShaderPayloadCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -318,9 +291,6 @@ public final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX extends Struct {
     /// {@return `executionGraphDispatchAddressAlignment`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_executionGraphDispatchAddressAlignment(MemorySegment segment) { return VkPhysicalDeviceShaderEnqueuePropertiesAMDX.get_executionGraphDispatchAddressAlignment(segment, 0L); }
-    /// {@return `executionGraphDispatchAddressAlignment` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int executionGraphDispatchAddressAlignmentAt(long index) { return VkPhysicalDeviceShaderEnqueuePropertiesAMDX.get_executionGraphDispatchAddressAlignment(this.segment(), index); }
     /// {@return `executionGraphDispatchAddressAlignment`}
     public @CType("uint32_t") int executionGraphDispatchAddressAlignment() { return VkPhysicalDeviceShaderEnqueuePropertiesAMDX.get_executionGraphDispatchAddressAlignment(this.segment()); }
     /// Sets `executionGraphDispatchAddressAlignment` with the given value at the given index.
@@ -332,11 +302,6 @@ public final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_executionGraphDispatchAddressAlignment(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceShaderEnqueuePropertiesAMDX.set_executionGraphDispatchAddressAlignment(segment, 0L, value); }
-    /// Sets `executionGraphDispatchAddressAlignment` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderEnqueuePropertiesAMDX executionGraphDispatchAddressAlignmentAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceShaderEnqueuePropertiesAMDX.set_executionGraphDispatchAddressAlignment(this.segment(), index, value); return this; }
     /// Sets `executionGraphDispatchAddressAlignment` with the given value.
     /// @param value the value
     /// @return `this`
@@ -345,33 +310,25 @@ public final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX extends Struct {
     /// {@return `maxExecutionGraphWorkgroupCount` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("uint32_t") int get_maxExecutionGraphWorkgroupCount(MemorySegment segment, long index) { return (int) VH_maxExecutionGraphWorkgroupCount.get(segment, 0L, index); }
+    public static @CType("uint32_t[3]") java.lang.foreign.MemorySegment get_maxExecutionGraphWorkgroupCount(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_maxExecutionGraphWorkgroupCount, index), ML_maxExecutionGraphWorkgroupCount); }
     /// {@return `maxExecutionGraphWorkgroupCount`}
     /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_maxExecutionGraphWorkgroupCount(MemorySegment segment) { return VkPhysicalDeviceShaderEnqueuePropertiesAMDX.get_maxExecutionGraphWorkgroupCount(segment, 0L); }
-    /// {@return `maxExecutionGraphWorkgroupCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxExecutionGraphWorkgroupCountAt(long index) { return VkPhysicalDeviceShaderEnqueuePropertiesAMDX.get_maxExecutionGraphWorkgroupCount(this.segment(), index); }
+    public static @CType("uint32_t[3]") java.lang.foreign.MemorySegment get_maxExecutionGraphWorkgroupCount(MemorySegment segment) { return VkPhysicalDeviceShaderEnqueuePropertiesAMDX.get_maxExecutionGraphWorkgroupCount(segment, 0L); }
     /// {@return `maxExecutionGraphWorkgroupCount`}
-    public @CType("uint32_t") int maxExecutionGraphWorkgroupCount() { return VkPhysicalDeviceShaderEnqueuePropertiesAMDX.get_maxExecutionGraphWorkgroupCount(this.segment()); }
+    public @CType("uint32_t[3]") java.lang.foreign.MemorySegment maxExecutionGraphWorkgroupCount() { return VkPhysicalDeviceShaderEnqueuePropertiesAMDX.get_maxExecutionGraphWorkgroupCount(this.segment()); }
     /// Sets `maxExecutionGraphWorkgroupCount` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_maxExecutionGraphWorkgroupCount(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_maxExecutionGraphWorkgroupCount.set(segment, 0L, index, value); }
+    public static void set_maxExecutionGraphWorkgroupCount(MemorySegment segment, long index, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_maxExecutionGraphWorkgroupCount, index), ML_maxExecutionGraphWorkgroupCount.byteSize()); }
     /// Sets `maxExecutionGraphWorkgroupCount` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_maxExecutionGraphWorkgroupCount(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceShaderEnqueuePropertiesAMDX.set_maxExecutionGraphWorkgroupCount(segment, 0L, value); }
-    /// Sets `maxExecutionGraphWorkgroupCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderEnqueuePropertiesAMDX maxExecutionGraphWorkgroupCountAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceShaderEnqueuePropertiesAMDX.set_maxExecutionGraphWorkgroupCount(this.segment(), index, value); return this; }
+    public static void set_maxExecutionGraphWorkgroupCount(MemorySegment segment, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceShaderEnqueuePropertiesAMDX.set_maxExecutionGraphWorkgroupCount(segment, 0L, value); }
     /// Sets `maxExecutionGraphWorkgroupCount` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkPhysicalDeviceShaderEnqueuePropertiesAMDX maxExecutionGraphWorkgroupCount(@CType("uint32_t") int value) { VkPhysicalDeviceShaderEnqueuePropertiesAMDX.set_maxExecutionGraphWorkgroupCount(this.segment(), value); return this; }
+    public VkPhysicalDeviceShaderEnqueuePropertiesAMDX maxExecutionGraphWorkgroupCount(@CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceShaderEnqueuePropertiesAMDX.set_maxExecutionGraphWorkgroupCount(this.segment(), value); return this; }
 
     /// {@return `maxExecutionGraphWorkgroups` at the given index}
     /// @param segment the segment of the struct
@@ -380,9 +337,6 @@ public final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX extends Struct {
     /// {@return `maxExecutionGraphWorkgroups`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxExecutionGraphWorkgroups(MemorySegment segment) { return VkPhysicalDeviceShaderEnqueuePropertiesAMDX.get_maxExecutionGraphWorkgroups(segment, 0L); }
-    /// {@return `maxExecutionGraphWorkgroups` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxExecutionGraphWorkgroupsAt(long index) { return VkPhysicalDeviceShaderEnqueuePropertiesAMDX.get_maxExecutionGraphWorkgroups(this.segment(), index); }
     /// {@return `maxExecutionGraphWorkgroups`}
     public @CType("uint32_t") int maxExecutionGraphWorkgroups() { return VkPhysicalDeviceShaderEnqueuePropertiesAMDX.get_maxExecutionGraphWorkgroups(this.segment()); }
     /// Sets `maxExecutionGraphWorkgroups` with the given value at the given index.
@@ -394,14 +348,113 @@ public final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxExecutionGraphWorkgroups(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceShaderEnqueuePropertiesAMDX.set_maxExecutionGraphWorkgroups(segment, 0L, value); }
-    /// Sets `maxExecutionGraphWorkgroups` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderEnqueuePropertiesAMDX maxExecutionGraphWorkgroupsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceShaderEnqueuePropertiesAMDX.set_maxExecutionGraphWorkgroups(this.segment(), index, value); return this; }
     /// Sets `maxExecutionGraphWorkgroups` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceShaderEnqueuePropertiesAMDX maxExecutionGraphWorkgroups(@CType("uint32_t") int value) { VkPhysicalDeviceShaderEnqueuePropertiesAMDX.set_maxExecutionGraphWorkgroups(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDeviceShaderEnqueuePropertiesAMDX].
+    public static final class Buffer extends VkPhysicalDeviceShaderEnqueuePropertiesAMDX {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDeviceShaderEnqueuePropertiesAMDX.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDeviceShaderEnqueuePropertiesAMDX`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDeviceShaderEnqueuePropertiesAMDX`
+        public VkPhysicalDeviceShaderEnqueuePropertiesAMDX asSlice(long index) { return new VkPhysicalDeviceShaderEnqueuePropertiesAMDX(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDeviceShaderEnqueuePropertiesAMDX`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDeviceShaderEnqueuePropertiesAMDX`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceShaderEnqueuePropertiesAMDX.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceShaderEnqueuePropertiesAMDX.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceShaderEnqueuePropertiesAMDX.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceShaderEnqueuePropertiesAMDX.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `maxExecutionGraphDepth` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxExecutionGraphDepthAt(long index) { return VkPhysicalDeviceShaderEnqueuePropertiesAMDX.get_maxExecutionGraphDepth(this.segment(), index); }
+        /// Sets `maxExecutionGraphDepth` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxExecutionGraphDepthAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceShaderEnqueuePropertiesAMDX.set_maxExecutionGraphDepth(this.segment(), index, value); return this; }
+
+        /// {@return `maxExecutionGraphShaderOutputNodes` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxExecutionGraphShaderOutputNodesAt(long index) { return VkPhysicalDeviceShaderEnqueuePropertiesAMDX.get_maxExecutionGraphShaderOutputNodes(this.segment(), index); }
+        /// Sets `maxExecutionGraphShaderOutputNodes` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxExecutionGraphShaderOutputNodesAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceShaderEnqueuePropertiesAMDX.set_maxExecutionGraphShaderOutputNodes(this.segment(), index, value); return this; }
+
+        /// {@return `maxExecutionGraphShaderPayloadSize` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxExecutionGraphShaderPayloadSizeAt(long index) { return VkPhysicalDeviceShaderEnqueuePropertiesAMDX.get_maxExecutionGraphShaderPayloadSize(this.segment(), index); }
+        /// Sets `maxExecutionGraphShaderPayloadSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxExecutionGraphShaderPayloadSizeAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceShaderEnqueuePropertiesAMDX.set_maxExecutionGraphShaderPayloadSize(this.segment(), index, value); return this; }
+
+        /// {@return `maxExecutionGraphShaderPayloadCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxExecutionGraphShaderPayloadCountAt(long index) { return VkPhysicalDeviceShaderEnqueuePropertiesAMDX.get_maxExecutionGraphShaderPayloadCount(this.segment(), index); }
+        /// Sets `maxExecutionGraphShaderPayloadCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxExecutionGraphShaderPayloadCountAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceShaderEnqueuePropertiesAMDX.set_maxExecutionGraphShaderPayloadCount(this.segment(), index, value); return this; }
+
+        /// {@return `executionGraphDispatchAddressAlignment` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int executionGraphDispatchAddressAlignmentAt(long index) { return VkPhysicalDeviceShaderEnqueuePropertiesAMDX.get_executionGraphDispatchAddressAlignment(this.segment(), index); }
+        /// Sets `executionGraphDispatchAddressAlignment` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer executionGraphDispatchAddressAlignmentAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceShaderEnqueuePropertiesAMDX.set_executionGraphDispatchAddressAlignment(this.segment(), index, value); return this; }
+
+        /// {@return `maxExecutionGraphWorkgroupCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t[3]") java.lang.foreign.MemorySegment maxExecutionGraphWorkgroupCountAt(long index) { return VkPhysicalDeviceShaderEnqueuePropertiesAMDX.get_maxExecutionGraphWorkgroupCount(this.segment(), index); }
+        /// Sets `maxExecutionGraphWorkgroupCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxExecutionGraphWorkgroupCountAt(long index, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceShaderEnqueuePropertiesAMDX.set_maxExecutionGraphWorkgroupCount(this.segment(), index, value); return this; }
+
+        /// {@return `maxExecutionGraphWorkgroups` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxExecutionGraphWorkgroupsAt(long index) { return VkPhysicalDeviceShaderEnqueuePropertiesAMDX.get_maxExecutionGraphWorkgroups(this.segment(), index); }
+        /// Sets `maxExecutionGraphWorkgroups` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxExecutionGraphWorkgroupsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceShaderEnqueuePropertiesAMDX.set_maxExecutionGraphWorkgroups(this.segment(), index, value); return this; }
+
+    }
 }

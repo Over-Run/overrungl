@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2024 Overrun Organization
+ * Copyright (c) 2024-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -168,9 +168,7 @@ public final class MemoryStack implements SegmentAllocator, AutoCloseable {
     /**
      * {@inheritDoc}
      * The returned memory segment is a slice of the {@linkplain #segment() backing segment}
-     * and is not initialized with zero.
-     * <p>
-     * Use {@link MemorySegment#fill(byte) fill((byte)0)} to initialize with zero.
+     * and is initialized with zero.
      *
      * @throws IndexOutOfBoundsException if there is not enough space to allocate
      * @throws IllegalArgumentException  if {@code byteSize < 0}, {@code byteAlignment <= 0},
@@ -184,7 +182,7 @@ public final class MemoryStack implements SegmentAllocator, AutoCloseable {
         if (byteAlignment <= 0 || ((byteAlignment & (byteAlignment - 1)) != 0L)) {
             throw new IllegalArgumentException("Invalid alignment constraint: " + byteAlignment);
         }
-        return trySlice(byteSize, byteAlignment);
+        return trySlice(byteSize, byteAlignment).fill((byte) 0);
     }
 
     /**

@@ -130,7 +130,7 @@ import overrungl.util.*;
 ///     VkBool32 extendedDynamicState3ShadingRateImageEnable;
 /// } VkPhysicalDeviceExtendedDynamicState3FeaturesEXT;
 /// ```
-public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Struct {
+public sealed class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Struct {
     /// The struct layout of `VkPhysicalDeviceExtendedDynamicState3FeaturesEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -244,6 +244,11 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     public static VkPhysicalDeviceExtendedDynamicState3FeaturesEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(segment); }
 
     /// Creates `VkPhysicalDeviceExtendedDynamicState3FeaturesEXT` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPhysicalDeviceExtendedDynamicState3FeaturesEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -256,7 +261,7 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceExtendedDynamicState3FeaturesEXT ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceExtendedDynamicState3FeaturesEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -267,7 +272,21 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceExtendedDynamicState3FeaturesEXT`
-    public static VkPhysicalDeviceExtendedDynamicState3FeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkPhysicalDeviceExtendedDynamicState3FeaturesEXT` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDeviceExtendedDynamicState3FeaturesEXT`
+    public static VkPhysicalDeviceExtendedDynamicState3FeaturesEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int extendedDynamicState3TessellationDomainOrigin, @CType("VkBool32") int extendedDynamicState3DepthClampEnable, @CType("VkBool32") int extendedDynamicState3PolygonMode, @CType("VkBool32") int extendedDynamicState3RasterizationSamples, @CType("VkBool32") int extendedDynamicState3SampleMask, @CType("VkBool32") int extendedDynamicState3AlphaToCoverageEnable, @CType("VkBool32") int extendedDynamicState3AlphaToOneEnable, @CType("VkBool32") int extendedDynamicState3LogicOpEnable, @CType("VkBool32") int extendedDynamicState3ColorBlendEnable, @CType("VkBool32") int extendedDynamicState3ColorBlendEquation, @CType("VkBool32") int extendedDynamicState3ColorWriteMask, @CType("VkBool32") int extendedDynamicState3RasterizationStream, @CType("VkBool32") int extendedDynamicState3ConservativeRasterizationMode, @CType("VkBool32") int extendedDynamicState3ExtraPrimitiveOverestimationSize, @CType("VkBool32") int extendedDynamicState3DepthClipEnable, @CType("VkBool32") int extendedDynamicState3SampleLocationsEnable, @CType("VkBool32") int extendedDynamicState3ColorBlendAdvanced, @CType("VkBool32") int extendedDynamicState3ProvokingVertexMode, @CType("VkBool32") int extendedDynamicState3LineRasterizationMode, @CType("VkBool32") int extendedDynamicState3LineStippleEnable, @CType("VkBool32") int extendedDynamicState3DepthClipNegativeOneToOne, @CType("VkBool32") int extendedDynamicState3ViewportWScalingEnable, @CType("VkBool32") int extendedDynamicState3ViewportSwizzle, @CType("VkBool32") int extendedDynamicState3CoverageToColorEnable, @CType("VkBool32") int extendedDynamicState3CoverageToColorLocation, @CType("VkBool32") int extendedDynamicState3CoverageModulationMode, @CType("VkBool32") int extendedDynamicState3CoverageModulationTableEnable, @CType("VkBool32") int extendedDynamicState3CoverageModulationTable, @CType("VkBool32") int extendedDynamicState3CoverageReductionMode, @CType("VkBool32") int extendedDynamicState3RepresentativeFragmentTestEnable, @CType("VkBool32") int extendedDynamicState3ShadingRateImageEnable) { return alloc(allocator).sType(sType).pNext(pNext).extendedDynamicState3TessellationDomainOrigin(extendedDynamicState3TessellationDomainOrigin).extendedDynamicState3DepthClampEnable(extendedDynamicState3DepthClampEnable).extendedDynamicState3PolygonMode(extendedDynamicState3PolygonMode).extendedDynamicState3RasterizationSamples(extendedDynamicState3RasterizationSamples).extendedDynamicState3SampleMask(extendedDynamicState3SampleMask).extendedDynamicState3AlphaToCoverageEnable(extendedDynamicState3AlphaToCoverageEnable).extendedDynamicState3AlphaToOneEnable(extendedDynamicState3AlphaToOneEnable).extendedDynamicState3LogicOpEnable(extendedDynamicState3LogicOpEnable).extendedDynamicState3ColorBlendEnable(extendedDynamicState3ColorBlendEnable).extendedDynamicState3ColorBlendEquation(extendedDynamicState3ColorBlendEquation).extendedDynamicState3ColorWriteMask(extendedDynamicState3ColorWriteMask).extendedDynamicState3RasterizationStream(extendedDynamicState3RasterizationStream).extendedDynamicState3ConservativeRasterizationMode(extendedDynamicState3ConservativeRasterizationMode).extendedDynamicState3ExtraPrimitiveOverestimationSize(extendedDynamicState3ExtraPrimitiveOverestimationSize).extendedDynamicState3DepthClipEnable(extendedDynamicState3DepthClipEnable).extendedDynamicState3SampleLocationsEnable(extendedDynamicState3SampleLocationsEnable).extendedDynamicState3ColorBlendAdvanced(extendedDynamicState3ColorBlendAdvanced).extendedDynamicState3ProvokingVertexMode(extendedDynamicState3ProvokingVertexMode).extendedDynamicState3LineRasterizationMode(extendedDynamicState3LineRasterizationMode).extendedDynamicState3LineStippleEnable(extendedDynamicState3LineStippleEnable).extendedDynamicState3DepthClipNegativeOneToOne(extendedDynamicState3DepthClipNegativeOneToOne).extendedDynamicState3ViewportWScalingEnable(extendedDynamicState3ViewportWScalingEnable).extendedDynamicState3ViewportSwizzle(extendedDynamicState3ViewportSwizzle).extendedDynamicState3CoverageToColorEnable(extendedDynamicState3CoverageToColorEnable).extendedDynamicState3CoverageToColorLocation(extendedDynamicState3CoverageToColorLocation).extendedDynamicState3CoverageModulationMode(extendedDynamicState3CoverageModulationMode).extendedDynamicState3CoverageModulationTableEnable(extendedDynamicState3CoverageModulationTableEnable).extendedDynamicState3CoverageModulationTable(extendedDynamicState3CoverageModulationTable).extendedDynamicState3CoverageReductionMode(extendedDynamicState3CoverageReductionMode).extendedDynamicState3RepresentativeFragmentTestEnable(extendedDynamicState3RepresentativeFragmentTestEnable).extendedDynamicState3ShadingRateImageEnable(extendedDynamicState3ShadingRateImageEnable); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT copyFrom(VkPhysicalDeviceExtendedDynamicState3FeaturesEXT src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -276,9 +295,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -290,11 +306,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -307,9 +318,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -321,11 +329,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -338,9 +341,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// {@return `extendedDynamicState3TessellationDomainOrigin`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_extendedDynamicState3TessellationDomainOrigin(MemorySegment segment) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3TessellationDomainOrigin(segment, 0L); }
-    /// {@return `extendedDynamicState3TessellationDomainOrigin` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int extendedDynamicState3TessellationDomainOriginAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3TessellationDomainOrigin(this.segment(), index); }
     /// {@return `extendedDynamicState3TessellationDomainOrigin`}
     public @CType("VkBool32") int extendedDynamicState3TessellationDomainOrigin() { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3TessellationDomainOrigin(this.segment()); }
     /// Sets `extendedDynamicState3TessellationDomainOrigin` with the given value at the given index.
@@ -352,11 +352,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_extendedDynamicState3TessellationDomainOrigin(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3TessellationDomainOrigin(segment, 0L, value); }
-    /// Sets `extendedDynamicState3TessellationDomainOrigin` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3TessellationDomainOriginAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3TessellationDomainOrigin(this.segment(), index, value); return this; }
     /// Sets `extendedDynamicState3TessellationDomainOrigin` with the given value.
     /// @param value the value
     /// @return `this`
@@ -369,9 +364,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// {@return `extendedDynamicState3DepthClampEnable`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_extendedDynamicState3DepthClampEnable(MemorySegment segment) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3DepthClampEnable(segment, 0L); }
-    /// {@return `extendedDynamicState3DepthClampEnable` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int extendedDynamicState3DepthClampEnableAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3DepthClampEnable(this.segment(), index); }
     /// {@return `extendedDynamicState3DepthClampEnable`}
     public @CType("VkBool32") int extendedDynamicState3DepthClampEnable() { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3DepthClampEnable(this.segment()); }
     /// Sets `extendedDynamicState3DepthClampEnable` with the given value at the given index.
@@ -383,11 +375,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_extendedDynamicState3DepthClampEnable(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3DepthClampEnable(segment, 0L, value); }
-    /// Sets `extendedDynamicState3DepthClampEnable` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3DepthClampEnableAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3DepthClampEnable(this.segment(), index, value); return this; }
     /// Sets `extendedDynamicState3DepthClampEnable` with the given value.
     /// @param value the value
     /// @return `this`
@@ -400,9 +387,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// {@return `extendedDynamicState3PolygonMode`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_extendedDynamicState3PolygonMode(MemorySegment segment) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3PolygonMode(segment, 0L); }
-    /// {@return `extendedDynamicState3PolygonMode` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int extendedDynamicState3PolygonModeAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3PolygonMode(this.segment(), index); }
     /// {@return `extendedDynamicState3PolygonMode`}
     public @CType("VkBool32") int extendedDynamicState3PolygonMode() { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3PolygonMode(this.segment()); }
     /// Sets `extendedDynamicState3PolygonMode` with the given value at the given index.
@@ -414,11 +398,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_extendedDynamicState3PolygonMode(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3PolygonMode(segment, 0L, value); }
-    /// Sets `extendedDynamicState3PolygonMode` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3PolygonModeAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3PolygonMode(this.segment(), index, value); return this; }
     /// Sets `extendedDynamicState3PolygonMode` with the given value.
     /// @param value the value
     /// @return `this`
@@ -431,9 +410,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// {@return `extendedDynamicState3RasterizationSamples`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_extendedDynamicState3RasterizationSamples(MemorySegment segment) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3RasterizationSamples(segment, 0L); }
-    /// {@return `extendedDynamicState3RasterizationSamples` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int extendedDynamicState3RasterizationSamplesAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3RasterizationSamples(this.segment(), index); }
     /// {@return `extendedDynamicState3RasterizationSamples`}
     public @CType("VkBool32") int extendedDynamicState3RasterizationSamples() { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3RasterizationSamples(this.segment()); }
     /// Sets `extendedDynamicState3RasterizationSamples` with the given value at the given index.
@@ -445,11 +421,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_extendedDynamicState3RasterizationSamples(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3RasterizationSamples(segment, 0L, value); }
-    /// Sets `extendedDynamicState3RasterizationSamples` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3RasterizationSamplesAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3RasterizationSamples(this.segment(), index, value); return this; }
     /// Sets `extendedDynamicState3RasterizationSamples` with the given value.
     /// @param value the value
     /// @return `this`
@@ -462,9 +433,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// {@return `extendedDynamicState3SampleMask`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_extendedDynamicState3SampleMask(MemorySegment segment) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3SampleMask(segment, 0L); }
-    /// {@return `extendedDynamicState3SampleMask` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int extendedDynamicState3SampleMaskAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3SampleMask(this.segment(), index); }
     /// {@return `extendedDynamicState3SampleMask`}
     public @CType("VkBool32") int extendedDynamicState3SampleMask() { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3SampleMask(this.segment()); }
     /// Sets `extendedDynamicState3SampleMask` with the given value at the given index.
@@ -476,11 +444,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_extendedDynamicState3SampleMask(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3SampleMask(segment, 0L, value); }
-    /// Sets `extendedDynamicState3SampleMask` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3SampleMaskAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3SampleMask(this.segment(), index, value); return this; }
     /// Sets `extendedDynamicState3SampleMask` with the given value.
     /// @param value the value
     /// @return `this`
@@ -493,9 +456,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// {@return `extendedDynamicState3AlphaToCoverageEnable`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_extendedDynamicState3AlphaToCoverageEnable(MemorySegment segment) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3AlphaToCoverageEnable(segment, 0L); }
-    /// {@return `extendedDynamicState3AlphaToCoverageEnable` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int extendedDynamicState3AlphaToCoverageEnableAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3AlphaToCoverageEnable(this.segment(), index); }
     /// {@return `extendedDynamicState3AlphaToCoverageEnable`}
     public @CType("VkBool32") int extendedDynamicState3AlphaToCoverageEnable() { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3AlphaToCoverageEnable(this.segment()); }
     /// Sets `extendedDynamicState3AlphaToCoverageEnable` with the given value at the given index.
@@ -507,11 +467,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_extendedDynamicState3AlphaToCoverageEnable(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3AlphaToCoverageEnable(segment, 0L, value); }
-    /// Sets `extendedDynamicState3AlphaToCoverageEnable` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3AlphaToCoverageEnableAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3AlphaToCoverageEnable(this.segment(), index, value); return this; }
     /// Sets `extendedDynamicState3AlphaToCoverageEnable` with the given value.
     /// @param value the value
     /// @return `this`
@@ -524,9 +479,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// {@return `extendedDynamicState3AlphaToOneEnable`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_extendedDynamicState3AlphaToOneEnable(MemorySegment segment) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3AlphaToOneEnable(segment, 0L); }
-    /// {@return `extendedDynamicState3AlphaToOneEnable` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int extendedDynamicState3AlphaToOneEnableAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3AlphaToOneEnable(this.segment(), index); }
     /// {@return `extendedDynamicState3AlphaToOneEnable`}
     public @CType("VkBool32") int extendedDynamicState3AlphaToOneEnable() { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3AlphaToOneEnable(this.segment()); }
     /// Sets `extendedDynamicState3AlphaToOneEnable` with the given value at the given index.
@@ -538,11 +490,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_extendedDynamicState3AlphaToOneEnable(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3AlphaToOneEnable(segment, 0L, value); }
-    /// Sets `extendedDynamicState3AlphaToOneEnable` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3AlphaToOneEnableAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3AlphaToOneEnable(this.segment(), index, value); return this; }
     /// Sets `extendedDynamicState3AlphaToOneEnable` with the given value.
     /// @param value the value
     /// @return `this`
@@ -555,9 +502,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// {@return `extendedDynamicState3LogicOpEnable`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_extendedDynamicState3LogicOpEnable(MemorySegment segment) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3LogicOpEnable(segment, 0L); }
-    /// {@return `extendedDynamicState3LogicOpEnable` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int extendedDynamicState3LogicOpEnableAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3LogicOpEnable(this.segment(), index); }
     /// {@return `extendedDynamicState3LogicOpEnable`}
     public @CType("VkBool32") int extendedDynamicState3LogicOpEnable() { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3LogicOpEnable(this.segment()); }
     /// Sets `extendedDynamicState3LogicOpEnable` with the given value at the given index.
@@ -569,11 +513,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_extendedDynamicState3LogicOpEnable(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3LogicOpEnable(segment, 0L, value); }
-    /// Sets `extendedDynamicState3LogicOpEnable` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3LogicOpEnableAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3LogicOpEnable(this.segment(), index, value); return this; }
     /// Sets `extendedDynamicState3LogicOpEnable` with the given value.
     /// @param value the value
     /// @return `this`
@@ -586,9 +525,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// {@return `extendedDynamicState3ColorBlendEnable`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_extendedDynamicState3ColorBlendEnable(MemorySegment segment) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3ColorBlendEnable(segment, 0L); }
-    /// {@return `extendedDynamicState3ColorBlendEnable` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int extendedDynamicState3ColorBlendEnableAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3ColorBlendEnable(this.segment(), index); }
     /// {@return `extendedDynamicState3ColorBlendEnable`}
     public @CType("VkBool32") int extendedDynamicState3ColorBlendEnable() { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3ColorBlendEnable(this.segment()); }
     /// Sets `extendedDynamicState3ColorBlendEnable` with the given value at the given index.
@@ -600,11 +536,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_extendedDynamicState3ColorBlendEnable(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3ColorBlendEnable(segment, 0L, value); }
-    /// Sets `extendedDynamicState3ColorBlendEnable` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3ColorBlendEnableAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3ColorBlendEnable(this.segment(), index, value); return this; }
     /// Sets `extendedDynamicState3ColorBlendEnable` with the given value.
     /// @param value the value
     /// @return `this`
@@ -617,9 +548,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// {@return `extendedDynamicState3ColorBlendEquation`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_extendedDynamicState3ColorBlendEquation(MemorySegment segment) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3ColorBlendEquation(segment, 0L); }
-    /// {@return `extendedDynamicState3ColorBlendEquation` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int extendedDynamicState3ColorBlendEquationAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3ColorBlendEquation(this.segment(), index); }
     /// {@return `extendedDynamicState3ColorBlendEquation`}
     public @CType("VkBool32") int extendedDynamicState3ColorBlendEquation() { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3ColorBlendEquation(this.segment()); }
     /// Sets `extendedDynamicState3ColorBlendEquation` with the given value at the given index.
@@ -631,11 +559,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_extendedDynamicState3ColorBlendEquation(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3ColorBlendEquation(segment, 0L, value); }
-    /// Sets `extendedDynamicState3ColorBlendEquation` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3ColorBlendEquationAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3ColorBlendEquation(this.segment(), index, value); return this; }
     /// Sets `extendedDynamicState3ColorBlendEquation` with the given value.
     /// @param value the value
     /// @return `this`
@@ -648,9 +571,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// {@return `extendedDynamicState3ColorWriteMask`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_extendedDynamicState3ColorWriteMask(MemorySegment segment) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3ColorWriteMask(segment, 0L); }
-    /// {@return `extendedDynamicState3ColorWriteMask` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int extendedDynamicState3ColorWriteMaskAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3ColorWriteMask(this.segment(), index); }
     /// {@return `extendedDynamicState3ColorWriteMask`}
     public @CType("VkBool32") int extendedDynamicState3ColorWriteMask() { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3ColorWriteMask(this.segment()); }
     /// Sets `extendedDynamicState3ColorWriteMask` with the given value at the given index.
@@ -662,11 +582,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_extendedDynamicState3ColorWriteMask(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3ColorWriteMask(segment, 0L, value); }
-    /// Sets `extendedDynamicState3ColorWriteMask` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3ColorWriteMaskAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3ColorWriteMask(this.segment(), index, value); return this; }
     /// Sets `extendedDynamicState3ColorWriteMask` with the given value.
     /// @param value the value
     /// @return `this`
@@ -679,9 +594,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// {@return `extendedDynamicState3RasterizationStream`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_extendedDynamicState3RasterizationStream(MemorySegment segment) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3RasterizationStream(segment, 0L); }
-    /// {@return `extendedDynamicState3RasterizationStream` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int extendedDynamicState3RasterizationStreamAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3RasterizationStream(this.segment(), index); }
     /// {@return `extendedDynamicState3RasterizationStream`}
     public @CType("VkBool32") int extendedDynamicState3RasterizationStream() { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3RasterizationStream(this.segment()); }
     /// Sets `extendedDynamicState3RasterizationStream` with the given value at the given index.
@@ -693,11 +605,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_extendedDynamicState3RasterizationStream(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3RasterizationStream(segment, 0L, value); }
-    /// Sets `extendedDynamicState3RasterizationStream` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3RasterizationStreamAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3RasterizationStream(this.segment(), index, value); return this; }
     /// Sets `extendedDynamicState3RasterizationStream` with the given value.
     /// @param value the value
     /// @return `this`
@@ -710,9 +617,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// {@return `extendedDynamicState3ConservativeRasterizationMode`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_extendedDynamicState3ConservativeRasterizationMode(MemorySegment segment) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3ConservativeRasterizationMode(segment, 0L); }
-    /// {@return `extendedDynamicState3ConservativeRasterizationMode` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int extendedDynamicState3ConservativeRasterizationModeAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3ConservativeRasterizationMode(this.segment(), index); }
     /// {@return `extendedDynamicState3ConservativeRasterizationMode`}
     public @CType("VkBool32") int extendedDynamicState3ConservativeRasterizationMode() { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3ConservativeRasterizationMode(this.segment()); }
     /// Sets `extendedDynamicState3ConservativeRasterizationMode` with the given value at the given index.
@@ -724,11 +628,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_extendedDynamicState3ConservativeRasterizationMode(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3ConservativeRasterizationMode(segment, 0L, value); }
-    /// Sets `extendedDynamicState3ConservativeRasterizationMode` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3ConservativeRasterizationModeAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3ConservativeRasterizationMode(this.segment(), index, value); return this; }
     /// Sets `extendedDynamicState3ConservativeRasterizationMode` with the given value.
     /// @param value the value
     /// @return `this`
@@ -741,9 +640,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// {@return `extendedDynamicState3ExtraPrimitiveOverestimationSize`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_extendedDynamicState3ExtraPrimitiveOverestimationSize(MemorySegment segment) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3ExtraPrimitiveOverestimationSize(segment, 0L); }
-    /// {@return `extendedDynamicState3ExtraPrimitiveOverestimationSize` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int extendedDynamicState3ExtraPrimitiveOverestimationSizeAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3ExtraPrimitiveOverestimationSize(this.segment(), index); }
     /// {@return `extendedDynamicState3ExtraPrimitiveOverestimationSize`}
     public @CType("VkBool32") int extendedDynamicState3ExtraPrimitiveOverestimationSize() { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3ExtraPrimitiveOverestimationSize(this.segment()); }
     /// Sets `extendedDynamicState3ExtraPrimitiveOverestimationSize` with the given value at the given index.
@@ -755,11 +651,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_extendedDynamicState3ExtraPrimitiveOverestimationSize(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3ExtraPrimitiveOverestimationSize(segment, 0L, value); }
-    /// Sets `extendedDynamicState3ExtraPrimitiveOverestimationSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3ExtraPrimitiveOverestimationSizeAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3ExtraPrimitiveOverestimationSize(this.segment(), index, value); return this; }
     /// Sets `extendedDynamicState3ExtraPrimitiveOverestimationSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -772,9 +663,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// {@return `extendedDynamicState3DepthClipEnable`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_extendedDynamicState3DepthClipEnable(MemorySegment segment) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3DepthClipEnable(segment, 0L); }
-    /// {@return `extendedDynamicState3DepthClipEnable` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int extendedDynamicState3DepthClipEnableAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3DepthClipEnable(this.segment(), index); }
     /// {@return `extendedDynamicState3DepthClipEnable`}
     public @CType("VkBool32") int extendedDynamicState3DepthClipEnable() { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3DepthClipEnable(this.segment()); }
     /// Sets `extendedDynamicState3DepthClipEnable` with the given value at the given index.
@@ -786,11 +674,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_extendedDynamicState3DepthClipEnable(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3DepthClipEnable(segment, 0L, value); }
-    /// Sets `extendedDynamicState3DepthClipEnable` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3DepthClipEnableAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3DepthClipEnable(this.segment(), index, value); return this; }
     /// Sets `extendedDynamicState3DepthClipEnable` with the given value.
     /// @param value the value
     /// @return `this`
@@ -803,9 +686,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// {@return `extendedDynamicState3SampleLocationsEnable`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_extendedDynamicState3SampleLocationsEnable(MemorySegment segment) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3SampleLocationsEnable(segment, 0L); }
-    /// {@return `extendedDynamicState3SampleLocationsEnable` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int extendedDynamicState3SampleLocationsEnableAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3SampleLocationsEnable(this.segment(), index); }
     /// {@return `extendedDynamicState3SampleLocationsEnable`}
     public @CType("VkBool32") int extendedDynamicState3SampleLocationsEnable() { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3SampleLocationsEnable(this.segment()); }
     /// Sets `extendedDynamicState3SampleLocationsEnable` with the given value at the given index.
@@ -817,11 +697,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_extendedDynamicState3SampleLocationsEnable(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3SampleLocationsEnable(segment, 0L, value); }
-    /// Sets `extendedDynamicState3SampleLocationsEnable` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3SampleLocationsEnableAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3SampleLocationsEnable(this.segment(), index, value); return this; }
     /// Sets `extendedDynamicState3SampleLocationsEnable` with the given value.
     /// @param value the value
     /// @return `this`
@@ -834,9 +709,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// {@return `extendedDynamicState3ColorBlendAdvanced`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_extendedDynamicState3ColorBlendAdvanced(MemorySegment segment) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3ColorBlendAdvanced(segment, 0L); }
-    /// {@return `extendedDynamicState3ColorBlendAdvanced` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int extendedDynamicState3ColorBlendAdvancedAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3ColorBlendAdvanced(this.segment(), index); }
     /// {@return `extendedDynamicState3ColorBlendAdvanced`}
     public @CType("VkBool32") int extendedDynamicState3ColorBlendAdvanced() { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3ColorBlendAdvanced(this.segment()); }
     /// Sets `extendedDynamicState3ColorBlendAdvanced` with the given value at the given index.
@@ -848,11 +720,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_extendedDynamicState3ColorBlendAdvanced(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3ColorBlendAdvanced(segment, 0L, value); }
-    /// Sets `extendedDynamicState3ColorBlendAdvanced` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3ColorBlendAdvancedAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3ColorBlendAdvanced(this.segment(), index, value); return this; }
     /// Sets `extendedDynamicState3ColorBlendAdvanced` with the given value.
     /// @param value the value
     /// @return `this`
@@ -865,9 +732,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// {@return `extendedDynamicState3ProvokingVertexMode`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_extendedDynamicState3ProvokingVertexMode(MemorySegment segment) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3ProvokingVertexMode(segment, 0L); }
-    /// {@return `extendedDynamicState3ProvokingVertexMode` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int extendedDynamicState3ProvokingVertexModeAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3ProvokingVertexMode(this.segment(), index); }
     /// {@return `extendedDynamicState3ProvokingVertexMode`}
     public @CType("VkBool32") int extendedDynamicState3ProvokingVertexMode() { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3ProvokingVertexMode(this.segment()); }
     /// Sets `extendedDynamicState3ProvokingVertexMode` with the given value at the given index.
@@ -879,11 +743,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_extendedDynamicState3ProvokingVertexMode(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3ProvokingVertexMode(segment, 0L, value); }
-    /// Sets `extendedDynamicState3ProvokingVertexMode` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3ProvokingVertexModeAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3ProvokingVertexMode(this.segment(), index, value); return this; }
     /// Sets `extendedDynamicState3ProvokingVertexMode` with the given value.
     /// @param value the value
     /// @return `this`
@@ -896,9 +755,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// {@return `extendedDynamicState3LineRasterizationMode`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_extendedDynamicState3LineRasterizationMode(MemorySegment segment) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3LineRasterizationMode(segment, 0L); }
-    /// {@return `extendedDynamicState3LineRasterizationMode` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int extendedDynamicState3LineRasterizationModeAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3LineRasterizationMode(this.segment(), index); }
     /// {@return `extendedDynamicState3LineRasterizationMode`}
     public @CType("VkBool32") int extendedDynamicState3LineRasterizationMode() { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3LineRasterizationMode(this.segment()); }
     /// Sets `extendedDynamicState3LineRasterizationMode` with the given value at the given index.
@@ -910,11 +766,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_extendedDynamicState3LineRasterizationMode(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3LineRasterizationMode(segment, 0L, value); }
-    /// Sets `extendedDynamicState3LineRasterizationMode` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3LineRasterizationModeAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3LineRasterizationMode(this.segment(), index, value); return this; }
     /// Sets `extendedDynamicState3LineRasterizationMode` with the given value.
     /// @param value the value
     /// @return `this`
@@ -927,9 +778,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// {@return `extendedDynamicState3LineStippleEnable`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_extendedDynamicState3LineStippleEnable(MemorySegment segment) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3LineStippleEnable(segment, 0L); }
-    /// {@return `extendedDynamicState3LineStippleEnable` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int extendedDynamicState3LineStippleEnableAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3LineStippleEnable(this.segment(), index); }
     /// {@return `extendedDynamicState3LineStippleEnable`}
     public @CType("VkBool32") int extendedDynamicState3LineStippleEnable() { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3LineStippleEnable(this.segment()); }
     /// Sets `extendedDynamicState3LineStippleEnable` with the given value at the given index.
@@ -941,11 +789,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_extendedDynamicState3LineStippleEnable(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3LineStippleEnable(segment, 0L, value); }
-    /// Sets `extendedDynamicState3LineStippleEnable` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3LineStippleEnableAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3LineStippleEnable(this.segment(), index, value); return this; }
     /// Sets `extendedDynamicState3LineStippleEnable` with the given value.
     /// @param value the value
     /// @return `this`
@@ -958,9 +801,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// {@return `extendedDynamicState3DepthClipNegativeOneToOne`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_extendedDynamicState3DepthClipNegativeOneToOne(MemorySegment segment) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3DepthClipNegativeOneToOne(segment, 0L); }
-    /// {@return `extendedDynamicState3DepthClipNegativeOneToOne` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int extendedDynamicState3DepthClipNegativeOneToOneAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3DepthClipNegativeOneToOne(this.segment(), index); }
     /// {@return `extendedDynamicState3DepthClipNegativeOneToOne`}
     public @CType("VkBool32") int extendedDynamicState3DepthClipNegativeOneToOne() { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3DepthClipNegativeOneToOne(this.segment()); }
     /// Sets `extendedDynamicState3DepthClipNegativeOneToOne` with the given value at the given index.
@@ -972,11 +812,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_extendedDynamicState3DepthClipNegativeOneToOne(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3DepthClipNegativeOneToOne(segment, 0L, value); }
-    /// Sets `extendedDynamicState3DepthClipNegativeOneToOne` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3DepthClipNegativeOneToOneAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3DepthClipNegativeOneToOne(this.segment(), index, value); return this; }
     /// Sets `extendedDynamicState3DepthClipNegativeOneToOne` with the given value.
     /// @param value the value
     /// @return `this`
@@ -989,9 +824,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// {@return `extendedDynamicState3ViewportWScalingEnable`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_extendedDynamicState3ViewportWScalingEnable(MemorySegment segment) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3ViewportWScalingEnable(segment, 0L); }
-    /// {@return `extendedDynamicState3ViewportWScalingEnable` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int extendedDynamicState3ViewportWScalingEnableAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3ViewportWScalingEnable(this.segment(), index); }
     /// {@return `extendedDynamicState3ViewportWScalingEnable`}
     public @CType("VkBool32") int extendedDynamicState3ViewportWScalingEnable() { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3ViewportWScalingEnable(this.segment()); }
     /// Sets `extendedDynamicState3ViewportWScalingEnable` with the given value at the given index.
@@ -1003,11 +835,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_extendedDynamicState3ViewportWScalingEnable(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3ViewportWScalingEnable(segment, 0L, value); }
-    /// Sets `extendedDynamicState3ViewportWScalingEnable` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3ViewportWScalingEnableAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3ViewportWScalingEnable(this.segment(), index, value); return this; }
     /// Sets `extendedDynamicState3ViewportWScalingEnable` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1020,9 +847,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// {@return `extendedDynamicState3ViewportSwizzle`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_extendedDynamicState3ViewportSwizzle(MemorySegment segment) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3ViewportSwizzle(segment, 0L); }
-    /// {@return `extendedDynamicState3ViewportSwizzle` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int extendedDynamicState3ViewportSwizzleAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3ViewportSwizzle(this.segment(), index); }
     /// {@return `extendedDynamicState3ViewportSwizzle`}
     public @CType("VkBool32") int extendedDynamicState3ViewportSwizzle() { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3ViewportSwizzle(this.segment()); }
     /// Sets `extendedDynamicState3ViewportSwizzle` with the given value at the given index.
@@ -1034,11 +858,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_extendedDynamicState3ViewportSwizzle(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3ViewportSwizzle(segment, 0L, value); }
-    /// Sets `extendedDynamicState3ViewportSwizzle` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3ViewportSwizzleAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3ViewportSwizzle(this.segment(), index, value); return this; }
     /// Sets `extendedDynamicState3ViewportSwizzle` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1051,9 +870,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// {@return `extendedDynamicState3CoverageToColorEnable`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_extendedDynamicState3CoverageToColorEnable(MemorySegment segment) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3CoverageToColorEnable(segment, 0L); }
-    /// {@return `extendedDynamicState3CoverageToColorEnable` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int extendedDynamicState3CoverageToColorEnableAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3CoverageToColorEnable(this.segment(), index); }
     /// {@return `extendedDynamicState3CoverageToColorEnable`}
     public @CType("VkBool32") int extendedDynamicState3CoverageToColorEnable() { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3CoverageToColorEnable(this.segment()); }
     /// Sets `extendedDynamicState3CoverageToColorEnable` with the given value at the given index.
@@ -1065,11 +881,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_extendedDynamicState3CoverageToColorEnable(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3CoverageToColorEnable(segment, 0L, value); }
-    /// Sets `extendedDynamicState3CoverageToColorEnable` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3CoverageToColorEnableAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3CoverageToColorEnable(this.segment(), index, value); return this; }
     /// Sets `extendedDynamicState3CoverageToColorEnable` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1082,9 +893,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// {@return `extendedDynamicState3CoverageToColorLocation`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_extendedDynamicState3CoverageToColorLocation(MemorySegment segment) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3CoverageToColorLocation(segment, 0L); }
-    /// {@return `extendedDynamicState3CoverageToColorLocation` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int extendedDynamicState3CoverageToColorLocationAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3CoverageToColorLocation(this.segment(), index); }
     /// {@return `extendedDynamicState3CoverageToColorLocation`}
     public @CType("VkBool32") int extendedDynamicState3CoverageToColorLocation() { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3CoverageToColorLocation(this.segment()); }
     /// Sets `extendedDynamicState3CoverageToColorLocation` with the given value at the given index.
@@ -1096,11 +904,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_extendedDynamicState3CoverageToColorLocation(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3CoverageToColorLocation(segment, 0L, value); }
-    /// Sets `extendedDynamicState3CoverageToColorLocation` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3CoverageToColorLocationAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3CoverageToColorLocation(this.segment(), index, value); return this; }
     /// Sets `extendedDynamicState3CoverageToColorLocation` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1113,9 +916,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// {@return `extendedDynamicState3CoverageModulationMode`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_extendedDynamicState3CoverageModulationMode(MemorySegment segment) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3CoverageModulationMode(segment, 0L); }
-    /// {@return `extendedDynamicState3CoverageModulationMode` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int extendedDynamicState3CoverageModulationModeAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3CoverageModulationMode(this.segment(), index); }
     /// {@return `extendedDynamicState3CoverageModulationMode`}
     public @CType("VkBool32") int extendedDynamicState3CoverageModulationMode() { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3CoverageModulationMode(this.segment()); }
     /// Sets `extendedDynamicState3CoverageModulationMode` with the given value at the given index.
@@ -1127,11 +927,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_extendedDynamicState3CoverageModulationMode(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3CoverageModulationMode(segment, 0L, value); }
-    /// Sets `extendedDynamicState3CoverageModulationMode` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3CoverageModulationModeAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3CoverageModulationMode(this.segment(), index, value); return this; }
     /// Sets `extendedDynamicState3CoverageModulationMode` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1144,9 +939,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// {@return `extendedDynamicState3CoverageModulationTableEnable`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_extendedDynamicState3CoverageModulationTableEnable(MemorySegment segment) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3CoverageModulationTableEnable(segment, 0L); }
-    /// {@return `extendedDynamicState3CoverageModulationTableEnable` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int extendedDynamicState3CoverageModulationTableEnableAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3CoverageModulationTableEnable(this.segment(), index); }
     /// {@return `extendedDynamicState3CoverageModulationTableEnable`}
     public @CType("VkBool32") int extendedDynamicState3CoverageModulationTableEnable() { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3CoverageModulationTableEnable(this.segment()); }
     /// Sets `extendedDynamicState3CoverageModulationTableEnable` with the given value at the given index.
@@ -1158,11 +950,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_extendedDynamicState3CoverageModulationTableEnable(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3CoverageModulationTableEnable(segment, 0L, value); }
-    /// Sets `extendedDynamicState3CoverageModulationTableEnable` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3CoverageModulationTableEnableAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3CoverageModulationTableEnable(this.segment(), index, value); return this; }
     /// Sets `extendedDynamicState3CoverageModulationTableEnable` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1175,9 +962,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// {@return `extendedDynamicState3CoverageModulationTable`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_extendedDynamicState3CoverageModulationTable(MemorySegment segment) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3CoverageModulationTable(segment, 0L); }
-    /// {@return `extendedDynamicState3CoverageModulationTable` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int extendedDynamicState3CoverageModulationTableAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3CoverageModulationTable(this.segment(), index); }
     /// {@return `extendedDynamicState3CoverageModulationTable`}
     public @CType("VkBool32") int extendedDynamicState3CoverageModulationTable() { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3CoverageModulationTable(this.segment()); }
     /// Sets `extendedDynamicState3CoverageModulationTable` with the given value at the given index.
@@ -1189,11 +973,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_extendedDynamicState3CoverageModulationTable(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3CoverageModulationTable(segment, 0L, value); }
-    /// Sets `extendedDynamicState3CoverageModulationTable` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3CoverageModulationTableAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3CoverageModulationTable(this.segment(), index, value); return this; }
     /// Sets `extendedDynamicState3CoverageModulationTable` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1206,9 +985,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// {@return `extendedDynamicState3CoverageReductionMode`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_extendedDynamicState3CoverageReductionMode(MemorySegment segment) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3CoverageReductionMode(segment, 0L); }
-    /// {@return `extendedDynamicState3CoverageReductionMode` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int extendedDynamicState3CoverageReductionModeAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3CoverageReductionMode(this.segment(), index); }
     /// {@return `extendedDynamicState3CoverageReductionMode`}
     public @CType("VkBool32") int extendedDynamicState3CoverageReductionMode() { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3CoverageReductionMode(this.segment()); }
     /// Sets `extendedDynamicState3CoverageReductionMode` with the given value at the given index.
@@ -1220,11 +996,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_extendedDynamicState3CoverageReductionMode(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3CoverageReductionMode(segment, 0L, value); }
-    /// Sets `extendedDynamicState3CoverageReductionMode` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3CoverageReductionModeAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3CoverageReductionMode(this.segment(), index, value); return this; }
     /// Sets `extendedDynamicState3CoverageReductionMode` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1237,9 +1008,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// {@return `extendedDynamicState3RepresentativeFragmentTestEnable`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_extendedDynamicState3RepresentativeFragmentTestEnable(MemorySegment segment) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3RepresentativeFragmentTestEnable(segment, 0L); }
-    /// {@return `extendedDynamicState3RepresentativeFragmentTestEnable` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int extendedDynamicState3RepresentativeFragmentTestEnableAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3RepresentativeFragmentTestEnable(this.segment(), index); }
     /// {@return `extendedDynamicState3RepresentativeFragmentTestEnable`}
     public @CType("VkBool32") int extendedDynamicState3RepresentativeFragmentTestEnable() { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3RepresentativeFragmentTestEnable(this.segment()); }
     /// Sets `extendedDynamicState3RepresentativeFragmentTestEnable` with the given value at the given index.
@@ -1251,11 +1019,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_extendedDynamicState3RepresentativeFragmentTestEnable(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3RepresentativeFragmentTestEnable(segment, 0L, value); }
-    /// Sets `extendedDynamicState3RepresentativeFragmentTestEnable` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3RepresentativeFragmentTestEnableAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3RepresentativeFragmentTestEnable(this.segment(), index, value); return this; }
     /// Sets `extendedDynamicState3RepresentativeFragmentTestEnable` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1268,9 +1031,6 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// {@return `extendedDynamicState3ShadingRateImageEnable`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_extendedDynamicState3ShadingRateImageEnable(MemorySegment segment) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3ShadingRateImageEnable(segment, 0L); }
-    /// {@return `extendedDynamicState3ShadingRateImageEnable` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int extendedDynamicState3ShadingRateImageEnableAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3ShadingRateImageEnable(this.segment(), index); }
     /// {@return `extendedDynamicState3ShadingRateImageEnable`}
     public @CType("VkBool32") int extendedDynamicState3ShadingRateImageEnable() { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3ShadingRateImageEnable(this.segment()); }
     /// Sets `extendedDynamicState3ShadingRateImageEnable` with the given value at the given index.
@@ -1282,14 +1042,329 @@ public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_extendedDynamicState3ShadingRateImageEnable(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3ShadingRateImageEnable(segment, 0L, value); }
-    /// Sets `extendedDynamicState3ShadingRateImageEnable` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3ShadingRateImageEnableAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3ShadingRateImageEnable(this.segment(), index, value); return this; }
     /// Sets `extendedDynamicState3ShadingRateImageEnable` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3ShadingRateImageEnable(@CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3ShadingRateImageEnable(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDeviceExtendedDynamicState3FeaturesEXT].
+    public static final class Buffer extends VkPhysicalDeviceExtendedDynamicState3FeaturesEXT {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDeviceExtendedDynamicState3FeaturesEXT`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDeviceExtendedDynamicState3FeaturesEXT`
+        public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT asSlice(long index) { return new VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDeviceExtendedDynamicState3FeaturesEXT`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDeviceExtendedDynamicState3FeaturesEXT`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `extendedDynamicState3TessellationDomainOrigin` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int extendedDynamicState3TessellationDomainOriginAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3TessellationDomainOrigin(this.segment(), index); }
+        /// Sets `extendedDynamicState3TessellationDomainOrigin` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer extendedDynamicState3TessellationDomainOriginAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3TessellationDomainOrigin(this.segment(), index, value); return this; }
+
+        /// {@return `extendedDynamicState3DepthClampEnable` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int extendedDynamicState3DepthClampEnableAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3DepthClampEnable(this.segment(), index); }
+        /// Sets `extendedDynamicState3DepthClampEnable` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer extendedDynamicState3DepthClampEnableAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3DepthClampEnable(this.segment(), index, value); return this; }
+
+        /// {@return `extendedDynamicState3PolygonMode` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int extendedDynamicState3PolygonModeAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3PolygonMode(this.segment(), index); }
+        /// Sets `extendedDynamicState3PolygonMode` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer extendedDynamicState3PolygonModeAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3PolygonMode(this.segment(), index, value); return this; }
+
+        /// {@return `extendedDynamicState3RasterizationSamples` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int extendedDynamicState3RasterizationSamplesAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3RasterizationSamples(this.segment(), index); }
+        /// Sets `extendedDynamicState3RasterizationSamples` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer extendedDynamicState3RasterizationSamplesAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3RasterizationSamples(this.segment(), index, value); return this; }
+
+        /// {@return `extendedDynamicState3SampleMask` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int extendedDynamicState3SampleMaskAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3SampleMask(this.segment(), index); }
+        /// Sets `extendedDynamicState3SampleMask` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer extendedDynamicState3SampleMaskAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3SampleMask(this.segment(), index, value); return this; }
+
+        /// {@return `extendedDynamicState3AlphaToCoverageEnable` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int extendedDynamicState3AlphaToCoverageEnableAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3AlphaToCoverageEnable(this.segment(), index); }
+        /// Sets `extendedDynamicState3AlphaToCoverageEnable` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer extendedDynamicState3AlphaToCoverageEnableAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3AlphaToCoverageEnable(this.segment(), index, value); return this; }
+
+        /// {@return `extendedDynamicState3AlphaToOneEnable` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int extendedDynamicState3AlphaToOneEnableAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3AlphaToOneEnable(this.segment(), index); }
+        /// Sets `extendedDynamicState3AlphaToOneEnable` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer extendedDynamicState3AlphaToOneEnableAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3AlphaToOneEnable(this.segment(), index, value); return this; }
+
+        /// {@return `extendedDynamicState3LogicOpEnable` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int extendedDynamicState3LogicOpEnableAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3LogicOpEnable(this.segment(), index); }
+        /// Sets `extendedDynamicState3LogicOpEnable` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer extendedDynamicState3LogicOpEnableAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3LogicOpEnable(this.segment(), index, value); return this; }
+
+        /// {@return `extendedDynamicState3ColorBlendEnable` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int extendedDynamicState3ColorBlendEnableAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3ColorBlendEnable(this.segment(), index); }
+        /// Sets `extendedDynamicState3ColorBlendEnable` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer extendedDynamicState3ColorBlendEnableAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3ColorBlendEnable(this.segment(), index, value); return this; }
+
+        /// {@return `extendedDynamicState3ColorBlendEquation` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int extendedDynamicState3ColorBlendEquationAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3ColorBlendEquation(this.segment(), index); }
+        /// Sets `extendedDynamicState3ColorBlendEquation` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer extendedDynamicState3ColorBlendEquationAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3ColorBlendEquation(this.segment(), index, value); return this; }
+
+        /// {@return `extendedDynamicState3ColorWriteMask` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int extendedDynamicState3ColorWriteMaskAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3ColorWriteMask(this.segment(), index); }
+        /// Sets `extendedDynamicState3ColorWriteMask` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer extendedDynamicState3ColorWriteMaskAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3ColorWriteMask(this.segment(), index, value); return this; }
+
+        /// {@return `extendedDynamicState3RasterizationStream` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int extendedDynamicState3RasterizationStreamAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3RasterizationStream(this.segment(), index); }
+        /// Sets `extendedDynamicState3RasterizationStream` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer extendedDynamicState3RasterizationStreamAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3RasterizationStream(this.segment(), index, value); return this; }
+
+        /// {@return `extendedDynamicState3ConservativeRasterizationMode` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int extendedDynamicState3ConservativeRasterizationModeAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3ConservativeRasterizationMode(this.segment(), index); }
+        /// Sets `extendedDynamicState3ConservativeRasterizationMode` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer extendedDynamicState3ConservativeRasterizationModeAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3ConservativeRasterizationMode(this.segment(), index, value); return this; }
+
+        /// {@return `extendedDynamicState3ExtraPrimitiveOverestimationSize` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int extendedDynamicState3ExtraPrimitiveOverestimationSizeAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3ExtraPrimitiveOverestimationSize(this.segment(), index); }
+        /// Sets `extendedDynamicState3ExtraPrimitiveOverestimationSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer extendedDynamicState3ExtraPrimitiveOverestimationSizeAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3ExtraPrimitiveOverestimationSize(this.segment(), index, value); return this; }
+
+        /// {@return `extendedDynamicState3DepthClipEnable` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int extendedDynamicState3DepthClipEnableAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3DepthClipEnable(this.segment(), index); }
+        /// Sets `extendedDynamicState3DepthClipEnable` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer extendedDynamicState3DepthClipEnableAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3DepthClipEnable(this.segment(), index, value); return this; }
+
+        /// {@return `extendedDynamicState3SampleLocationsEnable` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int extendedDynamicState3SampleLocationsEnableAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3SampleLocationsEnable(this.segment(), index); }
+        /// Sets `extendedDynamicState3SampleLocationsEnable` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer extendedDynamicState3SampleLocationsEnableAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3SampleLocationsEnable(this.segment(), index, value); return this; }
+
+        /// {@return `extendedDynamicState3ColorBlendAdvanced` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int extendedDynamicState3ColorBlendAdvancedAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3ColorBlendAdvanced(this.segment(), index); }
+        /// Sets `extendedDynamicState3ColorBlendAdvanced` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer extendedDynamicState3ColorBlendAdvancedAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3ColorBlendAdvanced(this.segment(), index, value); return this; }
+
+        /// {@return `extendedDynamicState3ProvokingVertexMode` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int extendedDynamicState3ProvokingVertexModeAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3ProvokingVertexMode(this.segment(), index); }
+        /// Sets `extendedDynamicState3ProvokingVertexMode` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer extendedDynamicState3ProvokingVertexModeAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3ProvokingVertexMode(this.segment(), index, value); return this; }
+
+        /// {@return `extendedDynamicState3LineRasterizationMode` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int extendedDynamicState3LineRasterizationModeAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3LineRasterizationMode(this.segment(), index); }
+        /// Sets `extendedDynamicState3LineRasterizationMode` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer extendedDynamicState3LineRasterizationModeAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3LineRasterizationMode(this.segment(), index, value); return this; }
+
+        /// {@return `extendedDynamicState3LineStippleEnable` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int extendedDynamicState3LineStippleEnableAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3LineStippleEnable(this.segment(), index); }
+        /// Sets `extendedDynamicState3LineStippleEnable` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer extendedDynamicState3LineStippleEnableAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3LineStippleEnable(this.segment(), index, value); return this; }
+
+        /// {@return `extendedDynamicState3DepthClipNegativeOneToOne` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int extendedDynamicState3DepthClipNegativeOneToOneAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3DepthClipNegativeOneToOne(this.segment(), index); }
+        /// Sets `extendedDynamicState3DepthClipNegativeOneToOne` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer extendedDynamicState3DepthClipNegativeOneToOneAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3DepthClipNegativeOneToOne(this.segment(), index, value); return this; }
+
+        /// {@return `extendedDynamicState3ViewportWScalingEnable` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int extendedDynamicState3ViewportWScalingEnableAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3ViewportWScalingEnable(this.segment(), index); }
+        /// Sets `extendedDynamicState3ViewportWScalingEnable` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer extendedDynamicState3ViewportWScalingEnableAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3ViewportWScalingEnable(this.segment(), index, value); return this; }
+
+        /// {@return `extendedDynamicState3ViewportSwizzle` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int extendedDynamicState3ViewportSwizzleAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3ViewportSwizzle(this.segment(), index); }
+        /// Sets `extendedDynamicState3ViewportSwizzle` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer extendedDynamicState3ViewportSwizzleAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3ViewportSwizzle(this.segment(), index, value); return this; }
+
+        /// {@return `extendedDynamicState3CoverageToColorEnable` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int extendedDynamicState3CoverageToColorEnableAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3CoverageToColorEnable(this.segment(), index); }
+        /// Sets `extendedDynamicState3CoverageToColorEnable` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer extendedDynamicState3CoverageToColorEnableAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3CoverageToColorEnable(this.segment(), index, value); return this; }
+
+        /// {@return `extendedDynamicState3CoverageToColorLocation` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int extendedDynamicState3CoverageToColorLocationAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3CoverageToColorLocation(this.segment(), index); }
+        /// Sets `extendedDynamicState3CoverageToColorLocation` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer extendedDynamicState3CoverageToColorLocationAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3CoverageToColorLocation(this.segment(), index, value); return this; }
+
+        /// {@return `extendedDynamicState3CoverageModulationMode` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int extendedDynamicState3CoverageModulationModeAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3CoverageModulationMode(this.segment(), index); }
+        /// Sets `extendedDynamicState3CoverageModulationMode` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer extendedDynamicState3CoverageModulationModeAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3CoverageModulationMode(this.segment(), index, value); return this; }
+
+        /// {@return `extendedDynamicState3CoverageModulationTableEnable` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int extendedDynamicState3CoverageModulationTableEnableAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3CoverageModulationTableEnable(this.segment(), index); }
+        /// Sets `extendedDynamicState3CoverageModulationTableEnable` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer extendedDynamicState3CoverageModulationTableEnableAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3CoverageModulationTableEnable(this.segment(), index, value); return this; }
+
+        /// {@return `extendedDynamicState3CoverageModulationTable` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int extendedDynamicState3CoverageModulationTableAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3CoverageModulationTable(this.segment(), index); }
+        /// Sets `extendedDynamicState3CoverageModulationTable` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer extendedDynamicState3CoverageModulationTableAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3CoverageModulationTable(this.segment(), index, value); return this; }
+
+        /// {@return `extendedDynamicState3CoverageReductionMode` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int extendedDynamicState3CoverageReductionModeAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3CoverageReductionMode(this.segment(), index); }
+        /// Sets `extendedDynamicState3CoverageReductionMode` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer extendedDynamicState3CoverageReductionModeAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3CoverageReductionMode(this.segment(), index, value); return this; }
+
+        /// {@return `extendedDynamicState3RepresentativeFragmentTestEnable` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int extendedDynamicState3RepresentativeFragmentTestEnableAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3RepresentativeFragmentTestEnable(this.segment(), index); }
+        /// Sets `extendedDynamicState3RepresentativeFragmentTestEnable` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer extendedDynamicState3RepresentativeFragmentTestEnableAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3RepresentativeFragmentTestEnable(this.segment(), index, value); return this; }
+
+        /// {@return `extendedDynamicState3ShadingRateImageEnable` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int extendedDynamicState3ShadingRateImageEnableAt(long index) { return VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.get_extendedDynamicState3ShadingRateImageEnable(this.segment(), index); }
+        /// Sets `extendedDynamicState3ShadingRateImageEnable` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer extendedDynamicState3ShadingRateImageEnableAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.set_extendedDynamicState3ShadingRateImageEnable(this.segment(), index, value); return this; }
+
+    }
 }

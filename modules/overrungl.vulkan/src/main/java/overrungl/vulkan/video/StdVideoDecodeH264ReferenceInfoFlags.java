@@ -43,7 +43,7 @@ import overrungl.util.*;
 ///     uint32_t : 1 is_non_existing;
 /// } StdVideoDecodeH264ReferenceInfoFlags;
 /// ```
-public final class StdVideoDecodeH264ReferenceInfoFlags extends Struct {
+public sealed class StdVideoDecodeH264ReferenceInfoFlags extends Struct {
     /// The struct layout of `StdVideoDecodeH264ReferenceInfoFlags`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("top_field_flag"),
@@ -70,6 +70,11 @@ public final class StdVideoDecodeH264ReferenceInfoFlags extends Struct {
     public static StdVideoDecodeH264ReferenceInfoFlags of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoDecodeH264ReferenceInfoFlags(segment); }
 
     /// Creates `StdVideoDecodeH264ReferenceInfoFlags` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `StdVideoDecodeH264ReferenceInfoFlags` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -82,7 +87,7 @@ public final class StdVideoDecodeH264ReferenceInfoFlags extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoDecodeH264ReferenceInfoFlags ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoDecodeH264ReferenceInfoFlags(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `StdVideoDecodeH264ReferenceInfoFlags` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -93,7 +98,21 @@ public final class StdVideoDecodeH264ReferenceInfoFlags extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `StdVideoDecodeH264ReferenceInfoFlags`
-    public static StdVideoDecodeH264ReferenceInfoFlags alloc(SegmentAllocator allocator, long count) { return new StdVideoDecodeH264ReferenceInfoFlags(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `StdVideoDecodeH264ReferenceInfoFlags` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `StdVideoDecodeH264ReferenceInfoFlags`
+    public static StdVideoDecodeH264ReferenceInfoFlags allocInit(SegmentAllocator allocator, @CType("uint32_t : 1") int top_field_flag, @CType("uint32_t : 1") int bottom_field_flag, @CType("uint32_t : 1") int used_for_long_term_reference, @CType("uint32_t : 1") int is_non_existing) { return alloc(allocator).top_field_flag(top_field_flag).bottom_field_flag(bottom_field_flag).used_for_long_term_reference(used_for_long_term_reference).is_non_existing(is_non_existing); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public StdVideoDecodeH264ReferenceInfoFlags copyFrom(StdVideoDecodeH264ReferenceInfoFlags src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `top_field_flag` at the given index}
     /// @param segment the segment of the struct
@@ -102,9 +121,6 @@ public final class StdVideoDecodeH264ReferenceInfoFlags extends Struct {
     /// {@return `top_field_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_top_field_flag(MemorySegment segment) { return StdVideoDecodeH264ReferenceInfoFlags.get_top_field_flag(segment, 0L); }
-    /// {@return `top_field_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int top_field_flagAt(long index) { return StdVideoDecodeH264ReferenceInfoFlags.get_top_field_flag(this.segment(), index); }
     /// {@return `top_field_flag`}
     public @CType("uint32_t : 1") int top_field_flag() { return StdVideoDecodeH264ReferenceInfoFlags.get_top_field_flag(this.segment()); }
     /// Sets `top_field_flag` with the given value at the given index.
@@ -116,11 +132,6 @@ public final class StdVideoDecodeH264ReferenceInfoFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_top_field_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoDecodeH264ReferenceInfoFlags.set_top_field_flag(segment, 0L, value); }
-    /// Sets `top_field_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoDecodeH264ReferenceInfoFlags top_field_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoDecodeH264ReferenceInfoFlags.set_top_field_flag(this.segment(), index, value); return this; }
     /// Sets `top_field_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -133,9 +144,6 @@ public final class StdVideoDecodeH264ReferenceInfoFlags extends Struct {
     /// {@return `bottom_field_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_bottom_field_flag(MemorySegment segment) { return StdVideoDecodeH264ReferenceInfoFlags.get_bottom_field_flag(segment, 0L); }
-    /// {@return `bottom_field_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int bottom_field_flagAt(long index) { return StdVideoDecodeH264ReferenceInfoFlags.get_bottom_field_flag(this.segment(), index); }
     /// {@return `bottom_field_flag`}
     public @CType("uint32_t : 1") int bottom_field_flag() { return StdVideoDecodeH264ReferenceInfoFlags.get_bottom_field_flag(this.segment()); }
     /// Sets `bottom_field_flag` with the given value at the given index.
@@ -147,11 +155,6 @@ public final class StdVideoDecodeH264ReferenceInfoFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_bottom_field_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoDecodeH264ReferenceInfoFlags.set_bottom_field_flag(segment, 0L, value); }
-    /// Sets `bottom_field_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoDecodeH264ReferenceInfoFlags bottom_field_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoDecodeH264ReferenceInfoFlags.set_bottom_field_flag(this.segment(), index, value); return this; }
     /// Sets `bottom_field_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -164,9 +167,6 @@ public final class StdVideoDecodeH264ReferenceInfoFlags extends Struct {
     /// {@return `used_for_long_term_reference`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_used_for_long_term_reference(MemorySegment segment) { return StdVideoDecodeH264ReferenceInfoFlags.get_used_for_long_term_reference(segment, 0L); }
-    /// {@return `used_for_long_term_reference` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int used_for_long_term_referenceAt(long index) { return StdVideoDecodeH264ReferenceInfoFlags.get_used_for_long_term_reference(this.segment(), index); }
     /// {@return `used_for_long_term_reference`}
     public @CType("uint32_t : 1") int used_for_long_term_reference() { return StdVideoDecodeH264ReferenceInfoFlags.get_used_for_long_term_reference(this.segment()); }
     /// Sets `used_for_long_term_reference` with the given value at the given index.
@@ -178,11 +178,6 @@ public final class StdVideoDecodeH264ReferenceInfoFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_used_for_long_term_reference(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoDecodeH264ReferenceInfoFlags.set_used_for_long_term_reference(segment, 0L, value); }
-    /// Sets `used_for_long_term_reference` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoDecodeH264ReferenceInfoFlags used_for_long_term_referenceAt(long index, @CType("uint32_t : 1") int value) { StdVideoDecodeH264ReferenceInfoFlags.set_used_for_long_term_reference(this.segment(), index, value); return this; }
     /// Sets `used_for_long_term_reference` with the given value.
     /// @param value the value
     /// @return `this`
@@ -195,9 +190,6 @@ public final class StdVideoDecodeH264ReferenceInfoFlags extends Struct {
     /// {@return `is_non_existing`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_is_non_existing(MemorySegment segment) { return StdVideoDecodeH264ReferenceInfoFlags.get_is_non_existing(segment, 0L); }
-    /// {@return `is_non_existing` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int is_non_existingAt(long index) { return StdVideoDecodeH264ReferenceInfoFlags.get_is_non_existing(this.segment(), index); }
     /// {@return `is_non_existing`}
     public @CType("uint32_t : 1") int is_non_existing() { return StdVideoDecodeH264ReferenceInfoFlags.get_is_non_existing(this.segment()); }
     /// Sets `is_non_existing` with the given value at the given index.
@@ -209,14 +201,68 @@ public final class StdVideoDecodeH264ReferenceInfoFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_is_non_existing(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoDecodeH264ReferenceInfoFlags.set_is_non_existing(segment, 0L, value); }
-    /// Sets `is_non_existing` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoDecodeH264ReferenceInfoFlags is_non_existingAt(long index, @CType("uint32_t : 1") int value) { StdVideoDecodeH264ReferenceInfoFlags.set_is_non_existing(this.segment(), index, value); return this; }
     /// Sets `is_non_existing` with the given value.
     /// @param value the value
     /// @return `this`
     public StdVideoDecodeH264ReferenceInfoFlags is_non_existing(@CType("uint32_t : 1") int value) { StdVideoDecodeH264ReferenceInfoFlags.set_is_non_existing(this.segment(), value); return this; }
 
+    /// A buffer of [StdVideoDecodeH264ReferenceInfoFlags].
+    public static final class Buffer extends StdVideoDecodeH264ReferenceInfoFlags {
+        private final long elementCount;
+
+        /// Creates `StdVideoDecodeH264ReferenceInfoFlags.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `StdVideoDecodeH264ReferenceInfoFlags`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `StdVideoDecodeH264ReferenceInfoFlags`
+        public StdVideoDecodeH264ReferenceInfoFlags asSlice(long index) { return new StdVideoDecodeH264ReferenceInfoFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `StdVideoDecodeH264ReferenceInfoFlags`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `StdVideoDecodeH264ReferenceInfoFlags`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `top_field_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int top_field_flagAt(long index) { return StdVideoDecodeH264ReferenceInfoFlags.get_top_field_flag(this.segment(), index); }
+        /// Sets `top_field_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer top_field_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoDecodeH264ReferenceInfoFlags.set_top_field_flag(this.segment(), index, value); return this; }
+
+        /// {@return `bottom_field_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int bottom_field_flagAt(long index) { return StdVideoDecodeH264ReferenceInfoFlags.get_bottom_field_flag(this.segment(), index); }
+        /// Sets `bottom_field_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer bottom_field_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoDecodeH264ReferenceInfoFlags.set_bottom_field_flag(this.segment(), index, value); return this; }
+
+        /// {@return `used_for_long_term_reference` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int used_for_long_term_referenceAt(long index) { return StdVideoDecodeH264ReferenceInfoFlags.get_used_for_long_term_reference(this.segment(), index); }
+        /// Sets `used_for_long_term_reference` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer used_for_long_term_referenceAt(long index, @CType("uint32_t : 1") int value) { StdVideoDecodeH264ReferenceInfoFlags.set_used_for_long_term_reference(this.segment(), index, value); return this; }
+
+        /// {@return `is_non_existing` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int is_non_existingAt(long index) { return StdVideoDecodeH264ReferenceInfoFlags.get_is_non_existing(this.segment(), index); }
+        /// Sets `is_non_existing` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer is_non_existingAt(long index, @CType("uint32_t : 1") int value) { StdVideoDecodeH264ReferenceInfoFlags.set_is_non_existing(this.segment(), index, value); return this; }
+
+    }
 }

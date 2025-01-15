@@ -22,7 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKEXTProvokingVertex {
+public final class VKEXTProvokingVertex {
     public static final int VK_PROVOKING_VERTEX_MODE_FIRST_VERTEX_EXT = 0;
     public static final int VK_PROVOKING_VERTEX_MODE_LAST_VERTEX_EXT = 1;
     public static final int VK_EXT_PROVOKING_VERTEX_SPEC_VERSION = 1;
@@ -31,7 +31,6 @@ public class VKEXTProvokingVertex {
     public static final int VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_PROVOKING_VERTEX_STATE_CREATE_INFO_EXT = 1000254001;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROVOKING_VERTEX_PROPERTIES_EXT = 1000254002;
 
-    public VKEXTProvokingVertex(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKEXTProvokingVertex() { }
 
 }

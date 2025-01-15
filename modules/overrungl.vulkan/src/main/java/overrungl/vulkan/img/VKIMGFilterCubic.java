@@ -23,13 +23,12 @@ import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 import static overrungl.vulkan.ext.VKEXTFilterCubic.*;
-public class VKIMGFilterCubic {
+public final class VKIMGFilterCubic {
     public static final int VK_IMG_FILTER_CUBIC_SPEC_VERSION = 1;
     public static final String VK_IMG_FILTER_CUBIC_EXTENSION_NAME = "VK_IMG_filter_cubic";
     public static final int VK_FILTER_CUBIC_IMG = VK_FILTER_CUBIC_EXT;
     public static final int VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_IMG = VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_EXT;
 
-    public VKIMGFilterCubic(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKIMGFilterCubic() { }
 
 }

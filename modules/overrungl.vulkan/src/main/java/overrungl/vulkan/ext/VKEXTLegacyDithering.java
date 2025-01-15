@@ -22,7 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKEXTLegacyDithering {
+public final class VKEXTLegacyDithering {
     public static final int VK_EXT_LEGACY_DITHERING_SPEC_VERSION = 2;
     public static final String VK_EXT_LEGACY_DITHERING_EXTENSION_NAME = "VK_EXT_legacy_dithering";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LEGACY_DITHERING_FEATURES_EXT = 1000465000;
@@ -30,7 +30,6 @@ public class VKEXTLegacyDithering {
     public static final int VK_RENDERING_ENABLE_LEGACY_DITHERING_BIT_EXT = 0x00000008;
     public static final long VK_PIPELINE_CREATE_2_ENABLE_LEGACY_DITHERING_BIT_EXT = 0x400000000L;
 
-    public VKEXTLegacyDithering(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKEXTLegacyDithering() { }
 
 }

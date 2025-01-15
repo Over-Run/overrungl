@@ -52,7 +52,7 @@ import overrungl.util.*;
 ///     const VkVertexInputAttributeDescription * pVertexAttributeDescriptions;
 /// } VkPipelineVertexInputStateCreateInfo;
 /// ```
-public final class VkPipelineVertexInputStateCreateInfo extends Struct {
+public sealed class VkPipelineVertexInputStateCreateInfo extends Struct {
     /// The struct layout of `VkPipelineVertexInputStateCreateInfo`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -88,6 +88,11 @@ public final class VkPipelineVertexInputStateCreateInfo extends Struct {
     public static VkPipelineVertexInputStateCreateInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineVertexInputStateCreateInfo(segment); }
 
     /// Creates `VkPipelineVertexInputStateCreateInfo` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPipelineVertexInputStateCreateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -100,7 +105,7 @@ public final class VkPipelineVertexInputStateCreateInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineVertexInputStateCreateInfo ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineVertexInputStateCreateInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPipelineVertexInputStateCreateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -111,7 +116,21 @@ public final class VkPipelineVertexInputStateCreateInfo extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPipelineVertexInputStateCreateInfo`
-    public static VkPipelineVertexInputStateCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkPipelineVertexInputStateCreateInfo(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkPipelineVertexInputStateCreateInfo` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPipelineVertexInputStateCreateInfo`
+    public static VkPipelineVertexInputStateCreateInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkPipelineVertexInputStateCreateFlags") int flags, @CType("uint32_t") int vertexBindingDescriptionCount, @CType("const VkVertexInputBindingDescription *") java.lang.foreign.MemorySegment pVertexBindingDescriptions, @CType("uint32_t") int vertexAttributeDescriptionCount, @CType("const VkVertexInputAttributeDescription *") java.lang.foreign.MemorySegment pVertexAttributeDescriptions) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).vertexBindingDescriptionCount(vertexBindingDescriptionCount).pVertexBindingDescriptions(pVertexBindingDescriptions).vertexAttributeDescriptionCount(vertexAttributeDescriptionCount).pVertexAttributeDescriptions(pVertexAttributeDescriptions); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPipelineVertexInputStateCreateInfo copyFrom(VkPipelineVertexInputStateCreateInfo src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -120,9 +139,6 @@ public final class VkPipelineVertexInputStateCreateInfo extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPipelineVertexInputStateCreateInfo.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPipelineVertexInputStateCreateInfo.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPipelineVertexInputStateCreateInfo.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -134,11 +150,6 @@ public final class VkPipelineVertexInputStateCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPipelineVertexInputStateCreateInfo.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineVertexInputStateCreateInfo sTypeAt(long index, @CType("VkStructureType") int value) { VkPipelineVertexInputStateCreateInfo.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -151,9 +162,6 @@ public final class VkPipelineVertexInputStateCreateInfo extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPipelineVertexInputStateCreateInfo.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPipelineVertexInputStateCreateInfo.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkPipelineVertexInputStateCreateInfo.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -165,11 +173,6 @@ public final class VkPipelineVertexInputStateCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineVertexInputStateCreateInfo.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineVertexInputStateCreateInfo pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineVertexInputStateCreateInfo.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,9 +185,6 @@ public final class VkPipelineVertexInputStateCreateInfo extends Struct {
     /// {@return `flags`}
     /// @param segment the segment of the struct
     public static @CType("VkPipelineVertexInputStateCreateFlags") int get_flags(MemorySegment segment) { return VkPipelineVertexInputStateCreateInfo.get_flags(segment, 0L); }
-    /// {@return `flags` at the given index}
-    /// @param index the index
-    public @CType("VkPipelineVertexInputStateCreateFlags") int flagsAt(long index) { return VkPipelineVertexInputStateCreateInfo.get_flags(this.segment(), index); }
     /// {@return `flags`}
     public @CType("VkPipelineVertexInputStateCreateFlags") int flags() { return VkPipelineVertexInputStateCreateInfo.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
@@ -196,11 +196,6 @@ public final class VkPipelineVertexInputStateCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_flags(MemorySegment segment, @CType("VkPipelineVertexInputStateCreateFlags") int value) { VkPipelineVertexInputStateCreateInfo.set_flags(segment, 0L, value); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineVertexInputStateCreateInfo flagsAt(long index, @CType("VkPipelineVertexInputStateCreateFlags") int value) { VkPipelineVertexInputStateCreateInfo.set_flags(this.segment(), index, value); return this; }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -213,9 +208,6 @@ public final class VkPipelineVertexInputStateCreateInfo extends Struct {
     /// {@return `vertexBindingDescriptionCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_vertexBindingDescriptionCount(MemorySegment segment) { return VkPipelineVertexInputStateCreateInfo.get_vertexBindingDescriptionCount(segment, 0L); }
-    /// {@return `vertexBindingDescriptionCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int vertexBindingDescriptionCountAt(long index) { return VkPipelineVertexInputStateCreateInfo.get_vertexBindingDescriptionCount(this.segment(), index); }
     /// {@return `vertexBindingDescriptionCount`}
     public @CType("uint32_t") int vertexBindingDescriptionCount() { return VkPipelineVertexInputStateCreateInfo.get_vertexBindingDescriptionCount(this.segment()); }
     /// Sets `vertexBindingDescriptionCount` with the given value at the given index.
@@ -227,11 +219,6 @@ public final class VkPipelineVertexInputStateCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_vertexBindingDescriptionCount(MemorySegment segment, @CType("uint32_t") int value) { VkPipelineVertexInputStateCreateInfo.set_vertexBindingDescriptionCount(segment, 0L, value); }
-    /// Sets `vertexBindingDescriptionCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineVertexInputStateCreateInfo vertexBindingDescriptionCountAt(long index, @CType("uint32_t") int value) { VkPipelineVertexInputStateCreateInfo.set_vertexBindingDescriptionCount(this.segment(), index, value); return this; }
     /// Sets `vertexBindingDescriptionCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -244,9 +231,6 @@ public final class VkPipelineVertexInputStateCreateInfo extends Struct {
     /// {@return `pVertexBindingDescriptions`}
     /// @param segment the segment of the struct
     public static @CType("const VkVertexInputBindingDescription *") java.lang.foreign.MemorySegment get_pVertexBindingDescriptions(MemorySegment segment) { return VkPipelineVertexInputStateCreateInfo.get_pVertexBindingDescriptions(segment, 0L); }
-    /// {@return `pVertexBindingDescriptions` at the given index}
-    /// @param index the index
-    public @CType("const VkVertexInputBindingDescription *") java.lang.foreign.MemorySegment pVertexBindingDescriptionsAt(long index) { return VkPipelineVertexInputStateCreateInfo.get_pVertexBindingDescriptions(this.segment(), index); }
     /// {@return `pVertexBindingDescriptions`}
     public @CType("const VkVertexInputBindingDescription *") java.lang.foreign.MemorySegment pVertexBindingDescriptions() { return VkPipelineVertexInputStateCreateInfo.get_pVertexBindingDescriptions(this.segment()); }
     /// Sets `pVertexBindingDescriptions` with the given value at the given index.
@@ -258,11 +242,6 @@ public final class VkPipelineVertexInputStateCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pVertexBindingDescriptions(MemorySegment segment, @CType("const VkVertexInputBindingDescription *") java.lang.foreign.MemorySegment value) { VkPipelineVertexInputStateCreateInfo.set_pVertexBindingDescriptions(segment, 0L, value); }
-    /// Sets `pVertexBindingDescriptions` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineVertexInputStateCreateInfo pVertexBindingDescriptionsAt(long index, @CType("const VkVertexInputBindingDescription *") java.lang.foreign.MemorySegment value) { VkPipelineVertexInputStateCreateInfo.set_pVertexBindingDescriptions(this.segment(), index, value); return this; }
     /// Sets `pVertexBindingDescriptions` with the given value.
     /// @param value the value
     /// @return `this`
@@ -275,9 +254,6 @@ public final class VkPipelineVertexInputStateCreateInfo extends Struct {
     /// {@return `vertexAttributeDescriptionCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_vertexAttributeDescriptionCount(MemorySegment segment) { return VkPipelineVertexInputStateCreateInfo.get_vertexAttributeDescriptionCount(segment, 0L); }
-    /// {@return `vertexAttributeDescriptionCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int vertexAttributeDescriptionCountAt(long index) { return VkPipelineVertexInputStateCreateInfo.get_vertexAttributeDescriptionCount(this.segment(), index); }
     /// {@return `vertexAttributeDescriptionCount`}
     public @CType("uint32_t") int vertexAttributeDescriptionCount() { return VkPipelineVertexInputStateCreateInfo.get_vertexAttributeDescriptionCount(this.segment()); }
     /// Sets `vertexAttributeDescriptionCount` with the given value at the given index.
@@ -289,11 +265,6 @@ public final class VkPipelineVertexInputStateCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_vertexAttributeDescriptionCount(MemorySegment segment, @CType("uint32_t") int value) { VkPipelineVertexInputStateCreateInfo.set_vertexAttributeDescriptionCount(segment, 0L, value); }
-    /// Sets `vertexAttributeDescriptionCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineVertexInputStateCreateInfo vertexAttributeDescriptionCountAt(long index, @CType("uint32_t") int value) { VkPipelineVertexInputStateCreateInfo.set_vertexAttributeDescriptionCount(this.segment(), index, value); return this; }
     /// Sets `vertexAttributeDescriptionCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -306,9 +277,6 @@ public final class VkPipelineVertexInputStateCreateInfo extends Struct {
     /// {@return `pVertexAttributeDescriptions`}
     /// @param segment the segment of the struct
     public static @CType("const VkVertexInputAttributeDescription *") java.lang.foreign.MemorySegment get_pVertexAttributeDescriptions(MemorySegment segment) { return VkPipelineVertexInputStateCreateInfo.get_pVertexAttributeDescriptions(segment, 0L); }
-    /// {@return `pVertexAttributeDescriptions` at the given index}
-    /// @param index the index
-    public @CType("const VkVertexInputAttributeDescription *") java.lang.foreign.MemorySegment pVertexAttributeDescriptionsAt(long index) { return VkPipelineVertexInputStateCreateInfo.get_pVertexAttributeDescriptions(this.segment(), index); }
     /// {@return `pVertexAttributeDescriptions`}
     public @CType("const VkVertexInputAttributeDescription *") java.lang.foreign.MemorySegment pVertexAttributeDescriptions() { return VkPipelineVertexInputStateCreateInfo.get_pVertexAttributeDescriptions(this.segment()); }
     /// Sets `pVertexAttributeDescriptions` with the given value at the given index.
@@ -320,14 +288,95 @@ public final class VkPipelineVertexInputStateCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pVertexAttributeDescriptions(MemorySegment segment, @CType("const VkVertexInputAttributeDescription *") java.lang.foreign.MemorySegment value) { VkPipelineVertexInputStateCreateInfo.set_pVertexAttributeDescriptions(segment, 0L, value); }
-    /// Sets `pVertexAttributeDescriptions` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineVertexInputStateCreateInfo pVertexAttributeDescriptionsAt(long index, @CType("const VkVertexInputAttributeDescription *") java.lang.foreign.MemorySegment value) { VkPipelineVertexInputStateCreateInfo.set_pVertexAttributeDescriptions(this.segment(), index, value); return this; }
     /// Sets `pVertexAttributeDescriptions` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPipelineVertexInputStateCreateInfo pVertexAttributeDescriptions(@CType("const VkVertexInputAttributeDescription *") java.lang.foreign.MemorySegment value) { VkPipelineVertexInputStateCreateInfo.set_pVertexAttributeDescriptions(this.segment(), value); return this; }
 
+    /// A buffer of [VkPipelineVertexInputStateCreateInfo].
+    public static final class Buffer extends VkPipelineVertexInputStateCreateInfo {
+        private final long elementCount;
+
+        /// Creates `VkPipelineVertexInputStateCreateInfo.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPipelineVertexInputStateCreateInfo`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPipelineVertexInputStateCreateInfo`
+        public VkPipelineVertexInputStateCreateInfo asSlice(long index) { return new VkPipelineVertexInputStateCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPipelineVertexInputStateCreateInfo`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPipelineVertexInputStateCreateInfo`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPipelineVertexInputStateCreateInfo.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPipelineVertexInputStateCreateInfo.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPipelineVertexInputStateCreateInfo.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineVertexInputStateCreateInfo.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `flags` at the given index}
+        /// @param index the index
+        public @CType("VkPipelineVertexInputStateCreateFlags") int flagsAt(long index) { return VkPipelineVertexInputStateCreateInfo.get_flags(this.segment(), index); }
+        /// Sets `flags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer flagsAt(long index, @CType("VkPipelineVertexInputStateCreateFlags") int value) { VkPipelineVertexInputStateCreateInfo.set_flags(this.segment(), index, value); return this; }
+
+        /// {@return `vertexBindingDescriptionCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int vertexBindingDescriptionCountAt(long index) { return VkPipelineVertexInputStateCreateInfo.get_vertexBindingDescriptionCount(this.segment(), index); }
+        /// Sets `vertexBindingDescriptionCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer vertexBindingDescriptionCountAt(long index, @CType("uint32_t") int value) { VkPipelineVertexInputStateCreateInfo.set_vertexBindingDescriptionCount(this.segment(), index, value); return this; }
+
+        /// {@return `pVertexBindingDescriptions` at the given index}
+        /// @param index the index
+        public @CType("const VkVertexInputBindingDescription *") java.lang.foreign.MemorySegment pVertexBindingDescriptionsAt(long index) { return VkPipelineVertexInputStateCreateInfo.get_pVertexBindingDescriptions(this.segment(), index); }
+        /// Sets `pVertexBindingDescriptions` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pVertexBindingDescriptionsAt(long index, @CType("const VkVertexInputBindingDescription *") java.lang.foreign.MemorySegment value) { VkPipelineVertexInputStateCreateInfo.set_pVertexBindingDescriptions(this.segment(), index, value); return this; }
+
+        /// {@return `vertexAttributeDescriptionCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int vertexAttributeDescriptionCountAt(long index) { return VkPipelineVertexInputStateCreateInfo.get_vertexAttributeDescriptionCount(this.segment(), index); }
+        /// Sets `vertexAttributeDescriptionCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer vertexAttributeDescriptionCountAt(long index, @CType("uint32_t") int value) { VkPipelineVertexInputStateCreateInfo.set_vertexAttributeDescriptionCount(this.segment(), index, value); return this; }
+
+        /// {@return `pVertexAttributeDescriptions` at the given index}
+        /// @param index the index
+        public @CType("const VkVertexInputAttributeDescription *") java.lang.foreign.MemorySegment pVertexAttributeDescriptionsAt(long index) { return VkPipelineVertexInputStateCreateInfo.get_pVertexAttributeDescriptions(this.segment(), index); }
+        /// Sets `pVertexAttributeDescriptions` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pVertexAttributeDescriptionsAt(long index, @CType("const VkVertexInputAttributeDescription *") java.lang.foreign.MemorySegment value) { VkPipelineVertexInputStateCreateInfo.set_pVertexAttributeDescriptions(this.segment(), index, value); return this; }
+
+    }
 }

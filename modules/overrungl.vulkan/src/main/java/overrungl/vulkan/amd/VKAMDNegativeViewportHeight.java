@@ -22,11 +22,10 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKAMDNegativeViewportHeight {
+public final class VKAMDNegativeViewportHeight {
     public static final int VK_AMD_NEGATIVE_VIEWPORT_HEIGHT_SPEC_VERSION = 1;
     public static final String VK_AMD_NEGATIVE_VIEWPORT_HEIGHT_EXTENSION_NAME = "VK_AMD_negative_viewport_height";
 
-    public VKAMDNegativeViewportHeight(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKAMDNegativeViewportHeight() { }
 
 }

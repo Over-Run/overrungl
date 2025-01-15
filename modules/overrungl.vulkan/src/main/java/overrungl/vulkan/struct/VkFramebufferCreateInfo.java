@@ -58,7 +58,7 @@ import overrungl.util.*;
 ///     uint32_t layers;
 /// } VkFramebufferCreateInfo;
 /// ```
-public final class VkFramebufferCreateInfo extends Struct {
+public sealed class VkFramebufferCreateInfo extends Struct {
     /// The struct layout of `VkFramebufferCreateInfo`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -100,6 +100,11 @@ public final class VkFramebufferCreateInfo extends Struct {
     public static VkFramebufferCreateInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkFramebufferCreateInfo(segment); }
 
     /// Creates `VkFramebufferCreateInfo` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkFramebufferCreateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -112,7 +117,7 @@ public final class VkFramebufferCreateInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkFramebufferCreateInfo ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkFramebufferCreateInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkFramebufferCreateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -123,7 +128,21 @@ public final class VkFramebufferCreateInfo extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkFramebufferCreateInfo`
-    public static VkFramebufferCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkFramebufferCreateInfo(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkFramebufferCreateInfo` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkFramebufferCreateInfo`
+    public static VkFramebufferCreateInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkFramebufferCreateFlags") int flags, @CType("VkRenderPass") java.lang.foreign.MemorySegment renderPass, @CType("uint32_t") int attachmentCount, @CType("const VkImageView *") java.lang.foreign.MemorySegment pAttachments, @CType("uint32_t") int width, @CType("uint32_t") int height, @CType("uint32_t") int layers) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).renderPass(renderPass).attachmentCount(attachmentCount).pAttachments(pAttachments).width(width).height(height).layers(layers); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkFramebufferCreateInfo copyFrom(VkFramebufferCreateInfo src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -132,9 +151,6 @@ public final class VkFramebufferCreateInfo extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkFramebufferCreateInfo.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkFramebufferCreateInfo.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkFramebufferCreateInfo.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -146,11 +162,6 @@ public final class VkFramebufferCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkFramebufferCreateInfo.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkFramebufferCreateInfo sTypeAt(long index, @CType("VkStructureType") int value) { VkFramebufferCreateInfo.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -163,9 +174,6 @@ public final class VkFramebufferCreateInfo extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkFramebufferCreateInfo.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkFramebufferCreateInfo.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkFramebufferCreateInfo.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -177,11 +185,6 @@ public final class VkFramebufferCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkFramebufferCreateInfo.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkFramebufferCreateInfo pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkFramebufferCreateInfo.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -194,9 +197,6 @@ public final class VkFramebufferCreateInfo extends Struct {
     /// {@return `flags`}
     /// @param segment the segment of the struct
     public static @CType("VkFramebufferCreateFlags") int get_flags(MemorySegment segment) { return VkFramebufferCreateInfo.get_flags(segment, 0L); }
-    /// {@return `flags` at the given index}
-    /// @param index the index
-    public @CType("VkFramebufferCreateFlags") int flagsAt(long index) { return VkFramebufferCreateInfo.get_flags(this.segment(), index); }
     /// {@return `flags`}
     public @CType("VkFramebufferCreateFlags") int flags() { return VkFramebufferCreateInfo.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
@@ -208,11 +208,6 @@ public final class VkFramebufferCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_flags(MemorySegment segment, @CType("VkFramebufferCreateFlags") int value) { VkFramebufferCreateInfo.set_flags(segment, 0L, value); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkFramebufferCreateInfo flagsAt(long index, @CType("VkFramebufferCreateFlags") int value) { VkFramebufferCreateInfo.set_flags(this.segment(), index, value); return this; }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -225,9 +220,6 @@ public final class VkFramebufferCreateInfo extends Struct {
     /// {@return `renderPass`}
     /// @param segment the segment of the struct
     public static @CType("VkRenderPass") java.lang.foreign.MemorySegment get_renderPass(MemorySegment segment) { return VkFramebufferCreateInfo.get_renderPass(segment, 0L); }
-    /// {@return `renderPass` at the given index}
-    /// @param index the index
-    public @CType("VkRenderPass") java.lang.foreign.MemorySegment renderPassAt(long index) { return VkFramebufferCreateInfo.get_renderPass(this.segment(), index); }
     /// {@return `renderPass`}
     public @CType("VkRenderPass") java.lang.foreign.MemorySegment renderPass() { return VkFramebufferCreateInfo.get_renderPass(this.segment()); }
     /// Sets `renderPass` with the given value at the given index.
@@ -239,11 +231,6 @@ public final class VkFramebufferCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_renderPass(MemorySegment segment, @CType("VkRenderPass") java.lang.foreign.MemorySegment value) { VkFramebufferCreateInfo.set_renderPass(segment, 0L, value); }
-    /// Sets `renderPass` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkFramebufferCreateInfo renderPassAt(long index, @CType("VkRenderPass") java.lang.foreign.MemorySegment value) { VkFramebufferCreateInfo.set_renderPass(this.segment(), index, value); return this; }
     /// Sets `renderPass` with the given value.
     /// @param value the value
     /// @return `this`
@@ -256,9 +243,6 @@ public final class VkFramebufferCreateInfo extends Struct {
     /// {@return `attachmentCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_attachmentCount(MemorySegment segment) { return VkFramebufferCreateInfo.get_attachmentCount(segment, 0L); }
-    /// {@return `attachmentCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int attachmentCountAt(long index) { return VkFramebufferCreateInfo.get_attachmentCount(this.segment(), index); }
     /// {@return `attachmentCount`}
     public @CType("uint32_t") int attachmentCount() { return VkFramebufferCreateInfo.get_attachmentCount(this.segment()); }
     /// Sets `attachmentCount` with the given value at the given index.
@@ -270,11 +254,6 @@ public final class VkFramebufferCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_attachmentCount(MemorySegment segment, @CType("uint32_t") int value) { VkFramebufferCreateInfo.set_attachmentCount(segment, 0L, value); }
-    /// Sets `attachmentCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkFramebufferCreateInfo attachmentCountAt(long index, @CType("uint32_t") int value) { VkFramebufferCreateInfo.set_attachmentCount(this.segment(), index, value); return this; }
     /// Sets `attachmentCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -287,9 +266,6 @@ public final class VkFramebufferCreateInfo extends Struct {
     /// {@return `pAttachments`}
     /// @param segment the segment of the struct
     public static @CType("const VkImageView *") java.lang.foreign.MemorySegment get_pAttachments(MemorySegment segment) { return VkFramebufferCreateInfo.get_pAttachments(segment, 0L); }
-    /// {@return `pAttachments` at the given index}
-    /// @param index the index
-    public @CType("const VkImageView *") java.lang.foreign.MemorySegment pAttachmentsAt(long index) { return VkFramebufferCreateInfo.get_pAttachments(this.segment(), index); }
     /// {@return `pAttachments`}
     public @CType("const VkImageView *") java.lang.foreign.MemorySegment pAttachments() { return VkFramebufferCreateInfo.get_pAttachments(this.segment()); }
     /// Sets `pAttachments` with the given value at the given index.
@@ -301,11 +277,6 @@ public final class VkFramebufferCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pAttachments(MemorySegment segment, @CType("const VkImageView *") java.lang.foreign.MemorySegment value) { VkFramebufferCreateInfo.set_pAttachments(segment, 0L, value); }
-    /// Sets `pAttachments` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkFramebufferCreateInfo pAttachmentsAt(long index, @CType("const VkImageView *") java.lang.foreign.MemorySegment value) { VkFramebufferCreateInfo.set_pAttachments(this.segment(), index, value); return this; }
     /// Sets `pAttachments` with the given value.
     /// @param value the value
     /// @return `this`
@@ -318,9 +289,6 @@ public final class VkFramebufferCreateInfo extends Struct {
     /// {@return `width`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_width(MemorySegment segment) { return VkFramebufferCreateInfo.get_width(segment, 0L); }
-    /// {@return `width` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int widthAt(long index) { return VkFramebufferCreateInfo.get_width(this.segment(), index); }
     /// {@return `width`}
     public @CType("uint32_t") int width() { return VkFramebufferCreateInfo.get_width(this.segment()); }
     /// Sets `width` with the given value at the given index.
@@ -332,11 +300,6 @@ public final class VkFramebufferCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_width(MemorySegment segment, @CType("uint32_t") int value) { VkFramebufferCreateInfo.set_width(segment, 0L, value); }
-    /// Sets `width` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkFramebufferCreateInfo widthAt(long index, @CType("uint32_t") int value) { VkFramebufferCreateInfo.set_width(this.segment(), index, value); return this; }
     /// Sets `width` with the given value.
     /// @param value the value
     /// @return `this`
@@ -349,9 +312,6 @@ public final class VkFramebufferCreateInfo extends Struct {
     /// {@return `height`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_height(MemorySegment segment) { return VkFramebufferCreateInfo.get_height(segment, 0L); }
-    /// {@return `height` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int heightAt(long index) { return VkFramebufferCreateInfo.get_height(this.segment(), index); }
     /// {@return `height`}
     public @CType("uint32_t") int height() { return VkFramebufferCreateInfo.get_height(this.segment()); }
     /// Sets `height` with the given value at the given index.
@@ -363,11 +323,6 @@ public final class VkFramebufferCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_height(MemorySegment segment, @CType("uint32_t") int value) { VkFramebufferCreateInfo.set_height(segment, 0L, value); }
-    /// Sets `height` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkFramebufferCreateInfo heightAt(long index, @CType("uint32_t") int value) { VkFramebufferCreateInfo.set_height(this.segment(), index, value); return this; }
     /// Sets `height` with the given value.
     /// @param value the value
     /// @return `this`
@@ -380,9 +335,6 @@ public final class VkFramebufferCreateInfo extends Struct {
     /// {@return `layers`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_layers(MemorySegment segment) { return VkFramebufferCreateInfo.get_layers(segment, 0L); }
-    /// {@return `layers` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int layersAt(long index) { return VkFramebufferCreateInfo.get_layers(this.segment(), index); }
     /// {@return `layers`}
     public @CType("uint32_t") int layers() { return VkFramebufferCreateInfo.get_layers(this.segment()); }
     /// Sets `layers` with the given value at the given index.
@@ -394,14 +346,113 @@ public final class VkFramebufferCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_layers(MemorySegment segment, @CType("uint32_t") int value) { VkFramebufferCreateInfo.set_layers(segment, 0L, value); }
-    /// Sets `layers` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkFramebufferCreateInfo layersAt(long index, @CType("uint32_t") int value) { VkFramebufferCreateInfo.set_layers(this.segment(), index, value); return this; }
     /// Sets `layers` with the given value.
     /// @param value the value
     /// @return `this`
     public VkFramebufferCreateInfo layers(@CType("uint32_t") int value) { VkFramebufferCreateInfo.set_layers(this.segment(), value); return this; }
 
+    /// A buffer of [VkFramebufferCreateInfo].
+    public static final class Buffer extends VkFramebufferCreateInfo {
+        private final long elementCount;
+
+        /// Creates `VkFramebufferCreateInfo.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkFramebufferCreateInfo`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkFramebufferCreateInfo`
+        public VkFramebufferCreateInfo asSlice(long index) { return new VkFramebufferCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkFramebufferCreateInfo`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkFramebufferCreateInfo`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkFramebufferCreateInfo.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkFramebufferCreateInfo.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkFramebufferCreateInfo.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkFramebufferCreateInfo.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `flags` at the given index}
+        /// @param index the index
+        public @CType("VkFramebufferCreateFlags") int flagsAt(long index) { return VkFramebufferCreateInfo.get_flags(this.segment(), index); }
+        /// Sets `flags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer flagsAt(long index, @CType("VkFramebufferCreateFlags") int value) { VkFramebufferCreateInfo.set_flags(this.segment(), index, value); return this; }
+
+        /// {@return `renderPass` at the given index}
+        /// @param index the index
+        public @CType("VkRenderPass") java.lang.foreign.MemorySegment renderPassAt(long index) { return VkFramebufferCreateInfo.get_renderPass(this.segment(), index); }
+        /// Sets `renderPass` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer renderPassAt(long index, @CType("VkRenderPass") java.lang.foreign.MemorySegment value) { VkFramebufferCreateInfo.set_renderPass(this.segment(), index, value); return this; }
+
+        /// {@return `attachmentCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int attachmentCountAt(long index) { return VkFramebufferCreateInfo.get_attachmentCount(this.segment(), index); }
+        /// Sets `attachmentCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer attachmentCountAt(long index, @CType("uint32_t") int value) { VkFramebufferCreateInfo.set_attachmentCount(this.segment(), index, value); return this; }
+
+        /// {@return `pAttachments` at the given index}
+        /// @param index the index
+        public @CType("const VkImageView *") java.lang.foreign.MemorySegment pAttachmentsAt(long index) { return VkFramebufferCreateInfo.get_pAttachments(this.segment(), index); }
+        /// Sets `pAttachments` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pAttachmentsAt(long index, @CType("const VkImageView *") java.lang.foreign.MemorySegment value) { VkFramebufferCreateInfo.set_pAttachments(this.segment(), index, value); return this; }
+
+        /// {@return `width` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int widthAt(long index) { return VkFramebufferCreateInfo.get_width(this.segment(), index); }
+        /// Sets `width` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer widthAt(long index, @CType("uint32_t") int value) { VkFramebufferCreateInfo.set_width(this.segment(), index, value); return this; }
+
+        /// {@return `height` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int heightAt(long index) { return VkFramebufferCreateInfo.get_height(this.segment(), index); }
+        /// Sets `height` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer heightAt(long index, @CType("uint32_t") int value) { VkFramebufferCreateInfo.set_height(this.segment(), index, value); return this; }
+
+        /// {@return `layers` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int layersAt(long index) { return VkFramebufferCreateInfo.get_layers(this.segment(), index); }
+        /// Sets `layers` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer layersAt(long index, @CType("uint32_t") int value) { VkFramebufferCreateInfo.set_layers(this.segment(), index, value); return this; }
+
+    }
 }

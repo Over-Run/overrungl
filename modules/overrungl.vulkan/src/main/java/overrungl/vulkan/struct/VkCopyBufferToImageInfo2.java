@@ -52,7 +52,7 @@ import overrungl.util.*;
 ///     const VkBufferImageCopy2 * pRegions;
 /// } VkCopyBufferToImageInfo2;
 /// ```
-public final class VkCopyBufferToImageInfo2 extends Struct {
+public sealed class VkCopyBufferToImageInfo2 extends Struct {
     /// The struct layout of `VkCopyBufferToImageInfo2`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -88,6 +88,11 @@ public final class VkCopyBufferToImageInfo2 extends Struct {
     public static VkCopyBufferToImageInfo2 of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkCopyBufferToImageInfo2(segment); }
 
     /// Creates `VkCopyBufferToImageInfo2` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkCopyBufferToImageInfo2` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -100,7 +105,7 @@ public final class VkCopyBufferToImageInfo2 extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkCopyBufferToImageInfo2 ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkCopyBufferToImageInfo2(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkCopyBufferToImageInfo2` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -111,7 +116,21 @@ public final class VkCopyBufferToImageInfo2 extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkCopyBufferToImageInfo2`
-    public static VkCopyBufferToImageInfo2 alloc(SegmentAllocator allocator, long count) { return new VkCopyBufferToImageInfo2(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkCopyBufferToImageInfo2` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkCopyBufferToImageInfo2`
+    public static VkCopyBufferToImageInfo2 allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkBuffer") java.lang.foreign.MemorySegment srcBuffer, @CType("VkImage") java.lang.foreign.MemorySegment dstImage, @CType("VkImageLayout") int dstImageLayout, @CType("uint32_t") int regionCount, @CType("const VkBufferImageCopy2 *") java.lang.foreign.MemorySegment pRegions) { return alloc(allocator).sType(sType).pNext(pNext).srcBuffer(srcBuffer).dstImage(dstImage).dstImageLayout(dstImageLayout).regionCount(regionCount).pRegions(pRegions); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkCopyBufferToImageInfo2 copyFrom(VkCopyBufferToImageInfo2 src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -120,9 +139,6 @@ public final class VkCopyBufferToImageInfo2 extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkCopyBufferToImageInfo2.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkCopyBufferToImageInfo2.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkCopyBufferToImageInfo2.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -134,11 +150,6 @@ public final class VkCopyBufferToImageInfo2 extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkCopyBufferToImageInfo2.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCopyBufferToImageInfo2 sTypeAt(long index, @CType("VkStructureType") int value) { VkCopyBufferToImageInfo2.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -151,9 +162,6 @@ public final class VkCopyBufferToImageInfo2 extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkCopyBufferToImageInfo2.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkCopyBufferToImageInfo2.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkCopyBufferToImageInfo2.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -165,11 +173,6 @@ public final class VkCopyBufferToImageInfo2 extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkCopyBufferToImageInfo2.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCopyBufferToImageInfo2 pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkCopyBufferToImageInfo2.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,9 +185,6 @@ public final class VkCopyBufferToImageInfo2 extends Struct {
     /// {@return `srcBuffer`}
     /// @param segment the segment of the struct
     public static @CType("VkBuffer") java.lang.foreign.MemorySegment get_srcBuffer(MemorySegment segment) { return VkCopyBufferToImageInfo2.get_srcBuffer(segment, 0L); }
-    /// {@return `srcBuffer` at the given index}
-    /// @param index the index
-    public @CType("VkBuffer") java.lang.foreign.MemorySegment srcBufferAt(long index) { return VkCopyBufferToImageInfo2.get_srcBuffer(this.segment(), index); }
     /// {@return `srcBuffer`}
     public @CType("VkBuffer") java.lang.foreign.MemorySegment srcBuffer() { return VkCopyBufferToImageInfo2.get_srcBuffer(this.segment()); }
     /// Sets `srcBuffer` with the given value at the given index.
@@ -196,11 +196,6 @@ public final class VkCopyBufferToImageInfo2 extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_srcBuffer(MemorySegment segment, @CType("VkBuffer") java.lang.foreign.MemorySegment value) { VkCopyBufferToImageInfo2.set_srcBuffer(segment, 0L, value); }
-    /// Sets `srcBuffer` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCopyBufferToImageInfo2 srcBufferAt(long index, @CType("VkBuffer") java.lang.foreign.MemorySegment value) { VkCopyBufferToImageInfo2.set_srcBuffer(this.segment(), index, value); return this; }
     /// Sets `srcBuffer` with the given value.
     /// @param value the value
     /// @return `this`
@@ -213,9 +208,6 @@ public final class VkCopyBufferToImageInfo2 extends Struct {
     /// {@return `dstImage`}
     /// @param segment the segment of the struct
     public static @CType("VkImage") java.lang.foreign.MemorySegment get_dstImage(MemorySegment segment) { return VkCopyBufferToImageInfo2.get_dstImage(segment, 0L); }
-    /// {@return `dstImage` at the given index}
-    /// @param index the index
-    public @CType("VkImage") java.lang.foreign.MemorySegment dstImageAt(long index) { return VkCopyBufferToImageInfo2.get_dstImage(this.segment(), index); }
     /// {@return `dstImage`}
     public @CType("VkImage") java.lang.foreign.MemorySegment dstImage() { return VkCopyBufferToImageInfo2.get_dstImage(this.segment()); }
     /// Sets `dstImage` with the given value at the given index.
@@ -227,11 +219,6 @@ public final class VkCopyBufferToImageInfo2 extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_dstImage(MemorySegment segment, @CType("VkImage") java.lang.foreign.MemorySegment value) { VkCopyBufferToImageInfo2.set_dstImage(segment, 0L, value); }
-    /// Sets `dstImage` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCopyBufferToImageInfo2 dstImageAt(long index, @CType("VkImage") java.lang.foreign.MemorySegment value) { VkCopyBufferToImageInfo2.set_dstImage(this.segment(), index, value); return this; }
     /// Sets `dstImage` with the given value.
     /// @param value the value
     /// @return `this`
@@ -244,9 +231,6 @@ public final class VkCopyBufferToImageInfo2 extends Struct {
     /// {@return `dstImageLayout`}
     /// @param segment the segment of the struct
     public static @CType("VkImageLayout") int get_dstImageLayout(MemorySegment segment) { return VkCopyBufferToImageInfo2.get_dstImageLayout(segment, 0L); }
-    /// {@return `dstImageLayout` at the given index}
-    /// @param index the index
-    public @CType("VkImageLayout") int dstImageLayoutAt(long index) { return VkCopyBufferToImageInfo2.get_dstImageLayout(this.segment(), index); }
     /// {@return `dstImageLayout`}
     public @CType("VkImageLayout") int dstImageLayout() { return VkCopyBufferToImageInfo2.get_dstImageLayout(this.segment()); }
     /// Sets `dstImageLayout` with the given value at the given index.
@@ -258,11 +242,6 @@ public final class VkCopyBufferToImageInfo2 extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_dstImageLayout(MemorySegment segment, @CType("VkImageLayout") int value) { VkCopyBufferToImageInfo2.set_dstImageLayout(segment, 0L, value); }
-    /// Sets `dstImageLayout` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCopyBufferToImageInfo2 dstImageLayoutAt(long index, @CType("VkImageLayout") int value) { VkCopyBufferToImageInfo2.set_dstImageLayout(this.segment(), index, value); return this; }
     /// Sets `dstImageLayout` with the given value.
     /// @param value the value
     /// @return `this`
@@ -275,9 +254,6 @@ public final class VkCopyBufferToImageInfo2 extends Struct {
     /// {@return `regionCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_regionCount(MemorySegment segment) { return VkCopyBufferToImageInfo2.get_regionCount(segment, 0L); }
-    /// {@return `regionCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int regionCountAt(long index) { return VkCopyBufferToImageInfo2.get_regionCount(this.segment(), index); }
     /// {@return `regionCount`}
     public @CType("uint32_t") int regionCount() { return VkCopyBufferToImageInfo2.get_regionCount(this.segment()); }
     /// Sets `regionCount` with the given value at the given index.
@@ -289,11 +265,6 @@ public final class VkCopyBufferToImageInfo2 extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_regionCount(MemorySegment segment, @CType("uint32_t") int value) { VkCopyBufferToImageInfo2.set_regionCount(segment, 0L, value); }
-    /// Sets `regionCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCopyBufferToImageInfo2 regionCountAt(long index, @CType("uint32_t") int value) { VkCopyBufferToImageInfo2.set_regionCount(this.segment(), index, value); return this; }
     /// Sets `regionCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -306,9 +277,6 @@ public final class VkCopyBufferToImageInfo2 extends Struct {
     /// {@return `pRegions`}
     /// @param segment the segment of the struct
     public static @CType("const VkBufferImageCopy2 *") java.lang.foreign.MemorySegment get_pRegions(MemorySegment segment) { return VkCopyBufferToImageInfo2.get_pRegions(segment, 0L); }
-    /// {@return `pRegions` at the given index}
-    /// @param index the index
-    public @CType("const VkBufferImageCopy2 *") java.lang.foreign.MemorySegment pRegionsAt(long index) { return VkCopyBufferToImageInfo2.get_pRegions(this.segment(), index); }
     /// {@return `pRegions`}
     public @CType("const VkBufferImageCopy2 *") java.lang.foreign.MemorySegment pRegions() { return VkCopyBufferToImageInfo2.get_pRegions(this.segment()); }
     /// Sets `pRegions` with the given value at the given index.
@@ -320,14 +288,95 @@ public final class VkCopyBufferToImageInfo2 extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pRegions(MemorySegment segment, @CType("const VkBufferImageCopy2 *") java.lang.foreign.MemorySegment value) { VkCopyBufferToImageInfo2.set_pRegions(segment, 0L, value); }
-    /// Sets `pRegions` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCopyBufferToImageInfo2 pRegionsAt(long index, @CType("const VkBufferImageCopy2 *") java.lang.foreign.MemorySegment value) { VkCopyBufferToImageInfo2.set_pRegions(this.segment(), index, value); return this; }
     /// Sets `pRegions` with the given value.
     /// @param value the value
     /// @return `this`
     public VkCopyBufferToImageInfo2 pRegions(@CType("const VkBufferImageCopy2 *") java.lang.foreign.MemorySegment value) { VkCopyBufferToImageInfo2.set_pRegions(this.segment(), value); return this; }
 
+    /// A buffer of [VkCopyBufferToImageInfo2].
+    public static final class Buffer extends VkCopyBufferToImageInfo2 {
+        private final long elementCount;
+
+        /// Creates `VkCopyBufferToImageInfo2.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkCopyBufferToImageInfo2`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkCopyBufferToImageInfo2`
+        public VkCopyBufferToImageInfo2 asSlice(long index) { return new VkCopyBufferToImageInfo2(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkCopyBufferToImageInfo2`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkCopyBufferToImageInfo2`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkCopyBufferToImageInfo2.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkCopyBufferToImageInfo2.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkCopyBufferToImageInfo2.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkCopyBufferToImageInfo2.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `srcBuffer` at the given index}
+        /// @param index the index
+        public @CType("VkBuffer") java.lang.foreign.MemorySegment srcBufferAt(long index) { return VkCopyBufferToImageInfo2.get_srcBuffer(this.segment(), index); }
+        /// Sets `srcBuffer` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer srcBufferAt(long index, @CType("VkBuffer") java.lang.foreign.MemorySegment value) { VkCopyBufferToImageInfo2.set_srcBuffer(this.segment(), index, value); return this; }
+
+        /// {@return `dstImage` at the given index}
+        /// @param index the index
+        public @CType("VkImage") java.lang.foreign.MemorySegment dstImageAt(long index) { return VkCopyBufferToImageInfo2.get_dstImage(this.segment(), index); }
+        /// Sets `dstImage` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer dstImageAt(long index, @CType("VkImage") java.lang.foreign.MemorySegment value) { VkCopyBufferToImageInfo2.set_dstImage(this.segment(), index, value); return this; }
+
+        /// {@return `dstImageLayout` at the given index}
+        /// @param index the index
+        public @CType("VkImageLayout") int dstImageLayoutAt(long index) { return VkCopyBufferToImageInfo2.get_dstImageLayout(this.segment(), index); }
+        /// Sets `dstImageLayout` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer dstImageLayoutAt(long index, @CType("VkImageLayout") int value) { VkCopyBufferToImageInfo2.set_dstImageLayout(this.segment(), index, value); return this; }
+
+        /// {@return `regionCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int regionCountAt(long index) { return VkCopyBufferToImageInfo2.get_regionCount(this.segment(), index); }
+        /// Sets `regionCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer regionCountAt(long index, @CType("uint32_t") int value) { VkCopyBufferToImageInfo2.set_regionCount(this.segment(), index, value); return this; }
+
+        /// {@return `pRegions` at the given index}
+        /// @param index the index
+        public @CType("const VkBufferImageCopy2 *") java.lang.foreign.MemorySegment pRegionsAt(long index) { return VkCopyBufferToImageInfo2.get_pRegions(this.segment(), index); }
+        /// Sets `pRegions` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pRegionsAt(long index, @CType("const VkBufferImageCopy2 *") java.lang.foreign.MemorySegment value) { VkCopyBufferToImageInfo2.set_pRegions(this.segment(), index, value); return this; }
+
+    }
 }

@@ -43,7 +43,7 @@ import overrungl.util.*;
 ///     VkShaderEXT shader;
 /// } VkWriteIndirectExecutionSetShaderEXT;
 /// ```
-public final class VkWriteIndirectExecutionSetShaderEXT extends Struct {
+public sealed class VkWriteIndirectExecutionSetShaderEXT extends Struct {
     /// The struct layout of `VkWriteIndirectExecutionSetShaderEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -70,6 +70,11 @@ public final class VkWriteIndirectExecutionSetShaderEXT extends Struct {
     public static VkWriteIndirectExecutionSetShaderEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkWriteIndirectExecutionSetShaderEXT(segment); }
 
     /// Creates `VkWriteIndirectExecutionSetShaderEXT` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkWriteIndirectExecutionSetShaderEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -82,7 +87,7 @@ public final class VkWriteIndirectExecutionSetShaderEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkWriteIndirectExecutionSetShaderEXT ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkWriteIndirectExecutionSetShaderEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkWriteIndirectExecutionSetShaderEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -93,7 +98,21 @@ public final class VkWriteIndirectExecutionSetShaderEXT extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkWriteIndirectExecutionSetShaderEXT`
-    public static VkWriteIndirectExecutionSetShaderEXT alloc(SegmentAllocator allocator, long count) { return new VkWriteIndirectExecutionSetShaderEXT(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkWriteIndirectExecutionSetShaderEXT` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkWriteIndirectExecutionSetShaderEXT`
+    public static VkWriteIndirectExecutionSetShaderEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int index, @CType("VkShaderEXT") java.lang.foreign.MemorySegment shader) { return alloc(allocator).sType(sType).pNext(pNext).index(index).shader(shader); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkWriteIndirectExecutionSetShaderEXT copyFrom(VkWriteIndirectExecutionSetShaderEXT src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -102,9 +121,6 @@ public final class VkWriteIndirectExecutionSetShaderEXT extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkWriteIndirectExecutionSetShaderEXT.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkWriteIndirectExecutionSetShaderEXT.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkWriteIndirectExecutionSetShaderEXT.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -116,11 +132,6 @@ public final class VkWriteIndirectExecutionSetShaderEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkWriteIndirectExecutionSetShaderEXT.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkWriteIndirectExecutionSetShaderEXT sTypeAt(long index, @CType("VkStructureType") int value) { VkWriteIndirectExecutionSetShaderEXT.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -133,9 +144,6 @@ public final class VkWriteIndirectExecutionSetShaderEXT extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkWriteIndirectExecutionSetShaderEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkWriteIndirectExecutionSetShaderEXT.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkWriteIndirectExecutionSetShaderEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -147,11 +155,6 @@ public final class VkWriteIndirectExecutionSetShaderEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkWriteIndirectExecutionSetShaderEXT.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkWriteIndirectExecutionSetShaderEXT pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkWriteIndirectExecutionSetShaderEXT.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -164,9 +167,6 @@ public final class VkWriteIndirectExecutionSetShaderEXT extends Struct {
     /// {@return `index`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_index(MemorySegment segment) { return VkWriteIndirectExecutionSetShaderEXT.get_index(segment, 0L); }
-    /// {@return `index` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int indexAt(long index) { return VkWriteIndirectExecutionSetShaderEXT.get_index(this.segment(), index); }
     /// {@return `index`}
     public @CType("uint32_t") int index() { return VkWriteIndirectExecutionSetShaderEXT.get_index(this.segment()); }
     /// Sets `index` with the given value at the given index.
@@ -178,11 +178,6 @@ public final class VkWriteIndirectExecutionSetShaderEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_index(MemorySegment segment, @CType("uint32_t") int value) { VkWriteIndirectExecutionSetShaderEXT.set_index(segment, 0L, value); }
-    /// Sets `index` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkWriteIndirectExecutionSetShaderEXT indexAt(long index, @CType("uint32_t") int value) { VkWriteIndirectExecutionSetShaderEXT.set_index(this.segment(), index, value); return this; }
     /// Sets `index` with the given value.
     /// @param value the value
     /// @return `this`
@@ -195,9 +190,6 @@ public final class VkWriteIndirectExecutionSetShaderEXT extends Struct {
     /// {@return `shader`}
     /// @param segment the segment of the struct
     public static @CType("VkShaderEXT") java.lang.foreign.MemorySegment get_shader(MemorySegment segment) { return VkWriteIndirectExecutionSetShaderEXT.get_shader(segment, 0L); }
-    /// {@return `shader` at the given index}
-    /// @param index the index
-    public @CType("VkShaderEXT") java.lang.foreign.MemorySegment shaderAt(long index) { return VkWriteIndirectExecutionSetShaderEXT.get_shader(this.segment(), index); }
     /// {@return `shader`}
     public @CType("VkShaderEXT") java.lang.foreign.MemorySegment shader() { return VkWriteIndirectExecutionSetShaderEXT.get_shader(this.segment()); }
     /// Sets `shader` with the given value at the given index.
@@ -209,14 +201,68 @@ public final class VkWriteIndirectExecutionSetShaderEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_shader(MemorySegment segment, @CType("VkShaderEXT") java.lang.foreign.MemorySegment value) { VkWriteIndirectExecutionSetShaderEXT.set_shader(segment, 0L, value); }
-    /// Sets `shader` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkWriteIndirectExecutionSetShaderEXT shaderAt(long index, @CType("VkShaderEXT") java.lang.foreign.MemorySegment value) { VkWriteIndirectExecutionSetShaderEXT.set_shader(this.segment(), index, value); return this; }
     /// Sets `shader` with the given value.
     /// @param value the value
     /// @return `this`
     public VkWriteIndirectExecutionSetShaderEXT shader(@CType("VkShaderEXT") java.lang.foreign.MemorySegment value) { VkWriteIndirectExecutionSetShaderEXT.set_shader(this.segment(), value); return this; }
 
+    /// A buffer of [VkWriteIndirectExecutionSetShaderEXT].
+    public static final class Buffer extends VkWriteIndirectExecutionSetShaderEXT {
+        private final long elementCount;
+
+        /// Creates `VkWriteIndirectExecutionSetShaderEXT.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkWriteIndirectExecutionSetShaderEXT`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkWriteIndirectExecutionSetShaderEXT`
+        public VkWriteIndirectExecutionSetShaderEXT asSlice(long index) { return new VkWriteIndirectExecutionSetShaderEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkWriteIndirectExecutionSetShaderEXT`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkWriteIndirectExecutionSetShaderEXT`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkWriteIndirectExecutionSetShaderEXT.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkWriteIndirectExecutionSetShaderEXT.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkWriteIndirectExecutionSetShaderEXT.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkWriteIndirectExecutionSetShaderEXT.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `index` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int indexAt(long index) { return VkWriteIndirectExecutionSetShaderEXT.get_index(this.segment(), index); }
+        /// Sets `index` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer indexAt(long index, @CType("uint32_t") int value) { VkWriteIndirectExecutionSetShaderEXT.set_index(this.segment(), index, value); return this; }
+
+        /// {@return `shader` at the given index}
+        /// @param index the index
+        public @CType("VkShaderEXT") java.lang.foreign.MemorySegment shaderAt(long index) { return VkWriteIndirectExecutionSetShaderEXT.get_shader(this.segment(), index); }
+        /// Sets `shader` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer shaderAt(long index, @CType("VkShaderEXT") java.lang.foreign.MemorySegment value) { VkWriteIndirectExecutionSetShaderEXT.set_shader(this.segment(), index, value); return this; }
+
+    }
 }

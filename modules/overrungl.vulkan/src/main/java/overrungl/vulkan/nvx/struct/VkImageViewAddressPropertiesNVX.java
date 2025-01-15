@@ -43,7 +43,7 @@ import overrungl.util.*;
 ///     VkDeviceSize size;
 /// } VkImageViewAddressPropertiesNVX;
 /// ```
-public final class VkImageViewAddressPropertiesNVX extends Struct {
+public sealed class VkImageViewAddressPropertiesNVX extends Struct {
     /// The struct layout of `VkImageViewAddressPropertiesNVX`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -70,6 +70,11 @@ public final class VkImageViewAddressPropertiesNVX extends Struct {
     public static VkImageViewAddressPropertiesNVX of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkImageViewAddressPropertiesNVX(segment); }
 
     /// Creates `VkImageViewAddressPropertiesNVX` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkImageViewAddressPropertiesNVX` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -82,7 +87,7 @@ public final class VkImageViewAddressPropertiesNVX extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkImageViewAddressPropertiesNVX ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkImageViewAddressPropertiesNVX(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkImageViewAddressPropertiesNVX` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -93,7 +98,21 @@ public final class VkImageViewAddressPropertiesNVX extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkImageViewAddressPropertiesNVX`
-    public static VkImageViewAddressPropertiesNVX alloc(SegmentAllocator allocator, long count) { return new VkImageViewAddressPropertiesNVX(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkImageViewAddressPropertiesNVX` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkImageViewAddressPropertiesNVX`
+    public static VkImageViewAddressPropertiesNVX allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkDeviceAddress") long deviceAddress, @CType("VkDeviceSize") long size) { return alloc(allocator).sType(sType).pNext(pNext).deviceAddress(deviceAddress).size(size); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkImageViewAddressPropertiesNVX copyFrom(VkImageViewAddressPropertiesNVX src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -102,9 +121,6 @@ public final class VkImageViewAddressPropertiesNVX extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkImageViewAddressPropertiesNVX.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkImageViewAddressPropertiesNVX.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkImageViewAddressPropertiesNVX.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -116,11 +132,6 @@ public final class VkImageViewAddressPropertiesNVX extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkImageViewAddressPropertiesNVX.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageViewAddressPropertiesNVX sTypeAt(long index, @CType("VkStructureType") int value) { VkImageViewAddressPropertiesNVX.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -133,9 +144,6 @@ public final class VkImageViewAddressPropertiesNVX extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkImageViewAddressPropertiesNVX.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkImageViewAddressPropertiesNVX.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkImageViewAddressPropertiesNVX.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -147,11 +155,6 @@ public final class VkImageViewAddressPropertiesNVX extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkImageViewAddressPropertiesNVX.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageViewAddressPropertiesNVX pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkImageViewAddressPropertiesNVX.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -164,9 +167,6 @@ public final class VkImageViewAddressPropertiesNVX extends Struct {
     /// {@return `deviceAddress`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceAddress") long get_deviceAddress(MemorySegment segment) { return VkImageViewAddressPropertiesNVX.get_deviceAddress(segment, 0L); }
-    /// {@return `deviceAddress` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceAddress") long deviceAddressAt(long index) { return VkImageViewAddressPropertiesNVX.get_deviceAddress(this.segment(), index); }
     /// {@return `deviceAddress`}
     public @CType("VkDeviceAddress") long deviceAddress() { return VkImageViewAddressPropertiesNVX.get_deviceAddress(this.segment()); }
     /// Sets `deviceAddress` with the given value at the given index.
@@ -178,11 +178,6 @@ public final class VkImageViewAddressPropertiesNVX extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_deviceAddress(MemorySegment segment, @CType("VkDeviceAddress") long value) { VkImageViewAddressPropertiesNVX.set_deviceAddress(segment, 0L, value); }
-    /// Sets `deviceAddress` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageViewAddressPropertiesNVX deviceAddressAt(long index, @CType("VkDeviceAddress") long value) { VkImageViewAddressPropertiesNVX.set_deviceAddress(this.segment(), index, value); return this; }
     /// Sets `deviceAddress` with the given value.
     /// @param value the value
     /// @return `this`
@@ -195,9 +190,6 @@ public final class VkImageViewAddressPropertiesNVX extends Struct {
     /// {@return `size`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_size(MemorySegment segment) { return VkImageViewAddressPropertiesNVX.get_size(segment, 0L); }
-    /// {@return `size` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long sizeAt(long index) { return VkImageViewAddressPropertiesNVX.get_size(this.segment(), index); }
     /// {@return `size`}
     public @CType("VkDeviceSize") long size() { return VkImageViewAddressPropertiesNVX.get_size(this.segment()); }
     /// Sets `size` with the given value at the given index.
@@ -209,14 +201,68 @@ public final class VkImageViewAddressPropertiesNVX extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_size(MemorySegment segment, @CType("VkDeviceSize") long value) { VkImageViewAddressPropertiesNVX.set_size(segment, 0L, value); }
-    /// Sets `size` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageViewAddressPropertiesNVX sizeAt(long index, @CType("VkDeviceSize") long value) { VkImageViewAddressPropertiesNVX.set_size(this.segment(), index, value); return this; }
     /// Sets `size` with the given value.
     /// @param value the value
     /// @return `this`
     public VkImageViewAddressPropertiesNVX size(@CType("VkDeviceSize") long value) { VkImageViewAddressPropertiesNVX.set_size(this.segment(), value); return this; }
 
+    /// A buffer of [VkImageViewAddressPropertiesNVX].
+    public static final class Buffer extends VkImageViewAddressPropertiesNVX {
+        private final long elementCount;
+
+        /// Creates `VkImageViewAddressPropertiesNVX.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkImageViewAddressPropertiesNVX`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkImageViewAddressPropertiesNVX`
+        public VkImageViewAddressPropertiesNVX asSlice(long index) { return new VkImageViewAddressPropertiesNVX(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkImageViewAddressPropertiesNVX`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkImageViewAddressPropertiesNVX`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkImageViewAddressPropertiesNVX.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkImageViewAddressPropertiesNVX.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkImageViewAddressPropertiesNVX.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkImageViewAddressPropertiesNVX.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `deviceAddress` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceAddress") long deviceAddressAt(long index) { return VkImageViewAddressPropertiesNVX.get_deviceAddress(this.segment(), index); }
+        /// Sets `deviceAddress` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer deviceAddressAt(long index, @CType("VkDeviceAddress") long value) { VkImageViewAddressPropertiesNVX.set_deviceAddress(this.segment(), index, value); return this; }
+
+        /// {@return `size` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long sizeAt(long index) { return VkImageViewAddressPropertiesNVX.get_size(this.segment(), index); }
+        /// Sets `size` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sizeAt(long index, @CType("VkDeviceSize") long value) { VkImageViewAddressPropertiesNVX.set_size(this.segment(), index, value); return this; }
+
+    }
 }

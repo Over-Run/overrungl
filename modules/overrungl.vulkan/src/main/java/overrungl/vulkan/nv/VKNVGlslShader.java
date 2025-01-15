@@ -22,12 +22,11 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKNVGlslShader {
+public final class VKNVGlslShader {
     public static final int VK_NV_GLSL_SHADER_SPEC_VERSION = 1;
     public static final String VK_NV_GLSL_SHADER_EXTENSION_NAME = "VK_NV_glsl_shader";
     public static final int VK_ERROR_INVALID_SHADER_NV = -1000012000;
 
-    public VKNVGlslShader(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKNVGlslShader() { }
 
 }

@@ -22,14 +22,13 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKNVDedicatedAllocation {
+public final class VKNVDedicatedAllocation {
     public static final int VK_NV_DEDICATED_ALLOCATION_SPEC_VERSION = 1;
     public static final String VK_NV_DEDICATED_ALLOCATION_EXTENSION_NAME = "VK_NV_dedicated_allocation";
     public static final int VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_IMAGE_CREATE_INFO_NV = 1000026000;
     public static final int VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_BUFFER_CREATE_INFO_NV = 1000026001;
     public static final int VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_MEMORY_ALLOCATE_INFO_NV = 1000026002;
 
-    public VKNVDedicatedAllocation(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKNVDedicatedAllocation() { }
 
 }

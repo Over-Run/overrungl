@@ -22,11 +22,10 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKEXTDepthRangeUnrestricted {
+public final class VKEXTDepthRangeUnrestricted {
     public static final int VK_EXT_DEPTH_RANGE_UNRESTRICTED_SPEC_VERSION = 1;
     public static final String VK_EXT_DEPTH_RANGE_UNRESTRICTED_EXTENSION_NAME = "VK_EXT_depth_range_unrestricted";
 
-    public VKEXTDepthRangeUnrestricted(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKEXTDepthRangeUnrestricted() { }
 
 }

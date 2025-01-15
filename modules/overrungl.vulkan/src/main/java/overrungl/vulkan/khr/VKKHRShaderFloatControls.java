@@ -23,7 +23,7 @@ import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 import static overrungl.vulkan.VK12.*;
-public class VKKHRShaderFloatControls {
+public final class VKKHRShaderFloatControls {
     public static final int VK_KHR_SHADER_FLOAT_CONTROLS_SPEC_VERSION = 4;
     public static final String VK_KHR_SHADER_FLOAT_CONTROLS_EXTENSION_NAME = "VK_KHR_shader_float_controls";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT_CONTROLS_PROPERTIES_KHR = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT_CONTROLS_PROPERTIES;
@@ -31,7 +31,6 @@ public class VKKHRShaderFloatControls {
     public static final int VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_ALL_KHR = VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_ALL;
     public static final int VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_NONE_KHR = VK_SHADER_FLOAT_CONTROLS_INDEPENDENCE_NONE;
 
-    public VKKHRShaderFloatControls(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKKHRShaderFloatControls() { }
 
 }

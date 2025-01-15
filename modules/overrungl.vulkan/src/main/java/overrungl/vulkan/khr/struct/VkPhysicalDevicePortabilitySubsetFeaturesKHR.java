@@ -82,7 +82,7 @@ import overrungl.util.*;
 ///     VkBool32 vertexAttributeAccessBeyondStride;
 /// } VkPhysicalDevicePortabilitySubsetFeaturesKHR;
 /// ```
-public final class VkPhysicalDevicePortabilitySubsetFeaturesKHR extends Struct {
+public sealed class VkPhysicalDevicePortabilitySubsetFeaturesKHR extends Struct {
     /// The struct layout of `VkPhysicalDevicePortabilitySubsetFeaturesKHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -148,6 +148,11 @@ public final class VkPhysicalDevicePortabilitySubsetFeaturesKHR extends Struct {
     public static VkPhysicalDevicePortabilitySubsetFeaturesKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDevicePortabilitySubsetFeaturesKHR(segment); }
 
     /// Creates `VkPhysicalDevicePortabilitySubsetFeaturesKHR` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPhysicalDevicePortabilitySubsetFeaturesKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -160,7 +165,7 @@ public final class VkPhysicalDevicePortabilitySubsetFeaturesKHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDevicePortabilitySubsetFeaturesKHR ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDevicePortabilitySubsetFeaturesKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDevicePortabilitySubsetFeaturesKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -171,7 +176,21 @@ public final class VkPhysicalDevicePortabilitySubsetFeaturesKHR extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDevicePortabilitySubsetFeaturesKHR`
-    public static VkPhysicalDevicePortabilitySubsetFeaturesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDevicePortabilitySubsetFeaturesKHR(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkPhysicalDevicePortabilitySubsetFeaturesKHR` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDevicePortabilitySubsetFeaturesKHR`
+    public static VkPhysicalDevicePortabilitySubsetFeaturesKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int constantAlphaColorBlendFactors, @CType("VkBool32") int events, @CType("VkBool32") int imageViewFormatReinterpretation, @CType("VkBool32") int imageViewFormatSwizzle, @CType("VkBool32") int imageView2DOn3DImage, @CType("VkBool32") int multisampleArrayImage, @CType("VkBool32") int mutableComparisonSamplers, @CType("VkBool32") int pointPolygons, @CType("VkBool32") int samplerMipLodBias, @CType("VkBool32") int separateStencilMaskRef, @CType("VkBool32") int shaderSampleRateInterpolationFunctions, @CType("VkBool32") int tessellationIsolines, @CType("VkBool32") int tessellationPointMode, @CType("VkBool32") int triangleFans, @CType("VkBool32") int vertexAttributeAccessBeyondStride) { return alloc(allocator).sType(sType).pNext(pNext).constantAlphaColorBlendFactors(constantAlphaColorBlendFactors).events(events).imageViewFormatReinterpretation(imageViewFormatReinterpretation).imageViewFormatSwizzle(imageViewFormatSwizzle).imageView2DOn3DImage(imageView2DOn3DImage).multisampleArrayImage(multisampleArrayImage).mutableComparisonSamplers(mutableComparisonSamplers).pointPolygons(pointPolygons).samplerMipLodBias(samplerMipLodBias).separateStencilMaskRef(separateStencilMaskRef).shaderSampleRateInterpolationFunctions(shaderSampleRateInterpolationFunctions).tessellationIsolines(tessellationIsolines).tessellationPointMode(tessellationPointMode).triangleFans(triangleFans).vertexAttributeAccessBeyondStride(vertexAttributeAccessBeyondStride); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDevicePortabilitySubsetFeaturesKHR copyFrom(VkPhysicalDevicePortabilitySubsetFeaturesKHR src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -180,9 +199,6 @@ public final class VkPhysicalDevicePortabilitySubsetFeaturesKHR extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -194,11 +210,6 @@ public final class VkPhysicalDevicePortabilitySubsetFeaturesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePortabilitySubsetFeaturesKHR sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -211,9 +222,6 @@ public final class VkPhysicalDevicePortabilitySubsetFeaturesKHR extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -225,11 +233,6 @@ public final class VkPhysicalDevicePortabilitySubsetFeaturesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePortabilitySubsetFeaturesKHR pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -242,9 +245,6 @@ public final class VkPhysicalDevicePortabilitySubsetFeaturesKHR extends Struct {
     /// {@return `constantAlphaColorBlendFactors`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_constantAlphaColorBlendFactors(MemorySegment segment) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_constantAlphaColorBlendFactors(segment, 0L); }
-    /// {@return `constantAlphaColorBlendFactors` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int constantAlphaColorBlendFactorsAt(long index) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_constantAlphaColorBlendFactors(this.segment(), index); }
     /// {@return `constantAlphaColorBlendFactors`}
     public @CType("VkBool32") int constantAlphaColorBlendFactors() { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_constantAlphaColorBlendFactors(this.segment()); }
     /// Sets `constantAlphaColorBlendFactors` with the given value at the given index.
@@ -256,11 +256,6 @@ public final class VkPhysicalDevicePortabilitySubsetFeaturesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_constantAlphaColorBlendFactors(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_constantAlphaColorBlendFactors(segment, 0L, value); }
-    /// Sets `constantAlphaColorBlendFactors` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePortabilitySubsetFeaturesKHR constantAlphaColorBlendFactorsAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_constantAlphaColorBlendFactors(this.segment(), index, value); return this; }
     /// Sets `constantAlphaColorBlendFactors` with the given value.
     /// @param value the value
     /// @return `this`
@@ -273,9 +268,6 @@ public final class VkPhysicalDevicePortabilitySubsetFeaturesKHR extends Struct {
     /// {@return `events`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_events(MemorySegment segment) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_events(segment, 0L); }
-    /// {@return `events` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int eventsAt(long index) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_events(this.segment(), index); }
     /// {@return `events`}
     public @CType("VkBool32") int events() { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_events(this.segment()); }
     /// Sets `events` with the given value at the given index.
@@ -287,11 +279,6 @@ public final class VkPhysicalDevicePortabilitySubsetFeaturesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_events(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_events(segment, 0L, value); }
-    /// Sets `events` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePortabilitySubsetFeaturesKHR eventsAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_events(this.segment(), index, value); return this; }
     /// Sets `events` with the given value.
     /// @param value the value
     /// @return `this`
@@ -304,9 +291,6 @@ public final class VkPhysicalDevicePortabilitySubsetFeaturesKHR extends Struct {
     /// {@return `imageViewFormatReinterpretation`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_imageViewFormatReinterpretation(MemorySegment segment) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_imageViewFormatReinterpretation(segment, 0L); }
-    /// {@return `imageViewFormatReinterpretation` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int imageViewFormatReinterpretationAt(long index) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_imageViewFormatReinterpretation(this.segment(), index); }
     /// {@return `imageViewFormatReinterpretation`}
     public @CType("VkBool32") int imageViewFormatReinterpretation() { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_imageViewFormatReinterpretation(this.segment()); }
     /// Sets `imageViewFormatReinterpretation` with the given value at the given index.
@@ -318,11 +302,6 @@ public final class VkPhysicalDevicePortabilitySubsetFeaturesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_imageViewFormatReinterpretation(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_imageViewFormatReinterpretation(segment, 0L, value); }
-    /// Sets `imageViewFormatReinterpretation` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePortabilitySubsetFeaturesKHR imageViewFormatReinterpretationAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_imageViewFormatReinterpretation(this.segment(), index, value); return this; }
     /// Sets `imageViewFormatReinterpretation` with the given value.
     /// @param value the value
     /// @return `this`
@@ -335,9 +314,6 @@ public final class VkPhysicalDevicePortabilitySubsetFeaturesKHR extends Struct {
     /// {@return `imageViewFormatSwizzle`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_imageViewFormatSwizzle(MemorySegment segment) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_imageViewFormatSwizzle(segment, 0L); }
-    /// {@return `imageViewFormatSwizzle` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int imageViewFormatSwizzleAt(long index) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_imageViewFormatSwizzle(this.segment(), index); }
     /// {@return `imageViewFormatSwizzle`}
     public @CType("VkBool32") int imageViewFormatSwizzle() { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_imageViewFormatSwizzle(this.segment()); }
     /// Sets `imageViewFormatSwizzle` with the given value at the given index.
@@ -349,11 +325,6 @@ public final class VkPhysicalDevicePortabilitySubsetFeaturesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_imageViewFormatSwizzle(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_imageViewFormatSwizzle(segment, 0L, value); }
-    /// Sets `imageViewFormatSwizzle` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePortabilitySubsetFeaturesKHR imageViewFormatSwizzleAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_imageViewFormatSwizzle(this.segment(), index, value); return this; }
     /// Sets `imageViewFormatSwizzle` with the given value.
     /// @param value the value
     /// @return `this`
@@ -366,9 +337,6 @@ public final class VkPhysicalDevicePortabilitySubsetFeaturesKHR extends Struct {
     /// {@return `imageView2DOn3DImage`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_imageView2DOn3DImage(MemorySegment segment) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_imageView2DOn3DImage(segment, 0L); }
-    /// {@return `imageView2DOn3DImage` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int imageView2DOn3DImageAt(long index) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_imageView2DOn3DImage(this.segment(), index); }
     /// {@return `imageView2DOn3DImage`}
     public @CType("VkBool32") int imageView2DOn3DImage() { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_imageView2DOn3DImage(this.segment()); }
     /// Sets `imageView2DOn3DImage` with the given value at the given index.
@@ -380,11 +348,6 @@ public final class VkPhysicalDevicePortabilitySubsetFeaturesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_imageView2DOn3DImage(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_imageView2DOn3DImage(segment, 0L, value); }
-    /// Sets `imageView2DOn3DImage` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePortabilitySubsetFeaturesKHR imageView2DOn3DImageAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_imageView2DOn3DImage(this.segment(), index, value); return this; }
     /// Sets `imageView2DOn3DImage` with the given value.
     /// @param value the value
     /// @return `this`
@@ -397,9 +360,6 @@ public final class VkPhysicalDevicePortabilitySubsetFeaturesKHR extends Struct {
     /// {@return `multisampleArrayImage`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_multisampleArrayImage(MemorySegment segment) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_multisampleArrayImage(segment, 0L); }
-    /// {@return `multisampleArrayImage` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int multisampleArrayImageAt(long index) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_multisampleArrayImage(this.segment(), index); }
     /// {@return `multisampleArrayImage`}
     public @CType("VkBool32") int multisampleArrayImage() { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_multisampleArrayImage(this.segment()); }
     /// Sets `multisampleArrayImage` with the given value at the given index.
@@ -411,11 +371,6 @@ public final class VkPhysicalDevicePortabilitySubsetFeaturesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_multisampleArrayImage(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_multisampleArrayImage(segment, 0L, value); }
-    /// Sets `multisampleArrayImage` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePortabilitySubsetFeaturesKHR multisampleArrayImageAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_multisampleArrayImage(this.segment(), index, value); return this; }
     /// Sets `multisampleArrayImage` with the given value.
     /// @param value the value
     /// @return `this`
@@ -428,9 +383,6 @@ public final class VkPhysicalDevicePortabilitySubsetFeaturesKHR extends Struct {
     /// {@return `mutableComparisonSamplers`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_mutableComparisonSamplers(MemorySegment segment) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_mutableComparisonSamplers(segment, 0L); }
-    /// {@return `mutableComparisonSamplers` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int mutableComparisonSamplersAt(long index) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_mutableComparisonSamplers(this.segment(), index); }
     /// {@return `mutableComparisonSamplers`}
     public @CType("VkBool32") int mutableComparisonSamplers() { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_mutableComparisonSamplers(this.segment()); }
     /// Sets `mutableComparisonSamplers` with the given value at the given index.
@@ -442,11 +394,6 @@ public final class VkPhysicalDevicePortabilitySubsetFeaturesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_mutableComparisonSamplers(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_mutableComparisonSamplers(segment, 0L, value); }
-    /// Sets `mutableComparisonSamplers` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePortabilitySubsetFeaturesKHR mutableComparisonSamplersAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_mutableComparisonSamplers(this.segment(), index, value); return this; }
     /// Sets `mutableComparisonSamplers` with the given value.
     /// @param value the value
     /// @return `this`
@@ -459,9 +406,6 @@ public final class VkPhysicalDevicePortabilitySubsetFeaturesKHR extends Struct {
     /// {@return `pointPolygons`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_pointPolygons(MemorySegment segment) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_pointPolygons(segment, 0L); }
-    /// {@return `pointPolygons` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int pointPolygonsAt(long index) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_pointPolygons(this.segment(), index); }
     /// {@return `pointPolygons`}
     public @CType("VkBool32") int pointPolygons() { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_pointPolygons(this.segment()); }
     /// Sets `pointPolygons` with the given value at the given index.
@@ -473,11 +417,6 @@ public final class VkPhysicalDevicePortabilitySubsetFeaturesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pointPolygons(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_pointPolygons(segment, 0L, value); }
-    /// Sets `pointPolygons` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePortabilitySubsetFeaturesKHR pointPolygonsAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_pointPolygons(this.segment(), index, value); return this; }
     /// Sets `pointPolygons` with the given value.
     /// @param value the value
     /// @return `this`
@@ -490,9 +429,6 @@ public final class VkPhysicalDevicePortabilitySubsetFeaturesKHR extends Struct {
     /// {@return `samplerMipLodBias`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_samplerMipLodBias(MemorySegment segment) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_samplerMipLodBias(segment, 0L); }
-    /// {@return `samplerMipLodBias` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int samplerMipLodBiasAt(long index) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_samplerMipLodBias(this.segment(), index); }
     /// {@return `samplerMipLodBias`}
     public @CType("VkBool32") int samplerMipLodBias() { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_samplerMipLodBias(this.segment()); }
     /// Sets `samplerMipLodBias` with the given value at the given index.
@@ -504,11 +440,6 @@ public final class VkPhysicalDevicePortabilitySubsetFeaturesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_samplerMipLodBias(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_samplerMipLodBias(segment, 0L, value); }
-    /// Sets `samplerMipLodBias` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePortabilitySubsetFeaturesKHR samplerMipLodBiasAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_samplerMipLodBias(this.segment(), index, value); return this; }
     /// Sets `samplerMipLodBias` with the given value.
     /// @param value the value
     /// @return `this`
@@ -521,9 +452,6 @@ public final class VkPhysicalDevicePortabilitySubsetFeaturesKHR extends Struct {
     /// {@return `separateStencilMaskRef`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_separateStencilMaskRef(MemorySegment segment) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_separateStencilMaskRef(segment, 0L); }
-    /// {@return `separateStencilMaskRef` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int separateStencilMaskRefAt(long index) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_separateStencilMaskRef(this.segment(), index); }
     /// {@return `separateStencilMaskRef`}
     public @CType("VkBool32") int separateStencilMaskRef() { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_separateStencilMaskRef(this.segment()); }
     /// Sets `separateStencilMaskRef` with the given value at the given index.
@@ -535,11 +463,6 @@ public final class VkPhysicalDevicePortabilitySubsetFeaturesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_separateStencilMaskRef(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_separateStencilMaskRef(segment, 0L, value); }
-    /// Sets `separateStencilMaskRef` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePortabilitySubsetFeaturesKHR separateStencilMaskRefAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_separateStencilMaskRef(this.segment(), index, value); return this; }
     /// Sets `separateStencilMaskRef` with the given value.
     /// @param value the value
     /// @return `this`
@@ -552,9 +475,6 @@ public final class VkPhysicalDevicePortabilitySubsetFeaturesKHR extends Struct {
     /// {@return `shaderSampleRateInterpolationFunctions`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_shaderSampleRateInterpolationFunctions(MemorySegment segment) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_shaderSampleRateInterpolationFunctions(segment, 0L); }
-    /// {@return `shaderSampleRateInterpolationFunctions` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int shaderSampleRateInterpolationFunctionsAt(long index) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_shaderSampleRateInterpolationFunctions(this.segment(), index); }
     /// {@return `shaderSampleRateInterpolationFunctions`}
     public @CType("VkBool32") int shaderSampleRateInterpolationFunctions() { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_shaderSampleRateInterpolationFunctions(this.segment()); }
     /// Sets `shaderSampleRateInterpolationFunctions` with the given value at the given index.
@@ -566,11 +486,6 @@ public final class VkPhysicalDevicePortabilitySubsetFeaturesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_shaderSampleRateInterpolationFunctions(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_shaderSampleRateInterpolationFunctions(segment, 0L, value); }
-    /// Sets `shaderSampleRateInterpolationFunctions` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePortabilitySubsetFeaturesKHR shaderSampleRateInterpolationFunctionsAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_shaderSampleRateInterpolationFunctions(this.segment(), index, value); return this; }
     /// Sets `shaderSampleRateInterpolationFunctions` with the given value.
     /// @param value the value
     /// @return `this`
@@ -583,9 +498,6 @@ public final class VkPhysicalDevicePortabilitySubsetFeaturesKHR extends Struct {
     /// {@return `tessellationIsolines`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_tessellationIsolines(MemorySegment segment) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_tessellationIsolines(segment, 0L); }
-    /// {@return `tessellationIsolines` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int tessellationIsolinesAt(long index) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_tessellationIsolines(this.segment(), index); }
     /// {@return `tessellationIsolines`}
     public @CType("VkBool32") int tessellationIsolines() { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_tessellationIsolines(this.segment()); }
     /// Sets `tessellationIsolines` with the given value at the given index.
@@ -597,11 +509,6 @@ public final class VkPhysicalDevicePortabilitySubsetFeaturesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_tessellationIsolines(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_tessellationIsolines(segment, 0L, value); }
-    /// Sets `tessellationIsolines` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePortabilitySubsetFeaturesKHR tessellationIsolinesAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_tessellationIsolines(this.segment(), index, value); return this; }
     /// Sets `tessellationIsolines` with the given value.
     /// @param value the value
     /// @return `this`
@@ -614,9 +521,6 @@ public final class VkPhysicalDevicePortabilitySubsetFeaturesKHR extends Struct {
     /// {@return `tessellationPointMode`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_tessellationPointMode(MemorySegment segment) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_tessellationPointMode(segment, 0L); }
-    /// {@return `tessellationPointMode` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int tessellationPointModeAt(long index) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_tessellationPointMode(this.segment(), index); }
     /// {@return `tessellationPointMode`}
     public @CType("VkBool32") int tessellationPointMode() { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_tessellationPointMode(this.segment()); }
     /// Sets `tessellationPointMode` with the given value at the given index.
@@ -628,11 +532,6 @@ public final class VkPhysicalDevicePortabilitySubsetFeaturesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_tessellationPointMode(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_tessellationPointMode(segment, 0L, value); }
-    /// Sets `tessellationPointMode` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePortabilitySubsetFeaturesKHR tessellationPointModeAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_tessellationPointMode(this.segment(), index, value); return this; }
     /// Sets `tessellationPointMode` with the given value.
     /// @param value the value
     /// @return `this`
@@ -645,9 +544,6 @@ public final class VkPhysicalDevicePortabilitySubsetFeaturesKHR extends Struct {
     /// {@return `triangleFans`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_triangleFans(MemorySegment segment) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_triangleFans(segment, 0L); }
-    /// {@return `triangleFans` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int triangleFansAt(long index) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_triangleFans(this.segment(), index); }
     /// {@return `triangleFans`}
     public @CType("VkBool32") int triangleFans() { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_triangleFans(this.segment()); }
     /// Sets `triangleFans` with the given value at the given index.
@@ -659,11 +555,6 @@ public final class VkPhysicalDevicePortabilitySubsetFeaturesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_triangleFans(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_triangleFans(segment, 0L, value); }
-    /// Sets `triangleFans` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePortabilitySubsetFeaturesKHR triangleFansAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_triangleFans(this.segment(), index, value); return this; }
     /// Sets `triangleFans` with the given value.
     /// @param value the value
     /// @return `this`
@@ -676,9 +567,6 @@ public final class VkPhysicalDevicePortabilitySubsetFeaturesKHR extends Struct {
     /// {@return `vertexAttributeAccessBeyondStride`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_vertexAttributeAccessBeyondStride(MemorySegment segment) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_vertexAttributeAccessBeyondStride(segment, 0L); }
-    /// {@return `vertexAttributeAccessBeyondStride` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int vertexAttributeAccessBeyondStrideAt(long index) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_vertexAttributeAccessBeyondStride(this.segment(), index); }
     /// {@return `vertexAttributeAccessBeyondStride`}
     public @CType("VkBool32") int vertexAttributeAccessBeyondStride() { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_vertexAttributeAccessBeyondStride(this.segment()); }
     /// Sets `vertexAttributeAccessBeyondStride` with the given value at the given index.
@@ -690,14 +578,185 @@ public final class VkPhysicalDevicePortabilitySubsetFeaturesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_vertexAttributeAccessBeyondStride(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_vertexAttributeAccessBeyondStride(segment, 0L, value); }
-    /// Sets `vertexAttributeAccessBeyondStride` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePortabilitySubsetFeaturesKHR vertexAttributeAccessBeyondStrideAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_vertexAttributeAccessBeyondStride(this.segment(), index, value); return this; }
     /// Sets `vertexAttributeAccessBeyondStride` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDevicePortabilitySubsetFeaturesKHR vertexAttributeAccessBeyondStride(@CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_vertexAttributeAccessBeyondStride(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDevicePortabilitySubsetFeaturesKHR].
+    public static final class Buffer extends VkPhysicalDevicePortabilitySubsetFeaturesKHR {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDevicePortabilitySubsetFeaturesKHR.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDevicePortabilitySubsetFeaturesKHR`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDevicePortabilitySubsetFeaturesKHR`
+        public VkPhysicalDevicePortabilitySubsetFeaturesKHR asSlice(long index) { return new VkPhysicalDevicePortabilitySubsetFeaturesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDevicePortabilitySubsetFeaturesKHR`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDevicePortabilitySubsetFeaturesKHR`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `constantAlphaColorBlendFactors` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int constantAlphaColorBlendFactorsAt(long index) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_constantAlphaColorBlendFactors(this.segment(), index); }
+        /// Sets `constantAlphaColorBlendFactors` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer constantAlphaColorBlendFactorsAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_constantAlphaColorBlendFactors(this.segment(), index, value); return this; }
+
+        /// {@return `events` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int eventsAt(long index) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_events(this.segment(), index); }
+        /// Sets `events` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer eventsAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_events(this.segment(), index, value); return this; }
+
+        /// {@return `imageViewFormatReinterpretation` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int imageViewFormatReinterpretationAt(long index) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_imageViewFormatReinterpretation(this.segment(), index); }
+        /// Sets `imageViewFormatReinterpretation` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer imageViewFormatReinterpretationAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_imageViewFormatReinterpretation(this.segment(), index, value); return this; }
+
+        /// {@return `imageViewFormatSwizzle` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int imageViewFormatSwizzleAt(long index) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_imageViewFormatSwizzle(this.segment(), index); }
+        /// Sets `imageViewFormatSwizzle` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer imageViewFormatSwizzleAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_imageViewFormatSwizzle(this.segment(), index, value); return this; }
+
+        /// {@return `imageView2DOn3DImage` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int imageView2DOn3DImageAt(long index) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_imageView2DOn3DImage(this.segment(), index); }
+        /// Sets `imageView2DOn3DImage` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer imageView2DOn3DImageAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_imageView2DOn3DImage(this.segment(), index, value); return this; }
+
+        /// {@return `multisampleArrayImage` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int multisampleArrayImageAt(long index) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_multisampleArrayImage(this.segment(), index); }
+        /// Sets `multisampleArrayImage` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer multisampleArrayImageAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_multisampleArrayImage(this.segment(), index, value); return this; }
+
+        /// {@return `mutableComparisonSamplers` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int mutableComparisonSamplersAt(long index) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_mutableComparisonSamplers(this.segment(), index); }
+        /// Sets `mutableComparisonSamplers` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer mutableComparisonSamplersAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_mutableComparisonSamplers(this.segment(), index, value); return this; }
+
+        /// {@return `pointPolygons` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int pointPolygonsAt(long index) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_pointPolygons(this.segment(), index); }
+        /// Sets `pointPolygons` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pointPolygonsAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_pointPolygons(this.segment(), index, value); return this; }
+
+        /// {@return `samplerMipLodBias` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int samplerMipLodBiasAt(long index) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_samplerMipLodBias(this.segment(), index); }
+        /// Sets `samplerMipLodBias` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer samplerMipLodBiasAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_samplerMipLodBias(this.segment(), index, value); return this; }
+
+        /// {@return `separateStencilMaskRef` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int separateStencilMaskRefAt(long index) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_separateStencilMaskRef(this.segment(), index); }
+        /// Sets `separateStencilMaskRef` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer separateStencilMaskRefAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_separateStencilMaskRef(this.segment(), index, value); return this; }
+
+        /// {@return `shaderSampleRateInterpolationFunctions` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int shaderSampleRateInterpolationFunctionsAt(long index) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_shaderSampleRateInterpolationFunctions(this.segment(), index); }
+        /// Sets `shaderSampleRateInterpolationFunctions` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer shaderSampleRateInterpolationFunctionsAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_shaderSampleRateInterpolationFunctions(this.segment(), index, value); return this; }
+
+        /// {@return `tessellationIsolines` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int tessellationIsolinesAt(long index) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_tessellationIsolines(this.segment(), index); }
+        /// Sets `tessellationIsolines` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer tessellationIsolinesAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_tessellationIsolines(this.segment(), index, value); return this; }
+
+        /// {@return `tessellationPointMode` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int tessellationPointModeAt(long index) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_tessellationPointMode(this.segment(), index); }
+        /// Sets `tessellationPointMode` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer tessellationPointModeAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_tessellationPointMode(this.segment(), index, value); return this; }
+
+        /// {@return `triangleFans` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int triangleFansAt(long index) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_triangleFans(this.segment(), index); }
+        /// Sets `triangleFans` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer triangleFansAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_triangleFans(this.segment(), index, value); return this; }
+
+        /// {@return `vertexAttributeAccessBeyondStride` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int vertexAttributeAccessBeyondStrideAt(long index) { return VkPhysicalDevicePortabilitySubsetFeaturesKHR.get_vertexAttributeAccessBeyondStride(this.segment(), index); }
+        /// Sets `vertexAttributeAccessBeyondStride` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer vertexAttributeAccessBeyondStrideAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePortabilitySubsetFeaturesKHR.set_vertexAttributeAccessBeyondStride(this.segment(), index, value); return this; }
+
+    }
 }

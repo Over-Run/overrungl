@@ -46,7 +46,7 @@ import overrungl.util.*;
 ///     uint32_t : 1 general_frame_only_constraint_flag;
 /// } StdVideoH265ProfileTierLevelFlags;
 /// ```
-public final class StdVideoH265ProfileTierLevelFlags extends Struct {
+public sealed class StdVideoH265ProfileTierLevelFlags extends Struct {
     /// The struct layout of `StdVideoH265ProfileTierLevelFlags`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("general_tier_flag"),
@@ -76,6 +76,11 @@ public final class StdVideoH265ProfileTierLevelFlags extends Struct {
     public static StdVideoH265ProfileTierLevelFlags of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoH265ProfileTierLevelFlags(segment); }
 
     /// Creates `StdVideoH265ProfileTierLevelFlags` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `StdVideoH265ProfileTierLevelFlags` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -88,7 +93,7 @@ public final class StdVideoH265ProfileTierLevelFlags extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoH265ProfileTierLevelFlags ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoH265ProfileTierLevelFlags(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `StdVideoH265ProfileTierLevelFlags` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -99,7 +104,21 @@ public final class StdVideoH265ProfileTierLevelFlags extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `StdVideoH265ProfileTierLevelFlags`
-    public static StdVideoH265ProfileTierLevelFlags alloc(SegmentAllocator allocator, long count) { return new StdVideoH265ProfileTierLevelFlags(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `StdVideoH265ProfileTierLevelFlags` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `StdVideoH265ProfileTierLevelFlags`
+    public static StdVideoH265ProfileTierLevelFlags allocInit(SegmentAllocator allocator, @CType("uint32_t : 1") int general_tier_flag, @CType("uint32_t : 1") int general_progressive_source_flag, @CType("uint32_t : 1") int general_interlaced_source_flag, @CType("uint32_t : 1") int general_non_packed_constraint_flag, @CType("uint32_t : 1") int general_frame_only_constraint_flag) { return alloc(allocator).general_tier_flag(general_tier_flag).general_progressive_source_flag(general_progressive_source_flag).general_interlaced_source_flag(general_interlaced_source_flag).general_non_packed_constraint_flag(general_non_packed_constraint_flag).general_frame_only_constraint_flag(general_frame_only_constraint_flag); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public StdVideoH265ProfileTierLevelFlags copyFrom(StdVideoH265ProfileTierLevelFlags src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `general_tier_flag` at the given index}
     /// @param segment the segment of the struct
@@ -108,9 +127,6 @@ public final class StdVideoH265ProfileTierLevelFlags extends Struct {
     /// {@return `general_tier_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_general_tier_flag(MemorySegment segment) { return StdVideoH265ProfileTierLevelFlags.get_general_tier_flag(segment, 0L); }
-    /// {@return `general_tier_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int general_tier_flagAt(long index) { return StdVideoH265ProfileTierLevelFlags.get_general_tier_flag(this.segment(), index); }
     /// {@return `general_tier_flag`}
     public @CType("uint32_t : 1") int general_tier_flag() { return StdVideoH265ProfileTierLevelFlags.get_general_tier_flag(this.segment()); }
     /// Sets `general_tier_flag` with the given value at the given index.
@@ -122,11 +138,6 @@ public final class StdVideoH265ProfileTierLevelFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_general_tier_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoH265ProfileTierLevelFlags.set_general_tier_flag(segment, 0L, value); }
-    /// Sets `general_tier_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH265ProfileTierLevelFlags general_tier_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265ProfileTierLevelFlags.set_general_tier_flag(this.segment(), index, value); return this; }
     /// Sets `general_tier_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -139,9 +150,6 @@ public final class StdVideoH265ProfileTierLevelFlags extends Struct {
     /// {@return `general_progressive_source_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_general_progressive_source_flag(MemorySegment segment) { return StdVideoH265ProfileTierLevelFlags.get_general_progressive_source_flag(segment, 0L); }
-    /// {@return `general_progressive_source_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int general_progressive_source_flagAt(long index) { return StdVideoH265ProfileTierLevelFlags.get_general_progressive_source_flag(this.segment(), index); }
     /// {@return `general_progressive_source_flag`}
     public @CType("uint32_t : 1") int general_progressive_source_flag() { return StdVideoH265ProfileTierLevelFlags.get_general_progressive_source_flag(this.segment()); }
     /// Sets `general_progressive_source_flag` with the given value at the given index.
@@ -153,11 +161,6 @@ public final class StdVideoH265ProfileTierLevelFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_general_progressive_source_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoH265ProfileTierLevelFlags.set_general_progressive_source_flag(segment, 0L, value); }
-    /// Sets `general_progressive_source_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH265ProfileTierLevelFlags general_progressive_source_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265ProfileTierLevelFlags.set_general_progressive_source_flag(this.segment(), index, value); return this; }
     /// Sets `general_progressive_source_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -170,9 +173,6 @@ public final class StdVideoH265ProfileTierLevelFlags extends Struct {
     /// {@return `general_interlaced_source_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_general_interlaced_source_flag(MemorySegment segment) { return StdVideoH265ProfileTierLevelFlags.get_general_interlaced_source_flag(segment, 0L); }
-    /// {@return `general_interlaced_source_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int general_interlaced_source_flagAt(long index) { return StdVideoH265ProfileTierLevelFlags.get_general_interlaced_source_flag(this.segment(), index); }
     /// {@return `general_interlaced_source_flag`}
     public @CType("uint32_t : 1") int general_interlaced_source_flag() { return StdVideoH265ProfileTierLevelFlags.get_general_interlaced_source_flag(this.segment()); }
     /// Sets `general_interlaced_source_flag` with the given value at the given index.
@@ -184,11 +184,6 @@ public final class StdVideoH265ProfileTierLevelFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_general_interlaced_source_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoH265ProfileTierLevelFlags.set_general_interlaced_source_flag(segment, 0L, value); }
-    /// Sets `general_interlaced_source_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH265ProfileTierLevelFlags general_interlaced_source_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265ProfileTierLevelFlags.set_general_interlaced_source_flag(this.segment(), index, value); return this; }
     /// Sets `general_interlaced_source_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -201,9 +196,6 @@ public final class StdVideoH265ProfileTierLevelFlags extends Struct {
     /// {@return `general_non_packed_constraint_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_general_non_packed_constraint_flag(MemorySegment segment) { return StdVideoH265ProfileTierLevelFlags.get_general_non_packed_constraint_flag(segment, 0L); }
-    /// {@return `general_non_packed_constraint_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int general_non_packed_constraint_flagAt(long index) { return StdVideoH265ProfileTierLevelFlags.get_general_non_packed_constraint_flag(this.segment(), index); }
     /// {@return `general_non_packed_constraint_flag`}
     public @CType("uint32_t : 1") int general_non_packed_constraint_flag() { return StdVideoH265ProfileTierLevelFlags.get_general_non_packed_constraint_flag(this.segment()); }
     /// Sets `general_non_packed_constraint_flag` with the given value at the given index.
@@ -215,11 +207,6 @@ public final class StdVideoH265ProfileTierLevelFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_general_non_packed_constraint_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoH265ProfileTierLevelFlags.set_general_non_packed_constraint_flag(segment, 0L, value); }
-    /// Sets `general_non_packed_constraint_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH265ProfileTierLevelFlags general_non_packed_constraint_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265ProfileTierLevelFlags.set_general_non_packed_constraint_flag(this.segment(), index, value); return this; }
     /// Sets `general_non_packed_constraint_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -232,9 +219,6 @@ public final class StdVideoH265ProfileTierLevelFlags extends Struct {
     /// {@return `general_frame_only_constraint_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_general_frame_only_constraint_flag(MemorySegment segment) { return StdVideoH265ProfileTierLevelFlags.get_general_frame_only_constraint_flag(segment, 0L); }
-    /// {@return `general_frame_only_constraint_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int general_frame_only_constraint_flagAt(long index) { return StdVideoH265ProfileTierLevelFlags.get_general_frame_only_constraint_flag(this.segment(), index); }
     /// {@return `general_frame_only_constraint_flag`}
     public @CType("uint32_t : 1") int general_frame_only_constraint_flag() { return StdVideoH265ProfileTierLevelFlags.get_general_frame_only_constraint_flag(this.segment()); }
     /// Sets `general_frame_only_constraint_flag` with the given value at the given index.
@@ -246,14 +230,77 @@ public final class StdVideoH265ProfileTierLevelFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_general_frame_only_constraint_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoH265ProfileTierLevelFlags.set_general_frame_only_constraint_flag(segment, 0L, value); }
-    /// Sets `general_frame_only_constraint_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH265ProfileTierLevelFlags general_frame_only_constraint_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265ProfileTierLevelFlags.set_general_frame_only_constraint_flag(this.segment(), index, value); return this; }
     /// Sets `general_frame_only_constraint_flag` with the given value.
     /// @param value the value
     /// @return `this`
     public StdVideoH265ProfileTierLevelFlags general_frame_only_constraint_flag(@CType("uint32_t : 1") int value) { StdVideoH265ProfileTierLevelFlags.set_general_frame_only_constraint_flag(this.segment(), value); return this; }
 
+    /// A buffer of [StdVideoH265ProfileTierLevelFlags].
+    public static final class Buffer extends StdVideoH265ProfileTierLevelFlags {
+        private final long elementCount;
+
+        /// Creates `StdVideoH265ProfileTierLevelFlags.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `StdVideoH265ProfileTierLevelFlags`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `StdVideoH265ProfileTierLevelFlags`
+        public StdVideoH265ProfileTierLevelFlags asSlice(long index) { return new StdVideoH265ProfileTierLevelFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `StdVideoH265ProfileTierLevelFlags`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `StdVideoH265ProfileTierLevelFlags`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `general_tier_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int general_tier_flagAt(long index) { return StdVideoH265ProfileTierLevelFlags.get_general_tier_flag(this.segment(), index); }
+        /// Sets `general_tier_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer general_tier_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265ProfileTierLevelFlags.set_general_tier_flag(this.segment(), index, value); return this; }
+
+        /// {@return `general_progressive_source_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int general_progressive_source_flagAt(long index) { return StdVideoH265ProfileTierLevelFlags.get_general_progressive_source_flag(this.segment(), index); }
+        /// Sets `general_progressive_source_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer general_progressive_source_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265ProfileTierLevelFlags.set_general_progressive_source_flag(this.segment(), index, value); return this; }
+
+        /// {@return `general_interlaced_source_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int general_interlaced_source_flagAt(long index) { return StdVideoH265ProfileTierLevelFlags.get_general_interlaced_source_flag(this.segment(), index); }
+        /// Sets `general_interlaced_source_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer general_interlaced_source_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265ProfileTierLevelFlags.set_general_interlaced_source_flag(this.segment(), index, value); return this; }
+
+        /// {@return `general_non_packed_constraint_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int general_non_packed_constraint_flagAt(long index) { return StdVideoH265ProfileTierLevelFlags.get_general_non_packed_constraint_flag(this.segment(), index); }
+        /// Sets `general_non_packed_constraint_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer general_non_packed_constraint_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265ProfileTierLevelFlags.set_general_non_packed_constraint_flag(this.segment(), index, value); return this; }
+
+        /// {@return `general_frame_only_constraint_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int general_frame_only_constraint_flagAt(long index) { return StdVideoH265ProfileTierLevelFlags.get_general_frame_only_constraint_flag(this.segment(), index); }
+        /// Sets `general_frame_only_constraint_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer general_frame_only_constraint_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265ProfileTierLevelFlags.set_general_frame_only_constraint_flag(this.segment(), index, value); return this; }
+
+    }
 }

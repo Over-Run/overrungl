@@ -71,7 +71,7 @@ import overrungl.util.*;
 ///     stbtt__buf fdselect;
 /// } STBTTFontInfo;
 /// ```
-public final class STBTTFontInfo extends Struct {
+public sealed class STBTTFontInfo extends Struct {
     /// The struct layout of `stbtt_fontinfo`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.ADDRESS.withName("userdata"),
@@ -106,6 +106,11 @@ public final class STBTTFontInfo extends Struct {
     public static STBTTFontInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new STBTTFontInfo(segment); }
 
     /// Creates `STBTTFontInfo` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `STBTTFontInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -118,7 +123,7 @@ public final class STBTTFontInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static STBTTFontInfo ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new STBTTFontInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `STBTTFontInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -129,6 +134,38 @@ public final class STBTTFontInfo extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `STBTTFontInfo`
-    public static STBTTFontInfo alloc(SegmentAllocator allocator, long count) { return new STBTTFontInfo(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public STBTTFontInfo copyFrom(STBTTFontInfo src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+
+    /// A buffer of [STBTTFontInfo].
+    public static final class Buffer extends STBTTFontInfo {
+        private final long elementCount;
+
+        /// Creates `STBTTFontInfo.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `STBTTFontInfo`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `STBTTFontInfo`
+        public STBTTFontInfo asSlice(long index) { return new STBTTFontInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `STBTTFontInfo`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `STBTTFontInfo`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+    }
 }

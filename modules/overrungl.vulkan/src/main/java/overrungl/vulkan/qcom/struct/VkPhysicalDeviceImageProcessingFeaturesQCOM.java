@@ -46,7 +46,7 @@ import overrungl.util.*;
 ///     VkBool32 textureBlockMatch;
 /// } VkPhysicalDeviceImageProcessingFeaturesQCOM;
 /// ```
-public final class VkPhysicalDeviceImageProcessingFeaturesQCOM extends Struct {
+public sealed class VkPhysicalDeviceImageProcessingFeaturesQCOM extends Struct {
     /// The struct layout of `VkPhysicalDeviceImageProcessingFeaturesQCOM`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -76,6 +76,11 @@ public final class VkPhysicalDeviceImageProcessingFeaturesQCOM extends Struct {
     public static VkPhysicalDeviceImageProcessingFeaturesQCOM of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceImageProcessingFeaturesQCOM(segment); }
 
     /// Creates `VkPhysicalDeviceImageProcessingFeaturesQCOM` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPhysicalDeviceImageProcessingFeaturesQCOM` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -88,7 +93,7 @@ public final class VkPhysicalDeviceImageProcessingFeaturesQCOM extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceImageProcessingFeaturesQCOM ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceImageProcessingFeaturesQCOM(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceImageProcessingFeaturesQCOM` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -99,7 +104,21 @@ public final class VkPhysicalDeviceImageProcessingFeaturesQCOM extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceImageProcessingFeaturesQCOM`
-    public static VkPhysicalDeviceImageProcessingFeaturesQCOM alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceImageProcessingFeaturesQCOM(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkPhysicalDeviceImageProcessingFeaturesQCOM` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDeviceImageProcessingFeaturesQCOM`
+    public static VkPhysicalDeviceImageProcessingFeaturesQCOM allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int textureSampleWeighted, @CType("VkBool32") int textureBoxFilter, @CType("VkBool32") int textureBlockMatch) { return alloc(allocator).sType(sType).pNext(pNext).textureSampleWeighted(textureSampleWeighted).textureBoxFilter(textureBoxFilter).textureBlockMatch(textureBlockMatch); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDeviceImageProcessingFeaturesQCOM copyFrom(VkPhysicalDeviceImageProcessingFeaturesQCOM src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -108,9 +127,6 @@ public final class VkPhysicalDeviceImageProcessingFeaturesQCOM extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceImageProcessingFeaturesQCOM.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceImageProcessingFeaturesQCOM.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPhysicalDeviceImageProcessingFeaturesQCOM.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -122,11 +138,6 @@ public final class VkPhysicalDeviceImageProcessingFeaturesQCOM extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceImageProcessingFeaturesQCOM.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceImageProcessingFeaturesQCOM sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceImageProcessingFeaturesQCOM.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -139,9 +150,6 @@ public final class VkPhysicalDeviceImageProcessingFeaturesQCOM extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceImageProcessingFeaturesQCOM.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceImageProcessingFeaturesQCOM.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceImageProcessingFeaturesQCOM.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -153,11 +161,6 @@ public final class VkPhysicalDeviceImageProcessingFeaturesQCOM extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceImageProcessingFeaturesQCOM.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceImageProcessingFeaturesQCOM pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceImageProcessingFeaturesQCOM.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -170,9 +173,6 @@ public final class VkPhysicalDeviceImageProcessingFeaturesQCOM extends Struct {
     /// {@return `textureSampleWeighted`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_textureSampleWeighted(MemorySegment segment) { return VkPhysicalDeviceImageProcessingFeaturesQCOM.get_textureSampleWeighted(segment, 0L); }
-    /// {@return `textureSampleWeighted` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int textureSampleWeightedAt(long index) { return VkPhysicalDeviceImageProcessingFeaturesQCOM.get_textureSampleWeighted(this.segment(), index); }
     /// {@return `textureSampleWeighted`}
     public @CType("VkBool32") int textureSampleWeighted() { return VkPhysicalDeviceImageProcessingFeaturesQCOM.get_textureSampleWeighted(this.segment()); }
     /// Sets `textureSampleWeighted` with the given value at the given index.
@@ -184,11 +184,6 @@ public final class VkPhysicalDeviceImageProcessingFeaturesQCOM extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_textureSampleWeighted(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceImageProcessingFeaturesQCOM.set_textureSampleWeighted(segment, 0L, value); }
-    /// Sets `textureSampleWeighted` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceImageProcessingFeaturesQCOM textureSampleWeightedAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceImageProcessingFeaturesQCOM.set_textureSampleWeighted(this.segment(), index, value); return this; }
     /// Sets `textureSampleWeighted` with the given value.
     /// @param value the value
     /// @return `this`
@@ -201,9 +196,6 @@ public final class VkPhysicalDeviceImageProcessingFeaturesQCOM extends Struct {
     /// {@return `textureBoxFilter`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_textureBoxFilter(MemorySegment segment) { return VkPhysicalDeviceImageProcessingFeaturesQCOM.get_textureBoxFilter(segment, 0L); }
-    /// {@return `textureBoxFilter` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int textureBoxFilterAt(long index) { return VkPhysicalDeviceImageProcessingFeaturesQCOM.get_textureBoxFilter(this.segment(), index); }
     /// {@return `textureBoxFilter`}
     public @CType("VkBool32") int textureBoxFilter() { return VkPhysicalDeviceImageProcessingFeaturesQCOM.get_textureBoxFilter(this.segment()); }
     /// Sets `textureBoxFilter` with the given value at the given index.
@@ -215,11 +207,6 @@ public final class VkPhysicalDeviceImageProcessingFeaturesQCOM extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_textureBoxFilter(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceImageProcessingFeaturesQCOM.set_textureBoxFilter(segment, 0L, value); }
-    /// Sets `textureBoxFilter` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceImageProcessingFeaturesQCOM textureBoxFilterAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceImageProcessingFeaturesQCOM.set_textureBoxFilter(this.segment(), index, value); return this; }
     /// Sets `textureBoxFilter` with the given value.
     /// @param value the value
     /// @return `this`
@@ -232,9 +219,6 @@ public final class VkPhysicalDeviceImageProcessingFeaturesQCOM extends Struct {
     /// {@return `textureBlockMatch`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_textureBlockMatch(MemorySegment segment) { return VkPhysicalDeviceImageProcessingFeaturesQCOM.get_textureBlockMatch(segment, 0L); }
-    /// {@return `textureBlockMatch` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int textureBlockMatchAt(long index) { return VkPhysicalDeviceImageProcessingFeaturesQCOM.get_textureBlockMatch(this.segment(), index); }
     /// {@return `textureBlockMatch`}
     public @CType("VkBool32") int textureBlockMatch() { return VkPhysicalDeviceImageProcessingFeaturesQCOM.get_textureBlockMatch(this.segment()); }
     /// Sets `textureBlockMatch` with the given value at the given index.
@@ -246,14 +230,77 @@ public final class VkPhysicalDeviceImageProcessingFeaturesQCOM extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_textureBlockMatch(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceImageProcessingFeaturesQCOM.set_textureBlockMatch(segment, 0L, value); }
-    /// Sets `textureBlockMatch` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceImageProcessingFeaturesQCOM textureBlockMatchAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceImageProcessingFeaturesQCOM.set_textureBlockMatch(this.segment(), index, value); return this; }
     /// Sets `textureBlockMatch` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceImageProcessingFeaturesQCOM textureBlockMatch(@CType("VkBool32") int value) { VkPhysicalDeviceImageProcessingFeaturesQCOM.set_textureBlockMatch(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDeviceImageProcessingFeaturesQCOM].
+    public static final class Buffer extends VkPhysicalDeviceImageProcessingFeaturesQCOM {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDeviceImageProcessingFeaturesQCOM.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDeviceImageProcessingFeaturesQCOM`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDeviceImageProcessingFeaturesQCOM`
+        public VkPhysicalDeviceImageProcessingFeaturesQCOM asSlice(long index) { return new VkPhysicalDeviceImageProcessingFeaturesQCOM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDeviceImageProcessingFeaturesQCOM`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDeviceImageProcessingFeaturesQCOM`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceImageProcessingFeaturesQCOM.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceImageProcessingFeaturesQCOM.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceImageProcessingFeaturesQCOM.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceImageProcessingFeaturesQCOM.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `textureSampleWeighted` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int textureSampleWeightedAt(long index) { return VkPhysicalDeviceImageProcessingFeaturesQCOM.get_textureSampleWeighted(this.segment(), index); }
+        /// Sets `textureSampleWeighted` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer textureSampleWeightedAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceImageProcessingFeaturesQCOM.set_textureSampleWeighted(this.segment(), index, value); return this; }
+
+        /// {@return `textureBoxFilter` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int textureBoxFilterAt(long index) { return VkPhysicalDeviceImageProcessingFeaturesQCOM.get_textureBoxFilter(this.segment(), index); }
+        /// Sets `textureBoxFilter` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer textureBoxFilterAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceImageProcessingFeaturesQCOM.set_textureBoxFilter(this.segment(), index, value); return this; }
+
+        /// {@return `textureBlockMatch` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int textureBlockMatchAt(long index) { return VkPhysicalDeviceImageProcessingFeaturesQCOM.get_textureBlockMatch(this.segment(), index); }
+        /// Sets `textureBlockMatch` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer textureBlockMatchAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceImageProcessingFeaturesQCOM.set_textureBlockMatch(this.segment(), index, value); return this; }
+
+    }
 }

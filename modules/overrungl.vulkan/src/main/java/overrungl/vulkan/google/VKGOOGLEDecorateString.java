@@ -22,11 +22,10 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKGOOGLEDecorateString {
+public final class VKGOOGLEDecorateString {
     public static final int VK_GOOGLE_DECORATE_STRING_SPEC_VERSION = 1;
     public static final String VK_GOOGLE_DECORATE_STRING_EXTENSION_NAME = "VK_GOOGLE_decorate_string";
 
-    public VKGOOGLEDecorateString(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKGOOGLEDecorateString() { }
 
 }

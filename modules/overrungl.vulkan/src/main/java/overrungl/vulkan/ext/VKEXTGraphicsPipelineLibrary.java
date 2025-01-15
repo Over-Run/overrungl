@@ -22,7 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKEXTGraphicsPipelineLibrary {
+public final class VKEXTGraphicsPipelineLibrary {
     public static final int VK_GRAPHICS_PIPELINE_LIBRARY_VERTEX_INPUT_INTERFACE_BIT_EXT = 0x00000001;
     public static final int VK_GRAPHICS_PIPELINE_LIBRARY_PRE_RASTERIZATION_SHADERS_BIT_EXT = 0x00000002;
     public static final int VK_GRAPHICS_PIPELINE_LIBRARY_FRAGMENT_SHADER_BIT_EXT = 0x00000004;
@@ -36,7 +36,6 @@ public class VKEXTGraphicsPipelineLibrary {
     public static final int VK_PIPELINE_CREATE_LINK_TIME_OPTIMIZATION_BIT_EXT = 0x00000400;
     public static final int VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT = 0x00000002;
 
-    public VKEXTGraphicsPipelineLibrary(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKEXTGraphicsPipelineLibrary() { }
 
 }

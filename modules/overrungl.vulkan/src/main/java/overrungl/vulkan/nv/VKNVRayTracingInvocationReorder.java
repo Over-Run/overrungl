@@ -22,7 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKNVRayTracingInvocationReorder {
+public final class VKNVRayTracingInvocationReorder {
     public static final int VK_RAY_TRACING_INVOCATION_REORDER_MODE_NONE_NV = 0;
     public static final int VK_RAY_TRACING_INVOCATION_REORDER_MODE_REORDER_NV = 1;
     public static final int VK_NV_RAY_TRACING_INVOCATION_REORDER_SPEC_VERSION = 1;
@@ -30,7 +30,6 @@ public class VKNVRayTracingInvocationReorder {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_FEATURES_NV = 1000490000;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_INVOCATION_REORDER_PROPERTIES_NV = 1000490001;
 
-    public VKNVRayTracingInvocationReorder(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKNVRayTracingInvocationReorder() { }
 
 }

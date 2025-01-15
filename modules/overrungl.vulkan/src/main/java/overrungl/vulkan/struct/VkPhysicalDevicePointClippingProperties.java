@@ -40,7 +40,7 @@ import overrungl.util.*;
 ///     VkPointClippingBehavior pointClippingBehavior;
 /// } VkPhysicalDevicePointClippingProperties;
 /// ```
-public final class VkPhysicalDevicePointClippingProperties extends Struct {
+public sealed class VkPhysicalDevicePointClippingProperties extends Struct {
     /// The struct layout of `VkPhysicalDevicePointClippingProperties`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -64,6 +64,11 @@ public final class VkPhysicalDevicePointClippingProperties extends Struct {
     public static VkPhysicalDevicePointClippingProperties of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDevicePointClippingProperties(segment); }
 
     /// Creates `VkPhysicalDevicePointClippingProperties` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPhysicalDevicePointClippingProperties` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -76,7 +81,7 @@ public final class VkPhysicalDevicePointClippingProperties extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDevicePointClippingProperties ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDevicePointClippingProperties(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDevicePointClippingProperties` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -87,7 +92,21 @@ public final class VkPhysicalDevicePointClippingProperties extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDevicePointClippingProperties`
-    public static VkPhysicalDevicePointClippingProperties alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDevicePointClippingProperties(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkPhysicalDevicePointClippingProperties` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDevicePointClippingProperties`
+    public static VkPhysicalDevicePointClippingProperties allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkPointClippingBehavior") int pointClippingBehavior) { return alloc(allocator).sType(sType).pNext(pNext).pointClippingBehavior(pointClippingBehavior); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDevicePointClippingProperties copyFrom(VkPhysicalDevicePointClippingProperties src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -96,9 +115,6 @@ public final class VkPhysicalDevicePointClippingProperties extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDevicePointClippingProperties.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDevicePointClippingProperties.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPhysicalDevicePointClippingProperties.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -110,11 +126,6 @@ public final class VkPhysicalDevicePointClippingProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDevicePointClippingProperties.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePointClippingProperties sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDevicePointClippingProperties.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -127,9 +138,6 @@ public final class VkPhysicalDevicePointClippingProperties extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDevicePointClippingProperties.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDevicePointClippingProperties.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDevicePointClippingProperties.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -141,11 +149,6 @@ public final class VkPhysicalDevicePointClippingProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDevicePointClippingProperties.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePointClippingProperties pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDevicePointClippingProperties.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,9 +161,6 @@ public final class VkPhysicalDevicePointClippingProperties extends Struct {
     /// {@return `pointClippingBehavior`}
     /// @param segment the segment of the struct
     public static @CType("VkPointClippingBehavior") int get_pointClippingBehavior(MemorySegment segment) { return VkPhysicalDevicePointClippingProperties.get_pointClippingBehavior(segment, 0L); }
-    /// {@return `pointClippingBehavior` at the given index}
-    /// @param index the index
-    public @CType("VkPointClippingBehavior") int pointClippingBehaviorAt(long index) { return VkPhysicalDevicePointClippingProperties.get_pointClippingBehavior(this.segment(), index); }
     /// {@return `pointClippingBehavior`}
     public @CType("VkPointClippingBehavior") int pointClippingBehavior() { return VkPhysicalDevicePointClippingProperties.get_pointClippingBehavior(this.segment()); }
     /// Sets `pointClippingBehavior` with the given value at the given index.
@@ -172,14 +172,59 @@ public final class VkPhysicalDevicePointClippingProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pointClippingBehavior(MemorySegment segment, @CType("VkPointClippingBehavior") int value) { VkPhysicalDevicePointClippingProperties.set_pointClippingBehavior(segment, 0L, value); }
-    /// Sets `pointClippingBehavior` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePointClippingProperties pointClippingBehaviorAt(long index, @CType("VkPointClippingBehavior") int value) { VkPhysicalDevicePointClippingProperties.set_pointClippingBehavior(this.segment(), index, value); return this; }
     /// Sets `pointClippingBehavior` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDevicePointClippingProperties pointClippingBehavior(@CType("VkPointClippingBehavior") int value) { VkPhysicalDevicePointClippingProperties.set_pointClippingBehavior(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDevicePointClippingProperties].
+    public static final class Buffer extends VkPhysicalDevicePointClippingProperties {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDevicePointClippingProperties.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDevicePointClippingProperties`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDevicePointClippingProperties`
+        public VkPhysicalDevicePointClippingProperties asSlice(long index) { return new VkPhysicalDevicePointClippingProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDevicePointClippingProperties`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDevicePointClippingProperties`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDevicePointClippingProperties.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDevicePointClippingProperties.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDevicePointClippingProperties.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDevicePointClippingProperties.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `pointClippingBehavior` at the given index}
+        /// @param index the index
+        public @CType("VkPointClippingBehavior") int pointClippingBehaviorAt(long index) { return VkPhysicalDevicePointClippingProperties.get_pointClippingBehavior(this.segment(), index); }
+        /// Sets `pointClippingBehavior` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pointClippingBehaviorAt(long index, @CType("VkPointClippingBehavior") int value) { VkPhysicalDevicePointClippingProperties.set_pointClippingBehavior(this.segment(), index, value); return this; }
+
+    }
 }

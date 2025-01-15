@@ -55,7 +55,7 @@ import overrungl.util.*;
 ///     VkImageSubresourceRange subresourceRange;
 /// } VkImageViewCreateInfo;
 /// ```
-public final class VkImageViewCreateInfo extends Struct {
+public sealed class VkImageViewCreateInfo extends Struct {
     /// The struct layout of `VkImageViewCreateInfo`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -98,6 +98,11 @@ public final class VkImageViewCreateInfo extends Struct {
     public static VkImageViewCreateInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkImageViewCreateInfo(segment); }
 
     /// Creates `VkImageViewCreateInfo` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkImageViewCreateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -110,7 +115,7 @@ public final class VkImageViewCreateInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkImageViewCreateInfo ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkImageViewCreateInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkImageViewCreateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -121,7 +126,21 @@ public final class VkImageViewCreateInfo extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkImageViewCreateInfo`
-    public static VkImageViewCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkImageViewCreateInfo(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkImageViewCreateInfo` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkImageViewCreateInfo`
+    public static VkImageViewCreateInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkImageViewCreateFlags") int flags, @CType("VkImage") java.lang.foreign.MemorySegment image, @CType("VkImageViewType") int viewType, @CType("VkFormat") int format, @CType("VkComponentMapping") java.lang.foreign.MemorySegment components, @CType("VkImageSubresourceRange") java.lang.foreign.MemorySegment subresourceRange) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).image(image).viewType(viewType).format(format).components(components).subresourceRange(subresourceRange); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkImageViewCreateInfo copyFrom(VkImageViewCreateInfo src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -130,9 +149,6 @@ public final class VkImageViewCreateInfo extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkImageViewCreateInfo.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkImageViewCreateInfo.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkImageViewCreateInfo.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -144,11 +160,6 @@ public final class VkImageViewCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkImageViewCreateInfo.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageViewCreateInfo sTypeAt(long index, @CType("VkStructureType") int value) { VkImageViewCreateInfo.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -161,9 +172,6 @@ public final class VkImageViewCreateInfo extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkImageViewCreateInfo.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkImageViewCreateInfo.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkImageViewCreateInfo.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -175,11 +183,6 @@ public final class VkImageViewCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkImageViewCreateInfo.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageViewCreateInfo pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkImageViewCreateInfo.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -192,9 +195,6 @@ public final class VkImageViewCreateInfo extends Struct {
     /// {@return `flags`}
     /// @param segment the segment of the struct
     public static @CType("VkImageViewCreateFlags") int get_flags(MemorySegment segment) { return VkImageViewCreateInfo.get_flags(segment, 0L); }
-    /// {@return `flags` at the given index}
-    /// @param index the index
-    public @CType("VkImageViewCreateFlags") int flagsAt(long index) { return VkImageViewCreateInfo.get_flags(this.segment(), index); }
     /// {@return `flags`}
     public @CType("VkImageViewCreateFlags") int flags() { return VkImageViewCreateInfo.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
@@ -206,11 +206,6 @@ public final class VkImageViewCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_flags(MemorySegment segment, @CType("VkImageViewCreateFlags") int value) { VkImageViewCreateInfo.set_flags(segment, 0L, value); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageViewCreateInfo flagsAt(long index, @CType("VkImageViewCreateFlags") int value) { VkImageViewCreateInfo.set_flags(this.segment(), index, value); return this; }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -223,9 +218,6 @@ public final class VkImageViewCreateInfo extends Struct {
     /// {@return `image`}
     /// @param segment the segment of the struct
     public static @CType("VkImage") java.lang.foreign.MemorySegment get_image(MemorySegment segment) { return VkImageViewCreateInfo.get_image(segment, 0L); }
-    /// {@return `image` at the given index}
-    /// @param index the index
-    public @CType("VkImage") java.lang.foreign.MemorySegment imageAt(long index) { return VkImageViewCreateInfo.get_image(this.segment(), index); }
     /// {@return `image`}
     public @CType("VkImage") java.lang.foreign.MemorySegment image() { return VkImageViewCreateInfo.get_image(this.segment()); }
     /// Sets `image` with the given value at the given index.
@@ -237,11 +229,6 @@ public final class VkImageViewCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_image(MemorySegment segment, @CType("VkImage") java.lang.foreign.MemorySegment value) { VkImageViewCreateInfo.set_image(segment, 0L, value); }
-    /// Sets `image` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageViewCreateInfo imageAt(long index, @CType("VkImage") java.lang.foreign.MemorySegment value) { VkImageViewCreateInfo.set_image(this.segment(), index, value); return this; }
     /// Sets `image` with the given value.
     /// @param value the value
     /// @return `this`
@@ -254,9 +241,6 @@ public final class VkImageViewCreateInfo extends Struct {
     /// {@return `viewType`}
     /// @param segment the segment of the struct
     public static @CType("VkImageViewType") int get_viewType(MemorySegment segment) { return VkImageViewCreateInfo.get_viewType(segment, 0L); }
-    /// {@return `viewType` at the given index}
-    /// @param index the index
-    public @CType("VkImageViewType") int viewTypeAt(long index) { return VkImageViewCreateInfo.get_viewType(this.segment(), index); }
     /// {@return `viewType`}
     public @CType("VkImageViewType") int viewType() { return VkImageViewCreateInfo.get_viewType(this.segment()); }
     /// Sets `viewType` with the given value at the given index.
@@ -268,11 +252,6 @@ public final class VkImageViewCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_viewType(MemorySegment segment, @CType("VkImageViewType") int value) { VkImageViewCreateInfo.set_viewType(segment, 0L, value); }
-    /// Sets `viewType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageViewCreateInfo viewTypeAt(long index, @CType("VkImageViewType") int value) { VkImageViewCreateInfo.set_viewType(this.segment(), index, value); return this; }
     /// Sets `viewType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -285,9 +264,6 @@ public final class VkImageViewCreateInfo extends Struct {
     /// {@return `format`}
     /// @param segment the segment of the struct
     public static @CType("VkFormat") int get_format(MemorySegment segment) { return VkImageViewCreateInfo.get_format(segment, 0L); }
-    /// {@return `format` at the given index}
-    /// @param index the index
-    public @CType("VkFormat") int formatAt(long index) { return VkImageViewCreateInfo.get_format(this.segment(), index); }
     /// {@return `format`}
     public @CType("VkFormat") int format() { return VkImageViewCreateInfo.get_format(this.segment()); }
     /// Sets `format` with the given value at the given index.
@@ -299,11 +275,6 @@ public final class VkImageViewCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_format(MemorySegment segment, @CType("VkFormat") int value) { VkImageViewCreateInfo.set_format(segment, 0L, value); }
-    /// Sets `format` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageViewCreateInfo formatAt(long index, @CType("VkFormat") int value) { VkImageViewCreateInfo.set_format(this.segment(), index, value); return this; }
     /// Sets `format` with the given value.
     /// @param value the value
     /// @return `this`
@@ -316,9 +287,6 @@ public final class VkImageViewCreateInfo extends Struct {
     /// {@return `components`}
     /// @param segment the segment of the struct
     public static @CType("VkComponentMapping") java.lang.foreign.MemorySegment get_components(MemorySegment segment) { return VkImageViewCreateInfo.get_components(segment, 0L); }
-    /// {@return `components` at the given index}
-    /// @param index the index
-    public @CType("VkComponentMapping") java.lang.foreign.MemorySegment componentsAt(long index) { return VkImageViewCreateInfo.get_components(this.segment(), index); }
     /// {@return `components`}
     public @CType("VkComponentMapping") java.lang.foreign.MemorySegment components() { return VkImageViewCreateInfo.get_components(this.segment()); }
     /// Sets `components` with the given value at the given index.
@@ -330,11 +298,6 @@ public final class VkImageViewCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_components(MemorySegment segment, @CType("VkComponentMapping") java.lang.foreign.MemorySegment value) { VkImageViewCreateInfo.set_components(segment, 0L, value); }
-    /// Sets `components` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageViewCreateInfo componentsAt(long index, @CType("VkComponentMapping") java.lang.foreign.MemorySegment value) { VkImageViewCreateInfo.set_components(this.segment(), index, value); return this; }
     /// Sets `components` with the given value.
     /// @param value the value
     /// @return `this`
@@ -347,9 +310,6 @@ public final class VkImageViewCreateInfo extends Struct {
     /// {@return `subresourceRange`}
     /// @param segment the segment of the struct
     public static @CType("VkImageSubresourceRange") java.lang.foreign.MemorySegment get_subresourceRange(MemorySegment segment) { return VkImageViewCreateInfo.get_subresourceRange(segment, 0L); }
-    /// {@return `subresourceRange` at the given index}
-    /// @param index the index
-    public @CType("VkImageSubresourceRange") java.lang.foreign.MemorySegment subresourceRangeAt(long index) { return VkImageViewCreateInfo.get_subresourceRange(this.segment(), index); }
     /// {@return `subresourceRange`}
     public @CType("VkImageSubresourceRange") java.lang.foreign.MemorySegment subresourceRange() { return VkImageViewCreateInfo.get_subresourceRange(this.segment()); }
     /// Sets `subresourceRange` with the given value at the given index.
@@ -361,14 +321,104 @@ public final class VkImageViewCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_subresourceRange(MemorySegment segment, @CType("VkImageSubresourceRange") java.lang.foreign.MemorySegment value) { VkImageViewCreateInfo.set_subresourceRange(segment, 0L, value); }
-    /// Sets `subresourceRange` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageViewCreateInfo subresourceRangeAt(long index, @CType("VkImageSubresourceRange") java.lang.foreign.MemorySegment value) { VkImageViewCreateInfo.set_subresourceRange(this.segment(), index, value); return this; }
     /// Sets `subresourceRange` with the given value.
     /// @param value the value
     /// @return `this`
     public VkImageViewCreateInfo subresourceRange(@CType("VkImageSubresourceRange") java.lang.foreign.MemorySegment value) { VkImageViewCreateInfo.set_subresourceRange(this.segment(), value); return this; }
 
+    /// A buffer of [VkImageViewCreateInfo].
+    public static final class Buffer extends VkImageViewCreateInfo {
+        private final long elementCount;
+
+        /// Creates `VkImageViewCreateInfo.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkImageViewCreateInfo`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkImageViewCreateInfo`
+        public VkImageViewCreateInfo asSlice(long index) { return new VkImageViewCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkImageViewCreateInfo`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkImageViewCreateInfo`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkImageViewCreateInfo.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkImageViewCreateInfo.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkImageViewCreateInfo.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkImageViewCreateInfo.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `flags` at the given index}
+        /// @param index the index
+        public @CType("VkImageViewCreateFlags") int flagsAt(long index) { return VkImageViewCreateInfo.get_flags(this.segment(), index); }
+        /// Sets `flags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer flagsAt(long index, @CType("VkImageViewCreateFlags") int value) { VkImageViewCreateInfo.set_flags(this.segment(), index, value); return this; }
+
+        /// {@return `image` at the given index}
+        /// @param index the index
+        public @CType("VkImage") java.lang.foreign.MemorySegment imageAt(long index) { return VkImageViewCreateInfo.get_image(this.segment(), index); }
+        /// Sets `image` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer imageAt(long index, @CType("VkImage") java.lang.foreign.MemorySegment value) { VkImageViewCreateInfo.set_image(this.segment(), index, value); return this; }
+
+        /// {@return `viewType` at the given index}
+        /// @param index the index
+        public @CType("VkImageViewType") int viewTypeAt(long index) { return VkImageViewCreateInfo.get_viewType(this.segment(), index); }
+        /// Sets `viewType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer viewTypeAt(long index, @CType("VkImageViewType") int value) { VkImageViewCreateInfo.set_viewType(this.segment(), index, value); return this; }
+
+        /// {@return `format` at the given index}
+        /// @param index the index
+        public @CType("VkFormat") int formatAt(long index) { return VkImageViewCreateInfo.get_format(this.segment(), index); }
+        /// Sets `format` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer formatAt(long index, @CType("VkFormat") int value) { VkImageViewCreateInfo.set_format(this.segment(), index, value); return this; }
+
+        /// {@return `components` at the given index}
+        /// @param index the index
+        public @CType("VkComponentMapping") java.lang.foreign.MemorySegment componentsAt(long index) { return VkImageViewCreateInfo.get_components(this.segment(), index); }
+        /// Sets `components` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer componentsAt(long index, @CType("VkComponentMapping") java.lang.foreign.MemorySegment value) { VkImageViewCreateInfo.set_components(this.segment(), index, value); return this; }
+
+        /// {@return `subresourceRange` at the given index}
+        /// @param index the index
+        public @CType("VkImageSubresourceRange") java.lang.foreign.MemorySegment subresourceRangeAt(long index) { return VkImageViewCreateInfo.get_subresourceRange(this.segment(), index); }
+        /// Sets `subresourceRange` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer subresourceRangeAt(long index, @CType("VkImageSubresourceRange") java.lang.foreign.MemorySegment value) { VkImageViewCreateInfo.set_subresourceRange(this.segment(), index, value); return this; }
+
+    }
 }

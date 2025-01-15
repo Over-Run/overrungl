@@ -46,7 +46,7 @@ import overrungl.util.*;
 ///     VkBool32 discardable;
 /// } VkMicromapBuildSizesInfoEXT;
 /// ```
-public final class VkMicromapBuildSizesInfoEXT extends Struct {
+public sealed class VkMicromapBuildSizesInfoEXT extends Struct {
     /// The struct layout of `VkMicromapBuildSizesInfoEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -76,6 +76,11 @@ public final class VkMicromapBuildSizesInfoEXT extends Struct {
     public static VkMicromapBuildSizesInfoEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkMicromapBuildSizesInfoEXT(segment); }
 
     /// Creates `VkMicromapBuildSizesInfoEXT` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkMicromapBuildSizesInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -88,7 +93,7 @@ public final class VkMicromapBuildSizesInfoEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkMicromapBuildSizesInfoEXT ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkMicromapBuildSizesInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkMicromapBuildSizesInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -99,7 +104,21 @@ public final class VkMicromapBuildSizesInfoEXT extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkMicromapBuildSizesInfoEXT`
-    public static VkMicromapBuildSizesInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkMicromapBuildSizesInfoEXT(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkMicromapBuildSizesInfoEXT` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkMicromapBuildSizesInfoEXT`
+    public static VkMicromapBuildSizesInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkDeviceSize") long micromapSize, @CType("VkDeviceSize") long buildScratchSize, @CType("VkBool32") int discardable) { return alloc(allocator).sType(sType).pNext(pNext).micromapSize(micromapSize).buildScratchSize(buildScratchSize).discardable(discardable); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkMicromapBuildSizesInfoEXT copyFrom(VkMicromapBuildSizesInfoEXT src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -108,9 +127,6 @@ public final class VkMicromapBuildSizesInfoEXT extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkMicromapBuildSizesInfoEXT.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkMicromapBuildSizesInfoEXT.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkMicromapBuildSizesInfoEXT.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -122,11 +138,6 @@ public final class VkMicromapBuildSizesInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkMicromapBuildSizesInfoEXT.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkMicromapBuildSizesInfoEXT sTypeAt(long index, @CType("VkStructureType") int value) { VkMicromapBuildSizesInfoEXT.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -139,9 +150,6 @@ public final class VkMicromapBuildSizesInfoEXT extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkMicromapBuildSizesInfoEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkMicromapBuildSizesInfoEXT.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkMicromapBuildSizesInfoEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -153,11 +161,6 @@ public final class VkMicromapBuildSizesInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkMicromapBuildSizesInfoEXT.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkMicromapBuildSizesInfoEXT pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkMicromapBuildSizesInfoEXT.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -170,9 +173,6 @@ public final class VkMicromapBuildSizesInfoEXT extends Struct {
     /// {@return `micromapSize`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_micromapSize(MemorySegment segment) { return VkMicromapBuildSizesInfoEXT.get_micromapSize(segment, 0L); }
-    /// {@return `micromapSize` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long micromapSizeAt(long index) { return VkMicromapBuildSizesInfoEXT.get_micromapSize(this.segment(), index); }
     /// {@return `micromapSize`}
     public @CType("VkDeviceSize") long micromapSize() { return VkMicromapBuildSizesInfoEXT.get_micromapSize(this.segment()); }
     /// Sets `micromapSize` with the given value at the given index.
@@ -184,11 +184,6 @@ public final class VkMicromapBuildSizesInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_micromapSize(MemorySegment segment, @CType("VkDeviceSize") long value) { VkMicromapBuildSizesInfoEXT.set_micromapSize(segment, 0L, value); }
-    /// Sets `micromapSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkMicromapBuildSizesInfoEXT micromapSizeAt(long index, @CType("VkDeviceSize") long value) { VkMicromapBuildSizesInfoEXT.set_micromapSize(this.segment(), index, value); return this; }
     /// Sets `micromapSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -201,9 +196,6 @@ public final class VkMicromapBuildSizesInfoEXT extends Struct {
     /// {@return `buildScratchSize`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_buildScratchSize(MemorySegment segment) { return VkMicromapBuildSizesInfoEXT.get_buildScratchSize(segment, 0L); }
-    /// {@return `buildScratchSize` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long buildScratchSizeAt(long index) { return VkMicromapBuildSizesInfoEXT.get_buildScratchSize(this.segment(), index); }
     /// {@return `buildScratchSize`}
     public @CType("VkDeviceSize") long buildScratchSize() { return VkMicromapBuildSizesInfoEXT.get_buildScratchSize(this.segment()); }
     /// Sets `buildScratchSize` with the given value at the given index.
@@ -215,11 +207,6 @@ public final class VkMicromapBuildSizesInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_buildScratchSize(MemorySegment segment, @CType("VkDeviceSize") long value) { VkMicromapBuildSizesInfoEXT.set_buildScratchSize(segment, 0L, value); }
-    /// Sets `buildScratchSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkMicromapBuildSizesInfoEXT buildScratchSizeAt(long index, @CType("VkDeviceSize") long value) { VkMicromapBuildSizesInfoEXT.set_buildScratchSize(this.segment(), index, value); return this; }
     /// Sets `buildScratchSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -232,9 +219,6 @@ public final class VkMicromapBuildSizesInfoEXT extends Struct {
     /// {@return `discardable`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_discardable(MemorySegment segment) { return VkMicromapBuildSizesInfoEXT.get_discardable(segment, 0L); }
-    /// {@return `discardable` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int discardableAt(long index) { return VkMicromapBuildSizesInfoEXT.get_discardable(this.segment(), index); }
     /// {@return `discardable`}
     public @CType("VkBool32") int discardable() { return VkMicromapBuildSizesInfoEXT.get_discardable(this.segment()); }
     /// Sets `discardable` with the given value at the given index.
@@ -246,14 +230,77 @@ public final class VkMicromapBuildSizesInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_discardable(MemorySegment segment, @CType("VkBool32") int value) { VkMicromapBuildSizesInfoEXT.set_discardable(segment, 0L, value); }
-    /// Sets `discardable` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkMicromapBuildSizesInfoEXT discardableAt(long index, @CType("VkBool32") int value) { VkMicromapBuildSizesInfoEXT.set_discardable(this.segment(), index, value); return this; }
     /// Sets `discardable` with the given value.
     /// @param value the value
     /// @return `this`
     public VkMicromapBuildSizesInfoEXT discardable(@CType("VkBool32") int value) { VkMicromapBuildSizesInfoEXT.set_discardable(this.segment(), value); return this; }
 
+    /// A buffer of [VkMicromapBuildSizesInfoEXT].
+    public static final class Buffer extends VkMicromapBuildSizesInfoEXT {
+        private final long elementCount;
+
+        /// Creates `VkMicromapBuildSizesInfoEXT.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkMicromapBuildSizesInfoEXT`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkMicromapBuildSizesInfoEXT`
+        public VkMicromapBuildSizesInfoEXT asSlice(long index) { return new VkMicromapBuildSizesInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkMicromapBuildSizesInfoEXT`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkMicromapBuildSizesInfoEXT`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkMicromapBuildSizesInfoEXT.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkMicromapBuildSizesInfoEXT.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkMicromapBuildSizesInfoEXT.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkMicromapBuildSizesInfoEXT.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `micromapSize` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long micromapSizeAt(long index) { return VkMicromapBuildSizesInfoEXT.get_micromapSize(this.segment(), index); }
+        /// Sets `micromapSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer micromapSizeAt(long index, @CType("VkDeviceSize") long value) { VkMicromapBuildSizesInfoEXT.set_micromapSize(this.segment(), index, value); return this; }
+
+        /// {@return `buildScratchSize` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long buildScratchSizeAt(long index) { return VkMicromapBuildSizesInfoEXT.get_buildScratchSize(this.segment(), index); }
+        /// Sets `buildScratchSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer buildScratchSizeAt(long index, @CType("VkDeviceSize") long value) { VkMicromapBuildSizesInfoEXT.set_buildScratchSize(this.segment(), index, value); return this; }
+
+        /// {@return `discardable` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int discardableAt(long index) { return VkMicromapBuildSizesInfoEXT.get_discardable(this.segment(), index); }
+        /// Sets `discardable` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer discardableAt(long index, @CType("VkBool32") int value) { VkMicromapBuildSizesInfoEXT.set_discardable(this.segment(), index, value); return this; }
+
+    }
 }

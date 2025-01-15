@@ -29,6 +29,7 @@ class Struct(
     private val union: Boolean = false,
     action: Struct.() -> Unit
 ) {
+    private val kindString = if (union) "union" else "struct"
     private val members = mutableListOf<StructMember>()
     val pointerType: CustomTypeSpec by lazy {
         val className = ClassName.get(packageName, name)
@@ -107,8 +108,8 @@ class Struct(
                 sb.appendLine(
                     when (it) {
                         is ValueStructMember -> "/// [VarHandle][#VH_${it.name}] - [Getter][#${it.name}()] - [Setter][#${it.name}(${it.type.carrier})]"
-                        is ByValueStructStructMember -> "/// [Byte offset][#OFFSET_${it.name}] - [Memory layout][#ML_${it.name}] - [Getter][#${it.name}()] - [Setter][#${it.name}(${it.type.carrier})]"
-                        is FixedSizeStructMember -> "/// [Byte offset handle][#MH_${it.name}] - [Memory layout][#ML_${it.name}] - [Getter][#${it.name}(long)] - [Setter][#${it.name}(long, ${it.type.carrier})]"
+                        is ByValueStructStructMember, is FixedSizeStructMember ->
+                            "/// [Byte offset][#OFFSET_${it.name}] - [Memory layout][#ML_${it.name}] - [Getter][#${it.name}()] - [Setter][#${it.name}(${it.type.carrier})]"
                     }
                 )
             }
@@ -118,7 +119,7 @@ class Struct(
                 /// ## Layout
                 /// [Java definition][#LAYOUT]
                 /// ```c
-                /// typedef ${if (union) "union" else "struct"} ${if (cType != null) "$cType " else ""}{
+                /// typedef $kindString ${if (cType != null) "$cType " else ""}{
             """.trimIndent()
         )
         members.forEach {
@@ -133,8 +134,8 @@ class Struct(
 
         sb.appendLine(
             """
-                public final class $name extends ${if (union) "Union" else "Struct"} {
-                    /// The ${if (union) "union" else "struct"} layout of `$cType`.
+                public sealed class $name extends ${if (union) "Union" else "Struct"} {
+                    /// The $kindString layout of `$cType`.
                     public static final ${if (union) "Union" else "Struct"}Layout LAYOUT = ${if (union) "MemoryLayout.unionLayout" else "LayoutBuilder.struct"}(
             """.trimIndent()
         )
@@ -154,19 +155,10 @@ class Struct(
                         """.trimMargin()
                     )
 
-                    is ByValueStructStructMember -> sb.appendLine(
+                    is ByValueStructStructMember, is FixedSizeStructMember -> sb.appendLine(
                         """
                             |    /// The byte offset of `${it.name}`.
                             |    public static final long OFFSET_${it.name} = LAYOUT.byteOffset(PathElement.groupElement("${it.name}"));
-                            |    /// The memory layout of `${it.name}`.
-                            |    public static final MemoryLayout ML_${it.name} = LAYOUT.select(PathElement.groupElement("${it.name}"));
-                        """.trimMargin()
-                    )
-
-                    is FixedSizeStructMember -> sb.appendLine(
-                        """
-                            |    /// The byte offset handle of `${it.name}` of type `(long baseOffset, long elementIndex)long`.
-                            |    public static final MethodHandle MH_${it.name} = LAYOUT.byteOffsetHandle(PathElement.groupElement("${it.name}"), PathElement.sequenceElement());
                             |    /// The memory layout of `${it.name}`.
                             |    public static final MemoryLayout ML_${it.name} = LAYOUT.select(PathElement.groupElement("${it.name}"));
                         """.trimMargin()
@@ -189,6 +181,11 @@ class Struct(
                 |    public static $name of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new $name(segment); }
                 |
                 |    /// Creates `$name` with the given segment.
+                |    /// @param segment the memory segment
+                |    /// @return the created instance or `null` if the segment is `NULL`
+                |    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+                |
+                |    /// Creates `$name` with the given segment.
                 |    ///
                 |    /// Reinterprets the segment if zero-length.
                 |    /// @param segment the memory segment
@@ -201,7 +198,7 @@ class Struct(
                 |    /// @param segment the memory segment
                 |    /// @param count   the count of the buffer
                 |    /// @return the created instance or `null` if the segment is `NULL`
-                |    public static $name ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new $name(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+                |    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
                 |
             """.trimMargin()
         )
@@ -218,7 +215,43 @@ class Struct(
                 |    /// @param allocator the segment allocator
                 |    /// @param count     the count
                 |    /// @return the allocated `$name`
-                |    public static $name alloc(SegmentAllocator allocator, long count) { return new $name(allocator.allocate(LAYOUT, count)); }
+                |    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+                |
+            """.trimMargin()
+        )
+        if (!opaque && !union) {
+            sb.append(
+                """
+                |    /// Allocates a `$name` with the given segment allocator and the initializing arguments.
+                |    /// @param allocator the segment allocator
+                |    /// @return the allocated `$name`
+                |    public static $name allocInit(SegmentAllocator allocator
+            """.trimMargin()
+            )
+            members.forEach { sb.append(", ${it.type.carrierWithC()} ${it.name}") }
+            sb.append(") { return alloc(allocator)")
+            members.forEach { sb.append(".${it.name}(${it.name})") }
+            sb.appendLine("; }")
+            sb.appendLine()
+        }
+
+        // copy
+        sb.appendLine(
+            """
+                |    /// Copies from the given source.
+                |    /// @param src the source
+                |    /// @return `this`
+                |    public $name copyFrom($name src) { this.segment().copyFrom(src.segment()); return this; }
+                |
+            """.trimMargin()
+        )
+
+        // cast
+        sb.appendLine(
+            """
+                |    /// Converts this instance to a buffer.
+                |    /// @return the buffer
+                |    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
                 |
             """.trimMargin()
         )
@@ -227,22 +260,20 @@ class Struct(
             members.forEach {
                 // getters
                 when (it) {
-                    is ValueStructMember, is ByValueStructStructMember -> {
+                    is ValueStructMember, is ByValueStructStructMember, is FixedSizeStructMember -> {
                         // static
                         sb.appendLine(
                             """
                                 |    /// {@return `${it.name}` at the given index}
-                                |    /// @param segment the segment of the struct
+                                |    /// @param segment the segment of the $kindString
                                 |    /// @param index   the index
                                 |    public static ${it.type.carrierWithC()} get_${it.name}(MemorySegment segment, long index) { ${
                                 when (it) {
                                     is ValueStructMember ->
                                         "return (${it.type.carrier}) VH_${it.name}.get(segment, 0L, index);"
 
-                                    is ByValueStructStructMember ->
+                                    is ByValueStructStructMember, is FixedSizeStructMember ->
                                         """return segment.asSlice(LAYOUT.scale(OFFSET_${it.name}, index), ML_${it.name});"""
-
-                                    else -> error("should not reach here")
                                 }
                             } }
                             """.trimMargin()
@@ -250,18 +281,11 @@ class Struct(
                         sb.appendLine(
                             """
                                 |    /// {@return `${it.name}`}
-                                |    /// @param segment the segment of the struct
+                                |    /// @param segment the segment of the $kindString
                                 |    public static ${it.type.carrierWithC()} get_${it.name}(MemorySegment segment) { return $name.get_${it.name}(segment, 0L); }
                             """.trimMargin()
                         )
                         // instance
-                        sb.appendLine(
-                            """
-                                |    /// {@return `${it.name}` at the given index}
-                                |    /// @param index the index
-                                |    public ${it.type.carrierWithC()} ${it.name}At(long index) { return $name.get_${it.name}(this.segment(), index); }
-                            """.trimMargin()
-                        )
                         sb.appendLine(
                             """
                                 |    /// {@return `${it.name}`}
@@ -269,63 +293,22 @@ class Struct(
                             """.trimMargin()
                         )
                     }
-
-                    is FixedSizeStructMember -> {
-                        // static
-                        sb.appendLine(
-                            """
-                                |    /// {@return `${it.name}` at the given index}
-                                |    /// @param segment      the segment of the struct
-                                |    /// @param index        the index of the struct buffer
-                                |    /// @param elementIndex the index of the element
-                                |    public static ${it.type.carrierWithC()} get_${it.name}(MemorySegment segment, long index, long elementIndex) {
-                                |        try { return segment.asSlice(LAYOUT.scale((long) MH_${it.name}.invokeExact(0L, elementIndex), index), ML_${it.name}); }
-                                |        catch (Throwable e) { throw new RuntimeException(e); }
-                                |    }
-                            """.trimMargin()
-                        )
-                        sb.appendLine(
-                            """
-                                |    /// {@return `${it.name}`}
-                                |    /// @param segment      the segment of the struct
-                                |    /// @param elementIndex the index of the element
-                                |    public static ${it.type.carrierWithC()} get_${it.name}(MemorySegment segment, long elementIndex) { return $name.get_${it.name}(segment, 0L, elementIndex); }
-                            """.trimMargin()
-                        )
-                        // instance
-                        sb.appendLine(
-                            """
-                                |    /// {@return `${it.name}` at the given index}
-                                |    /// @param index        the index of the struct buffer
-                                |    /// @param elementIndex the index of the element
-                                |    public ${it.type.carrierWithC()} ${it.name}At(long index, long elementIndex) { return $name.get_${it.name}(this.segment(), index, elementIndex); }
-                            """.trimMargin()
-                        )
-                        sb.appendLine(
-                            """
-                                |    /// {@return `${it.name}`}
-                                |    /// @param elementIndex the index of the element
-                                |    public ${it.type.carrierWithC()} ${it.name}(long elementIndex) { return $name.get_${it.name}(this.segment(), elementIndex); }
-                            """.trimMargin()
-                        )
-                    }
                 }
 
                 // setters
                 when (it) {
-                    is ValueStructMember, is ByValueStructStructMember -> {
+                    is ValueStructMember, is ByValueStructStructMember, is FixedSizeStructMember -> {
                         // static
                         sb.appendLine(
                             """
                                 |    /// Sets `${it.name}` with the given value at the given index.
-                                |    /// @param segment the segment of the struct
+                                |    /// @param segment the segment of the $kindString
                                 |    /// @param index   the index
                                 |    /// @param value   the value
                                 |    public static void set_${it.name}(MemorySegment segment, long index, ${it.type.carrierWithC()} value) { ${
                                 when (it) {
                                     is ValueStructMember -> "VH_${it.name}.set(segment, 0L, index, value);"
-                                    is ByValueStructStructMember -> """MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_${it.name}, index), ML_${it.name}.byteSize());"""
-                                    else -> error("should not reach here")
+                                    is ByValueStructStructMember, is FixedSizeStructMember -> """MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_${it.name}, index), ML_${it.name}.byteSize());"""
                                 }
                             } }
                             """.trimMargin()
@@ -333,21 +316,12 @@ class Struct(
                         sb.appendLine(
                             """
                                 |    /// Sets `${it.name}` with the given value.
-                                |    /// @param segment the segment of the struct
+                                |    /// @param segment the segment of the $kindString
                                 |    /// @param value   the value
                                 |    public static void set_${it.name}(MemorySegment segment, ${it.type.carrierWithC()} value) { $name.set_${it.name}(segment, 0L, value); }
                             """.trimMargin()
                         )
                         // instance
-                        sb.appendLine(
-                            """
-                                |    /// Sets `${it.name}` with the given value at the given index.
-                                |    /// @param index the index
-                                |    /// @param value the value
-                                |    /// @return `this`
-                                |    public $name ${it.name}At(long index, ${it.type.carrierWithC()} value) { $name.set_${it.name}(this.segment(), index, value); return this; }
-                            """.trimMargin()
-                        )
                         sb.appendLine(
                             """
                                 |    /// Sets `${it.name}` with the given value.
@@ -357,49 +331,81 @@ class Struct(
                             """.trimMargin()
                         )
                     }
+                }
 
-                    is FixedSizeStructMember -> {
-                        // static
-                        sb.appendLine(
-                            """
-                                |    /// Sets `${it.name}` with the given value at the given index.
-                                |    /// @param segment      the segment of the struct
-                                |    /// @param index        the index of the struct buffer
-                                |    /// @param elementIndex the index of the element
-                                |    /// @param value        the value
-                                |    public static void set_${it.name}(MemorySegment segment, long index, long elementIndex, ${it.type.carrierWithC()} value) {
-                                |        try { MemorySegment.copy(value, 0L, segment, LAYOUT.scale((long) MH_${it.name}.invokeExact(0L, elementIndex), index), ML_${it.name}.byteSize()); }
-                                |        catch (Throwable e) { throw new RuntimeException(e); }
-                                |    }
-                            """.trimMargin()
-                        )
-                        sb.appendLine(
-                            """
-                                |    /// Sets `${it.name}` with the given value.
-                                |    /// @param segment      the segment of the struct
-                                |    /// @param elementIndex the index of the element
-                                |    /// @param value        the value
-                                |    public static void set_${it.name}(MemorySegment segment, long elementIndex, ${it.type.carrierWithC()} value) { $name.set_${it.name}(segment, 0L, elementIndex, value); }
-                            """.trimMargin()
-                        )
+                sb.appendLine()
+            }
+        }
+
+
+        // buffer
+        sb.appendLine("    /// A buffer of [$name].")
+        sb.appendLine("    public static final class Buffer extends $name {")
+        sb.appendLine("        private final long elementCount;")
+        sb.appendLine()
+
+        // constructor
+        sb.appendLine(
+            """
+                |        /// Creates `$name.Buffer` with the given segment.
+                |        /// @param segment      the memory segment
+                |        /// @param elementCount the element count
+                |        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+                |
+            """.trimMargin()
+        )
+
+        sb.appendLine(
+            """
+                |        @Override public long estimateCount() { return elementCount; }
+                |
+            """.trimMargin()
+        )
+
+        // slice
+        sb.appendLine(
+            """
+                |        /// Creates a slice of `$name`.
+                |        /// @param index the index of the $kindString buffer
+                |        /// @return the slice of `$name`
+                |        public $name asSlice(long index) { return new $name(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+                |
+                |        /// Creates a slice of `$name`.
+                |        /// @param index the index of the $kindString buffer
+                |        /// @param count the count
+                |        /// @return the slice of `$name`
+                |        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+                |
+            """.trimMargin()
+        )
+
+        if (!opaque) {
+            members.forEach {
+                // getters
+                when (it) {
+                    is ValueStructMember, is ByValueStructStructMember, is FixedSizeStructMember -> {
                         // instance
                         sb.appendLine(
                             """
-                                |    /// Sets `${it.name}` with the given value at the given index.
-                                |    /// @param index        the index of the struct buffer
-                                |    /// @param elementIndex the index of the element
-                                |    /// @param value        the value
-                                |    /// @return `this`
-                                |    public $name ${it.name}At(long index, long elementIndex, ${it.type.carrierWithC()} value) { $name.set_${it.name}(this.segment(), index, elementIndex, value); return this; }
+                                |        /// {@return `${it.name}` at the given index}
+                                |        /// @param index the index
+                                |        public ${it.type.carrierWithC()} ${it.name}At(long index) { return $name.get_${it.name}(this.segment(), index); }
                             """.trimMargin()
                         )
+                    }
+                }
+
+                // setters
+                when (it) {
+                    is ValueStructMember, is ByValueStructStructMember, is FixedSizeStructMember -> {
+                        // instance
                         sb.appendLine(
                             """
-                                |    /// Sets `${it.name}` with the given value.
-                                |    /// @param elementIndex the index of the element
-                                |    /// @param value        the value
-                                |    /// @return `this`
-                                |    public $name ${it.name}(long elementIndex, ${it.type.carrierWithC()} value) { $name.set_${it.name}(this.segment(), elementIndex, value); return this; }
+                                |        /// Sets `${it.name}` with the given value at the given index.
+                                |        /// @param index the index
+                                |        /// @param value the value
+                                |        /// @return `this`
+                                |        public Buffer ${it.name}At(long index, ${it.type.carrierWithC()} value) { $name.set_${it.name}(this.segment(), index, value); return this; }
                             """.trimMargin()
                         )
                     }
@@ -408,6 +414,7 @@ class Struct(
                 sb.appendLine()
             }
         }
+        sb.appendLine("    }")
 
         doLast.invoke(sb)
         sb.appendLine("}")

@@ -40,7 +40,7 @@ import overrungl.util.*;
 ///     VkBool32 subpassMergeFeedback;
 /// } VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT;
 /// ```
-public final class VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT extends Struct {
+public sealed class VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT extends Struct {
     /// The struct layout of `VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -64,6 +64,11 @@ public final class VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT extends Struc
     public static VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT(segment); }
 
     /// Creates `VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -76,7 +81,7 @@ public final class VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT extends Struc
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -87,7 +92,21 @@ public final class VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT extends Struc
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT`
-    public static VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT`
+    public static VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int subpassMergeFeedback) { return alloc(allocator).sType(sType).pNext(pNext).subpassMergeFeedback(subpassMergeFeedback); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT copyFrom(VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -96,9 +115,6 @@ public final class VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT extends Struc
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -110,11 +126,6 @@ public final class VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT extends Struc
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -127,9 +138,6 @@ public final class VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT extends Struc
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -141,11 +149,6 @@ public final class VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT extends Struc
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,9 +161,6 @@ public final class VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT extends Struc
     /// {@return `subpassMergeFeedback`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_subpassMergeFeedback(MemorySegment segment) { return VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT.get_subpassMergeFeedback(segment, 0L); }
-    /// {@return `subpassMergeFeedback` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int subpassMergeFeedbackAt(long index) { return VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT.get_subpassMergeFeedback(this.segment(), index); }
     /// {@return `subpassMergeFeedback`}
     public @CType("VkBool32") int subpassMergeFeedback() { return VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT.get_subpassMergeFeedback(this.segment()); }
     /// Sets `subpassMergeFeedback` with the given value at the given index.
@@ -172,14 +172,59 @@ public final class VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT extends Struc
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_subpassMergeFeedback(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT.set_subpassMergeFeedback(segment, 0L, value); }
-    /// Sets `subpassMergeFeedback` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT subpassMergeFeedbackAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT.set_subpassMergeFeedback(this.segment(), index, value); return this; }
     /// Sets `subpassMergeFeedback` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT subpassMergeFeedback(@CType("VkBool32") int value) { VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT.set_subpassMergeFeedback(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT].
+    public static final class Buffer extends VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT`
+        public VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT asSlice(long index) { return new VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `subpassMergeFeedback` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int subpassMergeFeedbackAt(long index) { return VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT.get_subpassMergeFeedback(this.segment(), index); }
+        /// Sets `subpassMergeFeedback` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer subpassMergeFeedbackAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceSubpassMergeFeedbackFeaturesEXT.set_subpassMergeFeedback(this.segment(), index, value); return this; }
+
+    }
 }

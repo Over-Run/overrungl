@@ -22,11 +22,10 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKAMDShaderExplicitVertexParameter {
+public final class VKAMDShaderExplicitVertexParameter {
     public static final int VK_AMD_SHADER_EXPLICIT_VERTEX_PARAMETER_SPEC_VERSION = 1;
     public static final String VK_AMD_SHADER_EXPLICIT_VERTEX_PARAMETER_EXTENSION_NAME = "VK_AMD_shader_explicit_vertex_parameter";
 
-    public VKAMDShaderExplicitVertexParameter(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKAMDShaderExplicitVertexParameter() { }
 
 }

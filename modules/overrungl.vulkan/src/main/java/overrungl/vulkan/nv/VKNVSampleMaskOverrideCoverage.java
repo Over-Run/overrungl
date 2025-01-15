@@ -22,11 +22,10 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKNVSampleMaskOverrideCoverage {
+public final class VKNVSampleMaskOverrideCoverage {
     public static final int VK_NV_SAMPLE_MASK_OVERRIDE_COVERAGE_SPEC_VERSION = 1;
     public static final String VK_NV_SAMPLE_MASK_OVERRIDE_COVERAGE_EXTENSION_NAME = "VK_NV_sample_mask_override_coverage";
 
-    public VKNVSampleMaskOverrideCoverage(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKNVSampleMaskOverrideCoverage() { }
 
 }

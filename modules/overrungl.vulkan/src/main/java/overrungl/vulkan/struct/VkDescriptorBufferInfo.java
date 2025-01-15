@@ -40,7 +40,7 @@ import overrungl.util.*;
 ///     VkDeviceSize range;
 /// } VkDescriptorBufferInfo;
 /// ```
-public final class VkDescriptorBufferInfo extends Struct {
+public sealed class VkDescriptorBufferInfo extends Struct {
     /// The struct layout of `VkDescriptorBufferInfo`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.ADDRESS.withName("buffer"),
@@ -64,6 +64,11 @@ public final class VkDescriptorBufferInfo extends Struct {
     public static VkDescriptorBufferInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDescriptorBufferInfo(segment); }
 
     /// Creates `VkDescriptorBufferInfo` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkDescriptorBufferInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -76,7 +81,7 @@ public final class VkDescriptorBufferInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDescriptorBufferInfo ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkDescriptorBufferInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkDescriptorBufferInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -87,7 +92,21 @@ public final class VkDescriptorBufferInfo extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDescriptorBufferInfo`
-    public static VkDescriptorBufferInfo alloc(SegmentAllocator allocator, long count) { return new VkDescriptorBufferInfo(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkDescriptorBufferInfo` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkDescriptorBufferInfo`
+    public static VkDescriptorBufferInfo allocInit(SegmentAllocator allocator, @CType("VkBuffer") java.lang.foreign.MemorySegment buffer, @CType("VkDeviceSize") long offset, @CType("VkDeviceSize") long range) { return alloc(allocator).buffer(buffer).offset(offset).range(range); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkDescriptorBufferInfo copyFrom(VkDescriptorBufferInfo src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `buffer` at the given index}
     /// @param segment the segment of the struct
@@ -96,9 +115,6 @@ public final class VkDescriptorBufferInfo extends Struct {
     /// {@return `buffer`}
     /// @param segment the segment of the struct
     public static @CType("VkBuffer") java.lang.foreign.MemorySegment get_buffer(MemorySegment segment) { return VkDescriptorBufferInfo.get_buffer(segment, 0L); }
-    /// {@return `buffer` at the given index}
-    /// @param index the index
-    public @CType("VkBuffer") java.lang.foreign.MemorySegment bufferAt(long index) { return VkDescriptorBufferInfo.get_buffer(this.segment(), index); }
     /// {@return `buffer`}
     public @CType("VkBuffer") java.lang.foreign.MemorySegment buffer() { return VkDescriptorBufferInfo.get_buffer(this.segment()); }
     /// Sets `buffer` with the given value at the given index.
@@ -110,11 +126,6 @@ public final class VkDescriptorBufferInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_buffer(MemorySegment segment, @CType("VkBuffer") java.lang.foreign.MemorySegment value) { VkDescriptorBufferInfo.set_buffer(segment, 0L, value); }
-    /// Sets `buffer` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorBufferInfo bufferAt(long index, @CType("VkBuffer") java.lang.foreign.MemorySegment value) { VkDescriptorBufferInfo.set_buffer(this.segment(), index, value); return this; }
     /// Sets `buffer` with the given value.
     /// @param value the value
     /// @return `this`
@@ -127,9 +138,6 @@ public final class VkDescriptorBufferInfo extends Struct {
     /// {@return `offset`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_offset(MemorySegment segment) { return VkDescriptorBufferInfo.get_offset(segment, 0L); }
-    /// {@return `offset` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long offsetAt(long index) { return VkDescriptorBufferInfo.get_offset(this.segment(), index); }
     /// {@return `offset`}
     public @CType("VkDeviceSize") long offset() { return VkDescriptorBufferInfo.get_offset(this.segment()); }
     /// Sets `offset` with the given value at the given index.
@@ -141,11 +149,6 @@ public final class VkDescriptorBufferInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_offset(MemorySegment segment, @CType("VkDeviceSize") long value) { VkDescriptorBufferInfo.set_offset(segment, 0L, value); }
-    /// Sets `offset` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorBufferInfo offsetAt(long index, @CType("VkDeviceSize") long value) { VkDescriptorBufferInfo.set_offset(this.segment(), index, value); return this; }
     /// Sets `offset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,9 +161,6 @@ public final class VkDescriptorBufferInfo extends Struct {
     /// {@return `range`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_range(MemorySegment segment) { return VkDescriptorBufferInfo.get_range(segment, 0L); }
-    /// {@return `range` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long rangeAt(long index) { return VkDescriptorBufferInfo.get_range(this.segment(), index); }
     /// {@return `range`}
     public @CType("VkDeviceSize") long range() { return VkDescriptorBufferInfo.get_range(this.segment()); }
     /// Sets `range` with the given value at the given index.
@@ -172,14 +172,59 @@ public final class VkDescriptorBufferInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_range(MemorySegment segment, @CType("VkDeviceSize") long value) { VkDescriptorBufferInfo.set_range(segment, 0L, value); }
-    /// Sets `range` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorBufferInfo rangeAt(long index, @CType("VkDeviceSize") long value) { VkDescriptorBufferInfo.set_range(this.segment(), index, value); return this; }
     /// Sets `range` with the given value.
     /// @param value the value
     /// @return `this`
     public VkDescriptorBufferInfo range(@CType("VkDeviceSize") long value) { VkDescriptorBufferInfo.set_range(this.segment(), value); return this; }
 
+    /// A buffer of [VkDescriptorBufferInfo].
+    public static final class Buffer extends VkDescriptorBufferInfo {
+        private final long elementCount;
+
+        /// Creates `VkDescriptorBufferInfo.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkDescriptorBufferInfo`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkDescriptorBufferInfo`
+        public VkDescriptorBufferInfo asSlice(long index) { return new VkDescriptorBufferInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkDescriptorBufferInfo`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkDescriptorBufferInfo`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `buffer` at the given index}
+        /// @param index the index
+        public @CType("VkBuffer") java.lang.foreign.MemorySegment bufferAt(long index) { return VkDescriptorBufferInfo.get_buffer(this.segment(), index); }
+        /// Sets `buffer` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer bufferAt(long index, @CType("VkBuffer") java.lang.foreign.MemorySegment value) { VkDescriptorBufferInfo.set_buffer(this.segment(), index, value); return this; }
+
+        /// {@return `offset` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long offsetAt(long index) { return VkDescriptorBufferInfo.get_offset(this.segment(), index); }
+        /// Sets `offset` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer offsetAt(long index, @CType("VkDeviceSize") long value) { VkDescriptorBufferInfo.set_offset(this.segment(), index, value); return this; }
+
+        /// {@return `range` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long rangeAt(long index) { return VkDescriptorBufferInfo.get_range(this.segment(), index); }
+        /// Sets `range` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer rangeAt(long index, @CType("VkDeviceSize") long value) { VkDescriptorBufferInfo.set_range(this.segment(), index, value); return this; }
+
+    }
 }

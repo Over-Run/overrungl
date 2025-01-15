@@ -22,7 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKNVRayTracingMotionBlur {
+public final class VKNVRayTracingMotionBlur {
     public static final int VK_ACCELERATION_STRUCTURE_MOTION_INSTANCE_TYPE_STATIC_NV = 0;
     public static final int VK_ACCELERATION_STRUCTURE_MOTION_INSTANCE_TYPE_MATRIX_MOTION_NV = 1;
     public static final int VK_ACCELERATION_STRUCTURE_MOTION_INSTANCE_TYPE_SRT_MOTION_NV = 2;
@@ -35,7 +35,6 @@ public class VKNVRayTracingMotionBlur {
     public static final int VK_ACCELERATION_STRUCTURE_CREATE_MOTION_BIT_NV = 0x00000004;
     public static final int VK_PIPELINE_CREATE_RAY_TRACING_ALLOW_MOTION_BIT_NV = 0x00100000;
 
-    public VKNVRayTracingMotionBlur(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKNVRayTracingMotionBlur() { }
 
 }

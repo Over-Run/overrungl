@@ -112,7 +112,7 @@ import overrungl.util.*;
 ///     const uint32_t * pBufferRemovalTimes;
 /// } StdVideoEncodeAV1PictureInfo;
 /// ```
-public final class StdVideoEncodeAV1PictureInfo extends Struct {
+public sealed class StdVideoEncodeAV1PictureInfo extends Struct {
     /// The struct layout of `StdVideoEncodeAV1PictureInfo`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         StdVideoEncodeAV1PictureInfoFlags.LAYOUT.withName("flags"),
@@ -208,6 +208,11 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     public static StdVideoEncodeAV1PictureInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoEncodeAV1PictureInfo(segment); }
 
     /// Creates `StdVideoEncodeAV1PictureInfo` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `StdVideoEncodeAV1PictureInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -220,7 +225,7 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoEncodeAV1PictureInfo ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoEncodeAV1PictureInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `StdVideoEncodeAV1PictureInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -231,7 +236,21 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `StdVideoEncodeAV1PictureInfo`
-    public static StdVideoEncodeAV1PictureInfo alloc(SegmentAllocator allocator, long count) { return new StdVideoEncodeAV1PictureInfo(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `StdVideoEncodeAV1PictureInfo` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `StdVideoEncodeAV1PictureInfo`
+    public static StdVideoEncodeAV1PictureInfo allocInit(SegmentAllocator allocator, @CType("StdVideoEncodeAV1PictureInfoFlags") java.lang.foreign.MemorySegment flags, @CType("StdVideoAV1FrameType") int frame_type, @CType("uint32_t") int frame_presentation_time, @CType("uint32_t") int current_frame_id, @CType("uint8_t") byte order_hint, @CType("uint8_t") byte primary_ref_frame, @CType("uint8_t") byte refresh_frame_flags, @CType("uint8_t") byte coded_denom, @CType("uint16_t") short render_width_minus_1, @CType("uint16_t") short render_height_minus_1, @CType("StdVideoAV1InterpolationFilter") int interpolation_filter, @CType("StdVideoAV1TxMode") int TxMode, @CType("uint8_t") byte delta_q_res, @CType("uint8_t") byte delta_lf_res, @CType("uint8_t [ ]") byte ref_order_hint, @CType("int8_t [ ]") byte ref_frame_idx, @CType("uint8_t [3]") byte reserved1, @CType("uint32_t [ ]") int delta_frame_id_minus_1, @CType("const StdVideoAV1TileInfo *") java.lang.foreign.MemorySegment pTileInfo, @CType("const StdVideoAV1Quantization *") java.lang.foreign.MemorySegment pQuantization, @CType("const StdVideoAV1Segmentation *") java.lang.foreign.MemorySegment pSegmentation, @CType("const StdVideoAV1LoopFilter *") java.lang.foreign.MemorySegment pLoopFilter, @CType("const StdVideoAV1CDEF *") java.lang.foreign.MemorySegment pCDEF, @CType("const StdVideoAV1LoopRestoration *") java.lang.foreign.MemorySegment pLoopRestoration, @CType("const StdVideoAV1GlobalMotion *") java.lang.foreign.MemorySegment pGlobalMotion, @CType("const StdVideoEncodeAV1ExtensionHeader *") java.lang.foreign.MemorySegment pExtensionHeader, @CType("const uint32_t *") java.lang.foreign.MemorySegment pBufferRemovalTimes) { return alloc(allocator).flags(flags).frame_type(frame_type).frame_presentation_time(frame_presentation_time).current_frame_id(current_frame_id).order_hint(order_hint).primary_ref_frame(primary_ref_frame).refresh_frame_flags(refresh_frame_flags).coded_denom(coded_denom).render_width_minus_1(render_width_minus_1).render_height_minus_1(render_height_minus_1).interpolation_filter(interpolation_filter).TxMode(TxMode).delta_q_res(delta_q_res).delta_lf_res(delta_lf_res).ref_order_hint(ref_order_hint).ref_frame_idx(ref_frame_idx).reserved1(reserved1).delta_frame_id_minus_1(delta_frame_id_minus_1).pTileInfo(pTileInfo).pQuantization(pQuantization).pSegmentation(pSegmentation).pLoopFilter(pLoopFilter).pCDEF(pCDEF).pLoopRestoration(pLoopRestoration).pGlobalMotion(pGlobalMotion).pExtensionHeader(pExtensionHeader).pBufferRemovalTimes(pBufferRemovalTimes); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public StdVideoEncodeAV1PictureInfo copyFrom(StdVideoEncodeAV1PictureInfo src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
@@ -240,9 +259,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// {@return `flags`}
     /// @param segment the segment of the struct
     public static @CType("StdVideoEncodeAV1PictureInfoFlags") java.lang.foreign.MemorySegment get_flags(MemorySegment segment) { return StdVideoEncodeAV1PictureInfo.get_flags(segment, 0L); }
-    /// {@return `flags` at the given index}
-    /// @param index the index
-    public @CType("StdVideoEncodeAV1PictureInfoFlags") java.lang.foreign.MemorySegment flagsAt(long index) { return StdVideoEncodeAV1PictureInfo.get_flags(this.segment(), index); }
     /// {@return `flags`}
     public @CType("StdVideoEncodeAV1PictureInfoFlags") java.lang.foreign.MemorySegment flags() { return StdVideoEncodeAV1PictureInfo.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
@@ -254,11 +270,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_flags(MemorySegment segment, @CType("StdVideoEncodeAV1PictureInfoFlags") java.lang.foreign.MemorySegment value) { StdVideoEncodeAV1PictureInfo.set_flags(segment, 0L, value); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeAV1PictureInfo flagsAt(long index, @CType("StdVideoEncodeAV1PictureInfoFlags") java.lang.foreign.MemorySegment value) { StdVideoEncodeAV1PictureInfo.set_flags(this.segment(), index, value); return this; }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -271,9 +282,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// {@return `frame_type`}
     /// @param segment the segment of the struct
     public static @CType("StdVideoAV1FrameType") int get_frame_type(MemorySegment segment) { return StdVideoEncodeAV1PictureInfo.get_frame_type(segment, 0L); }
-    /// {@return `frame_type` at the given index}
-    /// @param index the index
-    public @CType("StdVideoAV1FrameType") int frame_typeAt(long index) { return StdVideoEncodeAV1PictureInfo.get_frame_type(this.segment(), index); }
     /// {@return `frame_type`}
     public @CType("StdVideoAV1FrameType") int frame_type() { return StdVideoEncodeAV1PictureInfo.get_frame_type(this.segment()); }
     /// Sets `frame_type` with the given value at the given index.
@@ -285,11 +293,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_frame_type(MemorySegment segment, @CType("StdVideoAV1FrameType") int value) { StdVideoEncodeAV1PictureInfo.set_frame_type(segment, 0L, value); }
-    /// Sets `frame_type` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeAV1PictureInfo frame_typeAt(long index, @CType("StdVideoAV1FrameType") int value) { StdVideoEncodeAV1PictureInfo.set_frame_type(this.segment(), index, value); return this; }
     /// Sets `frame_type` with the given value.
     /// @param value the value
     /// @return `this`
@@ -302,9 +305,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// {@return `frame_presentation_time`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_frame_presentation_time(MemorySegment segment) { return StdVideoEncodeAV1PictureInfo.get_frame_presentation_time(segment, 0L); }
-    /// {@return `frame_presentation_time` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int frame_presentation_timeAt(long index) { return StdVideoEncodeAV1PictureInfo.get_frame_presentation_time(this.segment(), index); }
     /// {@return `frame_presentation_time`}
     public @CType("uint32_t") int frame_presentation_time() { return StdVideoEncodeAV1PictureInfo.get_frame_presentation_time(this.segment()); }
     /// Sets `frame_presentation_time` with the given value at the given index.
@@ -316,11 +316,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_frame_presentation_time(MemorySegment segment, @CType("uint32_t") int value) { StdVideoEncodeAV1PictureInfo.set_frame_presentation_time(segment, 0L, value); }
-    /// Sets `frame_presentation_time` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeAV1PictureInfo frame_presentation_timeAt(long index, @CType("uint32_t") int value) { StdVideoEncodeAV1PictureInfo.set_frame_presentation_time(this.segment(), index, value); return this; }
     /// Sets `frame_presentation_time` with the given value.
     /// @param value the value
     /// @return `this`
@@ -333,9 +328,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// {@return `current_frame_id`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_current_frame_id(MemorySegment segment) { return StdVideoEncodeAV1PictureInfo.get_current_frame_id(segment, 0L); }
-    /// {@return `current_frame_id` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int current_frame_idAt(long index) { return StdVideoEncodeAV1PictureInfo.get_current_frame_id(this.segment(), index); }
     /// {@return `current_frame_id`}
     public @CType("uint32_t") int current_frame_id() { return StdVideoEncodeAV1PictureInfo.get_current_frame_id(this.segment()); }
     /// Sets `current_frame_id` with the given value at the given index.
@@ -347,11 +339,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_current_frame_id(MemorySegment segment, @CType("uint32_t") int value) { StdVideoEncodeAV1PictureInfo.set_current_frame_id(segment, 0L, value); }
-    /// Sets `current_frame_id` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeAV1PictureInfo current_frame_idAt(long index, @CType("uint32_t") int value) { StdVideoEncodeAV1PictureInfo.set_current_frame_id(this.segment(), index, value); return this; }
     /// Sets `current_frame_id` with the given value.
     /// @param value the value
     /// @return `this`
@@ -364,9 +351,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// {@return `order_hint`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t") byte get_order_hint(MemorySegment segment) { return StdVideoEncodeAV1PictureInfo.get_order_hint(segment, 0L); }
-    /// {@return `order_hint` at the given index}
-    /// @param index the index
-    public @CType("uint8_t") byte order_hintAt(long index) { return StdVideoEncodeAV1PictureInfo.get_order_hint(this.segment(), index); }
     /// {@return `order_hint`}
     public @CType("uint8_t") byte order_hint() { return StdVideoEncodeAV1PictureInfo.get_order_hint(this.segment()); }
     /// Sets `order_hint` with the given value at the given index.
@@ -378,11 +362,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_order_hint(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoEncodeAV1PictureInfo.set_order_hint(segment, 0L, value); }
-    /// Sets `order_hint` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeAV1PictureInfo order_hintAt(long index, @CType("uint8_t") byte value) { StdVideoEncodeAV1PictureInfo.set_order_hint(this.segment(), index, value); return this; }
     /// Sets `order_hint` with the given value.
     /// @param value the value
     /// @return `this`
@@ -395,9 +374,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// {@return `primary_ref_frame`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t") byte get_primary_ref_frame(MemorySegment segment) { return StdVideoEncodeAV1PictureInfo.get_primary_ref_frame(segment, 0L); }
-    /// {@return `primary_ref_frame` at the given index}
-    /// @param index the index
-    public @CType("uint8_t") byte primary_ref_frameAt(long index) { return StdVideoEncodeAV1PictureInfo.get_primary_ref_frame(this.segment(), index); }
     /// {@return `primary_ref_frame`}
     public @CType("uint8_t") byte primary_ref_frame() { return StdVideoEncodeAV1PictureInfo.get_primary_ref_frame(this.segment()); }
     /// Sets `primary_ref_frame` with the given value at the given index.
@@ -409,11 +385,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_primary_ref_frame(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoEncodeAV1PictureInfo.set_primary_ref_frame(segment, 0L, value); }
-    /// Sets `primary_ref_frame` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeAV1PictureInfo primary_ref_frameAt(long index, @CType("uint8_t") byte value) { StdVideoEncodeAV1PictureInfo.set_primary_ref_frame(this.segment(), index, value); return this; }
     /// Sets `primary_ref_frame` with the given value.
     /// @param value the value
     /// @return `this`
@@ -426,9 +397,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// {@return `refresh_frame_flags`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t") byte get_refresh_frame_flags(MemorySegment segment) { return StdVideoEncodeAV1PictureInfo.get_refresh_frame_flags(segment, 0L); }
-    /// {@return `refresh_frame_flags` at the given index}
-    /// @param index the index
-    public @CType("uint8_t") byte refresh_frame_flagsAt(long index) { return StdVideoEncodeAV1PictureInfo.get_refresh_frame_flags(this.segment(), index); }
     /// {@return `refresh_frame_flags`}
     public @CType("uint8_t") byte refresh_frame_flags() { return StdVideoEncodeAV1PictureInfo.get_refresh_frame_flags(this.segment()); }
     /// Sets `refresh_frame_flags` with the given value at the given index.
@@ -440,11 +408,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_refresh_frame_flags(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoEncodeAV1PictureInfo.set_refresh_frame_flags(segment, 0L, value); }
-    /// Sets `refresh_frame_flags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeAV1PictureInfo refresh_frame_flagsAt(long index, @CType("uint8_t") byte value) { StdVideoEncodeAV1PictureInfo.set_refresh_frame_flags(this.segment(), index, value); return this; }
     /// Sets `refresh_frame_flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -457,9 +420,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// {@return `coded_denom`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t") byte get_coded_denom(MemorySegment segment) { return StdVideoEncodeAV1PictureInfo.get_coded_denom(segment, 0L); }
-    /// {@return `coded_denom` at the given index}
-    /// @param index the index
-    public @CType("uint8_t") byte coded_denomAt(long index) { return StdVideoEncodeAV1PictureInfo.get_coded_denom(this.segment(), index); }
     /// {@return `coded_denom`}
     public @CType("uint8_t") byte coded_denom() { return StdVideoEncodeAV1PictureInfo.get_coded_denom(this.segment()); }
     /// Sets `coded_denom` with the given value at the given index.
@@ -471,11 +431,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_coded_denom(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoEncodeAV1PictureInfo.set_coded_denom(segment, 0L, value); }
-    /// Sets `coded_denom` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeAV1PictureInfo coded_denomAt(long index, @CType("uint8_t") byte value) { StdVideoEncodeAV1PictureInfo.set_coded_denom(this.segment(), index, value); return this; }
     /// Sets `coded_denom` with the given value.
     /// @param value the value
     /// @return `this`
@@ -488,9 +443,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// {@return `render_width_minus_1`}
     /// @param segment the segment of the struct
     public static @CType("uint16_t") short get_render_width_minus_1(MemorySegment segment) { return StdVideoEncodeAV1PictureInfo.get_render_width_minus_1(segment, 0L); }
-    /// {@return `render_width_minus_1` at the given index}
-    /// @param index the index
-    public @CType("uint16_t") short render_width_minus_1At(long index) { return StdVideoEncodeAV1PictureInfo.get_render_width_minus_1(this.segment(), index); }
     /// {@return `render_width_minus_1`}
     public @CType("uint16_t") short render_width_minus_1() { return StdVideoEncodeAV1PictureInfo.get_render_width_minus_1(this.segment()); }
     /// Sets `render_width_minus_1` with the given value at the given index.
@@ -502,11 +454,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_render_width_minus_1(MemorySegment segment, @CType("uint16_t") short value) { StdVideoEncodeAV1PictureInfo.set_render_width_minus_1(segment, 0L, value); }
-    /// Sets `render_width_minus_1` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeAV1PictureInfo render_width_minus_1At(long index, @CType("uint16_t") short value) { StdVideoEncodeAV1PictureInfo.set_render_width_minus_1(this.segment(), index, value); return this; }
     /// Sets `render_width_minus_1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -519,9 +466,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// {@return `render_height_minus_1`}
     /// @param segment the segment of the struct
     public static @CType("uint16_t") short get_render_height_minus_1(MemorySegment segment) { return StdVideoEncodeAV1PictureInfo.get_render_height_minus_1(segment, 0L); }
-    /// {@return `render_height_minus_1` at the given index}
-    /// @param index the index
-    public @CType("uint16_t") short render_height_minus_1At(long index) { return StdVideoEncodeAV1PictureInfo.get_render_height_minus_1(this.segment(), index); }
     /// {@return `render_height_minus_1`}
     public @CType("uint16_t") short render_height_minus_1() { return StdVideoEncodeAV1PictureInfo.get_render_height_minus_1(this.segment()); }
     /// Sets `render_height_minus_1` with the given value at the given index.
@@ -533,11 +477,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_render_height_minus_1(MemorySegment segment, @CType("uint16_t") short value) { StdVideoEncodeAV1PictureInfo.set_render_height_minus_1(segment, 0L, value); }
-    /// Sets `render_height_minus_1` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeAV1PictureInfo render_height_minus_1At(long index, @CType("uint16_t") short value) { StdVideoEncodeAV1PictureInfo.set_render_height_minus_1(this.segment(), index, value); return this; }
     /// Sets `render_height_minus_1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -550,9 +489,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// {@return `interpolation_filter`}
     /// @param segment the segment of the struct
     public static @CType("StdVideoAV1InterpolationFilter") int get_interpolation_filter(MemorySegment segment) { return StdVideoEncodeAV1PictureInfo.get_interpolation_filter(segment, 0L); }
-    /// {@return `interpolation_filter` at the given index}
-    /// @param index the index
-    public @CType("StdVideoAV1InterpolationFilter") int interpolation_filterAt(long index) { return StdVideoEncodeAV1PictureInfo.get_interpolation_filter(this.segment(), index); }
     /// {@return `interpolation_filter`}
     public @CType("StdVideoAV1InterpolationFilter") int interpolation_filter() { return StdVideoEncodeAV1PictureInfo.get_interpolation_filter(this.segment()); }
     /// Sets `interpolation_filter` with the given value at the given index.
@@ -564,11 +500,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_interpolation_filter(MemorySegment segment, @CType("StdVideoAV1InterpolationFilter") int value) { StdVideoEncodeAV1PictureInfo.set_interpolation_filter(segment, 0L, value); }
-    /// Sets `interpolation_filter` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeAV1PictureInfo interpolation_filterAt(long index, @CType("StdVideoAV1InterpolationFilter") int value) { StdVideoEncodeAV1PictureInfo.set_interpolation_filter(this.segment(), index, value); return this; }
     /// Sets `interpolation_filter` with the given value.
     /// @param value the value
     /// @return `this`
@@ -581,9 +512,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// {@return `TxMode`}
     /// @param segment the segment of the struct
     public static @CType("StdVideoAV1TxMode") int get_TxMode(MemorySegment segment) { return StdVideoEncodeAV1PictureInfo.get_TxMode(segment, 0L); }
-    /// {@return `TxMode` at the given index}
-    /// @param index the index
-    public @CType("StdVideoAV1TxMode") int TxModeAt(long index) { return StdVideoEncodeAV1PictureInfo.get_TxMode(this.segment(), index); }
     /// {@return `TxMode`}
     public @CType("StdVideoAV1TxMode") int TxMode() { return StdVideoEncodeAV1PictureInfo.get_TxMode(this.segment()); }
     /// Sets `TxMode` with the given value at the given index.
@@ -595,11 +523,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_TxMode(MemorySegment segment, @CType("StdVideoAV1TxMode") int value) { StdVideoEncodeAV1PictureInfo.set_TxMode(segment, 0L, value); }
-    /// Sets `TxMode` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeAV1PictureInfo TxModeAt(long index, @CType("StdVideoAV1TxMode") int value) { StdVideoEncodeAV1PictureInfo.set_TxMode(this.segment(), index, value); return this; }
     /// Sets `TxMode` with the given value.
     /// @param value the value
     /// @return `this`
@@ -612,9 +535,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// {@return `delta_q_res`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t") byte get_delta_q_res(MemorySegment segment) { return StdVideoEncodeAV1PictureInfo.get_delta_q_res(segment, 0L); }
-    /// {@return `delta_q_res` at the given index}
-    /// @param index the index
-    public @CType("uint8_t") byte delta_q_resAt(long index) { return StdVideoEncodeAV1PictureInfo.get_delta_q_res(this.segment(), index); }
     /// {@return `delta_q_res`}
     public @CType("uint8_t") byte delta_q_res() { return StdVideoEncodeAV1PictureInfo.get_delta_q_res(this.segment()); }
     /// Sets `delta_q_res` with the given value at the given index.
@@ -626,11 +546,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_delta_q_res(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoEncodeAV1PictureInfo.set_delta_q_res(segment, 0L, value); }
-    /// Sets `delta_q_res` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeAV1PictureInfo delta_q_resAt(long index, @CType("uint8_t") byte value) { StdVideoEncodeAV1PictureInfo.set_delta_q_res(this.segment(), index, value); return this; }
     /// Sets `delta_q_res` with the given value.
     /// @param value the value
     /// @return `this`
@@ -643,9 +558,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// {@return `delta_lf_res`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t") byte get_delta_lf_res(MemorySegment segment) { return StdVideoEncodeAV1PictureInfo.get_delta_lf_res(segment, 0L); }
-    /// {@return `delta_lf_res` at the given index}
-    /// @param index the index
-    public @CType("uint8_t") byte delta_lf_resAt(long index) { return StdVideoEncodeAV1PictureInfo.get_delta_lf_res(this.segment(), index); }
     /// {@return `delta_lf_res`}
     public @CType("uint8_t") byte delta_lf_res() { return StdVideoEncodeAV1PictureInfo.get_delta_lf_res(this.segment()); }
     /// Sets `delta_lf_res` with the given value at the given index.
@@ -657,11 +569,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_delta_lf_res(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoEncodeAV1PictureInfo.set_delta_lf_res(segment, 0L, value); }
-    /// Sets `delta_lf_res` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeAV1PictureInfo delta_lf_resAt(long index, @CType("uint8_t") byte value) { StdVideoEncodeAV1PictureInfo.set_delta_lf_res(this.segment(), index, value); return this; }
     /// Sets `delta_lf_res` with the given value.
     /// @param value the value
     /// @return `this`
@@ -674,9 +581,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// {@return `ref_order_hint`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t [ ]") byte get_ref_order_hint(MemorySegment segment) { return StdVideoEncodeAV1PictureInfo.get_ref_order_hint(segment, 0L); }
-    /// {@return `ref_order_hint` at the given index}
-    /// @param index the index
-    public @CType("uint8_t [ ]") byte ref_order_hintAt(long index) { return StdVideoEncodeAV1PictureInfo.get_ref_order_hint(this.segment(), index); }
     /// {@return `ref_order_hint`}
     public @CType("uint8_t [ ]") byte ref_order_hint() { return StdVideoEncodeAV1PictureInfo.get_ref_order_hint(this.segment()); }
     /// Sets `ref_order_hint` with the given value at the given index.
@@ -688,11 +592,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_ref_order_hint(MemorySegment segment, @CType("uint8_t [ ]") byte value) { StdVideoEncodeAV1PictureInfo.set_ref_order_hint(segment, 0L, value); }
-    /// Sets `ref_order_hint` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeAV1PictureInfo ref_order_hintAt(long index, @CType("uint8_t [ ]") byte value) { StdVideoEncodeAV1PictureInfo.set_ref_order_hint(this.segment(), index, value); return this; }
     /// Sets `ref_order_hint` with the given value.
     /// @param value the value
     /// @return `this`
@@ -705,9 +604,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// {@return `ref_frame_idx`}
     /// @param segment the segment of the struct
     public static @CType("int8_t [ ]") byte get_ref_frame_idx(MemorySegment segment) { return StdVideoEncodeAV1PictureInfo.get_ref_frame_idx(segment, 0L); }
-    /// {@return `ref_frame_idx` at the given index}
-    /// @param index the index
-    public @CType("int8_t [ ]") byte ref_frame_idxAt(long index) { return StdVideoEncodeAV1PictureInfo.get_ref_frame_idx(this.segment(), index); }
     /// {@return `ref_frame_idx`}
     public @CType("int8_t [ ]") byte ref_frame_idx() { return StdVideoEncodeAV1PictureInfo.get_ref_frame_idx(this.segment()); }
     /// Sets `ref_frame_idx` with the given value at the given index.
@@ -719,11 +615,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_ref_frame_idx(MemorySegment segment, @CType("int8_t [ ]") byte value) { StdVideoEncodeAV1PictureInfo.set_ref_frame_idx(segment, 0L, value); }
-    /// Sets `ref_frame_idx` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeAV1PictureInfo ref_frame_idxAt(long index, @CType("int8_t [ ]") byte value) { StdVideoEncodeAV1PictureInfo.set_ref_frame_idx(this.segment(), index, value); return this; }
     /// Sets `ref_frame_idx` with the given value.
     /// @param value the value
     /// @return `this`
@@ -736,9 +627,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// {@return `reserved1`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t [3]") byte get_reserved1(MemorySegment segment) { return StdVideoEncodeAV1PictureInfo.get_reserved1(segment, 0L); }
-    /// {@return `reserved1` at the given index}
-    /// @param index the index
-    public @CType("uint8_t [3]") byte reserved1At(long index) { return StdVideoEncodeAV1PictureInfo.get_reserved1(this.segment(), index); }
     /// {@return `reserved1`}
     public @CType("uint8_t [3]") byte reserved1() { return StdVideoEncodeAV1PictureInfo.get_reserved1(this.segment()); }
     /// Sets `reserved1` with the given value at the given index.
@@ -750,11 +638,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_reserved1(MemorySegment segment, @CType("uint8_t [3]") byte value) { StdVideoEncodeAV1PictureInfo.set_reserved1(segment, 0L, value); }
-    /// Sets `reserved1` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeAV1PictureInfo reserved1At(long index, @CType("uint8_t [3]") byte value) { StdVideoEncodeAV1PictureInfo.set_reserved1(this.segment(), index, value); return this; }
     /// Sets `reserved1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -767,9 +650,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// {@return `delta_frame_id_minus_1`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t [ ]") int get_delta_frame_id_minus_1(MemorySegment segment) { return StdVideoEncodeAV1PictureInfo.get_delta_frame_id_minus_1(segment, 0L); }
-    /// {@return `delta_frame_id_minus_1` at the given index}
-    /// @param index the index
-    public @CType("uint32_t [ ]") int delta_frame_id_minus_1At(long index) { return StdVideoEncodeAV1PictureInfo.get_delta_frame_id_minus_1(this.segment(), index); }
     /// {@return `delta_frame_id_minus_1`}
     public @CType("uint32_t [ ]") int delta_frame_id_minus_1() { return StdVideoEncodeAV1PictureInfo.get_delta_frame_id_minus_1(this.segment()); }
     /// Sets `delta_frame_id_minus_1` with the given value at the given index.
@@ -781,11 +661,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_delta_frame_id_minus_1(MemorySegment segment, @CType("uint32_t [ ]") int value) { StdVideoEncodeAV1PictureInfo.set_delta_frame_id_minus_1(segment, 0L, value); }
-    /// Sets `delta_frame_id_minus_1` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeAV1PictureInfo delta_frame_id_minus_1At(long index, @CType("uint32_t [ ]") int value) { StdVideoEncodeAV1PictureInfo.set_delta_frame_id_minus_1(this.segment(), index, value); return this; }
     /// Sets `delta_frame_id_minus_1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -798,9 +673,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// {@return `pTileInfo`}
     /// @param segment the segment of the struct
     public static @CType("const StdVideoAV1TileInfo *") java.lang.foreign.MemorySegment get_pTileInfo(MemorySegment segment) { return StdVideoEncodeAV1PictureInfo.get_pTileInfo(segment, 0L); }
-    /// {@return `pTileInfo` at the given index}
-    /// @param index the index
-    public @CType("const StdVideoAV1TileInfo *") java.lang.foreign.MemorySegment pTileInfoAt(long index) { return StdVideoEncodeAV1PictureInfo.get_pTileInfo(this.segment(), index); }
     /// {@return `pTileInfo`}
     public @CType("const StdVideoAV1TileInfo *") java.lang.foreign.MemorySegment pTileInfo() { return StdVideoEncodeAV1PictureInfo.get_pTileInfo(this.segment()); }
     /// Sets `pTileInfo` with the given value at the given index.
@@ -812,11 +684,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pTileInfo(MemorySegment segment, @CType("const StdVideoAV1TileInfo *") java.lang.foreign.MemorySegment value) { StdVideoEncodeAV1PictureInfo.set_pTileInfo(segment, 0L, value); }
-    /// Sets `pTileInfo` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeAV1PictureInfo pTileInfoAt(long index, @CType("const StdVideoAV1TileInfo *") java.lang.foreign.MemorySegment value) { StdVideoEncodeAV1PictureInfo.set_pTileInfo(this.segment(), index, value); return this; }
     /// Sets `pTileInfo` with the given value.
     /// @param value the value
     /// @return `this`
@@ -829,9 +696,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// {@return `pQuantization`}
     /// @param segment the segment of the struct
     public static @CType("const StdVideoAV1Quantization *") java.lang.foreign.MemorySegment get_pQuantization(MemorySegment segment) { return StdVideoEncodeAV1PictureInfo.get_pQuantization(segment, 0L); }
-    /// {@return `pQuantization` at the given index}
-    /// @param index the index
-    public @CType("const StdVideoAV1Quantization *") java.lang.foreign.MemorySegment pQuantizationAt(long index) { return StdVideoEncodeAV1PictureInfo.get_pQuantization(this.segment(), index); }
     /// {@return `pQuantization`}
     public @CType("const StdVideoAV1Quantization *") java.lang.foreign.MemorySegment pQuantization() { return StdVideoEncodeAV1PictureInfo.get_pQuantization(this.segment()); }
     /// Sets `pQuantization` with the given value at the given index.
@@ -843,11 +707,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pQuantization(MemorySegment segment, @CType("const StdVideoAV1Quantization *") java.lang.foreign.MemorySegment value) { StdVideoEncodeAV1PictureInfo.set_pQuantization(segment, 0L, value); }
-    /// Sets `pQuantization` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeAV1PictureInfo pQuantizationAt(long index, @CType("const StdVideoAV1Quantization *") java.lang.foreign.MemorySegment value) { StdVideoEncodeAV1PictureInfo.set_pQuantization(this.segment(), index, value); return this; }
     /// Sets `pQuantization` with the given value.
     /// @param value the value
     /// @return `this`
@@ -860,9 +719,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// {@return `pSegmentation`}
     /// @param segment the segment of the struct
     public static @CType("const StdVideoAV1Segmentation *") java.lang.foreign.MemorySegment get_pSegmentation(MemorySegment segment) { return StdVideoEncodeAV1PictureInfo.get_pSegmentation(segment, 0L); }
-    /// {@return `pSegmentation` at the given index}
-    /// @param index the index
-    public @CType("const StdVideoAV1Segmentation *") java.lang.foreign.MemorySegment pSegmentationAt(long index) { return StdVideoEncodeAV1PictureInfo.get_pSegmentation(this.segment(), index); }
     /// {@return `pSegmentation`}
     public @CType("const StdVideoAV1Segmentation *") java.lang.foreign.MemorySegment pSegmentation() { return StdVideoEncodeAV1PictureInfo.get_pSegmentation(this.segment()); }
     /// Sets `pSegmentation` with the given value at the given index.
@@ -874,11 +730,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pSegmentation(MemorySegment segment, @CType("const StdVideoAV1Segmentation *") java.lang.foreign.MemorySegment value) { StdVideoEncodeAV1PictureInfo.set_pSegmentation(segment, 0L, value); }
-    /// Sets `pSegmentation` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeAV1PictureInfo pSegmentationAt(long index, @CType("const StdVideoAV1Segmentation *") java.lang.foreign.MemorySegment value) { StdVideoEncodeAV1PictureInfo.set_pSegmentation(this.segment(), index, value); return this; }
     /// Sets `pSegmentation` with the given value.
     /// @param value the value
     /// @return `this`
@@ -891,9 +742,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// {@return `pLoopFilter`}
     /// @param segment the segment of the struct
     public static @CType("const StdVideoAV1LoopFilter *") java.lang.foreign.MemorySegment get_pLoopFilter(MemorySegment segment) { return StdVideoEncodeAV1PictureInfo.get_pLoopFilter(segment, 0L); }
-    /// {@return `pLoopFilter` at the given index}
-    /// @param index the index
-    public @CType("const StdVideoAV1LoopFilter *") java.lang.foreign.MemorySegment pLoopFilterAt(long index) { return StdVideoEncodeAV1PictureInfo.get_pLoopFilter(this.segment(), index); }
     /// {@return `pLoopFilter`}
     public @CType("const StdVideoAV1LoopFilter *") java.lang.foreign.MemorySegment pLoopFilter() { return StdVideoEncodeAV1PictureInfo.get_pLoopFilter(this.segment()); }
     /// Sets `pLoopFilter` with the given value at the given index.
@@ -905,11 +753,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pLoopFilter(MemorySegment segment, @CType("const StdVideoAV1LoopFilter *") java.lang.foreign.MemorySegment value) { StdVideoEncodeAV1PictureInfo.set_pLoopFilter(segment, 0L, value); }
-    /// Sets `pLoopFilter` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeAV1PictureInfo pLoopFilterAt(long index, @CType("const StdVideoAV1LoopFilter *") java.lang.foreign.MemorySegment value) { StdVideoEncodeAV1PictureInfo.set_pLoopFilter(this.segment(), index, value); return this; }
     /// Sets `pLoopFilter` with the given value.
     /// @param value the value
     /// @return `this`
@@ -922,9 +765,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// {@return `pCDEF`}
     /// @param segment the segment of the struct
     public static @CType("const StdVideoAV1CDEF *") java.lang.foreign.MemorySegment get_pCDEF(MemorySegment segment) { return StdVideoEncodeAV1PictureInfo.get_pCDEF(segment, 0L); }
-    /// {@return `pCDEF` at the given index}
-    /// @param index the index
-    public @CType("const StdVideoAV1CDEF *") java.lang.foreign.MemorySegment pCDEFAt(long index) { return StdVideoEncodeAV1PictureInfo.get_pCDEF(this.segment(), index); }
     /// {@return `pCDEF`}
     public @CType("const StdVideoAV1CDEF *") java.lang.foreign.MemorySegment pCDEF() { return StdVideoEncodeAV1PictureInfo.get_pCDEF(this.segment()); }
     /// Sets `pCDEF` with the given value at the given index.
@@ -936,11 +776,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pCDEF(MemorySegment segment, @CType("const StdVideoAV1CDEF *") java.lang.foreign.MemorySegment value) { StdVideoEncodeAV1PictureInfo.set_pCDEF(segment, 0L, value); }
-    /// Sets `pCDEF` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeAV1PictureInfo pCDEFAt(long index, @CType("const StdVideoAV1CDEF *") java.lang.foreign.MemorySegment value) { StdVideoEncodeAV1PictureInfo.set_pCDEF(this.segment(), index, value); return this; }
     /// Sets `pCDEF` with the given value.
     /// @param value the value
     /// @return `this`
@@ -953,9 +788,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// {@return `pLoopRestoration`}
     /// @param segment the segment of the struct
     public static @CType("const StdVideoAV1LoopRestoration *") java.lang.foreign.MemorySegment get_pLoopRestoration(MemorySegment segment) { return StdVideoEncodeAV1PictureInfo.get_pLoopRestoration(segment, 0L); }
-    /// {@return `pLoopRestoration` at the given index}
-    /// @param index the index
-    public @CType("const StdVideoAV1LoopRestoration *") java.lang.foreign.MemorySegment pLoopRestorationAt(long index) { return StdVideoEncodeAV1PictureInfo.get_pLoopRestoration(this.segment(), index); }
     /// {@return `pLoopRestoration`}
     public @CType("const StdVideoAV1LoopRestoration *") java.lang.foreign.MemorySegment pLoopRestoration() { return StdVideoEncodeAV1PictureInfo.get_pLoopRestoration(this.segment()); }
     /// Sets `pLoopRestoration` with the given value at the given index.
@@ -967,11 +799,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pLoopRestoration(MemorySegment segment, @CType("const StdVideoAV1LoopRestoration *") java.lang.foreign.MemorySegment value) { StdVideoEncodeAV1PictureInfo.set_pLoopRestoration(segment, 0L, value); }
-    /// Sets `pLoopRestoration` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeAV1PictureInfo pLoopRestorationAt(long index, @CType("const StdVideoAV1LoopRestoration *") java.lang.foreign.MemorySegment value) { StdVideoEncodeAV1PictureInfo.set_pLoopRestoration(this.segment(), index, value); return this; }
     /// Sets `pLoopRestoration` with the given value.
     /// @param value the value
     /// @return `this`
@@ -984,9 +811,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// {@return `pGlobalMotion`}
     /// @param segment the segment of the struct
     public static @CType("const StdVideoAV1GlobalMotion *") java.lang.foreign.MemorySegment get_pGlobalMotion(MemorySegment segment) { return StdVideoEncodeAV1PictureInfo.get_pGlobalMotion(segment, 0L); }
-    /// {@return `pGlobalMotion` at the given index}
-    /// @param index the index
-    public @CType("const StdVideoAV1GlobalMotion *") java.lang.foreign.MemorySegment pGlobalMotionAt(long index) { return StdVideoEncodeAV1PictureInfo.get_pGlobalMotion(this.segment(), index); }
     /// {@return `pGlobalMotion`}
     public @CType("const StdVideoAV1GlobalMotion *") java.lang.foreign.MemorySegment pGlobalMotion() { return StdVideoEncodeAV1PictureInfo.get_pGlobalMotion(this.segment()); }
     /// Sets `pGlobalMotion` with the given value at the given index.
@@ -998,11 +822,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pGlobalMotion(MemorySegment segment, @CType("const StdVideoAV1GlobalMotion *") java.lang.foreign.MemorySegment value) { StdVideoEncodeAV1PictureInfo.set_pGlobalMotion(segment, 0L, value); }
-    /// Sets `pGlobalMotion` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeAV1PictureInfo pGlobalMotionAt(long index, @CType("const StdVideoAV1GlobalMotion *") java.lang.foreign.MemorySegment value) { StdVideoEncodeAV1PictureInfo.set_pGlobalMotion(this.segment(), index, value); return this; }
     /// Sets `pGlobalMotion` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1015,9 +834,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// {@return `pExtensionHeader`}
     /// @param segment the segment of the struct
     public static @CType("const StdVideoEncodeAV1ExtensionHeader *") java.lang.foreign.MemorySegment get_pExtensionHeader(MemorySegment segment) { return StdVideoEncodeAV1PictureInfo.get_pExtensionHeader(segment, 0L); }
-    /// {@return `pExtensionHeader` at the given index}
-    /// @param index the index
-    public @CType("const StdVideoEncodeAV1ExtensionHeader *") java.lang.foreign.MemorySegment pExtensionHeaderAt(long index) { return StdVideoEncodeAV1PictureInfo.get_pExtensionHeader(this.segment(), index); }
     /// {@return `pExtensionHeader`}
     public @CType("const StdVideoEncodeAV1ExtensionHeader *") java.lang.foreign.MemorySegment pExtensionHeader() { return StdVideoEncodeAV1PictureInfo.get_pExtensionHeader(this.segment()); }
     /// Sets `pExtensionHeader` with the given value at the given index.
@@ -1029,11 +845,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pExtensionHeader(MemorySegment segment, @CType("const StdVideoEncodeAV1ExtensionHeader *") java.lang.foreign.MemorySegment value) { StdVideoEncodeAV1PictureInfo.set_pExtensionHeader(segment, 0L, value); }
-    /// Sets `pExtensionHeader` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeAV1PictureInfo pExtensionHeaderAt(long index, @CType("const StdVideoEncodeAV1ExtensionHeader *") java.lang.foreign.MemorySegment value) { StdVideoEncodeAV1PictureInfo.set_pExtensionHeader(this.segment(), index, value); return this; }
     /// Sets `pExtensionHeader` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1046,9 +857,6 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// {@return `pBufferRemovalTimes`}
     /// @param segment the segment of the struct
     public static @CType("const uint32_t *") java.lang.foreign.MemorySegment get_pBufferRemovalTimes(MemorySegment segment) { return StdVideoEncodeAV1PictureInfo.get_pBufferRemovalTimes(segment, 0L); }
-    /// {@return `pBufferRemovalTimes` at the given index}
-    /// @param index the index
-    public @CType("const uint32_t *") java.lang.foreign.MemorySegment pBufferRemovalTimesAt(long index) { return StdVideoEncodeAV1PictureInfo.get_pBufferRemovalTimes(this.segment(), index); }
     /// {@return `pBufferRemovalTimes`}
     public @CType("const uint32_t *") java.lang.foreign.MemorySegment pBufferRemovalTimes() { return StdVideoEncodeAV1PictureInfo.get_pBufferRemovalTimes(this.segment()); }
     /// Sets `pBufferRemovalTimes` with the given value at the given index.
@@ -1060,14 +868,275 @@ public final class StdVideoEncodeAV1PictureInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pBufferRemovalTimes(MemorySegment segment, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { StdVideoEncodeAV1PictureInfo.set_pBufferRemovalTimes(segment, 0L, value); }
-    /// Sets `pBufferRemovalTimes` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeAV1PictureInfo pBufferRemovalTimesAt(long index, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { StdVideoEncodeAV1PictureInfo.set_pBufferRemovalTimes(this.segment(), index, value); return this; }
     /// Sets `pBufferRemovalTimes` with the given value.
     /// @param value the value
     /// @return `this`
     public StdVideoEncodeAV1PictureInfo pBufferRemovalTimes(@CType("const uint32_t *") java.lang.foreign.MemorySegment value) { StdVideoEncodeAV1PictureInfo.set_pBufferRemovalTimes(this.segment(), value); return this; }
 
+    /// A buffer of [StdVideoEncodeAV1PictureInfo].
+    public static final class Buffer extends StdVideoEncodeAV1PictureInfo {
+        private final long elementCount;
+
+        /// Creates `StdVideoEncodeAV1PictureInfo.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `StdVideoEncodeAV1PictureInfo`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `StdVideoEncodeAV1PictureInfo`
+        public StdVideoEncodeAV1PictureInfo asSlice(long index) { return new StdVideoEncodeAV1PictureInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `StdVideoEncodeAV1PictureInfo`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `StdVideoEncodeAV1PictureInfo`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `flags` at the given index}
+        /// @param index the index
+        public @CType("StdVideoEncodeAV1PictureInfoFlags") java.lang.foreign.MemorySegment flagsAt(long index) { return StdVideoEncodeAV1PictureInfo.get_flags(this.segment(), index); }
+        /// Sets `flags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer flagsAt(long index, @CType("StdVideoEncodeAV1PictureInfoFlags") java.lang.foreign.MemorySegment value) { StdVideoEncodeAV1PictureInfo.set_flags(this.segment(), index, value); return this; }
+
+        /// {@return `frame_type` at the given index}
+        /// @param index the index
+        public @CType("StdVideoAV1FrameType") int frame_typeAt(long index) { return StdVideoEncodeAV1PictureInfo.get_frame_type(this.segment(), index); }
+        /// Sets `frame_type` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer frame_typeAt(long index, @CType("StdVideoAV1FrameType") int value) { StdVideoEncodeAV1PictureInfo.set_frame_type(this.segment(), index, value); return this; }
+
+        /// {@return `frame_presentation_time` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int frame_presentation_timeAt(long index) { return StdVideoEncodeAV1PictureInfo.get_frame_presentation_time(this.segment(), index); }
+        /// Sets `frame_presentation_time` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer frame_presentation_timeAt(long index, @CType("uint32_t") int value) { StdVideoEncodeAV1PictureInfo.set_frame_presentation_time(this.segment(), index, value); return this; }
+
+        /// {@return `current_frame_id` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int current_frame_idAt(long index) { return StdVideoEncodeAV1PictureInfo.get_current_frame_id(this.segment(), index); }
+        /// Sets `current_frame_id` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer current_frame_idAt(long index, @CType("uint32_t") int value) { StdVideoEncodeAV1PictureInfo.set_current_frame_id(this.segment(), index, value); return this; }
+
+        /// {@return `order_hint` at the given index}
+        /// @param index the index
+        public @CType("uint8_t") byte order_hintAt(long index) { return StdVideoEncodeAV1PictureInfo.get_order_hint(this.segment(), index); }
+        /// Sets `order_hint` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer order_hintAt(long index, @CType("uint8_t") byte value) { StdVideoEncodeAV1PictureInfo.set_order_hint(this.segment(), index, value); return this; }
+
+        /// {@return `primary_ref_frame` at the given index}
+        /// @param index the index
+        public @CType("uint8_t") byte primary_ref_frameAt(long index) { return StdVideoEncodeAV1PictureInfo.get_primary_ref_frame(this.segment(), index); }
+        /// Sets `primary_ref_frame` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer primary_ref_frameAt(long index, @CType("uint8_t") byte value) { StdVideoEncodeAV1PictureInfo.set_primary_ref_frame(this.segment(), index, value); return this; }
+
+        /// {@return `refresh_frame_flags` at the given index}
+        /// @param index the index
+        public @CType("uint8_t") byte refresh_frame_flagsAt(long index) { return StdVideoEncodeAV1PictureInfo.get_refresh_frame_flags(this.segment(), index); }
+        /// Sets `refresh_frame_flags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer refresh_frame_flagsAt(long index, @CType("uint8_t") byte value) { StdVideoEncodeAV1PictureInfo.set_refresh_frame_flags(this.segment(), index, value); return this; }
+
+        /// {@return `coded_denom` at the given index}
+        /// @param index the index
+        public @CType("uint8_t") byte coded_denomAt(long index) { return StdVideoEncodeAV1PictureInfo.get_coded_denom(this.segment(), index); }
+        /// Sets `coded_denom` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer coded_denomAt(long index, @CType("uint8_t") byte value) { StdVideoEncodeAV1PictureInfo.set_coded_denom(this.segment(), index, value); return this; }
+
+        /// {@return `render_width_minus_1` at the given index}
+        /// @param index the index
+        public @CType("uint16_t") short render_width_minus_1At(long index) { return StdVideoEncodeAV1PictureInfo.get_render_width_minus_1(this.segment(), index); }
+        /// Sets `render_width_minus_1` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer render_width_minus_1At(long index, @CType("uint16_t") short value) { StdVideoEncodeAV1PictureInfo.set_render_width_minus_1(this.segment(), index, value); return this; }
+
+        /// {@return `render_height_minus_1` at the given index}
+        /// @param index the index
+        public @CType("uint16_t") short render_height_minus_1At(long index) { return StdVideoEncodeAV1PictureInfo.get_render_height_minus_1(this.segment(), index); }
+        /// Sets `render_height_minus_1` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer render_height_minus_1At(long index, @CType("uint16_t") short value) { StdVideoEncodeAV1PictureInfo.set_render_height_minus_1(this.segment(), index, value); return this; }
+
+        /// {@return `interpolation_filter` at the given index}
+        /// @param index the index
+        public @CType("StdVideoAV1InterpolationFilter") int interpolation_filterAt(long index) { return StdVideoEncodeAV1PictureInfo.get_interpolation_filter(this.segment(), index); }
+        /// Sets `interpolation_filter` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer interpolation_filterAt(long index, @CType("StdVideoAV1InterpolationFilter") int value) { StdVideoEncodeAV1PictureInfo.set_interpolation_filter(this.segment(), index, value); return this; }
+
+        /// {@return `TxMode` at the given index}
+        /// @param index the index
+        public @CType("StdVideoAV1TxMode") int TxModeAt(long index) { return StdVideoEncodeAV1PictureInfo.get_TxMode(this.segment(), index); }
+        /// Sets `TxMode` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer TxModeAt(long index, @CType("StdVideoAV1TxMode") int value) { StdVideoEncodeAV1PictureInfo.set_TxMode(this.segment(), index, value); return this; }
+
+        /// {@return `delta_q_res` at the given index}
+        /// @param index the index
+        public @CType("uint8_t") byte delta_q_resAt(long index) { return StdVideoEncodeAV1PictureInfo.get_delta_q_res(this.segment(), index); }
+        /// Sets `delta_q_res` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer delta_q_resAt(long index, @CType("uint8_t") byte value) { StdVideoEncodeAV1PictureInfo.set_delta_q_res(this.segment(), index, value); return this; }
+
+        /// {@return `delta_lf_res` at the given index}
+        /// @param index the index
+        public @CType("uint8_t") byte delta_lf_resAt(long index) { return StdVideoEncodeAV1PictureInfo.get_delta_lf_res(this.segment(), index); }
+        /// Sets `delta_lf_res` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer delta_lf_resAt(long index, @CType("uint8_t") byte value) { StdVideoEncodeAV1PictureInfo.set_delta_lf_res(this.segment(), index, value); return this; }
+
+        /// {@return `ref_order_hint` at the given index}
+        /// @param index the index
+        public @CType("uint8_t [ ]") byte ref_order_hintAt(long index) { return StdVideoEncodeAV1PictureInfo.get_ref_order_hint(this.segment(), index); }
+        /// Sets `ref_order_hint` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer ref_order_hintAt(long index, @CType("uint8_t [ ]") byte value) { StdVideoEncodeAV1PictureInfo.set_ref_order_hint(this.segment(), index, value); return this; }
+
+        /// {@return `ref_frame_idx` at the given index}
+        /// @param index the index
+        public @CType("int8_t [ ]") byte ref_frame_idxAt(long index) { return StdVideoEncodeAV1PictureInfo.get_ref_frame_idx(this.segment(), index); }
+        /// Sets `ref_frame_idx` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer ref_frame_idxAt(long index, @CType("int8_t [ ]") byte value) { StdVideoEncodeAV1PictureInfo.set_ref_frame_idx(this.segment(), index, value); return this; }
+
+        /// {@return `reserved1` at the given index}
+        /// @param index the index
+        public @CType("uint8_t [3]") byte reserved1At(long index) { return StdVideoEncodeAV1PictureInfo.get_reserved1(this.segment(), index); }
+        /// Sets `reserved1` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer reserved1At(long index, @CType("uint8_t [3]") byte value) { StdVideoEncodeAV1PictureInfo.set_reserved1(this.segment(), index, value); return this; }
+
+        /// {@return `delta_frame_id_minus_1` at the given index}
+        /// @param index the index
+        public @CType("uint32_t [ ]") int delta_frame_id_minus_1At(long index) { return StdVideoEncodeAV1PictureInfo.get_delta_frame_id_minus_1(this.segment(), index); }
+        /// Sets `delta_frame_id_minus_1` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer delta_frame_id_minus_1At(long index, @CType("uint32_t [ ]") int value) { StdVideoEncodeAV1PictureInfo.set_delta_frame_id_minus_1(this.segment(), index, value); return this; }
+
+        /// {@return `pTileInfo` at the given index}
+        /// @param index the index
+        public @CType("const StdVideoAV1TileInfo *") java.lang.foreign.MemorySegment pTileInfoAt(long index) { return StdVideoEncodeAV1PictureInfo.get_pTileInfo(this.segment(), index); }
+        /// Sets `pTileInfo` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pTileInfoAt(long index, @CType("const StdVideoAV1TileInfo *") java.lang.foreign.MemorySegment value) { StdVideoEncodeAV1PictureInfo.set_pTileInfo(this.segment(), index, value); return this; }
+
+        /// {@return `pQuantization` at the given index}
+        /// @param index the index
+        public @CType("const StdVideoAV1Quantization *") java.lang.foreign.MemorySegment pQuantizationAt(long index) { return StdVideoEncodeAV1PictureInfo.get_pQuantization(this.segment(), index); }
+        /// Sets `pQuantization` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pQuantizationAt(long index, @CType("const StdVideoAV1Quantization *") java.lang.foreign.MemorySegment value) { StdVideoEncodeAV1PictureInfo.set_pQuantization(this.segment(), index, value); return this; }
+
+        /// {@return `pSegmentation` at the given index}
+        /// @param index the index
+        public @CType("const StdVideoAV1Segmentation *") java.lang.foreign.MemorySegment pSegmentationAt(long index) { return StdVideoEncodeAV1PictureInfo.get_pSegmentation(this.segment(), index); }
+        /// Sets `pSegmentation` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pSegmentationAt(long index, @CType("const StdVideoAV1Segmentation *") java.lang.foreign.MemorySegment value) { StdVideoEncodeAV1PictureInfo.set_pSegmentation(this.segment(), index, value); return this; }
+
+        /// {@return `pLoopFilter` at the given index}
+        /// @param index the index
+        public @CType("const StdVideoAV1LoopFilter *") java.lang.foreign.MemorySegment pLoopFilterAt(long index) { return StdVideoEncodeAV1PictureInfo.get_pLoopFilter(this.segment(), index); }
+        /// Sets `pLoopFilter` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pLoopFilterAt(long index, @CType("const StdVideoAV1LoopFilter *") java.lang.foreign.MemorySegment value) { StdVideoEncodeAV1PictureInfo.set_pLoopFilter(this.segment(), index, value); return this; }
+
+        /// {@return `pCDEF` at the given index}
+        /// @param index the index
+        public @CType("const StdVideoAV1CDEF *") java.lang.foreign.MemorySegment pCDEFAt(long index) { return StdVideoEncodeAV1PictureInfo.get_pCDEF(this.segment(), index); }
+        /// Sets `pCDEF` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pCDEFAt(long index, @CType("const StdVideoAV1CDEF *") java.lang.foreign.MemorySegment value) { StdVideoEncodeAV1PictureInfo.set_pCDEF(this.segment(), index, value); return this; }
+
+        /// {@return `pLoopRestoration` at the given index}
+        /// @param index the index
+        public @CType("const StdVideoAV1LoopRestoration *") java.lang.foreign.MemorySegment pLoopRestorationAt(long index) { return StdVideoEncodeAV1PictureInfo.get_pLoopRestoration(this.segment(), index); }
+        /// Sets `pLoopRestoration` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pLoopRestorationAt(long index, @CType("const StdVideoAV1LoopRestoration *") java.lang.foreign.MemorySegment value) { StdVideoEncodeAV1PictureInfo.set_pLoopRestoration(this.segment(), index, value); return this; }
+
+        /// {@return `pGlobalMotion` at the given index}
+        /// @param index the index
+        public @CType("const StdVideoAV1GlobalMotion *") java.lang.foreign.MemorySegment pGlobalMotionAt(long index) { return StdVideoEncodeAV1PictureInfo.get_pGlobalMotion(this.segment(), index); }
+        /// Sets `pGlobalMotion` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pGlobalMotionAt(long index, @CType("const StdVideoAV1GlobalMotion *") java.lang.foreign.MemorySegment value) { StdVideoEncodeAV1PictureInfo.set_pGlobalMotion(this.segment(), index, value); return this; }
+
+        /// {@return `pExtensionHeader` at the given index}
+        /// @param index the index
+        public @CType("const StdVideoEncodeAV1ExtensionHeader *") java.lang.foreign.MemorySegment pExtensionHeaderAt(long index) { return StdVideoEncodeAV1PictureInfo.get_pExtensionHeader(this.segment(), index); }
+        /// Sets `pExtensionHeader` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pExtensionHeaderAt(long index, @CType("const StdVideoEncodeAV1ExtensionHeader *") java.lang.foreign.MemorySegment value) { StdVideoEncodeAV1PictureInfo.set_pExtensionHeader(this.segment(), index, value); return this; }
+
+        /// {@return `pBufferRemovalTimes` at the given index}
+        /// @param index the index
+        public @CType("const uint32_t *") java.lang.foreign.MemorySegment pBufferRemovalTimesAt(long index) { return StdVideoEncodeAV1PictureInfo.get_pBufferRemovalTimes(this.segment(), index); }
+        /// Sets `pBufferRemovalTimes` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pBufferRemovalTimesAt(long index, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { StdVideoEncodeAV1PictureInfo.set_pBufferRemovalTimes(this.segment(), index, value); return this; }
+
+    }
 }

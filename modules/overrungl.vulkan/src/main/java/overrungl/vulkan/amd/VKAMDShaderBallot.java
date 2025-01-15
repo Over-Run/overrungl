@@ -22,11 +22,10 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKAMDShaderBallot {
+public final class VKAMDShaderBallot {
     public static final int VK_AMD_SHADER_BALLOT_SPEC_VERSION = 1;
     public static final String VK_AMD_SHADER_BALLOT_EXTENSION_NAME = "VK_AMD_shader_ballot";
 
-    public VKAMDShaderBallot(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKAMDShaderBallot() { }
 
 }

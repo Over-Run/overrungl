@@ -22,7 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKEXTBlendOperationAdvanced {
+public final class VKEXTBlendOperationAdvanced {
     public static final int VK_BLEND_OVERLAP_UNCORRELATED_EXT = 0;
     public static final int VK_BLEND_OVERLAP_DISJOINT_EXT = 1;
     public static final int VK_BLEND_OVERLAP_CONJOINT_EXT = 2;
@@ -79,7 +79,6 @@ public class VKEXTBlendOperationAdvanced {
     public static final int VK_BLEND_OP_BLUE_EXT = 1000148045;
     public static final int VK_ACCESS_COLOR_ATTACHMENT_READ_NONCOHERENT_BIT_EXT = 0x00080000;
 
-    public VKEXTBlendOperationAdvanced(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKEXTBlendOperationAdvanced() { }
 
 }

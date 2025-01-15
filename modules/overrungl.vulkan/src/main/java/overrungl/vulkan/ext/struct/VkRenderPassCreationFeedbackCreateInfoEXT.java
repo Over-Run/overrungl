@@ -40,7 +40,7 @@ import overrungl.util.*;
 ///     VkRenderPassCreationFeedbackInfoEXT * pRenderPassFeedback;
 /// } VkRenderPassCreationFeedbackCreateInfoEXT;
 /// ```
-public final class VkRenderPassCreationFeedbackCreateInfoEXT extends Struct {
+public sealed class VkRenderPassCreationFeedbackCreateInfoEXT extends Struct {
     /// The struct layout of `VkRenderPassCreationFeedbackCreateInfoEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -64,6 +64,11 @@ public final class VkRenderPassCreationFeedbackCreateInfoEXT extends Struct {
     public static VkRenderPassCreationFeedbackCreateInfoEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkRenderPassCreationFeedbackCreateInfoEXT(segment); }
 
     /// Creates `VkRenderPassCreationFeedbackCreateInfoEXT` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkRenderPassCreationFeedbackCreateInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -76,7 +81,7 @@ public final class VkRenderPassCreationFeedbackCreateInfoEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkRenderPassCreationFeedbackCreateInfoEXT ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkRenderPassCreationFeedbackCreateInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkRenderPassCreationFeedbackCreateInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -87,7 +92,21 @@ public final class VkRenderPassCreationFeedbackCreateInfoEXT extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkRenderPassCreationFeedbackCreateInfoEXT`
-    public static VkRenderPassCreationFeedbackCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkRenderPassCreationFeedbackCreateInfoEXT(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkRenderPassCreationFeedbackCreateInfoEXT` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkRenderPassCreationFeedbackCreateInfoEXT`
+    public static VkRenderPassCreationFeedbackCreateInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkRenderPassCreationFeedbackInfoEXT *") java.lang.foreign.MemorySegment pRenderPassFeedback) { return alloc(allocator).sType(sType).pNext(pNext).pRenderPassFeedback(pRenderPassFeedback); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkRenderPassCreationFeedbackCreateInfoEXT copyFrom(VkRenderPassCreationFeedbackCreateInfoEXT src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -96,9 +115,6 @@ public final class VkRenderPassCreationFeedbackCreateInfoEXT extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkRenderPassCreationFeedbackCreateInfoEXT.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkRenderPassCreationFeedbackCreateInfoEXT.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkRenderPassCreationFeedbackCreateInfoEXT.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -110,11 +126,6 @@ public final class VkRenderPassCreationFeedbackCreateInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkRenderPassCreationFeedbackCreateInfoEXT.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRenderPassCreationFeedbackCreateInfoEXT sTypeAt(long index, @CType("VkStructureType") int value) { VkRenderPassCreationFeedbackCreateInfoEXT.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -127,9 +138,6 @@ public final class VkRenderPassCreationFeedbackCreateInfoEXT extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkRenderPassCreationFeedbackCreateInfoEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkRenderPassCreationFeedbackCreateInfoEXT.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkRenderPassCreationFeedbackCreateInfoEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -141,11 +149,6 @@ public final class VkRenderPassCreationFeedbackCreateInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkRenderPassCreationFeedbackCreateInfoEXT.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRenderPassCreationFeedbackCreateInfoEXT pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkRenderPassCreationFeedbackCreateInfoEXT.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,9 +161,6 @@ public final class VkRenderPassCreationFeedbackCreateInfoEXT extends Struct {
     /// {@return `pRenderPassFeedback`}
     /// @param segment the segment of the struct
     public static @CType("VkRenderPassCreationFeedbackInfoEXT *") java.lang.foreign.MemorySegment get_pRenderPassFeedback(MemorySegment segment) { return VkRenderPassCreationFeedbackCreateInfoEXT.get_pRenderPassFeedback(segment, 0L); }
-    /// {@return `pRenderPassFeedback` at the given index}
-    /// @param index the index
-    public @CType("VkRenderPassCreationFeedbackInfoEXT *") java.lang.foreign.MemorySegment pRenderPassFeedbackAt(long index) { return VkRenderPassCreationFeedbackCreateInfoEXT.get_pRenderPassFeedback(this.segment(), index); }
     /// {@return `pRenderPassFeedback`}
     public @CType("VkRenderPassCreationFeedbackInfoEXT *") java.lang.foreign.MemorySegment pRenderPassFeedback() { return VkRenderPassCreationFeedbackCreateInfoEXT.get_pRenderPassFeedback(this.segment()); }
     /// Sets `pRenderPassFeedback` with the given value at the given index.
@@ -172,14 +172,59 @@ public final class VkRenderPassCreationFeedbackCreateInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pRenderPassFeedback(MemorySegment segment, @CType("VkRenderPassCreationFeedbackInfoEXT *") java.lang.foreign.MemorySegment value) { VkRenderPassCreationFeedbackCreateInfoEXT.set_pRenderPassFeedback(segment, 0L, value); }
-    /// Sets `pRenderPassFeedback` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRenderPassCreationFeedbackCreateInfoEXT pRenderPassFeedbackAt(long index, @CType("VkRenderPassCreationFeedbackInfoEXT *") java.lang.foreign.MemorySegment value) { VkRenderPassCreationFeedbackCreateInfoEXT.set_pRenderPassFeedback(this.segment(), index, value); return this; }
     /// Sets `pRenderPassFeedback` with the given value.
     /// @param value the value
     /// @return `this`
     public VkRenderPassCreationFeedbackCreateInfoEXT pRenderPassFeedback(@CType("VkRenderPassCreationFeedbackInfoEXT *") java.lang.foreign.MemorySegment value) { VkRenderPassCreationFeedbackCreateInfoEXT.set_pRenderPassFeedback(this.segment(), value); return this; }
 
+    /// A buffer of [VkRenderPassCreationFeedbackCreateInfoEXT].
+    public static final class Buffer extends VkRenderPassCreationFeedbackCreateInfoEXT {
+        private final long elementCount;
+
+        /// Creates `VkRenderPassCreationFeedbackCreateInfoEXT.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkRenderPassCreationFeedbackCreateInfoEXT`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkRenderPassCreationFeedbackCreateInfoEXT`
+        public VkRenderPassCreationFeedbackCreateInfoEXT asSlice(long index) { return new VkRenderPassCreationFeedbackCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkRenderPassCreationFeedbackCreateInfoEXT`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkRenderPassCreationFeedbackCreateInfoEXT`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkRenderPassCreationFeedbackCreateInfoEXT.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkRenderPassCreationFeedbackCreateInfoEXT.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkRenderPassCreationFeedbackCreateInfoEXT.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkRenderPassCreationFeedbackCreateInfoEXT.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `pRenderPassFeedback` at the given index}
+        /// @param index the index
+        public @CType("VkRenderPassCreationFeedbackInfoEXT *") java.lang.foreign.MemorySegment pRenderPassFeedbackAt(long index) { return VkRenderPassCreationFeedbackCreateInfoEXT.get_pRenderPassFeedback(this.segment(), index); }
+        /// Sets `pRenderPassFeedback` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pRenderPassFeedbackAt(long index, @CType("VkRenderPassCreationFeedbackInfoEXT *") java.lang.foreign.MemorySegment value) { VkRenderPassCreationFeedbackCreateInfoEXT.set_pRenderPassFeedback(this.segment(), index, value); return this; }
+
+    }
 }

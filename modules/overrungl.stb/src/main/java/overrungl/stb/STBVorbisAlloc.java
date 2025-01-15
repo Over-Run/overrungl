@@ -37,7 +37,7 @@ import overrungl.util.*;
 ///     int alloc_buffer_length_in_bytes;
 /// } STBVorbisAlloc;
 /// ```
-public final class STBVorbisAlloc extends Struct {
+public sealed class STBVorbisAlloc extends Struct {
     /// The struct layout of `stb_vorbis_alloc`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.ADDRESS.withName("alloc_buffer"),
@@ -58,6 +58,11 @@ public final class STBVorbisAlloc extends Struct {
     public static STBVorbisAlloc of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new STBVorbisAlloc(segment); }
 
     /// Creates `STBVorbisAlloc` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `STBVorbisAlloc` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -70,7 +75,7 @@ public final class STBVorbisAlloc extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static STBVorbisAlloc ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new STBVorbisAlloc(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `STBVorbisAlloc` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -81,7 +86,21 @@ public final class STBVorbisAlloc extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `STBVorbisAlloc`
-    public static STBVorbisAlloc alloc(SegmentAllocator allocator, long count) { return new STBVorbisAlloc(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `STBVorbisAlloc` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `STBVorbisAlloc`
+    public static STBVorbisAlloc allocInit(SegmentAllocator allocator, @CType("char *") java.lang.foreign.MemorySegment alloc_buffer, @CType("int") int alloc_buffer_length_in_bytes) { return alloc(allocator).alloc_buffer(alloc_buffer).alloc_buffer_length_in_bytes(alloc_buffer_length_in_bytes); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public STBVorbisAlloc copyFrom(STBVorbisAlloc src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `alloc_buffer` at the given index}
     /// @param segment the segment of the struct
@@ -90,9 +109,6 @@ public final class STBVorbisAlloc extends Struct {
     /// {@return `alloc_buffer`}
     /// @param segment the segment of the struct
     public static @CType("char *") java.lang.foreign.MemorySegment get_alloc_buffer(MemorySegment segment) { return STBVorbisAlloc.get_alloc_buffer(segment, 0L); }
-    /// {@return `alloc_buffer` at the given index}
-    /// @param index the index
-    public @CType("char *") java.lang.foreign.MemorySegment alloc_bufferAt(long index) { return STBVorbisAlloc.get_alloc_buffer(this.segment(), index); }
     /// {@return `alloc_buffer`}
     public @CType("char *") java.lang.foreign.MemorySegment alloc_buffer() { return STBVorbisAlloc.get_alloc_buffer(this.segment()); }
     /// Sets `alloc_buffer` with the given value at the given index.
@@ -104,11 +120,6 @@ public final class STBVorbisAlloc extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_alloc_buffer(MemorySegment segment, @CType("char *") java.lang.foreign.MemorySegment value) { STBVorbisAlloc.set_alloc_buffer(segment, 0L, value); }
-    /// Sets `alloc_buffer` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public STBVorbisAlloc alloc_bufferAt(long index, @CType("char *") java.lang.foreign.MemorySegment value) { STBVorbisAlloc.set_alloc_buffer(this.segment(), index, value); return this; }
     /// Sets `alloc_buffer` with the given value.
     /// @param value the value
     /// @return `this`
@@ -121,9 +132,6 @@ public final class STBVorbisAlloc extends Struct {
     /// {@return `alloc_buffer_length_in_bytes`}
     /// @param segment the segment of the struct
     public static @CType("int") int get_alloc_buffer_length_in_bytes(MemorySegment segment) { return STBVorbisAlloc.get_alloc_buffer_length_in_bytes(segment, 0L); }
-    /// {@return `alloc_buffer_length_in_bytes` at the given index}
-    /// @param index the index
-    public @CType("int") int alloc_buffer_length_in_bytesAt(long index) { return STBVorbisAlloc.get_alloc_buffer_length_in_bytes(this.segment(), index); }
     /// {@return `alloc_buffer_length_in_bytes`}
     public @CType("int") int alloc_buffer_length_in_bytes() { return STBVorbisAlloc.get_alloc_buffer_length_in_bytes(this.segment()); }
     /// Sets `alloc_buffer_length_in_bytes` with the given value at the given index.
@@ -135,14 +143,50 @@ public final class STBVorbisAlloc extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_alloc_buffer_length_in_bytes(MemorySegment segment, @CType("int") int value) { STBVorbisAlloc.set_alloc_buffer_length_in_bytes(segment, 0L, value); }
-    /// Sets `alloc_buffer_length_in_bytes` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public STBVorbisAlloc alloc_buffer_length_in_bytesAt(long index, @CType("int") int value) { STBVorbisAlloc.set_alloc_buffer_length_in_bytes(this.segment(), index, value); return this; }
     /// Sets `alloc_buffer_length_in_bytes` with the given value.
     /// @param value the value
     /// @return `this`
     public STBVorbisAlloc alloc_buffer_length_in_bytes(@CType("int") int value) { STBVorbisAlloc.set_alloc_buffer_length_in_bytes(this.segment(), value); return this; }
 
+    /// A buffer of [STBVorbisAlloc].
+    public static final class Buffer extends STBVorbisAlloc {
+        private final long elementCount;
+
+        /// Creates `STBVorbisAlloc.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `STBVorbisAlloc`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `STBVorbisAlloc`
+        public STBVorbisAlloc asSlice(long index) { return new STBVorbisAlloc(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `STBVorbisAlloc`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `STBVorbisAlloc`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `alloc_buffer` at the given index}
+        /// @param index the index
+        public @CType("char *") java.lang.foreign.MemorySegment alloc_bufferAt(long index) { return STBVorbisAlloc.get_alloc_buffer(this.segment(), index); }
+        /// Sets `alloc_buffer` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer alloc_bufferAt(long index, @CType("char *") java.lang.foreign.MemorySegment value) { STBVorbisAlloc.set_alloc_buffer(this.segment(), index, value); return this; }
+
+        /// {@return `alloc_buffer_length_in_bytes` at the given index}
+        /// @param index the index
+        public @CType("int") int alloc_buffer_length_in_bytesAt(long index) { return STBVorbisAlloc.get_alloc_buffer_length_in_bytes(this.segment(), index); }
+        /// Sets `alloc_buffer_length_in_bytes` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer alloc_buffer_length_in_bytesAt(long index, @CType("int") int value) { STBVorbisAlloc.set_alloc_buffer_length_in_bytes(this.segment(), index, value); return this; }
+
+    }
 }

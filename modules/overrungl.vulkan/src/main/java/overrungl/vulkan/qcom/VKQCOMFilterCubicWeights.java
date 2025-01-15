@@ -22,7 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKQCOMFilterCubicWeights {
+public final class VKQCOMFilterCubicWeights {
     public static final int VK_CUBIC_FILTER_WEIGHTS_CATMULL_ROM_QCOM = 0;
     public static final int VK_CUBIC_FILTER_WEIGHTS_ZERO_TANGENT_CARDINAL_QCOM = 1;
     public static final int VK_CUBIC_FILTER_WEIGHTS_B_SPLINE_QCOM = 2;
@@ -33,7 +33,6 @@ public class VKQCOMFilterCubicWeights {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CUBIC_WEIGHTS_FEATURES_QCOM = 1000519001;
     public static final int VK_STRUCTURE_TYPE_BLIT_IMAGE_CUBIC_WEIGHTS_INFO_QCOM = 1000519002;
 
-    public VKQCOMFilterCubicWeights(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKQCOMFilterCubicWeights() { }
 
 }

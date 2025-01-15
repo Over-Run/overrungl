@@ -22,11 +22,10 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKAMDShaderImageLoadStoreLod {
+public final class VKAMDShaderImageLoadStoreLod {
     public static final int VK_AMD_SHADER_IMAGE_LOAD_STORE_LOD_SPEC_VERSION = 1;
     public static final String VK_AMD_SHADER_IMAGE_LOAD_STORE_LOD_EXTENSION_NAME = "VK_AMD_shader_image_load_store_lod";
 
-    public VKAMDShaderImageLoadStoreLod(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKAMDShaderImageLoadStoreLod() { }
 
 }

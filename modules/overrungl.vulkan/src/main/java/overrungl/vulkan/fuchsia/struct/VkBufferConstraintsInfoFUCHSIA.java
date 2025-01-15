@@ -46,7 +46,7 @@ import overrungl.util.*;
 ///     VkBufferCollectionConstraintsInfoFUCHSIA bufferCollectionConstraints;
 /// } VkBufferConstraintsInfoFUCHSIA;
 /// ```
-public final class VkBufferConstraintsInfoFUCHSIA extends Struct {
+public sealed class VkBufferConstraintsInfoFUCHSIA extends Struct {
     /// The struct layout of `VkBufferConstraintsInfoFUCHSIA`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -80,6 +80,11 @@ public final class VkBufferConstraintsInfoFUCHSIA extends Struct {
     public static VkBufferConstraintsInfoFUCHSIA of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkBufferConstraintsInfoFUCHSIA(segment); }
 
     /// Creates `VkBufferConstraintsInfoFUCHSIA` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkBufferConstraintsInfoFUCHSIA` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -92,7 +97,7 @@ public final class VkBufferConstraintsInfoFUCHSIA extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkBufferConstraintsInfoFUCHSIA ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkBufferConstraintsInfoFUCHSIA(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkBufferConstraintsInfoFUCHSIA` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -103,7 +108,21 @@ public final class VkBufferConstraintsInfoFUCHSIA extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkBufferConstraintsInfoFUCHSIA`
-    public static VkBufferConstraintsInfoFUCHSIA alloc(SegmentAllocator allocator, long count) { return new VkBufferConstraintsInfoFUCHSIA(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkBufferConstraintsInfoFUCHSIA` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkBufferConstraintsInfoFUCHSIA`
+    public static VkBufferConstraintsInfoFUCHSIA allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkBufferCreateInfo") java.lang.foreign.MemorySegment createInfo, @CType("VkFormatFeatureFlags") int requiredFormatFeatures, @CType("VkBufferCollectionConstraintsInfoFUCHSIA") java.lang.foreign.MemorySegment bufferCollectionConstraints) { return alloc(allocator).sType(sType).pNext(pNext).createInfo(createInfo).requiredFormatFeatures(requiredFormatFeatures).bufferCollectionConstraints(bufferCollectionConstraints); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkBufferConstraintsInfoFUCHSIA copyFrom(VkBufferConstraintsInfoFUCHSIA src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -112,9 +131,6 @@ public final class VkBufferConstraintsInfoFUCHSIA extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkBufferConstraintsInfoFUCHSIA.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkBufferConstraintsInfoFUCHSIA.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkBufferConstraintsInfoFUCHSIA.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -126,11 +142,6 @@ public final class VkBufferConstraintsInfoFUCHSIA extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkBufferConstraintsInfoFUCHSIA.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBufferConstraintsInfoFUCHSIA sTypeAt(long index, @CType("VkStructureType") int value) { VkBufferConstraintsInfoFUCHSIA.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -143,9 +154,6 @@ public final class VkBufferConstraintsInfoFUCHSIA extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkBufferConstraintsInfoFUCHSIA.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkBufferConstraintsInfoFUCHSIA.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkBufferConstraintsInfoFUCHSIA.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -157,11 +165,6 @@ public final class VkBufferConstraintsInfoFUCHSIA extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkBufferConstraintsInfoFUCHSIA.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBufferConstraintsInfoFUCHSIA pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkBufferConstraintsInfoFUCHSIA.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,9 +177,6 @@ public final class VkBufferConstraintsInfoFUCHSIA extends Struct {
     /// {@return `createInfo`}
     /// @param segment the segment of the struct
     public static @CType("VkBufferCreateInfo") java.lang.foreign.MemorySegment get_createInfo(MemorySegment segment) { return VkBufferConstraintsInfoFUCHSIA.get_createInfo(segment, 0L); }
-    /// {@return `createInfo` at the given index}
-    /// @param index the index
-    public @CType("VkBufferCreateInfo") java.lang.foreign.MemorySegment createInfoAt(long index) { return VkBufferConstraintsInfoFUCHSIA.get_createInfo(this.segment(), index); }
     /// {@return `createInfo`}
     public @CType("VkBufferCreateInfo") java.lang.foreign.MemorySegment createInfo() { return VkBufferConstraintsInfoFUCHSIA.get_createInfo(this.segment()); }
     /// Sets `createInfo` with the given value at the given index.
@@ -188,11 +188,6 @@ public final class VkBufferConstraintsInfoFUCHSIA extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_createInfo(MemorySegment segment, @CType("VkBufferCreateInfo") java.lang.foreign.MemorySegment value) { VkBufferConstraintsInfoFUCHSIA.set_createInfo(segment, 0L, value); }
-    /// Sets `createInfo` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBufferConstraintsInfoFUCHSIA createInfoAt(long index, @CType("VkBufferCreateInfo") java.lang.foreign.MemorySegment value) { VkBufferConstraintsInfoFUCHSIA.set_createInfo(this.segment(), index, value); return this; }
     /// Sets `createInfo` with the given value.
     /// @param value the value
     /// @return `this`
@@ -205,9 +200,6 @@ public final class VkBufferConstraintsInfoFUCHSIA extends Struct {
     /// {@return `requiredFormatFeatures`}
     /// @param segment the segment of the struct
     public static @CType("VkFormatFeatureFlags") int get_requiredFormatFeatures(MemorySegment segment) { return VkBufferConstraintsInfoFUCHSIA.get_requiredFormatFeatures(segment, 0L); }
-    /// {@return `requiredFormatFeatures` at the given index}
-    /// @param index the index
-    public @CType("VkFormatFeatureFlags") int requiredFormatFeaturesAt(long index) { return VkBufferConstraintsInfoFUCHSIA.get_requiredFormatFeatures(this.segment(), index); }
     /// {@return `requiredFormatFeatures`}
     public @CType("VkFormatFeatureFlags") int requiredFormatFeatures() { return VkBufferConstraintsInfoFUCHSIA.get_requiredFormatFeatures(this.segment()); }
     /// Sets `requiredFormatFeatures` with the given value at the given index.
@@ -219,11 +211,6 @@ public final class VkBufferConstraintsInfoFUCHSIA extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_requiredFormatFeatures(MemorySegment segment, @CType("VkFormatFeatureFlags") int value) { VkBufferConstraintsInfoFUCHSIA.set_requiredFormatFeatures(segment, 0L, value); }
-    /// Sets `requiredFormatFeatures` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBufferConstraintsInfoFUCHSIA requiredFormatFeaturesAt(long index, @CType("VkFormatFeatureFlags") int value) { VkBufferConstraintsInfoFUCHSIA.set_requiredFormatFeatures(this.segment(), index, value); return this; }
     /// Sets `requiredFormatFeatures` with the given value.
     /// @param value the value
     /// @return `this`
@@ -236,9 +223,6 @@ public final class VkBufferConstraintsInfoFUCHSIA extends Struct {
     /// {@return `bufferCollectionConstraints`}
     /// @param segment the segment of the struct
     public static @CType("VkBufferCollectionConstraintsInfoFUCHSIA") java.lang.foreign.MemorySegment get_bufferCollectionConstraints(MemorySegment segment) { return VkBufferConstraintsInfoFUCHSIA.get_bufferCollectionConstraints(segment, 0L); }
-    /// {@return `bufferCollectionConstraints` at the given index}
-    /// @param index the index
-    public @CType("VkBufferCollectionConstraintsInfoFUCHSIA") java.lang.foreign.MemorySegment bufferCollectionConstraintsAt(long index) { return VkBufferConstraintsInfoFUCHSIA.get_bufferCollectionConstraints(this.segment(), index); }
     /// {@return `bufferCollectionConstraints`}
     public @CType("VkBufferCollectionConstraintsInfoFUCHSIA") java.lang.foreign.MemorySegment bufferCollectionConstraints() { return VkBufferConstraintsInfoFUCHSIA.get_bufferCollectionConstraints(this.segment()); }
     /// Sets `bufferCollectionConstraints` with the given value at the given index.
@@ -250,14 +234,77 @@ public final class VkBufferConstraintsInfoFUCHSIA extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_bufferCollectionConstraints(MemorySegment segment, @CType("VkBufferCollectionConstraintsInfoFUCHSIA") java.lang.foreign.MemorySegment value) { VkBufferConstraintsInfoFUCHSIA.set_bufferCollectionConstraints(segment, 0L, value); }
-    /// Sets `bufferCollectionConstraints` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBufferConstraintsInfoFUCHSIA bufferCollectionConstraintsAt(long index, @CType("VkBufferCollectionConstraintsInfoFUCHSIA") java.lang.foreign.MemorySegment value) { VkBufferConstraintsInfoFUCHSIA.set_bufferCollectionConstraints(this.segment(), index, value); return this; }
     /// Sets `bufferCollectionConstraints` with the given value.
     /// @param value the value
     /// @return `this`
     public VkBufferConstraintsInfoFUCHSIA bufferCollectionConstraints(@CType("VkBufferCollectionConstraintsInfoFUCHSIA") java.lang.foreign.MemorySegment value) { VkBufferConstraintsInfoFUCHSIA.set_bufferCollectionConstraints(this.segment(), value); return this; }
 
+    /// A buffer of [VkBufferConstraintsInfoFUCHSIA].
+    public static final class Buffer extends VkBufferConstraintsInfoFUCHSIA {
+        private final long elementCount;
+
+        /// Creates `VkBufferConstraintsInfoFUCHSIA.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkBufferConstraintsInfoFUCHSIA`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkBufferConstraintsInfoFUCHSIA`
+        public VkBufferConstraintsInfoFUCHSIA asSlice(long index) { return new VkBufferConstraintsInfoFUCHSIA(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkBufferConstraintsInfoFUCHSIA`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkBufferConstraintsInfoFUCHSIA`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkBufferConstraintsInfoFUCHSIA.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkBufferConstraintsInfoFUCHSIA.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkBufferConstraintsInfoFUCHSIA.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkBufferConstraintsInfoFUCHSIA.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `createInfo` at the given index}
+        /// @param index the index
+        public @CType("VkBufferCreateInfo") java.lang.foreign.MemorySegment createInfoAt(long index) { return VkBufferConstraintsInfoFUCHSIA.get_createInfo(this.segment(), index); }
+        /// Sets `createInfo` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer createInfoAt(long index, @CType("VkBufferCreateInfo") java.lang.foreign.MemorySegment value) { VkBufferConstraintsInfoFUCHSIA.set_createInfo(this.segment(), index, value); return this; }
+
+        /// {@return `requiredFormatFeatures` at the given index}
+        /// @param index the index
+        public @CType("VkFormatFeatureFlags") int requiredFormatFeaturesAt(long index) { return VkBufferConstraintsInfoFUCHSIA.get_requiredFormatFeatures(this.segment(), index); }
+        /// Sets `requiredFormatFeatures` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer requiredFormatFeaturesAt(long index, @CType("VkFormatFeatureFlags") int value) { VkBufferConstraintsInfoFUCHSIA.set_requiredFormatFeatures(this.segment(), index, value); return this; }
+
+        /// {@return `bufferCollectionConstraints` at the given index}
+        /// @param index the index
+        public @CType("VkBufferCollectionConstraintsInfoFUCHSIA") java.lang.foreign.MemorySegment bufferCollectionConstraintsAt(long index) { return VkBufferConstraintsInfoFUCHSIA.get_bufferCollectionConstraints(this.segment(), index); }
+        /// Sets `bufferCollectionConstraints` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer bufferCollectionConstraintsAt(long index, @CType("VkBufferCollectionConstraintsInfoFUCHSIA") java.lang.foreign.MemorySegment value) { VkBufferConstraintsInfoFUCHSIA.set_bufferCollectionConstraints(this.segment(), index, value); return this; }
+
+    }
 }

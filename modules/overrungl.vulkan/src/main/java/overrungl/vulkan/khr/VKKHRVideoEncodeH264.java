@@ -22,7 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKKHRVideoEncodeH264 {
+public final class VKKHRVideoEncodeH264 {
     public static final int VK_VIDEO_ENCODE_H264_CAPABILITY_HRD_COMPLIANCE_BIT_KHR = 0x00000001;
     public static final int VK_VIDEO_ENCODE_H264_CAPABILITY_PREDICTION_WEIGHT_TABLE_GENERATED_BIT_KHR = 0x00000002;
     public static final int VK_VIDEO_ENCODE_H264_CAPABILITY_ROW_UNALIGNED_SLICE_BIT_KHR = 0x00000004;
@@ -75,7 +75,6 @@ public class VKKHRVideoEncodeH264 {
     public static final int VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_SESSION_PARAMETERS_FEEDBACK_INFO_KHR = 1000038013;
     public static final int VK_VIDEO_CODEC_OPERATION_ENCODE_H264_BIT_KHR = 0x00010000;
 
-    public VKKHRVideoEncodeH264(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKKHRVideoEncodeH264() { }
 
 }

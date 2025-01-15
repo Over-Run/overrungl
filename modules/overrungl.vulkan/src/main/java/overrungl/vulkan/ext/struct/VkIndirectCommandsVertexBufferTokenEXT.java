@@ -34,7 +34,7 @@ import overrungl.util.*;
 ///     uint32_t vertexBindingUnit;
 /// } VkIndirectCommandsVertexBufferTokenEXT;
 /// ```
-public final class VkIndirectCommandsVertexBufferTokenEXT extends Struct {
+public sealed class VkIndirectCommandsVertexBufferTokenEXT extends Struct {
     /// The struct layout of `VkIndirectCommandsVertexBufferTokenEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("vertexBindingUnit")
@@ -52,6 +52,11 @@ public final class VkIndirectCommandsVertexBufferTokenEXT extends Struct {
     public static VkIndirectCommandsVertexBufferTokenEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkIndirectCommandsVertexBufferTokenEXT(segment); }
 
     /// Creates `VkIndirectCommandsVertexBufferTokenEXT` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkIndirectCommandsVertexBufferTokenEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -64,7 +69,7 @@ public final class VkIndirectCommandsVertexBufferTokenEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkIndirectCommandsVertexBufferTokenEXT ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkIndirectCommandsVertexBufferTokenEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkIndirectCommandsVertexBufferTokenEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -75,7 +80,21 @@ public final class VkIndirectCommandsVertexBufferTokenEXT extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkIndirectCommandsVertexBufferTokenEXT`
-    public static VkIndirectCommandsVertexBufferTokenEXT alloc(SegmentAllocator allocator, long count) { return new VkIndirectCommandsVertexBufferTokenEXT(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkIndirectCommandsVertexBufferTokenEXT` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkIndirectCommandsVertexBufferTokenEXT`
+    public static VkIndirectCommandsVertexBufferTokenEXT allocInit(SegmentAllocator allocator, @CType("uint32_t") int vertexBindingUnit) { return alloc(allocator).vertexBindingUnit(vertexBindingUnit); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkIndirectCommandsVertexBufferTokenEXT copyFrom(VkIndirectCommandsVertexBufferTokenEXT src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `vertexBindingUnit` at the given index}
     /// @param segment the segment of the struct
@@ -84,9 +103,6 @@ public final class VkIndirectCommandsVertexBufferTokenEXT extends Struct {
     /// {@return `vertexBindingUnit`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_vertexBindingUnit(MemorySegment segment) { return VkIndirectCommandsVertexBufferTokenEXT.get_vertexBindingUnit(segment, 0L); }
-    /// {@return `vertexBindingUnit` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int vertexBindingUnitAt(long index) { return VkIndirectCommandsVertexBufferTokenEXT.get_vertexBindingUnit(this.segment(), index); }
     /// {@return `vertexBindingUnit`}
     public @CType("uint32_t") int vertexBindingUnit() { return VkIndirectCommandsVertexBufferTokenEXT.get_vertexBindingUnit(this.segment()); }
     /// Sets `vertexBindingUnit` with the given value at the given index.
@@ -98,14 +114,41 @@ public final class VkIndirectCommandsVertexBufferTokenEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_vertexBindingUnit(MemorySegment segment, @CType("uint32_t") int value) { VkIndirectCommandsVertexBufferTokenEXT.set_vertexBindingUnit(segment, 0L, value); }
-    /// Sets `vertexBindingUnit` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsVertexBufferTokenEXT vertexBindingUnitAt(long index, @CType("uint32_t") int value) { VkIndirectCommandsVertexBufferTokenEXT.set_vertexBindingUnit(this.segment(), index, value); return this; }
     /// Sets `vertexBindingUnit` with the given value.
     /// @param value the value
     /// @return `this`
     public VkIndirectCommandsVertexBufferTokenEXT vertexBindingUnit(@CType("uint32_t") int value) { VkIndirectCommandsVertexBufferTokenEXT.set_vertexBindingUnit(this.segment(), value); return this; }
 
+    /// A buffer of [VkIndirectCommandsVertexBufferTokenEXT].
+    public static final class Buffer extends VkIndirectCommandsVertexBufferTokenEXT {
+        private final long elementCount;
+
+        /// Creates `VkIndirectCommandsVertexBufferTokenEXT.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkIndirectCommandsVertexBufferTokenEXT`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkIndirectCommandsVertexBufferTokenEXT`
+        public VkIndirectCommandsVertexBufferTokenEXT asSlice(long index) { return new VkIndirectCommandsVertexBufferTokenEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkIndirectCommandsVertexBufferTokenEXT`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkIndirectCommandsVertexBufferTokenEXT`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `vertexBindingUnit` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int vertexBindingUnitAt(long index) { return VkIndirectCommandsVertexBufferTokenEXT.get_vertexBindingUnit(this.segment(), index); }
+        /// Sets `vertexBindingUnit` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer vertexBindingUnitAt(long index, @CType("uint32_t") int value) { VkIndirectCommandsVertexBufferTokenEXT.set_vertexBindingUnit(this.segment(), index, value); return this; }
+
+    }
 }

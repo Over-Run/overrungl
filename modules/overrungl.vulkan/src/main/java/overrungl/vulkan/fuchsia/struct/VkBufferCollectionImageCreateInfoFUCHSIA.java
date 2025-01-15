@@ -43,7 +43,7 @@ import overrungl.util.*;
 ///     uint32_t index;
 /// } VkBufferCollectionImageCreateInfoFUCHSIA;
 /// ```
-public final class VkBufferCollectionImageCreateInfoFUCHSIA extends Struct {
+public sealed class VkBufferCollectionImageCreateInfoFUCHSIA extends Struct {
     /// The struct layout of `VkBufferCollectionImageCreateInfoFUCHSIA`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -70,6 +70,11 @@ public final class VkBufferCollectionImageCreateInfoFUCHSIA extends Struct {
     public static VkBufferCollectionImageCreateInfoFUCHSIA of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkBufferCollectionImageCreateInfoFUCHSIA(segment); }
 
     /// Creates `VkBufferCollectionImageCreateInfoFUCHSIA` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkBufferCollectionImageCreateInfoFUCHSIA` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -82,7 +87,7 @@ public final class VkBufferCollectionImageCreateInfoFUCHSIA extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkBufferCollectionImageCreateInfoFUCHSIA ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkBufferCollectionImageCreateInfoFUCHSIA(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkBufferCollectionImageCreateInfoFUCHSIA` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -93,7 +98,21 @@ public final class VkBufferCollectionImageCreateInfoFUCHSIA extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkBufferCollectionImageCreateInfoFUCHSIA`
-    public static VkBufferCollectionImageCreateInfoFUCHSIA alloc(SegmentAllocator allocator, long count) { return new VkBufferCollectionImageCreateInfoFUCHSIA(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkBufferCollectionImageCreateInfoFUCHSIA` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkBufferCollectionImageCreateInfoFUCHSIA`
+    public static VkBufferCollectionImageCreateInfoFUCHSIA allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkBufferCollectionFUCHSIA") java.lang.foreign.MemorySegment collection, @CType("uint32_t") int index) { return alloc(allocator).sType(sType).pNext(pNext).collection(collection).index(index); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkBufferCollectionImageCreateInfoFUCHSIA copyFrom(VkBufferCollectionImageCreateInfoFUCHSIA src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -102,9 +121,6 @@ public final class VkBufferCollectionImageCreateInfoFUCHSIA extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkBufferCollectionImageCreateInfoFUCHSIA.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkBufferCollectionImageCreateInfoFUCHSIA.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkBufferCollectionImageCreateInfoFUCHSIA.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -116,11 +132,6 @@ public final class VkBufferCollectionImageCreateInfoFUCHSIA extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkBufferCollectionImageCreateInfoFUCHSIA.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCollectionImageCreateInfoFUCHSIA sTypeAt(long index, @CType("VkStructureType") int value) { VkBufferCollectionImageCreateInfoFUCHSIA.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -133,9 +144,6 @@ public final class VkBufferCollectionImageCreateInfoFUCHSIA extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkBufferCollectionImageCreateInfoFUCHSIA.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkBufferCollectionImageCreateInfoFUCHSIA.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkBufferCollectionImageCreateInfoFUCHSIA.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -147,11 +155,6 @@ public final class VkBufferCollectionImageCreateInfoFUCHSIA extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkBufferCollectionImageCreateInfoFUCHSIA.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCollectionImageCreateInfoFUCHSIA pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkBufferCollectionImageCreateInfoFUCHSIA.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -164,9 +167,6 @@ public final class VkBufferCollectionImageCreateInfoFUCHSIA extends Struct {
     /// {@return `collection`}
     /// @param segment the segment of the struct
     public static @CType("VkBufferCollectionFUCHSIA") java.lang.foreign.MemorySegment get_collection(MemorySegment segment) { return VkBufferCollectionImageCreateInfoFUCHSIA.get_collection(segment, 0L); }
-    /// {@return `collection` at the given index}
-    /// @param index the index
-    public @CType("VkBufferCollectionFUCHSIA") java.lang.foreign.MemorySegment collectionAt(long index) { return VkBufferCollectionImageCreateInfoFUCHSIA.get_collection(this.segment(), index); }
     /// {@return `collection`}
     public @CType("VkBufferCollectionFUCHSIA") java.lang.foreign.MemorySegment collection() { return VkBufferCollectionImageCreateInfoFUCHSIA.get_collection(this.segment()); }
     /// Sets `collection` with the given value at the given index.
@@ -178,11 +178,6 @@ public final class VkBufferCollectionImageCreateInfoFUCHSIA extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_collection(MemorySegment segment, @CType("VkBufferCollectionFUCHSIA") java.lang.foreign.MemorySegment value) { VkBufferCollectionImageCreateInfoFUCHSIA.set_collection(segment, 0L, value); }
-    /// Sets `collection` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCollectionImageCreateInfoFUCHSIA collectionAt(long index, @CType("VkBufferCollectionFUCHSIA") java.lang.foreign.MemorySegment value) { VkBufferCollectionImageCreateInfoFUCHSIA.set_collection(this.segment(), index, value); return this; }
     /// Sets `collection` with the given value.
     /// @param value the value
     /// @return `this`
@@ -195,9 +190,6 @@ public final class VkBufferCollectionImageCreateInfoFUCHSIA extends Struct {
     /// {@return `index`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_index(MemorySegment segment) { return VkBufferCollectionImageCreateInfoFUCHSIA.get_index(segment, 0L); }
-    /// {@return `index` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int indexAt(long index) { return VkBufferCollectionImageCreateInfoFUCHSIA.get_index(this.segment(), index); }
     /// {@return `index`}
     public @CType("uint32_t") int index() { return VkBufferCollectionImageCreateInfoFUCHSIA.get_index(this.segment()); }
     /// Sets `index` with the given value at the given index.
@@ -209,14 +201,68 @@ public final class VkBufferCollectionImageCreateInfoFUCHSIA extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_index(MemorySegment segment, @CType("uint32_t") int value) { VkBufferCollectionImageCreateInfoFUCHSIA.set_index(segment, 0L, value); }
-    /// Sets `index` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCollectionImageCreateInfoFUCHSIA indexAt(long index, @CType("uint32_t") int value) { VkBufferCollectionImageCreateInfoFUCHSIA.set_index(this.segment(), index, value); return this; }
     /// Sets `index` with the given value.
     /// @param value the value
     /// @return `this`
     public VkBufferCollectionImageCreateInfoFUCHSIA index(@CType("uint32_t") int value) { VkBufferCollectionImageCreateInfoFUCHSIA.set_index(this.segment(), value); return this; }
 
+    /// A buffer of [VkBufferCollectionImageCreateInfoFUCHSIA].
+    public static final class Buffer extends VkBufferCollectionImageCreateInfoFUCHSIA {
+        private final long elementCount;
+
+        /// Creates `VkBufferCollectionImageCreateInfoFUCHSIA.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkBufferCollectionImageCreateInfoFUCHSIA`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkBufferCollectionImageCreateInfoFUCHSIA`
+        public VkBufferCollectionImageCreateInfoFUCHSIA asSlice(long index) { return new VkBufferCollectionImageCreateInfoFUCHSIA(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkBufferCollectionImageCreateInfoFUCHSIA`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkBufferCollectionImageCreateInfoFUCHSIA`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkBufferCollectionImageCreateInfoFUCHSIA.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkBufferCollectionImageCreateInfoFUCHSIA.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkBufferCollectionImageCreateInfoFUCHSIA.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkBufferCollectionImageCreateInfoFUCHSIA.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `collection` at the given index}
+        /// @param index the index
+        public @CType("VkBufferCollectionFUCHSIA") java.lang.foreign.MemorySegment collectionAt(long index) { return VkBufferCollectionImageCreateInfoFUCHSIA.get_collection(this.segment(), index); }
+        /// Sets `collection` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer collectionAt(long index, @CType("VkBufferCollectionFUCHSIA") java.lang.foreign.MemorySegment value) { VkBufferCollectionImageCreateInfoFUCHSIA.set_collection(this.segment(), index, value); return this; }
+
+        /// {@return `index` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int indexAt(long index) { return VkBufferCollectionImageCreateInfoFUCHSIA.get_index(this.segment(), index); }
+        /// Sets `index` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer indexAt(long index, @CType("uint32_t") int value) { VkBufferCollectionImageCreateInfoFUCHSIA.set_index(this.segment(), index, value); return this; }
+
+    }
 }

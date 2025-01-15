@@ -46,7 +46,7 @@ import overrungl.util.*;
 ///     VkBool32 nestedCommandBufferSimultaneousUse;
 /// } VkPhysicalDeviceNestedCommandBufferFeaturesEXT;
 /// ```
-public final class VkPhysicalDeviceNestedCommandBufferFeaturesEXT extends Struct {
+public sealed class VkPhysicalDeviceNestedCommandBufferFeaturesEXT extends Struct {
     /// The struct layout of `VkPhysicalDeviceNestedCommandBufferFeaturesEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -76,6 +76,11 @@ public final class VkPhysicalDeviceNestedCommandBufferFeaturesEXT extends Struct
     public static VkPhysicalDeviceNestedCommandBufferFeaturesEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceNestedCommandBufferFeaturesEXT(segment); }
 
     /// Creates `VkPhysicalDeviceNestedCommandBufferFeaturesEXT` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPhysicalDeviceNestedCommandBufferFeaturesEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -88,7 +93,7 @@ public final class VkPhysicalDeviceNestedCommandBufferFeaturesEXT extends Struct
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceNestedCommandBufferFeaturesEXT ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceNestedCommandBufferFeaturesEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceNestedCommandBufferFeaturesEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -99,7 +104,21 @@ public final class VkPhysicalDeviceNestedCommandBufferFeaturesEXT extends Struct
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceNestedCommandBufferFeaturesEXT`
-    public static VkPhysicalDeviceNestedCommandBufferFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceNestedCommandBufferFeaturesEXT(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkPhysicalDeviceNestedCommandBufferFeaturesEXT` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDeviceNestedCommandBufferFeaturesEXT`
+    public static VkPhysicalDeviceNestedCommandBufferFeaturesEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int nestedCommandBuffer, @CType("VkBool32") int nestedCommandBufferRendering, @CType("VkBool32") int nestedCommandBufferSimultaneousUse) { return alloc(allocator).sType(sType).pNext(pNext).nestedCommandBuffer(nestedCommandBuffer).nestedCommandBufferRendering(nestedCommandBufferRendering).nestedCommandBufferSimultaneousUse(nestedCommandBufferSimultaneousUse); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDeviceNestedCommandBufferFeaturesEXT copyFrom(VkPhysicalDeviceNestedCommandBufferFeaturesEXT src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -108,9 +127,6 @@ public final class VkPhysicalDeviceNestedCommandBufferFeaturesEXT extends Struct
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceNestedCommandBufferFeaturesEXT.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceNestedCommandBufferFeaturesEXT.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPhysicalDeviceNestedCommandBufferFeaturesEXT.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -122,11 +138,6 @@ public final class VkPhysicalDeviceNestedCommandBufferFeaturesEXT extends Struct
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceNestedCommandBufferFeaturesEXT.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceNestedCommandBufferFeaturesEXT sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceNestedCommandBufferFeaturesEXT.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -139,9 +150,6 @@ public final class VkPhysicalDeviceNestedCommandBufferFeaturesEXT extends Struct
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceNestedCommandBufferFeaturesEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceNestedCommandBufferFeaturesEXT.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceNestedCommandBufferFeaturesEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -153,11 +161,6 @@ public final class VkPhysicalDeviceNestedCommandBufferFeaturesEXT extends Struct
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceNestedCommandBufferFeaturesEXT.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceNestedCommandBufferFeaturesEXT pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceNestedCommandBufferFeaturesEXT.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -170,9 +173,6 @@ public final class VkPhysicalDeviceNestedCommandBufferFeaturesEXT extends Struct
     /// {@return `nestedCommandBuffer`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_nestedCommandBuffer(MemorySegment segment) { return VkPhysicalDeviceNestedCommandBufferFeaturesEXT.get_nestedCommandBuffer(segment, 0L); }
-    /// {@return `nestedCommandBuffer` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int nestedCommandBufferAt(long index) { return VkPhysicalDeviceNestedCommandBufferFeaturesEXT.get_nestedCommandBuffer(this.segment(), index); }
     /// {@return `nestedCommandBuffer`}
     public @CType("VkBool32") int nestedCommandBuffer() { return VkPhysicalDeviceNestedCommandBufferFeaturesEXT.get_nestedCommandBuffer(this.segment()); }
     /// Sets `nestedCommandBuffer` with the given value at the given index.
@@ -184,11 +184,6 @@ public final class VkPhysicalDeviceNestedCommandBufferFeaturesEXT extends Struct
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_nestedCommandBuffer(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceNestedCommandBufferFeaturesEXT.set_nestedCommandBuffer(segment, 0L, value); }
-    /// Sets `nestedCommandBuffer` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceNestedCommandBufferFeaturesEXT nestedCommandBufferAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceNestedCommandBufferFeaturesEXT.set_nestedCommandBuffer(this.segment(), index, value); return this; }
     /// Sets `nestedCommandBuffer` with the given value.
     /// @param value the value
     /// @return `this`
@@ -201,9 +196,6 @@ public final class VkPhysicalDeviceNestedCommandBufferFeaturesEXT extends Struct
     /// {@return `nestedCommandBufferRendering`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_nestedCommandBufferRendering(MemorySegment segment) { return VkPhysicalDeviceNestedCommandBufferFeaturesEXT.get_nestedCommandBufferRendering(segment, 0L); }
-    /// {@return `nestedCommandBufferRendering` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int nestedCommandBufferRenderingAt(long index) { return VkPhysicalDeviceNestedCommandBufferFeaturesEXT.get_nestedCommandBufferRendering(this.segment(), index); }
     /// {@return `nestedCommandBufferRendering`}
     public @CType("VkBool32") int nestedCommandBufferRendering() { return VkPhysicalDeviceNestedCommandBufferFeaturesEXT.get_nestedCommandBufferRendering(this.segment()); }
     /// Sets `nestedCommandBufferRendering` with the given value at the given index.
@@ -215,11 +207,6 @@ public final class VkPhysicalDeviceNestedCommandBufferFeaturesEXT extends Struct
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_nestedCommandBufferRendering(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceNestedCommandBufferFeaturesEXT.set_nestedCommandBufferRendering(segment, 0L, value); }
-    /// Sets `nestedCommandBufferRendering` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceNestedCommandBufferFeaturesEXT nestedCommandBufferRenderingAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceNestedCommandBufferFeaturesEXT.set_nestedCommandBufferRendering(this.segment(), index, value); return this; }
     /// Sets `nestedCommandBufferRendering` with the given value.
     /// @param value the value
     /// @return `this`
@@ -232,9 +219,6 @@ public final class VkPhysicalDeviceNestedCommandBufferFeaturesEXT extends Struct
     /// {@return `nestedCommandBufferSimultaneousUse`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_nestedCommandBufferSimultaneousUse(MemorySegment segment) { return VkPhysicalDeviceNestedCommandBufferFeaturesEXT.get_nestedCommandBufferSimultaneousUse(segment, 0L); }
-    /// {@return `nestedCommandBufferSimultaneousUse` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int nestedCommandBufferSimultaneousUseAt(long index) { return VkPhysicalDeviceNestedCommandBufferFeaturesEXT.get_nestedCommandBufferSimultaneousUse(this.segment(), index); }
     /// {@return `nestedCommandBufferSimultaneousUse`}
     public @CType("VkBool32") int nestedCommandBufferSimultaneousUse() { return VkPhysicalDeviceNestedCommandBufferFeaturesEXT.get_nestedCommandBufferSimultaneousUse(this.segment()); }
     /// Sets `nestedCommandBufferSimultaneousUse` with the given value at the given index.
@@ -246,14 +230,77 @@ public final class VkPhysicalDeviceNestedCommandBufferFeaturesEXT extends Struct
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_nestedCommandBufferSimultaneousUse(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceNestedCommandBufferFeaturesEXT.set_nestedCommandBufferSimultaneousUse(segment, 0L, value); }
-    /// Sets `nestedCommandBufferSimultaneousUse` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceNestedCommandBufferFeaturesEXT nestedCommandBufferSimultaneousUseAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceNestedCommandBufferFeaturesEXT.set_nestedCommandBufferSimultaneousUse(this.segment(), index, value); return this; }
     /// Sets `nestedCommandBufferSimultaneousUse` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceNestedCommandBufferFeaturesEXT nestedCommandBufferSimultaneousUse(@CType("VkBool32") int value) { VkPhysicalDeviceNestedCommandBufferFeaturesEXT.set_nestedCommandBufferSimultaneousUse(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDeviceNestedCommandBufferFeaturesEXT].
+    public static final class Buffer extends VkPhysicalDeviceNestedCommandBufferFeaturesEXT {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDeviceNestedCommandBufferFeaturesEXT.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDeviceNestedCommandBufferFeaturesEXT`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDeviceNestedCommandBufferFeaturesEXT`
+        public VkPhysicalDeviceNestedCommandBufferFeaturesEXT asSlice(long index) { return new VkPhysicalDeviceNestedCommandBufferFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDeviceNestedCommandBufferFeaturesEXT`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDeviceNestedCommandBufferFeaturesEXT`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceNestedCommandBufferFeaturesEXT.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceNestedCommandBufferFeaturesEXT.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceNestedCommandBufferFeaturesEXT.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceNestedCommandBufferFeaturesEXT.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `nestedCommandBuffer` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int nestedCommandBufferAt(long index) { return VkPhysicalDeviceNestedCommandBufferFeaturesEXT.get_nestedCommandBuffer(this.segment(), index); }
+        /// Sets `nestedCommandBuffer` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer nestedCommandBufferAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceNestedCommandBufferFeaturesEXT.set_nestedCommandBuffer(this.segment(), index, value); return this; }
+
+        /// {@return `nestedCommandBufferRendering` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int nestedCommandBufferRenderingAt(long index) { return VkPhysicalDeviceNestedCommandBufferFeaturesEXT.get_nestedCommandBufferRendering(this.segment(), index); }
+        /// Sets `nestedCommandBufferRendering` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer nestedCommandBufferRenderingAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceNestedCommandBufferFeaturesEXT.set_nestedCommandBufferRendering(this.segment(), index, value); return this; }
+
+        /// {@return `nestedCommandBufferSimultaneousUse` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int nestedCommandBufferSimultaneousUseAt(long index) { return VkPhysicalDeviceNestedCommandBufferFeaturesEXT.get_nestedCommandBufferSimultaneousUse(this.segment(), index); }
+        /// Sets `nestedCommandBufferSimultaneousUse` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer nestedCommandBufferSimultaneousUseAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceNestedCommandBufferFeaturesEXT.set_nestedCommandBufferSimultaneousUse(this.segment(), index, value); return this; }
+
+    }
 }

@@ -22,7 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKNVDisplacementMicromap {
+public final class VKNVDisplacementMicromap {
     public static final int VK_DISPLACEMENT_MICROMAP_FORMAT_64_TRIANGLES_64_BYTES_NV = 1;
     public static final int VK_DISPLACEMENT_MICROMAP_FORMAT_256_TRIANGLES_128_BYTES_NV = 2;
     public static final int VK_DISPLACEMENT_MICROMAP_FORMAT_1024_TRIANGLES_128_BYTES_NV = 3;
@@ -35,7 +35,6 @@ public class VKNVDisplacementMicromap {
     public static final int VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DISPLACEMENT_MICROMAP_UPDATE_NV = 0x00000200;
     public static final int VK_MICROMAP_TYPE_DISPLACEMENT_MICROMAP_NV = 1000397000;
 
-    public VKNVDisplacementMicromap(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKNVDisplacementMicromap() { }
 
 }

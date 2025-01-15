@@ -43,7 +43,7 @@ import overrungl.util.*;
 ///     VkDeviceOrHostAddressConstKHR data;
 /// } VkAccelerationStructureGeometryInstancesDataKHR;
 /// ```
-public final class VkAccelerationStructureGeometryInstancesDataKHR extends Struct {
+public sealed class VkAccelerationStructureGeometryInstancesDataKHR extends Struct {
     /// The struct layout of `VkAccelerationStructureGeometryInstancesDataKHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -72,6 +72,11 @@ public final class VkAccelerationStructureGeometryInstancesDataKHR extends Struc
     public static VkAccelerationStructureGeometryInstancesDataKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkAccelerationStructureGeometryInstancesDataKHR(segment); }
 
     /// Creates `VkAccelerationStructureGeometryInstancesDataKHR` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkAccelerationStructureGeometryInstancesDataKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -84,7 +89,7 @@ public final class VkAccelerationStructureGeometryInstancesDataKHR extends Struc
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkAccelerationStructureGeometryInstancesDataKHR ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkAccelerationStructureGeometryInstancesDataKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkAccelerationStructureGeometryInstancesDataKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -95,7 +100,21 @@ public final class VkAccelerationStructureGeometryInstancesDataKHR extends Struc
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkAccelerationStructureGeometryInstancesDataKHR`
-    public static VkAccelerationStructureGeometryInstancesDataKHR alloc(SegmentAllocator allocator, long count) { return new VkAccelerationStructureGeometryInstancesDataKHR(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkAccelerationStructureGeometryInstancesDataKHR` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkAccelerationStructureGeometryInstancesDataKHR`
+    public static VkAccelerationStructureGeometryInstancesDataKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int arrayOfPointers, @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment data) { return alloc(allocator).sType(sType).pNext(pNext).arrayOfPointers(arrayOfPointers).data(data); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkAccelerationStructureGeometryInstancesDataKHR copyFrom(VkAccelerationStructureGeometryInstancesDataKHR src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -104,9 +123,6 @@ public final class VkAccelerationStructureGeometryInstancesDataKHR extends Struc
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkAccelerationStructureGeometryInstancesDataKHR.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkAccelerationStructureGeometryInstancesDataKHR.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkAccelerationStructureGeometryInstancesDataKHR.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -118,11 +134,6 @@ public final class VkAccelerationStructureGeometryInstancesDataKHR extends Struc
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkAccelerationStructureGeometryInstancesDataKHR.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAccelerationStructureGeometryInstancesDataKHR sTypeAt(long index, @CType("VkStructureType") int value) { VkAccelerationStructureGeometryInstancesDataKHR.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -135,9 +146,6 @@ public final class VkAccelerationStructureGeometryInstancesDataKHR extends Struc
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkAccelerationStructureGeometryInstancesDataKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkAccelerationStructureGeometryInstancesDataKHR.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkAccelerationStructureGeometryInstancesDataKHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -149,11 +157,6 @@ public final class VkAccelerationStructureGeometryInstancesDataKHR extends Struc
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkAccelerationStructureGeometryInstancesDataKHR.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAccelerationStructureGeometryInstancesDataKHR pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkAccelerationStructureGeometryInstancesDataKHR.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,9 +169,6 @@ public final class VkAccelerationStructureGeometryInstancesDataKHR extends Struc
     /// {@return `arrayOfPointers`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_arrayOfPointers(MemorySegment segment) { return VkAccelerationStructureGeometryInstancesDataKHR.get_arrayOfPointers(segment, 0L); }
-    /// {@return `arrayOfPointers` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int arrayOfPointersAt(long index) { return VkAccelerationStructureGeometryInstancesDataKHR.get_arrayOfPointers(this.segment(), index); }
     /// {@return `arrayOfPointers`}
     public @CType("VkBool32") int arrayOfPointers() { return VkAccelerationStructureGeometryInstancesDataKHR.get_arrayOfPointers(this.segment()); }
     /// Sets `arrayOfPointers` with the given value at the given index.
@@ -180,11 +180,6 @@ public final class VkAccelerationStructureGeometryInstancesDataKHR extends Struc
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_arrayOfPointers(MemorySegment segment, @CType("VkBool32") int value) { VkAccelerationStructureGeometryInstancesDataKHR.set_arrayOfPointers(segment, 0L, value); }
-    /// Sets `arrayOfPointers` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAccelerationStructureGeometryInstancesDataKHR arrayOfPointersAt(long index, @CType("VkBool32") int value) { VkAccelerationStructureGeometryInstancesDataKHR.set_arrayOfPointers(this.segment(), index, value); return this; }
     /// Sets `arrayOfPointers` with the given value.
     /// @param value the value
     /// @return `this`
@@ -197,9 +192,6 @@ public final class VkAccelerationStructureGeometryInstancesDataKHR extends Struc
     /// {@return `data`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment get_data(MemorySegment segment) { return VkAccelerationStructureGeometryInstancesDataKHR.get_data(segment, 0L); }
-    /// {@return `data` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment dataAt(long index) { return VkAccelerationStructureGeometryInstancesDataKHR.get_data(this.segment(), index); }
     /// {@return `data`}
     public @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment data() { return VkAccelerationStructureGeometryInstancesDataKHR.get_data(this.segment()); }
     /// Sets `data` with the given value at the given index.
@@ -211,14 +203,68 @@ public final class VkAccelerationStructureGeometryInstancesDataKHR extends Struc
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_data(MemorySegment segment, @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment value) { VkAccelerationStructureGeometryInstancesDataKHR.set_data(segment, 0L, value); }
-    /// Sets `data` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAccelerationStructureGeometryInstancesDataKHR dataAt(long index, @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment value) { VkAccelerationStructureGeometryInstancesDataKHR.set_data(this.segment(), index, value); return this; }
     /// Sets `data` with the given value.
     /// @param value the value
     /// @return `this`
     public VkAccelerationStructureGeometryInstancesDataKHR data(@CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment value) { VkAccelerationStructureGeometryInstancesDataKHR.set_data(this.segment(), value); return this; }
 
+    /// A buffer of [VkAccelerationStructureGeometryInstancesDataKHR].
+    public static final class Buffer extends VkAccelerationStructureGeometryInstancesDataKHR {
+        private final long elementCount;
+
+        /// Creates `VkAccelerationStructureGeometryInstancesDataKHR.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkAccelerationStructureGeometryInstancesDataKHR`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkAccelerationStructureGeometryInstancesDataKHR`
+        public VkAccelerationStructureGeometryInstancesDataKHR asSlice(long index) { return new VkAccelerationStructureGeometryInstancesDataKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkAccelerationStructureGeometryInstancesDataKHR`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkAccelerationStructureGeometryInstancesDataKHR`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkAccelerationStructureGeometryInstancesDataKHR.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkAccelerationStructureGeometryInstancesDataKHR.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkAccelerationStructureGeometryInstancesDataKHR.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkAccelerationStructureGeometryInstancesDataKHR.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `arrayOfPointers` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int arrayOfPointersAt(long index) { return VkAccelerationStructureGeometryInstancesDataKHR.get_arrayOfPointers(this.segment(), index); }
+        /// Sets `arrayOfPointers` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer arrayOfPointersAt(long index, @CType("VkBool32") int value) { VkAccelerationStructureGeometryInstancesDataKHR.set_arrayOfPointers(this.segment(), index, value); return this; }
+
+        /// {@return `data` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment dataAt(long index) { return VkAccelerationStructureGeometryInstancesDataKHR.get_data(this.segment(), index); }
+        /// Sets `data` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer dataAt(long index, @CType("VkDeviceOrHostAddressConstKHR") java.lang.foreign.MemorySegment value) { VkAccelerationStructureGeometryInstancesDataKHR.set_data(this.segment(), index, value); return this; }
+
+    }
 }

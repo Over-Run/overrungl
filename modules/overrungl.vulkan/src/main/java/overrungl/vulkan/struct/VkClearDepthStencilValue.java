@@ -37,7 +37,7 @@ import overrungl.util.*;
 ///     uint32_t stencil;
 /// } VkClearDepthStencilValue;
 /// ```
-public final class VkClearDepthStencilValue extends Struct {
+public sealed class VkClearDepthStencilValue extends Struct {
     /// The struct layout of `VkClearDepthStencilValue`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_FLOAT.withName("depth"),
@@ -58,6 +58,11 @@ public final class VkClearDepthStencilValue extends Struct {
     public static VkClearDepthStencilValue of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkClearDepthStencilValue(segment); }
 
     /// Creates `VkClearDepthStencilValue` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkClearDepthStencilValue` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -70,7 +75,7 @@ public final class VkClearDepthStencilValue extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkClearDepthStencilValue ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkClearDepthStencilValue(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkClearDepthStencilValue` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -81,7 +86,21 @@ public final class VkClearDepthStencilValue extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkClearDepthStencilValue`
-    public static VkClearDepthStencilValue alloc(SegmentAllocator allocator, long count) { return new VkClearDepthStencilValue(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkClearDepthStencilValue` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkClearDepthStencilValue`
+    public static VkClearDepthStencilValue allocInit(SegmentAllocator allocator, @CType("float") float depth, @CType("uint32_t") int stencil) { return alloc(allocator).depth(depth).stencil(stencil); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkClearDepthStencilValue copyFrom(VkClearDepthStencilValue src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `depth` at the given index}
     /// @param segment the segment of the struct
@@ -90,9 +109,6 @@ public final class VkClearDepthStencilValue extends Struct {
     /// {@return `depth`}
     /// @param segment the segment of the struct
     public static @CType("float") float get_depth(MemorySegment segment) { return VkClearDepthStencilValue.get_depth(segment, 0L); }
-    /// {@return `depth` at the given index}
-    /// @param index the index
-    public @CType("float") float depthAt(long index) { return VkClearDepthStencilValue.get_depth(this.segment(), index); }
     /// {@return `depth`}
     public @CType("float") float depth() { return VkClearDepthStencilValue.get_depth(this.segment()); }
     /// Sets `depth` with the given value at the given index.
@@ -104,11 +120,6 @@ public final class VkClearDepthStencilValue extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_depth(MemorySegment segment, @CType("float") float value) { VkClearDepthStencilValue.set_depth(segment, 0L, value); }
-    /// Sets `depth` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkClearDepthStencilValue depthAt(long index, @CType("float") float value) { VkClearDepthStencilValue.set_depth(this.segment(), index, value); return this; }
     /// Sets `depth` with the given value.
     /// @param value the value
     /// @return `this`
@@ -121,9 +132,6 @@ public final class VkClearDepthStencilValue extends Struct {
     /// {@return `stencil`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_stencil(MemorySegment segment) { return VkClearDepthStencilValue.get_stencil(segment, 0L); }
-    /// {@return `stencil` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int stencilAt(long index) { return VkClearDepthStencilValue.get_stencil(this.segment(), index); }
     /// {@return `stencil`}
     public @CType("uint32_t") int stencil() { return VkClearDepthStencilValue.get_stencil(this.segment()); }
     /// Sets `stencil` with the given value at the given index.
@@ -135,14 +143,50 @@ public final class VkClearDepthStencilValue extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_stencil(MemorySegment segment, @CType("uint32_t") int value) { VkClearDepthStencilValue.set_stencil(segment, 0L, value); }
-    /// Sets `stencil` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkClearDepthStencilValue stencilAt(long index, @CType("uint32_t") int value) { VkClearDepthStencilValue.set_stencil(this.segment(), index, value); return this; }
     /// Sets `stencil` with the given value.
     /// @param value the value
     /// @return `this`
     public VkClearDepthStencilValue stencil(@CType("uint32_t") int value) { VkClearDepthStencilValue.set_stencil(this.segment(), value); return this; }
 
+    /// A buffer of [VkClearDepthStencilValue].
+    public static final class Buffer extends VkClearDepthStencilValue {
+        private final long elementCount;
+
+        /// Creates `VkClearDepthStencilValue.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkClearDepthStencilValue`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkClearDepthStencilValue`
+        public VkClearDepthStencilValue asSlice(long index) { return new VkClearDepthStencilValue(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkClearDepthStencilValue`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkClearDepthStencilValue`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `depth` at the given index}
+        /// @param index the index
+        public @CType("float") float depthAt(long index) { return VkClearDepthStencilValue.get_depth(this.segment(), index); }
+        /// Sets `depth` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer depthAt(long index, @CType("float") float value) { VkClearDepthStencilValue.set_depth(this.segment(), index, value); return this; }
+
+        /// {@return `stencil` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int stencilAt(long index) { return VkClearDepthStencilValue.get_stencil(this.segment(), index); }
+        /// Sets `stencil` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer stencilAt(long index, @CType("uint32_t") int value) { VkClearDepthStencilValue.set_stencil(this.segment(), index, value); return this; }
+
+    }
 }

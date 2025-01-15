@@ -46,7 +46,7 @@ import overrungl.util.*;
 ///     VkOffset2D origin;
 /// } VkTilePropertiesQCOM;
 /// ```
-public final class VkTilePropertiesQCOM extends Struct {
+public sealed class VkTilePropertiesQCOM extends Struct {
     /// The struct layout of `VkTilePropertiesQCOM`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -82,6 +82,11 @@ public final class VkTilePropertiesQCOM extends Struct {
     public static VkTilePropertiesQCOM of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkTilePropertiesQCOM(segment); }
 
     /// Creates `VkTilePropertiesQCOM` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkTilePropertiesQCOM` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -94,7 +99,7 @@ public final class VkTilePropertiesQCOM extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkTilePropertiesQCOM ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkTilePropertiesQCOM(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkTilePropertiesQCOM` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -105,7 +110,21 @@ public final class VkTilePropertiesQCOM extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkTilePropertiesQCOM`
-    public static VkTilePropertiesQCOM alloc(SegmentAllocator allocator, long count) { return new VkTilePropertiesQCOM(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkTilePropertiesQCOM` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkTilePropertiesQCOM`
+    public static VkTilePropertiesQCOM allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkExtent3D") java.lang.foreign.MemorySegment tileSize, @CType("VkExtent2D") java.lang.foreign.MemorySegment apronSize, @CType("VkOffset2D") java.lang.foreign.MemorySegment origin) { return alloc(allocator).sType(sType).pNext(pNext).tileSize(tileSize).apronSize(apronSize).origin(origin); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkTilePropertiesQCOM copyFrom(VkTilePropertiesQCOM src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -114,9 +133,6 @@ public final class VkTilePropertiesQCOM extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkTilePropertiesQCOM.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkTilePropertiesQCOM.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkTilePropertiesQCOM.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -128,11 +144,6 @@ public final class VkTilePropertiesQCOM extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkTilePropertiesQCOM.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkTilePropertiesQCOM sTypeAt(long index, @CType("VkStructureType") int value) { VkTilePropertiesQCOM.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -145,9 +156,6 @@ public final class VkTilePropertiesQCOM extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkTilePropertiesQCOM.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkTilePropertiesQCOM.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkTilePropertiesQCOM.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -159,11 +167,6 @@ public final class VkTilePropertiesQCOM extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkTilePropertiesQCOM.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkTilePropertiesQCOM pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkTilePropertiesQCOM.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -176,9 +179,6 @@ public final class VkTilePropertiesQCOM extends Struct {
     /// {@return `tileSize`}
     /// @param segment the segment of the struct
     public static @CType("VkExtent3D") java.lang.foreign.MemorySegment get_tileSize(MemorySegment segment) { return VkTilePropertiesQCOM.get_tileSize(segment, 0L); }
-    /// {@return `tileSize` at the given index}
-    /// @param index the index
-    public @CType("VkExtent3D") java.lang.foreign.MemorySegment tileSizeAt(long index) { return VkTilePropertiesQCOM.get_tileSize(this.segment(), index); }
     /// {@return `tileSize`}
     public @CType("VkExtent3D") java.lang.foreign.MemorySegment tileSize() { return VkTilePropertiesQCOM.get_tileSize(this.segment()); }
     /// Sets `tileSize` with the given value at the given index.
@@ -190,11 +190,6 @@ public final class VkTilePropertiesQCOM extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_tileSize(MemorySegment segment, @CType("VkExtent3D") java.lang.foreign.MemorySegment value) { VkTilePropertiesQCOM.set_tileSize(segment, 0L, value); }
-    /// Sets `tileSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkTilePropertiesQCOM tileSizeAt(long index, @CType("VkExtent3D") java.lang.foreign.MemorySegment value) { VkTilePropertiesQCOM.set_tileSize(this.segment(), index, value); return this; }
     /// Sets `tileSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -207,9 +202,6 @@ public final class VkTilePropertiesQCOM extends Struct {
     /// {@return `apronSize`}
     /// @param segment the segment of the struct
     public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_apronSize(MemorySegment segment) { return VkTilePropertiesQCOM.get_apronSize(segment, 0L); }
-    /// {@return `apronSize` at the given index}
-    /// @param index the index
-    public @CType("VkExtent2D") java.lang.foreign.MemorySegment apronSizeAt(long index) { return VkTilePropertiesQCOM.get_apronSize(this.segment(), index); }
     /// {@return `apronSize`}
     public @CType("VkExtent2D") java.lang.foreign.MemorySegment apronSize() { return VkTilePropertiesQCOM.get_apronSize(this.segment()); }
     /// Sets `apronSize` with the given value at the given index.
@@ -221,11 +213,6 @@ public final class VkTilePropertiesQCOM extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_apronSize(MemorySegment segment, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkTilePropertiesQCOM.set_apronSize(segment, 0L, value); }
-    /// Sets `apronSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkTilePropertiesQCOM apronSizeAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkTilePropertiesQCOM.set_apronSize(this.segment(), index, value); return this; }
     /// Sets `apronSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -238,9 +225,6 @@ public final class VkTilePropertiesQCOM extends Struct {
     /// {@return `origin`}
     /// @param segment the segment of the struct
     public static @CType("VkOffset2D") java.lang.foreign.MemorySegment get_origin(MemorySegment segment) { return VkTilePropertiesQCOM.get_origin(segment, 0L); }
-    /// {@return `origin` at the given index}
-    /// @param index the index
-    public @CType("VkOffset2D") java.lang.foreign.MemorySegment originAt(long index) { return VkTilePropertiesQCOM.get_origin(this.segment(), index); }
     /// {@return `origin`}
     public @CType("VkOffset2D") java.lang.foreign.MemorySegment origin() { return VkTilePropertiesQCOM.get_origin(this.segment()); }
     /// Sets `origin` with the given value at the given index.
@@ -252,14 +236,77 @@ public final class VkTilePropertiesQCOM extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_origin(MemorySegment segment, @CType("VkOffset2D") java.lang.foreign.MemorySegment value) { VkTilePropertiesQCOM.set_origin(segment, 0L, value); }
-    /// Sets `origin` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkTilePropertiesQCOM originAt(long index, @CType("VkOffset2D") java.lang.foreign.MemorySegment value) { VkTilePropertiesQCOM.set_origin(this.segment(), index, value); return this; }
     /// Sets `origin` with the given value.
     /// @param value the value
     /// @return `this`
     public VkTilePropertiesQCOM origin(@CType("VkOffset2D") java.lang.foreign.MemorySegment value) { VkTilePropertiesQCOM.set_origin(this.segment(), value); return this; }
 
+    /// A buffer of [VkTilePropertiesQCOM].
+    public static final class Buffer extends VkTilePropertiesQCOM {
+        private final long elementCount;
+
+        /// Creates `VkTilePropertiesQCOM.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkTilePropertiesQCOM`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkTilePropertiesQCOM`
+        public VkTilePropertiesQCOM asSlice(long index) { return new VkTilePropertiesQCOM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkTilePropertiesQCOM`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkTilePropertiesQCOM`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkTilePropertiesQCOM.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkTilePropertiesQCOM.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkTilePropertiesQCOM.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkTilePropertiesQCOM.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `tileSize` at the given index}
+        /// @param index the index
+        public @CType("VkExtent3D") java.lang.foreign.MemorySegment tileSizeAt(long index) { return VkTilePropertiesQCOM.get_tileSize(this.segment(), index); }
+        /// Sets `tileSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer tileSizeAt(long index, @CType("VkExtent3D") java.lang.foreign.MemorySegment value) { VkTilePropertiesQCOM.set_tileSize(this.segment(), index, value); return this; }
+
+        /// {@return `apronSize` at the given index}
+        /// @param index the index
+        public @CType("VkExtent2D") java.lang.foreign.MemorySegment apronSizeAt(long index) { return VkTilePropertiesQCOM.get_apronSize(this.segment(), index); }
+        /// Sets `apronSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer apronSizeAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkTilePropertiesQCOM.set_apronSize(this.segment(), index, value); return this; }
+
+        /// {@return `origin` at the given index}
+        /// @param index the index
+        public @CType("VkOffset2D") java.lang.foreign.MemorySegment originAt(long index) { return VkTilePropertiesQCOM.get_origin(this.segment(), index); }
+        /// Sets `origin` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer originAt(long index, @CType("VkOffset2D") java.lang.foreign.MemorySegment value) { VkTilePropertiesQCOM.set_origin(this.segment(), index, value); return this; }
+
+    }
 }

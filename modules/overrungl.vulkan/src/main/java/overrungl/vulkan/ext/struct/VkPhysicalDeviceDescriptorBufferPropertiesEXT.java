@@ -136,7 +136,7 @@ import overrungl.util.*;
 ///     VkDeviceSize descriptorBufferAddressSpaceSize;
 /// } VkPhysicalDeviceDescriptorBufferPropertiesEXT;
 /// ```
-public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct {
+public sealed class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct {
     /// The struct layout of `VkPhysicalDeviceDescriptorBufferPropertiesEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -256,6 +256,11 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     public static VkPhysicalDeviceDescriptorBufferPropertiesEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceDescriptorBufferPropertiesEXT(segment); }
 
     /// Creates `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -268,7 +273,7 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceDescriptorBufferPropertiesEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -279,7 +284,21 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
-    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceDescriptorBufferPropertiesEXT(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
+    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int combinedImageSamplerDescriptorSingleArray, @CType("VkBool32") int bufferlessPushDescriptors, @CType("VkBool32") int allowSamplerImageViewPostSubmitCreation, @CType("VkDeviceSize") long descriptorBufferOffsetAlignment, @CType("uint32_t") int maxDescriptorBufferBindings, @CType("uint32_t") int maxResourceDescriptorBufferBindings, @CType("uint32_t") int maxSamplerDescriptorBufferBindings, @CType("uint32_t") int maxEmbeddedImmutableSamplerBindings, @CType("uint32_t") int maxEmbeddedImmutableSamplers, @CType("size_t") long bufferCaptureReplayDescriptorDataSize, @CType("size_t") long imageCaptureReplayDescriptorDataSize, @CType("size_t") long imageViewCaptureReplayDescriptorDataSize, @CType("size_t") long samplerCaptureReplayDescriptorDataSize, @CType("size_t") long accelerationStructureCaptureReplayDescriptorDataSize, @CType("size_t") long samplerDescriptorSize, @CType("size_t") long combinedImageSamplerDescriptorSize, @CType("size_t") long sampledImageDescriptorSize, @CType("size_t") long storageImageDescriptorSize, @CType("size_t") long uniformTexelBufferDescriptorSize, @CType("size_t") long robustUniformTexelBufferDescriptorSize, @CType("size_t") long storageTexelBufferDescriptorSize, @CType("size_t") long robustStorageTexelBufferDescriptorSize, @CType("size_t") long uniformBufferDescriptorSize, @CType("size_t") long robustUniformBufferDescriptorSize, @CType("size_t") long storageBufferDescriptorSize, @CType("size_t") long robustStorageBufferDescriptorSize, @CType("size_t") long inputAttachmentDescriptorSize, @CType("size_t") long accelerationStructureDescriptorSize, @CType("VkDeviceSize") long maxSamplerDescriptorBufferRange, @CType("VkDeviceSize") long maxResourceDescriptorBufferRange, @CType("VkDeviceSize") long samplerDescriptorBufferAddressSpaceSize, @CType("VkDeviceSize") long resourceDescriptorBufferAddressSpaceSize, @CType("VkDeviceSize") long descriptorBufferAddressSpaceSize) { return alloc(allocator).sType(sType).pNext(pNext).combinedImageSamplerDescriptorSingleArray(combinedImageSamplerDescriptorSingleArray).bufferlessPushDescriptors(bufferlessPushDescriptors).allowSamplerImageViewPostSubmitCreation(allowSamplerImageViewPostSubmitCreation).descriptorBufferOffsetAlignment(descriptorBufferOffsetAlignment).maxDescriptorBufferBindings(maxDescriptorBufferBindings).maxResourceDescriptorBufferBindings(maxResourceDescriptorBufferBindings).maxSamplerDescriptorBufferBindings(maxSamplerDescriptorBufferBindings).maxEmbeddedImmutableSamplerBindings(maxEmbeddedImmutableSamplerBindings).maxEmbeddedImmutableSamplers(maxEmbeddedImmutableSamplers).bufferCaptureReplayDescriptorDataSize(bufferCaptureReplayDescriptorDataSize).imageCaptureReplayDescriptorDataSize(imageCaptureReplayDescriptorDataSize).imageViewCaptureReplayDescriptorDataSize(imageViewCaptureReplayDescriptorDataSize).samplerCaptureReplayDescriptorDataSize(samplerCaptureReplayDescriptorDataSize).accelerationStructureCaptureReplayDescriptorDataSize(accelerationStructureCaptureReplayDescriptorDataSize).samplerDescriptorSize(samplerDescriptorSize).combinedImageSamplerDescriptorSize(combinedImageSamplerDescriptorSize).sampledImageDescriptorSize(sampledImageDescriptorSize).storageImageDescriptorSize(storageImageDescriptorSize).uniformTexelBufferDescriptorSize(uniformTexelBufferDescriptorSize).robustUniformTexelBufferDescriptorSize(robustUniformTexelBufferDescriptorSize).storageTexelBufferDescriptorSize(storageTexelBufferDescriptorSize).robustStorageTexelBufferDescriptorSize(robustStorageTexelBufferDescriptorSize).uniformBufferDescriptorSize(uniformBufferDescriptorSize).robustUniformBufferDescriptorSize(robustUniformBufferDescriptorSize).storageBufferDescriptorSize(storageBufferDescriptorSize).robustStorageBufferDescriptorSize(robustStorageBufferDescriptorSize).inputAttachmentDescriptorSize(inputAttachmentDescriptorSize).accelerationStructureDescriptorSize(accelerationStructureDescriptorSize).maxSamplerDescriptorBufferRange(maxSamplerDescriptorBufferRange).maxResourceDescriptorBufferRange(maxResourceDescriptorBufferRange).samplerDescriptorBufferAddressSpaceSize(samplerDescriptorBufferAddressSpaceSize).resourceDescriptorBufferAddressSpaceSize(resourceDescriptorBufferAddressSpaceSize).descriptorBufferAddressSpaceSize(descriptorBufferAddressSpaceSize); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDeviceDescriptorBufferPropertiesEXT copyFrom(VkPhysicalDeviceDescriptorBufferPropertiesEXT src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -288,9 +307,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -302,11 +318,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorBufferPropertiesEXT sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -319,9 +330,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -333,11 +341,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorBufferPropertiesEXT pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -350,9 +353,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// {@return `combinedImageSamplerDescriptorSingleArray`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_combinedImageSamplerDescriptorSingleArray(MemorySegment segment) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_combinedImageSamplerDescriptorSingleArray(segment, 0L); }
-    /// {@return `combinedImageSamplerDescriptorSingleArray` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int combinedImageSamplerDescriptorSingleArrayAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_combinedImageSamplerDescriptorSingleArray(this.segment(), index); }
     /// {@return `combinedImageSamplerDescriptorSingleArray`}
     public @CType("VkBool32") int combinedImageSamplerDescriptorSingleArray() { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_combinedImageSamplerDescriptorSingleArray(this.segment()); }
     /// Sets `combinedImageSamplerDescriptorSingleArray` with the given value at the given index.
@@ -364,11 +364,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_combinedImageSamplerDescriptorSingleArray(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_combinedImageSamplerDescriptorSingleArray(segment, 0L, value); }
-    /// Sets `combinedImageSamplerDescriptorSingleArray` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorBufferPropertiesEXT combinedImageSamplerDescriptorSingleArrayAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_combinedImageSamplerDescriptorSingleArray(this.segment(), index, value); return this; }
     /// Sets `combinedImageSamplerDescriptorSingleArray` with the given value.
     /// @param value the value
     /// @return `this`
@@ -381,9 +376,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// {@return `bufferlessPushDescriptors`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_bufferlessPushDescriptors(MemorySegment segment) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_bufferlessPushDescriptors(segment, 0L); }
-    /// {@return `bufferlessPushDescriptors` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int bufferlessPushDescriptorsAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_bufferlessPushDescriptors(this.segment(), index); }
     /// {@return `bufferlessPushDescriptors`}
     public @CType("VkBool32") int bufferlessPushDescriptors() { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_bufferlessPushDescriptors(this.segment()); }
     /// Sets `bufferlessPushDescriptors` with the given value at the given index.
@@ -395,11 +387,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_bufferlessPushDescriptors(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_bufferlessPushDescriptors(segment, 0L, value); }
-    /// Sets `bufferlessPushDescriptors` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorBufferPropertiesEXT bufferlessPushDescriptorsAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_bufferlessPushDescriptors(this.segment(), index, value); return this; }
     /// Sets `bufferlessPushDescriptors` with the given value.
     /// @param value the value
     /// @return `this`
@@ -412,9 +399,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// {@return `allowSamplerImageViewPostSubmitCreation`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_allowSamplerImageViewPostSubmitCreation(MemorySegment segment) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_allowSamplerImageViewPostSubmitCreation(segment, 0L); }
-    /// {@return `allowSamplerImageViewPostSubmitCreation` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int allowSamplerImageViewPostSubmitCreationAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_allowSamplerImageViewPostSubmitCreation(this.segment(), index); }
     /// {@return `allowSamplerImageViewPostSubmitCreation`}
     public @CType("VkBool32") int allowSamplerImageViewPostSubmitCreation() { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_allowSamplerImageViewPostSubmitCreation(this.segment()); }
     /// Sets `allowSamplerImageViewPostSubmitCreation` with the given value at the given index.
@@ -426,11 +410,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_allowSamplerImageViewPostSubmitCreation(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_allowSamplerImageViewPostSubmitCreation(segment, 0L, value); }
-    /// Sets `allowSamplerImageViewPostSubmitCreation` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorBufferPropertiesEXT allowSamplerImageViewPostSubmitCreationAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_allowSamplerImageViewPostSubmitCreation(this.segment(), index, value); return this; }
     /// Sets `allowSamplerImageViewPostSubmitCreation` with the given value.
     /// @param value the value
     /// @return `this`
@@ -443,9 +422,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// {@return `descriptorBufferOffsetAlignment`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_descriptorBufferOffsetAlignment(MemorySegment segment) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_descriptorBufferOffsetAlignment(segment, 0L); }
-    /// {@return `descriptorBufferOffsetAlignment` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long descriptorBufferOffsetAlignmentAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_descriptorBufferOffsetAlignment(this.segment(), index); }
     /// {@return `descriptorBufferOffsetAlignment`}
     public @CType("VkDeviceSize") long descriptorBufferOffsetAlignment() { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_descriptorBufferOffsetAlignment(this.segment()); }
     /// Sets `descriptorBufferOffsetAlignment` with the given value at the given index.
@@ -457,11 +433,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_descriptorBufferOffsetAlignment(MemorySegment segment, @CType("VkDeviceSize") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_descriptorBufferOffsetAlignment(segment, 0L, value); }
-    /// Sets `descriptorBufferOffsetAlignment` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorBufferPropertiesEXT descriptorBufferOffsetAlignmentAt(long index, @CType("VkDeviceSize") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_descriptorBufferOffsetAlignment(this.segment(), index, value); return this; }
     /// Sets `descriptorBufferOffsetAlignment` with the given value.
     /// @param value the value
     /// @return `this`
@@ -474,9 +445,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// {@return `maxDescriptorBufferBindings`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxDescriptorBufferBindings(MemorySegment segment) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_maxDescriptorBufferBindings(segment, 0L); }
-    /// {@return `maxDescriptorBufferBindings` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxDescriptorBufferBindingsAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_maxDescriptorBufferBindings(this.segment(), index); }
     /// {@return `maxDescriptorBufferBindings`}
     public @CType("uint32_t") int maxDescriptorBufferBindings() { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_maxDescriptorBufferBindings(this.segment()); }
     /// Sets `maxDescriptorBufferBindings` with the given value at the given index.
@@ -488,11 +456,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxDescriptorBufferBindings(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_maxDescriptorBufferBindings(segment, 0L, value); }
-    /// Sets `maxDescriptorBufferBindings` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorBufferPropertiesEXT maxDescriptorBufferBindingsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_maxDescriptorBufferBindings(this.segment(), index, value); return this; }
     /// Sets `maxDescriptorBufferBindings` with the given value.
     /// @param value the value
     /// @return `this`
@@ -505,9 +468,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// {@return `maxResourceDescriptorBufferBindings`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxResourceDescriptorBufferBindings(MemorySegment segment) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_maxResourceDescriptorBufferBindings(segment, 0L); }
-    /// {@return `maxResourceDescriptorBufferBindings` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxResourceDescriptorBufferBindingsAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_maxResourceDescriptorBufferBindings(this.segment(), index); }
     /// {@return `maxResourceDescriptorBufferBindings`}
     public @CType("uint32_t") int maxResourceDescriptorBufferBindings() { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_maxResourceDescriptorBufferBindings(this.segment()); }
     /// Sets `maxResourceDescriptorBufferBindings` with the given value at the given index.
@@ -519,11 +479,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxResourceDescriptorBufferBindings(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_maxResourceDescriptorBufferBindings(segment, 0L, value); }
-    /// Sets `maxResourceDescriptorBufferBindings` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorBufferPropertiesEXT maxResourceDescriptorBufferBindingsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_maxResourceDescriptorBufferBindings(this.segment(), index, value); return this; }
     /// Sets `maxResourceDescriptorBufferBindings` with the given value.
     /// @param value the value
     /// @return `this`
@@ -536,9 +491,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// {@return `maxSamplerDescriptorBufferBindings`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxSamplerDescriptorBufferBindings(MemorySegment segment) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_maxSamplerDescriptorBufferBindings(segment, 0L); }
-    /// {@return `maxSamplerDescriptorBufferBindings` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxSamplerDescriptorBufferBindingsAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_maxSamplerDescriptorBufferBindings(this.segment(), index); }
     /// {@return `maxSamplerDescriptorBufferBindings`}
     public @CType("uint32_t") int maxSamplerDescriptorBufferBindings() { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_maxSamplerDescriptorBufferBindings(this.segment()); }
     /// Sets `maxSamplerDescriptorBufferBindings` with the given value at the given index.
@@ -550,11 +502,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxSamplerDescriptorBufferBindings(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_maxSamplerDescriptorBufferBindings(segment, 0L, value); }
-    /// Sets `maxSamplerDescriptorBufferBindings` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorBufferPropertiesEXT maxSamplerDescriptorBufferBindingsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_maxSamplerDescriptorBufferBindings(this.segment(), index, value); return this; }
     /// Sets `maxSamplerDescriptorBufferBindings` with the given value.
     /// @param value the value
     /// @return `this`
@@ -567,9 +514,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// {@return `maxEmbeddedImmutableSamplerBindings`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxEmbeddedImmutableSamplerBindings(MemorySegment segment) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_maxEmbeddedImmutableSamplerBindings(segment, 0L); }
-    /// {@return `maxEmbeddedImmutableSamplerBindings` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxEmbeddedImmutableSamplerBindingsAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_maxEmbeddedImmutableSamplerBindings(this.segment(), index); }
     /// {@return `maxEmbeddedImmutableSamplerBindings`}
     public @CType("uint32_t") int maxEmbeddedImmutableSamplerBindings() { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_maxEmbeddedImmutableSamplerBindings(this.segment()); }
     /// Sets `maxEmbeddedImmutableSamplerBindings` with the given value at the given index.
@@ -581,11 +525,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxEmbeddedImmutableSamplerBindings(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_maxEmbeddedImmutableSamplerBindings(segment, 0L, value); }
-    /// Sets `maxEmbeddedImmutableSamplerBindings` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorBufferPropertiesEXT maxEmbeddedImmutableSamplerBindingsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_maxEmbeddedImmutableSamplerBindings(this.segment(), index, value); return this; }
     /// Sets `maxEmbeddedImmutableSamplerBindings` with the given value.
     /// @param value the value
     /// @return `this`
@@ -598,9 +537,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// {@return `maxEmbeddedImmutableSamplers`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxEmbeddedImmutableSamplers(MemorySegment segment) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_maxEmbeddedImmutableSamplers(segment, 0L); }
-    /// {@return `maxEmbeddedImmutableSamplers` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxEmbeddedImmutableSamplersAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_maxEmbeddedImmutableSamplers(this.segment(), index); }
     /// {@return `maxEmbeddedImmutableSamplers`}
     public @CType("uint32_t") int maxEmbeddedImmutableSamplers() { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_maxEmbeddedImmutableSamplers(this.segment()); }
     /// Sets `maxEmbeddedImmutableSamplers` with the given value at the given index.
@@ -612,11 +548,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxEmbeddedImmutableSamplers(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_maxEmbeddedImmutableSamplers(segment, 0L, value); }
-    /// Sets `maxEmbeddedImmutableSamplers` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorBufferPropertiesEXT maxEmbeddedImmutableSamplersAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_maxEmbeddedImmutableSamplers(this.segment(), index, value); return this; }
     /// Sets `maxEmbeddedImmutableSamplers` with the given value.
     /// @param value the value
     /// @return `this`
@@ -629,9 +560,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// {@return `bufferCaptureReplayDescriptorDataSize`}
     /// @param segment the segment of the struct
     public static @CType("size_t") long get_bufferCaptureReplayDescriptorDataSize(MemorySegment segment) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_bufferCaptureReplayDescriptorDataSize(segment, 0L); }
-    /// {@return `bufferCaptureReplayDescriptorDataSize` at the given index}
-    /// @param index the index
-    public @CType("size_t") long bufferCaptureReplayDescriptorDataSizeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_bufferCaptureReplayDescriptorDataSize(this.segment(), index); }
     /// {@return `bufferCaptureReplayDescriptorDataSize`}
     public @CType("size_t") long bufferCaptureReplayDescriptorDataSize() { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_bufferCaptureReplayDescriptorDataSize(this.segment()); }
     /// Sets `bufferCaptureReplayDescriptorDataSize` with the given value at the given index.
@@ -643,11 +571,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_bufferCaptureReplayDescriptorDataSize(MemorySegment segment, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_bufferCaptureReplayDescriptorDataSize(segment, 0L, value); }
-    /// Sets `bufferCaptureReplayDescriptorDataSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorBufferPropertiesEXT bufferCaptureReplayDescriptorDataSizeAt(long index, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_bufferCaptureReplayDescriptorDataSize(this.segment(), index, value); return this; }
     /// Sets `bufferCaptureReplayDescriptorDataSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -660,9 +583,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// {@return `imageCaptureReplayDescriptorDataSize`}
     /// @param segment the segment of the struct
     public static @CType("size_t") long get_imageCaptureReplayDescriptorDataSize(MemorySegment segment) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_imageCaptureReplayDescriptorDataSize(segment, 0L); }
-    /// {@return `imageCaptureReplayDescriptorDataSize` at the given index}
-    /// @param index the index
-    public @CType("size_t") long imageCaptureReplayDescriptorDataSizeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_imageCaptureReplayDescriptorDataSize(this.segment(), index); }
     /// {@return `imageCaptureReplayDescriptorDataSize`}
     public @CType("size_t") long imageCaptureReplayDescriptorDataSize() { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_imageCaptureReplayDescriptorDataSize(this.segment()); }
     /// Sets `imageCaptureReplayDescriptorDataSize` with the given value at the given index.
@@ -674,11 +594,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_imageCaptureReplayDescriptorDataSize(MemorySegment segment, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_imageCaptureReplayDescriptorDataSize(segment, 0L, value); }
-    /// Sets `imageCaptureReplayDescriptorDataSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorBufferPropertiesEXT imageCaptureReplayDescriptorDataSizeAt(long index, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_imageCaptureReplayDescriptorDataSize(this.segment(), index, value); return this; }
     /// Sets `imageCaptureReplayDescriptorDataSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -691,9 +606,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// {@return `imageViewCaptureReplayDescriptorDataSize`}
     /// @param segment the segment of the struct
     public static @CType("size_t") long get_imageViewCaptureReplayDescriptorDataSize(MemorySegment segment) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_imageViewCaptureReplayDescriptorDataSize(segment, 0L); }
-    /// {@return `imageViewCaptureReplayDescriptorDataSize` at the given index}
-    /// @param index the index
-    public @CType("size_t") long imageViewCaptureReplayDescriptorDataSizeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_imageViewCaptureReplayDescriptorDataSize(this.segment(), index); }
     /// {@return `imageViewCaptureReplayDescriptorDataSize`}
     public @CType("size_t") long imageViewCaptureReplayDescriptorDataSize() { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_imageViewCaptureReplayDescriptorDataSize(this.segment()); }
     /// Sets `imageViewCaptureReplayDescriptorDataSize` with the given value at the given index.
@@ -705,11 +617,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_imageViewCaptureReplayDescriptorDataSize(MemorySegment segment, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_imageViewCaptureReplayDescriptorDataSize(segment, 0L, value); }
-    /// Sets `imageViewCaptureReplayDescriptorDataSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorBufferPropertiesEXT imageViewCaptureReplayDescriptorDataSizeAt(long index, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_imageViewCaptureReplayDescriptorDataSize(this.segment(), index, value); return this; }
     /// Sets `imageViewCaptureReplayDescriptorDataSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -722,9 +629,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// {@return `samplerCaptureReplayDescriptorDataSize`}
     /// @param segment the segment of the struct
     public static @CType("size_t") long get_samplerCaptureReplayDescriptorDataSize(MemorySegment segment) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_samplerCaptureReplayDescriptorDataSize(segment, 0L); }
-    /// {@return `samplerCaptureReplayDescriptorDataSize` at the given index}
-    /// @param index the index
-    public @CType("size_t") long samplerCaptureReplayDescriptorDataSizeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_samplerCaptureReplayDescriptorDataSize(this.segment(), index); }
     /// {@return `samplerCaptureReplayDescriptorDataSize`}
     public @CType("size_t") long samplerCaptureReplayDescriptorDataSize() { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_samplerCaptureReplayDescriptorDataSize(this.segment()); }
     /// Sets `samplerCaptureReplayDescriptorDataSize` with the given value at the given index.
@@ -736,11 +640,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_samplerCaptureReplayDescriptorDataSize(MemorySegment segment, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_samplerCaptureReplayDescriptorDataSize(segment, 0L, value); }
-    /// Sets `samplerCaptureReplayDescriptorDataSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorBufferPropertiesEXT samplerCaptureReplayDescriptorDataSizeAt(long index, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_samplerCaptureReplayDescriptorDataSize(this.segment(), index, value); return this; }
     /// Sets `samplerCaptureReplayDescriptorDataSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -753,9 +652,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// {@return `accelerationStructureCaptureReplayDescriptorDataSize`}
     /// @param segment the segment of the struct
     public static @CType("size_t") long get_accelerationStructureCaptureReplayDescriptorDataSize(MemorySegment segment) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_accelerationStructureCaptureReplayDescriptorDataSize(segment, 0L); }
-    /// {@return `accelerationStructureCaptureReplayDescriptorDataSize` at the given index}
-    /// @param index the index
-    public @CType("size_t") long accelerationStructureCaptureReplayDescriptorDataSizeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_accelerationStructureCaptureReplayDescriptorDataSize(this.segment(), index); }
     /// {@return `accelerationStructureCaptureReplayDescriptorDataSize`}
     public @CType("size_t") long accelerationStructureCaptureReplayDescriptorDataSize() { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_accelerationStructureCaptureReplayDescriptorDataSize(this.segment()); }
     /// Sets `accelerationStructureCaptureReplayDescriptorDataSize` with the given value at the given index.
@@ -767,11 +663,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_accelerationStructureCaptureReplayDescriptorDataSize(MemorySegment segment, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_accelerationStructureCaptureReplayDescriptorDataSize(segment, 0L, value); }
-    /// Sets `accelerationStructureCaptureReplayDescriptorDataSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorBufferPropertiesEXT accelerationStructureCaptureReplayDescriptorDataSizeAt(long index, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_accelerationStructureCaptureReplayDescriptorDataSize(this.segment(), index, value); return this; }
     /// Sets `accelerationStructureCaptureReplayDescriptorDataSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -784,9 +675,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// {@return `samplerDescriptorSize`}
     /// @param segment the segment of the struct
     public static @CType("size_t") long get_samplerDescriptorSize(MemorySegment segment) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_samplerDescriptorSize(segment, 0L); }
-    /// {@return `samplerDescriptorSize` at the given index}
-    /// @param index the index
-    public @CType("size_t") long samplerDescriptorSizeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_samplerDescriptorSize(this.segment(), index); }
     /// {@return `samplerDescriptorSize`}
     public @CType("size_t") long samplerDescriptorSize() { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_samplerDescriptorSize(this.segment()); }
     /// Sets `samplerDescriptorSize` with the given value at the given index.
@@ -798,11 +686,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_samplerDescriptorSize(MemorySegment segment, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_samplerDescriptorSize(segment, 0L, value); }
-    /// Sets `samplerDescriptorSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorBufferPropertiesEXT samplerDescriptorSizeAt(long index, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_samplerDescriptorSize(this.segment(), index, value); return this; }
     /// Sets `samplerDescriptorSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -815,9 +698,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// {@return `combinedImageSamplerDescriptorSize`}
     /// @param segment the segment of the struct
     public static @CType("size_t") long get_combinedImageSamplerDescriptorSize(MemorySegment segment) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_combinedImageSamplerDescriptorSize(segment, 0L); }
-    /// {@return `combinedImageSamplerDescriptorSize` at the given index}
-    /// @param index the index
-    public @CType("size_t") long combinedImageSamplerDescriptorSizeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_combinedImageSamplerDescriptorSize(this.segment(), index); }
     /// {@return `combinedImageSamplerDescriptorSize`}
     public @CType("size_t") long combinedImageSamplerDescriptorSize() { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_combinedImageSamplerDescriptorSize(this.segment()); }
     /// Sets `combinedImageSamplerDescriptorSize` with the given value at the given index.
@@ -829,11 +709,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_combinedImageSamplerDescriptorSize(MemorySegment segment, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_combinedImageSamplerDescriptorSize(segment, 0L, value); }
-    /// Sets `combinedImageSamplerDescriptorSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorBufferPropertiesEXT combinedImageSamplerDescriptorSizeAt(long index, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_combinedImageSamplerDescriptorSize(this.segment(), index, value); return this; }
     /// Sets `combinedImageSamplerDescriptorSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -846,9 +721,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// {@return `sampledImageDescriptorSize`}
     /// @param segment the segment of the struct
     public static @CType("size_t") long get_sampledImageDescriptorSize(MemorySegment segment) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_sampledImageDescriptorSize(segment, 0L); }
-    /// {@return `sampledImageDescriptorSize` at the given index}
-    /// @param index the index
-    public @CType("size_t") long sampledImageDescriptorSizeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_sampledImageDescriptorSize(this.segment(), index); }
     /// {@return `sampledImageDescriptorSize`}
     public @CType("size_t") long sampledImageDescriptorSize() { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_sampledImageDescriptorSize(this.segment()); }
     /// Sets `sampledImageDescriptorSize` with the given value at the given index.
@@ -860,11 +732,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sampledImageDescriptorSize(MemorySegment segment, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_sampledImageDescriptorSize(segment, 0L, value); }
-    /// Sets `sampledImageDescriptorSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorBufferPropertiesEXT sampledImageDescriptorSizeAt(long index, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_sampledImageDescriptorSize(this.segment(), index, value); return this; }
     /// Sets `sampledImageDescriptorSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -877,9 +744,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// {@return `storageImageDescriptorSize`}
     /// @param segment the segment of the struct
     public static @CType("size_t") long get_storageImageDescriptorSize(MemorySegment segment) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_storageImageDescriptorSize(segment, 0L); }
-    /// {@return `storageImageDescriptorSize` at the given index}
-    /// @param index the index
-    public @CType("size_t") long storageImageDescriptorSizeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_storageImageDescriptorSize(this.segment(), index); }
     /// {@return `storageImageDescriptorSize`}
     public @CType("size_t") long storageImageDescriptorSize() { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_storageImageDescriptorSize(this.segment()); }
     /// Sets `storageImageDescriptorSize` with the given value at the given index.
@@ -891,11 +755,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_storageImageDescriptorSize(MemorySegment segment, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_storageImageDescriptorSize(segment, 0L, value); }
-    /// Sets `storageImageDescriptorSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorBufferPropertiesEXT storageImageDescriptorSizeAt(long index, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_storageImageDescriptorSize(this.segment(), index, value); return this; }
     /// Sets `storageImageDescriptorSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -908,9 +767,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// {@return `uniformTexelBufferDescriptorSize`}
     /// @param segment the segment of the struct
     public static @CType("size_t") long get_uniformTexelBufferDescriptorSize(MemorySegment segment) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_uniformTexelBufferDescriptorSize(segment, 0L); }
-    /// {@return `uniformTexelBufferDescriptorSize` at the given index}
-    /// @param index the index
-    public @CType("size_t") long uniformTexelBufferDescriptorSizeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_uniformTexelBufferDescriptorSize(this.segment(), index); }
     /// {@return `uniformTexelBufferDescriptorSize`}
     public @CType("size_t") long uniformTexelBufferDescriptorSize() { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_uniformTexelBufferDescriptorSize(this.segment()); }
     /// Sets `uniformTexelBufferDescriptorSize` with the given value at the given index.
@@ -922,11 +778,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_uniformTexelBufferDescriptorSize(MemorySegment segment, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_uniformTexelBufferDescriptorSize(segment, 0L, value); }
-    /// Sets `uniformTexelBufferDescriptorSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorBufferPropertiesEXT uniformTexelBufferDescriptorSizeAt(long index, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_uniformTexelBufferDescriptorSize(this.segment(), index, value); return this; }
     /// Sets `uniformTexelBufferDescriptorSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -939,9 +790,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// {@return `robustUniformTexelBufferDescriptorSize`}
     /// @param segment the segment of the struct
     public static @CType("size_t") long get_robustUniformTexelBufferDescriptorSize(MemorySegment segment) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_robustUniformTexelBufferDescriptorSize(segment, 0L); }
-    /// {@return `robustUniformTexelBufferDescriptorSize` at the given index}
-    /// @param index the index
-    public @CType("size_t") long robustUniformTexelBufferDescriptorSizeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_robustUniformTexelBufferDescriptorSize(this.segment(), index); }
     /// {@return `robustUniformTexelBufferDescriptorSize`}
     public @CType("size_t") long robustUniformTexelBufferDescriptorSize() { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_robustUniformTexelBufferDescriptorSize(this.segment()); }
     /// Sets `robustUniformTexelBufferDescriptorSize` with the given value at the given index.
@@ -953,11 +801,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_robustUniformTexelBufferDescriptorSize(MemorySegment segment, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_robustUniformTexelBufferDescriptorSize(segment, 0L, value); }
-    /// Sets `robustUniformTexelBufferDescriptorSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorBufferPropertiesEXT robustUniformTexelBufferDescriptorSizeAt(long index, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_robustUniformTexelBufferDescriptorSize(this.segment(), index, value); return this; }
     /// Sets `robustUniformTexelBufferDescriptorSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -970,9 +813,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// {@return `storageTexelBufferDescriptorSize`}
     /// @param segment the segment of the struct
     public static @CType("size_t") long get_storageTexelBufferDescriptorSize(MemorySegment segment) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_storageTexelBufferDescriptorSize(segment, 0L); }
-    /// {@return `storageTexelBufferDescriptorSize` at the given index}
-    /// @param index the index
-    public @CType("size_t") long storageTexelBufferDescriptorSizeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_storageTexelBufferDescriptorSize(this.segment(), index); }
     /// {@return `storageTexelBufferDescriptorSize`}
     public @CType("size_t") long storageTexelBufferDescriptorSize() { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_storageTexelBufferDescriptorSize(this.segment()); }
     /// Sets `storageTexelBufferDescriptorSize` with the given value at the given index.
@@ -984,11 +824,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_storageTexelBufferDescriptorSize(MemorySegment segment, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_storageTexelBufferDescriptorSize(segment, 0L, value); }
-    /// Sets `storageTexelBufferDescriptorSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorBufferPropertiesEXT storageTexelBufferDescriptorSizeAt(long index, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_storageTexelBufferDescriptorSize(this.segment(), index, value); return this; }
     /// Sets `storageTexelBufferDescriptorSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1001,9 +836,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// {@return `robustStorageTexelBufferDescriptorSize`}
     /// @param segment the segment of the struct
     public static @CType("size_t") long get_robustStorageTexelBufferDescriptorSize(MemorySegment segment) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_robustStorageTexelBufferDescriptorSize(segment, 0L); }
-    /// {@return `robustStorageTexelBufferDescriptorSize` at the given index}
-    /// @param index the index
-    public @CType("size_t") long robustStorageTexelBufferDescriptorSizeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_robustStorageTexelBufferDescriptorSize(this.segment(), index); }
     /// {@return `robustStorageTexelBufferDescriptorSize`}
     public @CType("size_t") long robustStorageTexelBufferDescriptorSize() { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_robustStorageTexelBufferDescriptorSize(this.segment()); }
     /// Sets `robustStorageTexelBufferDescriptorSize` with the given value at the given index.
@@ -1015,11 +847,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_robustStorageTexelBufferDescriptorSize(MemorySegment segment, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_robustStorageTexelBufferDescriptorSize(segment, 0L, value); }
-    /// Sets `robustStorageTexelBufferDescriptorSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorBufferPropertiesEXT robustStorageTexelBufferDescriptorSizeAt(long index, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_robustStorageTexelBufferDescriptorSize(this.segment(), index, value); return this; }
     /// Sets `robustStorageTexelBufferDescriptorSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1032,9 +859,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// {@return `uniformBufferDescriptorSize`}
     /// @param segment the segment of the struct
     public static @CType("size_t") long get_uniformBufferDescriptorSize(MemorySegment segment) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_uniformBufferDescriptorSize(segment, 0L); }
-    /// {@return `uniformBufferDescriptorSize` at the given index}
-    /// @param index the index
-    public @CType("size_t") long uniformBufferDescriptorSizeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_uniformBufferDescriptorSize(this.segment(), index); }
     /// {@return `uniformBufferDescriptorSize`}
     public @CType("size_t") long uniformBufferDescriptorSize() { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_uniformBufferDescriptorSize(this.segment()); }
     /// Sets `uniformBufferDescriptorSize` with the given value at the given index.
@@ -1046,11 +870,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_uniformBufferDescriptorSize(MemorySegment segment, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_uniformBufferDescriptorSize(segment, 0L, value); }
-    /// Sets `uniformBufferDescriptorSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorBufferPropertiesEXT uniformBufferDescriptorSizeAt(long index, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_uniformBufferDescriptorSize(this.segment(), index, value); return this; }
     /// Sets `uniformBufferDescriptorSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1063,9 +882,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// {@return `robustUniformBufferDescriptorSize`}
     /// @param segment the segment of the struct
     public static @CType("size_t") long get_robustUniformBufferDescriptorSize(MemorySegment segment) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_robustUniformBufferDescriptorSize(segment, 0L); }
-    /// {@return `robustUniformBufferDescriptorSize` at the given index}
-    /// @param index the index
-    public @CType("size_t") long robustUniformBufferDescriptorSizeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_robustUniformBufferDescriptorSize(this.segment(), index); }
     /// {@return `robustUniformBufferDescriptorSize`}
     public @CType("size_t") long robustUniformBufferDescriptorSize() { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_robustUniformBufferDescriptorSize(this.segment()); }
     /// Sets `robustUniformBufferDescriptorSize` with the given value at the given index.
@@ -1077,11 +893,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_robustUniformBufferDescriptorSize(MemorySegment segment, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_robustUniformBufferDescriptorSize(segment, 0L, value); }
-    /// Sets `robustUniformBufferDescriptorSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorBufferPropertiesEXT robustUniformBufferDescriptorSizeAt(long index, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_robustUniformBufferDescriptorSize(this.segment(), index, value); return this; }
     /// Sets `robustUniformBufferDescriptorSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1094,9 +905,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// {@return `storageBufferDescriptorSize`}
     /// @param segment the segment of the struct
     public static @CType("size_t") long get_storageBufferDescriptorSize(MemorySegment segment) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_storageBufferDescriptorSize(segment, 0L); }
-    /// {@return `storageBufferDescriptorSize` at the given index}
-    /// @param index the index
-    public @CType("size_t") long storageBufferDescriptorSizeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_storageBufferDescriptorSize(this.segment(), index); }
     /// {@return `storageBufferDescriptorSize`}
     public @CType("size_t") long storageBufferDescriptorSize() { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_storageBufferDescriptorSize(this.segment()); }
     /// Sets `storageBufferDescriptorSize` with the given value at the given index.
@@ -1108,11 +916,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_storageBufferDescriptorSize(MemorySegment segment, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_storageBufferDescriptorSize(segment, 0L, value); }
-    /// Sets `storageBufferDescriptorSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorBufferPropertiesEXT storageBufferDescriptorSizeAt(long index, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_storageBufferDescriptorSize(this.segment(), index, value); return this; }
     /// Sets `storageBufferDescriptorSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1125,9 +928,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// {@return `robustStorageBufferDescriptorSize`}
     /// @param segment the segment of the struct
     public static @CType("size_t") long get_robustStorageBufferDescriptorSize(MemorySegment segment) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_robustStorageBufferDescriptorSize(segment, 0L); }
-    /// {@return `robustStorageBufferDescriptorSize` at the given index}
-    /// @param index the index
-    public @CType("size_t") long robustStorageBufferDescriptorSizeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_robustStorageBufferDescriptorSize(this.segment(), index); }
     /// {@return `robustStorageBufferDescriptorSize`}
     public @CType("size_t") long robustStorageBufferDescriptorSize() { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_robustStorageBufferDescriptorSize(this.segment()); }
     /// Sets `robustStorageBufferDescriptorSize` with the given value at the given index.
@@ -1139,11 +939,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_robustStorageBufferDescriptorSize(MemorySegment segment, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_robustStorageBufferDescriptorSize(segment, 0L, value); }
-    /// Sets `robustStorageBufferDescriptorSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorBufferPropertiesEXT robustStorageBufferDescriptorSizeAt(long index, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_robustStorageBufferDescriptorSize(this.segment(), index, value); return this; }
     /// Sets `robustStorageBufferDescriptorSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1156,9 +951,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// {@return `inputAttachmentDescriptorSize`}
     /// @param segment the segment of the struct
     public static @CType("size_t") long get_inputAttachmentDescriptorSize(MemorySegment segment) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_inputAttachmentDescriptorSize(segment, 0L); }
-    /// {@return `inputAttachmentDescriptorSize` at the given index}
-    /// @param index the index
-    public @CType("size_t") long inputAttachmentDescriptorSizeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_inputAttachmentDescriptorSize(this.segment(), index); }
     /// {@return `inputAttachmentDescriptorSize`}
     public @CType("size_t") long inputAttachmentDescriptorSize() { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_inputAttachmentDescriptorSize(this.segment()); }
     /// Sets `inputAttachmentDescriptorSize` with the given value at the given index.
@@ -1170,11 +962,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_inputAttachmentDescriptorSize(MemorySegment segment, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_inputAttachmentDescriptorSize(segment, 0L, value); }
-    /// Sets `inputAttachmentDescriptorSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorBufferPropertiesEXT inputAttachmentDescriptorSizeAt(long index, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_inputAttachmentDescriptorSize(this.segment(), index, value); return this; }
     /// Sets `inputAttachmentDescriptorSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1187,9 +974,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// {@return `accelerationStructureDescriptorSize`}
     /// @param segment the segment of the struct
     public static @CType("size_t") long get_accelerationStructureDescriptorSize(MemorySegment segment) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_accelerationStructureDescriptorSize(segment, 0L); }
-    /// {@return `accelerationStructureDescriptorSize` at the given index}
-    /// @param index the index
-    public @CType("size_t") long accelerationStructureDescriptorSizeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_accelerationStructureDescriptorSize(this.segment(), index); }
     /// {@return `accelerationStructureDescriptorSize`}
     public @CType("size_t") long accelerationStructureDescriptorSize() { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_accelerationStructureDescriptorSize(this.segment()); }
     /// Sets `accelerationStructureDescriptorSize` with the given value at the given index.
@@ -1201,11 +985,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_accelerationStructureDescriptorSize(MemorySegment segment, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_accelerationStructureDescriptorSize(segment, 0L, value); }
-    /// Sets `accelerationStructureDescriptorSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorBufferPropertiesEXT accelerationStructureDescriptorSizeAt(long index, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_accelerationStructureDescriptorSize(this.segment(), index, value); return this; }
     /// Sets `accelerationStructureDescriptorSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1218,9 +997,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// {@return `maxSamplerDescriptorBufferRange`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_maxSamplerDescriptorBufferRange(MemorySegment segment) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_maxSamplerDescriptorBufferRange(segment, 0L); }
-    /// {@return `maxSamplerDescriptorBufferRange` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long maxSamplerDescriptorBufferRangeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_maxSamplerDescriptorBufferRange(this.segment(), index); }
     /// {@return `maxSamplerDescriptorBufferRange`}
     public @CType("VkDeviceSize") long maxSamplerDescriptorBufferRange() { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_maxSamplerDescriptorBufferRange(this.segment()); }
     /// Sets `maxSamplerDescriptorBufferRange` with the given value at the given index.
@@ -1232,11 +1008,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxSamplerDescriptorBufferRange(MemorySegment segment, @CType("VkDeviceSize") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_maxSamplerDescriptorBufferRange(segment, 0L, value); }
-    /// Sets `maxSamplerDescriptorBufferRange` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorBufferPropertiesEXT maxSamplerDescriptorBufferRangeAt(long index, @CType("VkDeviceSize") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_maxSamplerDescriptorBufferRange(this.segment(), index, value); return this; }
     /// Sets `maxSamplerDescriptorBufferRange` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1249,9 +1020,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// {@return `maxResourceDescriptorBufferRange`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_maxResourceDescriptorBufferRange(MemorySegment segment) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_maxResourceDescriptorBufferRange(segment, 0L); }
-    /// {@return `maxResourceDescriptorBufferRange` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long maxResourceDescriptorBufferRangeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_maxResourceDescriptorBufferRange(this.segment(), index); }
     /// {@return `maxResourceDescriptorBufferRange`}
     public @CType("VkDeviceSize") long maxResourceDescriptorBufferRange() { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_maxResourceDescriptorBufferRange(this.segment()); }
     /// Sets `maxResourceDescriptorBufferRange` with the given value at the given index.
@@ -1263,11 +1031,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxResourceDescriptorBufferRange(MemorySegment segment, @CType("VkDeviceSize") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_maxResourceDescriptorBufferRange(segment, 0L, value); }
-    /// Sets `maxResourceDescriptorBufferRange` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorBufferPropertiesEXT maxResourceDescriptorBufferRangeAt(long index, @CType("VkDeviceSize") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_maxResourceDescriptorBufferRange(this.segment(), index, value); return this; }
     /// Sets `maxResourceDescriptorBufferRange` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1280,9 +1043,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// {@return `samplerDescriptorBufferAddressSpaceSize`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_samplerDescriptorBufferAddressSpaceSize(MemorySegment segment) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_samplerDescriptorBufferAddressSpaceSize(segment, 0L); }
-    /// {@return `samplerDescriptorBufferAddressSpaceSize` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long samplerDescriptorBufferAddressSpaceSizeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_samplerDescriptorBufferAddressSpaceSize(this.segment(), index); }
     /// {@return `samplerDescriptorBufferAddressSpaceSize`}
     public @CType("VkDeviceSize") long samplerDescriptorBufferAddressSpaceSize() { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_samplerDescriptorBufferAddressSpaceSize(this.segment()); }
     /// Sets `samplerDescriptorBufferAddressSpaceSize` with the given value at the given index.
@@ -1294,11 +1054,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_samplerDescriptorBufferAddressSpaceSize(MemorySegment segment, @CType("VkDeviceSize") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_samplerDescriptorBufferAddressSpaceSize(segment, 0L, value); }
-    /// Sets `samplerDescriptorBufferAddressSpaceSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorBufferPropertiesEXT samplerDescriptorBufferAddressSpaceSizeAt(long index, @CType("VkDeviceSize") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_samplerDescriptorBufferAddressSpaceSize(this.segment(), index, value); return this; }
     /// Sets `samplerDescriptorBufferAddressSpaceSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1311,9 +1066,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// {@return `resourceDescriptorBufferAddressSpaceSize`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_resourceDescriptorBufferAddressSpaceSize(MemorySegment segment) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_resourceDescriptorBufferAddressSpaceSize(segment, 0L); }
-    /// {@return `resourceDescriptorBufferAddressSpaceSize` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long resourceDescriptorBufferAddressSpaceSizeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_resourceDescriptorBufferAddressSpaceSize(this.segment(), index); }
     /// {@return `resourceDescriptorBufferAddressSpaceSize`}
     public @CType("VkDeviceSize") long resourceDescriptorBufferAddressSpaceSize() { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_resourceDescriptorBufferAddressSpaceSize(this.segment()); }
     /// Sets `resourceDescriptorBufferAddressSpaceSize` with the given value at the given index.
@@ -1325,11 +1077,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_resourceDescriptorBufferAddressSpaceSize(MemorySegment segment, @CType("VkDeviceSize") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_resourceDescriptorBufferAddressSpaceSize(segment, 0L, value); }
-    /// Sets `resourceDescriptorBufferAddressSpaceSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorBufferPropertiesEXT resourceDescriptorBufferAddressSpaceSizeAt(long index, @CType("VkDeviceSize") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_resourceDescriptorBufferAddressSpaceSize(this.segment(), index, value); return this; }
     /// Sets `resourceDescriptorBufferAddressSpaceSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1342,9 +1089,6 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// {@return `descriptorBufferAddressSpaceSize`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_descriptorBufferAddressSpaceSize(MemorySegment segment) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_descriptorBufferAddressSpaceSize(segment, 0L); }
-    /// {@return `descriptorBufferAddressSpaceSize` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long descriptorBufferAddressSpaceSizeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_descriptorBufferAddressSpaceSize(this.segment(), index); }
     /// {@return `descriptorBufferAddressSpaceSize`}
     public @CType("VkDeviceSize") long descriptorBufferAddressSpaceSize() { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_descriptorBufferAddressSpaceSize(this.segment()); }
     /// Sets `descriptorBufferAddressSpaceSize` with the given value at the given index.
@@ -1356,14 +1100,347 @@ public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_descriptorBufferAddressSpaceSize(MemorySegment segment, @CType("VkDeviceSize") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_descriptorBufferAddressSpaceSize(segment, 0L, value); }
-    /// Sets `descriptorBufferAddressSpaceSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDescriptorBufferPropertiesEXT descriptorBufferAddressSpaceSizeAt(long index, @CType("VkDeviceSize") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_descriptorBufferAddressSpaceSize(this.segment(), index, value); return this; }
     /// Sets `descriptorBufferAddressSpaceSize` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceDescriptorBufferPropertiesEXT descriptorBufferAddressSpaceSize(@CType("VkDeviceSize") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_descriptorBufferAddressSpaceSize(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDeviceDescriptorBufferPropertiesEXT].
+    public static final class Buffer extends VkPhysicalDeviceDescriptorBufferPropertiesEXT {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDeviceDescriptorBufferPropertiesEXT.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDeviceDescriptorBufferPropertiesEXT`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
+        public VkPhysicalDeviceDescriptorBufferPropertiesEXT asSlice(long index) { return new VkPhysicalDeviceDescriptorBufferPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDeviceDescriptorBufferPropertiesEXT`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `combinedImageSamplerDescriptorSingleArray` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int combinedImageSamplerDescriptorSingleArrayAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_combinedImageSamplerDescriptorSingleArray(this.segment(), index); }
+        /// Sets `combinedImageSamplerDescriptorSingleArray` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer combinedImageSamplerDescriptorSingleArrayAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_combinedImageSamplerDescriptorSingleArray(this.segment(), index, value); return this; }
+
+        /// {@return `bufferlessPushDescriptors` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int bufferlessPushDescriptorsAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_bufferlessPushDescriptors(this.segment(), index); }
+        /// Sets `bufferlessPushDescriptors` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer bufferlessPushDescriptorsAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_bufferlessPushDescriptors(this.segment(), index, value); return this; }
+
+        /// {@return `allowSamplerImageViewPostSubmitCreation` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int allowSamplerImageViewPostSubmitCreationAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_allowSamplerImageViewPostSubmitCreation(this.segment(), index); }
+        /// Sets `allowSamplerImageViewPostSubmitCreation` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer allowSamplerImageViewPostSubmitCreationAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_allowSamplerImageViewPostSubmitCreation(this.segment(), index, value); return this; }
+
+        /// {@return `descriptorBufferOffsetAlignment` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long descriptorBufferOffsetAlignmentAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_descriptorBufferOffsetAlignment(this.segment(), index); }
+        /// Sets `descriptorBufferOffsetAlignment` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer descriptorBufferOffsetAlignmentAt(long index, @CType("VkDeviceSize") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_descriptorBufferOffsetAlignment(this.segment(), index, value); return this; }
+
+        /// {@return `maxDescriptorBufferBindings` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxDescriptorBufferBindingsAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_maxDescriptorBufferBindings(this.segment(), index); }
+        /// Sets `maxDescriptorBufferBindings` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxDescriptorBufferBindingsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_maxDescriptorBufferBindings(this.segment(), index, value); return this; }
+
+        /// {@return `maxResourceDescriptorBufferBindings` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxResourceDescriptorBufferBindingsAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_maxResourceDescriptorBufferBindings(this.segment(), index); }
+        /// Sets `maxResourceDescriptorBufferBindings` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxResourceDescriptorBufferBindingsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_maxResourceDescriptorBufferBindings(this.segment(), index, value); return this; }
+
+        /// {@return `maxSamplerDescriptorBufferBindings` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxSamplerDescriptorBufferBindingsAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_maxSamplerDescriptorBufferBindings(this.segment(), index); }
+        /// Sets `maxSamplerDescriptorBufferBindings` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxSamplerDescriptorBufferBindingsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_maxSamplerDescriptorBufferBindings(this.segment(), index, value); return this; }
+
+        /// {@return `maxEmbeddedImmutableSamplerBindings` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxEmbeddedImmutableSamplerBindingsAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_maxEmbeddedImmutableSamplerBindings(this.segment(), index); }
+        /// Sets `maxEmbeddedImmutableSamplerBindings` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxEmbeddedImmutableSamplerBindingsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_maxEmbeddedImmutableSamplerBindings(this.segment(), index, value); return this; }
+
+        /// {@return `maxEmbeddedImmutableSamplers` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxEmbeddedImmutableSamplersAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_maxEmbeddedImmutableSamplers(this.segment(), index); }
+        /// Sets `maxEmbeddedImmutableSamplers` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxEmbeddedImmutableSamplersAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_maxEmbeddedImmutableSamplers(this.segment(), index, value); return this; }
+
+        /// {@return `bufferCaptureReplayDescriptorDataSize` at the given index}
+        /// @param index the index
+        public @CType("size_t") long bufferCaptureReplayDescriptorDataSizeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_bufferCaptureReplayDescriptorDataSize(this.segment(), index); }
+        /// Sets `bufferCaptureReplayDescriptorDataSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer bufferCaptureReplayDescriptorDataSizeAt(long index, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_bufferCaptureReplayDescriptorDataSize(this.segment(), index, value); return this; }
+
+        /// {@return `imageCaptureReplayDescriptorDataSize` at the given index}
+        /// @param index the index
+        public @CType("size_t") long imageCaptureReplayDescriptorDataSizeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_imageCaptureReplayDescriptorDataSize(this.segment(), index); }
+        /// Sets `imageCaptureReplayDescriptorDataSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer imageCaptureReplayDescriptorDataSizeAt(long index, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_imageCaptureReplayDescriptorDataSize(this.segment(), index, value); return this; }
+
+        /// {@return `imageViewCaptureReplayDescriptorDataSize` at the given index}
+        /// @param index the index
+        public @CType("size_t") long imageViewCaptureReplayDescriptorDataSizeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_imageViewCaptureReplayDescriptorDataSize(this.segment(), index); }
+        /// Sets `imageViewCaptureReplayDescriptorDataSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer imageViewCaptureReplayDescriptorDataSizeAt(long index, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_imageViewCaptureReplayDescriptorDataSize(this.segment(), index, value); return this; }
+
+        /// {@return `samplerCaptureReplayDescriptorDataSize` at the given index}
+        /// @param index the index
+        public @CType("size_t") long samplerCaptureReplayDescriptorDataSizeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_samplerCaptureReplayDescriptorDataSize(this.segment(), index); }
+        /// Sets `samplerCaptureReplayDescriptorDataSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer samplerCaptureReplayDescriptorDataSizeAt(long index, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_samplerCaptureReplayDescriptorDataSize(this.segment(), index, value); return this; }
+
+        /// {@return `accelerationStructureCaptureReplayDescriptorDataSize` at the given index}
+        /// @param index the index
+        public @CType("size_t") long accelerationStructureCaptureReplayDescriptorDataSizeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_accelerationStructureCaptureReplayDescriptorDataSize(this.segment(), index); }
+        /// Sets `accelerationStructureCaptureReplayDescriptorDataSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer accelerationStructureCaptureReplayDescriptorDataSizeAt(long index, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_accelerationStructureCaptureReplayDescriptorDataSize(this.segment(), index, value); return this; }
+
+        /// {@return `samplerDescriptorSize` at the given index}
+        /// @param index the index
+        public @CType("size_t") long samplerDescriptorSizeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_samplerDescriptorSize(this.segment(), index); }
+        /// Sets `samplerDescriptorSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer samplerDescriptorSizeAt(long index, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_samplerDescriptorSize(this.segment(), index, value); return this; }
+
+        /// {@return `combinedImageSamplerDescriptorSize` at the given index}
+        /// @param index the index
+        public @CType("size_t") long combinedImageSamplerDescriptorSizeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_combinedImageSamplerDescriptorSize(this.segment(), index); }
+        /// Sets `combinedImageSamplerDescriptorSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer combinedImageSamplerDescriptorSizeAt(long index, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_combinedImageSamplerDescriptorSize(this.segment(), index, value); return this; }
+
+        /// {@return `sampledImageDescriptorSize` at the given index}
+        /// @param index the index
+        public @CType("size_t") long sampledImageDescriptorSizeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_sampledImageDescriptorSize(this.segment(), index); }
+        /// Sets `sampledImageDescriptorSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sampledImageDescriptorSizeAt(long index, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_sampledImageDescriptorSize(this.segment(), index, value); return this; }
+
+        /// {@return `storageImageDescriptorSize` at the given index}
+        /// @param index the index
+        public @CType("size_t") long storageImageDescriptorSizeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_storageImageDescriptorSize(this.segment(), index); }
+        /// Sets `storageImageDescriptorSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer storageImageDescriptorSizeAt(long index, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_storageImageDescriptorSize(this.segment(), index, value); return this; }
+
+        /// {@return `uniformTexelBufferDescriptorSize` at the given index}
+        /// @param index the index
+        public @CType("size_t") long uniformTexelBufferDescriptorSizeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_uniformTexelBufferDescriptorSize(this.segment(), index); }
+        /// Sets `uniformTexelBufferDescriptorSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer uniformTexelBufferDescriptorSizeAt(long index, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_uniformTexelBufferDescriptorSize(this.segment(), index, value); return this; }
+
+        /// {@return `robustUniformTexelBufferDescriptorSize` at the given index}
+        /// @param index the index
+        public @CType("size_t") long robustUniformTexelBufferDescriptorSizeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_robustUniformTexelBufferDescriptorSize(this.segment(), index); }
+        /// Sets `robustUniformTexelBufferDescriptorSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer robustUniformTexelBufferDescriptorSizeAt(long index, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_robustUniformTexelBufferDescriptorSize(this.segment(), index, value); return this; }
+
+        /// {@return `storageTexelBufferDescriptorSize` at the given index}
+        /// @param index the index
+        public @CType("size_t") long storageTexelBufferDescriptorSizeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_storageTexelBufferDescriptorSize(this.segment(), index); }
+        /// Sets `storageTexelBufferDescriptorSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer storageTexelBufferDescriptorSizeAt(long index, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_storageTexelBufferDescriptorSize(this.segment(), index, value); return this; }
+
+        /// {@return `robustStorageTexelBufferDescriptorSize` at the given index}
+        /// @param index the index
+        public @CType("size_t") long robustStorageTexelBufferDescriptorSizeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_robustStorageTexelBufferDescriptorSize(this.segment(), index); }
+        /// Sets `robustStorageTexelBufferDescriptorSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer robustStorageTexelBufferDescriptorSizeAt(long index, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_robustStorageTexelBufferDescriptorSize(this.segment(), index, value); return this; }
+
+        /// {@return `uniformBufferDescriptorSize` at the given index}
+        /// @param index the index
+        public @CType("size_t") long uniformBufferDescriptorSizeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_uniformBufferDescriptorSize(this.segment(), index); }
+        /// Sets `uniformBufferDescriptorSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer uniformBufferDescriptorSizeAt(long index, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_uniformBufferDescriptorSize(this.segment(), index, value); return this; }
+
+        /// {@return `robustUniformBufferDescriptorSize` at the given index}
+        /// @param index the index
+        public @CType("size_t") long robustUniformBufferDescriptorSizeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_robustUniformBufferDescriptorSize(this.segment(), index); }
+        /// Sets `robustUniformBufferDescriptorSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer robustUniformBufferDescriptorSizeAt(long index, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_robustUniformBufferDescriptorSize(this.segment(), index, value); return this; }
+
+        /// {@return `storageBufferDescriptorSize` at the given index}
+        /// @param index the index
+        public @CType("size_t") long storageBufferDescriptorSizeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_storageBufferDescriptorSize(this.segment(), index); }
+        /// Sets `storageBufferDescriptorSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer storageBufferDescriptorSizeAt(long index, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_storageBufferDescriptorSize(this.segment(), index, value); return this; }
+
+        /// {@return `robustStorageBufferDescriptorSize` at the given index}
+        /// @param index the index
+        public @CType("size_t") long robustStorageBufferDescriptorSizeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_robustStorageBufferDescriptorSize(this.segment(), index); }
+        /// Sets `robustStorageBufferDescriptorSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer robustStorageBufferDescriptorSizeAt(long index, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_robustStorageBufferDescriptorSize(this.segment(), index, value); return this; }
+
+        /// {@return `inputAttachmentDescriptorSize` at the given index}
+        /// @param index the index
+        public @CType("size_t") long inputAttachmentDescriptorSizeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_inputAttachmentDescriptorSize(this.segment(), index); }
+        /// Sets `inputAttachmentDescriptorSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer inputAttachmentDescriptorSizeAt(long index, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_inputAttachmentDescriptorSize(this.segment(), index, value); return this; }
+
+        /// {@return `accelerationStructureDescriptorSize` at the given index}
+        /// @param index the index
+        public @CType("size_t") long accelerationStructureDescriptorSizeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_accelerationStructureDescriptorSize(this.segment(), index); }
+        /// Sets `accelerationStructureDescriptorSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer accelerationStructureDescriptorSizeAt(long index, @CType("size_t") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_accelerationStructureDescriptorSize(this.segment(), index, value); return this; }
+
+        /// {@return `maxSamplerDescriptorBufferRange` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long maxSamplerDescriptorBufferRangeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_maxSamplerDescriptorBufferRange(this.segment(), index); }
+        /// Sets `maxSamplerDescriptorBufferRange` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxSamplerDescriptorBufferRangeAt(long index, @CType("VkDeviceSize") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_maxSamplerDescriptorBufferRange(this.segment(), index, value); return this; }
+
+        /// {@return `maxResourceDescriptorBufferRange` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long maxResourceDescriptorBufferRangeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_maxResourceDescriptorBufferRange(this.segment(), index); }
+        /// Sets `maxResourceDescriptorBufferRange` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxResourceDescriptorBufferRangeAt(long index, @CType("VkDeviceSize") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_maxResourceDescriptorBufferRange(this.segment(), index, value); return this; }
+
+        /// {@return `samplerDescriptorBufferAddressSpaceSize` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long samplerDescriptorBufferAddressSpaceSizeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_samplerDescriptorBufferAddressSpaceSize(this.segment(), index); }
+        /// Sets `samplerDescriptorBufferAddressSpaceSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer samplerDescriptorBufferAddressSpaceSizeAt(long index, @CType("VkDeviceSize") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_samplerDescriptorBufferAddressSpaceSize(this.segment(), index, value); return this; }
+
+        /// {@return `resourceDescriptorBufferAddressSpaceSize` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long resourceDescriptorBufferAddressSpaceSizeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_resourceDescriptorBufferAddressSpaceSize(this.segment(), index); }
+        /// Sets `resourceDescriptorBufferAddressSpaceSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer resourceDescriptorBufferAddressSpaceSizeAt(long index, @CType("VkDeviceSize") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_resourceDescriptorBufferAddressSpaceSize(this.segment(), index, value); return this; }
+
+        /// {@return `descriptorBufferAddressSpaceSize` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long descriptorBufferAddressSpaceSizeAt(long index) { return VkPhysicalDeviceDescriptorBufferPropertiesEXT.get_descriptorBufferAddressSpaceSize(this.segment(), index); }
+        /// Sets `descriptorBufferAddressSpaceSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer descriptorBufferAddressSpaceSizeAt(long index, @CType("VkDeviceSize") long value) { VkPhysicalDeviceDescriptorBufferPropertiesEXT.set_descriptorBufferAddressSpaceSize(this.segment(), index, value); return this; }
+
+    }
 }

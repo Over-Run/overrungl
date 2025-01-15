@@ -46,7 +46,7 @@ import overrungl.util.*;
 ///     uint32_t firstInstance;
 /// } VkDrawIndexedIndirectCommand;
 /// ```
-public final class VkDrawIndexedIndirectCommand extends Struct {
+public sealed class VkDrawIndexedIndirectCommand extends Struct {
     /// The struct layout of `VkDrawIndexedIndirectCommand`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("indexCount"),
@@ -76,6 +76,11 @@ public final class VkDrawIndexedIndirectCommand extends Struct {
     public static VkDrawIndexedIndirectCommand of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDrawIndexedIndirectCommand(segment); }
 
     /// Creates `VkDrawIndexedIndirectCommand` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkDrawIndexedIndirectCommand` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -88,7 +93,7 @@ public final class VkDrawIndexedIndirectCommand extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDrawIndexedIndirectCommand ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkDrawIndexedIndirectCommand(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkDrawIndexedIndirectCommand` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -99,7 +104,21 @@ public final class VkDrawIndexedIndirectCommand extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDrawIndexedIndirectCommand`
-    public static VkDrawIndexedIndirectCommand alloc(SegmentAllocator allocator, long count) { return new VkDrawIndexedIndirectCommand(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkDrawIndexedIndirectCommand` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkDrawIndexedIndirectCommand`
+    public static VkDrawIndexedIndirectCommand allocInit(SegmentAllocator allocator, @CType("uint32_t") int indexCount, @CType("uint32_t") int instanceCount, @CType("uint32_t") int firstIndex, @CType("int32_t") int vertexOffset, @CType("uint32_t") int firstInstance) { return alloc(allocator).indexCount(indexCount).instanceCount(instanceCount).firstIndex(firstIndex).vertexOffset(vertexOffset).firstInstance(firstInstance); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkDrawIndexedIndirectCommand copyFrom(VkDrawIndexedIndirectCommand src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `indexCount` at the given index}
     /// @param segment the segment of the struct
@@ -108,9 +127,6 @@ public final class VkDrawIndexedIndirectCommand extends Struct {
     /// {@return `indexCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_indexCount(MemorySegment segment) { return VkDrawIndexedIndirectCommand.get_indexCount(segment, 0L); }
-    /// {@return `indexCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int indexCountAt(long index) { return VkDrawIndexedIndirectCommand.get_indexCount(this.segment(), index); }
     /// {@return `indexCount`}
     public @CType("uint32_t") int indexCount() { return VkDrawIndexedIndirectCommand.get_indexCount(this.segment()); }
     /// Sets `indexCount` with the given value at the given index.
@@ -122,11 +138,6 @@ public final class VkDrawIndexedIndirectCommand extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_indexCount(MemorySegment segment, @CType("uint32_t") int value) { VkDrawIndexedIndirectCommand.set_indexCount(segment, 0L, value); }
-    /// Sets `indexCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDrawIndexedIndirectCommand indexCountAt(long index, @CType("uint32_t") int value) { VkDrawIndexedIndirectCommand.set_indexCount(this.segment(), index, value); return this; }
     /// Sets `indexCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -139,9 +150,6 @@ public final class VkDrawIndexedIndirectCommand extends Struct {
     /// {@return `instanceCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_instanceCount(MemorySegment segment) { return VkDrawIndexedIndirectCommand.get_instanceCount(segment, 0L); }
-    /// {@return `instanceCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int instanceCountAt(long index) { return VkDrawIndexedIndirectCommand.get_instanceCount(this.segment(), index); }
     /// {@return `instanceCount`}
     public @CType("uint32_t") int instanceCount() { return VkDrawIndexedIndirectCommand.get_instanceCount(this.segment()); }
     /// Sets `instanceCount` with the given value at the given index.
@@ -153,11 +161,6 @@ public final class VkDrawIndexedIndirectCommand extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_instanceCount(MemorySegment segment, @CType("uint32_t") int value) { VkDrawIndexedIndirectCommand.set_instanceCount(segment, 0L, value); }
-    /// Sets `instanceCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDrawIndexedIndirectCommand instanceCountAt(long index, @CType("uint32_t") int value) { VkDrawIndexedIndirectCommand.set_instanceCount(this.segment(), index, value); return this; }
     /// Sets `instanceCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -170,9 +173,6 @@ public final class VkDrawIndexedIndirectCommand extends Struct {
     /// {@return `firstIndex`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_firstIndex(MemorySegment segment) { return VkDrawIndexedIndirectCommand.get_firstIndex(segment, 0L); }
-    /// {@return `firstIndex` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int firstIndexAt(long index) { return VkDrawIndexedIndirectCommand.get_firstIndex(this.segment(), index); }
     /// {@return `firstIndex`}
     public @CType("uint32_t") int firstIndex() { return VkDrawIndexedIndirectCommand.get_firstIndex(this.segment()); }
     /// Sets `firstIndex` with the given value at the given index.
@@ -184,11 +184,6 @@ public final class VkDrawIndexedIndirectCommand extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_firstIndex(MemorySegment segment, @CType("uint32_t") int value) { VkDrawIndexedIndirectCommand.set_firstIndex(segment, 0L, value); }
-    /// Sets `firstIndex` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDrawIndexedIndirectCommand firstIndexAt(long index, @CType("uint32_t") int value) { VkDrawIndexedIndirectCommand.set_firstIndex(this.segment(), index, value); return this; }
     /// Sets `firstIndex` with the given value.
     /// @param value the value
     /// @return `this`
@@ -201,9 +196,6 @@ public final class VkDrawIndexedIndirectCommand extends Struct {
     /// {@return `vertexOffset`}
     /// @param segment the segment of the struct
     public static @CType("int32_t") int get_vertexOffset(MemorySegment segment) { return VkDrawIndexedIndirectCommand.get_vertexOffset(segment, 0L); }
-    /// {@return `vertexOffset` at the given index}
-    /// @param index the index
-    public @CType("int32_t") int vertexOffsetAt(long index) { return VkDrawIndexedIndirectCommand.get_vertexOffset(this.segment(), index); }
     /// {@return `vertexOffset`}
     public @CType("int32_t") int vertexOffset() { return VkDrawIndexedIndirectCommand.get_vertexOffset(this.segment()); }
     /// Sets `vertexOffset` with the given value at the given index.
@@ -215,11 +207,6 @@ public final class VkDrawIndexedIndirectCommand extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_vertexOffset(MemorySegment segment, @CType("int32_t") int value) { VkDrawIndexedIndirectCommand.set_vertexOffset(segment, 0L, value); }
-    /// Sets `vertexOffset` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDrawIndexedIndirectCommand vertexOffsetAt(long index, @CType("int32_t") int value) { VkDrawIndexedIndirectCommand.set_vertexOffset(this.segment(), index, value); return this; }
     /// Sets `vertexOffset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -232,9 +219,6 @@ public final class VkDrawIndexedIndirectCommand extends Struct {
     /// {@return `firstInstance`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_firstInstance(MemorySegment segment) { return VkDrawIndexedIndirectCommand.get_firstInstance(segment, 0L); }
-    /// {@return `firstInstance` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int firstInstanceAt(long index) { return VkDrawIndexedIndirectCommand.get_firstInstance(this.segment(), index); }
     /// {@return `firstInstance`}
     public @CType("uint32_t") int firstInstance() { return VkDrawIndexedIndirectCommand.get_firstInstance(this.segment()); }
     /// Sets `firstInstance` with the given value at the given index.
@@ -246,14 +230,77 @@ public final class VkDrawIndexedIndirectCommand extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_firstInstance(MemorySegment segment, @CType("uint32_t") int value) { VkDrawIndexedIndirectCommand.set_firstInstance(segment, 0L, value); }
-    /// Sets `firstInstance` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDrawIndexedIndirectCommand firstInstanceAt(long index, @CType("uint32_t") int value) { VkDrawIndexedIndirectCommand.set_firstInstance(this.segment(), index, value); return this; }
     /// Sets `firstInstance` with the given value.
     /// @param value the value
     /// @return `this`
     public VkDrawIndexedIndirectCommand firstInstance(@CType("uint32_t") int value) { VkDrawIndexedIndirectCommand.set_firstInstance(this.segment(), value); return this; }
 
+    /// A buffer of [VkDrawIndexedIndirectCommand].
+    public static final class Buffer extends VkDrawIndexedIndirectCommand {
+        private final long elementCount;
+
+        /// Creates `VkDrawIndexedIndirectCommand.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkDrawIndexedIndirectCommand`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkDrawIndexedIndirectCommand`
+        public VkDrawIndexedIndirectCommand asSlice(long index) { return new VkDrawIndexedIndirectCommand(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkDrawIndexedIndirectCommand`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkDrawIndexedIndirectCommand`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `indexCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int indexCountAt(long index) { return VkDrawIndexedIndirectCommand.get_indexCount(this.segment(), index); }
+        /// Sets `indexCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer indexCountAt(long index, @CType("uint32_t") int value) { VkDrawIndexedIndirectCommand.set_indexCount(this.segment(), index, value); return this; }
+
+        /// {@return `instanceCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int instanceCountAt(long index) { return VkDrawIndexedIndirectCommand.get_instanceCount(this.segment(), index); }
+        /// Sets `instanceCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer instanceCountAt(long index, @CType("uint32_t") int value) { VkDrawIndexedIndirectCommand.set_instanceCount(this.segment(), index, value); return this; }
+
+        /// {@return `firstIndex` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int firstIndexAt(long index) { return VkDrawIndexedIndirectCommand.get_firstIndex(this.segment(), index); }
+        /// Sets `firstIndex` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer firstIndexAt(long index, @CType("uint32_t") int value) { VkDrawIndexedIndirectCommand.set_firstIndex(this.segment(), index, value); return this; }
+
+        /// {@return `vertexOffset` at the given index}
+        /// @param index the index
+        public @CType("int32_t") int vertexOffsetAt(long index) { return VkDrawIndexedIndirectCommand.get_vertexOffset(this.segment(), index); }
+        /// Sets `vertexOffset` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer vertexOffsetAt(long index, @CType("int32_t") int value) { VkDrawIndexedIndirectCommand.set_vertexOffset(this.segment(), index, value); return this; }
+
+        /// {@return `firstInstance` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int firstInstanceAt(long index) { return VkDrawIndexedIndirectCommand.get_firstInstance(this.segment(), index); }
+        /// Sets `firstInstance` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer firstInstanceAt(long index, @CType("uint32_t") int value) { VkDrawIndexedIndirectCommand.set_firstInstance(this.segment(), index, value); return this; }
+
+    }
 }

@@ -22,7 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKKHRVideoEncodeQuantizationMap {
+public final class VKKHRVideoEncodeQuantizationMap {
     public static final int VK_KHR_VIDEO_ENCODE_QUANTIZATION_MAP_SPEC_VERSION = 2;
     public static final String VK_KHR_VIDEO_ENCODE_QUANTIZATION_MAP_EXTENSION_NAME = "VK_KHR_video_encode_quantization_map";
     public static final int VK_STRUCTURE_TYPE_VIDEO_ENCODE_QUANTIZATION_MAP_CAPABILITIES_KHR = 1000553000;
@@ -50,7 +50,6 @@ public class VKKHRVideoEncodeQuantizationMap {
     public static final int VK_STRUCTURE_TYPE_VIDEO_ENCODE_AV1_QUANTIZATION_MAP_CAPABILITIES_KHR = 1000553007;
     public static final int VK_STRUCTURE_TYPE_VIDEO_FORMAT_AV1_QUANTIZATION_MAP_PROPERTIES_KHR = 1000553008;
 
-    public VKKHRVideoEncodeQuantizationMap(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKKHRVideoEncodeQuantizationMap() { }
 
 }

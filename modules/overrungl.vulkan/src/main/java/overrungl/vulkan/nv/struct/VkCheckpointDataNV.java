@@ -43,7 +43,7 @@ import overrungl.util.*;
 ///     void * pCheckpointMarker;
 /// } VkCheckpointDataNV;
 /// ```
-public final class VkCheckpointDataNV extends Struct {
+public sealed class VkCheckpointDataNV extends Struct {
     /// The struct layout of `VkCheckpointDataNV`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -70,6 +70,11 @@ public final class VkCheckpointDataNV extends Struct {
     public static VkCheckpointDataNV of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkCheckpointDataNV(segment); }
 
     /// Creates `VkCheckpointDataNV` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkCheckpointDataNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -82,7 +87,7 @@ public final class VkCheckpointDataNV extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkCheckpointDataNV ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkCheckpointDataNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkCheckpointDataNV` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -93,7 +98,21 @@ public final class VkCheckpointDataNV extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkCheckpointDataNV`
-    public static VkCheckpointDataNV alloc(SegmentAllocator allocator, long count) { return new VkCheckpointDataNV(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkCheckpointDataNV` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkCheckpointDataNV`
+    public static VkCheckpointDataNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkPipelineStageFlagBits") int stage, @CType("void *") java.lang.foreign.MemorySegment pCheckpointMarker) { return alloc(allocator).sType(sType).pNext(pNext).stage(stage).pCheckpointMarker(pCheckpointMarker); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkCheckpointDataNV copyFrom(VkCheckpointDataNV src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -102,9 +121,6 @@ public final class VkCheckpointDataNV extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkCheckpointDataNV.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkCheckpointDataNV.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkCheckpointDataNV.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -116,11 +132,6 @@ public final class VkCheckpointDataNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkCheckpointDataNV.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCheckpointDataNV sTypeAt(long index, @CType("VkStructureType") int value) { VkCheckpointDataNV.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -133,9 +144,6 @@ public final class VkCheckpointDataNV extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkCheckpointDataNV.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkCheckpointDataNV.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkCheckpointDataNV.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -147,11 +155,6 @@ public final class VkCheckpointDataNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkCheckpointDataNV.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCheckpointDataNV pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkCheckpointDataNV.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -164,9 +167,6 @@ public final class VkCheckpointDataNV extends Struct {
     /// {@return `stage`}
     /// @param segment the segment of the struct
     public static @CType("VkPipelineStageFlagBits") int get_stage(MemorySegment segment) { return VkCheckpointDataNV.get_stage(segment, 0L); }
-    /// {@return `stage` at the given index}
-    /// @param index the index
-    public @CType("VkPipelineStageFlagBits") int stageAt(long index) { return VkCheckpointDataNV.get_stage(this.segment(), index); }
     /// {@return `stage`}
     public @CType("VkPipelineStageFlagBits") int stage() { return VkCheckpointDataNV.get_stage(this.segment()); }
     /// Sets `stage` with the given value at the given index.
@@ -178,11 +178,6 @@ public final class VkCheckpointDataNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_stage(MemorySegment segment, @CType("VkPipelineStageFlagBits") int value) { VkCheckpointDataNV.set_stage(segment, 0L, value); }
-    /// Sets `stage` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCheckpointDataNV stageAt(long index, @CType("VkPipelineStageFlagBits") int value) { VkCheckpointDataNV.set_stage(this.segment(), index, value); return this; }
     /// Sets `stage` with the given value.
     /// @param value the value
     /// @return `this`
@@ -195,9 +190,6 @@ public final class VkCheckpointDataNV extends Struct {
     /// {@return `pCheckpointMarker`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pCheckpointMarker(MemorySegment segment) { return VkCheckpointDataNV.get_pCheckpointMarker(segment, 0L); }
-    /// {@return `pCheckpointMarker` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pCheckpointMarkerAt(long index) { return VkCheckpointDataNV.get_pCheckpointMarker(this.segment(), index); }
     /// {@return `pCheckpointMarker`}
     public @CType("void *") java.lang.foreign.MemorySegment pCheckpointMarker() { return VkCheckpointDataNV.get_pCheckpointMarker(this.segment()); }
     /// Sets `pCheckpointMarker` with the given value at the given index.
@@ -209,14 +201,68 @@ public final class VkCheckpointDataNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pCheckpointMarker(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkCheckpointDataNV.set_pCheckpointMarker(segment, 0L, value); }
-    /// Sets `pCheckpointMarker` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCheckpointDataNV pCheckpointMarkerAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkCheckpointDataNV.set_pCheckpointMarker(this.segment(), index, value); return this; }
     /// Sets `pCheckpointMarker` with the given value.
     /// @param value the value
     /// @return `this`
     public VkCheckpointDataNV pCheckpointMarker(@CType("void *") java.lang.foreign.MemorySegment value) { VkCheckpointDataNV.set_pCheckpointMarker(this.segment(), value); return this; }
 
+    /// A buffer of [VkCheckpointDataNV].
+    public static final class Buffer extends VkCheckpointDataNV {
+        private final long elementCount;
+
+        /// Creates `VkCheckpointDataNV.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkCheckpointDataNV`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkCheckpointDataNV`
+        public VkCheckpointDataNV asSlice(long index) { return new VkCheckpointDataNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkCheckpointDataNV`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkCheckpointDataNV`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkCheckpointDataNV.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkCheckpointDataNV.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkCheckpointDataNV.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkCheckpointDataNV.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `stage` at the given index}
+        /// @param index the index
+        public @CType("VkPipelineStageFlagBits") int stageAt(long index) { return VkCheckpointDataNV.get_stage(this.segment(), index); }
+        /// Sets `stage` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer stageAt(long index, @CType("VkPipelineStageFlagBits") int value) { VkCheckpointDataNV.set_stage(this.segment(), index, value); return this; }
+
+        /// {@return `pCheckpointMarker` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pCheckpointMarkerAt(long index) { return VkCheckpointDataNV.get_pCheckpointMarker(this.segment(), index); }
+        /// Sets `pCheckpointMarker` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pCheckpointMarkerAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkCheckpointDataNV.set_pCheckpointMarker(this.segment(), index, value); return this; }
+
+    }
 }

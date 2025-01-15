@@ -40,7 +40,7 @@ import overrungl.util.*;
 ///     uint32_t : 30 reserved;
 /// } StdVideoEncodeH265ReferenceListsInfoFlags;
 /// ```
-public final class StdVideoEncodeH265ReferenceListsInfoFlags extends Struct {
+public sealed class StdVideoEncodeH265ReferenceListsInfoFlags extends Struct {
     /// The struct layout of `StdVideoEncodeH265ReferenceListsInfoFlags`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("ref_pic_list_modification_flag_l0"),
@@ -64,6 +64,11 @@ public final class StdVideoEncodeH265ReferenceListsInfoFlags extends Struct {
     public static StdVideoEncodeH265ReferenceListsInfoFlags of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoEncodeH265ReferenceListsInfoFlags(segment); }
 
     /// Creates `StdVideoEncodeH265ReferenceListsInfoFlags` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `StdVideoEncodeH265ReferenceListsInfoFlags` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -76,7 +81,7 @@ public final class StdVideoEncodeH265ReferenceListsInfoFlags extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoEncodeH265ReferenceListsInfoFlags ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoEncodeH265ReferenceListsInfoFlags(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `StdVideoEncodeH265ReferenceListsInfoFlags` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -87,7 +92,21 @@ public final class StdVideoEncodeH265ReferenceListsInfoFlags extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `StdVideoEncodeH265ReferenceListsInfoFlags`
-    public static StdVideoEncodeH265ReferenceListsInfoFlags alloc(SegmentAllocator allocator, long count) { return new StdVideoEncodeH265ReferenceListsInfoFlags(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `StdVideoEncodeH265ReferenceListsInfoFlags` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `StdVideoEncodeH265ReferenceListsInfoFlags`
+    public static StdVideoEncodeH265ReferenceListsInfoFlags allocInit(SegmentAllocator allocator, @CType("uint32_t : 1") int ref_pic_list_modification_flag_l0, @CType("uint32_t : 1") int ref_pic_list_modification_flag_l1, @CType("uint32_t : 30") int reserved) { return alloc(allocator).ref_pic_list_modification_flag_l0(ref_pic_list_modification_flag_l0).ref_pic_list_modification_flag_l1(ref_pic_list_modification_flag_l1).reserved(reserved); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public StdVideoEncodeH265ReferenceListsInfoFlags copyFrom(StdVideoEncodeH265ReferenceListsInfoFlags src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `ref_pic_list_modification_flag_l0` at the given index}
     /// @param segment the segment of the struct
@@ -96,9 +115,6 @@ public final class StdVideoEncodeH265ReferenceListsInfoFlags extends Struct {
     /// {@return `ref_pic_list_modification_flag_l0`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_ref_pic_list_modification_flag_l0(MemorySegment segment) { return StdVideoEncodeH265ReferenceListsInfoFlags.get_ref_pic_list_modification_flag_l0(segment, 0L); }
-    /// {@return `ref_pic_list_modification_flag_l0` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int ref_pic_list_modification_flag_l0At(long index) { return StdVideoEncodeH265ReferenceListsInfoFlags.get_ref_pic_list_modification_flag_l0(this.segment(), index); }
     /// {@return `ref_pic_list_modification_flag_l0`}
     public @CType("uint32_t : 1") int ref_pic_list_modification_flag_l0() { return StdVideoEncodeH265ReferenceListsInfoFlags.get_ref_pic_list_modification_flag_l0(this.segment()); }
     /// Sets `ref_pic_list_modification_flag_l0` with the given value at the given index.
@@ -110,11 +126,6 @@ public final class StdVideoEncodeH265ReferenceListsInfoFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_ref_pic_list_modification_flag_l0(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoEncodeH265ReferenceListsInfoFlags.set_ref_pic_list_modification_flag_l0(segment, 0L, value); }
-    /// Sets `ref_pic_list_modification_flag_l0` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeH265ReferenceListsInfoFlags ref_pic_list_modification_flag_l0At(long index, @CType("uint32_t : 1") int value) { StdVideoEncodeH265ReferenceListsInfoFlags.set_ref_pic_list_modification_flag_l0(this.segment(), index, value); return this; }
     /// Sets `ref_pic_list_modification_flag_l0` with the given value.
     /// @param value the value
     /// @return `this`
@@ -127,9 +138,6 @@ public final class StdVideoEncodeH265ReferenceListsInfoFlags extends Struct {
     /// {@return `ref_pic_list_modification_flag_l1`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_ref_pic_list_modification_flag_l1(MemorySegment segment) { return StdVideoEncodeH265ReferenceListsInfoFlags.get_ref_pic_list_modification_flag_l1(segment, 0L); }
-    /// {@return `ref_pic_list_modification_flag_l1` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int ref_pic_list_modification_flag_l1At(long index) { return StdVideoEncodeH265ReferenceListsInfoFlags.get_ref_pic_list_modification_flag_l1(this.segment(), index); }
     /// {@return `ref_pic_list_modification_flag_l1`}
     public @CType("uint32_t : 1") int ref_pic_list_modification_flag_l1() { return StdVideoEncodeH265ReferenceListsInfoFlags.get_ref_pic_list_modification_flag_l1(this.segment()); }
     /// Sets `ref_pic_list_modification_flag_l1` with the given value at the given index.
@@ -141,11 +149,6 @@ public final class StdVideoEncodeH265ReferenceListsInfoFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_ref_pic_list_modification_flag_l1(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoEncodeH265ReferenceListsInfoFlags.set_ref_pic_list_modification_flag_l1(segment, 0L, value); }
-    /// Sets `ref_pic_list_modification_flag_l1` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeH265ReferenceListsInfoFlags ref_pic_list_modification_flag_l1At(long index, @CType("uint32_t : 1") int value) { StdVideoEncodeH265ReferenceListsInfoFlags.set_ref_pic_list_modification_flag_l1(this.segment(), index, value); return this; }
     /// Sets `ref_pic_list_modification_flag_l1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,9 +161,6 @@ public final class StdVideoEncodeH265ReferenceListsInfoFlags extends Struct {
     /// {@return `reserved`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 30") int get_reserved(MemorySegment segment) { return StdVideoEncodeH265ReferenceListsInfoFlags.get_reserved(segment, 0L); }
-    /// {@return `reserved` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 30") int reservedAt(long index) { return StdVideoEncodeH265ReferenceListsInfoFlags.get_reserved(this.segment(), index); }
     /// {@return `reserved`}
     public @CType("uint32_t : 30") int reserved() { return StdVideoEncodeH265ReferenceListsInfoFlags.get_reserved(this.segment()); }
     /// Sets `reserved` with the given value at the given index.
@@ -172,14 +172,59 @@ public final class StdVideoEncodeH265ReferenceListsInfoFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_reserved(MemorySegment segment, @CType("uint32_t : 30") int value) { StdVideoEncodeH265ReferenceListsInfoFlags.set_reserved(segment, 0L, value); }
-    /// Sets `reserved` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeH265ReferenceListsInfoFlags reservedAt(long index, @CType("uint32_t : 30") int value) { StdVideoEncodeH265ReferenceListsInfoFlags.set_reserved(this.segment(), index, value); return this; }
     /// Sets `reserved` with the given value.
     /// @param value the value
     /// @return `this`
     public StdVideoEncodeH265ReferenceListsInfoFlags reserved(@CType("uint32_t : 30") int value) { StdVideoEncodeH265ReferenceListsInfoFlags.set_reserved(this.segment(), value); return this; }
 
+    /// A buffer of [StdVideoEncodeH265ReferenceListsInfoFlags].
+    public static final class Buffer extends StdVideoEncodeH265ReferenceListsInfoFlags {
+        private final long elementCount;
+
+        /// Creates `StdVideoEncodeH265ReferenceListsInfoFlags.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `StdVideoEncodeH265ReferenceListsInfoFlags`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `StdVideoEncodeH265ReferenceListsInfoFlags`
+        public StdVideoEncodeH265ReferenceListsInfoFlags asSlice(long index) { return new StdVideoEncodeH265ReferenceListsInfoFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `StdVideoEncodeH265ReferenceListsInfoFlags`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `StdVideoEncodeH265ReferenceListsInfoFlags`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `ref_pic_list_modification_flag_l0` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int ref_pic_list_modification_flag_l0At(long index) { return StdVideoEncodeH265ReferenceListsInfoFlags.get_ref_pic_list_modification_flag_l0(this.segment(), index); }
+        /// Sets `ref_pic_list_modification_flag_l0` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer ref_pic_list_modification_flag_l0At(long index, @CType("uint32_t : 1") int value) { StdVideoEncodeH265ReferenceListsInfoFlags.set_ref_pic_list_modification_flag_l0(this.segment(), index, value); return this; }
+
+        /// {@return `ref_pic_list_modification_flag_l1` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int ref_pic_list_modification_flag_l1At(long index) { return StdVideoEncodeH265ReferenceListsInfoFlags.get_ref_pic_list_modification_flag_l1(this.segment(), index); }
+        /// Sets `ref_pic_list_modification_flag_l1` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer ref_pic_list_modification_flag_l1At(long index, @CType("uint32_t : 1") int value) { StdVideoEncodeH265ReferenceListsInfoFlags.set_ref_pic_list_modification_flag_l1(this.segment(), index, value); return this; }
+
+        /// {@return `reserved` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 30") int reservedAt(long index) { return StdVideoEncodeH265ReferenceListsInfoFlags.get_reserved(this.segment(), index); }
+        /// Sets `reserved` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer reservedAt(long index, @CType("uint32_t : 30") int value) { StdVideoEncodeH265ReferenceListsInfoFlags.set_reserved(this.segment(), index, value); return this; }
+
+    }
 }

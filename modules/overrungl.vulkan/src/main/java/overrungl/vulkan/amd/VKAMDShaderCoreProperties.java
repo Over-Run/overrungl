@@ -22,12 +22,11 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKAMDShaderCoreProperties {
+public final class VKAMDShaderCoreProperties {
     public static final int VK_AMD_SHADER_CORE_PROPERTIES_SPEC_VERSION = 2;
     public static final String VK_AMD_SHADER_CORE_PROPERTIES_EXTENSION_NAME = "VK_AMD_shader_core_properties";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_AMD = 1000185000;
 
-    public VKAMDShaderCoreProperties(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKAMDShaderCoreProperties() { }
 
 }

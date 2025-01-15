@@ -55,7 +55,7 @@ import overrungl.util.*;
 ///     const uint32_t * pQueueFamilyIndices;
 /// } VkBufferCreateInfo;
 /// ```
-public final class VkBufferCreateInfo extends Struct {
+public sealed class VkBufferCreateInfo extends Struct {
     /// The struct layout of `VkBufferCreateInfo`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -94,6 +94,11 @@ public final class VkBufferCreateInfo extends Struct {
     public static VkBufferCreateInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkBufferCreateInfo(segment); }
 
     /// Creates `VkBufferCreateInfo` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkBufferCreateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -106,7 +111,7 @@ public final class VkBufferCreateInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkBufferCreateInfo ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkBufferCreateInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkBufferCreateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -117,7 +122,21 @@ public final class VkBufferCreateInfo extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkBufferCreateInfo`
-    public static VkBufferCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkBufferCreateInfo(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkBufferCreateInfo` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkBufferCreateInfo`
+    public static VkBufferCreateInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkBufferCreateFlags") int flags, @CType("VkDeviceSize") long size, @CType("VkBufferUsageFlags") int usage, @CType("VkSharingMode") int sharingMode, @CType("uint32_t") int queueFamilyIndexCount, @CType("const uint32_t *") java.lang.foreign.MemorySegment pQueueFamilyIndices) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).size(size).usage(usage).sharingMode(sharingMode).queueFamilyIndexCount(queueFamilyIndexCount).pQueueFamilyIndices(pQueueFamilyIndices); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkBufferCreateInfo copyFrom(VkBufferCreateInfo src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -126,9 +145,6 @@ public final class VkBufferCreateInfo extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkBufferCreateInfo.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkBufferCreateInfo.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkBufferCreateInfo.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -140,11 +156,6 @@ public final class VkBufferCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkBufferCreateInfo.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCreateInfo sTypeAt(long index, @CType("VkStructureType") int value) { VkBufferCreateInfo.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -157,9 +168,6 @@ public final class VkBufferCreateInfo extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkBufferCreateInfo.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkBufferCreateInfo.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkBufferCreateInfo.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -171,11 +179,6 @@ public final class VkBufferCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkBufferCreateInfo.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCreateInfo pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkBufferCreateInfo.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -188,9 +191,6 @@ public final class VkBufferCreateInfo extends Struct {
     /// {@return `flags`}
     /// @param segment the segment of the struct
     public static @CType("VkBufferCreateFlags") int get_flags(MemorySegment segment) { return VkBufferCreateInfo.get_flags(segment, 0L); }
-    /// {@return `flags` at the given index}
-    /// @param index the index
-    public @CType("VkBufferCreateFlags") int flagsAt(long index) { return VkBufferCreateInfo.get_flags(this.segment(), index); }
     /// {@return `flags`}
     public @CType("VkBufferCreateFlags") int flags() { return VkBufferCreateInfo.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
@@ -202,11 +202,6 @@ public final class VkBufferCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_flags(MemorySegment segment, @CType("VkBufferCreateFlags") int value) { VkBufferCreateInfo.set_flags(segment, 0L, value); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCreateInfo flagsAt(long index, @CType("VkBufferCreateFlags") int value) { VkBufferCreateInfo.set_flags(this.segment(), index, value); return this; }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -219,9 +214,6 @@ public final class VkBufferCreateInfo extends Struct {
     /// {@return `size`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_size(MemorySegment segment) { return VkBufferCreateInfo.get_size(segment, 0L); }
-    /// {@return `size` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long sizeAt(long index) { return VkBufferCreateInfo.get_size(this.segment(), index); }
     /// {@return `size`}
     public @CType("VkDeviceSize") long size() { return VkBufferCreateInfo.get_size(this.segment()); }
     /// Sets `size` with the given value at the given index.
@@ -233,11 +225,6 @@ public final class VkBufferCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_size(MemorySegment segment, @CType("VkDeviceSize") long value) { VkBufferCreateInfo.set_size(segment, 0L, value); }
-    /// Sets `size` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCreateInfo sizeAt(long index, @CType("VkDeviceSize") long value) { VkBufferCreateInfo.set_size(this.segment(), index, value); return this; }
     /// Sets `size` with the given value.
     /// @param value the value
     /// @return `this`
@@ -250,9 +237,6 @@ public final class VkBufferCreateInfo extends Struct {
     /// {@return `usage`}
     /// @param segment the segment of the struct
     public static @CType("VkBufferUsageFlags") int get_usage(MemorySegment segment) { return VkBufferCreateInfo.get_usage(segment, 0L); }
-    /// {@return `usage` at the given index}
-    /// @param index the index
-    public @CType("VkBufferUsageFlags") int usageAt(long index) { return VkBufferCreateInfo.get_usage(this.segment(), index); }
     /// {@return `usage`}
     public @CType("VkBufferUsageFlags") int usage() { return VkBufferCreateInfo.get_usage(this.segment()); }
     /// Sets `usage` with the given value at the given index.
@@ -264,11 +248,6 @@ public final class VkBufferCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_usage(MemorySegment segment, @CType("VkBufferUsageFlags") int value) { VkBufferCreateInfo.set_usage(segment, 0L, value); }
-    /// Sets `usage` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCreateInfo usageAt(long index, @CType("VkBufferUsageFlags") int value) { VkBufferCreateInfo.set_usage(this.segment(), index, value); return this; }
     /// Sets `usage` with the given value.
     /// @param value the value
     /// @return `this`
@@ -281,9 +260,6 @@ public final class VkBufferCreateInfo extends Struct {
     /// {@return `sharingMode`}
     /// @param segment the segment of the struct
     public static @CType("VkSharingMode") int get_sharingMode(MemorySegment segment) { return VkBufferCreateInfo.get_sharingMode(segment, 0L); }
-    /// {@return `sharingMode` at the given index}
-    /// @param index the index
-    public @CType("VkSharingMode") int sharingModeAt(long index) { return VkBufferCreateInfo.get_sharingMode(this.segment(), index); }
     /// {@return `sharingMode`}
     public @CType("VkSharingMode") int sharingMode() { return VkBufferCreateInfo.get_sharingMode(this.segment()); }
     /// Sets `sharingMode` with the given value at the given index.
@@ -295,11 +271,6 @@ public final class VkBufferCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sharingMode(MemorySegment segment, @CType("VkSharingMode") int value) { VkBufferCreateInfo.set_sharingMode(segment, 0L, value); }
-    /// Sets `sharingMode` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCreateInfo sharingModeAt(long index, @CType("VkSharingMode") int value) { VkBufferCreateInfo.set_sharingMode(this.segment(), index, value); return this; }
     /// Sets `sharingMode` with the given value.
     /// @param value the value
     /// @return `this`
@@ -312,9 +283,6 @@ public final class VkBufferCreateInfo extends Struct {
     /// {@return `queueFamilyIndexCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_queueFamilyIndexCount(MemorySegment segment) { return VkBufferCreateInfo.get_queueFamilyIndexCount(segment, 0L); }
-    /// {@return `queueFamilyIndexCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int queueFamilyIndexCountAt(long index) { return VkBufferCreateInfo.get_queueFamilyIndexCount(this.segment(), index); }
     /// {@return `queueFamilyIndexCount`}
     public @CType("uint32_t") int queueFamilyIndexCount() { return VkBufferCreateInfo.get_queueFamilyIndexCount(this.segment()); }
     /// Sets `queueFamilyIndexCount` with the given value at the given index.
@@ -326,11 +294,6 @@ public final class VkBufferCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_queueFamilyIndexCount(MemorySegment segment, @CType("uint32_t") int value) { VkBufferCreateInfo.set_queueFamilyIndexCount(segment, 0L, value); }
-    /// Sets `queueFamilyIndexCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCreateInfo queueFamilyIndexCountAt(long index, @CType("uint32_t") int value) { VkBufferCreateInfo.set_queueFamilyIndexCount(this.segment(), index, value); return this; }
     /// Sets `queueFamilyIndexCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -343,9 +306,6 @@ public final class VkBufferCreateInfo extends Struct {
     /// {@return `pQueueFamilyIndices`}
     /// @param segment the segment of the struct
     public static @CType("const uint32_t *") java.lang.foreign.MemorySegment get_pQueueFamilyIndices(MemorySegment segment) { return VkBufferCreateInfo.get_pQueueFamilyIndices(segment, 0L); }
-    /// {@return `pQueueFamilyIndices` at the given index}
-    /// @param index the index
-    public @CType("const uint32_t *") java.lang.foreign.MemorySegment pQueueFamilyIndicesAt(long index) { return VkBufferCreateInfo.get_pQueueFamilyIndices(this.segment(), index); }
     /// {@return `pQueueFamilyIndices`}
     public @CType("const uint32_t *") java.lang.foreign.MemorySegment pQueueFamilyIndices() { return VkBufferCreateInfo.get_pQueueFamilyIndices(this.segment()); }
     /// Sets `pQueueFamilyIndices` with the given value at the given index.
@@ -357,14 +317,104 @@ public final class VkBufferCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pQueueFamilyIndices(MemorySegment segment, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkBufferCreateInfo.set_pQueueFamilyIndices(segment, 0L, value); }
-    /// Sets `pQueueFamilyIndices` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCreateInfo pQueueFamilyIndicesAt(long index, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkBufferCreateInfo.set_pQueueFamilyIndices(this.segment(), index, value); return this; }
     /// Sets `pQueueFamilyIndices` with the given value.
     /// @param value the value
     /// @return `this`
     public VkBufferCreateInfo pQueueFamilyIndices(@CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkBufferCreateInfo.set_pQueueFamilyIndices(this.segment(), value); return this; }
 
+    /// A buffer of [VkBufferCreateInfo].
+    public static final class Buffer extends VkBufferCreateInfo {
+        private final long elementCount;
+
+        /// Creates `VkBufferCreateInfo.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkBufferCreateInfo`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkBufferCreateInfo`
+        public VkBufferCreateInfo asSlice(long index) { return new VkBufferCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkBufferCreateInfo`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkBufferCreateInfo`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkBufferCreateInfo.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkBufferCreateInfo.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkBufferCreateInfo.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkBufferCreateInfo.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `flags` at the given index}
+        /// @param index the index
+        public @CType("VkBufferCreateFlags") int flagsAt(long index) { return VkBufferCreateInfo.get_flags(this.segment(), index); }
+        /// Sets `flags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer flagsAt(long index, @CType("VkBufferCreateFlags") int value) { VkBufferCreateInfo.set_flags(this.segment(), index, value); return this; }
+
+        /// {@return `size` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long sizeAt(long index) { return VkBufferCreateInfo.get_size(this.segment(), index); }
+        /// Sets `size` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sizeAt(long index, @CType("VkDeviceSize") long value) { VkBufferCreateInfo.set_size(this.segment(), index, value); return this; }
+
+        /// {@return `usage` at the given index}
+        /// @param index the index
+        public @CType("VkBufferUsageFlags") int usageAt(long index) { return VkBufferCreateInfo.get_usage(this.segment(), index); }
+        /// Sets `usage` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer usageAt(long index, @CType("VkBufferUsageFlags") int value) { VkBufferCreateInfo.set_usage(this.segment(), index, value); return this; }
+
+        /// {@return `sharingMode` at the given index}
+        /// @param index the index
+        public @CType("VkSharingMode") int sharingModeAt(long index) { return VkBufferCreateInfo.get_sharingMode(this.segment(), index); }
+        /// Sets `sharingMode` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sharingModeAt(long index, @CType("VkSharingMode") int value) { VkBufferCreateInfo.set_sharingMode(this.segment(), index, value); return this; }
+
+        /// {@return `queueFamilyIndexCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int queueFamilyIndexCountAt(long index) { return VkBufferCreateInfo.get_queueFamilyIndexCount(this.segment(), index); }
+        /// Sets `queueFamilyIndexCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer queueFamilyIndexCountAt(long index, @CType("uint32_t") int value) { VkBufferCreateInfo.set_queueFamilyIndexCount(this.segment(), index, value); return this; }
+
+        /// {@return `pQueueFamilyIndices` at the given index}
+        /// @param index the index
+        public @CType("const uint32_t *") java.lang.foreign.MemorySegment pQueueFamilyIndicesAt(long index) { return VkBufferCreateInfo.get_pQueueFamilyIndices(this.segment(), index); }
+        /// Sets `pQueueFamilyIndices` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pQueueFamilyIndicesAt(long index, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkBufferCreateInfo.set_pQueueFamilyIndices(this.segment(), index, value); return this; }
+
+    }
 }

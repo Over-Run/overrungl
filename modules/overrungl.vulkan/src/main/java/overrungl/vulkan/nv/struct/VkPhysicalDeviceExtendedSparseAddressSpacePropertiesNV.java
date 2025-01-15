@@ -46,7 +46,7 @@ import overrungl.util.*;
 ///     VkBufferUsageFlags extendedSparseBufferUsageFlags;
 /// } VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV;
 /// ```
-public final class VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV extends Struct {
+public sealed class VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV extends Struct {
     /// The struct layout of `VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -76,6 +76,11 @@ public final class VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV extend
     public static VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV(segment); }
 
     /// Creates `VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -88,7 +93,7 @@ public final class VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV extend
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -99,7 +104,21 @@ public final class VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV extend
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV`
-    public static VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV`
+    public static VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkDeviceSize") long extendedSparseAddressSpaceSize, @CType("VkImageUsageFlags") int extendedSparseImageUsageFlags, @CType("VkBufferUsageFlags") int extendedSparseBufferUsageFlags) { return alloc(allocator).sType(sType).pNext(pNext).extendedSparseAddressSpaceSize(extendedSparseAddressSpaceSize).extendedSparseImageUsageFlags(extendedSparseImageUsageFlags).extendedSparseBufferUsageFlags(extendedSparseBufferUsageFlags); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV copyFrom(VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -108,9 +127,6 @@ public final class VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV extend
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -122,11 +138,6 @@ public final class VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV extend
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -139,9 +150,6 @@ public final class VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV extend
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -153,11 +161,6 @@ public final class VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV extend
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -170,9 +173,6 @@ public final class VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV extend
     /// {@return `extendedSparseAddressSpaceSize`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_extendedSparseAddressSpaceSize(MemorySegment segment) { return VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV.get_extendedSparseAddressSpaceSize(segment, 0L); }
-    /// {@return `extendedSparseAddressSpaceSize` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long extendedSparseAddressSpaceSizeAt(long index) { return VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV.get_extendedSparseAddressSpaceSize(this.segment(), index); }
     /// {@return `extendedSparseAddressSpaceSize`}
     public @CType("VkDeviceSize") long extendedSparseAddressSpaceSize() { return VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV.get_extendedSparseAddressSpaceSize(this.segment()); }
     /// Sets `extendedSparseAddressSpaceSize` with the given value at the given index.
@@ -184,11 +184,6 @@ public final class VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV extend
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_extendedSparseAddressSpaceSize(MemorySegment segment, @CType("VkDeviceSize") long value) { VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV.set_extendedSparseAddressSpaceSize(segment, 0L, value); }
-    /// Sets `extendedSparseAddressSpaceSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV extendedSparseAddressSpaceSizeAt(long index, @CType("VkDeviceSize") long value) { VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV.set_extendedSparseAddressSpaceSize(this.segment(), index, value); return this; }
     /// Sets `extendedSparseAddressSpaceSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -201,9 +196,6 @@ public final class VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV extend
     /// {@return `extendedSparseImageUsageFlags`}
     /// @param segment the segment of the struct
     public static @CType("VkImageUsageFlags") int get_extendedSparseImageUsageFlags(MemorySegment segment) { return VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV.get_extendedSparseImageUsageFlags(segment, 0L); }
-    /// {@return `extendedSparseImageUsageFlags` at the given index}
-    /// @param index the index
-    public @CType("VkImageUsageFlags") int extendedSparseImageUsageFlagsAt(long index) { return VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV.get_extendedSparseImageUsageFlags(this.segment(), index); }
     /// {@return `extendedSparseImageUsageFlags`}
     public @CType("VkImageUsageFlags") int extendedSparseImageUsageFlags() { return VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV.get_extendedSparseImageUsageFlags(this.segment()); }
     /// Sets `extendedSparseImageUsageFlags` with the given value at the given index.
@@ -215,11 +207,6 @@ public final class VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV extend
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_extendedSparseImageUsageFlags(MemorySegment segment, @CType("VkImageUsageFlags") int value) { VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV.set_extendedSparseImageUsageFlags(segment, 0L, value); }
-    /// Sets `extendedSparseImageUsageFlags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV extendedSparseImageUsageFlagsAt(long index, @CType("VkImageUsageFlags") int value) { VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV.set_extendedSparseImageUsageFlags(this.segment(), index, value); return this; }
     /// Sets `extendedSparseImageUsageFlags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -232,9 +219,6 @@ public final class VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV extend
     /// {@return `extendedSparseBufferUsageFlags`}
     /// @param segment the segment of the struct
     public static @CType("VkBufferUsageFlags") int get_extendedSparseBufferUsageFlags(MemorySegment segment) { return VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV.get_extendedSparseBufferUsageFlags(segment, 0L); }
-    /// {@return `extendedSparseBufferUsageFlags` at the given index}
-    /// @param index the index
-    public @CType("VkBufferUsageFlags") int extendedSparseBufferUsageFlagsAt(long index) { return VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV.get_extendedSparseBufferUsageFlags(this.segment(), index); }
     /// {@return `extendedSparseBufferUsageFlags`}
     public @CType("VkBufferUsageFlags") int extendedSparseBufferUsageFlags() { return VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV.get_extendedSparseBufferUsageFlags(this.segment()); }
     /// Sets `extendedSparseBufferUsageFlags` with the given value at the given index.
@@ -246,14 +230,77 @@ public final class VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV extend
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_extendedSparseBufferUsageFlags(MemorySegment segment, @CType("VkBufferUsageFlags") int value) { VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV.set_extendedSparseBufferUsageFlags(segment, 0L, value); }
-    /// Sets `extendedSparseBufferUsageFlags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV extendedSparseBufferUsageFlagsAt(long index, @CType("VkBufferUsageFlags") int value) { VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV.set_extendedSparseBufferUsageFlags(this.segment(), index, value); return this; }
     /// Sets `extendedSparseBufferUsageFlags` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV extendedSparseBufferUsageFlags(@CType("VkBufferUsageFlags") int value) { VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV.set_extendedSparseBufferUsageFlags(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV].
+    public static final class Buffer extends VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV`
+        public VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV asSlice(long index) { return new VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `extendedSparseAddressSpaceSize` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long extendedSparseAddressSpaceSizeAt(long index) { return VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV.get_extendedSparseAddressSpaceSize(this.segment(), index); }
+        /// Sets `extendedSparseAddressSpaceSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer extendedSparseAddressSpaceSizeAt(long index, @CType("VkDeviceSize") long value) { VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV.set_extendedSparseAddressSpaceSize(this.segment(), index, value); return this; }
+
+        /// {@return `extendedSparseImageUsageFlags` at the given index}
+        /// @param index the index
+        public @CType("VkImageUsageFlags") int extendedSparseImageUsageFlagsAt(long index) { return VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV.get_extendedSparseImageUsageFlags(this.segment(), index); }
+        /// Sets `extendedSparseImageUsageFlags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer extendedSparseImageUsageFlagsAt(long index, @CType("VkImageUsageFlags") int value) { VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV.set_extendedSparseImageUsageFlags(this.segment(), index, value); return this; }
+
+        /// {@return `extendedSparseBufferUsageFlags` at the given index}
+        /// @param index the index
+        public @CType("VkBufferUsageFlags") int extendedSparseBufferUsageFlagsAt(long index) { return VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV.get_extendedSparseBufferUsageFlags(this.segment(), index); }
+        /// Sets `extendedSparseBufferUsageFlags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer extendedSparseBufferUsageFlagsAt(long index, @CType("VkBufferUsageFlags") int value) { VkPhysicalDeviceExtendedSparseAddressSpacePropertiesNV.set_extendedSparseBufferUsageFlags(this.segment(), index, value); return this; }
+
+    }
 }

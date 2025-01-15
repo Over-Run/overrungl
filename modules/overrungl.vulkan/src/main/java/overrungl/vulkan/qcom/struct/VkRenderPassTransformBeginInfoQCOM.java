@@ -40,7 +40,7 @@ import overrungl.util.*;
 ///     VkSurfaceTransformFlagBitsKHR transform;
 /// } VkRenderPassTransformBeginInfoQCOM;
 /// ```
-public final class VkRenderPassTransformBeginInfoQCOM extends Struct {
+public sealed class VkRenderPassTransformBeginInfoQCOM extends Struct {
     /// The struct layout of `VkRenderPassTransformBeginInfoQCOM`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -64,6 +64,11 @@ public final class VkRenderPassTransformBeginInfoQCOM extends Struct {
     public static VkRenderPassTransformBeginInfoQCOM of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkRenderPassTransformBeginInfoQCOM(segment); }
 
     /// Creates `VkRenderPassTransformBeginInfoQCOM` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkRenderPassTransformBeginInfoQCOM` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -76,7 +81,7 @@ public final class VkRenderPassTransformBeginInfoQCOM extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkRenderPassTransformBeginInfoQCOM ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkRenderPassTransformBeginInfoQCOM(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkRenderPassTransformBeginInfoQCOM` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -87,7 +92,21 @@ public final class VkRenderPassTransformBeginInfoQCOM extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkRenderPassTransformBeginInfoQCOM`
-    public static VkRenderPassTransformBeginInfoQCOM alloc(SegmentAllocator allocator, long count) { return new VkRenderPassTransformBeginInfoQCOM(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkRenderPassTransformBeginInfoQCOM` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkRenderPassTransformBeginInfoQCOM`
+    public static VkRenderPassTransformBeginInfoQCOM allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkSurfaceTransformFlagBitsKHR") int transform) { return alloc(allocator).sType(sType).pNext(pNext).transform(transform); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkRenderPassTransformBeginInfoQCOM copyFrom(VkRenderPassTransformBeginInfoQCOM src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -96,9 +115,6 @@ public final class VkRenderPassTransformBeginInfoQCOM extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkRenderPassTransformBeginInfoQCOM.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkRenderPassTransformBeginInfoQCOM.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkRenderPassTransformBeginInfoQCOM.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -110,11 +126,6 @@ public final class VkRenderPassTransformBeginInfoQCOM extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkRenderPassTransformBeginInfoQCOM.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRenderPassTransformBeginInfoQCOM sTypeAt(long index, @CType("VkStructureType") int value) { VkRenderPassTransformBeginInfoQCOM.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -127,9 +138,6 @@ public final class VkRenderPassTransformBeginInfoQCOM extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkRenderPassTransformBeginInfoQCOM.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkRenderPassTransformBeginInfoQCOM.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkRenderPassTransformBeginInfoQCOM.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -141,11 +149,6 @@ public final class VkRenderPassTransformBeginInfoQCOM extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkRenderPassTransformBeginInfoQCOM.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRenderPassTransformBeginInfoQCOM pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkRenderPassTransformBeginInfoQCOM.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,9 +161,6 @@ public final class VkRenderPassTransformBeginInfoQCOM extends Struct {
     /// {@return `transform`}
     /// @param segment the segment of the struct
     public static @CType("VkSurfaceTransformFlagBitsKHR") int get_transform(MemorySegment segment) { return VkRenderPassTransformBeginInfoQCOM.get_transform(segment, 0L); }
-    /// {@return `transform` at the given index}
-    /// @param index the index
-    public @CType("VkSurfaceTransformFlagBitsKHR") int transformAt(long index) { return VkRenderPassTransformBeginInfoQCOM.get_transform(this.segment(), index); }
     /// {@return `transform`}
     public @CType("VkSurfaceTransformFlagBitsKHR") int transform() { return VkRenderPassTransformBeginInfoQCOM.get_transform(this.segment()); }
     /// Sets `transform` with the given value at the given index.
@@ -172,14 +172,59 @@ public final class VkRenderPassTransformBeginInfoQCOM extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_transform(MemorySegment segment, @CType("VkSurfaceTransformFlagBitsKHR") int value) { VkRenderPassTransformBeginInfoQCOM.set_transform(segment, 0L, value); }
-    /// Sets `transform` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRenderPassTransformBeginInfoQCOM transformAt(long index, @CType("VkSurfaceTransformFlagBitsKHR") int value) { VkRenderPassTransformBeginInfoQCOM.set_transform(this.segment(), index, value); return this; }
     /// Sets `transform` with the given value.
     /// @param value the value
     /// @return `this`
     public VkRenderPassTransformBeginInfoQCOM transform(@CType("VkSurfaceTransformFlagBitsKHR") int value) { VkRenderPassTransformBeginInfoQCOM.set_transform(this.segment(), value); return this; }
 
+    /// A buffer of [VkRenderPassTransformBeginInfoQCOM].
+    public static final class Buffer extends VkRenderPassTransformBeginInfoQCOM {
+        private final long elementCount;
+
+        /// Creates `VkRenderPassTransformBeginInfoQCOM.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkRenderPassTransformBeginInfoQCOM`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkRenderPassTransformBeginInfoQCOM`
+        public VkRenderPassTransformBeginInfoQCOM asSlice(long index) { return new VkRenderPassTransformBeginInfoQCOM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkRenderPassTransformBeginInfoQCOM`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkRenderPassTransformBeginInfoQCOM`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkRenderPassTransformBeginInfoQCOM.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkRenderPassTransformBeginInfoQCOM.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkRenderPassTransformBeginInfoQCOM.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkRenderPassTransformBeginInfoQCOM.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `transform` at the given index}
+        /// @param index the index
+        public @CType("VkSurfaceTransformFlagBitsKHR") int transformAt(long index) { return VkRenderPassTransformBeginInfoQCOM.get_transform(this.segment(), index); }
+        /// Sets `transform` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer transformAt(long index, @CType("VkSurfaceTransformFlagBitsKHR") int value) { VkRenderPassTransformBeginInfoQCOM.set_transform(this.segment(), index, value); return this; }
+
+    }
 }

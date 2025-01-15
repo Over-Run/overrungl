@@ -40,7 +40,7 @@ import overrungl.util.*;
 ///     VkDeviceSize size;
 /// } VkCopyMemoryIndirectCommandNV;
 /// ```
-public final class VkCopyMemoryIndirectCommandNV extends Struct {
+public sealed class VkCopyMemoryIndirectCommandNV extends Struct {
     /// The struct layout of `VkCopyMemoryIndirectCommandNV`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_LONG.withName("srcAddress"),
@@ -64,6 +64,11 @@ public final class VkCopyMemoryIndirectCommandNV extends Struct {
     public static VkCopyMemoryIndirectCommandNV of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkCopyMemoryIndirectCommandNV(segment); }
 
     /// Creates `VkCopyMemoryIndirectCommandNV` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkCopyMemoryIndirectCommandNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -76,7 +81,7 @@ public final class VkCopyMemoryIndirectCommandNV extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkCopyMemoryIndirectCommandNV ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkCopyMemoryIndirectCommandNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkCopyMemoryIndirectCommandNV` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -87,7 +92,21 @@ public final class VkCopyMemoryIndirectCommandNV extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkCopyMemoryIndirectCommandNV`
-    public static VkCopyMemoryIndirectCommandNV alloc(SegmentAllocator allocator, long count) { return new VkCopyMemoryIndirectCommandNV(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkCopyMemoryIndirectCommandNV` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkCopyMemoryIndirectCommandNV`
+    public static VkCopyMemoryIndirectCommandNV allocInit(SegmentAllocator allocator, @CType("VkDeviceAddress") long srcAddress, @CType("VkDeviceAddress") long dstAddress, @CType("VkDeviceSize") long size) { return alloc(allocator).srcAddress(srcAddress).dstAddress(dstAddress).size(size); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkCopyMemoryIndirectCommandNV copyFrom(VkCopyMemoryIndirectCommandNV src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `srcAddress` at the given index}
     /// @param segment the segment of the struct
@@ -96,9 +115,6 @@ public final class VkCopyMemoryIndirectCommandNV extends Struct {
     /// {@return `srcAddress`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceAddress") long get_srcAddress(MemorySegment segment) { return VkCopyMemoryIndirectCommandNV.get_srcAddress(segment, 0L); }
-    /// {@return `srcAddress` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceAddress") long srcAddressAt(long index) { return VkCopyMemoryIndirectCommandNV.get_srcAddress(this.segment(), index); }
     /// {@return `srcAddress`}
     public @CType("VkDeviceAddress") long srcAddress() { return VkCopyMemoryIndirectCommandNV.get_srcAddress(this.segment()); }
     /// Sets `srcAddress` with the given value at the given index.
@@ -110,11 +126,6 @@ public final class VkCopyMemoryIndirectCommandNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_srcAddress(MemorySegment segment, @CType("VkDeviceAddress") long value) { VkCopyMemoryIndirectCommandNV.set_srcAddress(segment, 0L, value); }
-    /// Sets `srcAddress` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCopyMemoryIndirectCommandNV srcAddressAt(long index, @CType("VkDeviceAddress") long value) { VkCopyMemoryIndirectCommandNV.set_srcAddress(this.segment(), index, value); return this; }
     /// Sets `srcAddress` with the given value.
     /// @param value the value
     /// @return `this`
@@ -127,9 +138,6 @@ public final class VkCopyMemoryIndirectCommandNV extends Struct {
     /// {@return `dstAddress`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceAddress") long get_dstAddress(MemorySegment segment) { return VkCopyMemoryIndirectCommandNV.get_dstAddress(segment, 0L); }
-    /// {@return `dstAddress` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceAddress") long dstAddressAt(long index) { return VkCopyMemoryIndirectCommandNV.get_dstAddress(this.segment(), index); }
     /// {@return `dstAddress`}
     public @CType("VkDeviceAddress") long dstAddress() { return VkCopyMemoryIndirectCommandNV.get_dstAddress(this.segment()); }
     /// Sets `dstAddress` with the given value at the given index.
@@ -141,11 +149,6 @@ public final class VkCopyMemoryIndirectCommandNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_dstAddress(MemorySegment segment, @CType("VkDeviceAddress") long value) { VkCopyMemoryIndirectCommandNV.set_dstAddress(segment, 0L, value); }
-    /// Sets `dstAddress` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCopyMemoryIndirectCommandNV dstAddressAt(long index, @CType("VkDeviceAddress") long value) { VkCopyMemoryIndirectCommandNV.set_dstAddress(this.segment(), index, value); return this; }
     /// Sets `dstAddress` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,9 +161,6 @@ public final class VkCopyMemoryIndirectCommandNV extends Struct {
     /// {@return `size`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_size(MemorySegment segment) { return VkCopyMemoryIndirectCommandNV.get_size(segment, 0L); }
-    /// {@return `size` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long sizeAt(long index) { return VkCopyMemoryIndirectCommandNV.get_size(this.segment(), index); }
     /// {@return `size`}
     public @CType("VkDeviceSize") long size() { return VkCopyMemoryIndirectCommandNV.get_size(this.segment()); }
     /// Sets `size` with the given value at the given index.
@@ -172,14 +172,59 @@ public final class VkCopyMemoryIndirectCommandNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_size(MemorySegment segment, @CType("VkDeviceSize") long value) { VkCopyMemoryIndirectCommandNV.set_size(segment, 0L, value); }
-    /// Sets `size` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCopyMemoryIndirectCommandNV sizeAt(long index, @CType("VkDeviceSize") long value) { VkCopyMemoryIndirectCommandNV.set_size(this.segment(), index, value); return this; }
     /// Sets `size` with the given value.
     /// @param value the value
     /// @return `this`
     public VkCopyMemoryIndirectCommandNV size(@CType("VkDeviceSize") long value) { VkCopyMemoryIndirectCommandNV.set_size(this.segment(), value); return this; }
 
+    /// A buffer of [VkCopyMemoryIndirectCommandNV].
+    public static final class Buffer extends VkCopyMemoryIndirectCommandNV {
+        private final long elementCount;
+
+        /// Creates `VkCopyMemoryIndirectCommandNV.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkCopyMemoryIndirectCommandNV`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkCopyMemoryIndirectCommandNV`
+        public VkCopyMemoryIndirectCommandNV asSlice(long index) { return new VkCopyMemoryIndirectCommandNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkCopyMemoryIndirectCommandNV`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkCopyMemoryIndirectCommandNV`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `srcAddress` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceAddress") long srcAddressAt(long index) { return VkCopyMemoryIndirectCommandNV.get_srcAddress(this.segment(), index); }
+        /// Sets `srcAddress` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer srcAddressAt(long index, @CType("VkDeviceAddress") long value) { VkCopyMemoryIndirectCommandNV.set_srcAddress(this.segment(), index, value); return this; }
+
+        /// {@return `dstAddress` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceAddress") long dstAddressAt(long index) { return VkCopyMemoryIndirectCommandNV.get_dstAddress(this.segment(), index); }
+        /// Sets `dstAddress` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer dstAddressAt(long index, @CType("VkDeviceAddress") long value) { VkCopyMemoryIndirectCommandNV.set_dstAddress(this.segment(), index, value); return this; }
+
+        /// {@return `size` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long sizeAt(long index) { return VkCopyMemoryIndirectCommandNV.get_size(this.segment(), index); }
+        /// Sets `size` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sizeAt(long index, @CType("VkDeviceSize") long value) { VkCopyMemoryIndirectCommandNV.set_size(this.segment(), index, value); return this; }
+
+    }
 }

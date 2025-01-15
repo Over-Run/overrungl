@@ -73,7 +73,7 @@ import overrungl.util.*;
 ///     VkBool32 deviceGeneratedCommandsMultiDrawIndirectCount;
 /// } VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT;
 /// ```
-public final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT extends Struct {
+public sealed class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT extends Struct {
     /// The struct layout of `VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -130,6 +130,11 @@ public final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT extends 
     public static VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT(segment); }
 
     /// Creates `VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -142,7 +147,7 @@ public final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT extends 
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -153,7 +158,21 @@ public final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT extends 
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT`
-    public static VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT`
+    public static VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int maxIndirectPipelineCount, @CType("uint32_t") int maxIndirectShaderObjectCount, @CType("uint32_t") int maxIndirectSequenceCount, @CType("uint32_t") int maxIndirectCommandsTokenCount, @CType("uint32_t") int maxIndirectCommandsTokenOffset, @CType("uint32_t") int maxIndirectCommandsIndirectStride, @CType("VkIndirectCommandsInputModeFlagsEXT") int supportedIndirectCommandsInputModes, @CType("VkShaderStageFlags") int supportedIndirectCommandsShaderStages, @CType("VkShaderStageFlags") int supportedIndirectCommandsShaderStagesPipelineBinding, @CType("VkShaderStageFlags") int supportedIndirectCommandsShaderStagesShaderBinding, @CType("VkBool32") int deviceGeneratedCommandsTransformFeedback, @CType("VkBool32") int deviceGeneratedCommandsMultiDrawIndirectCount) { return alloc(allocator).sType(sType).pNext(pNext).maxIndirectPipelineCount(maxIndirectPipelineCount).maxIndirectShaderObjectCount(maxIndirectShaderObjectCount).maxIndirectSequenceCount(maxIndirectSequenceCount).maxIndirectCommandsTokenCount(maxIndirectCommandsTokenCount).maxIndirectCommandsTokenOffset(maxIndirectCommandsTokenOffset).maxIndirectCommandsIndirectStride(maxIndirectCommandsIndirectStride).supportedIndirectCommandsInputModes(supportedIndirectCommandsInputModes).supportedIndirectCommandsShaderStages(supportedIndirectCommandsShaderStages).supportedIndirectCommandsShaderStagesPipelineBinding(supportedIndirectCommandsShaderStagesPipelineBinding).supportedIndirectCommandsShaderStagesShaderBinding(supportedIndirectCommandsShaderStagesShaderBinding).deviceGeneratedCommandsTransformFeedback(deviceGeneratedCommandsTransformFeedback).deviceGeneratedCommandsMultiDrawIndirectCount(deviceGeneratedCommandsMultiDrawIndirectCount); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT copyFrom(VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -162,9 +181,6 @@ public final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT extends 
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -176,11 +192,6 @@ public final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT extends 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -193,9 +204,6 @@ public final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT extends 
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -207,11 +215,6 @@ public final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT extends 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -224,9 +227,6 @@ public final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT extends 
     /// {@return `maxIndirectPipelineCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxIndirectPipelineCount(MemorySegment segment) { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_maxIndirectPipelineCount(segment, 0L); }
-    /// {@return `maxIndirectPipelineCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxIndirectPipelineCountAt(long index) { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_maxIndirectPipelineCount(this.segment(), index); }
     /// {@return `maxIndirectPipelineCount`}
     public @CType("uint32_t") int maxIndirectPipelineCount() { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_maxIndirectPipelineCount(this.segment()); }
     /// Sets `maxIndirectPipelineCount` with the given value at the given index.
@@ -238,11 +238,6 @@ public final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT extends 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxIndirectPipelineCount(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.set_maxIndirectPipelineCount(segment, 0L, value); }
-    /// Sets `maxIndirectPipelineCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT maxIndirectPipelineCountAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.set_maxIndirectPipelineCount(this.segment(), index, value); return this; }
     /// Sets `maxIndirectPipelineCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -255,9 +250,6 @@ public final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT extends 
     /// {@return `maxIndirectShaderObjectCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxIndirectShaderObjectCount(MemorySegment segment) { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_maxIndirectShaderObjectCount(segment, 0L); }
-    /// {@return `maxIndirectShaderObjectCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxIndirectShaderObjectCountAt(long index) { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_maxIndirectShaderObjectCount(this.segment(), index); }
     /// {@return `maxIndirectShaderObjectCount`}
     public @CType("uint32_t") int maxIndirectShaderObjectCount() { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_maxIndirectShaderObjectCount(this.segment()); }
     /// Sets `maxIndirectShaderObjectCount` with the given value at the given index.
@@ -269,11 +261,6 @@ public final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT extends 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxIndirectShaderObjectCount(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.set_maxIndirectShaderObjectCount(segment, 0L, value); }
-    /// Sets `maxIndirectShaderObjectCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT maxIndirectShaderObjectCountAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.set_maxIndirectShaderObjectCount(this.segment(), index, value); return this; }
     /// Sets `maxIndirectShaderObjectCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -286,9 +273,6 @@ public final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT extends 
     /// {@return `maxIndirectSequenceCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxIndirectSequenceCount(MemorySegment segment) { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_maxIndirectSequenceCount(segment, 0L); }
-    /// {@return `maxIndirectSequenceCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxIndirectSequenceCountAt(long index) { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_maxIndirectSequenceCount(this.segment(), index); }
     /// {@return `maxIndirectSequenceCount`}
     public @CType("uint32_t") int maxIndirectSequenceCount() { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_maxIndirectSequenceCount(this.segment()); }
     /// Sets `maxIndirectSequenceCount` with the given value at the given index.
@@ -300,11 +284,6 @@ public final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT extends 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxIndirectSequenceCount(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.set_maxIndirectSequenceCount(segment, 0L, value); }
-    /// Sets `maxIndirectSequenceCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT maxIndirectSequenceCountAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.set_maxIndirectSequenceCount(this.segment(), index, value); return this; }
     /// Sets `maxIndirectSequenceCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -317,9 +296,6 @@ public final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT extends 
     /// {@return `maxIndirectCommandsTokenCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxIndirectCommandsTokenCount(MemorySegment segment) { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_maxIndirectCommandsTokenCount(segment, 0L); }
-    /// {@return `maxIndirectCommandsTokenCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxIndirectCommandsTokenCountAt(long index) { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_maxIndirectCommandsTokenCount(this.segment(), index); }
     /// {@return `maxIndirectCommandsTokenCount`}
     public @CType("uint32_t") int maxIndirectCommandsTokenCount() { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_maxIndirectCommandsTokenCount(this.segment()); }
     /// Sets `maxIndirectCommandsTokenCount` with the given value at the given index.
@@ -331,11 +307,6 @@ public final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT extends 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxIndirectCommandsTokenCount(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.set_maxIndirectCommandsTokenCount(segment, 0L, value); }
-    /// Sets `maxIndirectCommandsTokenCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT maxIndirectCommandsTokenCountAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.set_maxIndirectCommandsTokenCount(this.segment(), index, value); return this; }
     /// Sets `maxIndirectCommandsTokenCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -348,9 +319,6 @@ public final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT extends 
     /// {@return `maxIndirectCommandsTokenOffset`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxIndirectCommandsTokenOffset(MemorySegment segment) { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_maxIndirectCommandsTokenOffset(segment, 0L); }
-    /// {@return `maxIndirectCommandsTokenOffset` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxIndirectCommandsTokenOffsetAt(long index) { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_maxIndirectCommandsTokenOffset(this.segment(), index); }
     /// {@return `maxIndirectCommandsTokenOffset`}
     public @CType("uint32_t") int maxIndirectCommandsTokenOffset() { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_maxIndirectCommandsTokenOffset(this.segment()); }
     /// Sets `maxIndirectCommandsTokenOffset` with the given value at the given index.
@@ -362,11 +330,6 @@ public final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT extends 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxIndirectCommandsTokenOffset(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.set_maxIndirectCommandsTokenOffset(segment, 0L, value); }
-    /// Sets `maxIndirectCommandsTokenOffset` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT maxIndirectCommandsTokenOffsetAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.set_maxIndirectCommandsTokenOffset(this.segment(), index, value); return this; }
     /// Sets `maxIndirectCommandsTokenOffset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -379,9 +342,6 @@ public final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT extends 
     /// {@return `maxIndirectCommandsIndirectStride`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxIndirectCommandsIndirectStride(MemorySegment segment) { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_maxIndirectCommandsIndirectStride(segment, 0L); }
-    /// {@return `maxIndirectCommandsIndirectStride` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxIndirectCommandsIndirectStrideAt(long index) { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_maxIndirectCommandsIndirectStride(this.segment(), index); }
     /// {@return `maxIndirectCommandsIndirectStride`}
     public @CType("uint32_t") int maxIndirectCommandsIndirectStride() { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_maxIndirectCommandsIndirectStride(this.segment()); }
     /// Sets `maxIndirectCommandsIndirectStride` with the given value at the given index.
@@ -393,11 +353,6 @@ public final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT extends 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxIndirectCommandsIndirectStride(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.set_maxIndirectCommandsIndirectStride(segment, 0L, value); }
-    /// Sets `maxIndirectCommandsIndirectStride` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT maxIndirectCommandsIndirectStrideAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.set_maxIndirectCommandsIndirectStride(this.segment(), index, value); return this; }
     /// Sets `maxIndirectCommandsIndirectStride` with the given value.
     /// @param value the value
     /// @return `this`
@@ -410,9 +365,6 @@ public final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT extends 
     /// {@return `supportedIndirectCommandsInputModes`}
     /// @param segment the segment of the struct
     public static @CType("VkIndirectCommandsInputModeFlagsEXT") int get_supportedIndirectCommandsInputModes(MemorySegment segment) { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_supportedIndirectCommandsInputModes(segment, 0L); }
-    /// {@return `supportedIndirectCommandsInputModes` at the given index}
-    /// @param index the index
-    public @CType("VkIndirectCommandsInputModeFlagsEXT") int supportedIndirectCommandsInputModesAt(long index) { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_supportedIndirectCommandsInputModes(this.segment(), index); }
     /// {@return `supportedIndirectCommandsInputModes`}
     public @CType("VkIndirectCommandsInputModeFlagsEXT") int supportedIndirectCommandsInputModes() { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_supportedIndirectCommandsInputModes(this.segment()); }
     /// Sets `supportedIndirectCommandsInputModes` with the given value at the given index.
@@ -424,11 +376,6 @@ public final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT extends 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_supportedIndirectCommandsInputModes(MemorySegment segment, @CType("VkIndirectCommandsInputModeFlagsEXT") int value) { VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.set_supportedIndirectCommandsInputModes(segment, 0L, value); }
-    /// Sets `supportedIndirectCommandsInputModes` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT supportedIndirectCommandsInputModesAt(long index, @CType("VkIndirectCommandsInputModeFlagsEXT") int value) { VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.set_supportedIndirectCommandsInputModes(this.segment(), index, value); return this; }
     /// Sets `supportedIndirectCommandsInputModes` with the given value.
     /// @param value the value
     /// @return `this`
@@ -441,9 +388,6 @@ public final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT extends 
     /// {@return `supportedIndirectCommandsShaderStages`}
     /// @param segment the segment of the struct
     public static @CType("VkShaderStageFlags") int get_supportedIndirectCommandsShaderStages(MemorySegment segment) { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_supportedIndirectCommandsShaderStages(segment, 0L); }
-    /// {@return `supportedIndirectCommandsShaderStages` at the given index}
-    /// @param index the index
-    public @CType("VkShaderStageFlags") int supportedIndirectCommandsShaderStagesAt(long index) { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_supportedIndirectCommandsShaderStages(this.segment(), index); }
     /// {@return `supportedIndirectCommandsShaderStages`}
     public @CType("VkShaderStageFlags") int supportedIndirectCommandsShaderStages() { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_supportedIndirectCommandsShaderStages(this.segment()); }
     /// Sets `supportedIndirectCommandsShaderStages` with the given value at the given index.
@@ -455,11 +399,6 @@ public final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT extends 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_supportedIndirectCommandsShaderStages(MemorySegment segment, @CType("VkShaderStageFlags") int value) { VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.set_supportedIndirectCommandsShaderStages(segment, 0L, value); }
-    /// Sets `supportedIndirectCommandsShaderStages` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT supportedIndirectCommandsShaderStagesAt(long index, @CType("VkShaderStageFlags") int value) { VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.set_supportedIndirectCommandsShaderStages(this.segment(), index, value); return this; }
     /// Sets `supportedIndirectCommandsShaderStages` with the given value.
     /// @param value the value
     /// @return `this`
@@ -472,9 +411,6 @@ public final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT extends 
     /// {@return `supportedIndirectCommandsShaderStagesPipelineBinding`}
     /// @param segment the segment of the struct
     public static @CType("VkShaderStageFlags") int get_supportedIndirectCommandsShaderStagesPipelineBinding(MemorySegment segment) { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_supportedIndirectCommandsShaderStagesPipelineBinding(segment, 0L); }
-    /// {@return `supportedIndirectCommandsShaderStagesPipelineBinding` at the given index}
-    /// @param index the index
-    public @CType("VkShaderStageFlags") int supportedIndirectCommandsShaderStagesPipelineBindingAt(long index) { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_supportedIndirectCommandsShaderStagesPipelineBinding(this.segment(), index); }
     /// {@return `supportedIndirectCommandsShaderStagesPipelineBinding`}
     public @CType("VkShaderStageFlags") int supportedIndirectCommandsShaderStagesPipelineBinding() { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_supportedIndirectCommandsShaderStagesPipelineBinding(this.segment()); }
     /// Sets `supportedIndirectCommandsShaderStagesPipelineBinding` with the given value at the given index.
@@ -486,11 +422,6 @@ public final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT extends 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_supportedIndirectCommandsShaderStagesPipelineBinding(MemorySegment segment, @CType("VkShaderStageFlags") int value) { VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.set_supportedIndirectCommandsShaderStagesPipelineBinding(segment, 0L, value); }
-    /// Sets `supportedIndirectCommandsShaderStagesPipelineBinding` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT supportedIndirectCommandsShaderStagesPipelineBindingAt(long index, @CType("VkShaderStageFlags") int value) { VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.set_supportedIndirectCommandsShaderStagesPipelineBinding(this.segment(), index, value); return this; }
     /// Sets `supportedIndirectCommandsShaderStagesPipelineBinding` with the given value.
     /// @param value the value
     /// @return `this`
@@ -503,9 +434,6 @@ public final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT extends 
     /// {@return `supportedIndirectCommandsShaderStagesShaderBinding`}
     /// @param segment the segment of the struct
     public static @CType("VkShaderStageFlags") int get_supportedIndirectCommandsShaderStagesShaderBinding(MemorySegment segment) { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_supportedIndirectCommandsShaderStagesShaderBinding(segment, 0L); }
-    /// {@return `supportedIndirectCommandsShaderStagesShaderBinding` at the given index}
-    /// @param index the index
-    public @CType("VkShaderStageFlags") int supportedIndirectCommandsShaderStagesShaderBindingAt(long index) { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_supportedIndirectCommandsShaderStagesShaderBinding(this.segment(), index); }
     /// {@return `supportedIndirectCommandsShaderStagesShaderBinding`}
     public @CType("VkShaderStageFlags") int supportedIndirectCommandsShaderStagesShaderBinding() { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_supportedIndirectCommandsShaderStagesShaderBinding(this.segment()); }
     /// Sets `supportedIndirectCommandsShaderStagesShaderBinding` with the given value at the given index.
@@ -517,11 +445,6 @@ public final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT extends 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_supportedIndirectCommandsShaderStagesShaderBinding(MemorySegment segment, @CType("VkShaderStageFlags") int value) { VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.set_supportedIndirectCommandsShaderStagesShaderBinding(segment, 0L, value); }
-    /// Sets `supportedIndirectCommandsShaderStagesShaderBinding` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT supportedIndirectCommandsShaderStagesShaderBindingAt(long index, @CType("VkShaderStageFlags") int value) { VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.set_supportedIndirectCommandsShaderStagesShaderBinding(this.segment(), index, value); return this; }
     /// Sets `supportedIndirectCommandsShaderStagesShaderBinding` with the given value.
     /// @param value the value
     /// @return `this`
@@ -534,9 +457,6 @@ public final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT extends 
     /// {@return `deviceGeneratedCommandsTransformFeedback`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_deviceGeneratedCommandsTransformFeedback(MemorySegment segment) { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_deviceGeneratedCommandsTransformFeedback(segment, 0L); }
-    /// {@return `deviceGeneratedCommandsTransformFeedback` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int deviceGeneratedCommandsTransformFeedbackAt(long index) { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_deviceGeneratedCommandsTransformFeedback(this.segment(), index); }
     /// {@return `deviceGeneratedCommandsTransformFeedback`}
     public @CType("VkBool32") int deviceGeneratedCommandsTransformFeedback() { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_deviceGeneratedCommandsTransformFeedback(this.segment()); }
     /// Sets `deviceGeneratedCommandsTransformFeedback` with the given value at the given index.
@@ -548,11 +468,6 @@ public final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT extends 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_deviceGeneratedCommandsTransformFeedback(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.set_deviceGeneratedCommandsTransformFeedback(segment, 0L, value); }
-    /// Sets `deviceGeneratedCommandsTransformFeedback` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT deviceGeneratedCommandsTransformFeedbackAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.set_deviceGeneratedCommandsTransformFeedback(this.segment(), index, value); return this; }
     /// Sets `deviceGeneratedCommandsTransformFeedback` with the given value.
     /// @param value the value
     /// @return `this`
@@ -565,9 +480,6 @@ public final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT extends 
     /// {@return `deviceGeneratedCommandsMultiDrawIndirectCount`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_deviceGeneratedCommandsMultiDrawIndirectCount(MemorySegment segment) { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_deviceGeneratedCommandsMultiDrawIndirectCount(segment, 0L); }
-    /// {@return `deviceGeneratedCommandsMultiDrawIndirectCount` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int deviceGeneratedCommandsMultiDrawIndirectCountAt(long index) { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_deviceGeneratedCommandsMultiDrawIndirectCount(this.segment(), index); }
     /// {@return `deviceGeneratedCommandsMultiDrawIndirectCount`}
     public @CType("VkBool32") int deviceGeneratedCommandsMultiDrawIndirectCount() { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_deviceGeneratedCommandsMultiDrawIndirectCount(this.segment()); }
     /// Sets `deviceGeneratedCommandsMultiDrawIndirectCount` with the given value at the given index.
@@ -579,14 +491,158 @@ public final class VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT extends 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_deviceGeneratedCommandsMultiDrawIndirectCount(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.set_deviceGeneratedCommandsMultiDrawIndirectCount(segment, 0L, value); }
-    /// Sets `deviceGeneratedCommandsMultiDrawIndirectCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT deviceGeneratedCommandsMultiDrawIndirectCountAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.set_deviceGeneratedCommandsMultiDrawIndirectCount(this.segment(), index, value); return this; }
     /// Sets `deviceGeneratedCommandsMultiDrawIndirectCount` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT deviceGeneratedCommandsMultiDrawIndirectCount(@CType("VkBool32") int value) { VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.set_deviceGeneratedCommandsMultiDrawIndirectCount(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT].
+    public static final class Buffer extends VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT`
+        public VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT asSlice(long index) { return new VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `maxIndirectPipelineCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxIndirectPipelineCountAt(long index) { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_maxIndirectPipelineCount(this.segment(), index); }
+        /// Sets `maxIndirectPipelineCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxIndirectPipelineCountAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.set_maxIndirectPipelineCount(this.segment(), index, value); return this; }
+
+        /// {@return `maxIndirectShaderObjectCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxIndirectShaderObjectCountAt(long index) { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_maxIndirectShaderObjectCount(this.segment(), index); }
+        /// Sets `maxIndirectShaderObjectCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxIndirectShaderObjectCountAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.set_maxIndirectShaderObjectCount(this.segment(), index, value); return this; }
+
+        /// {@return `maxIndirectSequenceCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxIndirectSequenceCountAt(long index) { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_maxIndirectSequenceCount(this.segment(), index); }
+        /// Sets `maxIndirectSequenceCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxIndirectSequenceCountAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.set_maxIndirectSequenceCount(this.segment(), index, value); return this; }
+
+        /// {@return `maxIndirectCommandsTokenCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxIndirectCommandsTokenCountAt(long index) { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_maxIndirectCommandsTokenCount(this.segment(), index); }
+        /// Sets `maxIndirectCommandsTokenCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxIndirectCommandsTokenCountAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.set_maxIndirectCommandsTokenCount(this.segment(), index, value); return this; }
+
+        /// {@return `maxIndirectCommandsTokenOffset` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxIndirectCommandsTokenOffsetAt(long index) { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_maxIndirectCommandsTokenOffset(this.segment(), index); }
+        /// Sets `maxIndirectCommandsTokenOffset` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxIndirectCommandsTokenOffsetAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.set_maxIndirectCommandsTokenOffset(this.segment(), index, value); return this; }
+
+        /// {@return `maxIndirectCommandsIndirectStride` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxIndirectCommandsIndirectStrideAt(long index) { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_maxIndirectCommandsIndirectStride(this.segment(), index); }
+        /// Sets `maxIndirectCommandsIndirectStride` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxIndirectCommandsIndirectStrideAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.set_maxIndirectCommandsIndirectStride(this.segment(), index, value); return this; }
+
+        /// {@return `supportedIndirectCommandsInputModes` at the given index}
+        /// @param index the index
+        public @CType("VkIndirectCommandsInputModeFlagsEXT") int supportedIndirectCommandsInputModesAt(long index) { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_supportedIndirectCommandsInputModes(this.segment(), index); }
+        /// Sets `supportedIndirectCommandsInputModes` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer supportedIndirectCommandsInputModesAt(long index, @CType("VkIndirectCommandsInputModeFlagsEXT") int value) { VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.set_supportedIndirectCommandsInputModes(this.segment(), index, value); return this; }
+
+        /// {@return `supportedIndirectCommandsShaderStages` at the given index}
+        /// @param index the index
+        public @CType("VkShaderStageFlags") int supportedIndirectCommandsShaderStagesAt(long index) { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_supportedIndirectCommandsShaderStages(this.segment(), index); }
+        /// Sets `supportedIndirectCommandsShaderStages` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer supportedIndirectCommandsShaderStagesAt(long index, @CType("VkShaderStageFlags") int value) { VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.set_supportedIndirectCommandsShaderStages(this.segment(), index, value); return this; }
+
+        /// {@return `supportedIndirectCommandsShaderStagesPipelineBinding` at the given index}
+        /// @param index the index
+        public @CType("VkShaderStageFlags") int supportedIndirectCommandsShaderStagesPipelineBindingAt(long index) { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_supportedIndirectCommandsShaderStagesPipelineBinding(this.segment(), index); }
+        /// Sets `supportedIndirectCommandsShaderStagesPipelineBinding` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer supportedIndirectCommandsShaderStagesPipelineBindingAt(long index, @CType("VkShaderStageFlags") int value) { VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.set_supportedIndirectCommandsShaderStagesPipelineBinding(this.segment(), index, value); return this; }
+
+        /// {@return `supportedIndirectCommandsShaderStagesShaderBinding` at the given index}
+        /// @param index the index
+        public @CType("VkShaderStageFlags") int supportedIndirectCommandsShaderStagesShaderBindingAt(long index) { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_supportedIndirectCommandsShaderStagesShaderBinding(this.segment(), index); }
+        /// Sets `supportedIndirectCommandsShaderStagesShaderBinding` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer supportedIndirectCommandsShaderStagesShaderBindingAt(long index, @CType("VkShaderStageFlags") int value) { VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.set_supportedIndirectCommandsShaderStagesShaderBinding(this.segment(), index, value); return this; }
+
+        /// {@return `deviceGeneratedCommandsTransformFeedback` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int deviceGeneratedCommandsTransformFeedbackAt(long index) { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_deviceGeneratedCommandsTransformFeedback(this.segment(), index); }
+        /// Sets `deviceGeneratedCommandsTransformFeedback` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer deviceGeneratedCommandsTransformFeedbackAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.set_deviceGeneratedCommandsTransformFeedback(this.segment(), index, value); return this; }
+
+        /// {@return `deviceGeneratedCommandsMultiDrawIndirectCount` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int deviceGeneratedCommandsMultiDrawIndirectCountAt(long index) { return VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.get_deviceGeneratedCommandsMultiDrawIndirectCount(this.segment(), index); }
+        /// Sets `deviceGeneratedCommandsMultiDrawIndirectCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer deviceGeneratedCommandsMultiDrawIndirectCountAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceDeviceGeneratedCommandsPropertiesEXT.set_deviceGeneratedCommandsMultiDrawIndirectCount(this.segment(), index, value); return this; }
+
+    }
 }

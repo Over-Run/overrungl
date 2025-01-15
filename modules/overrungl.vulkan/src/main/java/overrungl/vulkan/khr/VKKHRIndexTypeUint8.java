@@ -23,13 +23,12 @@ import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 import static overrungl.vulkan.VK14.*;
-public class VKKHRIndexTypeUint8 {
+public final class VKKHRIndexTypeUint8 {
     public static final int VK_KHR_INDEX_TYPE_UINT8_SPEC_VERSION = 1;
     public static final String VK_KHR_INDEX_TYPE_UINT8_EXTENSION_NAME = "VK_KHR_index_type_uint8";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INDEX_TYPE_UINT8_FEATURES_KHR = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INDEX_TYPE_UINT8_FEATURES;
     public static final int VK_INDEX_TYPE_UINT8_KHR = VK_INDEX_TYPE_UINT8;
 
-    public VKKHRIndexTypeUint8(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKKHRIndexTypeUint8() { }
 
 }

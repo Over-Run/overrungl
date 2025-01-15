@@ -67,7 +67,7 @@ import overrungl.util.*;
 ///     uint32_t workgroupInvocations;
 /// } VkCooperativeMatrixFlexibleDimensionsPropertiesNV;
 /// ```
-public final class VkCooperativeMatrixFlexibleDimensionsPropertiesNV extends Struct {
+public sealed class VkCooperativeMatrixFlexibleDimensionsPropertiesNV extends Struct {
     /// The struct layout of `VkCooperativeMatrixFlexibleDimensionsPropertiesNV`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -118,6 +118,11 @@ public final class VkCooperativeMatrixFlexibleDimensionsPropertiesNV extends Str
     public static VkCooperativeMatrixFlexibleDimensionsPropertiesNV of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkCooperativeMatrixFlexibleDimensionsPropertiesNV(segment); }
 
     /// Creates `VkCooperativeMatrixFlexibleDimensionsPropertiesNV` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkCooperativeMatrixFlexibleDimensionsPropertiesNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -130,7 +135,7 @@ public final class VkCooperativeMatrixFlexibleDimensionsPropertiesNV extends Str
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkCooperativeMatrixFlexibleDimensionsPropertiesNV ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkCooperativeMatrixFlexibleDimensionsPropertiesNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkCooperativeMatrixFlexibleDimensionsPropertiesNV` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -141,7 +146,21 @@ public final class VkCooperativeMatrixFlexibleDimensionsPropertiesNV extends Str
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkCooperativeMatrixFlexibleDimensionsPropertiesNV`
-    public static VkCooperativeMatrixFlexibleDimensionsPropertiesNV alloc(SegmentAllocator allocator, long count) { return new VkCooperativeMatrixFlexibleDimensionsPropertiesNV(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkCooperativeMatrixFlexibleDimensionsPropertiesNV` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkCooperativeMatrixFlexibleDimensionsPropertiesNV`
+    public static VkCooperativeMatrixFlexibleDimensionsPropertiesNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int MGranularity, @CType("uint32_t") int NGranularity, @CType("uint32_t") int KGranularity, @CType("VkComponentTypeKHR") int AType, @CType("VkComponentTypeKHR") int BType, @CType("VkComponentTypeKHR") int CType, @CType("VkComponentTypeKHR") int ResultType, @CType("VkBool32") int saturatingAccumulation, @CType("VkScopeKHR") int scope, @CType("uint32_t") int workgroupInvocations) { return alloc(allocator).sType(sType).pNext(pNext).MGranularity(MGranularity).NGranularity(NGranularity).KGranularity(KGranularity).AType(AType).BType(BType).CType(CType).ResultType(ResultType).saturatingAccumulation(saturatingAccumulation).scope(scope).workgroupInvocations(workgroupInvocations); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkCooperativeMatrixFlexibleDimensionsPropertiesNV copyFrom(VkCooperativeMatrixFlexibleDimensionsPropertiesNV src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -150,9 +169,6 @@ public final class VkCooperativeMatrixFlexibleDimensionsPropertiesNV extends Str
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -164,11 +180,6 @@ public final class VkCooperativeMatrixFlexibleDimensionsPropertiesNV extends Str
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkCooperativeMatrixFlexibleDimensionsPropertiesNV.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCooperativeMatrixFlexibleDimensionsPropertiesNV sTypeAt(long index, @CType("VkStructureType") int value) { VkCooperativeMatrixFlexibleDimensionsPropertiesNV.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -181,9 +192,6 @@ public final class VkCooperativeMatrixFlexibleDimensionsPropertiesNV extends Str
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -195,11 +203,6 @@ public final class VkCooperativeMatrixFlexibleDimensionsPropertiesNV extends Str
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkCooperativeMatrixFlexibleDimensionsPropertiesNV.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCooperativeMatrixFlexibleDimensionsPropertiesNV pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkCooperativeMatrixFlexibleDimensionsPropertiesNV.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -212,9 +215,6 @@ public final class VkCooperativeMatrixFlexibleDimensionsPropertiesNV extends Str
     /// {@return `MGranularity`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_MGranularity(MemorySegment segment) { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_MGranularity(segment, 0L); }
-    /// {@return `MGranularity` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int MGranularityAt(long index) { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_MGranularity(this.segment(), index); }
     /// {@return `MGranularity`}
     public @CType("uint32_t") int MGranularity() { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_MGranularity(this.segment()); }
     /// Sets `MGranularity` with the given value at the given index.
@@ -226,11 +226,6 @@ public final class VkCooperativeMatrixFlexibleDimensionsPropertiesNV extends Str
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_MGranularity(MemorySegment segment, @CType("uint32_t") int value) { VkCooperativeMatrixFlexibleDimensionsPropertiesNV.set_MGranularity(segment, 0L, value); }
-    /// Sets `MGranularity` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCooperativeMatrixFlexibleDimensionsPropertiesNV MGranularityAt(long index, @CType("uint32_t") int value) { VkCooperativeMatrixFlexibleDimensionsPropertiesNV.set_MGranularity(this.segment(), index, value); return this; }
     /// Sets `MGranularity` with the given value.
     /// @param value the value
     /// @return `this`
@@ -243,9 +238,6 @@ public final class VkCooperativeMatrixFlexibleDimensionsPropertiesNV extends Str
     /// {@return `NGranularity`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_NGranularity(MemorySegment segment) { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_NGranularity(segment, 0L); }
-    /// {@return `NGranularity` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int NGranularityAt(long index) { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_NGranularity(this.segment(), index); }
     /// {@return `NGranularity`}
     public @CType("uint32_t") int NGranularity() { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_NGranularity(this.segment()); }
     /// Sets `NGranularity` with the given value at the given index.
@@ -257,11 +249,6 @@ public final class VkCooperativeMatrixFlexibleDimensionsPropertiesNV extends Str
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_NGranularity(MemorySegment segment, @CType("uint32_t") int value) { VkCooperativeMatrixFlexibleDimensionsPropertiesNV.set_NGranularity(segment, 0L, value); }
-    /// Sets `NGranularity` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCooperativeMatrixFlexibleDimensionsPropertiesNV NGranularityAt(long index, @CType("uint32_t") int value) { VkCooperativeMatrixFlexibleDimensionsPropertiesNV.set_NGranularity(this.segment(), index, value); return this; }
     /// Sets `NGranularity` with the given value.
     /// @param value the value
     /// @return `this`
@@ -274,9 +261,6 @@ public final class VkCooperativeMatrixFlexibleDimensionsPropertiesNV extends Str
     /// {@return `KGranularity`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_KGranularity(MemorySegment segment) { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_KGranularity(segment, 0L); }
-    /// {@return `KGranularity` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int KGranularityAt(long index) { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_KGranularity(this.segment(), index); }
     /// {@return `KGranularity`}
     public @CType("uint32_t") int KGranularity() { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_KGranularity(this.segment()); }
     /// Sets `KGranularity` with the given value at the given index.
@@ -288,11 +272,6 @@ public final class VkCooperativeMatrixFlexibleDimensionsPropertiesNV extends Str
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_KGranularity(MemorySegment segment, @CType("uint32_t") int value) { VkCooperativeMatrixFlexibleDimensionsPropertiesNV.set_KGranularity(segment, 0L, value); }
-    /// Sets `KGranularity` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCooperativeMatrixFlexibleDimensionsPropertiesNV KGranularityAt(long index, @CType("uint32_t") int value) { VkCooperativeMatrixFlexibleDimensionsPropertiesNV.set_KGranularity(this.segment(), index, value); return this; }
     /// Sets `KGranularity` with the given value.
     /// @param value the value
     /// @return `this`
@@ -305,9 +284,6 @@ public final class VkCooperativeMatrixFlexibleDimensionsPropertiesNV extends Str
     /// {@return `AType`}
     /// @param segment the segment of the struct
     public static @CType("VkComponentTypeKHR") int get_AType(MemorySegment segment) { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_AType(segment, 0L); }
-    /// {@return `AType` at the given index}
-    /// @param index the index
-    public @CType("VkComponentTypeKHR") int ATypeAt(long index) { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_AType(this.segment(), index); }
     /// {@return `AType`}
     public @CType("VkComponentTypeKHR") int AType() { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_AType(this.segment()); }
     /// Sets `AType` with the given value at the given index.
@@ -319,11 +295,6 @@ public final class VkCooperativeMatrixFlexibleDimensionsPropertiesNV extends Str
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_AType(MemorySegment segment, @CType("VkComponentTypeKHR") int value) { VkCooperativeMatrixFlexibleDimensionsPropertiesNV.set_AType(segment, 0L, value); }
-    /// Sets `AType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCooperativeMatrixFlexibleDimensionsPropertiesNV ATypeAt(long index, @CType("VkComponentTypeKHR") int value) { VkCooperativeMatrixFlexibleDimensionsPropertiesNV.set_AType(this.segment(), index, value); return this; }
     /// Sets `AType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -336,9 +307,6 @@ public final class VkCooperativeMatrixFlexibleDimensionsPropertiesNV extends Str
     /// {@return `BType`}
     /// @param segment the segment of the struct
     public static @CType("VkComponentTypeKHR") int get_BType(MemorySegment segment) { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_BType(segment, 0L); }
-    /// {@return `BType` at the given index}
-    /// @param index the index
-    public @CType("VkComponentTypeKHR") int BTypeAt(long index) { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_BType(this.segment(), index); }
     /// {@return `BType`}
     public @CType("VkComponentTypeKHR") int BType() { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_BType(this.segment()); }
     /// Sets `BType` with the given value at the given index.
@@ -350,11 +318,6 @@ public final class VkCooperativeMatrixFlexibleDimensionsPropertiesNV extends Str
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_BType(MemorySegment segment, @CType("VkComponentTypeKHR") int value) { VkCooperativeMatrixFlexibleDimensionsPropertiesNV.set_BType(segment, 0L, value); }
-    /// Sets `BType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCooperativeMatrixFlexibleDimensionsPropertiesNV BTypeAt(long index, @CType("VkComponentTypeKHR") int value) { VkCooperativeMatrixFlexibleDimensionsPropertiesNV.set_BType(this.segment(), index, value); return this; }
     /// Sets `BType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -367,9 +330,6 @@ public final class VkCooperativeMatrixFlexibleDimensionsPropertiesNV extends Str
     /// {@return `CType`}
     /// @param segment the segment of the struct
     public static @CType("VkComponentTypeKHR") int get_CType(MemorySegment segment) { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_CType(segment, 0L); }
-    /// {@return `CType` at the given index}
-    /// @param index the index
-    public @CType("VkComponentTypeKHR") int CTypeAt(long index) { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_CType(this.segment(), index); }
     /// {@return `CType`}
     public @CType("VkComponentTypeKHR") int CType() { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_CType(this.segment()); }
     /// Sets `CType` with the given value at the given index.
@@ -381,11 +341,6 @@ public final class VkCooperativeMatrixFlexibleDimensionsPropertiesNV extends Str
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_CType(MemorySegment segment, @CType("VkComponentTypeKHR") int value) { VkCooperativeMatrixFlexibleDimensionsPropertiesNV.set_CType(segment, 0L, value); }
-    /// Sets `CType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCooperativeMatrixFlexibleDimensionsPropertiesNV CTypeAt(long index, @CType("VkComponentTypeKHR") int value) { VkCooperativeMatrixFlexibleDimensionsPropertiesNV.set_CType(this.segment(), index, value); return this; }
     /// Sets `CType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -398,9 +353,6 @@ public final class VkCooperativeMatrixFlexibleDimensionsPropertiesNV extends Str
     /// {@return `ResultType`}
     /// @param segment the segment of the struct
     public static @CType("VkComponentTypeKHR") int get_ResultType(MemorySegment segment) { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_ResultType(segment, 0L); }
-    /// {@return `ResultType` at the given index}
-    /// @param index the index
-    public @CType("VkComponentTypeKHR") int ResultTypeAt(long index) { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_ResultType(this.segment(), index); }
     /// {@return `ResultType`}
     public @CType("VkComponentTypeKHR") int ResultType() { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_ResultType(this.segment()); }
     /// Sets `ResultType` with the given value at the given index.
@@ -412,11 +364,6 @@ public final class VkCooperativeMatrixFlexibleDimensionsPropertiesNV extends Str
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_ResultType(MemorySegment segment, @CType("VkComponentTypeKHR") int value) { VkCooperativeMatrixFlexibleDimensionsPropertiesNV.set_ResultType(segment, 0L, value); }
-    /// Sets `ResultType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCooperativeMatrixFlexibleDimensionsPropertiesNV ResultTypeAt(long index, @CType("VkComponentTypeKHR") int value) { VkCooperativeMatrixFlexibleDimensionsPropertiesNV.set_ResultType(this.segment(), index, value); return this; }
     /// Sets `ResultType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -429,9 +376,6 @@ public final class VkCooperativeMatrixFlexibleDimensionsPropertiesNV extends Str
     /// {@return `saturatingAccumulation`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_saturatingAccumulation(MemorySegment segment) { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_saturatingAccumulation(segment, 0L); }
-    /// {@return `saturatingAccumulation` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int saturatingAccumulationAt(long index) { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_saturatingAccumulation(this.segment(), index); }
     /// {@return `saturatingAccumulation`}
     public @CType("VkBool32") int saturatingAccumulation() { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_saturatingAccumulation(this.segment()); }
     /// Sets `saturatingAccumulation` with the given value at the given index.
@@ -443,11 +387,6 @@ public final class VkCooperativeMatrixFlexibleDimensionsPropertiesNV extends Str
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_saturatingAccumulation(MemorySegment segment, @CType("VkBool32") int value) { VkCooperativeMatrixFlexibleDimensionsPropertiesNV.set_saturatingAccumulation(segment, 0L, value); }
-    /// Sets `saturatingAccumulation` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCooperativeMatrixFlexibleDimensionsPropertiesNV saturatingAccumulationAt(long index, @CType("VkBool32") int value) { VkCooperativeMatrixFlexibleDimensionsPropertiesNV.set_saturatingAccumulation(this.segment(), index, value); return this; }
     /// Sets `saturatingAccumulation` with the given value.
     /// @param value the value
     /// @return `this`
@@ -460,9 +399,6 @@ public final class VkCooperativeMatrixFlexibleDimensionsPropertiesNV extends Str
     /// {@return `scope`}
     /// @param segment the segment of the struct
     public static @CType("VkScopeKHR") int get_scope(MemorySegment segment) { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_scope(segment, 0L); }
-    /// {@return `scope` at the given index}
-    /// @param index the index
-    public @CType("VkScopeKHR") int scopeAt(long index) { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_scope(this.segment(), index); }
     /// {@return `scope`}
     public @CType("VkScopeKHR") int scope() { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_scope(this.segment()); }
     /// Sets `scope` with the given value at the given index.
@@ -474,11 +410,6 @@ public final class VkCooperativeMatrixFlexibleDimensionsPropertiesNV extends Str
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_scope(MemorySegment segment, @CType("VkScopeKHR") int value) { VkCooperativeMatrixFlexibleDimensionsPropertiesNV.set_scope(segment, 0L, value); }
-    /// Sets `scope` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCooperativeMatrixFlexibleDimensionsPropertiesNV scopeAt(long index, @CType("VkScopeKHR") int value) { VkCooperativeMatrixFlexibleDimensionsPropertiesNV.set_scope(this.segment(), index, value); return this; }
     /// Sets `scope` with the given value.
     /// @param value the value
     /// @return `this`
@@ -491,9 +422,6 @@ public final class VkCooperativeMatrixFlexibleDimensionsPropertiesNV extends Str
     /// {@return `workgroupInvocations`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_workgroupInvocations(MemorySegment segment) { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_workgroupInvocations(segment, 0L); }
-    /// {@return `workgroupInvocations` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int workgroupInvocationsAt(long index) { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_workgroupInvocations(this.segment(), index); }
     /// {@return `workgroupInvocations`}
     public @CType("uint32_t") int workgroupInvocations() { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_workgroupInvocations(this.segment()); }
     /// Sets `workgroupInvocations` with the given value at the given index.
@@ -505,14 +433,140 @@ public final class VkCooperativeMatrixFlexibleDimensionsPropertiesNV extends Str
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_workgroupInvocations(MemorySegment segment, @CType("uint32_t") int value) { VkCooperativeMatrixFlexibleDimensionsPropertiesNV.set_workgroupInvocations(segment, 0L, value); }
-    /// Sets `workgroupInvocations` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCooperativeMatrixFlexibleDimensionsPropertiesNV workgroupInvocationsAt(long index, @CType("uint32_t") int value) { VkCooperativeMatrixFlexibleDimensionsPropertiesNV.set_workgroupInvocations(this.segment(), index, value); return this; }
     /// Sets `workgroupInvocations` with the given value.
     /// @param value the value
     /// @return `this`
     public VkCooperativeMatrixFlexibleDimensionsPropertiesNV workgroupInvocations(@CType("uint32_t") int value) { VkCooperativeMatrixFlexibleDimensionsPropertiesNV.set_workgroupInvocations(this.segment(), value); return this; }
 
+    /// A buffer of [VkCooperativeMatrixFlexibleDimensionsPropertiesNV].
+    public static final class Buffer extends VkCooperativeMatrixFlexibleDimensionsPropertiesNV {
+        private final long elementCount;
+
+        /// Creates `VkCooperativeMatrixFlexibleDimensionsPropertiesNV.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkCooperativeMatrixFlexibleDimensionsPropertiesNV`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkCooperativeMatrixFlexibleDimensionsPropertiesNV`
+        public VkCooperativeMatrixFlexibleDimensionsPropertiesNV asSlice(long index) { return new VkCooperativeMatrixFlexibleDimensionsPropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkCooperativeMatrixFlexibleDimensionsPropertiesNV`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkCooperativeMatrixFlexibleDimensionsPropertiesNV`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkCooperativeMatrixFlexibleDimensionsPropertiesNV.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkCooperativeMatrixFlexibleDimensionsPropertiesNV.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `MGranularity` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int MGranularityAt(long index) { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_MGranularity(this.segment(), index); }
+        /// Sets `MGranularity` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer MGranularityAt(long index, @CType("uint32_t") int value) { VkCooperativeMatrixFlexibleDimensionsPropertiesNV.set_MGranularity(this.segment(), index, value); return this; }
+
+        /// {@return `NGranularity` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int NGranularityAt(long index) { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_NGranularity(this.segment(), index); }
+        /// Sets `NGranularity` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer NGranularityAt(long index, @CType("uint32_t") int value) { VkCooperativeMatrixFlexibleDimensionsPropertiesNV.set_NGranularity(this.segment(), index, value); return this; }
+
+        /// {@return `KGranularity` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int KGranularityAt(long index) { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_KGranularity(this.segment(), index); }
+        /// Sets `KGranularity` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer KGranularityAt(long index, @CType("uint32_t") int value) { VkCooperativeMatrixFlexibleDimensionsPropertiesNV.set_KGranularity(this.segment(), index, value); return this; }
+
+        /// {@return `AType` at the given index}
+        /// @param index the index
+        public @CType("VkComponentTypeKHR") int ATypeAt(long index) { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_AType(this.segment(), index); }
+        /// Sets `AType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer ATypeAt(long index, @CType("VkComponentTypeKHR") int value) { VkCooperativeMatrixFlexibleDimensionsPropertiesNV.set_AType(this.segment(), index, value); return this; }
+
+        /// {@return `BType` at the given index}
+        /// @param index the index
+        public @CType("VkComponentTypeKHR") int BTypeAt(long index) { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_BType(this.segment(), index); }
+        /// Sets `BType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer BTypeAt(long index, @CType("VkComponentTypeKHR") int value) { VkCooperativeMatrixFlexibleDimensionsPropertiesNV.set_BType(this.segment(), index, value); return this; }
+
+        /// {@return `CType` at the given index}
+        /// @param index the index
+        public @CType("VkComponentTypeKHR") int CTypeAt(long index) { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_CType(this.segment(), index); }
+        /// Sets `CType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer CTypeAt(long index, @CType("VkComponentTypeKHR") int value) { VkCooperativeMatrixFlexibleDimensionsPropertiesNV.set_CType(this.segment(), index, value); return this; }
+
+        /// {@return `ResultType` at the given index}
+        /// @param index the index
+        public @CType("VkComponentTypeKHR") int ResultTypeAt(long index) { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_ResultType(this.segment(), index); }
+        /// Sets `ResultType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer ResultTypeAt(long index, @CType("VkComponentTypeKHR") int value) { VkCooperativeMatrixFlexibleDimensionsPropertiesNV.set_ResultType(this.segment(), index, value); return this; }
+
+        /// {@return `saturatingAccumulation` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int saturatingAccumulationAt(long index) { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_saturatingAccumulation(this.segment(), index); }
+        /// Sets `saturatingAccumulation` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer saturatingAccumulationAt(long index, @CType("VkBool32") int value) { VkCooperativeMatrixFlexibleDimensionsPropertiesNV.set_saturatingAccumulation(this.segment(), index, value); return this; }
+
+        /// {@return `scope` at the given index}
+        /// @param index the index
+        public @CType("VkScopeKHR") int scopeAt(long index) { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_scope(this.segment(), index); }
+        /// Sets `scope` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer scopeAt(long index, @CType("VkScopeKHR") int value) { VkCooperativeMatrixFlexibleDimensionsPropertiesNV.set_scope(this.segment(), index, value); return this; }
+
+        /// {@return `workgroupInvocations` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int workgroupInvocationsAt(long index) { return VkCooperativeMatrixFlexibleDimensionsPropertiesNV.get_workgroupInvocations(this.segment(), index); }
+        /// Sets `workgroupInvocations` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer workgroupInvocationsAt(long index, @CType("uint32_t") int value) { VkCooperativeMatrixFlexibleDimensionsPropertiesNV.set_workgroupInvocations(this.segment(), index, value); return this; }
+
+    }
 }

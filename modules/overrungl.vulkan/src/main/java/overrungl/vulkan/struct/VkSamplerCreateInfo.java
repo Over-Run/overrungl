@@ -85,7 +85,7 @@ import overrungl.util.*;
 ///     VkBool32 unnormalizedCoordinates;
 /// } VkSamplerCreateInfo;
 /// ```
-public final class VkSamplerCreateInfo extends Struct {
+public sealed class VkSamplerCreateInfo extends Struct {
     /// The struct layout of `VkSamplerCreateInfo`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -154,6 +154,11 @@ public final class VkSamplerCreateInfo extends Struct {
     public static VkSamplerCreateInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkSamplerCreateInfo(segment); }
 
     /// Creates `VkSamplerCreateInfo` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkSamplerCreateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -166,7 +171,7 @@ public final class VkSamplerCreateInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSamplerCreateInfo ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkSamplerCreateInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkSamplerCreateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -177,7 +182,21 @@ public final class VkSamplerCreateInfo extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkSamplerCreateInfo`
-    public static VkSamplerCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkSamplerCreateInfo(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkSamplerCreateInfo` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkSamplerCreateInfo`
+    public static VkSamplerCreateInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkSamplerCreateFlags") int flags, @CType("VkFilter") int magFilter, @CType("VkFilter") int minFilter, @CType("VkSamplerMipmapMode") int mipmapMode, @CType("VkSamplerAddressMode") int addressModeU, @CType("VkSamplerAddressMode") int addressModeV, @CType("VkSamplerAddressMode") int addressModeW, @CType("float") float mipLodBias, @CType("VkBool32") int anisotropyEnable, @CType("float") float maxAnisotropy, @CType("VkBool32") int compareEnable, @CType("VkCompareOp") int compareOp, @CType("float") float minLod, @CType("float") float maxLod, @CType("VkBorderColor") int borderColor, @CType("VkBool32") int unnormalizedCoordinates) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).magFilter(magFilter).minFilter(minFilter).mipmapMode(mipmapMode).addressModeU(addressModeU).addressModeV(addressModeV).addressModeW(addressModeW).mipLodBias(mipLodBias).anisotropyEnable(anisotropyEnable).maxAnisotropy(maxAnisotropy).compareEnable(compareEnable).compareOp(compareOp).minLod(minLod).maxLod(maxLod).borderColor(borderColor).unnormalizedCoordinates(unnormalizedCoordinates); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkSamplerCreateInfo copyFrom(VkSamplerCreateInfo src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -186,9 +205,6 @@ public final class VkSamplerCreateInfo extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkSamplerCreateInfo.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkSamplerCreateInfo.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkSamplerCreateInfo.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -200,11 +216,6 @@ public final class VkSamplerCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkSamplerCreateInfo.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSamplerCreateInfo sTypeAt(long index, @CType("VkStructureType") int value) { VkSamplerCreateInfo.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -217,9 +228,6 @@ public final class VkSamplerCreateInfo extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkSamplerCreateInfo.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkSamplerCreateInfo.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkSamplerCreateInfo.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -231,11 +239,6 @@ public final class VkSamplerCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkSamplerCreateInfo.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSamplerCreateInfo pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkSamplerCreateInfo.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -248,9 +251,6 @@ public final class VkSamplerCreateInfo extends Struct {
     /// {@return `flags`}
     /// @param segment the segment of the struct
     public static @CType("VkSamplerCreateFlags") int get_flags(MemorySegment segment) { return VkSamplerCreateInfo.get_flags(segment, 0L); }
-    /// {@return `flags` at the given index}
-    /// @param index the index
-    public @CType("VkSamplerCreateFlags") int flagsAt(long index) { return VkSamplerCreateInfo.get_flags(this.segment(), index); }
     /// {@return `flags`}
     public @CType("VkSamplerCreateFlags") int flags() { return VkSamplerCreateInfo.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
@@ -262,11 +262,6 @@ public final class VkSamplerCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_flags(MemorySegment segment, @CType("VkSamplerCreateFlags") int value) { VkSamplerCreateInfo.set_flags(segment, 0L, value); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSamplerCreateInfo flagsAt(long index, @CType("VkSamplerCreateFlags") int value) { VkSamplerCreateInfo.set_flags(this.segment(), index, value); return this; }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -279,9 +274,6 @@ public final class VkSamplerCreateInfo extends Struct {
     /// {@return `magFilter`}
     /// @param segment the segment of the struct
     public static @CType("VkFilter") int get_magFilter(MemorySegment segment) { return VkSamplerCreateInfo.get_magFilter(segment, 0L); }
-    /// {@return `magFilter` at the given index}
-    /// @param index the index
-    public @CType("VkFilter") int magFilterAt(long index) { return VkSamplerCreateInfo.get_magFilter(this.segment(), index); }
     /// {@return `magFilter`}
     public @CType("VkFilter") int magFilter() { return VkSamplerCreateInfo.get_magFilter(this.segment()); }
     /// Sets `magFilter` with the given value at the given index.
@@ -293,11 +285,6 @@ public final class VkSamplerCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_magFilter(MemorySegment segment, @CType("VkFilter") int value) { VkSamplerCreateInfo.set_magFilter(segment, 0L, value); }
-    /// Sets `magFilter` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSamplerCreateInfo magFilterAt(long index, @CType("VkFilter") int value) { VkSamplerCreateInfo.set_magFilter(this.segment(), index, value); return this; }
     /// Sets `magFilter` with the given value.
     /// @param value the value
     /// @return `this`
@@ -310,9 +297,6 @@ public final class VkSamplerCreateInfo extends Struct {
     /// {@return `minFilter`}
     /// @param segment the segment of the struct
     public static @CType("VkFilter") int get_minFilter(MemorySegment segment) { return VkSamplerCreateInfo.get_minFilter(segment, 0L); }
-    /// {@return `minFilter` at the given index}
-    /// @param index the index
-    public @CType("VkFilter") int minFilterAt(long index) { return VkSamplerCreateInfo.get_minFilter(this.segment(), index); }
     /// {@return `minFilter`}
     public @CType("VkFilter") int minFilter() { return VkSamplerCreateInfo.get_minFilter(this.segment()); }
     /// Sets `minFilter` with the given value at the given index.
@@ -324,11 +308,6 @@ public final class VkSamplerCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_minFilter(MemorySegment segment, @CType("VkFilter") int value) { VkSamplerCreateInfo.set_minFilter(segment, 0L, value); }
-    /// Sets `minFilter` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSamplerCreateInfo minFilterAt(long index, @CType("VkFilter") int value) { VkSamplerCreateInfo.set_minFilter(this.segment(), index, value); return this; }
     /// Sets `minFilter` with the given value.
     /// @param value the value
     /// @return `this`
@@ -341,9 +320,6 @@ public final class VkSamplerCreateInfo extends Struct {
     /// {@return `mipmapMode`}
     /// @param segment the segment of the struct
     public static @CType("VkSamplerMipmapMode") int get_mipmapMode(MemorySegment segment) { return VkSamplerCreateInfo.get_mipmapMode(segment, 0L); }
-    /// {@return `mipmapMode` at the given index}
-    /// @param index the index
-    public @CType("VkSamplerMipmapMode") int mipmapModeAt(long index) { return VkSamplerCreateInfo.get_mipmapMode(this.segment(), index); }
     /// {@return `mipmapMode`}
     public @CType("VkSamplerMipmapMode") int mipmapMode() { return VkSamplerCreateInfo.get_mipmapMode(this.segment()); }
     /// Sets `mipmapMode` with the given value at the given index.
@@ -355,11 +331,6 @@ public final class VkSamplerCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_mipmapMode(MemorySegment segment, @CType("VkSamplerMipmapMode") int value) { VkSamplerCreateInfo.set_mipmapMode(segment, 0L, value); }
-    /// Sets `mipmapMode` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSamplerCreateInfo mipmapModeAt(long index, @CType("VkSamplerMipmapMode") int value) { VkSamplerCreateInfo.set_mipmapMode(this.segment(), index, value); return this; }
     /// Sets `mipmapMode` with the given value.
     /// @param value the value
     /// @return `this`
@@ -372,9 +343,6 @@ public final class VkSamplerCreateInfo extends Struct {
     /// {@return `addressModeU`}
     /// @param segment the segment of the struct
     public static @CType("VkSamplerAddressMode") int get_addressModeU(MemorySegment segment) { return VkSamplerCreateInfo.get_addressModeU(segment, 0L); }
-    /// {@return `addressModeU` at the given index}
-    /// @param index the index
-    public @CType("VkSamplerAddressMode") int addressModeUAt(long index) { return VkSamplerCreateInfo.get_addressModeU(this.segment(), index); }
     /// {@return `addressModeU`}
     public @CType("VkSamplerAddressMode") int addressModeU() { return VkSamplerCreateInfo.get_addressModeU(this.segment()); }
     /// Sets `addressModeU` with the given value at the given index.
@@ -386,11 +354,6 @@ public final class VkSamplerCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_addressModeU(MemorySegment segment, @CType("VkSamplerAddressMode") int value) { VkSamplerCreateInfo.set_addressModeU(segment, 0L, value); }
-    /// Sets `addressModeU` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSamplerCreateInfo addressModeUAt(long index, @CType("VkSamplerAddressMode") int value) { VkSamplerCreateInfo.set_addressModeU(this.segment(), index, value); return this; }
     /// Sets `addressModeU` with the given value.
     /// @param value the value
     /// @return `this`
@@ -403,9 +366,6 @@ public final class VkSamplerCreateInfo extends Struct {
     /// {@return `addressModeV`}
     /// @param segment the segment of the struct
     public static @CType("VkSamplerAddressMode") int get_addressModeV(MemorySegment segment) { return VkSamplerCreateInfo.get_addressModeV(segment, 0L); }
-    /// {@return `addressModeV` at the given index}
-    /// @param index the index
-    public @CType("VkSamplerAddressMode") int addressModeVAt(long index) { return VkSamplerCreateInfo.get_addressModeV(this.segment(), index); }
     /// {@return `addressModeV`}
     public @CType("VkSamplerAddressMode") int addressModeV() { return VkSamplerCreateInfo.get_addressModeV(this.segment()); }
     /// Sets `addressModeV` with the given value at the given index.
@@ -417,11 +377,6 @@ public final class VkSamplerCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_addressModeV(MemorySegment segment, @CType("VkSamplerAddressMode") int value) { VkSamplerCreateInfo.set_addressModeV(segment, 0L, value); }
-    /// Sets `addressModeV` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSamplerCreateInfo addressModeVAt(long index, @CType("VkSamplerAddressMode") int value) { VkSamplerCreateInfo.set_addressModeV(this.segment(), index, value); return this; }
     /// Sets `addressModeV` with the given value.
     /// @param value the value
     /// @return `this`
@@ -434,9 +389,6 @@ public final class VkSamplerCreateInfo extends Struct {
     /// {@return `addressModeW`}
     /// @param segment the segment of the struct
     public static @CType("VkSamplerAddressMode") int get_addressModeW(MemorySegment segment) { return VkSamplerCreateInfo.get_addressModeW(segment, 0L); }
-    /// {@return `addressModeW` at the given index}
-    /// @param index the index
-    public @CType("VkSamplerAddressMode") int addressModeWAt(long index) { return VkSamplerCreateInfo.get_addressModeW(this.segment(), index); }
     /// {@return `addressModeW`}
     public @CType("VkSamplerAddressMode") int addressModeW() { return VkSamplerCreateInfo.get_addressModeW(this.segment()); }
     /// Sets `addressModeW` with the given value at the given index.
@@ -448,11 +400,6 @@ public final class VkSamplerCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_addressModeW(MemorySegment segment, @CType("VkSamplerAddressMode") int value) { VkSamplerCreateInfo.set_addressModeW(segment, 0L, value); }
-    /// Sets `addressModeW` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSamplerCreateInfo addressModeWAt(long index, @CType("VkSamplerAddressMode") int value) { VkSamplerCreateInfo.set_addressModeW(this.segment(), index, value); return this; }
     /// Sets `addressModeW` with the given value.
     /// @param value the value
     /// @return `this`
@@ -465,9 +412,6 @@ public final class VkSamplerCreateInfo extends Struct {
     /// {@return `mipLodBias`}
     /// @param segment the segment of the struct
     public static @CType("float") float get_mipLodBias(MemorySegment segment) { return VkSamplerCreateInfo.get_mipLodBias(segment, 0L); }
-    /// {@return `mipLodBias` at the given index}
-    /// @param index the index
-    public @CType("float") float mipLodBiasAt(long index) { return VkSamplerCreateInfo.get_mipLodBias(this.segment(), index); }
     /// {@return `mipLodBias`}
     public @CType("float") float mipLodBias() { return VkSamplerCreateInfo.get_mipLodBias(this.segment()); }
     /// Sets `mipLodBias` with the given value at the given index.
@@ -479,11 +423,6 @@ public final class VkSamplerCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_mipLodBias(MemorySegment segment, @CType("float") float value) { VkSamplerCreateInfo.set_mipLodBias(segment, 0L, value); }
-    /// Sets `mipLodBias` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSamplerCreateInfo mipLodBiasAt(long index, @CType("float") float value) { VkSamplerCreateInfo.set_mipLodBias(this.segment(), index, value); return this; }
     /// Sets `mipLodBias` with the given value.
     /// @param value the value
     /// @return `this`
@@ -496,9 +435,6 @@ public final class VkSamplerCreateInfo extends Struct {
     /// {@return `anisotropyEnable`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_anisotropyEnable(MemorySegment segment) { return VkSamplerCreateInfo.get_anisotropyEnable(segment, 0L); }
-    /// {@return `anisotropyEnable` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int anisotropyEnableAt(long index) { return VkSamplerCreateInfo.get_anisotropyEnable(this.segment(), index); }
     /// {@return `anisotropyEnable`}
     public @CType("VkBool32") int anisotropyEnable() { return VkSamplerCreateInfo.get_anisotropyEnable(this.segment()); }
     /// Sets `anisotropyEnable` with the given value at the given index.
@@ -510,11 +446,6 @@ public final class VkSamplerCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_anisotropyEnable(MemorySegment segment, @CType("VkBool32") int value) { VkSamplerCreateInfo.set_anisotropyEnable(segment, 0L, value); }
-    /// Sets `anisotropyEnable` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSamplerCreateInfo anisotropyEnableAt(long index, @CType("VkBool32") int value) { VkSamplerCreateInfo.set_anisotropyEnable(this.segment(), index, value); return this; }
     /// Sets `anisotropyEnable` with the given value.
     /// @param value the value
     /// @return `this`
@@ -527,9 +458,6 @@ public final class VkSamplerCreateInfo extends Struct {
     /// {@return `maxAnisotropy`}
     /// @param segment the segment of the struct
     public static @CType("float") float get_maxAnisotropy(MemorySegment segment) { return VkSamplerCreateInfo.get_maxAnisotropy(segment, 0L); }
-    /// {@return `maxAnisotropy` at the given index}
-    /// @param index the index
-    public @CType("float") float maxAnisotropyAt(long index) { return VkSamplerCreateInfo.get_maxAnisotropy(this.segment(), index); }
     /// {@return `maxAnisotropy`}
     public @CType("float") float maxAnisotropy() { return VkSamplerCreateInfo.get_maxAnisotropy(this.segment()); }
     /// Sets `maxAnisotropy` with the given value at the given index.
@@ -541,11 +469,6 @@ public final class VkSamplerCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxAnisotropy(MemorySegment segment, @CType("float") float value) { VkSamplerCreateInfo.set_maxAnisotropy(segment, 0L, value); }
-    /// Sets `maxAnisotropy` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSamplerCreateInfo maxAnisotropyAt(long index, @CType("float") float value) { VkSamplerCreateInfo.set_maxAnisotropy(this.segment(), index, value); return this; }
     /// Sets `maxAnisotropy` with the given value.
     /// @param value the value
     /// @return `this`
@@ -558,9 +481,6 @@ public final class VkSamplerCreateInfo extends Struct {
     /// {@return `compareEnable`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_compareEnable(MemorySegment segment) { return VkSamplerCreateInfo.get_compareEnable(segment, 0L); }
-    /// {@return `compareEnable` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int compareEnableAt(long index) { return VkSamplerCreateInfo.get_compareEnable(this.segment(), index); }
     /// {@return `compareEnable`}
     public @CType("VkBool32") int compareEnable() { return VkSamplerCreateInfo.get_compareEnable(this.segment()); }
     /// Sets `compareEnable` with the given value at the given index.
@@ -572,11 +492,6 @@ public final class VkSamplerCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_compareEnable(MemorySegment segment, @CType("VkBool32") int value) { VkSamplerCreateInfo.set_compareEnable(segment, 0L, value); }
-    /// Sets `compareEnable` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSamplerCreateInfo compareEnableAt(long index, @CType("VkBool32") int value) { VkSamplerCreateInfo.set_compareEnable(this.segment(), index, value); return this; }
     /// Sets `compareEnable` with the given value.
     /// @param value the value
     /// @return `this`
@@ -589,9 +504,6 @@ public final class VkSamplerCreateInfo extends Struct {
     /// {@return `compareOp`}
     /// @param segment the segment of the struct
     public static @CType("VkCompareOp") int get_compareOp(MemorySegment segment) { return VkSamplerCreateInfo.get_compareOp(segment, 0L); }
-    /// {@return `compareOp` at the given index}
-    /// @param index the index
-    public @CType("VkCompareOp") int compareOpAt(long index) { return VkSamplerCreateInfo.get_compareOp(this.segment(), index); }
     /// {@return `compareOp`}
     public @CType("VkCompareOp") int compareOp() { return VkSamplerCreateInfo.get_compareOp(this.segment()); }
     /// Sets `compareOp` with the given value at the given index.
@@ -603,11 +515,6 @@ public final class VkSamplerCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_compareOp(MemorySegment segment, @CType("VkCompareOp") int value) { VkSamplerCreateInfo.set_compareOp(segment, 0L, value); }
-    /// Sets `compareOp` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSamplerCreateInfo compareOpAt(long index, @CType("VkCompareOp") int value) { VkSamplerCreateInfo.set_compareOp(this.segment(), index, value); return this; }
     /// Sets `compareOp` with the given value.
     /// @param value the value
     /// @return `this`
@@ -620,9 +527,6 @@ public final class VkSamplerCreateInfo extends Struct {
     /// {@return `minLod`}
     /// @param segment the segment of the struct
     public static @CType("float") float get_minLod(MemorySegment segment) { return VkSamplerCreateInfo.get_minLod(segment, 0L); }
-    /// {@return `minLod` at the given index}
-    /// @param index the index
-    public @CType("float") float minLodAt(long index) { return VkSamplerCreateInfo.get_minLod(this.segment(), index); }
     /// {@return `minLod`}
     public @CType("float") float minLod() { return VkSamplerCreateInfo.get_minLod(this.segment()); }
     /// Sets `minLod` with the given value at the given index.
@@ -634,11 +538,6 @@ public final class VkSamplerCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_minLod(MemorySegment segment, @CType("float") float value) { VkSamplerCreateInfo.set_minLod(segment, 0L, value); }
-    /// Sets `minLod` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSamplerCreateInfo minLodAt(long index, @CType("float") float value) { VkSamplerCreateInfo.set_minLod(this.segment(), index, value); return this; }
     /// Sets `minLod` with the given value.
     /// @param value the value
     /// @return `this`
@@ -651,9 +550,6 @@ public final class VkSamplerCreateInfo extends Struct {
     /// {@return `maxLod`}
     /// @param segment the segment of the struct
     public static @CType("float") float get_maxLod(MemorySegment segment) { return VkSamplerCreateInfo.get_maxLod(segment, 0L); }
-    /// {@return `maxLod` at the given index}
-    /// @param index the index
-    public @CType("float") float maxLodAt(long index) { return VkSamplerCreateInfo.get_maxLod(this.segment(), index); }
     /// {@return `maxLod`}
     public @CType("float") float maxLod() { return VkSamplerCreateInfo.get_maxLod(this.segment()); }
     /// Sets `maxLod` with the given value at the given index.
@@ -665,11 +561,6 @@ public final class VkSamplerCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxLod(MemorySegment segment, @CType("float") float value) { VkSamplerCreateInfo.set_maxLod(segment, 0L, value); }
-    /// Sets `maxLod` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSamplerCreateInfo maxLodAt(long index, @CType("float") float value) { VkSamplerCreateInfo.set_maxLod(this.segment(), index, value); return this; }
     /// Sets `maxLod` with the given value.
     /// @param value the value
     /// @return `this`
@@ -682,9 +573,6 @@ public final class VkSamplerCreateInfo extends Struct {
     /// {@return `borderColor`}
     /// @param segment the segment of the struct
     public static @CType("VkBorderColor") int get_borderColor(MemorySegment segment) { return VkSamplerCreateInfo.get_borderColor(segment, 0L); }
-    /// {@return `borderColor` at the given index}
-    /// @param index the index
-    public @CType("VkBorderColor") int borderColorAt(long index) { return VkSamplerCreateInfo.get_borderColor(this.segment(), index); }
     /// {@return `borderColor`}
     public @CType("VkBorderColor") int borderColor() { return VkSamplerCreateInfo.get_borderColor(this.segment()); }
     /// Sets `borderColor` with the given value at the given index.
@@ -696,11 +584,6 @@ public final class VkSamplerCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_borderColor(MemorySegment segment, @CType("VkBorderColor") int value) { VkSamplerCreateInfo.set_borderColor(segment, 0L, value); }
-    /// Sets `borderColor` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSamplerCreateInfo borderColorAt(long index, @CType("VkBorderColor") int value) { VkSamplerCreateInfo.set_borderColor(this.segment(), index, value); return this; }
     /// Sets `borderColor` with the given value.
     /// @param value the value
     /// @return `this`
@@ -713,9 +596,6 @@ public final class VkSamplerCreateInfo extends Struct {
     /// {@return `unnormalizedCoordinates`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_unnormalizedCoordinates(MemorySegment segment) { return VkSamplerCreateInfo.get_unnormalizedCoordinates(segment, 0L); }
-    /// {@return `unnormalizedCoordinates` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int unnormalizedCoordinatesAt(long index) { return VkSamplerCreateInfo.get_unnormalizedCoordinates(this.segment(), index); }
     /// {@return `unnormalizedCoordinates`}
     public @CType("VkBool32") int unnormalizedCoordinates() { return VkSamplerCreateInfo.get_unnormalizedCoordinates(this.segment()); }
     /// Sets `unnormalizedCoordinates` with the given value at the given index.
@@ -727,14 +607,194 @@ public final class VkSamplerCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_unnormalizedCoordinates(MemorySegment segment, @CType("VkBool32") int value) { VkSamplerCreateInfo.set_unnormalizedCoordinates(segment, 0L, value); }
-    /// Sets `unnormalizedCoordinates` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSamplerCreateInfo unnormalizedCoordinatesAt(long index, @CType("VkBool32") int value) { VkSamplerCreateInfo.set_unnormalizedCoordinates(this.segment(), index, value); return this; }
     /// Sets `unnormalizedCoordinates` with the given value.
     /// @param value the value
     /// @return `this`
     public VkSamplerCreateInfo unnormalizedCoordinates(@CType("VkBool32") int value) { VkSamplerCreateInfo.set_unnormalizedCoordinates(this.segment(), value); return this; }
 
+    /// A buffer of [VkSamplerCreateInfo].
+    public static final class Buffer extends VkSamplerCreateInfo {
+        private final long elementCount;
+
+        /// Creates `VkSamplerCreateInfo.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkSamplerCreateInfo`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkSamplerCreateInfo`
+        public VkSamplerCreateInfo asSlice(long index) { return new VkSamplerCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkSamplerCreateInfo`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkSamplerCreateInfo`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkSamplerCreateInfo.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkSamplerCreateInfo.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkSamplerCreateInfo.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkSamplerCreateInfo.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `flags` at the given index}
+        /// @param index the index
+        public @CType("VkSamplerCreateFlags") int flagsAt(long index) { return VkSamplerCreateInfo.get_flags(this.segment(), index); }
+        /// Sets `flags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer flagsAt(long index, @CType("VkSamplerCreateFlags") int value) { VkSamplerCreateInfo.set_flags(this.segment(), index, value); return this; }
+
+        /// {@return `magFilter` at the given index}
+        /// @param index the index
+        public @CType("VkFilter") int magFilterAt(long index) { return VkSamplerCreateInfo.get_magFilter(this.segment(), index); }
+        /// Sets `magFilter` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer magFilterAt(long index, @CType("VkFilter") int value) { VkSamplerCreateInfo.set_magFilter(this.segment(), index, value); return this; }
+
+        /// {@return `minFilter` at the given index}
+        /// @param index the index
+        public @CType("VkFilter") int minFilterAt(long index) { return VkSamplerCreateInfo.get_minFilter(this.segment(), index); }
+        /// Sets `minFilter` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer minFilterAt(long index, @CType("VkFilter") int value) { VkSamplerCreateInfo.set_minFilter(this.segment(), index, value); return this; }
+
+        /// {@return `mipmapMode` at the given index}
+        /// @param index the index
+        public @CType("VkSamplerMipmapMode") int mipmapModeAt(long index) { return VkSamplerCreateInfo.get_mipmapMode(this.segment(), index); }
+        /// Sets `mipmapMode` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer mipmapModeAt(long index, @CType("VkSamplerMipmapMode") int value) { VkSamplerCreateInfo.set_mipmapMode(this.segment(), index, value); return this; }
+
+        /// {@return `addressModeU` at the given index}
+        /// @param index the index
+        public @CType("VkSamplerAddressMode") int addressModeUAt(long index) { return VkSamplerCreateInfo.get_addressModeU(this.segment(), index); }
+        /// Sets `addressModeU` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer addressModeUAt(long index, @CType("VkSamplerAddressMode") int value) { VkSamplerCreateInfo.set_addressModeU(this.segment(), index, value); return this; }
+
+        /// {@return `addressModeV` at the given index}
+        /// @param index the index
+        public @CType("VkSamplerAddressMode") int addressModeVAt(long index) { return VkSamplerCreateInfo.get_addressModeV(this.segment(), index); }
+        /// Sets `addressModeV` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer addressModeVAt(long index, @CType("VkSamplerAddressMode") int value) { VkSamplerCreateInfo.set_addressModeV(this.segment(), index, value); return this; }
+
+        /// {@return `addressModeW` at the given index}
+        /// @param index the index
+        public @CType("VkSamplerAddressMode") int addressModeWAt(long index) { return VkSamplerCreateInfo.get_addressModeW(this.segment(), index); }
+        /// Sets `addressModeW` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer addressModeWAt(long index, @CType("VkSamplerAddressMode") int value) { VkSamplerCreateInfo.set_addressModeW(this.segment(), index, value); return this; }
+
+        /// {@return `mipLodBias` at the given index}
+        /// @param index the index
+        public @CType("float") float mipLodBiasAt(long index) { return VkSamplerCreateInfo.get_mipLodBias(this.segment(), index); }
+        /// Sets `mipLodBias` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer mipLodBiasAt(long index, @CType("float") float value) { VkSamplerCreateInfo.set_mipLodBias(this.segment(), index, value); return this; }
+
+        /// {@return `anisotropyEnable` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int anisotropyEnableAt(long index) { return VkSamplerCreateInfo.get_anisotropyEnable(this.segment(), index); }
+        /// Sets `anisotropyEnable` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer anisotropyEnableAt(long index, @CType("VkBool32") int value) { VkSamplerCreateInfo.set_anisotropyEnable(this.segment(), index, value); return this; }
+
+        /// {@return `maxAnisotropy` at the given index}
+        /// @param index the index
+        public @CType("float") float maxAnisotropyAt(long index) { return VkSamplerCreateInfo.get_maxAnisotropy(this.segment(), index); }
+        /// Sets `maxAnisotropy` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxAnisotropyAt(long index, @CType("float") float value) { VkSamplerCreateInfo.set_maxAnisotropy(this.segment(), index, value); return this; }
+
+        /// {@return `compareEnable` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int compareEnableAt(long index) { return VkSamplerCreateInfo.get_compareEnable(this.segment(), index); }
+        /// Sets `compareEnable` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer compareEnableAt(long index, @CType("VkBool32") int value) { VkSamplerCreateInfo.set_compareEnable(this.segment(), index, value); return this; }
+
+        /// {@return `compareOp` at the given index}
+        /// @param index the index
+        public @CType("VkCompareOp") int compareOpAt(long index) { return VkSamplerCreateInfo.get_compareOp(this.segment(), index); }
+        /// Sets `compareOp` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer compareOpAt(long index, @CType("VkCompareOp") int value) { VkSamplerCreateInfo.set_compareOp(this.segment(), index, value); return this; }
+
+        /// {@return `minLod` at the given index}
+        /// @param index the index
+        public @CType("float") float minLodAt(long index) { return VkSamplerCreateInfo.get_minLod(this.segment(), index); }
+        /// Sets `minLod` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer minLodAt(long index, @CType("float") float value) { VkSamplerCreateInfo.set_minLod(this.segment(), index, value); return this; }
+
+        /// {@return `maxLod` at the given index}
+        /// @param index the index
+        public @CType("float") float maxLodAt(long index) { return VkSamplerCreateInfo.get_maxLod(this.segment(), index); }
+        /// Sets `maxLod` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxLodAt(long index, @CType("float") float value) { VkSamplerCreateInfo.set_maxLod(this.segment(), index, value); return this; }
+
+        /// {@return `borderColor` at the given index}
+        /// @param index the index
+        public @CType("VkBorderColor") int borderColorAt(long index) { return VkSamplerCreateInfo.get_borderColor(this.segment(), index); }
+        /// Sets `borderColor` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer borderColorAt(long index, @CType("VkBorderColor") int value) { VkSamplerCreateInfo.set_borderColor(this.segment(), index, value); return this; }
+
+        /// {@return `unnormalizedCoordinates` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int unnormalizedCoordinatesAt(long index) { return VkSamplerCreateInfo.get_unnormalizedCoordinates(this.segment(), index); }
+        /// Sets `unnormalizedCoordinates` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer unnormalizedCoordinatesAt(long index, @CType("VkBool32") int value) { VkSamplerCreateInfo.set_unnormalizedCoordinates(this.segment(), index, value); return this; }
+
+    }
 }

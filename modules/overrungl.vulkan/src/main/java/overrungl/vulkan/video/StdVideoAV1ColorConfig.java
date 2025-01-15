@@ -58,7 +58,7 @@ import overrungl.util.*;
 ///     StdVideoAV1ChromaSamplePosition chroma_sample_position;
 /// } StdVideoAV1ColorConfig;
 /// ```
-public final class StdVideoAV1ColorConfig extends Struct {
+public sealed class StdVideoAV1ColorConfig extends Struct {
     /// The struct layout of `StdVideoAV1ColorConfig`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         StdVideoAV1ColorConfigFlags.LAYOUT.withName("flags"),
@@ -100,6 +100,11 @@ public final class StdVideoAV1ColorConfig extends Struct {
     public static StdVideoAV1ColorConfig of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoAV1ColorConfig(segment); }
 
     /// Creates `StdVideoAV1ColorConfig` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `StdVideoAV1ColorConfig` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -112,7 +117,7 @@ public final class StdVideoAV1ColorConfig extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoAV1ColorConfig ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoAV1ColorConfig(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `StdVideoAV1ColorConfig` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -123,7 +128,21 @@ public final class StdVideoAV1ColorConfig extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `StdVideoAV1ColorConfig`
-    public static StdVideoAV1ColorConfig alloc(SegmentAllocator allocator, long count) { return new StdVideoAV1ColorConfig(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `StdVideoAV1ColorConfig` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `StdVideoAV1ColorConfig`
+    public static StdVideoAV1ColorConfig allocInit(SegmentAllocator allocator, @CType("StdVideoAV1ColorConfigFlags") java.lang.foreign.MemorySegment flags, @CType("uint8_t") byte BitDepth, @CType("uint8_t") byte subsampling_x, @CType("uint8_t") byte subsampling_y, @CType("uint8_t") byte reserved1, @CType("StdVideoAV1ColorPrimaries") int color_primaries, @CType("StdVideoAV1TransferCharacteristics") int transfer_characteristics, @CType("StdVideoAV1MatrixCoefficients") int matrix_coefficients, @CType("StdVideoAV1ChromaSamplePosition") int chroma_sample_position) { return alloc(allocator).flags(flags).BitDepth(BitDepth).subsampling_x(subsampling_x).subsampling_y(subsampling_y).reserved1(reserved1).color_primaries(color_primaries).transfer_characteristics(transfer_characteristics).matrix_coefficients(matrix_coefficients).chroma_sample_position(chroma_sample_position); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public StdVideoAV1ColorConfig copyFrom(StdVideoAV1ColorConfig src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
@@ -132,9 +151,6 @@ public final class StdVideoAV1ColorConfig extends Struct {
     /// {@return `flags`}
     /// @param segment the segment of the struct
     public static @CType("StdVideoAV1ColorConfigFlags") java.lang.foreign.MemorySegment get_flags(MemorySegment segment) { return StdVideoAV1ColorConfig.get_flags(segment, 0L); }
-    /// {@return `flags` at the given index}
-    /// @param index the index
-    public @CType("StdVideoAV1ColorConfigFlags") java.lang.foreign.MemorySegment flagsAt(long index) { return StdVideoAV1ColorConfig.get_flags(this.segment(), index); }
     /// {@return `flags`}
     public @CType("StdVideoAV1ColorConfigFlags") java.lang.foreign.MemorySegment flags() { return StdVideoAV1ColorConfig.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
@@ -146,11 +162,6 @@ public final class StdVideoAV1ColorConfig extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_flags(MemorySegment segment, @CType("StdVideoAV1ColorConfigFlags") java.lang.foreign.MemorySegment value) { StdVideoAV1ColorConfig.set_flags(segment, 0L, value); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1ColorConfig flagsAt(long index, @CType("StdVideoAV1ColorConfigFlags") java.lang.foreign.MemorySegment value) { StdVideoAV1ColorConfig.set_flags(this.segment(), index, value); return this; }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -163,9 +174,6 @@ public final class StdVideoAV1ColorConfig extends Struct {
     /// {@return `BitDepth`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t") byte get_BitDepth(MemorySegment segment) { return StdVideoAV1ColorConfig.get_BitDepth(segment, 0L); }
-    /// {@return `BitDepth` at the given index}
-    /// @param index the index
-    public @CType("uint8_t") byte BitDepthAt(long index) { return StdVideoAV1ColorConfig.get_BitDepth(this.segment(), index); }
     /// {@return `BitDepth`}
     public @CType("uint8_t") byte BitDepth() { return StdVideoAV1ColorConfig.get_BitDepth(this.segment()); }
     /// Sets `BitDepth` with the given value at the given index.
@@ -177,11 +185,6 @@ public final class StdVideoAV1ColorConfig extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_BitDepth(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoAV1ColorConfig.set_BitDepth(segment, 0L, value); }
-    /// Sets `BitDepth` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1ColorConfig BitDepthAt(long index, @CType("uint8_t") byte value) { StdVideoAV1ColorConfig.set_BitDepth(this.segment(), index, value); return this; }
     /// Sets `BitDepth` with the given value.
     /// @param value the value
     /// @return `this`
@@ -194,9 +197,6 @@ public final class StdVideoAV1ColorConfig extends Struct {
     /// {@return `subsampling_x`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t") byte get_subsampling_x(MemorySegment segment) { return StdVideoAV1ColorConfig.get_subsampling_x(segment, 0L); }
-    /// {@return `subsampling_x` at the given index}
-    /// @param index the index
-    public @CType("uint8_t") byte subsampling_xAt(long index) { return StdVideoAV1ColorConfig.get_subsampling_x(this.segment(), index); }
     /// {@return `subsampling_x`}
     public @CType("uint8_t") byte subsampling_x() { return StdVideoAV1ColorConfig.get_subsampling_x(this.segment()); }
     /// Sets `subsampling_x` with the given value at the given index.
@@ -208,11 +208,6 @@ public final class StdVideoAV1ColorConfig extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_subsampling_x(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoAV1ColorConfig.set_subsampling_x(segment, 0L, value); }
-    /// Sets `subsampling_x` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1ColorConfig subsampling_xAt(long index, @CType("uint8_t") byte value) { StdVideoAV1ColorConfig.set_subsampling_x(this.segment(), index, value); return this; }
     /// Sets `subsampling_x` with the given value.
     /// @param value the value
     /// @return `this`
@@ -225,9 +220,6 @@ public final class StdVideoAV1ColorConfig extends Struct {
     /// {@return `subsampling_y`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t") byte get_subsampling_y(MemorySegment segment) { return StdVideoAV1ColorConfig.get_subsampling_y(segment, 0L); }
-    /// {@return `subsampling_y` at the given index}
-    /// @param index the index
-    public @CType("uint8_t") byte subsampling_yAt(long index) { return StdVideoAV1ColorConfig.get_subsampling_y(this.segment(), index); }
     /// {@return `subsampling_y`}
     public @CType("uint8_t") byte subsampling_y() { return StdVideoAV1ColorConfig.get_subsampling_y(this.segment()); }
     /// Sets `subsampling_y` with the given value at the given index.
@@ -239,11 +231,6 @@ public final class StdVideoAV1ColorConfig extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_subsampling_y(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoAV1ColorConfig.set_subsampling_y(segment, 0L, value); }
-    /// Sets `subsampling_y` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1ColorConfig subsampling_yAt(long index, @CType("uint8_t") byte value) { StdVideoAV1ColorConfig.set_subsampling_y(this.segment(), index, value); return this; }
     /// Sets `subsampling_y` with the given value.
     /// @param value the value
     /// @return `this`
@@ -256,9 +243,6 @@ public final class StdVideoAV1ColorConfig extends Struct {
     /// {@return `reserved1`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t") byte get_reserved1(MemorySegment segment) { return StdVideoAV1ColorConfig.get_reserved1(segment, 0L); }
-    /// {@return `reserved1` at the given index}
-    /// @param index the index
-    public @CType("uint8_t") byte reserved1At(long index) { return StdVideoAV1ColorConfig.get_reserved1(this.segment(), index); }
     /// {@return `reserved1`}
     public @CType("uint8_t") byte reserved1() { return StdVideoAV1ColorConfig.get_reserved1(this.segment()); }
     /// Sets `reserved1` with the given value at the given index.
@@ -270,11 +254,6 @@ public final class StdVideoAV1ColorConfig extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_reserved1(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoAV1ColorConfig.set_reserved1(segment, 0L, value); }
-    /// Sets `reserved1` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1ColorConfig reserved1At(long index, @CType("uint8_t") byte value) { StdVideoAV1ColorConfig.set_reserved1(this.segment(), index, value); return this; }
     /// Sets `reserved1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -287,9 +266,6 @@ public final class StdVideoAV1ColorConfig extends Struct {
     /// {@return `color_primaries`}
     /// @param segment the segment of the struct
     public static @CType("StdVideoAV1ColorPrimaries") int get_color_primaries(MemorySegment segment) { return StdVideoAV1ColorConfig.get_color_primaries(segment, 0L); }
-    /// {@return `color_primaries` at the given index}
-    /// @param index the index
-    public @CType("StdVideoAV1ColorPrimaries") int color_primariesAt(long index) { return StdVideoAV1ColorConfig.get_color_primaries(this.segment(), index); }
     /// {@return `color_primaries`}
     public @CType("StdVideoAV1ColorPrimaries") int color_primaries() { return StdVideoAV1ColorConfig.get_color_primaries(this.segment()); }
     /// Sets `color_primaries` with the given value at the given index.
@@ -301,11 +277,6 @@ public final class StdVideoAV1ColorConfig extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_color_primaries(MemorySegment segment, @CType("StdVideoAV1ColorPrimaries") int value) { StdVideoAV1ColorConfig.set_color_primaries(segment, 0L, value); }
-    /// Sets `color_primaries` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1ColorConfig color_primariesAt(long index, @CType("StdVideoAV1ColorPrimaries") int value) { StdVideoAV1ColorConfig.set_color_primaries(this.segment(), index, value); return this; }
     /// Sets `color_primaries` with the given value.
     /// @param value the value
     /// @return `this`
@@ -318,9 +289,6 @@ public final class StdVideoAV1ColorConfig extends Struct {
     /// {@return `transfer_characteristics`}
     /// @param segment the segment of the struct
     public static @CType("StdVideoAV1TransferCharacteristics") int get_transfer_characteristics(MemorySegment segment) { return StdVideoAV1ColorConfig.get_transfer_characteristics(segment, 0L); }
-    /// {@return `transfer_characteristics` at the given index}
-    /// @param index the index
-    public @CType("StdVideoAV1TransferCharacteristics") int transfer_characteristicsAt(long index) { return StdVideoAV1ColorConfig.get_transfer_characteristics(this.segment(), index); }
     /// {@return `transfer_characteristics`}
     public @CType("StdVideoAV1TransferCharacteristics") int transfer_characteristics() { return StdVideoAV1ColorConfig.get_transfer_characteristics(this.segment()); }
     /// Sets `transfer_characteristics` with the given value at the given index.
@@ -332,11 +300,6 @@ public final class StdVideoAV1ColorConfig extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_transfer_characteristics(MemorySegment segment, @CType("StdVideoAV1TransferCharacteristics") int value) { StdVideoAV1ColorConfig.set_transfer_characteristics(segment, 0L, value); }
-    /// Sets `transfer_characteristics` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1ColorConfig transfer_characteristicsAt(long index, @CType("StdVideoAV1TransferCharacteristics") int value) { StdVideoAV1ColorConfig.set_transfer_characteristics(this.segment(), index, value); return this; }
     /// Sets `transfer_characteristics` with the given value.
     /// @param value the value
     /// @return `this`
@@ -349,9 +312,6 @@ public final class StdVideoAV1ColorConfig extends Struct {
     /// {@return `matrix_coefficients`}
     /// @param segment the segment of the struct
     public static @CType("StdVideoAV1MatrixCoefficients") int get_matrix_coefficients(MemorySegment segment) { return StdVideoAV1ColorConfig.get_matrix_coefficients(segment, 0L); }
-    /// {@return `matrix_coefficients` at the given index}
-    /// @param index the index
-    public @CType("StdVideoAV1MatrixCoefficients") int matrix_coefficientsAt(long index) { return StdVideoAV1ColorConfig.get_matrix_coefficients(this.segment(), index); }
     /// {@return `matrix_coefficients`}
     public @CType("StdVideoAV1MatrixCoefficients") int matrix_coefficients() { return StdVideoAV1ColorConfig.get_matrix_coefficients(this.segment()); }
     /// Sets `matrix_coefficients` with the given value at the given index.
@@ -363,11 +323,6 @@ public final class StdVideoAV1ColorConfig extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_matrix_coefficients(MemorySegment segment, @CType("StdVideoAV1MatrixCoefficients") int value) { StdVideoAV1ColorConfig.set_matrix_coefficients(segment, 0L, value); }
-    /// Sets `matrix_coefficients` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1ColorConfig matrix_coefficientsAt(long index, @CType("StdVideoAV1MatrixCoefficients") int value) { StdVideoAV1ColorConfig.set_matrix_coefficients(this.segment(), index, value); return this; }
     /// Sets `matrix_coefficients` with the given value.
     /// @param value the value
     /// @return `this`
@@ -380,9 +335,6 @@ public final class StdVideoAV1ColorConfig extends Struct {
     /// {@return `chroma_sample_position`}
     /// @param segment the segment of the struct
     public static @CType("StdVideoAV1ChromaSamplePosition") int get_chroma_sample_position(MemorySegment segment) { return StdVideoAV1ColorConfig.get_chroma_sample_position(segment, 0L); }
-    /// {@return `chroma_sample_position` at the given index}
-    /// @param index the index
-    public @CType("StdVideoAV1ChromaSamplePosition") int chroma_sample_positionAt(long index) { return StdVideoAV1ColorConfig.get_chroma_sample_position(this.segment(), index); }
     /// {@return `chroma_sample_position`}
     public @CType("StdVideoAV1ChromaSamplePosition") int chroma_sample_position() { return StdVideoAV1ColorConfig.get_chroma_sample_position(this.segment()); }
     /// Sets `chroma_sample_position` with the given value at the given index.
@@ -394,14 +346,113 @@ public final class StdVideoAV1ColorConfig extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_chroma_sample_position(MemorySegment segment, @CType("StdVideoAV1ChromaSamplePosition") int value) { StdVideoAV1ColorConfig.set_chroma_sample_position(segment, 0L, value); }
-    /// Sets `chroma_sample_position` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1ColorConfig chroma_sample_positionAt(long index, @CType("StdVideoAV1ChromaSamplePosition") int value) { StdVideoAV1ColorConfig.set_chroma_sample_position(this.segment(), index, value); return this; }
     /// Sets `chroma_sample_position` with the given value.
     /// @param value the value
     /// @return `this`
     public StdVideoAV1ColorConfig chroma_sample_position(@CType("StdVideoAV1ChromaSamplePosition") int value) { StdVideoAV1ColorConfig.set_chroma_sample_position(this.segment(), value); return this; }
 
+    /// A buffer of [StdVideoAV1ColorConfig].
+    public static final class Buffer extends StdVideoAV1ColorConfig {
+        private final long elementCount;
+
+        /// Creates `StdVideoAV1ColorConfig.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `StdVideoAV1ColorConfig`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `StdVideoAV1ColorConfig`
+        public StdVideoAV1ColorConfig asSlice(long index) { return new StdVideoAV1ColorConfig(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `StdVideoAV1ColorConfig`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `StdVideoAV1ColorConfig`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `flags` at the given index}
+        /// @param index the index
+        public @CType("StdVideoAV1ColorConfigFlags") java.lang.foreign.MemorySegment flagsAt(long index) { return StdVideoAV1ColorConfig.get_flags(this.segment(), index); }
+        /// Sets `flags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer flagsAt(long index, @CType("StdVideoAV1ColorConfigFlags") java.lang.foreign.MemorySegment value) { StdVideoAV1ColorConfig.set_flags(this.segment(), index, value); return this; }
+
+        /// {@return `BitDepth` at the given index}
+        /// @param index the index
+        public @CType("uint8_t") byte BitDepthAt(long index) { return StdVideoAV1ColorConfig.get_BitDepth(this.segment(), index); }
+        /// Sets `BitDepth` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer BitDepthAt(long index, @CType("uint8_t") byte value) { StdVideoAV1ColorConfig.set_BitDepth(this.segment(), index, value); return this; }
+
+        /// {@return `subsampling_x` at the given index}
+        /// @param index the index
+        public @CType("uint8_t") byte subsampling_xAt(long index) { return StdVideoAV1ColorConfig.get_subsampling_x(this.segment(), index); }
+        /// Sets `subsampling_x` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer subsampling_xAt(long index, @CType("uint8_t") byte value) { StdVideoAV1ColorConfig.set_subsampling_x(this.segment(), index, value); return this; }
+
+        /// {@return `subsampling_y` at the given index}
+        /// @param index the index
+        public @CType("uint8_t") byte subsampling_yAt(long index) { return StdVideoAV1ColorConfig.get_subsampling_y(this.segment(), index); }
+        /// Sets `subsampling_y` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer subsampling_yAt(long index, @CType("uint8_t") byte value) { StdVideoAV1ColorConfig.set_subsampling_y(this.segment(), index, value); return this; }
+
+        /// {@return `reserved1` at the given index}
+        /// @param index the index
+        public @CType("uint8_t") byte reserved1At(long index) { return StdVideoAV1ColorConfig.get_reserved1(this.segment(), index); }
+        /// Sets `reserved1` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer reserved1At(long index, @CType("uint8_t") byte value) { StdVideoAV1ColorConfig.set_reserved1(this.segment(), index, value); return this; }
+
+        /// {@return `color_primaries` at the given index}
+        /// @param index the index
+        public @CType("StdVideoAV1ColorPrimaries") int color_primariesAt(long index) { return StdVideoAV1ColorConfig.get_color_primaries(this.segment(), index); }
+        /// Sets `color_primaries` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer color_primariesAt(long index, @CType("StdVideoAV1ColorPrimaries") int value) { StdVideoAV1ColorConfig.set_color_primaries(this.segment(), index, value); return this; }
+
+        /// {@return `transfer_characteristics` at the given index}
+        /// @param index the index
+        public @CType("StdVideoAV1TransferCharacteristics") int transfer_characteristicsAt(long index) { return StdVideoAV1ColorConfig.get_transfer_characteristics(this.segment(), index); }
+        /// Sets `transfer_characteristics` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer transfer_characteristicsAt(long index, @CType("StdVideoAV1TransferCharacteristics") int value) { StdVideoAV1ColorConfig.set_transfer_characteristics(this.segment(), index, value); return this; }
+
+        /// {@return `matrix_coefficients` at the given index}
+        /// @param index the index
+        public @CType("StdVideoAV1MatrixCoefficients") int matrix_coefficientsAt(long index) { return StdVideoAV1ColorConfig.get_matrix_coefficients(this.segment(), index); }
+        /// Sets `matrix_coefficients` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer matrix_coefficientsAt(long index, @CType("StdVideoAV1MatrixCoefficients") int value) { StdVideoAV1ColorConfig.set_matrix_coefficients(this.segment(), index, value); return this; }
+
+        /// {@return `chroma_sample_position` at the given index}
+        /// @param index the index
+        public @CType("StdVideoAV1ChromaSamplePosition") int chroma_sample_positionAt(long index) { return StdVideoAV1ColorConfig.get_chroma_sample_position(this.segment(), index); }
+        /// Sets `chroma_sample_position` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer chroma_sample_positionAt(long index, @CType("StdVideoAV1ChromaSamplePosition") int value) { StdVideoAV1ColorConfig.set_chroma_sample_position(this.segment(), index, value); return this; }
+
+    }
 }

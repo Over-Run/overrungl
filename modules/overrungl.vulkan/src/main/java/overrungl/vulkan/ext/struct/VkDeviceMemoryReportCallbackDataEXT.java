@@ -58,7 +58,7 @@ import overrungl.util.*;
 ///     uint32_t heapIndex;
 /// } VkDeviceMemoryReportCallbackDataEXT;
 /// ```
-public final class VkDeviceMemoryReportCallbackDataEXT extends Struct {
+public sealed class VkDeviceMemoryReportCallbackDataEXT extends Struct {
     /// The struct layout of `VkDeviceMemoryReportCallbackDataEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -100,6 +100,11 @@ public final class VkDeviceMemoryReportCallbackDataEXT extends Struct {
     public static VkDeviceMemoryReportCallbackDataEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDeviceMemoryReportCallbackDataEXT(segment); }
 
     /// Creates `VkDeviceMemoryReportCallbackDataEXT` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkDeviceMemoryReportCallbackDataEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -112,7 +117,7 @@ public final class VkDeviceMemoryReportCallbackDataEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDeviceMemoryReportCallbackDataEXT ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkDeviceMemoryReportCallbackDataEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkDeviceMemoryReportCallbackDataEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -123,7 +128,21 @@ public final class VkDeviceMemoryReportCallbackDataEXT extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDeviceMemoryReportCallbackDataEXT`
-    public static VkDeviceMemoryReportCallbackDataEXT alloc(SegmentAllocator allocator, long count) { return new VkDeviceMemoryReportCallbackDataEXT(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkDeviceMemoryReportCallbackDataEXT` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkDeviceMemoryReportCallbackDataEXT`
+    public static VkDeviceMemoryReportCallbackDataEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkDeviceMemoryReportFlagsEXT") int flags, @CType("VkDeviceMemoryReportEventTypeEXT") int type, @CType("uint64_t") long memoryObjectId, @CType("VkDeviceSize") long size, @CType("VkObjectType") int objectType, @CType("uint64_t") long objectHandle, @CType("uint32_t") int heapIndex) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).type(type).memoryObjectId(memoryObjectId).size(size).objectType(objectType).objectHandle(objectHandle).heapIndex(heapIndex); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkDeviceMemoryReportCallbackDataEXT copyFrom(VkDeviceMemoryReportCallbackDataEXT src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -132,9 +151,6 @@ public final class VkDeviceMemoryReportCallbackDataEXT extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkDeviceMemoryReportCallbackDataEXT.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkDeviceMemoryReportCallbackDataEXT.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkDeviceMemoryReportCallbackDataEXT.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -146,11 +162,6 @@ public final class VkDeviceMemoryReportCallbackDataEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkDeviceMemoryReportCallbackDataEXT.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceMemoryReportCallbackDataEXT sTypeAt(long index, @CType("VkStructureType") int value) { VkDeviceMemoryReportCallbackDataEXT.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -163,9 +174,6 @@ public final class VkDeviceMemoryReportCallbackDataEXT extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkDeviceMemoryReportCallbackDataEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkDeviceMemoryReportCallbackDataEXT.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkDeviceMemoryReportCallbackDataEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -177,11 +185,6 @@ public final class VkDeviceMemoryReportCallbackDataEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkDeviceMemoryReportCallbackDataEXT.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceMemoryReportCallbackDataEXT pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkDeviceMemoryReportCallbackDataEXT.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -194,9 +197,6 @@ public final class VkDeviceMemoryReportCallbackDataEXT extends Struct {
     /// {@return `flags`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceMemoryReportFlagsEXT") int get_flags(MemorySegment segment) { return VkDeviceMemoryReportCallbackDataEXT.get_flags(segment, 0L); }
-    /// {@return `flags` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceMemoryReportFlagsEXT") int flagsAt(long index) { return VkDeviceMemoryReportCallbackDataEXT.get_flags(this.segment(), index); }
     /// {@return `flags`}
     public @CType("VkDeviceMemoryReportFlagsEXT") int flags() { return VkDeviceMemoryReportCallbackDataEXT.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
@@ -208,11 +208,6 @@ public final class VkDeviceMemoryReportCallbackDataEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_flags(MemorySegment segment, @CType("VkDeviceMemoryReportFlagsEXT") int value) { VkDeviceMemoryReportCallbackDataEXT.set_flags(segment, 0L, value); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceMemoryReportCallbackDataEXT flagsAt(long index, @CType("VkDeviceMemoryReportFlagsEXT") int value) { VkDeviceMemoryReportCallbackDataEXT.set_flags(this.segment(), index, value); return this; }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -225,9 +220,6 @@ public final class VkDeviceMemoryReportCallbackDataEXT extends Struct {
     /// {@return `type`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceMemoryReportEventTypeEXT") int get_type(MemorySegment segment) { return VkDeviceMemoryReportCallbackDataEXT.get_type(segment, 0L); }
-    /// {@return `type` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceMemoryReportEventTypeEXT") int typeAt(long index) { return VkDeviceMemoryReportCallbackDataEXT.get_type(this.segment(), index); }
     /// {@return `type`}
     public @CType("VkDeviceMemoryReportEventTypeEXT") int type() { return VkDeviceMemoryReportCallbackDataEXT.get_type(this.segment()); }
     /// Sets `type` with the given value at the given index.
@@ -239,11 +231,6 @@ public final class VkDeviceMemoryReportCallbackDataEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_type(MemorySegment segment, @CType("VkDeviceMemoryReportEventTypeEXT") int value) { VkDeviceMemoryReportCallbackDataEXT.set_type(segment, 0L, value); }
-    /// Sets `type` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceMemoryReportCallbackDataEXT typeAt(long index, @CType("VkDeviceMemoryReportEventTypeEXT") int value) { VkDeviceMemoryReportCallbackDataEXT.set_type(this.segment(), index, value); return this; }
     /// Sets `type` with the given value.
     /// @param value the value
     /// @return `this`
@@ -256,9 +243,6 @@ public final class VkDeviceMemoryReportCallbackDataEXT extends Struct {
     /// {@return `memoryObjectId`}
     /// @param segment the segment of the struct
     public static @CType("uint64_t") long get_memoryObjectId(MemorySegment segment) { return VkDeviceMemoryReportCallbackDataEXT.get_memoryObjectId(segment, 0L); }
-    /// {@return `memoryObjectId` at the given index}
-    /// @param index the index
-    public @CType("uint64_t") long memoryObjectIdAt(long index) { return VkDeviceMemoryReportCallbackDataEXT.get_memoryObjectId(this.segment(), index); }
     /// {@return `memoryObjectId`}
     public @CType("uint64_t") long memoryObjectId() { return VkDeviceMemoryReportCallbackDataEXT.get_memoryObjectId(this.segment()); }
     /// Sets `memoryObjectId` with the given value at the given index.
@@ -270,11 +254,6 @@ public final class VkDeviceMemoryReportCallbackDataEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_memoryObjectId(MemorySegment segment, @CType("uint64_t") long value) { VkDeviceMemoryReportCallbackDataEXT.set_memoryObjectId(segment, 0L, value); }
-    /// Sets `memoryObjectId` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceMemoryReportCallbackDataEXT memoryObjectIdAt(long index, @CType("uint64_t") long value) { VkDeviceMemoryReportCallbackDataEXT.set_memoryObjectId(this.segment(), index, value); return this; }
     /// Sets `memoryObjectId` with the given value.
     /// @param value the value
     /// @return `this`
@@ -287,9 +266,6 @@ public final class VkDeviceMemoryReportCallbackDataEXT extends Struct {
     /// {@return `size`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_size(MemorySegment segment) { return VkDeviceMemoryReportCallbackDataEXT.get_size(segment, 0L); }
-    /// {@return `size` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long sizeAt(long index) { return VkDeviceMemoryReportCallbackDataEXT.get_size(this.segment(), index); }
     /// {@return `size`}
     public @CType("VkDeviceSize") long size() { return VkDeviceMemoryReportCallbackDataEXT.get_size(this.segment()); }
     /// Sets `size` with the given value at the given index.
@@ -301,11 +277,6 @@ public final class VkDeviceMemoryReportCallbackDataEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_size(MemorySegment segment, @CType("VkDeviceSize") long value) { VkDeviceMemoryReportCallbackDataEXT.set_size(segment, 0L, value); }
-    /// Sets `size` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceMemoryReportCallbackDataEXT sizeAt(long index, @CType("VkDeviceSize") long value) { VkDeviceMemoryReportCallbackDataEXT.set_size(this.segment(), index, value); return this; }
     /// Sets `size` with the given value.
     /// @param value the value
     /// @return `this`
@@ -318,9 +289,6 @@ public final class VkDeviceMemoryReportCallbackDataEXT extends Struct {
     /// {@return `objectType`}
     /// @param segment the segment of the struct
     public static @CType("VkObjectType") int get_objectType(MemorySegment segment) { return VkDeviceMemoryReportCallbackDataEXT.get_objectType(segment, 0L); }
-    /// {@return `objectType` at the given index}
-    /// @param index the index
-    public @CType("VkObjectType") int objectTypeAt(long index) { return VkDeviceMemoryReportCallbackDataEXT.get_objectType(this.segment(), index); }
     /// {@return `objectType`}
     public @CType("VkObjectType") int objectType() { return VkDeviceMemoryReportCallbackDataEXT.get_objectType(this.segment()); }
     /// Sets `objectType` with the given value at the given index.
@@ -332,11 +300,6 @@ public final class VkDeviceMemoryReportCallbackDataEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_objectType(MemorySegment segment, @CType("VkObjectType") int value) { VkDeviceMemoryReportCallbackDataEXT.set_objectType(segment, 0L, value); }
-    /// Sets `objectType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceMemoryReportCallbackDataEXT objectTypeAt(long index, @CType("VkObjectType") int value) { VkDeviceMemoryReportCallbackDataEXT.set_objectType(this.segment(), index, value); return this; }
     /// Sets `objectType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -349,9 +312,6 @@ public final class VkDeviceMemoryReportCallbackDataEXT extends Struct {
     /// {@return `objectHandle`}
     /// @param segment the segment of the struct
     public static @CType("uint64_t") long get_objectHandle(MemorySegment segment) { return VkDeviceMemoryReportCallbackDataEXT.get_objectHandle(segment, 0L); }
-    /// {@return `objectHandle` at the given index}
-    /// @param index the index
-    public @CType("uint64_t") long objectHandleAt(long index) { return VkDeviceMemoryReportCallbackDataEXT.get_objectHandle(this.segment(), index); }
     /// {@return `objectHandle`}
     public @CType("uint64_t") long objectHandle() { return VkDeviceMemoryReportCallbackDataEXT.get_objectHandle(this.segment()); }
     /// Sets `objectHandle` with the given value at the given index.
@@ -363,11 +323,6 @@ public final class VkDeviceMemoryReportCallbackDataEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_objectHandle(MemorySegment segment, @CType("uint64_t") long value) { VkDeviceMemoryReportCallbackDataEXT.set_objectHandle(segment, 0L, value); }
-    /// Sets `objectHandle` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceMemoryReportCallbackDataEXT objectHandleAt(long index, @CType("uint64_t") long value) { VkDeviceMemoryReportCallbackDataEXT.set_objectHandle(this.segment(), index, value); return this; }
     /// Sets `objectHandle` with the given value.
     /// @param value the value
     /// @return `this`
@@ -380,9 +335,6 @@ public final class VkDeviceMemoryReportCallbackDataEXT extends Struct {
     /// {@return `heapIndex`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_heapIndex(MemorySegment segment) { return VkDeviceMemoryReportCallbackDataEXT.get_heapIndex(segment, 0L); }
-    /// {@return `heapIndex` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int heapIndexAt(long index) { return VkDeviceMemoryReportCallbackDataEXT.get_heapIndex(this.segment(), index); }
     /// {@return `heapIndex`}
     public @CType("uint32_t") int heapIndex() { return VkDeviceMemoryReportCallbackDataEXT.get_heapIndex(this.segment()); }
     /// Sets `heapIndex` with the given value at the given index.
@@ -394,14 +346,113 @@ public final class VkDeviceMemoryReportCallbackDataEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_heapIndex(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceMemoryReportCallbackDataEXT.set_heapIndex(segment, 0L, value); }
-    /// Sets `heapIndex` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceMemoryReportCallbackDataEXT heapIndexAt(long index, @CType("uint32_t") int value) { VkDeviceMemoryReportCallbackDataEXT.set_heapIndex(this.segment(), index, value); return this; }
     /// Sets `heapIndex` with the given value.
     /// @param value the value
     /// @return `this`
     public VkDeviceMemoryReportCallbackDataEXT heapIndex(@CType("uint32_t") int value) { VkDeviceMemoryReportCallbackDataEXT.set_heapIndex(this.segment(), value); return this; }
 
+    /// A buffer of [VkDeviceMemoryReportCallbackDataEXT].
+    public static final class Buffer extends VkDeviceMemoryReportCallbackDataEXT {
+        private final long elementCount;
+
+        /// Creates `VkDeviceMemoryReportCallbackDataEXT.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkDeviceMemoryReportCallbackDataEXT`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkDeviceMemoryReportCallbackDataEXT`
+        public VkDeviceMemoryReportCallbackDataEXT asSlice(long index) { return new VkDeviceMemoryReportCallbackDataEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkDeviceMemoryReportCallbackDataEXT`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkDeviceMemoryReportCallbackDataEXT`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkDeviceMemoryReportCallbackDataEXT.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkDeviceMemoryReportCallbackDataEXT.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkDeviceMemoryReportCallbackDataEXT.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkDeviceMemoryReportCallbackDataEXT.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `flags` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceMemoryReportFlagsEXT") int flagsAt(long index) { return VkDeviceMemoryReportCallbackDataEXT.get_flags(this.segment(), index); }
+        /// Sets `flags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer flagsAt(long index, @CType("VkDeviceMemoryReportFlagsEXT") int value) { VkDeviceMemoryReportCallbackDataEXT.set_flags(this.segment(), index, value); return this; }
+
+        /// {@return `type` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceMemoryReportEventTypeEXT") int typeAt(long index) { return VkDeviceMemoryReportCallbackDataEXT.get_type(this.segment(), index); }
+        /// Sets `type` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer typeAt(long index, @CType("VkDeviceMemoryReportEventTypeEXT") int value) { VkDeviceMemoryReportCallbackDataEXT.set_type(this.segment(), index, value); return this; }
+
+        /// {@return `memoryObjectId` at the given index}
+        /// @param index the index
+        public @CType("uint64_t") long memoryObjectIdAt(long index) { return VkDeviceMemoryReportCallbackDataEXT.get_memoryObjectId(this.segment(), index); }
+        /// Sets `memoryObjectId` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer memoryObjectIdAt(long index, @CType("uint64_t") long value) { VkDeviceMemoryReportCallbackDataEXT.set_memoryObjectId(this.segment(), index, value); return this; }
+
+        /// {@return `size` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long sizeAt(long index) { return VkDeviceMemoryReportCallbackDataEXT.get_size(this.segment(), index); }
+        /// Sets `size` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sizeAt(long index, @CType("VkDeviceSize") long value) { VkDeviceMemoryReportCallbackDataEXT.set_size(this.segment(), index, value); return this; }
+
+        /// {@return `objectType` at the given index}
+        /// @param index the index
+        public @CType("VkObjectType") int objectTypeAt(long index) { return VkDeviceMemoryReportCallbackDataEXT.get_objectType(this.segment(), index); }
+        /// Sets `objectType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer objectTypeAt(long index, @CType("VkObjectType") int value) { VkDeviceMemoryReportCallbackDataEXT.set_objectType(this.segment(), index, value); return this; }
+
+        /// {@return `objectHandle` at the given index}
+        /// @param index the index
+        public @CType("uint64_t") long objectHandleAt(long index) { return VkDeviceMemoryReportCallbackDataEXT.get_objectHandle(this.segment(), index); }
+        /// Sets `objectHandle` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer objectHandleAt(long index, @CType("uint64_t") long value) { VkDeviceMemoryReportCallbackDataEXT.set_objectHandle(this.segment(), index, value); return this; }
+
+        /// {@return `heapIndex` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int heapIndexAt(long index) { return VkDeviceMemoryReportCallbackDataEXT.get_heapIndex(this.segment(), index); }
+        /// Sets `heapIndex` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer heapIndexAt(long index, @CType("uint32_t") int value) { VkDeviceMemoryReportCallbackDataEXT.set_heapIndex(this.segment(), index, value); return this; }
+
+    }
 }

@@ -52,7 +52,7 @@ import overrungl.util.*;
 ///     VkBool32 pipelineBinaryCompressedData;
 /// } VkPhysicalDevicePipelineBinaryPropertiesKHR;
 /// ```
-public final class VkPhysicalDevicePipelineBinaryPropertiesKHR extends Struct {
+public sealed class VkPhysicalDevicePipelineBinaryPropertiesKHR extends Struct {
     /// The struct layout of `VkPhysicalDevicePipelineBinaryPropertiesKHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -88,6 +88,11 @@ public final class VkPhysicalDevicePipelineBinaryPropertiesKHR extends Struct {
     public static VkPhysicalDevicePipelineBinaryPropertiesKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDevicePipelineBinaryPropertiesKHR(segment); }
 
     /// Creates `VkPhysicalDevicePipelineBinaryPropertiesKHR` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPhysicalDevicePipelineBinaryPropertiesKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -100,7 +105,7 @@ public final class VkPhysicalDevicePipelineBinaryPropertiesKHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDevicePipelineBinaryPropertiesKHR ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDevicePipelineBinaryPropertiesKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDevicePipelineBinaryPropertiesKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -111,7 +116,21 @@ public final class VkPhysicalDevicePipelineBinaryPropertiesKHR extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDevicePipelineBinaryPropertiesKHR`
-    public static VkPhysicalDevicePipelineBinaryPropertiesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDevicePipelineBinaryPropertiesKHR(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkPhysicalDevicePipelineBinaryPropertiesKHR` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDevicePipelineBinaryPropertiesKHR`
+    public static VkPhysicalDevicePipelineBinaryPropertiesKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int pipelineBinaryInternalCache, @CType("VkBool32") int pipelineBinaryInternalCacheControl, @CType("VkBool32") int pipelineBinaryPrefersInternalCache, @CType("VkBool32") int pipelineBinaryPrecompiledInternalCache, @CType("VkBool32") int pipelineBinaryCompressedData) { return alloc(allocator).sType(sType).pNext(pNext).pipelineBinaryInternalCache(pipelineBinaryInternalCache).pipelineBinaryInternalCacheControl(pipelineBinaryInternalCacheControl).pipelineBinaryPrefersInternalCache(pipelineBinaryPrefersInternalCache).pipelineBinaryPrecompiledInternalCache(pipelineBinaryPrecompiledInternalCache).pipelineBinaryCompressedData(pipelineBinaryCompressedData); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDevicePipelineBinaryPropertiesKHR copyFrom(VkPhysicalDevicePipelineBinaryPropertiesKHR src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -120,9 +139,6 @@ public final class VkPhysicalDevicePipelineBinaryPropertiesKHR extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDevicePipelineBinaryPropertiesKHR.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDevicePipelineBinaryPropertiesKHR.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPhysicalDevicePipelineBinaryPropertiesKHR.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -134,11 +150,6 @@ public final class VkPhysicalDevicePipelineBinaryPropertiesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDevicePipelineBinaryPropertiesKHR.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePipelineBinaryPropertiesKHR sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDevicePipelineBinaryPropertiesKHR.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -151,9 +162,6 @@ public final class VkPhysicalDevicePipelineBinaryPropertiesKHR extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDevicePipelineBinaryPropertiesKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDevicePipelineBinaryPropertiesKHR.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDevicePipelineBinaryPropertiesKHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -165,11 +173,6 @@ public final class VkPhysicalDevicePipelineBinaryPropertiesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDevicePipelineBinaryPropertiesKHR.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePipelineBinaryPropertiesKHR pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDevicePipelineBinaryPropertiesKHR.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,9 +185,6 @@ public final class VkPhysicalDevicePipelineBinaryPropertiesKHR extends Struct {
     /// {@return `pipelineBinaryInternalCache`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_pipelineBinaryInternalCache(MemorySegment segment) { return VkPhysicalDevicePipelineBinaryPropertiesKHR.get_pipelineBinaryInternalCache(segment, 0L); }
-    /// {@return `pipelineBinaryInternalCache` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int pipelineBinaryInternalCacheAt(long index) { return VkPhysicalDevicePipelineBinaryPropertiesKHR.get_pipelineBinaryInternalCache(this.segment(), index); }
     /// {@return `pipelineBinaryInternalCache`}
     public @CType("VkBool32") int pipelineBinaryInternalCache() { return VkPhysicalDevicePipelineBinaryPropertiesKHR.get_pipelineBinaryInternalCache(this.segment()); }
     /// Sets `pipelineBinaryInternalCache` with the given value at the given index.
@@ -196,11 +196,6 @@ public final class VkPhysicalDevicePipelineBinaryPropertiesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pipelineBinaryInternalCache(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDevicePipelineBinaryPropertiesKHR.set_pipelineBinaryInternalCache(segment, 0L, value); }
-    /// Sets `pipelineBinaryInternalCache` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePipelineBinaryPropertiesKHR pipelineBinaryInternalCacheAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePipelineBinaryPropertiesKHR.set_pipelineBinaryInternalCache(this.segment(), index, value); return this; }
     /// Sets `pipelineBinaryInternalCache` with the given value.
     /// @param value the value
     /// @return `this`
@@ -213,9 +208,6 @@ public final class VkPhysicalDevicePipelineBinaryPropertiesKHR extends Struct {
     /// {@return `pipelineBinaryInternalCacheControl`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_pipelineBinaryInternalCacheControl(MemorySegment segment) { return VkPhysicalDevicePipelineBinaryPropertiesKHR.get_pipelineBinaryInternalCacheControl(segment, 0L); }
-    /// {@return `pipelineBinaryInternalCacheControl` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int pipelineBinaryInternalCacheControlAt(long index) { return VkPhysicalDevicePipelineBinaryPropertiesKHR.get_pipelineBinaryInternalCacheControl(this.segment(), index); }
     /// {@return `pipelineBinaryInternalCacheControl`}
     public @CType("VkBool32") int pipelineBinaryInternalCacheControl() { return VkPhysicalDevicePipelineBinaryPropertiesKHR.get_pipelineBinaryInternalCacheControl(this.segment()); }
     /// Sets `pipelineBinaryInternalCacheControl` with the given value at the given index.
@@ -227,11 +219,6 @@ public final class VkPhysicalDevicePipelineBinaryPropertiesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pipelineBinaryInternalCacheControl(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDevicePipelineBinaryPropertiesKHR.set_pipelineBinaryInternalCacheControl(segment, 0L, value); }
-    /// Sets `pipelineBinaryInternalCacheControl` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePipelineBinaryPropertiesKHR pipelineBinaryInternalCacheControlAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePipelineBinaryPropertiesKHR.set_pipelineBinaryInternalCacheControl(this.segment(), index, value); return this; }
     /// Sets `pipelineBinaryInternalCacheControl` with the given value.
     /// @param value the value
     /// @return `this`
@@ -244,9 +231,6 @@ public final class VkPhysicalDevicePipelineBinaryPropertiesKHR extends Struct {
     /// {@return `pipelineBinaryPrefersInternalCache`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_pipelineBinaryPrefersInternalCache(MemorySegment segment) { return VkPhysicalDevicePipelineBinaryPropertiesKHR.get_pipelineBinaryPrefersInternalCache(segment, 0L); }
-    /// {@return `pipelineBinaryPrefersInternalCache` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int pipelineBinaryPrefersInternalCacheAt(long index) { return VkPhysicalDevicePipelineBinaryPropertiesKHR.get_pipelineBinaryPrefersInternalCache(this.segment(), index); }
     /// {@return `pipelineBinaryPrefersInternalCache`}
     public @CType("VkBool32") int pipelineBinaryPrefersInternalCache() { return VkPhysicalDevicePipelineBinaryPropertiesKHR.get_pipelineBinaryPrefersInternalCache(this.segment()); }
     /// Sets `pipelineBinaryPrefersInternalCache` with the given value at the given index.
@@ -258,11 +242,6 @@ public final class VkPhysicalDevicePipelineBinaryPropertiesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pipelineBinaryPrefersInternalCache(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDevicePipelineBinaryPropertiesKHR.set_pipelineBinaryPrefersInternalCache(segment, 0L, value); }
-    /// Sets `pipelineBinaryPrefersInternalCache` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePipelineBinaryPropertiesKHR pipelineBinaryPrefersInternalCacheAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePipelineBinaryPropertiesKHR.set_pipelineBinaryPrefersInternalCache(this.segment(), index, value); return this; }
     /// Sets `pipelineBinaryPrefersInternalCache` with the given value.
     /// @param value the value
     /// @return `this`
@@ -275,9 +254,6 @@ public final class VkPhysicalDevicePipelineBinaryPropertiesKHR extends Struct {
     /// {@return `pipelineBinaryPrecompiledInternalCache`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_pipelineBinaryPrecompiledInternalCache(MemorySegment segment) { return VkPhysicalDevicePipelineBinaryPropertiesKHR.get_pipelineBinaryPrecompiledInternalCache(segment, 0L); }
-    /// {@return `pipelineBinaryPrecompiledInternalCache` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int pipelineBinaryPrecompiledInternalCacheAt(long index) { return VkPhysicalDevicePipelineBinaryPropertiesKHR.get_pipelineBinaryPrecompiledInternalCache(this.segment(), index); }
     /// {@return `pipelineBinaryPrecompiledInternalCache`}
     public @CType("VkBool32") int pipelineBinaryPrecompiledInternalCache() { return VkPhysicalDevicePipelineBinaryPropertiesKHR.get_pipelineBinaryPrecompiledInternalCache(this.segment()); }
     /// Sets `pipelineBinaryPrecompiledInternalCache` with the given value at the given index.
@@ -289,11 +265,6 @@ public final class VkPhysicalDevicePipelineBinaryPropertiesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pipelineBinaryPrecompiledInternalCache(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDevicePipelineBinaryPropertiesKHR.set_pipelineBinaryPrecompiledInternalCache(segment, 0L, value); }
-    /// Sets `pipelineBinaryPrecompiledInternalCache` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePipelineBinaryPropertiesKHR pipelineBinaryPrecompiledInternalCacheAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePipelineBinaryPropertiesKHR.set_pipelineBinaryPrecompiledInternalCache(this.segment(), index, value); return this; }
     /// Sets `pipelineBinaryPrecompiledInternalCache` with the given value.
     /// @param value the value
     /// @return `this`
@@ -306,9 +277,6 @@ public final class VkPhysicalDevicePipelineBinaryPropertiesKHR extends Struct {
     /// {@return `pipelineBinaryCompressedData`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_pipelineBinaryCompressedData(MemorySegment segment) { return VkPhysicalDevicePipelineBinaryPropertiesKHR.get_pipelineBinaryCompressedData(segment, 0L); }
-    /// {@return `pipelineBinaryCompressedData` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int pipelineBinaryCompressedDataAt(long index) { return VkPhysicalDevicePipelineBinaryPropertiesKHR.get_pipelineBinaryCompressedData(this.segment(), index); }
     /// {@return `pipelineBinaryCompressedData`}
     public @CType("VkBool32") int pipelineBinaryCompressedData() { return VkPhysicalDevicePipelineBinaryPropertiesKHR.get_pipelineBinaryCompressedData(this.segment()); }
     /// Sets `pipelineBinaryCompressedData` with the given value at the given index.
@@ -320,14 +288,95 @@ public final class VkPhysicalDevicePipelineBinaryPropertiesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pipelineBinaryCompressedData(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDevicePipelineBinaryPropertiesKHR.set_pipelineBinaryCompressedData(segment, 0L, value); }
-    /// Sets `pipelineBinaryCompressedData` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePipelineBinaryPropertiesKHR pipelineBinaryCompressedDataAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePipelineBinaryPropertiesKHR.set_pipelineBinaryCompressedData(this.segment(), index, value); return this; }
     /// Sets `pipelineBinaryCompressedData` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDevicePipelineBinaryPropertiesKHR pipelineBinaryCompressedData(@CType("VkBool32") int value) { VkPhysicalDevicePipelineBinaryPropertiesKHR.set_pipelineBinaryCompressedData(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDevicePipelineBinaryPropertiesKHR].
+    public static final class Buffer extends VkPhysicalDevicePipelineBinaryPropertiesKHR {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDevicePipelineBinaryPropertiesKHR.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDevicePipelineBinaryPropertiesKHR`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDevicePipelineBinaryPropertiesKHR`
+        public VkPhysicalDevicePipelineBinaryPropertiesKHR asSlice(long index) { return new VkPhysicalDevicePipelineBinaryPropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDevicePipelineBinaryPropertiesKHR`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDevicePipelineBinaryPropertiesKHR`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDevicePipelineBinaryPropertiesKHR.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDevicePipelineBinaryPropertiesKHR.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDevicePipelineBinaryPropertiesKHR.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDevicePipelineBinaryPropertiesKHR.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `pipelineBinaryInternalCache` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int pipelineBinaryInternalCacheAt(long index) { return VkPhysicalDevicePipelineBinaryPropertiesKHR.get_pipelineBinaryInternalCache(this.segment(), index); }
+        /// Sets `pipelineBinaryInternalCache` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pipelineBinaryInternalCacheAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePipelineBinaryPropertiesKHR.set_pipelineBinaryInternalCache(this.segment(), index, value); return this; }
+
+        /// {@return `pipelineBinaryInternalCacheControl` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int pipelineBinaryInternalCacheControlAt(long index) { return VkPhysicalDevicePipelineBinaryPropertiesKHR.get_pipelineBinaryInternalCacheControl(this.segment(), index); }
+        /// Sets `pipelineBinaryInternalCacheControl` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pipelineBinaryInternalCacheControlAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePipelineBinaryPropertiesKHR.set_pipelineBinaryInternalCacheControl(this.segment(), index, value); return this; }
+
+        /// {@return `pipelineBinaryPrefersInternalCache` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int pipelineBinaryPrefersInternalCacheAt(long index) { return VkPhysicalDevicePipelineBinaryPropertiesKHR.get_pipelineBinaryPrefersInternalCache(this.segment(), index); }
+        /// Sets `pipelineBinaryPrefersInternalCache` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pipelineBinaryPrefersInternalCacheAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePipelineBinaryPropertiesKHR.set_pipelineBinaryPrefersInternalCache(this.segment(), index, value); return this; }
+
+        /// {@return `pipelineBinaryPrecompiledInternalCache` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int pipelineBinaryPrecompiledInternalCacheAt(long index) { return VkPhysicalDevicePipelineBinaryPropertiesKHR.get_pipelineBinaryPrecompiledInternalCache(this.segment(), index); }
+        /// Sets `pipelineBinaryPrecompiledInternalCache` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pipelineBinaryPrecompiledInternalCacheAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePipelineBinaryPropertiesKHR.set_pipelineBinaryPrecompiledInternalCache(this.segment(), index, value); return this; }
+
+        /// {@return `pipelineBinaryCompressedData` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int pipelineBinaryCompressedDataAt(long index) { return VkPhysicalDevicePipelineBinaryPropertiesKHR.get_pipelineBinaryCompressedData(this.segment(), index); }
+        /// Sets `pipelineBinaryCompressedData` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pipelineBinaryCompressedDataAt(long index, @CType("VkBool32") int value) { VkPhysicalDevicePipelineBinaryPropertiesKHR.set_pipelineBinaryCompressedData(this.segment(), index, value); return this; }
+
+    }
 }

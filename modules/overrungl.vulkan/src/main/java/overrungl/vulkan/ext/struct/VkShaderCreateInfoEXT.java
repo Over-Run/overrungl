@@ -73,7 +73,7 @@ import overrungl.util.*;
 ///     const VkSpecializationInfo * pSpecializationInfo;
 /// } VkShaderCreateInfoEXT;
 /// ```
-public final class VkShaderCreateInfoEXT extends Struct {
+public sealed class VkShaderCreateInfoEXT extends Struct {
     /// The struct layout of `VkShaderCreateInfoEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -130,6 +130,11 @@ public final class VkShaderCreateInfoEXT extends Struct {
     public static VkShaderCreateInfoEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkShaderCreateInfoEXT(segment); }
 
     /// Creates `VkShaderCreateInfoEXT` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkShaderCreateInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -142,7 +147,7 @@ public final class VkShaderCreateInfoEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkShaderCreateInfoEXT ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkShaderCreateInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkShaderCreateInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -153,7 +158,21 @@ public final class VkShaderCreateInfoEXT extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkShaderCreateInfoEXT`
-    public static VkShaderCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkShaderCreateInfoEXT(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkShaderCreateInfoEXT` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkShaderCreateInfoEXT`
+    public static VkShaderCreateInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkShaderCreateFlagsEXT") int flags, @CType("VkShaderStageFlagBits") int stage, @CType("VkShaderStageFlags") int nextStage, @CType("VkShaderCodeTypeEXT") int codeType, @CType("size_t") long codeSize, @CType("const void *") java.lang.foreign.MemorySegment pCode, @CType("const char *") java.lang.foreign.MemorySegment pName, @CType("uint32_t") int setLayoutCount, @CType("const VkDescriptorSetLayout *") java.lang.foreign.MemorySegment pSetLayouts, @CType("uint32_t") int pushConstantRangeCount, @CType("const VkPushConstantRange *") java.lang.foreign.MemorySegment pPushConstantRanges, @CType("const VkSpecializationInfo *") java.lang.foreign.MemorySegment pSpecializationInfo) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stage(stage).nextStage(nextStage).codeType(codeType).codeSize(codeSize).pCode(pCode).pName(pName).setLayoutCount(setLayoutCount).pSetLayouts(pSetLayouts).pushConstantRangeCount(pushConstantRangeCount).pPushConstantRanges(pPushConstantRanges).pSpecializationInfo(pSpecializationInfo); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkShaderCreateInfoEXT copyFrom(VkShaderCreateInfoEXT src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -162,9 +181,6 @@ public final class VkShaderCreateInfoEXT extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkShaderCreateInfoEXT.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkShaderCreateInfoEXT.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkShaderCreateInfoEXT.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -176,11 +192,6 @@ public final class VkShaderCreateInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkShaderCreateInfoEXT.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkShaderCreateInfoEXT sTypeAt(long index, @CType("VkStructureType") int value) { VkShaderCreateInfoEXT.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -193,9 +204,6 @@ public final class VkShaderCreateInfoEXT extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkShaderCreateInfoEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkShaderCreateInfoEXT.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkShaderCreateInfoEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -207,11 +215,6 @@ public final class VkShaderCreateInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkShaderCreateInfoEXT.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkShaderCreateInfoEXT pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkShaderCreateInfoEXT.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -224,9 +227,6 @@ public final class VkShaderCreateInfoEXT extends Struct {
     /// {@return `flags`}
     /// @param segment the segment of the struct
     public static @CType("VkShaderCreateFlagsEXT") int get_flags(MemorySegment segment) { return VkShaderCreateInfoEXT.get_flags(segment, 0L); }
-    /// {@return `flags` at the given index}
-    /// @param index the index
-    public @CType("VkShaderCreateFlagsEXT") int flagsAt(long index) { return VkShaderCreateInfoEXT.get_flags(this.segment(), index); }
     /// {@return `flags`}
     public @CType("VkShaderCreateFlagsEXT") int flags() { return VkShaderCreateInfoEXT.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
@@ -238,11 +238,6 @@ public final class VkShaderCreateInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_flags(MemorySegment segment, @CType("VkShaderCreateFlagsEXT") int value) { VkShaderCreateInfoEXT.set_flags(segment, 0L, value); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkShaderCreateInfoEXT flagsAt(long index, @CType("VkShaderCreateFlagsEXT") int value) { VkShaderCreateInfoEXT.set_flags(this.segment(), index, value); return this; }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -255,9 +250,6 @@ public final class VkShaderCreateInfoEXT extends Struct {
     /// {@return `stage`}
     /// @param segment the segment of the struct
     public static @CType("VkShaderStageFlagBits") int get_stage(MemorySegment segment) { return VkShaderCreateInfoEXT.get_stage(segment, 0L); }
-    /// {@return `stage` at the given index}
-    /// @param index the index
-    public @CType("VkShaderStageFlagBits") int stageAt(long index) { return VkShaderCreateInfoEXT.get_stage(this.segment(), index); }
     /// {@return `stage`}
     public @CType("VkShaderStageFlagBits") int stage() { return VkShaderCreateInfoEXT.get_stage(this.segment()); }
     /// Sets `stage` with the given value at the given index.
@@ -269,11 +261,6 @@ public final class VkShaderCreateInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_stage(MemorySegment segment, @CType("VkShaderStageFlagBits") int value) { VkShaderCreateInfoEXT.set_stage(segment, 0L, value); }
-    /// Sets `stage` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkShaderCreateInfoEXT stageAt(long index, @CType("VkShaderStageFlagBits") int value) { VkShaderCreateInfoEXT.set_stage(this.segment(), index, value); return this; }
     /// Sets `stage` with the given value.
     /// @param value the value
     /// @return `this`
@@ -286,9 +273,6 @@ public final class VkShaderCreateInfoEXT extends Struct {
     /// {@return `nextStage`}
     /// @param segment the segment of the struct
     public static @CType("VkShaderStageFlags") int get_nextStage(MemorySegment segment) { return VkShaderCreateInfoEXT.get_nextStage(segment, 0L); }
-    /// {@return `nextStage` at the given index}
-    /// @param index the index
-    public @CType("VkShaderStageFlags") int nextStageAt(long index) { return VkShaderCreateInfoEXT.get_nextStage(this.segment(), index); }
     /// {@return `nextStage`}
     public @CType("VkShaderStageFlags") int nextStage() { return VkShaderCreateInfoEXT.get_nextStage(this.segment()); }
     /// Sets `nextStage` with the given value at the given index.
@@ -300,11 +284,6 @@ public final class VkShaderCreateInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_nextStage(MemorySegment segment, @CType("VkShaderStageFlags") int value) { VkShaderCreateInfoEXT.set_nextStage(segment, 0L, value); }
-    /// Sets `nextStage` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkShaderCreateInfoEXT nextStageAt(long index, @CType("VkShaderStageFlags") int value) { VkShaderCreateInfoEXT.set_nextStage(this.segment(), index, value); return this; }
     /// Sets `nextStage` with the given value.
     /// @param value the value
     /// @return `this`
@@ -317,9 +296,6 @@ public final class VkShaderCreateInfoEXT extends Struct {
     /// {@return `codeType`}
     /// @param segment the segment of the struct
     public static @CType("VkShaderCodeTypeEXT") int get_codeType(MemorySegment segment) { return VkShaderCreateInfoEXT.get_codeType(segment, 0L); }
-    /// {@return `codeType` at the given index}
-    /// @param index the index
-    public @CType("VkShaderCodeTypeEXT") int codeTypeAt(long index) { return VkShaderCreateInfoEXT.get_codeType(this.segment(), index); }
     /// {@return `codeType`}
     public @CType("VkShaderCodeTypeEXT") int codeType() { return VkShaderCreateInfoEXT.get_codeType(this.segment()); }
     /// Sets `codeType` with the given value at the given index.
@@ -331,11 +307,6 @@ public final class VkShaderCreateInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_codeType(MemorySegment segment, @CType("VkShaderCodeTypeEXT") int value) { VkShaderCreateInfoEXT.set_codeType(segment, 0L, value); }
-    /// Sets `codeType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkShaderCreateInfoEXT codeTypeAt(long index, @CType("VkShaderCodeTypeEXT") int value) { VkShaderCreateInfoEXT.set_codeType(this.segment(), index, value); return this; }
     /// Sets `codeType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -348,9 +319,6 @@ public final class VkShaderCreateInfoEXT extends Struct {
     /// {@return `codeSize`}
     /// @param segment the segment of the struct
     public static @CType("size_t") long get_codeSize(MemorySegment segment) { return VkShaderCreateInfoEXT.get_codeSize(segment, 0L); }
-    /// {@return `codeSize` at the given index}
-    /// @param index the index
-    public @CType("size_t") long codeSizeAt(long index) { return VkShaderCreateInfoEXT.get_codeSize(this.segment(), index); }
     /// {@return `codeSize`}
     public @CType("size_t") long codeSize() { return VkShaderCreateInfoEXT.get_codeSize(this.segment()); }
     /// Sets `codeSize` with the given value at the given index.
@@ -362,11 +330,6 @@ public final class VkShaderCreateInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_codeSize(MemorySegment segment, @CType("size_t") long value) { VkShaderCreateInfoEXT.set_codeSize(segment, 0L, value); }
-    /// Sets `codeSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkShaderCreateInfoEXT codeSizeAt(long index, @CType("size_t") long value) { VkShaderCreateInfoEXT.set_codeSize(this.segment(), index, value); return this; }
     /// Sets `codeSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -379,9 +342,6 @@ public final class VkShaderCreateInfoEXT extends Struct {
     /// {@return `pCode`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pCode(MemorySegment segment) { return VkShaderCreateInfoEXT.get_pCode(segment, 0L); }
-    /// {@return `pCode` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pCodeAt(long index) { return VkShaderCreateInfoEXT.get_pCode(this.segment(), index); }
     /// {@return `pCode`}
     public @CType("const void *") java.lang.foreign.MemorySegment pCode() { return VkShaderCreateInfoEXT.get_pCode(this.segment()); }
     /// Sets `pCode` with the given value at the given index.
@@ -393,11 +353,6 @@ public final class VkShaderCreateInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pCode(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkShaderCreateInfoEXT.set_pCode(segment, 0L, value); }
-    /// Sets `pCode` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkShaderCreateInfoEXT pCodeAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkShaderCreateInfoEXT.set_pCode(this.segment(), index, value); return this; }
     /// Sets `pCode` with the given value.
     /// @param value the value
     /// @return `this`
@@ -410,9 +365,6 @@ public final class VkShaderCreateInfoEXT extends Struct {
     /// {@return `pName`}
     /// @param segment the segment of the struct
     public static @CType("const char *") java.lang.foreign.MemorySegment get_pName(MemorySegment segment) { return VkShaderCreateInfoEXT.get_pName(segment, 0L); }
-    /// {@return `pName` at the given index}
-    /// @param index the index
-    public @CType("const char *") java.lang.foreign.MemorySegment pNameAt(long index) { return VkShaderCreateInfoEXT.get_pName(this.segment(), index); }
     /// {@return `pName`}
     public @CType("const char *") java.lang.foreign.MemorySegment pName() { return VkShaderCreateInfoEXT.get_pName(this.segment()); }
     /// Sets `pName` with the given value at the given index.
@@ -424,11 +376,6 @@ public final class VkShaderCreateInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pName(MemorySegment segment, @CType("const char *") java.lang.foreign.MemorySegment value) { VkShaderCreateInfoEXT.set_pName(segment, 0L, value); }
-    /// Sets `pName` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkShaderCreateInfoEXT pNameAt(long index, @CType("const char *") java.lang.foreign.MemorySegment value) { VkShaderCreateInfoEXT.set_pName(this.segment(), index, value); return this; }
     /// Sets `pName` with the given value.
     /// @param value the value
     /// @return `this`
@@ -441,9 +388,6 @@ public final class VkShaderCreateInfoEXT extends Struct {
     /// {@return `setLayoutCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_setLayoutCount(MemorySegment segment) { return VkShaderCreateInfoEXT.get_setLayoutCount(segment, 0L); }
-    /// {@return `setLayoutCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int setLayoutCountAt(long index) { return VkShaderCreateInfoEXT.get_setLayoutCount(this.segment(), index); }
     /// {@return `setLayoutCount`}
     public @CType("uint32_t") int setLayoutCount() { return VkShaderCreateInfoEXT.get_setLayoutCount(this.segment()); }
     /// Sets `setLayoutCount` with the given value at the given index.
@@ -455,11 +399,6 @@ public final class VkShaderCreateInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_setLayoutCount(MemorySegment segment, @CType("uint32_t") int value) { VkShaderCreateInfoEXT.set_setLayoutCount(segment, 0L, value); }
-    /// Sets `setLayoutCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkShaderCreateInfoEXT setLayoutCountAt(long index, @CType("uint32_t") int value) { VkShaderCreateInfoEXT.set_setLayoutCount(this.segment(), index, value); return this; }
     /// Sets `setLayoutCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -472,9 +411,6 @@ public final class VkShaderCreateInfoEXT extends Struct {
     /// {@return `pSetLayouts`}
     /// @param segment the segment of the struct
     public static @CType("const VkDescriptorSetLayout *") java.lang.foreign.MemorySegment get_pSetLayouts(MemorySegment segment) { return VkShaderCreateInfoEXT.get_pSetLayouts(segment, 0L); }
-    /// {@return `pSetLayouts` at the given index}
-    /// @param index the index
-    public @CType("const VkDescriptorSetLayout *") java.lang.foreign.MemorySegment pSetLayoutsAt(long index) { return VkShaderCreateInfoEXT.get_pSetLayouts(this.segment(), index); }
     /// {@return `pSetLayouts`}
     public @CType("const VkDescriptorSetLayout *") java.lang.foreign.MemorySegment pSetLayouts() { return VkShaderCreateInfoEXT.get_pSetLayouts(this.segment()); }
     /// Sets `pSetLayouts` with the given value at the given index.
@@ -486,11 +422,6 @@ public final class VkShaderCreateInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pSetLayouts(MemorySegment segment, @CType("const VkDescriptorSetLayout *") java.lang.foreign.MemorySegment value) { VkShaderCreateInfoEXT.set_pSetLayouts(segment, 0L, value); }
-    /// Sets `pSetLayouts` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkShaderCreateInfoEXT pSetLayoutsAt(long index, @CType("const VkDescriptorSetLayout *") java.lang.foreign.MemorySegment value) { VkShaderCreateInfoEXT.set_pSetLayouts(this.segment(), index, value); return this; }
     /// Sets `pSetLayouts` with the given value.
     /// @param value the value
     /// @return `this`
@@ -503,9 +434,6 @@ public final class VkShaderCreateInfoEXT extends Struct {
     /// {@return `pushConstantRangeCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_pushConstantRangeCount(MemorySegment segment) { return VkShaderCreateInfoEXT.get_pushConstantRangeCount(segment, 0L); }
-    /// {@return `pushConstantRangeCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int pushConstantRangeCountAt(long index) { return VkShaderCreateInfoEXT.get_pushConstantRangeCount(this.segment(), index); }
     /// {@return `pushConstantRangeCount`}
     public @CType("uint32_t") int pushConstantRangeCount() { return VkShaderCreateInfoEXT.get_pushConstantRangeCount(this.segment()); }
     /// Sets `pushConstantRangeCount` with the given value at the given index.
@@ -517,11 +445,6 @@ public final class VkShaderCreateInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pushConstantRangeCount(MemorySegment segment, @CType("uint32_t") int value) { VkShaderCreateInfoEXT.set_pushConstantRangeCount(segment, 0L, value); }
-    /// Sets `pushConstantRangeCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkShaderCreateInfoEXT pushConstantRangeCountAt(long index, @CType("uint32_t") int value) { VkShaderCreateInfoEXT.set_pushConstantRangeCount(this.segment(), index, value); return this; }
     /// Sets `pushConstantRangeCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -534,9 +457,6 @@ public final class VkShaderCreateInfoEXT extends Struct {
     /// {@return `pPushConstantRanges`}
     /// @param segment the segment of the struct
     public static @CType("const VkPushConstantRange *") java.lang.foreign.MemorySegment get_pPushConstantRanges(MemorySegment segment) { return VkShaderCreateInfoEXT.get_pPushConstantRanges(segment, 0L); }
-    /// {@return `pPushConstantRanges` at the given index}
-    /// @param index the index
-    public @CType("const VkPushConstantRange *") java.lang.foreign.MemorySegment pPushConstantRangesAt(long index) { return VkShaderCreateInfoEXT.get_pPushConstantRanges(this.segment(), index); }
     /// {@return `pPushConstantRanges`}
     public @CType("const VkPushConstantRange *") java.lang.foreign.MemorySegment pPushConstantRanges() { return VkShaderCreateInfoEXT.get_pPushConstantRanges(this.segment()); }
     /// Sets `pPushConstantRanges` with the given value at the given index.
@@ -548,11 +468,6 @@ public final class VkShaderCreateInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pPushConstantRanges(MemorySegment segment, @CType("const VkPushConstantRange *") java.lang.foreign.MemorySegment value) { VkShaderCreateInfoEXT.set_pPushConstantRanges(segment, 0L, value); }
-    /// Sets `pPushConstantRanges` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkShaderCreateInfoEXT pPushConstantRangesAt(long index, @CType("const VkPushConstantRange *") java.lang.foreign.MemorySegment value) { VkShaderCreateInfoEXT.set_pPushConstantRanges(this.segment(), index, value); return this; }
     /// Sets `pPushConstantRanges` with the given value.
     /// @param value the value
     /// @return `this`
@@ -565,9 +480,6 @@ public final class VkShaderCreateInfoEXT extends Struct {
     /// {@return `pSpecializationInfo`}
     /// @param segment the segment of the struct
     public static @CType("const VkSpecializationInfo *") java.lang.foreign.MemorySegment get_pSpecializationInfo(MemorySegment segment) { return VkShaderCreateInfoEXT.get_pSpecializationInfo(segment, 0L); }
-    /// {@return `pSpecializationInfo` at the given index}
-    /// @param index the index
-    public @CType("const VkSpecializationInfo *") java.lang.foreign.MemorySegment pSpecializationInfoAt(long index) { return VkShaderCreateInfoEXT.get_pSpecializationInfo(this.segment(), index); }
     /// {@return `pSpecializationInfo`}
     public @CType("const VkSpecializationInfo *") java.lang.foreign.MemorySegment pSpecializationInfo() { return VkShaderCreateInfoEXT.get_pSpecializationInfo(this.segment()); }
     /// Sets `pSpecializationInfo` with the given value at the given index.
@@ -579,14 +491,158 @@ public final class VkShaderCreateInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pSpecializationInfo(MemorySegment segment, @CType("const VkSpecializationInfo *") java.lang.foreign.MemorySegment value) { VkShaderCreateInfoEXT.set_pSpecializationInfo(segment, 0L, value); }
-    /// Sets `pSpecializationInfo` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkShaderCreateInfoEXT pSpecializationInfoAt(long index, @CType("const VkSpecializationInfo *") java.lang.foreign.MemorySegment value) { VkShaderCreateInfoEXT.set_pSpecializationInfo(this.segment(), index, value); return this; }
     /// Sets `pSpecializationInfo` with the given value.
     /// @param value the value
     /// @return `this`
     public VkShaderCreateInfoEXT pSpecializationInfo(@CType("const VkSpecializationInfo *") java.lang.foreign.MemorySegment value) { VkShaderCreateInfoEXT.set_pSpecializationInfo(this.segment(), value); return this; }
 
+    /// A buffer of [VkShaderCreateInfoEXT].
+    public static final class Buffer extends VkShaderCreateInfoEXT {
+        private final long elementCount;
+
+        /// Creates `VkShaderCreateInfoEXT.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkShaderCreateInfoEXT`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkShaderCreateInfoEXT`
+        public VkShaderCreateInfoEXT asSlice(long index) { return new VkShaderCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkShaderCreateInfoEXT`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkShaderCreateInfoEXT`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkShaderCreateInfoEXT.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkShaderCreateInfoEXT.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkShaderCreateInfoEXT.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkShaderCreateInfoEXT.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `flags` at the given index}
+        /// @param index the index
+        public @CType("VkShaderCreateFlagsEXT") int flagsAt(long index) { return VkShaderCreateInfoEXT.get_flags(this.segment(), index); }
+        /// Sets `flags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer flagsAt(long index, @CType("VkShaderCreateFlagsEXT") int value) { VkShaderCreateInfoEXT.set_flags(this.segment(), index, value); return this; }
+
+        /// {@return `stage` at the given index}
+        /// @param index the index
+        public @CType("VkShaderStageFlagBits") int stageAt(long index) { return VkShaderCreateInfoEXT.get_stage(this.segment(), index); }
+        /// Sets `stage` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer stageAt(long index, @CType("VkShaderStageFlagBits") int value) { VkShaderCreateInfoEXT.set_stage(this.segment(), index, value); return this; }
+
+        /// {@return `nextStage` at the given index}
+        /// @param index the index
+        public @CType("VkShaderStageFlags") int nextStageAt(long index) { return VkShaderCreateInfoEXT.get_nextStage(this.segment(), index); }
+        /// Sets `nextStage` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer nextStageAt(long index, @CType("VkShaderStageFlags") int value) { VkShaderCreateInfoEXT.set_nextStage(this.segment(), index, value); return this; }
+
+        /// {@return `codeType` at the given index}
+        /// @param index the index
+        public @CType("VkShaderCodeTypeEXT") int codeTypeAt(long index) { return VkShaderCreateInfoEXT.get_codeType(this.segment(), index); }
+        /// Sets `codeType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer codeTypeAt(long index, @CType("VkShaderCodeTypeEXT") int value) { VkShaderCreateInfoEXT.set_codeType(this.segment(), index, value); return this; }
+
+        /// {@return `codeSize` at the given index}
+        /// @param index the index
+        public @CType("size_t") long codeSizeAt(long index) { return VkShaderCreateInfoEXT.get_codeSize(this.segment(), index); }
+        /// Sets `codeSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer codeSizeAt(long index, @CType("size_t") long value) { VkShaderCreateInfoEXT.set_codeSize(this.segment(), index, value); return this; }
+
+        /// {@return `pCode` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pCodeAt(long index) { return VkShaderCreateInfoEXT.get_pCode(this.segment(), index); }
+        /// Sets `pCode` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pCodeAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkShaderCreateInfoEXT.set_pCode(this.segment(), index, value); return this; }
+
+        /// {@return `pName` at the given index}
+        /// @param index the index
+        public @CType("const char *") java.lang.foreign.MemorySegment pNameAt(long index) { return VkShaderCreateInfoEXT.get_pName(this.segment(), index); }
+        /// Sets `pName` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNameAt(long index, @CType("const char *") java.lang.foreign.MemorySegment value) { VkShaderCreateInfoEXT.set_pName(this.segment(), index, value); return this; }
+
+        /// {@return `setLayoutCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int setLayoutCountAt(long index) { return VkShaderCreateInfoEXT.get_setLayoutCount(this.segment(), index); }
+        /// Sets `setLayoutCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer setLayoutCountAt(long index, @CType("uint32_t") int value) { VkShaderCreateInfoEXT.set_setLayoutCount(this.segment(), index, value); return this; }
+
+        /// {@return `pSetLayouts` at the given index}
+        /// @param index the index
+        public @CType("const VkDescriptorSetLayout *") java.lang.foreign.MemorySegment pSetLayoutsAt(long index) { return VkShaderCreateInfoEXT.get_pSetLayouts(this.segment(), index); }
+        /// Sets `pSetLayouts` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pSetLayoutsAt(long index, @CType("const VkDescriptorSetLayout *") java.lang.foreign.MemorySegment value) { VkShaderCreateInfoEXT.set_pSetLayouts(this.segment(), index, value); return this; }
+
+        /// {@return `pushConstantRangeCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int pushConstantRangeCountAt(long index) { return VkShaderCreateInfoEXT.get_pushConstantRangeCount(this.segment(), index); }
+        /// Sets `pushConstantRangeCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pushConstantRangeCountAt(long index, @CType("uint32_t") int value) { VkShaderCreateInfoEXT.set_pushConstantRangeCount(this.segment(), index, value); return this; }
+
+        /// {@return `pPushConstantRanges` at the given index}
+        /// @param index the index
+        public @CType("const VkPushConstantRange *") java.lang.foreign.MemorySegment pPushConstantRangesAt(long index) { return VkShaderCreateInfoEXT.get_pPushConstantRanges(this.segment(), index); }
+        /// Sets `pPushConstantRanges` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pPushConstantRangesAt(long index, @CType("const VkPushConstantRange *") java.lang.foreign.MemorySegment value) { VkShaderCreateInfoEXT.set_pPushConstantRanges(this.segment(), index, value); return this; }
+
+        /// {@return `pSpecializationInfo` at the given index}
+        /// @param index the index
+        public @CType("const VkSpecializationInfo *") java.lang.foreign.MemorySegment pSpecializationInfoAt(long index) { return VkShaderCreateInfoEXT.get_pSpecializationInfo(this.segment(), index); }
+        /// Sets `pSpecializationInfo` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pSpecializationInfoAt(long index, @CType("const VkSpecializationInfo *") java.lang.foreign.MemorySegment value) { VkShaderCreateInfoEXT.set_pSpecializationInfo(this.segment(), index, value); return this; }
+
+    }
 }

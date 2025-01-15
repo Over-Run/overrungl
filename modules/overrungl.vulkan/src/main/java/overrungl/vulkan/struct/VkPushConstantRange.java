@@ -40,7 +40,7 @@ import overrungl.util.*;
 ///     uint32_t size;
 /// } VkPushConstantRange;
 /// ```
-public final class VkPushConstantRange extends Struct {
+public sealed class VkPushConstantRange extends Struct {
     /// The struct layout of `VkPushConstantRange`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("stageFlags"),
@@ -64,6 +64,11 @@ public final class VkPushConstantRange extends Struct {
     public static VkPushConstantRange of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPushConstantRange(segment); }
 
     /// Creates `VkPushConstantRange` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPushConstantRange` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -76,7 +81,7 @@ public final class VkPushConstantRange extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPushConstantRange ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPushConstantRange(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPushConstantRange` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -87,7 +92,21 @@ public final class VkPushConstantRange extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPushConstantRange`
-    public static VkPushConstantRange alloc(SegmentAllocator allocator, long count) { return new VkPushConstantRange(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkPushConstantRange` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPushConstantRange`
+    public static VkPushConstantRange allocInit(SegmentAllocator allocator, @CType("VkShaderStageFlags") int stageFlags, @CType("uint32_t") int offset, @CType("uint32_t") int size) { return alloc(allocator).stageFlags(stageFlags).offset(offset).size(size); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPushConstantRange copyFrom(VkPushConstantRange src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `stageFlags` at the given index}
     /// @param segment the segment of the struct
@@ -96,9 +115,6 @@ public final class VkPushConstantRange extends Struct {
     /// {@return `stageFlags`}
     /// @param segment the segment of the struct
     public static @CType("VkShaderStageFlags") int get_stageFlags(MemorySegment segment) { return VkPushConstantRange.get_stageFlags(segment, 0L); }
-    /// {@return `stageFlags` at the given index}
-    /// @param index the index
-    public @CType("VkShaderStageFlags") int stageFlagsAt(long index) { return VkPushConstantRange.get_stageFlags(this.segment(), index); }
     /// {@return `stageFlags`}
     public @CType("VkShaderStageFlags") int stageFlags() { return VkPushConstantRange.get_stageFlags(this.segment()); }
     /// Sets `stageFlags` with the given value at the given index.
@@ -110,11 +126,6 @@ public final class VkPushConstantRange extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_stageFlags(MemorySegment segment, @CType("VkShaderStageFlags") int value) { VkPushConstantRange.set_stageFlags(segment, 0L, value); }
-    /// Sets `stageFlags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPushConstantRange stageFlagsAt(long index, @CType("VkShaderStageFlags") int value) { VkPushConstantRange.set_stageFlags(this.segment(), index, value); return this; }
     /// Sets `stageFlags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -127,9 +138,6 @@ public final class VkPushConstantRange extends Struct {
     /// {@return `offset`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_offset(MemorySegment segment) { return VkPushConstantRange.get_offset(segment, 0L); }
-    /// {@return `offset` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int offsetAt(long index) { return VkPushConstantRange.get_offset(this.segment(), index); }
     /// {@return `offset`}
     public @CType("uint32_t") int offset() { return VkPushConstantRange.get_offset(this.segment()); }
     /// Sets `offset` with the given value at the given index.
@@ -141,11 +149,6 @@ public final class VkPushConstantRange extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_offset(MemorySegment segment, @CType("uint32_t") int value) { VkPushConstantRange.set_offset(segment, 0L, value); }
-    /// Sets `offset` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPushConstantRange offsetAt(long index, @CType("uint32_t") int value) { VkPushConstantRange.set_offset(this.segment(), index, value); return this; }
     /// Sets `offset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,9 +161,6 @@ public final class VkPushConstantRange extends Struct {
     /// {@return `size`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_size(MemorySegment segment) { return VkPushConstantRange.get_size(segment, 0L); }
-    /// {@return `size` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int sizeAt(long index) { return VkPushConstantRange.get_size(this.segment(), index); }
     /// {@return `size`}
     public @CType("uint32_t") int size() { return VkPushConstantRange.get_size(this.segment()); }
     /// Sets `size` with the given value at the given index.
@@ -172,14 +172,59 @@ public final class VkPushConstantRange extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_size(MemorySegment segment, @CType("uint32_t") int value) { VkPushConstantRange.set_size(segment, 0L, value); }
-    /// Sets `size` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPushConstantRange sizeAt(long index, @CType("uint32_t") int value) { VkPushConstantRange.set_size(this.segment(), index, value); return this; }
     /// Sets `size` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPushConstantRange size(@CType("uint32_t") int value) { VkPushConstantRange.set_size(this.segment(), value); return this; }
 
+    /// A buffer of [VkPushConstantRange].
+    public static final class Buffer extends VkPushConstantRange {
+        private final long elementCount;
+
+        /// Creates `VkPushConstantRange.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPushConstantRange`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPushConstantRange`
+        public VkPushConstantRange asSlice(long index) { return new VkPushConstantRange(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPushConstantRange`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPushConstantRange`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `stageFlags` at the given index}
+        /// @param index the index
+        public @CType("VkShaderStageFlags") int stageFlagsAt(long index) { return VkPushConstantRange.get_stageFlags(this.segment(), index); }
+        /// Sets `stageFlags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer stageFlagsAt(long index, @CType("VkShaderStageFlags") int value) { VkPushConstantRange.set_stageFlags(this.segment(), index, value); return this; }
+
+        /// {@return `offset` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int offsetAt(long index) { return VkPushConstantRange.get_offset(this.segment(), index); }
+        /// Sets `offset` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer offsetAt(long index, @CType("uint32_t") int value) { VkPushConstantRange.set_offset(this.segment(), index, value); return this; }
+
+        /// {@return `size` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int sizeAt(long index) { return VkPushConstantRange.get_size(this.segment(), index); }
+        /// Sets `size` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sizeAt(long index, @CType("uint32_t") int value) { VkPushConstantRange.set_size(this.segment(), index, value); return this; }
+
+    }
 }

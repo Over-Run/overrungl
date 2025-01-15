@@ -23,7 +23,7 @@ import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 import static overrungl.vulkan.VK12.*;
-public class VKKHRDepthStencilResolve {
+public final class VKKHRDepthStencilResolve {
     public static final int VK_KHR_DEPTH_STENCIL_RESOLVE_SPEC_VERSION = 1;
     public static final String VK_KHR_DEPTH_STENCIL_RESOLVE_EXTENSION_NAME = "VK_KHR_depth_stencil_resolve";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES_KHR = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES;
@@ -34,7 +34,6 @@ public class VKKHRDepthStencilResolve {
     public static final int VK_RESOLVE_MODE_MIN_BIT_KHR = VK_RESOLVE_MODE_MIN_BIT;
     public static final int VK_RESOLVE_MODE_MAX_BIT_KHR = VK_RESOLVE_MODE_MAX_BIT;
 
-    public VKKHRDepthStencilResolve(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKKHRDepthStencilResolve() { }
 
 }

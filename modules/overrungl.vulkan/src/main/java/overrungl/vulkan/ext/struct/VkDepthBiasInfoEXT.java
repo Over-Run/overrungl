@@ -46,7 +46,7 @@ import overrungl.util.*;
 ///     float depthBiasSlopeFactor;
 /// } VkDepthBiasInfoEXT;
 /// ```
-public final class VkDepthBiasInfoEXT extends Struct {
+public sealed class VkDepthBiasInfoEXT extends Struct {
     /// The struct layout of `VkDepthBiasInfoEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -76,6 +76,11 @@ public final class VkDepthBiasInfoEXT extends Struct {
     public static VkDepthBiasInfoEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDepthBiasInfoEXT(segment); }
 
     /// Creates `VkDepthBiasInfoEXT` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkDepthBiasInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -88,7 +93,7 @@ public final class VkDepthBiasInfoEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDepthBiasInfoEXT ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkDepthBiasInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkDepthBiasInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -99,7 +104,21 @@ public final class VkDepthBiasInfoEXT extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDepthBiasInfoEXT`
-    public static VkDepthBiasInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkDepthBiasInfoEXT(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkDepthBiasInfoEXT` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkDepthBiasInfoEXT`
+    public static VkDepthBiasInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("float") float depthBiasConstantFactor, @CType("float") float depthBiasClamp, @CType("float") float depthBiasSlopeFactor) { return alloc(allocator).sType(sType).pNext(pNext).depthBiasConstantFactor(depthBiasConstantFactor).depthBiasClamp(depthBiasClamp).depthBiasSlopeFactor(depthBiasSlopeFactor); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkDepthBiasInfoEXT copyFrom(VkDepthBiasInfoEXT src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -108,9 +127,6 @@ public final class VkDepthBiasInfoEXT extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkDepthBiasInfoEXT.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkDepthBiasInfoEXT.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkDepthBiasInfoEXT.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -122,11 +138,6 @@ public final class VkDepthBiasInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkDepthBiasInfoEXT.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDepthBiasInfoEXT sTypeAt(long index, @CType("VkStructureType") int value) { VkDepthBiasInfoEXT.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -139,9 +150,6 @@ public final class VkDepthBiasInfoEXT extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkDepthBiasInfoEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkDepthBiasInfoEXT.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkDepthBiasInfoEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -153,11 +161,6 @@ public final class VkDepthBiasInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDepthBiasInfoEXT.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDepthBiasInfoEXT pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDepthBiasInfoEXT.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -170,9 +173,6 @@ public final class VkDepthBiasInfoEXT extends Struct {
     /// {@return `depthBiasConstantFactor`}
     /// @param segment the segment of the struct
     public static @CType("float") float get_depthBiasConstantFactor(MemorySegment segment) { return VkDepthBiasInfoEXT.get_depthBiasConstantFactor(segment, 0L); }
-    /// {@return `depthBiasConstantFactor` at the given index}
-    /// @param index the index
-    public @CType("float") float depthBiasConstantFactorAt(long index) { return VkDepthBiasInfoEXT.get_depthBiasConstantFactor(this.segment(), index); }
     /// {@return `depthBiasConstantFactor`}
     public @CType("float") float depthBiasConstantFactor() { return VkDepthBiasInfoEXT.get_depthBiasConstantFactor(this.segment()); }
     /// Sets `depthBiasConstantFactor` with the given value at the given index.
@@ -184,11 +184,6 @@ public final class VkDepthBiasInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_depthBiasConstantFactor(MemorySegment segment, @CType("float") float value) { VkDepthBiasInfoEXT.set_depthBiasConstantFactor(segment, 0L, value); }
-    /// Sets `depthBiasConstantFactor` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDepthBiasInfoEXT depthBiasConstantFactorAt(long index, @CType("float") float value) { VkDepthBiasInfoEXT.set_depthBiasConstantFactor(this.segment(), index, value); return this; }
     /// Sets `depthBiasConstantFactor` with the given value.
     /// @param value the value
     /// @return `this`
@@ -201,9 +196,6 @@ public final class VkDepthBiasInfoEXT extends Struct {
     /// {@return `depthBiasClamp`}
     /// @param segment the segment of the struct
     public static @CType("float") float get_depthBiasClamp(MemorySegment segment) { return VkDepthBiasInfoEXT.get_depthBiasClamp(segment, 0L); }
-    /// {@return `depthBiasClamp` at the given index}
-    /// @param index the index
-    public @CType("float") float depthBiasClampAt(long index) { return VkDepthBiasInfoEXT.get_depthBiasClamp(this.segment(), index); }
     /// {@return `depthBiasClamp`}
     public @CType("float") float depthBiasClamp() { return VkDepthBiasInfoEXT.get_depthBiasClamp(this.segment()); }
     /// Sets `depthBiasClamp` with the given value at the given index.
@@ -215,11 +207,6 @@ public final class VkDepthBiasInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_depthBiasClamp(MemorySegment segment, @CType("float") float value) { VkDepthBiasInfoEXT.set_depthBiasClamp(segment, 0L, value); }
-    /// Sets `depthBiasClamp` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDepthBiasInfoEXT depthBiasClampAt(long index, @CType("float") float value) { VkDepthBiasInfoEXT.set_depthBiasClamp(this.segment(), index, value); return this; }
     /// Sets `depthBiasClamp` with the given value.
     /// @param value the value
     /// @return `this`
@@ -232,9 +219,6 @@ public final class VkDepthBiasInfoEXT extends Struct {
     /// {@return `depthBiasSlopeFactor`}
     /// @param segment the segment of the struct
     public static @CType("float") float get_depthBiasSlopeFactor(MemorySegment segment) { return VkDepthBiasInfoEXT.get_depthBiasSlopeFactor(segment, 0L); }
-    /// {@return `depthBiasSlopeFactor` at the given index}
-    /// @param index the index
-    public @CType("float") float depthBiasSlopeFactorAt(long index) { return VkDepthBiasInfoEXT.get_depthBiasSlopeFactor(this.segment(), index); }
     /// {@return `depthBiasSlopeFactor`}
     public @CType("float") float depthBiasSlopeFactor() { return VkDepthBiasInfoEXT.get_depthBiasSlopeFactor(this.segment()); }
     /// Sets `depthBiasSlopeFactor` with the given value at the given index.
@@ -246,14 +230,77 @@ public final class VkDepthBiasInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_depthBiasSlopeFactor(MemorySegment segment, @CType("float") float value) { VkDepthBiasInfoEXT.set_depthBiasSlopeFactor(segment, 0L, value); }
-    /// Sets `depthBiasSlopeFactor` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDepthBiasInfoEXT depthBiasSlopeFactorAt(long index, @CType("float") float value) { VkDepthBiasInfoEXT.set_depthBiasSlopeFactor(this.segment(), index, value); return this; }
     /// Sets `depthBiasSlopeFactor` with the given value.
     /// @param value the value
     /// @return `this`
     public VkDepthBiasInfoEXT depthBiasSlopeFactor(@CType("float") float value) { VkDepthBiasInfoEXT.set_depthBiasSlopeFactor(this.segment(), value); return this; }
 
+    /// A buffer of [VkDepthBiasInfoEXT].
+    public static final class Buffer extends VkDepthBiasInfoEXT {
+        private final long elementCount;
+
+        /// Creates `VkDepthBiasInfoEXT.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkDepthBiasInfoEXT`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkDepthBiasInfoEXT`
+        public VkDepthBiasInfoEXT asSlice(long index) { return new VkDepthBiasInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkDepthBiasInfoEXT`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkDepthBiasInfoEXT`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkDepthBiasInfoEXT.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkDepthBiasInfoEXT.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkDepthBiasInfoEXT.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDepthBiasInfoEXT.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `depthBiasConstantFactor` at the given index}
+        /// @param index the index
+        public @CType("float") float depthBiasConstantFactorAt(long index) { return VkDepthBiasInfoEXT.get_depthBiasConstantFactor(this.segment(), index); }
+        /// Sets `depthBiasConstantFactor` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer depthBiasConstantFactorAt(long index, @CType("float") float value) { VkDepthBiasInfoEXT.set_depthBiasConstantFactor(this.segment(), index, value); return this; }
+
+        /// {@return `depthBiasClamp` at the given index}
+        /// @param index the index
+        public @CType("float") float depthBiasClampAt(long index) { return VkDepthBiasInfoEXT.get_depthBiasClamp(this.segment(), index); }
+        /// Sets `depthBiasClamp` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer depthBiasClampAt(long index, @CType("float") float value) { VkDepthBiasInfoEXT.set_depthBiasClamp(this.segment(), index, value); return this; }
+
+        /// {@return `depthBiasSlopeFactor` at the given index}
+        /// @param index the index
+        public @CType("float") float depthBiasSlopeFactorAt(long index) { return VkDepthBiasInfoEXT.get_depthBiasSlopeFactor(this.segment(), index); }
+        /// Sets `depthBiasSlopeFactor` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer depthBiasSlopeFactorAt(long index, @CType("float") float value) { VkDepthBiasInfoEXT.set_depthBiasSlopeFactor(this.segment(), index, value); return this; }
+
+    }
 }

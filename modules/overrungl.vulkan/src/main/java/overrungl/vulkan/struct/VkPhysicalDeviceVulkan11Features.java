@@ -73,7 +73,7 @@ import overrungl.util.*;
 ///     VkBool32 shaderDrawParameters;
 /// } VkPhysicalDeviceVulkan11Features;
 /// ```
-public final class VkPhysicalDeviceVulkan11Features extends Struct {
+public sealed class VkPhysicalDeviceVulkan11Features extends Struct {
     /// The struct layout of `VkPhysicalDeviceVulkan11Features`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -130,6 +130,11 @@ public final class VkPhysicalDeviceVulkan11Features extends Struct {
     public static VkPhysicalDeviceVulkan11Features of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceVulkan11Features(segment); }
 
     /// Creates `VkPhysicalDeviceVulkan11Features` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPhysicalDeviceVulkan11Features` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -142,7 +147,7 @@ public final class VkPhysicalDeviceVulkan11Features extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceVulkan11Features ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceVulkan11Features(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceVulkan11Features` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -153,7 +158,21 @@ public final class VkPhysicalDeviceVulkan11Features extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceVulkan11Features`
-    public static VkPhysicalDeviceVulkan11Features alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceVulkan11Features(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkPhysicalDeviceVulkan11Features` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDeviceVulkan11Features`
+    public static VkPhysicalDeviceVulkan11Features allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int storageBuffer16BitAccess, @CType("VkBool32") int uniformAndStorageBuffer16BitAccess, @CType("VkBool32") int storagePushConstant16, @CType("VkBool32") int storageInputOutput16, @CType("VkBool32") int multiview, @CType("VkBool32") int multiviewGeometryShader, @CType("VkBool32") int multiviewTessellationShader, @CType("VkBool32") int variablePointersStorageBuffer, @CType("VkBool32") int variablePointers, @CType("VkBool32") int protectedMemory, @CType("VkBool32") int samplerYcbcrConversion, @CType("VkBool32") int shaderDrawParameters) { return alloc(allocator).sType(sType).pNext(pNext).storageBuffer16BitAccess(storageBuffer16BitAccess).uniformAndStorageBuffer16BitAccess(uniformAndStorageBuffer16BitAccess).storagePushConstant16(storagePushConstant16).storageInputOutput16(storageInputOutput16).multiview(multiview).multiviewGeometryShader(multiviewGeometryShader).multiviewTessellationShader(multiviewTessellationShader).variablePointersStorageBuffer(variablePointersStorageBuffer).variablePointers(variablePointers).protectedMemory(protectedMemory).samplerYcbcrConversion(samplerYcbcrConversion).shaderDrawParameters(shaderDrawParameters); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDeviceVulkan11Features copyFrom(VkPhysicalDeviceVulkan11Features src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -162,9 +181,6 @@ public final class VkPhysicalDeviceVulkan11Features extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceVulkan11Features.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceVulkan11Features.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPhysicalDeviceVulkan11Features.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -176,11 +192,6 @@ public final class VkPhysicalDeviceVulkan11Features extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceVulkan11Features.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceVulkan11Features sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceVulkan11Features.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -193,9 +204,6 @@ public final class VkPhysicalDeviceVulkan11Features extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceVulkan11Features.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceVulkan11Features.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceVulkan11Features.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -207,11 +215,6 @@ public final class VkPhysicalDeviceVulkan11Features extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan11Features.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceVulkan11Features pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan11Features.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -224,9 +227,6 @@ public final class VkPhysicalDeviceVulkan11Features extends Struct {
     /// {@return `storageBuffer16BitAccess`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_storageBuffer16BitAccess(MemorySegment segment) { return VkPhysicalDeviceVulkan11Features.get_storageBuffer16BitAccess(segment, 0L); }
-    /// {@return `storageBuffer16BitAccess` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int storageBuffer16BitAccessAt(long index) { return VkPhysicalDeviceVulkan11Features.get_storageBuffer16BitAccess(this.segment(), index); }
     /// {@return `storageBuffer16BitAccess`}
     public @CType("VkBool32") int storageBuffer16BitAccess() { return VkPhysicalDeviceVulkan11Features.get_storageBuffer16BitAccess(this.segment()); }
     /// Sets `storageBuffer16BitAccess` with the given value at the given index.
@@ -238,11 +238,6 @@ public final class VkPhysicalDeviceVulkan11Features extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_storageBuffer16BitAccess(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan11Features.set_storageBuffer16BitAccess(segment, 0L, value); }
-    /// Sets `storageBuffer16BitAccess` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceVulkan11Features storageBuffer16BitAccessAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan11Features.set_storageBuffer16BitAccess(this.segment(), index, value); return this; }
     /// Sets `storageBuffer16BitAccess` with the given value.
     /// @param value the value
     /// @return `this`
@@ -255,9 +250,6 @@ public final class VkPhysicalDeviceVulkan11Features extends Struct {
     /// {@return `uniformAndStorageBuffer16BitAccess`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_uniformAndStorageBuffer16BitAccess(MemorySegment segment) { return VkPhysicalDeviceVulkan11Features.get_uniformAndStorageBuffer16BitAccess(segment, 0L); }
-    /// {@return `uniformAndStorageBuffer16BitAccess` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int uniformAndStorageBuffer16BitAccessAt(long index) { return VkPhysicalDeviceVulkan11Features.get_uniformAndStorageBuffer16BitAccess(this.segment(), index); }
     /// {@return `uniformAndStorageBuffer16BitAccess`}
     public @CType("VkBool32") int uniformAndStorageBuffer16BitAccess() { return VkPhysicalDeviceVulkan11Features.get_uniformAndStorageBuffer16BitAccess(this.segment()); }
     /// Sets `uniformAndStorageBuffer16BitAccess` with the given value at the given index.
@@ -269,11 +261,6 @@ public final class VkPhysicalDeviceVulkan11Features extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_uniformAndStorageBuffer16BitAccess(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan11Features.set_uniformAndStorageBuffer16BitAccess(segment, 0L, value); }
-    /// Sets `uniformAndStorageBuffer16BitAccess` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceVulkan11Features uniformAndStorageBuffer16BitAccessAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan11Features.set_uniformAndStorageBuffer16BitAccess(this.segment(), index, value); return this; }
     /// Sets `uniformAndStorageBuffer16BitAccess` with the given value.
     /// @param value the value
     /// @return `this`
@@ -286,9 +273,6 @@ public final class VkPhysicalDeviceVulkan11Features extends Struct {
     /// {@return `storagePushConstant16`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_storagePushConstant16(MemorySegment segment) { return VkPhysicalDeviceVulkan11Features.get_storagePushConstant16(segment, 0L); }
-    /// {@return `storagePushConstant16` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int storagePushConstant16At(long index) { return VkPhysicalDeviceVulkan11Features.get_storagePushConstant16(this.segment(), index); }
     /// {@return `storagePushConstant16`}
     public @CType("VkBool32") int storagePushConstant16() { return VkPhysicalDeviceVulkan11Features.get_storagePushConstant16(this.segment()); }
     /// Sets `storagePushConstant16` with the given value at the given index.
@@ -300,11 +284,6 @@ public final class VkPhysicalDeviceVulkan11Features extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_storagePushConstant16(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan11Features.set_storagePushConstant16(segment, 0L, value); }
-    /// Sets `storagePushConstant16` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceVulkan11Features storagePushConstant16At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan11Features.set_storagePushConstant16(this.segment(), index, value); return this; }
     /// Sets `storagePushConstant16` with the given value.
     /// @param value the value
     /// @return `this`
@@ -317,9 +296,6 @@ public final class VkPhysicalDeviceVulkan11Features extends Struct {
     /// {@return `storageInputOutput16`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_storageInputOutput16(MemorySegment segment) { return VkPhysicalDeviceVulkan11Features.get_storageInputOutput16(segment, 0L); }
-    /// {@return `storageInputOutput16` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int storageInputOutput16At(long index) { return VkPhysicalDeviceVulkan11Features.get_storageInputOutput16(this.segment(), index); }
     /// {@return `storageInputOutput16`}
     public @CType("VkBool32") int storageInputOutput16() { return VkPhysicalDeviceVulkan11Features.get_storageInputOutput16(this.segment()); }
     /// Sets `storageInputOutput16` with the given value at the given index.
@@ -331,11 +307,6 @@ public final class VkPhysicalDeviceVulkan11Features extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_storageInputOutput16(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan11Features.set_storageInputOutput16(segment, 0L, value); }
-    /// Sets `storageInputOutput16` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceVulkan11Features storageInputOutput16At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan11Features.set_storageInputOutput16(this.segment(), index, value); return this; }
     /// Sets `storageInputOutput16` with the given value.
     /// @param value the value
     /// @return `this`
@@ -348,9 +319,6 @@ public final class VkPhysicalDeviceVulkan11Features extends Struct {
     /// {@return `multiview`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_multiview(MemorySegment segment) { return VkPhysicalDeviceVulkan11Features.get_multiview(segment, 0L); }
-    /// {@return `multiview` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int multiviewAt(long index) { return VkPhysicalDeviceVulkan11Features.get_multiview(this.segment(), index); }
     /// {@return `multiview`}
     public @CType("VkBool32") int multiview() { return VkPhysicalDeviceVulkan11Features.get_multiview(this.segment()); }
     /// Sets `multiview` with the given value at the given index.
@@ -362,11 +330,6 @@ public final class VkPhysicalDeviceVulkan11Features extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_multiview(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan11Features.set_multiview(segment, 0L, value); }
-    /// Sets `multiview` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceVulkan11Features multiviewAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan11Features.set_multiview(this.segment(), index, value); return this; }
     /// Sets `multiview` with the given value.
     /// @param value the value
     /// @return `this`
@@ -379,9 +342,6 @@ public final class VkPhysicalDeviceVulkan11Features extends Struct {
     /// {@return `multiviewGeometryShader`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_multiviewGeometryShader(MemorySegment segment) { return VkPhysicalDeviceVulkan11Features.get_multiviewGeometryShader(segment, 0L); }
-    /// {@return `multiviewGeometryShader` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int multiviewGeometryShaderAt(long index) { return VkPhysicalDeviceVulkan11Features.get_multiviewGeometryShader(this.segment(), index); }
     /// {@return `multiviewGeometryShader`}
     public @CType("VkBool32") int multiviewGeometryShader() { return VkPhysicalDeviceVulkan11Features.get_multiviewGeometryShader(this.segment()); }
     /// Sets `multiviewGeometryShader` with the given value at the given index.
@@ -393,11 +353,6 @@ public final class VkPhysicalDeviceVulkan11Features extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_multiviewGeometryShader(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan11Features.set_multiviewGeometryShader(segment, 0L, value); }
-    /// Sets `multiviewGeometryShader` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceVulkan11Features multiviewGeometryShaderAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan11Features.set_multiviewGeometryShader(this.segment(), index, value); return this; }
     /// Sets `multiviewGeometryShader` with the given value.
     /// @param value the value
     /// @return `this`
@@ -410,9 +365,6 @@ public final class VkPhysicalDeviceVulkan11Features extends Struct {
     /// {@return `multiviewTessellationShader`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_multiviewTessellationShader(MemorySegment segment) { return VkPhysicalDeviceVulkan11Features.get_multiviewTessellationShader(segment, 0L); }
-    /// {@return `multiviewTessellationShader` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int multiviewTessellationShaderAt(long index) { return VkPhysicalDeviceVulkan11Features.get_multiviewTessellationShader(this.segment(), index); }
     /// {@return `multiviewTessellationShader`}
     public @CType("VkBool32") int multiviewTessellationShader() { return VkPhysicalDeviceVulkan11Features.get_multiviewTessellationShader(this.segment()); }
     /// Sets `multiviewTessellationShader` with the given value at the given index.
@@ -424,11 +376,6 @@ public final class VkPhysicalDeviceVulkan11Features extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_multiviewTessellationShader(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan11Features.set_multiviewTessellationShader(segment, 0L, value); }
-    /// Sets `multiviewTessellationShader` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceVulkan11Features multiviewTessellationShaderAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan11Features.set_multiviewTessellationShader(this.segment(), index, value); return this; }
     /// Sets `multiviewTessellationShader` with the given value.
     /// @param value the value
     /// @return `this`
@@ -441,9 +388,6 @@ public final class VkPhysicalDeviceVulkan11Features extends Struct {
     /// {@return `variablePointersStorageBuffer`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_variablePointersStorageBuffer(MemorySegment segment) { return VkPhysicalDeviceVulkan11Features.get_variablePointersStorageBuffer(segment, 0L); }
-    /// {@return `variablePointersStorageBuffer` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int variablePointersStorageBufferAt(long index) { return VkPhysicalDeviceVulkan11Features.get_variablePointersStorageBuffer(this.segment(), index); }
     /// {@return `variablePointersStorageBuffer`}
     public @CType("VkBool32") int variablePointersStorageBuffer() { return VkPhysicalDeviceVulkan11Features.get_variablePointersStorageBuffer(this.segment()); }
     /// Sets `variablePointersStorageBuffer` with the given value at the given index.
@@ -455,11 +399,6 @@ public final class VkPhysicalDeviceVulkan11Features extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_variablePointersStorageBuffer(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan11Features.set_variablePointersStorageBuffer(segment, 0L, value); }
-    /// Sets `variablePointersStorageBuffer` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceVulkan11Features variablePointersStorageBufferAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan11Features.set_variablePointersStorageBuffer(this.segment(), index, value); return this; }
     /// Sets `variablePointersStorageBuffer` with the given value.
     /// @param value the value
     /// @return `this`
@@ -472,9 +411,6 @@ public final class VkPhysicalDeviceVulkan11Features extends Struct {
     /// {@return `variablePointers`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_variablePointers(MemorySegment segment) { return VkPhysicalDeviceVulkan11Features.get_variablePointers(segment, 0L); }
-    /// {@return `variablePointers` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int variablePointersAt(long index) { return VkPhysicalDeviceVulkan11Features.get_variablePointers(this.segment(), index); }
     /// {@return `variablePointers`}
     public @CType("VkBool32") int variablePointers() { return VkPhysicalDeviceVulkan11Features.get_variablePointers(this.segment()); }
     /// Sets `variablePointers` with the given value at the given index.
@@ -486,11 +422,6 @@ public final class VkPhysicalDeviceVulkan11Features extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_variablePointers(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan11Features.set_variablePointers(segment, 0L, value); }
-    /// Sets `variablePointers` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceVulkan11Features variablePointersAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan11Features.set_variablePointers(this.segment(), index, value); return this; }
     /// Sets `variablePointers` with the given value.
     /// @param value the value
     /// @return `this`
@@ -503,9 +434,6 @@ public final class VkPhysicalDeviceVulkan11Features extends Struct {
     /// {@return `protectedMemory`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_protectedMemory(MemorySegment segment) { return VkPhysicalDeviceVulkan11Features.get_protectedMemory(segment, 0L); }
-    /// {@return `protectedMemory` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int protectedMemoryAt(long index) { return VkPhysicalDeviceVulkan11Features.get_protectedMemory(this.segment(), index); }
     /// {@return `protectedMemory`}
     public @CType("VkBool32") int protectedMemory() { return VkPhysicalDeviceVulkan11Features.get_protectedMemory(this.segment()); }
     /// Sets `protectedMemory` with the given value at the given index.
@@ -517,11 +445,6 @@ public final class VkPhysicalDeviceVulkan11Features extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_protectedMemory(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan11Features.set_protectedMemory(segment, 0L, value); }
-    /// Sets `protectedMemory` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceVulkan11Features protectedMemoryAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan11Features.set_protectedMemory(this.segment(), index, value); return this; }
     /// Sets `protectedMemory` with the given value.
     /// @param value the value
     /// @return `this`
@@ -534,9 +457,6 @@ public final class VkPhysicalDeviceVulkan11Features extends Struct {
     /// {@return `samplerYcbcrConversion`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_samplerYcbcrConversion(MemorySegment segment) { return VkPhysicalDeviceVulkan11Features.get_samplerYcbcrConversion(segment, 0L); }
-    /// {@return `samplerYcbcrConversion` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int samplerYcbcrConversionAt(long index) { return VkPhysicalDeviceVulkan11Features.get_samplerYcbcrConversion(this.segment(), index); }
     /// {@return `samplerYcbcrConversion`}
     public @CType("VkBool32") int samplerYcbcrConversion() { return VkPhysicalDeviceVulkan11Features.get_samplerYcbcrConversion(this.segment()); }
     /// Sets `samplerYcbcrConversion` with the given value at the given index.
@@ -548,11 +468,6 @@ public final class VkPhysicalDeviceVulkan11Features extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_samplerYcbcrConversion(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan11Features.set_samplerYcbcrConversion(segment, 0L, value); }
-    /// Sets `samplerYcbcrConversion` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceVulkan11Features samplerYcbcrConversionAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan11Features.set_samplerYcbcrConversion(this.segment(), index, value); return this; }
     /// Sets `samplerYcbcrConversion` with the given value.
     /// @param value the value
     /// @return `this`
@@ -565,9 +480,6 @@ public final class VkPhysicalDeviceVulkan11Features extends Struct {
     /// {@return `shaderDrawParameters`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_shaderDrawParameters(MemorySegment segment) { return VkPhysicalDeviceVulkan11Features.get_shaderDrawParameters(segment, 0L); }
-    /// {@return `shaderDrawParameters` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int shaderDrawParametersAt(long index) { return VkPhysicalDeviceVulkan11Features.get_shaderDrawParameters(this.segment(), index); }
     /// {@return `shaderDrawParameters`}
     public @CType("VkBool32") int shaderDrawParameters() { return VkPhysicalDeviceVulkan11Features.get_shaderDrawParameters(this.segment()); }
     /// Sets `shaderDrawParameters` with the given value at the given index.
@@ -579,14 +491,158 @@ public final class VkPhysicalDeviceVulkan11Features extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_shaderDrawParameters(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan11Features.set_shaderDrawParameters(segment, 0L, value); }
-    /// Sets `shaderDrawParameters` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceVulkan11Features shaderDrawParametersAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan11Features.set_shaderDrawParameters(this.segment(), index, value); return this; }
     /// Sets `shaderDrawParameters` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceVulkan11Features shaderDrawParameters(@CType("VkBool32") int value) { VkPhysicalDeviceVulkan11Features.set_shaderDrawParameters(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDeviceVulkan11Features].
+    public static final class Buffer extends VkPhysicalDeviceVulkan11Features {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDeviceVulkan11Features.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDeviceVulkan11Features`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDeviceVulkan11Features`
+        public VkPhysicalDeviceVulkan11Features asSlice(long index) { return new VkPhysicalDeviceVulkan11Features(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDeviceVulkan11Features`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDeviceVulkan11Features`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceVulkan11Features.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceVulkan11Features.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceVulkan11Features.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkan11Features.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `storageBuffer16BitAccess` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int storageBuffer16BitAccessAt(long index) { return VkPhysicalDeviceVulkan11Features.get_storageBuffer16BitAccess(this.segment(), index); }
+        /// Sets `storageBuffer16BitAccess` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer storageBuffer16BitAccessAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan11Features.set_storageBuffer16BitAccess(this.segment(), index, value); return this; }
+
+        /// {@return `uniformAndStorageBuffer16BitAccess` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int uniformAndStorageBuffer16BitAccessAt(long index) { return VkPhysicalDeviceVulkan11Features.get_uniformAndStorageBuffer16BitAccess(this.segment(), index); }
+        /// Sets `uniformAndStorageBuffer16BitAccess` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer uniformAndStorageBuffer16BitAccessAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan11Features.set_uniformAndStorageBuffer16BitAccess(this.segment(), index, value); return this; }
+
+        /// {@return `storagePushConstant16` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int storagePushConstant16At(long index) { return VkPhysicalDeviceVulkan11Features.get_storagePushConstant16(this.segment(), index); }
+        /// Sets `storagePushConstant16` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer storagePushConstant16At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan11Features.set_storagePushConstant16(this.segment(), index, value); return this; }
+
+        /// {@return `storageInputOutput16` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int storageInputOutput16At(long index) { return VkPhysicalDeviceVulkan11Features.get_storageInputOutput16(this.segment(), index); }
+        /// Sets `storageInputOutput16` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer storageInputOutput16At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan11Features.set_storageInputOutput16(this.segment(), index, value); return this; }
+
+        /// {@return `multiview` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int multiviewAt(long index) { return VkPhysicalDeviceVulkan11Features.get_multiview(this.segment(), index); }
+        /// Sets `multiview` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer multiviewAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan11Features.set_multiview(this.segment(), index, value); return this; }
+
+        /// {@return `multiviewGeometryShader` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int multiviewGeometryShaderAt(long index) { return VkPhysicalDeviceVulkan11Features.get_multiviewGeometryShader(this.segment(), index); }
+        /// Sets `multiviewGeometryShader` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer multiviewGeometryShaderAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan11Features.set_multiviewGeometryShader(this.segment(), index, value); return this; }
+
+        /// {@return `multiviewTessellationShader` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int multiviewTessellationShaderAt(long index) { return VkPhysicalDeviceVulkan11Features.get_multiviewTessellationShader(this.segment(), index); }
+        /// Sets `multiviewTessellationShader` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer multiviewTessellationShaderAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan11Features.set_multiviewTessellationShader(this.segment(), index, value); return this; }
+
+        /// {@return `variablePointersStorageBuffer` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int variablePointersStorageBufferAt(long index) { return VkPhysicalDeviceVulkan11Features.get_variablePointersStorageBuffer(this.segment(), index); }
+        /// Sets `variablePointersStorageBuffer` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer variablePointersStorageBufferAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan11Features.set_variablePointersStorageBuffer(this.segment(), index, value); return this; }
+
+        /// {@return `variablePointers` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int variablePointersAt(long index) { return VkPhysicalDeviceVulkan11Features.get_variablePointers(this.segment(), index); }
+        /// Sets `variablePointers` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer variablePointersAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan11Features.set_variablePointers(this.segment(), index, value); return this; }
+
+        /// {@return `protectedMemory` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int protectedMemoryAt(long index) { return VkPhysicalDeviceVulkan11Features.get_protectedMemory(this.segment(), index); }
+        /// Sets `protectedMemory` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer protectedMemoryAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan11Features.set_protectedMemory(this.segment(), index, value); return this; }
+
+        /// {@return `samplerYcbcrConversion` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int samplerYcbcrConversionAt(long index) { return VkPhysicalDeviceVulkan11Features.get_samplerYcbcrConversion(this.segment(), index); }
+        /// Sets `samplerYcbcrConversion` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer samplerYcbcrConversionAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan11Features.set_samplerYcbcrConversion(this.segment(), index, value); return this; }
+
+        /// {@return `shaderDrawParameters` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int shaderDrawParametersAt(long index) { return VkPhysicalDeviceVulkan11Features.get_shaderDrawParameters(this.segment(), index); }
+        /// Sets `shaderDrawParameters` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer shaderDrawParametersAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkan11Features.set_shaderDrawParameters(this.segment(), index, value); return this; }
+
+    }
 }

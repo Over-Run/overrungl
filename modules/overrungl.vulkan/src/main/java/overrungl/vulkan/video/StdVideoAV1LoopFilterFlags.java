@@ -40,7 +40,7 @@ import overrungl.util.*;
 ///     uint32_t : 30 reserved;
 /// } StdVideoAV1LoopFilterFlags;
 /// ```
-public final class StdVideoAV1LoopFilterFlags extends Struct {
+public sealed class StdVideoAV1LoopFilterFlags extends Struct {
     /// The struct layout of `StdVideoAV1LoopFilterFlags`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("loop_filter_delta_enabled"),
@@ -64,6 +64,11 @@ public final class StdVideoAV1LoopFilterFlags extends Struct {
     public static StdVideoAV1LoopFilterFlags of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoAV1LoopFilterFlags(segment); }
 
     /// Creates `StdVideoAV1LoopFilterFlags` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `StdVideoAV1LoopFilterFlags` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -76,7 +81,7 @@ public final class StdVideoAV1LoopFilterFlags extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoAV1LoopFilterFlags ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoAV1LoopFilterFlags(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `StdVideoAV1LoopFilterFlags` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -87,7 +92,21 @@ public final class StdVideoAV1LoopFilterFlags extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `StdVideoAV1LoopFilterFlags`
-    public static StdVideoAV1LoopFilterFlags alloc(SegmentAllocator allocator, long count) { return new StdVideoAV1LoopFilterFlags(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `StdVideoAV1LoopFilterFlags` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `StdVideoAV1LoopFilterFlags`
+    public static StdVideoAV1LoopFilterFlags allocInit(SegmentAllocator allocator, @CType("uint32_t : 1") int loop_filter_delta_enabled, @CType("uint32_t : 1") int loop_filter_delta_update, @CType("uint32_t : 30") int reserved) { return alloc(allocator).loop_filter_delta_enabled(loop_filter_delta_enabled).loop_filter_delta_update(loop_filter_delta_update).reserved(reserved); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public StdVideoAV1LoopFilterFlags copyFrom(StdVideoAV1LoopFilterFlags src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `loop_filter_delta_enabled` at the given index}
     /// @param segment the segment of the struct
@@ -96,9 +115,6 @@ public final class StdVideoAV1LoopFilterFlags extends Struct {
     /// {@return `loop_filter_delta_enabled`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_loop_filter_delta_enabled(MemorySegment segment) { return StdVideoAV1LoopFilterFlags.get_loop_filter_delta_enabled(segment, 0L); }
-    /// {@return `loop_filter_delta_enabled` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int loop_filter_delta_enabledAt(long index) { return StdVideoAV1LoopFilterFlags.get_loop_filter_delta_enabled(this.segment(), index); }
     /// {@return `loop_filter_delta_enabled`}
     public @CType("uint32_t : 1") int loop_filter_delta_enabled() { return StdVideoAV1LoopFilterFlags.get_loop_filter_delta_enabled(this.segment()); }
     /// Sets `loop_filter_delta_enabled` with the given value at the given index.
@@ -110,11 +126,6 @@ public final class StdVideoAV1LoopFilterFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_loop_filter_delta_enabled(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoAV1LoopFilterFlags.set_loop_filter_delta_enabled(segment, 0L, value); }
-    /// Sets `loop_filter_delta_enabled` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1LoopFilterFlags loop_filter_delta_enabledAt(long index, @CType("uint32_t : 1") int value) { StdVideoAV1LoopFilterFlags.set_loop_filter_delta_enabled(this.segment(), index, value); return this; }
     /// Sets `loop_filter_delta_enabled` with the given value.
     /// @param value the value
     /// @return `this`
@@ -127,9 +138,6 @@ public final class StdVideoAV1LoopFilterFlags extends Struct {
     /// {@return `loop_filter_delta_update`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_loop_filter_delta_update(MemorySegment segment) { return StdVideoAV1LoopFilterFlags.get_loop_filter_delta_update(segment, 0L); }
-    /// {@return `loop_filter_delta_update` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int loop_filter_delta_updateAt(long index) { return StdVideoAV1LoopFilterFlags.get_loop_filter_delta_update(this.segment(), index); }
     /// {@return `loop_filter_delta_update`}
     public @CType("uint32_t : 1") int loop_filter_delta_update() { return StdVideoAV1LoopFilterFlags.get_loop_filter_delta_update(this.segment()); }
     /// Sets `loop_filter_delta_update` with the given value at the given index.
@@ -141,11 +149,6 @@ public final class StdVideoAV1LoopFilterFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_loop_filter_delta_update(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoAV1LoopFilterFlags.set_loop_filter_delta_update(segment, 0L, value); }
-    /// Sets `loop_filter_delta_update` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1LoopFilterFlags loop_filter_delta_updateAt(long index, @CType("uint32_t : 1") int value) { StdVideoAV1LoopFilterFlags.set_loop_filter_delta_update(this.segment(), index, value); return this; }
     /// Sets `loop_filter_delta_update` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,9 +161,6 @@ public final class StdVideoAV1LoopFilterFlags extends Struct {
     /// {@return `reserved`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 30") int get_reserved(MemorySegment segment) { return StdVideoAV1LoopFilterFlags.get_reserved(segment, 0L); }
-    /// {@return `reserved` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 30") int reservedAt(long index) { return StdVideoAV1LoopFilterFlags.get_reserved(this.segment(), index); }
     /// {@return `reserved`}
     public @CType("uint32_t : 30") int reserved() { return StdVideoAV1LoopFilterFlags.get_reserved(this.segment()); }
     /// Sets `reserved` with the given value at the given index.
@@ -172,14 +172,59 @@ public final class StdVideoAV1LoopFilterFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_reserved(MemorySegment segment, @CType("uint32_t : 30") int value) { StdVideoAV1LoopFilterFlags.set_reserved(segment, 0L, value); }
-    /// Sets `reserved` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1LoopFilterFlags reservedAt(long index, @CType("uint32_t : 30") int value) { StdVideoAV1LoopFilterFlags.set_reserved(this.segment(), index, value); return this; }
     /// Sets `reserved` with the given value.
     /// @param value the value
     /// @return `this`
     public StdVideoAV1LoopFilterFlags reserved(@CType("uint32_t : 30") int value) { StdVideoAV1LoopFilterFlags.set_reserved(this.segment(), value); return this; }
 
+    /// A buffer of [StdVideoAV1LoopFilterFlags].
+    public static final class Buffer extends StdVideoAV1LoopFilterFlags {
+        private final long elementCount;
+
+        /// Creates `StdVideoAV1LoopFilterFlags.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `StdVideoAV1LoopFilterFlags`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `StdVideoAV1LoopFilterFlags`
+        public StdVideoAV1LoopFilterFlags asSlice(long index) { return new StdVideoAV1LoopFilterFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `StdVideoAV1LoopFilterFlags`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `StdVideoAV1LoopFilterFlags`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `loop_filter_delta_enabled` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int loop_filter_delta_enabledAt(long index) { return StdVideoAV1LoopFilterFlags.get_loop_filter_delta_enabled(this.segment(), index); }
+        /// Sets `loop_filter_delta_enabled` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer loop_filter_delta_enabledAt(long index, @CType("uint32_t : 1") int value) { StdVideoAV1LoopFilterFlags.set_loop_filter_delta_enabled(this.segment(), index, value); return this; }
+
+        /// {@return `loop_filter_delta_update` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int loop_filter_delta_updateAt(long index) { return StdVideoAV1LoopFilterFlags.get_loop_filter_delta_update(this.segment(), index); }
+        /// Sets `loop_filter_delta_update` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer loop_filter_delta_updateAt(long index, @CType("uint32_t : 1") int value) { StdVideoAV1LoopFilterFlags.set_loop_filter_delta_update(this.segment(), index, value); return this; }
+
+        /// {@return `reserved` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 30") int reservedAt(long index) { return StdVideoAV1LoopFilterFlags.get_reserved(this.segment(), index); }
+        /// Sets `reserved` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer reservedAt(long index, @CType("uint32_t : 30") int value) { StdVideoAV1LoopFilterFlags.set_reserved(this.segment(), index, value); return this; }
+
+    }
 }

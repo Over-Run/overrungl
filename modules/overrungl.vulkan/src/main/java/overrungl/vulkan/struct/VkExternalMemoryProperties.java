@@ -40,7 +40,7 @@ import overrungl.util.*;
 ///     VkExternalMemoryHandleTypeFlags compatibleHandleTypes;
 /// } VkExternalMemoryProperties;
 /// ```
-public final class VkExternalMemoryProperties extends Struct {
+public sealed class VkExternalMemoryProperties extends Struct {
     /// The struct layout of `VkExternalMemoryProperties`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("externalMemoryFeatures"),
@@ -64,6 +64,11 @@ public final class VkExternalMemoryProperties extends Struct {
     public static VkExternalMemoryProperties of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkExternalMemoryProperties(segment); }
 
     /// Creates `VkExternalMemoryProperties` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkExternalMemoryProperties` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -76,7 +81,7 @@ public final class VkExternalMemoryProperties extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkExternalMemoryProperties ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkExternalMemoryProperties(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkExternalMemoryProperties` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -87,7 +92,21 @@ public final class VkExternalMemoryProperties extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkExternalMemoryProperties`
-    public static VkExternalMemoryProperties alloc(SegmentAllocator allocator, long count) { return new VkExternalMemoryProperties(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkExternalMemoryProperties` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkExternalMemoryProperties`
+    public static VkExternalMemoryProperties allocInit(SegmentAllocator allocator, @CType("VkExternalMemoryFeatureFlags") int externalMemoryFeatures, @CType("VkExternalMemoryHandleTypeFlags") int exportFromImportedHandleTypes, @CType("VkExternalMemoryHandleTypeFlags") int compatibleHandleTypes) { return alloc(allocator).externalMemoryFeatures(externalMemoryFeatures).exportFromImportedHandleTypes(exportFromImportedHandleTypes).compatibleHandleTypes(compatibleHandleTypes); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkExternalMemoryProperties copyFrom(VkExternalMemoryProperties src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `externalMemoryFeatures` at the given index}
     /// @param segment the segment of the struct
@@ -96,9 +115,6 @@ public final class VkExternalMemoryProperties extends Struct {
     /// {@return `externalMemoryFeatures`}
     /// @param segment the segment of the struct
     public static @CType("VkExternalMemoryFeatureFlags") int get_externalMemoryFeatures(MemorySegment segment) { return VkExternalMemoryProperties.get_externalMemoryFeatures(segment, 0L); }
-    /// {@return `externalMemoryFeatures` at the given index}
-    /// @param index the index
-    public @CType("VkExternalMemoryFeatureFlags") int externalMemoryFeaturesAt(long index) { return VkExternalMemoryProperties.get_externalMemoryFeatures(this.segment(), index); }
     /// {@return `externalMemoryFeatures`}
     public @CType("VkExternalMemoryFeatureFlags") int externalMemoryFeatures() { return VkExternalMemoryProperties.get_externalMemoryFeatures(this.segment()); }
     /// Sets `externalMemoryFeatures` with the given value at the given index.
@@ -110,11 +126,6 @@ public final class VkExternalMemoryProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_externalMemoryFeatures(MemorySegment segment, @CType("VkExternalMemoryFeatureFlags") int value) { VkExternalMemoryProperties.set_externalMemoryFeatures(segment, 0L, value); }
-    /// Sets `externalMemoryFeatures` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkExternalMemoryProperties externalMemoryFeaturesAt(long index, @CType("VkExternalMemoryFeatureFlags") int value) { VkExternalMemoryProperties.set_externalMemoryFeatures(this.segment(), index, value); return this; }
     /// Sets `externalMemoryFeatures` with the given value.
     /// @param value the value
     /// @return `this`
@@ -127,9 +138,6 @@ public final class VkExternalMemoryProperties extends Struct {
     /// {@return `exportFromImportedHandleTypes`}
     /// @param segment the segment of the struct
     public static @CType("VkExternalMemoryHandleTypeFlags") int get_exportFromImportedHandleTypes(MemorySegment segment) { return VkExternalMemoryProperties.get_exportFromImportedHandleTypes(segment, 0L); }
-    /// {@return `exportFromImportedHandleTypes` at the given index}
-    /// @param index the index
-    public @CType("VkExternalMemoryHandleTypeFlags") int exportFromImportedHandleTypesAt(long index) { return VkExternalMemoryProperties.get_exportFromImportedHandleTypes(this.segment(), index); }
     /// {@return `exportFromImportedHandleTypes`}
     public @CType("VkExternalMemoryHandleTypeFlags") int exportFromImportedHandleTypes() { return VkExternalMemoryProperties.get_exportFromImportedHandleTypes(this.segment()); }
     /// Sets `exportFromImportedHandleTypes` with the given value at the given index.
@@ -141,11 +149,6 @@ public final class VkExternalMemoryProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_exportFromImportedHandleTypes(MemorySegment segment, @CType("VkExternalMemoryHandleTypeFlags") int value) { VkExternalMemoryProperties.set_exportFromImportedHandleTypes(segment, 0L, value); }
-    /// Sets `exportFromImportedHandleTypes` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkExternalMemoryProperties exportFromImportedHandleTypesAt(long index, @CType("VkExternalMemoryHandleTypeFlags") int value) { VkExternalMemoryProperties.set_exportFromImportedHandleTypes(this.segment(), index, value); return this; }
     /// Sets `exportFromImportedHandleTypes` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,9 +161,6 @@ public final class VkExternalMemoryProperties extends Struct {
     /// {@return `compatibleHandleTypes`}
     /// @param segment the segment of the struct
     public static @CType("VkExternalMemoryHandleTypeFlags") int get_compatibleHandleTypes(MemorySegment segment) { return VkExternalMemoryProperties.get_compatibleHandleTypes(segment, 0L); }
-    /// {@return `compatibleHandleTypes` at the given index}
-    /// @param index the index
-    public @CType("VkExternalMemoryHandleTypeFlags") int compatibleHandleTypesAt(long index) { return VkExternalMemoryProperties.get_compatibleHandleTypes(this.segment(), index); }
     /// {@return `compatibleHandleTypes`}
     public @CType("VkExternalMemoryHandleTypeFlags") int compatibleHandleTypes() { return VkExternalMemoryProperties.get_compatibleHandleTypes(this.segment()); }
     /// Sets `compatibleHandleTypes` with the given value at the given index.
@@ -172,14 +172,59 @@ public final class VkExternalMemoryProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_compatibleHandleTypes(MemorySegment segment, @CType("VkExternalMemoryHandleTypeFlags") int value) { VkExternalMemoryProperties.set_compatibleHandleTypes(segment, 0L, value); }
-    /// Sets `compatibleHandleTypes` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkExternalMemoryProperties compatibleHandleTypesAt(long index, @CType("VkExternalMemoryHandleTypeFlags") int value) { VkExternalMemoryProperties.set_compatibleHandleTypes(this.segment(), index, value); return this; }
     /// Sets `compatibleHandleTypes` with the given value.
     /// @param value the value
     /// @return `this`
     public VkExternalMemoryProperties compatibleHandleTypes(@CType("VkExternalMemoryHandleTypeFlags") int value) { VkExternalMemoryProperties.set_compatibleHandleTypes(this.segment(), value); return this; }
 
+    /// A buffer of [VkExternalMemoryProperties].
+    public static final class Buffer extends VkExternalMemoryProperties {
+        private final long elementCount;
+
+        /// Creates `VkExternalMemoryProperties.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkExternalMemoryProperties`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkExternalMemoryProperties`
+        public VkExternalMemoryProperties asSlice(long index) { return new VkExternalMemoryProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkExternalMemoryProperties`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkExternalMemoryProperties`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `externalMemoryFeatures` at the given index}
+        /// @param index the index
+        public @CType("VkExternalMemoryFeatureFlags") int externalMemoryFeaturesAt(long index) { return VkExternalMemoryProperties.get_externalMemoryFeatures(this.segment(), index); }
+        /// Sets `externalMemoryFeatures` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer externalMemoryFeaturesAt(long index, @CType("VkExternalMemoryFeatureFlags") int value) { VkExternalMemoryProperties.set_externalMemoryFeatures(this.segment(), index, value); return this; }
+
+        /// {@return `exportFromImportedHandleTypes` at the given index}
+        /// @param index the index
+        public @CType("VkExternalMemoryHandleTypeFlags") int exportFromImportedHandleTypesAt(long index) { return VkExternalMemoryProperties.get_exportFromImportedHandleTypes(this.segment(), index); }
+        /// Sets `exportFromImportedHandleTypes` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer exportFromImportedHandleTypesAt(long index, @CType("VkExternalMemoryHandleTypeFlags") int value) { VkExternalMemoryProperties.set_exportFromImportedHandleTypes(this.segment(), index, value); return this; }
+
+        /// {@return `compatibleHandleTypes` at the given index}
+        /// @param index the index
+        public @CType("VkExternalMemoryHandleTypeFlags") int compatibleHandleTypesAt(long index) { return VkExternalMemoryProperties.get_compatibleHandleTypes(this.segment(), index); }
+        /// Sets `compatibleHandleTypes` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer compatibleHandleTypesAt(long index, @CType("VkExternalMemoryHandleTypeFlags") int value) { VkExternalMemoryProperties.set_compatibleHandleTypes(this.segment(), index, value); return this; }
+
+    }
 }

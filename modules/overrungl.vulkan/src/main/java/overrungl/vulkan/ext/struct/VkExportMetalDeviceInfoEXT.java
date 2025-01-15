@@ -40,7 +40,7 @@ import overrungl.util.*;
 ///     MTLDevice_id mtlDevice;
 /// } VkExportMetalDeviceInfoEXT;
 /// ```
-public final class VkExportMetalDeviceInfoEXT extends Struct {
+public sealed class VkExportMetalDeviceInfoEXT extends Struct {
     /// The struct layout of `VkExportMetalDeviceInfoEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -64,6 +64,11 @@ public final class VkExportMetalDeviceInfoEXT extends Struct {
     public static VkExportMetalDeviceInfoEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkExportMetalDeviceInfoEXT(segment); }
 
     /// Creates `VkExportMetalDeviceInfoEXT` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkExportMetalDeviceInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -76,7 +81,7 @@ public final class VkExportMetalDeviceInfoEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkExportMetalDeviceInfoEXT ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkExportMetalDeviceInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkExportMetalDeviceInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -87,7 +92,21 @@ public final class VkExportMetalDeviceInfoEXT extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkExportMetalDeviceInfoEXT`
-    public static VkExportMetalDeviceInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkExportMetalDeviceInfoEXT(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkExportMetalDeviceInfoEXT` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkExportMetalDeviceInfoEXT`
+    public static VkExportMetalDeviceInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("MTLDevice_id") java.lang.foreign.MemorySegment mtlDevice) { return alloc(allocator).sType(sType).pNext(pNext).mtlDevice(mtlDevice); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkExportMetalDeviceInfoEXT copyFrom(VkExportMetalDeviceInfoEXT src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -96,9 +115,6 @@ public final class VkExportMetalDeviceInfoEXT extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkExportMetalDeviceInfoEXT.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkExportMetalDeviceInfoEXT.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkExportMetalDeviceInfoEXT.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -110,11 +126,6 @@ public final class VkExportMetalDeviceInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkExportMetalDeviceInfoEXT.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkExportMetalDeviceInfoEXT sTypeAt(long index, @CType("VkStructureType") int value) { VkExportMetalDeviceInfoEXT.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -127,9 +138,6 @@ public final class VkExportMetalDeviceInfoEXT extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkExportMetalDeviceInfoEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkExportMetalDeviceInfoEXT.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkExportMetalDeviceInfoEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -141,11 +149,6 @@ public final class VkExportMetalDeviceInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkExportMetalDeviceInfoEXT.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkExportMetalDeviceInfoEXT pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkExportMetalDeviceInfoEXT.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,9 +161,6 @@ public final class VkExportMetalDeviceInfoEXT extends Struct {
     /// {@return `mtlDevice`}
     /// @param segment the segment of the struct
     public static @CType("MTLDevice_id") java.lang.foreign.MemorySegment get_mtlDevice(MemorySegment segment) { return VkExportMetalDeviceInfoEXT.get_mtlDevice(segment, 0L); }
-    /// {@return `mtlDevice` at the given index}
-    /// @param index the index
-    public @CType("MTLDevice_id") java.lang.foreign.MemorySegment mtlDeviceAt(long index) { return VkExportMetalDeviceInfoEXT.get_mtlDevice(this.segment(), index); }
     /// {@return `mtlDevice`}
     public @CType("MTLDevice_id") java.lang.foreign.MemorySegment mtlDevice() { return VkExportMetalDeviceInfoEXT.get_mtlDevice(this.segment()); }
     /// Sets `mtlDevice` with the given value at the given index.
@@ -172,14 +172,59 @@ public final class VkExportMetalDeviceInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_mtlDevice(MemorySegment segment, @CType("MTLDevice_id") java.lang.foreign.MemorySegment value) { VkExportMetalDeviceInfoEXT.set_mtlDevice(segment, 0L, value); }
-    /// Sets `mtlDevice` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkExportMetalDeviceInfoEXT mtlDeviceAt(long index, @CType("MTLDevice_id") java.lang.foreign.MemorySegment value) { VkExportMetalDeviceInfoEXT.set_mtlDevice(this.segment(), index, value); return this; }
     /// Sets `mtlDevice` with the given value.
     /// @param value the value
     /// @return `this`
     public VkExportMetalDeviceInfoEXT mtlDevice(@CType("MTLDevice_id") java.lang.foreign.MemorySegment value) { VkExportMetalDeviceInfoEXT.set_mtlDevice(this.segment(), value); return this; }
 
+    /// A buffer of [VkExportMetalDeviceInfoEXT].
+    public static final class Buffer extends VkExportMetalDeviceInfoEXT {
+        private final long elementCount;
+
+        /// Creates `VkExportMetalDeviceInfoEXT.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkExportMetalDeviceInfoEXT`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkExportMetalDeviceInfoEXT`
+        public VkExportMetalDeviceInfoEXT asSlice(long index) { return new VkExportMetalDeviceInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkExportMetalDeviceInfoEXT`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkExportMetalDeviceInfoEXT`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkExportMetalDeviceInfoEXT.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkExportMetalDeviceInfoEXT.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkExportMetalDeviceInfoEXT.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkExportMetalDeviceInfoEXT.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `mtlDevice` at the given index}
+        /// @param index the index
+        public @CType("MTLDevice_id") java.lang.foreign.MemorySegment mtlDeviceAt(long index) { return VkExportMetalDeviceInfoEXT.get_mtlDevice(this.segment(), index); }
+        /// Sets `mtlDevice` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer mtlDeviceAt(long index, @CType("MTLDevice_id") java.lang.foreign.MemorySegment value) { VkExportMetalDeviceInfoEXT.set_mtlDevice(this.segment(), index, value); return this; }
+
+    }
 }

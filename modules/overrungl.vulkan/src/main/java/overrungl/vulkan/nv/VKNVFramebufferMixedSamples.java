@@ -23,7 +23,7 @@ import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 import static overrungl.vulkan.amd.VKAMDMixedAttachmentSamples.*;
-public class VKNVFramebufferMixedSamples {
+public final class VKNVFramebufferMixedSamples {
     public static final int VK_COVERAGE_MODULATION_MODE_NONE_NV = 0;
     public static final int VK_COVERAGE_MODULATION_MODE_RGB_NV = 1;
     public static final int VK_COVERAGE_MODULATION_MODE_ALPHA_NV = 2;
@@ -33,7 +33,6 @@ public class VKNVFramebufferMixedSamples {
     public static final int VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_MODULATION_STATE_CREATE_INFO_NV = 1000152000;
     public static final int VK_STRUCTURE_TYPE_ATTACHMENT_SAMPLE_COUNT_INFO_NV = VK_STRUCTURE_TYPE_ATTACHMENT_SAMPLE_COUNT_INFO_AMD;
 
-    public VKNVFramebufferMixedSamples(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKNVFramebufferMixedSamples() { }
 
 }

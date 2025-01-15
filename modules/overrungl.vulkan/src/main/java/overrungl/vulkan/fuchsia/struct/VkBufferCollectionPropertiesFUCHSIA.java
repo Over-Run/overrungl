@@ -70,7 +70,7 @@ import overrungl.util.*;
 ///     VkChromaLocation suggestedYChromaOffset;
 /// } VkBufferCollectionPropertiesFUCHSIA;
 /// ```
-public final class VkBufferCollectionPropertiesFUCHSIA extends Struct {
+public sealed class VkBufferCollectionPropertiesFUCHSIA extends Struct {
     /// The struct layout of `VkBufferCollectionPropertiesFUCHSIA`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -128,6 +128,11 @@ public final class VkBufferCollectionPropertiesFUCHSIA extends Struct {
     public static VkBufferCollectionPropertiesFUCHSIA of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkBufferCollectionPropertiesFUCHSIA(segment); }
 
     /// Creates `VkBufferCollectionPropertiesFUCHSIA` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkBufferCollectionPropertiesFUCHSIA` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -140,7 +145,7 @@ public final class VkBufferCollectionPropertiesFUCHSIA extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkBufferCollectionPropertiesFUCHSIA ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkBufferCollectionPropertiesFUCHSIA(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkBufferCollectionPropertiesFUCHSIA` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -151,7 +156,21 @@ public final class VkBufferCollectionPropertiesFUCHSIA extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkBufferCollectionPropertiesFUCHSIA`
-    public static VkBufferCollectionPropertiesFUCHSIA alloc(SegmentAllocator allocator, long count) { return new VkBufferCollectionPropertiesFUCHSIA(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkBufferCollectionPropertiesFUCHSIA` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkBufferCollectionPropertiesFUCHSIA`
+    public static VkBufferCollectionPropertiesFUCHSIA allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int memoryTypeBits, @CType("uint32_t") int bufferCount, @CType("uint32_t") int createInfoIndex, @CType("uint64_t") long sysmemPixelFormat, @CType("VkFormatFeatureFlags") int formatFeatures, @CType("VkSysmemColorSpaceFUCHSIA") java.lang.foreign.MemorySegment sysmemColorSpaceIndex, @CType("VkComponentMapping") java.lang.foreign.MemorySegment samplerYcbcrConversionComponents, @CType("VkSamplerYcbcrModelConversion") int suggestedYcbcrModel, @CType("VkSamplerYcbcrRange") int suggestedYcbcrRange, @CType("VkChromaLocation") int suggestedXChromaOffset, @CType("VkChromaLocation") int suggestedYChromaOffset) { return alloc(allocator).sType(sType).pNext(pNext).memoryTypeBits(memoryTypeBits).bufferCount(bufferCount).createInfoIndex(createInfoIndex).sysmemPixelFormat(sysmemPixelFormat).formatFeatures(formatFeatures).sysmemColorSpaceIndex(sysmemColorSpaceIndex).samplerYcbcrConversionComponents(samplerYcbcrConversionComponents).suggestedYcbcrModel(suggestedYcbcrModel).suggestedYcbcrRange(suggestedYcbcrRange).suggestedXChromaOffset(suggestedXChromaOffset).suggestedYChromaOffset(suggestedYChromaOffset); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkBufferCollectionPropertiesFUCHSIA copyFrom(VkBufferCollectionPropertiesFUCHSIA src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -160,9 +179,6 @@ public final class VkBufferCollectionPropertiesFUCHSIA extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkBufferCollectionPropertiesFUCHSIA.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkBufferCollectionPropertiesFUCHSIA.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkBufferCollectionPropertiesFUCHSIA.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -174,11 +190,6 @@ public final class VkBufferCollectionPropertiesFUCHSIA extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkBufferCollectionPropertiesFUCHSIA.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCollectionPropertiesFUCHSIA sTypeAt(long index, @CType("VkStructureType") int value) { VkBufferCollectionPropertiesFUCHSIA.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -191,9 +202,6 @@ public final class VkBufferCollectionPropertiesFUCHSIA extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkBufferCollectionPropertiesFUCHSIA.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkBufferCollectionPropertiesFUCHSIA.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkBufferCollectionPropertiesFUCHSIA.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -205,11 +213,6 @@ public final class VkBufferCollectionPropertiesFUCHSIA extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkBufferCollectionPropertiesFUCHSIA.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCollectionPropertiesFUCHSIA pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkBufferCollectionPropertiesFUCHSIA.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -222,9 +225,6 @@ public final class VkBufferCollectionPropertiesFUCHSIA extends Struct {
     /// {@return `memoryTypeBits`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_memoryTypeBits(MemorySegment segment) { return VkBufferCollectionPropertiesFUCHSIA.get_memoryTypeBits(segment, 0L); }
-    /// {@return `memoryTypeBits` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int memoryTypeBitsAt(long index) { return VkBufferCollectionPropertiesFUCHSIA.get_memoryTypeBits(this.segment(), index); }
     /// {@return `memoryTypeBits`}
     public @CType("uint32_t") int memoryTypeBits() { return VkBufferCollectionPropertiesFUCHSIA.get_memoryTypeBits(this.segment()); }
     /// Sets `memoryTypeBits` with the given value at the given index.
@@ -236,11 +236,6 @@ public final class VkBufferCollectionPropertiesFUCHSIA extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_memoryTypeBits(MemorySegment segment, @CType("uint32_t") int value) { VkBufferCollectionPropertiesFUCHSIA.set_memoryTypeBits(segment, 0L, value); }
-    /// Sets `memoryTypeBits` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCollectionPropertiesFUCHSIA memoryTypeBitsAt(long index, @CType("uint32_t") int value) { VkBufferCollectionPropertiesFUCHSIA.set_memoryTypeBits(this.segment(), index, value); return this; }
     /// Sets `memoryTypeBits` with the given value.
     /// @param value the value
     /// @return `this`
@@ -253,9 +248,6 @@ public final class VkBufferCollectionPropertiesFUCHSIA extends Struct {
     /// {@return `bufferCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_bufferCount(MemorySegment segment) { return VkBufferCollectionPropertiesFUCHSIA.get_bufferCount(segment, 0L); }
-    /// {@return `bufferCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int bufferCountAt(long index) { return VkBufferCollectionPropertiesFUCHSIA.get_bufferCount(this.segment(), index); }
     /// {@return `bufferCount`}
     public @CType("uint32_t") int bufferCount() { return VkBufferCollectionPropertiesFUCHSIA.get_bufferCount(this.segment()); }
     /// Sets `bufferCount` with the given value at the given index.
@@ -267,11 +259,6 @@ public final class VkBufferCollectionPropertiesFUCHSIA extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_bufferCount(MemorySegment segment, @CType("uint32_t") int value) { VkBufferCollectionPropertiesFUCHSIA.set_bufferCount(segment, 0L, value); }
-    /// Sets `bufferCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCollectionPropertiesFUCHSIA bufferCountAt(long index, @CType("uint32_t") int value) { VkBufferCollectionPropertiesFUCHSIA.set_bufferCount(this.segment(), index, value); return this; }
     /// Sets `bufferCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -284,9 +271,6 @@ public final class VkBufferCollectionPropertiesFUCHSIA extends Struct {
     /// {@return `createInfoIndex`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_createInfoIndex(MemorySegment segment) { return VkBufferCollectionPropertiesFUCHSIA.get_createInfoIndex(segment, 0L); }
-    /// {@return `createInfoIndex` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int createInfoIndexAt(long index) { return VkBufferCollectionPropertiesFUCHSIA.get_createInfoIndex(this.segment(), index); }
     /// {@return `createInfoIndex`}
     public @CType("uint32_t") int createInfoIndex() { return VkBufferCollectionPropertiesFUCHSIA.get_createInfoIndex(this.segment()); }
     /// Sets `createInfoIndex` with the given value at the given index.
@@ -298,11 +282,6 @@ public final class VkBufferCollectionPropertiesFUCHSIA extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_createInfoIndex(MemorySegment segment, @CType("uint32_t") int value) { VkBufferCollectionPropertiesFUCHSIA.set_createInfoIndex(segment, 0L, value); }
-    /// Sets `createInfoIndex` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCollectionPropertiesFUCHSIA createInfoIndexAt(long index, @CType("uint32_t") int value) { VkBufferCollectionPropertiesFUCHSIA.set_createInfoIndex(this.segment(), index, value); return this; }
     /// Sets `createInfoIndex` with the given value.
     /// @param value the value
     /// @return `this`
@@ -315,9 +294,6 @@ public final class VkBufferCollectionPropertiesFUCHSIA extends Struct {
     /// {@return `sysmemPixelFormat`}
     /// @param segment the segment of the struct
     public static @CType("uint64_t") long get_sysmemPixelFormat(MemorySegment segment) { return VkBufferCollectionPropertiesFUCHSIA.get_sysmemPixelFormat(segment, 0L); }
-    /// {@return `sysmemPixelFormat` at the given index}
-    /// @param index the index
-    public @CType("uint64_t") long sysmemPixelFormatAt(long index) { return VkBufferCollectionPropertiesFUCHSIA.get_sysmemPixelFormat(this.segment(), index); }
     /// {@return `sysmemPixelFormat`}
     public @CType("uint64_t") long sysmemPixelFormat() { return VkBufferCollectionPropertiesFUCHSIA.get_sysmemPixelFormat(this.segment()); }
     /// Sets `sysmemPixelFormat` with the given value at the given index.
@@ -329,11 +305,6 @@ public final class VkBufferCollectionPropertiesFUCHSIA extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sysmemPixelFormat(MemorySegment segment, @CType("uint64_t") long value) { VkBufferCollectionPropertiesFUCHSIA.set_sysmemPixelFormat(segment, 0L, value); }
-    /// Sets `sysmemPixelFormat` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCollectionPropertiesFUCHSIA sysmemPixelFormatAt(long index, @CType("uint64_t") long value) { VkBufferCollectionPropertiesFUCHSIA.set_sysmemPixelFormat(this.segment(), index, value); return this; }
     /// Sets `sysmemPixelFormat` with the given value.
     /// @param value the value
     /// @return `this`
@@ -346,9 +317,6 @@ public final class VkBufferCollectionPropertiesFUCHSIA extends Struct {
     /// {@return `formatFeatures`}
     /// @param segment the segment of the struct
     public static @CType("VkFormatFeatureFlags") int get_formatFeatures(MemorySegment segment) { return VkBufferCollectionPropertiesFUCHSIA.get_formatFeatures(segment, 0L); }
-    /// {@return `formatFeatures` at the given index}
-    /// @param index the index
-    public @CType("VkFormatFeatureFlags") int formatFeaturesAt(long index) { return VkBufferCollectionPropertiesFUCHSIA.get_formatFeatures(this.segment(), index); }
     /// {@return `formatFeatures`}
     public @CType("VkFormatFeatureFlags") int formatFeatures() { return VkBufferCollectionPropertiesFUCHSIA.get_formatFeatures(this.segment()); }
     /// Sets `formatFeatures` with the given value at the given index.
@@ -360,11 +328,6 @@ public final class VkBufferCollectionPropertiesFUCHSIA extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_formatFeatures(MemorySegment segment, @CType("VkFormatFeatureFlags") int value) { VkBufferCollectionPropertiesFUCHSIA.set_formatFeatures(segment, 0L, value); }
-    /// Sets `formatFeatures` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCollectionPropertiesFUCHSIA formatFeaturesAt(long index, @CType("VkFormatFeatureFlags") int value) { VkBufferCollectionPropertiesFUCHSIA.set_formatFeatures(this.segment(), index, value); return this; }
     /// Sets `formatFeatures` with the given value.
     /// @param value the value
     /// @return `this`
@@ -377,9 +340,6 @@ public final class VkBufferCollectionPropertiesFUCHSIA extends Struct {
     /// {@return `sysmemColorSpaceIndex`}
     /// @param segment the segment of the struct
     public static @CType("VkSysmemColorSpaceFUCHSIA") java.lang.foreign.MemorySegment get_sysmemColorSpaceIndex(MemorySegment segment) { return VkBufferCollectionPropertiesFUCHSIA.get_sysmemColorSpaceIndex(segment, 0L); }
-    /// {@return `sysmemColorSpaceIndex` at the given index}
-    /// @param index the index
-    public @CType("VkSysmemColorSpaceFUCHSIA") java.lang.foreign.MemorySegment sysmemColorSpaceIndexAt(long index) { return VkBufferCollectionPropertiesFUCHSIA.get_sysmemColorSpaceIndex(this.segment(), index); }
     /// {@return `sysmemColorSpaceIndex`}
     public @CType("VkSysmemColorSpaceFUCHSIA") java.lang.foreign.MemorySegment sysmemColorSpaceIndex() { return VkBufferCollectionPropertiesFUCHSIA.get_sysmemColorSpaceIndex(this.segment()); }
     /// Sets `sysmemColorSpaceIndex` with the given value at the given index.
@@ -391,11 +351,6 @@ public final class VkBufferCollectionPropertiesFUCHSIA extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sysmemColorSpaceIndex(MemorySegment segment, @CType("VkSysmemColorSpaceFUCHSIA") java.lang.foreign.MemorySegment value) { VkBufferCollectionPropertiesFUCHSIA.set_sysmemColorSpaceIndex(segment, 0L, value); }
-    /// Sets `sysmemColorSpaceIndex` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCollectionPropertiesFUCHSIA sysmemColorSpaceIndexAt(long index, @CType("VkSysmemColorSpaceFUCHSIA") java.lang.foreign.MemorySegment value) { VkBufferCollectionPropertiesFUCHSIA.set_sysmemColorSpaceIndex(this.segment(), index, value); return this; }
     /// Sets `sysmemColorSpaceIndex` with the given value.
     /// @param value the value
     /// @return `this`
@@ -408,9 +363,6 @@ public final class VkBufferCollectionPropertiesFUCHSIA extends Struct {
     /// {@return `samplerYcbcrConversionComponents`}
     /// @param segment the segment of the struct
     public static @CType("VkComponentMapping") java.lang.foreign.MemorySegment get_samplerYcbcrConversionComponents(MemorySegment segment) { return VkBufferCollectionPropertiesFUCHSIA.get_samplerYcbcrConversionComponents(segment, 0L); }
-    /// {@return `samplerYcbcrConversionComponents` at the given index}
-    /// @param index the index
-    public @CType("VkComponentMapping") java.lang.foreign.MemorySegment samplerYcbcrConversionComponentsAt(long index) { return VkBufferCollectionPropertiesFUCHSIA.get_samplerYcbcrConversionComponents(this.segment(), index); }
     /// {@return `samplerYcbcrConversionComponents`}
     public @CType("VkComponentMapping") java.lang.foreign.MemorySegment samplerYcbcrConversionComponents() { return VkBufferCollectionPropertiesFUCHSIA.get_samplerYcbcrConversionComponents(this.segment()); }
     /// Sets `samplerYcbcrConversionComponents` with the given value at the given index.
@@ -422,11 +374,6 @@ public final class VkBufferCollectionPropertiesFUCHSIA extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_samplerYcbcrConversionComponents(MemorySegment segment, @CType("VkComponentMapping") java.lang.foreign.MemorySegment value) { VkBufferCollectionPropertiesFUCHSIA.set_samplerYcbcrConversionComponents(segment, 0L, value); }
-    /// Sets `samplerYcbcrConversionComponents` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCollectionPropertiesFUCHSIA samplerYcbcrConversionComponentsAt(long index, @CType("VkComponentMapping") java.lang.foreign.MemorySegment value) { VkBufferCollectionPropertiesFUCHSIA.set_samplerYcbcrConversionComponents(this.segment(), index, value); return this; }
     /// Sets `samplerYcbcrConversionComponents` with the given value.
     /// @param value the value
     /// @return `this`
@@ -439,9 +386,6 @@ public final class VkBufferCollectionPropertiesFUCHSIA extends Struct {
     /// {@return `suggestedYcbcrModel`}
     /// @param segment the segment of the struct
     public static @CType("VkSamplerYcbcrModelConversion") int get_suggestedYcbcrModel(MemorySegment segment) { return VkBufferCollectionPropertiesFUCHSIA.get_suggestedYcbcrModel(segment, 0L); }
-    /// {@return `suggestedYcbcrModel` at the given index}
-    /// @param index the index
-    public @CType("VkSamplerYcbcrModelConversion") int suggestedYcbcrModelAt(long index) { return VkBufferCollectionPropertiesFUCHSIA.get_suggestedYcbcrModel(this.segment(), index); }
     /// {@return `suggestedYcbcrModel`}
     public @CType("VkSamplerYcbcrModelConversion") int suggestedYcbcrModel() { return VkBufferCollectionPropertiesFUCHSIA.get_suggestedYcbcrModel(this.segment()); }
     /// Sets `suggestedYcbcrModel` with the given value at the given index.
@@ -453,11 +397,6 @@ public final class VkBufferCollectionPropertiesFUCHSIA extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_suggestedYcbcrModel(MemorySegment segment, @CType("VkSamplerYcbcrModelConversion") int value) { VkBufferCollectionPropertiesFUCHSIA.set_suggestedYcbcrModel(segment, 0L, value); }
-    /// Sets `suggestedYcbcrModel` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCollectionPropertiesFUCHSIA suggestedYcbcrModelAt(long index, @CType("VkSamplerYcbcrModelConversion") int value) { VkBufferCollectionPropertiesFUCHSIA.set_suggestedYcbcrModel(this.segment(), index, value); return this; }
     /// Sets `suggestedYcbcrModel` with the given value.
     /// @param value the value
     /// @return `this`
@@ -470,9 +409,6 @@ public final class VkBufferCollectionPropertiesFUCHSIA extends Struct {
     /// {@return `suggestedYcbcrRange`}
     /// @param segment the segment of the struct
     public static @CType("VkSamplerYcbcrRange") int get_suggestedYcbcrRange(MemorySegment segment) { return VkBufferCollectionPropertiesFUCHSIA.get_suggestedYcbcrRange(segment, 0L); }
-    /// {@return `suggestedYcbcrRange` at the given index}
-    /// @param index the index
-    public @CType("VkSamplerYcbcrRange") int suggestedYcbcrRangeAt(long index) { return VkBufferCollectionPropertiesFUCHSIA.get_suggestedYcbcrRange(this.segment(), index); }
     /// {@return `suggestedYcbcrRange`}
     public @CType("VkSamplerYcbcrRange") int suggestedYcbcrRange() { return VkBufferCollectionPropertiesFUCHSIA.get_suggestedYcbcrRange(this.segment()); }
     /// Sets `suggestedYcbcrRange` with the given value at the given index.
@@ -484,11 +420,6 @@ public final class VkBufferCollectionPropertiesFUCHSIA extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_suggestedYcbcrRange(MemorySegment segment, @CType("VkSamplerYcbcrRange") int value) { VkBufferCollectionPropertiesFUCHSIA.set_suggestedYcbcrRange(segment, 0L, value); }
-    /// Sets `suggestedYcbcrRange` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCollectionPropertiesFUCHSIA suggestedYcbcrRangeAt(long index, @CType("VkSamplerYcbcrRange") int value) { VkBufferCollectionPropertiesFUCHSIA.set_suggestedYcbcrRange(this.segment(), index, value); return this; }
     /// Sets `suggestedYcbcrRange` with the given value.
     /// @param value the value
     /// @return `this`
@@ -501,9 +432,6 @@ public final class VkBufferCollectionPropertiesFUCHSIA extends Struct {
     /// {@return `suggestedXChromaOffset`}
     /// @param segment the segment of the struct
     public static @CType("VkChromaLocation") int get_suggestedXChromaOffset(MemorySegment segment) { return VkBufferCollectionPropertiesFUCHSIA.get_suggestedXChromaOffset(segment, 0L); }
-    /// {@return `suggestedXChromaOffset` at the given index}
-    /// @param index the index
-    public @CType("VkChromaLocation") int suggestedXChromaOffsetAt(long index) { return VkBufferCollectionPropertiesFUCHSIA.get_suggestedXChromaOffset(this.segment(), index); }
     /// {@return `suggestedXChromaOffset`}
     public @CType("VkChromaLocation") int suggestedXChromaOffset() { return VkBufferCollectionPropertiesFUCHSIA.get_suggestedXChromaOffset(this.segment()); }
     /// Sets `suggestedXChromaOffset` with the given value at the given index.
@@ -515,11 +443,6 @@ public final class VkBufferCollectionPropertiesFUCHSIA extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_suggestedXChromaOffset(MemorySegment segment, @CType("VkChromaLocation") int value) { VkBufferCollectionPropertiesFUCHSIA.set_suggestedXChromaOffset(segment, 0L, value); }
-    /// Sets `suggestedXChromaOffset` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCollectionPropertiesFUCHSIA suggestedXChromaOffsetAt(long index, @CType("VkChromaLocation") int value) { VkBufferCollectionPropertiesFUCHSIA.set_suggestedXChromaOffset(this.segment(), index, value); return this; }
     /// Sets `suggestedXChromaOffset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -532,9 +455,6 @@ public final class VkBufferCollectionPropertiesFUCHSIA extends Struct {
     /// {@return `suggestedYChromaOffset`}
     /// @param segment the segment of the struct
     public static @CType("VkChromaLocation") int get_suggestedYChromaOffset(MemorySegment segment) { return VkBufferCollectionPropertiesFUCHSIA.get_suggestedYChromaOffset(segment, 0L); }
-    /// {@return `suggestedYChromaOffset` at the given index}
-    /// @param index the index
-    public @CType("VkChromaLocation") int suggestedYChromaOffsetAt(long index) { return VkBufferCollectionPropertiesFUCHSIA.get_suggestedYChromaOffset(this.segment(), index); }
     /// {@return `suggestedYChromaOffset`}
     public @CType("VkChromaLocation") int suggestedYChromaOffset() { return VkBufferCollectionPropertiesFUCHSIA.get_suggestedYChromaOffset(this.segment()); }
     /// Sets `suggestedYChromaOffset` with the given value at the given index.
@@ -546,14 +466,149 @@ public final class VkBufferCollectionPropertiesFUCHSIA extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_suggestedYChromaOffset(MemorySegment segment, @CType("VkChromaLocation") int value) { VkBufferCollectionPropertiesFUCHSIA.set_suggestedYChromaOffset(segment, 0L, value); }
-    /// Sets `suggestedYChromaOffset` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBufferCollectionPropertiesFUCHSIA suggestedYChromaOffsetAt(long index, @CType("VkChromaLocation") int value) { VkBufferCollectionPropertiesFUCHSIA.set_suggestedYChromaOffset(this.segment(), index, value); return this; }
     /// Sets `suggestedYChromaOffset` with the given value.
     /// @param value the value
     /// @return `this`
     public VkBufferCollectionPropertiesFUCHSIA suggestedYChromaOffset(@CType("VkChromaLocation") int value) { VkBufferCollectionPropertiesFUCHSIA.set_suggestedYChromaOffset(this.segment(), value); return this; }
 
+    /// A buffer of [VkBufferCollectionPropertiesFUCHSIA].
+    public static final class Buffer extends VkBufferCollectionPropertiesFUCHSIA {
+        private final long elementCount;
+
+        /// Creates `VkBufferCollectionPropertiesFUCHSIA.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkBufferCollectionPropertiesFUCHSIA`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkBufferCollectionPropertiesFUCHSIA`
+        public VkBufferCollectionPropertiesFUCHSIA asSlice(long index) { return new VkBufferCollectionPropertiesFUCHSIA(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkBufferCollectionPropertiesFUCHSIA`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkBufferCollectionPropertiesFUCHSIA`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkBufferCollectionPropertiesFUCHSIA.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkBufferCollectionPropertiesFUCHSIA.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkBufferCollectionPropertiesFUCHSIA.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkBufferCollectionPropertiesFUCHSIA.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `memoryTypeBits` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int memoryTypeBitsAt(long index) { return VkBufferCollectionPropertiesFUCHSIA.get_memoryTypeBits(this.segment(), index); }
+        /// Sets `memoryTypeBits` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer memoryTypeBitsAt(long index, @CType("uint32_t") int value) { VkBufferCollectionPropertiesFUCHSIA.set_memoryTypeBits(this.segment(), index, value); return this; }
+
+        /// {@return `bufferCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int bufferCountAt(long index) { return VkBufferCollectionPropertiesFUCHSIA.get_bufferCount(this.segment(), index); }
+        /// Sets `bufferCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer bufferCountAt(long index, @CType("uint32_t") int value) { VkBufferCollectionPropertiesFUCHSIA.set_bufferCount(this.segment(), index, value); return this; }
+
+        /// {@return `createInfoIndex` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int createInfoIndexAt(long index) { return VkBufferCollectionPropertiesFUCHSIA.get_createInfoIndex(this.segment(), index); }
+        /// Sets `createInfoIndex` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer createInfoIndexAt(long index, @CType("uint32_t") int value) { VkBufferCollectionPropertiesFUCHSIA.set_createInfoIndex(this.segment(), index, value); return this; }
+
+        /// {@return `sysmemPixelFormat` at the given index}
+        /// @param index the index
+        public @CType("uint64_t") long sysmemPixelFormatAt(long index) { return VkBufferCollectionPropertiesFUCHSIA.get_sysmemPixelFormat(this.segment(), index); }
+        /// Sets `sysmemPixelFormat` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sysmemPixelFormatAt(long index, @CType("uint64_t") long value) { VkBufferCollectionPropertiesFUCHSIA.set_sysmemPixelFormat(this.segment(), index, value); return this; }
+
+        /// {@return `formatFeatures` at the given index}
+        /// @param index the index
+        public @CType("VkFormatFeatureFlags") int formatFeaturesAt(long index) { return VkBufferCollectionPropertiesFUCHSIA.get_formatFeatures(this.segment(), index); }
+        /// Sets `formatFeatures` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer formatFeaturesAt(long index, @CType("VkFormatFeatureFlags") int value) { VkBufferCollectionPropertiesFUCHSIA.set_formatFeatures(this.segment(), index, value); return this; }
+
+        /// {@return `sysmemColorSpaceIndex` at the given index}
+        /// @param index the index
+        public @CType("VkSysmemColorSpaceFUCHSIA") java.lang.foreign.MemorySegment sysmemColorSpaceIndexAt(long index) { return VkBufferCollectionPropertiesFUCHSIA.get_sysmemColorSpaceIndex(this.segment(), index); }
+        /// Sets `sysmemColorSpaceIndex` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sysmemColorSpaceIndexAt(long index, @CType("VkSysmemColorSpaceFUCHSIA") java.lang.foreign.MemorySegment value) { VkBufferCollectionPropertiesFUCHSIA.set_sysmemColorSpaceIndex(this.segment(), index, value); return this; }
+
+        /// {@return `samplerYcbcrConversionComponents` at the given index}
+        /// @param index the index
+        public @CType("VkComponentMapping") java.lang.foreign.MemorySegment samplerYcbcrConversionComponentsAt(long index) { return VkBufferCollectionPropertiesFUCHSIA.get_samplerYcbcrConversionComponents(this.segment(), index); }
+        /// Sets `samplerYcbcrConversionComponents` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer samplerYcbcrConversionComponentsAt(long index, @CType("VkComponentMapping") java.lang.foreign.MemorySegment value) { VkBufferCollectionPropertiesFUCHSIA.set_samplerYcbcrConversionComponents(this.segment(), index, value); return this; }
+
+        /// {@return `suggestedYcbcrModel` at the given index}
+        /// @param index the index
+        public @CType("VkSamplerYcbcrModelConversion") int suggestedYcbcrModelAt(long index) { return VkBufferCollectionPropertiesFUCHSIA.get_suggestedYcbcrModel(this.segment(), index); }
+        /// Sets `suggestedYcbcrModel` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer suggestedYcbcrModelAt(long index, @CType("VkSamplerYcbcrModelConversion") int value) { VkBufferCollectionPropertiesFUCHSIA.set_suggestedYcbcrModel(this.segment(), index, value); return this; }
+
+        /// {@return `suggestedYcbcrRange` at the given index}
+        /// @param index the index
+        public @CType("VkSamplerYcbcrRange") int suggestedYcbcrRangeAt(long index) { return VkBufferCollectionPropertiesFUCHSIA.get_suggestedYcbcrRange(this.segment(), index); }
+        /// Sets `suggestedYcbcrRange` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer suggestedYcbcrRangeAt(long index, @CType("VkSamplerYcbcrRange") int value) { VkBufferCollectionPropertiesFUCHSIA.set_suggestedYcbcrRange(this.segment(), index, value); return this; }
+
+        /// {@return `suggestedXChromaOffset` at the given index}
+        /// @param index the index
+        public @CType("VkChromaLocation") int suggestedXChromaOffsetAt(long index) { return VkBufferCollectionPropertiesFUCHSIA.get_suggestedXChromaOffset(this.segment(), index); }
+        /// Sets `suggestedXChromaOffset` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer suggestedXChromaOffsetAt(long index, @CType("VkChromaLocation") int value) { VkBufferCollectionPropertiesFUCHSIA.set_suggestedXChromaOffset(this.segment(), index, value); return this; }
+
+        /// {@return `suggestedYChromaOffset` at the given index}
+        /// @param index the index
+        public @CType("VkChromaLocation") int suggestedYChromaOffsetAt(long index) { return VkBufferCollectionPropertiesFUCHSIA.get_suggestedYChromaOffset(this.segment(), index); }
+        /// Sets `suggestedYChromaOffset` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer suggestedYChromaOffsetAt(long index, @CType("VkChromaLocation") int value) { VkBufferCollectionPropertiesFUCHSIA.set_suggestedYChromaOffset(this.segment(), index, value); return this; }
+
+    }
 }

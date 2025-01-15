@@ -58,7 +58,7 @@ import overrungl.util.*;
 ///     VkExtent2D maxDstExtent;
 /// } VkDisplayPlaneCapabilitiesKHR;
 /// ```
-public final class VkDisplayPlaneCapabilitiesKHR extends Struct {
+public sealed class VkDisplayPlaneCapabilitiesKHR extends Struct {
     /// The struct layout of `VkDisplayPlaneCapabilitiesKHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("supportedAlpha"),
@@ -116,6 +116,11 @@ public final class VkDisplayPlaneCapabilitiesKHR extends Struct {
     public static VkDisplayPlaneCapabilitiesKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDisplayPlaneCapabilitiesKHR(segment); }
 
     /// Creates `VkDisplayPlaneCapabilitiesKHR` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkDisplayPlaneCapabilitiesKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -128,7 +133,7 @@ public final class VkDisplayPlaneCapabilitiesKHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDisplayPlaneCapabilitiesKHR ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkDisplayPlaneCapabilitiesKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkDisplayPlaneCapabilitiesKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -139,7 +144,21 @@ public final class VkDisplayPlaneCapabilitiesKHR extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDisplayPlaneCapabilitiesKHR`
-    public static VkDisplayPlaneCapabilitiesKHR alloc(SegmentAllocator allocator, long count) { return new VkDisplayPlaneCapabilitiesKHR(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkDisplayPlaneCapabilitiesKHR` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkDisplayPlaneCapabilitiesKHR`
+    public static VkDisplayPlaneCapabilitiesKHR allocInit(SegmentAllocator allocator, @CType("VkDisplayPlaneAlphaFlagsKHR") int supportedAlpha, @CType("VkOffset2D") java.lang.foreign.MemorySegment minSrcPosition, @CType("VkOffset2D") java.lang.foreign.MemorySegment maxSrcPosition, @CType("VkExtent2D") java.lang.foreign.MemorySegment minSrcExtent, @CType("VkExtent2D") java.lang.foreign.MemorySegment maxSrcExtent, @CType("VkOffset2D") java.lang.foreign.MemorySegment minDstPosition, @CType("VkOffset2D") java.lang.foreign.MemorySegment maxDstPosition, @CType("VkExtent2D") java.lang.foreign.MemorySegment minDstExtent, @CType("VkExtent2D") java.lang.foreign.MemorySegment maxDstExtent) { return alloc(allocator).supportedAlpha(supportedAlpha).minSrcPosition(minSrcPosition).maxSrcPosition(maxSrcPosition).minSrcExtent(minSrcExtent).maxSrcExtent(maxSrcExtent).minDstPosition(minDstPosition).maxDstPosition(maxDstPosition).minDstExtent(minDstExtent).maxDstExtent(maxDstExtent); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkDisplayPlaneCapabilitiesKHR copyFrom(VkDisplayPlaneCapabilitiesKHR src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `supportedAlpha` at the given index}
     /// @param segment the segment of the struct
@@ -148,9 +167,6 @@ public final class VkDisplayPlaneCapabilitiesKHR extends Struct {
     /// {@return `supportedAlpha`}
     /// @param segment the segment of the struct
     public static @CType("VkDisplayPlaneAlphaFlagsKHR") int get_supportedAlpha(MemorySegment segment) { return VkDisplayPlaneCapabilitiesKHR.get_supportedAlpha(segment, 0L); }
-    /// {@return `supportedAlpha` at the given index}
-    /// @param index the index
-    public @CType("VkDisplayPlaneAlphaFlagsKHR") int supportedAlphaAt(long index) { return VkDisplayPlaneCapabilitiesKHR.get_supportedAlpha(this.segment(), index); }
     /// {@return `supportedAlpha`}
     public @CType("VkDisplayPlaneAlphaFlagsKHR") int supportedAlpha() { return VkDisplayPlaneCapabilitiesKHR.get_supportedAlpha(this.segment()); }
     /// Sets `supportedAlpha` with the given value at the given index.
@@ -162,11 +178,6 @@ public final class VkDisplayPlaneCapabilitiesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_supportedAlpha(MemorySegment segment, @CType("VkDisplayPlaneAlphaFlagsKHR") int value) { VkDisplayPlaneCapabilitiesKHR.set_supportedAlpha(segment, 0L, value); }
-    /// Sets `supportedAlpha` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPlaneCapabilitiesKHR supportedAlphaAt(long index, @CType("VkDisplayPlaneAlphaFlagsKHR") int value) { VkDisplayPlaneCapabilitiesKHR.set_supportedAlpha(this.segment(), index, value); return this; }
     /// Sets `supportedAlpha` with the given value.
     /// @param value the value
     /// @return `this`
@@ -179,9 +190,6 @@ public final class VkDisplayPlaneCapabilitiesKHR extends Struct {
     /// {@return `minSrcPosition`}
     /// @param segment the segment of the struct
     public static @CType("VkOffset2D") java.lang.foreign.MemorySegment get_minSrcPosition(MemorySegment segment) { return VkDisplayPlaneCapabilitiesKHR.get_minSrcPosition(segment, 0L); }
-    /// {@return `minSrcPosition` at the given index}
-    /// @param index the index
-    public @CType("VkOffset2D") java.lang.foreign.MemorySegment minSrcPositionAt(long index) { return VkDisplayPlaneCapabilitiesKHR.get_minSrcPosition(this.segment(), index); }
     /// {@return `minSrcPosition`}
     public @CType("VkOffset2D") java.lang.foreign.MemorySegment minSrcPosition() { return VkDisplayPlaneCapabilitiesKHR.get_minSrcPosition(this.segment()); }
     /// Sets `minSrcPosition` with the given value at the given index.
@@ -193,11 +201,6 @@ public final class VkDisplayPlaneCapabilitiesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_minSrcPosition(MemorySegment segment, @CType("VkOffset2D") java.lang.foreign.MemorySegment value) { VkDisplayPlaneCapabilitiesKHR.set_minSrcPosition(segment, 0L, value); }
-    /// Sets `minSrcPosition` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPlaneCapabilitiesKHR minSrcPositionAt(long index, @CType("VkOffset2D") java.lang.foreign.MemorySegment value) { VkDisplayPlaneCapabilitiesKHR.set_minSrcPosition(this.segment(), index, value); return this; }
     /// Sets `minSrcPosition` with the given value.
     /// @param value the value
     /// @return `this`
@@ -210,9 +213,6 @@ public final class VkDisplayPlaneCapabilitiesKHR extends Struct {
     /// {@return `maxSrcPosition`}
     /// @param segment the segment of the struct
     public static @CType("VkOffset2D") java.lang.foreign.MemorySegment get_maxSrcPosition(MemorySegment segment) { return VkDisplayPlaneCapabilitiesKHR.get_maxSrcPosition(segment, 0L); }
-    /// {@return `maxSrcPosition` at the given index}
-    /// @param index the index
-    public @CType("VkOffset2D") java.lang.foreign.MemorySegment maxSrcPositionAt(long index) { return VkDisplayPlaneCapabilitiesKHR.get_maxSrcPosition(this.segment(), index); }
     /// {@return `maxSrcPosition`}
     public @CType("VkOffset2D") java.lang.foreign.MemorySegment maxSrcPosition() { return VkDisplayPlaneCapabilitiesKHR.get_maxSrcPosition(this.segment()); }
     /// Sets `maxSrcPosition` with the given value at the given index.
@@ -224,11 +224,6 @@ public final class VkDisplayPlaneCapabilitiesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxSrcPosition(MemorySegment segment, @CType("VkOffset2D") java.lang.foreign.MemorySegment value) { VkDisplayPlaneCapabilitiesKHR.set_maxSrcPosition(segment, 0L, value); }
-    /// Sets `maxSrcPosition` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPlaneCapabilitiesKHR maxSrcPositionAt(long index, @CType("VkOffset2D") java.lang.foreign.MemorySegment value) { VkDisplayPlaneCapabilitiesKHR.set_maxSrcPosition(this.segment(), index, value); return this; }
     /// Sets `maxSrcPosition` with the given value.
     /// @param value the value
     /// @return `this`
@@ -241,9 +236,6 @@ public final class VkDisplayPlaneCapabilitiesKHR extends Struct {
     /// {@return `minSrcExtent`}
     /// @param segment the segment of the struct
     public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_minSrcExtent(MemorySegment segment) { return VkDisplayPlaneCapabilitiesKHR.get_minSrcExtent(segment, 0L); }
-    /// {@return `minSrcExtent` at the given index}
-    /// @param index the index
-    public @CType("VkExtent2D") java.lang.foreign.MemorySegment minSrcExtentAt(long index) { return VkDisplayPlaneCapabilitiesKHR.get_minSrcExtent(this.segment(), index); }
     /// {@return `minSrcExtent`}
     public @CType("VkExtent2D") java.lang.foreign.MemorySegment minSrcExtent() { return VkDisplayPlaneCapabilitiesKHR.get_minSrcExtent(this.segment()); }
     /// Sets `minSrcExtent` with the given value at the given index.
@@ -255,11 +247,6 @@ public final class VkDisplayPlaneCapabilitiesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_minSrcExtent(MemorySegment segment, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkDisplayPlaneCapabilitiesKHR.set_minSrcExtent(segment, 0L, value); }
-    /// Sets `minSrcExtent` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPlaneCapabilitiesKHR minSrcExtentAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkDisplayPlaneCapabilitiesKHR.set_minSrcExtent(this.segment(), index, value); return this; }
     /// Sets `minSrcExtent` with the given value.
     /// @param value the value
     /// @return `this`
@@ -272,9 +259,6 @@ public final class VkDisplayPlaneCapabilitiesKHR extends Struct {
     /// {@return `maxSrcExtent`}
     /// @param segment the segment of the struct
     public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_maxSrcExtent(MemorySegment segment) { return VkDisplayPlaneCapabilitiesKHR.get_maxSrcExtent(segment, 0L); }
-    /// {@return `maxSrcExtent` at the given index}
-    /// @param index the index
-    public @CType("VkExtent2D") java.lang.foreign.MemorySegment maxSrcExtentAt(long index) { return VkDisplayPlaneCapabilitiesKHR.get_maxSrcExtent(this.segment(), index); }
     /// {@return `maxSrcExtent`}
     public @CType("VkExtent2D") java.lang.foreign.MemorySegment maxSrcExtent() { return VkDisplayPlaneCapabilitiesKHR.get_maxSrcExtent(this.segment()); }
     /// Sets `maxSrcExtent` with the given value at the given index.
@@ -286,11 +270,6 @@ public final class VkDisplayPlaneCapabilitiesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxSrcExtent(MemorySegment segment, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkDisplayPlaneCapabilitiesKHR.set_maxSrcExtent(segment, 0L, value); }
-    /// Sets `maxSrcExtent` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPlaneCapabilitiesKHR maxSrcExtentAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkDisplayPlaneCapabilitiesKHR.set_maxSrcExtent(this.segment(), index, value); return this; }
     /// Sets `maxSrcExtent` with the given value.
     /// @param value the value
     /// @return `this`
@@ -303,9 +282,6 @@ public final class VkDisplayPlaneCapabilitiesKHR extends Struct {
     /// {@return `minDstPosition`}
     /// @param segment the segment of the struct
     public static @CType("VkOffset2D") java.lang.foreign.MemorySegment get_minDstPosition(MemorySegment segment) { return VkDisplayPlaneCapabilitiesKHR.get_minDstPosition(segment, 0L); }
-    /// {@return `minDstPosition` at the given index}
-    /// @param index the index
-    public @CType("VkOffset2D") java.lang.foreign.MemorySegment minDstPositionAt(long index) { return VkDisplayPlaneCapabilitiesKHR.get_minDstPosition(this.segment(), index); }
     /// {@return `minDstPosition`}
     public @CType("VkOffset2D") java.lang.foreign.MemorySegment minDstPosition() { return VkDisplayPlaneCapabilitiesKHR.get_minDstPosition(this.segment()); }
     /// Sets `minDstPosition` with the given value at the given index.
@@ -317,11 +293,6 @@ public final class VkDisplayPlaneCapabilitiesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_minDstPosition(MemorySegment segment, @CType("VkOffset2D") java.lang.foreign.MemorySegment value) { VkDisplayPlaneCapabilitiesKHR.set_minDstPosition(segment, 0L, value); }
-    /// Sets `minDstPosition` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPlaneCapabilitiesKHR minDstPositionAt(long index, @CType("VkOffset2D") java.lang.foreign.MemorySegment value) { VkDisplayPlaneCapabilitiesKHR.set_minDstPosition(this.segment(), index, value); return this; }
     /// Sets `minDstPosition` with the given value.
     /// @param value the value
     /// @return `this`
@@ -334,9 +305,6 @@ public final class VkDisplayPlaneCapabilitiesKHR extends Struct {
     /// {@return `maxDstPosition`}
     /// @param segment the segment of the struct
     public static @CType("VkOffset2D") java.lang.foreign.MemorySegment get_maxDstPosition(MemorySegment segment) { return VkDisplayPlaneCapabilitiesKHR.get_maxDstPosition(segment, 0L); }
-    /// {@return `maxDstPosition` at the given index}
-    /// @param index the index
-    public @CType("VkOffset2D") java.lang.foreign.MemorySegment maxDstPositionAt(long index) { return VkDisplayPlaneCapabilitiesKHR.get_maxDstPosition(this.segment(), index); }
     /// {@return `maxDstPosition`}
     public @CType("VkOffset2D") java.lang.foreign.MemorySegment maxDstPosition() { return VkDisplayPlaneCapabilitiesKHR.get_maxDstPosition(this.segment()); }
     /// Sets `maxDstPosition` with the given value at the given index.
@@ -348,11 +316,6 @@ public final class VkDisplayPlaneCapabilitiesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxDstPosition(MemorySegment segment, @CType("VkOffset2D") java.lang.foreign.MemorySegment value) { VkDisplayPlaneCapabilitiesKHR.set_maxDstPosition(segment, 0L, value); }
-    /// Sets `maxDstPosition` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPlaneCapabilitiesKHR maxDstPositionAt(long index, @CType("VkOffset2D") java.lang.foreign.MemorySegment value) { VkDisplayPlaneCapabilitiesKHR.set_maxDstPosition(this.segment(), index, value); return this; }
     /// Sets `maxDstPosition` with the given value.
     /// @param value the value
     /// @return `this`
@@ -365,9 +328,6 @@ public final class VkDisplayPlaneCapabilitiesKHR extends Struct {
     /// {@return `minDstExtent`}
     /// @param segment the segment of the struct
     public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_minDstExtent(MemorySegment segment) { return VkDisplayPlaneCapabilitiesKHR.get_minDstExtent(segment, 0L); }
-    /// {@return `minDstExtent` at the given index}
-    /// @param index the index
-    public @CType("VkExtent2D") java.lang.foreign.MemorySegment minDstExtentAt(long index) { return VkDisplayPlaneCapabilitiesKHR.get_minDstExtent(this.segment(), index); }
     /// {@return `minDstExtent`}
     public @CType("VkExtent2D") java.lang.foreign.MemorySegment minDstExtent() { return VkDisplayPlaneCapabilitiesKHR.get_minDstExtent(this.segment()); }
     /// Sets `minDstExtent` with the given value at the given index.
@@ -379,11 +339,6 @@ public final class VkDisplayPlaneCapabilitiesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_minDstExtent(MemorySegment segment, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkDisplayPlaneCapabilitiesKHR.set_minDstExtent(segment, 0L, value); }
-    /// Sets `minDstExtent` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPlaneCapabilitiesKHR minDstExtentAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkDisplayPlaneCapabilitiesKHR.set_minDstExtent(this.segment(), index, value); return this; }
     /// Sets `minDstExtent` with the given value.
     /// @param value the value
     /// @return `this`
@@ -396,9 +351,6 @@ public final class VkDisplayPlaneCapabilitiesKHR extends Struct {
     /// {@return `maxDstExtent`}
     /// @param segment the segment of the struct
     public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_maxDstExtent(MemorySegment segment) { return VkDisplayPlaneCapabilitiesKHR.get_maxDstExtent(segment, 0L); }
-    /// {@return `maxDstExtent` at the given index}
-    /// @param index the index
-    public @CType("VkExtent2D") java.lang.foreign.MemorySegment maxDstExtentAt(long index) { return VkDisplayPlaneCapabilitiesKHR.get_maxDstExtent(this.segment(), index); }
     /// {@return `maxDstExtent`}
     public @CType("VkExtent2D") java.lang.foreign.MemorySegment maxDstExtent() { return VkDisplayPlaneCapabilitiesKHR.get_maxDstExtent(this.segment()); }
     /// Sets `maxDstExtent` with the given value at the given index.
@@ -410,14 +362,113 @@ public final class VkDisplayPlaneCapabilitiesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxDstExtent(MemorySegment segment, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkDisplayPlaneCapabilitiesKHR.set_maxDstExtent(segment, 0L, value); }
-    /// Sets `maxDstExtent` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPlaneCapabilitiesKHR maxDstExtentAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkDisplayPlaneCapabilitiesKHR.set_maxDstExtent(this.segment(), index, value); return this; }
     /// Sets `maxDstExtent` with the given value.
     /// @param value the value
     /// @return `this`
     public VkDisplayPlaneCapabilitiesKHR maxDstExtent(@CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkDisplayPlaneCapabilitiesKHR.set_maxDstExtent(this.segment(), value); return this; }
 
+    /// A buffer of [VkDisplayPlaneCapabilitiesKHR].
+    public static final class Buffer extends VkDisplayPlaneCapabilitiesKHR {
+        private final long elementCount;
+
+        /// Creates `VkDisplayPlaneCapabilitiesKHR.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkDisplayPlaneCapabilitiesKHR`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkDisplayPlaneCapabilitiesKHR`
+        public VkDisplayPlaneCapabilitiesKHR asSlice(long index) { return new VkDisplayPlaneCapabilitiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkDisplayPlaneCapabilitiesKHR`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkDisplayPlaneCapabilitiesKHR`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `supportedAlpha` at the given index}
+        /// @param index the index
+        public @CType("VkDisplayPlaneAlphaFlagsKHR") int supportedAlphaAt(long index) { return VkDisplayPlaneCapabilitiesKHR.get_supportedAlpha(this.segment(), index); }
+        /// Sets `supportedAlpha` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer supportedAlphaAt(long index, @CType("VkDisplayPlaneAlphaFlagsKHR") int value) { VkDisplayPlaneCapabilitiesKHR.set_supportedAlpha(this.segment(), index, value); return this; }
+
+        /// {@return `minSrcPosition` at the given index}
+        /// @param index the index
+        public @CType("VkOffset2D") java.lang.foreign.MemorySegment minSrcPositionAt(long index) { return VkDisplayPlaneCapabilitiesKHR.get_minSrcPosition(this.segment(), index); }
+        /// Sets `minSrcPosition` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer minSrcPositionAt(long index, @CType("VkOffset2D") java.lang.foreign.MemorySegment value) { VkDisplayPlaneCapabilitiesKHR.set_minSrcPosition(this.segment(), index, value); return this; }
+
+        /// {@return `maxSrcPosition` at the given index}
+        /// @param index the index
+        public @CType("VkOffset2D") java.lang.foreign.MemorySegment maxSrcPositionAt(long index) { return VkDisplayPlaneCapabilitiesKHR.get_maxSrcPosition(this.segment(), index); }
+        /// Sets `maxSrcPosition` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxSrcPositionAt(long index, @CType("VkOffset2D") java.lang.foreign.MemorySegment value) { VkDisplayPlaneCapabilitiesKHR.set_maxSrcPosition(this.segment(), index, value); return this; }
+
+        /// {@return `minSrcExtent` at the given index}
+        /// @param index the index
+        public @CType("VkExtent2D") java.lang.foreign.MemorySegment minSrcExtentAt(long index) { return VkDisplayPlaneCapabilitiesKHR.get_minSrcExtent(this.segment(), index); }
+        /// Sets `minSrcExtent` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer minSrcExtentAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkDisplayPlaneCapabilitiesKHR.set_minSrcExtent(this.segment(), index, value); return this; }
+
+        /// {@return `maxSrcExtent` at the given index}
+        /// @param index the index
+        public @CType("VkExtent2D") java.lang.foreign.MemorySegment maxSrcExtentAt(long index) { return VkDisplayPlaneCapabilitiesKHR.get_maxSrcExtent(this.segment(), index); }
+        /// Sets `maxSrcExtent` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxSrcExtentAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkDisplayPlaneCapabilitiesKHR.set_maxSrcExtent(this.segment(), index, value); return this; }
+
+        /// {@return `minDstPosition` at the given index}
+        /// @param index the index
+        public @CType("VkOffset2D") java.lang.foreign.MemorySegment minDstPositionAt(long index) { return VkDisplayPlaneCapabilitiesKHR.get_minDstPosition(this.segment(), index); }
+        /// Sets `minDstPosition` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer minDstPositionAt(long index, @CType("VkOffset2D") java.lang.foreign.MemorySegment value) { VkDisplayPlaneCapabilitiesKHR.set_minDstPosition(this.segment(), index, value); return this; }
+
+        /// {@return `maxDstPosition` at the given index}
+        /// @param index the index
+        public @CType("VkOffset2D") java.lang.foreign.MemorySegment maxDstPositionAt(long index) { return VkDisplayPlaneCapabilitiesKHR.get_maxDstPosition(this.segment(), index); }
+        /// Sets `maxDstPosition` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxDstPositionAt(long index, @CType("VkOffset2D") java.lang.foreign.MemorySegment value) { VkDisplayPlaneCapabilitiesKHR.set_maxDstPosition(this.segment(), index, value); return this; }
+
+        /// {@return `minDstExtent` at the given index}
+        /// @param index the index
+        public @CType("VkExtent2D") java.lang.foreign.MemorySegment minDstExtentAt(long index) { return VkDisplayPlaneCapabilitiesKHR.get_minDstExtent(this.segment(), index); }
+        /// Sets `minDstExtent` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer minDstExtentAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkDisplayPlaneCapabilitiesKHR.set_minDstExtent(this.segment(), index, value); return this; }
+
+        /// {@return `maxDstExtent` at the given index}
+        /// @param index the index
+        public @CType("VkExtent2D") java.lang.foreign.MemorySegment maxDstExtentAt(long index) { return VkDisplayPlaneCapabilitiesKHR.get_maxDstExtent(this.segment(), index); }
+        /// Sets `maxDstExtent` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxDstExtentAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkDisplayPlaneCapabilitiesKHR.set_maxDstExtent(this.segment(), index, value); return this; }
+
+    }
 }

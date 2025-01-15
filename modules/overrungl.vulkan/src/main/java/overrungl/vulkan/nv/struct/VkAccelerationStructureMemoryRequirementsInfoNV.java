@@ -43,7 +43,7 @@ import overrungl.util.*;
 ///     VkAccelerationStructureNV accelerationStructure;
 /// } VkAccelerationStructureMemoryRequirementsInfoNV;
 /// ```
-public final class VkAccelerationStructureMemoryRequirementsInfoNV extends Struct {
+public sealed class VkAccelerationStructureMemoryRequirementsInfoNV extends Struct {
     /// The struct layout of `VkAccelerationStructureMemoryRequirementsInfoNV`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -70,6 +70,11 @@ public final class VkAccelerationStructureMemoryRequirementsInfoNV extends Struc
     public static VkAccelerationStructureMemoryRequirementsInfoNV of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkAccelerationStructureMemoryRequirementsInfoNV(segment); }
 
     /// Creates `VkAccelerationStructureMemoryRequirementsInfoNV` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkAccelerationStructureMemoryRequirementsInfoNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -82,7 +87,7 @@ public final class VkAccelerationStructureMemoryRequirementsInfoNV extends Struc
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkAccelerationStructureMemoryRequirementsInfoNV ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkAccelerationStructureMemoryRequirementsInfoNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkAccelerationStructureMemoryRequirementsInfoNV` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -93,7 +98,21 @@ public final class VkAccelerationStructureMemoryRequirementsInfoNV extends Struc
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkAccelerationStructureMemoryRequirementsInfoNV`
-    public static VkAccelerationStructureMemoryRequirementsInfoNV alloc(SegmentAllocator allocator, long count) { return new VkAccelerationStructureMemoryRequirementsInfoNV(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkAccelerationStructureMemoryRequirementsInfoNV` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkAccelerationStructureMemoryRequirementsInfoNV`
+    public static VkAccelerationStructureMemoryRequirementsInfoNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkAccelerationStructureMemoryRequirementsTypeNV") int type, @CType("VkAccelerationStructureNV") java.lang.foreign.MemorySegment accelerationStructure) { return alloc(allocator).sType(sType).pNext(pNext).type(type).accelerationStructure(accelerationStructure); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkAccelerationStructureMemoryRequirementsInfoNV copyFrom(VkAccelerationStructureMemoryRequirementsInfoNV src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -102,9 +121,6 @@ public final class VkAccelerationStructureMemoryRequirementsInfoNV extends Struc
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkAccelerationStructureMemoryRequirementsInfoNV.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkAccelerationStructureMemoryRequirementsInfoNV.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkAccelerationStructureMemoryRequirementsInfoNV.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -116,11 +132,6 @@ public final class VkAccelerationStructureMemoryRequirementsInfoNV extends Struc
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkAccelerationStructureMemoryRequirementsInfoNV.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAccelerationStructureMemoryRequirementsInfoNV sTypeAt(long index, @CType("VkStructureType") int value) { VkAccelerationStructureMemoryRequirementsInfoNV.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -133,9 +144,6 @@ public final class VkAccelerationStructureMemoryRequirementsInfoNV extends Struc
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkAccelerationStructureMemoryRequirementsInfoNV.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkAccelerationStructureMemoryRequirementsInfoNV.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkAccelerationStructureMemoryRequirementsInfoNV.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -147,11 +155,6 @@ public final class VkAccelerationStructureMemoryRequirementsInfoNV extends Struc
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkAccelerationStructureMemoryRequirementsInfoNV.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAccelerationStructureMemoryRequirementsInfoNV pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkAccelerationStructureMemoryRequirementsInfoNV.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -164,9 +167,6 @@ public final class VkAccelerationStructureMemoryRequirementsInfoNV extends Struc
     /// {@return `type`}
     /// @param segment the segment of the struct
     public static @CType("VkAccelerationStructureMemoryRequirementsTypeNV") int get_type(MemorySegment segment) { return VkAccelerationStructureMemoryRequirementsInfoNV.get_type(segment, 0L); }
-    /// {@return `type` at the given index}
-    /// @param index the index
-    public @CType("VkAccelerationStructureMemoryRequirementsTypeNV") int typeAt(long index) { return VkAccelerationStructureMemoryRequirementsInfoNV.get_type(this.segment(), index); }
     /// {@return `type`}
     public @CType("VkAccelerationStructureMemoryRequirementsTypeNV") int type() { return VkAccelerationStructureMemoryRequirementsInfoNV.get_type(this.segment()); }
     /// Sets `type` with the given value at the given index.
@@ -178,11 +178,6 @@ public final class VkAccelerationStructureMemoryRequirementsInfoNV extends Struc
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_type(MemorySegment segment, @CType("VkAccelerationStructureMemoryRequirementsTypeNV") int value) { VkAccelerationStructureMemoryRequirementsInfoNV.set_type(segment, 0L, value); }
-    /// Sets `type` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAccelerationStructureMemoryRequirementsInfoNV typeAt(long index, @CType("VkAccelerationStructureMemoryRequirementsTypeNV") int value) { VkAccelerationStructureMemoryRequirementsInfoNV.set_type(this.segment(), index, value); return this; }
     /// Sets `type` with the given value.
     /// @param value the value
     /// @return `this`
@@ -195,9 +190,6 @@ public final class VkAccelerationStructureMemoryRequirementsInfoNV extends Struc
     /// {@return `accelerationStructure`}
     /// @param segment the segment of the struct
     public static @CType("VkAccelerationStructureNV") java.lang.foreign.MemorySegment get_accelerationStructure(MemorySegment segment) { return VkAccelerationStructureMemoryRequirementsInfoNV.get_accelerationStructure(segment, 0L); }
-    /// {@return `accelerationStructure` at the given index}
-    /// @param index the index
-    public @CType("VkAccelerationStructureNV") java.lang.foreign.MemorySegment accelerationStructureAt(long index) { return VkAccelerationStructureMemoryRequirementsInfoNV.get_accelerationStructure(this.segment(), index); }
     /// {@return `accelerationStructure`}
     public @CType("VkAccelerationStructureNV") java.lang.foreign.MemorySegment accelerationStructure() { return VkAccelerationStructureMemoryRequirementsInfoNV.get_accelerationStructure(this.segment()); }
     /// Sets `accelerationStructure` with the given value at the given index.
@@ -209,14 +201,68 @@ public final class VkAccelerationStructureMemoryRequirementsInfoNV extends Struc
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_accelerationStructure(MemorySegment segment, @CType("VkAccelerationStructureNV") java.lang.foreign.MemorySegment value) { VkAccelerationStructureMemoryRequirementsInfoNV.set_accelerationStructure(segment, 0L, value); }
-    /// Sets `accelerationStructure` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAccelerationStructureMemoryRequirementsInfoNV accelerationStructureAt(long index, @CType("VkAccelerationStructureNV") java.lang.foreign.MemorySegment value) { VkAccelerationStructureMemoryRequirementsInfoNV.set_accelerationStructure(this.segment(), index, value); return this; }
     /// Sets `accelerationStructure` with the given value.
     /// @param value the value
     /// @return `this`
     public VkAccelerationStructureMemoryRequirementsInfoNV accelerationStructure(@CType("VkAccelerationStructureNV") java.lang.foreign.MemorySegment value) { VkAccelerationStructureMemoryRequirementsInfoNV.set_accelerationStructure(this.segment(), value); return this; }
 
+    /// A buffer of [VkAccelerationStructureMemoryRequirementsInfoNV].
+    public static final class Buffer extends VkAccelerationStructureMemoryRequirementsInfoNV {
+        private final long elementCount;
+
+        /// Creates `VkAccelerationStructureMemoryRequirementsInfoNV.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkAccelerationStructureMemoryRequirementsInfoNV`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkAccelerationStructureMemoryRequirementsInfoNV`
+        public VkAccelerationStructureMemoryRequirementsInfoNV asSlice(long index) { return new VkAccelerationStructureMemoryRequirementsInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkAccelerationStructureMemoryRequirementsInfoNV`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkAccelerationStructureMemoryRequirementsInfoNV`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkAccelerationStructureMemoryRequirementsInfoNV.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkAccelerationStructureMemoryRequirementsInfoNV.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkAccelerationStructureMemoryRequirementsInfoNV.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkAccelerationStructureMemoryRequirementsInfoNV.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `type` at the given index}
+        /// @param index the index
+        public @CType("VkAccelerationStructureMemoryRequirementsTypeNV") int typeAt(long index) { return VkAccelerationStructureMemoryRequirementsInfoNV.get_type(this.segment(), index); }
+        /// Sets `type` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer typeAt(long index, @CType("VkAccelerationStructureMemoryRequirementsTypeNV") int value) { VkAccelerationStructureMemoryRequirementsInfoNV.set_type(this.segment(), index, value); return this; }
+
+        /// {@return `accelerationStructure` at the given index}
+        /// @param index the index
+        public @CType("VkAccelerationStructureNV") java.lang.foreign.MemorySegment accelerationStructureAt(long index) { return VkAccelerationStructureMemoryRequirementsInfoNV.get_accelerationStructure(this.segment(), index); }
+        /// Sets `accelerationStructure` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer accelerationStructureAt(long index, @CType("VkAccelerationStructureNV") java.lang.foreign.MemorySegment value) { VkAccelerationStructureMemoryRequirementsInfoNV.set_accelerationStructure(this.segment(), index, value); return this; }
+
+    }
 }

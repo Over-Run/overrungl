@@ -22,7 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKEXTDeviceAddressBindingReport {
+public final class VKEXTDeviceAddressBindingReport {
     public static final int VK_DEVICE_ADDRESS_BINDING_INTERNAL_OBJECT_BIT_EXT = 0x00000001;
     public static final int VK_DEVICE_ADDRESS_BINDING_TYPE_BIND_EXT = 0;
     public static final int VK_DEVICE_ADDRESS_BINDING_TYPE_UNBIND_EXT = 1;
@@ -32,7 +32,6 @@ public class VKEXTDeviceAddressBindingReport {
     public static final int VK_STRUCTURE_TYPE_DEVICE_ADDRESS_BINDING_CALLBACK_DATA_EXT = 1000354001;
     public static final int VK_DEBUG_UTILS_MESSAGE_TYPE_DEVICE_ADDRESS_BINDING_BIT_EXT = 0x00000008;
 
-    public VKEXTDeviceAddressBindingReport(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKEXTDeviceAddressBindingReport() { }
 
 }

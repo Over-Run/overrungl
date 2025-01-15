@@ -76,7 +76,7 @@ import overrungl.util.*;
 ///     VkImageLayout initialLayout;
 /// } VkImageCreateInfo;
 /// ```
-public final class VkImageCreateInfo extends Struct {
+public sealed class VkImageCreateInfo extends Struct {
     /// The struct layout of `VkImageCreateInfo`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -138,6 +138,11 @@ public final class VkImageCreateInfo extends Struct {
     public static VkImageCreateInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkImageCreateInfo(segment); }
 
     /// Creates `VkImageCreateInfo` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkImageCreateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -150,7 +155,7 @@ public final class VkImageCreateInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkImageCreateInfo ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkImageCreateInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkImageCreateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -161,7 +166,21 @@ public final class VkImageCreateInfo extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkImageCreateInfo`
-    public static VkImageCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkImageCreateInfo(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkImageCreateInfo` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkImageCreateInfo`
+    public static VkImageCreateInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkImageCreateFlags") int flags, @CType("VkImageType") int imageType, @CType("VkFormat") int format, @CType("VkExtent3D") java.lang.foreign.MemorySegment extent, @CType("uint32_t") int mipLevels, @CType("uint32_t") int arrayLayers, @CType("VkSampleCountFlagBits") int samples, @CType("VkImageTiling") int tiling, @CType("VkImageUsageFlags") int usage, @CType("VkSharingMode") int sharingMode, @CType("uint32_t") int queueFamilyIndexCount, @CType("const uint32_t *") java.lang.foreign.MemorySegment pQueueFamilyIndices, @CType("VkImageLayout") int initialLayout) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).imageType(imageType).format(format).extent(extent).mipLevels(mipLevels).arrayLayers(arrayLayers).samples(samples).tiling(tiling).usage(usage).sharingMode(sharingMode).queueFamilyIndexCount(queueFamilyIndexCount).pQueueFamilyIndices(pQueueFamilyIndices).initialLayout(initialLayout); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkImageCreateInfo copyFrom(VkImageCreateInfo src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -170,9 +189,6 @@ public final class VkImageCreateInfo extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkImageCreateInfo.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkImageCreateInfo.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkImageCreateInfo.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -184,11 +200,6 @@ public final class VkImageCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkImageCreateInfo.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo sTypeAt(long index, @CType("VkStructureType") int value) { VkImageCreateInfo.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -201,9 +212,6 @@ public final class VkImageCreateInfo extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkImageCreateInfo.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkImageCreateInfo.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkImageCreateInfo.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -215,11 +223,6 @@ public final class VkImageCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkImageCreateInfo.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkImageCreateInfo.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -232,9 +235,6 @@ public final class VkImageCreateInfo extends Struct {
     /// {@return `flags`}
     /// @param segment the segment of the struct
     public static @CType("VkImageCreateFlags") int get_flags(MemorySegment segment) { return VkImageCreateInfo.get_flags(segment, 0L); }
-    /// {@return `flags` at the given index}
-    /// @param index the index
-    public @CType("VkImageCreateFlags") int flagsAt(long index) { return VkImageCreateInfo.get_flags(this.segment(), index); }
     /// {@return `flags`}
     public @CType("VkImageCreateFlags") int flags() { return VkImageCreateInfo.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
@@ -246,11 +246,6 @@ public final class VkImageCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_flags(MemorySegment segment, @CType("VkImageCreateFlags") int value) { VkImageCreateInfo.set_flags(segment, 0L, value); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo flagsAt(long index, @CType("VkImageCreateFlags") int value) { VkImageCreateInfo.set_flags(this.segment(), index, value); return this; }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -263,9 +258,6 @@ public final class VkImageCreateInfo extends Struct {
     /// {@return `imageType`}
     /// @param segment the segment of the struct
     public static @CType("VkImageType") int get_imageType(MemorySegment segment) { return VkImageCreateInfo.get_imageType(segment, 0L); }
-    /// {@return `imageType` at the given index}
-    /// @param index the index
-    public @CType("VkImageType") int imageTypeAt(long index) { return VkImageCreateInfo.get_imageType(this.segment(), index); }
     /// {@return `imageType`}
     public @CType("VkImageType") int imageType() { return VkImageCreateInfo.get_imageType(this.segment()); }
     /// Sets `imageType` with the given value at the given index.
@@ -277,11 +269,6 @@ public final class VkImageCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_imageType(MemorySegment segment, @CType("VkImageType") int value) { VkImageCreateInfo.set_imageType(segment, 0L, value); }
-    /// Sets `imageType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo imageTypeAt(long index, @CType("VkImageType") int value) { VkImageCreateInfo.set_imageType(this.segment(), index, value); return this; }
     /// Sets `imageType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -294,9 +281,6 @@ public final class VkImageCreateInfo extends Struct {
     /// {@return `format`}
     /// @param segment the segment of the struct
     public static @CType("VkFormat") int get_format(MemorySegment segment) { return VkImageCreateInfo.get_format(segment, 0L); }
-    /// {@return `format` at the given index}
-    /// @param index the index
-    public @CType("VkFormat") int formatAt(long index) { return VkImageCreateInfo.get_format(this.segment(), index); }
     /// {@return `format`}
     public @CType("VkFormat") int format() { return VkImageCreateInfo.get_format(this.segment()); }
     /// Sets `format` with the given value at the given index.
@@ -308,11 +292,6 @@ public final class VkImageCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_format(MemorySegment segment, @CType("VkFormat") int value) { VkImageCreateInfo.set_format(segment, 0L, value); }
-    /// Sets `format` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo formatAt(long index, @CType("VkFormat") int value) { VkImageCreateInfo.set_format(this.segment(), index, value); return this; }
     /// Sets `format` with the given value.
     /// @param value the value
     /// @return `this`
@@ -325,9 +304,6 @@ public final class VkImageCreateInfo extends Struct {
     /// {@return `extent`}
     /// @param segment the segment of the struct
     public static @CType("VkExtent3D") java.lang.foreign.MemorySegment get_extent(MemorySegment segment) { return VkImageCreateInfo.get_extent(segment, 0L); }
-    /// {@return `extent` at the given index}
-    /// @param index the index
-    public @CType("VkExtent3D") java.lang.foreign.MemorySegment extentAt(long index) { return VkImageCreateInfo.get_extent(this.segment(), index); }
     /// {@return `extent`}
     public @CType("VkExtent3D") java.lang.foreign.MemorySegment extent() { return VkImageCreateInfo.get_extent(this.segment()); }
     /// Sets `extent` with the given value at the given index.
@@ -339,11 +315,6 @@ public final class VkImageCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_extent(MemorySegment segment, @CType("VkExtent3D") java.lang.foreign.MemorySegment value) { VkImageCreateInfo.set_extent(segment, 0L, value); }
-    /// Sets `extent` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo extentAt(long index, @CType("VkExtent3D") java.lang.foreign.MemorySegment value) { VkImageCreateInfo.set_extent(this.segment(), index, value); return this; }
     /// Sets `extent` with the given value.
     /// @param value the value
     /// @return `this`
@@ -356,9 +327,6 @@ public final class VkImageCreateInfo extends Struct {
     /// {@return `mipLevels`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_mipLevels(MemorySegment segment) { return VkImageCreateInfo.get_mipLevels(segment, 0L); }
-    /// {@return `mipLevels` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int mipLevelsAt(long index) { return VkImageCreateInfo.get_mipLevels(this.segment(), index); }
     /// {@return `mipLevels`}
     public @CType("uint32_t") int mipLevels() { return VkImageCreateInfo.get_mipLevels(this.segment()); }
     /// Sets `mipLevels` with the given value at the given index.
@@ -370,11 +338,6 @@ public final class VkImageCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_mipLevels(MemorySegment segment, @CType("uint32_t") int value) { VkImageCreateInfo.set_mipLevels(segment, 0L, value); }
-    /// Sets `mipLevels` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo mipLevelsAt(long index, @CType("uint32_t") int value) { VkImageCreateInfo.set_mipLevels(this.segment(), index, value); return this; }
     /// Sets `mipLevels` with the given value.
     /// @param value the value
     /// @return `this`
@@ -387,9 +350,6 @@ public final class VkImageCreateInfo extends Struct {
     /// {@return `arrayLayers`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_arrayLayers(MemorySegment segment) { return VkImageCreateInfo.get_arrayLayers(segment, 0L); }
-    /// {@return `arrayLayers` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int arrayLayersAt(long index) { return VkImageCreateInfo.get_arrayLayers(this.segment(), index); }
     /// {@return `arrayLayers`}
     public @CType("uint32_t") int arrayLayers() { return VkImageCreateInfo.get_arrayLayers(this.segment()); }
     /// Sets `arrayLayers` with the given value at the given index.
@@ -401,11 +361,6 @@ public final class VkImageCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_arrayLayers(MemorySegment segment, @CType("uint32_t") int value) { VkImageCreateInfo.set_arrayLayers(segment, 0L, value); }
-    /// Sets `arrayLayers` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo arrayLayersAt(long index, @CType("uint32_t") int value) { VkImageCreateInfo.set_arrayLayers(this.segment(), index, value); return this; }
     /// Sets `arrayLayers` with the given value.
     /// @param value the value
     /// @return `this`
@@ -418,9 +373,6 @@ public final class VkImageCreateInfo extends Struct {
     /// {@return `samples`}
     /// @param segment the segment of the struct
     public static @CType("VkSampleCountFlagBits") int get_samples(MemorySegment segment) { return VkImageCreateInfo.get_samples(segment, 0L); }
-    /// {@return `samples` at the given index}
-    /// @param index the index
-    public @CType("VkSampleCountFlagBits") int samplesAt(long index) { return VkImageCreateInfo.get_samples(this.segment(), index); }
     /// {@return `samples`}
     public @CType("VkSampleCountFlagBits") int samples() { return VkImageCreateInfo.get_samples(this.segment()); }
     /// Sets `samples` with the given value at the given index.
@@ -432,11 +384,6 @@ public final class VkImageCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_samples(MemorySegment segment, @CType("VkSampleCountFlagBits") int value) { VkImageCreateInfo.set_samples(segment, 0L, value); }
-    /// Sets `samples` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo samplesAt(long index, @CType("VkSampleCountFlagBits") int value) { VkImageCreateInfo.set_samples(this.segment(), index, value); return this; }
     /// Sets `samples` with the given value.
     /// @param value the value
     /// @return `this`
@@ -449,9 +396,6 @@ public final class VkImageCreateInfo extends Struct {
     /// {@return `tiling`}
     /// @param segment the segment of the struct
     public static @CType("VkImageTiling") int get_tiling(MemorySegment segment) { return VkImageCreateInfo.get_tiling(segment, 0L); }
-    /// {@return `tiling` at the given index}
-    /// @param index the index
-    public @CType("VkImageTiling") int tilingAt(long index) { return VkImageCreateInfo.get_tiling(this.segment(), index); }
     /// {@return `tiling`}
     public @CType("VkImageTiling") int tiling() { return VkImageCreateInfo.get_tiling(this.segment()); }
     /// Sets `tiling` with the given value at the given index.
@@ -463,11 +407,6 @@ public final class VkImageCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_tiling(MemorySegment segment, @CType("VkImageTiling") int value) { VkImageCreateInfo.set_tiling(segment, 0L, value); }
-    /// Sets `tiling` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo tilingAt(long index, @CType("VkImageTiling") int value) { VkImageCreateInfo.set_tiling(this.segment(), index, value); return this; }
     /// Sets `tiling` with the given value.
     /// @param value the value
     /// @return `this`
@@ -480,9 +419,6 @@ public final class VkImageCreateInfo extends Struct {
     /// {@return `usage`}
     /// @param segment the segment of the struct
     public static @CType("VkImageUsageFlags") int get_usage(MemorySegment segment) { return VkImageCreateInfo.get_usage(segment, 0L); }
-    /// {@return `usage` at the given index}
-    /// @param index the index
-    public @CType("VkImageUsageFlags") int usageAt(long index) { return VkImageCreateInfo.get_usage(this.segment(), index); }
     /// {@return `usage`}
     public @CType("VkImageUsageFlags") int usage() { return VkImageCreateInfo.get_usage(this.segment()); }
     /// Sets `usage` with the given value at the given index.
@@ -494,11 +430,6 @@ public final class VkImageCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_usage(MemorySegment segment, @CType("VkImageUsageFlags") int value) { VkImageCreateInfo.set_usage(segment, 0L, value); }
-    /// Sets `usage` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo usageAt(long index, @CType("VkImageUsageFlags") int value) { VkImageCreateInfo.set_usage(this.segment(), index, value); return this; }
     /// Sets `usage` with the given value.
     /// @param value the value
     /// @return `this`
@@ -511,9 +442,6 @@ public final class VkImageCreateInfo extends Struct {
     /// {@return `sharingMode`}
     /// @param segment the segment of the struct
     public static @CType("VkSharingMode") int get_sharingMode(MemorySegment segment) { return VkImageCreateInfo.get_sharingMode(segment, 0L); }
-    /// {@return `sharingMode` at the given index}
-    /// @param index the index
-    public @CType("VkSharingMode") int sharingModeAt(long index) { return VkImageCreateInfo.get_sharingMode(this.segment(), index); }
     /// {@return `sharingMode`}
     public @CType("VkSharingMode") int sharingMode() { return VkImageCreateInfo.get_sharingMode(this.segment()); }
     /// Sets `sharingMode` with the given value at the given index.
@@ -525,11 +453,6 @@ public final class VkImageCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sharingMode(MemorySegment segment, @CType("VkSharingMode") int value) { VkImageCreateInfo.set_sharingMode(segment, 0L, value); }
-    /// Sets `sharingMode` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo sharingModeAt(long index, @CType("VkSharingMode") int value) { VkImageCreateInfo.set_sharingMode(this.segment(), index, value); return this; }
     /// Sets `sharingMode` with the given value.
     /// @param value the value
     /// @return `this`
@@ -542,9 +465,6 @@ public final class VkImageCreateInfo extends Struct {
     /// {@return `queueFamilyIndexCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_queueFamilyIndexCount(MemorySegment segment) { return VkImageCreateInfo.get_queueFamilyIndexCount(segment, 0L); }
-    /// {@return `queueFamilyIndexCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int queueFamilyIndexCountAt(long index) { return VkImageCreateInfo.get_queueFamilyIndexCount(this.segment(), index); }
     /// {@return `queueFamilyIndexCount`}
     public @CType("uint32_t") int queueFamilyIndexCount() { return VkImageCreateInfo.get_queueFamilyIndexCount(this.segment()); }
     /// Sets `queueFamilyIndexCount` with the given value at the given index.
@@ -556,11 +476,6 @@ public final class VkImageCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_queueFamilyIndexCount(MemorySegment segment, @CType("uint32_t") int value) { VkImageCreateInfo.set_queueFamilyIndexCount(segment, 0L, value); }
-    /// Sets `queueFamilyIndexCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo queueFamilyIndexCountAt(long index, @CType("uint32_t") int value) { VkImageCreateInfo.set_queueFamilyIndexCount(this.segment(), index, value); return this; }
     /// Sets `queueFamilyIndexCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -573,9 +488,6 @@ public final class VkImageCreateInfo extends Struct {
     /// {@return `pQueueFamilyIndices`}
     /// @param segment the segment of the struct
     public static @CType("const uint32_t *") java.lang.foreign.MemorySegment get_pQueueFamilyIndices(MemorySegment segment) { return VkImageCreateInfo.get_pQueueFamilyIndices(segment, 0L); }
-    /// {@return `pQueueFamilyIndices` at the given index}
-    /// @param index the index
-    public @CType("const uint32_t *") java.lang.foreign.MemorySegment pQueueFamilyIndicesAt(long index) { return VkImageCreateInfo.get_pQueueFamilyIndices(this.segment(), index); }
     /// {@return `pQueueFamilyIndices`}
     public @CType("const uint32_t *") java.lang.foreign.MemorySegment pQueueFamilyIndices() { return VkImageCreateInfo.get_pQueueFamilyIndices(this.segment()); }
     /// Sets `pQueueFamilyIndices` with the given value at the given index.
@@ -587,11 +499,6 @@ public final class VkImageCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pQueueFamilyIndices(MemorySegment segment, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkImageCreateInfo.set_pQueueFamilyIndices(segment, 0L, value); }
-    /// Sets `pQueueFamilyIndices` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo pQueueFamilyIndicesAt(long index, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkImageCreateInfo.set_pQueueFamilyIndices(this.segment(), index, value); return this; }
     /// Sets `pQueueFamilyIndices` with the given value.
     /// @param value the value
     /// @return `this`
@@ -604,9 +511,6 @@ public final class VkImageCreateInfo extends Struct {
     /// {@return `initialLayout`}
     /// @param segment the segment of the struct
     public static @CType("VkImageLayout") int get_initialLayout(MemorySegment segment) { return VkImageCreateInfo.get_initialLayout(segment, 0L); }
-    /// {@return `initialLayout` at the given index}
-    /// @param index the index
-    public @CType("VkImageLayout") int initialLayoutAt(long index) { return VkImageCreateInfo.get_initialLayout(this.segment(), index); }
     /// {@return `initialLayout`}
     public @CType("VkImageLayout") int initialLayout() { return VkImageCreateInfo.get_initialLayout(this.segment()); }
     /// Sets `initialLayout` with the given value at the given index.
@@ -618,14 +522,167 @@ public final class VkImageCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_initialLayout(MemorySegment segment, @CType("VkImageLayout") int value) { VkImageCreateInfo.set_initialLayout(segment, 0L, value); }
-    /// Sets `initialLayout` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageCreateInfo initialLayoutAt(long index, @CType("VkImageLayout") int value) { VkImageCreateInfo.set_initialLayout(this.segment(), index, value); return this; }
     /// Sets `initialLayout` with the given value.
     /// @param value the value
     /// @return `this`
     public VkImageCreateInfo initialLayout(@CType("VkImageLayout") int value) { VkImageCreateInfo.set_initialLayout(this.segment(), value); return this; }
 
+    /// A buffer of [VkImageCreateInfo].
+    public static final class Buffer extends VkImageCreateInfo {
+        private final long elementCount;
+
+        /// Creates `VkImageCreateInfo.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkImageCreateInfo`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkImageCreateInfo`
+        public VkImageCreateInfo asSlice(long index) { return new VkImageCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkImageCreateInfo`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkImageCreateInfo`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkImageCreateInfo.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkImageCreateInfo.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkImageCreateInfo.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkImageCreateInfo.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `flags` at the given index}
+        /// @param index the index
+        public @CType("VkImageCreateFlags") int flagsAt(long index) { return VkImageCreateInfo.get_flags(this.segment(), index); }
+        /// Sets `flags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer flagsAt(long index, @CType("VkImageCreateFlags") int value) { VkImageCreateInfo.set_flags(this.segment(), index, value); return this; }
+
+        /// {@return `imageType` at the given index}
+        /// @param index the index
+        public @CType("VkImageType") int imageTypeAt(long index) { return VkImageCreateInfo.get_imageType(this.segment(), index); }
+        /// Sets `imageType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer imageTypeAt(long index, @CType("VkImageType") int value) { VkImageCreateInfo.set_imageType(this.segment(), index, value); return this; }
+
+        /// {@return `format` at the given index}
+        /// @param index the index
+        public @CType("VkFormat") int formatAt(long index) { return VkImageCreateInfo.get_format(this.segment(), index); }
+        /// Sets `format` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer formatAt(long index, @CType("VkFormat") int value) { VkImageCreateInfo.set_format(this.segment(), index, value); return this; }
+
+        /// {@return `extent` at the given index}
+        /// @param index the index
+        public @CType("VkExtent3D") java.lang.foreign.MemorySegment extentAt(long index) { return VkImageCreateInfo.get_extent(this.segment(), index); }
+        /// Sets `extent` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer extentAt(long index, @CType("VkExtent3D") java.lang.foreign.MemorySegment value) { VkImageCreateInfo.set_extent(this.segment(), index, value); return this; }
+
+        /// {@return `mipLevels` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int mipLevelsAt(long index) { return VkImageCreateInfo.get_mipLevels(this.segment(), index); }
+        /// Sets `mipLevels` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer mipLevelsAt(long index, @CType("uint32_t") int value) { VkImageCreateInfo.set_mipLevels(this.segment(), index, value); return this; }
+
+        /// {@return `arrayLayers` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int arrayLayersAt(long index) { return VkImageCreateInfo.get_arrayLayers(this.segment(), index); }
+        /// Sets `arrayLayers` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer arrayLayersAt(long index, @CType("uint32_t") int value) { VkImageCreateInfo.set_arrayLayers(this.segment(), index, value); return this; }
+
+        /// {@return `samples` at the given index}
+        /// @param index the index
+        public @CType("VkSampleCountFlagBits") int samplesAt(long index) { return VkImageCreateInfo.get_samples(this.segment(), index); }
+        /// Sets `samples` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer samplesAt(long index, @CType("VkSampleCountFlagBits") int value) { VkImageCreateInfo.set_samples(this.segment(), index, value); return this; }
+
+        /// {@return `tiling` at the given index}
+        /// @param index the index
+        public @CType("VkImageTiling") int tilingAt(long index) { return VkImageCreateInfo.get_tiling(this.segment(), index); }
+        /// Sets `tiling` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer tilingAt(long index, @CType("VkImageTiling") int value) { VkImageCreateInfo.set_tiling(this.segment(), index, value); return this; }
+
+        /// {@return `usage` at the given index}
+        /// @param index the index
+        public @CType("VkImageUsageFlags") int usageAt(long index) { return VkImageCreateInfo.get_usage(this.segment(), index); }
+        /// Sets `usage` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer usageAt(long index, @CType("VkImageUsageFlags") int value) { VkImageCreateInfo.set_usage(this.segment(), index, value); return this; }
+
+        /// {@return `sharingMode` at the given index}
+        /// @param index the index
+        public @CType("VkSharingMode") int sharingModeAt(long index) { return VkImageCreateInfo.get_sharingMode(this.segment(), index); }
+        /// Sets `sharingMode` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sharingModeAt(long index, @CType("VkSharingMode") int value) { VkImageCreateInfo.set_sharingMode(this.segment(), index, value); return this; }
+
+        /// {@return `queueFamilyIndexCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int queueFamilyIndexCountAt(long index) { return VkImageCreateInfo.get_queueFamilyIndexCount(this.segment(), index); }
+        /// Sets `queueFamilyIndexCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer queueFamilyIndexCountAt(long index, @CType("uint32_t") int value) { VkImageCreateInfo.set_queueFamilyIndexCount(this.segment(), index, value); return this; }
+
+        /// {@return `pQueueFamilyIndices` at the given index}
+        /// @param index the index
+        public @CType("const uint32_t *") java.lang.foreign.MemorySegment pQueueFamilyIndicesAt(long index) { return VkImageCreateInfo.get_pQueueFamilyIndices(this.segment(), index); }
+        /// Sets `pQueueFamilyIndices` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pQueueFamilyIndicesAt(long index, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkImageCreateInfo.set_pQueueFamilyIndices(this.segment(), index, value); return this; }
+
+        /// {@return `initialLayout` at the given index}
+        /// @param index the index
+        public @CType("VkImageLayout") int initialLayoutAt(long index) { return VkImageCreateInfo.get_initialLayout(this.segment(), index); }
+        /// Sets `initialLayout` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer initialLayoutAt(long index, @CType("VkImageLayout") int value) { VkImageCreateInfo.set_initialLayout(this.segment(), index, value); return this; }
+
+    }
 }

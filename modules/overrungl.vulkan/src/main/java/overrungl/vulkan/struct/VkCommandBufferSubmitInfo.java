@@ -43,7 +43,7 @@ import overrungl.util.*;
 ///     uint32_t deviceMask;
 /// } VkCommandBufferSubmitInfo;
 /// ```
-public final class VkCommandBufferSubmitInfo extends Struct {
+public sealed class VkCommandBufferSubmitInfo extends Struct {
     /// The struct layout of `VkCommandBufferSubmitInfo`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -70,6 +70,11 @@ public final class VkCommandBufferSubmitInfo extends Struct {
     public static VkCommandBufferSubmitInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkCommandBufferSubmitInfo(segment); }
 
     /// Creates `VkCommandBufferSubmitInfo` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkCommandBufferSubmitInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -82,7 +87,7 @@ public final class VkCommandBufferSubmitInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkCommandBufferSubmitInfo ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkCommandBufferSubmitInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkCommandBufferSubmitInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -93,7 +98,21 @@ public final class VkCommandBufferSubmitInfo extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkCommandBufferSubmitInfo`
-    public static VkCommandBufferSubmitInfo alloc(SegmentAllocator allocator, long count) { return new VkCommandBufferSubmitInfo(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkCommandBufferSubmitInfo` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkCommandBufferSubmitInfo`
+    public static VkCommandBufferSubmitInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkCommandBuffer") java.lang.foreign.MemorySegment commandBuffer, @CType("uint32_t") int deviceMask) { return alloc(allocator).sType(sType).pNext(pNext).commandBuffer(commandBuffer).deviceMask(deviceMask); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkCommandBufferSubmitInfo copyFrom(VkCommandBufferSubmitInfo src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -102,9 +121,6 @@ public final class VkCommandBufferSubmitInfo extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkCommandBufferSubmitInfo.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkCommandBufferSubmitInfo.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkCommandBufferSubmitInfo.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -116,11 +132,6 @@ public final class VkCommandBufferSubmitInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkCommandBufferSubmitInfo.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCommandBufferSubmitInfo sTypeAt(long index, @CType("VkStructureType") int value) { VkCommandBufferSubmitInfo.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -133,9 +144,6 @@ public final class VkCommandBufferSubmitInfo extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkCommandBufferSubmitInfo.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkCommandBufferSubmitInfo.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkCommandBufferSubmitInfo.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -147,11 +155,6 @@ public final class VkCommandBufferSubmitInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkCommandBufferSubmitInfo.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCommandBufferSubmitInfo pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkCommandBufferSubmitInfo.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -164,9 +167,6 @@ public final class VkCommandBufferSubmitInfo extends Struct {
     /// {@return `commandBuffer`}
     /// @param segment the segment of the struct
     public static @CType("VkCommandBuffer") java.lang.foreign.MemorySegment get_commandBuffer(MemorySegment segment) { return VkCommandBufferSubmitInfo.get_commandBuffer(segment, 0L); }
-    /// {@return `commandBuffer` at the given index}
-    /// @param index the index
-    public @CType("VkCommandBuffer") java.lang.foreign.MemorySegment commandBufferAt(long index) { return VkCommandBufferSubmitInfo.get_commandBuffer(this.segment(), index); }
     /// {@return `commandBuffer`}
     public @CType("VkCommandBuffer") java.lang.foreign.MemorySegment commandBuffer() { return VkCommandBufferSubmitInfo.get_commandBuffer(this.segment()); }
     /// Sets `commandBuffer` with the given value at the given index.
@@ -178,11 +178,6 @@ public final class VkCommandBufferSubmitInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_commandBuffer(MemorySegment segment, @CType("VkCommandBuffer") java.lang.foreign.MemorySegment value) { VkCommandBufferSubmitInfo.set_commandBuffer(segment, 0L, value); }
-    /// Sets `commandBuffer` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCommandBufferSubmitInfo commandBufferAt(long index, @CType("VkCommandBuffer") java.lang.foreign.MemorySegment value) { VkCommandBufferSubmitInfo.set_commandBuffer(this.segment(), index, value); return this; }
     /// Sets `commandBuffer` with the given value.
     /// @param value the value
     /// @return `this`
@@ -195,9 +190,6 @@ public final class VkCommandBufferSubmitInfo extends Struct {
     /// {@return `deviceMask`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_deviceMask(MemorySegment segment) { return VkCommandBufferSubmitInfo.get_deviceMask(segment, 0L); }
-    /// {@return `deviceMask` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int deviceMaskAt(long index) { return VkCommandBufferSubmitInfo.get_deviceMask(this.segment(), index); }
     /// {@return `deviceMask`}
     public @CType("uint32_t") int deviceMask() { return VkCommandBufferSubmitInfo.get_deviceMask(this.segment()); }
     /// Sets `deviceMask` with the given value at the given index.
@@ -209,14 +201,68 @@ public final class VkCommandBufferSubmitInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_deviceMask(MemorySegment segment, @CType("uint32_t") int value) { VkCommandBufferSubmitInfo.set_deviceMask(segment, 0L, value); }
-    /// Sets `deviceMask` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCommandBufferSubmitInfo deviceMaskAt(long index, @CType("uint32_t") int value) { VkCommandBufferSubmitInfo.set_deviceMask(this.segment(), index, value); return this; }
     /// Sets `deviceMask` with the given value.
     /// @param value the value
     /// @return `this`
     public VkCommandBufferSubmitInfo deviceMask(@CType("uint32_t") int value) { VkCommandBufferSubmitInfo.set_deviceMask(this.segment(), value); return this; }
 
+    /// A buffer of [VkCommandBufferSubmitInfo].
+    public static final class Buffer extends VkCommandBufferSubmitInfo {
+        private final long elementCount;
+
+        /// Creates `VkCommandBufferSubmitInfo.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkCommandBufferSubmitInfo`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkCommandBufferSubmitInfo`
+        public VkCommandBufferSubmitInfo asSlice(long index) { return new VkCommandBufferSubmitInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkCommandBufferSubmitInfo`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkCommandBufferSubmitInfo`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkCommandBufferSubmitInfo.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkCommandBufferSubmitInfo.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkCommandBufferSubmitInfo.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkCommandBufferSubmitInfo.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `commandBuffer` at the given index}
+        /// @param index the index
+        public @CType("VkCommandBuffer") java.lang.foreign.MemorySegment commandBufferAt(long index) { return VkCommandBufferSubmitInfo.get_commandBuffer(this.segment(), index); }
+        /// Sets `commandBuffer` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer commandBufferAt(long index, @CType("VkCommandBuffer") java.lang.foreign.MemorySegment value) { VkCommandBufferSubmitInfo.set_commandBuffer(this.segment(), index, value); return this; }
+
+        /// {@return `deviceMask` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int deviceMaskAt(long index) { return VkCommandBufferSubmitInfo.get_deviceMask(this.segment(), index); }
+        /// Sets `deviceMask` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer deviceMaskAt(long index, @CType("uint32_t") int value) { VkCommandBufferSubmitInfo.set_deviceMask(this.segment(), index, value); return this; }
+
+    }
 }

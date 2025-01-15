@@ -37,7 +37,7 @@ import overrungl.util.*;
 ///     const void * hostAddress;
 /// } VkDeviceOrHostAddressConstAMDX;
 /// ```
-public final class VkDeviceOrHostAddressConstAMDX extends Union {
+public sealed class VkDeviceOrHostAddressConstAMDX extends Union {
     /// The union layout of `VkDeviceOrHostAddressConstAMDX`.
     public static final UnionLayout LAYOUT = MemoryLayout.unionLayout(
         ValueLayout.JAVA_LONG.withName("deviceAddress"),
@@ -58,6 +58,11 @@ public final class VkDeviceOrHostAddressConstAMDX extends Union {
     public static VkDeviceOrHostAddressConstAMDX of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDeviceOrHostAddressConstAMDX(segment); }
 
     /// Creates `VkDeviceOrHostAddressConstAMDX` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkDeviceOrHostAddressConstAMDX` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -70,7 +75,7 @@ public final class VkDeviceOrHostAddressConstAMDX extends Union {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDeviceOrHostAddressConstAMDX ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkDeviceOrHostAddressConstAMDX(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkDeviceOrHostAddressConstAMDX` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -81,68 +86,102 @@ public final class VkDeviceOrHostAddressConstAMDX extends Union {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDeviceOrHostAddressConstAMDX`
-    public static VkDeviceOrHostAddressConstAMDX alloc(SegmentAllocator allocator, long count) { return new VkDeviceOrHostAddressConstAMDX(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkDeviceOrHostAddressConstAMDX copyFrom(VkDeviceOrHostAddressConstAMDX src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `deviceAddress` at the given index}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     public static @CType("VkDeviceAddress") long get_deviceAddress(MemorySegment segment, long index) { return (long) VH_deviceAddress.get(segment, 0L, index); }
     /// {@return `deviceAddress`}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     public static @CType("VkDeviceAddress") long get_deviceAddress(MemorySegment segment) { return VkDeviceOrHostAddressConstAMDX.get_deviceAddress(segment, 0L); }
-    /// {@return `deviceAddress` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceAddress") long deviceAddressAt(long index) { return VkDeviceOrHostAddressConstAMDX.get_deviceAddress(this.segment(), index); }
     /// {@return `deviceAddress`}
     public @CType("VkDeviceAddress") long deviceAddress() { return VkDeviceOrHostAddressConstAMDX.get_deviceAddress(this.segment()); }
     /// Sets `deviceAddress` with the given value at the given index.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     /// @param value   the value
     public static void set_deviceAddress(MemorySegment segment, long index, @CType("VkDeviceAddress") long value) { VH_deviceAddress.set(segment, 0L, index, value); }
     /// Sets `deviceAddress` with the given value.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param value   the value
     public static void set_deviceAddress(MemorySegment segment, @CType("VkDeviceAddress") long value) { VkDeviceOrHostAddressConstAMDX.set_deviceAddress(segment, 0L, value); }
-    /// Sets `deviceAddress` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceOrHostAddressConstAMDX deviceAddressAt(long index, @CType("VkDeviceAddress") long value) { VkDeviceOrHostAddressConstAMDX.set_deviceAddress(this.segment(), index, value); return this; }
     /// Sets `deviceAddress` with the given value.
     /// @param value the value
     /// @return `this`
     public VkDeviceOrHostAddressConstAMDX deviceAddress(@CType("VkDeviceAddress") long value) { VkDeviceOrHostAddressConstAMDX.set_deviceAddress(this.segment(), value); return this; }
 
     /// {@return `hostAddress` at the given index}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     public static @CType("const void *") java.lang.foreign.MemorySegment get_hostAddress(MemorySegment segment, long index) { return (java.lang.foreign.MemorySegment) VH_hostAddress.get(segment, 0L, index); }
     /// {@return `hostAddress`}
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     public static @CType("const void *") java.lang.foreign.MemorySegment get_hostAddress(MemorySegment segment) { return VkDeviceOrHostAddressConstAMDX.get_hostAddress(segment, 0L); }
-    /// {@return `hostAddress` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment hostAddressAt(long index) { return VkDeviceOrHostAddressConstAMDX.get_hostAddress(this.segment(), index); }
     /// {@return `hostAddress`}
     public @CType("const void *") java.lang.foreign.MemorySegment hostAddress() { return VkDeviceOrHostAddressConstAMDX.get_hostAddress(this.segment()); }
     /// Sets `hostAddress` with the given value at the given index.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param index   the index
     /// @param value   the value
     public static void set_hostAddress(MemorySegment segment, long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VH_hostAddress.set(segment, 0L, index, value); }
     /// Sets `hostAddress` with the given value.
-    /// @param segment the segment of the struct
+    /// @param segment the segment of the union
     /// @param value   the value
     public static void set_hostAddress(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDeviceOrHostAddressConstAMDX.set_hostAddress(segment, 0L, value); }
-    /// Sets `hostAddress` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceOrHostAddressConstAMDX hostAddressAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDeviceOrHostAddressConstAMDX.set_hostAddress(this.segment(), index, value); return this; }
     /// Sets `hostAddress` with the given value.
     /// @param value the value
     /// @return `this`
     public VkDeviceOrHostAddressConstAMDX hostAddress(@CType("const void *") java.lang.foreign.MemorySegment value) { VkDeviceOrHostAddressConstAMDX.set_hostAddress(this.segment(), value); return this; }
 
+    /// A buffer of [VkDeviceOrHostAddressConstAMDX].
+    public static final class Buffer extends VkDeviceOrHostAddressConstAMDX {
+        private final long elementCount;
+
+        /// Creates `VkDeviceOrHostAddressConstAMDX.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkDeviceOrHostAddressConstAMDX`.
+        /// @param index the index of the union buffer
+        /// @return the slice of `VkDeviceOrHostAddressConstAMDX`
+        public VkDeviceOrHostAddressConstAMDX asSlice(long index) { return new VkDeviceOrHostAddressConstAMDX(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkDeviceOrHostAddressConstAMDX`.
+        /// @param index the index of the union buffer
+        /// @param count the count
+        /// @return the slice of `VkDeviceOrHostAddressConstAMDX`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `deviceAddress` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceAddress") long deviceAddressAt(long index) { return VkDeviceOrHostAddressConstAMDX.get_deviceAddress(this.segment(), index); }
+        /// Sets `deviceAddress` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer deviceAddressAt(long index, @CType("VkDeviceAddress") long value) { VkDeviceOrHostAddressConstAMDX.set_deviceAddress(this.segment(), index, value); return this; }
+
+        /// {@return `hostAddress` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment hostAddressAt(long index) { return VkDeviceOrHostAddressConstAMDX.get_hostAddress(this.segment(), index); }
+        /// Sets `hostAddress` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer hostAddressAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDeviceOrHostAddressConstAMDX.set_hostAddress(this.segment(), index, value); return this; }
+
+    }
 }

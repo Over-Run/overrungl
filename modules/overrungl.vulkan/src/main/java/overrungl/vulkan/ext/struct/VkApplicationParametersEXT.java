@@ -49,7 +49,7 @@ import overrungl.util.*;
 ///     uint64_t value;
 /// } VkApplicationParametersEXT;
 /// ```
-public final class VkApplicationParametersEXT extends Struct {
+public sealed class VkApplicationParametersEXT extends Struct {
     /// The struct layout of `VkApplicationParametersEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -82,6 +82,11 @@ public final class VkApplicationParametersEXT extends Struct {
     public static VkApplicationParametersEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkApplicationParametersEXT(segment); }
 
     /// Creates `VkApplicationParametersEXT` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkApplicationParametersEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -94,7 +99,7 @@ public final class VkApplicationParametersEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkApplicationParametersEXT ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkApplicationParametersEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkApplicationParametersEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -105,7 +110,21 @@ public final class VkApplicationParametersEXT extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkApplicationParametersEXT`
-    public static VkApplicationParametersEXT alloc(SegmentAllocator allocator, long count) { return new VkApplicationParametersEXT(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkApplicationParametersEXT` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkApplicationParametersEXT`
+    public static VkApplicationParametersEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int vendorID, @CType("uint32_t") int deviceID, @CType("uint32_t") int key, @CType("uint64_t") long value) { return alloc(allocator).sType(sType).pNext(pNext).vendorID(vendorID).deviceID(deviceID).key(key).value(value); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkApplicationParametersEXT copyFrom(VkApplicationParametersEXT src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -114,9 +133,6 @@ public final class VkApplicationParametersEXT extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkApplicationParametersEXT.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkApplicationParametersEXT.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkApplicationParametersEXT.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -128,11 +144,6 @@ public final class VkApplicationParametersEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkApplicationParametersEXT.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkApplicationParametersEXT sTypeAt(long index, @CType("VkStructureType") int value) { VkApplicationParametersEXT.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -145,9 +156,6 @@ public final class VkApplicationParametersEXT extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkApplicationParametersEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkApplicationParametersEXT.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkApplicationParametersEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -159,11 +167,6 @@ public final class VkApplicationParametersEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkApplicationParametersEXT.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkApplicationParametersEXT pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkApplicationParametersEXT.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -176,9 +179,6 @@ public final class VkApplicationParametersEXT extends Struct {
     /// {@return `vendorID`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_vendorID(MemorySegment segment) { return VkApplicationParametersEXT.get_vendorID(segment, 0L); }
-    /// {@return `vendorID` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int vendorIDAt(long index) { return VkApplicationParametersEXT.get_vendorID(this.segment(), index); }
     /// {@return `vendorID`}
     public @CType("uint32_t") int vendorID() { return VkApplicationParametersEXT.get_vendorID(this.segment()); }
     /// Sets `vendorID` with the given value at the given index.
@@ -190,11 +190,6 @@ public final class VkApplicationParametersEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_vendorID(MemorySegment segment, @CType("uint32_t") int value) { VkApplicationParametersEXT.set_vendorID(segment, 0L, value); }
-    /// Sets `vendorID` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkApplicationParametersEXT vendorIDAt(long index, @CType("uint32_t") int value) { VkApplicationParametersEXT.set_vendorID(this.segment(), index, value); return this; }
     /// Sets `vendorID` with the given value.
     /// @param value the value
     /// @return `this`
@@ -207,9 +202,6 @@ public final class VkApplicationParametersEXT extends Struct {
     /// {@return `deviceID`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_deviceID(MemorySegment segment) { return VkApplicationParametersEXT.get_deviceID(segment, 0L); }
-    /// {@return `deviceID` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int deviceIDAt(long index) { return VkApplicationParametersEXT.get_deviceID(this.segment(), index); }
     /// {@return `deviceID`}
     public @CType("uint32_t") int deviceID() { return VkApplicationParametersEXT.get_deviceID(this.segment()); }
     /// Sets `deviceID` with the given value at the given index.
@@ -221,11 +213,6 @@ public final class VkApplicationParametersEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_deviceID(MemorySegment segment, @CType("uint32_t") int value) { VkApplicationParametersEXT.set_deviceID(segment, 0L, value); }
-    /// Sets `deviceID` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkApplicationParametersEXT deviceIDAt(long index, @CType("uint32_t") int value) { VkApplicationParametersEXT.set_deviceID(this.segment(), index, value); return this; }
     /// Sets `deviceID` with the given value.
     /// @param value the value
     /// @return `this`
@@ -238,9 +225,6 @@ public final class VkApplicationParametersEXT extends Struct {
     /// {@return `key`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_key(MemorySegment segment) { return VkApplicationParametersEXT.get_key(segment, 0L); }
-    /// {@return `key` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int keyAt(long index) { return VkApplicationParametersEXT.get_key(this.segment(), index); }
     /// {@return `key`}
     public @CType("uint32_t") int key() { return VkApplicationParametersEXT.get_key(this.segment()); }
     /// Sets `key` with the given value at the given index.
@@ -252,11 +236,6 @@ public final class VkApplicationParametersEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_key(MemorySegment segment, @CType("uint32_t") int value) { VkApplicationParametersEXT.set_key(segment, 0L, value); }
-    /// Sets `key` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkApplicationParametersEXT keyAt(long index, @CType("uint32_t") int value) { VkApplicationParametersEXT.set_key(this.segment(), index, value); return this; }
     /// Sets `key` with the given value.
     /// @param value the value
     /// @return `this`
@@ -269,9 +248,6 @@ public final class VkApplicationParametersEXT extends Struct {
     /// {@return `value`}
     /// @param segment the segment of the struct
     public static @CType("uint64_t") long get_value(MemorySegment segment) { return VkApplicationParametersEXT.get_value(segment, 0L); }
-    /// {@return `value` at the given index}
-    /// @param index the index
-    public @CType("uint64_t") long valueAt(long index) { return VkApplicationParametersEXT.get_value(this.segment(), index); }
     /// {@return `value`}
     public @CType("uint64_t") long value() { return VkApplicationParametersEXT.get_value(this.segment()); }
     /// Sets `value` with the given value at the given index.
@@ -283,14 +259,86 @@ public final class VkApplicationParametersEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_value(MemorySegment segment, @CType("uint64_t") long value) { VkApplicationParametersEXT.set_value(segment, 0L, value); }
-    /// Sets `value` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkApplicationParametersEXT valueAt(long index, @CType("uint64_t") long value) { VkApplicationParametersEXT.set_value(this.segment(), index, value); return this; }
     /// Sets `value` with the given value.
     /// @param value the value
     /// @return `this`
     public VkApplicationParametersEXT value(@CType("uint64_t") long value) { VkApplicationParametersEXT.set_value(this.segment(), value); return this; }
 
+    /// A buffer of [VkApplicationParametersEXT].
+    public static final class Buffer extends VkApplicationParametersEXT {
+        private final long elementCount;
+
+        /// Creates `VkApplicationParametersEXT.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkApplicationParametersEXT`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkApplicationParametersEXT`
+        public VkApplicationParametersEXT asSlice(long index) { return new VkApplicationParametersEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkApplicationParametersEXT`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkApplicationParametersEXT`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkApplicationParametersEXT.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkApplicationParametersEXT.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkApplicationParametersEXT.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkApplicationParametersEXT.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `vendorID` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int vendorIDAt(long index) { return VkApplicationParametersEXT.get_vendorID(this.segment(), index); }
+        /// Sets `vendorID` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer vendorIDAt(long index, @CType("uint32_t") int value) { VkApplicationParametersEXT.set_vendorID(this.segment(), index, value); return this; }
+
+        /// {@return `deviceID` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int deviceIDAt(long index) { return VkApplicationParametersEXT.get_deviceID(this.segment(), index); }
+        /// Sets `deviceID` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer deviceIDAt(long index, @CType("uint32_t") int value) { VkApplicationParametersEXT.set_deviceID(this.segment(), index, value); return this; }
+
+        /// {@return `key` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int keyAt(long index) { return VkApplicationParametersEXT.get_key(this.segment(), index); }
+        /// Sets `key` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer keyAt(long index, @CType("uint32_t") int value) { VkApplicationParametersEXT.set_key(this.segment(), index, value); return this; }
+
+        /// {@return `value` at the given index}
+        /// @param index the index
+        public @CType("uint64_t") long valueAt(long index) { return VkApplicationParametersEXT.get_value(this.segment(), index); }
+        /// Sets `value` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer valueAt(long index, @CType("uint64_t") long value) { VkApplicationParametersEXT.set_value(this.segment(), index, value); return this; }
+
+    }
 }

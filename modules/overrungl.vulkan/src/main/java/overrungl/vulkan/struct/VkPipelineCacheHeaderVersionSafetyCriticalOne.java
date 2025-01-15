@@ -49,7 +49,7 @@ import overrungl.util.*;
 ///     uint64_t pipelineIndexOffset;
 /// } VkPipelineCacheHeaderVersionSafetyCriticalOne;
 /// ```
-public final class VkPipelineCacheHeaderVersionSafetyCriticalOne extends Struct {
+public sealed class VkPipelineCacheHeaderVersionSafetyCriticalOne extends Struct {
     /// The struct layout of `VkPipelineCacheHeaderVersionSafetyCriticalOne`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.struct.VkPipelineCacheHeaderVersionOne.LAYOUT.withName("headerVersionOne"),
@@ -84,6 +84,11 @@ public final class VkPipelineCacheHeaderVersionSafetyCriticalOne extends Struct 
     public static VkPipelineCacheHeaderVersionSafetyCriticalOne of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineCacheHeaderVersionSafetyCriticalOne(segment); }
 
     /// Creates `VkPipelineCacheHeaderVersionSafetyCriticalOne` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPipelineCacheHeaderVersionSafetyCriticalOne` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -96,7 +101,7 @@ public final class VkPipelineCacheHeaderVersionSafetyCriticalOne extends Struct 
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineCacheHeaderVersionSafetyCriticalOne ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineCacheHeaderVersionSafetyCriticalOne(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPipelineCacheHeaderVersionSafetyCriticalOne` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -107,7 +112,21 @@ public final class VkPipelineCacheHeaderVersionSafetyCriticalOne extends Struct 
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPipelineCacheHeaderVersionSafetyCriticalOne`
-    public static VkPipelineCacheHeaderVersionSafetyCriticalOne alloc(SegmentAllocator allocator, long count) { return new VkPipelineCacheHeaderVersionSafetyCriticalOne(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkPipelineCacheHeaderVersionSafetyCriticalOne` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPipelineCacheHeaderVersionSafetyCriticalOne`
+    public static VkPipelineCacheHeaderVersionSafetyCriticalOne allocInit(SegmentAllocator allocator, @CType("VkPipelineCacheHeaderVersionOne") java.lang.foreign.MemorySegment headerVersionOne, @CType("VkPipelineCacheValidationVersion") int validationVersion, @CType("uint32_t") int implementationData, @CType("uint32_t") int pipelineIndexCount, @CType("uint32_t") int pipelineIndexStride, @CType("uint64_t") long pipelineIndexOffset) { return alloc(allocator).headerVersionOne(headerVersionOne).validationVersion(validationVersion).implementationData(implementationData).pipelineIndexCount(pipelineIndexCount).pipelineIndexStride(pipelineIndexStride).pipelineIndexOffset(pipelineIndexOffset); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPipelineCacheHeaderVersionSafetyCriticalOne copyFrom(VkPipelineCacheHeaderVersionSafetyCriticalOne src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `headerVersionOne` at the given index}
     /// @param segment the segment of the struct
@@ -116,9 +135,6 @@ public final class VkPipelineCacheHeaderVersionSafetyCriticalOne extends Struct 
     /// {@return `headerVersionOne`}
     /// @param segment the segment of the struct
     public static @CType("VkPipelineCacheHeaderVersionOne") java.lang.foreign.MemorySegment get_headerVersionOne(MemorySegment segment) { return VkPipelineCacheHeaderVersionSafetyCriticalOne.get_headerVersionOne(segment, 0L); }
-    /// {@return `headerVersionOne` at the given index}
-    /// @param index the index
-    public @CType("VkPipelineCacheHeaderVersionOne") java.lang.foreign.MemorySegment headerVersionOneAt(long index) { return VkPipelineCacheHeaderVersionSafetyCriticalOne.get_headerVersionOne(this.segment(), index); }
     /// {@return `headerVersionOne`}
     public @CType("VkPipelineCacheHeaderVersionOne") java.lang.foreign.MemorySegment headerVersionOne() { return VkPipelineCacheHeaderVersionSafetyCriticalOne.get_headerVersionOne(this.segment()); }
     /// Sets `headerVersionOne` with the given value at the given index.
@@ -130,11 +146,6 @@ public final class VkPipelineCacheHeaderVersionSafetyCriticalOne extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_headerVersionOne(MemorySegment segment, @CType("VkPipelineCacheHeaderVersionOne") java.lang.foreign.MemorySegment value) { VkPipelineCacheHeaderVersionSafetyCriticalOne.set_headerVersionOne(segment, 0L, value); }
-    /// Sets `headerVersionOne` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineCacheHeaderVersionSafetyCriticalOne headerVersionOneAt(long index, @CType("VkPipelineCacheHeaderVersionOne") java.lang.foreign.MemorySegment value) { VkPipelineCacheHeaderVersionSafetyCriticalOne.set_headerVersionOne(this.segment(), index, value); return this; }
     /// Sets `headerVersionOne` with the given value.
     /// @param value the value
     /// @return `this`
@@ -147,9 +158,6 @@ public final class VkPipelineCacheHeaderVersionSafetyCriticalOne extends Struct 
     /// {@return `validationVersion`}
     /// @param segment the segment of the struct
     public static @CType("VkPipelineCacheValidationVersion") int get_validationVersion(MemorySegment segment) { return VkPipelineCacheHeaderVersionSafetyCriticalOne.get_validationVersion(segment, 0L); }
-    /// {@return `validationVersion` at the given index}
-    /// @param index the index
-    public @CType("VkPipelineCacheValidationVersion") int validationVersionAt(long index) { return VkPipelineCacheHeaderVersionSafetyCriticalOne.get_validationVersion(this.segment(), index); }
     /// {@return `validationVersion`}
     public @CType("VkPipelineCacheValidationVersion") int validationVersion() { return VkPipelineCacheHeaderVersionSafetyCriticalOne.get_validationVersion(this.segment()); }
     /// Sets `validationVersion` with the given value at the given index.
@@ -161,11 +169,6 @@ public final class VkPipelineCacheHeaderVersionSafetyCriticalOne extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_validationVersion(MemorySegment segment, @CType("VkPipelineCacheValidationVersion") int value) { VkPipelineCacheHeaderVersionSafetyCriticalOne.set_validationVersion(segment, 0L, value); }
-    /// Sets `validationVersion` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineCacheHeaderVersionSafetyCriticalOne validationVersionAt(long index, @CType("VkPipelineCacheValidationVersion") int value) { VkPipelineCacheHeaderVersionSafetyCriticalOne.set_validationVersion(this.segment(), index, value); return this; }
     /// Sets `validationVersion` with the given value.
     /// @param value the value
     /// @return `this`
@@ -178,9 +181,6 @@ public final class VkPipelineCacheHeaderVersionSafetyCriticalOne extends Struct 
     /// {@return `implementationData`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_implementationData(MemorySegment segment) { return VkPipelineCacheHeaderVersionSafetyCriticalOne.get_implementationData(segment, 0L); }
-    /// {@return `implementationData` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int implementationDataAt(long index) { return VkPipelineCacheHeaderVersionSafetyCriticalOne.get_implementationData(this.segment(), index); }
     /// {@return `implementationData`}
     public @CType("uint32_t") int implementationData() { return VkPipelineCacheHeaderVersionSafetyCriticalOne.get_implementationData(this.segment()); }
     /// Sets `implementationData` with the given value at the given index.
@@ -192,11 +192,6 @@ public final class VkPipelineCacheHeaderVersionSafetyCriticalOne extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_implementationData(MemorySegment segment, @CType("uint32_t") int value) { VkPipelineCacheHeaderVersionSafetyCriticalOne.set_implementationData(segment, 0L, value); }
-    /// Sets `implementationData` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineCacheHeaderVersionSafetyCriticalOne implementationDataAt(long index, @CType("uint32_t") int value) { VkPipelineCacheHeaderVersionSafetyCriticalOne.set_implementationData(this.segment(), index, value); return this; }
     /// Sets `implementationData` with the given value.
     /// @param value the value
     /// @return `this`
@@ -209,9 +204,6 @@ public final class VkPipelineCacheHeaderVersionSafetyCriticalOne extends Struct 
     /// {@return `pipelineIndexCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_pipelineIndexCount(MemorySegment segment) { return VkPipelineCacheHeaderVersionSafetyCriticalOne.get_pipelineIndexCount(segment, 0L); }
-    /// {@return `pipelineIndexCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int pipelineIndexCountAt(long index) { return VkPipelineCacheHeaderVersionSafetyCriticalOne.get_pipelineIndexCount(this.segment(), index); }
     /// {@return `pipelineIndexCount`}
     public @CType("uint32_t") int pipelineIndexCount() { return VkPipelineCacheHeaderVersionSafetyCriticalOne.get_pipelineIndexCount(this.segment()); }
     /// Sets `pipelineIndexCount` with the given value at the given index.
@@ -223,11 +215,6 @@ public final class VkPipelineCacheHeaderVersionSafetyCriticalOne extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pipelineIndexCount(MemorySegment segment, @CType("uint32_t") int value) { VkPipelineCacheHeaderVersionSafetyCriticalOne.set_pipelineIndexCount(segment, 0L, value); }
-    /// Sets `pipelineIndexCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineCacheHeaderVersionSafetyCriticalOne pipelineIndexCountAt(long index, @CType("uint32_t") int value) { VkPipelineCacheHeaderVersionSafetyCriticalOne.set_pipelineIndexCount(this.segment(), index, value); return this; }
     /// Sets `pipelineIndexCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -240,9 +227,6 @@ public final class VkPipelineCacheHeaderVersionSafetyCriticalOne extends Struct 
     /// {@return `pipelineIndexStride`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_pipelineIndexStride(MemorySegment segment) { return VkPipelineCacheHeaderVersionSafetyCriticalOne.get_pipelineIndexStride(segment, 0L); }
-    /// {@return `pipelineIndexStride` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int pipelineIndexStrideAt(long index) { return VkPipelineCacheHeaderVersionSafetyCriticalOne.get_pipelineIndexStride(this.segment(), index); }
     /// {@return `pipelineIndexStride`}
     public @CType("uint32_t") int pipelineIndexStride() { return VkPipelineCacheHeaderVersionSafetyCriticalOne.get_pipelineIndexStride(this.segment()); }
     /// Sets `pipelineIndexStride` with the given value at the given index.
@@ -254,11 +238,6 @@ public final class VkPipelineCacheHeaderVersionSafetyCriticalOne extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pipelineIndexStride(MemorySegment segment, @CType("uint32_t") int value) { VkPipelineCacheHeaderVersionSafetyCriticalOne.set_pipelineIndexStride(segment, 0L, value); }
-    /// Sets `pipelineIndexStride` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineCacheHeaderVersionSafetyCriticalOne pipelineIndexStrideAt(long index, @CType("uint32_t") int value) { VkPipelineCacheHeaderVersionSafetyCriticalOne.set_pipelineIndexStride(this.segment(), index, value); return this; }
     /// Sets `pipelineIndexStride` with the given value.
     /// @param value the value
     /// @return `this`
@@ -271,9 +250,6 @@ public final class VkPipelineCacheHeaderVersionSafetyCriticalOne extends Struct 
     /// {@return `pipelineIndexOffset`}
     /// @param segment the segment of the struct
     public static @CType("uint64_t") long get_pipelineIndexOffset(MemorySegment segment) { return VkPipelineCacheHeaderVersionSafetyCriticalOne.get_pipelineIndexOffset(segment, 0L); }
-    /// {@return `pipelineIndexOffset` at the given index}
-    /// @param index the index
-    public @CType("uint64_t") long pipelineIndexOffsetAt(long index) { return VkPipelineCacheHeaderVersionSafetyCriticalOne.get_pipelineIndexOffset(this.segment(), index); }
     /// {@return `pipelineIndexOffset`}
     public @CType("uint64_t") long pipelineIndexOffset() { return VkPipelineCacheHeaderVersionSafetyCriticalOne.get_pipelineIndexOffset(this.segment()); }
     /// Sets `pipelineIndexOffset` with the given value at the given index.
@@ -285,14 +261,86 @@ public final class VkPipelineCacheHeaderVersionSafetyCriticalOne extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pipelineIndexOffset(MemorySegment segment, @CType("uint64_t") long value) { VkPipelineCacheHeaderVersionSafetyCriticalOne.set_pipelineIndexOffset(segment, 0L, value); }
-    /// Sets `pipelineIndexOffset` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineCacheHeaderVersionSafetyCriticalOne pipelineIndexOffsetAt(long index, @CType("uint64_t") long value) { VkPipelineCacheHeaderVersionSafetyCriticalOne.set_pipelineIndexOffset(this.segment(), index, value); return this; }
     /// Sets `pipelineIndexOffset` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPipelineCacheHeaderVersionSafetyCriticalOne pipelineIndexOffset(@CType("uint64_t") long value) { VkPipelineCacheHeaderVersionSafetyCriticalOne.set_pipelineIndexOffset(this.segment(), value); return this; }
 
+    /// A buffer of [VkPipelineCacheHeaderVersionSafetyCriticalOne].
+    public static final class Buffer extends VkPipelineCacheHeaderVersionSafetyCriticalOne {
+        private final long elementCount;
+
+        /// Creates `VkPipelineCacheHeaderVersionSafetyCriticalOne.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPipelineCacheHeaderVersionSafetyCriticalOne`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPipelineCacheHeaderVersionSafetyCriticalOne`
+        public VkPipelineCacheHeaderVersionSafetyCriticalOne asSlice(long index) { return new VkPipelineCacheHeaderVersionSafetyCriticalOne(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPipelineCacheHeaderVersionSafetyCriticalOne`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPipelineCacheHeaderVersionSafetyCriticalOne`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `headerVersionOne` at the given index}
+        /// @param index the index
+        public @CType("VkPipelineCacheHeaderVersionOne") java.lang.foreign.MemorySegment headerVersionOneAt(long index) { return VkPipelineCacheHeaderVersionSafetyCriticalOne.get_headerVersionOne(this.segment(), index); }
+        /// Sets `headerVersionOne` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer headerVersionOneAt(long index, @CType("VkPipelineCacheHeaderVersionOne") java.lang.foreign.MemorySegment value) { VkPipelineCacheHeaderVersionSafetyCriticalOne.set_headerVersionOne(this.segment(), index, value); return this; }
+
+        /// {@return `validationVersion` at the given index}
+        /// @param index the index
+        public @CType("VkPipelineCacheValidationVersion") int validationVersionAt(long index) { return VkPipelineCacheHeaderVersionSafetyCriticalOne.get_validationVersion(this.segment(), index); }
+        /// Sets `validationVersion` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer validationVersionAt(long index, @CType("VkPipelineCacheValidationVersion") int value) { VkPipelineCacheHeaderVersionSafetyCriticalOne.set_validationVersion(this.segment(), index, value); return this; }
+
+        /// {@return `implementationData` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int implementationDataAt(long index) { return VkPipelineCacheHeaderVersionSafetyCriticalOne.get_implementationData(this.segment(), index); }
+        /// Sets `implementationData` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer implementationDataAt(long index, @CType("uint32_t") int value) { VkPipelineCacheHeaderVersionSafetyCriticalOne.set_implementationData(this.segment(), index, value); return this; }
+
+        /// {@return `pipelineIndexCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int pipelineIndexCountAt(long index) { return VkPipelineCacheHeaderVersionSafetyCriticalOne.get_pipelineIndexCount(this.segment(), index); }
+        /// Sets `pipelineIndexCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pipelineIndexCountAt(long index, @CType("uint32_t") int value) { VkPipelineCacheHeaderVersionSafetyCriticalOne.set_pipelineIndexCount(this.segment(), index, value); return this; }
+
+        /// {@return `pipelineIndexStride` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int pipelineIndexStrideAt(long index) { return VkPipelineCacheHeaderVersionSafetyCriticalOne.get_pipelineIndexStride(this.segment(), index); }
+        /// Sets `pipelineIndexStride` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pipelineIndexStrideAt(long index, @CType("uint32_t") int value) { VkPipelineCacheHeaderVersionSafetyCriticalOne.set_pipelineIndexStride(this.segment(), index, value); return this; }
+
+        /// {@return `pipelineIndexOffset` at the given index}
+        /// @param index the index
+        public @CType("uint64_t") long pipelineIndexOffsetAt(long index) { return VkPipelineCacheHeaderVersionSafetyCriticalOne.get_pipelineIndexOffset(this.segment(), index); }
+        /// Sets `pipelineIndexOffset` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pipelineIndexOffsetAt(long index, @CType("uint64_t") long value) { VkPipelineCacheHeaderVersionSafetyCriticalOne.set_pipelineIndexOffset(this.segment(), index, value); return this; }
+
+    }
 }

@@ -52,7 +52,7 @@ import overrungl.util.*;
 ///     MTLTexture_id mtlTexture;
 /// } VkExportMetalTextureInfoEXT;
 /// ```
-public final class VkExportMetalTextureInfoEXT extends Struct {
+public sealed class VkExportMetalTextureInfoEXT extends Struct {
     /// The struct layout of `VkExportMetalTextureInfoEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -88,6 +88,11 @@ public final class VkExportMetalTextureInfoEXT extends Struct {
     public static VkExportMetalTextureInfoEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkExportMetalTextureInfoEXT(segment); }
 
     /// Creates `VkExportMetalTextureInfoEXT` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkExportMetalTextureInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -100,7 +105,7 @@ public final class VkExportMetalTextureInfoEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkExportMetalTextureInfoEXT ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkExportMetalTextureInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkExportMetalTextureInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -111,7 +116,21 @@ public final class VkExportMetalTextureInfoEXT extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkExportMetalTextureInfoEXT`
-    public static VkExportMetalTextureInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkExportMetalTextureInfoEXT(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkExportMetalTextureInfoEXT` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkExportMetalTextureInfoEXT`
+    public static VkExportMetalTextureInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkImage") java.lang.foreign.MemorySegment image, @CType("VkImageView") java.lang.foreign.MemorySegment imageView, @CType("VkBufferView") java.lang.foreign.MemorySegment bufferView, @CType("VkImageAspectFlagBits") int plane, @CType("MTLTexture_id") java.lang.foreign.MemorySegment mtlTexture) { return alloc(allocator).sType(sType).pNext(pNext).image(image).imageView(imageView).bufferView(bufferView).plane(plane).mtlTexture(mtlTexture); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkExportMetalTextureInfoEXT copyFrom(VkExportMetalTextureInfoEXT src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -120,9 +139,6 @@ public final class VkExportMetalTextureInfoEXT extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkExportMetalTextureInfoEXT.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkExportMetalTextureInfoEXT.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkExportMetalTextureInfoEXT.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -134,11 +150,6 @@ public final class VkExportMetalTextureInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkExportMetalTextureInfoEXT.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkExportMetalTextureInfoEXT sTypeAt(long index, @CType("VkStructureType") int value) { VkExportMetalTextureInfoEXT.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -151,9 +162,6 @@ public final class VkExportMetalTextureInfoEXT extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkExportMetalTextureInfoEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkExportMetalTextureInfoEXT.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkExportMetalTextureInfoEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -165,11 +173,6 @@ public final class VkExportMetalTextureInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkExportMetalTextureInfoEXT.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkExportMetalTextureInfoEXT pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkExportMetalTextureInfoEXT.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,9 +185,6 @@ public final class VkExportMetalTextureInfoEXT extends Struct {
     /// {@return `image`}
     /// @param segment the segment of the struct
     public static @CType("VkImage") java.lang.foreign.MemorySegment get_image(MemorySegment segment) { return VkExportMetalTextureInfoEXT.get_image(segment, 0L); }
-    /// {@return `image` at the given index}
-    /// @param index the index
-    public @CType("VkImage") java.lang.foreign.MemorySegment imageAt(long index) { return VkExportMetalTextureInfoEXT.get_image(this.segment(), index); }
     /// {@return `image`}
     public @CType("VkImage") java.lang.foreign.MemorySegment image() { return VkExportMetalTextureInfoEXT.get_image(this.segment()); }
     /// Sets `image` with the given value at the given index.
@@ -196,11 +196,6 @@ public final class VkExportMetalTextureInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_image(MemorySegment segment, @CType("VkImage") java.lang.foreign.MemorySegment value) { VkExportMetalTextureInfoEXT.set_image(segment, 0L, value); }
-    /// Sets `image` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkExportMetalTextureInfoEXT imageAt(long index, @CType("VkImage") java.lang.foreign.MemorySegment value) { VkExportMetalTextureInfoEXT.set_image(this.segment(), index, value); return this; }
     /// Sets `image` with the given value.
     /// @param value the value
     /// @return `this`
@@ -213,9 +208,6 @@ public final class VkExportMetalTextureInfoEXT extends Struct {
     /// {@return `imageView`}
     /// @param segment the segment of the struct
     public static @CType("VkImageView") java.lang.foreign.MemorySegment get_imageView(MemorySegment segment) { return VkExportMetalTextureInfoEXT.get_imageView(segment, 0L); }
-    /// {@return `imageView` at the given index}
-    /// @param index the index
-    public @CType("VkImageView") java.lang.foreign.MemorySegment imageViewAt(long index) { return VkExportMetalTextureInfoEXT.get_imageView(this.segment(), index); }
     /// {@return `imageView`}
     public @CType("VkImageView") java.lang.foreign.MemorySegment imageView() { return VkExportMetalTextureInfoEXT.get_imageView(this.segment()); }
     /// Sets `imageView` with the given value at the given index.
@@ -227,11 +219,6 @@ public final class VkExportMetalTextureInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_imageView(MemorySegment segment, @CType("VkImageView") java.lang.foreign.MemorySegment value) { VkExportMetalTextureInfoEXT.set_imageView(segment, 0L, value); }
-    /// Sets `imageView` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkExportMetalTextureInfoEXT imageViewAt(long index, @CType("VkImageView") java.lang.foreign.MemorySegment value) { VkExportMetalTextureInfoEXT.set_imageView(this.segment(), index, value); return this; }
     /// Sets `imageView` with the given value.
     /// @param value the value
     /// @return `this`
@@ -244,9 +231,6 @@ public final class VkExportMetalTextureInfoEXT extends Struct {
     /// {@return `bufferView`}
     /// @param segment the segment of the struct
     public static @CType("VkBufferView") java.lang.foreign.MemorySegment get_bufferView(MemorySegment segment) { return VkExportMetalTextureInfoEXT.get_bufferView(segment, 0L); }
-    /// {@return `bufferView` at the given index}
-    /// @param index the index
-    public @CType("VkBufferView") java.lang.foreign.MemorySegment bufferViewAt(long index) { return VkExportMetalTextureInfoEXT.get_bufferView(this.segment(), index); }
     /// {@return `bufferView`}
     public @CType("VkBufferView") java.lang.foreign.MemorySegment bufferView() { return VkExportMetalTextureInfoEXT.get_bufferView(this.segment()); }
     /// Sets `bufferView` with the given value at the given index.
@@ -258,11 +242,6 @@ public final class VkExportMetalTextureInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_bufferView(MemorySegment segment, @CType("VkBufferView") java.lang.foreign.MemorySegment value) { VkExportMetalTextureInfoEXT.set_bufferView(segment, 0L, value); }
-    /// Sets `bufferView` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkExportMetalTextureInfoEXT bufferViewAt(long index, @CType("VkBufferView") java.lang.foreign.MemorySegment value) { VkExportMetalTextureInfoEXT.set_bufferView(this.segment(), index, value); return this; }
     /// Sets `bufferView` with the given value.
     /// @param value the value
     /// @return `this`
@@ -275,9 +254,6 @@ public final class VkExportMetalTextureInfoEXT extends Struct {
     /// {@return `plane`}
     /// @param segment the segment of the struct
     public static @CType("VkImageAspectFlagBits") int get_plane(MemorySegment segment) { return VkExportMetalTextureInfoEXT.get_plane(segment, 0L); }
-    /// {@return `plane` at the given index}
-    /// @param index the index
-    public @CType("VkImageAspectFlagBits") int planeAt(long index) { return VkExportMetalTextureInfoEXT.get_plane(this.segment(), index); }
     /// {@return `plane`}
     public @CType("VkImageAspectFlagBits") int plane() { return VkExportMetalTextureInfoEXT.get_plane(this.segment()); }
     /// Sets `plane` with the given value at the given index.
@@ -289,11 +265,6 @@ public final class VkExportMetalTextureInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_plane(MemorySegment segment, @CType("VkImageAspectFlagBits") int value) { VkExportMetalTextureInfoEXT.set_plane(segment, 0L, value); }
-    /// Sets `plane` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkExportMetalTextureInfoEXT planeAt(long index, @CType("VkImageAspectFlagBits") int value) { VkExportMetalTextureInfoEXT.set_plane(this.segment(), index, value); return this; }
     /// Sets `plane` with the given value.
     /// @param value the value
     /// @return `this`
@@ -306,9 +277,6 @@ public final class VkExportMetalTextureInfoEXT extends Struct {
     /// {@return `mtlTexture`}
     /// @param segment the segment of the struct
     public static @CType("MTLTexture_id") java.lang.foreign.MemorySegment get_mtlTexture(MemorySegment segment) { return VkExportMetalTextureInfoEXT.get_mtlTexture(segment, 0L); }
-    /// {@return `mtlTexture` at the given index}
-    /// @param index the index
-    public @CType("MTLTexture_id") java.lang.foreign.MemorySegment mtlTextureAt(long index) { return VkExportMetalTextureInfoEXT.get_mtlTexture(this.segment(), index); }
     /// {@return `mtlTexture`}
     public @CType("MTLTexture_id") java.lang.foreign.MemorySegment mtlTexture() { return VkExportMetalTextureInfoEXT.get_mtlTexture(this.segment()); }
     /// Sets `mtlTexture` with the given value at the given index.
@@ -320,14 +288,95 @@ public final class VkExportMetalTextureInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_mtlTexture(MemorySegment segment, @CType("MTLTexture_id") java.lang.foreign.MemorySegment value) { VkExportMetalTextureInfoEXT.set_mtlTexture(segment, 0L, value); }
-    /// Sets `mtlTexture` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkExportMetalTextureInfoEXT mtlTextureAt(long index, @CType("MTLTexture_id") java.lang.foreign.MemorySegment value) { VkExportMetalTextureInfoEXT.set_mtlTexture(this.segment(), index, value); return this; }
     /// Sets `mtlTexture` with the given value.
     /// @param value the value
     /// @return `this`
     public VkExportMetalTextureInfoEXT mtlTexture(@CType("MTLTexture_id") java.lang.foreign.MemorySegment value) { VkExportMetalTextureInfoEXT.set_mtlTexture(this.segment(), value); return this; }
 
+    /// A buffer of [VkExportMetalTextureInfoEXT].
+    public static final class Buffer extends VkExportMetalTextureInfoEXT {
+        private final long elementCount;
+
+        /// Creates `VkExportMetalTextureInfoEXT.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkExportMetalTextureInfoEXT`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkExportMetalTextureInfoEXT`
+        public VkExportMetalTextureInfoEXT asSlice(long index) { return new VkExportMetalTextureInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkExportMetalTextureInfoEXT`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkExportMetalTextureInfoEXT`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkExportMetalTextureInfoEXT.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkExportMetalTextureInfoEXT.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkExportMetalTextureInfoEXT.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkExportMetalTextureInfoEXT.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `image` at the given index}
+        /// @param index the index
+        public @CType("VkImage") java.lang.foreign.MemorySegment imageAt(long index) { return VkExportMetalTextureInfoEXT.get_image(this.segment(), index); }
+        /// Sets `image` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer imageAt(long index, @CType("VkImage") java.lang.foreign.MemorySegment value) { VkExportMetalTextureInfoEXT.set_image(this.segment(), index, value); return this; }
+
+        /// {@return `imageView` at the given index}
+        /// @param index the index
+        public @CType("VkImageView") java.lang.foreign.MemorySegment imageViewAt(long index) { return VkExportMetalTextureInfoEXT.get_imageView(this.segment(), index); }
+        /// Sets `imageView` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer imageViewAt(long index, @CType("VkImageView") java.lang.foreign.MemorySegment value) { VkExportMetalTextureInfoEXT.set_imageView(this.segment(), index, value); return this; }
+
+        /// {@return `bufferView` at the given index}
+        /// @param index the index
+        public @CType("VkBufferView") java.lang.foreign.MemorySegment bufferViewAt(long index) { return VkExportMetalTextureInfoEXT.get_bufferView(this.segment(), index); }
+        /// Sets `bufferView` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer bufferViewAt(long index, @CType("VkBufferView") java.lang.foreign.MemorySegment value) { VkExportMetalTextureInfoEXT.set_bufferView(this.segment(), index, value); return this; }
+
+        /// {@return `plane` at the given index}
+        /// @param index the index
+        public @CType("VkImageAspectFlagBits") int planeAt(long index) { return VkExportMetalTextureInfoEXT.get_plane(this.segment(), index); }
+        /// Sets `plane` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer planeAt(long index, @CType("VkImageAspectFlagBits") int value) { VkExportMetalTextureInfoEXT.set_plane(this.segment(), index, value); return this; }
+
+        /// {@return `mtlTexture` at the given index}
+        /// @param index the index
+        public @CType("MTLTexture_id") java.lang.foreign.MemorySegment mtlTextureAt(long index) { return VkExportMetalTextureInfoEXT.get_mtlTexture(this.segment(), index); }
+        /// Sets `mtlTexture` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer mtlTextureAt(long index, @CType("MTLTexture_id") java.lang.foreign.MemorySegment value) { VkExportMetalTextureInfoEXT.set_mtlTexture(this.segment(), index, value); return this; }
+
+    }
 }

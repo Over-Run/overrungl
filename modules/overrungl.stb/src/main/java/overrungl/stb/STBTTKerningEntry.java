@@ -40,7 +40,7 @@ import overrungl.util.*;
 ///     int advance;
 /// } STBTTKerningEntry;
 /// ```
-public final class STBTTKerningEntry extends Struct {
+public sealed class STBTTKerningEntry extends Struct {
     /// The struct layout of `stbtt_kerningentry`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("glyph1"),
@@ -64,6 +64,11 @@ public final class STBTTKerningEntry extends Struct {
     public static STBTTKerningEntry of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new STBTTKerningEntry(segment); }
 
     /// Creates `STBTTKerningEntry` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `STBTTKerningEntry` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -76,7 +81,7 @@ public final class STBTTKerningEntry extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static STBTTKerningEntry ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new STBTTKerningEntry(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `STBTTKerningEntry` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -87,7 +92,21 @@ public final class STBTTKerningEntry extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `STBTTKerningEntry`
-    public static STBTTKerningEntry alloc(SegmentAllocator allocator, long count) { return new STBTTKerningEntry(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `STBTTKerningEntry` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `STBTTKerningEntry`
+    public static STBTTKerningEntry allocInit(SegmentAllocator allocator, @CType("int") int glyph1, @CType("int") int glyph2, @CType("int") int advance) { return alloc(allocator).glyph1(glyph1).glyph2(glyph2).advance(advance); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public STBTTKerningEntry copyFrom(STBTTKerningEntry src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `glyph1` at the given index}
     /// @param segment the segment of the struct
@@ -96,9 +115,6 @@ public final class STBTTKerningEntry extends Struct {
     /// {@return `glyph1`}
     /// @param segment the segment of the struct
     public static @CType("int") int get_glyph1(MemorySegment segment) { return STBTTKerningEntry.get_glyph1(segment, 0L); }
-    /// {@return `glyph1` at the given index}
-    /// @param index the index
-    public @CType("int") int glyph1At(long index) { return STBTTKerningEntry.get_glyph1(this.segment(), index); }
     /// {@return `glyph1`}
     public @CType("int") int glyph1() { return STBTTKerningEntry.get_glyph1(this.segment()); }
     /// Sets `glyph1` with the given value at the given index.
@@ -110,11 +126,6 @@ public final class STBTTKerningEntry extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_glyph1(MemorySegment segment, @CType("int") int value) { STBTTKerningEntry.set_glyph1(segment, 0L, value); }
-    /// Sets `glyph1` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public STBTTKerningEntry glyph1At(long index, @CType("int") int value) { STBTTKerningEntry.set_glyph1(this.segment(), index, value); return this; }
     /// Sets `glyph1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -127,9 +138,6 @@ public final class STBTTKerningEntry extends Struct {
     /// {@return `glyph2`}
     /// @param segment the segment of the struct
     public static @CType("int") int get_glyph2(MemorySegment segment) { return STBTTKerningEntry.get_glyph2(segment, 0L); }
-    /// {@return `glyph2` at the given index}
-    /// @param index the index
-    public @CType("int") int glyph2At(long index) { return STBTTKerningEntry.get_glyph2(this.segment(), index); }
     /// {@return `glyph2`}
     public @CType("int") int glyph2() { return STBTTKerningEntry.get_glyph2(this.segment()); }
     /// Sets `glyph2` with the given value at the given index.
@@ -141,11 +149,6 @@ public final class STBTTKerningEntry extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_glyph2(MemorySegment segment, @CType("int") int value) { STBTTKerningEntry.set_glyph2(segment, 0L, value); }
-    /// Sets `glyph2` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public STBTTKerningEntry glyph2At(long index, @CType("int") int value) { STBTTKerningEntry.set_glyph2(this.segment(), index, value); return this; }
     /// Sets `glyph2` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,9 +161,6 @@ public final class STBTTKerningEntry extends Struct {
     /// {@return `advance`}
     /// @param segment the segment of the struct
     public static @CType("int") int get_advance(MemorySegment segment) { return STBTTKerningEntry.get_advance(segment, 0L); }
-    /// {@return `advance` at the given index}
-    /// @param index the index
-    public @CType("int") int advanceAt(long index) { return STBTTKerningEntry.get_advance(this.segment(), index); }
     /// {@return `advance`}
     public @CType("int") int advance() { return STBTTKerningEntry.get_advance(this.segment()); }
     /// Sets `advance` with the given value at the given index.
@@ -172,14 +172,59 @@ public final class STBTTKerningEntry extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_advance(MemorySegment segment, @CType("int") int value) { STBTTKerningEntry.set_advance(segment, 0L, value); }
-    /// Sets `advance` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public STBTTKerningEntry advanceAt(long index, @CType("int") int value) { STBTTKerningEntry.set_advance(this.segment(), index, value); return this; }
     /// Sets `advance` with the given value.
     /// @param value the value
     /// @return `this`
     public STBTTKerningEntry advance(@CType("int") int value) { STBTTKerningEntry.set_advance(this.segment(), value); return this; }
 
+    /// A buffer of [STBTTKerningEntry].
+    public static final class Buffer extends STBTTKerningEntry {
+        private final long elementCount;
+
+        /// Creates `STBTTKerningEntry.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `STBTTKerningEntry`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `STBTTKerningEntry`
+        public STBTTKerningEntry asSlice(long index) { return new STBTTKerningEntry(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `STBTTKerningEntry`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `STBTTKerningEntry`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `glyph1` at the given index}
+        /// @param index the index
+        public @CType("int") int glyph1At(long index) { return STBTTKerningEntry.get_glyph1(this.segment(), index); }
+        /// Sets `glyph1` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer glyph1At(long index, @CType("int") int value) { STBTTKerningEntry.set_glyph1(this.segment(), index, value); return this; }
+
+        /// {@return `glyph2` at the given index}
+        /// @param index the index
+        public @CType("int") int glyph2At(long index) { return STBTTKerningEntry.get_glyph2(this.segment(), index); }
+        /// Sets `glyph2` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer glyph2At(long index, @CType("int") int value) { STBTTKerningEntry.set_glyph2(this.segment(), index, value); return this; }
+
+        /// {@return `advance` at the given index}
+        /// @param index the index
+        public @CType("int") int advanceAt(long index) { return STBTTKerningEntry.get_advance(this.segment(), index); }
+        /// Sets `advance` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer advanceAt(long index, @CType("int") int value) { STBTTKerningEntry.set_advance(this.segment(), index, value); return this; }
+
+    }
 }

@@ -37,7 +37,7 @@ import overrungl.util.*;
 ///     VkSampleLocationsInfoEXT sampleLocationsInfo;
 /// } VkAttachmentSampleLocationsEXT;
 /// ```
-public final class VkAttachmentSampleLocationsEXT extends Struct {
+public sealed class VkAttachmentSampleLocationsEXT extends Struct {
     /// The struct layout of `VkAttachmentSampleLocationsEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("attachmentIndex"),
@@ -60,6 +60,11 @@ public final class VkAttachmentSampleLocationsEXT extends Struct {
     public static VkAttachmentSampleLocationsEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkAttachmentSampleLocationsEXT(segment); }
 
     /// Creates `VkAttachmentSampleLocationsEXT` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkAttachmentSampleLocationsEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -72,7 +77,7 @@ public final class VkAttachmentSampleLocationsEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkAttachmentSampleLocationsEXT ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkAttachmentSampleLocationsEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkAttachmentSampleLocationsEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -83,7 +88,21 @@ public final class VkAttachmentSampleLocationsEXT extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkAttachmentSampleLocationsEXT`
-    public static VkAttachmentSampleLocationsEXT alloc(SegmentAllocator allocator, long count) { return new VkAttachmentSampleLocationsEXT(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkAttachmentSampleLocationsEXT` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkAttachmentSampleLocationsEXT`
+    public static VkAttachmentSampleLocationsEXT allocInit(SegmentAllocator allocator, @CType("uint32_t") int attachmentIndex, @CType("VkSampleLocationsInfoEXT") java.lang.foreign.MemorySegment sampleLocationsInfo) { return alloc(allocator).attachmentIndex(attachmentIndex).sampleLocationsInfo(sampleLocationsInfo); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkAttachmentSampleLocationsEXT copyFrom(VkAttachmentSampleLocationsEXT src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `attachmentIndex` at the given index}
     /// @param segment the segment of the struct
@@ -92,9 +111,6 @@ public final class VkAttachmentSampleLocationsEXT extends Struct {
     /// {@return `attachmentIndex`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_attachmentIndex(MemorySegment segment) { return VkAttachmentSampleLocationsEXT.get_attachmentIndex(segment, 0L); }
-    /// {@return `attachmentIndex` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int attachmentIndexAt(long index) { return VkAttachmentSampleLocationsEXT.get_attachmentIndex(this.segment(), index); }
     /// {@return `attachmentIndex`}
     public @CType("uint32_t") int attachmentIndex() { return VkAttachmentSampleLocationsEXT.get_attachmentIndex(this.segment()); }
     /// Sets `attachmentIndex` with the given value at the given index.
@@ -106,11 +122,6 @@ public final class VkAttachmentSampleLocationsEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_attachmentIndex(MemorySegment segment, @CType("uint32_t") int value) { VkAttachmentSampleLocationsEXT.set_attachmentIndex(segment, 0L, value); }
-    /// Sets `attachmentIndex` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAttachmentSampleLocationsEXT attachmentIndexAt(long index, @CType("uint32_t") int value) { VkAttachmentSampleLocationsEXT.set_attachmentIndex(this.segment(), index, value); return this; }
     /// Sets `attachmentIndex` with the given value.
     /// @param value the value
     /// @return `this`
@@ -123,9 +134,6 @@ public final class VkAttachmentSampleLocationsEXT extends Struct {
     /// {@return `sampleLocationsInfo`}
     /// @param segment the segment of the struct
     public static @CType("VkSampleLocationsInfoEXT") java.lang.foreign.MemorySegment get_sampleLocationsInfo(MemorySegment segment) { return VkAttachmentSampleLocationsEXT.get_sampleLocationsInfo(segment, 0L); }
-    /// {@return `sampleLocationsInfo` at the given index}
-    /// @param index the index
-    public @CType("VkSampleLocationsInfoEXT") java.lang.foreign.MemorySegment sampleLocationsInfoAt(long index) { return VkAttachmentSampleLocationsEXT.get_sampleLocationsInfo(this.segment(), index); }
     /// {@return `sampleLocationsInfo`}
     public @CType("VkSampleLocationsInfoEXT") java.lang.foreign.MemorySegment sampleLocationsInfo() { return VkAttachmentSampleLocationsEXT.get_sampleLocationsInfo(this.segment()); }
     /// Sets `sampleLocationsInfo` with the given value at the given index.
@@ -137,14 +145,50 @@ public final class VkAttachmentSampleLocationsEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sampleLocationsInfo(MemorySegment segment, @CType("VkSampleLocationsInfoEXT") java.lang.foreign.MemorySegment value) { VkAttachmentSampleLocationsEXT.set_sampleLocationsInfo(segment, 0L, value); }
-    /// Sets `sampleLocationsInfo` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAttachmentSampleLocationsEXT sampleLocationsInfoAt(long index, @CType("VkSampleLocationsInfoEXT") java.lang.foreign.MemorySegment value) { VkAttachmentSampleLocationsEXT.set_sampleLocationsInfo(this.segment(), index, value); return this; }
     /// Sets `sampleLocationsInfo` with the given value.
     /// @param value the value
     /// @return `this`
     public VkAttachmentSampleLocationsEXT sampleLocationsInfo(@CType("VkSampleLocationsInfoEXT") java.lang.foreign.MemorySegment value) { VkAttachmentSampleLocationsEXT.set_sampleLocationsInfo(this.segment(), value); return this; }
 
+    /// A buffer of [VkAttachmentSampleLocationsEXT].
+    public static final class Buffer extends VkAttachmentSampleLocationsEXT {
+        private final long elementCount;
+
+        /// Creates `VkAttachmentSampleLocationsEXT.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkAttachmentSampleLocationsEXT`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkAttachmentSampleLocationsEXT`
+        public VkAttachmentSampleLocationsEXT asSlice(long index) { return new VkAttachmentSampleLocationsEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkAttachmentSampleLocationsEXT`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkAttachmentSampleLocationsEXT`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `attachmentIndex` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int attachmentIndexAt(long index) { return VkAttachmentSampleLocationsEXT.get_attachmentIndex(this.segment(), index); }
+        /// Sets `attachmentIndex` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer attachmentIndexAt(long index, @CType("uint32_t") int value) { VkAttachmentSampleLocationsEXT.set_attachmentIndex(this.segment(), index, value); return this; }
+
+        /// {@return `sampleLocationsInfo` at the given index}
+        /// @param index the index
+        public @CType("VkSampleLocationsInfoEXT") java.lang.foreign.MemorySegment sampleLocationsInfoAt(long index) { return VkAttachmentSampleLocationsEXT.get_sampleLocationsInfo(this.segment(), index); }
+        /// Sets `sampleLocationsInfo` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sampleLocationsInfoAt(long index, @CType("VkSampleLocationsInfoEXT") java.lang.foreign.MemorySegment value) { VkAttachmentSampleLocationsEXT.set_sampleLocationsInfo(this.segment(), index, value); return this; }
+
+    }
 }

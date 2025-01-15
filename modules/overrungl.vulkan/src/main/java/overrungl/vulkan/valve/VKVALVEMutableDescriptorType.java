@@ -23,7 +23,7 @@ import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 import static overrungl.vulkan.ext.VKEXTMutableDescriptorType.*;
-public class VKVALVEMutableDescriptorType {
+public final class VKVALVEMutableDescriptorType {
     public static final int VK_VALVE_MUTABLE_DESCRIPTOR_TYPE_SPEC_VERSION = 1;
     public static final String VK_VALVE_MUTABLE_DESCRIPTOR_TYPE_EXTENSION_NAME = "VK_VALVE_mutable_descriptor_type";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MUTABLE_DESCRIPTOR_TYPE_FEATURES_VALVE = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MUTABLE_DESCRIPTOR_TYPE_FEATURES_EXT;
@@ -32,7 +32,6 @@ public class VKVALVEMutableDescriptorType {
     public static final int VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_VALVE = VK_DESCRIPTOR_POOL_CREATE_HOST_ONLY_BIT_EXT;
     public static final int VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_VALVE = VK_DESCRIPTOR_SET_LAYOUT_CREATE_HOST_ONLY_POOL_BIT_EXT;
 
-    public VKVALVEMutableDescriptorType(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKVALVEMutableDescriptorType() { }
 
 }

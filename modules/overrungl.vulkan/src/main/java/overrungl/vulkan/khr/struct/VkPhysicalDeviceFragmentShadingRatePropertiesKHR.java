@@ -88,7 +88,7 @@ import overrungl.util.*;
 ///     VkBool32 fragmentShadingRateStrictMultiplyCombiner;
 /// } VkPhysicalDeviceFragmentShadingRatePropertiesKHR;
 /// ```
-public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Struct {
+public sealed class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Struct {
     /// The struct layout of `VkPhysicalDeviceFragmentShadingRatePropertiesKHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -166,6 +166,11 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Stru
     public static VkPhysicalDeviceFragmentShadingRatePropertiesKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceFragmentShadingRatePropertiesKHR(segment); }
 
     /// Creates `VkPhysicalDeviceFragmentShadingRatePropertiesKHR` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPhysicalDeviceFragmentShadingRatePropertiesKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -178,7 +183,7 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Stru
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceFragmentShadingRatePropertiesKHR ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceFragmentShadingRatePropertiesKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceFragmentShadingRatePropertiesKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -189,7 +194,21 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Stru
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceFragmentShadingRatePropertiesKHR`
-    public static VkPhysicalDeviceFragmentShadingRatePropertiesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceFragmentShadingRatePropertiesKHR(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkPhysicalDeviceFragmentShadingRatePropertiesKHR` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDeviceFragmentShadingRatePropertiesKHR`
+    public static VkPhysicalDeviceFragmentShadingRatePropertiesKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkExtent2D") java.lang.foreign.MemorySegment minFragmentShadingRateAttachmentTexelSize, @CType("VkExtent2D") java.lang.foreign.MemorySegment maxFragmentShadingRateAttachmentTexelSize, @CType("uint32_t") int maxFragmentShadingRateAttachmentTexelSizeAspectRatio, @CType("VkBool32") int primitiveFragmentShadingRateWithMultipleViewports, @CType("VkBool32") int layeredShadingRateAttachments, @CType("VkBool32") int fragmentShadingRateNonTrivialCombinerOps, @CType("VkExtent2D") java.lang.foreign.MemorySegment maxFragmentSize, @CType("uint32_t") int maxFragmentSizeAspectRatio, @CType("uint32_t") int maxFragmentShadingRateCoverageSamples, @CType("VkSampleCountFlagBits") int maxFragmentShadingRateRasterizationSamples, @CType("VkBool32") int fragmentShadingRateWithShaderDepthStencilWrites, @CType("VkBool32") int fragmentShadingRateWithSampleMask, @CType("VkBool32") int fragmentShadingRateWithShaderSampleMask, @CType("VkBool32") int fragmentShadingRateWithConservativeRasterization, @CType("VkBool32") int fragmentShadingRateWithFragmentShaderInterlock, @CType("VkBool32") int fragmentShadingRateWithCustomSampleLocations, @CType("VkBool32") int fragmentShadingRateStrictMultiplyCombiner) { return alloc(allocator).sType(sType).pNext(pNext).minFragmentShadingRateAttachmentTexelSize(minFragmentShadingRateAttachmentTexelSize).maxFragmentShadingRateAttachmentTexelSize(maxFragmentShadingRateAttachmentTexelSize).maxFragmentShadingRateAttachmentTexelSizeAspectRatio(maxFragmentShadingRateAttachmentTexelSizeAspectRatio).primitiveFragmentShadingRateWithMultipleViewports(primitiveFragmentShadingRateWithMultipleViewports).layeredShadingRateAttachments(layeredShadingRateAttachments).fragmentShadingRateNonTrivialCombinerOps(fragmentShadingRateNonTrivialCombinerOps).maxFragmentSize(maxFragmentSize).maxFragmentSizeAspectRatio(maxFragmentSizeAspectRatio).maxFragmentShadingRateCoverageSamples(maxFragmentShadingRateCoverageSamples).maxFragmentShadingRateRasterizationSamples(maxFragmentShadingRateRasterizationSamples).fragmentShadingRateWithShaderDepthStencilWrites(fragmentShadingRateWithShaderDepthStencilWrites).fragmentShadingRateWithSampleMask(fragmentShadingRateWithSampleMask).fragmentShadingRateWithShaderSampleMask(fragmentShadingRateWithShaderSampleMask).fragmentShadingRateWithConservativeRasterization(fragmentShadingRateWithConservativeRasterization).fragmentShadingRateWithFragmentShaderInterlock(fragmentShadingRateWithFragmentShaderInterlock).fragmentShadingRateWithCustomSampleLocations(fragmentShadingRateWithCustomSampleLocations).fragmentShadingRateStrictMultiplyCombiner(fragmentShadingRateStrictMultiplyCombiner); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR copyFrom(VkPhysicalDeviceFragmentShadingRatePropertiesKHR src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -198,9 +217,6 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Stru
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -212,11 +228,6 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -229,9 +240,6 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Stru
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -243,11 +251,6 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -260,9 +263,6 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Stru
     /// {@return `minFragmentShadingRateAttachmentTexelSize`}
     /// @param segment the segment of the struct
     public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_minFragmentShadingRateAttachmentTexelSize(MemorySegment segment) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_minFragmentShadingRateAttachmentTexelSize(segment, 0L); }
-    /// {@return `minFragmentShadingRateAttachmentTexelSize` at the given index}
-    /// @param index the index
-    public @CType("VkExtent2D") java.lang.foreign.MemorySegment minFragmentShadingRateAttachmentTexelSizeAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_minFragmentShadingRateAttachmentTexelSize(this.segment(), index); }
     /// {@return `minFragmentShadingRateAttachmentTexelSize`}
     public @CType("VkExtent2D") java.lang.foreign.MemorySegment minFragmentShadingRateAttachmentTexelSize() { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_minFragmentShadingRateAttachmentTexelSize(this.segment()); }
     /// Sets `minFragmentShadingRateAttachmentTexelSize` with the given value at the given index.
@@ -274,11 +274,6 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_minFragmentShadingRateAttachmentTexelSize(MemorySegment segment, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_minFragmentShadingRateAttachmentTexelSize(segment, 0L, value); }
-    /// Sets `minFragmentShadingRateAttachmentTexelSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR minFragmentShadingRateAttachmentTexelSizeAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_minFragmentShadingRateAttachmentTexelSize(this.segment(), index, value); return this; }
     /// Sets `minFragmentShadingRateAttachmentTexelSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -291,9 +286,6 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Stru
     /// {@return `maxFragmentShadingRateAttachmentTexelSize`}
     /// @param segment the segment of the struct
     public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_maxFragmentShadingRateAttachmentTexelSize(MemorySegment segment) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_maxFragmentShadingRateAttachmentTexelSize(segment, 0L); }
-    /// {@return `maxFragmentShadingRateAttachmentTexelSize` at the given index}
-    /// @param index the index
-    public @CType("VkExtent2D") java.lang.foreign.MemorySegment maxFragmentShadingRateAttachmentTexelSizeAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_maxFragmentShadingRateAttachmentTexelSize(this.segment(), index); }
     /// {@return `maxFragmentShadingRateAttachmentTexelSize`}
     public @CType("VkExtent2D") java.lang.foreign.MemorySegment maxFragmentShadingRateAttachmentTexelSize() { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_maxFragmentShadingRateAttachmentTexelSize(this.segment()); }
     /// Sets `maxFragmentShadingRateAttachmentTexelSize` with the given value at the given index.
@@ -305,11 +297,6 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxFragmentShadingRateAttachmentTexelSize(MemorySegment segment, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_maxFragmentShadingRateAttachmentTexelSize(segment, 0L, value); }
-    /// Sets `maxFragmentShadingRateAttachmentTexelSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR maxFragmentShadingRateAttachmentTexelSizeAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_maxFragmentShadingRateAttachmentTexelSize(this.segment(), index, value); return this; }
     /// Sets `maxFragmentShadingRateAttachmentTexelSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -322,9 +309,6 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Stru
     /// {@return `maxFragmentShadingRateAttachmentTexelSizeAspectRatio`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxFragmentShadingRateAttachmentTexelSizeAspectRatio(MemorySegment segment) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_maxFragmentShadingRateAttachmentTexelSizeAspectRatio(segment, 0L); }
-    /// {@return `maxFragmentShadingRateAttachmentTexelSizeAspectRatio` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxFragmentShadingRateAttachmentTexelSizeAspectRatioAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_maxFragmentShadingRateAttachmentTexelSizeAspectRatio(this.segment(), index); }
     /// {@return `maxFragmentShadingRateAttachmentTexelSizeAspectRatio`}
     public @CType("uint32_t") int maxFragmentShadingRateAttachmentTexelSizeAspectRatio() { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_maxFragmentShadingRateAttachmentTexelSizeAspectRatio(this.segment()); }
     /// Sets `maxFragmentShadingRateAttachmentTexelSizeAspectRatio` with the given value at the given index.
@@ -336,11 +320,6 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxFragmentShadingRateAttachmentTexelSizeAspectRatio(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_maxFragmentShadingRateAttachmentTexelSizeAspectRatio(segment, 0L, value); }
-    /// Sets `maxFragmentShadingRateAttachmentTexelSizeAspectRatio` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR maxFragmentShadingRateAttachmentTexelSizeAspectRatioAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_maxFragmentShadingRateAttachmentTexelSizeAspectRatio(this.segment(), index, value); return this; }
     /// Sets `maxFragmentShadingRateAttachmentTexelSizeAspectRatio` with the given value.
     /// @param value the value
     /// @return `this`
@@ -353,9 +332,6 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Stru
     /// {@return `primitiveFragmentShadingRateWithMultipleViewports`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_primitiveFragmentShadingRateWithMultipleViewports(MemorySegment segment) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_primitiveFragmentShadingRateWithMultipleViewports(segment, 0L); }
-    /// {@return `primitiveFragmentShadingRateWithMultipleViewports` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int primitiveFragmentShadingRateWithMultipleViewportsAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_primitiveFragmentShadingRateWithMultipleViewports(this.segment(), index); }
     /// {@return `primitiveFragmentShadingRateWithMultipleViewports`}
     public @CType("VkBool32") int primitiveFragmentShadingRateWithMultipleViewports() { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_primitiveFragmentShadingRateWithMultipleViewports(this.segment()); }
     /// Sets `primitiveFragmentShadingRateWithMultipleViewports` with the given value at the given index.
@@ -367,11 +343,6 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_primitiveFragmentShadingRateWithMultipleViewports(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_primitiveFragmentShadingRateWithMultipleViewports(segment, 0L, value); }
-    /// Sets `primitiveFragmentShadingRateWithMultipleViewports` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR primitiveFragmentShadingRateWithMultipleViewportsAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_primitiveFragmentShadingRateWithMultipleViewports(this.segment(), index, value); return this; }
     /// Sets `primitiveFragmentShadingRateWithMultipleViewports` with the given value.
     /// @param value the value
     /// @return `this`
@@ -384,9 +355,6 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Stru
     /// {@return `layeredShadingRateAttachments`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_layeredShadingRateAttachments(MemorySegment segment) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_layeredShadingRateAttachments(segment, 0L); }
-    /// {@return `layeredShadingRateAttachments` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int layeredShadingRateAttachmentsAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_layeredShadingRateAttachments(this.segment(), index); }
     /// {@return `layeredShadingRateAttachments`}
     public @CType("VkBool32") int layeredShadingRateAttachments() { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_layeredShadingRateAttachments(this.segment()); }
     /// Sets `layeredShadingRateAttachments` with the given value at the given index.
@@ -398,11 +366,6 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_layeredShadingRateAttachments(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_layeredShadingRateAttachments(segment, 0L, value); }
-    /// Sets `layeredShadingRateAttachments` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR layeredShadingRateAttachmentsAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_layeredShadingRateAttachments(this.segment(), index, value); return this; }
     /// Sets `layeredShadingRateAttachments` with the given value.
     /// @param value the value
     /// @return `this`
@@ -415,9 +378,6 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Stru
     /// {@return `fragmentShadingRateNonTrivialCombinerOps`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_fragmentShadingRateNonTrivialCombinerOps(MemorySegment segment) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_fragmentShadingRateNonTrivialCombinerOps(segment, 0L); }
-    /// {@return `fragmentShadingRateNonTrivialCombinerOps` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int fragmentShadingRateNonTrivialCombinerOpsAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_fragmentShadingRateNonTrivialCombinerOps(this.segment(), index); }
     /// {@return `fragmentShadingRateNonTrivialCombinerOps`}
     public @CType("VkBool32") int fragmentShadingRateNonTrivialCombinerOps() { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_fragmentShadingRateNonTrivialCombinerOps(this.segment()); }
     /// Sets `fragmentShadingRateNonTrivialCombinerOps` with the given value at the given index.
@@ -429,11 +389,6 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_fragmentShadingRateNonTrivialCombinerOps(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_fragmentShadingRateNonTrivialCombinerOps(segment, 0L, value); }
-    /// Sets `fragmentShadingRateNonTrivialCombinerOps` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR fragmentShadingRateNonTrivialCombinerOpsAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_fragmentShadingRateNonTrivialCombinerOps(this.segment(), index, value); return this; }
     /// Sets `fragmentShadingRateNonTrivialCombinerOps` with the given value.
     /// @param value the value
     /// @return `this`
@@ -446,9 +401,6 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Stru
     /// {@return `maxFragmentSize`}
     /// @param segment the segment of the struct
     public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_maxFragmentSize(MemorySegment segment) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_maxFragmentSize(segment, 0L); }
-    /// {@return `maxFragmentSize` at the given index}
-    /// @param index the index
-    public @CType("VkExtent2D") java.lang.foreign.MemorySegment maxFragmentSizeAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_maxFragmentSize(this.segment(), index); }
     /// {@return `maxFragmentSize`}
     public @CType("VkExtent2D") java.lang.foreign.MemorySegment maxFragmentSize() { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_maxFragmentSize(this.segment()); }
     /// Sets `maxFragmentSize` with the given value at the given index.
@@ -460,11 +412,6 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxFragmentSize(MemorySegment segment, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_maxFragmentSize(segment, 0L, value); }
-    /// Sets `maxFragmentSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR maxFragmentSizeAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_maxFragmentSize(this.segment(), index, value); return this; }
     /// Sets `maxFragmentSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -477,9 +424,6 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Stru
     /// {@return `maxFragmentSizeAspectRatio`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxFragmentSizeAspectRatio(MemorySegment segment) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_maxFragmentSizeAspectRatio(segment, 0L); }
-    /// {@return `maxFragmentSizeAspectRatio` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxFragmentSizeAspectRatioAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_maxFragmentSizeAspectRatio(this.segment(), index); }
     /// {@return `maxFragmentSizeAspectRatio`}
     public @CType("uint32_t") int maxFragmentSizeAspectRatio() { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_maxFragmentSizeAspectRatio(this.segment()); }
     /// Sets `maxFragmentSizeAspectRatio` with the given value at the given index.
@@ -491,11 +435,6 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxFragmentSizeAspectRatio(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_maxFragmentSizeAspectRatio(segment, 0L, value); }
-    /// Sets `maxFragmentSizeAspectRatio` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR maxFragmentSizeAspectRatioAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_maxFragmentSizeAspectRatio(this.segment(), index, value); return this; }
     /// Sets `maxFragmentSizeAspectRatio` with the given value.
     /// @param value the value
     /// @return `this`
@@ -508,9 +447,6 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Stru
     /// {@return `maxFragmentShadingRateCoverageSamples`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxFragmentShadingRateCoverageSamples(MemorySegment segment) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_maxFragmentShadingRateCoverageSamples(segment, 0L); }
-    /// {@return `maxFragmentShadingRateCoverageSamples` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxFragmentShadingRateCoverageSamplesAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_maxFragmentShadingRateCoverageSamples(this.segment(), index); }
     /// {@return `maxFragmentShadingRateCoverageSamples`}
     public @CType("uint32_t") int maxFragmentShadingRateCoverageSamples() { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_maxFragmentShadingRateCoverageSamples(this.segment()); }
     /// Sets `maxFragmentShadingRateCoverageSamples` with the given value at the given index.
@@ -522,11 +458,6 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxFragmentShadingRateCoverageSamples(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_maxFragmentShadingRateCoverageSamples(segment, 0L, value); }
-    /// Sets `maxFragmentShadingRateCoverageSamples` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR maxFragmentShadingRateCoverageSamplesAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_maxFragmentShadingRateCoverageSamples(this.segment(), index, value); return this; }
     /// Sets `maxFragmentShadingRateCoverageSamples` with the given value.
     /// @param value the value
     /// @return `this`
@@ -539,9 +470,6 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Stru
     /// {@return `maxFragmentShadingRateRasterizationSamples`}
     /// @param segment the segment of the struct
     public static @CType("VkSampleCountFlagBits") int get_maxFragmentShadingRateRasterizationSamples(MemorySegment segment) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_maxFragmentShadingRateRasterizationSamples(segment, 0L); }
-    /// {@return `maxFragmentShadingRateRasterizationSamples` at the given index}
-    /// @param index the index
-    public @CType("VkSampleCountFlagBits") int maxFragmentShadingRateRasterizationSamplesAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_maxFragmentShadingRateRasterizationSamples(this.segment(), index); }
     /// {@return `maxFragmentShadingRateRasterizationSamples`}
     public @CType("VkSampleCountFlagBits") int maxFragmentShadingRateRasterizationSamples() { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_maxFragmentShadingRateRasterizationSamples(this.segment()); }
     /// Sets `maxFragmentShadingRateRasterizationSamples` with the given value at the given index.
@@ -553,11 +481,6 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxFragmentShadingRateRasterizationSamples(MemorySegment segment, @CType("VkSampleCountFlagBits") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_maxFragmentShadingRateRasterizationSamples(segment, 0L, value); }
-    /// Sets `maxFragmentShadingRateRasterizationSamples` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR maxFragmentShadingRateRasterizationSamplesAt(long index, @CType("VkSampleCountFlagBits") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_maxFragmentShadingRateRasterizationSamples(this.segment(), index, value); return this; }
     /// Sets `maxFragmentShadingRateRasterizationSamples` with the given value.
     /// @param value the value
     /// @return `this`
@@ -570,9 +493,6 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Stru
     /// {@return `fragmentShadingRateWithShaderDepthStencilWrites`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_fragmentShadingRateWithShaderDepthStencilWrites(MemorySegment segment) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_fragmentShadingRateWithShaderDepthStencilWrites(segment, 0L); }
-    /// {@return `fragmentShadingRateWithShaderDepthStencilWrites` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int fragmentShadingRateWithShaderDepthStencilWritesAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_fragmentShadingRateWithShaderDepthStencilWrites(this.segment(), index); }
     /// {@return `fragmentShadingRateWithShaderDepthStencilWrites`}
     public @CType("VkBool32") int fragmentShadingRateWithShaderDepthStencilWrites() { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_fragmentShadingRateWithShaderDepthStencilWrites(this.segment()); }
     /// Sets `fragmentShadingRateWithShaderDepthStencilWrites` with the given value at the given index.
@@ -584,11 +504,6 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_fragmentShadingRateWithShaderDepthStencilWrites(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_fragmentShadingRateWithShaderDepthStencilWrites(segment, 0L, value); }
-    /// Sets `fragmentShadingRateWithShaderDepthStencilWrites` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR fragmentShadingRateWithShaderDepthStencilWritesAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_fragmentShadingRateWithShaderDepthStencilWrites(this.segment(), index, value); return this; }
     /// Sets `fragmentShadingRateWithShaderDepthStencilWrites` with the given value.
     /// @param value the value
     /// @return `this`
@@ -601,9 +516,6 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Stru
     /// {@return `fragmentShadingRateWithSampleMask`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_fragmentShadingRateWithSampleMask(MemorySegment segment) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_fragmentShadingRateWithSampleMask(segment, 0L); }
-    /// {@return `fragmentShadingRateWithSampleMask` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int fragmentShadingRateWithSampleMaskAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_fragmentShadingRateWithSampleMask(this.segment(), index); }
     /// {@return `fragmentShadingRateWithSampleMask`}
     public @CType("VkBool32") int fragmentShadingRateWithSampleMask() { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_fragmentShadingRateWithSampleMask(this.segment()); }
     /// Sets `fragmentShadingRateWithSampleMask` with the given value at the given index.
@@ -615,11 +527,6 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_fragmentShadingRateWithSampleMask(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_fragmentShadingRateWithSampleMask(segment, 0L, value); }
-    /// Sets `fragmentShadingRateWithSampleMask` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR fragmentShadingRateWithSampleMaskAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_fragmentShadingRateWithSampleMask(this.segment(), index, value); return this; }
     /// Sets `fragmentShadingRateWithSampleMask` with the given value.
     /// @param value the value
     /// @return `this`
@@ -632,9 +539,6 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Stru
     /// {@return `fragmentShadingRateWithShaderSampleMask`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_fragmentShadingRateWithShaderSampleMask(MemorySegment segment) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_fragmentShadingRateWithShaderSampleMask(segment, 0L); }
-    /// {@return `fragmentShadingRateWithShaderSampleMask` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int fragmentShadingRateWithShaderSampleMaskAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_fragmentShadingRateWithShaderSampleMask(this.segment(), index); }
     /// {@return `fragmentShadingRateWithShaderSampleMask`}
     public @CType("VkBool32") int fragmentShadingRateWithShaderSampleMask() { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_fragmentShadingRateWithShaderSampleMask(this.segment()); }
     /// Sets `fragmentShadingRateWithShaderSampleMask` with the given value at the given index.
@@ -646,11 +550,6 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_fragmentShadingRateWithShaderSampleMask(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_fragmentShadingRateWithShaderSampleMask(segment, 0L, value); }
-    /// Sets `fragmentShadingRateWithShaderSampleMask` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR fragmentShadingRateWithShaderSampleMaskAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_fragmentShadingRateWithShaderSampleMask(this.segment(), index, value); return this; }
     /// Sets `fragmentShadingRateWithShaderSampleMask` with the given value.
     /// @param value the value
     /// @return `this`
@@ -663,9 +562,6 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Stru
     /// {@return `fragmentShadingRateWithConservativeRasterization`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_fragmentShadingRateWithConservativeRasterization(MemorySegment segment) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_fragmentShadingRateWithConservativeRasterization(segment, 0L); }
-    /// {@return `fragmentShadingRateWithConservativeRasterization` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int fragmentShadingRateWithConservativeRasterizationAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_fragmentShadingRateWithConservativeRasterization(this.segment(), index); }
     /// {@return `fragmentShadingRateWithConservativeRasterization`}
     public @CType("VkBool32") int fragmentShadingRateWithConservativeRasterization() { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_fragmentShadingRateWithConservativeRasterization(this.segment()); }
     /// Sets `fragmentShadingRateWithConservativeRasterization` with the given value at the given index.
@@ -677,11 +573,6 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_fragmentShadingRateWithConservativeRasterization(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_fragmentShadingRateWithConservativeRasterization(segment, 0L, value); }
-    /// Sets `fragmentShadingRateWithConservativeRasterization` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR fragmentShadingRateWithConservativeRasterizationAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_fragmentShadingRateWithConservativeRasterization(this.segment(), index, value); return this; }
     /// Sets `fragmentShadingRateWithConservativeRasterization` with the given value.
     /// @param value the value
     /// @return `this`
@@ -694,9 +585,6 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Stru
     /// {@return `fragmentShadingRateWithFragmentShaderInterlock`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_fragmentShadingRateWithFragmentShaderInterlock(MemorySegment segment) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_fragmentShadingRateWithFragmentShaderInterlock(segment, 0L); }
-    /// {@return `fragmentShadingRateWithFragmentShaderInterlock` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int fragmentShadingRateWithFragmentShaderInterlockAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_fragmentShadingRateWithFragmentShaderInterlock(this.segment(), index); }
     /// {@return `fragmentShadingRateWithFragmentShaderInterlock`}
     public @CType("VkBool32") int fragmentShadingRateWithFragmentShaderInterlock() { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_fragmentShadingRateWithFragmentShaderInterlock(this.segment()); }
     /// Sets `fragmentShadingRateWithFragmentShaderInterlock` with the given value at the given index.
@@ -708,11 +596,6 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_fragmentShadingRateWithFragmentShaderInterlock(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_fragmentShadingRateWithFragmentShaderInterlock(segment, 0L, value); }
-    /// Sets `fragmentShadingRateWithFragmentShaderInterlock` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR fragmentShadingRateWithFragmentShaderInterlockAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_fragmentShadingRateWithFragmentShaderInterlock(this.segment(), index, value); return this; }
     /// Sets `fragmentShadingRateWithFragmentShaderInterlock` with the given value.
     /// @param value the value
     /// @return `this`
@@ -725,9 +608,6 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Stru
     /// {@return `fragmentShadingRateWithCustomSampleLocations`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_fragmentShadingRateWithCustomSampleLocations(MemorySegment segment) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_fragmentShadingRateWithCustomSampleLocations(segment, 0L); }
-    /// {@return `fragmentShadingRateWithCustomSampleLocations` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int fragmentShadingRateWithCustomSampleLocationsAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_fragmentShadingRateWithCustomSampleLocations(this.segment(), index); }
     /// {@return `fragmentShadingRateWithCustomSampleLocations`}
     public @CType("VkBool32") int fragmentShadingRateWithCustomSampleLocations() { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_fragmentShadingRateWithCustomSampleLocations(this.segment()); }
     /// Sets `fragmentShadingRateWithCustomSampleLocations` with the given value at the given index.
@@ -739,11 +619,6 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_fragmentShadingRateWithCustomSampleLocations(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_fragmentShadingRateWithCustomSampleLocations(segment, 0L, value); }
-    /// Sets `fragmentShadingRateWithCustomSampleLocations` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR fragmentShadingRateWithCustomSampleLocationsAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_fragmentShadingRateWithCustomSampleLocations(this.segment(), index, value); return this; }
     /// Sets `fragmentShadingRateWithCustomSampleLocations` with the given value.
     /// @param value the value
     /// @return `this`
@@ -756,9 +631,6 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Stru
     /// {@return `fragmentShadingRateStrictMultiplyCombiner`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_fragmentShadingRateStrictMultiplyCombiner(MemorySegment segment) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_fragmentShadingRateStrictMultiplyCombiner(segment, 0L); }
-    /// {@return `fragmentShadingRateStrictMultiplyCombiner` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int fragmentShadingRateStrictMultiplyCombinerAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_fragmentShadingRateStrictMultiplyCombiner(this.segment(), index); }
     /// {@return `fragmentShadingRateStrictMultiplyCombiner`}
     public @CType("VkBool32") int fragmentShadingRateStrictMultiplyCombiner() { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_fragmentShadingRateStrictMultiplyCombiner(this.segment()); }
     /// Sets `fragmentShadingRateStrictMultiplyCombiner` with the given value at the given index.
@@ -770,14 +642,203 @@ public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_fragmentShadingRateStrictMultiplyCombiner(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_fragmentShadingRateStrictMultiplyCombiner(segment, 0L, value); }
-    /// Sets `fragmentShadingRateStrictMultiplyCombiner` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR fragmentShadingRateStrictMultiplyCombinerAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_fragmentShadingRateStrictMultiplyCombiner(this.segment(), index, value); return this; }
     /// Sets `fragmentShadingRateStrictMultiplyCombiner` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceFragmentShadingRatePropertiesKHR fragmentShadingRateStrictMultiplyCombiner(@CType("VkBool32") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_fragmentShadingRateStrictMultiplyCombiner(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDeviceFragmentShadingRatePropertiesKHR].
+    public static final class Buffer extends VkPhysicalDeviceFragmentShadingRatePropertiesKHR {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDeviceFragmentShadingRatePropertiesKHR.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDeviceFragmentShadingRatePropertiesKHR`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDeviceFragmentShadingRatePropertiesKHR`
+        public VkPhysicalDeviceFragmentShadingRatePropertiesKHR asSlice(long index) { return new VkPhysicalDeviceFragmentShadingRatePropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDeviceFragmentShadingRatePropertiesKHR`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDeviceFragmentShadingRatePropertiesKHR`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `minFragmentShadingRateAttachmentTexelSize` at the given index}
+        /// @param index the index
+        public @CType("VkExtent2D") java.lang.foreign.MemorySegment minFragmentShadingRateAttachmentTexelSizeAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_minFragmentShadingRateAttachmentTexelSize(this.segment(), index); }
+        /// Sets `minFragmentShadingRateAttachmentTexelSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer minFragmentShadingRateAttachmentTexelSizeAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_minFragmentShadingRateAttachmentTexelSize(this.segment(), index, value); return this; }
+
+        /// {@return `maxFragmentShadingRateAttachmentTexelSize` at the given index}
+        /// @param index the index
+        public @CType("VkExtent2D") java.lang.foreign.MemorySegment maxFragmentShadingRateAttachmentTexelSizeAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_maxFragmentShadingRateAttachmentTexelSize(this.segment(), index); }
+        /// Sets `maxFragmentShadingRateAttachmentTexelSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxFragmentShadingRateAttachmentTexelSizeAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_maxFragmentShadingRateAttachmentTexelSize(this.segment(), index, value); return this; }
+
+        /// {@return `maxFragmentShadingRateAttachmentTexelSizeAspectRatio` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxFragmentShadingRateAttachmentTexelSizeAspectRatioAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_maxFragmentShadingRateAttachmentTexelSizeAspectRatio(this.segment(), index); }
+        /// Sets `maxFragmentShadingRateAttachmentTexelSizeAspectRatio` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxFragmentShadingRateAttachmentTexelSizeAspectRatioAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_maxFragmentShadingRateAttachmentTexelSizeAspectRatio(this.segment(), index, value); return this; }
+
+        /// {@return `primitiveFragmentShadingRateWithMultipleViewports` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int primitiveFragmentShadingRateWithMultipleViewportsAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_primitiveFragmentShadingRateWithMultipleViewports(this.segment(), index); }
+        /// Sets `primitiveFragmentShadingRateWithMultipleViewports` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer primitiveFragmentShadingRateWithMultipleViewportsAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_primitiveFragmentShadingRateWithMultipleViewports(this.segment(), index, value); return this; }
+
+        /// {@return `layeredShadingRateAttachments` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int layeredShadingRateAttachmentsAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_layeredShadingRateAttachments(this.segment(), index); }
+        /// Sets `layeredShadingRateAttachments` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer layeredShadingRateAttachmentsAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_layeredShadingRateAttachments(this.segment(), index, value); return this; }
+
+        /// {@return `fragmentShadingRateNonTrivialCombinerOps` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int fragmentShadingRateNonTrivialCombinerOpsAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_fragmentShadingRateNonTrivialCombinerOps(this.segment(), index); }
+        /// Sets `fragmentShadingRateNonTrivialCombinerOps` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer fragmentShadingRateNonTrivialCombinerOpsAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_fragmentShadingRateNonTrivialCombinerOps(this.segment(), index, value); return this; }
+
+        /// {@return `maxFragmentSize` at the given index}
+        /// @param index the index
+        public @CType("VkExtent2D") java.lang.foreign.MemorySegment maxFragmentSizeAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_maxFragmentSize(this.segment(), index); }
+        /// Sets `maxFragmentSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxFragmentSizeAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_maxFragmentSize(this.segment(), index, value); return this; }
+
+        /// {@return `maxFragmentSizeAspectRatio` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxFragmentSizeAspectRatioAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_maxFragmentSizeAspectRatio(this.segment(), index); }
+        /// Sets `maxFragmentSizeAspectRatio` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxFragmentSizeAspectRatioAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_maxFragmentSizeAspectRatio(this.segment(), index, value); return this; }
+
+        /// {@return `maxFragmentShadingRateCoverageSamples` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxFragmentShadingRateCoverageSamplesAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_maxFragmentShadingRateCoverageSamples(this.segment(), index); }
+        /// Sets `maxFragmentShadingRateCoverageSamples` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxFragmentShadingRateCoverageSamplesAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_maxFragmentShadingRateCoverageSamples(this.segment(), index, value); return this; }
+
+        /// {@return `maxFragmentShadingRateRasterizationSamples` at the given index}
+        /// @param index the index
+        public @CType("VkSampleCountFlagBits") int maxFragmentShadingRateRasterizationSamplesAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_maxFragmentShadingRateRasterizationSamples(this.segment(), index); }
+        /// Sets `maxFragmentShadingRateRasterizationSamples` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxFragmentShadingRateRasterizationSamplesAt(long index, @CType("VkSampleCountFlagBits") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_maxFragmentShadingRateRasterizationSamples(this.segment(), index, value); return this; }
+
+        /// {@return `fragmentShadingRateWithShaderDepthStencilWrites` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int fragmentShadingRateWithShaderDepthStencilWritesAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_fragmentShadingRateWithShaderDepthStencilWrites(this.segment(), index); }
+        /// Sets `fragmentShadingRateWithShaderDepthStencilWrites` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer fragmentShadingRateWithShaderDepthStencilWritesAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_fragmentShadingRateWithShaderDepthStencilWrites(this.segment(), index, value); return this; }
+
+        /// {@return `fragmentShadingRateWithSampleMask` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int fragmentShadingRateWithSampleMaskAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_fragmentShadingRateWithSampleMask(this.segment(), index); }
+        /// Sets `fragmentShadingRateWithSampleMask` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer fragmentShadingRateWithSampleMaskAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_fragmentShadingRateWithSampleMask(this.segment(), index, value); return this; }
+
+        /// {@return `fragmentShadingRateWithShaderSampleMask` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int fragmentShadingRateWithShaderSampleMaskAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_fragmentShadingRateWithShaderSampleMask(this.segment(), index); }
+        /// Sets `fragmentShadingRateWithShaderSampleMask` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer fragmentShadingRateWithShaderSampleMaskAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_fragmentShadingRateWithShaderSampleMask(this.segment(), index, value); return this; }
+
+        /// {@return `fragmentShadingRateWithConservativeRasterization` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int fragmentShadingRateWithConservativeRasterizationAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_fragmentShadingRateWithConservativeRasterization(this.segment(), index); }
+        /// Sets `fragmentShadingRateWithConservativeRasterization` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer fragmentShadingRateWithConservativeRasterizationAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_fragmentShadingRateWithConservativeRasterization(this.segment(), index, value); return this; }
+
+        /// {@return `fragmentShadingRateWithFragmentShaderInterlock` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int fragmentShadingRateWithFragmentShaderInterlockAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_fragmentShadingRateWithFragmentShaderInterlock(this.segment(), index); }
+        /// Sets `fragmentShadingRateWithFragmentShaderInterlock` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer fragmentShadingRateWithFragmentShaderInterlockAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_fragmentShadingRateWithFragmentShaderInterlock(this.segment(), index, value); return this; }
+
+        /// {@return `fragmentShadingRateWithCustomSampleLocations` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int fragmentShadingRateWithCustomSampleLocationsAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_fragmentShadingRateWithCustomSampleLocations(this.segment(), index); }
+        /// Sets `fragmentShadingRateWithCustomSampleLocations` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer fragmentShadingRateWithCustomSampleLocationsAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_fragmentShadingRateWithCustomSampleLocations(this.segment(), index, value); return this; }
+
+        /// {@return `fragmentShadingRateStrictMultiplyCombiner` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int fragmentShadingRateStrictMultiplyCombinerAt(long index) { return VkPhysicalDeviceFragmentShadingRatePropertiesKHR.get_fragmentShadingRateStrictMultiplyCombiner(this.segment(), index); }
+        /// Sets `fragmentShadingRateStrictMultiplyCombiner` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer fragmentShadingRateStrictMultiplyCombinerAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentShadingRatePropertiesKHR.set_fragmentShadingRateStrictMultiplyCombiner(this.segment(), index, value); return this; }
+
+    }
 }

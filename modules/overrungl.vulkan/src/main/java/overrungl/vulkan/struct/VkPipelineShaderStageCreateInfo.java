@@ -52,7 +52,7 @@ import overrungl.util.*;
 ///     const VkSpecializationInfo * pSpecializationInfo;
 /// } VkPipelineShaderStageCreateInfo;
 /// ```
-public final class VkPipelineShaderStageCreateInfo extends Struct {
+public sealed class VkPipelineShaderStageCreateInfo extends Struct {
     /// The struct layout of `VkPipelineShaderStageCreateInfo`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -88,6 +88,11 @@ public final class VkPipelineShaderStageCreateInfo extends Struct {
     public static VkPipelineShaderStageCreateInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineShaderStageCreateInfo(segment); }
 
     /// Creates `VkPipelineShaderStageCreateInfo` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPipelineShaderStageCreateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -100,7 +105,7 @@ public final class VkPipelineShaderStageCreateInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineShaderStageCreateInfo ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineShaderStageCreateInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPipelineShaderStageCreateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -111,7 +116,21 @@ public final class VkPipelineShaderStageCreateInfo extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPipelineShaderStageCreateInfo`
-    public static VkPipelineShaderStageCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkPipelineShaderStageCreateInfo(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkPipelineShaderStageCreateInfo` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPipelineShaderStageCreateInfo`
+    public static VkPipelineShaderStageCreateInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkPipelineShaderStageCreateFlags") int flags, @CType("VkShaderStageFlagBits") int stage, @CType("VkShaderModule") java.lang.foreign.MemorySegment module, @CType("const char *") java.lang.foreign.MemorySegment pName, @CType("const VkSpecializationInfo *") java.lang.foreign.MemorySegment pSpecializationInfo) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stage(stage).module(module).pName(pName).pSpecializationInfo(pSpecializationInfo); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPipelineShaderStageCreateInfo copyFrom(VkPipelineShaderStageCreateInfo src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -120,9 +139,6 @@ public final class VkPipelineShaderStageCreateInfo extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPipelineShaderStageCreateInfo.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPipelineShaderStageCreateInfo.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPipelineShaderStageCreateInfo.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -134,11 +150,6 @@ public final class VkPipelineShaderStageCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPipelineShaderStageCreateInfo.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineShaderStageCreateInfo sTypeAt(long index, @CType("VkStructureType") int value) { VkPipelineShaderStageCreateInfo.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -151,9 +162,6 @@ public final class VkPipelineShaderStageCreateInfo extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPipelineShaderStageCreateInfo.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPipelineShaderStageCreateInfo.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkPipelineShaderStageCreateInfo.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -165,11 +173,6 @@ public final class VkPipelineShaderStageCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineShaderStageCreateInfo.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineShaderStageCreateInfo pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineShaderStageCreateInfo.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,9 +185,6 @@ public final class VkPipelineShaderStageCreateInfo extends Struct {
     /// {@return `flags`}
     /// @param segment the segment of the struct
     public static @CType("VkPipelineShaderStageCreateFlags") int get_flags(MemorySegment segment) { return VkPipelineShaderStageCreateInfo.get_flags(segment, 0L); }
-    /// {@return `flags` at the given index}
-    /// @param index the index
-    public @CType("VkPipelineShaderStageCreateFlags") int flagsAt(long index) { return VkPipelineShaderStageCreateInfo.get_flags(this.segment(), index); }
     /// {@return `flags`}
     public @CType("VkPipelineShaderStageCreateFlags") int flags() { return VkPipelineShaderStageCreateInfo.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
@@ -196,11 +196,6 @@ public final class VkPipelineShaderStageCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_flags(MemorySegment segment, @CType("VkPipelineShaderStageCreateFlags") int value) { VkPipelineShaderStageCreateInfo.set_flags(segment, 0L, value); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineShaderStageCreateInfo flagsAt(long index, @CType("VkPipelineShaderStageCreateFlags") int value) { VkPipelineShaderStageCreateInfo.set_flags(this.segment(), index, value); return this; }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -213,9 +208,6 @@ public final class VkPipelineShaderStageCreateInfo extends Struct {
     /// {@return `stage`}
     /// @param segment the segment of the struct
     public static @CType("VkShaderStageFlagBits") int get_stage(MemorySegment segment) { return VkPipelineShaderStageCreateInfo.get_stage(segment, 0L); }
-    /// {@return `stage` at the given index}
-    /// @param index the index
-    public @CType("VkShaderStageFlagBits") int stageAt(long index) { return VkPipelineShaderStageCreateInfo.get_stage(this.segment(), index); }
     /// {@return `stage`}
     public @CType("VkShaderStageFlagBits") int stage() { return VkPipelineShaderStageCreateInfo.get_stage(this.segment()); }
     /// Sets `stage` with the given value at the given index.
@@ -227,11 +219,6 @@ public final class VkPipelineShaderStageCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_stage(MemorySegment segment, @CType("VkShaderStageFlagBits") int value) { VkPipelineShaderStageCreateInfo.set_stage(segment, 0L, value); }
-    /// Sets `stage` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineShaderStageCreateInfo stageAt(long index, @CType("VkShaderStageFlagBits") int value) { VkPipelineShaderStageCreateInfo.set_stage(this.segment(), index, value); return this; }
     /// Sets `stage` with the given value.
     /// @param value the value
     /// @return `this`
@@ -244,9 +231,6 @@ public final class VkPipelineShaderStageCreateInfo extends Struct {
     /// {@return `module`}
     /// @param segment the segment of the struct
     public static @CType("VkShaderModule") java.lang.foreign.MemorySegment get_module(MemorySegment segment) { return VkPipelineShaderStageCreateInfo.get_module(segment, 0L); }
-    /// {@return `module` at the given index}
-    /// @param index the index
-    public @CType("VkShaderModule") java.lang.foreign.MemorySegment moduleAt(long index) { return VkPipelineShaderStageCreateInfo.get_module(this.segment(), index); }
     /// {@return `module`}
     public @CType("VkShaderModule") java.lang.foreign.MemorySegment module() { return VkPipelineShaderStageCreateInfo.get_module(this.segment()); }
     /// Sets `module` with the given value at the given index.
@@ -258,11 +242,6 @@ public final class VkPipelineShaderStageCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_module(MemorySegment segment, @CType("VkShaderModule") java.lang.foreign.MemorySegment value) { VkPipelineShaderStageCreateInfo.set_module(segment, 0L, value); }
-    /// Sets `module` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineShaderStageCreateInfo moduleAt(long index, @CType("VkShaderModule") java.lang.foreign.MemorySegment value) { VkPipelineShaderStageCreateInfo.set_module(this.segment(), index, value); return this; }
     /// Sets `module` with the given value.
     /// @param value the value
     /// @return `this`
@@ -275,9 +254,6 @@ public final class VkPipelineShaderStageCreateInfo extends Struct {
     /// {@return `pName`}
     /// @param segment the segment of the struct
     public static @CType("const char *") java.lang.foreign.MemorySegment get_pName(MemorySegment segment) { return VkPipelineShaderStageCreateInfo.get_pName(segment, 0L); }
-    /// {@return `pName` at the given index}
-    /// @param index the index
-    public @CType("const char *") java.lang.foreign.MemorySegment pNameAt(long index) { return VkPipelineShaderStageCreateInfo.get_pName(this.segment(), index); }
     /// {@return `pName`}
     public @CType("const char *") java.lang.foreign.MemorySegment pName() { return VkPipelineShaderStageCreateInfo.get_pName(this.segment()); }
     /// Sets `pName` with the given value at the given index.
@@ -289,11 +265,6 @@ public final class VkPipelineShaderStageCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pName(MemorySegment segment, @CType("const char *") java.lang.foreign.MemorySegment value) { VkPipelineShaderStageCreateInfo.set_pName(segment, 0L, value); }
-    /// Sets `pName` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineShaderStageCreateInfo pNameAt(long index, @CType("const char *") java.lang.foreign.MemorySegment value) { VkPipelineShaderStageCreateInfo.set_pName(this.segment(), index, value); return this; }
     /// Sets `pName` with the given value.
     /// @param value the value
     /// @return `this`
@@ -306,9 +277,6 @@ public final class VkPipelineShaderStageCreateInfo extends Struct {
     /// {@return `pSpecializationInfo`}
     /// @param segment the segment of the struct
     public static @CType("const VkSpecializationInfo *") java.lang.foreign.MemorySegment get_pSpecializationInfo(MemorySegment segment) { return VkPipelineShaderStageCreateInfo.get_pSpecializationInfo(segment, 0L); }
-    /// {@return `pSpecializationInfo` at the given index}
-    /// @param index the index
-    public @CType("const VkSpecializationInfo *") java.lang.foreign.MemorySegment pSpecializationInfoAt(long index) { return VkPipelineShaderStageCreateInfo.get_pSpecializationInfo(this.segment(), index); }
     /// {@return `pSpecializationInfo`}
     public @CType("const VkSpecializationInfo *") java.lang.foreign.MemorySegment pSpecializationInfo() { return VkPipelineShaderStageCreateInfo.get_pSpecializationInfo(this.segment()); }
     /// Sets `pSpecializationInfo` with the given value at the given index.
@@ -320,14 +288,95 @@ public final class VkPipelineShaderStageCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pSpecializationInfo(MemorySegment segment, @CType("const VkSpecializationInfo *") java.lang.foreign.MemorySegment value) { VkPipelineShaderStageCreateInfo.set_pSpecializationInfo(segment, 0L, value); }
-    /// Sets `pSpecializationInfo` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineShaderStageCreateInfo pSpecializationInfoAt(long index, @CType("const VkSpecializationInfo *") java.lang.foreign.MemorySegment value) { VkPipelineShaderStageCreateInfo.set_pSpecializationInfo(this.segment(), index, value); return this; }
     /// Sets `pSpecializationInfo` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPipelineShaderStageCreateInfo pSpecializationInfo(@CType("const VkSpecializationInfo *") java.lang.foreign.MemorySegment value) { VkPipelineShaderStageCreateInfo.set_pSpecializationInfo(this.segment(), value); return this; }
 
+    /// A buffer of [VkPipelineShaderStageCreateInfo].
+    public static final class Buffer extends VkPipelineShaderStageCreateInfo {
+        private final long elementCount;
+
+        /// Creates `VkPipelineShaderStageCreateInfo.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPipelineShaderStageCreateInfo`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPipelineShaderStageCreateInfo`
+        public VkPipelineShaderStageCreateInfo asSlice(long index) { return new VkPipelineShaderStageCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPipelineShaderStageCreateInfo`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPipelineShaderStageCreateInfo`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPipelineShaderStageCreateInfo.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPipelineShaderStageCreateInfo.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPipelineShaderStageCreateInfo.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineShaderStageCreateInfo.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `flags` at the given index}
+        /// @param index the index
+        public @CType("VkPipelineShaderStageCreateFlags") int flagsAt(long index) { return VkPipelineShaderStageCreateInfo.get_flags(this.segment(), index); }
+        /// Sets `flags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer flagsAt(long index, @CType("VkPipelineShaderStageCreateFlags") int value) { VkPipelineShaderStageCreateInfo.set_flags(this.segment(), index, value); return this; }
+
+        /// {@return `stage` at the given index}
+        /// @param index the index
+        public @CType("VkShaderStageFlagBits") int stageAt(long index) { return VkPipelineShaderStageCreateInfo.get_stage(this.segment(), index); }
+        /// Sets `stage` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer stageAt(long index, @CType("VkShaderStageFlagBits") int value) { VkPipelineShaderStageCreateInfo.set_stage(this.segment(), index, value); return this; }
+
+        /// {@return `module` at the given index}
+        /// @param index the index
+        public @CType("VkShaderModule") java.lang.foreign.MemorySegment moduleAt(long index) { return VkPipelineShaderStageCreateInfo.get_module(this.segment(), index); }
+        /// Sets `module` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer moduleAt(long index, @CType("VkShaderModule") java.lang.foreign.MemorySegment value) { VkPipelineShaderStageCreateInfo.set_module(this.segment(), index, value); return this; }
+
+        /// {@return `pName` at the given index}
+        /// @param index the index
+        public @CType("const char *") java.lang.foreign.MemorySegment pNameAt(long index) { return VkPipelineShaderStageCreateInfo.get_pName(this.segment(), index); }
+        /// Sets `pName` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNameAt(long index, @CType("const char *") java.lang.foreign.MemorySegment value) { VkPipelineShaderStageCreateInfo.set_pName(this.segment(), index, value); return this; }
+
+        /// {@return `pSpecializationInfo` at the given index}
+        /// @param index the index
+        public @CType("const VkSpecializationInfo *") java.lang.foreign.MemorySegment pSpecializationInfoAt(long index) { return VkPipelineShaderStageCreateInfo.get_pSpecializationInfo(this.segment(), index); }
+        /// Sets `pSpecializationInfo` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pSpecializationInfoAt(long index, @CType("const VkSpecializationInfo *") java.lang.foreign.MemorySegment value) { VkPipelineShaderStageCreateInfo.set_pSpecializationInfo(this.segment(), index, value); return this; }
+
+    }
 }

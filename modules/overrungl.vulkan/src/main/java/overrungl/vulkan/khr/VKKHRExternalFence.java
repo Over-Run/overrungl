@@ -23,13 +23,12 @@ import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 import static overrungl.vulkan.VK11.*;
-public class VKKHRExternalFence {
+public final class VKKHRExternalFence {
     public static final int VK_KHR_EXTERNAL_FENCE_SPEC_VERSION = 1;
     public static final String VK_KHR_EXTERNAL_FENCE_EXTENSION_NAME = "VK_KHR_external_fence";
     public static final int VK_STRUCTURE_TYPE_EXPORT_FENCE_CREATE_INFO_KHR = VK_STRUCTURE_TYPE_EXPORT_FENCE_CREATE_INFO;
     public static final int VK_FENCE_IMPORT_TEMPORARY_BIT_KHR = VK_FENCE_IMPORT_TEMPORARY_BIT;
 
-    public VKKHRExternalFence(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKKHRExternalFence() { }
 
 }

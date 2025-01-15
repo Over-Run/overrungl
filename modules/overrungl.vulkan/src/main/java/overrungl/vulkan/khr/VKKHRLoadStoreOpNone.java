@@ -24,13 +24,12 @@ import overrungl.util.*;
 import overrungl.vulkan.*;
 import static overrungl.vulkan.VK13.*;
 import static overrungl.vulkan.VK14.*;
-public class VKKHRLoadStoreOpNone {
+public final class VKKHRLoadStoreOpNone {
     public static final int VK_KHR_LOAD_STORE_OP_NONE_SPEC_VERSION = 1;
     public static final String VK_KHR_LOAD_STORE_OP_NONE_EXTENSION_NAME = "VK_KHR_load_store_op_none";
     public static final int VK_ATTACHMENT_LOAD_OP_NONE_KHR = VK_ATTACHMENT_LOAD_OP_NONE;
     public static final int VK_ATTACHMENT_STORE_OP_NONE_KHR = VK_ATTACHMENT_STORE_OP_NONE;
 
-    public VKKHRLoadStoreOpNone(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKKHRLoadStoreOpNone() { }
 
 }

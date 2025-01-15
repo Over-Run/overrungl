@@ -23,7 +23,7 @@ import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 import static overrungl.vulkan.ext.VKEXTFragmentDensityMap.*;
-public class VKEXTFragmentDensityMap {
+public final class VKEXTFragmentDensityMap {
     public static final int VK_EXT_FRAGMENT_DENSITY_MAP_SPEC_VERSION = 2;
     public static final String VK_EXT_FRAGMENT_DENSITY_MAP_EXTENSION_NAME = "VK_EXT_fragment_density_map";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_FEATURES_EXT = 1000218000;
@@ -43,7 +43,6 @@ public class VKEXTFragmentDensityMap {
     public static final int VK_STRUCTURE_TYPE_RENDERING_FRAGMENT_DENSITY_MAP_ATTACHMENT_INFO_EXT = 1000218007;
     public static final int VK_PIPELINE_RASTERIZATION_STATE_CREATE_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT = VK_PIPELINE_CREATE_RENDERING_FRAGMENT_DENSITY_MAP_ATTACHMENT_BIT_EXT;
 
-    public VKEXTFragmentDensityMap(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKEXTFragmentDensityMap() { }
 
 }

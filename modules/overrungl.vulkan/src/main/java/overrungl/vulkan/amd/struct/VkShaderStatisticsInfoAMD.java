@@ -38,7 +38,7 @@ import overrungl.util.*;
 /// ### numAvailableSgprs
 /// [VarHandle][#VH_numAvailableSgprs] - [Getter][#numAvailableSgprs()] - [Setter][#numAvailableSgprs(int)]
 /// ### computeWorkGroupSize
-/// [VarHandle][#VH_computeWorkGroupSize] - [Getter][#computeWorkGroupSize()] - [Setter][#computeWorkGroupSize(int)]
+/// [Byte offset][#OFFSET_computeWorkGroupSize] - [Memory layout][#ML_computeWorkGroupSize] - [Getter][#computeWorkGroupSize()] - [Setter][#computeWorkGroupSize(java.lang.foreign.MemorySegment)]
 /// ## Layout
 /// [Java definition][#LAYOUT]
 /// ```c
@@ -49,10 +49,10 @@ import overrungl.util.*;
 ///     uint32_t numPhysicalSgprs;
 ///     uint32_t numAvailableVgprs;
 ///     uint32_t numAvailableSgprs;
-///     uint32_t computeWorkGroupSize;
+///     uint32_t[3] computeWorkGroupSize;
 /// } VkShaderStatisticsInfoAMD;
 /// ```
-public final class VkShaderStatisticsInfoAMD extends Struct {
+public sealed class VkShaderStatisticsInfoAMD extends Struct {
     /// The struct layout of `VkShaderStatisticsInfoAMD`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("shaderStageMask"),
@@ -61,7 +61,7 @@ public final class VkShaderStatisticsInfoAMD extends Struct {
         ValueLayout.JAVA_INT.withName("numPhysicalSgprs"),
         ValueLayout.JAVA_INT.withName("numAvailableVgprs"),
         ValueLayout.JAVA_INT.withName("numAvailableSgprs"),
-        ValueLayout.JAVA_INT.withName("computeWorkGroupSize")
+        MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_INT).withName("computeWorkGroupSize")
     );
     /// The [VarHandle] of `shaderStageMask` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_shaderStageMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderStageMask"));
@@ -77,8 +77,10 @@ public final class VkShaderStatisticsInfoAMD extends Struct {
     public static final VarHandle VH_numAvailableVgprs = LAYOUT.arrayElementVarHandle(PathElement.groupElement("numAvailableVgprs"));
     /// The [VarHandle] of `numAvailableSgprs` of type `(MemorySegment base, long baseOffset, long index)int`.
     public static final VarHandle VH_numAvailableSgprs = LAYOUT.arrayElementVarHandle(PathElement.groupElement("numAvailableSgprs"));
-    /// The [VarHandle] of `computeWorkGroupSize` of type `(MemorySegment base, long baseOffset, long index)int`.
-    public static final VarHandle VH_computeWorkGroupSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("computeWorkGroupSize"));
+    /// The byte offset of `computeWorkGroupSize`.
+    public static final long OFFSET_computeWorkGroupSize = LAYOUT.byteOffset(PathElement.groupElement("computeWorkGroupSize"));
+    /// The memory layout of `computeWorkGroupSize`.
+    public static final MemoryLayout ML_computeWorkGroupSize = LAYOUT.select(PathElement.groupElement("computeWorkGroupSize"));
 
     /// Creates `VkShaderStatisticsInfoAMD` with the given segment.
     /// @param segment the memory segment
@@ -88,6 +90,11 @@ public final class VkShaderStatisticsInfoAMD extends Struct {
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
     public static VkShaderStatisticsInfoAMD of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkShaderStatisticsInfoAMD(segment); }
+
+    /// Creates `VkShaderStatisticsInfoAMD` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkShaderStatisticsInfoAMD` with the given segment.
     ///
@@ -102,7 +109,7 @@ public final class VkShaderStatisticsInfoAMD extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkShaderStatisticsInfoAMD ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkShaderStatisticsInfoAMD(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkShaderStatisticsInfoAMD` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -113,7 +120,21 @@ public final class VkShaderStatisticsInfoAMD extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkShaderStatisticsInfoAMD`
-    public static VkShaderStatisticsInfoAMD alloc(SegmentAllocator allocator, long count) { return new VkShaderStatisticsInfoAMD(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkShaderStatisticsInfoAMD` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkShaderStatisticsInfoAMD`
+    public static VkShaderStatisticsInfoAMD allocInit(SegmentAllocator allocator, @CType("VkShaderStageFlags") int shaderStageMask, @CType("VkShaderResourceUsageAMD") java.lang.foreign.MemorySegment resourceUsage, @CType("uint32_t") int numPhysicalVgprs, @CType("uint32_t") int numPhysicalSgprs, @CType("uint32_t") int numAvailableVgprs, @CType("uint32_t") int numAvailableSgprs, @CType("uint32_t[3]") java.lang.foreign.MemorySegment computeWorkGroupSize) { return alloc(allocator).shaderStageMask(shaderStageMask).resourceUsage(resourceUsage).numPhysicalVgprs(numPhysicalVgprs).numPhysicalSgprs(numPhysicalSgprs).numAvailableVgprs(numAvailableVgprs).numAvailableSgprs(numAvailableSgprs).computeWorkGroupSize(computeWorkGroupSize); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkShaderStatisticsInfoAMD copyFrom(VkShaderStatisticsInfoAMD src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `shaderStageMask` at the given index}
     /// @param segment the segment of the struct
@@ -122,9 +143,6 @@ public final class VkShaderStatisticsInfoAMD extends Struct {
     /// {@return `shaderStageMask`}
     /// @param segment the segment of the struct
     public static @CType("VkShaderStageFlags") int get_shaderStageMask(MemorySegment segment) { return VkShaderStatisticsInfoAMD.get_shaderStageMask(segment, 0L); }
-    /// {@return `shaderStageMask` at the given index}
-    /// @param index the index
-    public @CType("VkShaderStageFlags") int shaderStageMaskAt(long index) { return VkShaderStatisticsInfoAMD.get_shaderStageMask(this.segment(), index); }
     /// {@return `shaderStageMask`}
     public @CType("VkShaderStageFlags") int shaderStageMask() { return VkShaderStatisticsInfoAMD.get_shaderStageMask(this.segment()); }
     /// Sets `shaderStageMask` with the given value at the given index.
@@ -136,11 +154,6 @@ public final class VkShaderStatisticsInfoAMD extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_shaderStageMask(MemorySegment segment, @CType("VkShaderStageFlags") int value) { VkShaderStatisticsInfoAMD.set_shaderStageMask(segment, 0L, value); }
-    /// Sets `shaderStageMask` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkShaderStatisticsInfoAMD shaderStageMaskAt(long index, @CType("VkShaderStageFlags") int value) { VkShaderStatisticsInfoAMD.set_shaderStageMask(this.segment(), index, value); return this; }
     /// Sets `shaderStageMask` with the given value.
     /// @param value the value
     /// @return `this`
@@ -153,9 +166,6 @@ public final class VkShaderStatisticsInfoAMD extends Struct {
     /// {@return `resourceUsage`}
     /// @param segment the segment of the struct
     public static @CType("VkShaderResourceUsageAMD") java.lang.foreign.MemorySegment get_resourceUsage(MemorySegment segment) { return VkShaderStatisticsInfoAMD.get_resourceUsage(segment, 0L); }
-    /// {@return `resourceUsage` at the given index}
-    /// @param index the index
-    public @CType("VkShaderResourceUsageAMD") java.lang.foreign.MemorySegment resourceUsageAt(long index) { return VkShaderStatisticsInfoAMD.get_resourceUsage(this.segment(), index); }
     /// {@return `resourceUsage`}
     public @CType("VkShaderResourceUsageAMD") java.lang.foreign.MemorySegment resourceUsage() { return VkShaderStatisticsInfoAMD.get_resourceUsage(this.segment()); }
     /// Sets `resourceUsage` with the given value at the given index.
@@ -167,11 +177,6 @@ public final class VkShaderStatisticsInfoAMD extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_resourceUsage(MemorySegment segment, @CType("VkShaderResourceUsageAMD") java.lang.foreign.MemorySegment value) { VkShaderStatisticsInfoAMD.set_resourceUsage(segment, 0L, value); }
-    /// Sets `resourceUsage` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkShaderStatisticsInfoAMD resourceUsageAt(long index, @CType("VkShaderResourceUsageAMD") java.lang.foreign.MemorySegment value) { VkShaderStatisticsInfoAMD.set_resourceUsage(this.segment(), index, value); return this; }
     /// Sets `resourceUsage` with the given value.
     /// @param value the value
     /// @return `this`
@@ -184,9 +189,6 @@ public final class VkShaderStatisticsInfoAMD extends Struct {
     /// {@return `numPhysicalVgprs`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_numPhysicalVgprs(MemorySegment segment) { return VkShaderStatisticsInfoAMD.get_numPhysicalVgprs(segment, 0L); }
-    /// {@return `numPhysicalVgprs` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int numPhysicalVgprsAt(long index) { return VkShaderStatisticsInfoAMD.get_numPhysicalVgprs(this.segment(), index); }
     /// {@return `numPhysicalVgprs`}
     public @CType("uint32_t") int numPhysicalVgprs() { return VkShaderStatisticsInfoAMD.get_numPhysicalVgprs(this.segment()); }
     /// Sets `numPhysicalVgprs` with the given value at the given index.
@@ -198,11 +200,6 @@ public final class VkShaderStatisticsInfoAMD extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_numPhysicalVgprs(MemorySegment segment, @CType("uint32_t") int value) { VkShaderStatisticsInfoAMD.set_numPhysicalVgprs(segment, 0L, value); }
-    /// Sets `numPhysicalVgprs` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkShaderStatisticsInfoAMD numPhysicalVgprsAt(long index, @CType("uint32_t") int value) { VkShaderStatisticsInfoAMD.set_numPhysicalVgprs(this.segment(), index, value); return this; }
     /// Sets `numPhysicalVgprs` with the given value.
     /// @param value the value
     /// @return `this`
@@ -215,9 +212,6 @@ public final class VkShaderStatisticsInfoAMD extends Struct {
     /// {@return `numPhysicalSgprs`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_numPhysicalSgprs(MemorySegment segment) { return VkShaderStatisticsInfoAMD.get_numPhysicalSgprs(segment, 0L); }
-    /// {@return `numPhysicalSgprs` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int numPhysicalSgprsAt(long index) { return VkShaderStatisticsInfoAMD.get_numPhysicalSgprs(this.segment(), index); }
     /// {@return `numPhysicalSgprs`}
     public @CType("uint32_t") int numPhysicalSgprs() { return VkShaderStatisticsInfoAMD.get_numPhysicalSgprs(this.segment()); }
     /// Sets `numPhysicalSgprs` with the given value at the given index.
@@ -229,11 +223,6 @@ public final class VkShaderStatisticsInfoAMD extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_numPhysicalSgprs(MemorySegment segment, @CType("uint32_t") int value) { VkShaderStatisticsInfoAMD.set_numPhysicalSgprs(segment, 0L, value); }
-    /// Sets `numPhysicalSgprs` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkShaderStatisticsInfoAMD numPhysicalSgprsAt(long index, @CType("uint32_t") int value) { VkShaderStatisticsInfoAMD.set_numPhysicalSgprs(this.segment(), index, value); return this; }
     /// Sets `numPhysicalSgprs` with the given value.
     /// @param value the value
     /// @return `this`
@@ -246,9 +235,6 @@ public final class VkShaderStatisticsInfoAMD extends Struct {
     /// {@return `numAvailableVgprs`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_numAvailableVgprs(MemorySegment segment) { return VkShaderStatisticsInfoAMD.get_numAvailableVgprs(segment, 0L); }
-    /// {@return `numAvailableVgprs` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int numAvailableVgprsAt(long index) { return VkShaderStatisticsInfoAMD.get_numAvailableVgprs(this.segment(), index); }
     /// {@return `numAvailableVgprs`}
     public @CType("uint32_t") int numAvailableVgprs() { return VkShaderStatisticsInfoAMD.get_numAvailableVgprs(this.segment()); }
     /// Sets `numAvailableVgprs` with the given value at the given index.
@@ -260,11 +246,6 @@ public final class VkShaderStatisticsInfoAMD extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_numAvailableVgprs(MemorySegment segment, @CType("uint32_t") int value) { VkShaderStatisticsInfoAMD.set_numAvailableVgprs(segment, 0L, value); }
-    /// Sets `numAvailableVgprs` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkShaderStatisticsInfoAMD numAvailableVgprsAt(long index, @CType("uint32_t") int value) { VkShaderStatisticsInfoAMD.set_numAvailableVgprs(this.segment(), index, value); return this; }
     /// Sets `numAvailableVgprs` with the given value.
     /// @param value the value
     /// @return `this`
@@ -277,9 +258,6 @@ public final class VkShaderStatisticsInfoAMD extends Struct {
     /// {@return `numAvailableSgprs`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_numAvailableSgprs(MemorySegment segment) { return VkShaderStatisticsInfoAMD.get_numAvailableSgprs(segment, 0L); }
-    /// {@return `numAvailableSgprs` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int numAvailableSgprsAt(long index) { return VkShaderStatisticsInfoAMD.get_numAvailableSgprs(this.segment(), index); }
     /// {@return `numAvailableSgprs`}
     public @CType("uint32_t") int numAvailableSgprs() { return VkShaderStatisticsInfoAMD.get_numAvailableSgprs(this.segment()); }
     /// Sets `numAvailableSgprs` with the given value at the given index.
@@ -291,11 +269,6 @@ public final class VkShaderStatisticsInfoAMD extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_numAvailableSgprs(MemorySegment segment, @CType("uint32_t") int value) { VkShaderStatisticsInfoAMD.set_numAvailableSgprs(segment, 0L, value); }
-    /// Sets `numAvailableSgprs` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkShaderStatisticsInfoAMD numAvailableSgprsAt(long index, @CType("uint32_t") int value) { VkShaderStatisticsInfoAMD.set_numAvailableSgprs(this.segment(), index, value); return this; }
     /// Sets `numAvailableSgprs` with the given value.
     /// @param value the value
     /// @return `this`
@@ -304,32 +277,110 @@ public final class VkShaderStatisticsInfoAMD extends Struct {
     /// {@return `computeWorkGroupSize` at the given index}
     /// @param segment the segment of the struct
     /// @param index   the index
-    public static @CType("uint32_t") int get_computeWorkGroupSize(MemorySegment segment, long index) { return (int) VH_computeWorkGroupSize.get(segment, 0L, index); }
+    public static @CType("uint32_t[3]") java.lang.foreign.MemorySegment get_computeWorkGroupSize(MemorySegment segment, long index) { return segment.asSlice(LAYOUT.scale(OFFSET_computeWorkGroupSize, index), ML_computeWorkGroupSize); }
     /// {@return `computeWorkGroupSize`}
     /// @param segment the segment of the struct
-    public static @CType("uint32_t") int get_computeWorkGroupSize(MemorySegment segment) { return VkShaderStatisticsInfoAMD.get_computeWorkGroupSize(segment, 0L); }
-    /// {@return `computeWorkGroupSize` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int computeWorkGroupSizeAt(long index) { return VkShaderStatisticsInfoAMD.get_computeWorkGroupSize(this.segment(), index); }
+    public static @CType("uint32_t[3]") java.lang.foreign.MemorySegment get_computeWorkGroupSize(MemorySegment segment) { return VkShaderStatisticsInfoAMD.get_computeWorkGroupSize(segment, 0L); }
     /// {@return `computeWorkGroupSize`}
-    public @CType("uint32_t") int computeWorkGroupSize() { return VkShaderStatisticsInfoAMD.get_computeWorkGroupSize(this.segment()); }
+    public @CType("uint32_t[3]") java.lang.foreign.MemorySegment computeWorkGroupSize() { return VkShaderStatisticsInfoAMD.get_computeWorkGroupSize(this.segment()); }
     /// Sets `computeWorkGroupSize` with the given value at the given index.
     /// @param segment the segment of the struct
     /// @param index   the index
     /// @param value   the value
-    public static void set_computeWorkGroupSize(MemorySegment segment, long index, @CType("uint32_t") int value) { VH_computeWorkGroupSize.set(segment, 0L, index, value); }
+    public static void set_computeWorkGroupSize(MemorySegment segment, long index, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { MemorySegment.copy(value, 0L, segment, LAYOUT.scale(OFFSET_computeWorkGroupSize, index), ML_computeWorkGroupSize.byteSize()); }
     /// Sets `computeWorkGroupSize` with the given value.
     /// @param segment the segment of the struct
     /// @param value   the value
-    public static void set_computeWorkGroupSize(MemorySegment segment, @CType("uint32_t") int value) { VkShaderStatisticsInfoAMD.set_computeWorkGroupSize(segment, 0L, value); }
-    /// Sets `computeWorkGroupSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkShaderStatisticsInfoAMD computeWorkGroupSizeAt(long index, @CType("uint32_t") int value) { VkShaderStatisticsInfoAMD.set_computeWorkGroupSize(this.segment(), index, value); return this; }
+    public static void set_computeWorkGroupSize(MemorySegment segment, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkShaderStatisticsInfoAMD.set_computeWorkGroupSize(segment, 0L, value); }
     /// Sets `computeWorkGroupSize` with the given value.
     /// @param value the value
     /// @return `this`
-    public VkShaderStatisticsInfoAMD computeWorkGroupSize(@CType("uint32_t") int value) { VkShaderStatisticsInfoAMD.set_computeWorkGroupSize(this.segment(), value); return this; }
+    public VkShaderStatisticsInfoAMD computeWorkGroupSize(@CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkShaderStatisticsInfoAMD.set_computeWorkGroupSize(this.segment(), value); return this; }
 
+    /// A buffer of [VkShaderStatisticsInfoAMD].
+    public static final class Buffer extends VkShaderStatisticsInfoAMD {
+        private final long elementCount;
+
+        /// Creates `VkShaderStatisticsInfoAMD.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkShaderStatisticsInfoAMD`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkShaderStatisticsInfoAMD`
+        public VkShaderStatisticsInfoAMD asSlice(long index) { return new VkShaderStatisticsInfoAMD(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkShaderStatisticsInfoAMD`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkShaderStatisticsInfoAMD`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `shaderStageMask` at the given index}
+        /// @param index the index
+        public @CType("VkShaderStageFlags") int shaderStageMaskAt(long index) { return VkShaderStatisticsInfoAMD.get_shaderStageMask(this.segment(), index); }
+        /// Sets `shaderStageMask` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer shaderStageMaskAt(long index, @CType("VkShaderStageFlags") int value) { VkShaderStatisticsInfoAMD.set_shaderStageMask(this.segment(), index, value); return this; }
+
+        /// {@return `resourceUsage` at the given index}
+        /// @param index the index
+        public @CType("VkShaderResourceUsageAMD") java.lang.foreign.MemorySegment resourceUsageAt(long index) { return VkShaderStatisticsInfoAMD.get_resourceUsage(this.segment(), index); }
+        /// Sets `resourceUsage` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer resourceUsageAt(long index, @CType("VkShaderResourceUsageAMD") java.lang.foreign.MemorySegment value) { VkShaderStatisticsInfoAMD.set_resourceUsage(this.segment(), index, value); return this; }
+
+        /// {@return `numPhysicalVgprs` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int numPhysicalVgprsAt(long index) { return VkShaderStatisticsInfoAMD.get_numPhysicalVgprs(this.segment(), index); }
+        /// Sets `numPhysicalVgprs` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer numPhysicalVgprsAt(long index, @CType("uint32_t") int value) { VkShaderStatisticsInfoAMD.set_numPhysicalVgprs(this.segment(), index, value); return this; }
+
+        /// {@return `numPhysicalSgprs` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int numPhysicalSgprsAt(long index) { return VkShaderStatisticsInfoAMD.get_numPhysicalSgprs(this.segment(), index); }
+        /// Sets `numPhysicalSgprs` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer numPhysicalSgprsAt(long index, @CType("uint32_t") int value) { VkShaderStatisticsInfoAMD.set_numPhysicalSgprs(this.segment(), index, value); return this; }
+
+        /// {@return `numAvailableVgprs` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int numAvailableVgprsAt(long index) { return VkShaderStatisticsInfoAMD.get_numAvailableVgprs(this.segment(), index); }
+        /// Sets `numAvailableVgprs` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer numAvailableVgprsAt(long index, @CType("uint32_t") int value) { VkShaderStatisticsInfoAMD.set_numAvailableVgprs(this.segment(), index, value); return this; }
+
+        /// {@return `numAvailableSgprs` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int numAvailableSgprsAt(long index) { return VkShaderStatisticsInfoAMD.get_numAvailableSgprs(this.segment(), index); }
+        /// Sets `numAvailableSgprs` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer numAvailableSgprsAt(long index, @CType("uint32_t") int value) { VkShaderStatisticsInfoAMD.set_numAvailableSgprs(this.segment(), index, value); return this; }
+
+        /// {@return `computeWorkGroupSize` at the given index}
+        /// @param index the index
+        public @CType("uint32_t[3]") java.lang.foreign.MemorySegment computeWorkGroupSizeAt(long index) { return VkShaderStatisticsInfoAMD.get_computeWorkGroupSize(this.segment(), index); }
+        /// Sets `computeWorkGroupSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer computeWorkGroupSizeAt(long index, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkShaderStatisticsInfoAMD.set_computeWorkGroupSize(this.segment(), index, value); return this; }
+
+    }
 }

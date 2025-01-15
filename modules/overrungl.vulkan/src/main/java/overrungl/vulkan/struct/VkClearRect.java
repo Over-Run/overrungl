@@ -40,7 +40,7 @@ import overrungl.util.*;
 ///     uint32_t layerCount;
 /// } VkClearRect;
 /// ```
-public final class VkClearRect extends Struct {
+public sealed class VkClearRect extends Struct {
     /// The struct layout of `VkClearRect`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.struct.VkRect2D.LAYOUT.withName("rect"),
@@ -66,6 +66,11 @@ public final class VkClearRect extends Struct {
     public static VkClearRect of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkClearRect(segment); }
 
     /// Creates `VkClearRect` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkClearRect` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -78,7 +83,7 @@ public final class VkClearRect extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkClearRect ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkClearRect(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkClearRect` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -89,7 +94,21 @@ public final class VkClearRect extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkClearRect`
-    public static VkClearRect alloc(SegmentAllocator allocator, long count) { return new VkClearRect(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkClearRect` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkClearRect`
+    public static VkClearRect allocInit(SegmentAllocator allocator, @CType("VkRect2D") java.lang.foreign.MemorySegment rect, @CType("uint32_t") int baseArrayLayer, @CType("uint32_t") int layerCount) { return alloc(allocator).rect(rect).baseArrayLayer(baseArrayLayer).layerCount(layerCount); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkClearRect copyFrom(VkClearRect src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `rect` at the given index}
     /// @param segment the segment of the struct
@@ -98,9 +117,6 @@ public final class VkClearRect extends Struct {
     /// {@return `rect`}
     /// @param segment the segment of the struct
     public static @CType("VkRect2D") java.lang.foreign.MemorySegment get_rect(MemorySegment segment) { return VkClearRect.get_rect(segment, 0L); }
-    /// {@return `rect` at the given index}
-    /// @param index the index
-    public @CType("VkRect2D") java.lang.foreign.MemorySegment rectAt(long index) { return VkClearRect.get_rect(this.segment(), index); }
     /// {@return `rect`}
     public @CType("VkRect2D") java.lang.foreign.MemorySegment rect() { return VkClearRect.get_rect(this.segment()); }
     /// Sets `rect` with the given value at the given index.
@@ -112,11 +128,6 @@ public final class VkClearRect extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_rect(MemorySegment segment, @CType("VkRect2D") java.lang.foreign.MemorySegment value) { VkClearRect.set_rect(segment, 0L, value); }
-    /// Sets `rect` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkClearRect rectAt(long index, @CType("VkRect2D") java.lang.foreign.MemorySegment value) { VkClearRect.set_rect(this.segment(), index, value); return this; }
     /// Sets `rect` with the given value.
     /// @param value the value
     /// @return `this`
@@ -129,9 +140,6 @@ public final class VkClearRect extends Struct {
     /// {@return `baseArrayLayer`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_baseArrayLayer(MemorySegment segment) { return VkClearRect.get_baseArrayLayer(segment, 0L); }
-    /// {@return `baseArrayLayer` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int baseArrayLayerAt(long index) { return VkClearRect.get_baseArrayLayer(this.segment(), index); }
     /// {@return `baseArrayLayer`}
     public @CType("uint32_t") int baseArrayLayer() { return VkClearRect.get_baseArrayLayer(this.segment()); }
     /// Sets `baseArrayLayer` with the given value at the given index.
@@ -143,11 +151,6 @@ public final class VkClearRect extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_baseArrayLayer(MemorySegment segment, @CType("uint32_t") int value) { VkClearRect.set_baseArrayLayer(segment, 0L, value); }
-    /// Sets `baseArrayLayer` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkClearRect baseArrayLayerAt(long index, @CType("uint32_t") int value) { VkClearRect.set_baseArrayLayer(this.segment(), index, value); return this; }
     /// Sets `baseArrayLayer` with the given value.
     /// @param value the value
     /// @return `this`
@@ -160,9 +163,6 @@ public final class VkClearRect extends Struct {
     /// {@return `layerCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_layerCount(MemorySegment segment) { return VkClearRect.get_layerCount(segment, 0L); }
-    /// {@return `layerCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int layerCountAt(long index) { return VkClearRect.get_layerCount(this.segment(), index); }
     /// {@return `layerCount`}
     public @CType("uint32_t") int layerCount() { return VkClearRect.get_layerCount(this.segment()); }
     /// Sets `layerCount` with the given value at the given index.
@@ -174,14 +174,59 @@ public final class VkClearRect extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_layerCount(MemorySegment segment, @CType("uint32_t") int value) { VkClearRect.set_layerCount(segment, 0L, value); }
-    /// Sets `layerCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkClearRect layerCountAt(long index, @CType("uint32_t") int value) { VkClearRect.set_layerCount(this.segment(), index, value); return this; }
     /// Sets `layerCount` with the given value.
     /// @param value the value
     /// @return `this`
     public VkClearRect layerCount(@CType("uint32_t") int value) { VkClearRect.set_layerCount(this.segment(), value); return this; }
 
+    /// A buffer of [VkClearRect].
+    public static final class Buffer extends VkClearRect {
+        private final long elementCount;
+
+        /// Creates `VkClearRect.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkClearRect`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkClearRect`
+        public VkClearRect asSlice(long index) { return new VkClearRect(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkClearRect`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkClearRect`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `rect` at the given index}
+        /// @param index the index
+        public @CType("VkRect2D") java.lang.foreign.MemorySegment rectAt(long index) { return VkClearRect.get_rect(this.segment(), index); }
+        /// Sets `rect` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer rectAt(long index, @CType("VkRect2D") java.lang.foreign.MemorySegment value) { VkClearRect.set_rect(this.segment(), index, value); return this; }
+
+        /// {@return `baseArrayLayer` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int baseArrayLayerAt(long index) { return VkClearRect.get_baseArrayLayer(this.segment(), index); }
+        /// Sets `baseArrayLayer` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer baseArrayLayerAt(long index, @CType("uint32_t") int value) { VkClearRect.set_baseArrayLayer(this.segment(), index, value); return this; }
+
+        /// {@return `layerCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int layerCountAt(long index) { return VkClearRect.get_layerCount(this.segment(), index); }
+        /// Sets `layerCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer layerCountAt(long index, @CType("uint32_t") int value) { VkClearRect.set_layerCount(this.segment(), index, value); return this; }
+
+    }
 }

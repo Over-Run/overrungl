@@ -64,7 +64,7 @@ import overrungl.util.*;
 ///     const void * pTag;
 /// } VkFrameBoundaryEXT;
 /// ```
-public final class VkFrameBoundaryEXT extends Struct {
+public sealed class VkFrameBoundaryEXT extends Struct {
     /// The struct layout of `VkFrameBoundaryEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -112,6 +112,11 @@ public final class VkFrameBoundaryEXT extends Struct {
     public static VkFrameBoundaryEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkFrameBoundaryEXT(segment); }
 
     /// Creates `VkFrameBoundaryEXT` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkFrameBoundaryEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -124,7 +129,7 @@ public final class VkFrameBoundaryEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkFrameBoundaryEXT ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkFrameBoundaryEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkFrameBoundaryEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -135,7 +140,21 @@ public final class VkFrameBoundaryEXT extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkFrameBoundaryEXT`
-    public static VkFrameBoundaryEXT alloc(SegmentAllocator allocator, long count) { return new VkFrameBoundaryEXT(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkFrameBoundaryEXT` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkFrameBoundaryEXT`
+    public static VkFrameBoundaryEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkFrameBoundaryFlagsEXT") int flags, @CType("uint64_t") long frameID, @CType("uint32_t") int imageCount, @CType("const VkImage *") java.lang.foreign.MemorySegment pImages, @CType("uint32_t") int bufferCount, @CType("const VkBuffer *") java.lang.foreign.MemorySegment pBuffers, @CType("uint64_t") long tagName, @CType("size_t") long tagSize, @CType("const void *") java.lang.foreign.MemorySegment pTag) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).frameID(frameID).imageCount(imageCount).pImages(pImages).bufferCount(bufferCount).pBuffers(pBuffers).tagName(tagName).tagSize(tagSize).pTag(pTag); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkFrameBoundaryEXT copyFrom(VkFrameBoundaryEXT src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -144,9 +163,6 @@ public final class VkFrameBoundaryEXT extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkFrameBoundaryEXT.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkFrameBoundaryEXT.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkFrameBoundaryEXT.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -158,11 +174,6 @@ public final class VkFrameBoundaryEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkFrameBoundaryEXT.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkFrameBoundaryEXT sTypeAt(long index, @CType("VkStructureType") int value) { VkFrameBoundaryEXT.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -175,9 +186,6 @@ public final class VkFrameBoundaryEXT extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkFrameBoundaryEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkFrameBoundaryEXT.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkFrameBoundaryEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -189,11 +197,6 @@ public final class VkFrameBoundaryEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkFrameBoundaryEXT.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkFrameBoundaryEXT pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkFrameBoundaryEXT.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -206,9 +209,6 @@ public final class VkFrameBoundaryEXT extends Struct {
     /// {@return `flags`}
     /// @param segment the segment of the struct
     public static @CType("VkFrameBoundaryFlagsEXT") int get_flags(MemorySegment segment) { return VkFrameBoundaryEXT.get_flags(segment, 0L); }
-    /// {@return `flags` at the given index}
-    /// @param index the index
-    public @CType("VkFrameBoundaryFlagsEXT") int flagsAt(long index) { return VkFrameBoundaryEXT.get_flags(this.segment(), index); }
     /// {@return `flags`}
     public @CType("VkFrameBoundaryFlagsEXT") int flags() { return VkFrameBoundaryEXT.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
@@ -220,11 +220,6 @@ public final class VkFrameBoundaryEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_flags(MemorySegment segment, @CType("VkFrameBoundaryFlagsEXT") int value) { VkFrameBoundaryEXT.set_flags(segment, 0L, value); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkFrameBoundaryEXT flagsAt(long index, @CType("VkFrameBoundaryFlagsEXT") int value) { VkFrameBoundaryEXT.set_flags(this.segment(), index, value); return this; }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -237,9 +232,6 @@ public final class VkFrameBoundaryEXT extends Struct {
     /// {@return `frameID`}
     /// @param segment the segment of the struct
     public static @CType("uint64_t") long get_frameID(MemorySegment segment) { return VkFrameBoundaryEXT.get_frameID(segment, 0L); }
-    /// {@return `frameID` at the given index}
-    /// @param index the index
-    public @CType("uint64_t") long frameIDAt(long index) { return VkFrameBoundaryEXT.get_frameID(this.segment(), index); }
     /// {@return `frameID`}
     public @CType("uint64_t") long frameID() { return VkFrameBoundaryEXT.get_frameID(this.segment()); }
     /// Sets `frameID` with the given value at the given index.
@@ -251,11 +243,6 @@ public final class VkFrameBoundaryEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_frameID(MemorySegment segment, @CType("uint64_t") long value) { VkFrameBoundaryEXT.set_frameID(segment, 0L, value); }
-    /// Sets `frameID` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkFrameBoundaryEXT frameIDAt(long index, @CType("uint64_t") long value) { VkFrameBoundaryEXT.set_frameID(this.segment(), index, value); return this; }
     /// Sets `frameID` with the given value.
     /// @param value the value
     /// @return `this`
@@ -268,9 +255,6 @@ public final class VkFrameBoundaryEXT extends Struct {
     /// {@return `imageCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_imageCount(MemorySegment segment) { return VkFrameBoundaryEXT.get_imageCount(segment, 0L); }
-    /// {@return `imageCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int imageCountAt(long index) { return VkFrameBoundaryEXT.get_imageCount(this.segment(), index); }
     /// {@return `imageCount`}
     public @CType("uint32_t") int imageCount() { return VkFrameBoundaryEXT.get_imageCount(this.segment()); }
     /// Sets `imageCount` with the given value at the given index.
@@ -282,11 +266,6 @@ public final class VkFrameBoundaryEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_imageCount(MemorySegment segment, @CType("uint32_t") int value) { VkFrameBoundaryEXT.set_imageCount(segment, 0L, value); }
-    /// Sets `imageCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkFrameBoundaryEXT imageCountAt(long index, @CType("uint32_t") int value) { VkFrameBoundaryEXT.set_imageCount(this.segment(), index, value); return this; }
     /// Sets `imageCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -299,9 +278,6 @@ public final class VkFrameBoundaryEXT extends Struct {
     /// {@return `pImages`}
     /// @param segment the segment of the struct
     public static @CType("const VkImage *") java.lang.foreign.MemorySegment get_pImages(MemorySegment segment) { return VkFrameBoundaryEXT.get_pImages(segment, 0L); }
-    /// {@return `pImages` at the given index}
-    /// @param index the index
-    public @CType("const VkImage *") java.lang.foreign.MemorySegment pImagesAt(long index) { return VkFrameBoundaryEXT.get_pImages(this.segment(), index); }
     /// {@return `pImages`}
     public @CType("const VkImage *") java.lang.foreign.MemorySegment pImages() { return VkFrameBoundaryEXT.get_pImages(this.segment()); }
     /// Sets `pImages` with the given value at the given index.
@@ -313,11 +289,6 @@ public final class VkFrameBoundaryEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pImages(MemorySegment segment, @CType("const VkImage *") java.lang.foreign.MemorySegment value) { VkFrameBoundaryEXT.set_pImages(segment, 0L, value); }
-    /// Sets `pImages` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkFrameBoundaryEXT pImagesAt(long index, @CType("const VkImage *") java.lang.foreign.MemorySegment value) { VkFrameBoundaryEXT.set_pImages(this.segment(), index, value); return this; }
     /// Sets `pImages` with the given value.
     /// @param value the value
     /// @return `this`
@@ -330,9 +301,6 @@ public final class VkFrameBoundaryEXT extends Struct {
     /// {@return `bufferCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_bufferCount(MemorySegment segment) { return VkFrameBoundaryEXT.get_bufferCount(segment, 0L); }
-    /// {@return `bufferCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int bufferCountAt(long index) { return VkFrameBoundaryEXT.get_bufferCount(this.segment(), index); }
     /// {@return `bufferCount`}
     public @CType("uint32_t") int bufferCount() { return VkFrameBoundaryEXT.get_bufferCount(this.segment()); }
     /// Sets `bufferCount` with the given value at the given index.
@@ -344,11 +312,6 @@ public final class VkFrameBoundaryEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_bufferCount(MemorySegment segment, @CType("uint32_t") int value) { VkFrameBoundaryEXT.set_bufferCount(segment, 0L, value); }
-    /// Sets `bufferCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkFrameBoundaryEXT bufferCountAt(long index, @CType("uint32_t") int value) { VkFrameBoundaryEXT.set_bufferCount(this.segment(), index, value); return this; }
     /// Sets `bufferCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -361,9 +324,6 @@ public final class VkFrameBoundaryEXT extends Struct {
     /// {@return `pBuffers`}
     /// @param segment the segment of the struct
     public static @CType("const VkBuffer *") java.lang.foreign.MemorySegment get_pBuffers(MemorySegment segment) { return VkFrameBoundaryEXT.get_pBuffers(segment, 0L); }
-    /// {@return `pBuffers` at the given index}
-    /// @param index the index
-    public @CType("const VkBuffer *") java.lang.foreign.MemorySegment pBuffersAt(long index) { return VkFrameBoundaryEXT.get_pBuffers(this.segment(), index); }
     /// {@return `pBuffers`}
     public @CType("const VkBuffer *") java.lang.foreign.MemorySegment pBuffers() { return VkFrameBoundaryEXT.get_pBuffers(this.segment()); }
     /// Sets `pBuffers` with the given value at the given index.
@@ -375,11 +335,6 @@ public final class VkFrameBoundaryEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pBuffers(MemorySegment segment, @CType("const VkBuffer *") java.lang.foreign.MemorySegment value) { VkFrameBoundaryEXT.set_pBuffers(segment, 0L, value); }
-    /// Sets `pBuffers` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkFrameBoundaryEXT pBuffersAt(long index, @CType("const VkBuffer *") java.lang.foreign.MemorySegment value) { VkFrameBoundaryEXT.set_pBuffers(this.segment(), index, value); return this; }
     /// Sets `pBuffers` with the given value.
     /// @param value the value
     /// @return `this`
@@ -392,9 +347,6 @@ public final class VkFrameBoundaryEXT extends Struct {
     /// {@return `tagName`}
     /// @param segment the segment of the struct
     public static @CType("uint64_t") long get_tagName(MemorySegment segment) { return VkFrameBoundaryEXT.get_tagName(segment, 0L); }
-    /// {@return `tagName` at the given index}
-    /// @param index the index
-    public @CType("uint64_t") long tagNameAt(long index) { return VkFrameBoundaryEXT.get_tagName(this.segment(), index); }
     /// {@return `tagName`}
     public @CType("uint64_t") long tagName() { return VkFrameBoundaryEXT.get_tagName(this.segment()); }
     /// Sets `tagName` with the given value at the given index.
@@ -406,11 +358,6 @@ public final class VkFrameBoundaryEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_tagName(MemorySegment segment, @CType("uint64_t") long value) { VkFrameBoundaryEXT.set_tagName(segment, 0L, value); }
-    /// Sets `tagName` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkFrameBoundaryEXT tagNameAt(long index, @CType("uint64_t") long value) { VkFrameBoundaryEXT.set_tagName(this.segment(), index, value); return this; }
     /// Sets `tagName` with the given value.
     /// @param value the value
     /// @return `this`
@@ -423,9 +370,6 @@ public final class VkFrameBoundaryEXT extends Struct {
     /// {@return `tagSize`}
     /// @param segment the segment of the struct
     public static @CType("size_t") long get_tagSize(MemorySegment segment) { return VkFrameBoundaryEXT.get_tagSize(segment, 0L); }
-    /// {@return `tagSize` at the given index}
-    /// @param index the index
-    public @CType("size_t") long tagSizeAt(long index) { return VkFrameBoundaryEXT.get_tagSize(this.segment(), index); }
     /// {@return `tagSize`}
     public @CType("size_t") long tagSize() { return VkFrameBoundaryEXT.get_tagSize(this.segment()); }
     /// Sets `tagSize` with the given value at the given index.
@@ -437,11 +381,6 @@ public final class VkFrameBoundaryEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_tagSize(MemorySegment segment, @CType("size_t") long value) { VkFrameBoundaryEXT.set_tagSize(segment, 0L, value); }
-    /// Sets `tagSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkFrameBoundaryEXT tagSizeAt(long index, @CType("size_t") long value) { VkFrameBoundaryEXT.set_tagSize(this.segment(), index, value); return this; }
     /// Sets `tagSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -454,9 +393,6 @@ public final class VkFrameBoundaryEXT extends Struct {
     /// {@return `pTag`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pTag(MemorySegment segment) { return VkFrameBoundaryEXT.get_pTag(segment, 0L); }
-    /// {@return `pTag` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pTagAt(long index) { return VkFrameBoundaryEXT.get_pTag(this.segment(), index); }
     /// {@return `pTag`}
     public @CType("const void *") java.lang.foreign.MemorySegment pTag() { return VkFrameBoundaryEXT.get_pTag(this.segment()); }
     /// Sets `pTag` with the given value at the given index.
@@ -468,14 +404,131 @@ public final class VkFrameBoundaryEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pTag(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkFrameBoundaryEXT.set_pTag(segment, 0L, value); }
-    /// Sets `pTag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkFrameBoundaryEXT pTagAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkFrameBoundaryEXT.set_pTag(this.segment(), index, value); return this; }
     /// Sets `pTag` with the given value.
     /// @param value the value
     /// @return `this`
     public VkFrameBoundaryEXT pTag(@CType("const void *") java.lang.foreign.MemorySegment value) { VkFrameBoundaryEXT.set_pTag(this.segment(), value); return this; }
 
+    /// A buffer of [VkFrameBoundaryEXT].
+    public static final class Buffer extends VkFrameBoundaryEXT {
+        private final long elementCount;
+
+        /// Creates `VkFrameBoundaryEXT.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkFrameBoundaryEXT`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkFrameBoundaryEXT`
+        public VkFrameBoundaryEXT asSlice(long index) { return new VkFrameBoundaryEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkFrameBoundaryEXT`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkFrameBoundaryEXT`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkFrameBoundaryEXT.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkFrameBoundaryEXT.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkFrameBoundaryEXT.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkFrameBoundaryEXT.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `flags` at the given index}
+        /// @param index the index
+        public @CType("VkFrameBoundaryFlagsEXT") int flagsAt(long index) { return VkFrameBoundaryEXT.get_flags(this.segment(), index); }
+        /// Sets `flags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer flagsAt(long index, @CType("VkFrameBoundaryFlagsEXT") int value) { VkFrameBoundaryEXT.set_flags(this.segment(), index, value); return this; }
+
+        /// {@return `frameID` at the given index}
+        /// @param index the index
+        public @CType("uint64_t") long frameIDAt(long index) { return VkFrameBoundaryEXT.get_frameID(this.segment(), index); }
+        /// Sets `frameID` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer frameIDAt(long index, @CType("uint64_t") long value) { VkFrameBoundaryEXT.set_frameID(this.segment(), index, value); return this; }
+
+        /// {@return `imageCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int imageCountAt(long index) { return VkFrameBoundaryEXT.get_imageCount(this.segment(), index); }
+        /// Sets `imageCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer imageCountAt(long index, @CType("uint32_t") int value) { VkFrameBoundaryEXT.set_imageCount(this.segment(), index, value); return this; }
+
+        /// {@return `pImages` at the given index}
+        /// @param index the index
+        public @CType("const VkImage *") java.lang.foreign.MemorySegment pImagesAt(long index) { return VkFrameBoundaryEXT.get_pImages(this.segment(), index); }
+        /// Sets `pImages` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pImagesAt(long index, @CType("const VkImage *") java.lang.foreign.MemorySegment value) { VkFrameBoundaryEXT.set_pImages(this.segment(), index, value); return this; }
+
+        /// {@return `bufferCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int bufferCountAt(long index) { return VkFrameBoundaryEXT.get_bufferCount(this.segment(), index); }
+        /// Sets `bufferCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer bufferCountAt(long index, @CType("uint32_t") int value) { VkFrameBoundaryEXT.set_bufferCount(this.segment(), index, value); return this; }
+
+        /// {@return `pBuffers` at the given index}
+        /// @param index the index
+        public @CType("const VkBuffer *") java.lang.foreign.MemorySegment pBuffersAt(long index) { return VkFrameBoundaryEXT.get_pBuffers(this.segment(), index); }
+        /// Sets `pBuffers` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pBuffersAt(long index, @CType("const VkBuffer *") java.lang.foreign.MemorySegment value) { VkFrameBoundaryEXT.set_pBuffers(this.segment(), index, value); return this; }
+
+        /// {@return `tagName` at the given index}
+        /// @param index the index
+        public @CType("uint64_t") long tagNameAt(long index) { return VkFrameBoundaryEXT.get_tagName(this.segment(), index); }
+        /// Sets `tagName` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer tagNameAt(long index, @CType("uint64_t") long value) { VkFrameBoundaryEXT.set_tagName(this.segment(), index, value); return this; }
+
+        /// {@return `tagSize` at the given index}
+        /// @param index the index
+        public @CType("size_t") long tagSizeAt(long index) { return VkFrameBoundaryEXT.get_tagSize(this.segment(), index); }
+        /// Sets `tagSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer tagSizeAt(long index, @CType("size_t") long value) { VkFrameBoundaryEXT.set_tagSize(this.segment(), index, value); return this; }
+
+        /// {@return `pTag` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pTagAt(long index) { return VkFrameBoundaryEXT.get_pTag(this.segment(), index); }
+        /// Sets `pTag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pTagAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkFrameBoundaryEXT.set_pTag(this.segment(), index, value); return this; }
+
+    }
 }

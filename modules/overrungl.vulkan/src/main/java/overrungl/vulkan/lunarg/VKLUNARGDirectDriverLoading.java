@@ -22,7 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKLUNARGDirectDriverLoading {
+public final class VKLUNARGDirectDriverLoading {
     public static final int VK_DIRECT_DRIVER_LOADING_MODE_EXCLUSIVE_LUNARG = 0;
     public static final int VK_DIRECT_DRIVER_LOADING_MODE_INCLUSIVE_LUNARG = 1;
     public static final int VK_LUNARG_DIRECT_DRIVER_LOADING_SPEC_VERSION = 1;
@@ -30,7 +30,6 @@ public class VKLUNARGDirectDriverLoading {
     public static final int VK_STRUCTURE_TYPE_DIRECT_DRIVER_LOADING_INFO_LUNARG = 1000459000;
     public static final int VK_STRUCTURE_TYPE_DIRECT_DRIVER_LOADING_LIST_LUNARG = 1000459001;
 
-    public VKLUNARGDirectDriverLoading(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
-    }
+    private VKLUNARGDirectDriverLoading() { }
 
 }

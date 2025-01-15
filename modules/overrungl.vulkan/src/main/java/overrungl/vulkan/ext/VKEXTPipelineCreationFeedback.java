@@ -23,7 +23,7 @@ import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 import static overrungl.vulkan.VK13.*;
-public class VKEXTPipelineCreationFeedback {
+public final class VKEXTPipelineCreationFeedback {
     public static final int VK_EXT_PIPELINE_CREATION_FEEDBACK_SPEC_VERSION = 1;
     public static final String VK_EXT_PIPELINE_CREATION_FEEDBACK_EXTENSION_NAME = "VK_EXT_pipeline_creation_feedback";
     public static final int VK_STRUCTURE_TYPE_PIPELINE_CREATION_FEEDBACK_CREATE_INFO_EXT = VK_STRUCTURE_TYPE_PIPELINE_CREATION_FEEDBACK_CREATE_INFO;
@@ -31,7 +31,6 @@ public class VKEXTPipelineCreationFeedback {
     public static final int VK_PIPELINE_CREATION_FEEDBACK_APPLICATION_PIPELINE_CACHE_HIT_BIT_EXT = VK_PIPELINE_CREATION_FEEDBACK_APPLICATION_PIPELINE_CACHE_HIT_BIT;
     public static final int VK_PIPELINE_CREATION_FEEDBACK_BASE_PIPELINE_ACCELERATION_BIT_EXT = VK_PIPELINE_CREATION_FEEDBACK_BASE_PIPELINE_ACCELERATION_BIT;
 
-    public VKEXTPipelineCreationFeedback(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKEXTPipelineCreationFeedback() { }
 
 }

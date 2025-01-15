@@ -22,13 +22,12 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKEXTNonSeamlessCubeMap {
+public final class VKEXTNonSeamlessCubeMap {
     public static final int VK_EXT_NON_SEAMLESS_CUBE_MAP_SPEC_VERSION = 1;
     public static final String VK_EXT_NON_SEAMLESS_CUBE_MAP_EXTENSION_NAME = "VK_EXT_non_seamless_cube_map";
     public static final int VK_SAMPLER_CREATE_NON_SEAMLESS_CUBE_MAP_BIT_EXT = 0x00000004;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_NON_SEAMLESS_CUBE_MAP_FEATURES_EXT = 1000422000;
 
-    public VKEXTNonSeamlessCubeMap(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKEXTNonSeamlessCubeMap() { }
 
 }

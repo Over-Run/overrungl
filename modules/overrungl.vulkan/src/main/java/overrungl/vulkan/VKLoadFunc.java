@@ -26,7 +26,7 @@ import java.lang.foreign.MemorySegment;
 ///
 /// ## Example
 /// ```java
-/// VKLoadFunc func = GLFW::glfwGetInstanceProcAddress;
+/// VKLoadFunc func = GLFWVulkan::glfwGetInstanceProcAddress;
 /// pInstance = stack.allocate(ADDRESS);                           // VkInstance instance;
 /// vkCreateInstance(func, createInfo.segment(), NULL, pInstance); // vkCreateInstance(createInfo, NULL, &instance);
 /// instance = pInstance.get(ADDRESS, 0L);

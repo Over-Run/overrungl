@@ -22,7 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKEXTConservativeRasterization {
+public final class VKEXTConservativeRasterization {
     public static final int VK_CONSERVATIVE_RASTERIZATION_MODE_DISABLED_EXT = 0;
     public static final int VK_CONSERVATIVE_RASTERIZATION_MODE_OVERESTIMATE_EXT = 1;
     public static final int VK_CONSERVATIVE_RASTERIZATION_MODE_UNDERESTIMATE_EXT = 2;
@@ -31,7 +31,6 @@ public class VKEXTConservativeRasterization {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CONSERVATIVE_RASTERIZATION_PROPERTIES_EXT = 1000101000;
     public static final int VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_CONSERVATIVE_STATE_CREATE_INFO_EXT = 1000101001;
 
-    public VKEXTConservativeRasterization(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKEXTConservativeRasterization() { }
 
 }

@@ -23,12 +23,11 @@ import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 import static overrungl.vulkan.VK11.*;
-public class VKKHR16bitStorage {
+public final class VKKHR16bitStorage {
     public static final int VK_KHR_16BIT_STORAGE_SPEC_VERSION = 1;
     public static final String VK_KHR_16BIT_STORAGE_EXTENSION_NAME = "VK_KHR_16bit_storage";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_16BIT_STORAGE_FEATURES_KHR = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_16BIT_STORAGE_FEATURES;
 
-    public VKKHR16bitStorage(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKKHR16bitStorage() { }
 
 }

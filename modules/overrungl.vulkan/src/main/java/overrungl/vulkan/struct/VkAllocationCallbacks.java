@@ -49,7 +49,7 @@ import overrungl.util.*;
 ///     PFN_vkInternalFreeNotification pfnInternalFree;
 /// } VkAllocationCallbacks;
 /// ```
-public final class VkAllocationCallbacks extends Struct {
+public sealed class VkAllocationCallbacks extends Struct {
     /// The struct layout of `VkAllocationCallbacks`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.ADDRESS.withName("pUserData"),
@@ -82,6 +82,11 @@ public final class VkAllocationCallbacks extends Struct {
     public static VkAllocationCallbacks of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkAllocationCallbacks(segment); }
 
     /// Creates `VkAllocationCallbacks` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkAllocationCallbacks` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -94,7 +99,7 @@ public final class VkAllocationCallbacks extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkAllocationCallbacks ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkAllocationCallbacks(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkAllocationCallbacks` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -105,7 +110,21 @@ public final class VkAllocationCallbacks extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkAllocationCallbacks`
-    public static VkAllocationCallbacks alloc(SegmentAllocator allocator, long count) { return new VkAllocationCallbacks(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkAllocationCallbacks` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkAllocationCallbacks`
+    public static VkAllocationCallbacks allocInit(SegmentAllocator allocator, @CType("void *") java.lang.foreign.MemorySegment pUserData, @CType("PFN_vkAllocationFunction") java.lang.foreign.MemorySegment pfnAllocation, @CType("PFN_vkReallocationFunction") java.lang.foreign.MemorySegment pfnReallocation, @CType("PFN_vkFreeFunction") java.lang.foreign.MemorySegment pfnFree, @CType("PFN_vkInternalAllocationNotification") java.lang.foreign.MemorySegment pfnInternalAllocation, @CType("PFN_vkInternalFreeNotification") java.lang.foreign.MemorySegment pfnInternalFree) { return alloc(allocator).pUserData(pUserData).pfnAllocation(pfnAllocation).pfnReallocation(pfnReallocation).pfnFree(pfnFree).pfnInternalAllocation(pfnInternalAllocation).pfnInternalFree(pfnInternalFree); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkAllocationCallbacks copyFrom(VkAllocationCallbacks src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `pUserData` at the given index}
     /// @param segment the segment of the struct
@@ -114,9 +133,6 @@ public final class VkAllocationCallbacks extends Struct {
     /// {@return `pUserData`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pUserData(MemorySegment segment) { return VkAllocationCallbacks.get_pUserData(segment, 0L); }
-    /// {@return `pUserData` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pUserDataAt(long index) { return VkAllocationCallbacks.get_pUserData(this.segment(), index); }
     /// {@return `pUserData`}
     public @CType("void *") java.lang.foreign.MemorySegment pUserData() { return VkAllocationCallbacks.get_pUserData(this.segment()); }
     /// Sets `pUserData` with the given value at the given index.
@@ -128,11 +144,6 @@ public final class VkAllocationCallbacks extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pUserData(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkAllocationCallbacks.set_pUserData(segment, 0L, value); }
-    /// Sets `pUserData` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAllocationCallbacks pUserDataAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkAllocationCallbacks.set_pUserData(this.segment(), index, value); return this; }
     /// Sets `pUserData` with the given value.
     /// @param value the value
     /// @return `this`
@@ -145,9 +156,6 @@ public final class VkAllocationCallbacks extends Struct {
     /// {@return `pfnAllocation`}
     /// @param segment the segment of the struct
     public static @CType("PFN_vkAllocationFunction") java.lang.foreign.MemorySegment get_pfnAllocation(MemorySegment segment) { return VkAllocationCallbacks.get_pfnAllocation(segment, 0L); }
-    /// {@return `pfnAllocation` at the given index}
-    /// @param index the index
-    public @CType("PFN_vkAllocationFunction") java.lang.foreign.MemorySegment pfnAllocationAt(long index) { return VkAllocationCallbacks.get_pfnAllocation(this.segment(), index); }
     /// {@return `pfnAllocation`}
     public @CType("PFN_vkAllocationFunction") java.lang.foreign.MemorySegment pfnAllocation() { return VkAllocationCallbacks.get_pfnAllocation(this.segment()); }
     /// Sets `pfnAllocation` with the given value at the given index.
@@ -159,11 +167,6 @@ public final class VkAllocationCallbacks extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pfnAllocation(MemorySegment segment, @CType("PFN_vkAllocationFunction") java.lang.foreign.MemorySegment value) { VkAllocationCallbacks.set_pfnAllocation(segment, 0L, value); }
-    /// Sets `pfnAllocation` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAllocationCallbacks pfnAllocationAt(long index, @CType("PFN_vkAllocationFunction") java.lang.foreign.MemorySegment value) { VkAllocationCallbacks.set_pfnAllocation(this.segment(), index, value); return this; }
     /// Sets `pfnAllocation` with the given value.
     /// @param value the value
     /// @return `this`
@@ -176,9 +179,6 @@ public final class VkAllocationCallbacks extends Struct {
     /// {@return `pfnReallocation`}
     /// @param segment the segment of the struct
     public static @CType("PFN_vkReallocationFunction") java.lang.foreign.MemorySegment get_pfnReallocation(MemorySegment segment) { return VkAllocationCallbacks.get_pfnReallocation(segment, 0L); }
-    /// {@return `pfnReallocation` at the given index}
-    /// @param index the index
-    public @CType("PFN_vkReallocationFunction") java.lang.foreign.MemorySegment pfnReallocationAt(long index) { return VkAllocationCallbacks.get_pfnReallocation(this.segment(), index); }
     /// {@return `pfnReallocation`}
     public @CType("PFN_vkReallocationFunction") java.lang.foreign.MemorySegment pfnReallocation() { return VkAllocationCallbacks.get_pfnReallocation(this.segment()); }
     /// Sets `pfnReallocation` with the given value at the given index.
@@ -190,11 +190,6 @@ public final class VkAllocationCallbacks extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pfnReallocation(MemorySegment segment, @CType("PFN_vkReallocationFunction") java.lang.foreign.MemorySegment value) { VkAllocationCallbacks.set_pfnReallocation(segment, 0L, value); }
-    /// Sets `pfnReallocation` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAllocationCallbacks pfnReallocationAt(long index, @CType("PFN_vkReallocationFunction") java.lang.foreign.MemorySegment value) { VkAllocationCallbacks.set_pfnReallocation(this.segment(), index, value); return this; }
     /// Sets `pfnReallocation` with the given value.
     /// @param value the value
     /// @return `this`
@@ -207,9 +202,6 @@ public final class VkAllocationCallbacks extends Struct {
     /// {@return `pfnFree`}
     /// @param segment the segment of the struct
     public static @CType("PFN_vkFreeFunction") java.lang.foreign.MemorySegment get_pfnFree(MemorySegment segment) { return VkAllocationCallbacks.get_pfnFree(segment, 0L); }
-    /// {@return `pfnFree` at the given index}
-    /// @param index the index
-    public @CType("PFN_vkFreeFunction") java.lang.foreign.MemorySegment pfnFreeAt(long index) { return VkAllocationCallbacks.get_pfnFree(this.segment(), index); }
     /// {@return `pfnFree`}
     public @CType("PFN_vkFreeFunction") java.lang.foreign.MemorySegment pfnFree() { return VkAllocationCallbacks.get_pfnFree(this.segment()); }
     /// Sets `pfnFree` with the given value at the given index.
@@ -221,11 +213,6 @@ public final class VkAllocationCallbacks extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pfnFree(MemorySegment segment, @CType("PFN_vkFreeFunction") java.lang.foreign.MemorySegment value) { VkAllocationCallbacks.set_pfnFree(segment, 0L, value); }
-    /// Sets `pfnFree` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAllocationCallbacks pfnFreeAt(long index, @CType("PFN_vkFreeFunction") java.lang.foreign.MemorySegment value) { VkAllocationCallbacks.set_pfnFree(this.segment(), index, value); return this; }
     /// Sets `pfnFree` with the given value.
     /// @param value the value
     /// @return `this`
@@ -238,9 +225,6 @@ public final class VkAllocationCallbacks extends Struct {
     /// {@return `pfnInternalAllocation`}
     /// @param segment the segment of the struct
     public static @CType("PFN_vkInternalAllocationNotification") java.lang.foreign.MemorySegment get_pfnInternalAllocation(MemorySegment segment) { return VkAllocationCallbacks.get_pfnInternalAllocation(segment, 0L); }
-    /// {@return `pfnInternalAllocation` at the given index}
-    /// @param index the index
-    public @CType("PFN_vkInternalAllocationNotification") java.lang.foreign.MemorySegment pfnInternalAllocationAt(long index) { return VkAllocationCallbacks.get_pfnInternalAllocation(this.segment(), index); }
     /// {@return `pfnInternalAllocation`}
     public @CType("PFN_vkInternalAllocationNotification") java.lang.foreign.MemorySegment pfnInternalAllocation() { return VkAllocationCallbacks.get_pfnInternalAllocation(this.segment()); }
     /// Sets `pfnInternalAllocation` with the given value at the given index.
@@ -252,11 +236,6 @@ public final class VkAllocationCallbacks extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pfnInternalAllocation(MemorySegment segment, @CType("PFN_vkInternalAllocationNotification") java.lang.foreign.MemorySegment value) { VkAllocationCallbacks.set_pfnInternalAllocation(segment, 0L, value); }
-    /// Sets `pfnInternalAllocation` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAllocationCallbacks pfnInternalAllocationAt(long index, @CType("PFN_vkInternalAllocationNotification") java.lang.foreign.MemorySegment value) { VkAllocationCallbacks.set_pfnInternalAllocation(this.segment(), index, value); return this; }
     /// Sets `pfnInternalAllocation` with the given value.
     /// @param value the value
     /// @return `this`
@@ -269,9 +248,6 @@ public final class VkAllocationCallbacks extends Struct {
     /// {@return `pfnInternalFree`}
     /// @param segment the segment of the struct
     public static @CType("PFN_vkInternalFreeNotification") java.lang.foreign.MemorySegment get_pfnInternalFree(MemorySegment segment) { return VkAllocationCallbacks.get_pfnInternalFree(segment, 0L); }
-    /// {@return `pfnInternalFree` at the given index}
-    /// @param index the index
-    public @CType("PFN_vkInternalFreeNotification") java.lang.foreign.MemorySegment pfnInternalFreeAt(long index) { return VkAllocationCallbacks.get_pfnInternalFree(this.segment(), index); }
     /// {@return `pfnInternalFree`}
     public @CType("PFN_vkInternalFreeNotification") java.lang.foreign.MemorySegment pfnInternalFree() { return VkAllocationCallbacks.get_pfnInternalFree(this.segment()); }
     /// Sets `pfnInternalFree` with the given value at the given index.
@@ -283,14 +259,86 @@ public final class VkAllocationCallbacks extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pfnInternalFree(MemorySegment segment, @CType("PFN_vkInternalFreeNotification") java.lang.foreign.MemorySegment value) { VkAllocationCallbacks.set_pfnInternalFree(segment, 0L, value); }
-    /// Sets `pfnInternalFree` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAllocationCallbacks pfnInternalFreeAt(long index, @CType("PFN_vkInternalFreeNotification") java.lang.foreign.MemorySegment value) { VkAllocationCallbacks.set_pfnInternalFree(this.segment(), index, value); return this; }
     /// Sets `pfnInternalFree` with the given value.
     /// @param value the value
     /// @return `this`
     public VkAllocationCallbacks pfnInternalFree(@CType("PFN_vkInternalFreeNotification") java.lang.foreign.MemorySegment value) { VkAllocationCallbacks.set_pfnInternalFree(this.segment(), value); return this; }
 
+    /// A buffer of [VkAllocationCallbacks].
+    public static final class Buffer extends VkAllocationCallbacks {
+        private final long elementCount;
+
+        /// Creates `VkAllocationCallbacks.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkAllocationCallbacks`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkAllocationCallbacks`
+        public VkAllocationCallbacks asSlice(long index) { return new VkAllocationCallbacks(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkAllocationCallbacks`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkAllocationCallbacks`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `pUserData` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pUserDataAt(long index) { return VkAllocationCallbacks.get_pUserData(this.segment(), index); }
+        /// Sets `pUserData` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pUserDataAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkAllocationCallbacks.set_pUserData(this.segment(), index, value); return this; }
+
+        /// {@return `pfnAllocation` at the given index}
+        /// @param index the index
+        public @CType("PFN_vkAllocationFunction") java.lang.foreign.MemorySegment pfnAllocationAt(long index) { return VkAllocationCallbacks.get_pfnAllocation(this.segment(), index); }
+        /// Sets `pfnAllocation` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pfnAllocationAt(long index, @CType("PFN_vkAllocationFunction") java.lang.foreign.MemorySegment value) { VkAllocationCallbacks.set_pfnAllocation(this.segment(), index, value); return this; }
+
+        /// {@return `pfnReallocation` at the given index}
+        /// @param index the index
+        public @CType("PFN_vkReallocationFunction") java.lang.foreign.MemorySegment pfnReallocationAt(long index) { return VkAllocationCallbacks.get_pfnReallocation(this.segment(), index); }
+        /// Sets `pfnReallocation` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pfnReallocationAt(long index, @CType("PFN_vkReallocationFunction") java.lang.foreign.MemorySegment value) { VkAllocationCallbacks.set_pfnReallocation(this.segment(), index, value); return this; }
+
+        /// {@return `pfnFree` at the given index}
+        /// @param index the index
+        public @CType("PFN_vkFreeFunction") java.lang.foreign.MemorySegment pfnFreeAt(long index) { return VkAllocationCallbacks.get_pfnFree(this.segment(), index); }
+        /// Sets `pfnFree` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pfnFreeAt(long index, @CType("PFN_vkFreeFunction") java.lang.foreign.MemorySegment value) { VkAllocationCallbacks.set_pfnFree(this.segment(), index, value); return this; }
+
+        /// {@return `pfnInternalAllocation` at the given index}
+        /// @param index the index
+        public @CType("PFN_vkInternalAllocationNotification") java.lang.foreign.MemorySegment pfnInternalAllocationAt(long index) { return VkAllocationCallbacks.get_pfnInternalAllocation(this.segment(), index); }
+        /// Sets `pfnInternalAllocation` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pfnInternalAllocationAt(long index, @CType("PFN_vkInternalAllocationNotification") java.lang.foreign.MemorySegment value) { VkAllocationCallbacks.set_pfnInternalAllocation(this.segment(), index, value); return this; }
+
+        /// {@return `pfnInternalFree` at the given index}
+        /// @param index the index
+        public @CType("PFN_vkInternalFreeNotification") java.lang.foreign.MemorySegment pfnInternalFreeAt(long index) { return VkAllocationCallbacks.get_pfnInternalFree(this.segment(), index); }
+        /// Sets `pfnInternalFree` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pfnInternalFreeAt(long index, @CType("PFN_vkInternalFreeNotification") java.lang.foreign.MemorySegment value) { VkAllocationCallbacks.set_pfnInternalFree(this.segment(), index, value); return this; }
+
+    }
 }

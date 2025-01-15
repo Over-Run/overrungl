@@ -58,7 +58,7 @@ import overrungl.util.*;
 ///     VkBool32 alphaToOneEnable;
 /// } VkPipelineMultisampleStateCreateInfo;
 /// ```
-public final class VkPipelineMultisampleStateCreateInfo extends Struct {
+public sealed class VkPipelineMultisampleStateCreateInfo extends Struct {
     /// The struct layout of `VkPipelineMultisampleStateCreateInfo`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -100,6 +100,11 @@ public final class VkPipelineMultisampleStateCreateInfo extends Struct {
     public static VkPipelineMultisampleStateCreateInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineMultisampleStateCreateInfo(segment); }
 
     /// Creates `VkPipelineMultisampleStateCreateInfo` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPipelineMultisampleStateCreateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -112,7 +117,7 @@ public final class VkPipelineMultisampleStateCreateInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineMultisampleStateCreateInfo ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineMultisampleStateCreateInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPipelineMultisampleStateCreateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -123,7 +128,21 @@ public final class VkPipelineMultisampleStateCreateInfo extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPipelineMultisampleStateCreateInfo`
-    public static VkPipelineMultisampleStateCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkPipelineMultisampleStateCreateInfo(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkPipelineMultisampleStateCreateInfo` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPipelineMultisampleStateCreateInfo`
+    public static VkPipelineMultisampleStateCreateInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkPipelineMultisampleStateCreateFlags") int flags, @CType("VkSampleCountFlagBits") int rasterizationSamples, @CType("VkBool32") int sampleShadingEnable, @CType("float") float minSampleShading, @CType("const VkSampleMask *") java.lang.foreign.MemorySegment pSampleMask, @CType("VkBool32") int alphaToCoverageEnable, @CType("VkBool32") int alphaToOneEnable) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).rasterizationSamples(rasterizationSamples).sampleShadingEnable(sampleShadingEnable).minSampleShading(minSampleShading).pSampleMask(pSampleMask).alphaToCoverageEnable(alphaToCoverageEnable).alphaToOneEnable(alphaToOneEnable); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPipelineMultisampleStateCreateInfo copyFrom(VkPipelineMultisampleStateCreateInfo src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -132,9 +151,6 @@ public final class VkPipelineMultisampleStateCreateInfo extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPipelineMultisampleStateCreateInfo.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPipelineMultisampleStateCreateInfo.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPipelineMultisampleStateCreateInfo.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -146,11 +162,6 @@ public final class VkPipelineMultisampleStateCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPipelineMultisampleStateCreateInfo.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineMultisampleStateCreateInfo sTypeAt(long index, @CType("VkStructureType") int value) { VkPipelineMultisampleStateCreateInfo.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -163,9 +174,6 @@ public final class VkPipelineMultisampleStateCreateInfo extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPipelineMultisampleStateCreateInfo.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPipelineMultisampleStateCreateInfo.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkPipelineMultisampleStateCreateInfo.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -177,11 +185,6 @@ public final class VkPipelineMultisampleStateCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineMultisampleStateCreateInfo.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineMultisampleStateCreateInfo pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineMultisampleStateCreateInfo.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -194,9 +197,6 @@ public final class VkPipelineMultisampleStateCreateInfo extends Struct {
     /// {@return `flags`}
     /// @param segment the segment of the struct
     public static @CType("VkPipelineMultisampleStateCreateFlags") int get_flags(MemorySegment segment) { return VkPipelineMultisampleStateCreateInfo.get_flags(segment, 0L); }
-    /// {@return `flags` at the given index}
-    /// @param index the index
-    public @CType("VkPipelineMultisampleStateCreateFlags") int flagsAt(long index) { return VkPipelineMultisampleStateCreateInfo.get_flags(this.segment(), index); }
     /// {@return `flags`}
     public @CType("VkPipelineMultisampleStateCreateFlags") int flags() { return VkPipelineMultisampleStateCreateInfo.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
@@ -208,11 +208,6 @@ public final class VkPipelineMultisampleStateCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_flags(MemorySegment segment, @CType("VkPipelineMultisampleStateCreateFlags") int value) { VkPipelineMultisampleStateCreateInfo.set_flags(segment, 0L, value); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineMultisampleStateCreateInfo flagsAt(long index, @CType("VkPipelineMultisampleStateCreateFlags") int value) { VkPipelineMultisampleStateCreateInfo.set_flags(this.segment(), index, value); return this; }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -225,9 +220,6 @@ public final class VkPipelineMultisampleStateCreateInfo extends Struct {
     /// {@return `rasterizationSamples`}
     /// @param segment the segment of the struct
     public static @CType("VkSampleCountFlagBits") int get_rasterizationSamples(MemorySegment segment) { return VkPipelineMultisampleStateCreateInfo.get_rasterizationSamples(segment, 0L); }
-    /// {@return `rasterizationSamples` at the given index}
-    /// @param index the index
-    public @CType("VkSampleCountFlagBits") int rasterizationSamplesAt(long index) { return VkPipelineMultisampleStateCreateInfo.get_rasterizationSamples(this.segment(), index); }
     /// {@return `rasterizationSamples`}
     public @CType("VkSampleCountFlagBits") int rasterizationSamples() { return VkPipelineMultisampleStateCreateInfo.get_rasterizationSamples(this.segment()); }
     /// Sets `rasterizationSamples` with the given value at the given index.
@@ -239,11 +231,6 @@ public final class VkPipelineMultisampleStateCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_rasterizationSamples(MemorySegment segment, @CType("VkSampleCountFlagBits") int value) { VkPipelineMultisampleStateCreateInfo.set_rasterizationSamples(segment, 0L, value); }
-    /// Sets `rasterizationSamples` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineMultisampleStateCreateInfo rasterizationSamplesAt(long index, @CType("VkSampleCountFlagBits") int value) { VkPipelineMultisampleStateCreateInfo.set_rasterizationSamples(this.segment(), index, value); return this; }
     /// Sets `rasterizationSamples` with the given value.
     /// @param value the value
     /// @return `this`
@@ -256,9 +243,6 @@ public final class VkPipelineMultisampleStateCreateInfo extends Struct {
     /// {@return `sampleShadingEnable`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_sampleShadingEnable(MemorySegment segment) { return VkPipelineMultisampleStateCreateInfo.get_sampleShadingEnable(segment, 0L); }
-    /// {@return `sampleShadingEnable` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int sampleShadingEnableAt(long index) { return VkPipelineMultisampleStateCreateInfo.get_sampleShadingEnable(this.segment(), index); }
     /// {@return `sampleShadingEnable`}
     public @CType("VkBool32") int sampleShadingEnable() { return VkPipelineMultisampleStateCreateInfo.get_sampleShadingEnable(this.segment()); }
     /// Sets `sampleShadingEnable` with the given value at the given index.
@@ -270,11 +254,6 @@ public final class VkPipelineMultisampleStateCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sampleShadingEnable(MemorySegment segment, @CType("VkBool32") int value) { VkPipelineMultisampleStateCreateInfo.set_sampleShadingEnable(segment, 0L, value); }
-    /// Sets `sampleShadingEnable` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineMultisampleStateCreateInfo sampleShadingEnableAt(long index, @CType("VkBool32") int value) { VkPipelineMultisampleStateCreateInfo.set_sampleShadingEnable(this.segment(), index, value); return this; }
     /// Sets `sampleShadingEnable` with the given value.
     /// @param value the value
     /// @return `this`
@@ -287,9 +266,6 @@ public final class VkPipelineMultisampleStateCreateInfo extends Struct {
     /// {@return `minSampleShading`}
     /// @param segment the segment of the struct
     public static @CType("float") float get_minSampleShading(MemorySegment segment) { return VkPipelineMultisampleStateCreateInfo.get_minSampleShading(segment, 0L); }
-    /// {@return `minSampleShading` at the given index}
-    /// @param index the index
-    public @CType("float") float minSampleShadingAt(long index) { return VkPipelineMultisampleStateCreateInfo.get_minSampleShading(this.segment(), index); }
     /// {@return `minSampleShading`}
     public @CType("float") float minSampleShading() { return VkPipelineMultisampleStateCreateInfo.get_minSampleShading(this.segment()); }
     /// Sets `minSampleShading` with the given value at the given index.
@@ -301,11 +277,6 @@ public final class VkPipelineMultisampleStateCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_minSampleShading(MemorySegment segment, @CType("float") float value) { VkPipelineMultisampleStateCreateInfo.set_minSampleShading(segment, 0L, value); }
-    /// Sets `minSampleShading` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineMultisampleStateCreateInfo minSampleShadingAt(long index, @CType("float") float value) { VkPipelineMultisampleStateCreateInfo.set_minSampleShading(this.segment(), index, value); return this; }
     /// Sets `minSampleShading` with the given value.
     /// @param value the value
     /// @return `this`
@@ -318,9 +289,6 @@ public final class VkPipelineMultisampleStateCreateInfo extends Struct {
     /// {@return `pSampleMask`}
     /// @param segment the segment of the struct
     public static @CType("const VkSampleMask *") java.lang.foreign.MemorySegment get_pSampleMask(MemorySegment segment) { return VkPipelineMultisampleStateCreateInfo.get_pSampleMask(segment, 0L); }
-    /// {@return `pSampleMask` at the given index}
-    /// @param index the index
-    public @CType("const VkSampleMask *") java.lang.foreign.MemorySegment pSampleMaskAt(long index) { return VkPipelineMultisampleStateCreateInfo.get_pSampleMask(this.segment(), index); }
     /// {@return `pSampleMask`}
     public @CType("const VkSampleMask *") java.lang.foreign.MemorySegment pSampleMask() { return VkPipelineMultisampleStateCreateInfo.get_pSampleMask(this.segment()); }
     /// Sets `pSampleMask` with the given value at the given index.
@@ -332,11 +300,6 @@ public final class VkPipelineMultisampleStateCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pSampleMask(MemorySegment segment, @CType("const VkSampleMask *") java.lang.foreign.MemorySegment value) { VkPipelineMultisampleStateCreateInfo.set_pSampleMask(segment, 0L, value); }
-    /// Sets `pSampleMask` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineMultisampleStateCreateInfo pSampleMaskAt(long index, @CType("const VkSampleMask *") java.lang.foreign.MemorySegment value) { VkPipelineMultisampleStateCreateInfo.set_pSampleMask(this.segment(), index, value); return this; }
     /// Sets `pSampleMask` with the given value.
     /// @param value the value
     /// @return `this`
@@ -349,9 +312,6 @@ public final class VkPipelineMultisampleStateCreateInfo extends Struct {
     /// {@return `alphaToCoverageEnable`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_alphaToCoverageEnable(MemorySegment segment) { return VkPipelineMultisampleStateCreateInfo.get_alphaToCoverageEnable(segment, 0L); }
-    /// {@return `alphaToCoverageEnable` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int alphaToCoverageEnableAt(long index) { return VkPipelineMultisampleStateCreateInfo.get_alphaToCoverageEnable(this.segment(), index); }
     /// {@return `alphaToCoverageEnable`}
     public @CType("VkBool32") int alphaToCoverageEnable() { return VkPipelineMultisampleStateCreateInfo.get_alphaToCoverageEnable(this.segment()); }
     /// Sets `alphaToCoverageEnable` with the given value at the given index.
@@ -363,11 +323,6 @@ public final class VkPipelineMultisampleStateCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_alphaToCoverageEnable(MemorySegment segment, @CType("VkBool32") int value) { VkPipelineMultisampleStateCreateInfo.set_alphaToCoverageEnable(segment, 0L, value); }
-    /// Sets `alphaToCoverageEnable` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineMultisampleStateCreateInfo alphaToCoverageEnableAt(long index, @CType("VkBool32") int value) { VkPipelineMultisampleStateCreateInfo.set_alphaToCoverageEnable(this.segment(), index, value); return this; }
     /// Sets `alphaToCoverageEnable` with the given value.
     /// @param value the value
     /// @return `this`
@@ -380,9 +335,6 @@ public final class VkPipelineMultisampleStateCreateInfo extends Struct {
     /// {@return `alphaToOneEnable`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_alphaToOneEnable(MemorySegment segment) { return VkPipelineMultisampleStateCreateInfo.get_alphaToOneEnable(segment, 0L); }
-    /// {@return `alphaToOneEnable` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int alphaToOneEnableAt(long index) { return VkPipelineMultisampleStateCreateInfo.get_alphaToOneEnable(this.segment(), index); }
     /// {@return `alphaToOneEnable`}
     public @CType("VkBool32") int alphaToOneEnable() { return VkPipelineMultisampleStateCreateInfo.get_alphaToOneEnable(this.segment()); }
     /// Sets `alphaToOneEnable` with the given value at the given index.
@@ -394,14 +346,113 @@ public final class VkPipelineMultisampleStateCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_alphaToOneEnable(MemorySegment segment, @CType("VkBool32") int value) { VkPipelineMultisampleStateCreateInfo.set_alphaToOneEnable(segment, 0L, value); }
-    /// Sets `alphaToOneEnable` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineMultisampleStateCreateInfo alphaToOneEnableAt(long index, @CType("VkBool32") int value) { VkPipelineMultisampleStateCreateInfo.set_alphaToOneEnable(this.segment(), index, value); return this; }
     /// Sets `alphaToOneEnable` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPipelineMultisampleStateCreateInfo alphaToOneEnable(@CType("VkBool32") int value) { VkPipelineMultisampleStateCreateInfo.set_alphaToOneEnable(this.segment(), value); return this; }
 
+    /// A buffer of [VkPipelineMultisampleStateCreateInfo].
+    public static final class Buffer extends VkPipelineMultisampleStateCreateInfo {
+        private final long elementCount;
+
+        /// Creates `VkPipelineMultisampleStateCreateInfo.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPipelineMultisampleStateCreateInfo`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPipelineMultisampleStateCreateInfo`
+        public VkPipelineMultisampleStateCreateInfo asSlice(long index) { return new VkPipelineMultisampleStateCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPipelineMultisampleStateCreateInfo`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPipelineMultisampleStateCreateInfo`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPipelineMultisampleStateCreateInfo.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPipelineMultisampleStateCreateInfo.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPipelineMultisampleStateCreateInfo.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineMultisampleStateCreateInfo.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `flags` at the given index}
+        /// @param index the index
+        public @CType("VkPipelineMultisampleStateCreateFlags") int flagsAt(long index) { return VkPipelineMultisampleStateCreateInfo.get_flags(this.segment(), index); }
+        /// Sets `flags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer flagsAt(long index, @CType("VkPipelineMultisampleStateCreateFlags") int value) { VkPipelineMultisampleStateCreateInfo.set_flags(this.segment(), index, value); return this; }
+
+        /// {@return `rasterizationSamples` at the given index}
+        /// @param index the index
+        public @CType("VkSampleCountFlagBits") int rasterizationSamplesAt(long index) { return VkPipelineMultisampleStateCreateInfo.get_rasterizationSamples(this.segment(), index); }
+        /// Sets `rasterizationSamples` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer rasterizationSamplesAt(long index, @CType("VkSampleCountFlagBits") int value) { VkPipelineMultisampleStateCreateInfo.set_rasterizationSamples(this.segment(), index, value); return this; }
+
+        /// {@return `sampleShadingEnable` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int sampleShadingEnableAt(long index) { return VkPipelineMultisampleStateCreateInfo.get_sampleShadingEnable(this.segment(), index); }
+        /// Sets `sampleShadingEnable` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sampleShadingEnableAt(long index, @CType("VkBool32") int value) { VkPipelineMultisampleStateCreateInfo.set_sampleShadingEnable(this.segment(), index, value); return this; }
+
+        /// {@return `minSampleShading` at the given index}
+        /// @param index the index
+        public @CType("float") float minSampleShadingAt(long index) { return VkPipelineMultisampleStateCreateInfo.get_minSampleShading(this.segment(), index); }
+        /// Sets `minSampleShading` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer minSampleShadingAt(long index, @CType("float") float value) { VkPipelineMultisampleStateCreateInfo.set_minSampleShading(this.segment(), index, value); return this; }
+
+        /// {@return `pSampleMask` at the given index}
+        /// @param index the index
+        public @CType("const VkSampleMask *") java.lang.foreign.MemorySegment pSampleMaskAt(long index) { return VkPipelineMultisampleStateCreateInfo.get_pSampleMask(this.segment(), index); }
+        /// Sets `pSampleMask` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pSampleMaskAt(long index, @CType("const VkSampleMask *") java.lang.foreign.MemorySegment value) { VkPipelineMultisampleStateCreateInfo.set_pSampleMask(this.segment(), index, value); return this; }
+
+        /// {@return `alphaToCoverageEnable` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int alphaToCoverageEnableAt(long index) { return VkPipelineMultisampleStateCreateInfo.get_alphaToCoverageEnable(this.segment(), index); }
+        /// Sets `alphaToCoverageEnable` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer alphaToCoverageEnableAt(long index, @CType("VkBool32") int value) { VkPipelineMultisampleStateCreateInfo.set_alphaToCoverageEnable(this.segment(), index, value); return this; }
+
+        /// {@return `alphaToOneEnable` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int alphaToOneEnableAt(long index) { return VkPipelineMultisampleStateCreateInfo.get_alphaToOneEnable(this.segment(), index); }
+        /// Sets `alphaToOneEnable` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer alphaToOneEnableAt(long index, @CType("VkBool32") int value) { VkPipelineMultisampleStateCreateInfo.set_alphaToOneEnable(this.segment(), index, value); return this; }
+
+    }
 }

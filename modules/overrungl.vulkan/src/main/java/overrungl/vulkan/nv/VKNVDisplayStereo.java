@@ -22,7 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKNVDisplayStereo {
+public final class VKNVDisplayStereo {
     public static final int VK_DISPLAY_SURFACE_STEREO_TYPE_NONE_NV = 0;
     public static final int VK_DISPLAY_SURFACE_STEREO_TYPE_ONBOARD_DIN_NV = 1;
     public static final int VK_DISPLAY_SURFACE_STEREO_TYPE_HDMI_3D_NV = 2;
@@ -32,7 +32,6 @@ public class VKNVDisplayStereo {
     public static final int VK_STRUCTURE_TYPE_DISPLAY_SURFACE_STEREO_CREATE_INFO_NV = 1000551000;
     public static final int VK_STRUCTURE_TYPE_DISPLAY_MODE_STEREO_PROPERTIES_NV = 1000551001;
 
-    public VKNVDisplayStereo(@CType("VkInstance") MemorySegment instance, VKLoadFunc func) {
-    }
+    private VKNVDisplayStereo() { }
 
 }

@@ -49,7 +49,7 @@ import overrungl.util.*;
 ///     VkBool32 sciSyncExport;
 /// } VkPhysicalDeviceExternalSciSync2FeaturesNV;
 /// ```
-public final class VkPhysicalDeviceExternalSciSync2FeaturesNV extends Struct {
+public sealed class VkPhysicalDeviceExternalSciSync2FeaturesNV extends Struct {
     /// The struct layout of `VkPhysicalDeviceExternalSciSync2FeaturesNV`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -82,6 +82,11 @@ public final class VkPhysicalDeviceExternalSciSync2FeaturesNV extends Struct {
     public static VkPhysicalDeviceExternalSciSync2FeaturesNV of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceExternalSciSync2FeaturesNV(segment); }
 
     /// Creates `VkPhysicalDeviceExternalSciSync2FeaturesNV` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPhysicalDeviceExternalSciSync2FeaturesNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -94,7 +99,7 @@ public final class VkPhysicalDeviceExternalSciSync2FeaturesNV extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceExternalSciSync2FeaturesNV ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceExternalSciSync2FeaturesNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceExternalSciSync2FeaturesNV` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -105,7 +110,21 @@ public final class VkPhysicalDeviceExternalSciSync2FeaturesNV extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceExternalSciSync2FeaturesNV`
-    public static VkPhysicalDeviceExternalSciSync2FeaturesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceExternalSciSync2FeaturesNV(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkPhysicalDeviceExternalSciSync2FeaturesNV` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDeviceExternalSciSync2FeaturesNV`
+    public static VkPhysicalDeviceExternalSciSync2FeaturesNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int sciSyncFence, @CType("VkBool32") int sciSyncSemaphore2, @CType("VkBool32") int sciSyncImport, @CType("VkBool32") int sciSyncExport) { return alloc(allocator).sType(sType).pNext(pNext).sciSyncFence(sciSyncFence).sciSyncSemaphore2(sciSyncSemaphore2).sciSyncImport(sciSyncImport).sciSyncExport(sciSyncExport); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDeviceExternalSciSync2FeaturesNV copyFrom(VkPhysicalDeviceExternalSciSync2FeaturesNV src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -114,9 +133,6 @@ public final class VkPhysicalDeviceExternalSciSync2FeaturesNV extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceExternalSciSync2FeaturesNV.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceExternalSciSync2FeaturesNV.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPhysicalDeviceExternalSciSync2FeaturesNV.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -128,11 +144,6 @@ public final class VkPhysicalDeviceExternalSciSync2FeaturesNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceExternalSciSync2FeaturesNV.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExternalSciSync2FeaturesNV sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceExternalSciSync2FeaturesNV.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -145,9 +156,6 @@ public final class VkPhysicalDeviceExternalSciSync2FeaturesNV extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceExternalSciSync2FeaturesNV.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceExternalSciSync2FeaturesNV.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceExternalSciSync2FeaturesNV.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -159,11 +167,6 @@ public final class VkPhysicalDeviceExternalSciSync2FeaturesNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceExternalSciSync2FeaturesNV.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExternalSciSync2FeaturesNV pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceExternalSciSync2FeaturesNV.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -176,9 +179,6 @@ public final class VkPhysicalDeviceExternalSciSync2FeaturesNV extends Struct {
     /// {@return `sciSyncFence`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_sciSyncFence(MemorySegment segment) { return VkPhysicalDeviceExternalSciSync2FeaturesNV.get_sciSyncFence(segment, 0L); }
-    /// {@return `sciSyncFence` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int sciSyncFenceAt(long index) { return VkPhysicalDeviceExternalSciSync2FeaturesNV.get_sciSyncFence(this.segment(), index); }
     /// {@return `sciSyncFence`}
     public @CType("VkBool32") int sciSyncFence() { return VkPhysicalDeviceExternalSciSync2FeaturesNV.get_sciSyncFence(this.segment()); }
     /// Sets `sciSyncFence` with the given value at the given index.
@@ -190,11 +190,6 @@ public final class VkPhysicalDeviceExternalSciSync2FeaturesNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sciSyncFence(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceExternalSciSync2FeaturesNV.set_sciSyncFence(segment, 0L, value); }
-    /// Sets `sciSyncFence` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExternalSciSync2FeaturesNV sciSyncFenceAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExternalSciSync2FeaturesNV.set_sciSyncFence(this.segment(), index, value); return this; }
     /// Sets `sciSyncFence` with the given value.
     /// @param value the value
     /// @return `this`
@@ -207,9 +202,6 @@ public final class VkPhysicalDeviceExternalSciSync2FeaturesNV extends Struct {
     /// {@return `sciSyncSemaphore2`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_sciSyncSemaphore2(MemorySegment segment) { return VkPhysicalDeviceExternalSciSync2FeaturesNV.get_sciSyncSemaphore2(segment, 0L); }
-    /// {@return `sciSyncSemaphore2` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int sciSyncSemaphore2At(long index) { return VkPhysicalDeviceExternalSciSync2FeaturesNV.get_sciSyncSemaphore2(this.segment(), index); }
     /// {@return `sciSyncSemaphore2`}
     public @CType("VkBool32") int sciSyncSemaphore2() { return VkPhysicalDeviceExternalSciSync2FeaturesNV.get_sciSyncSemaphore2(this.segment()); }
     /// Sets `sciSyncSemaphore2` with the given value at the given index.
@@ -221,11 +213,6 @@ public final class VkPhysicalDeviceExternalSciSync2FeaturesNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sciSyncSemaphore2(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceExternalSciSync2FeaturesNV.set_sciSyncSemaphore2(segment, 0L, value); }
-    /// Sets `sciSyncSemaphore2` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExternalSciSync2FeaturesNV sciSyncSemaphore2At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExternalSciSync2FeaturesNV.set_sciSyncSemaphore2(this.segment(), index, value); return this; }
     /// Sets `sciSyncSemaphore2` with the given value.
     /// @param value the value
     /// @return `this`
@@ -238,9 +225,6 @@ public final class VkPhysicalDeviceExternalSciSync2FeaturesNV extends Struct {
     /// {@return `sciSyncImport`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_sciSyncImport(MemorySegment segment) { return VkPhysicalDeviceExternalSciSync2FeaturesNV.get_sciSyncImport(segment, 0L); }
-    /// {@return `sciSyncImport` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int sciSyncImportAt(long index) { return VkPhysicalDeviceExternalSciSync2FeaturesNV.get_sciSyncImport(this.segment(), index); }
     /// {@return `sciSyncImport`}
     public @CType("VkBool32") int sciSyncImport() { return VkPhysicalDeviceExternalSciSync2FeaturesNV.get_sciSyncImport(this.segment()); }
     /// Sets `sciSyncImport` with the given value at the given index.
@@ -252,11 +236,6 @@ public final class VkPhysicalDeviceExternalSciSync2FeaturesNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sciSyncImport(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceExternalSciSync2FeaturesNV.set_sciSyncImport(segment, 0L, value); }
-    /// Sets `sciSyncImport` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExternalSciSync2FeaturesNV sciSyncImportAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExternalSciSync2FeaturesNV.set_sciSyncImport(this.segment(), index, value); return this; }
     /// Sets `sciSyncImport` with the given value.
     /// @param value the value
     /// @return `this`
@@ -269,9 +248,6 @@ public final class VkPhysicalDeviceExternalSciSync2FeaturesNV extends Struct {
     /// {@return `sciSyncExport`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_sciSyncExport(MemorySegment segment) { return VkPhysicalDeviceExternalSciSync2FeaturesNV.get_sciSyncExport(segment, 0L); }
-    /// {@return `sciSyncExport` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int sciSyncExportAt(long index) { return VkPhysicalDeviceExternalSciSync2FeaturesNV.get_sciSyncExport(this.segment(), index); }
     /// {@return `sciSyncExport`}
     public @CType("VkBool32") int sciSyncExport() { return VkPhysicalDeviceExternalSciSync2FeaturesNV.get_sciSyncExport(this.segment()); }
     /// Sets `sciSyncExport` with the given value at the given index.
@@ -283,14 +259,86 @@ public final class VkPhysicalDeviceExternalSciSync2FeaturesNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sciSyncExport(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceExternalSciSync2FeaturesNV.set_sciSyncExport(segment, 0L, value); }
-    /// Sets `sciSyncExport` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExternalSciSync2FeaturesNV sciSyncExportAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExternalSciSync2FeaturesNV.set_sciSyncExport(this.segment(), index, value); return this; }
     /// Sets `sciSyncExport` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceExternalSciSync2FeaturesNV sciSyncExport(@CType("VkBool32") int value) { VkPhysicalDeviceExternalSciSync2FeaturesNV.set_sciSyncExport(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDeviceExternalSciSync2FeaturesNV].
+    public static final class Buffer extends VkPhysicalDeviceExternalSciSync2FeaturesNV {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDeviceExternalSciSync2FeaturesNV.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDeviceExternalSciSync2FeaturesNV`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDeviceExternalSciSync2FeaturesNV`
+        public VkPhysicalDeviceExternalSciSync2FeaturesNV asSlice(long index) { return new VkPhysicalDeviceExternalSciSync2FeaturesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDeviceExternalSciSync2FeaturesNV`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDeviceExternalSciSync2FeaturesNV`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceExternalSciSync2FeaturesNV.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceExternalSciSync2FeaturesNV.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceExternalSciSync2FeaturesNV.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceExternalSciSync2FeaturesNV.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `sciSyncFence` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int sciSyncFenceAt(long index) { return VkPhysicalDeviceExternalSciSync2FeaturesNV.get_sciSyncFence(this.segment(), index); }
+        /// Sets `sciSyncFence` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sciSyncFenceAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExternalSciSync2FeaturesNV.set_sciSyncFence(this.segment(), index, value); return this; }
+
+        /// {@return `sciSyncSemaphore2` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int sciSyncSemaphore2At(long index) { return VkPhysicalDeviceExternalSciSync2FeaturesNV.get_sciSyncSemaphore2(this.segment(), index); }
+        /// Sets `sciSyncSemaphore2` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sciSyncSemaphore2At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExternalSciSync2FeaturesNV.set_sciSyncSemaphore2(this.segment(), index, value); return this; }
+
+        /// {@return `sciSyncImport` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int sciSyncImportAt(long index) { return VkPhysicalDeviceExternalSciSync2FeaturesNV.get_sciSyncImport(this.segment(), index); }
+        /// Sets `sciSyncImport` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sciSyncImportAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExternalSciSync2FeaturesNV.set_sciSyncImport(this.segment(), index, value); return this; }
+
+        /// {@return `sciSyncExport` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int sciSyncExportAt(long index) { return VkPhysicalDeviceExternalSciSync2FeaturesNV.get_sciSyncExport(this.segment(), index); }
+        /// Sets `sciSyncExport` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sciSyncExportAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExternalSciSync2FeaturesNV.set_sciSyncExport(this.segment(), index, value); return this; }
+
+    }
 }

@@ -22,7 +22,7 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-public class VKARMRenderPassStriped {
+public final class VKARMRenderPassStriped {
     public static final int VK_ARM_RENDER_PASS_STRIPED_SPEC_VERSION = 1;
     public static final String VK_ARM_RENDER_PASS_STRIPED_EXTENSION_NAME = "VK_ARM_render_pass_striped";
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RENDER_PASS_STRIPED_FEATURES_ARM = 1000424000;
@@ -31,7 +31,6 @@ public class VKARMRenderPassStriped {
     public static final int VK_STRUCTURE_TYPE_RENDER_PASS_STRIPE_INFO_ARM = 1000424003;
     public static final int VK_STRUCTURE_TYPE_RENDER_PASS_STRIPE_SUBMIT_INFO_ARM = 1000424004;
 
-    public VKARMRenderPassStriped(@CType("VkDevice") MemorySegment device, VKLoadFunc func) {
-    }
+    private VKARMRenderPassStriped() { }
 
 }

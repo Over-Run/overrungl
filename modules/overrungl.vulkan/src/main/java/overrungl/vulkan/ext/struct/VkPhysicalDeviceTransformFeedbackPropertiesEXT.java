@@ -67,7 +67,7 @@ import overrungl.util.*;
 ///     VkBool32 transformFeedbackDraw;
 /// } VkPhysicalDeviceTransformFeedbackPropertiesEXT;
 /// ```
-public final class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends Struct {
+public sealed class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends Struct {
     /// The struct layout of `VkPhysicalDeviceTransformFeedbackPropertiesEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -118,6 +118,11 @@ public final class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends Struct
     public static VkPhysicalDeviceTransformFeedbackPropertiesEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceTransformFeedbackPropertiesEXT(segment); }
 
     /// Creates `VkPhysicalDeviceTransformFeedbackPropertiesEXT` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPhysicalDeviceTransformFeedbackPropertiesEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -130,7 +135,7 @@ public final class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends Struct
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceTransformFeedbackPropertiesEXT ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceTransformFeedbackPropertiesEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceTransformFeedbackPropertiesEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -141,7 +146,21 @@ public final class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends Struct
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceTransformFeedbackPropertiesEXT`
-    public static VkPhysicalDeviceTransformFeedbackPropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceTransformFeedbackPropertiesEXT(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkPhysicalDeviceTransformFeedbackPropertiesEXT` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDeviceTransformFeedbackPropertiesEXT`
+    public static VkPhysicalDeviceTransformFeedbackPropertiesEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int maxTransformFeedbackStreams, @CType("uint32_t") int maxTransformFeedbackBuffers, @CType("VkDeviceSize") long maxTransformFeedbackBufferSize, @CType("uint32_t") int maxTransformFeedbackStreamDataSize, @CType("uint32_t") int maxTransformFeedbackBufferDataSize, @CType("uint32_t") int maxTransformFeedbackBufferDataStride, @CType("VkBool32") int transformFeedbackQueries, @CType("VkBool32") int transformFeedbackStreamsLinesTriangles, @CType("VkBool32") int transformFeedbackRasterizationStreamSelect, @CType("VkBool32") int transformFeedbackDraw) { return alloc(allocator).sType(sType).pNext(pNext).maxTransformFeedbackStreams(maxTransformFeedbackStreams).maxTransformFeedbackBuffers(maxTransformFeedbackBuffers).maxTransformFeedbackBufferSize(maxTransformFeedbackBufferSize).maxTransformFeedbackStreamDataSize(maxTransformFeedbackStreamDataSize).maxTransformFeedbackBufferDataSize(maxTransformFeedbackBufferDataSize).maxTransformFeedbackBufferDataStride(maxTransformFeedbackBufferDataStride).transformFeedbackQueries(transformFeedbackQueries).transformFeedbackStreamsLinesTriangles(transformFeedbackStreamsLinesTriangles).transformFeedbackRasterizationStreamSelect(transformFeedbackRasterizationStreamSelect).transformFeedbackDraw(transformFeedbackDraw); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDeviceTransformFeedbackPropertiesEXT copyFrom(VkPhysicalDeviceTransformFeedbackPropertiesEXT src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -150,9 +169,6 @@ public final class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends Struct
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -164,11 +180,6 @@ public final class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends Struct
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceTransformFeedbackPropertiesEXT.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceTransformFeedbackPropertiesEXT sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceTransformFeedbackPropertiesEXT.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -181,9 +192,6 @@ public final class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends Struct
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -195,11 +203,6 @@ public final class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends Struct
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceTransformFeedbackPropertiesEXT.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceTransformFeedbackPropertiesEXT pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceTransformFeedbackPropertiesEXT.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -212,9 +215,6 @@ public final class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends Struct
     /// {@return `maxTransformFeedbackStreams`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxTransformFeedbackStreams(MemorySegment segment) { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_maxTransformFeedbackStreams(segment, 0L); }
-    /// {@return `maxTransformFeedbackStreams` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxTransformFeedbackStreamsAt(long index) { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_maxTransformFeedbackStreams(this.segment(), index); }
     /// {@return `maxTransformFeedbackStreams`}
     public @CType("uint32_t") int maxTransformFeedbackStreams() { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_maxTransformFeedbackStreams(this.segment()); }
     /// Sets `maxTransformFeedbackStreams` with the given value at the given index.
@@ -226,11 +226,6 @@ public final class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends Struct
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxTransformFeedbackStreams(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceTransformFeedbackPropertiesEXT.set_maxTransformFeedbackStreams(segment, 0L, value); }
-    /// Sets `maxTransformFeedbackStreams` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceTransformFeedbackPropertiesEXT maxTransformFeedbackStreamsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceTransformFeedbackPropertiesEXT.set_maxTransformFeedbackStreams(this.segment(), index, value); return this; }
     /// Sets `maxTransformFeedbackStreams` with the given value.
     /// @param value the value
     /// @return `this`
@@ -243,9 +238,6 @@ public final class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends Struct
     /// {@return `maxTransformFeedbackBuffers`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxTransformFeedbackBuffers(MemorySegment segment) { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_maxTransformFeedbackBuffers(segment, 0L); }
-    /// {@return `maxTransformFeedbackBuffers` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxTransformFeedbackBuffersAt(long index) { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_maxTransformFeedbackBuffers(this.segment(), index); }
     /// {@return `maxTransformFeedbackBuffers`}
     public @CType("uint32_t") int maxTransformFeedbackBuffers() { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_maxTransformFeedbackBuffers(this.segment()); }
     /// Sets `maxTransformFeedbackBuffers` with the given value at the given index.
@@ -257,11 +249,6 @@ public final class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends Struct
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxTransformFeedbackBuffers(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceTransformFeedbackPropertiesEXT.set_maxTransformFeedbackBuffers(segment, 0L, value); }
-    /// Sets `maxTransformFeedbackBuffers` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceTransformFeedbackPropertiesEXT maxTransformFeedbackBuffersAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceTransformFeedbackPropertiesEXT.set_maxTransformFeedbackBuffers(this.segment(), index, value); return this; }
     /// Sets `maxTransformFeedbackBuffers` with the given value.
     /// @param value the value
     /// @return `this`
@@ -274,9 +261,6 @@ public final class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends Struct
     /// {@return `maxTransformFeedbackBufferSize`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_maxTransformFeedbackBufferSize(MemorySegment segment) { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_maxTransformFeedbackBufferSize(segment, 0L); }
-    /// {@return `maxTransformFeedbackBufferSize` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long maxTransformFeedbackBufferSizeAt(long index) { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_maxTransformFeedbackBufferSize(this.segment(), index); }
     /// {@return `maxTransformFeedbackBufferSize`}
     public @CType("VkDeviceSize") long maxTransformFeedbackBufferSize() { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_maxTransformFeedbackBufferSize(this.segment()); }
     /// Sets `maxTransformFeedbackBufferSize` with the given value at the given index.
@@ -288,11 +272,6 @@ public final class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends Struct
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxTransformFeedbackBufferSize(MemorySegment segment, @CType("VkDeviceSize") long value) { VkPhysicalDeviceTransformFeedbackPropertiesEXT.set_maxTransformFeedbackBufferSize(segment, 0L, value); }
-    /// Sets `maxTransformFeedbackBufferSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceTransformFeedbackPropertiesEXT maxTransformFeedbackBufferSizeAt(long index, @CType("VkDeviceSize") long value) { VkPhysicalDeviceTransformFeedbackPropertiesEXT.set_maxTransformFeedbackBufferSize(this.segment(), index, value); return this; }
     /// Sets `maxTransformFeedbackBufferSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -305,9 +284,6 @@ public final class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends Struct
     /// {@return `maxTransformFeedbackStreamDataSize`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxTransformFeedbackStreamDataSize(MemorySegment segment) { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_maxTransformFeedbackStreamDataSize(segment, 0L); }
-    /// {@return `maxTransformFeedbackStreamDataSize` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxTransformFeedbackStreamDataSizeAt(long index) { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_maxTransformFeedbackStreamDataSize(this.segment(), index); }
     /// {@return `maxTransformFeedbackStreamDataSize`}
     public @CType("uint32_t") int maxTransformFeedbackStreamDataSize() { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_maxTransformFeedbackStreamDataSize(this.segment()); }
     /// Sets `maxTransformFeedbackStreamDataSize` with the given value at the given index.
@@ -319,11 +295,6 @@ public final class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends Struct
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxTransformFeedbackStreamDataSize(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceTransformFeedbackPropertiesEXT.set_maxTransformFeedbackStreamDataSize(segment, 0L, value); }
-    /// Sets `maxTransformFeedbackStreamDataSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceTransformFeedbackPropertiesEXT maxTransformFeedbackStreamDataSizeAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceTransformFeedbackPropertiesEXT.set_maxTransformFeedbackStreamDataSize(this.segment(), index, value); return this; }
     /// Sets `maxTransformFeedbackStreamDataSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -336,9 +307,6 @@ public final class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends Struct
     /// {@return `maxTransformFeedbackBufferDataSize`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxTransformFeedbackBufferDataSize(MemorySegment segment) { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_maxTransformFeedbackBufferDataSize(segment, 0L); }
-    /// {@return `maxTransformFeedbackBufferDataSize` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxTransformFeedbackBufferDataSizeAt(long index) { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_maxTransformFeedbackBufferDataSize(this.segment(), index); }
     /// {@return `maxTransformFeedbackBufferDataSize`}
     public @CType("uint32_t") int maxTransformFeedbackBufferDataSize() { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_maxTransformFeedbackBufferDataSize(this.segment()); }
     /// Sets `maxTransformFeedbackBufferDataSize` with the given value at the given index.
@@ -350,11 +318,6 @@ public final class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends Struct
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxTransformFeedbackBufferDataSize(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceTransformFeedbackPropertiesEXT.set_maxTransformFeedbackBufferDataSize(segment, 0L, value); }
-    /// Sets `maxTransformFeedbackBufferDataSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceTransformFeedbackPropertiesEXT maxTransformFeedbackBufferDataSizeAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceTransformFeedbackPropertiesEXT.set_maxTransformFeedbackBufferDataSize(this.segment(), index, value); return this; }
     /// Sets `maxTransformFeedbackBufferDataSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -367,9 +330,6 @@ public final class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends Struct
     /// {@return `maxTransformFeedbackBufferDataStride`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxTransformFeedbackBufferDataStride(MemorySegment segment) { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_maxTransformFeedbackBufferDataStride(segment, 0L); }
-    /// {@return `maxTransformFeedbackBufferDataStride` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxTransformFeedbackBufferDataStrideAt(long index) { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_maxTransformFeedbackBufferDataStride(this.segment(), index); }
     /// {@return `maxTransformFeedbackBufferDataStride`}
     public @CType("uint32_t") int maxTransformFeedbackBufferDataStride() { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_maxTransformFeedbackBufferDataStride(this.segment()); }
     /// Sets `maxTransformFeedbackBufferDataStride` with the given value at the given index.
@@ -381,11 +341,6 @@ public final class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends Struct
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxTransformFeedbackBufferDataStride(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceTransformFeedbackPropertiesEXT.set_maxTransformFeedbackBufferDataStride(segment, 0L, value); }
-    /// Sets `maxTransformFeedbackBufferDataStride` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceTransformFeedbackPropertiesEXT maxTransformFeedbackBufferDataStrideAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceTransformFeedbackPropertiesEXT.set_maxTransformFeedbackBufferDataStride(this.segment(), index, value); return this; }
     /// Sets `maxTransformFeedbackBufferDataStride` with the given value.
     /// @param value the value
     /// @return `this`
@@ -398,9 +353,6 @@ public final class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends Struct
     /// {@return `transformFeedbackQueries`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_transformFeedbackQueries(MemorySegment segment) { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_transformFeedbackQueries(segment, 0L); }
-    /// {@return `transformFeedbackQueries` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int transformFeedbackQueriesAt(long index) { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_transformFeedbackQueries(this.segment(), index); }
     /// {@return `transformFeedbackQueries`}
     public @CType("VkBool32") int transformFeedbackQueries() { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_transformFeedbackQueries(this.segment()); }
     /// Sets `transformFeedbackQueries` with the given value at the given index.
@@ -412,11 +364,6 @@ public final class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends Struct
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_transformFeedbackQueries(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceTransformFeedbackPropertiesEXT.set_transformFeedbackQueries(segment, 0L, value); }
-    /// Sets `transformFeedbackQueries` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceTransformFeedbackPropertiesEXT transformFeedbackQueriesAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceTransformFeedbackPropertiesEXT.set_transformFeedbackQueries(this.segment(), index, value); return this; }
     /// Sets `transformFeedbackQueries` with the given value.
     /// @param value the value
     /// @return `this`
@@ -429,9 +376,6 @@ public final class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends Struct
     /// {@return `transformFeedbackStreamsLinesTriangles`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_transformFeedbackStreamsLinesTriangles(MemorySegment segment) { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_transformFeedbackStreamsLinesTriangles(segment, 0L); }
-    /// {@return `transformFeedbackStreamsLinesTriangles` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int transformFeedbackStreamsLinesTrianglesAt(long index) { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_transformFeedbackStreamsLinesTriangles(this.segment(), index); }
     /// {@return `transformFeedbackStreamsLinesTriangles`}
     public @CType("VkBool32") int transformFeedbackStreamsLinesTriangles() { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_transformFeedbackStreamsLinesTriangles(this.segment()); }
     /// Sets `transformFeedbackStreamsLinesTriangles` with the given value at the given index.
@@ -443,11 +387,6 @@ public final class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends Struct
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_transformFeedbackStreamsLinesTriangles(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceTransformFeedbackPropertiesEXT.set_transformFeedbackStreamsLinesTriangles(segment, 0L, value); }
-    /// Sets `transformFeedbackStreamsLinesTriangles` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceTransformFeedbackPropertiesEXT transformFeedbackStreamsLinesTrianglesAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceTransformFeedbackPropertiesEXT.set_transformFeedbackStreamsLinesTriangles(this.segment(), index, value); return this; }
     /// Sets `transformFeedbackStreamsLinesTriangles` with the given value.
     /// @param value the value
     /// @return `this`
@@ -460,9 +399,6 @@ public final class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends Struct
     /// {@return `transformFeedbackRasterizationStreamSelect`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_transformFeedbackRasterizationStreamSelect(MemorySegment segment) { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_transformFeedbackRasterizationStreamSelect(segment, 0L); }
-    /// {@return `transformFeedbackRasterizationStreamSelect` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int transformFeedbackRasterizationStreamSelectAt(long index) { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_transformFeedbackRasterizationStreamSelect(this.segment(), index); }
     /// {@return `transformFeedbackRasterizationStreamSelect`}
     public @CType("VkBool32") int transformFeedbackRasterizationStreamSelect() { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_transformFeedbackRasterizationStreamSelect(this.segment()); }
     /// Sets `transformFeedbackRasterizationStreamSelect` with the given value at the given index.
@@ -474,11 +410,6 @@ public final class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends Struct
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_transformFeedbackRasterizationStreamSelect(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceTransformFeedbackPropertiesEXT.set_transformFeedbackRasterizationStreamSelect(segment, 0L, value); }
-    /// Sets `transformFeedbackRasterizationStreamSelect` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceTransformFeedbackPropertiesEXT transformFeedbackRasterizationStreamSelectAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceTransformFeedbackPropertiesEXT.set_transformFeedbackRasterizationStreamSelect(this.segment(), index, value); return this; }
     /// Sets `transformFeedbackRasterizationStreamSelect` with the given value.
     /// @param value the value
     /// @return `this`
@@ -491,9 +422,6 @@ public final class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends Struct
     /// {@return `transformFeedbackDraw`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_transformFeedbackDraw(MemorySegment segment) { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_transformFeedbackDraw(segment, 0L); }
-    /// {@return `transformFeedbackDraw` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int transformFeedbackDrawAt(long index) { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_transformFeedbackDraw(this.segment(), index); }
     /// {@return `transformFeedbackDraw`}
     public @CType("VkBool32") int transformFeedbackDraw() { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_transformFeedbackDraw(this.segment()); }
     /// Sets `transformFeedbackDraw` with the given value at the given index.
@@ -505,14 +433,140 @@ public final class VkPhysicalDeviceTransformFeedbackPropertiesEXT extends Struct
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_transformFeedbackDraw(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceTransformFeedbackPropertiesEXT.set_transformFeedbackDraw(segment, 0L, value); }
-    /// Sets `transformFeedbackDraw` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceTransformFeedbackPropertiesEXT transformFeedbackDrawAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceTransformFeedbackPropertiesEXT.set_transformFeedbackDraw(this.segment(), index, value); return this; }
     /// Sets `transformFeedbackDraw` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceTransformFeedbackPropertiesEXT transformFeedbackDraw(@CType("VkBool32") int value) { VkPhysicalDeviceTransformFeedbackPropertiesEXT.set_transformFeedbackDraw(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDeviceTransformFeedbackPropertiesEXT].
+    public static final class Buffer extends VkPhysicalDeviceTransformFeedbackPropertiesEXT {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDeviceTransformFeedbackPropertiesEXT.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDeviceTransformFeedbackPropertiesEXT`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDeviceTransformFeedbackPropertiesEXT`
+        public VkPhysicalDeviceTransformFeedbackPropertiesEXT asSlice(long index) { return new VkPhysicalDeviceTransformFeedbackPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDeviceTransformFeedbackPropertiesEXT`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDeviceTransformFeedbackPropertiesEXT`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceTransformFeedbackPropertiesEXT.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceTransformFeedbackPropertiesEXT.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `maxTransformFeedbackStreams` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxTransformFeedbackStreamsAt(long index) { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_maxTransformFeedbackStreams(this.segment(), index); }
+        /// Sets `maxTransformFeedbackStreams` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxTransformFeedbackStreamsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceTransformFeedbackPropertiesEXT.set_maxTransformFeedbackStreams(this.segment(), index, value); return this; }
+
+        /// {@return `maxTransformFeedbackBuffers` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxTransformFeedbackBuffersAt(long index) { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_maxTransformFeedbackBuffers(this.segment(), index); }
+        /// Sets `maxTransformFeedbackBuffers` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxTransformFeedbackBuffersAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceTransformFeedbackPropertiesEXT.set_maxTransformFeedbackBuffers(this.segment(), index, value); return this; }
+
+        /// {@return `maxTransformFeedbackBufferSize` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long maxTransformFeedbackBufferSizeAt(long index) { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_maxTransformFeedbackBufferSize(this.segment(), index); }
+        /// Sets `maxTransformFeedbackBufferSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxTransformFeedbackBufferSizeAt(long index, @CType("VkDeviceSize") long value) { VkPhysicalDeviceTransformFeedbackPropertiesEXT.set_maxTransformFeedbackBufferSize(this.segment(), index, value); return this; }
+
+        /// {@return `maxTransformFeedbackStreamDataSize` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxTransformFeedbackStreamDataSizeAt(long index) { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_maxTransformFeedbackStreamDataSize(this.segment(), index); }
+        /// Sets `maxTransformFeedbackStreamDataSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxTransformFeedbackStreamDataSizeAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceTransformFeedbackPropertiesEXT.set_maxTransformFeedbackStreamDataSize(this.segment(), index, value); return this; }
+
+        /// {@return `maxTransformFeedbackBufferDataSize` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxTransformFeedbackBufferDataSizeAt(long index) { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_maxTransformFeedbackBufferDataSize(this.segment(), index); }
+        /// Sets `maxTransformFeedbackBufferDataSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxTransformFeedbackBufferDataSizeAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceTransformFeedbackPropertiesEXT.set_maxTransformFeedbackBufferDataSize(this.segment(), index, value); return this; }
+
+        /// {@return `maxTransformFeedbackBufferDataStride` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxTransformFeedbackBufferDataStrideAt(long index) { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_maxTransformFeedbackBufferDataStride(this.segment(), index); }
+        /// Sets `maxTransformFeedbackBufferDataStride` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxTransformFeedbackBufferDataStrideAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceTransformFeedbackPropertiesEXT.set_maxTransformFeedbackBufferDataStride(this.segment(), index, value); return this; }
+
+        /// {@return `transformFeedbackQueries` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int transformFeedbackQueriesAt(long index) { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_transformFeedbackQueries(this.segment(), index); }
+        /// Sets `transformFeedbackQueries` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer transformFeedbackQueriesAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceTransformFeedbackPropertiesEXT.set_transformFeedbackQueries(this.segment(), index, value); return this; }
+
+        /// {@return `transformFeedbackStreamsLinesTriangles` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int transformFeedbackStreamsLinesTrianglesAt(long index) { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_transformFeedbackStreamsLinesTriangles(this.segment(), index); }
+        /// Sets `transformFeedbackStreamsLinesTriangles` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer transformFeedbackStreamsLinesTrianglesAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceTransformFeedbackPropertiesEXT.set_transformFeedbackStreamsLinesTriangles(this.segment(), index, value); return this; }
+
+        /// {@return `transformFeedbackRasterizationStreamSelect` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int transformFeedbackRasterizationStreamSelectAt(long index) { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_transformFeedbackRasterizationStreamSelect(this.segment(), index); }
+        /// Sets `transformFeedbackRasterizationStreamSelect` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer transformFeedbackRasterizationStreamSelectAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceTransformFeedbackPropertiesEXT.set_transformFeedbackRasterizationStreamSelect(this.segment(), index, value); return this; }
+
+        /// {@return `transformFeedbackDraw` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int transformFeedbackDrawAt(long index) { return VkPhysicalDeviceTransformFeedbackPropertiesEXT.get_transformFeedbackDraw(this.segment(), index); }
+        /// Sets `transformFeedbackDraw` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer transformFeedbackDrawAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceTransformFeedbackPropertiesEXT.set_transformFeedbackDraw(this.segment(), index, value); return this; }
+
+    }
 }

@@ -76,7 +76,7 @@ import overrungl.util.*;
 ///     const uint32_t * pIndexTypeValues;
 /// } VkIndirectCommandsLayoutTokenNV;
 /// ```
-public final class VkIndirectCommandsLayoutTokenNV extends Struct {
+public sealed class VkIndirectCommandsLayoutTokenNV extends Struct {
     /// The struct layout of `VkIndirectCommandsLayoutTokenNV`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -136,6 +136,11 @@ public final class VkIndirectCommandsLayoutTokenNV extends Struct {
     public static VkIndirectCommandsLayoutTokenNV of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkIndirectCommandsLayoutTokenNV(segment); }
 
     /// Creates `VkIndirectCommandsLayoutTokenNV` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkIndirectCommandsLayoutTokenNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -148,7 +153,7 @@ public final class VkIndirectCommandsLayoutTokenNV extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkIndirectCommandsLayoutTokenNV ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkIndirectCommandsLayoutTokenNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkIndirectCommandsLayoutTokenNV` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -159,7 +164,21 @@ public final class VkIndirectCommandsLayoutTokenNV extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkIndirectCommandsLayoutTokenNV`
-    public static VkIndirectCommandsLayoutTokenNV alloc(SegmentAllocator allocator, long count) { return new VkIndirectCommandsLayoutTokenNV(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkIndirectCommandsLayoutTokenNV` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkIndirectCommandsLayoutTokenNV`
+    public static VkIndirectCommandsLayoutTokenNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkIndirectCommandsTokenTypeNV") int tokenType, @CType("uint32_t") int stream, @CType("uint32_t") int offset, @CType("uint32_t") int vertexBindingUnit, @CType("VkBool32") int vertexDynamicStride, @CType("VkPipelineLayout") java.lang.foreign.MemorySegment pushconstantPipelineLayout, @CType("VkShaderStageFlags") int pushconstantShaderStageFlags, @CType("uint32_t") int pushconstantOffset, @CType("uint32_t") int pushconstantSize, @CType("VkIndirectStateFlagsNV") int indirectStateFlags, @CType("uint32_t") int indexTypeCount, @CType("const VkIndexType *") java.lang.foreign.MemorySegment pIndexTypes, @CType("const uint32_t *") java.lang.foreign.MemorySegment pIndexTypeValues) { return alloc(allocator).sType(sType).pNext(pNext).tokenType(tokenType).stream(stream).offset(offset).vertexBindingUnit(vertexBindingUnit).vertexDynamicStride(vertexDynamicStride).pushconstantPipelineLayout(pushconstantPipelineLayout).pushconstantShaderStageFlags(pushconstantShaderStageFlags).pushconstantOffset(pushconstantOffset).pushconstantSize(pushconstantSize).indirectStateFlags(indirectStateFlags).indexTypeCount(indexTypeCount).pIndexTypes(pIndexTypes).pIndexTypeValues(pIndexTypeValues); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkIndirectCommandsLayoutTokenNV copyFrom(VkIndirectCommandsLayoutTokenNV src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -168,9 +187,6 @@ public final class VkIndirectCommandsLayoutTokenNV extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkIndirectCommandsLayoutTokenNV.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkIndirectCommandsLayoutTokenNV.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkIndirectCommandsLayoutTokenNV.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -182,11 +198,6 @@ public final class VkIndirectCommandsLayoutTokenNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkIndirectCommandsLayoutTokenNV.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV sTypeAt(long index, @CType("VkStructureType") int value) { VkIndirectCommandsLayoutTokenNV.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -199,9 +210,6 @@ public final class VkIndirectCommandsLayoutTokenNV extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkIndirectCommandsLayoutTokenNV.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkIndirectCommandsLayoutTokenNV.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkIndirectCommandsLayoutTokenNV.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -213,11 +221,6 @@ public final class VkIndirectCommandsLayoutTokenNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkIndirectCommandsLayoutTokenNV.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkIndirectCommandsLayoutTokenNV.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -230,9 +233,6 @@ public final class VkIndirectCommandsLayoutTokenNV extends Struct {
     /// {@return `tokenType`}
     /// @param segment the segment of the struct
     public static @CType("VkIndirectCommandsTokenTypeNV") int get_tokenType(MemorySegment segment) { return VkIndirectCommandsLayoutTokenNV.get_tokenType(segment, 0L); }
-    /// {@return `tokenType` at the given index}
-    /// @param index the index
-    public @CType("VkIndirectCommandsTokenTypeNV") int tokenTypeAt(long index) { return VkIndirectCommandsLayoutTokenNV.get_tokenType(this.segment(), index); }
     /// {@return `tokenType`}
     public @CType("VkIndirectCommandsTokenTypeNV") int tokenType() { return VkIndirectCommandsLayoutTokenNV.get_tokenType(this.segment()); }
     /// Sets `tokenType` with the given value at the given index.
@@ -244,11 +244,6 @@ public final class VkIndirectCommandsLayoutTokenNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_tokenType(MemorySegment segment, @CType("VkIndirectCommandsTokenTypeNV") int value) { VkIndirectCommandsLayoutTokenNV.set_tokenType(segment, 0L, value); }
-    /// Sets `tokenType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV tokenTypeAt(long index, @CType("VkIndirectCommandsTokenTypeNV") int value) { VkIndirectCommandsLayoutTokenNV.set_tokenType(this.segment(), index, value); return this; }
     /// Sets `tokenType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -261,9 +256,6 @@ public final class VkIndirectCommandsLayoutTokenNV extends Struct {
     /// {@return `stream`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_stream(MemorySegment segment) { return VkIndirectCommandsLayoutTokenNV.get_stream(segment, 0L); }
-    /// {@return `stream` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int streamAt(long index) { return VkIndirectCommandsLayoutTokenNV.get_stream(this.segment(), index); }
     /// {@return `stream`}
     public @CType("uint32_t") int stream() { return VkIndirectCommandsLayoutTokenNV.get_stream(this.segment()); }
     /// Sets `stream` with the given value at the given index.
@@ -275,11 +267,6 @@ public final class VkIndirectCommandsLayoutTokenNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_stream(MemorySegment segment, @CType("uint32_t") int value) { VkIndirectCommandsLayoutTokenNV.set_stream(segment, 0L, value); }
-    /// Sets `stream` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV streamAt(long index, @CType("uint32_t") int value) { VkIndirectCommandsLayoutTokenNV.set_stream(this.segment(), index, value); return this; }
     /// Sets `stream` with the given value.
     /// @param value the value
     /// @return `this`
@@ -292,9 +279,6 @@ public final class VkIndirectCommandsLayoutTokenNV extends Struct {
     /// {@return `offset`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_offset(MemorySegment segment) { return VkIndirectCommandsLayoutTokenNV.get_offset(segment, 0L); }
-    /// {@return `offset` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int offsetAt(long index) { return VkIndirectCommandsLayoutTokenNV.get_offset(this.segment(), index); }
     /// {@return `offset`}
     public @CType("uint32_t") int offset() { return VkIndirectCommandsLayoutTokenNV.get_offset(this.segment()); }
     /// Sets `offset` with the given value at the given index.
@@ -306,11 +290,6 @@ public final class VkIndirectCommandsLayoutTokenNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_offset(MemorySegment segment, @CType("uint32_t") int value) { VkIndirectCommandsLayoutTokenNV.set_offset(segment, 0L, value); }
-    /// Sets `offset` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV offsetAt(long index, @CType("uint32_t") int value) { VkIndirectCommandsLayoutTokenNV.set_offset(this.segment(), index, value); return this; }
     /// Sets `offset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -323,9 +302,6 @@ public final class VkIndirectCommandsLayoutTokenNV extends Struct {
     /// {@return `vertexBindingUnit`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_vertexBindingUnit(MemorySegment segment) { return VkIndirectCommandsLayoutTokenNV.get_vertexBindingUnit(segment, 0L); }
-    /// {@return `vertexBindingUnit` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int vertexBindingUnitAt(long index) { return VkIndirectCommandsLayoutTokenNV.get_vertexBindingUnit(this.segment(), index); }
     /// {@return `vertexBindingUnit`}
     public @CType("uint32_t") int vertexBindingUnit() { return VkIndirectCommandsLayoutTokenNV.get_vertexBindingUnit(this.segment()); }
     /// Sets `vertexBindingUnit` with the given value at the given index.
@@ -337,11 +313,6 @@ public final class VkIndirectCommandsLayoutTokenNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_vertexBindingUnit(MemorySegment segment, @CType("uint32_t") int value) { VkIndirectCommandsLayoutTokenNV.set_vertexBindingUnit(segment, 0L, value); }
-    /// Sets `vertexBindingUnit` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV vertexBindingUnitAt(long index, @CType("uint32_t") int value) { VkIndirectCommandsLayoutTokenNV.set_vertexBindingUnit(this.segment(), index, value); return this; }
     /// Sets `vertexBindingUnit` with the given value.
     /// @param value the value
     /// @return `this`
@@ -354,9 +325,6 @@ public final class VkIndirectCommandsLayoutTokenNV extends Struct {
     /// {@return `vertexDynamicStride`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_vertexDynamicStride(MemorySegment segment) { return VkIndirectCommandsLayoutTokenNV.get_vertexDynamicStride(segment, 0L); }
-    /// {@return `vertexDynamicStride` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int vertexDynamicStrideAt(long index) { return VkIndirectCommandsLayoutTokenNV.get_vertexDynamicStride(this.segment(), index); }
     /// {@return `vertexDynamicStride`}
     public @CType("VkBool32") int vertexDynamicStride() { return VkIndirectCommandsLayoutTokenNV.get_vertexDynamicStride(this.segment()); }
     /// Sets `vertexDynamicStride` with the given value at the given index.
@@ -368,11 +336,6 @@ public final class VkIndirectCommandsLayoutTokenNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_vertexDynamicStride(MemorySegment segment, @CType("VkBool32") int value) { VkIndirectCommandsLayoutTokenNV.set_vertexDynamicStride(segment, 0L, value); }
-    /// Sets `vertexDynamicStride` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV vertexDynamicStrideAt(long index, @CType("VkBool32") int value) { VkIndirectCommandsLayoutTokenNV.set_vertexDynamicStride(this.segment(), index, value); return this; }
     /// Sets `vertexDynamicStride` with the given value.
     /// @param value the value
     /// @return `this`
@@ -385,9 +348,6 @@ public final class VkIndirectCommandsLayoutTokenNV extends Struct {
     /// {@return `pushconstantPipelineLayout`}
     /// @param segment the segment of the struct
     public static @CType("VkPipelineLayout") java.lang.foreign.MemorySegment get_pushconstantPipelineLayout(MemorySegment segment) { return VkIndirectCommandsLayoutTokenNV.get_pushconstantPipelineLayout(segment, 0L); }
-    /// {@return `pushconstantPipelineLayout` at the given index}
-    /// @param index the index
-    public @CType("VkPipelineLayout") java.lang.foreign.MemorySegment pushconstantPipelineLayoutAt(long index) { return VkIndirectCommandsLayoutTokenNV.get_pushconstantPipelineLayout(this.segment(), index); }
     /// {@return `pushconstantPipelineLayout`}
     public @CType("VkPipelineLayout") java.lang.foreign.MemorySegment pushconstantPipelineLayout() { return VkIndirectCommandsLayoutTokenNV.get_pushconstantPipelineLayout(this.segment()); }
     /// Sets `pushconstantPipelineLayout` with the given value at the given index.
@@ -399,11 +359,6 @@ public final class VkIndirectCommandsLayoutTokenNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pushconstantPipelineLayout(MemorySegment segment, @CType("VkPipelineLayout") java.lang.foreign.MemorySegment value) { VkIndirectCommandsLayoutTokenNV.set_pushconstantPipelineLayout(segment, 0L, value); }
-    /// Sets `pushconstantPipelineLayout` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV pushconstantPipelineLayoutAt(long index, @CType("VkPipelineLayout") java.lang.foreign.MemorySegment value) { VkIndirectCommandsLayoutTokenNV.set_pushconstantPipelineLayout(this.segment(), index, value); return this; }
     /// Sets `pushconstantPipelineLayout` with the given value.
     /// @param value the value
     /// @return `this`
@@ -416,9 +371,6 @@ public final class VkIndirectCommandsLayoutTokenNV extends Struct {
     /// {@return `pushconstantShaderStageFlags`}
     /// @param segment the segment of the struct
     public static @CType("VkShaderStageFlags") int get_pushconstantShaderStageFlags(MemorySegment segment) { return VkIndirectCommandsLayoutTokenNV.get_pushconstantShaderStageFlags(segment, 0L); }
-    /// {@return `pushconstantShaderStageFlags` at the given index}
-    /// @param index the index
-    public @CType("VkShaderStageFlags") int pushconstantShaderStageFlagsAt(long index) { return VkIndirectCommandsLayoutTokenNV.get_pushconstantShaderStageFlags(this.segment(), index); }
     /// {@return `pushconstantShaderStageFlags`}
     public @CType("VkShaderStageFlags") int pushconstantShaderStageFlags() { return VkIndirectCommandsLayoutTokenNV.get_pushconstantShaderStageFlags(this.segment()); }
     /// Sets `pushconstantShaderStageFlags` with the given value at the given index.
@@ -430,11 +382,6 @@ public final class VkIndirectCommandsLayoutTokenNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pushconstantShaderStageFlags(MemorySegment segment, @CType("VkShaderStageFlags") int value) { VkIndirectCommandsLayoutTokenNV.set_pushconstantShaderStageFlags(segment, 0L, value); }
-    /// Sets `pushconstantShaderStageFlags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV pushconstantShaderStageFlagsAt(long index, @CType("VkShaderStageFlags") int value) { VkIndirectCommandsLayoutTokenNV.set_pushconstantShaderStageFlags(this.segment(), index, value); return this; }
     /// Sets `pushconstantShaderStageFlags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -447,9 +394,6 @@ public final class VkIndirectCommandsLayoutTokenNV extends Struct {
     /// {@return `pushconstantOffset`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_pushconstantOffset(MemorySegment segment) { return VkIndirectCommandsLayoutTokenNV.get_pushconstantOffset(segment, 0L); }
-    /// {@return `pushconstantOffset` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int pushconstantOffsetAt(long index) { return VkIndirectCommandsLayoutTokenNV.get_pushconstantOffset(this.segment(), index); }
     /// {@return `pushconstantOffset`}
     public @CType("uint32_t") int pushconstantOffset() { return VkIndirectCommandsLayoutTokenNV.get_pushconstantOffset(this.segment()); }
     /// Sets `pushconstantOffset` with the given value at the given index.
@@ -461,11 +405,6 @@ public final class VkIndirectCommandsLayoutTokenNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pushconstantOffset(MemorySegment segment, @CType("uint32_t") int value) { VkIndirectCommandsLayoutTokenNV.set_pushconstantOffset(segment, 0L, value); }
-    /// Sets `pushconstantOffset` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV pushconstantOffsetAt(long index, @CType("uint32_t") int value) { VkIndirectCommandsLayoutTokenNV.set_pushconstantOffset(this.segment(), index, value); return this; }
     /// Sets `pushconstantOffset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -478,9 +417,6 @@ public final class VkIndirectCommandsLayoutTokenNV extends Struct {
     /// {@return `pushconstantSize`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_pushconstantSize(MemorySegment segment) { return VkIndirectCommandsLayoutTokenNV.get_pushconstantSize(segment, 0L); }
-    /// {@return `pushconstantSize` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int pushconstantSizeAt(long index) { return VkIndirectCommandsLayoutTokenNV.get_pushconstantSize(this.segment(), index); }
     /// {@return `pushconstantSize`}
     public @CType("uint32_t") int pushconstantSize() { return VkIndirectCommandsLayoutTokenNV.get_pushconstantSize(this.segment()); }
     /// Sets `pushconstantSize` with the given value at the given index.
@@ -492,11 +428,6 @@ public final class VkIndirectCommandsLayoutTokenNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pushconstantSize(MemorySegment segment, @CType("uint32_t") int value) { VkIndirectCommandsLayoutTokenNV.set_pushconstantSize(segment, 0L, value); }
-    /// Sets `pushconstantSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV pushconstantSizeAt(long index, @CType("uint32_t") int value) { VkIndirectCommandsLayoutTokenNV.set_pushconstantSize(this.segment(), index, value); return this; }
     /// Sets `pushconstantSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -509,9 +440,6 @@ public final class VkIndirectCommandsLayoutTokenNV extends Struct {
     /// {@return `indirectStateFlags`}
     /// @param segment the segment of the struct
     public static @CType("VkIndirectStateFlagsNV") int get_indirectStateFlags(MemorySegment segment) { return VkIndirectCommandsLayoutTokenNV.get_indirectStateFlags(segment, 0L); }
-    /// {@return `indirectStateFlags` at the given index}
-    /// @param index the index
-    public @CType("VkIndirectStateFlagsNV") int indirectStateFlagsAt(long index) { return VkIndirectCommandsLayoutTokenNV.get_indirectStateFlags(this.segment(), index); }
     /// {@return `indirectStateFlags`}
     public @CType("VkIndirectStateFlagsNV") int indirectStateFlags() { return VkIndirectCommandsLayoutTokenNV.get_indirectStateFlags(this.segment()); }
     /// Sets `indirectStateFlags` with the given value at the given index.
@@ -523,11 +451,6 @@ public final class VkIndirectCommandsLayoutTokenNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_indirectStateFlags(MemorySegment segment, @CType("VkIndirectStateFlagsNV") int value) { VkIndirectCommandsLayoutTokenNV.set_indirectStateFlags(segment, 0L, value); }
-    /// Sets `indirectStateFlags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV indirectStateFlagsAt(long index, @CType("VkIndirectStateFlagsNV") int value) { VkIndirectCommandsLayoutTokenNV.set_indirectStateFlags(this.segment(), index, value); return this; }
     /// Sets `indirectStateFlags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -540,9 +463,6 @@ public final class VkIndirectCommandsLayoutTokenNV extends Struct {
     /// {@return `indexTypeCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_indexTypeCount(MemorySegment segment) { return VkIndirectCommandsLayoutTokenNV.get_indexTypeCount(segment, 0L); }
-    /// {@return `indexTypeCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int indexTypeCountAt(long index) { return VkIndirectCommandsLayoutTokenNV.get_indexTypeCount(this.segment(), index); }
     /// {@return `indexTypeCount`}
     public @CType("uint32_t") int indexTypeCount() { return VkIndirectCommandsLayoutTokenNV.get_indexTypeCount(this.segment()); }
     /// Sets `indexTypeCount` with the given value at the given index.
@@ -554,11 +474,6 @@ public final class VkIndirectCommandsLayoutTokenNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_indexTypeCount(MemorySegment segment, @CType("uint32_t") int value) { VkIndirectCommandsLayoutTokenNV.set_indexTypeCount(segment, 0L, value); }
-    /// Sets `indexTypeCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV indexTypeCountAt(long index, @CType("uint32_t") int value) { VkIndirectCommandsLayoutTokenNV.set_indexTypeCount(this.segment(), index, value); return this; }
     /// Sets `indexTypeCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -571,9 +486,6 @@ public final class VkIndirectCommandsLayoutTokenNV extends Struct {
     /// {@return `pIndexTypes`}
     /// @param segment the segment of the struct
     public static @CType("const VkIndexType *") java.lang.foreign.MemorySegment get_pIndexTypes(MemorySegment segment) { return VkIndirectCommandsLayoutTokenNV.get_pIndexTypes(segment, 0L); }
-    /// {@return `pIndexTypes` at the given index}
-    /// @param index the index
-    public @CType("const VkIndexType *") java.lang.foreign.MemorySegment pIndexTypesAt(long index) { return VkIndirectCommandsLayoutTokenNV.get_pIndexTypes(this.segment(), index); }
     /// {@return `pIndexTypes`}
     public @CType("const VkIndexType *") java.lang.foreign.MemorySegment pIndexTypes() { return VkIndirectCommandsLayoutTokenNV.get_pIndexTypes(this.segment()); }
     /// Sets `pIndexTypes` with the given value at the given index.
@@ -585,11 +497,6 @@ public final class VkIndirectCommandsLayoutTokenNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pIndexTypes(MemorySegment segment, @CType("const VkIndexType *") java.lang.foreign.MemorySegment value) { VkIndirectCommandsLayoutTokenNV.set_pIndexTypes(segment, 0L, value); }
-    /// Sets `pIndexTypes` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV pIndexTypesAt(long index, @CType("const VkIndexType *") java.lang.foreign.MemorySegment value) { VkIndirectCommandsLayoutTokenNV.set_pIndexTypes(this.segment(), index, value); return this; }
     /// Sets `pIndexTypes` with the given value.
     /// @param value the value
     /// @return `this`
@@ -602,9 +509,6 @@ public final class VkIndirectCommandsLayoutTokenNV extends Struct {
     /// {@return `pIndexTypeValues`}
     /// @param segment the segment of the struct
     public static @CType("const uint32_t *") java.lang.foreign.MemorySegment get_pIndexTypeValues(MemorySegment segment) { return VkIndirectCommandsLayoutTokenNV.get_pIndexTypeValues(segment, 0L); }
-    /// {@return `pIndexTypeValues` at the given index}
-    /// @param index the index
-    public @CType("const uint32_t *") java.lang.foreign.MemorySegment pIndexTypeValuesAt(long index) { return VkIndirectCommandsLayoutTokenNV.get_pIndexTypeValues(this.segment(), index); }
     /// {@return `pIndexTypeValues`}
     public @CType("const uint32_t *") java.lang.foreign.MemorySegment pIndexTypeValues() { return VkIndirectCommandsLayoutTokenNV.get_pIndexTypeValues(this.segment()); }
     /// Sets `pIndexTypeValues` with the given value at the given index.
@@ -616,14 +520,167 @@ public final class VkIndirectCommandsLayoutTokenNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pIndexTypeValues(MemorySegment segment, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkIndirectCommandsLayoutTokenNV.set_pIndexTypeValues(segment, 0L, value); }
-    /// Sets `pIndexTypeValues` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsLayoutTokenNV pIndexTypeValuesAt(long index, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkIndirectCommandsLayoutTokenNV.set_pIndexTypeValues(this.segment(), index, value); return this; }
     /// Sets `pIndexTypeValues` with the given value.
     /// @param value the value
     /// @return `this`
     public VkIndirectCommandsLayoutTokenNV pIndexTypeValues(@CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkIndirectCommandsLayoutTokenNV.set_pIndexTypeValues(this.segment(), value); return this; }
 
+    /// A buffer of [VkIndirectCommandsLayoutTokenNV].
+    public static final class Buffer extends VkIndirectCommandsLayoutTokenNV {
+        private final long elementCount;
+
+        /// Creates `VkIndirectCommandsLayoutTokenNV.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkIndirectCommandsLayoutTokenNV`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkIndirectCommandsLayoutTokenNV`
+        public VkIndirectCommandsLayoutTokenNV asSlice(long index) { return new VkIndirectCommandsLayoutTokenNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkIndirectCommandsLayoutTokenNV`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkIndirectCommandsLayoutTokenNV`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkIndirectCommandsLayoutTokenNV.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkIndirectCommandsLayoutTokenNV.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkIndirectCommandsLayoutTokenNV.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkIndirectCommandsLayoutTokenNV.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `tokenType` at the given index}
+        /// @param index the index
+        public @CType("VkIndirectCommandsTokenTypeNV") int tokenTypeAt(long index) { return VkIndirectCommandsLayoutTokenNV.get_tokenType(this.segment(), index); }
+        /// Sets `tokenType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer tokenTypeAt(long index, @CType("VkIndirectCommandsTokenTypeNV") int value) { VkIndirectCommandsLayoutTokenNV.set_tokenType(this.segment(), index, value); return this; }
+
+        /// {@return `stream` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int streamAt(long index) { return VkIndirectCommandsLayoutTokenNV.get_stream(this.segment(), index); }
+        /// Sets `stream` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer streamAt(long index, @CType("uint32_t") int value) { VkIndirectCommandsLayoutTokenNV.set_stream(this.segment(), index, value); return this; }
+
+        /// {@return `offset` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int offsetAt(long index) { return VkIndirectCommandsLayoutTokenNV.get_offset(this.segment(), index); }
+        /// Sets `offset` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer offsetAt(long index, @CType("uint32_t") int value) { VkIndirectCommandsLayoutTokenNV.set_offset(this.segment(), index, value); return this; }
+
+        /// {@return `vertexBindingUnit` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int vertexBindingUnitAt(long index) { return VkIndirectCommandsLayoutTokenNV.get_vertexBindingUnit(this.segment(), index); }
+        /// Sets `vertexBindingUnit` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer vertexBindingUnitAt(long index, @CType("uint32_t") int value) { VkIndirectCommandsLayoutTokenNV.set_vertexBindingUnit(this.segment(), index, value); return this; }
+
+        /// {@return `vertexDynamicStride` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int vertexDynamicStrideAt(long index) { return VkIndirectCommandsLayoutTokenNV.get_vertexDynamicStride(this.segment(), index); }
+        /// Sets `vertexDynamicStride` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer vertexDynamicStrideAt(long index, @CType("VkBool32") int value) { VkIndirectCommandsLayoutTokenNV.set_vertexDynamicStride(this.segment(), index, value); return this; }
+
+        /// {@return `pushconstantPipelineLayout` at the given index}
+        /// @param index the index
+        public @CType("VkPipelineLayout") java.lang.foreign.MemorySegment pushconstantPipelineLayoutAt(long index) { return VkIndirectCommandsLayoutTokenNV.get_pushconstantPipelineLayout(this.segment(), index); }
+        /// Sets `pushconstantPipelineLayout` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pushconstantPipelineLayoutAt(long index, @CType("VkPipelineLayout") java.lang.foreign.MemorySegment value) { VkIndirectCommandsLayoutTokenNV.set_pushconstantPipelineLayout(this.segment(), index, value); return this; }
+
+        /// {@return `pushconstantShaderStageFlags` at the given index}
+        /// @param index the index
+        public @CType("VkShaderStageFlags") int pushconstantShaderStageFlagsAt(long index) { return VkIndirectCommandsLayoutTokenNV.get_pushconstantShaderStageFlags(this.segment(), index); }
+        /// Sets `pushconstantShaderStageFlags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pushconstantShaderStageFlagsAt(long index, @CType("VkShaderStageFlags") int value) { VkIndirectCommandsLayoutTokenNV.set_pushconstantShaderStageFlags(this.segment(), index, value); return this; }
+
+        /// {@return `pushconstantOffset` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int pushconstantOffsetAt(long index) { return VkIndirectCommandsLayoutTokenNV.get_pushconstantOffset(this.segment(), index); }
+        /// Sets `pushconstantOffset` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pushconstantOffsetAt(long index, @CType("uint32_t") int value) { VkIndirectCommandsLayoutTokenNV.set_pushconstantOffset(this.segment(), index, value); return this; }
+
+        /// {@return `pushconstantSize` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int pushconstantSizeAt(long index) { return VkIndirectCommandsLayoutTokenNV.get_pushconstantSize(this.segment(), index); }
+        /// Sets `pushconstantSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pushconstantSizeAt(long index, @CType("uint32_t") int value) { VkIndirectCommandsLayoutTokenNV.set_pushconstantSize(this.segment(), index, value); return this; }
+
+        /// {@return `indirectStateFlags` at the given index}
+        /// @param index the index
+        public @CType("VkIndirectStateFlagsNV") int indirectStateFlagsAt(long index) { return VkIndirectCommandsLayoutTokenNV.get_indirectStateFlags(this.segment(), index); }
+        /// Sets `indirectStateFlags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer indirectStateFlagsAt(long index, @CType("VkIndirectStateFlagsNV") int value) { VkIndirectCommandsLayoutTokenNV.set_indirectStateFlags(this.segment(), index, value); return this; }
+
+        /// {@return `indexTypeCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int indexTypeCountAt(long index) { return VkIndirectCommandsLayoutTokenNV.get_indexTypeCount(this.segment(), index); }
+        /// Sets `indexTypeCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer indexTypeCountAt(long index, @CType("uint32_t") int value) { VkIndirectCommandsLayoutTokenNV.set_indexTypeCount(this.segment(), index, value); return this; }
+
+        /// {@return `pIndexTypes` at the given index}
+        /// @param index the index
+        public @CType("const VkIndexType *") java.lang.foreign.MemorySegment pIndexTypesAt(long index) { return VkIndirectCommandsLayoutTokenNV.get_pIndexTypes(this.segment(), index); }
+        /// Sets `pIndexTypes` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pIndexTypesAt(long index, @CType("const VkIndexType *") java.lang.foreign.MemorySegment value) { VkIndirectCommandsLayoutTokenNV.set_pIndexTypes(this.segment(), index, value); return this; }
+
+        /// {@return `pIndexTypeValues` at the given index}
+        /// @param index the index
+        public @CType("const uint32_t *") java.lang.foreign.MemorySegment pIndexTypeValuesAt(long index) { return VkIndirectCommandsLayoutTokenNV.get_pIndexTypeValues(this.segment(), index); }
+        /// Sets `pIndexTypeValues` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pIndexTypeValuesAt(long index, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkIndirectCommandsLayoutTokenNV.set_pIndexTypeValues(this.segment(), index, value); return this; }
+
+    }
 }

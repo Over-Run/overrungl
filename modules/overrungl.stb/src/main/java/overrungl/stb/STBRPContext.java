@@ -49,7 +49,7 @@ import overrungl.util.*;
 ///     stbrp_node[2] extra;
 /// } STBRPContext;
 /// ```
-public final class STBRPContext extends Struct {
+public sealed class STBRPContext extends Struct {
     /// The struct layout of `stbrp_context`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("width"),
@@ -73,6 +73,11 @@ public final class STBRPContext extends Struct {
     public static STBRPContext of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new STBRPContext(segment); }
 
     /// Creates `STBRPContext` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `STBRPContext` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -85,7 +90,7 @@ public final class STBRPContext extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static STBRPContext ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new STBRPContext(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `STBRPContext` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -96,6 +101,38 @@ public final class STBRPContext extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `STBRPContext`
-    public static STBRPContext alloc(SegmentAllocator allocator, long count) { return new STBRPContext(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public STBRPContext copyFrom(STBRPContext src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
+
+    /// A buffer of [STBRPContext].
+    public static final class Buffer extends STBRPContext {
+        private final long elementCount;
+
+        /// Creates `STBRPContext.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `STBRPContext`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `STBRPContext`
+        public STBRPContext asSlice(long index) { return new STBRPContext(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `STBRPContext`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `STBRPContext`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+    }
 }

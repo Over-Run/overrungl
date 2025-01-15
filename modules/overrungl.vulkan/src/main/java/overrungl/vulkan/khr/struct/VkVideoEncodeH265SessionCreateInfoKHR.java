@@ -43,7 +43,7 @@ import overrungl.util.*;
 ///     StdVideoH265LevelIdc maxLevelIdc;
 /// } VkVideoEncodeH265SessionCreateInfoKHR;
 /// ```
-public final class VkVideoEncodeH265SessionCreateInfoKHR extends Struct {
+public sealed class VkVideoEncodeH265SessionCreateInfoKHR extends Struct {
     /// The struct layout of `VkVideoEncodeH265SessionCreateInfoKHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -70,6 +70,11 @@ public final class VkVideoEncodeH265SessionCreateInfoKHR extends Struct {
     public static VkVideoEncodeH265SessionCreateInfoKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkVideoEncodeH265SessionCreateInfoKHR(segment); }
 
     /// Creates `VkVideoEncodeH265SessionCreateInfoKHR` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkVideoEncodeH265SessionCreateInfoKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -82,7 +87,7 @@ public final class VkVideoEncodeH265SessionCreateInfoKHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkVideoEncodeH265SessionCreateInfoKHR ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkVideoEncodeH265SessionCreateInfoKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkVideoEncodeH265SessionCreateInfoKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -93,7 +98,21 @@ public final class VkVideoEncodeH265SessionCreateInfoKHR extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkVideoEncodeH265SessionCreateInfoKHR`
-    public static VkVideoEncodeH265SessionCreateInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoEncodeH265SessionCreateInfoKHR(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkVideoEncodeH265SessionCreateInfoKHR` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkVideoEncodeH265SessionCreateInfoKHR`
+    public static VkVideoEncodeH265SessionCreateInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int useMaxLevelIdc, @CType("StdVideoH265LevelIdc") int maxLevelIdc) { return alloc(allocator).sType(sType).pNext(pNext).useMaxLevelIdc(useMaxLevelIdc).maxLevelIdc(maxLevelIdc); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkVideoEncodeH265SessionCreateInfoKHR copyFrom(VkVideoEncodeH265SessionCreateInfoKHR src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -102,9 +121,6 @@ public final class VkVideoEncodeH265SessionCreateInfoKHR extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkVideoEncodeH265SessionCreateInfoKHR.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkVideoEncodeH265SessionCreateInfoKHR.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkVideoEncodeH265SessionCreateInfoKHR.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -116,11 +132,6 @@ public final class VkVideoEncodeH265SessionCreateInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkVideoEncodeH265SessionCreateInfoKHR.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH265SessionCreateInfoKHR sTypeAt(long index, @CType("VkStructureType") int value) { VkVideoEncodeH265SessionCreateInfoKHR.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -133,9 +144,6 @@ public final class VkVideoEncodeH265SessionCreateInfoKHR extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkVideoEncodeH265SessionCreateInfoKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkVideoEncodeH265SessionCreateInfoKHR.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkVideoEncodeH265SessionCreateInfoKHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -147,11 +155,6 @@ public final class VkVideoEncodeH265SessionCreateInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkVideoEncodeH265SessionCreateInfoKHR.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH265SessionCreateInfoKHR pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkVideoEncodeH265SessionCreateInfoKHR.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -164,9 +167,6 @@ public final class VkVideoEncodeH265SessionCreateInfoKHR extends Struct {
     /// {@return `useMaxLevelIdc`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_useMaxLevelIdc(MemorySegment segment) { return VkVideoEncodeH265SessionCreateInfoKHR.get_useMaxLevelIdc(segment, 0L); }
-    /// {@return `useMaxLevelIdc` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int useMaxLevelIdcAt(long index) { return VkVideoEncodeH265SessionCreateInfoKHR.get_useMaxLevelIdc(this.segment(), index); }
     /// {@return `useMaxLevelIdc`}
     public @CType("VkBool32") int useMaxLevelIdc() { return VkVideoEncodeH265SessionCreateInfoKHR.get_useMaxLevelIdc(this.segment()); }
     /// Sets `useMaxLevelIdc` with the given value at the given index.
@@ -178,11 +178,6 @@ public final class VkVideoEncodeH265SessionCreateInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_useMaxLevelIdc(MemorySegment segment, @CType("VkBool32") int value) { VkVideoEncodeH265SessionCreateInfoKHR.set_useMaxLevelIdc(segment, 0L, value); }
-    /// Sets `useMaxLevelIdc` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH265SessionCreateInfoKHR useMaxLevelIdcAt(long index, @CType("VkBool32") int value) { VkVideoEncodeH265SessionCreateInfoKHR.set_useMaxLevelIdc(this.segment(), index, value); return this; }
     /// Sets `useMaxLevelIdc` with the given value.
     /// @param value the value
     /// @return `this`
@@ -195,9 +190,6 @@ public final class VkVideoEncodeH265SessionCreateInfoKHR extends Struct {
     /// {@return `maxLevelIdc`}
     /// @param segment the segment of the struct
     public static @CType("StdVideoH265LevelIdc") int get_maxLevelIdc(MemorySegment segment) { return VkVideoEncodeH265SessionCreateInfoKHR.get_maxLevelIdc(segment, 0L); }
-    /// {@return `maxLevelIdc` at the given index}
-    /// @param index the index
-    public @CType("StdVideoH265LevelIdc") int maxLevelIdcAt(long index) { return VkVideoEncodeH265SessionCreateInfoKHR.get_maxLevelIdc(this.segment(), index); }
     /// {@return `maxLevelIdc`}
     public @CType("StdVideoH265LevelIdc") int maxLevelIdc() { return VkVideoEncodeH265SessionCreateInfoKHR.get_maxLevelIdc(this.segment()); }
     /// Sets `maxLevelIdc` with the given value at the given index.
@@ -209,14 +201,68 @@ public final class VkVideoEncodeH265SessionCreateInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxLevelIdc(MemorySegment segment, @CType("StdVideoH265LevelIdc") int value) { VkVideoEncodeH265SessionCreateInfoKHR.set_maxLevelIdc(segment, 0L, value); }
-    /// Sets `maxLevelIdc` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH265SessionCreateInfoKHR maxLevelIdcAt(long index, @CType("StdVideoH265LevelIdc") int value) { VkVideoEncodeH265SessionCreateInfoKHR.set_maxLevelIdc(this.segment(), index, value); return this; }
     /// Sets `maxLevelIdc` with the given value.
     /// @param value the value
     /// @return `this`
     public VkVideoEncodeH265SessionCreateInfoKHR maxLevelIdc(@CType("StdVideoH265LevelIdc") int value) { VkVideoEncodeH265SessionCreateInfoKHR.set_maxLevelIdc(this.segment(), value); return this; }
 
+    /// A buffer of [VkVideoEncodeH265SessionCreateInfoKHR].
+    public static final class Buffer extends VkVideoEncodeH265SessionCreateInfoKHR {
+        private final long elementCount;
+
+        /// Creates `VkVideoEncodeH265SessionCreateInfoKHR.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkVideoEncodeH265SessionCreateInfoKHR`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkVideoEncodeH265SessionCreateInfoKHR`
+        public VkVideoEncodeH265SessionCreateInfoKHR asSlice(long index) { return new VkVideoEncodeH265SessionCreateInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkVideoEncodeH265SessionCreateInfoKHR`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkVideoEncodeH265SessionCreateInfoKHR`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkVideoEncodeH265SessionCreateInfoKHR.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkVideoEncodeH265SessionCreateInfoKHR.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkVideoEncodeH265SessionCreateInfoKHR.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkVideoEncodeH265SessionCreateInfoKHR.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `useMaxLevelIdc` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int useMaxLevelIdcAt(long index) { return VkVideoEncodeH265SessionCreateInfoKHR.get_useMaxLevelIdc(this.segment(), index); }
+        /// Sets `useMaxLevelIdc` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer useMaxLevelIdcAt(long index, @CType("VkBool32") int value) { VkVideoEncodeH265SessionCreateInfoKHR.set_useMaxLevelIdc(this.segment(), index, value); return this; }
+
+        /// {@return `maxLevelIdc` at the given index}
+        /// @param index the index
+        public @CType("StdVideoH265LevelIdc") int maxLevelIdcAt(long index) { return VkVideoEncodeH265SessionCreateInfoKHR.get_maxLevelIdc(this.segment(), index); }
+        /// Sets `maxLevelIdc` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxLevelIdcAt(long index, @CType("StdVideoH265LevelIdc") int value) { VkVideoEncodeH265SessionCreateInfoKHR.set_maxLevelIdc(this.segment(), index, value); return this; }
+
+    }
 }

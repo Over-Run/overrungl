@@ -43,7 +43,7 @@ import overrungl.util.*;
 ///     const uint64_t * pDrmFormatModifiers;
 /// } VkImageDrmFormatModifierListCreateInfoEXT;
 /// ```
-public final class VkImageDrmFormatModifierListCreateInfoEXT extends Struct {
+public sealed class VkImageDrmFormatModifierListCreateInfoEXT extends Struct {
     /// The struct layout of `VkImageDrmFormatModifierListCreateInfoEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -70,6 +70,11 @@ public final class VkImageDrmFormatModifierListCreateInfoEXT extends Struct {
     public static VkImageDrmFormatModifierListCreateInfoEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkImageDrmFormatModifierListCreateInfoEXT(segment); }
 
     /// Creates `VkImageDrmFormatModifierListCreateInfoEXT` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkImageDrmFormatModifierListCreateInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -82,7 +87,7 @@ public final class VkImageDrmFormatModifierListCreateInfoEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkImageDrmFormatModifierListCreateInfoEXT ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkImageDrmFormatModifierListCreateInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkImageDrmFormatModifierListCreateInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -93,7 +98,21 @@ public final class VkImageDrmFormatModifierListCreateInfoEXT extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkImageDrmFormatModifierListCreateInfoEXT`
-    public static VkImageDrmFormatModifierListCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkImageDrmFormatModifierListCreateInfoEXT(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkImageDrmFormatModifierListCreateInfoEXT` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkImageDrmFormatModifierListCreateInfoEXT`
+    public static VkImageDrmFormatModifierListCreateInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int drmFormatModifierCount, @CType("const uint64_t *") java.lang.foreign.MemorySegment pDrmFormatModifiers) { return alloc(allocator).sType(sType).pNext(pNext).drmFormatModifierCount(drmFormatModifierCount).pDrmFormatModifiers(pDrmFormatModifiers); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkImageDrmFormatModifierListCreateInfoEXT copyFrom(VkImageDrmFormatModifierListCreateInfoEXT src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -102,9 +121,6 @@ public final class VkImageDrmFormatModifierListCreateInfoEXT extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkImageDrmFormatModifierListCreateInfoEXT.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkImageDrmFormatModifierListCreateInfoEXT.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkImageDrmFormatModifierListCreateInfoEXT.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -116,11 +132,6 @@ public final class VkImageDrmFormatModifierListCreateInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkImageDrmFormatModifierListCreateInfoEXT.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageDrmFormatModifierListCreateInfoEXT sTypeAt(long index, @CType("VkStructureType") int value) { VkImageDrmFormatModifierListCreateInfoEXT.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -133,9 +144,6 @@ public final class VkImageDrmFormatModifierListCreateInfoEXT extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkImageDrmFormatModifierListCreateInfoEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkImageDrmFormatModifierListCreateInfoEXT.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkImageDrmFormatModifierListCreateInfoEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -147,11 +155,6 @@ public final class VkImageDrmFormatModifierListCreateInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkImageDrmFormatModifierListCreateInfoEXT.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageDrmFormatModifierListCreateInfoEXT pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkImageDrmFormatModifierListCreateInfoEXT.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -164,9 +167,6 @@ public final class VkImageDrmFormatModifierListCreateInfoEXT extends Struct {
     /// {@return `drmFormatModifierCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_drmFormatModifierCount(MemorySegment segment) { return VkImageDrmFormatModifierListCreateInfoEXT.get_drmFormatModifierCount(segment, 0L); }
-    /// {@return `drmFormatModifierCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int drmFormatModifierCountAt(long index) { return VkImageDrmFormatModifierListCreateInfoEXT.get_drmFormatModifierCount(this.segment(), index); }
     /// {@return `drmFormatModifierCount`}
     public @CType("uint32_t") int drmFormatModifierCount() { return VkImageDrmFormatModifierListCreateInfoEXT.get_drmFormatModifierCount(this.segment()); }
     /// Sets `drmFormatModifierCount` with the given value at the given index.
@@ -178,11 +178,6 @@ public final class VkImageDrmFormatModifierListCreateInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_drmFormatModifierCount(MemorySegment segment, @CType("uint32_t") int value) { VkImageDrmFormatModifierListCreateInfoEXT.set_drmFormatModifierCount(segment, 0L, value); }
-    /// Sets `drmFormatModifierCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageDrmFormatModifierListCreateInfoEXT drmFormatModifierCountAt(long index, @CType("uint32_t") int value) { VkImageDrmFormatModifierListCreateInfoEXT.set_drmFormatModifierCount(this.segment(), index, value); return this; }
     /// Sets `drmFormatModifierCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -195,9 +190,6 @@ public final class VkImageDrmFormatModifierListCreateInfoEXT extends Struct {
     /// {@return `pDrmFormatModifiers`}
     /// @param segment the segment of the struct
     public static @CType("const uint64_t *") java.lang.foreign.MemorySegment get_pDrmFormatModifiers(MemorySegment segment) { return VkImageDrmFormatModifierListCreateInfoEXT.get_pDrmFormatModifiers(segment, 0L); }
-    /// {@return `pDrmFormatModifiers` at the given index}
-    /// @param index the index
-    public @CType("const uint64_t *") java.lang.foreign.MemorySegment pDrmFormatModifiersAt(long index) { return VkImageDrmFormatModifierListCreateInfoEXT.get_pDrmFormatModifiers(this.segment(), index); }
     /// {@return `pDrmFormatModifiers`}
     public @CType("const uint64_t *") java.lang.foreign.MemorySegment pDrmFormatModifiers() { return VkImageDrmFormatModifierListCreateInfoEXT.get_pDrmFormatModifiers(this.segment()); }
     /// Sets `pDrmFormatModifiers` with the given value at the given index.
@@ -209,14 +201,68 @@ public final class VkImageDrmFormatModifierListCreateInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pDrmFormatModifiers(MemorySegment segment, @CType("const uint64_t *") java.lang.foreign.MemorySegment value) { VkImageDrmFormatModifierListCreateInfoEXT.set_pDrmFormatModifiers(segment, 0L, value); }
-    /// Sets `pDrmFormatModifiers` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageDrmFormatModifierListCreateInfoEXT pDrmFormatModifiersAt(long index, @CType("const uint64_t *") java.lang.foreign.MemorySegment value) { VkImageDrmFormatModifierListCreateInfoEXT.set_pDrmFormatModifiers(this.segment(), index, value); return this; }
     /// Sets `pDrmFormatModifiers` with the given value.
     /// @param value the value
     /// @return `this`
     public VkImageDrmFormatModifierListCreateInfoEXT pDrmFormatModifiers(@CType("const uint64_t *") java.lang.foreign.MemorySegment value) { VkImageDrmFormatModifierListCreateInfoEXT.set_pDrmFormatModifiers(this.segment(), value); return this; }
 
+    /// A buffer of [VkImageDrmFormatModifierListCreateInfoEXT].
+    public static final class Buffer extends VkImageDrmFormatModifierListCreateInfoEXT {
+        private final long elementCount;
+
+        /// Creates `VkImageDrmFormatModifierListCreateInfoEXT.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkImageDrmFormatModifierListCreateInfoEXT`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkImageDrmFormatModifierListCreateInfoEXT`
+        public VkImageDrmFormatModifierListCreateInfoEXT asSlice(long index) { return new VkImageDrmFormatModifierListCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkImageDrmFormatModifierListCreateInfoEXT`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkImageDrmFormatModifierListCreateInfoEXT`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkImageDrmFormatModifierListCreateInfoEXT.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkImageDrmFormatModifierListCreateInfoEXT.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkImageDrmFormatModifierListCreateInfoEXT.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkImageDrmFormatModifierListCreateInfoEXT.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `drmFormatModifierCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int drmFormatModifierCountAt(long index) { return VkImageDrmFormatModifierListCreateInfoEXT.get_drmFormatModifierCount(this.segment(), index); }
+        /// Sets `drmFormatModifierCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer drmFormatModifierCountAt(long index, @CType("uint32_t") int value) { VkImageDrmFormatModifierListCreateInfoEXT.set_drmFormatModifierCount(this.segment(), index, value); return this; }
+
+        /// {@return `pDrmFormatModifiers` at the given index}
+        /// @param index the index
+        public @CType("const uint64_t *") java.lang.foreign.MemorySegment pDrmFormatModifiersAt(long index) { return VkImageDrmFormatModifierListCreateInfoEXT.get_pDrmFormatModifiers(this.segment(), index); }
+        /// Sets `pDrmFormatModifiers` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pDrmFormatModifiersAt(long index, @CType("const uint64_t *") java.lang.foreign.MemorySegment value) { VkImageDrmFormatModifierListCreateInfoEXT.set_pDrmFormatModifiers(this.segment(), index, value); return this; }
+
+    }
 }

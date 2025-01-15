@@ -61,7 +61,7 @@ import overrungl.util.*;
 ///     VkImageSubresourceRange subresourceRange;
 /// } VkImageMemoryBarrier;
 /// ```
-public final class VkImageMemoryBarrier extends Struct {
+public sealed class VkImageMemoryBarrier extends Struct {
     /// The struct layout of `VkImageMemoryBarrier`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -108,6 +108,11 @@ public final class VkImageMemoryBarrier extends Struct {
     public static VkImageMemoryBarrier of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkImageMemoryBarrier(segment); }
 
     /// Creates `VkImageMemoryBarrier` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkImageMemoryBarrier` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -120,7 +125,7 @@ public final class VkImageMemoryBarrier extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkImageMemoryBarrier ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkImageMemoryBarrier(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkImageMemoryBarrier` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -131,7 +136,21 @@ public final class VkImageMemoryBarrier extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkImageMemoryBarrier`
-    public static VkImageMemoryBarrier alloc(SegmentAllocator allocator, long count) { return new VkImageMemoryBarrier(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkImageMemoryBarrier` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkImageMemoryBarrier`
+    public static VkImageMemoryBarrier allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkAccessFlags") int srcAccessMask, @CType("VkAccessFlags") int dstAccessMask, @CType("VkImageLayout") int oldLayout, @CType("VkImageLayout") int newLayout, @CType("uint32_t") int srcQueueFamilyIndex, @CType("uint32_t") int dstQueueFamilyIndex, @CType("VkImage") java.lang.foreign.MemorySegment image, @CType("VkImageSubresourceRange") java.lang.foreign.MemorySegment subresourceRange) { return alloc(allocator).sType(sType).pNext(pNext).srcAccessMask(srcAccessMask).dstAccessMask(dstAccessMask).oldLayout(oldLayout).newLayout(newLayout).srcQueueFamilyIndex(srcQueueFamilyIndex).dstQueueFamilyIndex(dstQueueFamilyIndex).image(image).subresourceRange(subresourceRange); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkImageMemoryBarrier copyFrom(VkImageMemoryBarrier src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -140,9 +159,6 @@ public final class VkImageMemoryBarrier extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkImageMemoryBarrier.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkImageMemoryBarrier.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkImageMemoryBarrier.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -154,11 +170,6 @@ public final class VkImageMemoryBarrier extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkImageMemoryBarrier.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageMemoryBarrier sTypeAt(long index, @CType("VkStructureType") int value) { VkImageMemoryBarrier.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -171,9 +182,6 @@ public final class VkImageMemoryBarrier extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkImageMemoryBarrier.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkImageMemoryBarrier.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkImageMemoryBarrier.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -185,11 +193,6 @@ public final class VkImageMemoryBarrier extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkImageMemoryBarrier.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageMemoryBarrier pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkImageMemoryBarrier.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -202,9 +205,6 @@ public final class VkImageMemoryBarrier extends Struct {
     /// {@return `srcAccessMask`}
     /// @param segment the segment of the struct
     public static @CType("VkAccessFlags") int get_srcAccessMask(MemorySegment segment) { return VkImageMemoryBarrier.get_srcAccessMask(segment, 0L); }
-    /// {@return `srcAccessMask` at the given index}
-    /// @param index the index
-    public @CType("VkAccessFlags") int srcAccessMaskAt(long index) { return VkImageMemoryBarrier.get_srcAccessMask(this.segment(), index); }
     /// {@return `srcAccessMask`}
     public @CType("VkAccessFlags") int srcAccessMask() { return VkImageMemoryBarrier.get_srcAccessMask(this.segment()); }
     /// Sets `srcAccessMask` with the given value at the given index.
@@ -216,11 +216,6 @@ public final class VkImageMemoryBarrier extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_srcAccessMask(MemorySegment segment, @CType("VkAccessFlags") int value) { VkImageMemoryBarrier.set_srcAccessMask(segment, 0L, value); }
-    /// Sets `srcAccessMask` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageMemoryBarrier srcAccessMaskAt(long index, @CType("VkAccessFlags") int value) { VkImageMemoryBarrier.set_srcAccessMask(this.segment(), index, value); return this; }
     /// Sets `srcAccessMask` with the given value.
     /// @param value the value
     /// @return `this`
@@ -233,9 +228,6 @@ public final class VkImageMemoryBarrier extends Struct {
     /// {@return `dstAccessMask`}
     /// @param segment the segment of the struct
     public static @CType("VkAccessFlags") int get_dstAccessMask(MemorySegment segment) { return VkImageMemoryBarrier.get_dstAccessMask(segment, 0L); }
-    /// {@return `dstAccessMask` at the given index}
-    /// @param index the index
-    public @CType("VkAccessFlags") int dstAccessMaskAt(long index) { return VkImageMemoryBarrier.get_dstAccessMask(this.segment(), index); }
     /// {@return `dstAccessMask`}
     public @CType("VkAccessFlags") int dstAccessMask() { return VkImageMemoryBarrier.get_dstAccessMask(this.segment()); }
     /// Sets `dstAccessMask` with the given value at the given index.
@@ -247,11 +239,6 @@ public final class VkImageMemoryBarrier extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_dstAccessMask(MemorySegment segment, @CType("VkAccessFlags") int value) { VkImageMemoryBarrier.set_dstAccessMask(segment, 0L, value); }
-    /// Sets `dstAccessMask` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageMemoryBarrier dstAccessMaskAt(long index, @CType("VkAccessFlags") int value) { VkImageMemoryBarrier.set_dstAccessMask(this.segment(), index, value); return this; }
     /// Sets `dstAccessMask` with the given value.
     /// @param value the value
     /// @return `this`
@@ -264,9 +251,6 @@ public final class VkImageMemoryBarrier extends Struct {
     /// {@return `oldLayout`}
     /// @param segment the segment of the struct
     public static @CType("VkImageLayout") int get_oldLayout(MemorySegment segment) { return VkImageMemoryBarrier.get_oldLayout(segment, 0L); }
-    /// {@return `oldLayout` at the given index}
-    /// @param index the index
-    public @CType("VkImageLayout") int oldLayoutAt(long index) { return VkImageMemoryBarrier.get_oldLayout(this.segment(), index); }
     /// {@return `oldLayout`}
     public @CType("VkImageLayout") int oldLayout() { return VkImageMemoryBarrier.get_oldLayout(this.segment()); }
     /// Sets `oldLayout` with the given value at the given index.
@@ -278,11 +262,6 @@ public final class VkImageMemoryBarrier extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_oldLayout(MemorySegment segment, @CType("VkImageLayout") int value) { VkImageMemoryBarrier.set_oldLayout(segment, 0L, value); }
-    /// Sets `oldLayout` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageMemoryBarrier oldLayoutAt(long index, @CType("VkImageLayout") int value) { VkImageMemoryBarrier.set_oldLayout(this.segment(), index, value); return this; }
     /// Sets `oldLayout` with the given value.
     /// @param value the value
     /// @return `this`
@@ -295,9 +274,6 @@ public final class VkImageMemoryBarrier extends Struct {
     /// {@return `newLayout`}
     /// @param segment the segment of the struct
     public static @CType("VkImageLayout") int get_newLayout(MemorySegment segment) { return VkImageMemoryBarrier.get_newLayout(segment, 0L); }
-    /// {@return `newLayout` at the given index}
-    /// @param index the index
-    public @CType("VkImageLayout") int newLayoutAt(long index) { return VkImageMemoryBarrier.get_newLayout(this.segment(), index); }
     /// {@return `newLayout`}
     public @CType("VkImageLayout") int newLayout() { return VkImageMemoryBarrier.get_newLayout(this.segment()); }
     /// Sets `newLayout` with the given value at the given index.
@@ -309,11 +285,6 @@ public final class VkImageMemoryBarrier extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_newLayout(MemorySegment segment, @CType("VkImageLayout") int value) { VkImageMemoryBarrier.set_newLayout(segment, 0L, value); }
-    /// Sets `newLayout` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageMemoryBarrier newLayoutAt(long index, @CType("VkImageLayout") int value) { VkImageMemoryBarrier.set_newLayout(this.segment(), index, value); return this; }
     /// Sets `newLayout` with the given value.
     /// @param value the value
     /// @return `this`
@@ -326,9 +297,6 @@ public final class VkImageMemoryBarrier extends Struct {
     /// {@return `srcQueueFamilyIndex`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_srcQueueFamilyIndex(MemorySegment segment) { return VkImageMemoryBarrier.get_srcQueueFamilyIndex(segment, 0L); }
-    /// {@return `srcQueueFamilyIndex` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int srcQueueFamilyIndexAt(long index) { return VkImageMemoryBarrier.get_srcQueueFamilyIndex(this.segment(), index); }
     /// {@return `srcQueueFamilyIndex`}
     public @CType("uint32_t") int srcQueueFamilyIndex() { return VkImageMemoryBarrier.get_srcQueueFamilyIndex(this.segment()); }
     /// Sets `srcQueueFamilyIndex` with the given value at the given index.
@@ -340,11 +308,6 @@ public final class VkImageMemoryBarrier extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_srcQueueFamilyIndex(MemorySegment segment, @CType("uint32_t") int value) { VkImageMemoryBarrier.set_srcQueueFamilyIndex(segment, 0L, value); }
-    /// Sets `srcQueueFamilyIndex` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageMemoryBarrier srcQueueFamilyIndexAt(long index, @CType("uint32_t") int value) { VkImageMemoryBarrier.set_srcQueueFamilyIndex(this.segment(), index, value); return this; }
     /// Sets `srcQueueFamilyIndex` with the given value.
     /// @param value the value
     /// @return `this`
@@ -357,9 +320,6 @@ public final class VkImageMemoryBarrier extends Struct {
     /// {@return `dstQueueFamilyIndex`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_dstQueueFamilyIndex(MemorySegment segment) { return VkImageMemoryBarrier.get_dstQueueFamilyIndex(segment, 0L); }
-    /// {@return `dstQueueFamilyIndex` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int dstQueueFamilyIndexAt(long index) { return VkImageMemoryBarrier.get_dstQueueFamilyIndex(this.segment(), index); }
     /// {@return `dstQueueFamilyIndex`}
     public @CType("uint32_t") int dstQueueFamilyIndex() { return VkImageMemoryBarrier.get_dstQueueFamilyIndex(this.segment()); }
     /// Sets `dstQueueFamilyIndex` with the given value at the given index.
@@ -371,11 +331,6 @@ public final class VkImageMemoryBarrier extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_dstQueueFamilyIndex(MemorySegment segment, @CType("uint32_t") int value) { VkImageMemoryBarrier.set_dstQueueFamilyIndex(segment, 0L, value); }
-    /// Sets `dstQueueFamilyIndex` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageMemoryBarrier dstQueueFamilyIndexAt(long index, @CType("uint32_t") int value) { VkImageMemoryBarrier.set_dstQueueFamilyIndex(this.segment(), index, value); return this; }
     /// Sets `dstQueueFamilyIndex` with the given value.
     /// @param value the value
     /// @return `this`
@@ -388,9 +343,6 @@ public final class VkImageMemoryBarrier extends Struct {
     /// {@return `image`}
     /// @param segment the segment of the struct
     public static @CType("VkImage") java.lang.foreign.MemorySegment get_image(MemorySegment segment) { return VkImageMemoryBarrier.get_image(segment, 0L); }
-    /// {@return `image` at the given index}
-    /// @param index the index
-    public @CType("VkImage") java.lang.foreign.MemorySegment imageAt(long index) { return VkImageMemoryBarrier.get_image(this.segment(), index); }
     /// {@return `image`}
     public @CType("VkImage") java.lang.foreign.MemorySegment image() { return VkImageMemoryBarrier.get_image(this.segment()); }
     /// Sets `image` with the given value at the given index.
@@ -402,11 +354,6 @@ public final class VkImageMemoryBarrier extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_image(MemorySegment segment, @CType("VkImage") java.lang.foreign.MemorySegment value) { VkImageMemoryBarrier.set_image(segment, 0L, value); }
-    /// Sets `image` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageMemoryBarrier imageAt(long index, @CType("VkImage") java.lang.foreign.MemorySegment value) { VkImageMemoryBarrier.set_image(this.segment(), index, value); return this; }
     /// Sets `image` with the given value.
     /// @param value the value
     /// @return `this`
@@ -419,9 +366,6 @@ public final class VkImageMemoryBarrier extends Struct {
     /// {@return `subresourceRange`}
     /// @param segment the segment of the struct
     public static @CType("VkImageSubresourceRange") java.lang.foreign.MemorySegment get_subresourceRange(MemorySegment segment) { return VkImageMemoryBarrier.get_subresourceRange(segment, 0L); }
-    /// {@return `subresourceRange` at the given index}
-    /// @param index the index
-    public @CType("VkImageSubresourceRange") java.lang.foreign.MemorySegment subresourceRangeAt(long index) { return VkImageMemoryBarrier.get_subresourceRange(this.segment(), index); }
     /// {@return `subresourceRange`}
     public @CType("VkImageSubresourceRange") java.lang.foreign.MemorySegment subresourceRange() { return VkImageMemoryBarrier.get_subresourceRange(this.segment()); }
     /// Sets `subresourceRange` with the given value at the given index.
@@ -433,14 +377,122 @@ public final class VkImageMemoryBarrier extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_subresourceRange(MemorySegment segment, @CType("VkImageSubresourceRange") java.lang.foreign.MemorySegment value) { VkImageMemoryBarrier.set_subresourceRange(segment, 0L, value); }
-    /// Sets `subresourceRange` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageMemoryBarrier subresourceRangeAt(long index, @CType("VkImageSubresourceRange") java.lang.foreign.MemorySegment value) { VkImageMemoryBarrier.set_subresourceRange(this.segment(), index, value); return this; }
     /// Sets `subresourceRange` with the given value.
     /// @param value the value
     /// @return `this`
     public VkImageMemoryBarrier subresourceRange(@CType("VkImageSubresourceRange") java.lang.foreign.MemorySegment value) { VkImageMemoryBarrier.set_subresourceRange(this.segment(), value); return this; }
 
+    /// A buffer of [VkImageMemoryBarrier].
+    public static final class Buffer extends VkImageMemoryBarrier {
+        private final long elementCount;
+
+        /// Creates `VkImageMemoryBarrier.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkImageMemoryBarrier`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkImageMemoryBarrier`
+        public VkImageMemoryBarrier asSlice(long index) { return new VkImageMemoryBarrier(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkImageMemoryBarrier`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkImageMemoryBarrier`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkImageMemoryBarrier.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkImageMemoryBarrier.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkImageMemoryBarrier.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkImageMemoryBarrier.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `srcAccessMask` at the given index}
+        /// @param index the index
+        public @CType("VkAccessFlags") int srcAccessMaskAt(long index) { return VkImageMemoryBarrier.get_srcAccessMask(this.segment(), index); }
+        /// Sets `srcAccessMask` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer srcAccessMaskAt(long index, @CType("VkAccessFlags") int value) { VkImageMemoryBarrier.set_srcAccessMask(this.segment(), index, value); return this; }
+
+        /// {@return `dstAccessMask` at the given index}
+        /// @param index the index
+        public @CType("VkAccessFlags") int dstAccessMaskAt(long index) { return VkImageMemoryBarrier.get_dstAccessMask(this.segment(), index); }
+        /// Sets `dstAccessMask` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer dstAccessMaskAt(long index, @CType("VkAccessFlags") int value) { VkImageMemoryBarrier.set_dstAccessMask(this.segment(), index, value); return this; }
+
+        /// {@return `oldLayout` at the given index}
+        /// @param index the index
+        public @CType("VkImageLayout") int oldLayoutAt(long index) { return VkImageMemoryBarrier.get_oldLayout(this.segment(), index); }
+        /// Sets `oldLayout` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer oldLayoutAt(long index, @CType("VkImageLayout") int value) { VkImageMemoryBarrier.set_oldLayout(this.segment(), index, value); return this; }
+
+        /// {@return `newLayout` at the given index}
+        /// @param index the index
+        public @CType("VkImageLayout") int newLayoutAt(long index) { return VkImageMemoryBarrier.get_newLayout(this.segment(), index); }
+        /// Sets `newLayout` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer newLayoutAt(long index, @CType("VkImageLayout") int value) { VkImageMemoryBarrier.set_newLayout(this.segment(), index, value); return this; }
+
+        /// {@return `srcQueueFamilyIndex` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int srcQueueFamilyIndexAt(long index) { return VkImageMemoryBarrier.get_srcQueueFamilyIndex(this.segment(), index); }
+        /// Sets `srcQueueFamilyIndex` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer srcQueueFamilyIndexAt(long index, @CType("uint32_t") int value) { VkImageMemoryBarrier.set_srcQueueFamilyIndex(this.segment(), index, value); return this; }
+
+        /// {@return `dstQueueFamilyIndex` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int dstQueueFamilyIndexAt(long index) { return VkImageMemoryBarrier.get_dstQueueFamilyIndex(this.segment(), index); }
+        /// Sets `dstQueueFamilyIndex` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer dstQueueFamilyIndexAt(long index, @CType("uint32_t") int value) { VkImageMemoryBarrier.set_dstQueueFamilyIndex(this.segment(), index, value); return this; }
+
+        /// {@return `image` at the given index}
+        /// @param index the index
+        public @CType("VkImage") java.lang.foreign.MemorySegment imageAt(long index) { return VkImageMemoryBarrier.get_image(this.segment(), index); }
+        /// Sets `image` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer imageAt(long index, @CType("VkImage") java.lang.foreign.MemorySegment value) { VkImageMemoryBarrier.set_image(this.segment(), index, value); return this; }
+
+        /// {@return `subresourceRange` at the given index}
+        /// @param index the index
+        public @CType("VkImageSubresourceRange") java.lang.foreign.MemorySegment subresourceRangeAt(long index) { return VkImageMemoryBarrier.get_subresourceRange(this.segment(), index); }
+        /// Sets `subresourceRange` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer subresourceRangeAt(long index, @CType("VkImageSubresourceRange") java.lang.foreign.MemorySegment value) { VkImageMemoryBarrier.set_subresourceRange(this.segment(), index, value); return this; }
+
+    }
 }

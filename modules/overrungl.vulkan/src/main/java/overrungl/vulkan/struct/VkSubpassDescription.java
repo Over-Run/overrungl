@@ -61,7 +61,7 @@ import overrungl.util.*;
 ///     const uint32_t * pPreserveAttachments;
 /// } VkSubpassDescription;
 /// ```
-public final class VkSubpassDescription extends Struct {
+public sealed class VkSubpassDescription extends Struct {
     /// The struct layout of `VkSubpassDescription`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("flags"),
@@ -106,6 +106,11 @@ public final class VkSubpassDescription extends Struct {
     public static VkSubpassDescription of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkSubpassDescription(segment); }
 
     /// Creates `VkSubpassDescription` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkSubpassDescription` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -118,7 +123,7 @@ public final class VkSubpassDescription extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSubpassDescription ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkSubpassDescription(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkSubpassDescription` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -129,7 +134,21 @@ public final class VkSubpassDescription extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkSubpassDescription`
-    public static VkSubpassDescription alloc(SegmentAllocator allocator, long count) { return new VkSubpassDescription(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkSubpassDescription` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkSubpassDescription`
+    public static VkSubpassDescription allocInit(SegmentAllocator allocator, @CType("VkSubpassDescriptionFlags") int flags, @CType("VkPipelineBindPoint") int pipelineBindPoint, @CType("uint32_t") int inputAttachmentCount, @CType("const VkAttachmentReference *") java.lang.foreign.MemorySegment pInputAttachments, @CType("uint32_t") int colorAttachmentCount, @CType("const VkAttachmentReference *") java.lang.foreign.MemorySegment pColorAttachments, @CType("const VkAttachmentReference *") java.lang.foreign.MemorySegment pResolveAttachments, @CType("const VkAttachmentReference *") java.lang.foreign.MemorySegment pDepthStencilAttachment, @CType("uint32_t") int preserveAttachmentCount, @CType("const uint32_t *") java.lang.foreign.MemorySegment pPreserveAttachments) { return alloc(allocator).flags(flags).pipelineBindPoint(pipelineBindPoint).inputAttachmentCount(inputAttachmentCount).pInputAttachments(pInputAttachments).colorAttachmentCount(colorAttachmentCount).pColorAttachments(pColorAttachments).pResolveAttachments(pResolveAttachments).pDepthStencilAttachment(pDepthStencilAttachment).preserveAttachmentCount(preserveAttachmentCount).pPreserveAttachments(pPreserveAttachments); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkSubpassDescription copyFrom(VkSubpassDescription src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
@@ -138,9 +157,6 @@ public final class VkSubpassDescription extends Struct {
     /// {@return `flags`}
     /// @param segment the segment of the struct
     public static @CType("VkSubpassDescriptionFlags") int get_flags(MemorySegment segment) { return VkSubpassDescription.get_flags(segment, 0L); }
-    /// {@return `flags` at the given index}
-    /// @param index the index
-    public @CType("VkSubpassDescriptionFlags") int flagsAt(long index) { return VkSubpassDescription.get_flags(this.segment(), index); }
     /// {@return `flags`}
     public @CType("VkSubpassDescriptionFlags") int flags() { return VkSubpassDescription.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
@@ -152,11 +168,6 @@ public final class VkSubpassDescription extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_flags(MemorySegment segment, @CType("VkSubpassDescriptionFlags") int value) { VkSubpassDescription.set_flags(segment, 0L, value); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSubpassDescription flagsAt(long index, @CType("VkSubpassDescriptionFlags") int value) { VkSubpassDescription.set_flags(this.segment(), index, value); return this; }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -169,9 +180,6 @@ public final class VkSubpassDescription extends Struct {
     /// {@return `pipelineBindPoint`}
     /// @param segment the segment of the struct
     public static @CType("VkPipelineBindPoint") int get_pipelineBindPoint(MemorySegment segment) { return VkSubpassDescription.get_pipelineBindPoint(segment, 0L); }
-    /// {@return `pipelineBindPoint` at the given index}
-    /// @param index the index
-    public @CType("VkPipelineBindPoint") int pipelineBindPointAt(long index) { return VkSubpassDescription.get_pipelineBindPoint(this.segment(), index); }
     /// {@return `pipelineBindPoint`}
     public @CType("VkPipelineBindPoint") int pipelineBindPoint() { return VkSubpassDescription.get_pipelineBindPoint(this.segment()); }
     /// Sets `pipelineBindPoint` with the given value at the given index.
@@ -183,11 +191,6 @@ public final class VkSubpassDescription extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pipelineBindPoint(MemorySegment segment, @CType("VkPipelineBindPoint") int value) { VkSubpassDescription.set_pipelineBindPoint(segment, 0L, value); }
-    /// Sets `pipelineBindPoint` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSubpassDescription pipelineBindPointAt(long index, @CType("VkPipelineBindPoint") int value) { VkSubpassDescription.set_pipelineBindPoint(this.segment(), index, value); return this; }
     /// Sets `pipelineBindPoint` with the given value.
     /// @param value the value
     /// @return `this`
@@ -200,9 +203,6 @@ public final class VkSubpassDescription extends Struct {
     /// {@return `inputAttachmentCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_inputAttachmentCount(MemorySegment segment) { return VkSubpassDescription.get_inputAttachmentCount(segment, 0L); }
-    /// {@return `inputAttachmentCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int inputAttachmentCountAt(long index) { return VkSubpassDescription.get_inputAttachmentCount(this.segment(), index); }
     /// {@return `inputAttachmentCount`}
     public @CType("uint32_t") int inputAttachmentCount() { return VkSubpassDescription.get_inputAttachmentCount(this.segment()); }
     /// Sets `inputAttachmentCount` with the given value at the given index.
@@ -214,11 +214,6 @@ public final class VkSubpassDescription extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_inputAttachmentCount(MemorySegment segment, @CType("uint32_t") int value) { VkSubpassDescription.set_inputAttachmentCount(segment, 0L, value); }
-    /// Sets `inputAttachmentCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSubpassDescription inputAttachmentCountAt(long index, @CType("uint32_t") int value) { VkSubpassDescription.set_inputAttachmentCount(this.segment(), index, value); return this; }
     /// Sets `inputAttachmentCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -231,9 +226,6 @@ public final class VkSubpassDescription extends Struct {
     /// {@return `pInputAttachments`}
     /// @param segment the segment of the struct
     public static @CType("const VkAttachmentReference *") java.lang.foreign.MemorySegment get_pInputAttachments(MemorySegment segment) { return VkSubpassDescription.get_pInputAttachments(segment, 0L); }
-    /// {@return `pInputAttachments` at the given index}
-    /// @param index the index
-    public @CType("const VkAttachmentReference *") java.lang.foreign.MemorySegment pInputAttachmentsAt(long index) { return VkSubpassDescription.get_pInputAttachments(this.segment(), index); }
     /// {@return `pInputAttachments`}
     public @CType("const VkAttachmentReference *") java.lang.foreign.MemorySegment pInputAttachments() { return VkSubpassDescription.get_pInputAttachments(this.segment()); }
     /// Sets `pInputAttachments` with the given value at the given index.
@@ -245,11 +237,6 @@ public final class VkSubpassDescription extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pInputAttachments(MemorySegment segment, @CType("const VkAttachmentReference *") java.lang.foreign.MemorySegment value) { VkSubpassDescription.set_pInputAttachments(segment, 0L, value); }
-    /// Sets `pInputAttachments` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSubpassDescription pInputAttachmentsAt(long index, @CType("const VkAttachmentReference *") java.lang.foreign.MemorySegment value) { VkSubpassDescription.set_pInputAttachments(this.segment(), index, value); return this; }
     /// Sets `pInputAttachments` with the given value.
     /// @param value the value
     /// @return `this`
@@ -262,9 +249,6 @@ public final class VkSubpassDescription extends Struct {
     /// {@return `colorAttachmentCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_colorAttachmentCount(MemorySegment segment) { return VkSubpassDescription.get_colorAttachmentCount(segment, 0L); }
-    /// {@return `colorAttachmentCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int colorAttachmentCountAt(long index) { return VkSubpassDescription.get_colorAttachmentCount(this.segment(), index); }
     /// {@return `colorAttachmentCount`}
     public @CType("uint32_t") int colorAttachmentCount() { return VkSubpassDescription.get_colorAttachmentCount(this.segment()); }
     /// Sets `colorAttachmentCount` with the given value at the given index.
@@ -276,11 +260,6 @@ public final class VkSubpassDescription extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_colorAttachmentCount(MemorySegment segment, @CType("uint32_t") int value) { VkSubpassDescription.set_colorAttachmentCount(segment, 0L, value); }
-    /// Sets `colorAttachmentCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSubpassDescription colorAttachmentCountAt(long index, @CType("uint32_t") int value) { VkSubpassDescription.set_colorAttachmentCount(this.segment(), index, value); return this; }
     /// Sets `colorAttachmentCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -293,9 +272,6 @@ public final class VkSubpassDescription extends Struct {
     /// {@return `pColorAttachments`}
     /// @param segment the segment of the struct
     public static @CType("const VkAttachmentReference *") java.lang.foreign.MemorySegment get_pColorAttachments(MemorySegment segment) { return VkSubpassDescription.get_pColorAttachments(segment, 0L); }
-    /// {@return `pColorAttachments` at the given index}
-    /// @param index the index
-    public @CType("const VkAttachmentReference *") java.lang.foreign.MemorySegment pColorAttachmentsAt(long index) { return VkSubpassDescription.get_pColorAttachments(this.segment(), index); }
     /// {@return `pColorAttachments`}
     public @CType("const VkAttachmentReference *") java.lang.foreign.MemorySegment pColorAttachments() { return VkSubpassDescription.get_pColorAttachments(this.segment()); }
     /// Sets `pColorAttachments` with the given value at the given index.
@@ -307,11 +283,6 @@ public final class VkSubpassDescription extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pColorAttachments(MemorySegment segment, @CType("const VkAttachmentReference *") java.lang.foreign.MemorySegment value) { VkSubpassDescription.set_pColorAttachments(segment, 0L, value); }
-    /// Sets `pColorAttachments` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSubpassDescription pColorAttachmentsAt(long index, @CType("const VkAttachmentReference *") java.lang.foreign.MemorySegment value) { VkSubpassDescription.set_pColorAttachments(this.segment(), index, value); return this; }
     /// Sets `pColorAttachments` with the given value.
     /// @param value the value
     /// @return `this`
@@ -324,9 +295,6 @@ public final class VkSubpassDescription extends Struct {
     /// {@return `pResolveAttachments`}
     /// @param segment the segment of the struct
     public static @CType("const VkAttachmentReference *") java.lang.foreign.MemorySegment get_pResolveAttachments(MemorySegment segment) { return VkSubpassDescription.get_pResolveAttachments(segment, 0L); }
-    /// {@return `pResolveAttachments` at the given index}
-    /// @param index the index
-    public @CType("const VkAttachmentReference *") java.lang.foreign.MemorySegment pResolveAttachmentsAt(long index) { return VkSubpassDescription.get_pResolveAttachments(this.segment(), index); }
     /// {@return `pResolveAttachments`}
     public @CType("const VkAttachmentReference *") java.lang.foreign.MemorySegment pResolveAttachments() { return VkSubpassDescription.get_pResolveAttachments(this.segment()); }
     /// Sets `pResolveAttachments` with the given value at the given index.
@@ -338,11 +306,6 @@ public final class VkSubpassDescription extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pResolveAttachments(MemorySegment segment, @CType("const VkAttachmentReference *") java.lang.foreign.MemorySegment value) { VkSubpassDescription.set_pResolveAttachments(segment, 0L, value); }
-    /// Sets `pResolveAttachments` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSubpassDescription pResolveAttachmentsAt(long index, @CType("const VkAttachmentReference *") java.lang.foreign.MemorySegment value) { VkSubpassDescription.set_pResolveAttachments(this.segment(), index, value); return this; }
     /// Sets `pResolveAttachments` with the given value.
     /// @param value the value
     /// @return `this`
@@ -355,9 +318,6 @@ public final class VkSubpassDescription extends Struct {
     /// {@return `pDepthStencilAttachment`}
     /// @param segment the segment of the struct
     public static @CType("const VkAttachmentReference *") java.lang.foreign.MemorySegment get_pDepthStencilAttachment(MemorySegment segment) { return VkSubpassDescription.get_pDepthStencilAttachment(segment, 0L); }
-    /// {@return `pDepthStencilAttachment` at the given index}
-    /// @param index the index
-    public @CType("const VkAttachmentReference *") java.lang.foreign.MemorySegment pDepthStencilAttachmentAt(long index) { return VkSubpassDescription.get_pDepthStencilAttachment(this.segment(), index); }
     /// {@return `pDepthStencilAttachment`}
     public @CType("const VkAttachmentReference *") java.lang.foreign.MemorySegment pDepthStencilAttachment() { return VkSubpassDescription.get_pDepthStencilAttachment(this.segment()); }
     /// Sets `pDepthStencilAttachment` with the given value at the given index.
@@ -369,11 +329,6 @@ public final class VkSubpassDescription extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pDepthStencilAttachment(MemorySegment segment, @CType("const VkAttachmentReference *") java.lang.foreign.MemorySegment value) { VkSubpassDescription.set_pDepthStencilAttachment(segment, 0L, value); }
-    /// Sets `pDepthStencilAttachment` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSubpassDescription pDepthStencilAttachmentAt(long index, @CType("const VkAttachmentReference *") java.lang.foreign.MemorySegment value) { VkSubpassDescription.set_pDepthStencilAttachment(this.segment(), index, value); return this; }
     /// Sets `pDepthStencilAttachment` with the given value.
     /// @param value the value
     /// @return `this`
@@ -386,9 +341,6 @@ public final class VkSubpassDescription extends Struct {
     /// {@return `preserveAttachmentCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_preserveAttachmentCount(MemorySegment segment) { return VkSubpassDescription.get_preserveAttachmentCount(segment, 0L); }
-    /// {@return `preserveAttachmentCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int preserveAttachmentCountAt(long index) { return VkSubpassDescription.get_preserveAttachmentCount(this.segment(), index); }
     /// {@return `preserveAttachmentCount`}
     public @CType("uint32_t") int preserveAttachmentCount() { return VkSubpassDescription.get_preserveAttachmentCount(this.segment()); }
     /// Sets `preserveAttachmentCount` with the given value at the given index.
@@ -400,11 +352,6 @@ public final class VkSubpassDescription extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_preserveAttachmentCount(MemorySegment segment, @CType("uint32_t") int value) { VkSubpassDescription.set_preserveAttachmentCount(segment, 0L, value); }
-    /// Sets `preserveAttachmentCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSubpassDescription preserveAttachmentCountAt(long index, @CType("uint32_t") int value) { VkSubpassDescription.set_preserveAttachmentCount(this.segment(), index, value); return this; }
     /// Sets `preserveAttachmentCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -417,9 +364,6 @@ public final class VkSubpassDescription extends Struct {
     /// {@return `pPreserveAttachments`}
     /// @param segment the segment of the struct
     public static @CType("const uint32_t *") java.lang.foreign.MemorySegment get_pPreserveAttachments(MemorySegment segment) { return VkSubpassDescription.get_pPreserveAttachments(segment, 0L); }
-    /// {@return `pPreserveAttachments` at the given index}
-    /// @param index the index
-    public @CType("const uint32_t *") java.lang.foreign.MemorySegment pPreserveAttachmentsAt(long index) { return VkSubpassDescription.get_pPreserveAttachments(this.segment(), index); }
     /// {@return `pPreserveAttachments`}
     public @CType("const uint32_t *") java.lang.foreign.MemorySegment pPreserveAttachments() { return VkSubpassDescription.get_pPreserveAttachments(this.segment()); }
     /// Sets `pPreserveAttachments` with the given value at the given index.
@@ -431,14 +375,122 @@ public final class VkSubpassDescription extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pPreserveAttachments(MemorySegment segment, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkSubpassDescription.set_pPreserveAttachments(segment, 0L, value); }
-    /// Sets `pPreserveAttachments` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSubpassDescription pPreserveAttachmentsAt(long index, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkSubpassDescription.set_pPreserveAttachments(this.segment(), index, value); return this; }
     /// Sets `pPreserveAttachments` with the given value.
     /// @param value the value
     /// @return `this`
     public VkSubpassDescription pPreserveAttachments(@CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkSubpassDescription.set_pPreserveAttachments(this.segment(), value); return this; }
 
+    /// A buffer of [VkSubpassDescription].
+    public static final class Buffer extends VkSubpassDescription {
+        private final long elementCount;
+
+        /// Creates `VkSubpassDescription.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkSubpassDescription`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkSubpassDescription`
+        public VkSubpassDescription asSlice(long index) { return new VkSubpassDescription(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkSubpassDescription`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkSubpassDescription`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `flags` at the given index}
+        /// @param index the index
+        public @CType("VkSubpassDescriptionFlags") int flagsAt(long index) { return VkSubpassDescription.get_flags(this.segment(), index); }
+        /// Sets `flags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer flagsAt(long index, @CType("VkSubpassDescriptionFlags") int value) { VkSubpassDescription.set_flags(this.segment(), index, value); return this; }
+
+        /// {@return `pipelineBindPoint` at the given index}
+        /// @param index the index
+        public @CType("VkPipelineBindPoint") int pipelineBindPointAt(long index) { return VkSubpassDescription.get_pipelineBindPoint(this.segment(), index); }
+        /// Sets `pipelineBindPoint` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pipelineBindPointAt(long index, @CType("VkPipelineBindPoint") int value) { VkSubpassDescription.set_pipelineBindPoint(this.segment(), index, value); return this; }
+
+        /// {@return `inputAttachmentCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int inputAttachmentCountAt(long index) { return VkSubpassDescription.get_inputAttachmentCount(this.segment(), index); }
+        /// Sets `inputAttachmentCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer inputAttachmentCountAt(long index, @CType("uint32_t") int value) { VkSubpassDescription.set_inputAttachmentCount(this.segment(), index, value); return this; }
+
+        /// {@return `pInputAttachments` at the given index}
+        /// @param index the index
+        public @CType("const VkAttachmentReference *") java.lang.foreign.MemorySegment pInputAttachmentsAt(long index) { return VkSubpassDescription.get_pInputAttachments(this.segment(), index); }
+        /// Sets `pInputAttachments` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pInputAttachmentsAt(long index, @CType("const VkAttachmentReference *") java.lang.foreign.MemorySegment value) { VkSubpassDescription.set_pInputAttachments(this.segment(), index, value); return this; }
+
+        /// {@return `colorAttachmentCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int colorAttachmentCountAt(long index) { return VkSubpassDescription.get_colorAttachmentCount(this.segment(), index); }
+        /// Sets `colorAttachmentCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer colorAttachmentCountAt(long index, @CType("uint32_t") int value) { VkSubpassDescription.set_colorAttachmentCount(this.segment(), index, value); return this; }
+
+        /// {@return `pColorAttachments` at the given index}
+        /// @param index the index
+        public @CType("const VkAttachmentReference *") java.lang.foreign.MemorySegment pColorAttachmentsAt(long index) { return VkSubpassDescription.get_pColorAttachments(this.segment(), index); }
+        /// Sets `pColorAttachments` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pColorAttachmentsAt(long index, @CType("const VkAttachmentReference *") java.lang.foreign.MemorySegment value) { VkSubpassDescription.set_pColorAttachments(this.segment(), index, value); return this; }
+
+        /// {@return `pResolveAttachments` at the given index}
+        /// @param index the index
+        public @CType("const VkAttachmentReference *") java.lang.foreign.MemorySegment pResolveAttachmentsAt(long index) { return VkSubpassDescription.get_pResolveAttachments(this.segment(), index); }
+        /// Sets `pResolveAttachments` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pResolveAttachmentsAt(long index, @CType("const VkAttachmentReference *") java.lang.foreign.MemorySegment value) { VkSubpassDescription.set_pResolveAttachments(this.segment(), index, value); return this; }
+
+        /// {@return `pDepthStencilAttachment` at the given index}
+        /// @param index the index
+        public @CType("const VkAttachmentReference *") java.lang.foreign.MemorySegment pDepthStencilAttachmentAt(long index) { return VkSubpassDescription.get_pDepthStencilAttachment(this.segment(), index); }
+        /// Sets `pDepthStencilAttachment` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pDepthStencilAttachmentAt(long index, @CType("const VkAttachmentReference *") java.lang.foreign.MemorySegment value) { VkSubpassDescription.set_pDepthStencilAttachment(this.segment(), index, value); return this; }
+
+        /// {@return `preserveAttachmentCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int preserveAttachmentCountAt(long index) { return VkSubpassDescription.get_preserveAttachmentCount(this.segment(), index); }
+        /// Sets `preserveAttachmentCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer preserveAttachmentCountAt(long index, @CType("uint32_t") int value) { VkSubpassDescription.set_preserveAttachmentCount(this.segment(), index, value); return this; }
+
+        /// {@return `pPreserveAttachments` at the given index}
+        /// @param index the index
+        public @CType("const uint32_t *") java.lang.foreign.MemorySegment pPreserveAttachmentsAt(long index) { return VkSubpassDescription.get_pPreserveAttachments(this.segment(), index); }
+        /// Sets `pPreserveAttachments` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pPreserveAttachmentsAt(long index, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkSubpassDescription.set_pPreserveAttachments(this.segment(), index, value); return this; }
+
+    }
 }

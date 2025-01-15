@@ -40,7 +40,7 @@ import overrungl.util.*;
 ///     VkResult * pResult;
 /// } VkBindMemoryStatus;
 /// ```
-public final class VkBindMemoryStatus extends Struct {
+public sealed class VkBindMemoryStatus extends Struct {
     /// The struct layout of `VkBindMemoryStatus`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -64,6 +64,11 @@ public final class VkBindMemoryStatus extends Struct {
     public static VkBindMemoryStatus of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkBindMemoryStatus(segment); }
 
     /// Creates `VkBindMemoryStatus` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkBindMemoryStatus` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -76,7 +81,7 @@ public final class VkBindMemoryStatus extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkBindMemoryStatus ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkBindMemoryStatus(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkBindMemoryStatus` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -87,7 +92,21 @@ public final class VkBindMemoryStatus extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkBindMemoryStatus`
-    public static VkBindMemoryStatus alloc(SegmentAllocator allocator, long count) { return new VkBindMemoryStatus(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkBindMemoryStatus` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkBindMemoryStatus`
+    public static VkBindMemoryStatus allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkResult *") java.lang.foreign.MemorySegment pResult) { return alloc(allocator).sType(sType).pNext(pNext).pResult(pResult); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkBindMemoryStatus copyFrom(VkBindMemoryStatus src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -96,9 +115,6 @@ public final class VkBindMemoryStatus extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkBindMemoryStatus.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkBindMemoryStatus.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkBindMemoryStatus.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -110,11 +126,6 @@ public final class VkBindMemoryStatus extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkBindMemoryStatus.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBindMemoryStatus sTypeAt(long index, @CType("VkStructureType") int value) { VkBindMemoryStatus.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -127,9 +138,6 @@ public final class VkBindMemoryStatus extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkBindMemoryStatus.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkBindMemoryStatus.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkBindMemoryStatus.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -141,11 +149,6 @@ public final class VkBindMemoryStatus extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkBindMemoryStatus.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBindMemoryStatus pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkBindMemoryStatus.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,9 +161,6 @@ public final class VkBindMemoryStatus extends Struct {
     /// {@return `pResult`}
     /// @param segment the segment of the struct
     public static @CType("VkResult *") java.lang.foreign.MemorySegment get_pResult(MemorySegment segment) { return VkBindMemoryStatus.get_pResult(segment, 0L); }
-    /// {@return `pResult` at the given index}
-    /// @param index the index
-    public @CType("VkResult *") java.lang.foreign.MemorySegment pResultAt(long index) { return VkBindMemoryStatus.get_pResult(this.segment(), index); }
     /// {@return `pResult`}
     public @CType("VkResult *") java.lang.foreign.MemorySegment pResult() { return VkBindMemoryStatus.get_pResult(this.segment()); }
     /// Sets `pResult` with the given value at the given index.
@@ -172,14 +172,59 @@ public final class VkBindMemoryStatus extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pResult(MemorySegment segment, @CType("VkResult *") java.lang.foreign.MemorySegment value) { VkBindMemoryStatus.set_pResult(segment, 0L, value); }
-    /// Sets `pResult` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBindMemoryStatus pResultAt(long index, @CType("VkResult *") java.lang.foreign.MemorySegment value) { VkBindMemoryStatus.set_pResult(this.segment(), index, value); return this; }
     /// Sets `pResult` with the given value.
     /// @param value the value
     /// @return `this`
     public VkBindMemoryStatus pResult(@CType("VkResult *") java.lang.foreign.MemorySegment value) { VkBindMemoryStatus.set_pResult(this.segment(), value); return this; }
 
+    /// A buffer of [VkBindMemoryStatus].
+    public static final class Buffer extends VkBindMemoryStatus {
+        private final long elementCount;
+
+        /// Creates `VkBindMemoryStatus.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkBindMemoryStatus`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkBindMemoryStatus`
+        public VkBindMemoryStatus asSlice(long index) { return new VkBindMemoryStatus(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkBindMemoryStatus`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkBindMemoryStatus`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkBindMemoryStatus.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkBindMemoryStatus.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkBindMemoryStatus.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkBindMemoryStatus.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `pResult` at the given index}
+        /// @param index the index
+        public @CType("VkResult *") java.lang.foreign.MemorySegment pResultAt(long index) { return VkBindMemoryStatus.get_pResult(this.segment(), index); }
+        /// Sets `pResult` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pResultAt(long index, @CType("VkResult *") java.lang.foreign.MemorySegment value) { VkBindMemoryStatus.set_pResult(this.segment(), index, value); return this; }
+
+    }
 }

@@ -43,7 +43,7 @@ import overrungl.util.*;
 ///     VkBool32 sparseImageInt64Atomics;
 /// } VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT;
 /// ```
-public final class VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT extends Struct {
+public sealed class VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT extends Struct {
     /// The struct layout of `VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -70,6 +70,11 @@ public final class VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT extends Str
     public static VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT(segment); }
 
     /// Creates `VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -82,7 +87,7 @@ public final class VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT extends Str
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -93,7 +98,21 @@ public final class VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT extends Str
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT`
-    public static VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT`
+    public static VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int shaderImageInt64Atomics, @CType("VkBool32") int sparseImageInt64Atomics) { return alloc(allocator).sType(sType).pNext(pNext).shaderImageInt64Atomics(shaderImageInt64Atomics).sparseImageInt64Atomics(sparseImageInt64Atomics); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT copyFrom(VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -102,9 +121,6 @@ public final class VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT extends Str
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -116,11 +132,6 @@ public final class VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT extends Str
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -133,9 +144,6 @@ public final class VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT extends Str
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -147,11 +155,6 @@ public final class VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT extends Str
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -164,9 +167,6 @@ public final class VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT extends Str
     /// {@return `shaderImageInt64Atomics`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_shaderImageInt64Atomics(MemorySegment segment) { return VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT.get_shaderImageInt64Atomics(segment, 0L); }
-    /// {@return `shaderImageInt64Atomics` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int shaderImageInt64AtomicsAt(long index) { return VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT.get_shaderImageInt64Atomics(this.segment(), index); }
     /// {@return `shaderImageInt64Atomics`}
     public @CType("VkBool32") int shaderImageInt64Atomics() { return VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT.get_shaderImageInt64Atomics(this.segment()); }
     /// Sets `shaderImageInt64Atomics` with the given value at the given index.
@@ -178,11 +178,6 @@ public final class VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT extends Str
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_shaderImageInt64Atomics(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT.set_shaderImageInt64Atomics(segment, 0L, value); }
-    /// Sets `shaderImageInt64Atomics` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT shaderImageInt64AtomicsAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT.set_shaderImageInt64Atomics(this.segment(), index, value); return this; }
     /// Sets `shaderImageInt64Atomics` with the given value.
     /// @param value the value
     /// @return `this`
@@ -195,9 +190,6 @@ public final class VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT extends Str
     /// {@return `sparseImageInt64Atomics`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_sparseImageInt64Atomics(MemorySegment segment) { return VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT.get_sparseImageInt64Atomics(segment, 0L); }
-    /// {@return `sparseImageInt64Atomics` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int sparseImageInt64AtomicsAt(long index) { return VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT.get_sparseImageInt64Atomics(this.segment(), index); }
     /// {@return `sparseImageInt64Atomics`}
     public @CType("VkBool32") int sparseImageInt64Atomics() { return VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT.get_sparseImageInt64Atomics(this.segment()); }
     /// Sets `sparseImageInt64Atomics` with the given value at the given index.
@@ -209,14 +201,68 @@ public final class VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT extends Str
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sparseImageInt64Atomics(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT.set_sparseImageInt64Atomics(segment, 0L, value); }
-    /// Sets `sparseImageInt64Atomics` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT sparseImageInt64AtomicsAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT.set_sparseImageInt64Atomics(this.segment(), index, value); return this; }
     /// Sets `sparseImageInt64Atomics` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT sparseImageInt64Atomics(@CType("VkBool32") int value) { VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT.set_sparseImageInt64Atomics(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT].
+    public static final class Buffer extends VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT`
+        public VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT asSlice(long index) { return new VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `shaderImageInt64Atomics` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int shaderImageInt64AtomicsAt(long index) { return VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT.get_shaderImageInt64Atomics(this.segment(), index); }
+        /// Sets `shaderImageInt64Atomics` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer shaderImageInt64AtomicsAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT.set_shaderImageInt64Atomics(this.segment(), index, value); return this; }
+
+        /// {@return `sparseImageInt64Atomics` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int sparseImageInt64AtomicsAt(long index) { return VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT.get_sparseImageInt64Atomics(this.segment(), index); }
+        /// Sets `sparseImageInt64Atomics` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sparseImageInt64AtomicsAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT.set_sparseImageInt64Atomics(this.segment(), index, value); return this; }
+
+    }
 }

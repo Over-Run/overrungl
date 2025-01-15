@@ -40,7 +40,7 @@ import overrungl.util.*;
 ///     VkBool32 legacyVertexAttributes;
 /// } VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT;
 /// ```
-public final class VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT extends Struct {
+public sealed class VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT extends Struct {
     /// The struct layout of `VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -64,6 +64,11 @@ public final class VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT extends Str
     public static VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT(segment); }
 
     /// Creates `VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -76,7 +81,7 @@ public final class VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT extends Str
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -87,7 +92,21 @@ public final class VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT extends Str
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT`
-    public static VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT`
+    public static VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int legacyVertexAttributes) { return alloc(allocator).sType(sType).pNext(pNext).legacyVertexAttributes(legacyVertexAttributes); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT copyFrom(VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -96,9 +115,6 @@ public final class VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT extends Str
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -110,11 +126,6 @@ public final class VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT extends Str
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -127,9 +138,6 @@ public final class VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT extends Str
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -141,11 +149,6 @@ public final class VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT extends Str
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -158,9 +161,6 @@ public final class VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT extends Str
     /// {@return `legacyVertexAttributes`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_legacyVertexAttributes(MemorySegment segment) { return VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT.get_legacyVertexAttributes(segment, 0L); }
-    /// {@return `legacyVertexAttributes` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int legacyVertexAttributesAt(long index) { return VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT.get_legacyVertexAttributes(this.segment(), index); }
     /// {@return `legacyVertexAttributes`}
     public @CType("VkBool32") int legacyVertexAttributes() { return VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT.get_legacyVertexAttributes(this.segment()); }
     /// Sets `legacyVertexAttributes` with the given value at the given index.
@@ -172,14 +172,59 @@ public final class VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT extends Str
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_legacyVertexAttributes(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT.set_legacyVertexAttributes(segment, 0L, value); }
-    /// Sets `legacyVertexAttributes` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT legacyVertexAttributesAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT.set_legacyVertexAttributes(this.segment(), index, value); return this; }
     /// Sets `legacyVertexAttributes` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT legacyVertexAttributes(@CType("VkBool32") int value) { VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT.set_legacyVertexAttributes(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT].
+    public static final class Buffer extends VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT`
+        public VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT asSlice(long index) { return new VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `legacyVertexAttributes` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int legacyVertexAttributesAt(long index) { return VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT.get_legacyVertexAttributes(this.segment(), index); }
+        /// Sets `legacyVertexAttributes` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer legacyVertexAttributesAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceLegacyVertexAttributesFeaturesEXT.set_legacyVertexAttributes(this.segment(), index, value); return this; }
+
+    }
 }

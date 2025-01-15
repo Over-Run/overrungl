@@ -37,7 +37,7 @@ import overrungl.util.*;
 ///     uint64_t duration;
 /// } VkPipelineCreationFeedback;
 /// ```
-public final class VkPipelineCreationFeedback extends Struct {
+public sealed class VkPipelineCreationFeedback extends Struct {
     /// The struct layout of `VkPipelineCreationFeedback`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("flags"),
@@ -58,6 +58,11 @@ public final class VkPipelineCreationFeedback extends Struct {
     public static VkPipelineCreationFeedback of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineCreationFeedback(segment); }
 
     /// Creates `VkPipelineCreationFeedback` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPipelineCreationFeedback` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -70,7 +75,7 @@ public final class VkPipelineCreationFeedback extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineCreationFeedback ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineCreationFeedback(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPipelineCreationFeedback` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -81,7 +86,21 @@ public final class VkPipelineCreationFeedback extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPipelineCreationFeedback`
-    public static VkPipelineCreationFeedback alloc(SegmentAllocator allocator, long count) { return new VkPipelineCreationFeedback(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkPipelineCreationFeedback` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPipelineCreationFeedback`
+    public static VkPipelineCreationFeedback allocInit(SegmentAllocator allocator, @CType("VkPipelineCreationFeedbackFlags") int flags, @CType("uint64_t") long duration) { return alloc(allocator).flags(flags).duration(duration); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPipelineCreationFeedback copyFrom(VkPipelineCreationFeedback src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
@@ -90,9 +109,6 @@ public final class VkPipelineCreationFeedback extends Struct {
     /// {@return `flags`}
     /// @param segment the segment of the struct
     public static @CType("VkPipelineCreationFeedbackFlags") int get_flags(MemorySegment segment) { return VkPipelineCreationFeedback.get_flags(segment, 0L); }
-    /// {@return `flags` at the given index}
-    /// @param index the index
-    public @CType("VkPipelineCreationFeedbackFlags") int flagsAt(long index) { return VkPipelineCreationFeedback.get_flags(this.segment(), index); }
     /// {@return `flags`}
     public @CType("VkPipelineCreationFeedbackFlags") int flags() { return VkPipelineCreationFeedback.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
@@ -104,11 +120,6 @@ public final class VkPipelineCreationFeedback extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_flags(MemorySegment segment, @CType("VkPipelineCreationFeedbackFlags") int value) { VkPipelineCreationFeedback.set_flags(segment, 0L, value); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineCreationFeedback flagsAt(long index, @CType("VkPipelineCreationFeedbackFlags") int value) { VkPipelineCreationFeedback.set_flags(this.segment(), index, value); return this; }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -121,9 +132,6 @@ public final class VkPipelineCreationFeedback extends Struct {
     /// {@return `duration`}
     /// @param segment the segment of the struct
     public static @CType("uint64_t") long get_duration(MemorySegment segment) { return VkPipelineCreationFeedback.get_duration(segment, 0L); }
-    /// {@return `duration` at the given index}
-    /// @param index the index
-    public @CType("uint64_t") long durationAt(long index) { return VkPipelineCreationFeedback.get_duration(this.segment(), index); }
     /// {@return `duration`}
     public @CType("uint64_t") long duration() { return VkPipelineCreationFeedback.get_duration(this.segment()); }
     /// Sets `duration` with the given value at the given index.
@@ -135,14 +143,50 @@ public final class VkPipelineCreationFeedback extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_duration(MemorySegment segment, @CType("uint64_t") long value) { VkPipelineCreationFeedback.set_duration(segment, 0L, value); }
-    /// Sets `duration` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineCreationFeedback durationAt(long index, @CType("uint64_t") long value) { VkPipelineCreationFeedback.set_duration(this.segment(), index, value); return this; }
     /// Sets `duration` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPipelineCreationFeedback duration(@CType("uint64_t") long value) { VkPipelineCreationFeedback.set_duration(this.segment(), value); return this; }
 
+    /// A buffer of [VkPipelineCreationFeedback].
+    public static final class Buffer extends VkPipelineCreationFeedback {
+        private final long elementCount;
+
+        /// Creates `VkPipelineCreationFeedback.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPipelineCreationFeedback`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPipelineCreationFeedback`
+        public VkPipelineCreationFeedback asSlice(long index) { return new VkPipelineCreationFeedback(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPipelineCreationFeedback`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPipelineCreationFeedback`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `flags` at the given index}
+        /// @param index the index
+        public @CType("VkPipelineCreationFeedbackFlags") int flagsAt(long index) { return VkPipelineCreationFeedback.get_flags(this.segment(), index); }
+        /// Sets `flags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer flagsAt(long index, @CType("VkPipelineCreationFeedbackFlags") int value) { VkPipelineCreationFeedback.set_flags(this.segment(), index, value); return this; }
+
+        /// {@return `duration` at the given index}
+        /// @param index the index
+        public @CType("uint64_t") long durationAt(long index) { return VkPipelineCreationFeedback.get_duration(this.segment(), index); }
+        /// Sets `duration` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer durationAt(long index, @CType("uint64_t") long value) { VkPipelineCreationFeedback.set_duration(this.segment(), index, value); return this; }
+
+    }
 }

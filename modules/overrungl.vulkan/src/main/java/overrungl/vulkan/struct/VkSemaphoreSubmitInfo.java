@@ -49,7 +49,7 @@ import overrungl.util.*;
 ///     uint32_t deviceIndex;
 /// } VkSemaphoreSubmitInfo;
 /// ```
-public final class VkSemaphoreSubmitInfo extends Struct {
+public sealed class VkSemaphoreSubmitInfo extends Struct {
     /// The struct layout of `VkSemaphoreSubmitInfo`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -82,6 +82,11 @@ public final class VkSemaphoreSubmitInfo extends Struct {
     public static VkSemaphoreSubmitInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkSemaphoreSubmitInfo(segment); }
 
     /// Creates `VkSemaphoreSubmitInfo` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkSemaphoreSubmitInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -94,7 +99,7 @@ public final class VkSemaphoreSubmitInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSemaphoreSubmitInfo ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkSemaphoreSubmitInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkSemaphoreSubmitInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -105,7 +110,21 @@ public final class VkSemaphoreSubmitInfo extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkSemaphoreSubmitInfo`
-    public static VkSemaphoreSubmitInfo alloc(SegmentAllocator allocator, long count) { return new VkSemaphoreSubmitInfo(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkSemaphoreSubmitInfo` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkSemaphoreSubmitInfo`
+    public static VkSemaphoreSubmitInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkSemaphore") java.lang.foreign.MemorySegment semaphore, @CType("uint64_t") long value, @CType("VkPipelineStageFlags2") long stageMask, @CType("uint32_t") int deviceIndex) { return alloc(allocator).sType(sType).pNext(pNext).semaphore(semaphore).value(value).stageMask(stageMask).deviceIndex(deviceIndex); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkSemaphoreSubmitInfo copyFrom(VkSemaphoreSubmitInfo src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -114,9 +133,6 @@ public final class VkSemaphoreSubmitInfo extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkSemaphoreSubmitInfo.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkSemaphoreSubmitInfo.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkSemaphoreSubmitInfo.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -128,11 +144,6 @@ public final class VkSemaphoreSubmitInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkSemaphoreSubmitInfo.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSemaphoreSubmitInfo sTypeAt(long index, @CType("VkStructureType") int value) { VkSemaphoreSubmitInfo.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -145,9 +156,6 @@ public final class VkSemaphoreSubmitInfo extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkSemaphoreSubmitInfo.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkSemaphoreSubmitInfo.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkSemaphoreSubmitInfo.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -159,11 +167,6 @@ public final class VkSemaphoreSubmitInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkSemaphoreSubmitInfo.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSemaphoreSubmitInfo pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkSemaphoreSubmitInfo.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -176,9 +179,6 @@ public final class VkSemaphoreSubmitInfo extends Struct {
     /// {@return `semaphore`}
     /// @param segment the segment of the struct
     public static @CType("VkSemaphore") java.lang.foreign.MemorySegment get_semaphore(MemorySegment segment) { return VkSemaphoreSubmitInfo.get_semaphore(segment, 0L); }
-    /// {@return `semaphore` at the given index}
-    /// @param index the index
-    public @CType("VkSemaphore") java.lang.foreign.MemorySegment semaphoreAt(long index) { return VkSemaphoreSubmitInfo.get_semaphore(this.segment(), index); }
     /// {@return `semaphore`}
     public @CType("VkSemaphore") java.lang.foreign.MemorySegment semaphore() { return VkSemaphoreSubmitInfo.get_semaphore(this.segment()); }
     /// Sets `semaphore` with the given value at the given index.
@@ -190,11 +190,6 @@ public final class VkSemaphoreSubmitInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_semaphore(MemorySegment segment, @CType("VkSemaphore") java.lang.foreign.MemorySegment value) { VkSemaphoreSubmitInfo.set_semaphore(segment, 0L, value); }
-    /// Sets `semaphore` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSemaphoreSubmitInfo semaphoreAt(long index, @CType("VkSemaphore") java.lang.foreign.MemorySegment value) { VkSemaphoreSubmitInfo.set_semaphore(this.segment(), index, value); return this; }
     /// Sets `semaphore` with the given value.
     /// @param value the value
     /// @return `this`
@@ -207,9 +202,6 @@ public final class VkSemaphoreSubmitInfo extends Struct {
     /// {@return `value`}
     /// @param segment the segment of the struct
     public static @CType("uint64_t") long get_value(MemorySegment segment) { return VkSemaphoreSubmitInfo.get_value(segment, 0L); }
-    /// {@return `value` at the given index}
-    /// @param index the index
-    public @CType("uint64_t") long valueAt(long index) { return VkSemaphoreSubmitInfo.get_value(this.segment(), index); }
     /// {@return `value`}
     public @CType("uint64_t") long value() { return VkSemaphoreSubmitInfo.get_value(this.segment()); }
     /// Sets `value` with the given value at the given index.
@@ -221,11 +213,6 @@ public final class VkSemaphoreSubmitInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_value(MemorySegment segment, @CType("uint64_t") long value) { VkSemaphoreSubmitInfo.set_value(segment, 0L, value); }
-    /// Sets `value` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSemaphoreSubmitInfo valueAt(long index, @CType("uint64_t") long value) { VkSemaphoreSubmitInfo.set_value(this.segment(), index, value); return this; }
     /// Sets `value` with the given value.
     /// @param value the value
     /// @return `this`
@@ -238,9 +225,6 @@ public final class VkSemaphoreSubmitInfo extends Struct {
     /// {@return `stageMask`}
     /// @param segment the segment of the struct
     public static @CType("VkPipelineStageFlags2") long get_stageMask(MemorySegment segment) { return VkSemaphoreSubmitInfo.get_stageMask(segment, 0L); }
-    /// {@return `stageMask` at the given index}
-    /// @param index the index
-    public @CType("VkPipelineStageFlags2") long stageMaskAt(long index) { return VkSemaphoreSubmitInfo.get_stageMask(this.segment(), index); }
     /// {@return `stageMask`}
     public @CType("VkPipelineStageFlags2") long stageMask() { return VkSemaphoreSubmitInfo.get_stageMask(this.segment()); }
     /// Sets `stageMask` with the given value at the given index.
@@ -252,11 +236,6 @@ public final class VkSemaphoreSubmitInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_stageMask(MemorySegment segment, @CType("VkPipelineStageFlags2") long value) { VkSemaphoreSubmitInfo.set_stageMask(segment, 0L, value); }
-    /// Sets `stageMask` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSemaphoreSubmitInfo stageMaskAt(long index, @CType("VkPipelineStageFlags2") long value) { VkSemaphoreSubmitInfo.set_stageMask(this.segment(), index, value); return this; }
     /// Sets `stageMask` with the given value.
     /// @param value the value
     /// @return `this`
@@ -269,9 +248,6 @@ public final class VkSemaphoreSubmitInfo extends Struct {
     /// {@return `deviceIndex`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_deviceIndex(MemorySegment segment) { return VkSemaphoreSubmitInfo.get_deviceIndex(segment, 0L); }
-    /// {@return `deviceIndex` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int deviceIndexAt(long index) { return VkSemaphoreSubmitInfo.get_deviceIndex(this.segment(), index); }
     /// {@return `deviceIndex`}
     public @CType("uint32_t") int deviceIndex() { return VkSemaphoreSubmitInfo.get_deviceIndex(this.segment()); }
     /// Sets `deviceIndex` with the given value at the given index.
@@ -283,14 +259,86 @@ public final class VkSemaphoreSubmitInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_deviceIndex(MemorySegment segment, @CType("uint32_t") int value) { VkSemaphoreSubmitInfo.set_deviceIndex(segment, 0L, value); }
-    /// Sets `deviceIndex` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSemaphoreSubmitInfo deviceIndexAt(long index, @CType("uint32_t") int value) { VkSemaphoreSubmitInfo.set_deviceIndex(this.segment(), index, value); return this; }
     /// Sets `deviceIndex` with the given value.
     /// @param value the value
     /// @return `this`
     public VkSemaphoreSubmitInfo deviceIndex(@CType("uint32_t") int value) { VkSemaphoreSubmitInfo.set_deviceIndex(this.segment(), value); return this; }
 
+    /// A buffer of [VkSemaphoreSubmitInfo].
+    public static final class Buffer extends VkSemaphoreSubmitInfo {
+        private final long elementCount;
+
+        /// Creates `VkSemaphoreSubmitInfo.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkSemaphoreSubmitInfo`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkSemaphoreSubmitInfo`
+        public VkSemaphoreSubmitInfo asSlice(long index) { return new VkSemaphoreSubmitInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkSemaphoreSubmitInfo`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkSemaphoreSubmitInfo`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkSemaphoreSubmitInfo.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkSemaphoreSubmitInfo.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkSemaphoreSubmitInfo.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkSemaphoreSubmitInfo.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `semaphore` at the given index}
+        /// @param index the index
+        public @CType("VkSemaphore") java.lang.foreign.MemorySegment semaphoreAt(long index) { return VkSemaphoreSubmitInfo.get_semaphore(this.segment(), index); }
+        /// Sets `semaphore` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer semaphoreAt(long index, @CType("VkSemaphore") java.lang.foreign.MemorySegment value) { VkSemaphoreSubmitInfo.set_semaphore(this.segment(), index, value); return this; }
+
+        /// {@return `value` at the given index}
+        /// @param index the index
+        public @CType("uint64_t") long valueAt(long index) { return VkSemaphoreSubmitInfo.get_value(this.segment(), index); }
+        /// Sets `value` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer valueAt(long index, @CType("uint64_t") long value) { VkSemaphoreSubmitInfo.set_value(this.segment(), index, value); return this; }
+
+        /// {@return `stageMask` at the given index}
+        /// @param index the index
+        public @CType("VkPipelineStageFlags2") long stageMaskAt(long index) { return VkSemaphoreSubmitInfo.get_stageMask(this.segment(), index); }
+        /// Sets `stageMask` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer stageMaskAt(long index, @CType("VkPipelineStageFlags2") long value) { VkSemaphoreSubmitInfo.set_stageMask(this.segment(), index, value); return this; }
+
+        /// {@return `deviceIndex` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int deviceIndexAt(long index) { return VkSemaphoreSubmitInfo.get_deviceIndex(this.segment(), index); }
+        /// Sets `deviceIndex` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer deviceIndexAt(long index, @CType("uint32_t") int value) { VkSemaphoreSubmitInfo.set_deviceIndex(this.segment(), index, value); return this; }
+
+    }
 }

@@ -55,7 +55,7 @@ import overrungl.util.*;
 ///     int64_t renderMinor;
 /// } VkPhysicalDeviceDrmPropertiesEXT;
 /// ```
-public final class VkPhysicalDeviceDrmPropertiesEXT extends Struct {
+public sealed class VkPhysicalDeviceDrmPropertiesEXT extends Struct {
     /// The struct layout of `VkPhysicalDeviceDrmPropertiesEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -94,6 +94,11 @@ public final class VkPhysicalDeviceDrmPropertiesEXT extends Struct {
     public static VkPhysicalDeviceDrmPropertiesEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceDrmPropertiesEXT(segment); }
 
     /// Creates `VkPhysicalDeviceDrmPropertiesEXT` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPhysicalDeviceDrmPropertiesEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -106,7 +111,7 @@ public final class VkPhysicalDeviceDrmPropertiesEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceDrmPropertiesEXT ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceDrmPropertiesEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceDrmPropertiesEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -117,7 +122,21 @@ public final class VkPhysicalDeviceDrmPropertiesEXT extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceDrmPropertiesEXT`
-    public static VkPhysicalDeviceDrmPropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceDrmPropertiesEXT(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkPhysicalDeviceDrmPropertiesEXT` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDeviceDrmPropertiesEXT`
+    public static VkPhysicalDeviceDrmPropertiesEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int hasPrimary, @CType("VkBool32") int hasRender, @CType("int64_t") long primaryMajor, @CType("int64_t") long primaryMinor, @CType("int64_t") long renderMajor, @CType("int64_t") long renderMinor) { return alloc(allocator).sType(sType).pNext(pNext).hasPrimary(hasPrimary).hasRender(hasRender).primaryMajor(primaryMajor).primaryMinor(primaryMinor).renderMajor(renderMajor).renderMinor(renderMinor); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDeviceDrmPropertiesEXT copyFrom(VkPhysicalDeviceDrmPropertiesEXT src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -126,9 +145,6 @@ public final class VkPhysicalDeviceDrmPropertiesEXT extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceDrmPropertiesEXT.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceDrmPropertiesEXT.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPhysicalDeviceDrmPropertiesEXT.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -140,11 +156,6 @@ public final class VkPhysicalDeviceDrmPropertiesEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceDrmPropertiesEXT.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDrmPropertiesEXT sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceDrmPropertiesEXT.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -157,9 +168,6 @@ public final class VkPhysicalDeviceDrmPropertiesEXT extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceDrmPropertiesEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceDrmPropertiesEXT.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceDrmPropertiesEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -171,11 +179,6 @@ public final class VkPhysicalDeviceDrmPropertiesEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceDrmPropertiesEXT.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDrmPropertiesEXT pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceDrmPropertiesEXT.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -188,9 +191,6 @@ public final class VkPhysicalDeviceDrmPropertiesEXT extends Struct {
     /// {@return `hasPrimary`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_hasPrimary(MemorySegment segment) { return VkPhysicalDeviceDrmPropertiesEXT.get_hasPrimary(segment, 0L); }
-    /// {@return `hasPrimary` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int hasPrimaryAt(long index) { return VkPhysicalDeviceDrmPropertiesEXT.get_hasPrimary(this.segment(), index); }
     /// {@return `hasPrimary`}
     public @CType("VkBool32") int hasPrimary() { return VkPhysicalDeviceDrmPropertiesEXT.get_hasPrimary(this.segment()); }
     /// Sets `hasPrimary` with the given value at the given index.
@@ -202,11 +202,6 @@ public final class VkPhysicalDeviceDrmPropertiesEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_hasPrimary(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceDrmPropertiesEXT.set_hasPrimary(segment, 0L, value); }
-    /// Sets `hasPrimary` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDrmPropertiesEXT hasPrimaryAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceDrmPropertiesEXT.set_hasPrimary(this.segment(), index, value); return this; }
     /// Sets `hasPrimary` with the given value.
     /// @param value the value
     /// @return `this`
@@ -219,9 +214,6 @@ public final class VkPhysicalDeviceDrmPropertiesEXT extends Struct {
     /// {@return `hasRender`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_hasRender(MemorySegment segment) { return VkPhysicalDeviceDrmPropertiesEXT.get_hasRender(segment, 0L); }
-    /// {@return `hasRender` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int hasRenderAt(long index) { return VkPhysicalDeviceDrmPropertiesEXT.get_hasRender(this.segment(), index); }
     /// {@return `hasRender`}
     public @CType("VkBool32") int hasRender() { return VkPhysicalDeviceDrmPropertiesEXT.get_hasRender(this.segment()); }
     /// Sets `hasRender` with the given value at the given index.
@@ -233,11 +225,6 @@ public final class VkPhysicalDeviceDrmPropertiesEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_hasRender(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceDrmPropertiesEXT.set_hasRender(segment, 0L, value); }
-    /// Sets `hasRender` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDrmPropertiesEXT hasRenderAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceDrmPropertiesEXT.set_hasRender(this.segment(), index, value); return this; }
     /// Sets `hasRender` with the given value.
     /// @param value the value
     /// @return `this`
@@ -250,9 +237,6 @@ public final class VkPhysicalDeviceDrmPropertiesEXT extends Struct {
     /// {@return `primaryMajor`}
     /// @param segment the segment of the struct
     public static @CType("int64_t") long get_primaryMajor(MemorySegment segment) { return VkPhysicalDeviceDrmPropertiesEXT.get_primaryMajor(segment, 0L); }
-    /// {@return `primaryMajor` at the given index}
-    /// @param index the index
-    public @CType("int64_t") long primaryMajorAt(long index) { return VkPhysicalDeviceDrmPropertiesEXT.get_primaryMajor(this.segment(), index); }
     /// {@return `primaryMajor`}
     public @CType("int64_t") long primaryMajor() { return VkPhysicalDeviceDrmPropertiesEXT.get_primaryMajor(this.segment()); }
     /// Sets `primaryMajor` with the given value at the given index.
@@ -264,11 +248,6 @@ public final class VkPhysicalDeviceDrmPropertiesEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_primaryMajor(MemorySegment segment, @CType("int64_t") long value) { VkPhysicalDeviceDrmPropertiesEXT.set_primaryMajor(segment, 0L, value); }
-    /// Sets `primaryMajor` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDrmPropertiesEXT primaryMajorAt(long index, @CType("int64_t") long value) { VkPhysicalDeviceDrmPropertiesEXT.set_primaryMajor(this.segment(), index, value); return this; }
     /// Sets `primaryMajor` with the given value.
     /// @param value the value
     /// @return `this`
@@ -281,9 +260,6 @@ public final class VkPhysicalDeviceDrmPropertiesEXT extends Struct {
     /// {@return `primaryMinor`}
     /// @param segment the segment of the struct
     public static @CType("int64_t") long get_primaryMinor(MemorySegment segment) { return VkPhysicalDeviceDrmPropertiesEXT.get_primaryMinor(segment, 0L); }
-    /// {@return `primaryMinor` at the given index}
-    /// @param index the index
-    public @CType("int64_t") long primaryMinorAt(long index) { return VkPhysicalDeviceDrmPropertiesEXT.get_primaryMinor(this.segment(), index); }
     /// {@return `primaryMinor`}
     public @CType("int64_t") long primaryMinor() { return VkPhysicalDeviceDrmPropertiesEXT.get_primaryMinor(this.segment()); }
     /// Sets `primaryMinor` with the given value at the given index.
@@ -295,11 +271,6 @@ public final class VkPhysicalDeviceDrmPropertiesEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_primaryMinor(MemorySegment segment, @CType("int64_t") long value) { VkPhysicalDeviceDrmPropertiesEXT.set_primaryMinor(segment, 0L, value); }
-    /// Sets `primaryMinor` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDrmPropertiesEXT primaryMinorAt(long index, @CType("int64_t") long value) { VkPhysicalDeviceDrmPropertiesEXT.set_primaryMinor(this.segment(), index, value); return this; }
     /// Sets `primaryMinor` with the given value.
     /// @param value the value
     /// @return `this`
@@ -312,9 +283,6 @@ public final class VkPhysicalDeviceDrmPropertiesEXT extends Struct {
     /// {@return `renderMajor`}
     /// @param segment the segment of the struct
     public static @CType("int64_t") long get_renderMajor(MemorySegment segment) { return VkPhysicalDeviceDrmPropertiesEXT.get_renderMajor(segment, 0L); }
-    /// {@return `renderMajor` at the given index}
-    /// @param index the index
-    public @CType("int64_t") long renderMajorAt(long index) { return VkPhysicalDeviceDrmPropertiesEXT.get_renderMajor(this.segment(), index); }
     /// {@return `renderMajor`}
     public @CType("int64_t") long renderMajor() { return VkPhysicalDeviceDrmPropertiesEXT.get_renderMajor(this.segment()); }
     /// Sets `renderMajor` with the given value at the given index.
@@ -326,11 +294,6 @@ public final class VkPhysicalDeviceDrmPropertiesEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_renderMajor(MemorySegment segment, @CType("int64_t") long value) { VkPhysicalDeviceDrmPropertiesEXT.set_renderMajor(segment, 0L, value); }
-    /// Sets `renderMajor` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDrmPropertiesEXT renderMajorAt(long index, @CType("int64_t") long value) { VkPhysicalDeviceDrmPropertiesEXT.set_renderMajor(this.segment(), index, value); return this; }
     /// Sets `renderMajor` with the given value.
     /// @param value the value
     /// @return `this`
@@ -343,9 +306,6 @@ public final class VkPhysicalDeviceDrmPropertiesEXT extends Struct {
     /// {@return `renderMinor`}
     /// @param segment the segment of the struct
     public static @CType("int64_t") long get_renderMinor(MemorySegment segment) { return VkPhysicalDeviceDrmPropertiesEXT.get_renderMinor(segment, 0L); }
-    /// {@return `renderMinor` at the given index}
-    /// @param index the index
-    public @CType("int64_t") long renderMinorAt(long index) { return VkPhysicalDeviceDrmPropertiesEXT.get_renderMinor(this.segment(), index); }
     /// {@return `renderMinor`}
     public @CType("int64_t") long renderMinor() { return VkPhysicalDeviceDrmPropertiesEXT.get_renderMinor(this.segment()); }
     /// Sets `renderMinor` with the given value at the given index.
@@ -357,14 +317,104 @@ public final class VkPhysicalDeviceDrmPropertiesEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_renderMinor(MemorySegment segment, @CType("int64_t") long value) { VkPhysicalDeviceDrmPropertiesEXT.set_renderMinor(segment, 0L, value); }
-    /// Sets `renderMinor` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDrmPropertiesEXT renderMinorAt(long index, @CType("int64_t") long value) { VkPhysicalDeviceDrmPropertiesEXT.set_renderMinor(this.segment(), index, value); return this; }
     /// Sets `renderMinor` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceDrmPropertiesEXT renderMinor(@CType("int64_t") long value) { VkPhysicalDeviceDrmPropertiesEXT.set_renderMinor(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDeviceDrmPropertiesEXT].
+    public static final class Buffer extends VkPhysicalDeviceDrmPropertiesEXT {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDeviceDrmPropertiesEXT.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDeviceDrmPropertiesEXT`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDeviceDrmPropertiesEXT`
+        public VkPhysicalDeviceDrmPropertiesEXT asSlice(long index) { return new VkPhysicalDeviceDrmPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDeviceDrmPropertiesEXT`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDeviceDrmPropertiesEXT`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceDrmPropertiesEXT.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceDrmPropertiesEXT.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceDrmPropertiesEXT.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceDrmPropertiesEXT.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `hasPrimary` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int hasPrimaryAt(long index) { return VkPhysicalDeviceDrmPropertiesEXT.get_hasPrimary(this.segment(), index); }
+        /// Sets `hasPrimary` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer hasPrimaryAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceDrmPropertiesEXT.set_hasPrimary(this.segment(), index, value); return this; }
+
+        /// {@return `hasRender` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int hasRenderAt(long index) { return VkPhysicalDeviceDrmPropertiesEXT.get_hasRender(this.segment(), index); }
+        /// Sets `hasRender` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer hasRenderAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceDrmPropertiesEXT.set_hasRender(this.segment(), index, value); return this; }
+
+        /// {@return `primaryMajor` at the given index}
+        /// @param index the index
+        public @CType("int64_t") long primaryMajorAt(long index) { return VkPhysicalDeviceDrmPropertiesEXT.get_primaryMajor(this.segment(), index); }
+        /// Sets `primaryMajor` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer primaryMajorAt(long index, @CType("int64_t") long value) { VkPhysicalDeviceDrmPropertiesEXT.set_primaryMajor(this.segment(), index, value); return this; }
+
+        /// {@return `primaryMinor` at the given index}
+        /// @param index the index
+        public @CType("int64_t") long primaryMinorAt(long index) { return VkPhysicalDeviceDrmPropertiesEXT.get_primaryMinor(this.segment(), index); }
+        /// Sets `primaryMinor` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer primaryMinorAt(long index, @CType("int64_t") long value) { VkPhysicalDeviceDrmPropertiesEXT.set_primaryMinor(this.segment(), index, value); return this; }
+
+        /// {@return `renderMajor` at the given index}
+        /// @param index the index
+        public @CType("int64_t") long renderMajorAt(long index) { return VkPhysicalDeviceDrmPropertiesEXT.get_renderMajor(this.segment(), index); }
+        /// Sets `renderMajor` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer renderMajorAt(long index, @CType("int64_t") long value) { VkPhysicalDeviceDrmPropertiesEXT.set_renderMajor(this.segment(), index, value); return this; }
+
+        /// {@return `renderMinor` at the given index}
+        /// @param index the index
+        public @CType("int64_t") long renderMinorAt(long index) { return VkPhysicalDeviceDrmPropertiesEXT.get_renderMinor(this.segment(), index); }
+        /// Sets `renderMinor` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer renderMinorAt(long index, @CType("int64_t") long value) { VkPhysicalDeviceDrmPropertiesEXT.set_renderMinor(this.segment(), index, value); return this; }
+
+    }
 }

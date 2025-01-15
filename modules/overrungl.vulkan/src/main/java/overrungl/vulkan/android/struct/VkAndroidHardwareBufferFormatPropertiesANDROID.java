@@ -61,7 +61,7 @@ import overrungl.util.*;
 ///     VkChromaLocation suggestedYChromaOffset;
 /// } VkAndroidHardwareBufferFormatPropertiesANDROID;
 /// ```
-public final class VkAndroidHardwareBufferFormatPropertiesANDROID extends Struct {
+public sealed class VkAndroidHardwareBufferFormatPropertiesANDROID extends Struct {
     /// The struct layout of `VkAndroidHardwareBufferFormatPropertiesANDROID`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -108,6 +108,11 @@ public final class VkAndroidHardwareBufferFormatPropertiesANDROID extends Struct
     public static VkAndroidHardwareBufferFormatPropertiesANDROID of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkAndroidHardwareBufferFormatPropertiesANDROID(segment); }
 
     /// Creates `VkAndroidHardwareBufferFormatPropertiesANDROID` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkAndroidHardwareBufferFormatPropertiesANDROID` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -120,7 +125,7 @@ public final class VkAndroidHardwareBufferFormatPropertiesANDROID extends Struct
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkAndroidHardwareBufferFormatPropertiesANDROID ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkAndroidHardwareBufferFormatPropertiesANDROID(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkAndroidHardwareBufferFormatPropertiesANDROID` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -131,7 +136,21 @@ public final class VkAndroidHardwareBufferFormatPropertiesANDROID extends Struct
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkAndroidHardwareBufferFormatPropertiesANDROID`
-    public static VkAndroidHardwareBufferFormatPropertiesANDROID alloc(SegmentAllocator allocator, long count) { return new VkAndroidHardwareBufferFormatPropertiesANDROID(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `VkAndroidHardwareBufferFormatPropertiesANDROID` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkAndroidHardwareBufferFormatPropertiesANDROID`
+    public static VkAndroidHardwareBufferFormatPropertiesANDROID allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkFormat") int format, @CType("uint64_t") long externalFormat, @CType("VkFormatFeatureFlags") int formatFeatures, @CType("VkComponentMapping") java.lang.foreign.MemorySegment samplerYcbcrConversionComponents, @CType("VkSamplerYcbcrModelConversion") int suggestedYcbcrModel, @CType("VkSamplerYcbcrRange") int suggestedYcbcrRange, @CType("VkChromaLocation") int suggestedXChromaOffset, @CType("VkChromaLocation") int suggestedYChromaOffset) { return alloc(allocator).sType(sType).pNext(pNext).format(format).externalFormat(externalFormat).formatFeatures(formatFeatures).samplerYcbcrConversionComponents(samplerYcbcrConversionComponents).suggestedYcbcrModel(suggestedYcbcrModel).suggestedYcbcrRange(suggestedYcbcrRange).suggestedXChromaOffset(suggestedXChromaOffset).suggestedYChromaOffset(suggestedYChromaOffset); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkAndroidHardwareBufferFormatPropertiesANDROID copyFrom(VkAndroidHardwareBufferFormatPropertiesANDROID src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -140,9 +159,6 @@ public final class VkAndroidHardwareBufferFormatPropertiesANDROID extends Struct
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkAndroidHardwareBufferFormatPropertiesANDROID.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkAndroidHardwareBufferFormatPropertiesANDROID.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkAndroidHardwareBufferFormatPropertiesANDROID.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -154,11 +170,6 @@ public final class VkAndroidHardwareBufferFormatPropertiesANDROID extends Struct
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkAndroidHardwareBufferFormatPropertiesANDROID.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAndroidHardwareBufferFormatPropertiesANDROID sTypeAt(long index, @CType("VkStructureType") int value) { VkAndroidHardwareBufferFormatPropertiesANDROID.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -171,9 +182,6 @@ public final class VkAndroidHardwareBufferFormatPropertiesANDROID extends Struct
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkAndroidHardwareBufferFormatPropertiesANDROID.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkAndroidHardwareBufferFormatPropertiesANDROID.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkAndroidHardwareBufferFormatPropertiesANDROID.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -185,11 +193,6 @@ public final class VkAndroidHardwareBufferFormatPropertiesANDROID extends Struct
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkAndroidHardwareBufferFormatPropertiesANDROID.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAndroidHardwareBufferFormatPropertiesANDROID pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkAndroidHardwareBufferFormatPropertiesANDROID.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -202,9 +205,6 @@ public final class VkAndroidHardwareBufferFormatPropertiesANDROID extends Struct
     /// {@return `format`}
     /// @param segment the segment of the struct
     public static @CType("VkFormat") int get_format(MemorySegment segment) { return VkAndroidHardwareBufferFormatPropertiesANDROID.get_format(segment, 0L); }
-    /// {@return `format` at the given index}
-    /// @param index the index
-    public @CType("VkFormat") int formatAt(long index) { return VkAndroidHardwareBufferFormatPropertiesANDROID.get_format(this.segment(), index); }
     /// {@return `format`}
     public @CType("VkFormat") int format() { return VkAndroidHardwareBufferFormatPropertiesANDROID.get_format(this.segment()); }
     /// Sets `format` with the given value at the given index.
@@ -216,11 +216,6 @@ public final class VkAndroidHardwareBufferFormatPropertiesANDROID extends Struct
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_format(MemorySegment segment, @CType("VkFormat") int value) { VkAndroidHardwareBufferFormatPropertiesANDROID.set_format(segment, 0L, value); }
-    /// Sets `format` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAndroidHardwareBufferFormatPropertiesANDROID formatAt(long index, @CType("VkFormat") int value) { VkAndroidHardwareBufferFormatPropertiesANDROID.set_format(this.segment(), index, value); return this; }
     /// Sets `format` with the given value.
     /// @param value the value
     /// @return `this`
@@ -233,9 +228,6 @@ public final class VkAndroidHardwareBufferFormatPropertiesANDROID extends Struct
     /// {@return `externalFormat`}
     /// @param segment the segment of the struct
     public static @CType("uint64_t") long get_externalFormat(MemorySegment segment) { return VkAndroidHardwareBufferFormatPropertiesANDROID.get_externalFormat(segment, 0L); }
-    /// {@return `externalFormat` at the given index}
-    /// @param index the index
-    public @CType("uint64_t") long externalFormatAt(long index) { return VkAndroidHardwareBufferFormatPropertiesANDROID.get_externalFormat(this.segment(), index); }
     /// {@return `externalFormat`}
     public @CType("uint64_t") long externalFormat() { return VkAndroidHardwareBufferFormatPropertiesANDROID.get_externalFormat(this.segment()); }
     /// Sets `externalFormat` with the given value at the given index.
@@ -247,11 +239,6 @@ public final class VkAndroidHardwareBufferFormatPropertiesANDROID extends Struct
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_externalFormat(MemorySegment segment, @CType("uint64_t") long value) { VkAndroidHardwareBufferFormatPropertiesANDROID.set_externalFormat(segment, 0L, value); }
-    /// Sets `externalFormat` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAndroidHardwareBufferFormatPropertiesANDROID externalFormatAt(long index, @CType("uint64_t") long value) { VkAndroidHardwareBufferFormatPropertiesANDROID.set_externalFormat(this.segment(), index, value); return this; }
     /// Sets `externalFormat` with the given value.
     /// @param value the value
     /// @return `this`
@@ -264,9 +251,6 @@ public final class VkAndroidHardwareBufferFormatPropertiesANDROID extends Struct
     /// {@return `formatFeatures`}
     /// @param segment the segment of the struct
     public static @CType("VkFormatFeatureFlags") int get_formatFeatures(MemorySegment segment) { return VkAndroidHardwareBufferFormatPropertiesANDROID.get_formatFeatures(segment, 0L); }
-    /// {@return `formatFeatures` at the given index}
-    /// @param index the index
-    public @CType("VkFormatFeatureFlags") int formatFeaturesAt(long index) { return VkAndroidHardwareBufferFormatPropertiesANDROID.get_formatFeatures(this.segment(), index); }
     /// {@return `formatFeatures`}
     public @CType("VkFormatFeatureFlags") int formatFeatures() { return VkAndroidHardwareBufferFormatPropertiesANDROID.get_formatFeatures(this.segment()); }
     /// Sets `formatFeatures` with the given value at the given index.
@@ -278,11 +262,6 @@ public final class VkAndroidHardwareBufferFormatPropertiesANDROID extends Struct
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_formatFeatures(MemorySegment segment, @CType("VkFormatFeatureFlags") int value) { VkAndroidHardwareBufferFormatPropertiesANDROID.set_formatFeatures(segment, 0L, value); }
-    /// Sets `formatFeatures` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAndroidHardwareBufferFormatPropertiesANDROID formatFeaturesAt(long index, @CType("VkFormatFeatureFlags") int value) { VkAndroidHardwareBufferFormatPropertiesANDROID.set_formatFeatures(this.segment(), index, value); return this; }
     /// Sets `formatFeatures` with the given value.
     /// @param value the value
     /// @return `this`
@@ -295,9 +274,6 @@ public final class VkAndroidHardwareBufferFormatPropertiesANDROID extends Struct
     /// {@return `samplerYcbcrConversionComponents`}
     /// @param segment the segment of the struct
     public static @CType("VkComponentMapping") java.lang.foreign.MemorySegment get_samplerYcbcrConversionComponents(MemorySegment segment) { return VkAndroidHardwareBufferFormatPropertiesANDROID.get_samplerYcbcrConversionComponents(segment, 0L); }
-    /// {@return `samplerYcbcrConversionComponents` at the given index}
-    /// @param index the index
-    public @CType("VkComponentMapping") java.lang.foreign.MemorySegment samplerYcbcrConversionComponentsAt(long index) { return VkAndroidHardwareBufferFormatPropertiesANDROID.get_samplerYcbcrConversionComponents(this.segment(), index); }
     /// {@return `samplerYcbcrConversionComponents`}
     public @CType("VkComponentMapping") java.lang.foreign.MemorySegment samplerYcbcrConversionComponents() { return VkAndroidHardwareBufferFormatPropertiesANDROID.get_samplerYcbcrConversionComponents(this.segment()); }
     /// Sets `samplerYcbcrConversionComponents` with the given value at the given index.
@@ -309,11 +285,6 @@ public final class VkAndroidHardwareBufferFormatPropertiesANDROID extends Struct
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_samplerYcbcrConversionComponents(MemorySegment segment, @CType("VkComponentMapping") java.lang.foreign.MemorySegment value) { VkAndroidHardwareBufferFormatPropertiesANDROID.set_samplerYcbcrConversionComponents(segment, 0L, value); }
-    /// Sets `samplerYcbcrConversionComponents` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAndroidHardwareBufferFormatPropertiesANDROID samplerYcbcrConversionComponentsAt(long index, @CType("VkComponentMapping") java.lang.foreign.MemorySegment value) { VkAndroidHardwareBufferFormatPropertiesANDROID.set_samplerYcbcrConversionComponents(this.segment(), index, value); return this; }
     /// Sets `samplerYcbcrConversionComponents` with the given value.
     /// @param value the value
     /// @return `this`
@@ -326,9 +297,6 @@ public final class VkAndroidHardwareBufferFormatPropertiesANDROID extends Struct
     /// {@return `suggestedYcbcrModel`}
     /// @param segment the segment of the struct
     public static @CType("VkSamplerYcbcrModelConversion") int get_suggestedYcbcrModel(MemorySegment segment) { return VkAndroidHardwareBufferFormatPropertiesANDROID.get_suggestedYcbcrModel(segment, 0L); }
-    /// {@return `suggestedYcbcrModel` at the given index}
-    /// @param index the index
-    public @CType("VkSamplerYcbcrModelConversion") int suggestedYcbcrModelAt(long index) { return VkAndroidHardwareBufferFormatPropertiesANDROID.get_suggestedYcbcrModel(this.segment(), index); }
     /// {@return `suggestedYcbcrModel`}
     public @CType("VkSamplerYcbcrModelConversion") int suggestedYcbcrModel() { return VkAndroidHardwareBufferFormatPropertiesANDROID.get_suggestedYcbcrModel(this.segment()); }
     /// Sets `suggestedYcbcrModel` with the given value at the given index.
@@ -340,11 +308,6 @@ public final class VkAndroidHardwareBufferFormatPropertiesANDROID extends Struct
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_suggestedYcbcrModel(MemorySegment segment, @CType("VkSamplerYcbcrModelConversion") int value) { VkAndroidHardwareBufferFormatPropertiesANDROID.set_suggestedYcbcrModel(segment, 0L, value); }
-    /// Sets `suggestedYcbcrModel` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAndroidHardwareBufferFormatPropertiesANDROID suggestedYcbcrModelAt(long index, @CType("VkSamplerYcbcrModelConversion") int value) { VkAndroidHardwareBufferFormatPropertiesANDROID.set_suggestedYcbcrModel(this.segment(), index, value); return this; }
     /// Sets `suggestedYcbcrModel` with the given value.
     /// @param value the value
     /// @return `this`
@@ -357,9 +320,6 @@ public final class VkAndroidHardwareBufferFormatPropertiesANDROID extends Struct
     /// {@return `suggestedYcbcrRange`}
     /// @param segment the segment of the struct
     public static @CType("VkSamplerYcbcrRange") int get_suggestedYcbcrRange(MemorySegment segment) { return VkAndroidHardwareBufferFormatPropertiesANDROID.get_suggestedYcbcrRange(segment, 0L); }
-    /// {@return `suggestedYcbcrRange` at the given index}
-    /// @param index the index
-    public @CType("VkSamplerYcbcrRange") int suggestedYcbcrRangeAt(long index) { return VkAndroidHardwareBufferFormatPropertiesANDROID.get_suggestedYcbcrRange(this.segment(), index); }
     /// {@return `suggestedYcbcrRange`}
     public @CType("VkSamplerYcbcrRange") int suggestedYcbcrRange() { return VkAndroidHardwareBufferFormatPropertiesANDROID.get_suggestedYcbcrRange(this.segment()); }
     /// Sets `suggestedYcbcrRange` with the given value at the given index.
@@ -371,11 +331,6 @@ public final class VkAndroidHardwareBufferFormatPropertiesANDROID extends Struct
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_suggestedYcbcrRange(MemorySegment segment, @CType("VkSamplerYcbcrRange") int value) { VkAndroidHardwareBufferFormatPropertiesANDROID.set_suggestedYcbcrRange(segment, 0L, value); }
-    /// Sets `suggestedYcbcrRange` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAndroidHardwareBufferFormatPropertiesANDROID suggestedYcbcrRangeAt(long index, @CType("VkSamplerYcbcrRange") int value) { VkAndroidHardwareBufferFormatPropertiesANDROID.set_suggestedYcbcrRange(this.segment(), index, value); return this; }
     /// Sets `suggestedYcbcrRange` with the given value.
     /// @param value the value
     /// @return `this`
@@ -388,9 +343,6 @@ public final class VkAndroidHardwareBufferFormatPropertiesANDROID extends Struct
     /// {@return `suggestedXChromaOffset`}
     /// @param segment the segment of the struct
     public static @CType("VkChromaLocation") int get_suggestedXChromaOffset(MemorySegment segment) { return VkAndroidHardwareBufferFormatPropertiesANDROID.get_suggestedXChromaOffset(segment, 0L); }
-    /// {@return `suggestedXChromaOffset` at the given index}
-    /// @param index the index
-    public @CType("VkChromaLocation") int suggestedXChromaOffsetAt(long index) { return VkAndroidHardwareBufferFormatPropertiesANDROID.get_suggestedXChromaOffset(this.segment(), index); }
     /// {@return `suggestedXChromaOffset`}
     public @CType("VkChromaLocation") int suggestedXChromaOffset() { return VkAndroidHardwareBufferFormatPropertiesANDROID.get_suggestedXChromaOffset(this.segment()); }
     /// Sets `suggestedXChromaOffset` with the given value at the given index.
@@ -402,11 +354,6 @@ public final class VkAndroidHardwareBufferFormatPropertiesANDROID extends Struct
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_suggestedXChromaOffset(MemorySegment segment, @CType("VkChromaLocation") int value) { VkAndroidHardwareBufferFormatPropertiesANDROID.set_suggestedXChromaOffset(segment, 0L, value); }
-    /// Sets `suggestedXChromaOffset` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAndroidHardwareBufferFormatPropertiesANDROID suggestedXChromaOffsetAt(long index, @CType("VkChromaLocation") int value) { VkAndroidHardwareBufferFormatPropertiesANDROID.set_suggestedXChromaOffset(this.segment(), index, value); return this; }
     /// Sets `suggestedXChromaOffset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -419,9 +366,6 @@ public final class VkAndroidHardwareBufferFormatPropertiesANDROID extends Struct
     /// {@return `suggestedYChromaOffset`}
     /// @param segment the segment of the struct
     public static @CType("VkChromaLocation") int get_suggestedYChromaOffset(MemorySegment segment) { return VkAndroidHardwareBufferFormatPropertiesANDROID.get_suggestedYChromaOffset(segment, 0L); }
-    /// {@return `suggestedYChromaOffset` at the given index}
-    /// @param index the index
-    public @CType("VkChromaLocation") int suggestedYChromaOffsetAt(long index) { return VkAndroidHardwareBufferFormatPropertiesANDROID.get_suggestedYChromaOffset(this.segment(), index); }
     /// {@return `suggestedYChromaOffset`}
     public @CType("VkChromaLocation") int suggestedYChromaOffset() { return VkAndroidHardwareBufferFormatPropertiesANDROID.get_suggestedYChromaOffset(this.segment()); }
     /// Sets `suggestedYChromaOffset` with the given value at the given index.
@@ -433,14 +377,122 @@ public final class VkAndroidHardwareBufferFormatPropertiesANDROID extends Struct
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_suggestedYChromaOffset(MemorySegment segment, @CType("VkChromaLocation") int value) { VkAndroidHardwareBufferFormatPropertiesANDROID.set_suggestedYChromaOffset(segment, 0L, value); }
-    /// Sets `suggestedYChromaOffset` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAndroidHardwareBufferFormatPropertiesANDROID suggestedYChromaOffsetAt(long index, @CType("VkChromaLocation") int value) { VkAndroidHardwareBufferFormatPropertiesANDROID.set_suggestedYChromaOffset(this.segment(), index, value); return this; }
     /// Sets `suggestedYChromaOffset` with the given value.
     /// @param value the value
     /// @return `this`
     public VkAndroidHardwareBufferFormatPropertiesANDROID suggestedYChromaOffset(@CType("VkChromaLocation") int value) { VkAndroidHardwareBufferFormatPropertiesANDROID.set_suggestedYChromaOffset(this.segment(), value); return this; }
 
+    /// A buffer of [VkAndroidHardwareBufferFormatPropertiesANDROID].
+    public static final class Buffer extends VkAndroidHardwareBufferFormatPropertiesANDROID {
+        private final long elementCount;
+
+        /// Creates `VkAndroidHardwareBufferFormatPropertiesANDROID.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkAndroidHardwareBufferFormatPropertiesANDROID`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkAndroidHardwareBufferFormatPropertiesANDROID`
+        public VkAndroidHardwareBufferFormatPropertiesANDROID asSlice(long index) { return new VkAndroidHardwareBufferFormatPropertiesANDROID(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkAndroidHardwareBufferFormatPropertiesANDROID`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkAndroidHardwareBufferFormatPropertiesANDROID`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkAndroidHardwareBufferFormatPropertiesANDROID.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkAndroidHardwareBufferFormatPropertiesANDROID.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkAndroidHardwareBufferFormatPropertiesANDROID.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkAndroidHardwareBufferFormatPropertiesANDROID.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `format` at the given index}
+        /// @param index the index
+        public @CType("VkFormat") int formatAt(long index) { return VkAndroidHardwareBufferFormatPropertiesANDROID.get_format(this.segment(), index); }
+        /// Sets `format` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer formatAt(long index, @CType("VkFormat") int value) { VkAndroidHardwareBufferFormatPropertiesANDROID.set_format(this.segment(), index, value); return this; }
+
+        /// {@return `externalFormat` at the given index}
+        /// @param index the index
+        public @CType("uint64_t") long externalFormatAt(long index) { return VkAndroidHardwareBufferFormatPropertiesANDROID.get_externalFormat(this.segment(), index); }
+        /// Sets `externalFormat` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer externalFormatAt(long index, @CType("uint64_t") long value) { VkAndroidHardwareBufferFormatPropertiesANDROID.set_externalFormat(this.segment(), index, value); return this; }
+
+        /// {@return `formatFeatures` at the given index}
+        /// @param index the index
+        public @CType("VkFormatFeatureFlags") int formatFeaturesAt(long index) { return VkAndroidHardwareBufferFormatPropertiesANDROID.get_formatFeatures(this.segment(), index); }
+        /// Sets `formatFeatures` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer formatFeaturesAt(long index, @CType("VkFormatFeatureFlags") int value) { VkAndroidHardwareBufferFormatPropertiesANDROID.set_formatFeatures(this.segment(), index, value); return this; }
+
+        /// {@return `samplerYcbcrConversionComponents` at the given index}
+        /// @param index the index
+        public @CType("VkComponentMapping") java.lang.foreign.MemorySegment samplerYcbcrConversionComponentsAt(long index) { return VkAndroidHardwareBufferFormatPropertiesANDROID.get_samplerYcbcrConversionComponents(this.segment(), index); }
+        /// Sets `samplerYcbcrConversionComponents` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer samplerYcbcrConversionComponentsAt(long index, @CType("VkComponentMapping") java.lang.foreign.MemorySegment value) { VkAndroidHardwareBufferFormatPropertiesANDROID.set_samplerYcbcrConversionComponents(this.segment(), index, value); return this; }
+
+        /// {@return `suggestedYcbcrModel` at the given index}
+        /// @param index the index
+        public @CType("VkSamplerYcbcrModelConversion") int suggestedYcbcrModelAt(long index) { return VkAndroidHardwareBufferFormatPropertiesANDROID.get_suggestedYcbcrModel(this.segment(), index); }
+        /// Sets `suggestedYcbcrModel` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer suggestedYcbcrModelAt(long index, @CType("VkSamplerYcbcrModelConversion") int value) { VkAndroidHardwareBufferFormatPropertiesANDROID.set_suggestedYcbcrModel(this.segment(), index, value); return this; }
+
+        /// {@return `suggestedYcbcrRange` at the given index}
+        /// @param index the index
+        public @CType("VkSamplerYcbcrRange") int suggestedYcbcrRangeAt(long index) { return VkAndroidHardwareBufferFormatPropertiesANDROID.get_suggestedYcbcrRange(this.segment(), index); }
+        /// Sets `suggestedYcbcrRange` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer suggestedYcbcrRangeAt(long index, @CType("VkSamplerYcbcrRange") int value) { VkAndroidHardwareBufferFormatPropertiesANDROID.set_suggestedYcbcrRange(this.segment(), index, value); return this; }
+
+        /// {@return `suggestedXChromaOffset` at the given index}
+        /// @param index the index
+        public @CType("VkChromaLocation") int suggestedXChromaOffsetAt(long index) { return VkAndroidHardwareBufferFormatPropertiesANDROID.get_suggestedXChromaOffset(this.segment(), index); }
+        /// Sets `suggestedXChromaOffset` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer suggestedXChromaOffsetAt(long index, @CType("VkChromaLocation") int value) { VkAndroidHardwareBufferFormatPropertiesANDROID.set_suggestedXChromaOffset(this.segment(), index, value); return this; }
+
+        /// {@return `suggestedYChromaOffset` at the given index}
+        /// @param index the index
+        public @CType("VkChromaLocation") int suggestedYChromaOffsetAt(long index) { return VkAndroidHardwareBufferFormatPropertiesANDROID.get_suggestedYChromaOffset(this.segment(), index); }
+        /// Sets `suggestedYChromaOffset` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer suggestedYChromaOffsetAt(long index, @CType("VkChromaLocation") int value) { VkAndroidHardwareBufferFormatPropertiesANDROID.set_suggestedYChromaOffset(this.segment(), index, value); return this; }
+
+    }
 }

@@ -73,7 +73,7 @@ import overrungl.util.*;
 ///     uint16_t [ ] delta_poc_s1_minus1;
 /// } StdVideoH265ShortTermRefPicSet;
 /// ```
-public final class StdVideoH265ShortTermRefPicSet extends Struct {
+public sealed class StdVideoH265ShortTermRefPicSet extends Struct {
     /// The struct layout of `StdVideoH265ShortTermRefPicSet`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         StdVideoH265ShortTermRefPicSetFlags.LAYOUT.withName("flags"),
@@ -130,6 +130,11 @@ public final class StdVideoH265ShortTermRefPicSet extends Struct {
     public static StdVideoH265ShortTermRefPicSet of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoH265ShortTermRefPicSet(segment); }
 
     /// Creates `StdVideoH265ShortTermRefPicSet` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `StdVideoH265ShortTermRefPicSet` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -142,7 +147,7 @@ public final class StdVideoH265ShortTermRefPicSet extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoH265ShortTermRefPicSet ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoH265ShortTermRefPicSet(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `StdVideoH265ShortTermRefPicSet` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -153,7 +158,21 @@ public final class StdVideoH265ShortTermRefPicSet extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `StdVideoH265ShortTermRefPicSet`
-    public static StdVideoH265ShortTermRefPicSet alloc(SegmentAllocator allocator, long count) { return new StdVideoH265ShortTermRefPicSet(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+
+    /// Allocates a `StdVideoH265ShortTermRefPicSet` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `StdVideoH265ShortTermRefPicSet`
+    public static StdVideoH265ShortTermRefPicSet allocInit(SegmentAllocator allocator, @CType("StdVideoH265ShortTermRefPicSetFlags") java.lang.foreign.MemorySegment flags, @CType("uint32_t") int delta_idx_minus1, @CType("uint16_t") short use_delta_flag, @CType("uint16_t") short abs_delta_rps_minus1, @CType("uint16_t") short used_by_curr_pic_flag, @CType("uint16_t") short used_by_curr_pic_s0_flag, @CType("uint16_t") short used_by_curr_pic_s1_flag, @CType("uint16_t") short reserved1, @CType("uint8_t") byte reserved2, @CType("uint8_t") byte reserved3, @CType("uint8_t") byte num_negative_pics, @CType("uint8_t") byte num_positive_pics, @CType("uint16_t [ ]") short delta_poc_s0_minus1, @CType("uint16_t [ ]") short delta_poc_s1_minus1) { return alloc(allocator).flags(flags).delta_idx_minus1(delta_idx_minus1).use_delta_flag(use_delta_flag).abs_delta_rps_minus1(abs_delta_rps_minus1).used_by_curr_pic_flag(used_by_curr_pic_flag).used_by_curr_pic_s0_flag(used_by_curr_pic_s0_flag).used_by_curr_pic_s1_flag(used_by_curr_pic_s1_flag).reserved1(reserved1).reserved2(reserved2).reserved3(reserved3).num_negative_pics(num_negative_pics).num_positive_pics(num_positive_pics).delta_poc_s0_minus1(delta_poc_s0_minus1).delta_poc_s1_minus1(delta_poc_s1_minus1); }
+
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public StdVideoH265ShortTermRefPicSet copyFrom(StdVideoH265ShortTermRefPicSet src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
@@ -162,9 +181,6 @@ public final class StdVideoH265ShortTermRefPicSet extends Struct {
     /// {@return `flags`}
     /// @param segment the segment of the struct
     public static @CType("StdVideoH265ShortTermRefPicSetFlags") java.lang.foreign.MemorySegment get_flags(MemorySegment segment) { return StdVideoH265ShortTermRefPicSet.get_flags(segment, 0L); }
-    /// {@return `flags` at the given index}
-    /// @param index the index
-    public @CType("StdVideoH265ShortTermRefPicSetFlags") java.lang.foreign.MemorySegment flagsAt(long index) { return StdVideoH265ShortTermRefPicSet.get_flags(this.segment(), index); }
     /// {@return `flags`}
     public @CType("StdVideoH265ShortTermRefPicSetFlags") java.lang.foreign.MemorySegment flags() { return StdVideoH265ShortTermRefPicSet.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
@@ -176,11 +192,6 @@ public final class StdVideoH265ShortTermRefPicSet extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_flags(MemorySegment segment, @CType("StdVideoH265ShortTermRefPicSetFlags") java.lang.foreign.MemorySegment value) { StdVideoH265ShortTermRefPicSet.set_flags(segment, 0L, value); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH265ShortTermRefPicSet flagsAt(long index, @CType("StdVideoH265ShortTermRefPicSetFlags") java.lang.foreign.MemorySegment value) { StdVideoH265ShortTermRefPicSet.set_flags(this.segment(), index, value); return this; }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -193,9 +204,6 @@ public final class StdVideoH265ShortTermRefPicSet extends Struct {
     /// {@return `delta_idx_minus1`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_delta_idx_minus1(MemorySegment segment) { return StdVideoH265ShortTermRefPicSet.get_delta_idx_minus1(segment, 0L); }
-    /// {@return `delta_idx_minus1` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int delta_idx_minus1At(long index) { return StdVideoH265ShortTermRefPicSet.get_delta_idx_minus1(this.segment(), index); }
     /// {@return `delta_idx_minus1`}
     public @CType("uint32_t") int delta_idx_minus1() { return StdVideoH265ShortTermRefPicSet.get_delta_idx_minus1(this.segment()); }
     /// Sets `delta_idx_minus1` with the given value at the given index.
@@ -207,11 +215,6 @@ public final class StdVideoH265ShortTermRefPicSet extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_delta_idx_minus1(MemorySegment segment, @CType("uint32_t") int value) { StdVideoH265ShortTermRefPicSet.set_delta_idx_minus1(segment, 0L, value); }
-    /// Sets `delta_idx_minus1` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH265ShortTermRefPicSet delta_idx_minus1At(long index, @CType("uint32_t") int value) { StdVideoH265ShortTermRefPicSet.set_delta_idx_minus1(this.segment(), index, value); return this; }
     /// Sets `delta_idx_minus1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -224,9 +227,6 @@ public final class StdVideoH265ShortTermRefPicSet extends Struct {
     /// {@return `use_delta_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint16_t") short get_use_delta_flag(MemorySegment segment) { return StdVideoH265ShortTermRefPicSet.get_use_delta_flag(segment, 0L); }
-    /// {@return `use_delta_flag` at the given index}
-    /// @param index the index
-    public @CType("uint16_t") short use_delta_flagAt(long index) { return StdVideoH265ShortTermRefPicSet.get_use_delta_flag(this.segment(), index); }
     /// {@return `use_delta_flag`}
     public @CType("uint16_t") short use_delta_flag() { return StdVideoH265ShortTermRefPicSet.get_use_delta_flag(this.segment()); }
     /// Sets `use_delta_flag` with the given value at the given index.
@@ -238,11 +238,6 @@ public final class StdVideoH265ShortTermRefPicSet extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_use_delta_flag(MemorySegment segment, @CType("uint16_t") short value) { StdVideoH265ShortTermRefPicSet.set_use_delta_flag(segment, 0L, value); }
-    /// Sets `use_delta_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH265ShortTermRefPicSet use_delta_flagAt(long index, @CType("uint16_t") short value) { StdVideoH265ShortTermRefPicSet.set_use_delta_flag(this.segment(), index, value); return this; }
     /// Sets `use_delta_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -255,9 +250,6 @@ public final class StdVideoH265ShortTermRefPicSet extends Struct {
     /// {@return `abs_delta_rps_minus1`}
     /// @param segment the segment of the struct
     public static @CType("uint16_t") short get_abs_delta_rps_minus1(MemorySegment segment) { return StdVideoH265ShortTermRefPicSet.get_abs_delta_rps_minus1(segment, 0L); }
-    /// {@return `abs_delta_rps_minus1` at the given index}
-    /// @param index the index
-    public @CType("uint16_t") short abs_delta_rps_minus1At(long index) { return StdVideoH265ShortTermRefPicSet.get_abs_delta_rps_minus1(this.segment(), index); }
     /// {@return `abs_delta_rps_minus1`}
     public @CType("uint16_t") short abs_delta_rps_minus1() { return StdVideoH265ShortTermRefPicSet.get_abs_delta_rps_minus1(this.segment()); }
     /// Sets `abs_delta_rps_minus1` with the given value at the given index.
@@ -269,11 +261,6 @@ public final class StdVideoH265ShortTermRefPicSet extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_abs_delta_rps_minus1(MemorySegment segment, @CType("uint16_t") short value) { StdVideoH265ShortTermRefPicSet.set_abs_delta_rps_minus1(segment, 0L, value); }
-    /// Sets `abs_delta_rps_minus1` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH265ShortTermRefPicSet abs_delta_rps_minus1At(long index, @CType("uint16_t") short value) { StdVideoH265ShortTermRefPicSet.set_abs_delta_rps_minus1(this.segment(), index, value); return this; }
     /// Sets `abs_delta_rps_minus1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -286,9 +273,6 @@ public final class StdVideoH265ShortTermRefPicSet extends Struct {
     /// {@return `used_by_curr_pic_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint16_t") short get_used_by_curr_pic_flag(MemorySegment segment) { return StdVideoH265ShortTermRefPicSet.get_used_by_curr_pic_flag(segment, 0L); }
-    /// {@return `used_by_curr_pic_flag` at the given index}
-    /// @param index the index
-    public @CType("uint16_t") short used_by_curr_pic_flagAt(long index) { return StdVideoH265ShortTermRefPicSet.get_used_by_curr_pic_flag(this.segment(), index); }
     /// {@return `used_by_curr_pic_flag`}
     public @CType("uint16_t") short used_by_curr_pic_flag() { return StdVideoH265ShortTermRefPicSet.get_used_by_curr_pic_flag(this.segment()); }
     /// Sets `used_by_curr_pic_flag` with the given value at the given index.
@@ -300,11 +284,6 @@ public final class StdVideoH265ShortTermRefPicSet extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_used_by_curr_pic_flag(MemorySegment segment, @CType("uint16_t") short value) { StdVideoH265ShortTermRefPicSet.set_used_by_curr_pic_flag(segment, 0L, value); }
-    /// Sets `used_by_curr_pic_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH265ShortTermRefPicSet used_by_curr_pic_flagAt(long index, @CType("uint16_t") short value) { StdVideoH265ShortTermRefPicSet.set_used_by_curr_pic_flag(this.segment(), index, value); return this; }
     /// Sets `used_by_curr_pic_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -317,9 +296,6 @@ public final class StdVideoH265ShortTermRefPicSet extends Struct {
     /// {@return `used_by_curr_pic_s0_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint16_t") short get_used_by_curr_pic_s0_flag(MemorySegment segment) { return StdVideoH265ShortTermRefPicSet.get_used_by_curr_pic_s0_flag(segment, 0L); }
-    /// {@return `used_by_curr_pic_s0_flag` at the given index}
-    /// @param index the index
-    public @CType("uint16_t") short used_by_curr_pic_s0_flagAt(long index) { return StdVideoH265ShortTermRefPicSet.get_used_by_curr_pic_s0_flag(this.segment(), index); }
     /// {@return `used_by_curr_pic_s0_flag`}
     public @CType("uint16_t") short used_by_curr_pic_s0_flag() { return StdVideoH265ShortTermRefPicSet.get_used_by_curr_pic_s0_flag(this.segment()); }
     /// Sets `used_by_curr_pic_s0_flag` with the given value at the given index.
@@ -331,11 +307,6 @@ public final class StdVideoH265ShortTermRefPicSet extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_used_by_curr_pic_s0_flag(MemorySegment segment, @CType("uint16_t") short value) { StdVideoH265ShortTermRefPicSet.set_used_by_curr_pic_s0_flag(segment, 0L, value); }
-    /// Sets `used_by_curr_pic_s0_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH265ShortTermRefPicSet used_by_curr_pic_s0_flagAt(long index, @CType("uint16_t") short value) { StdVideoH265ShortTermRefPicSet.set_used_by_curr_pic_s0_flag(this.segment(), index, value); return this; }
     /// Sets `used_by_curr_pic_s0_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -348,9 +319,6 @@ public final class StdVideoH265ShortTermRefPicSet extends Struct {
     /// {@return `used_by_curr_pic_s1_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint16_t") short get_used_by_curr_pic_s1_flag(MemorySegment segment) { return StdVideoH265ShortTermRefPicSet.get_used_by_curr_pic_s1_flag(segment, 0L); }
-    /// {@return `used_by_curr_pic_s1_flag` at the given index}
-    /// @param index the index
-    public @CType("uint16_t") short used_by_curr_pic_s1_flagAt(long index) { return StdVideoH265ShortTermRefPicSet.get_used_by_curr_pic_s1_flag(this.segment(), index); }
     /// {@return `used_by_curr_pic_s1_flag`}
     public @CType("uint16_t") short used_by_curr_pic_s1_flag() { return StdVideoH265ShortTermRefPicSet.get_used_by_curr_pic_s1_flag(this.segment()); }
     /// Sets `used_by_curr_pic_s1_flag` with the given value at the given index.
@@ -362,11 +330,6 @@ public final class StdVideoH265ShortTermRefPicSet extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_used_by_curr_pic_s1_flag(MemorySegment segment, @CType("uint16_t") short value) { StdVideoH265ShortTermRefPicSet.set_used_by_curr_pic_s1_flag(segment, 0L, value); }
-    /// Sets `used_by_curr_pic_s1_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH265ShortTermRefPicSet used_by_curr_pic_s1_flagAt(long index, @CType("uint16_t") short value) { StdVideoH265ShortTermRefPicSet.set_used_by_curr_pic_s1_flag(this.segment(), index, value); return this; }
     /// Sets `used_by_curr_pic_s1_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -379,9 +342,6 @@ public final class StdVideoH265ShortTermRefPicSet extends Struct {
     /// {@return `reserved1`}
     /// @param segment the segment of the struct
     public static @CType("uint16_t") short get_reserved1(MemorySegment segment) { return StdVideoH265ShortTermRefPicSet.get_reserved1(segment, 0L); }
-    /// {@return `reserved1` at the given index}
-    /// @param index the index
-    public @CType("uint16_t") short reserved1At(long index) { return StdVideoH265ShortTermRefPicSet.get_reserved1(this.segment(), index); }
     /// {@return `reserved1`}
     public @CType("uint16_t") short reserved1() { return StdVideoH265ShortTermRefPicSet.get_reserved1(this.segment()); }
     /// Sets `reserved1` with the given value at the given index.
@@ -393,11 +353,6 @@ public final class StdVideoH265ShortTermRefPicSet extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_reserved1(MemorySegment segment, @CType("uint16_t") short value) { StdVideoH265ShortTermRefPicSet.set_reserved1(segment, 0L, value); }
-    /// Sets `reserved1` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH265ShortTermRefPicSet reserved1At(long index, @CType("uint16_t") short value) { StdVideoH265ShortTermRefPicSet.set_reserved1(this.segment(), index, value); return this; }
     /// Sets `reserved1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -410,9 +365,6 @@ public final class StdVideoH265ShortTermRefPicSet extends Struct {
     /// {@return `reserved2`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t") byte get_reserved2(MemorySegment segment) { return StdVideoH265ShortTermRefPicSet.get_reserved2(segment, 0L); }
-    /// {@return `reserved2` at the given index}
-    /// @param index the index
-    public @CType("uint8_t") byte reserved2At(long index) { return StdVideoH265ShortTermRefPicSet.get_reserved2(this.segment(), index); }
     /// {@return `reserved2`}
     public @CType("uint8_t") byte reserved2() { return StdVideoH265ShortTermRefPicSet.get_reserved2(this.segment()); }
     /// Sets `reserved2` with the given value at the given index.
@@ -424,11 +376,6 @@ public final class StdVideoH265ShortTermRefPicSet extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_reserved2(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoH265ShortTermRefPicSet.set_reserved2(segment, 0L, value); }
-    /// Sets `reserved2` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH265ShortTermRefPicSet reserved2At(long index, @CType("uint8_t") byte value) { StdVideoH265ShortTermRefPicSet.set_reserved2(this.segment(), index, value); return this; }
     /// Sets `reserved2` with the given value.
     /// @param value the value
     /// @return `this`
@@ -441,9 +388,6 @@ public final class StdVideoH265ShortTermRefPicSet extends Struct {
     /// {@return `reserved3`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t") byte get_reserved3(MemorySegment segment) { return StdVideoH265ShortTermRefPicSet.get_reserved3(segment, 0L); }
-    /// {@return `reserved3` at the given index}
-    /// @param index the index
-    public @CType("uint8_t") byte reserved3At(long index) { return StdVideoH265ShortTermRefPicSet.get_reserved3(this.segment(), index); }
     /// {@return `reserved3`}
     public @CType("uint8_t") byte reserved3() { return StdVideoH265ShortTermRefPicSet.get_reserved3(this.segment()); }
     /// Sets `reserved3` with the given value at the given index.
@@ -455,11 +399,6 @@ public final class StdVideoH265ShortTermRefPicSet extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_reserved3(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoH265ShortTermRefPicSet.set_reserved3(segment, 0L, value); }
-    /// Sets `reserved3` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH265ShortTermRefPicSet reserved3At(long index, @CType("uint8_t") byte value) { StdVideoH265ShortTermRefPicSet.set_reserved3(this.segment(), index, value); return this; }
     /// Sets `reserved3` with the given value.
     /// @param value the value
     /// @return `this`
@@ -472,9 +411,6 @@ public final class StdVideoH265ShortTermRefPicSet extends Struct {
     /// {@return `num_negative_pics`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t") byte get_num_negative_pics(MemorySegment segment) { return StdVideoH265ShortTermRefPicSet.get_num_negative_pics(segment, 0L); }
-    /// {@return `num_negative_pics` at the given index}
-    /// @param index the index
-    public @CType("uint8_t") byte num_negative_picsAt(long index) { return StdVideoH265ShortTermRefPicSet.get_num_negative_pics(this.segment(), index); }
     /// {@return `num_negative_pics`}
     public @CType("uint8_t") byte num_negative_pics() { return StdVideoH265ShortTermRefPicSet.get_num_negative_pics(this.segment()); }
     /// Sets `num_negative_pics` with the given value at the given index.
@@ -486,11 +422,6 @@ public final class StdVideoH265ShortTermRefPicSet extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_num_negative_pics(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoH265ShortTermRefPicSet.set_num_negative_pics(segment, 0L, value); }
-    /// Sets `num_negative_pics` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH265ShortTermRefPicSet num_negative_picsAt(long index, @CType("uint8_t") byte value) { StdVideoH265ShortTermRefPicSet.set_num_negative_pics(this.segment(), index, value); return this; }
     /// Sets `num_negative_pics` with the given value.
     /// @param value the value
     /// @return `this`
@@ -503,9 +434,6 @@ public final class StdVideoH265ShortTermRefPicSet extends Struct {
     /// {@return `num_positive_pics`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t") byte get_num_positive_pics(MemorySegment segment) { return StdVideoH265ShortTermRefPicSet.get_num_positive_pics(segment, 0L); }
-    /// {@return `num_positive_pics` at the given index}
-    /// @param index the index
-    public @CType("uint8_t") byte num_positive_picsAt(long index) { return StdVideoH265ShortTermRefPicSet.get_num_positive_pics(this.segment(), index); }
     /// {@return `num_positive_pics`}
     public @CType("uint8_t") byte num_positive_pics() { return StdVideoH265ShortTermRefPicSet.get_num_positive_pics(this.segment()); }
     /// Sets `num_positive_pics` with the given value at the given index.
@@ -517,11 +445,6 @@ public final class StdVideoH265ShortTermRefPicSet extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_num_positive_pics(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoH265ShortTermRefPicSet.set_num_positive_pics(segment, 0L, value); }
-    /// Sets `num_positive_pics` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH265ShortTermRefPicSet num_positive_picsAt(long index, @CType("uint8_t") byte value) { StdVideoH265ShortTermRefPicSet.set_num_positive_pics(this.segment(), index, value); return this; }
     /// Sets `num_positive_pics` with the given value.
     /// @param value the value
     /// @return `this`
@@ -534,9 +457,6 @@ public final class StdVideoH265ShortTermRefPicSet extends Struct {
     /// {@return `delta_poc_s0_minus1`}
     /// @param segment the segment of the struct
     public static @CType("uint16_t [ ]") short get_delta_poc_s0_minus1(MemorySegment segment) { return StdVideoH265ShortTermRefPicSet.get_delta_poc_s0_minus1(segment, 0L); }
-    /// {@return `delta_poc_s0_minus1` at the given index}
-    /// @param index the index
-    public @CType("uint16_t [ ]") short delta_poc_s0_minus1At(long index) { return StdVideoH265ShortTermRefPicSet.get_delta_poc_s0_minus1(this.segment(), index); }
     /// {@return `delta_poc_s0_minus1`}
     public @CType("uint16_t [ ]") short delta_poc_s0_minus1() { return StdVideoH265ShortTermRefPicSet.get_delta_poc_s0_minus1(this.segment()); }
     /// Sets `delta_poc_s0_minus1` with the given value at the given index.
@@ -548,11 +468,6 @@ public final class StdVideoH265ShortTermRefPicSet extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_delta_poc_s0_minus1(MemorySegment segment, @CType("uint16_t [ ]") short value) { StdVideoH265ShortTermRefPicSet.set_delta_poc_s0_minus1(segment, 0L, value); }
-    /// Sets `delta_poc_s0_minus1` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH265ShortTermRefPicSet delta_poc_s0_minus1At(long index, @CType("uint16_t [ ]") short value) { StdVideoH265ShortTermRefPicSet.set_delta_poc_s0_minus1(this.segment(), index, value); return this; }
     /// Sets `delta_poc_s0_minus1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -565,9 +480,6 @@ public final class StdVideoH265ShortTermRefPicSet extends Struct {
     /// {@return `delta_poc_s1_minus1`}
     /// @param segment the segment of the struct
     public static @CType("uint16_t [ ]") short get_delta_poc_s1_minus1(MemorySegment segment) { return StdVideoH265ShortTermRefPicSet.get_delta_poc_s1_minus1(segment, 0L); }
-    /// {@return `delta_poc_s1_minus1` at the given index}
-    /// @param index the index
-    public @CType("uint16_t [ ]") short delta_poc_s1_minus1At(long index) { return StdVideoH265ShortTermRefPicSet.get_delta_poc_s1_minus1(this.segment(), index); }
     /// {@return `delta_poc_s1_minus1`}
     public @CType("uint16_t [ ]") short delta_poc_s1_minus1() { return StdVideoH265ShortTermRefPicSet.get_delta_poc_s1_minus1(this.segment()); }
     /// Sets `delta_poc_s1_minus1` with the given value at the given index.
@@ -579,14 +491,158 @@ public final class StdVideoH265ShortTermRefPicSet extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_delta_poc_s1_minus1(MemorySegment segment, @CType("uint16_t [ ]") short value) { StdVideoH265ShortTermRefPicSet.set_delta_poc_s1_minus1(segment, 0L, value); }
-    /// Sets `delta_poc_s1_minus1` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH265ShortTermRefPicSet delta_poc_s1_minus1At(long index, @CType("uint16_t [ ]") short value) { StdVideoH265ShortTermRefPicSet.set_delta_poc_s1_minus1(this.segment(), index, value); return this; }
     /// Sets `delta_poc_s1_minus1` with the given value.
     /// @param value the value
     /// @return `this`
     public StdVideoH265ShortTermRefPicSet delta_poc_s1_minus1(@CType("uint16_t [ ]") short value) { StdVideoH265ShortTermRefPicSet.set_delta_poc_s1_minus1(this.segment(), value); return this; }
 
+    /// A buffer of [StdVideoH265ShortTermRefPicSet].
+    public static final class Buffer extends StdVideoH265ShortTermRefPicSet {
+        private final long elementCount;
+
+        /// Creates `StdVideoH265ShortTermRefPicSet.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `StdVideoH265ShortTermRefPicSet`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `StdVideoH265ShortTermRefPicSet`
+        public StdVideoH265ShortTermRefPicSet asSlice(long index) { return new StdVideoH265ShortTermRefPicSet(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `StdVideoH265ShortTermRefPicSet`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `StdVideoH265ShortTermRefPicSet`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `flags` at the given index}
+        /// @param index the index
+        public @CType("StdVideoH265ShortTermRefPicSetFlags") java.lang.foreign.MemorySegment flagsAt(long index) { return StdVideoH265ShortTermRefPicSet.get_flags(this.segment(), index); }
+        /// Sets `flags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer flagsAt(long index, @CType("StdVideoH265ShortTermRefPicSetFlags") java.lang.foreign.MemorySegment value) { StdVideoH265ShortTermRefPicSet.set_flags(this.segment(), index, value); return this; }
+
+        /// {@return `delta_idx_minus1` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int delta_idx_minus1At(long index) { return StdVideoH265ShortTermRefPicSet.get_delta_idx_minus1(this.segment(), index); }
+        /// Sets `delta_idx_minus1` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer delta_idx_minus1At(long index, @CType("uint32_t") int value) { StdVideoH265ShortTermRefPicSet.set_delta_idx_minus1(this.segment(), index, value); return this; }
+
+        /// {@return `use_delta_flag` at the given index}
+        /// @param index the index
+        public @CType("uint16_t") short use_delta_flagAt(long index) { return StdVideoH265ShortTermRefPicSet.get_use_delta_flag(this.segment(), index); }
+        /// Sets `use_delta_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer use_delta_flagAt(long index, @CType("uint16_t") short value) { StdVideoH265ShortTermRefPicSet.set_use_delta_flag(this.segment(), index, value); return this; }
+
+        /// {@return `abs_delta_rps_minus1` at the given index}
+        /// @param index the index
+        public @CType("uint16_t") short abs_delta_rps_minus1At(long index) { return StdVideoH265ShortTermRefPicSet.get_abs_delta_rps_minus1(this.segment(), index); }
+        /// Sets `abs_delta_rps_minus1` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer abs_delta_rps_minus1At(long index, @CType("uint16_t") short value) { StdVideoH265ShortTermRefPicSet.set_abs_delta_rps_minus1(this.segment(), index, value); return this; }
+
+        /// {@return `used_by_curr_pic_flag` at the given index}
+        /// @param index the index
+        public @CType("uint16_t") short used_by_curr_pic_flagAt(long index) { return StdVideoH265ShortTermRefPicSet.get_used_by_curr_pic_flag(this.segment(), index); }
+        /// Sets `used_by_curr_pic_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer used_by_curr_pic_flagAt(long index, @CType("uint16_t") short value) { StdVideoH265ShortTermRefPicSet.set_used_by_curr_pic_flag(this.segment(), index, value); return this; }
+
+        /// {@return `used_by_curr_pic_s0_flag` at the given index}
+        /// @param index the index
+        public @CType("uint16_t") short used_by_curr_pic_s0_flagAt(long index) { return StdVideoH265ShortTermRefPicSet.get_used_by_curr_pic_s0_flag(this.segment(), index); }
+        /// Sets `used_by_curr_pic_s0_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer used_by_curr_pic_s0_flagAt(long index, @CType("uint16_t") short value) { StdVideoH265ShortTermRefPicSet.set_used_by_curr_pic_s0_flag(this.segment(), index, value); return this; }
+
+        /// {@return `used_by_curr_pic_s1_flag` at the given index}
+        /// @param index the index
+        public @CType("uint16_t") short used_by_curr_pic_s1_flagAt(long index) { return StdVideoH265ShortTermRefPicSet.get_used_by_curr_pic_s1_flag(this.segment(), index); }
+        /// Sets `used_by_curr_pic_s1_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer used_by_curr_pic_s1_flagAt(long index, @CType("uint16_t") short value) { StdVideoH265ShortTermRefPicSet.set_used_by_curr_pic_s1_flag(this.segment(), index, value); return this; }
+
+        /// {@return `reserved1` at the given index}
+        /// @param index the index
+        public @CType("uint16_t") short reserved1At(long index) { return StdVideoH265ShortTermRefPicSet.get_reserved1(this.segment(), index); }
+        /// Sets `reserved1` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer reserved1At(long index, @CType("uint16_t") short value) { StdVideoH265ShortTermRefPicSet.set_reserved1(this.segment(), index, value); return this; }
+
+        /// {@return `reserved2` at the given index}
+        /// @param index the index
+        public @CType("uint8_t") byte reserved2At(long index) { return StdVideoH265ShortTermRefPicSet.get_reserved2(this.segment(), index); }
+        /// Sets `reserved2` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer reserved2At(long index, @CType("uint8_t") byte value) { StdVideoH265ShortTermRefPicSet.set_reserved2(this.segment(), index, value); return this; }
+
+        /// {@return `reserved3` at the given index}
+        /// @param index the index
+        public @CType("uint8_t") byte reserved3At(long index) { return StdVideoH265ShortTermRefPicSet.get_reserved3(this.segment(), index); }
+        /// Sets `reserved3` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer reserved3At(long index, @CType("uint8_t") byte value) { StdVideoH265ShortTermRefPicSet.set_reserved3(this.segment(), index, value); return this; }
+
+        /// {@return `num_negative_pics` at the given index}
+        /// @param index the index
+        public @CType("uint8_t") byte num_negative_picsAt(long index) { return StdVideoH265ShortTermRefPicSet.get_num_negative_pics(this.segment(), index); }
+        /// Sets `num_negative_pics` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer num_negative_picsAt(long index, @CType("uint8_t") byte value) { StdVideoH265ShortTermRefPicSet.set_num_negative_pics(this.segment(), index, value); return this; }
+
+        /// {@return `num_positive_pics` at the given index}
+        /// @param index the index
+        public @CType("uint8_t") byte num_positive_picsAt(long index) { return StdVideoH265ShortTermRefPicSet.get_num_positive_pics(this.segment(), index); }
+        /// Sets `num_positive_pics` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer num_positive_picsAt(long index, @CType("uint8_t") byte value) { StdVideoH265ShortTermRefPicSet.set_num_positive_pics(this.segment(), index, value); return this; }
+
+        /// {@return `delta_poc_s0_minus1` at the given index}
+        /// @param index the index
+        public @CType("uint16_t [ ]") short delta_poc_s0_minus1At(long index) { return StdVideoH265ShortTermRefPicSet.get_delta_poc_s0_minus1(this.segment(), index); }
+        /// Sets `delta_poc_s0_minus1` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer delta_poc_s0_minus1At(long index, @CType("uint16_t [ ]") short value) { StdVideoH265ShortTermRefPicSet.set_delta_poc_s0_minus1(this.segment(), index, value); return this; }
+
+        /// {@return `delta_poc_s1_minus1` at the given index}
+        /// @param index the index
+        public @CType("uint16_t [ ]") short delta_poc_s1_minus1At(long index) { return StdVideoH265ShortTermRefPicSet.get_delta_poc_s1_minus1(this.segment(), index); }
+        /// Sets `delta_poc_s1_minus1` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer delta_poc_s1_minus1At(long index, @CType("uint16_t [ ]") short value) { StdVideoH265ShortTermRefPicSet.set_delta_poc_s1_minus1(this.segment(), index, value); return this; }
+
+    }
 }
