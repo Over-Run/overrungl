@@ -22,11 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 public class VK11 extends VK10 {
-    public static final int VK_API_VERSION_1_0 = VK_MAKE_API_VERSION(0, 1, 0, 0);
-    public static final int VK_API_VERSION_1_1 = VK_MAKE_API_VERSION(0, 1, 1, 0);
-    public static final int VK_API_VERSION_1_2 = VK_MAKE_API_VERSION(0, 1, 2, 0);
-    public static final int VK_API_VERSION_1_3 = VK_MAKE_API_VERSION(0, 1, 3, 0);
-    public static final int VK_API_VERSION_1_4 = VK_MAKE_API_VERSION(0, 1, 4, 0);
     public static final int VK_SUBGROUP_FEATURE_BASIC_BIT = 0x00000001;
     public static final int VK_SUBGROUP_FEATURE_VOTE_BIT = 0x00000002;
     public static final int VK_SUBGROUP_FEATURE_ARITHMETIC_BIT = 0x00000004;

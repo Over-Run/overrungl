@@ -552,10 +552,12 @@ fun main() {
             VkDowncall(vulkanPackage, className) {
                 vkExtends[featureNumber]?.also { extends.add("VK$it") }
 
-                defineVkVersion.forEach { (k, v) ->
-                    fields.add(
-                        VkDowncallField("int", k, v)
-                    )
+                if (featureNumber == "1.0") {
+                    defineVkVersion.forEach { (k, v) ->
+                        fields.add(
+                            VkDowncallField("int", k, v)
+                        )
+                    }
                 }
 
                 addReqTypes(featureReqTypes)
