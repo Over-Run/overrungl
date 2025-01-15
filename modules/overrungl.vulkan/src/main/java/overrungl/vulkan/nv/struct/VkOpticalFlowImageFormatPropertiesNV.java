@@ -40,7 +40,7 @@ import overrungl.util.*;
 ///     VkFormat format;
 /// } VkOpticalFlowImageFormatPropertiesNV;
 /// ```
-public final class VkOpticalFlowImageFormatPropertiesNV extends Struct {
+public sealed class VkOpticalFlowImageFormatPropertiesNV extends Struct {
     /// The struct layout of `VkOpticalFlowImageFormatPropertiesNV`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -64,6 +64,11 @@ public final class VkOpticalFlowImageFormatPropertiesNV extends Struct {
     public static VkOpticalFlowImageFormatPropertiesNV of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkOpticalFlowImageFormatPropertiesNV(segment); }
 
     /// Creates `VkOpticalFlowImageFormatPropertiesNV` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkOpticalFlowImageFormatPropertiesNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -76,7 +81,7 @@ public final class VkOpticalFlowImageFormatPropertiesNV extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkOpticalFlowImageFormatPropertiesNV ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkOpticalFlowImageFormatPropertiesNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkOpticalFlowImageFormatPropertiesNV` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -87,18 +92,21 @@ public final class VkOpticalFlowImageFormatPropertiesNV extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkOpticalFlowImageFormatPropertiesNV`
-    public static VkOpticalFlowImageFormatPropertiesNV alloc(SegmentAllocator allocator, long count) { return new VkOpticalFlowImageFormatPropertiesNV(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkOpticalFlowImageFormatPropertiesNV`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkOpticalFlowImageFormatPropertiesNV`
-    public VkOpticalFlowImageFormatPropertiesNV asSlice(long index) { return new VkOpticalFlowImageFormatPropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkOpticalFlowImageFormatPropertiesNV` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkOpticalFlowImageFormatPropertiesNV`
+    public static VkOpticalFlowImageFormatPropertiesNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkFormat") int format) { return alloc(allocator).sType(sType).pNext(pNext).format(format); }
 
-    /// Creates a slice of `VkOpticalFlowImageFormatPropertiesNV`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkOpticalFlowImageFormatPropertiesNV`
-    public VkOpticalFlowImageFormatPropertiesNV asSlice(long index, long count) { return new VkOpticalFlowImageFormatPropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkOpticalFlowImageFormatPropertiesNV copyFrom(VkOpticalFlowImageFormatPropertiesNV src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -107,9 +115,6 @@ public final class VkOpticalFlowImageFormatPropertiesNV extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkOpticalFlowImageFormatPropertiesNV.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkOpticalFlowImageFormatPropertiesNV.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkOpticalFlowImageFormatPropertiesNV.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -121,11 +126,6 @@ public final class VkOpticalFlowImageFormatPropertiesNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkOpticalFlowImageFormatPropertiesNV.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkOpticalFlowImageFormatPropertiesNV sTypeAt(long index, @CType("VkStructureType") int value) { VkOpticalFlowImageFormatPropertiesNV.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -138,9 +138,6 @@ public final class VkOpticalFlowImageFormatPropertiesNV extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkOpticalFlowImageFormatPropertiesNV.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkOpticalFlowImageFormatPropertiesNV.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkOpticalFlowImageFormatPropertiesNV.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -152,11 +149,6 @@ public final class VkOpticalFlowImageFormatPropertiesNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkOpticalFlowImageFormatPropertiesNV.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkOpticalFlowImageFormatPropertiesNV pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkOpticalFlowImageFormatPropertiesNV.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -169,9 +161,6 @@ public final class VkOpticalFlowImageFormatPropertiesNV extends Struct {
     /// {@return `format`}
     /// @param segment the segment of the struct
     public static @CType("VkFormat") int get_format(MemorySegment segment) { return VkOpticalFlowImageFormatPropertiesNV.get_format(segment, 0L); }
-    /// {@return `format` at the given index}
-    /// @param index the index
-    public @CType("VkFormat") int formatAt(long index) { return VkOpticalFlowImageFormatPropertiesNV.get_format(this.segment(), index); }
     /// {@return `format`}
     public @CType("VkFormat") int format() { return VkOpticalFlowImageFormatPropertiesNV.get_format(this.segment()); }
     /// Sets `format` with the given value at the given index.
@@ -183,14 +172,59 @@ public final class VkOpticalFlowImageFormatPropertiesNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_format(MemorySegment segment, @CType("VkFormat") int value) { VkOpticalFlowImageFormatPropertiesNV.set_format(segment, 0L, value); }
-    /// Sets `format` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkOpticalFlowImageFormatPropertiesNV formatAt(long index, @CType("VkFormat") int value) { VkOpticalFlowImageFormatPropertiesNV.set_format(this.segment(), index, value); return this; }
     /// Sets `format` with the given value.
     /// @param value the value
     /// @return `this`
     public VkOpticalFlowImageFormatPropertiesNV format(@CType("VkFormat") int value) { VkOpticalFlowImageFormatPropertiesNV.set_format(this.segment(), value); return this; }
 
+    /// A buffer of [VkOpticalFlowImageFormatPropertiesNV].
+    public static final class Buffer extends VkOpticalFlowImageFormatPropertiesNV {
+        private final long elementCount;
+
+        /// Creates `VkOpticalFlowImageFormatPropertiesNV.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkOpticalFlowImageFormatPropertiesNV`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkOpticalFlowImageFormatPropertiesNV`
+        public VkOpticalFlowImageFormatPropertiesNV asSlice(long index) { return new VkOpticalFlowImageFormatPropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkOpticalFlowImageFormatPropertiesNV`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkOpticalFlowImageFormatPropertiesNV`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkOpticalFlowImageFormatPropertiesNV.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkOpticalFlowImageFormatPropertiesNV.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkOpticalFlowImageFormatPropertiesNV.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkOpticalFlowImageFormatPropertiesNV.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `format` at the given index}
+        /// @param index the index
+        public @CType("VkFormat") int formatAt(long index) { return VkOpticalFlowImageFormatPropertiesNV.get_format(this.segment(), index); }
+        /// Sets `format` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer formatAt(long index, @CType("VkFormat") int value) { VkOpticalFlowImageFormatPropertiesNV.set_format(this.segment(), index, value); return this; }
+
+    }
 }

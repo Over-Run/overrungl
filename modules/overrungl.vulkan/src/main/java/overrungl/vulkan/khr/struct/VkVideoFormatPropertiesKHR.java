@@ -55,7 +55,7 @@ import overrungl.util.*;
 ///     VkImageUsageFlags imageUsageFlags;
 /// } VkVideoFormatPropertiesKHR;
 /// ```
-public final class VkVideoFormatPropertiesKHR extends Struct {
+public sealed class VkVideoFormatPropertiesKHR extends Struct {
     /// The struct layout of `VkVideoFormatPropertiesKHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -96,6 +96,11 @@ public final class VkVideoFormatPropertiesKHR extends Struct {
     public static VkVideoFormatPropertiesKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkVideoFormatPropertiesKHR(segment); }
 
     /// Creates `VkVideoFormatPropertiesKHR` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkVideoFormatPropertiesKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -108,7 +113,7 @@ public final class VkVideoFormatPropertiesKHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkVideoFormatPropertiesKHR ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkVideoFormatPropertiesKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkVideoFormatPropertiesKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -119,18 +124,21 @@ public final class VkVideoFormatPropertiesKHR extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkVideoFormatPropertiesKHR`
-    public static VkVideoFormatPropertiesKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoFormatPropertiesKHR(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkVideoFormatPropertiesKHR`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkVideoFormatPropertiesKHR`
-    public VkVideoFormatPropertiesKHR asSlice(long index) { return new VkVideoFormatPropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkVideoFormatPropertiesKHR` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkVideoFormatPropertiesKHR`
+    public static VkVideoFormatPropertiesKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkFormat") int format, @CType("VkComponentMapping") java.lang.foreign.MemorySegment componentMapping, @CType("VkImageCreateFlags") int imageCreateFlags, @CType("VkImageType") int imageType, @CType("VkImageTiling") int imageTiling, @CType("VkImageUsageFlags") int imageUsageFlags) { return alloc(allocator).sType(sType).pNext(pNext).format(format).componentMapping(componentMapping).imageCreateFlags(imageCreateFlags).imageType(imageType).imageTiling(imageTiling).imageUsageFlags(imageUsageFlags); }
 
-    /// Creates a slice of `VkVideoFormatPropertiesKHR`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkVideoFormatPropertiesKHR`
-    public VkVideoFormatPropertiesKHR asSlice(long index, long count) { return new VkVideoFormatPropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkVideoFormatPropertiesKHR copyFrom(VkVideoFormatPropertiesKHR src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -139,9 +147,6 @@ public final class VkVideoFormatPropertiesKHR extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkVideoFormatPropertiesKHR.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkVideoFormatPropertiesKHR.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkVideoFormatPropertiesKHR.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -153,11 +158,6 @@ public final class VkVideoFormatPropertiesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkVideoFormatPropertiesKHR.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkVideoFormatPropertiesKHR sTypeAt(long index, @CType("VkStructureType") int value) { VkVideoFormatPropertiesKHR.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -170,9 +170,6 @@ public final class VkVideoFormatPropertiesKHR extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkVideoFormatPropertiesKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkVideoFormatPropertiesKHR.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkVideoFormatPropertiesKHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -184,11 +181,6 @@ public final class VkVideoFormatPropertiesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkVideoFormatPropertiesKHR.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkVideoFormatPropertiesKHR pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkVideoFormatPropertiesKHR.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -201,9 +193,6 @@ public final class VkVideoFormatPropertiesKHR extends Struct {
     /// {@return `format`}
     /// @param segment the segment of the struct
     public static @CType("VkFormat") int get_format(MemorySegment segment) { return VkVideoFormatPropertiesKHR.get_format(segment, 0L); }
-    /// {@return `format` at the given index}
-    /// @param index the index
-    public @CType("VkFormat") int formatAt(long index) { return VkVideoFormatPropertiesKHR.get_format(this.segment(), index); }
     /// {@return `format`}
     public @CType("VkFormat") int format() { return VkVideoFormatPropertiesKHR.get_format(this.segment()); }
     /// Sets `format` with the given value at the given index.
@@ -215,11 +204,6 @@ public final class VkVideoFormatPropertiesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_format(MemorySegment segment, @CType("VkFormat") int value) { VkVideoFormatPropertiesKHR.set_format(segment, 0L, value); }
-    /// Sets `format` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkVideoFormatPropertiesKHR formatAt(long index, @CType("VkFormat") int value) { VkVideoFormatPropertiesKHR.set_format(this.segment(), index, value); return this; }
     /// Sets `format` with the given value.
     /// @param value the value
     /// @return `this`
@@ -232,9 +216,6 @@ public final class VkVideoFormatPropertiesKHR extends Struct {
     /// {@return `componentMapping`}
     /// @param segment the segment of the struct
     public static @CType("VkComponentMapping") java.lang.foreign.MemorySegment get_componentMapping(MemorySegment segment) { return VkVideoFormatPropertiesKHR.get_componentMapping(segment, 0L); }
-    /// {@return `componentMapping` at the given index}
-    /// @param index the index
-    public @CType("VkComponentMapping") java.lang.foreign.MemorySegment componentMappingAt(long index) { return VkVideoFormatPropertiesKHR.get_componentMapping(this.segment(), index); }
     /// {@return `componentMapping`}
     public @CType("VkComponentMapping") java.lang.foreign.MemorySegment componentMapping() { return VkVideoFormatPropertiesKHR.get_componentMapping(this.segment()); }
     /// Sets `componentMapping` with the given value at the given index.
@@ -246,11 +227,6 @@ public final class VkVideoFormatPropertiesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_componentMapping(MemorySegment segment, @CType("VkComponentMapping") java.lang.foreign.MemorySegment value) { VkVideoFormatPropertiesKHR.set_componentMapping(segment, 0L, value); }
-    /// Sets `componentMapping` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkVideoFormatPropertiesKHR componentMappingAt(long index, @CType("VkComponentMapping") java.lang.foreign.MemorySegment value) { VkVideoFormatPropertiesKHR.set_componentMapping(this.segment(), index, value); return this; }
     /// Sets `componentMapping` with the given value.
     /// @param value the value
     /// @return `this`
@@ -263,9 +239,6 @@ public final class VkVideoFormatPropertiesKHR extends Struct {
     /// {@return `imageCreateFlags`}
     /// @param segment the segment of the struct
     public static @CType("VkImageCreateFlags") int get_imageCreateFlags(MemorySegment segment) { return VkVideoFormatPropertiesKHR.get_imageCreateFlags(segment, 0L); }
-    /// {@return `imageCreateFlags` at the given index}
-    /// @param index the index
-    public @CType("VkImageCreateFlags") int imageCreateFlagsAt(long index) { return VkVideoFormatPropertiesKHR.get_imageCreateFlags(this.segment(), index); }
     /// {@return `imageCreateFlags`}
     public @CType("VkImageCreateFlags") int imageCreateFlags() { return VkVideoFormatPropertiesKHR.get_imageCreateFlags(this.segment()); }
     /// Sets `imageCreateFlags` with the given value at the given index.
@@ -277,11 +250,6 @@ public final class VkVideoFormatPropertiesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_imageCreateFlags(MemorySegment segment, @CType("VkImageCreateFlags") int value) { VkVideoFormatPropertiesKHR.set_imageCreateFlags(segment, 0L, value); }
-    /// Sets `imageCreateFlags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkVideoFormatPropertiesKHR imageCreateFlagsAt(long index, @CType("VkImageCreateFlags") int value) { VkVideoFormatPropertiesKHR.set_imageCreateFlags(this.segment(), index, value); return this; }
     /// Sets `imageCreateFlags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -294,9 +262,6 @@ public final class VkVideoFormatPropertiesKHR extends Struct {
     /// {@return `imageType`}
     /// @param segment the segment of the struct
     public static @CType("VkImageType") int get_imageType(MemorySegment segment) { return VkVideoFormatPropertiesKHR.get_imageType(segment, 0L); }
-    /// {@return `imageType` at the given index}
-    /// @param index the index
-    public @CType("VkImageType") int imageTypeAt(long index) { return VkVideoFormatPropertiesKHR.get_imageType(this.segment(), index); }
     /// {@return `imageType`}
     public @CType("VkImageType") int imageType() { return VkVideoFormatPropertiesKHR.get_imageType(this.segment()); }
     /// Sets `imageType` with the given value at the given index.
@@ -308,11 +273,6 @@ public final class VkVideoFormatPropertiesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_imageType(MemorySegment segment, @CType("VkImageType") int value) { VkVideoFormatPropertiesKHR.set_imageType(segment, 0L, value); }
-    /// Sets `imageType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkVideoFormatPropertiesKHR imageTypeAt(long index, @CType("VkImageType") int value) { VkVideoFormatPropertiesKHR.set_imageType(this.segment(), index, value); return this; }
     /// Sets `imageType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -325,9 +285,6 @@ public final class VkVideoFormatPropertiesKHR extends Struct {
     /// {@return `imageTiling`}
     /// @param segment the segment of the struct
     public static @CType("VkImageTiling") int get_imageTiling(MemorySegment segment) { return VkVideoFormatPropertiesKHR.get_imageTiling(segment, 0L); }
-    /// {@return `imageTiling` at the given index}
-    /// @param index the index
-    public @CType("VkImageTiling") int imageTilingAt(long index) { return VkVideoFormatPropertiesKHR.get_imageTiling(this.segment(), index); }
     /// {@return `imageTiling`}
     public @CType("VkImageTiling") int imageTiling() { return VkVideoFormatPropertiesKHR.get_imageTiling(this.segment()); }
     /// Sets `imageTiling` with the given value at the given index.
@@ -339,11 +296,6 @@ public final class VkVideoFormatPropertiesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_imageTiling(MemorySegment segment, @CType("VkImageTiling") int value) { VkVideoFormatPropertiesKHR.set_imageTiling(segment, 0L, value); }
-    /// Sets `imageTiling` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkVideoFormatPropertiesKHR imageTilingAt(long index, @CType("VkImageTiling") int value) { VkVideoFormatPropertiesKHR.set_imageTiling(this.segment(), index, value); return this; }
     /// Sets `imageTiling` with the given value.
     /// @param value the value
     /// @return `this`
@@ -356,9 +308,6 @@ public final class VkVideoFormatPropertiesKHR extends Struct {
     /// {@return `imageUsageFlags`}
     /// @param segment the segment of the struct
     public static @CType("VkImageUsageFlags") int get_imageUsageFlags(MemorySegment segment) { return VkVideoFormatPropertiesKHR.get_imageUsageFlags(segment, 0L); }
-    /// {@return `imageUsageFlags` at the given index}
-    /// @param index the index
-    public @CType("VkImageUsageFlags") int imageUsageFlagsAt(long index) { return VkVideoFormatPropertiesKHR.get_imageUsageFlags(this.segment(), index); }
     /// {@return `imageUsageFlags`}
     public @CType("VkImageUsageFlags") int imageUsageFlags() { return VkVideoFormatPropertiesKHR.get_imageUsageFlags(this.segment()); }
     /// Sets `imageUsageFlags` with the given value at the given index.
@@ -370,14 +319,104 @@ public final class VkVideoFormatPropertiesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_imageUsageFlags(MemorySegment segment, @CType("VkImageUsageFlags") int value) { VkVideoFormatPropertiesKHR.set_imageUsageFlags(segment, 0L, value); }
-    /// Sets `imageUsageFlags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkVideoFormatPropertiesKHR imageUsageFlagsAt(long index, @CType("VkImageUsageFlags") int value) { VkVideoFormatPropertiesKHR.set_imageUsageFlags(this.segment(), index, value); return this; }
     /// Sets `imageUsageFlags` with the given value.
     /// @param value the value
     /// @return `this`
     public VkVideoFormatPropertiesKHR imageUsageFlags(@CType("VkImageUsageFlags") int value) { VkVideoFormatPropertiesKHR.set_imageUsageFlags(this.segment(), value); return this; }
 
+    /// A buffer of [VkVideoFormatPropertiesKHR].
+    public static final class Buffer extends VkVideoFormatPropertiesKHR {
+        private final long elementCount;
+
+        /// Creates `VkVideoFormatPropertiesKHR.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkVideoFormatPropertiesKHR`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkVideoFormatPropertiesKHR`
+        public VkVideoFormatPropertiesKHR asSlice(long index) { return new VkVideoFormatPropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkVideoFormatPropertiesKHR`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkVideoFormatPropertiesKHR`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkVideoFormatPropertiesKHR.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkVideoFormatPropertiesKHR.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkVideoFormatPropertiesKHR.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkVideoFormatPropertiesKHR.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `format` at the given index}
+        /// @param index the index
+        public @CType("VkFormat") int formatAt(long index) { return VkVideoFormatPropertiesKHR.get_format(this.segment(), index); }
+        /// Sets `format` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer formatAt(long index, @CType("VkFormat") int value) { VkVideoFormatPropertiesKHR.set_format(this.segment(), index, value); return this; }
+
+        /// {@return `componentMapping` at the given index}
+        /// @param index the index
+        public @CType("VkComponentMapping") java.lang.foreign.MemorySegment componentMappingAt(long index) { return VkVideoFormatPropertiesKHR.get_componentMapping(this.segment(), index); }
+        /// Sets `componentMapping` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer componentMappingAt(long index, @CType("VkComponentMapping") java.lang.foreign.MemorySegment value) { VkVideoFormatPropertiesKHR.set_componentMapping(this.segment(), index, value); return this; }
+
+        /// {@return `imageCreateFlags` at the given index}
+        /// @param index the index
+        public @CType("VkImageCreateFlags") int imageCreateFlagsAt(long index) { return VkVideoFormatPropertiesKHR.get_imageCreateFlags(this.segment(), index); }
+        /// Sets `imageCreateFlags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer imageCreateFlagsAt(long index, @CType("VkImageCreateFlags") int value) { VkVideoFormatPropertiesKHR.set_imageCreateFlags(this.segment(), index, value); return this; }
+
+        /// {@return `imageType` at the given index}
+        /// @param index the index
+        public @CType("VkImageType") int imageTypeAt(long index) { return VkVideoFormatPropertiesKHR.get_imageType(this.segment(), index); }
+        /// Sets `imageType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer imageTypeAt(long index, @CType("VkImageType") int value) { VkVideoFormatPropertiesKHR.set_imageType(this.segment(), index, value); return this; }
+
+        /// {@return `imageTiling` at the given index}
+        /// @param index the index
+        public @CType("VkImageTiling") int imageTilingAt(long index) { return VkVideoFormatPropertiesKHR.get_imageTiling(this.segment(), index); }
+        /// Sets `imageTiling` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer imageTilingAt(long index, @CType("VkImageTiling") int value) { VkVideoFormatPropertiesKHR.set_imageTiling(this.segment(), index, value); return this; }
+
+        /// {@return `imageUsageFlags` at the given index}
+        /// @param index the index
+        public @CType("VkImageUsageFlags") int imageUsageFlagsAt(long index) { return VkVideoFormatPropertiesKHR.get_imageUsageFlags(this.segment(), index); }
+        /// Sets `imageUsageFlags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer imageUsageFlagsAt(long index, @CType("VkImageUsageFlags") int value) { VkVideoFormatPropertiesKHR.set_imageUsageFlags(this.segment(), index, value); return this; }
+
+    }
 }

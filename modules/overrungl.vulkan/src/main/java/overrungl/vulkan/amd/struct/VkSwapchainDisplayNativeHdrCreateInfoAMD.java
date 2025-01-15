@@ -40,7 +40,7 @@ import overrungl.util.*;
 ///     VkBool32 localDimmingEnable;
 /// } VkSwapchainDisplayNativeHdrCreateInfoAMD;
 /// ```
-public final class VkSwapchainDisplayNativeHdrCreateInfoAMD extends Struct {
+public sealed class VkSwapchainDisplayNativeHdrCreateInfoAMD extends Struct {
     /// The struct layout of `VkSwapchainDisplayNativeHdrCreateInfoAMD`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -64,6 +64,11 @@ public final class VkSwapchainDisplayNativeHdrCreateInfoAMD extends Struct {
     public static VkSwapchainDisplayNativeHdrCreateInfoAMD of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkSwapchainDisplayNativeHdrCreateInfoAMD(segment); }
 
     /// Creates `VkSwapchainDisplayNativeHdrCreateInfoAMD` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkSwapchainDisplayNativeHdrCreateInfoAMD` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -76,7 +81,7 @@ public final class VkSwapchainDisplayNativeHdrCreateInfoAMD extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSwapchainDisplayNativeHdrCreateInfoAMD ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkSwapchainDisplayNativeHdrCreateInfoAMD(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkSwapchainDisplayNativeHdrCreateInfoAMD` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -87,18 +92,21 @@ public final class VkSwapchainDisplayNativeHdrCreateInfoAMD extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkSwapchainDisplayNativeHdrCreateInfoAMD`
-    public static VkSwapchainDisplayNativeHdrCreateInfoAMD alloc(SegmentAllocator allocator, long count) { return new VkSwapchainDisplayNativeHdrCreateInfoAMD(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkSwapchainDisplayNativeHdrCreateInfoAMD`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkSwapchainDisplayNativeHdrCreateInfoAMD`
-    public VkSwapchainDisplayNativeHdrCreateInfoAMD asSlice(long index) { return new VkSwapchainDisplayNativeHdrCreateInfoAMD(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkSwapchainDisplayNativeHdrCreateInfoAMD` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkSwapchainDisplayNativeHdrCreateInfoAMD`
+    public static VkSwapchainDisplayNativeHdrCreateInfoAMD allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int localDimmingEnable) { return alloc(allocator).sType(sType).pNext(pNext).localDimmingEnable(localDimmingEnable); }
 
-    /// Creates a slice of `VkSwapchainDisplayNativeHdrCreateInfoAMD`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkSwapchainDisplayNativeHdrCreateInfoAMD`
-    public VkSwapchainDisplayNativeHdrCreateInfoAMD asSlice(long index, long count) { return new VkSwapchainDisplayNativeHdrCreateInfoAMD(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkSwapchainDisplayNativeHdrCreateInfoAMD copyFrom(VkSwapchainDisplayNativeHdrCreateInfoAMD src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -107,9 +115,6 @@ public final class VkSwapchainDisplayNativeHdrCreateInfoAMD extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkSwapchainDisplayNativeHdrCreateInfoAMD.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkSwapchainDisplayNativeHdrCreateInfoAMD.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkSwapchainDisplayNativeHdrCreateInfoAMD.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -121,11 +126,6 @@ public final class VkSwapchainDisplayNativeHdrCreateInfoAMD extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkSwapchainDisplayNativeHdrCreateInfoAMD.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSwapchainDisplayNativeHdrCreateInfoAMD sTypeAt(long index, @CType("VkStructureType") int value) { VkSwapchainDisplayNativeHdrCreateInfoAMD.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -138,9 +138,6 @@ public final class VkSwapchainDisplayNativeHdrCreateInfoAMD extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkSwapchainDisplayNativeHdrCreateInfoAMD.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkSwapchainDisplayNativeHdrCreateInfoAMD.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkSwapchainDisplayNativeHdrCreateInfoAMD.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -152,11 +149,6 @@ public final class VkSwapchainDisplayNativeHdrCreateInfoAMD extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkSwapchainDisplayNativeHdrCreateInfoAMD.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSwapchainDisplayNativeHdrCreateInfoAMD pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkSwapchainDisplayNativeHdrCreateInfoAMD.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -169,9 +161,6 @@ public final class VkSwapchainDisplayNativeHdrCreateInfoAMD extends Struct {
     /// {@return `localDimmingEnable`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_localDimmingEnable(MemorySegment segment) { return VkSwapchainDisplayNativeHdrCreateInfoAMD.get_localDimmingEnable(segment, 0L); }
-    /// {@return `localDimmingEnable` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int localDimmingEnableAt(long index) { return VkSwapchainDisplayNativeHdrCreateInfoAMD.get_localDimmingEnable(this.segment(), index); }
     /// {@return `localDimmingEnable`}
     public @CType("VkBool32") int localDimmingEnable() { return VkSwapchainDisplayNativeHdrCreateInfoAMD.get_localDimmingEnable(this.segment()); }
     /// Sets `localDimmingEnable` with the given value at the given index.
@@ -183,14 +172,59 @@ public final class VkSwapchainDisplayNativeHdrCreateInfoAMD extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_localDimmingEnable(MemorySegment segment, @CType("VkBool32") int value) { VkSwapchainDisplayNativeHdrCreateInfoAMD.set_localDimmingEnable(segment, 0L, value); }
-    /// Sets `localDimmingEnable` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSwapchainDisplayNativeHdrCreateInfoAMD localDimmingEnableAt(long index, @CType("VkBool32") int value) { VkSwapchainDisplayNativeHdrCreateInfoAMD.set_localDimmingEnable(this.segment(), index, value); return this; }
     /// Sets `localDimmingEnable` with the given value.
     /// @param value the value
     /// @return `this`
     public VkSwapchainDisplayNativeHdrCreateInfoAMD localDimmingEnable(@CType("VkBool32") int value) { VkSwapchainDisplayNativeHdrCreateInfoAMD.set_localDimmingEnable(this.segment(), value); return this; }
 
+    /// A buffer of [VkSwapchainDisplayNativeHdrCreateInfoAMD].
+    public static final class Buffer extends VkSwapchainDisplayNativeHdrCreateInfoAMD {
+        private final long elementCount;
+
+        /// Creates `VkSwapchainDisplayNativeHdrCreateInfoAMD.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkSwapchainDisplayNativeHdrCreateInfoAMD`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkSwapchainDisplayNativeHdrCreateInfoAMD`
+        public VkSwapchainDisplayNativeHdrCreateInfoAMD asSlice(long index) { return new VkSwapchainDisplayNativeHdrCreateInfoAMD(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkSwapchainDisplayNativeHdrCreateInfoAMD`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkSwapchainDisplayNativeHdrCreateInfoAMD`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkSwapchainDisplayNativeHdrCreateInfoAMD.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkSwapchainDisplayNativeHdrCreateInfoAMD.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkSwapchainDisplayNativeHdrCreateInfoAMD.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkSwapchainDisplayNativeHdrCreateInfoAMD.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `localDimmingEnable` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int localDimmingEnableAt(long index) { return VkSwapchainDisplayNativeHdrCreateInfoAMD.get_localDimmingEnable(this.segment(), index); }
+        /// Sets `localDimmingEnable` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer localDimmingEnableAt(long index, @CType("VkBool32") int value) { VkSwapchainDisplayNativeHdrCreateInfoAMD.set_localDimmingEnable(this.segment(), index, value); return this; }
+
+    }
 }

@@ -43,7 +43,7 @@ import overrungl.util.*;
 ///     VkBool32 shaderInt8;
 /// } VkPhysicalDeviceShaderFloat16Int8Features;
 /// ```
-public final class VkPhysicalDeviceShaderFloat16Int8Features extends Struct {
+public sealed class VkPhysicalDeviceShaderFloat16Int8Features extends Struct {
     /// The struct layout of `VkPhysicalDeviceShaderFloat16Int8Features`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -70,6 +70,11 @@ public final class VkPhysicalDeviceShaderFloat16Int8Features extends Struct {
     public static VkPhysicalDeviceShaderFloat16Int8Features of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderFloat16Int8Features(segment); }
 
     /// Creates `VkPhysicalDeviceShaderFloat16Int8Features` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPhysicalDeviceShaderFloat16Int8Features` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -82,7 +87,7 @@ public final class VkPhysicalDeviceShaderFloat16Int8Features extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceShaderFloat16Int8Features ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderFloat16Int8Features(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceShaderFloat16Int8Features` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -93,18 +98,21 @@ public final class VkPhysicalDeviceShaderFloat16Int8Features extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceShaderFloat16Int8Features`
-    public static VkPhysicalDeviceShaderFloat16Int8Features alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceShaderFloat16Int8Features(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkPhysicalDeviceShaderFloat16Int8Features`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDeviceShaderFloat16Int8Features`
-    public VkPhysicalDeviceShaderFloat16Int8Features asSlice(long index) { return new VkPhysicalDeviceShaderFloat16Int8Features(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkPhysicalDeviceShaderFloat16Int8Features` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDeviceShaderFloat16Int8Features`
+    public static VkPhysicalDeviceShaderFloat16Int8Features allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int shaderFloat16, @CType("VkBool32") int shaderInt8) { return alloc(allocator).sType(sType).pNext(pNext).shaderFloat16(shaderFloat16).shaderInt8(shaderInt8); }
 
-    /// Creates a slice of `VkPhysicalDeviceShaderFloat16Int8Features`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDeviceShaderFloat16Int8Features`
-    public VkPhysicalDeviceShaderFloat16Int8Features asSlice(long index, long count) { return new VkPhysicalDeviceShaderFloat16Int8Features(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDeviceShaderFloat16Int8Features copyFrom(VkPhysicalDeviceShaderFloat16Int8Features src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -113,9 +121,6 @@ public final class VkPhysicalDeviceShaderFloat16Int8Features extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceShaderFloat16Int8Features.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceShaderFloat16Int8Features.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPhysicalDeviceShaderFloat16Int8Features.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -127,11 +132,6 @@ public final class VkPhysicalDeviceShaderFloat16Int8Features extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceShaderFloat16Int8Features.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderFloat16Int8Features sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceShaderFloat16Int8Features.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -144,9 +144,6 @@ public final class VkPhysicalDeviceShaderFloat16Int8Features extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceShaderFloat16Int8Features.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceShaderFloat16Int8Features.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceShaderFloat16Int8Features.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -158,11 +155,6 @@ public final class VkPhysicalDeviceShaderFloat16Int8Features extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceShaderFloat16Int8Features.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderFloat16Int8Features pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceShaderFloat16Int8Features.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -175,9 +167,6 @@ public final class VkPhysicalDeviceShaderFloat16Int8Features extends Struct {
     /// {@return `shaderFloat16`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_shaderFloat16(MemorySegment segment) { return VkPhysicalDeviceShaderFloat16Int8Features.get_shaderFloat16(segment, 0L); }
-    /// {@return `shaderFloat16` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int shaderFloat16At(long index) { return VkPhysicalDeviceShaderFloat16Int8Features.get_shaderFloat16(this.segment(), index); }
     /// {@return `shaderFloat16`}
     public @CType("VkBool32") int shaderFloat16() { return VkPhysicalDeviceShaderFloat16Int8Features.get_shaderFloat16(this.segment()); }
     /// Sets `shaderFloat16` with the given value at the given index.
@@ -189,11 +178,6 @@ public final class VkPhysicalDeviceShaderFloat16Int8Features extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_shaderFloat16(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceShaderFloat16Int8Features.set_shaderFloat16(segment, 0L, value); }
-    /// Sets `shaderFloat16` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderFloat16Int8Features shaderFloat16At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceShaderFloat16Int8Features.set_shaderFloat16(this.segment(), index, value); return this; }
     /// Sets `shaderFloat16` with the given value.
     /// @param value the value
     /// @return `this`
@@ -206,9 +190,6 @@ public final class VkPhysicalDeviceShaderFloat16Int8Features extends Struct {
     /// {@return `shaderInt8`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_shaderInt8(MemorySegment segment) { return VkPhysicalDeviceShaderFloat16Int8Features.get_shaderInt8(segment, 0L); }
-    /// {@return `shaderInt8` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int shaderInt8At(long index) { return VkPhysicalDeviceShaderFloat16Int8Features.get_shaderInt8(this.segment(), index); }
     /// {@return `shaderInt8`}
     public @CType("VkBool32") int shaderInt8() { return VkPhysicalDeviceShaderFloat16Int8Features.get_shaderInt8(this.segment()); }
     /// Sets `shaderInt8` with the given value at the given index.
@@ -220,14 +201,68 @@ public final class VkPhysicalDeviceShaderFloat16Int8Features extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_shaderInt8(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceShaderFloat16Int8Features.set_shaderInt8(segment, 0L, value); }
-    /// Sets `shaderInt8` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderFloat16Int8Features shaderInt8At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceShaderFloat16Int8Features.set_shaderInt8(this.segment(), index, value); return this; }
     /// Sets `shaderInt8` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceShaderFloat16Int8Features shaderInt8(@CType("VkBool32") int value) { VkPhysicalDeviceShaderFloat16Int8Features.set_shaderInt8(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDeviceShaderFloat16Int8Features].
+    public static final class Buffer extends VkPhysicalDeviceShaderFloat16Int8Features {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDeviceShaderFloat16Int8Features.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDeviceShaderFloat16Int8Features`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDeviceShaderFloat16Int8Features`
+        public VkPhysicalDeviceShaderFloat16Int8Features asSlice(long index) { return new VkPhysicalDeviceShaderFloat16Int8Features(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDeviceShaderFloat16Int8Features`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDeviceShaderFloat16Int8Features`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceShaderFloat16Int8Features.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceShaderFloat16Int8Features.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceShaderFloat16Int8Features.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceShaderFloat16Int8Features.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `shaderFloat16` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int shaderFloat16At(long index) { return VkPhysicalDeviceShaderFloat16Int8Features.get_shaderFloat16(this.segment(), index); }
+        /// Sets `shaderFloat16` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer shaderFloat16At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceShaderFloat16Int8Features.set_shaderFloat16(this.segment(), index, value); return this; }
+
+        /// {@return `shaderInt8` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int shaderInt8At(long index) { return VkPhysicalDeviceShaderFloat16Int8Features.get_shaderInt8(this.segment(), index); }
+        /// Sets `shaderInt8` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer shaderInt8At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceShaderFloat16Int8Features.set_shaderInt8(this.segment(), index, value); return this; }
+
+    }
 }

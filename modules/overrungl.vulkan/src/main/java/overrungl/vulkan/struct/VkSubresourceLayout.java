@@ -46,7 +46,7 @@ import overrungl.util.*;
 ///     VkDeviceSize depthPitch;
 /// } VkSubresourceLayout;
 /// ```
-public final class VkSubresourceLayout extends Struct {
+public sealed class VkSubresourceLayout extends Struct {
     /// The struct layout of `VkSubresourceLayout`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_LONG.withName("offset"),
@@ -76,6 +76,11 @@ public final class VkSubresourceLayout extends Struct {
     public static VkSubresourceLayout of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkSubresourceLayout(segment); }
 
     /// Creates `VkSubresourceLayout` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkSubresourceLayout` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -88,7 +93,7 @@ public final class VkSubresourceLayout extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSubresourceLayout ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkSubresourceLayout(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkSubresourceLayout` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -99,18 +104,21 @@ public final class VkSubresourceLayout extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkSubresourceLayout`
-    public static VkSubresourceLayout alloc(SegmentAllocator allocator, long count) { return new VkSubresourceLayout(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkSubresourceLayout`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkSubresourceLayout`
-    public VkSubresourceLayout asSlice(long index) { return new VkSubresourceLayout(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkSubresourceLayout` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkSubresourceLayout`
+    public static VkSubresourceLayout allocInit(SegmentAllocator allocator, @CType("VkDeviceSize") long offset, @CType("VkDeviceSize") long size, @CType("VkDeviceSize") long rowPitch, @CType("VkDeviceSize") long arrayPitch, @CType("VkDeviceSize") long depthPitch) { return alloc(allocator).offset(offset).size(size).rowPitch(rowPitch).arrayPitch(arrayPitch).depthPitch(depthPitch); }
 
-    /// Creates a slice of `VkSubresourceLayout`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkSubresourceLayout`
-    public VkSubresourceLayout asSlice(long index, long count) { return new VkSubresourceLayout(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkSubresourceLayout copyFrom(VkSubresourceLayout src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `offset` at the given index}
     /// @param segment the segment of the struct
@@ -119,9 +127,6 @@ public final class VkSubresourceLayout extends Struct {
     /// {@return `offset`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_offset(MemorySegment segment) { return VkSubresourceLayout.get_offset(segment, 0L); }
-    /// {@return `offset` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long offsetAt(long index) { return VkSubresourceLayout.get_offset(this.segment(), index); }
     /// {@return `offset`}
     public @CType("VkDeviceSize") long offset() { return VkSubresourceLayout.get_offset(this.segment()); }
     /// Sets `offset` with the given value at the given index.
@@ -133,11 +138,6 @@ public final class VkSubresourceLayout extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_offset(MemorySegment segment, @CType("VkDeviceSize") long value) { VkSubresourceLayout.set_offset(segment, 0L, value); }
-    /// Sets `offset` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSubresourceLayout offsetAt(long index, @CType("VkDeviceSize") long value) { VkSubresourceLayout.set_offset(this.segment(), index, value); return this; }
     /// Sets `offset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,9 +150,6 @@ public final class VkSubresourceLayout extends Struct {
     /// {@return `size`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_size(MemorySegment segment) { return VkSubresourceLayout.get_size(segment, 0L); }
-    /// {@return `size` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long sizeAt(long index) { return VkSubresourceLayout.get_size(this.segment(), index); }
     /// {@return `size`}
     public @CType("VkDeviceSize") long size() { return VkSubresourceLayout.get_size(this.segment()); }
     /// Sets `size` with the given value at the given index.
@@ -164,11 +161,6 @@ public final class VkSubresourceLayout extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_size(MemorySegment segment, @CType("VkDeviceSize") long value) { VkSubresourceLayout.set_size(segment, 0L, value); }
-    /// Sets `size` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSubresourceLayout sizeAt(long index, @CType("VkDeviceSize") long value) { VkSubresourceLayout.set_size(this.segment(), index, value); return this; }
     /// Sets `size` with the given value.
     /// @param value the value
     /// @return `this`
@@ -181,9 +173,6 @@ public final class VkSubresourceLayout extends Struct {
     /// {@return `rowPitch`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_rowPitch(MemorySegment segment) { return VkSubresourceLayout.get_rowPitch(segment, 0L); }
-    /// {@return `rowPitch` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long rowPitchAt(long index) { return VkSubresourceLayout.get_rowPitch(this.segment(), index); }
     /// {@return `rowPitch`}
     public @CType("VkDeviceSize") long rowPitch() { return VkSubresourceLayout.get_rowPitch(this.segment()); }
     /// Sets `rowPitch` with the given value at the given index.
@@ -195,11 +184,6 @@ public final class VkSubresourceLayout extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_rowPitch(MemorySegment segment, @CType("VkDeviceSize") long value) { VkSubresourceLayout.set_rowPitch(segment, 0L, value); }
-    /// Sets `rowPitch` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSubresourceLayout rowPitchAt(long index, @CType("VkDeviceSize") long value) { VkSubresourceLayout.set_rowPitch(this.segment(), index, value); return this; }
     /// Sets `rowPitch` with the given value.
     /// @param value the value
     /// @return `this`
@@ -212,9 +196,6 @@ public final class VkSubresourceLayout extends Struct {
     /// {@return `arrayPitch`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_arrayPitch(MemorySegment segment) { return VkSubresourceLayout.get_arrayPitch(segment, 0L); }
-    /// {@return `arrayPitch` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long arrayPitchAt(long index) { return VkSubresourceLayout.get_arrayPitch(this.segment(), index); }
     /// {@return `arrayPitch`}
     public @CType("VkDeviceSize") long arrayPitch() { return VkSubresourceLayout.get_arrayPitch(this.segment()); }
     /// Sets `arrayPitch` with the given value at the given index.
@@ -226,11 +207,6 @@ public final class VkSubresourceLayout extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_arrayPitch(MemorySegment segment, @CType("VkDeviceSize") long value) { VkSubresourceLayout.set_arrayPitch(segment, 0L, value); }
-    /// Sets `arrayPitch` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSubresourceLayout arrayPitchAt(long index, @CType("VkDeviceSize") long value) { VkSubresourceLayout.set_arrayPitch(this.segment(), index, value); return this; }
     /// Sets `arrayPitch` with the given value.
     /// @param value the value
     /// @return `this`
@@ -243,9 +219,6 @@ public final class VkSubresourceLayout extends Struct {
     /// {@return `depthPitch`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_depthPitch(MemorySegment segment) { return VkSubresourceLayout.get_depthPitch(segment, 0L); }
-    /// {@return `depthPitch` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long depthPitchAt(long index) { return VkSubresourceLayout.get_depthPitch(this.segment(), index); }
     /// {@return `depthPitch`}
     public @CType("VkDeviceSize") long depthPitch() { return VkSubresourceLayout.get_depthPitch(this.segment()); }
     /// Sets `depthPitch` with the given value at the given index.
@@ -257,14 +230,77 @@ public final class VkSubresourceLayout extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_depthPitch(MemorySegment segment, @CType("VkDeviceSize") long value) { VkSubresourceLayout.set_depthPitch(segment, 0L, value); }
-    /// Sets `depthPitch` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSubresourceLayout depthPitchAt(long index, @CType("VkDeviceSize") long value) { VkSubresourceLayout.set_depthPitch(this.segment(), index, value); return this; }
     /// Sets `depthPitch` with the given value.
     /// @param value the value
     /// @return `this`
     public VkSubresourceLayout depthPitch(@CType("VkDeviceSize") long value) { VkSubresourceLayout.set_depthPitch(this.segment(), value); return this; }
 
+    /// A buffer of [VkSubresourceLayout].
+    public static final class Buffer extends VkSubresourceLayout {
+        private final long elementCount;
+
+        /// Creates `VkSubresourceLayout.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkSubresourceLayout`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkSubresourceLayout`
+        public VkSubresourceLayout asSlice(long index) { return new VkSubresourceLayout(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkSubresourceLayout`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkSubresourceLayout`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `offset` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long offsetAt(long index) { return VkSubresourceLayout.get_offset(this.segment(), index); }
+        /// Sets `offset` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer offsetAt(long index, @CType("VkDeviceSize") long value) { VkSubresourceLayout.set_offset(this.segment(), index, value); return this; }
+
+        /// {@return `size` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long sizeAt(long index) { return VkSubresourceLayout.get_size(this.segment(), index); }
+        /// Sets `size` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sizeAt(long index, @CType("VkDeviceSize") long value) { VkSubresourceLayout.set_size(this.segment(), index, value); return this; }
+
+        /// {@return `rowPitch` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long rowPitchAt(long index) { return VkSubresourceLayout.get_rowPitch(this.segment(), index); }
+        /// Sets `rowPitch` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer rowPitchAt(long index, @CType("VkDeviceSize") long value) { VkSubresourceLayout.set_rowPitch(this.segment(), index, value); return this; }
+
+        /// {@return `arrayPitch` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long arrayPitchAt(long index) { return VkSubresourceLayout.get_arrayPitch(this.segment(), index); }
+        /// Sets `arrayPitch` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer arrayPitchAt(long index, @CType("VkDeviceSize") long value) { VkSubresourceLayout.set_arrayPitch(this.segment(), index, value); return this; }
+
+        /// {@return `depthPitch` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long depthPitchAt(long index) { return VkSubresourceLayout.get_depthPitch(this.segment(), index); }
+        /// Sets `depthPitch` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer depthPitchAt(long index, @CType("VkDeviceSize") long value) { VkSubresourceLayout.set_depthPitch(this.segment(), index, value); return this; }
+
+    }
 }

@@ -43,7 +43,7 @@ import overrungl.util.*;
 ///     uint32_t maxMultiviewInstanceIndex;
 /// } VkPhysicalDeviceMultiviewProperties;
 /// ```
-public final class VkPhysicalDeviceMultiviewProperties extends Struct {
+public sealed class VkPhysicalDeviceMultiviewProperties extends Struct {
     /// The struct layout of `VkPhysicalDeviceMultiviewProperties`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -70,6 +70,11 @@ public final class VkPhysicalDeviceMultiviewProperties extends Struct {
     public static VkPhysicalDeviceMultiviewProperties of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceMultiviewProperties(segment); }
 
     /// Creates `VkPhysicalDeviceMultiviewProperties` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPhysicalDeviceMultiviewProperties` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -82,7 +87,7 @@ public final class VkPhysicalDeviceMultiviewProperties extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceMultiviewProperties ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceMultiviewProperties(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceMultiviewProperties` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -93,18 +98,21 @@ public final class VkPhysicalDeviceMultiviewProperties extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceMultiviewProperties`
-    public static VkPhysicalDeviceMultiviewProperties alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceMultiviewProperties(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkPhysicalDeviceMultiviewProperties`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDeviceMultiviewProperties`
-    public VkPhysicalDeviceMultiviewProperties asSlice(long index) { return new VkPhysicalDeviceMultiviewProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkPhysicalDeviceMultiviewProperties` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDeviceMultiviewProperties`
+    public static VkPhysicalDeviceMultiviewProperties allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int maxMultiviewViewCount, @CType("uint32_t") int maxMultiviewInstanceIndex) { return alloc(allocator).sType(sType).pNext(pNext).maxMultiviewViewCount(maxMultiviewViewCount).maxMultiviewInstanceIndex(maxMultiviewInstanceIndex); }
 
-    /// Creates a slice of `VkPhysicalDeviceMultiviewProperties`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDeviceMultiviewProperties`
-    public VkPhysicalDeviceMultiviewProperties asSlice(long index, long count) { return new VkPhysicalDeviceMultiviewProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDeviceMultiviewProperties copyFrom(VkPhysicalDeviceMultiviewProperties src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -113,9 +121,6 @@ public final class VkPhysicalDeviceMultiviewProperties extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceMultiviewProperties.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceMultiviewProperties.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPhysicalDeviceMultiviewProperties.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -127,11 +132,6 @@ public final class VkPhysicalDeviceMultiviewProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceMultiviewProperties.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceMultiviewProperties sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceMultiviewProperties.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -144,9 +144,6 @@ public final class VkPhysicalDeviceMultiviewProperties extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceMultiviewProperties.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceMultiviewProperties.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceMultiviewProperties.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -158,11 +155,6 @@ public final class VkPhysicalDeviceMultiviewProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceMultiviewProperties.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceMultiviewProperties pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceMultiviewProperties.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -175,9 +167,6 @@ public final class VkPhysicalDeviceMultiviewProperties extends Struct {
     /// {@return `maxMultiviewViewCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxMultiviewViewCount(MemorySegment segment) { return VkPhysicalDeviceMultiviewProperties.get_maxMultiviewViewCount(segment, 0L); }
-    /// {@return `maxMultiviewViewCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxMultiviewViewCountAt(long index) { return VkPhysicalDeviceMultiviewProperties.get_maxMultiviewViewCount(this.segment(), index); }
     /// {@return `maxMultiviewViewCount`}
     public @CType("uint32_t") int maxMultiviewViewCount() { return VkPhysicalDeviceMultiviewProperties.get_maxMultiviewViewCount(this.segment()); }
     /// Sets `maxMultiviewViewCount` with the given value at the given index.
@@ -189,11 +178,6 @@ public final class VkPhysicalDeviceMultiviewProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxMultiviewViewCount(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceMultiviewProperties.set_maxMultiviewViewCount(segment, 0L, value); }
-    /// Sets `maxMultiviewViewCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceMultiviewProperties maxMultiviewViewCountAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceMultiviewProperties.set_maxMultiviewViewCount(this.segment(), index, value); return this; }
     /// Sets `maxMultiviewViewCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -206,9 +190,6 @@ public final class VkPhysicalDeviceMultiviewProperties extends Struct {
     /// {@return `maxMultiviewInstanceIndex`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxMultiviewInstanceIndex(MemorySegment segment) { return VkPhysicalDeviceMultiviewProperties.get_maxMultiviewInstanceIndex(segment, 0L); }
-    /// {@return `maxMultiviewInstanceIndex` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxMultiviewInstanceIndexAt(long index) { return VkPhysicalDeviceMultiviewProperties.get_maxMultiviewInstanceIndex(this.segment(), index); }
     /// {@return `maxMultiviewInstanceIndex`}
     public @CType("uint32_t") int maxMultiviewInstanceIndex() { return VkPhysicalDeviceMultiviewProperties.get_maxMultiviewInstanceIndex(this.segment()); }
     /// Sets `maxMultiviewInstanceIndex` with the given value at the given index.
@@ -220,14 +201,68 @@ public final class VkPhysicalDeviceMultiviewProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxMultiviewInstanceIndex(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceMultiviewProperties.set_maxMultiviewInstanceIndex(segment, 0L, value); }
-    /// Sets `maxMultiviewInstanceIndex` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceMultiviewProperties maxMultiviewInstanceIndexAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceMultiviewProperties.set_maxMultiviewInstanceIndex(this.segment(), index, value); return this; }
     /// Sets `maxMultiviewInstanceIndex` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceMultiviewProperties maxMultiviewInstanceIndex(@CType("uint32_t") int value) { VkPhysicalDeviceMultiviewProperties.set_maxMultiviewInstanceIndex(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDeviceMultiviewProperties].
+    public static final class Buffer extends VkPhysicalDeviceMultiviewProperties {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDeviceMultiviewProperties.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDeviceMultiviewProperties`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDeviceMultiviewProperties`
+        public VkPhysicalDeviceMultiviewProperties asSlice(long index) { return new VkPhysicalDeviceMultiviewProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDeviceMultiviewProperties`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDeviceMultiviewProperties`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceMultiviewProperties.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceMultiviewProperties.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceMultiviewProperties.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceMultiviewProperties.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `maxMultiviewViewCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxMultiviewViewCountAt(long index) { return VkPhysicalDeviceMultiviewProperties.get_maxMultiviewViewCount(this.segment(), index); }
+        /// Sets `maxMultiviewViewCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxMultiviewViewCountAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceMultiviewProperties.set_maxMultiviewViewCount(this.segment(), index, value); return this; }
+
+        /// {@return `maxMultiviewInstanceIndex` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxMultiviewInstanceIndexAt(long index) { return VkPhysicalDeviceMultiviewProperties.get_maxMultiviewInstanceIndex(this.segment(), index); }
+        /// Sets `maxMultiviewInstanceIndex` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxMultiviewInstanceIndexAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceMultiviewProperties.set_maxMultiviewInstanceIndex(this.segment(), index, value); return this; }
+
+    }
 }

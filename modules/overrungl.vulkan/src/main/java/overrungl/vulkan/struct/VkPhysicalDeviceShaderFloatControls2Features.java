@@ -40,7 +40,7 @@ import overrungl.util.*;
 ///     VkBool32 shaderFloatControls2;
 /// } VkPhysicalDeviceShaderFloatControls2Features;
 /// ```
-public final class VkPhysicalDeviceShaderFloatControls2Features extends Struct {
+public sealed class VkPhysicalDeviceShaderFloatControls2Features extends Struct {
     /// The struct layout of `VkPhysicalDeviceShaderFloatControls2Features`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -64,6 +64,11 @@ public final class VkPhysicalDeviceShaderFloatControls2Features extends Struct {
     public static VkPhysicalDeviceShaderFloatControls2Features of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderFloatControls2Features(segment); }
 
     /// Creates `VkPhysicalDeviceShaderFloatControls2Features` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPhysicalDeviceShaderFloatControls2Features` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -76,7 +81,7 @@ public final class VkPhysicalDeviceShaderFloatControls2Features extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceShaderFloatControls2Features ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderFloatControls2Features(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceShaderFloatControls2Features` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -87,18 +92,21 @@ public final class VkPhysicalDeviceShaderFloatControls2Features extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceShaderFloatControls2Features`
-    public static VkPhysicalDeviceShaderFloatControls2Features alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceShaderFloatControls2Features(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkPhysicalDeviceShaderFloatControls2Features`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDeviceShaderFloatControls2Features`
-    public VkPhysicalDeviceShaderFloatControls2Features asSlice(long index) { return new VkPhysicalDeviceShaderFloatControls2Features(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkPhysicalDeviceShaderFloatControls2Features` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDeviceShaderFloatControls2Features`
+    public static VkPhysicalDeviceShaderFloatControls2Features allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int shaderFloatControls2) { return alloc(allocator).sType(sType).pNext(pNext).shaderFloatControls2(shaderFloatControls2); }
 
-    /// Creates a slice of `VkPhysicalDeviceShaderFloatControls2Features`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDeviceShaderFloatControls2Features`
-    public VkPhysicalDeviceShaderFloatControls2Features asSlice(long index, long count) { return new VkPhysicalDeviceShaderFloatControls2Features(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDeviceShaderFloatControls2Features copyFrom(VkPhysicalDeviceShaderFloatControls2Features src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -107,9 +115,6 @@ public final class VkPhysicalDeviceShaderFloatControls2Features extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceShaderFloatControls2Features.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceShaderFloatControls2Features.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPhysicalDeviceShaderFloatControls2Features.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -121,11 +126,6 @@ public final class VkPhysicalDeviceShaderFloatControls2Features extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceShaderFloatControls2Features.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderFloatControls2Features sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceShaderFloatControls2Features.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -138,9 +138,6 @@ public final class VkPhysicalDeviceShaderFloatControls2Features extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceShaderFloatControls2Features.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceShaderFloatControls2Features.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceShaderFloatControls2Features.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -152,11 +149,6 @@ public final class VkPhysicalDeviceShaderFloatControls2Features extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceShaderFloatControls2Features.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderFloatControls2Features pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceShaderFloatControls2Features.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -169,9 +161,6 @@ public final class VkPhysicalDeviceShaderFloatControls2Features extends Struct {
     /// {@return `shaderFloatControls2`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_shaderFloatControls2(MemorySegment segment) { return VkPhysicalDeviceShaderFloatControls2Features.get_shaderFloatControls2(segment, 0L); }
-    /// {@return `shaderFloatControls2` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int shaderFloatControls2At(long index) { return VkPhysicalDeviceShaderFloatControls2Features.get_shaderFloatControls2(this.segment(), index); }
     /// {@return `shaderFloatControls2`}
     public @CType("VkBool32") int shaderFloatControls2() { return VkPhysicalDeviceShaderFloatControls2Features.get_shaderFloatControls2(this.segment()); }
     /// Sets `shaderFloatControls2` with the given value at the given index.
@@ -183,14 +172,59 @@ public final class VkPhysicalDeviceShaderFloatControls2Features extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_shaderFloatControls2(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceShaderFloatControls2Features.set_shaderFloatControls2(segment, 0L, value); }
-    /// Sets `shaderFloatControls2` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderFloatControls2Features shaderFloatControls2At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceShaderFloatControls2Features.set_shaderFloatControls2(this.segment(), index, value); return this; }
     /// Sets `shaderFloatControls2` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceShaderFloatControls2Features shaderFloatControls2(@CType("VkBool32") int value) { VkPhysicalDeviceShaderFloatControls2Features.set_shaderFloatControls2(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDeviceShaderFloatControls2Features].
+    public static final class Buffer extends VkPhysicalDeviceShaderFloatControls2Features {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDeviceShaderFloatControls2Features.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDeviceShaderFloatControls2Features`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDeviceShaderFloatControls2Features`
+        public VkPhysicalDeviceShaderFloatControls2Features asSlice(long index) { return new VkPhysicalDeviceShaderFloatControls2Features(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDeviceShaderFloatControls2Features`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDeviceShaderFloatControls2Features`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceShaderFloatControls2Features.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceShaderFloatControls2Features.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceShaderFloatControls2Features.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceShaderFloatControls2Features.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `shaderFloatControls2` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int shaderFloatControls2At(long index) { return VkPhysicalDeviceShaderFloatControls2Features.get_shaderFloatControls2(this.segment(), index); }
+        /// Sets `shaderFloatControls2` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer shaderFloatControls2At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceShaderFloatControls2Features.set_shaderFloatControls2(this.segment(), index, value); return this; }
+
+    }
 }

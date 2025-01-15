@@ -61,7 +61,7 @@ import overrungl.util.*;
 ///     VkImageUsageFlags supportedUsageFlags;
 /// } VkSurfaceCapabilitiesKHR;
 /// ```
-public final class VkSurfaceCapabilitiesKHR extends Struct {
+public sealed class VkSurfaceCapabilitiesKHR extends Struct {
     /// The struct layout of `VkSurfaceCapabilitiesKHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("minImageCount"),
@@ -112,6 +112,11 @@ public final class VkSurfaceCapabilitiesKHR extends Struct {
     public static VkSurfaceCapabilitiesKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkSurfaceCapabilitiesKHR(segment); }
 
     /// Creates `VkSurfaceCapabilitiesKHR` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkSurfaceCapabilitiesKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -124,7 +129,7 @@ public final class VkSurfaceCapabilitiesKHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSurfaceCapabilitiesKHR ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkSurfaceCapabilitiesKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkSurfaceCapabilitiesKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -135,18 +140,21 @@ public final class VkSurfaceCapabilitiesKHR extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkSurfaceCapabilitiesKHR`
-    public static VkSurfaceCapabilitiesKHR alloc(SegmentAllocator allocator, long count) { return new VkSurfaceCapabilitiesKHR(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkSurfaceCapabilitiesKHR`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkSurfaceCapabilitiesKHR`
-    public VkSurfaceCapabilitiesKHR asSlice(long index) { return new VkSurfaceCapabilitiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkSurfaceCapabilitiesKHR` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkSurfaceCapabilitiesKHR`
+    public static VkSurfaceCapabilitiesKHR allocInit(SegmentAllocator allocator, @CType("uint32_t") int minImageCount, @CType("uint32_t") int maxImageCount, @CType("VkExtent2D") java.lang.foreign.MemorySegment currentExtent, @CType("VkExtent2D") java.lang.foreign.MemorySegment minImageExtent, @CType("VkExtent2D") java.lang.foreign.MemorySegment maxImageExtent, @CType("uint32_t") int maxImageArrayLayers, @CType("VkSurfaceTransformFlagsKHR") int supportedTransforms, @CType("VkSurfaceTransformFlagBitsKHR") int currentTransform, @CType("VkCompositeAlphaFlagsKHR") int supportedCompositeAlpha, @CType("VkImageUsageFlags") int supportedUsageFlags) { return alloc(allocator).minImageCount(minImageCount).maxImageCount(maxImageCount).currentExtent(currentExtent).minImageExtent(minImageExtent).maxImageExtent(maxImageExtent).maxImageArrayLayers(maxImageArrayLayers).supportedTransforms(supportedTransforms).currentTransform(currentTransform).supportedCompositeAlpha(supportedCompositeAlpha).supportedUsageFlags(supportedUsageFlags); }
 
-    /// Creates a slice of `VkSurfaceCapabilitiesKHR`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkSurfaceCapabilitiesKHR`
-    public VkSurfaceCapabilitiesKHR asSlice(long index, long count) { return new VkSurfaceCapabilitiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkSurfaceCapabilitiesKHR copyFrom(VkSurfaceCapabilitiesKHR src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `minImageCount` at the given index}
     /// @param segment the segment of the struct
@@ -155,9 +163,6 @@ public final class VkSurfaceCapabilitiesKHR extends Struct {
     /// {@return `minImageCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_minImageCount(MemorySegment segment) { return VkSurfaceCapabilitiesKHR.get_minImageCount(segment, 0L); }
-    /// {@return `minImageCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int minImageCountAt(long index) { return VkSurfaceCapabilitiesKHR.get_minImageCount(this.segment(), index); }
     /// {@return `minImageCount`}
     public @CType("uint32_t") int minImageCount() { return VkSurfaceCapabilitiesKHR.get_minImageCount(this.segment()); }
     /// Sets `minImageCount` with the given value at the given index.
@@ -169,11 +174,6 @@ public final class VkSurfaceCapabilitiesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_minImageCount(MemorySegment segment, @CType("uint32_t") int value) { VkSurfaceCapabilitiesKHR.set_minImageCount(segment, 0L, value); }
-    /// Sets `minImageCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSurfaceCapabilitiesKHR minImageCountAt(long index, @CType("uint32_t") int value) { VkSurfaceCapabilitiesKHR.set_minImageCount(this.segment(), index, value); return this; }
     /// Sets `minImageCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -186,9 +186,6 @@ public final class VkSurfaceCapabilitiesKHR extends Struct {
     /// {@return `maxImageCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxImageCount(MemorySegment segment) { return VkSurfaceCapabilitiesKHR.get_maxImageCount(segment, 0L); }
-    /// {@return `maxImageCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxImageCountAt(long index) { return VkSurfaceCapabilitiesKHR.get_maxImageCount(this.segment(), index); }
     /// {@return `maxImageCount`}
     public @CType("uint32_t") int maxImageCount() { return VkSurfaceCapabilitiesKHR.get_maxImageCount(this.segment()); }
     /// Sets `maxImageCount` with the given value at the given index.
@@ -200,11 +197,6 @@ public final class VkSurfaceCapabilitiesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxImageCount(MemorySegment segment, @CType("uint32_t") int value) { VkSurfaceCapabilitiesKHR.set_maxImageCount(segment, 0L, value); }
-    /// Sets `maxImageCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSurfaceCapabilitiesKHR maxImageCountAt(long index, @CType("uint32_t") int value) { VkSurfaceCapabilitiesKHR.set_maxImageCount(this.segment(), index, value); return this; }
     /// Sets `maxImageCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -217,9 +209,6 @@ public final class VkSurfaceCapabilitiesKHR extends Struct {
     /// {@return `currentExtent`}
     /// @param segment the segment of the struct
     public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_currentExtent(MemorySegment segment) { return VkSurfaceCapabilitiesKHR.get_currentExtent(segment, 0L); }
-    /// {@return `currentExtent` at the given index}
-    /// @param index the index
-    public @CType("VkExtent2D") java.lang.foreign.MemorySegment currentExtentAt(long index) { return VkSurfaceCapabilitiesKHR.get_currentExtent(this.segment(), index); }
     /// {@return `currentExtent`}
     public @CType("VkExtent2D") java.lang.foreign.MemorySegment currentExtent() { return VkSurfaceCapabilitiesKHR.get_currentExtent(this.segment()); }
     /// Sets `currentExtent` with the given value at the given index.
@@ -231,11 +220,6 @@ public final class VkSurfaceCapabilitiesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_currentExtent(MemorySegment segment, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkSurfaceCapabilitiesKHR.set_currentExtent(segment, 0L, value); }
-    /// Sets `currentExtent` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSurfaceCapabilitiesKHR currentExtentAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkSurfaceCapabilitiesKHR.set_currentExtent(this.segment(), index, value); return this; }
     /// Sets `currentExtent` with the given value.
     /// @param value the value
     /// @return `this`
@@ -248,9 +232,6 @@ public final class VkSurfaceCapabilitiesKHR extends Struct {
     /// {@return `minImageExtent`}
     /// @param segment the segment of the struct
     public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_minImageExtent(MemorySegment segment) { return VkSurfaceCapabilitiesKHR.get_minImageExtent(segment, 0L); }
-    /// {@return `minImageExtent` at the given index}
-    /// @param index the index
-    public @CType("VkExtent2D") java.lang.foreign.MemorySegment minImageExtentAt(long index) { return VkSurfaceCapabilitiesKHR.get_minImageExtent(this.segment(), index); }
     /// {@return `minImageExtent`}
     public @CType("VkExtent2D") java.lang.foreign.MemorySegment minImageExtent() { return VkSurfaceCapabilitiesKHR.get_minImageExtent(this.segment()); }
     /// Sets `minImageExtent` with the given value at the given index.
@@ -262,11 +243,6 @@ public final class VkSurfaceCapabilitiesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_minImageExtent(MemorySegment segment, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkSurfaceCapabilitiesKHR.set_minImageExtent(segment, 0L, value); }
-    /// Sets `minImageExtent` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSurfaceCapabilitiesKHR minImageExtentAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkSurfaceCapabilitiesKHR.set_minImageExtent(this.segment(), index, value); return this; }
     /// Sets `minImageExtent` with the given value.
     /// @param value the value
     /// @return `this`
@@ -279,9 +255,6 @@ public final class VkSurfaceCapabilitiesKHR extends Struct {
     /// {@return `maxImageExtent`}
     /// @param segment the segment of the struct
     public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_maxImageExtent(MemorySegment segment) { return VkSurfaceCapabilitiesKHR.get_maxImageExtent(segment, 0L); }
-    /// {@return `maxImageExtent` at the given index}
-    /// @param index the index
-    public @CType("VkExtent2D") java.lang.foreign.MemorySegment maxImageExtentAt(long index) { return VkSurfaceCapabilitiesKHR.get_maxImageExtent(this.segment(), index); }
     /// {@return `maxImageExtent`}
     public @CType("VkExtent2D") java.lang.foreign.MemorySegment maxImageExtent() { return VkSurfaceCapabilitiesKHR.get_maxImageExtent(this.segment()); }
     /// Sets `maxImageExtent` with the given value at the given index.
@@ -293,11 +266,6 @@ public final class VkSurfaceCapabilitiesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxImageExtent(MemorySegment segment, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkSurfaceCapabilitiesKHR.set_maxImageExtent(segment, 0L, value); }
-    /// Sets `maxImageExtent` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSurfaceCapabilitiesKHR maxImageExtentAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkSurfaceCapabilitiesKHR.set_maxImageExtent(this.segment(), index, value); return this; }
     /// Sets `maxImageExtent` with the given value.
     /// @param value the value
     /// @return `this`
@@ -310,9 +278,6 @@ public final class VkSurfaceCapabilitiesKHR extends Struct {
     /// {@return `maxImageArrayLayers`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxImageArrayLayers(MemorySegment segment) { return VkSurfaceCapabilitiesKHR.get_maxImageArrayLayers(segment, 0L); }
-    /// {@return `maxImageArrayLayers` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxImageArrayLayersAt(long index) { return VkSurfaceCapabilitiesKHR.get_maxImageArrayLayers(this.segment(), index); }
     /// {@return `maxImageArrayLayers`}
     public @CType("uint32_t") int maxImageArrayLayers() { return VkSurfaceCapabilitiesKHR.get_maxImageArrayLayers(this.segment()); }
     /// Sets `maxImageArrayLayers` with the given value at the given index.
@@ -324,11 +289,6 @@ public final class VkSurfaceCapabilitiesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxImageArrayLayers(MemorySegment segment, @CType("uint32_t") int value) { VkSurfaceCapabilitiesKHR.set_maxImageArrayLayers(segment, 0L, value); }
-    /// Sets `maxImageArrayLayers` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSurfaceCapabilitiesKHR maxImageArrayLayersAt(long index, @CType("uint32_t") int value) { VkSurfaceCapabilitiesKHR.set_maxImageArrayLayers(this.segment(), index, value); return this; }
     /// Sets `maxImageArrayLayers` with the given value.
     /// @param value the value
     /// @return `this`
@@ -341,9 +301,6 @@ public final class VkSurfaceCapabilitiesKHR extends Struct {
     /// {@return `supportedTransforms`}
     /// @param segment the segment of the struct
     public static @CType("VkSurfaceTransformFlagsKHR") int get_supportedTransforms(MemorySegment segment) { return VkSurfaceCapabilitiesKHR.get_supportedTransforms(segment, 0L); }
-    /// {@return `supportedTransforms` at the given index}
-    /// @param index the index
-    public @CType("VkSurfaceTransformFlagsKHR") int supportedTransformsAt(long index) { return VkSurfaceCapabilitiesKHR.get_supportedTransforms(this.segment(), index); }
     /// {@return `supportedTransforms`}
     public @CType("VkSurfaceTransformFlagsKHR") int supportedTransforms() { return VkSurfaceCapabilitiesKHR.get_supportedTransforms(this.segment()); }
     /// Sets `supportedTransforms` with the given value at the given index.
@@ -355,11 +312,6 @@ public final class VkSurfaceCapabilitiesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_supportedTransforms(MemorySegment segment, @CType("VkSurfaceTransformFlagsKHR") int value) { VkSurfaceCapabilitiesKHR.set_supportedTransforms(segment, 0L, value); }
-    /// Sets `supportedTransforms` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSurfaceCapabilitiesKHR supportedTransformsAt(long index, @CType("VkSurfaceTransformFlagsKHR") int value) { VkSurfaceCapabilitiesKHR.set_supportedTransforms(this.segment(), index, value); return this; }
     /// Sets `supportedTransforms` with the given value.
     /// @param value the value
     /// @return `this`
@@ -372,9 +324,6 @@ public final class VkSurfaceCapabilitiesKHR extends Struct {
     /// {@return `currentTransform`}
     /// @param segment the segment of the struct
     public static @CType("VkSurfaceTransformFlagBitsKHR") int get_currentTransform(MemorySegment segment) { return VkSurfaceCapabilitiesKHR.get_currentTransform(segment, 0L); }
-    /// {@return `currentTransform` at the given index}
-    /// @param index the index
-    public @CType("VkSurfaceTransformFlagBitsKHR") int currentTransformAt(long index) { return VkSurfaceCapabilitiesKHR.get_currentTransform(this.segment(), index); }
     /// {@return `currentTransform`}
     public @CType("VkSurfaceTransformFlagBitsKHR") int currentTransform() { return VkSurfaceCapabilitiesKHR.get_currentTransform(this.segment()); }
     /// Sets `currentTransform` with the given value at the given index.
@@ -386,11 +335,6 @@ public final class VkSurfaceCapabilitiesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_currentTransform(MemorySegment segment, @CType("VkSurfaceTransformFlagBitsKHR") int value) { VkSurfaceCapabilitiesKHR.set_currentTransform(segment, 0L, value); }
-    /// Sets `currentTransform` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSurfaceCapabilitiesKHR currentTransformAt(long index, @CType("VkSurfaceTransformFlagBitsKHR") int value) { VkSurfaceCapabilitiesKHR.set_currentTransform(this.segment(), index, value); return this; }
     /// Sets `currentTransform` with the given value.
     /// @param value the value
     /// @return `this`
@@ -403,9 +347,6 @@ public final class VkSurfaceCapabilitiesKHR extends Struct {
     /// {@return `supportedCompositeAlpha`}
     /// @param segment the segment of the struct
     public static @CType("VkCompositeAlphaFlagsKHR") int get_supportedCompositeAlpha(MemorySegment segment) { return VkSurfaceCapabilitiesKHR.get_supportedCompositeAlpha(segment, 0L); }
-    /// {@return `supportedCompositeAlpha` at the given index}
-    /// @param index the index
-    public @CType("VkCompositeAlphaFlagsKHR") int supportedCompositeAlphaAt(long index) { return VkSurfaceCapabilitiesKHR.get_supportedCompositeAlpha(this.segment(), index); }
     /// {@return `supportedCompositeAlpha`}
     public @CType("VkCompositeAlphaFlagsKHR") int supportedCompositeAlpha() { return VkSurfaceCapabilitiesKHR.get_supportedCompositeAlpha(this.segment()); }
     /// Sets `supportedCompositeAlpha` with the given value at the given index.
@@ -417,11 +358,6 @@ public final class VkSurfaceCapabilitiesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_supportedCompositeAlpha(MemorySegment segment, @CType("VkCompositeAlphaFlagsKHR") int value) { VkSurfaceCapabilitiesKHR.set_supportedCompositeAlpha(segment, 0L, value); }
-    /// Sets `supportedCompositeAlpha` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSurfaceCapabilitiesKHR supportedCompositeAlphaAt(long index, @CType("VkCompositeAlphaFlagsKHR") int value) { VkSurfaceCapabilitiesKHR.set_supportedCompositeAlpha(this.segment(), index, value); return this; }
     /// Sets `supportedCompositeAlpha` with the given value.
     /// @param value the value
     /// @return `this`
@@ -434,9 +370,6 @@ public final class VkSurfaceCapabilitiesKHR extends Struct {
     /// {@return `supportedUsageFlags`}
     /// @param segment the segment of the struct
     public static @CType("VkImageUsageFlags") int get_supportedUsageFlags(MemorySegment segment) { return VkSurfaceCapabilitiesKHR.get_supportedUsageFlags(segment, 0L); }
-    /// {@return `supportedUsageFlags` at the given index}
-    /// @param index the index
-    public @CType("VkImageUsageFlags") int supportedUsageFlagsAt(long index) { return VkSurfaceCapabilitiesKHR.get_supportedUsageFlags(this.segment(), index); }
     /// {@return `supportedUsageFlags`}
     public @CType("VkImageUsageFlags") int supportedUsageFlags() { return VkSurfaceCapabilitiesKHR.get_supportedUsageFlags(this.segment()); }
     /// Sets `supportedUsageFlags` with the given value at the given index.
@@ -448,14 +381,122 @@ public final class VkSurfaceCapabilitiesKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_supportedUsageFlags(MemorySegment segment, @CType("VkImageUsageFlags") int value) { VkSurfaceCapabilitiesKHR.set_supportedUsageFlags(segment, 0L, value); }
-    /// Sets `supportedUsageFlags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSurfaceCapabilitiesKHR supportedUsageFlagsAt(long index, @CType("VkImageUsageFlags") int value) { VkSurfaceCapabilitiesKHR.set_supportedUsageFlags(this.segment(), index, value); return this; }
     /// Sets `supportedUsageFlags` with the given value.
     /// @param value the value
     /// @return `this`
     public VkSurfaceCapabilitiesKHR supportedUsageFlags(@CType("VkImageUsageFlags") int value) { VkSurfaceCapabilitiesKHR.set_supportedUsageFlags(this.segment(), value); return this; }
 
+    /// A buffer of [VkSurfaceCapabilitiesKHR].
+    public static final class Buffer extends VkSurfaceCapabilitiesKHR {
+        private final long elementCount;
+
+        /// Creates `VkSurfaceCapabilitiesKHR.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkSurfaceCapabilitiesKHR`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkSurfaceCapabilitiesKHR`
+        public VkSurfaceCapabilitiesKHR asSlice(long index) { return new VkSurfaceCapabilitiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkSurfaceCapabilitiesKHR`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkSurfaceCapabilitiesKHR`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `minImageCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int minImageCountAt(long index) { return VkSurfaceCapabilitiesKHR.get_minImageCount(this.segment(), index); }
+        /// Sets `minImageCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer minImageCountAt(long index, @CType("uint32_t") int value) { VkSurfaceCapabilitiesKHR.set_minImageCount(this.segment(), index, value); return this; }
+
+        /// {@return `maxImageCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxImageCountAt(long index) { return VkSurfaceCapabilitiesKHR.get_maxImageCount(this.segment(), index); }
+        /// Sets `maxImageCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxImageCountAt(long index, @CType("uint32_t") int value) { VkSurfaceCapabilitiesKHR.set_maxImageCount(this.segment(), index, value); return this; }
+
+        /// {@return `currentExtent` at the given index}
+        /// @param index the index
+        public @CType("VkExtent2D") java.lang.foreign.MemorySegment currentExtentAt(long index) { return VkSurfaceCapabilitiesKHR.get_currentExtent(this.segment(), index); }
+        /// Sets `currentExtent` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer currentExtentAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkSurfaceCapabilitiesKHR.set_currentExtent(this.segment(), index, value); return this; }
+
+        /// {@return `minImageExtent` at the given index}
+        /// @param index the index
+        public @CType("VkExtent2D") java.lang.foreign.MemorySegment minImageExtentAt(long index) { return VkSurfaceCapabilitiesKHR.get_minImageExtent(this.segment(), index); }
+        /// Sets `minImageExtent` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer minImageExtentAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkSurfaceCapabilitiesKHR.set_minImageExtent(this.segment(), index, value); return this; }
+
+        /// {@return `maxImageExtent` at the given index}
+        /// @param index the index
+        public @CType("VkExtent2D") java.lang.foreign.MemorySegment maxImageExtentAt(long index) { return VkSurfaceCapabilitiesKHR.get_maxImageExtent(this.segment(), index); }
+        /// Sets `maxImageExtent` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxImageExtentAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkSurfaceCapabilitiesKHR.set_maxImageExtent(this.segment(), index, value); return this; }
+
+        /// {@return `maxImageArrayLayers` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxImageArrayLayersAt(long index) { return VkSurfaceCapabilitiesKHR.get_maxImageArrayLayers(this.segment(), index); }
+        /// Sets `maxImageArrayLayers` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxImageArrayLayersAt(long index, @CType("uint32_t") int value) { VkSurfaceCapabilitiesKHR.set_maxImageArrayLayers(this.segment(), index, value); return this; }
+
+        /// {@return `supportedTransforms` at the given index}
+        /// @param index the index
+        public @CType("VkSurfaceTransformFlagsKHR") int supportedTransformsAt(long index) { return VkSurfaceCapabilitiesKHR.get_supportedTransforms(this.segment(), index); }
+        /// Sets `supportedTransforms` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer supportedTransformsAt(long index, @CType("VkSurfaceTransformFlagsKHR") int value) { VkSurfaceCapabilitiesKHR.set_supportedTransforms(this.segment(), index, value); return this; }
+
+        /// {@return `currentTransform` at the given index}
+        /// @param index the index
+        public @CType("VkSurfaceTransformFlagBitsKHR") int currentTransformAt(long index) { return VkSurfaceCapabilitiesKHR.get_currentTransform(this.segment(), index); }
+        /// Sets `currentTransform` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer currentTransformAt(long index, @CType("VkSurfaceTransformFlagBitsKHR") int value) { VkSurfaceCapabilitiesKHR.set_currentTransform(this.segment(), index, value); return this; }
+
+        /// {@return `supportedCompositeAlpha` at the given index}
+        /// @param index the index
+        public @CType("VkCompositeAlphaFlagsKHR") int supportedCompositeAlphaAt(long index) { return VkSurfaceCapabilitiesKHR.get_supportedCompositeAlpha(this.segment(), index); }
+        /// Sets `supportedCompositeAlpha` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer supportedCompositeAlphaAt(long index, @CType("VkCompositeAlphaFlagsKHR") int value) { VkSurfaceCapabilitiesKHR.set_supportedCompositeAlpha(this.segment(), index, value); return this; }
+
+        /// {@return `supportedUsageFlags` at the given index}
+        /// @param index the index
+        public @CType("VkImageUsageFlags") int supportedUsageFlagsAt(long index) { return VkSurfaceCapabilitiesKHR.get_supportedUsageFlags(this.segment(), index); }
+        /// Sets `supportedUsageFlags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer supportedUsageFlagsAt(long index, @CType("VkImageUsageFlags") int value) { VkSurfaceCapabilitiesKHR.set_supportedUsageFlags(this.segment(), index, value); return this; }
+
+    }
 }

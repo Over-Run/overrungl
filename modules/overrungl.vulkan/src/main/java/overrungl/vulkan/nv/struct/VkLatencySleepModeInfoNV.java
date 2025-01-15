@@ -46,7 +46,7 @@ import overrungl.util.*;
 ///     uint32_t minimumIntervalUs;
 /// } VkLatencySleepModeInfoNV;
 /// ```
-public final class VkLatencySleepModeInfoNV extends Struct {
+public sealed class VkLatencySleepModeInfoNV extends Struct {
     /// The struct layout of `VkLatencySleepModeInfoNV`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -76,6 +76,11 @@ public final class VkLatencySleepModeInfoNV extends Struct {
     public static VkLatencySleepModeInfoNV of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkLatencySleepModeInfoNV(segment); }
 
     /// Creates `VkLatencySleepModeInfoNV` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkLatencySleepModeInfoNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -88,7 +93,7 @@ public final class VkLatencySleepModeInfoNV extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkLatencySleepModeInfoNV ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkLatencySleepModeInfoNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkLatencySleepModeInfoNV` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -99,18 +104,21 @@ public final class VkLatencySleepModeInfoNV extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkLatencySleepModeInfoNV`
-    public static VkLatencySleepModeInfoNV alloc(SegmentAllocator allocator, long count) { return new VkLatencySleepModeInfoNV(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkLatencySleepModeInfoNV`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkLatencySleepModeInfoNV`
-    public VkLatencySleepModeInfoNV asSlice(long index) { return new VkLatencySleepModeInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkLatencySleepModeInfoNV` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkLatencySleepModeInfoNV`
+    public static VkLatencySleepModeInfoNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int lowLatencyMode, @CType("VkBool32") int lowLatencyBoost, @CType("uint32_t") int minimumIntervalUs) { return alloc(allocator).sType(sType).pNext(pNext).lowLatencyMode(lowLatencyMode).lowLatencyBoost(lowLatencyBoost).minimumIntervalUs(minimumIntervalUs); }
 
-    /// Creates a slice of `VkLatencySleepModeInfoNV`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkLatencySleepModeInfoNV`
-    public VkLatencySleepModeInfoNV asSlice(long index, long count) { return new VkLatencySleepModeInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkLatencySleepModeInfoNV copyFrom(VkLatencySleepModeInfoNV src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -119,9 +127,6 @@ public final class VkLatencySleepModeInfoNV extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkLatencySleepModeInfoNV.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkLatencySleepModeInfoNV.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkLatencySleepModeInfoNV.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -133,11 +138,6 @@ public final class VkLatencySleepModeInfoNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkLatencySleepModeInfoNV.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkLatencySleepModeInfoNV sTypeAt(long index, @CType("VkStructureType") int value) { VkLatencySleepModeInfoNV.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,9 +150,6 @@ public final class VkLatencySleepModeInfoNV extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkLatencySleepModeInfoNV.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkLatencySleepModeInfoNV.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkLatencySleepModeInfoNV.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -164,11 +161,6 @@ public final class VkLatencySleepModeInfoNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkLatencySleepModeInfoNV.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkLatencySleepModeInfoNV pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkLatencySleepModeInfoNV.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -181,9 +173,6 @@ public final class VkLatencySleepModeInfoNV extends Struct {
     /// {@return `lowLatencyMode`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_lowLatencyMode(MemorySegment segment) { return VkLatencySleepModeInfoNV.get_lowLatencyMode(segment, 0L); }
-    /// {@return `lowLatencyMode` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int lowLatencyModeAt(long index) { return VkLatencySleepModeInfoNV.get_lowLatencyMode(this.segment(), index); }
     /// {@return `lowLatencyMode`}
     public @CType("VkBool32") int lowLatencyMode() { return VkLatencySleepModeInfoNV.get_lowLatencyMode(this.segment()); }
     /// Sets `lowLatencyMode` with the given value at the given index.
@@ -195,11 +184,6 @@ public final class VkLatencySleepModeInfoNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_lowLatencyMode(MemorySegment segment, @CType("VkBool32") int value) { VkLatencySleepModeInfoNV.set_lowLatencyMode(segment, 0L, value); }
-    /// Sets `lowLatencyMode` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkLatencySleepModeInfoNV lowLatencyModeAt(long index, @CType("VkBool32") int value) { VkLatencySleepModeInfoNV.set_lowLatencyMode(this.segment(), index, value); return this; }
     /// Sets `lowLatencyMode` with the given value.
     /// @param value the value
     /// @return `this`
@@ -212,9 +196,6 @@ public final class VkLatencySleepModeInfoNV extends Struct {
     /// {@return `lowLatencyBoost`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_lowLatencyBoost(MemorySegment segment) { return VkLatencySleepModeInfoNV.get_lowLatencyBoost(segment, 0L); }
-    /// {@return `lowLatencyBoost` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int lowLatencyBoostAt(long index) { return VkLatencySleepModeInfoNV.get_lowLatencyBoost(this.segment(), index); }
     /// {@return `lowLatencyBoost`}
     public @CType("VkBool32") int lowLatencyBoost() { return VkLatencySleepModeInfoNV.get_lowLatencyBoost(this.segment()); }
     /// Sets `lowLatencyBoost` with the given value at the given index.
@@ -226,11 +207,6 @@ public final class VkLatencySleepModeInfoNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_lowLatencyBoost(MemorySegment segment, @CType("VkBool32") int value) { VkLatencySleepModeInfoNV.set_lowLatencyBoost(segment, 0L, value); }
-    /// Sets `lowLatencyBoost` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkLatencySleepModeInfoNV lowLatencyBoostAt(long index, @CType("VkBool32") int value) { VkLatencySleepModeInfoNV.set_lowLatencyBoost(this.segment(), index, value); return this; }
     /// Sets `lowLatencyBoost` with the given value.
     /// @param value the value
     /// @return `this`
@@ -243,9 +219,6 @@ public final class VkLatencySleepModeInfoNV extends Struct {
     /// {@return `minimumIntervalUs`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_minimumIntervalUs(MemorySegment segment) { return VkLatencySleepModeInfoNV.get_minimumIntervalUs(segment, 0L); }
-    /// {@return `minimumIntervalUs` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int minimumIntervalUsAt(long index) { return VkLatencySleepModeInfoNV.get_minimumIntervalUs(this.segment(), index); }
     /// {@return `minimumIntervalUs`}
     public @CType("uint32_t") int minimumIntervalUs() { return VkLatencySleepModeInfoNV.get_minimumIntervalUs(this.segment()); }
     /// Sets `minimumIntervalUs` with the given value at the given index.
@@ -257,14 +230,77 @@ public final class VkLatencySleepModeInfoNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_minimumIntervalUs(MemorySegment segment, @CType("uint32_t") int value) { VkLatencySleepModeInfoNV.set_minimumIntervalUs(segment, 0L, value); }
-    /// Sets `minimumIntervalUs` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkLatencySleepModeInfoNV minimumIntervalUsAt(long index, @CType("uint32_t") int value) { VkLatencySleepModeInfoNV.set_minimumIntervalUs(this.segment(), index, value); return this; }
     /// Sets `minimumIntervalUs` with the given value.
     /// @param value the value
     /// @return `this`
     public VkLatencySleepModeInfoNV minimumIntervalUs(@CType("uint32_t") int value) { VkLatencySleepModeInfoNV.set_minimumIntervalUs(this.segment(), value); return this; }
 
+    /// A buffer of [VkLatencySleepModeInfoNV].
+    public static final class Buffer extends VkLatencySleepModeInfoNV {
+        private final long elementCount;
+
+        /// Creates `VkLatencySleepModeInfoNV.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkLatencySleepModeInfoNV`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkLatencySleepModeInfoNV`
+        public VkLatencySleepModeInfoNV asSlice(long index) { return new VkLatencySleepModeInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkLatencySleepModeInfoNV`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkLatencySleepModeInfoNV`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkLatencySleepModeInfoNV.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkLatencySleepModeInfoNV.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkLatencySleepModeInfoNV.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkLatencySleepModeInfoNV.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `lowLatencyMode` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int lowLatencyModeAt(long index) { return VkLatencySleepModeInfoNV.get_lowLatencyMode(this.segment(), index); }
+        /// Sets `lowLatencyMode` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer lowLatencyModeAt(long index, @CType("VkBool32") int value) { VkLatencySleepModeInfoNV.set_lowLatencyMode(this.segment(), index, value); return this; }
+
+        /// {@return `lowLatencyBoost` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int lowLatencyBoostAt(long index) { return VkLatencySleepModeInfoNV.get_lowLatencyBoost(this.segment(), index); }
+        /// Sets `lowLatencyBoost` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer lowLatencyBoostAt(long index, @CType("VkBool32") int value) { VkLatencySleepModeInfoNV.set_lowLatencyBoost(this.segment(), index, value); return this; }
+
+        /// {@return `minimumIntervalUs` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int minimumIntervalUsAt(long index) { return VkLatencySleepModeInfoNV.get_minimumIntervalUs(this.segment(), index); }
+        /// Sets `minimumIntervalUs` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer minimumIntervalUsAt(long index, @CType("uint32_t") int value) { VkLatencySleepModeInfoNV.set_minimumIntervalUs(this.segment(), index, value); return this; }
+
+    }
 }

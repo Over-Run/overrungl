@@ -40,7 +40,7 @@ import overrungl.util.*;
 ///     VkPerformanceConfigurationTypeINTEL type;
 /// } VkPerformanceConfigurationAcquireInfoINTEL;
 /// ```
-public final class VkPerformanceConfigurationAcquireInfoINTEL extends Struct {
+public sealed class VkPerformanceConfigurationAcquireInfoINTEL extends Struct {
     /// The struct layout of `VkPerformanceConfigurationAcquireInfoINTEL`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -64,6 +64,11 @@ public final class VkPerformanceConfigurationAcquireInfoINTEL extends Struct {
     public static VkPerformanceConfigurationAcquireInfoINTEL of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPerformanceConfigurationAcquireInfoINTEL(segment); }
 
     /// Creates `VkPerformanceConfigurationAcquireInfoINTEL` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPerformanceConfigurationAcquireInfoINTEL` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -76,7 +81,7 @@ public final class VkPerformanceConfigurationAcquireInfoINTEL extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPerformanceConfigurationAcquireInfoINTEL ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPerformanceConfigurationAcquireInfoINTEL(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPerformanceConfigurationAcquireInfoINTEL` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -87,18 +92,21 @@ public final class VkPerformanceConfigurationAcquireInfoINTEL extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPerformanceConfigurationAcquireInfoINTEL`
-    public static VkPerformanceConfigurationAcquireInfoINTEL alloc(SegmentAllocator allocator, long count) { return new VkPerformanceConfigurationAcquireInfoINTEL(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkPerformanceConfigurationAcquireInfoINTEL`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPerformanceConfigurationAcquireInfoINTEL`
-    public VkPerformanceConfigurationAcquireInfoINTEL asSlice(long index) { return new VkPerformanceConfigurationAcquireInfoINTEL(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkPerformanceConfigurationAcquireInfoINTEL` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPerformanceConfigurationAcquireInfoINTEL`
+    public static VkPerformanceConfigurationAcquireInfoINTEL allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkPerformanceConfigurationTypeINTEL") int type) { return alloc(allocator).sType(sType).pNext(pNext).type(type); }
 
-    /// Creates a slice of `VkPerformanceConfigurationAcquireInfoINTEL`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPerformanceConfigurationAcquireInfoINTEL`
-    public VkPerformanceConfigurationAcquireInfoINTEL asSlice(long index, long count) { return new VkPerformanceConfigurationAcquireInfoINTEL(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPerformanceConfigurationAcquireInfoINTEL copyFrom(VkPerformanceConfigurationAcquireInfoINTEL src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -107,9 +115,6 @@ public final class VkPerformanceConfigurationAcquireInfoINTEL extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPerformanceConfigurationAcquireInfoINTEL.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPerformanceConfigurationAcquireInfoINTEL.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPerformanceConfigurationAcquireInfoINTEL.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -121,11 +126,6 @@ public final class VkPerformanceConfigurationAcquireInfoINTEL extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPerformanceConfigurationAcquireInfoINTEL.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPerformanceConfigurationAcquireInfoINTEL sTypeAt(long index, @CType("VkStructureType") int value) { VkPerformanceConfigurationAcquireInfoINTEL.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -138,9 +138,6 @@ public final class VkPerformanceConfigurationAcquireInfoINTEL extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPerformanceConfigurationAcquireInfoINTEL.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPerformanceConfigurationAcquireInfoINTEL.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkPerformanceConfigurationAcquireInfoINTEL.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -152,11 +149,6 @@ public final class VkPerformanceConfigurationAcquireInfoINTEL extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPerformanceConfigurationAcquireInfoINTEL.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPerformanceConfigurationAcquireInfoINTEL pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPerformanceConfigurationAcquireInfoINTEL.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -169,9 +161,6 @@ public final class VkPerformanceConfigurationAcquireInfoINTEL extends Struct {
     /// {@return `type`}
     /// @param segment the segment of the struct
     public static @CType("VkPerformanceConfigurationTypeINTEL") int get_type(MemorySegment segment) { return VkPerformanceConfigurationAcquireInfoINTEL.get_type(segment, 0L); }
-    /// {@return `type` at the given index}
-    /// @param index the index
-    public @CType("VkPerformanceConfigurationTypeINTEL") int typeAt(long index) { return VkPerformanceConfigurationAcquireInfoINTEL.get_type(this.segment(), index); }
     /// {@return `type`}
     public @CType("VkPerformanceConfigurationTypeINTEL") int type() { return VkPerformanceConfigurationAcquireInfoINTEL.get_type(this.segment()); }
     /// Sets `type` with the given value at the given index.
@@ -183,14 +172,59 @@ public final class VkPerformanceConfigurationAcquireInfoINTEL extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_type(MemorySegment segment, @CType("VkPerformanceConfigurationTypeINTEL") int value) { VkPerformanceConfigurationAcquireInfoINTEL.set_type(segment, 0L, value); }
-    /// Sets `type` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPerformanceConfigurationAcquireInfoINTEL typeAt(long index, @CType("VkPerformanceConfigurationTypeINTEL") int value) { VkPerformanceConfigurationAcquireInfoINTEL.set_type(this.segment(), index, value); return this; }
     /// Sets `type` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPerformanceConfigurationAcquireInfoINTEL type(@CType("VkPerformanceConfigurationTypeINTEL") int value) { VkPerformanceConfigurationAcquireInfoINTEL.set_type(this.segment(), value); return this; }
 
+    /// A buffer of [VkPerformanceConfigurationAcquireInfoINTEL].
+    public static final class Buffer extends VkPerformanceConfigurationAcquireInfoINTEL {
+        private final long elementCount;
+
+        /// Creates `VkPerformanceConfigurationAcquireInfoINTEL.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPerformanceConfigurationAcquireInfoINTEL`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPerformanceConfigurationAcquireInfoINTEL`
+        public VkPerformanceConfigurationAcquireInfoINTEL asSlice(long index) { return new VkPerformanceConfigurationAcquireInfoINTEL(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPerformanceConfigurationAcquireInfoINTEL`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPerformanceConfigurationAcquireInfoINTEL`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPerformanceConfigurationAcquireInfoINTEL.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPerformanceConfigurationAcquireInfoINTEL.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPerformanceConfigurationAcquireInfoINTEL.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPerformanceConfigurationAcquireInfoINTEL.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `type` at the given index}
+        /// @param index the index
+        public @CType("VkPerformanceConfigurationTypeINTEL") int typeAt(long index) { return VkPerformanceConfigurationAcquireInfoINTEL.get_type(this.segment(), index); }
+        /// Sets `type` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer typeAt(long index, @CType("VkPerformanceConfigurationTypeINTEL") int value) { VkPerformanceConfigurationAcquireInfoINTEL.set_type(this.segment(), index, value); return this; }
+
+    }
 }

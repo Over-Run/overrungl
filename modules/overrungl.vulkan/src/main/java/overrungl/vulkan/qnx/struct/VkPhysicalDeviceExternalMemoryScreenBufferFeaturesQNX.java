@@ -40,7 +40,7 @@ import overrungl.util.*;
 ///     VkBool32 screenBufferImport;
 /// } VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX;
 /// ```
-public final class VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX extends Struct {
+public sealed class VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX extends Struct {
     /// The struct layout of `VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -64,6 +64,11 @@ public final class VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX extends
     public static VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX(segment); }
 
     /// Creates `VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -76,7 +81,7 @@ public final class VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX extends
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -87,18 +92,21 @@ public final class VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX extends
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX`
-    public static VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX`
-    public VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX asSlice(long index) { return new VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX`
+    public static VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int screenBufferImport) { return alloc(allocator).sType(sType).pNext(pNext).screenBufferImport(screenBufferImport); }
 
-    /// Creates a slice of `VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX`
-    public VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX asSlice(long index, long count) { return new VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX copyFrom(VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -107,9 +115,6 @@ public final class VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX extends
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -121,11 +126,6 @@ public final class VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX extends
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -138,9 +138,6 @@ public final class VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX extends
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -152,11 +149,6 @@ public final class VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX extends
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -169,9 +161,6 @@ public final class VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX extends
     /// {@return `screenBufferImport`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_screenBufferImport(MemorySegment segment) { return VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX.get_screenBufferImport(segment, 0L); }
-    /// {@return `screenBufferImport` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int screenBufferImportAt(long index) { return VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX.get_screenBufferImport(this.segment(), index); }
     /// {@return `screenBufferImport`}
     public @CType("VkBool32") int screenBufferImport() { return VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX.get_screenBufferImport(this.segment()); }
     /// Sets `screenBufferImport` with the given value at the given index.
@@ -183,14 +172,59 @@ public final class VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX extends
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_screenBufferImport(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX.set_screenBufferImport(segment, 0L, value); }
-    /// Sets `screenBufferImport` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX screenBufferImportAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX.set_screenBufferImport(this.segment(), index, value); return this; }
     /// Sets `screenBufferImport` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX screenBufferImport(@CType("VkBool32") int value) { VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX.set_screenBufferImport(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX].
+    public static final class Buffer extends VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX`
+        public VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX asSlice(long index) { return new VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `screenBufferImport` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int screenBufferImportAt(long index) { return VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX.get_screenBufferImport(this.segment(), index); }
+        /// Sets `screenBufferImport` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer screenBufferImportAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExternalMemoryScreenBufferFeaturesQNX.set_screenBufferImport(this.segment(), index, value); return this; }
+
+    }
 }

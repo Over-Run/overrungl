@@ -40,7 +40,7 @@ import overrungl.util.*;
 ///     uint32_t frameBSize;
 /// } VkVideoEncodeH265FrameSizeKHR;
 /// ```
-public final class VkVideoEncodeH265FrameSizeKHR extends Struct {
+public sealed class VkVideoEncodeH265FrameSizeKHR extends Struct {
     /// The struct layout of `VkVideoEncodeH265FrameSizeKHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("frameISize"),
@@ -64,6 +64,11 @@ public final class VkVideoEncodeH265FrameSizeKHR extends Struct {
     public static VkVideoEncodeH265FrameSizeKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkVideoEncodeH265FrameSizeKHR(segment); }
 
     /// Creates `VkVideoEncodeH265FrameSizeKHR` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkVideoEncodeH265FrameSizeKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -76,7 +81,7 @@ public final class VkVideoEncodeH265FrameSizeKHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkVideoEncodeH265FrameSizeKHR ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkVideoEncodeH265FrameSizeKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkVideoEncodeH265FrameSizeKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -87,18 +92,21 @@ public final class VkVideoEncodeH265FrameSizeKHR extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkVideoEncodeH265FrameSizeKHR`
-    public static VkVideoEncodeH265FrameSizeKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoEncodeH265FrameSizeKHR(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkVideoEncodeH265FrameSizeKHR`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkVideoEncodeH265FrameSizeKHR`
-    public VkVideoEncodeH265FrameSizeKHR asSlice(long index) { return new VkVideoEncodeH265FrameSizeKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkVideoEncodeH265FrameSizeKHR` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkVideoEncodeH265FrameSizeKHR`
+    public static VkVideoEncodeH265FrameSizeKHR allocInit(SegmentAllocator allocator, @CType("uint32_t") int frameISize, @CType("uint32_t") int framePSize, @CType("uint32_t") int frameBSize) { return alloc(allocator).frameISize(frameISize).framePSize(framePSize).frameBSize(frameBSize); }
 
-    /// Creates a slice of `VkVideoEncodeH265FrameSizeKHR`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkVideoEncodeH265FrameSizeKHR`
-    public VkVideoEncodeH265FrameSizeKHR asSlice(long index, long count) { return new VkVideoEncodeH265FrameSizeKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkVideoEncodeH265FrameSizeKHR copyFrom(VkVideoEncodeH265FrameSizeKHR src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `frameISize` at the given index}
     /// @param segment the segment of the struct
@@ -107,9 +115,6 @@ public final class VkVideoEncodeH265FrameSizeKHR extends Struct {
     /// {@return `frameISize`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_frameISize(MemorySegment segment) { return VkVideoEncodeH265FrameSizeKHR.get_frameISize(segment, 0L); }
-    /// {@return `frameISize` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int frameISizeAt(long index) { return VkVideoEncodeH265FrameSizeKHR.get_frameISize(this.segment(), index); }
     /// {@return `frameISize`}
     public @CType("uint32_t") int frameISize() { return VkVideoEncodeH265FrameSizeKHR.get_frameISize(this.segment()); }
     /// Sets `frameISize` with the given value at the given index.
@@ -121,11 +126,6 @@ public final class VkVideoEncodeH265FrameSizeKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_frameISize(MemorySegment segment, @CType("uint32_t") int value) { VkVideoEncodeH265FrameSizeKHR.set_frameISize(segment, 0L, value); }
-    /// Sets `frameISize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH265FrameSizeKHR frameISizeAt(long index, @CType("uint32_t") int value) { VkVideoEncodeH265FrameSizeKHR.set_frameISize(this.segment(), index, value); return this; }
     /// Sets `frameISize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -138,9 +138,6 @@ public final class VkVideoEncodeH265FrameSizeKHR extends Struct {
     /// {@return `framePSize`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_framePSize(MemorySegment segment) { return VkVideoEncodeH265FrameSizeKHR.get_framePSize(segment, 0L); }
-    /// {@return `framePSize` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int framePSizeAt(long index) { return VkVideoEncodeH265FrameSizeKHR.get_framePSize(this.segment(), index); }
     /// {@return `framePSize`}
     public @CType("uint32_t") int framePSize() { return VkVideoEncodeH265FrameSizeKHR.get_framePSize(this.segment()); }
     /// Sets `framePSize` with the given value at the given index.
@@ -152,11 +149,6 @@ public final class VkVideoEncodeH265FrameSizeKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_framePSize(MemorySegment segment, @CType("uint32_t") int value) { VkVideoEncodeH265FrameSizeKHR.set_framePSize(segment, 0L, value); }
-    /// Sets `framePSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH265FrameSizeKHR framePSizeAt(long index, @CType("uint32_t") int value) { VkVideoEncodeH265FrameSizeKHR.set_framePSize(this.segment(), index, value); return this; }
     /// Sets `framePSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -169,9 +161,6 @@ public final class VkVideoEncodeH265FrameSizeKHR extends Struct {
     /// {@return `frameBSize`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_frameBSize(MemorySegment segment) { return VkVideoEncodeH265FrameSizeKHR.get_frameBSize(segment, 0L); }
-    /// {@return `frameBSize` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int frameBSizeAt(long index) { return VkVideoEncodeH265FrameSizeKHR.get_frameBSize(this.segment(), index); }
     /// {@return `frameBSize`}
     public @CType("uint32_t") int frameBSize() { return VkVideoEncodeH265FrameSizeKHR.get_frameBSize(this.segment()); }
     /// Sets `frameBSize` with the given value at the given index.
@@ -183,14 +172,59 @@ public final class VkVideoEncodeH265FrameSizeKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_frameBSize(MemorySegment segment, @CType("uint32_t") int value) { VkVideoEncodeH265FrameSizeKHR.set_frameBSize(segment, 0L, value); }
-    /// Sets `frameBSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH265FrameSizeKHR frameBSizeAt(long index, @CType("uint32_t") int value) { VkVideoEncodeH265FrameSizeKHR.set_frameBSize(this.segment(), index, value); return this; }
     /// Sets `frameBSize` with the given value.
     /// @param value the value
     /// @return `this`
     public VkVideoEncodeH265FrameSizeKHR frameBSize(@CType("uint32_t") int value) { VkVideoEncodeH265FrameSizeKHR.set_frameBSize(this.segment(), value); return this; }
 
+    /// A buffer of [VkVideoEncodeH265FrameSizeKHR].
+    public static final class Buffer extends VkVideoEncodeH265FrameSizeKHR {
+        private final long elementCount;
+
+        /// Creates `VkVideoEncodeH265FrameSizeKHR.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkVideoEncodeH265FrameSizeKHR`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkVideoEncodeH265FrameSizeKHR`
+        public VkVideoEncodeH265FrameSizeKHR asSlice(long index) { return new VkVideoEncodeH265FrameSizeKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkVideoEncodeH265FrameSizeKHR`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkVideoEncodeH265FrameSizeKHR`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `frameISize` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int frameISizeAt(long index) { return VkVideoEncodeH265FrameSizeKHR.get_frameISize(this.segment(), index); }
+        /// Sets `frameISize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer frameISizeAt(long index, @CType("uint32_t") int value) { VkVideoEncodeH265FrameSizeKHR.set_frameISize(this.segment(), index, value); return this; }
+
+        /// {@return `framePSize` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int framePSizeAt(long index) { return VkVideoEncodeH265FrameSizeKHR.get_framePSize(this.segment(), index); }
+        /// Sets `framePSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer framePSizeAt(long index, @CType("uint32_t") int value) { VkVideoEncodeH265FrameSizeKHR.set_framePSize(this.segment(), index, value); return this; }
+
+        /// {@return `frameBSize` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int frameBSizeAt(long index) { return VkVideoEncodeH265FrameSizeKHR.get_frameBSize(this.segment(), index); }
+        /// Sets `frameBSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer frameBSizeAt(long index, @CType("uint32_t") int value) { VkVideoEncodeH265FrameSizeKHR.set_frameBSize(this.segment(), index, value); return this; }
+
+    }
 }

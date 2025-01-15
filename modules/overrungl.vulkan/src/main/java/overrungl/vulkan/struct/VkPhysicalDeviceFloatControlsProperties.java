@@ -88,7 +88,7 @@ import overrungl.util.*;
 ///     VkBool32 shaderRoundingModeRTZFloat64;
 /// } VkPhysicalDeviceFloatControlsProperties;
 /// ```
-public final class VkPhysicalDeviceFloatControlsProperties extends Struct {
+public sealed class VkPhysicalDeviceFloatControlsProperties extends Struct {
     /// The struct layout of `VkPhysicalDeviceFloatControlsProperties`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -160,6 +160,11 @@ public final class VkPhysicalDeviceFloatControlsProperties extends Struct {
     public static VkPhysicalDeviceFloatControlsProperties of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceFloatControlsProperties(segment); }
 
     /// Creates `VkPhysicalDeviceFloatControlsProperties` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPhysicalDeviceFloatControlsProperties` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -172,7 +177,7 @@ public final class VkPhysicalDeviceFloatControlsProperties extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceFloatControlsProperties ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceFloatControlsProperties(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceFloatControlsProperties` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -183,18 +188,21 @@ public final class VkPhysicalDeviceFloatControlsProperties extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceFloatControlsProperties`
-    public static VkPhysicalDeviceFloatControlsProperties alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceFloatControlsProperties(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkPhysicalDeviceFloatControlsProperties`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDeviceFloatControlsProperties`
-    public VkPhysicalDeviceFloatControlsProperties asSlice(long index) { return new VkPhysicalDeviceFloatControlsProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkPhysicalDeviceFloatControlsProperties` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDeviceFloatControlsProperties`
+    public static VkPhysicalDeviceFloatControlsProperties allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkShaderFloatControlsIndependence") int denormBehaviorIndependence, @CType("VkShaderFloatControlsIndependence") int roundingModeIndependence, @CType("VkBool32") int shaderSignedZeroInfNanPreserveFloat16, @CType("VkBool32") int shaderSignedZeroInfNanPreserveFloat32, @CType("VkBool32") int shaderSignedZeroInfNanPreserveFloat64, @CType("VkBool32") int shaderDenormPreserveFloat16, @CType("VkBool32") int shaderDenormPreserveFloat32, @CType("VkBool32") int shaderDenormPreserveFloat64, @CType("VkBool32") int shaderDenormFlushToZeroFloat16, @CType("VkBool32") int shaderDenormFlushToZeroFloat32, @CType("VkBool32") int shaderDenormFlushToZeroFloat64, @CType("VkBool32") int shaderRoundingModeRTEFloat16, @CType("VkBool32") int shaderRoundingModeRTEFloat32, @CType("VkBool32") int shaderRoundingModeRTEFloat64, @CType("VkBool32") int shaderRoundingModeRTZFloat16, @CType("VkBool32") int shaderRoundingModeRTZFloat32, @CType("VkBool32") int shaderRoundingModeRTZFloat64) { return alloc(allocator).sType(sType).pNext(pNext).denormBehaviorIndependence(denormBehaviorIndependence).roundingModeIndependence(roundingModeIndependence).shaderSignedZeroInfNanPreserveFloat16(shaderSignedZeroInfNanPreserveFloat16).shaderSignedZeroInfNanPreserveFloat32(shaderSignedZeroInfNanPreserveFloat32).shaderSignedZeroInfNanPreserveFloat64(shaderSignedZeroInfNanPreserveFloat64).shaderDenormPreserveFloat16(shaderDenormPreserveFloat16).shaderDenormPreserveFloat32(shaderDenormPreserveFloat32).shaderDenormPreserveFloat64(shaderDenormPreserveFloat64).shaderDenormFlushToZeroFloat16(shaderDenormFlushToZeroFloat16).shaderDenormFlushToZeroFloat32(shaderDenormFlushToZeroFloat32).shaderDenormFlushToZeroFloat64(shaderDenormFlushToZeroFloat64).shaderRoundingModeRTEFloat16(shaderRoundingModeRTEFloat16).shaderRoundingModeRTEFloat32(shaderRoundingModeRTEFloat32).shaderRoundingModeRTEFloat64(shaderRoundingModeRTEFloat64).shaderRoundingModeRTZFloat16(shaderRoundingModeRTZFloat16).shaderRoundingModeRTZFloat32(shaderRoundingModeRTZFloat32).shaderRoundingModeRTZFloat64(shaderRoundingModeRTZFloat64); }
 
-    /// Creates a slice of `VkPhysicalDeviceFloatControlsProperties`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDeviceFloatControlsProperties`
-    public VkPhysicalDeviceFloatControlsProperties asSlice(long index, long count) { return new VkPhysicalDeviceFloatControlsProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDeviceFloatControlsProperties copyFrom(VkPhysicalDeviceFloatControlsProperties src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -203,9 +211,6 @@ public final class VkPhysicalDeviceFloatControlsProperties extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceFloatControlsProperties.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceFloatControlsProperties.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPhysicalDeviceFloatControlsProperties.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -217,11 +222,6 @@ public final class VkPhysicalDeviceFloatControlsProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceFloatControlsProperties.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFloatControlsProperties sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceFloatControlsProperties.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -234,9 +234,6 @@ public final class VkPhysicalDeviceFloatControlsProperties extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceFloatControlsProperties.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceFloatControlsProperties.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceFloatControlsProperties.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -248,11 +245,6 @@ public final class VkPhysicalDeviceFloatControlsProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceFloatControlsProperties.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFloatControlsProperties pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceFloatControlsProperties.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -265,9 +257,6 @@ public final class VkPhysicalDeviceFloatControlsProperties extends Struct {
     /// {@return `denormBehaviorIndependence`}
     /// @param segment the segment of the struct
     public static @CType("VkShaderFloatControlsIndependence") int get_denormBehaviorIndependence(MemorySegment segment) { return VkPhysicalDeviceFloatControlsProperties.get_denormBehaviorIndependence(segment, 0L); }
-    /// {@return `denormBehaviorIndependence` at the given index}
-    /// @param index the index
-    public @CType("VkShaderFloatControlsIndependence") int denormBehaviorIndependenceAt(long index) { return VkPhysicalDeviceFloatControlsProperties.get_denormBehaviorIndependence(this.segment(), index); }
     /// {@return `denormBehaviorIndependence`}
     public @CType("VkShaderFloatControlsIndependence") int denormBehaviorIndependence() { return VkPhysicalDeviceFloatControlsProperties.get_denormBehaviorIndependence(this.segment()); }
     /// Sets `denormBehaviorIndependence` with the given value at the given index.
@@ -279,11 +268,6 @@ public final class VkPhysicalDeviceFloatControlsProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_denormBehaviorIndependence(MemorySegment segment, @CType("VkShaderFloatControlsIndependence") int value) { VkPhysicalDeviceFloatControlsProperties.set_denormBehaviorIndependence(segment, 0L, value); }
-    /// Sets `denormBehaviorIndependence` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFloatControlsProperties denormBehaviorIndependenceAt(long index, @CType("VkShaderFloatControlsIndependence") int value) { VkPhysicalDeviceFloatControlsProperties.set_denormBehaviorIndependence(this.segment(), index, value); return this; }
     /// Sets `denormBehaviorIndependence` with the given value.
     /// @param value the value
     /// @return `this`
@@ -296,9 +280,6 @@ public final class VkPhysicalDeviceFloatControlsProperties extends Struct {
     /// {@return `roundingModeIndependence`}
     /// @param segment the segment of the struct
     public static @CType("VkShaderFloatControlsIndependence") int get_roundingModeIndependence(MemorySegment segment) { return VkPhysicalDeviceFloatControlsProperties.get_roundingModeIndependence(segment, 0L); }
-    /// {@return `roundingModeIndependence` at the given index}
-    /// @param index the index
-    public @CType("VkShaderFloatControlsIndependence") int roundingModeIndependenceAt(long index) { return VkPhysicalDeviceFloatControlsProperties.get_roundingModeIndependence(this.segment(), index); }
     /// {@return `roundingModeIndependence`}
     public @CType("VkShaderFloatControlsIndependence") int roundingModeIndependence() { return VkPhysicalDeviceFloatControlsProperties.get_roundingModeIndependence(this.segment()); }
     /// Sets `roundingModeIndependence` with the given value at the given index.
@@ -310,11 +291,6 @@ public final class VkPhysicalDeviceFloatControlsProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_roundingModeIndependence(MemorySegment segment, @CType("VkShaderFloatControlsIndependence") int value) { VkPhysicalDeviceFloatControlsProperties.set_roundingModeIndependence(segment, 0L, value); }
-    /// Sets `roundingModeIndependence` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFloatControlsProperties roundingModeIndependenceAt(long index, @CType("VkShaderFloatControlsIndependence") int value) { VkPhysicalDeviceFloatControlsProperties.set_roundingModeIndependence(this.segment(), index, value); return this; }
     /// Sets `roundingModeIndependence` with the given value.
     /// @param value the value
     /// @return `this`
@@ -327,9 +303,6 @@ public final class VkPhysicalDeviceFloatControlsProperties extends Struct {
     /// {@return `shaderSignedZeroInfNanPreserveFloat16`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_shaderSignedZeroInfNanPreserveFloat16(MemorySegment segment) { return VkPhysicalDeviceFloatControlsProperties.get_shaderSignedZeroInfNanPreserveFloat16(segment, 0L); }
-    /// {@return `shaderSignedZeroInfNanPreserveFloat16` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int shaderSignedZeroInfNanPreserveFloat16At(long index) { return VkPhysicalDeviceFloatControlsProperties.get_shaderSignedZeroInfNanPreserveFloat16(this.segment(), index); }
     /// {@return `shaderSignedZeroInfNanPreserveFloat16`}
     public @CType("VkBool32") int shaderSignedZeroInfNanPreserveFloat16() { return VkPhysicalDeviceFloatControlsProperties.get_shaderSignedZeroInfNanPreserveFloat16(this.segment()); }
     /// Sets `shaderSignedZeroInfNanPreserveFloat16` with the given value at the given index.
@@ -341,11 +314,6 @@ public final class VkPhysicalDeviceFloatControlsProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_shaderSignedZeroInfNanPreserveFloat16(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderSignedZeroInfNanPreserveFloat16(segment, 0L, value); }
-    /// Sets `shaderSignedZeroInfNanPreserveFloat16` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFloatControlsProperties shaderSignedZeroInfNanPreserveFloat16At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderSignedZeroInfNanPreserveFloat16(this.segment(), index, value); return this; }
     /// Sets `shaderSignedZeroInfNanPreserveFloat16` with the given value.
     /// @param value the value
     /// @return `this`
@@ -358,9 +326,6 @@ public final class VkPhysicalDeviceFloatControlsProperties extends Struct {
     /// {@return `shaderSignedZeroInfNanPreserveFloat32`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_shaderSignedZeroInfNanPreserveFloat32(MemorySegment segment) { return VkPhysicalDeviceFloatControlsProperties.get_shaderSignedZeroInfNanPreserveFloat32(segment, 0L); }
-    /// {@return `shaderSignedZeroInfNanPreserveFloat32` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int shaderSignedZeroInfNanPreserveFloat32At(long index) { return VkPhysicalDeviceFloatControlsProperties.get_shaderSignedZeroInfNanPreserveFloat32(this.segment(), index); }
     /// {@return `shaderSignedZeroInfNanPreserveFloat32`}
     public @CType("VkBool32") int shaderSignedZeroInfNanPreserveFloat32() { return VkPhysicalDeviceFloatControlsProperties.get_shaderSignedZeroInfNanPreserveFloat32(this.segment()); }
     /// Sets `shaderSignedZeroInfNanPreserveFloat32` with the given value at the given index.
@@ -372,11 +337,6 @@ public final class VkPhysicalDeviceFloatControlsProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_shaderSignedZeroInfNanPreserveFloat32(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderSignedZeroInfNanPreserveFloat32(segment, 0L, value); }
-    /// Sets `shaderSignedZeroInfNanPreserveFloat32` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFloatControlsProperties shaderSignedZeroInfNanPreserveFloat32At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderSignedZeroInfNanPreserveFloat32(this.segment(), index, value); return this; }
     /// Sets `shaderSignedZeroInfNanPreserveFloat32` with the given value.
     /// @param value the value
     /// @return `this`
@@ -389,9 +349,6 @@ public final class VkPhysicalDeviceFloatControlsProperties extends Struct {
     /// {@return `shaderSignedZeroInfNanPreserveFloat64`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_shaderSignedZeroInfNanPreserveFloat64(MemorySegment segment) { return VkPhysicalDeviceFloatControlsProperties.get_shaderSignedZeroInfNanPreserveFloat64(segment, 0L); }
-    /// {@return `shaderSignedZeroInfNanPreserveFloat64` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int shaderSignedZeroInfNanPreserveFloat64At(long index) { return VkPhysicalDeviceFloatControlsProperties.get_shaderSignedZeroInfNanPreserveFloat64(this.segment(), index); }
     /// {@return `shaderSignedZeroInfNanPreserveFloat64`}
     public @CType("VkBool32") int shaderSignedZeroInfNanPreserveFloat64() { return VkPhysicalDeviceFloatControlsProperties.get_shaderSignedZeroInfNanPreserveFloat64(this.segment()); }
     /// Sets `shaderSignedZeroInfNanPreserveFloat64` with the given value at the given index.
@@ -403,11 +360,6 @@ public final class VkPhysicalDeviceFloatControlsProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_shaderSignedZeroInfNanPreserveFloat64(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderSignedZeroInfNanPreserveFloat64(segment, 0L, value); }
-    /// Sets `shaderSignedZeroInfNanPreserveFloat64` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFloatControlsProperties shaderSignedZeroInfNanPreserveFloat64At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderSignedZeroInfNanPreserveFloat64(this.segment(), index, value); return this; }
     /// Sets `shaderSignedZeroInfNanPreserveFloat64` with the given value.
     /// @param value the value
     /// @return `this`
@@ -420,9 +372,6 @@ public final class VkPhysicalDeviceFloatControlsProperties extends Struct {
     /// {@return `shaderDenormPreserveFloat16`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_shaderDenormPreserveFloat16(MemorySegment segment) { return VkPhysicalDeviceFloatControlsProperties.get_shaderDenormPreserveFloat16(segment, 0L); }
-    /// {@return `shaderDenormPreserveFloat16` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int shaderDenormPreserveFloat16At(long index) { return VkPhysicalDeviceFloatControlsProperties.get_shaderDenormPreserveFloat16(this.segment(), index); }
     /// {@return `shaderDenormPreserveFloat16`}
     public @CType("VkBool32") int shaderDenormPreserveFloat16() { return VkPhysicalDeviceFloatControlsProperties.get_shaderDenormPreserveFloat16(this.segment()); }
     /// Sets `shaderDenormPreserveFloat16` with the given value at the given index.
@@ -434,11 +383,6 @@ public final class VkPhysicalDeviceFloatControlsProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_shaderDenormPreserveFloat16(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderDenormPreserveFloat16(segment, 0L, value); }
-    /// Sets `shaderDenormPreserveFloat16` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFloatControlsProperties shaderDenormPreserveFloat16At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderDenormPreserveFloat16(this.segment(), index, value); return this; }
     /// Sets `shaderDenormPreserveFloat16` with the given value.
     /// @param value the value
     /// @return `this`
@@ -451,9 +395,6 @@ public final class VkPhysicalDeviceFloatControlsProperties extends Struct {
     /// {@return `shaderDenormPreserveFloat32`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_shaderDenormPreserveFloat32(MemorySegment segment) { return VkPhysicalDeviceFloatControlsProperties.get_shaderDenormPreserveFloat32(segment, 0L); }
-    /// {@return `shaderDenormPreserveFloat32` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int shaderDenormPreserveFloat32At(long index) { return VkPhysicalDeviceFloatControlsProperties.get_shaderDenormPreserveFloat32(this.segment(), index); }
     /// {@return `shaderDenormPreserveFloat32`}
     public @CType("VkBool32") int shaderDenormPreserveFloat32() { return VkPhysicalDeviceFloatControlsProperties.get_shaderDenormPreserveFloat32(this.segment()); }
     /// Sets `shaderDenormPreserveFloat32` with the given value at the given index.
@@ -465,11 +406,6 @@ public final class VkPhysicalDeviceFloatControlsProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_shaderDenormPreserveFloat32(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderDenormPreserveFloat32(segment, 0L, value); }
-    /// Sets `shaderDenormPreserveFloat32` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFloatControlsProperties shaderDenormPreserveFloat32At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderDenormPreserveFloat32(this.segment(), index, value); return this; }
     /// Sets `shaderDenormPreserveFloat32` with the given value.
     /// @param value the value
     /// @return `this`
@@ -482,9 +418,6 @@ public final class VkPhysicalDeviceFloatControlsProperties extends Struct {
     /// {@return `shaderDenormPreserveFloat64`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_shaderDenormPreserveFloat64(MemorySegment segment) { return VkPhysicalDeviceFloatControlsProperties.get_shaderDenormPreserveFloat64(segment, 0L); }
-    /// {@return `shaderDenormPreserveFloat64` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int shaderDenormPreserveFloat64At(long index) { return VkPhysicalDeviceFloatControlsProperties.get_shaderDenormPreserveFloat64(this.segment(), index); }
     /// {@return `shaderDenormPreserveFloat64`}
     public @CType("VkBool32") int shaderDenormPreserveFloat64() { return VkPhysicalDeviceFloatControlsProperties.get_shaderDenormPreserveFloat64(this.segment()); }
     /// Sets `shaderDenormPreserveFloat64` with the given value at the given index.
@@ -496,11 +429,6 @@ public final class VkPhysicalDeviceFloatControlsProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_shaderDenormPreserveFloat64(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderDenormPreserveFloat64(segment, 0L, value); }
-    /// Sets `shaderDenormPreserveFloat64` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFloatControlsProperties shaderDenormPreserveFloat64At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderDenormPreserveFloat64(this.segment(), index, value); return this; }
     /// Sets `shaderDenormPreserveFloat64` with the given value.
     /// @param value the value
     /// @return `this`
@@ -513,9 +441,6 @@ public final class VkPhysicalDeviceFloatControlsProperties extends Struct {
     /// {@return `shaderDenormFlushToZeroFloat16`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_shaderDenormFlushToZeroFloat16(MemorySegment segment) { return VkPhysicalDeviceFloatControlsProperties.get_shaderDenormFlushToZeroFloat16(segment, 0L); }
-    /// {@return `shaderDenormFlushToZeroFloat16` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int shaderDenormFlushToZeroFloat16At(long index) { return VkPhysicalDeviceFloatControlsProperties.get_shaderDenormFlushToZeroFloat16(this.segment(), index); }
     /// {@return `shaderDenormFlushToZeroFloat16`}
     public @CType("VkBool32") int shaderDenormFlushToZeroFloat16() { return VkPhysicalDeviceFloatControlsProperties.get_shaderDenormFlushToZeroFloat16(this.segment()); }
     /// Sets `shaderDenormFlushToZeroFloat16` with the given value at the given index.
@@ -527,11 +452,6 @@ public final class VkPhysicalDeviceFloatControlsProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_shaderDenormFlushToZeroFloat16(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderDenormFlushToZeroFloat16(segment, 0L, value); }
-    /// Sets `shaderDenormFlushToZeroFloat16` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFloatControlsProperties shaderDenormFlushToZeroFloat16At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderDenormFlushToZeroFloat16(this.segment(), index, value); return this; }
     /// Sets `shaderDenormFlushToZeroFloat16` with the given value.
     /// @param value the value
     /// @return `this`
@@ -544,9 +464,6 @@ public final class VkPhysicalDeviceFloatControlsProperties extends Struct {
     /// {@return `shaderDenormFlushToZeroFloat32`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_shaderDenormFlushToZeroFloat32(MemorySegment segment) { return VkPhysicalDeviceFloatControlsProperties.get_shaderDenormFlushToZeroFloat32(segment, 0L); }
-    /// {@return `shaderDenormFlushToZeroFloat32` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int shaderDenormFlushToZeroFloat32At(long index) { return VkPhysicalDeviceFloatControlsProperties.get_shaderDenormFlushToZeroFloat32(this.segment(), index); }
     /// {@return `shaderDenormFlushToZeroFloat32`}
     public @CType("VkBool32") int shaderDenormFlushToZeroFloat32() { return VkPhysicalDeviceFloatControlsProperties.get_shaderDenormFlushToZeroFloat32(this.segment()); }
     /// Sets `shaderDenormFlushToZeroFloat32` with the given value at the given index.
@@ -558,11 +475,6 @@ public final class VkPhysicalDeviceFloatControlsProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_shaderDenormFlushToZeroFloat32(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderDenormFlushToZeroFloat32(segment, 0L, value); }
-    /// Sets `shaderDenormFlushToZeroFloat32` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFloatControlsProperties shaderDenormFlushToZeroFloat32At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderDenormFlushToZeroFloat32(this.segment(), index, value); return this; }
     /// Sets `shaderDenormFlushToZeroFloat32` with the given value.
     /// @param value the value
     /// @return `this`
@@ -575,9 +487,6 @@ public final class VkPhysicalDeviceFloatControlsProperties extends Struct {
     /// {@return `shaderDenormFlushToZeroFloat64`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_shaderDenormFlushToZeroFloat64(MemorySegment segment) { return VkPhysicalDeviceFloatControlsProperties.get_shaderDenormFlushToZeroFloat64(segment, 0L); }
-    /// {@return `shaderDenormFlushToZeroFloat64` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int shaderDenormFlushToZeroFloat64At(long index) { return VkPhysicalDeviceFloatControlsProperties.get_shaderDenormFlushToZeroFloat64(this.segment(), index); }
     /// {@return `shaderDenormFlushToZeroFloat64`}
     public @CType("VkBool32") int shaderDenormFlushToZeroFloat64() { return VkPhysicalDeviceFloatControlsProperties.get_shaderDenormFlushToZeroFloat64(this.segment()); }
     /// Sets `shaderDenormFlushToZeroFloat64` with the given value at the given index.
@@ -589,11 +498,6 @@ public final class VkPhysicalDeviceFloatControlsProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_shaderDenormFlushToZeroFloat64(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderDenormFlushToZeroFloat64(segment, 0L, value); }
-    /// Sets `shaderDenormFlushToZeroFloat64` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFloatControlsProperties shaderDenormFlushToZeroFloat64At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderDenormFlushToZeroFloat64(this.segment(), index, value); return this; }
     /// Sets `shaderDenormFlushToZeroFloat64` with the given value.
     /// @param value the value
     /// @return `this`
@@ -606,9 +510,6 @@ public final class VkPhysicalDeviceFloatControlsProperties extends Struct {
     /// {@return `shaderRoundingModeRTEFloat16`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_shaderRoundingModeRTEFloat16(MemorySegment segment) { return VkPhysicalDeviceFloatControlsProperties.get_shaderRoundingModeRTEFloat16(segment, 0L); }
-    /// {@return `shaderRoundingModeRTEFloat16` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int shaderRoundingModeRTEFloat16At(long index) { return VkPhysicalDeviceFloatControlsProperties.get_shaderRoundingModeRTEFloat16(this.segment(), index); }
     /// {@return `shaderRoundingModeRTEFloat16`}
     public @CType("VkBool32") int shaderRoundingModeRTEFloat16() { return VkPhysicalDeviceFloatControlsProperties.get_shaderRoundingModeRTEFloat16(this.segment()); }
     /// Sets `shaderRoundingModeRTEFloat16` with the given value at the given index.
@@ -620,11 +521,6 @@ public final class VkPhysicalDeviceFloatControlsProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_shaderRoundingModeRTEFloat16(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderRoundingModeRTEFloat16(segment, 0L, value); }
-    /// Sets `shaderRoundingModeRTEFloat16` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFloatControlsProperties shaderRoundingModeRTEFloat16At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderRoundingModeRTEFloat16(this.segment(), index, value); return this; }
     /// Sets `shaderRoundingModeRTEFloat16` with the given value.
     /// @param value the value
     /// @return `this`
@@ -637,9 +533,6 @@ public final class VkPhysicalDeviceFloatControlsProperties extends Struct {
     /// {@return `shaderRoundingModeRTEFloat32`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_shaderRoundingModeRTEFloat32(MemorySegment segment) { return VkPhysicalDeviceFloatControlsProperties.get_shaderRoundingModeRTEFloat32(segment, 0L); }
-    /// {@return `shaderRoundingModeRTEFloat32` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int shaderRoundingModeRTEFloat32At(long index) { return VkPhysicalDeviceFloatControlsProperties.get_shaderRoundingModeRTEFloat32(this.segment(), index); }
     /// {@return `shaderRoundingModeRTEFloat32`}
     public @CType("VkBool32") int shaderRoundingModeRTEFloat32() { return VkPhysicalDeviceFloatControlsProperties.get_shaderRoundingModeRTEFloat32(this.segment()); }
     /// Sets `shaderRoundingModeRTEFloat32` with the given value at the given index.
@@ -651,11 +544,6 @@ public final class VkPhysicalDeviceFloatControlsProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_shaderRoundingModeRTEFloat32(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderRoundingModeRTEFloat32(segment, 0L, value); }
-    /// Sets `shaderRoundingModeRTEFloat32` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFloatControlsProperties shaderRoundingModeRTEFloat32At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderRoundingModeRTEFloat32(this.segment(), index, value); return this; }
     /// Sets `shaderRoundingModeRTEFloat32` with the given value.
     /// @param value the value
     /// @return `this`
@@ -668,9 +556,6 @@ public final class VkPhysicalDeviceFloatControlsProperties extends Struct {
     /// {@return `shaderRoundingModeRTEFloat64`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_shaderRoundingModeRTEFloat64(MemorySegment segment) { return VkPhysicalDeviceFloatControlsProperties.get_shaderRoundingModeRTEFloat64(segment, 0L); }
-    /// {@return `shaderRoundingModeRTEFloat64` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int shaderRoundingModeRTEFloat64At(long index) { return VkPhysicalDeviceFloatControlsProperties.get_shaderRoundingModeRTEFloat64(this.segment(), index); }
     /// {@return `shaderRoundingModeRTEFloat64`}
     public @CType("VkBool32") int shaderRoundingModeRTEFloat64() { return VkPhysicalDeviceFloatControlsProperties.get_shaderRoundingModeRTEFloat64(this.segment()); }
     /// Sets `shaderRoundingModeRTEFloat64` with the given value at the given index.
@@ -682,11 +567,6 @@ public final class VkPhysicalDeviceFloatControlsProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_shaderRoundingModeRTEFloat64(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderRoundingModeRTEFloat64(segment, 0L, value); }
-    /// Sets `shaderRoundingModeRTEFloat64` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFloatControlsProperties shaderRoundingModeRTEFloat64At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderRoundingModeRTEFloat64(this.segment(), index, value); return this; }
     /// Sets `shaderRoundingModeRTEFloat64` with the given value.
     /// @param value the value
     /// @return `this`
@@ -699,9 +579,6 @@ public final class VkPhysicalDeviceFloatControlsProperties extends Struct {
     /// {@return `shaderRoundingModeRTZFloat16`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_shaderRoundingModeRTZFloat16(MemorySegment segment) { return VkPhysicalDeviceFloatControlsProperties.get_shaderRoundingModeRTZFloat16(segment, 0L); }
-    /// {@return `shaderRoundingModeRTZFloat16` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int shaderRoundingModeRTZFloat16At(long index) { return VkPhysicalDeviceFloatControlsProperties.get_shaderRoundingModeRTZFloat16(this.segment(), index); }
     /// {@return `shaderRoundingModeRTZFloat16`}
     public @CType("VkBool32") int shaderRoundingModeRTZFloat16() { return VkPhysicalDeviceFloatControlsProperties.get_shaderRoundingModeRTZFloat16(this.segment()); }
     /// Sets `shaderRoundingModeRTZFloat16` with the given value at the given index.
@@ -713,11 +590,6 @@ public final class VkPhysicalDeviceFloatControlsProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_shaderRoundingModeRTZFloat16(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderRoundingModeRTZFloat16(segment, 0L, value); }
-    /// Sets `shaderRoundingModeRTZFloat16` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFloatControlsProperties shaderRoundingModeRTZFloat16At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderRoundingModeRTZFloat16(this.segment(), index, value); return this; }
     /// Sets `shaderRoundingModeRTZFloat16` with the given value.
     /// @param value the value
     /// @return `this`
@@ -730,9 +602,6 @@ public final class VkPhysicalDeviceFloatControlsProperties extends Struct {
     /// {@return `shaderRoundingModeRTZFloat32`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_shaderRoundingModeRTZFloat32(MemorySegment segment) { return VkPhysicalDeviceFloatControlsProperties.get_shaderRoundingModeRTZFloat32(segment, 0L); }
-    /// {@return `shaderRoundingModeRTZFloat32` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int shaderRoundingModeRTZFloat32At(long index) { return VkPhysicalDeviceFloatControlsProperties.get_shaderRoundingModeRTZFloat32(this.segment(), index); }
     /// {@return `shaderRoundingModeRTZFloat32`}
     public @CType("VkBool32") int shaderRoundingModeRTZFloat32() { return VkPhysicalDeviceFloatControlsProperties.get_shaderRoundingModeRTZFloat32(this.segment()); }
     /// Sets `shaderRoundingModeRTZFloat32` with the given value at the given index.
@@ -744,11 +613,6 @@ public final class VkPhysicalDeviceFloatControlsProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_shaderRoundingModeRTZFloat32(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderRoundingModeRTZFloat32(segment, 0L, value); }
-    /// Sets `shaderRoundingModeRTZFloat32` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFloatControlsProperties shaderRoundingModeRTZFloat32At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderRoundingModeRTZFloat32(this.segment(), index, value); return this; }
     /// Sets `shaderRoundingModeRTZFloat32` with the given value.
     /// @param value the value
     /// @return `this`
@@ -761,9 +625,6 @@ public final class VkPhysicalDeviceFloatControlsProperties extends Struct {
     /// {@return `shaderRoundingModeRTZFloat64`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_shaderRoundingModeRTZFloat64(MemorySegment segment) { return VkPhysicalDeviceFloatControlsProperties.get_shaderRoundingModeRTZFloat64(segment, 0L); }
-    /// {@return `shaderRoundingModeRTZFloat64` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int shaderRoundingModeRTZFloat64At(long index) { return VkPhysicalDeviceFloatControlsProperties.get_shaderRoundingModeRTZFloat64(this.segment(), index); }
     /// {@return `shaderRoundingModeRTZFloat64`}
     public @CType("VkBool32") int shaderRoundingModeRTZFloat64() { return VkPhysicalDeviceFloatControlsProperties.get_shaderRoundingModeRTZFloat64(this.segment()); }
     /// Sets `shaderRoundingModeRTZFloat64` with the given value at the given index.
@@ -775,14 +636,203 @@ public final class VkPhysicalDeviceFloatControlsProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_shaderRoundingModeRTZFloat64(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderRoundingModeRTZFloat64(segment, 0L, value); }
-    /// Sets `shaderRoundingModeRTZFloat64` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFloatControlsProperties shaderRoundingModeRTZFloat64At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderRoundingModeRTZFloat64(this.segment(), index, value); return this; }
     /// Sets `shaderRoundingModeRTZFloat64` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceFloatControlsProperties shaderRoundingModeRTZFloat64(@CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderRoundingModeRTZFloat64(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDeviceFloatControlsProperties].
+    public static final class Buffer extends VkPhysicalDeviceFloatControlsProperties {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDeviceFloatControlsProperties.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDeviceFloatControlsProperties`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDeviceFloatControlsProperties`
+        public VkPhysicalDeviceFloatControlsProperties asSlice(long index) { return new VkPhysicalDeviceFloatControlsProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDeviceFloatControlsProperties`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDeviceFloatControlsProperties`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceFloatControlsProperties.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceFloatControlsProperties.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceFloatControlsProperties.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceFloatControlsProperties.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `denormBehaviorIndependence` at the given index}
+        /// @param index the index
+        public @CType("VkShaderFloatControlsIndependence") int denormBehaviorIndependenceAt(long index) { return VkPhysicalDeviceFloatControlsProperties.get_denormBehaviorIndependence(this.segment(), index); }
+        /// Sets `denormBehaviorIndependence` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer denormBehaviorIndependenceAt(long index, @CType("VkShaderFloatControlsIndependence") int value) { VkPhysicalDeviceFloatControlsProperties.set_denormBehaviorIndependence(this.segment(), index, value); return this; }
+
+        /// {@return `roundingModeIndependence` at the given index}
+        /// @param index the index
+        public @CType("VkShaderFloatControlsIndependence") int roundingModeIndependenceAt(long index) { return VkPhysicalDeviceFloatControlsProperties.get_roundingModeIndependence(this.segment(), index); }
+        /// Sets `roundingModeIndependence` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer roundingModeIndependenceAt(long index, @CType("VkShaderFloatControlsIndependence") int value) { VkPhysicalDeviceFloatControlsProperties.set_roundingModeIndependence(this.segment(), index, value); return this; }
+
+        /// {@return `shaderSignedZeroInfNanPreserveFloat16` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int shaderSignedZeroInfNanPreserveFloat16At(long index) { return VkPhysicalDeviceFloatControlsProperties.get_shaderSignedZeroInfNanPreserveFloat16(this.segment(), index); }
+        /// Sets `shaderSignedZeroInfNanPreserveFloat16` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer shaderSignedZeroInfNanPreserveFloat16At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderSignedZeroInfNanPreserveFloat16(this.segment(), index, value); return this; }
+
+        /// {@return `shaderSignedZeroInfNanPreserveFloat32` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int shaderSignedZeroInfNanPreserveFloat32At(long index) { return VkPhysicalDeviceFloatControlsProperties.get_shaderSignedZeroInfNanPreserveFloat32(this.segment(), index); }
+        /// Sets `shaderSignedZeroInfNanPreserveFloat32` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer shaderSignedZeroInfNanPreserveFloat32At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderSignedZeroInfNanPreserveFloat32(this.segment(), index, value); return this; }
+
+        /// {@return `shaderSignedZeroInfNanPreserveFloat64` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int shaderSignedZeroInfNanPreserveFloat64At(long index) { return VkPhysicalDeviceFloatControlsProperties.get_shaderSignedZeroInfNanPreserveFloat64(this.segment(), index); }
+        /// Sets `shaderSignedZeroInfNanPreserveFloat64` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer shaderSignedZeroInfNanPreserveFloat64At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderSignedZeroInfNanPreserveFloat64(this.segment(), index, value); return this; }
+
+        /// {@return `shaderDenormPreserveFloat16` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int shaderDenormPreserveFloat16At(long index) { return VkPhysicalDeviceFloatControlsProperties.get_shaderDenormPreserveFloat16(this.segment(), index); }
+        /// Sets `shaderDenormPreserveFloat16` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer shaderDenormPreserveFloat16At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderDenormPreserveFloat16(this.segment(), index, value); return this; }
+
+        /// {@return `shaderDenormPreserveFloat32` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int shaderDenormPreserveFloat32At(long index) { return VkPhysicalDeviceFloatControlsProperties.get_shaderDenormPreserveFloat32(this.segment(), index); }
+        /// Sets `shaderDenormPreserveFloat32` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer shaderDenormPreserveFloat32At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderDenormPreserveFloat32(this.segment(), index, value); return this; }
+
+        /// {@return `shaderDenormPreserveFloat64` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int shaderDenormPreserveFloat64At(long index) { return VkPhysicalDeviceFloatControlsProperties.get_shaderDenormPreserveFloat64(this.segment(), index); }
+        /// Sets `shaderDenormPreserveFloat64` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer shaderDenormPreserveFloat64At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderDenormPreserveFloat64(this.segment(), index, value); return this; }
+
+        /// {@return `shaderDenormFlushToZeroFloat16` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int shaderDenormFlushToZeroFloat16At(long index) { return VkPhysicalDeviceFloatControlsProperties.get_shaderDenormFlushToZeroFloat16(this.segment(), index); }
+        /// Sets `shaderDenormFlushToZeroFloat16` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer shaderDenormFlushToZeroFloat16At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderDenormFlushToZeroFloat16(this.segment(), index, value); return this; }
+
+        /// {@return `shaderDenormFlushToZeroFloat32` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int shaderDenormFlushToZeroFloat32At(long index) { return VkPhysicalDeviceFloatControlsProperties.get_shaderDenormFlushToZeroFloat32(this.segment(), index); }
+        /// Sets `shaderDenormFlushToZeroFloat32` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer shaderDenormFlushToZeroFloat32At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderDenormFlushToZeroFloat32(this.segment(), index, value); return this; }
+
+        /// {@return `shaderDenormFlushToZeroFloat64` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int shaderDenormFlushToZeroFloat64At(long index) { return VkPhysicalDeviceFloatControlsProperties.get_shaderDenormFlushToZeroFloat64(this.segment(), index); }
+        /// Sets `shaderDenormFlushToZeroFloat64` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer shaderDenormFlushToZeroFloat64At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderDenormFlushToZeroFloat64(this.segment(), index, value); return this; }
+
+        /// {@return `shaderRoundingModeRTEFloat16` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int shaderRoundingModeRTEFloat16At(long index) { return VkPhysicalDeviceFloatControlsProperties.get_shaderRoundingModeRTEFloat16(this.segment(), index); }
+        /// Sets `shaderRoundingModeRTEFloat16` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer shaderRoundingModeRTEFloat16At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderRoundingModeRTEFloat16(this.segment(), index, value); return this; }
+
+        /// {@return `shaderRoundingModeRTEFloat32` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int shaderRoundingModeRTEFloat32At(long index) { return VkPhysicalDeviceFloatControlsProperties.get_shaderRoundingModeRTEFloat32(this.segment(), index); }
+        /// Sets `shaderRoundingModeRTEFloat32` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer shaderRoundingModeRTEFloat32At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderRoundingModeRTEFloat32(this.segment(), index, value); return this; }
+
+        /// {@return `shaderRoundingModeRTEFloat64` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int shaderRoundingModeRTEFloat64At(long index) { return VkPhysicalDeviceFloatControlsProperties.get_shaderRoundingModeRTEFloat64(this.segment(), index); }
+        /// Sets `shaderRoundingModeRTEFloat64` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer shaderRoundingModeRTEFloat64At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderRoundingModeRTEFloat64(this.segment(), index, value); return this; }
+
+        /// {@return `shaderRoundingModeRTZFloat16` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int shaderRoundingModeRTZFloat16At(long index) { return VkPhysicalDeviceFloatControlsProperties.get_shaderRoundingModeRTZFloat16(this.segment(), index); }
+        /// Sets `shaderRoundingModeRTZFloat16` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer shaderRoundingModeRTZFloat16At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderRoundingModeRTZFloat16(this.segment(), index, value); return this; }
+
+        /// {@return `shaderRoundingModeRTZFloat32` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int shaderRoundingModeRTZFloat32At(long index) { return VkPhysicalDeviceFloatControlsProperties.get_shaderRoundingModeRTZFloat32(this.segment(), index); }
+        /// Sets `shaderRoundingModeRTZFloat32` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer shaderRoundingModeRTZFloat32At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderRoundingModeRTZFloat32(this.segment(), index, value); return this; }
+
+        /// {@return `shaderRoundingModeRTZFloat64` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int shaderRoundingModeRTZFloat64At(long index) { return VkPhysicalDeviceFloatControlsProperties.get_shaderRoundingModeRTZFloat64(this.segment(), index); }
+        /// Sets `shaderRoundingModeRTZFloat64` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer shaderRoundingModeRTZFloat64At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFloatControlsProperties.set_shaderRoundingModeRTZFloat64(this.segment(), index, value); return this; }
+
+    }
 }

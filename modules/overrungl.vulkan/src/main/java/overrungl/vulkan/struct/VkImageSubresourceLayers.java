@@ -43,7 +43,7 @@ import overrungl.util.*;
 ///     uint32_t layerCount;
 /// } VkImageSubresourceLayers;
 /// ```
-public final class VkImageSubresourceLayers extends Struct {
+public sealed class VkImageSubresourceLayers extends Struct {
     /// The struct layout of `VkImageSubresourceLayers`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("aspectMask"),
@@ -70,6 +70,11 @@ public final class VkImageSubresourceLayers extends Struct {
     public static VkImageSubresourceLayers of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkImageSubresourceLayers(segment); }
 
     /// Creates `VkImageSubresourceLayers` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkImageSubresourceLayers` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -82,7 +87,7 @@ public final class VkImageSubresourceLayers extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkImageSubresourceLayers ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkImageSubresourceLayers(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkImageSubresourceLayers` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -93,18 +98,21 @@ public final class VkImageSubresourceLayers extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkImageSubresourceLayers`
-    public static VkImageSubresourceLayers alloc(SegmentAllocator allocator, long count) { return new VkImageSubresourceLayers(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkImageSubresourceLayers`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkImageSubresourceLayers`
-    public VkImageSubresourceLayers asSlice(long index) { return new VkImageSubresourceLayers(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkImageSubresourceLayers` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkImageSubresourceLayers`
+    public static VkImageSubresourceLayers allocInit(SegmentAllocator allocator, @CType("VkImageAspectFlags") int aspectMask, @CType("uint32_t") int mipLevel, @CType("uint32_t") int baseArrayLayer, @CType("uint32_t") int layerCount) { return alloc(allocator).aspectMask(aspectMask).mipLevel(mipLevel).baseArrayLayer(baseArrayLayer).layerCount(layerCount); }
 
-    /// Creates a slice of `VkImageSubresourceLayers`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkImageSubresourceLayers`
-    public VkImageSubresourceLayers asSlice(long index, long count) { return new VkImageSubresourceLayers(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkImageSubresourceLayers copyFrom(VkImageSubresourceLayers src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `aspectMask` at the given index}
     /// @param segment the segment of the struct
@@ -113,9 +121,6 @@ public final class VkImageSubresourceLayers extends Struct {
     /// {@return `aspectMask`}
     /// @param segment the segment of the struct
     public static @CType("VkImageAspectFlags") int get_aspectMask(MemorySegment segment) { return VkImageSubresourceLayers.get_aspectMask(segment, 0L); }
-    /// {@return `aspectMask` at the given index}
-    /// @param index the index
-    public @CType("VkImageAspectFlags") int aspectMaskAt(long index) { return VkImageSubresourceLayers.get_aspectMask(this.segment(), index); }
     /// {@return `aspectMask`}
     public @CType("VkImageAspectFlags") int aspectMask() { return VkImageSubresourceLayers.get_aspectMask(this.segment()); }
     /// Sets `aspectMask` with the given value at the given index.
@@ -127,11 +132,6 @@ public final class VkImageSubresourceLayers extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_aspectMask(MemorySegment segment, @CType("VkImageAspectFlags") int value) { VkImageSubresourceLayers.set_aspectMask(segment, 0L, value); }
-    /// Sets `aspectMask` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageSubresourceLayers aspectMaskAt(long index, @CType("VkImageAspectFlags") int value) { VkImageSubresourceLayers.set_aspectMask(this.segment(), index, value); return this; }
     /// Sets `aspectMask` with the given value.
     /// @param value the value
     /// @return `this`
@@ -144,9 +144,6 @@ public final class VkImageSubresourceLayers extends Struct {
     /// {@return `mipLevel`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_mipLevel(MemorySegment segment) { return VkImageSubresourceLayers.get_mipLevel(segment, 0L); }
-    /// {@return `mipLevel` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int mipLevelAt(long index) { return VkImageSubresourceLayers.get_mipLevel(this.segment(), index); }
     /// {@return `mipLevel`}
     public @CType("uint32_t") int mipLevel() { return VkImageSubresourceLayers.get_mipLevel(this.segment()); }
     /// Sets `mipLevel` with the given value at the given index.
@@ -158,11 +155,6 @@ public final class VkImageSubresourceLayers extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_mipLevel(MemorySegment segment, @CType("uint32_t") int value) { VkImageSubresourceLayers.set_mipLevel(segment, 0L, value); }
-    /// Sets `mipLevel` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageSubresourceLayers mipLevelAt(long index, @CType("uint32_t") int value) { VkImageSubresourceLayers.set_mipLevel(this.segment(), index, value); return this; }
     /// Sets `mipLevel` with the given value.
     /// @param value the value
     /// @return `this`
@@ -175,9 +167,6 @@ public final class VkImageSubresourceLayers extends Struct {
     /// {@return `baseArrayLayer`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_baseArrayLayer(MemorySegment segment) { return VkImageSubresourceLayers.get_baseArrayLayer(segment, 0L); }
-    /// {@return `baseArrayLayer` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int baseArrayLayerAt(long index) { return VkImageSubresourceLayers.get_baseArrayLayer(this.segment(), index); }
     /// {@return `baseArrayLayer`}
     public @CType("uint32_t") int baseArrayLayer() { return VkImageSubresourceLayers.get_baseArrayLayer(this.segment()); }
     /// Sets `baseArrayLayer` with the given value at the given index.
@@ -189,11 +178,6 @@ public final class VkImageSubresourceLayers extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_baseArrayLayer(MemorySegment segment, @CType("uint32_t") int value) { VkImageSubresourceLayers.set_baseArrayLayer(segment, 0L, value); }
-    /// Sets `baseArrayLayer` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageSubresourceLayers baseArrayLayerAt(long index, @CType("uint32_t") int value) { VkImageSubresourceLayers.set_baseArrayLayer(this.segment(), index, value); return this; }
     /// Sets `baseArrayLayer` with the given value.
     /// @param value the value
     /// @return `this`
@@ -206,9 +190,6 @@ public final class VkImageSubresourceLayers extends Struct {
     /// {@return `layerCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_layerCount(MemorySegment segment) { return VkImageSubresourceLayers.get_layerCount(segment, 0L); }
-    /// {@return `layerCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int layerCountAt(long index) { return VkImageSubresourceLayers.get_layerCount(this.segment(), index); }
     /// {@return `layerCount`}
     public @CType("uint32_t") int layerCount() { return VkImageSubresourceLayers.get_layerCount(this.segment()); }
     /// Sets `layerCount` with the given value at the given index.
@@ -220,14 +201,68 @@ public final class VkImageSubresourceLayers extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_layerCount(MemorySegment segment, @CType("uint32_t") int value) { VkImageSubresourceLayers.set_layerCount(segment, 0L, value); }
-    /// Sets `layerCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageSubresourceLayers layerCountAt(long index, @CType("uint32_t") int value) { VkImageSubresourceLayers.set_layerCount(this.segment(), index, value); return this; }
     /// Sets `layerCount` with the given value.
     /// @param value the value
     /// @return `this`
     public VkImageSubresourceLayers layerCount(@CType("uint32_t") int value) { VkImageSubresourceLayers.set_layerCount(this.segment(), value); return this; }
 
+    /// A buffer of [VkImageSubresourceLayers].
+    public static final class Buffer extends VkImageSubresourceLayers {
+        private final long elementCount;
+
+        /// Creates `VkImageSubresourceLayers.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkImageSubresourceLayers`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkImageSubresourceLayers`
+        public VkImageSubresourceLayers asSlice(long index) { return new VkImageSubresourceLayers(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkImageSubresourceLayers`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkImageSubresourceLayers`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `aspectMask` at the given index}
+        /// @param index the index
+        public @CType("VkImageAspectFlags") int aspectMaskAt(long index) { return VkImageSubresourceLayers.get_aspectMask(this.segment(), index); }
+        /// Sets `aspectMask` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer aspectMaskAt(long index, @CType("VkImageAspectFlags") int value) { VkImageSubresourceLayers.set_aspectMask(this.segment(), index, value); return this; }
+
+        /// {@return `mipLevel` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int mipLevelAt(long index) { return VkImageSubresourceLayers.get_mipLevel(this.segment(), index); }
+        /// Sets `mipLevel` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer mipLevelAt(long index, @CType("uint32_t") int value) { VkImageSubresourceLayers.set_mipLevel(this.segment(), index, value); return this; }
+
+        /// {@return `baseArrayLayer` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int baseArrayLayerAt(long index) { return VkImageSubresourceLayers.get_baseArrayLayer(this.segment(), index); }
+        /// Sets `baseArrayLayer` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer baseArrayLayerAt(long index, @CType("uint32_t") int value) { VkImageSubresourceLayers.set_baseArrayLayer(this.segment(), index, value); return this; }
+
+        /// {@return `layerCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int layerCountAt(long index) { return VkImageSubresourceLayers.get_layerCount(this.segment(), index); }
+        /// Sets `layerCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer layerCountAt(long index, @CType("uint32_t") int value) { VkImageSubresourceLayers.set_layerCount(this.segment(), index, value); return this; }
+
+    }
 }

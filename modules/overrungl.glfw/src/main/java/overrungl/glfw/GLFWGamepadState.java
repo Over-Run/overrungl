@@ -37,7 +37,7 @@ import overrungl.util.*;
 ///     float[6] axes;
 /// } GLFWGamepadState;
 /// ```
-public final class GLFWGamepadState extends Struct {
+public sealed class GLFWGamepadState extends Struct {
     /// The struct layout of `GLFWgamepadstate`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         MemoryLayout.sequenceLayout(15, ValueLayout.JAVA_BYTE).withName("buttons"),
@@ -62,6 +62,11 @@ public final class GLFWGamepadState extends Struct {
     public static GLFWGamepadState of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new GLFWGamepadState(segment); }
 
     /// Creates `GLFWGamepadState` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `GLFWGamepadState` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -74,7 +79,7 @@ public final class GLFWGamepadState extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static GLFWGamepadState ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new GLFWGamepadState(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `GLFWGamepadState` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -85,18 +90,21 @@ public final class GLFWGamepadState extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `GLFWGamepadState`
-    public static GLFWGamepadState alloc(SegmentAllocator allocator, long count) { return new GLFWGamepadState(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `GLFWGamepadState`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `GLFWGamepadState`
-    public GLFWGamepadState asSlice(long index) { return new GLFWGamepadState(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `GLFWGamepadState` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `GLFWGamepadState`
+    public static GLFWGamepadState allocInit(SegmentAllocator allocator, @CType("unsigned char[15]") java.lang.foreign.MemorySegment buttons, @CType("float[6]") java.lang.foreign.MemorySegment axes) { return alloc(allocator).buttons(buttons).axes(axes); }
 
-    /// Creates a slice of `GLFWGamepadState`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `GLFWGamepadState`
-    public GLFWGamepadState asSlice(long index, long count) { return new GLFWGamepadState(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public GLFWGamepadState copyFrom(GLFWGamepadState src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `buttons` at the given index}
     /// @param segment the segment of the struct
@@ -105,9 +113,6 @@ public final class GLFWGamepadState extends Struct {
     /// {@return `buttons`}
     /// @param segment the segment of the struct
     public static @CType("unsigned char[15]") java.lang.foreign.MemorySegment get_buttons(MemorySegment segment) { return GLFWGamepadState.get_buttons(segment, 0L); }
-    /// {@return `buttons` at the given index}
-    /// @param index the index
-    public @CType("unsigned char[15]") java.lang.foreign.MemorySegment buttonsAt(long index) { return GLFWGamepadState.get_buttons(this.segment(), index); }
     /// {@return `buttons`}
     public @CType("unsigned char[15]") java.lang.foreign.MemorySegment buttons() { return GLFWGamepadState.get_buttons(this.segment()); }
     /// Sets `buttons` with the given value at the given index.
@@ -119,11 +124,6 @@ public final class GLFWGamepadState extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_buttons(MemorySegment segment, @CType("unsigned char[15]") java.lang.foreign.MemorySegment value) { GLFWGamepadState.set_buttons(segment, 0L, value); }
-    /// Sets `buttons` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public GLFWGamepadState buttonsAt(long index, @CType("unsigned char[15]") java.lang.foreign.MemorySegment value) { GLFWGamepadState.set_buttons(this.segment(), index, value); return this; }
     /// Sets `buttons` with the given value.
     /// @param value the value
     /// @return `this`
@@ -136,9 +136,6 @@ public final class GLFWGamepadState extends Struct {
     /// {@return `axes`}
     /// @param segment the segment of the struct
     public static @CType("float[6]") java.lang.foreign.MemorySegment get_axes(MemorySegment segment) { return GLFWGamepadState.get_axes(segment, 0L); }
-    /// {@return `axes` at the given index}
-    /// @param index the index
-    public @CType("float[6]") java.lang.foreign.MemorySegment axesAt(long index) { return GLFWGamepadState.get_axes(this.segment(), index); }
     /// {@return `axes`}
     public @CType("float[6]") java.lang.foreign.MemorySegment axes() { return GLFWGamepadState.get_axes(this.segment()); }
     /// Sets `axes` with the given value at the given index.
@@ -150,14 +147,50 @@ public final class GLFWGamepadState extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_axes(MemorySegment segment, @CType("float[6]") java.lang.foreign.MemorySegment value) { GLFWGamepadState.set_axes(segment, 0L, value); }
-    /// Sets `axes` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public GLFWGamepadState axesAt(long index, @CType("float[6]") java.lang.foreign.MemorySegment value) { GLFWGamepadState.set_axes(this.segment(), index, value); return this; }
     /// Sets `axes` with the given value.
     /// @param value the value
     /// @return `this`
     public GLFWGamepadState axes(@CType("float[6]") java.lang.foreign.MemorySegment value) { GLFWGamepadState.set_axes(this.segment(), value); return this; }
 
+    /// A buffer of [GLFWGamepadState].
+    public static final class Buffer extends GLFWGamepadState {
+        private final long elementCount;
+
+        /// Creates `GLFWGamepadState.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `GLFWGamepadState`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `GLFWGamepadState`
+        public GLFWGamepadState asSlice(long index) { return new GLFWGamepadState(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `GLFWGamepadState`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `GLFWGamepadState`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `buttons` at the given index}
+        /// @param index the index
+        public @CType("unsigned char[15]") java.lang.foreign.MemorySegment buttonsAt(long index) { return GLFWGamepadState.get_buttons(this.segment(), index); }
+        /// Sets `buttons` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer buttonsAt(long index, @CType("unsigned char[15]") java.lang.foreign.MemorySegment value) { GLFWGamepadState.set_buttons(this.segment(), index, value); return this; }
+
+        /// {@return `axes` at the given index}
+        /// @param index the index
+        public @CType("float[6]") java.lang.foreign.MemorySegment axesAt(long index) { return GLFWGamepadState.get_axes(this.segment(), index); }
+        /// Sets `axes` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer axesAt(long index, @CType("float[6]") java.lang.foreign.MemorySegment value) { GLFWGamepadState.set_axes(this.segment(), index, value); return this; }
+
+    }
 }

@@ -43,7 +43,7 @@ import overrungl.util.*;
 ///     const void * pView;
 /// } VkIOSSurfaceCreateInfoMVK;
 /// ```
-public final class VkIOSSurfaceCreateInfoMVK extends Struct {
+public sealed class VkIOSSurfaceCreateInfoMVK extends Struct {
     /// The struct layout of `VkIOSSurfaceCreateInfoMVK`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -70,6 +70,11 @@ public final class VkIOSSurfaceCreateInfoMVK extends Struct {
     public static VkIOSSurfaceCreateInfoMVK of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkIOSSurfaceCreateInfoMVK(segment); }
 
     /// Creates `VkIOSSurfaceCreateInfoMVK` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkIOSSurfaceCreateInfoMVK` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -82,7 +87,7 @@ public final class VkIOSSurfaceCreateInfoMVK extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkIOSSurfaceCreateInfoMVK ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkIOSSurfaceCreateInfoMVK(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkIOSSurfaceCreateInfoMVK` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -93,18 +98,21 @@ public final class VkIOSSurfaceCreateInfoMVK extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkIOSSurfaceCreateInfoMVK`
-    public static VkIOSSurfaceCreateInfoMVK alloc(SegmentAllocator allocator, long count) { return new VkIOSSurfaceCreateInfoMVK(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkIOSSurfaceCreateInfoMVK`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkIOSSurfaceCreateInfoMVK`
-    public VkIOSSurfaceCreateInfoMVK asSlice(long index) { return new VkIOSSurfaceCreateInfoMVK(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkIOSSurfaceCreateInfoMVK` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkIOSSurfaceCreateInfoMVK`
+    public static VkIOSSurfaceCreateInfoMVK allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkIOSSurfaceCreateFlagsMVK") int flags, @CType("const void *") java.lang.foreign.MemorySegment pView) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).pView(pView); }
 
-    /// Creates a slice of `VkIOSSurfaceCreateInfoMVK`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkIOSSurfaceCreateInfoMVK`
-    public VkIOSSurfaceCreateInfoMVK asSlice(long index, long count) { return new VkIOSSurfaceCreateInfoMVK(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkIOSSurfaceCreateInfoMVK copyFrom(VkIOSSurfaceCreateInfoMVK src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -113,9 +121,6 @@ public final class VkIOSSurfaceCreateInfoMVK extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkIOSSurfaceCreateInfoMVK.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkIOSSurfaceCreateInfoMVK.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkIOSSurfaceCreateInfoMVK.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -127,11 +132,6 @@ public final class VkIOSSurfaceCreateInfoMVK extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkIOSSurfaceCreateInfoMVK.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkIOSSurfaceCreateInfoMVK sTypeAt(long index, @CType("VkStructureType") int value) { VkIOSSurfaceCreateInfoMVK.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -144,9 +144,6 @@ public final class VkIOSSurfaceCreateInfoMVK extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkIOSSurfaceCreateInfoMVK.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkIOSSurfaceCreateInfoMVK.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkIOSSurfaceCreateInfoMVK.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -158,11 +155,6 @@ public final class VkIOSSurfaceCreateInfoMVK extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkIOSSurfaceCreateInfoMVK.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkIOSSurfaceCreateInfoMVK pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkIOSSurfaceCreateInfoMVK.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -175,9 +167,6 @@ public final class VkIOSSurfaceCreateInfoMVK extends Struct {
     /// {@return `flags`}
     /// @param segment the segment of the struct
     public static @CType("VkIOSSurfaceCreateFlagsMVK") int get_flags(MemorySegment segment) { return VkIOSSurfaceCreateInfoMVK.get_flags(segment, 0L); }
-    /// {@return `flags` at the given index}
-    /// @param index the index
-    public @CType("VkIOSSurfaceCreateFlagsMVK") int flagsAt(long index) { return VkIOSSurfaceCreateInfoMVK.get_flags(this.segment(), index); }
     /// {@return `flags`}
     public @CType("VkIOSSurfaceCreateFlagsMVK") int flags() { return VkIOSSurfaceCreateInfoMVK.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
@@ -189,11 +178,6 @@ public final class VkIOSSurfaceCreateInfoMVK extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_flags(MemorySegment segment, @CType("VkIOSSurfaceCreateFlagsMVK") int value) { VkIOSSurfaceCreateInfoMVK.set_flags(segment, 0L, value); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkIOSSurfaceCreateInfoMVK flagsAt(long index, @CType("VkIOSSurfaceCreateFlagsMVK") int value) { VkIOSSurfaceCreateInfoMVK.set_flags(this.segment(), index, value); return this; }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -206,9 +190,6 @@ public final class VkIOSSurfaceCreateInfoMVK extends Struct {
     /// {@return `pView`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pView(MemorySegment segment) { return VkIOSSurfaceCreateInfoMVK.get_pView(segment, 0L); }
-    /// {@return `pView` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pViewAt(long index) { return VkIOSSurfaceCreateInfoMVK.get_pView(this.segment(), index); }
     /// {@return `pView`}
     public @CType("const void *") java.lang.foreign.MemorySegment pView() { return VkIOSSurfaceCreateInfoMVK.get_pView(this.segment()); }
     /// Sets `pView` with the given value at the given index.
@@ -220,14 +201,68 @@ public final class VkIOSSurfaceCreateInfoMVK extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pView(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkIOSSurfaceCreateInfoMVK.set_pView(segment, 0L, value); }
-    /// Sets `pView` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkIOSSurfaceCreateInfoMVK pViewAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkIOSSurfaceCreateInfoMVK.set_pView(this.segment(), index, value); return this; }
     /// Sets `pView` with the given value.
     /// @param value the value
     /// @return `this`
     public VkIOSSurfaceCreateInfoMVK pView(@CType("const void *") java.lang.foreign.MemorySegment value) { VkIOSSurfaceCreateInfoMVK.set_pView(this.segment(), value); return this; }
 
+    /// A buffer of [VkIOSSurfaceCreateInfoMVK].
+    public static final class Buffer extends VkIOSSurfaceCreateInfoMVK {
+        private final long elementCount;
+
+        /// Creates `VkIOSSurfaceCreateInfoMVK.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkIOSSurfaceCreateInfoMVK`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkIOSSurfaceCreateInfoMVK`
+        public VkIOSSurfaceCreateInfoMVK asSlice(long index) { return new VkIOSSurfaceCreateInfoMVK(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkIOSSurfaceCreateInfoMVK`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkIOSSurfaceCreateInfoMVK`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkIOSSurfaceCreateInfoMVK.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkIOSSurfaceCreateInfoMVK.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkIOSSurfaceCreateInfoMVK.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkIOSSurfaceCreateInfoMVK.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `flags` at the given index}
+        /// @param index the index
+        public @CType("VkIOSSurfaceCreateFlagsMVK") int flagsAt(long index) { return VkIOSSurfaceCreateInfoMVK.get_flags(this.segment(), index); }
+        /// Sets `flags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer flagsAt(long index, @CType("VkIOSSurfaceCreateFlagsMVK") int value) { VkIOSSurfaceCreateInfoMVK.set_flags(this.segment(), index, value); return this; }
+
+        /// {@return `pView` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pViewAt(long index) { return VkIOSSurfaceCreateInfoMVK.get_pView(this.segment(), index); }
+        /// Sets `pView` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pViewAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkIOSSurfaceCreateInfoMVK.set_pView(this.segment(), index, value); return this; }
+
+    }
 }

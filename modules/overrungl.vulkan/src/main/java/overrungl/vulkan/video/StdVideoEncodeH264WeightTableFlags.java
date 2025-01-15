@@ -43,7 +43,7 @@ import overrungl.util.*;
 ///     uint32_t chroma_weight_l1_flag;
 /// } StdVideoEncodeH264WeightTableFlags;
 /// ```
-public final class StdVideoEncodeH264WeightTableFlags extends Struct {
+public sealed class StdVideoEncodeH264WeightTableFlags extends Struct {
     /// The struct layout of `StdVideoEncodeH264WeightTableFlags`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("luma_weight_l0_flag"),
@@ -70,6 +70,11 @@ public final class StdVideoEncodeH264WeightTableFlags extends Struct {
     public static StdVideoEncodeH264WeightTableFlags of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoEncodeH264WeightTableFlags(segment); }
 
     /// Creates `StdVideoEncodeH264WeightTableFlags` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `StdVideoEncodeH264WeightTableFlags` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -82,7 +87,7 @@ public final class StdVideoEncodeH264WeightTableFlags extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoEncodeH264WeightTableFlags ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoEncodeH264WeightTableFlags(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `StdVideoEncodeH264WeightTableFlags` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -93,18 +98,21 @@ public final class StdVideoEncodeH264WeightTableFlags extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `StdVideoEncodeH264WeightTableFlags`
-    public static StdVideoEncodeH264WeightTableFlags alloc(SegmentAllocator allocator, long count) { return new StdVideoEncodeH264WeightTableFlags(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `StdVideoEncodeH264WeightTableFlags`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `StdVideoEncodeH264WeightTableFlags`
-    public StdVideoEncodeH264WeightTableFlags asSlice(long index) { return new StdVideoEncodeH264WeightTableFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `StdVideoEncodeH264WeightTableFlags` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `StdVideoEncodeH264WeightTableFlags`
+    public static StdVideoEncodeH264WeightTableFlags allocInit(SegmentAllocator allocator, @CType("uint32_t") int luma_weight_l0_flag, @CType("uint32_t") int chroma_weight_l0_flag, @CType("uint32_t") int luma_weight_l1_flag, @CType("uint32_t") int chroma_weight_l1_flag) { return alloc(allocator).luma_weight_l0_flag(luma_weight_l0_flag).chroma_weight_l0_flag(chroma_weight_l0_flag).luma_weight_l1_flag(luma_weight_l1_flag).chroma_weight_l1_flag(chroma_weight_l1_flag); }
 
-    /// Creates a slice of `StdVideoEncodeH264WeightTableFlags`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `StdVideoEncodeH264WeightTableFlags`
-    public StdVideoEncodeH264WeightTableFlags asSlice(long index, long count) { return new StdVideoEncodeH264WeightTableFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public StdVideoEncodeH264WeightTableFlags copyFrom(StdVideoEncodeH264WeightTableFlags src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `luma_weight_l0_flag` at the given index}
     /// @param segment the segment of the struct
@@ -113,9 +121,6 @@ public final class StdVideoEncodeH264WeightTableFlags extends Struct {
     /// {@return `luma_weight_l0_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_luma_weight_l0_flag(MemorySegment segment) { return StdVideoEncodeH264WeightTableFlags.get_luma_weight_l0_flag(segment, 0L); }
-    /// {@return `luma_weight_l0_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int luma_weight_l0_flagAt(long index) { return StdVideoEncodeH264WeightTableFlags.get_luma_weight_l0_flag(this.segment(), index); }
     /// {@return `luma_weight_l0_flag`}
     public @CType("uint32_t") int luma_weight_l0_flag() { return StdVideoEncodeH264WeightTableFlags.get_luma_weight_l0_flag(this.segment()); }
     /// Sets `luma_weight_l0_flag` with the given value at the given index.
@@ -127,11 +132,6 @@ public final class StdVideoEncodeH264WeightTableFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_luma_weight_l0_flag(MemorySegment segment, @CType("uint32_t") int value) { StdVideoEncodeH264WeightTableFlags.set_luma_weight_l0_flag(segment, 0L, value); }
-    /// Sets `luma_weight_l0_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeH264WeightTableFlags luma_weight_l0_flagAt(long index, @CType("uint32_t") int value) { StdVideoEncodeH264WeightTableFlags.set_luma_weight_l0_flag(this.segment(), index, value); return this; }
     /// Sets `luma_weight_l0_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -144,9 +144,6 @@ public final class StdVideoEncodeH264WeightTableFlags extends Struct {
     /// {@return `chroma_weight_l0_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_chroma_weight_l0_flag(MemorySegment segment) { return StdVideoEncodeH264WeightTableFlags.get_chroma_weight_l0_flag(segment, 0L); }
-    /// {@return `chroma_weight_l0_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int chroma_weight_l0_flagAt(long index) { return StdVideoEncodeH264WeightTableFlags.get_chroma_weight_l0_flag(this.segment(), index); }
     /// {@return `chroma_weight_l0_flag`}
     public @CType("uint32_t") int chroma_weight_l0_flag() { return StdVideoEncodeH264WeightTableFlags.get_chroma_weight_l0_flag(this.segment()); }
     /// Sets `chroma_weight_l0_flag` with the given value at the given index.
@@ -158,11 +155,6 @@ public final class StdVideoEncodeH264WeightTableFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_chroma_weight_l0_flag(MemorySegment segment, @CType("uint32_t") int value) { StdVideoEncodeH264WeightTableFlags.set_chroma_weight_l0_flag(segment, 0L, value); }
-    /// Sets `chroma_weight_l0_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeH264WeightTableFlags chroma_weight_l0_flagAt(long index, @CType("uint32_t") int value) { StdVideoEncodeH264WeightTableFlags.set_chroma_weight_l0_flag(this.segment(), index, value); return this; }
     /// Sets `chroma_weight_l0_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -175,9 +167,6 @@ public final class StdVideoEncodeH264WeightTableFlags extends Struct {
     /// {@return `luma_weight_l1_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_luma_weight_l1_flag(MemorySegment segment) { return StdVideoEncodeH264WeightTableFlags.get_luma_weight_l1_flag(segment, 0L); }
-    /// {@return `luma_weight_l1_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int luma_weight_l1_flagAt(long index) { return StdVideoEncodeH264WeightTableFlags.get_luma_weight_l1_flag(this.segment(), index); }
     /// {@return `luma_weight_l1_flag`}
     public @CType("uint32_t") int luma_weight_l1_flag() { return StdVideoEncodeH264WeightTableFlags.get_luma_weight_l1_flag(this.segment()); }
     /// Sets `luma_weight_l1_flag` with the given value at the given index.
@@ -189,11 +178,6 @@ public final class StdVideoEncodeH264WeightTableFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_luma_weight_l1_flag(MemorySegment segment, @CType("uint32_t") int value) { StdVideoEncodeH264WeightTableFlags.set_luma_weight_l1_flag(segment, 0L, value); }
-    /// Sets `luma_weight_l1_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeH264WeightTableFlags luma_weight_l1_flagAt(long index, @CType("uint32_t") int value) { StdVideoEncodeH264WeightTableFlags.set_luma_weight_l1_flag(this.segment(), index, value); return this; }
     /// Sets `luma_weight_l1_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -206,9 +190,6 @@ public final class StdVideoEncodeH264WeightTableFlags extends Struct {
     /// {@return `chroma_weight_l1_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_chroma_weight_l1_flag(MemorySegment segment) { return StdVideoEncodeH264WeightTableFlags.get_chroma_weight_l1_flag(segment, 0L); }
-    /// {@return `chroma_weight_l1_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int chroma_weight_l1_flagAt(long index) { return StdVideoEncodeH264WeightTableFlags.get_chroma_weight_l1_flag(this.segment(), index); }
     /// {@return `chroma_weight_l1_flag`}
     public @CType("uint32_t") int chroma_weight_l1_flag() { return StdVideoEncodeH264WeightTableFlags.get_chroma_weight_l1_flag(this.segment()); }
     /// Sets `chroma_weight_l1_flag` with the given value at the given index.
@@ -220,14 +201,68 @@ public final class StdVideoEncodeH264WeightTableFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_chroma_weight_l1_flag(MemorySegment segment, @CType("uint32_t") int value) { StdVideoEncodeH264WeightTableFlags.set_chroma_weight_l1_flag(segment, 0L, value); }
-    /// Sets `chroma_weight_l1_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeH264WeightTableFlags chroma_weight_l1_flagAt(long index, @CType("uint32_t") int value) { StdVideoEncodeH264WeightTableFlags.set_chroma_weight_l1_flag(this.segment(), index, value); return this; }
     /// Sets `chroma_weight_l1_flag` with the given value.
     /// @param value the value
     /// @return `this`
     public StdVideoEncodeH264WeightTableFlags chroma_weight_l1_flag(@CType("uint32_t") int value) { StdVideoEncodeH264WeightTableFlags.set_chroma_weight_l1_flag(this.segment(), value); return this; }
 
+    /// A buffer of [StdVideoEncodeH264WeightTableFlags].
+    public static final class Buffer extends StdVideoEncodeH264WeightTableFlags {
+        private final long elementCount;
+
+        /// Creates `StdVideoEncodeH264WeightTableFlags.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `StdVideoEncodeH264WeightTableFlags`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `StdVideoEncodeH264WeightTableFlags`
+        public StdVideoEncodeH264WeightTableFlags asSlice(long index) { return new StdVideoEncodeH264WeightTableFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `StdVideoEncodeH264WeightTableFlags`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `StdVideoEncodeH264WeightTableFlags`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `luma_weight_l0_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int luma_weight_l0_flagAt(long index) { return StdVideoEncodeH264WeightTableFlags.get_luma_weight_l0_flag(this.segment(), index); }
+        /// Sets `luma_weight_l0_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer luma_weight_l0_flagAt(long index, @CType("uint32_t") int value) { StdVideoEncodeH264WeightTableFlags.set_luma_weight_l0_flag(this.segment(), index, value); return this; }
+
+        /// {@return `chroma_weight_l0_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int chroma_weight_l0_flagAt(long index) { return StdVideoEncodeH264WeightTableFlags.get_chroma_weight_l0_flag(this.segment(), index); }
+        /// Sets `chroma_weight_l0_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer chroma_weight_l0_flagAt(long index, @CType("uint32_t") int value) { StdVideoEncodeH264WeightTableFlags.set_chroma_weight_l0_flag(this.segment(), index, value); return this; }
+
+        /// {@return `luma_weight_l1_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int luma_weight_l1_flagAt(long index) { return StdVideoEncodeH264WeightTableFlags.get_luma_weight_l1_flag(this.segment(), index); }
+        /// Sets `luma_weight_l1_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer luma_weight_l1_flagAt(long index, @CType("uint32_t") int value) { StdVideoEncodeH264WeightTableFlags.set_luma_weight_l1_flag(this.segment(), index, value); return this; }
+
+        /// {@return `chroma_weight_l1_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int chroma_weight_l1_flagAt(long index) { return StdVideoEncodeH264WeightTableFlags.get_chroma_weight_l1_flag(this.segment(), index); }
+        /// Sets `chroma_weight_l1_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer chroma_weight_l1_flagAt(long index, @CType("uint32_t") int value) { StdVideoEncodeH264WeightTableFlags.set_chroma_weight_l1_flag(this.segment(), index, value); return this; }
+
+    }
 }

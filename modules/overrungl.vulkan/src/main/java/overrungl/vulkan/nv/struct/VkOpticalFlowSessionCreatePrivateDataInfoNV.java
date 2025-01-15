@@ -46,7 +46,7 @@ import overrungl.util.*;
 ///     const void * pPrivateData;
 /// } VkOpticalFlowSessionCreatePrivateDataInfoNV;
 /// ```
-public final class VkOpticalFlowSessionCreatePrivateDataInfoNV extends Struct {
+public sealed class VkOpticalFlowSessionCreatePrivateDataInfoNV extends Struct {
     /// The struct layout of `VkOpticalFlowSessionCreatePrivateDataInfoNV`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -76,6 +76,11 @@ public final class VkOpticalFlowSessionCreatePrivateDataInfoNV extends Struct {
     public static VkOpticalFlowSessionCreatePrivateDataInfoNV of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkOpticalFlowSessionCreatePrivateDataInfoNV(segment); }
 
     /// Creates `VkOpticalFlowSessionCreatePrivateDataInfoNV` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkOpticalFlowSessionCreatePrivateDataInfoNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -88,7 +93,7 @@ public final class VkOpticalFlowSessionCreatePrivateDataInfoNV extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkOpticalFlowSessionCreatePrivateDataInfoNV ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkOpticalFlowSessionCreatePrivateDataInfoNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkOpticalFlowSessionCreatePrivateDataInfoNV` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -99,18 +104,21 @@ public final class VkOpticalFlowSessionCreatePrivateDataInfoNV extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkOpticalFlowSessionCreatePrivateDataInfoNV`
-    public static VkOpticalFlowSessionCreatePrivateDataInfoNV alloc(SegmentAllocator allocator, long count) { return new VkOpticalFlowSessionCreatePrivateDataInfoNV(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkOpticalFlowSessionCreatePrivateDataInfoNV`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkOpticalFlowSessionCreatePrivateDataInfoNV`
-    public VkOpticalFlowSessionCreatePrivateDataInfoNV asSlice(long index) { return new VkOpticalFlowSessionCreatePrivateDataInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkOpticalFlowSessionCreatePrivateDataInfoNV` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkOpticalFlowSessionCreatePrivateDataInfoNV`
+    public static VkOpticalFlowSessionCreatePrivateDataInfoNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int id, @CType("uint32_t") int size, @CType("const void *") java.lang.foreign.MemorySegment pPrivateData) { return alloc(allocator).sType(sType).pNext(pNext).id(id).size(size).pPrivateData(pPrivateData); }
 
-    /// Creates a slice of `VkOpticalFlowSessionCreatePrivateDataInfoNV`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkOpticalFlowSessionCreatePrivateDataInfoNV`
-    public VkOpticalFlowSessionCreatePrivateDataInfoNV asSlice(long index, long count) { return new VkOpticalFlowSessionCreatePrivateDataInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkOpticalFlowSessionCreatePrivateDataInfoNV copyFrom(VkOpticalFlowSessionCreatePrivateDataInfoNV src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -119,9 +127,6 @@ public final class VkOpticalFlowSessionCreatePrivateDataInfoNV extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkOpticalFlowSessionCreatePrivateDataInfoNV.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkOpticalFlowSessionCreatePrivateDataInfoNV.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkOpticalFlowSessionCreatePrivateDataInfoNV.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -133,11 +138,6 @@ public final class VkOpticalFlowSessionCreatePrivateDataInfoNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkOpticalFlowSessionCreatePrivateDataInfoNV.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkOpticalFlowSessionCreatePrivateDataInfoNV sTypeAt(long index, @CType("VkStructureType") int value) { VkOpticalFlowSessionCreatePrivateDataInfoNV.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,9 +150,6 @@ public final class VkOpticalFlowSessionCreatePrivateDataInfoNV extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkOpticalFlowSessionCreatePrivateDataInfoNV.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkOpticalFlowSessionCreatePrivateDataInfoNV.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkOpticalFlowSessionCreatePrivateDataInfoNV.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -164,11 +161,6 @@ public final class VkOpticalFlowSessionCreatePrivateDataInfoNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkOpticalFlowSessionCreatePrivateDataInfoNV.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkOpticalFlowSessionCreatePrivateDataInfoNV pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkOpticalFlowSessionCreatePrivateDataInfoNV.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -181,9 +173,6 @@ public final class VkOpticalFlowSessionCreatePrivateDataInfoNV extends Struct {
     /// {@return `id`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_id(MemorySegment segment) { return VkOpticalFlowSessionCreatePrivateDataInfoNV.get_id(segment, 0L); }
-    /// {@return `id` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int idAt(long index) { return VkOpticalFlowSessionCreatePrivateDataInfoNV.get_id(this.segment(), index); }
     /// {@return `id`}
     public @CType("uint32_t") int id() { return VkOpticalFlowSessionCreatePrivateDataInfoNV.get_id(this.segment()); }
     /// Sets `id` with the given value at the given index.
@@ -195,11 +184,6 @@ public final class VkOpticalFlowSessionCreatePrivateDataInfoNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_id(MemorySegment segment, @CType("uint32_t") int value) { VkOpticalFlowSessionCreatePrivateDataInfoNV.set_id(segment, 0L, value); }
-    /// Sets `id` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkOpticalFlowSessionCreatePrivateDataInfoNV idAt(long index, @CType("uint32_t") int value) { VkOpticalFlowSessionCreatePrivateDataInfoNV.set_id(this.segment(), index, value); return this; }
     /// Sets `id` with the given value.
     /// @param value the value
     /// @return `this`
@@ -212,9 +196,6 @@ public final class VkOpticalFlowSessionCreatePrivateDataInfoNV extends Struct {
     /// {@return `size`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_size(MemorySegment segment) { return VkOpticalFlowSessionCreatePrivateDataInfoNV.get_size(segment, 0L); }
-    /// {@return `size` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int sizeAt(long index) { return VkOpticalFlowSessionCreatePrivateDataInfoNV.get_size(this.segment(), index); }
     /// {@return `size`}
     public @CType("uint32_t") int size() { return VkOpticalFlowSessionCreatePrivateDataInfoNV.get_size(this.segment()); }
     /// Sets `size` with the given value at the given index.
@@ -226,11 +207,6 @@ public final class VkOpticalFlowSessionCreatePrivateDataInfoNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_size(MemorySegment segment, @CType("uint32_t") int value) { VkOpticalFlowSessionCreatePrivateDataInfoNV.set_size(segment, 0L, value); }
-    /// Sets `size` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkOpticalFlowSessionCreatePrivateDataInfoNV sizeAt(long index, @CType("uint32_t") int value) { VkOpticalFlowSessionCreatePrivateDataInfoNV.set_size(this.segment(), index, value); return this; }
     /// Sets `size` with the given value.
     /// @param value the value
     /// @return `this`
@@ -243,9 +219,6 @@ public final class VkOpticalFlowSessionCreatePrivateDataInfoNV extends Struct {
     /// {@return `pPrivateData`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pPrivateData(MemorySegment segment) { return VkOpticalFlowSessionCreatePrivateDataInfoNV.get_pPrivateData(segment, 0L); }
-    /// {@return `pPrivateData` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pPrivateDataAt(long index) { return VkOpticalFlowSessionCreatePrivateDataInfoNV.get_pPrivateData(this.segment(), index); }
     /// {@return `pPrivateData`}
     public @CType("const void *") java.lang.foreign.MemorySegment pPrivateData() { return VkOpticalFlowSessionCreatePrivateDataInfoNV.get_pPrivateData(this.segment()); }
     /// Sets `pPrivateData` with the given value at the given index.
@@ -257,14 +230,77 @@ public final class VkOpticalFlowSessionCreatePrivateDataInfoNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pPrivateData(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkOpticalFlowSessionCreatePrivateDataInfoNV.set_pPrivateData(segment, 0L, value); }
-    /// Sets `pPrivateData` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkOpticalFlowSessionCreatePrivateDataInfoNV pPrivateDataAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkOpticalFlowSessionCreatePrivateDataInfoNV.set_pPrivateData(this.segment(), index, value); return this; }
     /// Sets `pPrivateData` with the given value.
     /// @param value the value
     /// @return `this`
     public VkOpticalFlowSessionCreatePrivateDataInfoNV pPrivateData(@CType("const void *") java.lang.foreign.MemorySegment value) { VkOpticalFlowSessionCreatePrivateDataInfoNV.set_pPrivateData(this.segment(), value); return this; }
 
+    /// A buffer of [VkOpticalFlowSessionCreatePrivateDataInfoNV].
+    public static final class Buffer extends VkOpticalFlowSessionCreatePrivateDataInfoNV {
+        private final long elementCount;
+
+        /// Creates `VkOpticalFlowSessionCreatePrivateDataInfoNV.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkOpticalFlowSessionCreatePrivateDataInfoNV`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkOpticalFlowSessionCreatePrivateDataInfoNV`
+        public VkOpticalFlowSessionCreatePrivateDataInfoNV asSlice(long index) { return new VkOpticalFlowSessionCreatePrivateDataInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkOpticalFlowSessionCreatePrivateDataInfoNV`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkOpticalFlowSessionCreatePrivateDataInfoNV`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkOpticalFlowSessionCreatePrivateDataInfoNV.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkOpticalFlowSessionCreatePrivateDataInfoNV.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkOpticalFlowSessionCreatePrivateDataInfoNV.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkOpticalFlowSessionCreatePrivateDataInfoNV.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `id` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int idAt(long index) { return VkOpticalFlowSessionCreatePrivateDataInfoNV.get_id(this.segment(), index); }
+        /// Sets `id` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer idAt(long index, @CType("uint32_t") int value) { VkOpticalFlowSessionCreatePrivateDataInfoNV.set_id(this.segment(), index, value); return this; }
+
+        /// {@return `size` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int sizeAt(long index) { return VkOpticalFlowSessionCreatePrivateDataInfoNV.get_size(this.segment(), index); }
+        /// Sets `size` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sizeAt(long index, @CType("uint32_t") int value) { VkOpticalFlowSessionCreatePrivateDataInfoNV.set_size(this.segment(), index, value); return this; }
+
+        /// {@return `pPrivateData` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pPrivateDataAt(long index) { return VkOpticalFlowSessionCreatePrivateDataInfoNV.get_pPrivateData(this.segment(), index); }
+        /// Sets `pPrivateData` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pPrivateDataAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkOpticalFlowSessionCreatePrivateDataInfoNV.set_pPrivateData(this.segment(), index, value); return this; }
+
+    }
 }

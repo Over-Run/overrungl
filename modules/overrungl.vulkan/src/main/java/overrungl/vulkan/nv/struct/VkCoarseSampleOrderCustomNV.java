@@ -43,7 +43,7 @@ import overrungl.util.*;
 ///     const VkCoarseSampleLocationNV * pSampleLocations;
 /// } VkCoarseSampleOrderCustomNV;
 /// ```
-public final class VkCoarseSampleOrderCustomNV extends Struct {
+public sealed class VkCoarseSampleOrderCustomNV extends Struct {
     /// The struct layout of `VkCoarseSampleOrderCustomNV`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("shadingRate"),
@@ -70,6 +70,11 @@ public final class VkCoarseSampleOrderCustomNV extends Struct {
     public static VkCoarseSampleOrderCustomNV of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkCoarseSampleOrderCustomNV(segment); }
 
     /// Creates `VkCoarseSampleOrderCustomNV` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkCoarseSampleOrderCustomNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -82,7 +87,7 @@ public final class VkCoarseSampleOrderCustomNV extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkCoarseSampleOrderCustomNV ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkCoarseSampleOrderCustomNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkCoarseSampleOrderCustomNV` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -93,18 +98,21 @@ public final class VkCoarseSampleOrderCustomNV extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkCoarseSampleOrderCustomNV`
-    public static VkCoarseSampleOrderCustomNV alloc(SegmentAllocator allocator, long count) { return new VkCoarseSampleOrderCustomNV(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkCoarseSampleOrderCustomNV`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkCoarseSampleOrderCustomNV`
-    public VkCoarseSampleOrderCustomNV asSlice(long index) { return new VkCoarseSampleOrderCustomNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkCoarseSampleOrderCustomNV` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkCoarseSampleOrderCustomNV`
+    public static VkCoarseSampleOrderCustomNV allocInit(SegmentAllocator allocator, @CType("VkShadingRatePaletteEntryNV") int shadingRate, @CType("uint32_t") int sampleCount, @CType("uint32_t") int sampleLocationCount, @CType("const VkCoarseSampleLocationNV *") java.lang.foreign.MemorySegment pSampleLocations) { return alloc(allocator).shadingRate(shadingRate).sampleCount(sampleCount).sampleLocationCount(sampleLocationCount).pSampleLocations(pSampleLocations); }
 
-    /// Creates a slice of `VkCoarseSampleOrderCustomNV`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkCoarseSampleOrderCustomNV`
-    public VkCoarseSampleOrderCustomNV asSlice(long index, long count) { return new VkCoarseSampleOrderCustomNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkCoarseSampleOrderCustomNV copyFrom(VkCoarseSampleOrderCustomNV src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `shadingRate` at the given index}
     /// @param segment the segment of the struct
@@ -113,9 +121,6 @@ public final class VkCoarseSampleOrderCustomNV extends Struct {
     /// {@return `shadingRate`}
     /// @param segment the segment of the struct
     public static @CType("VkShadingRatePaletteEntryNV") int get_shadingRate(MemorySegment segment) { return VkCoarseSampleOrderCustomNV.get_shadingRate(segment, 0L); }
-    /// {@return `shadingRate` at the given index}
-    /// @param index the index
-    public @CType("VkShadingRatePaletteEntryNV") int shadingRateAt(long index) { return VkCoarseSampleOrderCustomNV.get_shadingRate(this.segment(), index); }
     /// {@return `shadingRate`}
     public @CType("VkShadingRatePaletteEntryNV") int shadingRate() { return VkCoarseSampleOrderCustomNV.get_shadingRate(this.segment()); }
     /// Sets `shadingRate` with the given value at the given index.
@@ -127,11 +132,6 @@ public final class VkCoarseSampleOrderCustomNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_shadingRate(MemorySegment segment, @CType("VkShadingRatePaletteEntryNV") int value) { VkCoarseSampleOrderCustomNV.set_shadingRate(segment, 0L, value); }
-    /// Sets `shadingRate` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCoarseSampleOrderCustomNV shadingRateAt(long index, @CType("VkShadingRatePaletteEntryNV") int value) { VkCoarseSampleOrderCustomNV.set_shadingRate(this.segment(), index, value); return this; }
     /// Sets `shadingRate` with the given value.
     /// @param value the value
     /// @return `this`
@@ -144,9 +144,6 @@ public final class VkCoarseSampleOrderCustomNV extends Struct {
     /// {@return `sampleCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_sampleCount(MemorySegment segment) { return VkCoarseSampleOrderCustomNV.get_sampleCount(segment, 0L); }
-    /// {@return `sampleCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int sampleCountAt(long index) { return VkCoarseSampleOrderCustomNV.get_sampleCount(this.segment(), index); }
     /// {@return `sampleCount`}
     public @CType("uint32_t") int sampleCount() { return VkCoarseSampleOrderCustomNV.get_sampleCount(this.segment()); }
     /// Sets `sampleCount` with the given value at the given index.
@@ -158,11 +155,6 @@ public final class VkCoarseSampleOrderCustomNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sampleCount(MemorySegment segment, @CType("uint32_t") int value) { VkCoarseSampleOrderCustomNV.set_sampleCount(segment, 0L, value); }
-    /// Sets `sampleCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCoarseSampleOrderCustomNV sampleCountAt(long index, @CType("uint32_t") int value) { VkCoarseSampleOrderCustomNV.set_sampleCount(this.segment(), index, value); return this; }
     /// Sets `sampleCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -175,9 +167,6 @@ public final class VkCoarseSampleOrderCustomNV extends Struct {
     /// {@return `sampleLocationCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_sampleLocationCount(MemorySegment segment) { return VkCoarseSampleOrderCustomNV.get_sampleLocationCount(segment, 0L); }
-    /// {@return `sampleLocationCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int sampleLocationCountAt(long index) { return VkCoarseSampleOrderCustomNV.get_sampleLocationCount(this.segment(), index); }
     /// {@return `sampleLocationCount`}
     public @CType("uint32_t") int sampleLocationCount() { return VkCoarseSampleOrderCustomNV.get_sampleLocationCount(this.segment()); }
     /// Sets `sampleLocationCount` with the given value at the given index.
@@ -189,11 +178,6 @@ public final class VkCoarseSampleOrderCustomNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sampleLocationCount(MemorySegment segment, @CType("uint32_t") int value) { VkCoarseSampleOrderCustomNV.set_sampleLocationCount(segment, 0L, value); }
-    /// Sets `sampleLocationCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCoarseSampleOrderCustomNV sampleLocationCountAt(long index, @CType("uint32_t") int value) { VkCoarseSampleOrderCustomNV.set_sampleLocationCount(this.segment(), index, value); return this; }
     /// Sets `sampleLocationCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -206,9 +190,6 @@ public final class VkCoarseSampleOrderCustomNV extends Struct {
     /// {@return `pSampleLocations`}
     /// @param segment the segment of the struct
     public static @CType("const VkCoarseSampleLocationNV *") java.lang.foreign.MemorySegment get_pSampleLocations(MemorySegment segment) { return VkCoarseSampleOrderCustomNV.get_pSampleLocations(segment, 0L); }
-    /// {@return `pSampleLocations` at the given index}
-    /// @param index the index
-    public @CType("const VkCoarseSampleLocationNV *") java.lang.foreign.MemorySegment pSampleLocationsAt(long index) { return VkCoarseSampleOrderCustomNV.get_pSampleLocations(this.segment(), index); }
     /// {@return `pSampleLocations`}
     public @CType("const VkCoarseSampleLocationNV *") java.lang.foreign.MemorySegment pSampleLocations() { return VkCoarseSampleOrderCustomNV.get_pSampleLocations(this.segment()); }
     /// Sets `pSampleLocations` with the given value at the given index.
@@ -220,14 +201,68 @@ public final class VkCoarseSampleOrderCustomNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pSampleLocations(MemorySegment segment, @CType("const VkCoarseSampleLocationNV *") java.lang.foreign.MemorySegment value) { VkCoarseSampleOrderCustomNV.set_pSampleLocations(segment, 0L, value); }
-    /// Sets `pSampleLocations` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCoarseSampleOrderCustomNV pSampleLocationsAt(long index, @CType("const VkCoarseSampleLocationNV *") java.lang.foreign.MemorySegment value) { VkCoarseSampleOrderCustomNV.set_pSampleLocations(this.segment(), index, value); return this; }
     /// Sets `pSampleLocations` with the given value.
     /// @param value the value
     /// @return `this`
     public VkCoarseSampleOrderCustomNV pSampleLocations(@CType("const VkCoarseSampleLocationNV *") java.lang.foreign.MemorySegment value) { VkCoarseSampleOrderCustomNV.set_pSampleLocations(this.segment(), value); return this; }
 
+    /// A buffer of [VkCoarseSampleOrderCustomNV].
+    public static final class Buffer extends VkCoarseSampleOrderCustomNV {
+        private final long elementCount;
+
+        /// Creates `VkCoarseSampleOrderCustomNV.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkCoarseSampleOrderCustomNV`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkCoarseSampleOrderCustomNV`
+        public VkCoarseSampleOrderCustomNV asSlice(long index) { return new VkCoarseSampleOrderCustomNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkCoarseSampleOrderCustomNV`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkCoarseSampleOrderCustomNV`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `shadingRate` at the given index}
+        /// @param index the index
+        public @CType("VkShadingRatePaletteEntryNV") int shadingRateAt(long index) { return VkCoarseSampleOrderCustomNV.get_shadingRate(this.segment(), index); }
+        /// Sets `shadingRate` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer shadingRateAt(long index, @CType("VkShadingRatePaletteEntryNV") int value) { VkCoarseSampleOrderCustomNV.set_shadingRate(this.segment(), index, value); return this; }
+
+        /// {@return `sampleCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int sampleCountAt(long index) { return VkCoarseSampleOrderCustomNV.get_sampleCount(this.segment(), index); }
+        /// Sets `sampleCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sampleCountAt(long index, @CType("uint32_t") int value) { VkCoarseSampleOrderCustomNV.set_sampleCount(this.segment(), index, value); return this; }
+
+        /// {@return `sampleLocationCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int sampleLocationCountAt(long index) { return VkCoarseSampleOrderCustomNV.get_sampleLocationCount(this.segment(), index); }
+        /// Sets `sampleLocationCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sampleLocationCountAt(long index, @CType("uint32_t") int value) { VkCoarseSampleOrderCustomNV.set_sampleLocationCount(this.segment(), index, value); return this; }
+
+        /// {@return `pSampleLocations` at the given index}
+        /// @param index the index
+        public @CType("const VkCoarseSampleLocationNV *") java.lang.foreign.MemorySegment pSampleLocationsAt(long index) { return VkCoarseSampleOrderCustomNV.get_pSampleLocations(this.segment(), index); }
+        /// Sets `pSampleLocations` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pSampleLocationsAt(long index, @CType("const VkCoarseSampleLocationNV *") java.lang.foreign.MemorySegment value) { VkCoarseSampleOrderCustomNV.set_pSampleLocations(this.segment(), index, value); return this; }
+
+    }
 }

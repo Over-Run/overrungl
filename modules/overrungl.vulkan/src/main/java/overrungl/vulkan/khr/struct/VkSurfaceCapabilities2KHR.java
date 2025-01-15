@@ -40,7 +40,7 @@ import overrungl.util.*;
 ///     VkSurfaceCapabilitiesKHR surfaceCapabilities;
 /// } VkSurfaceCapabilities2KHR;
 /// ```
-public final class VkSurfaceCapabilities2KHR extends Struct {
+public sealed class VkSurfaceCapabilities2KHR extends Struct {
     /// The struct layout of `VkSurfaceCapabilities2KHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -66,6 +66,11 @@ public final class VkSurfaceCapabilities2KHR extends Struct {
     public static VkSurfaceCapabilities2KHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkSurfaceCapabilities2KHR(segment); }
 
     /// Creates `VkSurfaceCapabilities2KHR` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkSurfaceCapabilities2KHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -78,7 +83,7 @@ public final class VkSurfaceCapabilities2KHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSurfaceCapabilities2KHR ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkSurfaceCapabilities2KHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkSurfaceCapabilities2KHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -89,18 +94,21 @@ public final class VkSurfaceCapabilities2KHR extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkSurfaceCapabilities2KHR`
-    public static VkSurfaceCapabilities2KHR alloc(SegmentAllocator allocator, long count) { return new VkSurfaceCapabilities2KHR(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkSurfaceCapabilities2KHR`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkSurfaceCapabilities2KHR`
-    public VkSurfaceCapabilities2KHR asSlice(long index) { return new VkSurfaceCapabilities2KHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkSurfaceCapabilities2KHR` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkSurfaceCapabilities2KHR`
+    public static VkSurfaceCapabilities2KHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkSurfaceCapabilitiesKHR") java.lang.foreign.MemorySegment surfaceCapabilities) { return alloc(allocator).sType(sType).pNext(pNext).surfaceCapabilities(surfaceCapabilities); }
 
-    /// Creates a slice of `VkSurfaceCapabilities2KHR`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkSurfaceCapabilities2KHR`
-    public VkSurfaceCapabilities2KHR asSlice(long index, long count) { return new VkSurfaceCapabilities2KHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkSurfaceCapabilities2KHR copyFrom(VkSurfaceCapabilities2KHR src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -109,9 +117,6 @@ public final class VkSurfaceCapabilities2KHR extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkSurfaceCapabilities2KHR.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkSurfaceCapabilities2KHR.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkSurfaceCapabilities2KHR.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -123,11 +128,6 @@ public final class VkSurfaceCapabilities2KHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkSurfaceCapabilities2KHR.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSurfaceCapabilities2KHR sTypeAt(long index, @CType("VkStructureType") int value) { VkSurfaceCapabilities2KHR.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -140,9 +140,6 @@ public final class VkSurfaceCapabilities2KHR extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkSurfaceCapabilities2KHR.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkSurfaceCapabilities2KHR.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkSurfaceCapabilities2KHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -154,11 +151,6 @@ public final class VkSurfaceCapabilities2KHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkSurfaceCapabilities2KHR.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSurfaceCapabilities2KHR pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkSurfaceCapabilities2KHR.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -171,9 +163,6 @@ public final class VkSurfaceCapabilities2KHR extends Struct {
     /// {@return `surfaceCapabilities`}
     /// @param segment the segment of the struct
     public static @CType("VkSurfaceCapabilitiesKHR") java.lang.foreign.MemorySegment get_surfaceCapabilities(MemorySegment segment) { return VkSurfaceCapabilities2KHR.get_surfaceCapabilities(segment, 0L); }
-    /// {@return `surfaceCapabilities` at the given index}
-    /// @param index the index
-    public @CType("VkSurfaceCapabilitiesKHR") java.lang.foreign.MemorySegment surfaceCapabilitiesAt(long index) { return VkSurfaceCapabilities2KHR.get_surfaceCapabilities(this.segment(), index); }
     /// {@return `surfaceCapabilities`}
     public @CType("VkSurfaceCapabilitiesKHR") java.lang.foreign.MemorySegment surfaceCapabilities() { return VkSurfaceCapabilities2KHR.get_surfaceCapabilities(this.segment()); }
     /// Sets `surfaceCapabilities` with the given value at the given index.
@@ -185,14 +174,59 @@ public final class VkSurfaceCapabilities2KHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_surfaceCapabilities(MemorySegment segment, @CType("VkSurfaceCapabilitiesKHR") java.lang.foreign.MemorySegment value) { VkSurfaceCapabilities2KHR.set_surfaceCapabilities(segment, 0L, value); }
-    /// Sets `surfaceCapabilities` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSurfaceCapabilities2KHR surfaceCapabilitiesAt(long index, @CType("VkSurfaceCapabilitiesKHR") java.lang.foreign.MemorySegment value) { VkSurfaceCapabilities2KHR.set_surfaceCapabilities(this.segment(), index, value); return this; }
     /// Sets `surfaceCapabilities` with the given value.
     /// @param value the value
     /// @return `this`
     public VkSurfaceCapabilities2KHR surfaceCapabilities(@CType("VkSurfaceCapabilitiesKHR") java.lang.foreign.MemorySegment value) { VkSurfaceCapabilities2KHR.set_surfaceCapabilities(this.segment(), value); return this; }
 
+    /// A buffer of [VkSurfaceCapabilities2KHR].
+    public static final class Buffer extends VkSurfaceCapabilities2KHR {
+        private final long elementCount;
+
+        /// Creates `VkSurfaceCapabilities2KHR.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkSurfaceCapabilities2KHR`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkSurfaceCapabilities2KHR`
+        public VkSurfaceCapabilities2KHR asSlice(long index) { return new VkSurfaceCapabilities2KHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkSurfaceCapabilities2KHR`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkSurfaceCapabilities2KHR`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkSurfaceCapabilities2KHR.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkSurfaceCapabilities2KHR.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkSurfaceCapabilities2KHR.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkSurfaceCapabilities2KHR.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `surfaceCapabilities` at the given index}
+        /// @param index the index
+        public @CType("VkSurfaceCapabilitiesKHR") java.lang.foreign.MemorySegment surfaceCapabilitiesAt(long index) { return VkSurfaceCapabilities2KHR.get_surfaceCapabilities(this.segment(), index); }
+        /// Sets `surfaceCapabilities` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer surfaceCapabilitiesAt(long index, @CType("VkSurfaceCapabilitiesKHR") java.lang.foreign.MemorySegment value) { VkSurfaceCapabilities2KHR.set_surfaceCapabilities(this.segment(), index, value); return this; }
+
+    }
 }

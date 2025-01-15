@@ -46,7 +46,7 @@ import overrungl.util.*;
 ///     VkDeviceSize imageMipTailStride;
 /// } VkSparseImageMemoryRequirements;
 /// ```
-public final class VkSparseImageMemoryRequirements extends Struct {
+public sealed class VkSparseImageMemoryRequirements extends Struct {
     /// The struct layout of `VkSparseImageMemoryRequirements`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.struct.VkSparseImageFormatProperties.LAYOUT.withName("formatProperties"),
@@ -78,6 +78,11 @@ public final class VkSparseImageMemoryRequirements extends Struct {
     public static VkSparseImageMemoryRequirements of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkSparseImageMemoryRequirements(segment); }
 
     /// Creates `VkSparseImageMemoryRequirements` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkSparseImageMemoryRequirements` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -90,7 +95,7 @@ public final class VkSparseImageMemoryRequirements extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSparseImageMemoryRequirements ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkSparseImageMemoryRequirements(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkSparseImageMemoryRequirements` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -101,18 +106,21 @@ public final class VkSparseImageMemoryRequirements extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkSparseImageMemoryRequirements`
-    public static VkSparseImageMemoryRequirements alloc(SegmentAllocator allocator, long count) { return new VkSparseImageMemoryRequirements(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkSparseImageMemoryRequirements`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkSparseImageMemoryRequirements`
-    public VkSparseImageMemoryRequirements asSlice(long index) { return new VkSparseImageMemoryRequirements(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkSparseImageMemoryRequirements` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkSparseImageMemoryRequirements`
+    public static VkSparseImageMemoryRequirements allocInit(SegmentAllocator allocator, @CType("VkSparseImageFormatProperties") java.lang.foreign.MemorySegment formatProperties, @CType("uint32_t") int imageMipTailFirstLod, @CType("VkDeviceSize") long imageMipTailSize, @CType("VkDeviceSize") long imageMipTailOffset, @CType("VkDeviceSize") long imageMipTailStride) { return alloc(allocator).formatProperties(formatProperties).imageMipTailFirstLod(imageMipTailFirstLod).imageMipTailSize(imageMipTailSize).imageMipTailOffset(imageMipTailOffset).imageMipTailStride(imageMipTailStride); }
 
-    /// Creates a slice of `VkSparseImageMemoryRequirements`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkSparseImageMemoryRequirements`
-    public VkSparseImageMemoryRequirements asSlice(long index, long count) { return new VkSparseImageMemoryRequirements(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkSparseImageMemoryRequirements copyFrom(VkSparseImageMemoryRequirements src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `formatProperties` at the given index}
     /// @param segment the segment of the struct
@@ -121,9 +129,6 @@ public final class VkSparseImageMemoryRequirements extends Struct {
     /// {@return `formatProperties`}
     /// @param segment the segment of the struct
     public static @CType("VkSparseImageFormatProperties") java.lang.foreign.MemorySegment get_formatProperties(MemorySegment segment) { return VkSparseImageMemoryRequirements.get_formatProperties(segment, 0L); }
-    /// {@return `formatProperties` at the given index}
-    /// @param index the index
-    public @CType("VkSparseImageFormatProperties") java.lang.foreign.MemorySegment formatPropertiesAt(long index) { return VkSparseImageMemoryRequirements.get_formatProperties(this.segment(), index); }
     /// {@return `formatProperties`}
     public @CType("VkSparseImageFormatProperties") java.lang.foreign.MemorySegment formatProperties() { return VkSparseImageMemoryRequirements.get_formatProperties(this.segment()); }
     /// Sets `formatProperties` with the given value at the given index.
@@ -135,11 +140,6 @@ public final class VkSparseImageMemoryRequirements extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_formatProperties(MemorySegment segment, @CType("VkSparseImageFormatProperties") java.lang.foreign.MemorySegment value) { VkSparseImageMemoryRequirements.set_formatProperties(segment, 0L, value); }
-    /// Sets `formatProperties` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSparseImageMemoryRequirements formatPropertiesAt(long index, @CType("VkSparseImageFormatProperties") java.lang.foreign.MemorySegment value) { VkSparseImageMemoryRequirements.set_formatProperties(this.segment(), index, value); return this; }
     /// Sets `formatProperties` with the given value.
     /// @param value the value
     /// @return `this`
@@ -152,9 +152,6 @@ public final class VkSparseImageMemoryRequirements extends Struct {
     /// {@return `imageMipTailFirstLod`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_imageMipTailFirstLod(MemorySegment segment) { return VkSparseImageMemoryRequirements.get_imageMipTailFirstLod(segment, 0L); }
-    /// {@return `imageMipTailFirstLod` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int imageMipTailFirstLodAt(long index) { return VkSparseImageMemoryRequirements.get_imageMipTailFirstLod(this.segment(), index); }
     /// {@return `imageMipTailFirstLod`}
     public @CType("uint32_t") int imageMipTailFirstLod() { return VkSparseImageMemoryRequirements.get_imageMipTailFirstLod(this.segment()); }
     /// Sets `imageMipTailFirstLod` with the given value at the given index.
@@ -166,11 +163,6 @@ public final class VkSparseImageMemoryRequirements extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_imageMipTailFirstLod(MemorySegment segment, @CType("uint32_t") int value) { VkSparseImageMemoryRequirements.set_imageMipTailFirstLod(segment, 0L, value); }
-    /// Sets `imageMipTailFirstLod` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSparseImageMemoryRequirements imageMipTailFirstLodAt(long index, @CType("uint32_t") int value) { VkSparseImageMemoryRequirements.set_imageMipTailFirstLod(this.segment(), index, value); return this; }
     /// Sets `imageMipTailFirstLod` with the given value.
     /// @param value the value
     /// @return `this`
@@ -183,9 +175,6 @@ public final class VkSparseImageMemoryRequirements extends Struct {
     /// {@return `imageMipTailSize`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_imageMipTailSize(MemorySegment segment) { return VkSparseImageMemoryRequirements.get_imageMipTailSize(segment, 0L); }
-    /// {@return `imageMipTailSize` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long imageMipTailSizeAt(long index) { return VkSparseImageMemoryRequirements.get_imageMipTailSize(this.segment(), index); }
     /// {@return `imageMipTailSize`}
     public @CType("VkDeviceSize") long imageMipTailSize() { return VkSparseImageMemoryRequirements.get_imageMipTailSize(this.segment()); }
     /// Sets `imageMipTailSize` with the given value at the given index.
@@ -197,11 +186,6 @@ public final class VkSparseImageMemoryRequirements extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_imageMipTailSize(MemorySegment segment, @CType("VkDeviceSize") long value) { VkSparseImageMemoryRequirements.set_imageMipTailSize(segment, 0L, value); }
-    /// Sets `imageMipTailSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSparseImageMemoryRequirements imageMipTailSizeAt(long index, @CType("VkDeviceSize") long value) { VkSparseImageMemoryRequirements.set_imageMipTailSize(this.segment(), index, value); return this; }
     /// Sets `imageMipTailSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -214,9 +198,6 @@ public final class VkSparseImageMemoryRequirements extends Struct {
     /// {@return `imageMipTailOffset`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_imageMipTailOffset(MemorySegment segment) { return VkSparseImageMemoryRequirements.get_imageMipTailOffset(segment, 0L); }
-    /// {@return `imageMipTailOffset` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long imageMipTailOffsetAt(long index) { return VkSparseImageMemoryRequirements.get_imageMipTailOffset(this.segment(), index); }
     /// {@return `imageMipTailOffset`}
     public @CType("VkDeviceSize") long imageMipTailOffset() { return VkSparseImageMemoryRequirements.get_imageMipTailOffset(this.segment()); }
     /// Sets `imageMipTailOffset` with the given value at the given index.
@@ -228,11 +209,6 @@ public final class VkSparseImageMemoryRequirements extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_imageMipTailOffset(MemorySegment segment, @CType("VkDeviceSize") long value) { VkSparseImageMemoryRequirements.set_imageMipTailOffset(segment, 0L, value); }
-    /// Sets `imageMipTailOffset` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSparseImageMemoryRequirements imageMipTailOffsetAt(long index, @CType("VkDeviceSize") long value) { VkSparseImageMemoryRequirements.set_imageMipTailOffset(this.segment(), index, value); return this; }
     /// Sets `imageMipTailOffset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -245,9 +221,6 @@ public final class VkSparseImageMemoryRequirements extends Struct {
     /// {@return `imageMipTailStride`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_imageMipTailStride(MemorySegment segment) { return VkSparseImageMemoryRequirements.get_imageMipTailStride(segment, 0L); }
-    /// {@return `imageMipTailStride` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long imageMipTailStrideAt(long index) { return VkSparseImageMemoryRequirements.get_imageMipTailStride(this.segment(), index); }
     /// {@return `imageMipTailStride`}
     public @CType("VkDeviceSize") long imageMipTailStride() { return VkSparseImageMemoryRequirements.get_imageMipTailStride(this.segment()); }
     /// Sets `imageMipTailStride` with the given value at the given index.
@@ -259,14 +232,77 @@ public final class VkSparseImageMemoryRequirements extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_imageMipTailStride(MemorySegment segment, @CType("VkDeviceSize") long value) { VkSparseImageMemoryRequirements.set_imageMipTailStride(segment, 0L, value); }
-    /// Sets `imageMipTailStride` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSparseImageMemoryRequirements imageMipTailStrideAt(long index, @CType("VkDeviceSize") long value) { VkSparseImageMemoryRequirements.set_imageMipTailStride(this.segment(), index, value); return this; }
     /// Sets `imageMipTailStride` with the given value.
     /// @param value the value
     /// @return `this`
     public VkSparseImageMemoryRequirements imageMipTailStride(@CType("VkDeviceSize") long value) { VkSparseImageMemoryRequirements.set_imageMipTailStride(this.segment(), value); return this; }
 
+    /// A buffer of [VkSparseImageMemoryRequirements].
+    public static final class Buffer extends VkSparseImageMemoryRequirements {
+        private final long elementCount;
+
+        /// Creates `VkSparseImageMemoryRequirements.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkSparseImageMemoryRequirements`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkSparseImageMemoryRequirements`
+        public VkSparseImageMemoryRequirements asSlice(long index) { return new VkSparseImageMemoryRequirements(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkSparseImageMemoryRequirements`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkSparseImageMemoryRequirements`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `formatProperties` at the given index}
+        /// @param index the index
+        public @CType("VkSparseImageFormatProperties") java.lang.foreign.MemorySegment formatPropertiesAt(long index) { return VkSparseImageMemoryRequirements.get_formatProperties(this.segment(), index); }
+        /// Sets `formatProperties` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer formatPropertiesAt(long index, @CType("VkSparseImageFormatProperties") java.lang.foreign.MemorySegment value) { VkSparseImageMemoryRequirements.set_formatProperties(this.segment(), index, value); return this; }
+
+        /// {@return `imageMipTailFirstLod` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int imageMipTailFirstLodAt(long index) { return VkSparseImageMemoryRequirements.get_imageMipTailFirstLod(this.segment(), index); }
+        /// Sets `imageMipTailFirstLod` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer imageMipTailFirstLodAt(long index, @CType("uint32_t") int value) { VkSparseImageMemoryRequirements.set_imageMipTailFirstLod(this.segment(), index, value); return this; }
+
+        /// {@return `imageMipTailSize` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long imageMipTailSizeAt(long index) { return VkSparseImageMemoryRequirements.get_imageMipTailSize(this.segment(), index); }
+        /// Sets `imageMipTailSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer imageMipTailSizeAt(long index, @CType("VkDeviceSize") long value) { VkSparseImageMemoryRequirements.set_imageMipTailSize(this.segment(), index, value); return this; }
+
+        /// {@return `imageMipTailOffset` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long imageMipTailOffsetAt(long index) { return VkSparseImageMemoryRequirements.get_imageMipTailOffset(this.segment(), index); }
+        /// Sets `imageMipTailOffset` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer imageMipTailOffsetAt(long index, @CType("VkDeviceSize") long value) { VkSparseImageMemoryRequirements.set_imageMipTailOffset(this.segment(), index, value); return this; }
+
+        /// {@return `imageMipTailStride` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long imageMipTailStrideAt(long index) { return VkSparseImageMemoryRequirements.get_imageMipTailStride(this.segment(), index); }
+        /// Sets `imageMipTailStride` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer imageMipTailStrideAt(long index, @CType("VkDeviceSize") long value) { VkSparseImageMemoryRequirements.set_imageMipTailStride(this.segment(), index, value); return this; }
+
+    }
 }

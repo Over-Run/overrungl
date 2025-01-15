@@ -55,7 +55,7 @@ import overrungl.util.*;
 ///     unsigned char padding;
 /// } STBTTVertex;
 /// ```
-public final class STBTTVertex extends Struct {
+public sealed class STBTTVertex extends Struct {
     /// The struct layout of `stbtt_vertex`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_SHORT.withName("x"),
@@ -94,6 +94,11 @@ public final class STBTTVertex extends Struct {
     public static STBTTVertex of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new STBTTVertex(segment); }
 
     /// Creates `STBTTVertex` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `STBTTVertex` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -106,7 +111,7 @@ public final class STBTTVertex extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static STBTTVertex ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new STBTTVertex(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `STBTTVertex` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -117,18 +122,21 @@ public final class STBTTVertex extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `STBTTVertex`
-    public static STBTTVertex alloc(SegmentAllocator allocator, long count) { return new STBTTVertex(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `STBTTVertex`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `STBTTVertex`
-    public STBTTVertex asSlice(long index) { return new STBTTVertex(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `STBTTVertex` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `STBTTVertex`
+    public static STBTTVertex allocInit(SegmentAllocator allocator, @CType("stbtt_vertex_type") short x, @CType("stbtt_vertex_type") short y, @CType("stbtt_vertex_type") short cx, @CType("stbtt_vertex_type") short cy, @CType("stbtt_vertex_type") short cx1, @CType("stbtt_vertex_type") short cy1, @CType("unsigned char") byte type, @CType("unsigned char") byte padding) { return alloc(allocator).x(x).y(y).cx(cx).cy(cy).cx1(cx1).cy1(cy1).type(type).padding(padding); }
 
-    /// Creates a slice of `STBTTVertex`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `STBTTVertex`
-    public STBTTVertex asSlice(long index, long count) { return new STBTTVertex(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public STBTTVertex copyFrom(STBTTVertex src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `x` at the given index}
     /// @param segment the segment of the struct
@@ -137,9 +145,6 @@ public final class STBTTVertex extends Struct {
     /// {@return `x`}
     /// @param segment the segment of the struct
     public static @CType("stbtt_vertex_type") short get_x(MemorySegment segment) { return STBTTVertex.get_x(segment, 0L); }
-    /// {@return `x` at the given index}
-    /// @param index the index
-    public @CType("stbtt_vertex_type") short xAt(long index) { return STBTTVertex.get_x(this.segment(), index); }
     /// {@return `x`}
     public @CType("stbtt_vertex_type") short x() { return STBTTVertex.get_x(this.segment()); }
     /// Sets `x` with the given value at the given index.
@@ -151,11 +156,6 @@ public final class STBTTVertex extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_x(MemorySegment segment, @CType("stbtt_vertex_type") short value) { STBTTVertex.set_x(segment, 0L, value); }
-    /// Sets `x` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public STBTTVertex xAt(long index, @CType("stbtt_vertex_type") short value) { STBTTVertex.set_x(this.segment(), index, value); return this; }
     /// Sets `x` with the given value.
     /// @param value the value
     /// @return `this`
@@ -168,9 +168,6 @@ public final class STBTTVertex extends Struct {
     /// {@return `y`}
     /// @param segment the segment of the struct
     public static @CType("stbtt_vertex_type") short get_y(MemorySegment segment) { return STBTTVertex.get_y(segment, 0L); }
-    /// {@return `y` at the given index}
-    /// @param index the index
-    public @CType("stbtt_vertex_type") short yAt(long index) { return STBTTVertex.get_y(this.segment(), index); }
     /// {@return `y`}
     public @CType("stbtt_vertex_type") short y() { return STBTTVertex.get_y(this.segment()); }
     /// Sets `y` with the given value at the given index.
@@ -182,11 +179,6 @@ public final class STBTTVertex extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_y(MemorySegment segment, @CType("stbtt_vertex_type") short value) { STBTTVertex.set_y(segment, 0L, value); }
-    /// Sets `y` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public STBTTVertex yAt(long index, @CType("stbtt_vertex_type") short value) { STBTTVertex.set_y(this.segment(), index, value); return this; }
     /// Sets `y` with the given value.
     /// @param value the value
     /// @return `this`
@@ -199,9 +191,6 @@ public final class STBTTVertex extends Struct {
     /// {@return `cx`}
     /// @param segment the segment of the struct
     public static @CType("stbtt_vertex_type") short get_cx(MemorySegment segment) { return STBTTVertex.get_cx(segment, 0L); }
-    /// {@return `cx` at the given index}
-    /// @param index the index
-    public @CType("stbtt_vertex_type") short cxAt(long index) { return STBTTVertex.get_cx(this.segment(), index); }
     /// {@return `cx`}
     public @CType("stbtt_vertex_type") short cx() { return STBTTVertex.get_cx(this.segment()); }
     /// Sets `cx` with the given value at the given index.
@@ -213,11 +202,6 @@ public final class STBTTVertex extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_cx(MemorySegment segment, @CType("stbtt_vertex_type") short value) { STBTTVertex.set_cx(segment, 0L, value); }
-    /// Sets `cx` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public STBTTVertex cxAt(long index, @CType("stbtt_vertex_type") short value) { STBTTVertex.set_cx(this.segment(), index, value); return this; }
     /// Sets `cx` with the given value.
     /// @param value the value
     /// @return `this`
@@ -230,9 +214,6 @@ public final class STBTTVertex extends Struct {
     /// {@return `cy`}
     /// @param segment the segment of the struct
     public static @CType("stbtt_vertex_type") short get_cy(MemorySegment segment) { return STBTTVertex.get_cy(segment, 0L); }
-    /// {@return `cy` at the given index}
-    /// @param index the index
-    public @CType("stbtt_vertex_type") short cyAt(long index) { return STBTTVertex.get_cy(this.segment(), index); }
     /// {@return `cy`}
     public @CType("stbtt_vertex_type") short cy() { return STBTTVertex.get_cy(this.segment()); }
     /// Sets `cy` with the given value at the given index.
@@ -244,11 +225,6 @@ public final class STBTTVertex extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_cy(MemorySegment segment, @CType("stbtt_vertex_type") short value) { STBTTVertex.set_cy(segment, 0L, value); }
-    /// Sets `cy` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public STBTTVertex cyAt(long index, @CType("stbtt_vertex_type") short value) { STBTTVertex.set_cy(this.segment(), index, value); return this; }
     /// Sets `cy` with the given value.
     /// @param value the value
     /// @return `this`
@@ -261,9 +237,6 @@ public final class STBTTVertex extends Struct {
     /// {@return `cx1`}
     /// @param segment the segment of the struct
     public static @CType("stbtt_vertex_type") short get_cx1(MemorySegment segment) { return STBTTVertex.get_cx1(segment, 0L); }
-    /// {@return `cx1` at the given index}
-    /// @param index the index
-    public @CType("stbtt_vertex_type") short cx1At(long index) { return STBTTVertex.get_cx1(this.segment(), index); }
     /// {@return `cx1`}
     public @CType("stbtt_vertex_type") short cx1() { return STBTTVertex.get_cx1(this.segment()); }
     /// Sets `cx1` with the given value at the given index.
@@ -275,11 +248,6 @@ public final class STBTTVertex extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_cx1(MemorySegment segment, @CType("stbtt_vertex_type") short value) { STBTTVertex.set_cx1(segment, 0L, value); }
-    /// Sets `cx1` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public STBTTVertex cx1At(long index, @CType("stbtt_vertex_type") short value) { STBTTVertex.set_cx1(this.segment(), index, value); return this; }
     /// Sets `cx1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -292,9 +260,6 @@ public final class STBTTVertex extends Struct {
     /// {@return `cy1`}
     /// @param segment the segment of the struct
     public static @CType("stbtt_vertex_type") short get_cy1(MemorySegment segment) { return STBTTVertex.get_cy1(segment, 0L); }
-    /// {@return `cy1` at the given index}
-    /// @param index the index
-    public @CType("stbtt_vertex_type") short cy1At(long index) { return STBTTVertex.get_cy1(this.segment(), index); }
     /// {@return `cy1`}
     public @CType("stbtt_vertex_type") short cy1() { return STBTTVertex.get_cy1(this.segment()); }
     /// Sets `cy1` with the given value at the given index.
@@ -306,11 +271,6 @@ public final class STBTTVertex extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_cy1(MemorySegment segment, @CType("stbtt_vertex_type") short value) { STBTTVertex.set_cy1(segment, 0L, value); }
-    /// Sets `cy1` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public STBTTVertex cy1At(long index, @CType("stbtt_vertex_type") short value) { STBTTVertex.set_cy1(this.segment(), index, value); return this; }
     /// Sets `cy1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -323,9 +283,6 @@ public final class STBTTVertex extends Struct {
     /// {@return `type`}
     /// @param segment the segment of the struct
     public static @CType("unsigned char") byte get_type(MemorySegment segment) { return STBTTVertex.get_type(segment, 0L); }
-    /// {@return `type` at the given index}
-    /// @param index the index
-    public @CType("unsigned char") byte typeAt(long index) { return STBTTVertex.get_type(this.segment(), index); }
     /// {@return `type`}
     public @CType("unsigned char") byte type() { return STBTTVertex.get_type(this.segment()); }
     /// Sets `type` with the given value at the given index.
@@ -337,11 +294,6 @@ public final class STBTTVertex extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_type(MemorySegment segment, @CType("unsigned char") byte value) { STBTTVertex.set_type(segment, 0L, value); }
-    /// Sets `type` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public STBTTVertex typeAt(long index, @CType("unsigned char") byte value) { STBTTVertex.set_type(this.segment(), index, value); return this; }
     /// Sets `type` with the given value.
     /// @param value the value
     /// @return `this`
@@ -354,9 +306,6 @@ public final class STBTTVertex extends Struct {
     /// {@return `padding`}
     /// @param segment the segment of the struct
     public static @CType("unsigned char") byte get_padding(MemorySegment segment) { return STBTTVertex.get_padding(segment, 0L); }
-    /// {@return `padding` at the given index}
-    /// @param index the index
-    public @CType("unsigned char") byte paddingAt(long index) { return STBTTVertex.get_padding(this.segment(), index); }
     /// {@return `padding`}
     public @CType("unsigned char") byte padding() { return STBTTVertex.get_padding(this.segment()); }
     /// Sets `padding` with the given value at the given index.
@@ -368,14 +317,104 @@ public final class STBTTVertex extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_padding(MemorySegment segment, @CType("unsigned char") byte value) { STBTTVertex.set_padding(segment, 0L, value); }
-    /// Sets `padding` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public STBTTVertex paddingAt(long index, @CType("unsigned char") byte value) { STBTTVertex.set_padding(this.segment(), index, value); return this; }
     /// Sets `padding` with the given value.
     /// @param value the value
     /// @return `this`
     public STBTTVertex padding(@CType("unsigned char") byte value) { STBTTVertex.set_padding(this.segment(), value); return this; }
 
+    /// A buffer of [STBTTVertex].
+    public static final class Buffer extends STBTTVertex {
+        private final long elementCount;
+
+        /// Creates `STBTTVertex.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `STBTTVertex`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `STBTTVertex`
+        public STBTTVertex asSlice(long index) { return new STBTTVertex(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `STBTTVertex`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `STBTTVertex`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `x` at the given index}
+        /// @param index the index
+        public @CType("stbtt_vertex_type") short xAt(long index) { return STBTTVertex.get_x(this.segment(), index); }
+        /// Sets `x` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer xAt(long index, @CType("stbtt_vertex_type") short value) { STBTTVertex.set_x(this.segment(), index, value); return this; }
+
+        /// {@return `y` at the given index}
+        /// @param index the index
+        public @CType("stbtt_vertex_type") short yAt(long index) { return STBTTVertex.get_y(this.segment(), index); }
+        /// Sets `y` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer yAt(long index, @CType("stbtt_vertex_type") short value) { STBTTVertex.set_y(this.segment(), index, value); return this; }
+
+        /// {@return `cx` at the given index}
+        /// @param index the index
+        public @CType("stbtt_vertex_type") short cxAt(long index) { return STBTTVertex.get_cx(this.segment(), index); }
+        /// Sets `cx` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer cxAt(long index, @CType("stbtt_vertex_type") short value) { STBTTVertex.set_cx(this.segment(), index, value); return this; }
+
+        /// {@return `cy` at the given index}
+        /// @param index the index
+        public @CType("stbtt_vertex_type") short cyAt(long index) { return STBTTVertex.get_cy(this.segment(), index); }
+        /// Sets `cy` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer cyAt(long index, @CType("stbtt_vertex_type") short value) { STBTTVertex.set_cy(this.segment(), index, value); return this; }
+
+        /// {@return `cx1` at the given index}
+        /// @param index the index
+        public @CType("stbtt_vertex_type") short cx1At(long index) { return STBTTVertex.get_cx1(this.segment(), index); }
+        /// Sets `cx1` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer cx1At(long index, @CType("stbtt_vertex_type") short value) { STBTTVertex.set_cx1(this.segment(), index, value); return this; }
+
+        /// {@return `cy1` at the given index}
+        /// @param index the index
+        public @CType("stbtt_vertex_type") short cy1At(long index) { return STBTTVertex.get_cy1(this.segment(), index); }
+        /// Sets `cy1` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer cy1At(long index, @CType("stbtt_vertex_type") short value) { STBTTVertex.set_cy1(this.segment(), index, value); return this; }
+
+        /// {@return `type` at the given index}
+        /// @param index the index
+        public @CType("unsigned char") byte typeAt(long index) { return STBTTVertex.get_type(this.segment(), index); }
+        /// Sets `type` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer typeAt(long index, @CType("unsigned char") byte value) { STBTTVertex.set_type(this.segment(), index, value); return this; }
+
+        /// {@return `padding` at the given index}
+        /// @param index the index
+        public @CType("unsigned char") byte paddingAt(long index) { return STBTTVertex.get_padding(this.segment(), index); }
+        /// Sets `padding` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer paddingAt(long index, @CType("unsigned char") byte value) { STBTTVertex.set_padding(this.segment(), index, value); return this; }
+
+    }
 }

@@ -41,7 +41,7 @@ import static overrungl.vulkan.VK10.*;
 ///     uint32_t postMergeIndex;
 /// } VkRenderPassSubpassFeedbackInfoEXT;
 /// ```
-public final class VkRenderPassSubpassFeedbackInfoEXT extends Struct {
+public sealed class VkRenderPassSubpassFeedbackInfoEXT extends Struct {
     /// The struct layout of `VkRenderPassSubpassFeedbackInfoEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("subpassMergeStatus"),
@@ -67,6 +67,11 @@ public final class VkRenderPassSubpassFeedbackInfoEXT extends Struct {
     public static VkRenderPassSubpassFeedbackInfoEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkRenderPassSubpassFeedbackInfoEXT(segment); }
 
     /// Creates `VkRenderPassSubpassFeedbackInfoEXT` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkRenderPassSubpassFeedbackInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -79,7 +84,7 @@ public final class VkRenderPassSubpassFeedbackInfoEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkRenderPassSubpassFeedbackInfoEXT ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkRenderPassSubpassFeedbackInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkRenderPassSubpassFeedbackInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -90,18 +95,21 @@ public final class VkRenderPassSubpassFeedbackInfoEXT extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkRenderPassSubpassFeedbackInfoEXT`
-    public static VkRenderPassSubpassFeedbackInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkRenderPassSubpassFeedbackInfoEXT(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkRenderPassSubpassFeedbackInfoEXT`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkRenderPassSubpassFeedbackInfoEXT`
-    public VkRenderPassSubpassFeedbackInfoEXT asSlice(long index) { return new VkRenderPassSubpassFeedbackInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkRenderPassSubpassFeedbackInfoEXT` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkRenderPassSubpassFeedbackInfoEXT`
+    public static VkRenderPassSubpassFeedbackInfoEXT allocInit(SegmentAllocator allocator, @CType("VkSubpassMergeStatusEXT") int subpassMergeStatus, @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment description, @CType("uint32_t") int postMergeIndex) { return alloc(allocator).subpassMergeStatus(subpassMergeStatus).description(description).postMergeIndex(postMergeIndex); }
 
-    /// Creates a slice of `VkRenderPassSubpassFeedbackInfoEXT`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkRenderPassSubpassFeedbackInfoEXT`
-    public VkRenderPassSubpassFeedbackInfoEXT asSlice(long index, long count) { return new VkRenderPassSubpassFeedbackInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkRenderPassSubpassFeedbackInfoEXT copyFrom(VkRenderPassSubpassFeedbackInfoEXT src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `subpassMergeStatus` at the given index}
     /// @param segment the segment of the struct
@@ -110,9 +118,6 @@ public final class VkRenderPassSubpassFeedbackInfoEXT extends Struct {
     /// {@return `subpassMergeStatus`}
     /// @param segment the segment of the struct
     public static @CType("VkSubpassMergeStatusEXT") int get_subpassMergeStatus(MemorySegment segment) { return VkRenderPassSubpassFeedbackInfoEXT.get_subpassMergeStatus(segment, 0L); }
-    /// {@return `subpassMergeStatus` at the given index}
-    /// @param index the index
-    public @CType("VkSubpassMergeStatusEXT") int subpassMergeStatusAt(long index) { return VkRenderPassSubpassFeedbackInfoEXT.get_subpassMergeStatus(this.segment(), index); }
     /// {@return `subpassMergeStatus`}
     public @CType("VkSubpassMergeStatusEXT") int subpassMergeStatus() { return VkRenderPassSubpassFeedbackInfoEXT.get_subpassMergeStatus(this.segment()); }
     /// Sets `subpassMergeStatus` with the given value at the given index.
@@ -124,11 +129,6 @@ public final class VkRenderPassSubpassFeedbackInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_subpassMergeStatus(MemorySegment segment, @CType("VkSubpassMergeStatusEXT") int value) { VkRenderPassSubpassFeedbackInfoEXT.set_subpassMergeStatus(segment, 0L, value); }
-    /// Sets `subpassMergeStatus` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRenderPassSubpassFeedbackInfoEXT subpassMergeStatusAt(long index, @CType("VkSubpassMergeStatusEXT") int value) { VkRenderPassSubpassFeedbackInfoEXT.set_subpassMergeStatus(this.segment(), index, value); return this; }
     /// Sets `subpassMergeStatus` with the given value.
     /// @param value the value
     /// @return `this`
@@ -141,9 +141,6 @@ public final class VkRenderPassSubpassFeedbackInfoEXT extends Struct {
     /// {@return `description`}
     /// @param segment the segment of the struct
     public static @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment get_description(MemorySegment segment) { return VkRenderPassSubpassFeedbackInfoEXT.get_description(segment, 0L); }
-    /// {@return `description` at the given index}
-    /// @param index the index
-    public @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment descriptionAt(long index) { return VkRenderPassSubpassFeedbackInfoEXT.get_description(this.segment(), index); }
     /// {@return `description`}
     public @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment description() { return VkRenderPassSubpassFeedbackInfoEXT.get_description(this.segment()); }
     /// Sets `description` with the given value at the given index.
@@ -155,11 +152,6 @@ public final class VkRenderPassSubpassFeedbackInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_description(MemorySegment segment, @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment value) { VkRenderPassSubpassFeedbackInfoEXT.set_description(segment, 0L, value); }
-    /// Sets `description` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRenderPassSubpassFeedbackInfoEXT descriptionAt(long index, @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment value) { VkRenderPassSubpassFeedbackInfoEXT.set_description(this.segment(), index, value); return this; }
     /// Sets `description` with the given value.
     /// @param value the value
     /// @return `this`
@@ -172,9 +164,6 @@ public final class VkRenderPassSubpassFeedbackInfoEXT extends Struct {
     /// {@return `postMergeIndex`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_postMergeIndex(MemorySegment segment) { return VkRenderPassSubpassFeedbackInfoEXT.get_postMergeIndex(segment, 0L); }
-    /// {@return `postMergeIndex` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int postMergeIndexAt(long index) { return VkRenderPassSubpassFeedbackInfoEXT.get_postMergeIndex(this.segment(), index); }
     /// {@return `postMergeIndex`}
     public @CType("uint32_t") int postMergeIndex() { return VkRenderPassSubpassFeedbackInfoEXT.get_postMergeIndex(this.segment()); }
     /// Sets `postMergeIndex` with the given value at the given index.
@@ -186,14 +175,59 @@ public final class VkRenderPassSubpassFeedbackInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_postMergeIndex(MemorySegment segment, @CType("uint32_t") int value) { VkRenderPassSubpassFeedbackInfoEXT.set_postMergeIndex(segment, 0L, value); }
-    /// Sets `postMergeIndex` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRenderPassSubpassFeedbackInfoEXT postMergeIndexAt(long index, @CType("uint32_t") int value) { VkRenderPassSubpassFeedbackInfoEXT.set_postMergeIndex(this.segment(), index, value); return this; }
     /// Sets `postMergeIndex` with the given value.
     /// @param value the value
     /// @return `this`
     public VkRenderPassSubpassFeedbackInfoEXT postMergeIndex(@CType("uint32_t") int value) { VkRenderPassSubpassFeedbackInfoEXT.set_postMergeIndex(this.segment(), value); return this; }
 
+    /// A buffer of [VkRenderPassSubpassFeedbackInfoEXT].
+    public static final class Buffer extends VkRenderPassSubpassFeedbackInfoEXT {
+        private final long elementCount;
+
+        /// Creates `VkRenderPassSubpassFeedbackInfoEXT.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkRenderPassSubpassFeedbackInfoEXT`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkRenderPassSubpassFeedbackInfoEXT`
+        public VkRenderPassSubpassFeedbackInfoEXT asSlice(long index) { return new VkRenderPassSubpassFeedbackInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkRenderPassSubpassFeedbackInfoEXT`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkRenderPassSubpassFeedbackInfoEXT`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `subpassMergeStatus` at the given index}
+        /// @param index the index
+        public @CType("VkSubpassMergeStatusEXT") int subpassMergeStatusAt(long index) { return VkRenderPassSubpassFeedbackInfoEXT.get_subpassMergeStatus(this.segment(), index); }
+        /// Sets `subpassMergeStatus` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer subpassMergeStatusAt(long index, @CType("VkSubpassMergeStatusEXT") int value) { VkRenderPassSubpassFeedbackInfoEXT.set_subpassMergeStatus(this.segment(), index, value); return this; }
+
+        /// {@return `description` at the given index}
+        /// @param index the index
+        public @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment descriptionAt(long index) { return VkRenderPassSubpassFeedbackInfoEXT.get_description(this.segment(), index); }
+        /// Sets `description` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer descriptionAt(long index, @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment value) { VkRenderPassSubpassFeedbackInfoEXT.set_description(this.segment(), index, value); return this; }
+
+        /// {@return `postMergeIndex` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int postMergeIndexAt(long index) { return VkRenderPassSubpassFeedbackInfoEXT.get_postMergeIndex(this.segment(), index); }
+        /// Sets `postMergeIndex` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer postMergeIndexAt(long index, @CType("uint32_t") int value) { VkRenderPassSubpassFeedbackInfoEXT.set_postMergeIndex(this.segment(), index, value); return this; }
+
+    }
 }

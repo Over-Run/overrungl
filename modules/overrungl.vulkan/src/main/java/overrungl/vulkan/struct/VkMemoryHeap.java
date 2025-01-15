@@ -37,7 +37,7 @@ import overrungl.util.*;
 ///     VkMemoryHeapFlags flags;
 /// } VkMemoryHeap;
 /// ```
-public final class VkMemoryHeap extends Struct {
+public sealed class VkMemoryHeap extends Struct {
     /// The struct layout of `VkMemoryHeap`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_LONG.withName("size"),
@@ -58,6 +58,11 @@ public final class VkMemoryHeap extends Struct {
     public static VkMemoryHeap of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkMemoryHeap(segment); }
 
     /// Creates `VkMemoryHeap` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkMemoryHeap` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -70,7 +75,7 @@ public final class VkMemoryHeap extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkMemoryHeap ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkMemoryHeap(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkMemoryHeap` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -81,18 +86,21 @@ public final class VkMemoryHeap extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkMemoryHeap`
-    public static VkMemoryHeap alloc(SegmentAllocator allocator, long count) { return new VkMemoryHeap(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkMemoryHeap`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkMemoryHeap`
-    public VkMemoryHeap asSlice(long index) { return new VkMemoryHeap(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkMemoryHeap` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkMemoryHeap`
+    public static VkMemoryHeap allocInit(SegmentAllocator allocator, @CType("VkDeviceSize") long size, @CType("VkMemoryHeapFlags") int flags) { return alloc(allocator).size(size).flags(flags); }
 
-    /// Creates a slice of `VkMemoryHeap`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkMemoryHeap`
-    public VkMemoryHeap asSlice(long index, long count) { return new VkMemoryHeap(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkMemoryHeap copyFrom(VkMemoryHeap src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `size` at the given index}
     /// @param segment the segment of the struct
@@ -101,9 +109,6 @@ public final class VkMemoryHeap extends Struct {
     /// {@return `size`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_size(MemorySegment segment) { return VkMemoryHeap.get_size(segment, 0L); }
-    /// {@return `size` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long sizeAt(long index) { return VkMemoryHeap.get_size(this.segment(), index); }
     /// {@return `size`}
     public @CType("VkDeviceSize") long size() { return VkMemoryHeap.get_size(this.segment()); }
     /// Sets `size` with the given value at the given index.
@@ -115,11 +120,6 @@ public final class VkMemoryHeap extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_size(MemorySegment segment, @CType("VkDeviceSize") long value) { VkMemoryHeap.set_size(segment, 0L, value); }
-    /// Sets `size` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkMemoryHeap sizeAt(long index, @CType("VkDeviceSize") long value) { VkMemoryHeap.set_size(this.segment(), index, value); return this; }
     /// Sets `size` with the given value.
     /// @param value the value
     /// @return `this`
@@ -132,9 +132,6 @@ public final class VkMemoryHeap extends Struct {
     /// {@return `flags`}
     /// @param segment the segment of the struct
     public static @CType("VkMemoryHeapFlags") int get_flags(MemorySegment segment) { return VkMemoryHeap.get_flags(segment, 0L); }
-    /// {@return `flags` at the given index}
-    /// @param index the index
-    public @CType("VkMemoryHeapFlags") int flagsAt(long index) { return VkMemoryHeap.get_flags(this.segment(), index); }
     /// {@return `flags`}
     public @CType("VkMemoryHeapFlags") int flags() { return VkMemoryHeap.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
@@ -146,14 +143,50 @@ public final class VkMemoryHeap extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_flags(MemorySegment segment, @CType("VkMemoryHeapFlags") int value) { VkMemoryHeap.set_flags(segment, 0L, value); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkMemoryHeap flagsAt(long index, @CType("VkMemoryHeapFlags") int value) { VkMemoryHeap.set_flags(this.segment(), index, value); return this; }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
     public VkMemoryHeap flags(@CType("VkMemoryHeapFlags") int value) { VkMemoryHeap.set_flags(this.segment(), value); return this; }
 
+    /// A buffer of [VkMemoryHeap].
+    public static final class Buffer extends VkMemoryHeap {
+        private final long elementCount;
+
+        /// Creates `VkMemoryHeap.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkMemoryHeap`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkMemoryHeap`
+        public VkMemoryHeap asSlice(long index) { return new VkMemoryHeap(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkMemoryHeap`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkMemoryHeap`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `size` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long sizeAt(long index) { return VkMemoryHeap.get_size(this.segment(), index); }
+        /// Sets `size` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sizeAt(long index, @CType("VkDeviceSize") long value) { VkMemoryHeap.set_size(this.segment(), index, value); return this; }
+
+        /// {@return `flags` at the given index}
+        /// @param index the index
+        public @CType("VkMemoryHeapFlags") int flagsAt(long index) { return VkMemoryHeap.get_flags(this.segment(), index); }
+        /// Sets `flags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer flagsAt(long index, @CType("VkMemoryHeapFlags") int value) { VkMemoryHeap.set_flags(this.segment(), index, value); return this; }
+
+    }
 }

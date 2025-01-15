@@ -40,7 +40,7 @@ import overrungl.util.*;
 ///     VkSwapchainImageUsageFlagsANDROID usage;
 /// } VkSwapchainImageCreateInfoANDROID;
 /// ```
-public final class VkSwapchainImageCreateInfoANDROID extends Struct {
+public sealed class VkSwapchainImageCreateInfoANDROID extends Struct {
     /// The struct layout of `VkSwapchainImageCreateInfoANDROID`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -64,6 +64,11 @@ public final class VkSwapchainImageCreateInfoANDROID extends Struct {
     public static VkSwapchainImageCreateInfoANDROID of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkSwapchainImageCreateInfoANDROID(segment); }
 
     /// Creates `VkSwapchainImageCreateInfoANDROID` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkSwapchainImageCreateInfoANDROID` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -76,7 +81,7 @@ public final class VkSwapchainImageCreateInfoANDROID extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSwapchainImageCreateInfoANDROID ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkSwapchainImageCreateInfoANDROID(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkSwapchainImageCreateInfoANDROID` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -87,18 +92,21 @@ public final class VkSwapchainImageCreateInfoANDROID extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkSwapchainImageCreateInfoANDROID`
-    public static VkSwapchainImageCreateInfoANDROID alloc(SegmentAllocator allocator, long count) { return new VkSwapchainImageCreateInfoANDROID(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkSwapchainImageCreateInfoANDROID`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkSwapchainImageCreateInfoANDROID`
-    public VkSwapchainImageCreateInfoANDROID asSlice(long index) { return new VkSwapchainImageCreateInfoANDROID(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkSwapchainImageCreateInfoANDROID` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkSwapchainImageCreateInfoANDROID`
+    public static VkSwapchainImageCreateInfoANDROID allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkSwapchainImageUsageFlagsANDROID") int usage) { return alloc(allocator).sType(sType).pNext(pNext).usage(usage); }
 
-    /// Creates a slice of `VkSwapchainImageCreateInfoANDROID`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkSwapchainImageCreateInfoANDROID`
-    public VkSwapchainImageCreateInfoANDROID asSlice(long index, long count) { return new VkSwapchainImageCreateInfoANDROID(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkSwapchainImageCreateInfoANDROID copyFrom(VkSwapchainImageCreateInfoANDROID src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -107,9 +115,6 @@ public final class VkSwapchainImageCreateInfoANDROID extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkSwapchainImageCreateInfoANDROID.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkSwapchainImageCreateInfoANDROID.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkSwapchainImageCreateInfoANDROID.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -121,11 +126,6 @@ public final class VkSwapchainImageCreateInfoANDROID extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkSwapchainImageCreateInfoANDROID.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSwapchainImageCreateInfoANDROID sTypeAt(long index, @CType("VkStructureType") int value) { VkSwapchainImageCreateInfoANDROID.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -138,9 +138,6 @@ public final class VkSwapchainImageCreateInfoANDROID extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkSwapchainImageCreateInfoANDROID.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkSwapchainImageCreateInfoANDROID.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkSwapchainImageCreateInfoANDROID.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -152,11 +149,6 @@ public final class VkSwapchainImageCreateInfoANDROID extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkSwapchainImageCreateInfoANDROID.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSwapchainImageCreateInfoANDROID pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkSwapchainImageCreateInfoANDROID.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -169,9 +161,6 @@ public final class VkSwapchainImageCreateInfoANDROID extends Struct {
     /// {@return `usage`}
     /// @param segment the segment of the struct
     public static @CType("VkSwapchainImageUsageFlagsANDROID") int get_usage(MemorySegment segment) { return VkSwapchainImageCreateInfoANDROID.get_usage(segment, 0L); }
-    /// {@return `usage` at the given index}
-    /// @param index the index
-    public @CType("VkSwapchainImageUsageFlagsANDROID") int usageAt(long index) { return VkSwapchainImageCreateInfoANDROID.get_usage(this.segment(), index); }
     /// {@return `usage`}
     public @CType("VkSwapchainImageUsageFlagsANDROID") int usage() { return VkSwapchainImageCreateInfoANDROID.get_usage(this.segment()); }
     /// Sets `usage` with the given value at the given index.
@@ -183,14 +172,59 @@ public final class VkSwapchainImageCreateInfoANDROID extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_usage(MemorySegment segment, @CType("VkSwapchainImageUsageFlagsANDROID") int value) { VkSwapchainImageCreateInfoANDROID.set_usage(segment, 0L, value); }
-    /// Sets `usage` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSwapchainImageCreateInfoANDROID usageAt(long index, @CType("VkSwapchainImageUsageFlagsANDROID") int value) { VkSwapchainImageCreateInfoANDROID.set_usage(this.segment(), index, value); return this; }
     /// Sets `usage` with the given value.
     /// @param value the value
     /// @return `this`
     public VkSwapchainImageCreateInfoANDROID usage(@CType("VkSwapchainImageUsageFlagsANDROID") int value) { VkSwapchainImageCreateInfoANDROID.set_usage(this.segment(), value); return this; }
 
+    /// A buffer of [VkSwapchainImageCreateInfoANDROID].
+    public static final class Buffer extends VkSwapchainImageCreateInfoANDROID {
+        private final long elementCount;
+
+        /// Creates `VkSwapchainImageCreateInfoANDROID.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkSwapchainImageCreateInfoANDROID`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkSwapchainImageCreateInfoANDROID`
+        public VkSwapchainImageCreateInfoANDROID asSlice(long index) { return new VkSwapchainImageCreateInfoANDROID(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkSwapchainImageCreateInfoANDROID`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkSwapchainImageCreateInfoANDROID`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkSwapchainImageCreateInfoANDROID.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkSwapchainImageCreateInfoANDROID.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkSwapchainImageCreateInfoANDROID.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkSwapchainImageCreateInfoANDROID.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `usage` at the given index}
+        /// @param index the index
+        public @CType("VkSwapchainImageUsageFlagsANDROID") int usageAt(long index) { return VkSwapchainImageCreateInfoANDROID.get_usage(this.segment(), index); }
+        /// Sets `usage` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer usageAt(long index, @CType("VkSwapchainImageUsageFlagsANDROID") int value) { VkSwapchainImageCreateInfoANDROID.set_usage(this.segment(), index, value); return this; }
+
+    }
 }

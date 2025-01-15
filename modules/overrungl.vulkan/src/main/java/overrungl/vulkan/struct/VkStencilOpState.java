@@ -52,7 +52,7 @@ import overrungl.util.*;
 ///     uint32_t reference;
 /// } VkStencilOpState;
 /// ```
-public final class VkStencilOpState extends Struct {
+public sealed class VkStencilOpState extends Struct {
     /// The struct layout of `VkStencilOpState`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("failOp"),
@@ -88,6 +88,11 @@ public final class VkStencilOpState extends Struct {
     public static VkStencilOpState of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkStencilOpState(segment); }
 
     /// Creates `VkStencilOpState` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkStencilOpState` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -100,7 +105,7 @@ public final class VkStencilOpState extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkStencilOpState ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkStencilOpState(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkStencilOpState` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -111,18 +116,21 @@ public final class VkStencilOpState extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkStencilOpState`
-    public static VkStencilOpState alloc(SegmentAllocator allocator, long count) { return new VkStencilOpState(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkStencilOpState`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkStencilOpState`
-    public VkStencilOpState asSlice(long index) { return new VkStencilOpState(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkStencilOpState` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkStencilOpState`
+    public static VkStencilOpState allocInit(SegmentAllocator allocator, @CType("VkStencilOp") int failOp, @CType("VkStencilOp") int passOp, @CType("VkStencilOp") int depthFailOp, @CType("VkCompareOp") int compareOp, @CType("uint32_t") int compareMask, @CType("uint32_t") int writeMask, @CType("uint32_t") int reference) { return alloc(allocator).failOp(failOp).passOp(passOp).depthFailOp(depthFailOp).compareOp(compareOp).compareMask(compareMask).writeMask(writeMask).reference(reference); }
 
-    /// Creates a slice of `VkStencilOpState`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkStencilOpState`
-    public VkStencilOpState asSlice(long index, long count) { return new VkStencilOpState(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkStencilOpState copyFrom(VkStencilOpState src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `failOp` at the given index}
     /// @param segment the segment of the struct
@@ -131,9 +139,6 @@ public final class VkStencilOpState extends Struct {
     /// {@return `failOp`}
     /// @param segment the segment of the struct
     public static @CType("VkStencilOp") int get_failOp(MemorySegment segment) { return VkStencilOpState.get_failOp(segment, 0L); }
-    /// {@return `failOp` at the given index}
-    /// @param index the index
-    public @CType("VkStencilOp") int failOpAt(long index) { return VkStencilOpState.get_failOp(this.segment(), index); }
     /// {@return `failOp`}
     public @CType("VkStencilOp") int failOp() { return VkStencilOpState.get_failOp(this.segment()); }
     /// Sets `failOp` with the given value at the given index.
@@ -145,11 +150,6 @@ public final class VkStencilOpState extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_failOp(MemorySegment segment, @CType("VkStencilOp") int value) { VkStencilOpState.set_failOp(segment, 0L, value); }
-    /// Sets `failOp` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkStencilOpState failOpAt(long index, @CType("VkStencilOp") int value) { VkStencilOpState.set_failOp(this.segment(), index, value); return this; }
     /// Sets `failOp` with the given value.
     /// @param value the value
     /// @return `this`
@@ -162,9 +162,6 @@ public final class VkStencilOpState extends Struct {
     /// {@return `passOp`}
     /// @param segment the segment of the struct
     public static @CType("VkStencilOp") int get_passOp(MemorySegment segment) { return VkStencilOpState.get_passOp(segment, 0L); }
-    /// {@return `passOp` at the given index}
-    /// @param index the index
-    public @CType("VkStencilOp") int passOpAt(long index) { return VkStencilOpState.get_passOp(this.segment(), index); }
     /// {@return `passOp`}
     public @CType("VkStencilOp") int passOp() { return VkStencilOpState.get_passOp(this.segment()); }
     /// Sets `passOp` with the given value at the given index.
@@ -176,11 +173,6 @@ public final class VkStencilOpState extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_passOp(MemorySegment segment, @CType("VkStencilOp") int value) { VkStencilOpState.set_passOp(segment, 0L, value); }
-    /// Sets `passOp` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkStencilOpState passOpAt(long index, @CType("VkStencilOp") int value) { VkStencilOpState.set_passOp(this.segment(), index, value); return this; }
     /// Sets `passOp` with the given value.
     /// @param value the value
     /// @return `this`
@@ -193,9 +185,6 @@ public final class VkStencilOpState extends Struct {
     /// {@return `depthFailOp`}
     /// @param segment the segment of the struct
     public static @CType("VkStencilOp") int get_depthFailOp(MemorySegment segment) { return VkStencilOpState.get_depthFailOp(segment, 0L); }
-    /// {@return `depthFailOp` at the given index}
-    /// @param index the index
-    public @CType("VkStencilOp") int depthFailOpAt(long index) { return VkStencilOpState.get_depthFailOp(this.segment(), index); }
     /// {@return `depthFailOp`}
     public @CType("VkStencilOp") int depthFailOp() { return VkStencilOpState.get_depthFailOp(this.segment()); }
     /// Sets `depthFailOp` with the given value at the given index.
@@ -207,11 +196,6 @@ public final class VkStencilOpState extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_depthFailOp(MemorySegment segment, @CType("VkStencilOp") int value) { VkStencilOpState.set_depthFailOp(segment, 0L, value); }
-    /// Sets `depthFailOp` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkStencilOpState depthFailOpAt(long index, @CType("VkStencilOp") int value) { VkStencilOpState.set_depthFailOp(this.segment(), index, value); return this; }
     /// Sets `depthFailOp` with the given value.
     /// @param value the value
     /// @return `this`
@@ -224,9 +208,6 @@ public final class VkStencilOpState extends Struct {
     /// {@return `compareOp`}
     /// @param segment the segment of the struct
     public static @CType("VkCompareOp") int get_compareOp(MemorySegment segment) { return VkStencilOpState.get_compareOp(segment, 0L); }
-    /// {@return `compareOp` at the given index}
-    /// @param index the index
-    public @CType("VkCompareOp") int compareOpAt(long index) { return VkStencilOpState.get_compareOp(this.segment(), index); }
     /// {@return `compareOp`}
     public @CType("VkCompareOp") int compareOp() { return VkStencilOpState.get_compareOp(this.segment()); }
     /// Sets `compareOp` with the given value at the given index.
@@ -238,11 +219,6 @@ public final class VkStencilOpState extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_compareOp(MemorySegment segment, @CType("VkCompareOp") int value) { VkStencilOpState.set_compareOp(segment, 0L, value); }
-    /// Sets `compareOp` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkStencilOpState compareOpAt(long index, @CType("VkCompareOp") int value) { VkStencilOpState.set_compareOp(this.segment(), index, value); return this; }
     /// Sets `compareOp` with the given value.
     /// @param value the value
     /// @return `this`
@@ -255,9 +231,6 @@ public final class VkStencilOpState extends Struct {
     /// {@return `compareMask`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_compareMask(MemorySegment segment) { return VkStencilOpState.get_compareMask(segment, 0L); }
-    /// {@return `compareMask` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int compareMaskAt(long index) { return VkStencilOpState.get_compareMask(this.segment(), index); }
     /// {@return `compareMask`}
     public @CType("uint32_t") int compareMask() { return VkStencilOpState.get_compareMask(this.segment()); }
     /// Sets `compareMask` with the given value at the given index.
@@ -269,11 +242,6 @@ public final class VkStencilOpState extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_compareMask(MemorySegment segment, @CType("uint32_t") int value) { VkStencilOpState.set_compareMask(segment, 0L, value); }
-    /// Sets `compareMask` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkStencilOpState compareMaskAt(long index, @CType("uint32_t") int value) { VkStencilOpState.set_compareMask(this.segment(), index, value); return this; }
     /// Sets `compareMask` with the given value.
     /// @param value the value
     /// @return `this`
@@ -286,9 +254,6 @@ public final class VkStencilOpState extends Struct {
     /// {@return `writeMask`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_writeMask(MemorySegment segment) { return VkStencilOpState.get_writeMask(segment, 0L); }
-    /// {@return `writeMask` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int writeMaskAt(long index) { return VkStencilOpState.get_writeMask(this.segment(), index); }
     /// {@return `writeMask`}
     public @CType("uint32_t") int writeMask() { return VkStencilOpState.get_writeMask(this.segment()); }
     /// Sets `writeMask` with the given value at the given index.
@@ -300,11 +265,6 @@ public final class VkStencilOpState extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_writeMask(MemorySegment segment, @CType("uint32_t") int value) { VkStencilOpState.set_writeMask(segment, 0L, value); }
-    /// Sets `writeMask` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkStencilOpState writeMaskAt(long index, @CType("uint32_t") int value) { VkStencilOpState.set_writeMask(this.segment(), index, value); return this; }
     /// Sets `writeMask` with the given value.
     /// @param value the value
     /// @return `this`
@@ -317,9 +277,6 @@ public final class VkStencilOpState extends Struct {
     /// {@return `reference`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_reference(MemorySegment segment) { return VkStencilOpState.get_reference(segment, 0L); }
-    /// {@return `reference` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int referenceAt(long index) { return VkStencilOpState.get_reference(this.segment(), index); }
     /// {@return `reference`}
     public @CType("uint32_t") int reference() { return VkStencilOpState.get_reference(this.segment()); }
     /// Sets `reference` with the given value at the given index.
@@ -331,14 +288,95 @@ public final class VkStencilOpState extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_reference(MemorySegment segment, @CType("uint32_t") int value) { VkStencilOpState.set_reference(segment, 0L, value); }
-    /// Sets `reference` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkStencilOpState referenceAt(long index, @CType("uint32_t") int value) { VkStencilOpState.set_reference(this.segment(), index, value); return this; }
     /// Sets `reference` with the given value.
     /// @param value the value
     /// @return `this`
     public VkStencilOpState reference(@CType("uint32_t") int value) { VkStencilOpState.set_reference(this.segment(), value); return this; }
 
+    /// A buffer of [VkStencilOpState].
+    public static final class Buffer extends VkStencilOpState {
+        private final long elementCount;
+
+        /// Creates `VkStencilOpState.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkStencilOpState`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkStencilOpState`
+        public VkStencilOpState asSlice(long index) { return new VkStencilOpState(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkStencilOpState`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkStencilOpState`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `failOp` at the given index}
+        /// @param index the index
+        public @CType("VkStencilOp") int failOpAt(long index) { return VkStencilOpState.get_failOp(this.segment(), index); }
+        /// Sets `failOp` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer failOpAt(long index, @CType("VkStencilOp") int value) { VkStencilOpState.set_failOp(this.segment(), index, value); return this; }
+
+        /// {@return `passOp` at the given index}
+        /// @param index the index
+        public @CType("VkStencilOp") int passOpAt(long index) { return VkStencilOpState.get_passOp(this.segment(), index); }
+        /// Sets `passOp` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer passOpAt(long index, @CType("VkStencilOp") int value) { VkStencilOpState.set_passOp(this.segment(), index, value); return this; }
+
+        /// {@return `depthFailOp` at the given index}
+        /// @param index the index
+        public @CType("VkStencilOp") int depthFailOpAt(long index) { return VkStencilOpState.get_depthFailOp(this.segment(), index); }
+        /// Sets `depthFailOp` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer depthFailOpAt(long index, @CType("VkStencilOp") int value) { VkStencilOpState.set_depthFailOp(this.segment(), index, value); return this; }
+
+        /// {@return `compareOp` at the given index}
+        /// @param index the index
+        public @CType("VkCompareOp") int compareOpAt(long index) { return VkStencilOpState.get_compareOp(this.segment(), index); }
+        /// Sets `compareOp` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer compareOpAt(long index, @CType("VkCompareOp") int value) { VkStencilOpState.set_compareOp(this.segment(), index, value); return this; }
+
+        /// {@return `compareMask` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int compareMaskAt(long index) { return VkStencilOpState.get_compareMask(this.segment(), index); }
+        /// Sets `compareMask` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer compareMaskAt(long index, @CType("uint32_t") int value) { VkStencilOpState.set_compareMask(this.segment(), index, value); return this; }
+
+        /// {@return `writeMask` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int writeMaskAt(long index) { return VkStencilOpState.get_writeMask(this.segment(), index); }
+        /// Sets `writeMask` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer writeMaskAt(long index, @CType("uint32_t") int value) { VkStencilOpState.set_writeMask(this.segment(), index, value); return this; }
+
+        /// {@return `reference` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int referenceAt(long index) { return VkStencilOpState.get_reference(this.segment(), index); }
+        /// Sets `reference` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer referenceAt(long index, @CType("uint32_t") int value) { VkStencilOpState.set_reference(this.segment(), index, value); return this; }
+
+    }
 }

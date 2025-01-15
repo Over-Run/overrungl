@@ -55,7 +55,7 @@ import overrungl.util.*;
 ///     VkQueryPipelineStatisticFlags pipelineStatistics;
 /// } VkCommandBufferInheritanceInfo;
 /// ```
-public final class VkCommandBufferInheritanceInfo extends Struct {
+public sealed class VkCommandBufferInheritanceInfo extends Struct {
     /// The struct layout of `VkCommandBufferInheritanceInfo`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -94,6 +94,11 @@ public final class VkCommandBufferInheritanceInfo extends Struct {
     public static VkCommandBufferInheritanceInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkCommandBufferInheritanceInfo(segment); }
 
     /// Creates `VkCommandBufferInheritanceInfo` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkCommandBufferInheritanceInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -106,7 +111,7 @@ public final class VkCommandBufferInheritanceInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkCommandBufferInheritanceInfo ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkCommandBufferInheritanceInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkCommandBufferInheritanceInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -117,18 +122,21 @@ public final class VkCommandBufferInheritanceInfo extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkCommandBufferInheritanceInfo`
-    public static VkCommandBufferInheritanceInfo alloc(SegmentAllocator allocator, long count) { return new VkCommandBufferInheritanceInfo(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkCommandBufferInheritanceInfo`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkCommandBufferInheritanceInfo`
-    public VkCommandBufferInheritanceInfo asSlice(long index) { return new VkCommandBufferInheritanceInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkCommandBufferInheritanceInfo` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkCommandBufferInheritanceInfo`
+    public static VkCommandBufferInheritanceInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkRenderPass") java.lang.foreign.MemorySegment renderPass, @CType("uint32_t") int subpass, @CType("VkFramebuffer") java.lang.foreign.MemorySegment framebuffer, @CType("VkBool32") int occlusionQueryEnable, @CType("VkQueryControlFlags") int queryFlags, @CType("VkQueryPipelineStatisticFlags") int pipelineStatistics) { return alloc(allocator).sType(sType).pNext(pNext).renderPass(renderPass).subpass(subpass).framebuffer(framebuffer).occlusionQueryEnable(occlusionQueryEnable).queryFlags(queryFlags).pipelineStatistics(pipelineStatistics); }
 
-    /// Creates a slice of `VkCommandBufferInheritanceInfo`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkCommandBufferInheritanceInfo`
-    public VkCommandBufferInheritanceInfo asSlice(long index, long count) { return new VkCommandBufferInheritanceInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkCommandBufferInheritanceInfo copyFrom(VkCommandBufferInheritanceInfo src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -137,9 +145,6 @@ public final class VkCommandBufferInheritanceInfo extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkCommandBufferInheritanceInfo.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkCommandBufferInheritanceInfo.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkCommandBufferInheritanceInfo.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -151,11 +156,6 @@ public final class VkCommandBufferInheritanceInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkCommandBufferInheritanceInfo.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCommandBufferInheritanceInfo sTypeAt(long index, @CType("VkStructureType") int value) { VkCommandBufferInheritanceInfo.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -168,9 +168,6 @@ public final class VkCommandBufferInheritanceInfo extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkCommandBufferInheritanceInfo.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkCommandBufferInheritanceInfo.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkCommandBufferInheritanceInfo.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -182,11 +179,6 @@ public final class VkCommandBufferInheritanceInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkCommandBufferInheritanceInfo.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCommandBufferInheritanceInfo pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkCommandBufferInheritanceInfo.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -199,9 +191,6 @@ public final class VkCommandBufferInheritanceInfo extends Struct {
     /// {@return `renderPass`}
     /// @param segment the segment of the struct
     public static @CType("VkRenderPass") java.lang.foreign.MemorySegment get_renderPass(MemorySegment segment) { return VkCommandBufferInheritanceInfo.get_renderPass(segment, 0L); }
-    /// {@return `renderPass` at the given index}
-    /// @param index the index
-    public @CType("VkRenderPass") java.lang.foreign.MemorySegment renderPassAt(long index) { return VkCommandBufferInheritanceInfo.get_renderPass(this.segment(), index); }
     /// {@return `renderPass`}
     public @CType("VkRenderPass") java.lang.foreign.MemorySegment renderPass() { return VkCommandBufferInheritanceInfo.get_renderPass(this.segment()); }
     /// Sets `renderPass` with the given value at the given index.
@@ -213,11 +202,6 @@ public final class VkCommandBufferInheritanceInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_renderPass(MemorySegment segment, @CType("VkRenderPass") java.lang.foreign.MemorySegment value) { VkCommandBufferInheritanceInfo.set_renderPass(segment, 0L, value); }
-    /// Sets `renderPass` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCommandBufferInheritanceInfo renderPassAt(long index, @CType("VkRenderPass") java.lang.foreign.MemorySegment value) { VkCommandBufferInheritanceInfo.set_renderPass(this.segment(), index, value); return this; }
     /// Sets `renderPass` with the given value.
     /// @param value the value
     /// @return `this`
@@ -230,9 +214,6 @@ public final class VkCommandBufferInheritanceInfo extends Struct {
     /// {@return `subpass`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_subpass(MemorySegment segment) { return VkCommandBufferInheritanceInfo.get_subpass(segment, 0L); }
-    /// {@return `subpass` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int subpassAt(long index) { return VkCommandBufferInheritanceInfo.get_subpass(this.segment(), index); }
     /// {@return `subpass`}
     public @CType("uint32_t") int subpass() { return VkCommandBufferInheritanceInfo.get_subpass(this.segment()); }
     /// Sets `subpass` with the given value at the given index.
@@ -244,11 +225,6 @@ public final class VkCommandBufferInheritanceInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_subpass(MemorySegment segment, @CType("uint32_t") int value) { VkCommandBufferInheritanceInfo.set_subpass(segment, 0L, value); }
-    /// Sets `subpass` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCommandBufferInheritanceInfo subpassAt(long index, @CType("uint32_t") int value) { VkCommandBufferInheritanceInfo.set_subpass(this.segment(), index, value); return this; }
     /// Sets `subpass` with the given value.
     /// @param value the value
     /// @return `this`
@@ -261,9 +237,6 @@ public final class VkCommandBufferInheritanceInfo extends Struct {
     /// {@return `framebuffer`}
     /// @param segment the segment of the struct
     public static @CType("VkFramebuffer") java.lang.foreign.MemorySegment get_framebuffer(MemorySegment segment) { return VkCommandBufferInheritanceInfo.get_framebuffer(segment, 0L); }
-    /// {@return `framebuffer` at the given index}
-    /// @param index the index
-    public @CType("VkFramebuffer") java.lang.foreign.MemorySegment framebufferAt(long index) { return VkCommandBufferInheritanceInfo.get_framebuffer(this.segment(), index); }
     /// {@return `framebuffer`}
     public @CType("VkFramebuffer") java.lang.foreign.MemorySegment framebuffer() { return VkCommandBufferInheritanceInfo.get_framebuffer(this.segment()); }
     /// Sets `framebuffer` with the given value at the given index.
@@ -275,11 +248,6 @@ public final class VkCommandBufferInheritanceInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_framebuffer(MemorySegment segment, @CType("VkFramebuffer") java.lang.foreign.MemorySegment value) { VkCommandBufferInheritanceInfo.set_framebuffer(segment, 0L, value); }
-    /// Sets `framebuffer` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCommandBufferInheritanceInfo framebufferAt(long index, @CType("VkFramebuffer") java.lang.foreign.MemorySegment value) { VkCommandBufferInheritanceInfo.set_framebuffer(this.segment(), index, value); return this; }
     /// Sets `framebuffer` with the given value.
     /// @param value the value
     /// @return `this`
@@ -292,9 +260,6 @@ public final class VkCommandBufferInheritanceInfo extends Struct {
     /// {@return `occlusionQueryEnable`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_occlusionQueryEnable(MemorySegment segment) { return VkCommandBufferInheritanceInfo.get_occlusionQueryEnable(segment, 0L); }
-    /// {@return `occlusionQueryEnable` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int occlusionQueryEnableAt(long index) { return VkCommandBufferInheritanceInfo.get_occlusionQueryEnable(this.segment(), index); }
     /// {@return `occlusionQueryEnable`}
     public @CType("VkBool32") int occlusionQueryEnable() { return VkCommandBufferInheritanceInfo.get_occlusionQueryEnable(this.segment()); }
     /// Sets `occlusionQueryEnable` with the given value at the given index.
@@ -306,11 +271,6 @@ public final class VkCommandBufferInheritanceInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_occlusionQueryEnable(MemorySegment segment, @CType("VkBool32") int value) { VkCommandBufferInheritanceInfo.set_occlusionQueryEnable(segment, 0L, value); }
-    /// Sets `occlusionQueryEnable` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCommandBufferInheritanceInfo occlusionQueryEnableAt(long index, @CType("VkBool32") int value) { VkCommandBufferInheritanceInfo.set_occlusionQueryEnable(this.segment(), index, value); return this; }
     /// Sets `occlusionQueryEnable` with the given value.
     /// @param value the value
     /// @return `this`
@@ -323,9 +283,6 @@ public final class VkCommandBufferInheritanceInfo extends Struct {
     /// {@return `queryFlags`}
     /// @param segment the segment of the struct
     public static @CType("VkQueryControlFlags") int get_queryFlags(MemorySegment segment) { return VkCommandBufferInheritanceInfo.get_queryFlags(segment, 0L); }
-    /// {@return `queryFlags` at the given index}
-    /// @param index the index
-    public @CType("VkQueryControlFlags") int queryFlagsAt(long index) { return VkCommandBufferInheritanceInfo.get_queryFlags(this.segment(), index); }
     /// {@return `queryFlags`}
     public @CType("VkQueryControlFlags") int queryFlags() { return VkCommandBufferInheritanceInfo.get_queryFlags(this.segment()); }
     /// Sets `queryFlags` with the given value at the given index.
@@ -337,11 +294,6 @@ public final class VkCommandBufferInheritanceInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_queryFlags(MemorySegment segment, @CType("VkQueryControlFlags") int value) { VkCommandBufferInheritanceInfo.set_queryFlags(segment, 0L, value); }
-    /// Sets `queryFlags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCommandBufferInheritanceInfo queryFlagsAt(long index, @CType("VkQueryControlFlags") int value) { VkCommandBufferInheritanceInfo.set_queryFlags(this.segment(), index, value); return this; }
     /// Sets `queryFlags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -354,9 +306,6 @@ public final class VkCommandBufferInheritanceInfo extends Struct {
     /// {@return `pipelineStatistics`}
     /// @param segment the segment of the struct
     public static @CType("VkQueryPipelineStatisticFlags") int get_pipelineStatistics(MemorySegment segment) { return VkCommandBufferInheritanceInfo.get_pipelineStatistics(segment, 0L); }
-    /// {@return `pipelineStatistics` at the given index}
-    /// @param index the index
-    public @CType("VkQueryPipelineStatisticFlags") int pipelineStatisticsAt(long index) { return VkCommandBufferInheritanceInfo.get_pipelineStatistics(this.segment(), index); }
     /// {@return `pipelineStatistics`}
     public @CType("VkQueryPipelineStatisticFlags") int pipelineStatistics() { return VkCommandBufferInheritanceInfo.get_pipelineStatistics(this.segment()); }
     /// Sets `pipelineStatistics` with the given value at the given index.
@@ -368,14 +317,104 @@ public final class VkCommandBufferInheritanceInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pipelineStatistics(MemorySegment segment, @CType("VkQueryPipelineStatisticFlags") int value) { VkCommandBufferInheritanceInfo.set_pipelineStatistics(segment, 0L, value); }
-    /// Sets `pipelineStatistics` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCommandBufferInheritanceInfo pipelineStatisticsAt(long index, @CType("VkQueryPipelineStatisticFlags") int value) { VkCommandBufferInheritanceInfo.set_pipelineStatistics(this.segment(), index, value); return this; }
     /// Sets `pipelineStatistics` with the given value.
     /// @param value the value
     /// @return `this`
     public VkCommandBufferInheritanceInfo pipelineStatistics(@CType("VkQueryPipelineStatisticFlags") int value) { VkCommandBufferInheritanceInfo.set_pipelineStatistics(this.segment(), value); return this; }
 
+    /// A buffer of [VkCommandBufferInheritanceInfo].
+    public static final class Buffer extends VkCommandBufferInheritanceInfo {
+        private final long elementCount;
+
+        /// Creates `VkCommandBufferInheritanceInfo.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkCommandBufferInheritanceInfo`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkCommandBufferInheritanceInfo`
+        public VkCommandBufferInheritanceInfo asSlice(long index) { return new VkCommandBufferInheritanceInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkCommandBufferInheritanceInfo`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkCommandBufferInheritanceInfo`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkCommandBufferInheritanceInfo.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkCommandBufferInheritanceInfo.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkCommandBufferInheritanceInfo.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkCommandBufferInheritanceInfo.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `renderPass` at the given index}
+        /// @param index the index
+        public @CType("VkRenderPass") java.lang.foreign.MemorySegment renderPassAt(long index) { return VkCommandBufferInheritanceInfo.get_renderPass(this.segment(), index); }
+        /// Sets `renderPass` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer renderPassAt(long index, @CType("VkRenderPass") java.lang.foreign.MemorySegment value) { VkCommandBufferInheritanceInfo.set_renderPass(this.segment(), index, value); return this; }
+
+        /// {@return `subpass` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int subpassAt(long index) { return VkCommandBufferInheritanceInfo.get_subpass(this.segment(), index); }
+        /// Sets `subpass` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer subpassAt(long index, @CType("uint32_t") int value) { VkCommandBufferInheritanceInfo.set_subpass(this.segment(), index, value); return this; }
+
+        /// {@return `framebuffer` at the given index}
+        /// @param index the index
+        public @CType("VkFramebuffer") java.lang.foreign.MemorySegment framebufferAt(long index) { return VkCommandBufferInheritanceInfo.get_framebuffer(this.segment(), index); }
+        /// Sets `framebuffer` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer framebufferAt(long index, @CType("VkFramebuffer") java.lang.foreign.MemorySegment value) { VkCommandBufferInheritanceInfo.set_framebuffer(this.segment(), index, value); return this; }
+
+        /// {@return `occlusionQueryEnable` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int occlusionQueryEnableAt(long index) { return VkCommandBufferInheritanceInfo.get_occlusionQueryEnable(this.segment(), index); }
+        /// Sets `occlusionQueryEnable` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer occlusionQueryEnableAt(long index, @CType("VkBool32") int value) { VkCommandBufferInheritanceInfo.set_occlusionQueryEnable(this.segment(), index, value); return this; }
+
+        /// {@return `queryFlags` at the given index}
+        /// @param index the index
+        public @CType("VkQueryControlFlags") int queryFlagsAt(long index) { return VkCommandBufferInheritanceInfo.get_queryFlags(this.segment(), index); }
+        /// Sets `queryFlags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer queryFlagsAt(long index, @CType("VkQueryControlFlags") int value) { VkCommandBufferInheritanceInfo.set_queryFlags(this.segment(), index, value); return this; }
+
+        /// {@return `pipelineStatistics` at the given index}
+        /// @param index the index
+        public @CType("VkQueryPipelineStatisticFlags") int pipelineStatisticsAt(long index) { return VkCommandBufferInheritanceInfo.get_pipelineStatistics(this.segment(), index); }
+        /// Sets `pipelineStatistics` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pipelineStatisticsAt(long index, @CType("VkQueryPipelineStatisticFlags") int value) { VkCommandBufferInheritanceInfo.set_pipelineStatistics(this.segment(), index, value); return this; }
+
+    }
 }

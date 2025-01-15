@@ -73,7 +73,7 @@ import overrungl.util.*;
 ///     uint32_t depth;
 /// } VkTraceRaysIndirectCommand2KHR;
 /// ```
-public final class VkTraceRaysIndirectCommand2KHR extends Struct {
+public sealed class VkTraceRaysIndirectCommand2KHR extends Struct {
     /// The struct layout of `VkTraceRaysIndirectCommand2KHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_LONG.withName("raygenShaderRecordAddress"),
@@ -130,6 +130,11 @@ public final class VkTraceRaysIndirectCommand2KHR extends Struct {
     public static VkTraceRaysIndirectCommand2KHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkTraceRaysIndirectCommand2KHR(segment); }
 
     /// Creates `VkTraceRaysIndirectCommand2KHR` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkTraceRaysIndirectCommand2KHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -142,7 +147,7 @@ public final class VkTraceRaysIndirectCommand2KHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkTraceRaysIndirectCommand2KHR ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkTraceRaysIndirectCommand2KHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkTraceRaysIndirectCommand2KHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -153,18 +158,21 @@ public final class VkTraceRaysIndirectCommand2KHR extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkTraceRaysIndirectCommand2KHR`
-    public static VkTraceRaysIndirectCommand2KHR alloc(SegmentAllocator allocator, long count) { return new VkTraceRaysIndirectCommand2KHR(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkTraceRaysIndirectCommand2KHR`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkTraceRaysIndirectCommand2KHR`
-    public VkTraceRaysIndirectCommand2KHR asSlice(long index) { return new VkTraceRaysIndirectCommand2KHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkTraceRaysIndirectCommand2KHR` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkTraceRaysIndirectCommand2KHR`
+    public static VkTraceRaysIndirectCommand2KHR allocInit(SegmentAllocator allocator, @CType("VkDeviceAddress") long raygenShaderRecordAddress, @CType("VkDeviceSize") long raygenShaderRecordSize, @CType("VkDeviceAddress") long missShaderBindingTableAddress, @CType("VkDeviceSize") long missShaderBindingTableSize, @CType("VkDeviceSize") long missShaderBindingTableStride, @CType("VkDeviceAddress") long hitShaderBindingTableAddress, @CType("VkDeviceSize") long hitShaderBindingTableSize, @CType("VkDeviceSize") long hitShaderBindingTableStride, @CType("VkDeviceAddress") long callableShaderBindingTableAddress, @CType("VkDeviceSize") long callableShaderBindingTableSize, @CType("VkDeviceSize") long callableShaderBindingTableStride, @CType("uint32_t") int width, @CType("uint32_t") int height, @CType("uint32_t") int depth) { return alloc(allocator).raygenShaderRecordAddress(raygenShaderRecordAddress).raygenShaderRecordSize(raygenShaderRecordSize).missShaderBindingTableAddress(missShaderBindingTableAddress).missShaderBindingTableSize(missShaderBindingTableSize).missShaderBindingTableStride(missShaderBindingTableStride).hitShaderBindingTableAddress(hitShaderBindingTableAddress).hitShaderBindingTableSize(hitShaderBindingTableSize).hitShaderBindingTableStride(hitShaderBindingTableStride).callableShaderBindingTableAddress(callableShaderBindingTableAddress).callableShaderBindingTableSize(callableShaderBindingTableSize).callableShaderBindingTableStride(callableShaderBindingTableStride).width(width).height(height).depth(depth); }
 
-    /// Creates a slice of `VkTraceRaysIndirectCommand2KHR`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkTraceRaysIndirectCommand2KHR`
-    public VkTraceRaysIndirectCommand2KHR asSlice(long index, long count) { return new VkTraceRaysIndirectCommand2KHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkTraceRaysIndirectCommand2KHR copyFrom(VkTraceRaysIndirectCommand2KHR src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `raygenShaderRecordAddress` at the given index}
     /// @param segment the segment of the struct
@@ -173,9 +181,6 @@ public final class VkTraceRaysIndirectCommand2KHR extends Struct {
     /// {@return `raygenShaderRecordAddress`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceAddress") long get_raygenShaderRecordAddress(MemorySegment segment) { return VkTraceRaysIndirectCommand2KHR.get_raygenShaderRecordAddress(segment, 0L); }
-    /// {@return `raygenShaderRecordAddress` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceAddress") long raygenShaderRecordAddressAt(long index) { return VkTraceRaysIndirectCommand2KHR.get_raygenShaderRecordAddress(this.segment(), index); }
     /// {@return `raygenShaderRecordAddress`}
     public @CType("VkDeviceAddress") long raygenShaderRecordAddress() { return VkTraceRaysIndirectCommand2KHR.get_raygenShaderRecordAddress(this.segment()); }
     /// Sets `raygenShaderRecordAddress` with the given value at the given index.
@@ -187,11 +192,6 @@ public final class VkTraceRaysIndirectCommand2KHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_raygenShaderRecordAddress(MemorySegment segment, @CType("VkDeviceAddress") long value) { VkTraceRaysIndirectCommand2KHR.set_raygenShaderRecordAddress(segment, 0L, value); }
-    /// Sets `raygenShaderRecordAddress` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkTraceRaysIndirectCommand2KHR raygenShaderRecordAddressAt(long index, @CType("VkDeviceAddress") long value) { VkTraceRaysIndirectCommand2KHR.set_raygenShaderRecordAddress(this.segment(), index, value); return this; }
     /// Sets `raygenShaderRecordAddress` with the given value.
     /// @param value the value
     /// @return `this`
@@ -204,9 +204,6 @@ public final class VkTraceRaysIndirectCommand2KHR extends Struct {
     /// {@return `raygenShaderRecordSize`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_raygenShaderRecordSize(MemorySegment segment) { return VkTraceRaysIndirectCommand2KHR.get_raygenShaderRecordSize(segment, 0L); }
-    /// {@return `raygenShaderRecordSize` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long raygenShaderRecordSizeAt(long index) { return VkTraceRaysIndirectCommand2KHR.get_raygenShaderRecordSize(this.segment(), index); }
     /// {@return `raygenShaderRecordSize`}
     public @CType("VkDeviceSize") long raygenShaderRecordSize() { return VkTraceRaysIndirectCommand2KHR.get_raygenShaderRecordSize(this.segment()); }
     /// Sets `raygenShaderRecordSize` with the given value at the given index.
@@ -218,11 +215,6 @@ public final class VkTraceRaysIndirectCommand2KHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_raygenShaderRecordSize(MemorySegment segment, @CType("VkDeviceSize") long value) { VkTraceRaysIndirectCommand2KHR.set_raygenShaderRecordSize(segment, 0L, value); }
-    /// Sets `raygenShaderRecordSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkTraceRaysIndirectCommand2KHR raygenShaderRecordSizeAt(long index, @CType("VkDeviceSize") long value) { VkTraceRaysIndirectCommand2KHR.set_raygenShaderRecordSize(this.segment(), index, value); return this; }
     /// Sets `raygenShaderRecordSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -235,9 +227,6 @@ public final class VkTraceRaysIndirectCommand2KHR extends Struct {
     /// {@return `missShaderBindingTableAddress`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceAddress") long get_missShaderBindingTableAddress(MemorySegment segment) { return VkTraceRaysIndirectCommand2KHR.get_missShaderBindingTableAddress(segment, 0L); }
-    /// {@return `missShaderBindingTableAddress` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceAddress") long missShaderBindingTableAddressAt(long index) { return VkTraceRaysIndirectCommand2KHR.get_missShaderBindingTableAddress(this.segment(), index); }
     /// {@return `missShaderBindingTableAddress`}
     public @CType("VkDeviceAddress") long missShaderBindingTableAddress() { return VkTraceRaysIndirectCommand2KHR.get_missShaderBindingTableAddress(this.segment()); }
     /// Sets `missShaderBindingTableAddress` with the given value at the given index.
@@ -249,11 +238,6 @@ public final class VkTraceRaysIndirectCommand2KHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_missShaderBindingTableAddress(MemorySegment segment, @CType("VkDeviceAddress") long value) { VkTraceRaysIndirectCommand2KHR.set_missShaderBindingTableAddress(segment, 0L, value); }
-    /// Sets `missShaderBindingTableAddress` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkTraceRaysIndirectCommand2KHR missShaderBindingTableAddressAt(long index, @CType("VkDeviceAddress") long value) { VkTraceRaysIndirectCommand2KHR.set_missShaderBindingTableAddress(this.segment(), index, value); return this; }
     /// Sets `missShaderBindingTableAddress` with the given value.
     /// @param value the value
     /// @return `this`
@@ -266,9 +250,6 @@ public final class VkTraceRaysIndirectCommand2KHR extends Struct {
     /// {@return `missShaderBindingTableSize`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_missShaderBindingTableSize(MemorySegment segment) { return VkTraceRaysIndirectCommand2KHR.get_missShaderBindingTableSize(segment, 0L); }
-    /// {@return `missShaderBindingTableSize` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long missShaderBindingTableSizeAt(long index) { return VkTraceRaysIndirectCommand2KHR.get_missShaderBindingTableSize(this.segment(), index); }
     /// {@return `missShaderBindingTableSize`}
     public @CType("VkDeviceSize") long missShaderBindingTableSize() { return VkTraceRaysIndirectCommand2KHR.get_missShaderBindingTableSize(this.segment()); }
     /// Sets `missShaderBindingTableSize` with the given value at the given index.
@@ -280,11 +261,6 @@ public final class VkTraceRaysIndirectCommand2KHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_missShaderBindingTableSize(MemorySegment segment, @CType("VkDeviceSize") long value) { VkTraceRaysIndirectCommand2KHR.set_missShaderBindingTableSize(segment, 0L, value); }
-    /// Sets `missShaderBindingTableSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkTraceRaysIndirectCommand2KHR missShaderBindingTableSizeAt(long index, @CType("VkDeviceSize") long value) { VkTraceRaysIndirectCommand2KHR.set_missShaderBindingTableSize(this.segment(), index, value); return this; }
     /// Sets `missShaderBindingTableSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -297,9 +273,6 @@ public final class VkTraceRaysIndirectCommand2KHR extends Struct {
     /// {@return `missShaderBindingTableStride`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_missShaderBindingTableStride(MemorySegment segment) { return VkTraceRaysIndirectCommand2KHR.get_missShaderBindingTableStride(segment, 0L); }
-    /// {@return `missShaderBindingTableStride` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long missShaderBindingTableStrideAt(long index) { return VkTraceRaysIndirectCommand2KHR.get_missShaderBindingTableStride(this.segment(), index); }
     /// {@return `missShaderBindingTableStride`}
     public @CType("VkDeviceSize") long missShaderBindingTableStride() { return VkTraceRaysIndirectCommand2KHR.get_missShaderBindingTableStride(this.segment()); }
     /// Sets `missShaderBindingTableStride` with the given value at the given index.
@@ -311,11 +284,6 @@ public final class VkTraceRaysIndirectCommand2KHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_missShaderBindingTableStride(MemorySegment segment, @CType("VkDeviceSize") long value) { VkTraceRaysIndirectCommand2KHR.set_missShaderBindingTableStride(segment, 0L, value); }
-    /// Sets `missShaderBindingTableStride` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkTraceRaysIndirectCommand2KHR missShaderBindingTableStrideAt(long index, @CType("VkDeviceSize") long value) { VkTraceRaysIndirectCommand2KHR.set_missShaderBindingTableStride(this.segment(), index, value); return this; }
     /// Sets `missShaderBindingTableStride` with the given value.
     /// @param value the value
     /// @return `this`
@@ -328,9 +296,6 @@ public final class VkTraceRaysIndirectCommand2KHR extends Struct {
     /// {@return `hitShaderBindingTableAddress`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceAddress") long get_hitShaderBindingTableAddress(MemorySegment segment) { return VkTraceRaysIndirectCommand2KHR.get_hitShaderBindingTableAddress(segment, 0L); }
-    /// {@return `hitShaderBindingTableAddress` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceAddress") long hitShaderBindingTableAddressAt(long index) { return VkTraceRaysIndirectCommand2KHR.get_hitShaderBindingTableAddress(this.segment(), index); }
     /// {@return `hitShaderBindingTableAddress`}
     public @CType("VkDeviceAddress") long hitShaderBindingTableAddress() { return VkTraceRaysIndirectCommand2KHR.get_hitShaderBindingTableAddress(this.segment()); }
     /// Sets `hitShaderBindingTableAddress` with the given value at the given index.
@@ -342,11 +307,6 @@ public final class VkTraceRaysIndirectCommand2KHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_hitShaderBindingTableAddress(MemorySegment segment, @CType("VkDeviceAddress") long value) { VkTraceRaysIndirectCommand2KHR.set_hitShaderBindingTableAddress(segment, 0L, value); }
-    /// Sets `hitShaderBindingTableAddress` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkTraceRaysIndirectCommand2KHR hitShaderBindingTableAddressAt(long index, @CType("VkDeviceAddress") long value) { VkTraceRaysIndirectCommand2KHR.set_hitShaderBindingTableAddress(this.segment(), index, value); return this; }
     /// Sets `hitShaderBindingTableAddress` with the given value.
     /// @param value the value
     /// @return `this`
@@ -359,9 +319,6 @@ public final class VkTraceRaysIndirectCommand2KHR extends Struct {
     /// {@return `hitShaderBindingTableSize`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_hitShaderBindingTableSize(MemorySegment segment) { return VkTraceRaysIndirectCommand2KHR.get_hitShaderBindingTableSize(segment, 0L); }
-    /// {@return `hitShaderBindingTableSize` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long hitShaderBindingTableSizeAt(long index) { return VkTraceRaysIndirectCommand2KHR.get_hitShaderBindingTableSize(this.segment(), index); }
     /// {@return `hitShaderBindingTableSize`}
     public @CType("VkDeviceSize") long hitShaderBindingTableSize() { return VkTraceRaysIndirectCommand2KHR.get_hitShaderBindingTableSize(this.segment()); }
     /// Sets `hitShaderBindingTableSize` with the given value at the given index.
@@ -373,11 +330,6 @@ public final class VkTraceRaysIndirectCommand2KHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_hitShaderBindingTableSize(MemorySegment segment, @CType("VkDeviceSize") long value) { VkTraceRaysIndirectCommand2KHR.set_hitShaderBindingTableSize(segment, 0L, value); }
-    /// Sets `hitShaderBindingTableSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkTraceRaysIndirectCommand2KHR hitShaderBindingTableSizeAt(long index, @CType("VkDeviceSize") long value) { VkTraceRaysIndirectCommand2KHR.set_hitShaderBindingTableSize(this.segment(), index, value); return this; }
     /// Sets `hitShaderBindingTableSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -390,9 +342,6 @@ public final class VkTraceRaysIndirectCommand2KHR extends Struct {
     /// {@return `hitShaderBindingTableStride`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_hitShaderBindingTableStride(MemorySegment segment) { return VkTraceRaysIndirectCommand2KHR.get_hitShaderBindingTableStride(segment, 0L); }
-    /// {@return `hitShaderBindingTableStride` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long hitShaderBindingTableStrideAt(long index) { return VkTraceRaysIndirectCommand2KHR.get_hitShaderBindingTableStride(this.segment(), index); }
     /// {@return `hitShaderBindingTableStride`}
     public @CType("VkDeviceSize") long hitShaderBindingTableStride() { return VkTraceRaysIndirectCommand2KHR.get_hitShaderBindingTableStride(this.segment()); }
     /// Sets `hitShaderBindingTableStride` with the given value at the given index.
@@ -404,11 +353,6 @@ public final class VkTraceRaysIndirectCommand2KHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_hitShaderBindingTableStride(MemorySegment segment, @CType("VkDeviceSize") long value) { VkTraceRaysIndirectCommand2KHR.set_hitShaderBindingTableStride(segment, 0L, value); }
-    /// Sets `hitShaderBindingTableStride` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkTraceRaysIndirectCommand2KHR hitShaderBindingTableStrideAt(long index, @CType("VkDeviceSize") long value) { VkTraceRaysIndirectCommand2KHR.set_hitShaderBindingTableStride(this.segment(), index, value); return this; }
     /// Sets `hitShaderBindingTableStride` with the given value.
     /// @param value the value
     /// @return `this`
@@ -421,9 +365,6 @@ public final class VkTraceRaysIndirectCommand2KHR extends Struct {
     /// {@return `callableShaderBindingTableAddress`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceAddress") long get_callableShaderBindingTableAddress(MemorySegment segment) { return VkTraceRaysIndirectCommand2KHR.get_callableShaderBindingTableAddress(segment, 0L); }
-    /// {@return `callableShaderBindingTableAddress` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceAddress") long callableShaderBindingTableAddressAt(long index) { return VkTraceRaysIndirectCommand2KHR.get_callableShaderBindingTableAddress(this.segment(), index); }
     /// {@return `callableShaderBindingTableAddress`}
     public @CType("VkDeviceAddress") long callableShaderBindingTableAddress() { return VkTraceRaysIndirectCommand2KHR.get_callableShaderBindingTableAddress(this.segment()); }
     /// Sets `callableShaderBindingTableAddress` with the given value at the given index.
@@ -435,11 +376,6 @@ public final class VkTraceRaysIndirectCommand2KHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_callableShaderBindingTableAddress(MemorySegment segment, @CType("VkDeviceAddress") long value) { VkTraceRaysIndirectCommand2KHR.set_callableShaderBindingTableAddress(segment, 0L, value); }
-    /// Sets `callableShaderBindingTableAddress` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkTraceRaysIndirectCommand2KHR callableShaderBindingTableAddressAt(long index, @CType("VkDeviceAddress") long value) { VkTraceRaysIndirectCommand2KHR.set_callableShaderBindingTableAddress(this.segment(), index, value); return this; }
     /// Sets `callableShaderBindingTableAddress` with the given value.
     /// @param value the value
     /// @return `this`
@@ -452,9 +388,6 @@ public final class VkTraceRaysIndirectCommand2KHR extends Struct {
     /// {@return `callableShaderBindingTableSize`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_callableShaderBindingTableSize(MemorySegment segment) { return VkTraceRaysIndirectCommand2KHR.get_callableShaderBindingTableSize(segment, 0L); }
-    /// {@return `callableShaderBindingTableSize` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long callableShaderBindingTableSizeAt(long index) { return VkTraceRaysIndirectCommand2KHR.get_callableShaderBindingTableSize(this.segment(), index); }
     /// {@return `callableShaderBindingTableSize`}
     public @CType("VkDeviceSize") long callableShaderBindingTableSize() { return VkTraceRaysIndirectCommand2KHR.get_callableShaderBindingTableSize(this.segment()); }
     /// Sets `callableShaderBindingTableSize` with the given value at the given index.
@@ -466,11 +399,6 @@ public final class VkTraceRaysIndirectCommand2KHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_callableShaderBindingTableSize(MemorySegment segment, @CType("VkDeviceSize") long value) { VkTraceRaysIndirectCommand2KHR.set_callableShaderBindingTableSize(segment, 0L, value); }
-    /// Sets `callableShaderBindingTableSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkTraceRaysIndirectCommand2KHR callableShaderBindingTableSizeAt(long index, @CType("VkDeviceSize") long value) { VkTraceRaysIndirectCommand2KHR.set_callableShaderBindingTableSize(this.segment(), index, value); return this; }
     /// Sets `callableShaderBindingTableSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -483,9 +411,6 @@ public final class VkTraceRaysIndirectCommand2KHR extends Struct {
     /// {@return `callableShaderBindingTableStride`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_callableShaderBindingTableStride(MemorySegment segment) { return VkTraceRaysIndirectCommand2KHR.get_callableShaderBindingTableStride(segment, 0L); }
-    /// {@return `callableShaderBindingTableStride` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long callableShaderBindingTableStrideAt(long index) { return VkTraceRaysIndirectCommand2KHR.get_callableShaderBindingTableStride(this.segment(), index); }
     /// {@return `callableShaderBindingTableStride`}
     public @CType("VkDeviceSize") long callableShaderBindingTableStride() { return VkTraceRaysIndirectCommand2KHR.get_callableShaderBindingTableStride(this.segment()); }
     /// Sets `callableShaderBindingTableStride` with the given value at the given index.
@@ -497,11 +422,6 @@ public final class VkTraceRaysIndirectCommand2KHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_callableShaderBindingTableStride(MemorySegment segment, @CType("VkDeviceSize") long value) { VkTraceRaysIndirectCommand2KHR.set_callableShaderBindingTableStride(segment, 0L, value); }
-    /// Sets `callableShaderBindingTableStride` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkTraceRaysIndirectCommand2KHR callableShaderBindingTableStrideAt(long index, @CType("VkDeviceSize") long value) { VkTraceRaysIndirectCommand2KHR.set_callableShaderBindingTableStride(this.segment(), index, value); return this; }
     /// Sets `callableShaderBindingTableStride` with the given value.
     /// @param value the value
     /// @return `this`
@@ -514,9 +434,6 @@ public final class VkTraceRaysIndirectCommand2KHR extends Struct {
     /// {@return `width`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_width(MemorySegment segment) { return VkTraceRaysIndirectCommand2KHR.get_width(segment, 0L); }
-    /// {@return `width` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int widthAt(long index) { return VkTraceRaysIndirectCommand2KHR.get_width(this.segment(), index); }
     /// {@return `width`}
     public @CType("uint32_t") int width() { return VkTraceRaysIndirectCommand2KHR.get_width(this.segment()); }
     /// Sets `width` with the given value at the given index.
@@ -528,11 +445,6 @@ public final class VkTraceRaysIndirectCommand2KHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_width(MemorySegment segment, @CType("uint32_t") int value) { VkTraceRaysIndirectCommand2KHR.set_width(segment, 0L, value); }
-    /// Sets `width` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkTraceRaysIndirectCommand2KHR widthAt(long index, @CType("uint32_t") int value) { VkTraceRaysIndirectCommand2KHR.set_width(this.segment(), index, value); return this; }
     /// Sets `width` with the given value.
     /// @param value the value
     /// @return `this`
@@ -545,9 +457,6 @@ public final class VkTraceRaysIndirectCommand2KHR extends Struct {
     /// {@return `height`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_height(MemorySegment segment) { return VkTraceRaysIndirectCommand2KHR.get_height(segment, 0L); }
-    /// {@return `height` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int heightAt(long index) { return VkTraceRaysIndirectCommand2KHR.get_height(this.segment(), index); }
     /// {@return `height`}
     public @CType("uint32_t") int height() { return VkTraceRaysIndirectCommand2KHR.get_height(this.segment()); }
     /// Sets `height` with the given value at the given index.
@@ -559,11 +468,6 @@ public final class VkTraceRaysIndirectCommand2KHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_height(MemorySegment segment, @CType("uint32_t") int value) { VkTraceRaysIndirectCommand2KHR.set_height(segment, 0L, value); }
-    /// Sets `height` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkTraceRaysIndirectCommand2KHR heightAt(long index, @CType("uint32_t") int value) { VkTraceRaysIndirectCommand2KHR.set_height(this.segment(), index, value); return this; }
     /// Sets `height` with the given value.
     /// @param value the value
     /// @return `this`
@@ -576,9 +480,6 @@ public final class VkTraceRaysIndirectCommand2KHR extends Struct {
     /// {@return `depth`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_depth(MemorySegment segment) { return VkTraceRaysIndirectCommand2KHR.get_depth(segment, 0L); }
-    /// {@return `depth` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int depthAt(long index) { return VkTraceRaysIndirectCommand2KHR.get_depth(this.segment(), index); }
     /// {@return `depth`}
     public @CType("uint32_t") int depth() { return VkTraceRaysIndirectCommand2KHR.get_depth(this.segment()); }
     /// Sets `depth` with the given value at the given index.
@@ -590,14 +491,158 @@ public final class VkTraceRaysIndirectCommand2KHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_depth(MemorySegment segment, @CType("uint32_t") int value) { VkTraceRaysIndirectCommand2KHR.set_depth(segment, 0L, value); }
-    /// Sets `depth` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkTraceRaysIndirectCommand2KHR depthAt(long index, @CType("uint32_t") int value) { VkTraceRaysIndirectCommand2KHR.set_depth(this.segment(), index, value); return this; }
     /// Sets `depth` with the given value.
     /// @param value the value
     /// @return `this`
     public VkTraceRaysIndirectCommand2KHR depth(@CType("uint32_t") int value) { VkTraceRaysIndirectCommand2KHR.set_depth(this.segment(), value); return this; }
 
+    /// A buffer of [VkTraceRaysIndirectCommand2KHR].
+    public static final class Buffer extends VkTraceRaysIndirectCommand2KHR {
+        private final long elementCount;
+
+        /// Creates `VkTraceRaysIndirectCommand2KHR.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkTraceRaysIndirectCommand2KHR`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkTraceRaysIndirectCommand2KHR`
+        public VkTraceRaysIndirectCommand2KHR asSlice(long index) { return new VkTraceRaysIndirectCommand2KHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkTraceRaysIndirectCommand2KHR`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkTraceRaysIndirectCommand2KHR`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `raygenShaderRecordAddress` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceAddress") long raygenShaderRecordAddressAt(long index) { return VkTraceRaysIndirectCommand2KHR.get_raygenShaderRecordAddress(this.segment(), index); }
+        /// Sets `raygenShaderRecordAddress` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer raygenShaderRecordAddressAt(long index, @CType("VkDeviceAddress") long value) { VkTraceRaysIndirectCommand2KHR.set_raygenShaderRecordAddress(this.segment(), index, value); return this; }
+
+        /// {@return `raygenShaderRecordSize` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long raygenShaderRecordSizeAt(long index) { return VkTraceRaysIndirectCommand2KHR.get_raygenShaderRecordSize(this.segment(), index); }
+        /// Sets `raygenShaderRecordSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer raygenShaderRecordSizeAt(long index, @CType("VkDeviceSize") long value) { VkTraceRaysIndirectCommand2KHR.set_raygenShaderRecordSize(this.segment(), index, value); return this; }
+
+        /// {@return `missShaderBindingTableAddress` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceAddress") long missShaderBindingTableAddressAt(long index) { return VkTraceRaysIndirectCommand2KHR.get_missShaderBindingTableAddress(this.segment(), index); }
+        /// Sets `missShaderBindingTableAddress` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer missShaderBindingTableAddressAt(long index, @CType("VkDeviceAddress") long value) { VkTraceRaysIndirectCommand2KHR.set_missShaderBindingTableAddress(this.segment(), index, value); return this; }
+
+        /// {@return `missShaderBindingTableSize` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long missShaderBindingTableSizeAt(long index) { return VkTraceRaysIndirectCommand2KHR.get_missShaderBindingTableSize(this.segment(), index); }
+        /// Sets `missShaderBindingTableSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer missShaderBindingTableSizeAt(long index, @CType("VkDeviceSize") long value) { VkTraceRaysIndirectCommand2KHR.set_missShaderBindingTableSize(this.segment(), index, value); return this; }
+
+        /// {@return `missShaderBindingTableStride` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long missShaderBindingTableStrideAt(long index) { return VkTraceRaysIndirectCommand2KHR.get_missShaderBindingTableStride(this.segment(), index); }
+        /// Sets `missShaderBindingTableStride` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer missShaderBindingTableStrideAt(long index, @CType("VkDeviceSize") long value) { VkTraceRaysIndirectCommand2KHR.set_missShaderBindingTableStride(this.segment(), index, value); return this; }
+
+        /// {@return `hitShaderBindingTableAddress` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceAddress") long hitShaderBindingTableAddressAt(long index) { return VkTraceRaysIndirectCommand2KHR.get_hitShaderBindingTableAddress(this.segment(), index); }
+        /// Sets `hitShaderBindingTableAddress` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer hitShaderBindingTableAddressAt(long index, @CType("VkDeviceAddress") long value) { VkTraceRaysIndirectCommand2KHR.set_hitShaderBindingTableAddress(this.segment(), index, value); return this; }
+
+        /// {@return `hitShaderBindingTableSize` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long hitShaderBindingTableSizeAt(long index) { return VkTraceRaysIndirectCommand2KHR.get_hitShaderBindingTableSize(this.segment(), index); }
+        /// Sets `hitShaderBindingTableSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer hitShaderBindingTableSizeAt(long index, @CType("VkDeviceSize") long value) { VkTraceRaysIndirectCommand2KHR.set_hitShaderBindingTableSize(this.segment(), index, value); return this; }
+
+        /// {@return `hitShaderBindingTableStride` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long hitShaderBindingTableStrideAt(long index) { return VkTraceRaysIndirectCommand2KHR.get_hitShaderBindingTableStride(this.segment(), index); }
+        /// Sets `hitShaderBindingTableStride` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer hitShaderBindingTableStrideAt(long index, @CType("VkDeviceSize") long value) { VkTraceRaysIndirectCommand2KHR.set_hitShaderBindingTableStride(this.segment(), index, value); return this; }
+
+        /// {@return `callableShaderBindingTableAddress` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceAddress") long callableShaderBindingTableAddressAt(long index) { return VkTraceRaysIndirectCommand2KHR.get_callableShaderBindingTableAddress(this.segment(), index); }
+        /// Sets `callableShaderBindingTableAddress` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer callableShaderBindingTableAddressAt(long index, @CType("VkDeviceAddress") long value) { VkTraceRaysIndirectCommand2KHR.set_callableShaderBindingTableAddress(this.segment(), index, value); return this; }
+
+        /// {@return `callableShaderBindingTableSize` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long callableShaderBindingTableSizeAt(long index) { return VkTraceRaysIndirectCommand2KHR.get_callableShaderBindingTableSize(this.segment(), index); }
+        /// Sets `callableShaderBindingTableSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer callableShaderBindingTableSizeAt(long index, @CType("VkDeviceSize") long value) { VkTraceRaysIndirectCommand2KHR.set_callableShaderBindingTableSize(this.segment(), index, value); return this; }
+
+        /// {@return `callableShaderBindingTableStride` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long callableShaderBindingTableStrideAt(long index) { return VkTraceRaysIndirectCommand2KHR.get_callableShaderBindingTableStride(this.segment(), index); }
+        /// Sets `callableShaderBindingTableStride` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer callableShaderBindingTableStrideAt(long index, @CType("VkDeviceSize") long value) { VkTraceRaysIndirectCommand2KHR.set_callableShaderBindingTableStride(this.segment(), index, value); return this; }
+
+        /// {@return `width` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int widthAt(long index) { return VkTraceRaysIndirectCommand2KHR.get_width(this.segment(), index); }
+        /// Sets `width` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer widthAt(long index, @CType("uint32_t") int value) { VkTraceRaysIndirectCommand2KHR.set_width(this.segment(), index, value); return this; }
+
+        /// {@return `height` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int heightAt(long index) { return VkTraceRaysIndirectCommand2KHR.get_height(this.segment(), index); }
+        /// Sets `height` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer heightAt(long index, @CType("uint32_t") int value) { VkTraceRaysIndirectCommand2KHR.set_height(this.segment(), index, value); return this; }
+
+        /// {@return `depth` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int depthAt(long index) { return VkTraceRaysIndirectCommand2KHR.get_depth(this.segment(), index); }
+        /// Sets `depth` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer depthAt(long index, @CType("uint32_t") int value) { VkTraceRaysIndirectCommand2KHR.set_depth(this.segment(), index, value); return this; }
+
+    }
 }

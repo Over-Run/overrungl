@@ -349,7 +349,7 @@ import overrungl.util.*;
 ///     VkDeviceSize nonCoherentAtomSize;
 /// } VkPhysicalDeviceLimits;
 /// ```
-public final class VkPhysicalDeviceLimits extends Struct {
+public sealed class VkPhysicalDeviceLimits extends Struct {
     /// The struct layout of `VkPhysicalDeviceLimits`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("maxImageDimension1D"),
@@ -694,6 +694,11 @@ public final class VkPhysicalDeviceLimits extends Struct {
     public static VkPhysicalDeviceLimits of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceLimits(segment); }
 
     /// Creates `VkPhysicalDeviceLimits` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPhysicalDeviceLimits` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -706,7 +711,7 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceLimits ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceLimits(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceLimits` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -717,18 +722,21 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceLimits`
-    public static VkPhysicalDeviceLimits alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceLimits(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkPhysicalDeviceLimits`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDeviceLimits`
-    public VkPhysicalDeviceLimits asSlice(long index) { return new VkPhysicalDeviceLimits(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkPhysicalDeviceLimits` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDeviceLimits`
+    public static VkPhysicalDeviceLimits allocInit(SegmentAllocator allocator, @CType("uint32_t") int maxImageDimension1D, @CType("uint32_t") int maxImageDimension2D, @CType("uint32_t") int maxImageDimension3D, @CType("uint32_t") int maxImageDimensionCube, @CType("uint32_t") int maxImageArrayLayers, @CType("uint32_t") int maxTexelBufferElements, @CType("uint32_t") int maxUniformBufferRange, @CType("uint32_t") int maxStorageBufferRange, @CType("uint32_t") int maxPushConstantsSize, @CType("uint32_t") int maxMemoryAllocationCount, @CType("uint32_t") int maxSamplerAllocationCount, @CType("VkDeviceSize") long bufferImageGranularity, @CType("VkDeviceSize") long sparseAddressSpaceSize, @CType("uint32_t") int maxBoundDescriptorSets, @CType("uint32_t") int maxPerStageDescriptorSamplers, @CType("uint32_t") int maxPerStageDescriptorUniformBuffers, @CType("uint32_t") int maxPerStageDescriptorStorageBuffers, @CType("uint32_t") int maxPerStageDescriptorSampledImages, @CType("uint32_t") int maxPerStageDescriptorStorageImages, @CType("uint32_t") int maxPerStageDescriptorInputAttachments, @CType("uint32_t") int maxPerStageResources, @CType("uint32_t") int maxDescriptorSetSamplers, @CType("uint32_t") int maxDescriptorSetUniformBuffers, @CType("uint32_t") int maxDescriptorSetUniformBuffersDynamic, @CType("uint32_t") int maxDescriptorSetStorageBuffers, @CType("uint32_t") int maxDescriptorSetStorageBuffersDynamic, @CType("uint32_t") int maxDescriptorSetSampledImages, @CType("uint32_t") int maxDescriptorSetStorageImages, @CType("uint32_t") int maxDescriptorSetInputAttachments, @CType("uint32_t") int maxVertexInputAttributes, @CType("uint32_t") int maxVertexInputBindings, @CType("uint32_t") int maxVertexInputAttributeOffset, @CType("uint32_t") int maxVertexInputBindingStride, @CType("uint32_t") int maxVertexOutputComponents, @CType("uint32_t") int maxTessellationGenerationLevel, @CType("uint32_t") int maxTessellationPatchSize, @CType("uint32_t") int maxTessellationControlPerVertexInputComponents, @CType("uint32_t") int maxTessellationControlPerVertexOutputComponents, @CType("uint32_t") int maxTessellationControlPerPatchOutputComponents, @CType("uint32_t") int maxTessellationControlTotalOutputComponents, @CType("uint32_t") int maxTessellationEvaluationInputComponents, @CType("uint32_t") int maxTessellationEvaluationOutputComponents, @CType("uint32_t") int maxGeometryShaderInvocations, @CType("uint32_t") int maxGeometryInputComponents, @CType("uint32_t") int maxGeometryOutputComponents, @CType("uint32_t") int maxGeometryOutputVertices, @CType("uint32_t") int maxGeometryTotalOutputComponents, @CType("uint32_t") int maxFragmentInputComponents, @CType("uint32_t") int maxFragmentOutputAttachments, @CType("uint32_t") int maxFragmentDualSrcAttachments, @CType("uint32_t") int maxFragmentCombinedOutputResources, @CType("uint32_t") int maxComputeSharedMemorySize, @CType("uint32_t[3]") java.lang.foreign.MemorySegment maxComputeWorkGroupCount, @CType("uint32_t") int maxComputeWorkGroupInvocations, @CType("uint32_t[3]") java.lang.foreign.MemorySegment maxComputeWorkGroupSize, @CType("uint32_t") int subPixelPrecisionBits, @CType("uint32_t") int subTexelPrecisionBits, @CType("uint32_t") int mipmapPrecisionBits, @CType("uint32_t") int maxDrawIndexedIndexValue, @CType("uint32_t") int maxDrawIndirectCount, @CType("float") float maxSamplerLodBias, @CType("float") float maxSamplerAnisotropy, @CType("uint32_t") int maxViewports, @CType("uint32_t[2]") java.lang.foreign.MemorySegment maxViewportDimensions, @CType("float[2]") java.lang.foreign.MemorySegment viewportBoundsRange, @CType("uint32_t") int viewportSubPixelBits, @CType("size_t") long minMemoryMapAlignment, @CType("VkDeviceSize") long minTexelBufferOffsetAlignment, @CType("VkDeviceSize") long minUniformBufferOffsetAlignment, @CType("VkDeviceSize") long minStorageBufferOffsetAlignment, @CType("int32_t") int minTexelOffset, @CType("uint32_t") int maxTexelOffset, @CType("int32_t") int minTexelGatherOffset, @CType("uint32_t") int maxTexelGatherOffset, @CType("float") float minInterpolationOffset, @CType("float") float maxInterpolationOffset, @CType("uint32_t") int subPixelInterpolationOffsetBits, @CType("uint32_t") int maxFramebufferWidth, @CType("uint32_t") int maxFramebufferHeight, @CType("uint32_t") int maxFramebufferLayers, @CType("VkSampleCountFlags") int framebufferColorSampleCounts, @CType("VkSampleCountFlags") int framebufferDepthSampleCounts, @CType("VkSampleCountFlags") int framebufferStencilSampleCounts, @CType("VkSampleCountFlags") int framebufferNoAttachmentsSampleCounts, @CType("uint32_t") int maxColorAttachments, @CType("VkSampleCountFlags") int sampledImageColorSampleCounts, @CType("VkSampleCountFlags") int sampledImageIntegerSampleCounts, @CType("VkSampleCountFlags") int sampledImageDepthSampleCounts, @CType("VkSampleCountFlags") int sampledImageStencilSampleCounts, @CType("VkSampleCountFlags") int storageImageSampleCounts, @CType("uint32_t") int maxSampleMaskWords, @CType("VkBool32") int timestampComputeAndGraphics, @CType("float") float timestampPeriod, @CType("uint32_t") int maxClipDistances, @CType("uint32_t") int maxCullDistances, @CType("uint32_t") int maxCombinedClipAndCullDistances, @CType("uint32_t") int discreteQueuePriorities, @CType("float[2]") java.lang.foreign.MemorySegment pointSizeRange, @CType("float[2]") java.lang.foreign.MemorySegment lineWidthRange, @CType("float") float pointSizeGranularity, @CType("float") float lineWidthGranularity, @CType("VkBool32") int strictLines, @CType("VkBool32") int standardSampleLocations, @CType("VkDeviceSize") long optimalBufferCopyOffsetAlignment, @CType("VkDeviceSize") long optimalBufferCopyRowPitchAlignment, @CType("VkDeviceSize") long nonCoherentAtomSize) { return alloc(allocator).maxImageDimension1D(maxImageDimension1D).maxImageDimension2D(maxImageDimension2D).maxImageDimension3D(maxImageDimension3D).maxImageDimensionCube(maxImageDimensionCube).maxImageArrayLayers(maxImageArrayLayers).maxTexelBufferElements(maxTexelBufferElements).maxUniformBufferRange(maxUniformBufferRange).maxStorageBufferRange(maxStorageBufferRange).maxPushConstantsSize(maxPushConstantsSize).maxMemoryAllocationCount(maxMemoryAllocationCount).maxSamplerAllocationCount(maxSamplerAllocationCount).bufferImageGranularity(bufferImageGranularity).sparseAddressSpaceSize(sparseAddressSpaceSize).maxBoundDescriptorSets(maxBoundDescriptorSets).maxPerStageDescriptorSamplers(maxPerStageDescriptorSamplers).maxPerStageDescriptorUniformBuffers(maxPerStageDescriptorUniformBuffers).maxPerStageDescriptorStorageBuffers(maxPerStageDescriptorStorageBuffers).maxPerStageDescriptorSampledImages(maxPerStageDescriptorSampledImages).maxPerStageDescriptorStorageImages(maxPerStageDescriptorStorageImages).maxPerStageDescriptorInputAttachments(maxPerStageDescriptorInputAttachments).maxPerStageResources(maxPerStageResources).maxDescriptorSetSamplers(maxDescriptorSetSamplers).maxDescriptorSetUniformBuffers(maxDescriptorSetUniformBuffers).maxDescriptorSetUniformBuffersDynamic(maxDescriptorSetUniformBuffersDynamic).maxDescriptorSetStorageBuffers(maxDescriptorSetStorageBuffers).maxDescriptorSetStorageBuffersDynamic(maxDescriptorSetStorageBuffersDynamic).maxDescriptorSetSampledImages(maxDescriptorSetSampledImages).maxDescriptorSetStorageImages(maxDescriptorSetStorageImages).maxDescriptorSetInputAttachments(maxDescriptorSetInputAttachments).maxVertexInputAttributes(maxVertexInputAttributes).maxVertexInputBindings(maxVertexInputBindings).maxVertexInputAttributeOffset(maxVertexInputAttributeOffset).maxVertexInputBindingStride(maxVertexInputBindingStride).maxVertexOutputComponents(maxVertexOutputComponents).maxTessellationGenerationLevel(maxTessellationGenerationLevel).maxTessellationPatchSize(maxTessellationPatchSize).maxTessellationControlPerVertexInputComponents(maxTessellationControlPerVertexInputComponents).maxTessellationControlPerVertexOutputComponents(maxTessellationControlPerVertexOutputComponents).maxTessellationControlPerPatchOutputComponents(maxTessellationControlPerPatchOutputComponents).maxTessellationControlTotalOutputComponents(maxTessellationControlTotalOutputComponents).maxTessellationEvaluationInputComponents(maxTessellationEvaluationInputComponents).maxTessellationEvaluationOutputComponents(maxTessellationEvaluationOutputComponents).maxGeometryShaderInvocations(maxGeometryShaderInvocations).maxGeometryInputComponents(maxGeometryInputComponents).maxGeometryOutputComponents(maxGeometryOutputComponents).maxGeometryOutputVertices(maxGeometryOutputVertices).maxGeometryTotalOutputComponents(maxGeometryTotalOutputComponents).maxFragmentInputComponents(maxFragmentInputComponents).maxFragmentOutputAttachments(maxFragmentOutputAttachments).maxFragmentDualSrcAttachments(maxFragmentDualSrcAttachments).maxFragmentCombinedOutputResources(maxFragmentCombinedOutputResources).maxComputeSharedMemorySize(maxComputeSharedMemorySize).maxComputeWorkGroupCount(maxComputeWorkGroupCount).maxComputeWorkGroupInvocations(maxComputeWorkGroupInvocations).maxComputeWorkGroupSize(maxComputeWorkGroupSize).subPixelPrecisionBits(subPixelPrecisionBits).subTexelPrecisionBits(subTexelPrecisionBits).mipmapPrecisionBits(mipmapPrecisionBits).maxDrawIndexedIndexValue(maxDrawIndexedIndexValue).maxDrawIndirectCount(maxDrawIndirectCount).maxSamplerLodBias(maxSamplerLodBias).maxSamplerAnisotropy(maxSamplerAnisotropy).maxViewports(maxViewports).maxViewportDimensions(maxViewportDimensions).viewportBoundsRange(viewportBoundsRange).viewportSubPixelBits(viewportSubPixelBits).minMemoryMapAlignment(minMemoryMapAlignment).minTexelBufferOffsetAlignment(minTexelBufferOffsetAlignment).minUniformBufferOffsetAlignment(minUniformBufferOffsetAlignment).minStorageBufferOffsetAlignment(minStorageBufferOffsetAlignment).minTexelOffset(minTexelOffset).maxTexelOffset(maxTexelOffset).minTexelGatherOffset(minTexelGatherOffset).maxTexelGatherOffset(maxTexelGatherOffset).minInterpolationOffset(minInterpolationOffset).maxInterpolationOffset(maxInterpolationOffset).subPixelInterpolationOffsetBits(subPixelInterpolationOffsetBits).maxFramebufferWidth(maxFramebufferWidth).maxFramebufferHeight(maxFramebufferHeight).maxFramebufferLayers(maxFramebufferLayers).framebufferColorSampleCounts(framebufferColorSampleCounts).framebufferDepthSampleCounts(framebufferDepthSampleCounts).framebufferStencilSampleCounts(framebufferStencilSampleCounts).framebufferNoAttachmentsSampleCounts(framebufferNoAttachmentsSampleCounts).maxColorAttachments(maxColorAttachments).sampledImageColorSampleCounts(sampledImageColorSampleCounts).sampledImageIntegerSampleCounts(sampledImageIntegerSampleCounts).sampledImageDepthSampleCounts(sampledImageDepthSampleCounts).sampledImageStencilSampleCounts(sampledImageStencilSampleCounts).storageImageSampleCounts(storageImageSampleCounts).maxSampleMaskWords(maxSampleMaskWords).timestampComputeAndGraphics(timestampComputeAndGraphics).timestampPeriod(timestampPeriod).maxClipDistances(maxClipDistances).maxCullDistances(maxCullDistances).maxCombinedClipAndCullDistances(maxCombinedClipAndCullDistances).discreteQueuePriorities(discreteQueuePriorities).pointSizeRange(pointSizeRange).lineWidthRange(lineWidthRange).pointSizeGranularity(pointSizeGranularity).lineWidthGranularity(lineWidthGranularity).strictLines(strictLines).standardSampleLocations(standardSampleLocations).optimalBufferCopyOffsetAlignment(optimalBufferCopyOffsetAlignment).optimalBufferCopyRowPitchAlignment(optimalBufferCopyRowPitchAlignment).nonCoherentAtomSize(nonCoherentAtomSize); }
 
-    /// Creates a slice of `VkPhysicalDeviceLimits`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDeviceLimits`
-    public VkPhysicalDeviceLimits asSlice(long index, long count) { return new VkPhysicalDeviceLimits(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDeviceLimits copyFrom(VkPhysicalDeviceLimits src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `maxImageDimension1D` at the given index}
     /// @param segment the segment of the struct
@@ -737,9 +745,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxImageDimension1D`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxImageDimension1D(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxImageDimension1D(segment, 0L); }
-    /// {@return `maxImageDimension1D` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxImageDimension1DAt(long index) { return VkPhysicalDeviceLimits.get_maxImageDimension1D(this.segment(), index); }
     /// {@return `maxImageDimension1D`}
     public @CType("uint32_t") int maxImageDimension1D() { return VkPhysicalDeviceLimits.get_maxImageDimension1D(this.segment()); }
     /// Sets `maxImageDimension1D` with the given value at the given index.
@@ -751,11 +756,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxImageDimension1D(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxImageDimension1D(segment, 0L, value); }
-    /// Sets `maxImageDimension1D` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxImageDimension1DAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxImageDimension1D(this.segment(), index, value); return this; }
     /// Sets `maxImageDimension1D` with the given value.
     /// @param value the value
     /// @return `this`
@@ -768,9 +768,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxImageDimension2D`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxImageDimension2D(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxImageDimension2D(segment, 0L); }
-    /// {@return `maxImageDimension2D` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxImageDimension2DAt(long index) { return VkPhysicalDeviceLimits.get_maxImageDimension2D(this.segment(), index); }
     /// {@return `maxImageDimension2D`}
     public @CType("uint32_t") int maxImageDimension2D() { return VkPhysicalDeviceLimits.get_maxImageDimension2D(this.segment()); }
     /// Sets `maxImageDimension2D` with the given value at the given index.
@@ -782,11 +779,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxImageDimension2D(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxImageDimension2D(segment, 0L, value); }
-    /// Sets `maxImageDimension2D` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxImageDimension2DAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxImageDimension2D(this.segment(), index, value); return this; }
     /// Sets `maxImageDimension2D` with the given value.
     /// @param value the value
     /// @return `this`
@@ -799,9 +791,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxImageDimension3D`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxImageDimension3D(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxImageDimension3D(segment, 0L); }
-    /// {@return `maxImageDimension3D` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxImageDimension3DAt(long index) { return VkPhysicalDeviceLimits.get_maxImageDimension3D(this.segment(), index); }
     /// {@return `maxImageDimension3D`}
     public @CType("uint32_t") int maxImageDimension3D() { return VkPhysicalDeviceLimits.get_maxImageDimension3D(this.segment()); }
     /// Sets `maxImageDimension3D` with the given value at the given index.
@@ -813,11 +802,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxImageDimension3D(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxImageDimension3D(segment, 0L, value); }
-    /// Sets `maxImageDimension3D` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxImageDimension3DAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxImageDimension3D(this.segment(), index, value); return this; }
     /// Sets `maxImageDimension3D` with the given value.
     /// @param value the value
     /// @return `this`
@@ -830,9 +814,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxImageDimensionCube`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxImageDimensionCube(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxImageDimensionCube(segment, 0L); }
-    /// {@return `maxImageDimensionCube` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxImageDimensionCubeAt(long index) { return VkPhysicalDeviceLimits.get_maxImageDimensionCube(this.segment(), index); }
     /// {@return `maxImageDimensionCube`}
     public @CType("uint32_t") int maxImageDimensionCube() { return VkPhysicalDeviceLimits.get_maxImageDimensionCube(this.segment()); }
     /// Sets `maxImageDimensionCube` with the given value at the given index.
@@ -844,11 +825,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxImageDimensionCube(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxImageDimensionCube(segment, 0L, value); }
-    /// Sets `maxImageDimensionCube` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxImageDimensionCubeAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxImageDimensionCube(this.segment(), index, value); return this; }
     /// Sets `maxImageDimensionCube` with the given value.
     /// @param value the value
     /// @return `this`
@@ -861,9 +837,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxImageArrayLayers`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxImageArrayLayers(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxImageArrayLayers(segment, 0L); }
-    /// {@return `maxImageArrayLayers` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxImageArrayLayersAt(long index) { return VkPhysicalDeviceLimits.get_maxImageArrayLayers(this.segment(), index); }
     /// {@return `maxImageArrayLayers`}
     public @CType("uint32_t") int maxImageArrayLayers() { return VkPhysicalDeviceLimits.get_maxImageArrayLayers(this.segment()); }
     /// Sets `maxImageArrayLayers` with the given value at the given index.
@@ -875,11 +848,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxImageArrayLayers(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxImageArrayLayers(segment, 0L, value); }
-    /// Sets `maxImageArrayLayers` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxImageArrayLayersAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxImageArrayLayers(this.segment(), index, value); return this; }
     /// Sets `maxImageArrayLayers` with the given value.
     /// @param value the value
     /// @return `this`
@@ -892,9 +860,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxTexelBufferElements`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxTexelBufferElements(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxTexelBufferElements(segment, 0L); }
-    /// {@return `maxTexelBufferElements` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxTexelBufferElementsAt(long index) { return VkPhysicalDeviceLimits.get_maxTexelBufferElements(this.segment(), index); }
     /// {@return `maxTexelBufferElements`}
     public @CType("uint32_t") int maxTexelBufferElements() { return VkPhysicalDeviceLimits.get_maxTexelBufferElements(this.segment()); }
     /// Sets `maxTexelBufferElements` with the given value at the given index.
@@ -906,11 +871,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxTexelBufferElements(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxTexelBufferElements(segment, 0L, value); }
-    /// Sets `maxTexelBufferElements` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxTexelBufferElementsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxTexelBufferElements(this.segment(), index, value); return this; }
     /// Sets `maxTexelBufferElements` with the given value.
     /// @param value the value
     /// @return `this`
@@ -923,9 +883,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxUniformBufferRange`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxUniformBufferRange(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxUniformBufferRange(segment, 0L); }
-    /// {@return `maxUniformBufferRange` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxUniformBufferRangeAt(long index) { return VkPhysicalDeviceLimits.get_maxUniformBufferRange(this.segment(), index); }
     /// {@return `maxUniformBufferRange`}
     public @CType("uint32_t") int maxUniformBufferRange() { return VkPhysicalDeviceLimits.get_maxUniformBufferRange(this.segment()); }
     /// Sets `maxUniformBufferRange` with the given value at the given index.
@@ -937,11 +894,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxUniformBufferRange(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxUniformBufferRange(segment, 0L, value); }
-    /// Sets `maxUniformBufferRange` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxUniformBufferRangeAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxUniformBufferRange(this.segment(), index, value); return this; }
     /// Sets `maxUniformBufferRange` with the given value.
     /// @param value the value
     /// @return `this`
@@ -954,9 +906,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxStorageBufferRange`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxStorageBufferRange(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxStorageBufferRange(segment, 0L); }
-    /// {@return `maxStorageBufferRange` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxStorageBufferRangeAt(long index) { return VkPhysicalDeviceLimits.get_maxStorageBufferRange(this.segment(), index); }
     /// {@return `maxStorageBufferRange`}
     public @CType("uint32_t") int maxStorageBufferRange() { return VkPhysicalDeviceLimits.get_maxStorageBufferRange(this.segment()); }
     /// Sets `maxStorageBufferRange` with the given value at the given index.
@@ -968,11 +917,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxStorageBufferRange(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxStorageBufferRange(segment, 0L, value); }
-    /// Sets `maxStorageBufferRange` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxStorageBufferRangeAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxStorageBufferRange(this.segment(), index, value); return this; }
     /// Sets `maxStorageBufferRange` with the given value.
     /// @param value the value
     /// @return `this`
@@ -985,9 +929,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxPushConstantsSize`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxPushConstantsSize(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxPushConstantsSize(segment, 0L); }
-    /// {@return `maxPushConstantsSize` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxPushConstantsSizeAt(long index) { return VkPhysicalDeviceLimits.get_maxPushConstantsSize(this.segment(), index); }
     /// {@return `maxPushConstantsSize`}
     public @CType("uint32_t") int maxPushConstantsSize() { return VkPhysicalDeviceLimits.get_maxPushConstantsSize(this.segment()); }
     /// Sets `maxPushConstantsSize` with the given value at the given index.
@@ -999,11 +940,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxPushConstantsSize(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxPushConstantsSize(segment, 0L, value); }
-    /// Sets `maxPushConstantsSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxPushConstantsSizeAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxPushConstantsSize(this.segment(), index, value); return this; }
     /// Sets `maxPushConstantsSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1016,9 +952,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxMemoryAllocationCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxMemoryAllocationCount(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxMemoryAllocationCount(segment, 0L); }
-    /// {@return `maxMemoryAllocationCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxMemoryAllocationCountAt(long index) { return VkPhysicalDeviceLimits.get_maxMemoryAllocationCount(this.segment(), index); }
     /// {@return `maxMemoryAllocationCount`}
     public @CType("uint32_t") int maxMemoryAllocationCount() { return VkPhysicalDeviceLimits.get_maxMemoryAllocationCount(this.segment()); }
     /// Sets `maxMemoryAllocationCount` with the given value at the given index.
@@ -1030,11 +963,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxMemoryAllocationCount(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxMemoryAllocationCount(segment, 0L, value); }
-    /// Sets `maxMemoryAllocationCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxMemoryAllocationCountAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxMemoryAllocationCount(this.segment(), index, value); return this; }
     /// Sets `maxMemoryAllocationCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1047,9 +975,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxSamplerAllocationCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxSamplerAllocationCount(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxSamplerAllocationCount(segment, 0L); }
-    /// {@return `maxSamplerAllocationCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxSamplerAllocationCountAt(long index) { return VkPhysicalDeviceLimits.get_maxSamplerAllocationCount(this.segment(), index); }
     /// {@return `maxSamplerAllocationCount`}
     public @CType("uint32_t") int maxSamplerAllocationCount() { return VkPhysicalDeviceLimits.get_maxSamplerAllocationCount(this.segment()); }
     /// Sets `maxSamplerAllocationCount` with the given value at the given index.
@@ -1061,11 +986,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxSamplerAllocationCount(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxSamplerAllocationCount(segment, 0L, value); }
-    /// Sets `maxSamplerAllocationCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxSamplerAllocationCountAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxSamplerAllocationCount(this.segment(), index, value); return this; }
     /// Sets `maxSamplerAllocationCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1078,9 +998,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `bufferImageGranularity`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_bufferImageGranularity(MemorySegment segment) { return VkPhysicalDeviceLimits.get_bufferImageGranularity(segment, 0L); }
-    /// {@return `bufferImageGranularity` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long bufferImageGranularityAt(long index) { return VkPhysicalDeviceLimits.get_bufferImageGranularity(this.segment(), index); }
     /// {@return `bufferImageGranularity`}
     public @CType("VkDeviceSize") long bufferImageGranularity() { return VkPhysicalDeviceLimits.get_bufferImageGranularity(this.segment()); }
     /// Sets `bufferImageGranularity` with the given value at the given index.
@@ -1092,11 +1009,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_bufferImageGranularity(MemorySegment segment, @CType("VkDeviceSize") long value) { VkPhysicalDeviceLimits.set_bufferImageGranularity(segment, 0L, value); }
-    /// Sets `bufferImageGranularity` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits bufferImageGranularityAt(long index, @CType("VkDeviceSize") long value) { VkPhysicalDeviceLimits.set_bufferImageGranularity(this.segment(), index, value); return this; }
     /// Sets `bufferImageGranularity` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1109,9 +1021,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `sparseAddressSpaceSize`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_sparseAddressSpaceSize(MemorySegment segment) { return VkPhysicalDeviceLimits.get_sparseAddressSpaceSize(segment, 0L); }
-    /// {@return `sparseAddressSpaceSize` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long sparseAddressSpaceSizeAt(long index) { return VkPhysicalDeviceLimits.get_sparseAddressSpaceSize(this.segment(), index); }
     /// {@return `sparseAddressSpaceSize`}
     public @CType("VkDeviceSize") long sparseAddressSpaceSize() { return VkPhysicalDeviceLimits.get_sparseAddressSpaceSize(this.segment()); }
     /// Sets `sparseAddressSpaceSize` with the given value at the given index.
@@ -1123,11 +1032,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sparseAddressSpaceSize(MemorySegment segment, @CType("VkDeviceSize") long value) { VkPhysicalDeviceLimits.set_sparseAddressSpaceSize(segment, 0L, value); }
-    /// Sets `sparseAddressSpaceSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits sparseAddressSpaceSizeAt(long index, @CType("VkDeviceSize") long value) { VkPhysicalDeviceLimits.set_sparseAddressSpaceSize(this.segment(), index, value); return this; }
     /// Sets `sparseAddressSpaceSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1140,9 +1044,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxBoundDescriptorSets`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxBoundDescriptorSets(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxBoundDescriptorSets(segment, 0L); }
-    /// {@return `maxBoundDescriptorSets` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxBoundDescriptorSetsAt(long index) { return VkPhysicalDeviceLimits.get_maxBoundDescriptorSets(this.segment(), index); }
     /// {@return `maxBoundDescriptorSets`}
     public @CType("uint32_t") int maxBoundDescriptorSets() { return VkPhysicalDeviceLimits.get_maxBoundDescriptorSets(this.segment()); }
     /// Sets `maxBoundDescriptorSets` with the given value at the given index.
@@ -1154,11 +1055,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxBoundDescriptorSets(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxBoundDescriptorSets(segment, 0L, value); }
-    /// Sets `maxBoundDescriptorSets` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxBoundDescriptorSetsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxBoundDescriptorSets(this.segment(), index, value); return this; }
     /// Sets `maxBoundDescriptorSets` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1171,9 +1067,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxPerStageDescriptorSamplers`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxPerStageDescriptorSamplers(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxPerStageDescriptorSamplers(segment, 0L); }
-    /// {@return `maxPerStageDescriptorSamplers` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxPerStageDescriptorSamplersAt(long index) { return VkPhysicalDeviceLimits.get_maxPerStageDescriptorSamplers(this.segment(), index); }
     /// {@return `maxPerStageDescriptorSamplers`}
     public @CType("uint32_t") int maxPerStageDescriptorSamplers() { return VkPhysicalDeviceLimits.get_maxPerStageDescriptorSamplers(this.segment()); }
     /// Sets `maxPerStageDescriptorSamplers` with the given value at the given index.
@@ -1185,11 +1078,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxPerStageDescriptorSamplers(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxPerStageDescriptorSamplers(segment, 0L, value); }
-    /// Sets `maxPerStageDescriptorSamplers` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxPerStageDescriptorSamplersAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxPerStageDescriptorSamplers(this.segment(), index, value); return this; }
     /// Sets `maxPerStageDescriptorSamplers` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1202,9 +1090,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxPerStageDescriptorUniformBuffers`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxPerStageDescriptorUniformBuffers(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxPerStageDescriptorUniformBuffers(segment, 0L); }
-    /// {@return `maxPerStageDescriptorUniformBuffers` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxPerStageDescriptorUniformBuffersAt(long index) { return VkPhysicalDeviceLimits.get_maxPerStageDescriptorUniformBuffers(this.segment(), index); }
     /// {@return `maxPerStageDescriptorUniformBuffers`}
     public @CType("uint32_t") int maxPerStageDescriptorUniformBuffers() { return VkPhysicalDeviceLimits.get_maxPerStageDescriptorUniformBuffers(this.segment()); }
     /// Sets `maxPerStageDescriptorUniformBuffers` with the given value at the given index.
@@ -1216,11 +1101,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxPerStageDescriptorUniformBuffers(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxPerStageDescriptorUniformBuffers(segment, 0L, value); }
-    /// Sets `maxPerStageDescriptorUniformBuffers` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxPerStageDescriptorUniformBuffersAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxPerStageDescriptorUniformBuffers(this.segment(), index, value); return this; }
     /// Sets `maxPerStageDescriptorUniformBuffers` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1233,9 +1113,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxPerStageDescriptorStorageBuffers`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxPerStageDescriptorStorageBuffers(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxPerStageDescriptorStorageBuffers(segment, 0L); }
-    /// {@return `maxPerStageDescriptorStorageBuffers` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxPerStageDescriptorStorageBuffersAt(long index) { return VkPhysicalDeviceLimits.get_maxPerStageDescriptorStorageBuffers(this.segment(), index); }
     /// {@return `maxPerStageDescriptorStorageBuffers`}
     public @CType("uint32_t") int maxPerStageDescriptorStorageBuffers() { return VkPhysicalDeviceLimits.get_maxPerStageDescriptorStorageBuffers(this.segment()); }
     /// Sets `maxPerStageDescriptorStorageBuffers` with the given value at the given index.
@@ -1247,11 +1124,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxPerStageDescriptorStorageBuffers(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxPerStageDescriptorStorageBuffers(segment, 0L, value); }
-    /// Sets `maxPerStageDescriptorStorageBuffers` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxPerStageDescriptorStorageBuffersAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxPerStageDescriptorStorageBuffers(this.segment(), index, value); return this; }
     /// Sets `maxPerStageDescriptorStorageBuffers` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1264,9 +1136,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxPerStageDescriptorSampledImages`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxPerStageDescriptorSampledImages(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxPerStageDescriptorSampledImages(segment, 0L); }
-    /// {@return `maxPerStageDescriptorSampledImages` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxPerStageDescriptorSampledImagesAt(long index) { return VkPhysicalDeviceLimits.get_maxPerStageDescriptorSampledImages(this.segment(), index); }
     /// {@return `maxPerStageDescriptorSampledImages`}
     public @CType("uint32_t") int maxPerStageDescriptorSampledImages() { return VkPhysicalDeviceLimits.get_maxPerStageDescriptorSampledImages(this.segment()); }
     /// Sets `maxPerStageDescriptorSampledImages` with the given value at the given index.
@@ -1278,11 +1147,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxPerStageDescriptorSampledImages(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxPerStageDescriptorSampledImages(segment, 0L, value); }
-    /// Sets `maxPerStageDescriptorSampledImages` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxPerStageDescriptorSampledImagesAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxPerStageDescriptorSampledImages(this.segment(), index, value); return this; }
     /// Sets `maxPerStageDescriptorSampledImages` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1295,9 +1159,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxPerStageDescriptorStorageImages`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxPerStageDescriptorStorageImages(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxPerStageDescriptorStorageImages(segment, 0L); }
-    /// {@return `maxPerStageDescriptorStorageImages` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxPerStageDescriptorStorageImagesAt(long index) { return VkPhysicalDeviceLimits.get_maxPerStageDescriptorStorageImages(this.segment(), index); }
     /// {@return `maxPerStageDescriptorStorageImages`}
     public @CType("uint32_t") int maxPerStageDescriptorStorageImages() { return VkPhysicalDeviceLimits.get_maxPerStageDescriptorStorageImages(this.segment()); }
     /// Sets `maxPerStageDescriptorStorageImages` with the given value at the given index.
@@ -1309,11 +1170,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxPerStageDescriptorStorageImages(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxPerStageDescriptorStorageImages(segment, 0L, value); }
-    /// Sets `maxPerStageDescriptorStorageImages` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxPerStageDescriptorStorageImagesAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxPerStageDescriptorStorageImages(this.segment(), index, value); return this; }
     /// Sets `maxPerStageDescriptorStorageImages` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1326,9 +1182,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxPerStageDescriptorInputAttachments`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxPerStageDescriptorInputAttachments(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxPerStageDescriptorInputAttachments(segment, 0L); }
-    /// {@return `maxPerStageDescriptorInputAttachments` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxPerStageDescriptorInputAttachmentsAt(long index) { return VkPhysicalDeviceLimits.get_maxPerStageDescriptorInputAttachments(this.segment(), index); }
     /// {@return `maxPerStageDescriptorInputAttachments`}
     public @CType("uint32_t") int maxPerStageDescriptorInputAttachments() { return VkPhysicalDeviceLimits.get_maxPerStageDescriptorInputAttachments(this.segment()); }
     /// Sets `maxPerStageDescriptorInputAttachments` with the given value at the given index.
@@ -1340,11 +1193,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxPerStageDescriptorInputAttachments(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxPerStageDescriptorInputAttachments(segment, 0L, value); }
-    /// Sets `maxPerStageDescriptorInputAttachments` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxPerStageDescriptorInputAttachmentsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxPerStageDescriptorInputAttachments(this.segment(), index, value); return this; }
     /// Sets `maxPerStageDescriptorInputAttachments` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1357,9 +1205,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxPerStageResources`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxPerStageResources(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxPerStageResources(segment, 0L); }
-    /// {@return `maxPerStageResources` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxPerStageResourcesAt(long index) { return VkPhysicalDeviceLimits.get_maxPerStageResources(this.segment(), index); }
     /// {@return `maxPerStageResources`}
     public @CType("uint32_t") int maxPerStageResources() { return VkPhysicalDeviceLimits.get_maxPerStageResources(this.segment()); }
     /// Sets `maxPerStageResources` with the given value at the given index.
@@ -1371,11 +1216,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxPerStageResources(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxPerStageResources(segment, 0L, value); }
-    /// Sets `maxPerStageResources` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxPerStageResourcesAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxPerStageResources(this.segment(), index, value); return this; }
     /// Sets `maxPerStageResources` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1388,9 +1228,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxDescriptorSetSamplers`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxDescriptorSetSamplers(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxDescriptorSetSamplers(segment, 0L); }
-    /// {@return `maxDescriptorSetSamplers` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxDescriptorSetSamplersAt(long index) { return VkPhysicalDeviceLimits.get_maxDescriptorSetSamplers(this.segment(), index); }
     /// {@return `maxDescriptorSetSamplers`}
     public @CType("uint32_t") int maxDescriptorSetSamplers() { return VkPhysicalDeviceLimits.get_maxDescriptorSetSamplers(this.segment()); }
     /// Sets `maxDescriptorSetSamplers` with the given value at the given index.
@@ -1402,11 +1239,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxDescriptorSetSamplers(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxDescriptorSetSamplers(segment, 0L, value); }
-    /// Sets `maxDescriptorSetSamplers` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxDescriptorSetSamplersAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxDescriptorSetSamplers(this.segment(), index, value); return this; }
     /// Sets `maxDescriptorSetSamplers` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1419,9 +1251,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxDescriptorSetUniformBuffers`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxDescriptorSetUniformBuffers(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxDescriptorSetUniformBuffers(segment, 0L); }
-    /// {@return `maxDescriptorSetUniformBuffers` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxDescriptorSetUniformBuffersAt(long index) { return VkPhysicalDeviceLimits.get_maxDescriptorSetUniformBuffers(this.segment(), index); }
     /// {@return `maxDescriptorSetUniformBuffers`}
     public @CType("uint32_t") int maxDescriptorSetUniformBuffers() { return VkPhysicalDeviceLimits.get_maxDescriptorSetUniformBuffers(this.segment()); }
     /// Sets `maxDescriptorSetUniformBuffers` with the given value at the given index.
@@ -1433,11 +1262,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxDescriptorSetUniformBuffers(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxDescriptorSetUniformBuffers(segment, 0L, value); }
-    /// Sets `maxDescriptorSetUniformBuffers` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxDescriptorSetUniformBuffersAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxDescriptorSetUniformBuffers(this.segment(), index, value); return this; }
     /// Sets `maxDescriptorSetUniformBuffers` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1450,9 +1274,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxDescriptorSetUniformBuffersDynamic`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxDescriptorSetUniformBuffersDynamic(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxDescriptorSetUniformBuffersDynamic(segment, 0L); }
-    /// {@return `maxDescriptorSetUniformBuffersDynamic` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxDescriptorSetUniformBuffersDynamicAt(long index) { return VkPhysicalDeviceLimits.get_maxDescriptorSetUniformBuffersDynamic(this.segment(), index); }
     /// {@return `maxDescriptorSetUniformBuffersDynamic`}
     public @CType("uint32_t") int maxDescriptorSetUniformBuffersDynamic() { return VkPhysicalDeviceLimits.get_maxDescriptorSetUniformBuffersDynamic(this.segment()); }
     /// Sets `maxDescriptorSetUniformBuffersDynamic` with the given value at the given index.
@@ -1464,11 +1285,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxDescriptorSetUniformBuffersDynamic(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxDescriptorSetUniformBuffersDynamic(segment, 0L, value); }
-    /// Sets `maxDescriptorSetUniformBuffersDynamic` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxDescriptorSetUniformBuffersDynamicAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxDescriptorSetUniformBuffersDynamic(this.segment(), index, value); return this; }
     /// Sets `maxDescriptorSetUniformBuffersDynamic` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1481,9 +1297,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxDescriptorSetStorageBuffers`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxDescriptorSetStorageBuffers(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxDescriptorSetStorageBuffers(segment, 0L); }
-    /// {@return `maxDescriptorSetStorageBuffers` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxDescriptorSetStorageBuffersAt(long index) { return VkPhysicalDeviceLimits.get_maxDescriptorSetStorageBuffers(this.segment(), index); }
     /// {@return `maxDescriptorSetStorageBuffers`}
     public @CType("uint32_t") int maxDescriptorSetStorageBuffers() { return VkPhysicalDeviceLimits.get_maxDescriptorSetStorageBuffers(this.segment()); }
     /// Sets `maxDescriptorSetStorageBuffers` with the given value at the given index.
@@ -1495,11 +1308,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxDescriptorSetStorageBuffers(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxDescriptorSetStorageBuffers(segment, 0L, value); }
-    /// Sets `maxDescriptorSetStorageBuffers` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxDescriptorSetStorageBuffersAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxDescriptorSetStorageBuffers(this.segment(), index, value); return this; }
     /// Sets `maxDescriptorSetStorageBuffers` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1512,9 +1320,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxDescriptorSetStorageBuffersDynamic`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxDescriptorSetStorageBuffersDynamic(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxDescriptorSetStorageBuffersDynamic(segment, 0L); }
-    /// {@return `maxDescriptorSetStorageBuffersDynamic` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxDescriptorSetStorageBuffersDynamicAt(long index) { return VkPhysicalDeviceLimits.get_maxDescriptorSetStorageBuffersDynamic(this.segment(), index); }
     /// {@return `maxDescriptorSetStorageBuffersDynamic`}
     public @CType("uint32_t") int maxDescriptorSetStorageBuffersDynamic() { return VkPhysicalDeviceLimits.get_maxDescriptorSetStorageBuffersDynamic(this.segment()); }
     /// Sets `maxDescriptorSetStorageBuffersDynamic` with the given value at the given index.
@@ -1526,11 +1331,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxDescriptorSetStorageBuffersDynamic(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxDescriptorSetStorageBuffersDynamic(segment, 0L, value); }
-    /// Sets `maxDescriptorSetStorageBuffersDynamic` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxDescriptorSetStorageBuffersDynamicAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxDescriptorSetStorageBuffersDynamic(this.segment(), index, value); return this; }
     /// Sets `maxDescriptorSetStorageBuffersDynamic` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1543,9 +1343,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxDescriptorSetSampledImages`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxDescriptorSetSampledImages(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxDescriptorSetSampledImages(segment, 0L); }
-    /// {@return `maxDescriptorSetSampledImages` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxDescriptorSetSampledImagesAt(long index) { return VkPhysicalDeviceLimits.get_maxDescriptorSetSampledImages(this.segment(), index); }
     /// {@return `maxDescriptorSetSampledImages`}
     public @CType("uint32_t") int maxDescriptorSetSampledImages() { return VkPhysicalDeviceLimits.get_maxDescriptorSetSampledImages(this.segment()); }
     /// Sets `maxDescriptorSetSampledImages` with the given value at the given index.
@@ -1557,11 +1354,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxDescriptorSetSampledImages(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxDescriptorSetSampledImages(segment, 0L, value); }
-    /// Sets `maxDescriptorSetSampledImages` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxDescriptorSetSampledImagesAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxDescriptorSetSampledImages(this.segment(), index, value); return this; }
     /// Sets `maxDescriptorSetSampledImages` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1574,9 +1366,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxDescriptorSetStorageImages`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxDescriptorSetStorageImages(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxDescriptorSetStorageImages(segment, 0L); }
-    /// {@return `maxDescriptorSetStorageImages` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxDescriptorSetStorageImagesAt(long index) { return VkPhysicalDeviceLimits.get_maxDescriptorSetStorageImages(this.segment(), index); }
     /// {@return `maxDescriptorSetStorageImages`}
     public @CType("uint32_t") int maxDescriptorSetStorageImages() { return VkPhysicalDeviceLimits.get_maxDescriptorSetStorageImages(this.segment()); }
     /// Sets `maxDescriptorSetStorageImages` with the given value at the given index.
@@ -1588,11 +1377,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxDescriptorSetStorageImages(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxDescriptorSetStorageImages(segment, 0L, value); }
-    /// Sets `maxDescriptorSetStorageImages` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxDescriptorSetStorageImagesAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxDescriptorSetStorageImages(this.segment(), index, value); return this; }
     /// Sets `maxDescriptorSetStorageImages` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1605,9 +1389,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxDescriptorSetInputAttachments`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxDescriptorSetInputAttachments(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxDescriptorSetInputAttachments(segment, 0L); }
-    /// {@return `maxDescriptorSetInputAttachments` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxDescriptorSetInputAttachmentsAt(long index) { return VkPhysicalDeviceLimits.get_maxDescriptorSetInputAttachments(this.segment(), index); }
     /// {@return `maxDescriptorSetInputAttachments`}
     public @CType("uint32_t") int maxDescriptorSetInputAttachments() { return VkPhysicalDeviceLimits.get_maxDescriptorSetInputAttachments(this.segment()); }
     /// Sets `maxDescriptorSetInputAttachments` with the given value at the given index.
@@ -1619,11 +1400,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxDescriptorSetInputAttachments(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxDescriptorSetInputAttachments(segment, 0L, value); }
-    /// Sets `maxDescriptorSetInputAttachments` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxDescriptorSetInputAttachmentsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxDescriptorSetInputAttachments(this.segment(), index, value); return this; }
     /// Sets `maxDescriptorSetInputAttachments` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1636,9 +1412,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxVertexInputAttributes`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxVertexInputAttributes(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxVertexInputAttributes(segment, 0L); }
-    /// {@return `maxVertexInputAttributes` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxVertexInputAttributesAt(long index) { return VkPhysicalDeviceLimits.get_maxVertexInputAttributes(this.segment(), index); }
     /// {@return `maxVertexInputAttributes`}
     public @CType("uint32_t") int maxVertexInputAttributes() { return VkPhysicalDeviceLimits.get_maxVertexInputAttributes(this.segment()); }
     /// Sets `maxVertexInputAttributes` with the given value at the given index.
@@ -1650,11 +1423,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxVertexInputAttributes(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxVertexInputAttributes(segment, 0L, value); }
-    /// Sets `maxVertexInputAttributes` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxVertexInputAttributesAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxVertexInputAttributes(this.segment(), index, value); return this; }
     /// Sets `maxVertexInputAttributes` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1667,9 +1435,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxVertexInputBindings`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxVertexInputBindings(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxVertexInputBindings(segment, 0L); }
-    /// {@return `maxVertexInputBindings` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxVertexInputBindingsAt(long index) { return VkPhysicalDeviceLimits.get_maxVertexInputBindings(this.segment(), index); }
     /// {@return `maxVertexInputBindings`}
     public @CType("uint32_t") int maxVertexInputBindings() { return VkPhysicalDeviceLimits.get_maxVertexInputBindings(this.segment()); }
     /// Sets `maxVertexInputBindings` with the given value at the given index.
@@ -1681,11 +1446,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxVertexInputBindings(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxVertexInputBindings(segment, 0L, value); }
-    /// Sets `maxVertexInputBindings` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxVertexInputBindingsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxVertexInputBindings(this.segment(), index, value); return this; }
     /// Sets `maxVertexInputBindings` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1698,9 +1458,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxVertexInputAttributeOffset`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxVertexInputAttributeOffset(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxVertexInputAttributeOffset(segment, 0L); }
-    /// {@return `maxVertexInputAttributeOffset` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxVertexInputAttributeOffsetAt(long index) { return VkPhysicalDeviceLimits.get_maxVertexInputAttributeOffset(this.segment(), index); }
     /// {@return `maxVertexInputAttributeOffset`}
     public @CType("uint32_t") int maxVertexInputAttributeOffset() { return VkPhysicalDeviceLimits.get_maxVertexInputAttributeOffset(this.segment()); }
     /// Sets `maxVertexInputAttributeOffset` with the given value at the given index.
@@ -1712,11 +1469,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxVertexInputAttributeOffset(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxVertexInputAttributeOffset(segment, 0L, value); }
-    /// Sets `maxVertexInputAttributeOffset` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxVertexInputAttributeOffsetAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxVertexInputAttributeOffset(this.segment(), index, value); return this; }
     /// Sets `maxVertexInputAttributeOffset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1729,9 +1481,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxVertexInputBindingStride`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxVertexInputBindingStride(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxVertexInputBindingStride(segment, 0L); }
-    /// {@return `maxVertexInputBindingStride` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxVertexInputBindingStrideAt(long index) { return VkPhysicalDeviceLimits.get_maxVertexInputBindingStride(this.segment(), index); }
     /// {@return `maxVertexInputBindingStride`}
     public @CType("uint32_t") int maxVertexInputBindingStride() { return VkPhysicalDeviceLimits.get_maxVertexInputBindingStride(this.segment()); }
     /// Sets `maxVertexInputBindingStride` with the given value at the given index.
@@ -1743,11 +1492,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxVertexInputBindingStride(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxVertexInputBindingStride(segment, 0L, value); }
-    /// Sets `maxVertexInputBindingStride` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxVertexInputBindingStrideAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxVertexInputBindingStride(this.segment(), index, value); return this; }
     /// Sets `maxVertexInputBindingStride` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1760,9 +1504,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxVertexOutputComponents`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxVertexOutputComponents(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxVertexOutputComponents(segment, 0L); }
-    /// {@return `maxVertexOutputComponents` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxVertexOutputComponentsAt(long index) { return VkPhysicalDeviceLimits.get_maxVertexOutputComponents(this.segment(), index); }
     /// {@return `maxVertexOutputComponents`}
     public @CType("uint32_t") int maxVertexOutputComponents() { return VkPhysicalDeviceLimits.get_maxVertexOutputComponents(this.segment()); }
     /// Sets `maxVertexOutputComponents` with the given value at the given index.
@@ -1774,11 +1515,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxVertexOutputComponents(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxVertexOutputComponents(segment, 0L, value); }
-    /// Sets `maxVertexOutputComponents` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxVertexOutputComponentsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxVertexOutputComponents(this.segment(), index, value); return this; }
     /// Sets `maxVertexOutputComponents` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1791,9 +1527,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxTessellationGenerationLevel`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxTessellationGenerationLevel(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxTessellationGenerationLevel(segment, 0L); }
-    /// {@return `maxTessellationGenerationLevel` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxTessellationGenerationLevelAt(long index) { return VkPhysicalDeviceLimits.get_maxTessellationGenerationLevel(this.segment(), index); }
     /// {@return `maxTessellationGenerationLevel`}
     public @CType("uint32_t") int maxTessellationGenerationLevel() { return VkPhysicalDeviceLimits.get_maxTessellationGenerationLevel(this.segment()); }
     /// Sets `maxTessellationGenerationLevel` with the given value at the given index.
@@ -1805,11 +1538,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxTessellationGenerationLevel(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxTessellationGenerationLevel(segment, 0L, value); }
-    /// Sets `maxTessellationGenerationLevel` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxTessellationGenerationLevelAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxTessellationGenerationLevel(this.segment(), index, value); return this; }
     /// Sets `maxTessellationGenerationLevel` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1822,9 +1550,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxTessellationPatchSize`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxTessellationPatchSize(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxTessellationPatchSize(segment, 0L); }
-    /// {@return `maxTessellationPatchSize` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxTessellationPatchSizeAt(long index) { return VkPhysicalDeviceLimits.get_maxTessellationPatchSize(this.segment(), index); }
     /// {@return `maxTessellationPatchSize`}
     public @CType("uint32_t") int maxTessellationPatchSize() { return VkPhysicalDeviceLimits.get_maxTessellationPatchSize(this.segment()); }
     /// Sets `maxTessellationPatchSize` with the given value at the given index.
@@ -1836,11 +1561,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxTessellationPatchSize(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxTessellationPatchSize(segment, 0L, value); }
-    /// Sets `maxTessellationPatchSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxTessellationPatchSizeAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxTessellationPatchSize(this.segment(), index, value); return this; }
     /// Sets `maxTessellationPatchSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1853,9 +1573,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxTessellationControlPerVertexInputComponents`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxTessellationControlPerVertexInputComponents(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxTessellationControlPerVertexInputComponents(segment, 0L); }
-    /// {@return `maxTessellationControlPerVertexInputComponents` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxTessellationControlPerVertexInputComponentsAt(long index) { return VkPhysicalDeviceLimits.get_maxTessellationControlPerVertexInputComponents(this.segment(), index); }
     /// {@return `maxTessellationControlPerVertexInputComponents`}
     public @CType("uint32_t") int maxTessellationControlPerVertexInputComponents() { return VkPhysicalDeviceLimits.get_maxTessellationControlPerVertexInputComponents(this.segment()); }
     /// Sets `maxTessellationControlPerVertexInputComponents` with the given value at the given index.
@@ -1867,11 +1584,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxTessellationControlPerVertexInputComponents(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxTessellationControlPerVertexInputComponents(segment, 0L, value); }
-    /// Sets `maxTessellationControlPerVertexInputComponents` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxTessellationControlPerVertexInputComponentsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxTessellationControlPerVertexInputComponents(this.segment(), index, value); return this; }
     /// Sets `maxTessellationControlPerVertexInputComponents` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1884,9 +1596,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxTessellationControlPerVertexOutputComponents`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxTessellationControlPerVertexOutputComponents(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxTessellationControlPerVertexOutputComponents(segment, 0L); }
-    /// {@return `maxTessellationControlPerVertexOutputComponents` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxTessellationControlPerVertexOutputComponentsAt(long index) { return VkPhysicalDeviceLimits.get_maxTessellationControlPerVertexOutputComponents(this.segment(), index); }
     /// {@return `maxTessellationControlPerVertexOutputComponents`}
     public @CType("uint32_t") int maxTessellationControlPerVertexOutputComponents() { return VkPhysicalDeviceLimits.get_maxTessellationControlPerVertexOutputComponents(this.segment()); }
     /// Sets `maxTessellationControlPerVertexOutputComponents` with the given value at the given index.
@@ -1898,11 +1607,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxTessellationControlPerVertexOutputComponents(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxTessellationControlPerVertexOutputComponents(segment, 0L, value); }
-    /// Sets `maxTessellationControlPerVertexOutputComponents` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxTessellationControlPerVertexOutputComponentsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxTessellationControlPerVertexOutputComponents(this.segment(), index, value); return this; }
     /// Sets `maxTessellationControlPerVertexOutputComponents` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1915,9 +1619,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxTessellationControlPerPatchOutputComponents`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxTessellationControlPerPatchOutputComponents(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxTessellationControlPerPatchOutputComponents(segment, 0L); }
-    /// {@return `maxTessellationControlPerPatchOutputComponents` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxTessellationControlPerPatchOutputComponentsAt(long index) { return VkPhysicalDeviceLimits.get_maxTessellationControlPerPatchOutputComponents(this.segment(), index); }
     /// {@return `maxTessellationControlPerPatchOutputComponents`}
     public @CType("uint32_t") int maxTessellationControlPerPatchOutputComponents() { return VkPhysicalDeviceLimits.get_maxTessellationControlPerPatchOutputComponents(this.segment()); }
     /// Sets `maxTessellationControlPerPatchOutputComponents` with the given value at the given index.
@@ -1929,11 +1630,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxTessellationControlPerPatchOutputComponents(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxTessellationControlPerPatchOutputComponents(segment, 0L, value); }
-    /// Sets `maxTessellationControlPerPatchOutputComponents` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxTessellationControlPerPatchOutputComponentsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxTessellationControlPerPatchOutputComponents(this.segment(), index, value); return this; }
     /// Sets `maxTessellationControlPerPatchOutputComponents` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1946,9 +1642,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxTessellationControlTotalOutputComponents`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxTessellationControlTotalOutputComponents(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxTessellationControlTotalOutputComponents(segment, 0L); }
-    /// {@return `maxTessellationControlTotalOutputComponents` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxTessellationControlTotalOutputComponentsAt(long index) { return VkPhysicalDeviceLimits.get_maxTessellationControlTotalOutputComponents(this.segment(), index); }
     /// {@return `maxTessellationControlTotalOutputComponents`}
     public @CType("uint32_t") int maxTessellationControlTotalOutputComponents() { return VkPhysicalDeviceLimits.get_maxTessellationControlTotalOutputComponents(this.segment()); }
     /// Sets `maxTessellationControlTotalOutputComponents` with the given value at the given index.
@@ -1960,11 +1653,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxTessellationControlTotalOutputComponents(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxTessellationControlTotalOutputComponents(segment, 0L, value); }
-    /// Sets `maxTessellationControlTotalOutputComponents` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxTessellationControlTotalOutputComponentsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxTessellationControlTotalOutputComponents(this.segment(), index, value); return this; }
     /// Sets `maxTessellationControlTotalOutputComponents` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1977,9 +1665,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxTessellationEvaluationInputComponents`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxTessellationEvaluationInputComponents(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxTessellationEvaluationInputComponents(segment, 0L); }
-    /// {@return `maxTessellationEvaluationInputComponents` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxTessellationEvaluationInputComponentsAt(long index) { return VkPhysicalDeviceLimits.get_maxTessellationEvaluationInputComponents(this.segment(), index); }
     /// {@return `maxTessellationEvaluationInputComponents`}
     public @CType("uint32_t") int maxTessellationEvaluationInputComponents() { return VkPhysicalDeviceLimits.get_maxTessellationEvaluationInputComponents(this.segment()); }
     /// Sets `maxTessellationEvaluationInputComponents` with the given value at the given index.
@@ -1991,11 +1676,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxTessellationEvaluationInputComponents(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxTessellationEvaluationInputComponents(segment, 0L, value); }
-    /// Sets `maxTessellationEvaluationInputComponents` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxTessellationEvaluationInputComponentsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxTessellationEvaluationInputComponents(this.segment(), index, value); return this; }
     /// Sets `maxTessellationEvaluationInputComponents` with the given value.
     /// @param value the value
     /// @return `this`
@@ -2008,9 +1688,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxTessellationEvaluationOutputComponents`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxTessellationEvaluationOutputComponents(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxTessellationEvaluationOutputComponents(segment, 0L); }
-    /// {@return `maxTessellationEvaluationOutputComponents` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxTessellationEvaluationOutputComponentsAt(long index) { return VkPhysicalDeviceLimits.get_maxTessellationEvaluationOutputComponents(this.segment(), index); }
     /// {@return `maxTessellationEvaluationOutputComponents`}
     public @CType("uint32_t") int maxTessellationEvaluationOutputComponents() { return VkPhysicalDeviceLimits.get_maxTessellationEvaluationOutputComponents(this.segment()); }
     /// Sets `maxTessellationEvaluationOutputComponents` with the given value at the given index.
@@ -2022,11 +1699,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxTessellationEvaluationOutputComponents(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxTessellationEvaluationOutputComponents(segment, 0L, value); }
-    /// Sets `maxTessellationEvaluationOutputComponents` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxTessellationEvaluationOutputComponentsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxTessellationEvaluationOutputComponents(this.segment(), index, value); return this; }
     /// Sets `maxTessellationEvaluationOutputComponents` with the given value.
     /// @param value the value
     /// @return `this`
@@ -2039,9 +1711,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxGeometryShaderInvocations`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxGeometryShaderInvocations(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxGeometryShaderInvocations(segment, 0L); }
-    /// {@return `maxGeometryShaderInvocations` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxGeometryShaderInvocationsAt(long index) { return VkPhysicalDeviceLimits.get_maxGeometryShaderInvocations(this.segment(), index); }
     /// {@return `maxGeometryShaderInvocations`}
     public @CType("uint32_t") int maxGeometryShaderInvocations() { return VkPhysicalDeviceLimits.get_maxGeometryShaderInvocations(this.segment()); }
     /// Sets `maxGeometryShaderInvocations` with the given value at the given index.
@@ -2053,11 +1722,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxGeometryShaderInvocations(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxGeometryShaderInvocations(segment, 0L, value); }
-    /// Sets `maxGeometryShaderInvocations` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxGeometryShaderInvocationsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxGeometryShaderInvocations(this.segment(), index, value); return this; }
     /// Sets `maxGeometryShaderInvocations` with the given value.
     /// @param value the value
     /// @return `this`
@@ -2070,9 +1734,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxGeometryInputComponents`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxGeometryInputComponents(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxGeometryInputComponents(segment, 0L); }
-    /// {@return `maxGeometryInputComponents` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxGeometryInputComponentsAt(long index) { return VkPhysicalDeviceLimits.get_maxGeometryInputComponents(this.segment(), index); }
     /// {@return `maxGeometryInputComponents`}
     public @CType("uint32_t") int maxGeometryInputComponents() { return VkPhysicalDeviceLimits.get_maxGeometryInputComponents(this.segment()); }
     /// Sets `maxGeometryInputComponents` with the given value at the given index.
@@ -2084,11 +1745,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxGeometryInputComponents(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxGeometryInputComponents(segment, 0L, value); }
-    /// Sets `maxGeometryInputComponents` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxGeometryInputComponentsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxGeometryInputComponents(this.segment(), index, value); return this; }
     /// Sets `maxGeometryInputComponents` with the given value.
     /// @param value the value
     /// @return `this`
@@ -2101,9 +1757,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxGeometryOutputComponents`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxGeometryOutputComponents(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxGeometryOutputComponents(segment, 0L); }
-    /// {@return `maxGeometryOutputComponents` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxGeometryOutputComponentsAt(long index) { return VkPhysicalDeviceLimits.get_maxGeometryOutputComponents(this.segment(), index); }
     /// {@return `maxGeometryOutputComponents`}
     public @CType("uint32_t") int maxGeometryOutputComponents() { return VkPhysicalDeviceLimits.get_maxGeometryOutputComponents(this.segment()); }
     /// Sets `maxGeometryOutputComponents` with the given value at the given index.
@@ -2115,11 +1768,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxGeometryOutputComponents(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxGeometryOutputComponents(segment, 0L, value); }
-    /// Sets `maxGeometryOutputComponents` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxGeometryOutputComponentsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxGeometryOutputComponents(this.segment(), index, value); return this; }
     /// Sets `maxGeometryOutputComponents` with the given value.
     /// @param value the value
     /// @return `this`
@@ -2132,9 +1780,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxGeometryOutputVertices`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxGeometryOutputVertices(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxGeometryOutputVertices(segment, 0L); }
-    /// {@return `maxGeometryOutputVertices` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxGeometryOutputVerticesAt(long index) { return VkPhysicalDeviceLimits.get_maxGeometryOutputVertices(this.segment(), index); }
     /// {@return `maxGeometryOutputVertices`}
     public @CType("uint32_t") int maxGeometryOutputVertices() { return VkPhysicalDeviceLimits.get_maxGeometryOutputVertices(this.segment()); }
     /// Sets `maxGeometryOutputVertices` with the given value at the given index.
@@ -2146,11 +1791,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxGeometryOutputVertices(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxGeometryOutputVertices(segment, 0L, value); }
-    /// Sets `maxGeometryOutputVertices` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxGeometryOutputVerticesAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxGeometryOutputVertices(this.segment(), index, value); return this; }
     /// Sets `maxGeometryOutputVertices` with the given value.
     /// @param value the value
     /// @return `this`
@@ -2163,9 +1803,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxGeometryTotalOutputComponents`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxGeometryTotalOutputComponents(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxGeometryTotalOutputComponents(segment, 0L); }
-    /// {@return `maxGeometryTotalOutputComponents` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxGeometryTotalOutputComponentsAt(long index) { return VkPhysicalDeviceLimits.get_maxGeometryTotalOutputComponents(this.segment(), index); }
     /// {@return `maxGeometryTotalOutputComponents`}
     public @CType("uint32_t") int maxGeometryTotalOutputComponents() { return VkPhysicalDeviceLimits.get_maxGeometryTotalOutputComponents(this.segment()); }
     /// Sets `maxGeometryTotalOutputComponents` with the given value at the given index.
@@ -2177,11 +1814,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxGeometryTotalOutputComponents(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxGeometryTotalOutputComponents(segment, 0L, value); }
-    /// Sets `maxGeometryTotalOutputComponents` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxGeometryTotalOutputComponentsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxGeometryTotalOutputComponents(this.segment(), index, value); return this; }
     /// Sets `maxGeometryTotalOutputComponents` with the given value.
     /// @param value the value
     /// @return `this`
@@ -2194,9 +1826,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxFragmentInputComponents`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxFragmentInputComponents(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxFragmentInputComponents(segment, 0L); }
-    /// {@return `maxFragmentInputComponents` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxFragmentInputComponentsAt(long index) { return VkPhysicalDeviceLimits.get_maxFragmentInputComponents(this.segment(), index); }
     /// {@return `maxFragmentInputComponents`}
     public @CType("uint32_t") int maxFragmentInputComponents() { return VkPhysicalDeviceLimits.get_maxFragmentInputComponents(this.segment()); }
     /// Sets `maxFragmentInputComponents` with the given value at the given index.
@@ -2208,11 +1837,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxFragmentInputComponents(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxFragmentInputComponents(segment, 0L, value); }
-    /// Sets `maxFragmentInputComponents` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxFragmentInputComponentsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxFragmentInputComponents(this.segment(), index, value); return this; }
     /// Sets `maxFragmentInputComponents` with the given value.
     /// @param value the value
     /// @return `this`
@@ -2225,9 +1849,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxFragmentOutputAttachments`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxFragmentOutputAttachments(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxFragmentOutputAttachments(segment, 0L); }
-    /// {@return `maxFragmentOutputAttachments` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxFragmentOutputAttachmentsAt(long index) { return VkPhysicalDeviceLimits.get_maxFragmentOutputAttachments(this.segment(), index); }
     /// {@return `maxFragmentOutputAttachments`}
     public @CType("uint32_t") int maxFragmentOutputAttachments() { return VkPhysicalDeviceLimits.get_maxFragmentOutputAttachments(this.segment()); }
     /// Sets `maxFragmentOutputAttachments` with the given value at the given index.
@@ -2239,11 +1860,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxFragmentOutputAttachments(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxFragmentOutputAttachments(segment, 0L, value); }
-    /// Sets `maxFragmentOutputAttachments` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxFragmentOutputAttachmentsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxFragmentOutputAttachments(this.segment(), index, value); return this; }
     /// Sets `maxFragmentOutputAttachments` with the given value.
     /// @param value the value
     /// @return `this`
@@ -2256,9 +1872,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxFragmentDualSrcAttachments`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxFragmentDualSrcAttachments(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxFragmentDualSrcAttachments(segment, 0L); }
-    /// {@return `maxFragmentDualSrcAttachments` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxFragmentDualSrcAttachmentsAt(long index) { return VkPhysicalDeviceLimits.get_maxFragmentDualSrcAttachments(this.segment(), index); }
     /// {@return `maxFragmentDualSrcAttachments`}
     public @CType("uint32_t") int maxFragmentDualSrcAttachments() { return VkPhysicalDeviceLimits.get_maxFragmentDualSrcAttachments(this.segment()); }
     /// Sets `maxFragmentDualSrcAttachments` with the given value at the given index.
@@ -2270,11 +1883,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxFragmentDualSrcAttachments(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxFragmentDualSrcAttachments(segment, 0L, value); }
-    /// Sets `maxFragmentDualSrcAttachments` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxFragmentDualSrcAttachmentsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxFragmentDualSrcAttachments(this.segment(), index, value); return this; }
     /// Sets `maxFragmentDualSrcAttachments` with the given value.
     /// @param value the value
     /// @return `this`
@@ -2287,9 +1895,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxFragmentCombinedOutputResources`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxFragmentCombinedOutputResources(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxFragmentCombinedOutputResources(segment, 0L); }
-    /// {@return `maxFragmentCombinedOutputResources` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxFragmentCombinedOutputResourcesAt(long index) { return VkPhysicalDeviceLimits.get_maxFragmentCombinedOutputResources(this.segment(), index); }
     /// {@return `maxFragmentCombinedOutputResources`}
     public @CType("uint32_t") int maxFragmentCombinedOutputResources() { return VkPhysicalDeviceLimits.get_maxFragmentCombinedOutputResources(this.segment()); }
     /// Sets `maxFragmentCombinedOutputResources` with the given value at the given index.
@@ -2301,11 +1906,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxFragmentCombinedOutputResources(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxFragmentCombinedOutputResources(segment, 0L, value); }
-    /// Sets `maxFragmentCombinedOutputResources` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxFragmentCombinedOutputResourcesAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxFragmentCombinedOutputResources(this.segment(), index, value); return this; }
     /// Sets `maxFragmentCombinedOutputResources` with the given value.
     /// @param value the value
     /// @return `this`
@@ -2318,9 +1918,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxComputeSharedMemorySize`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxComputeSharedMemorySize(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxComputeSharedMemorySize(segment, 0L); }
-    /// {@return `maxComputeSharedMemorySize` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxComputeSharedMemorySizeAt(long index) { return VkPhysicalDeviceLimits.get_maxComputeSharedMemorySize(this.segment(), index); }
     /// {@return `maxComputeSharedMemorySize`}
     public @CType("uint32_t") int maxComputeSharedMemorySize() { return VkPhysicalDeviceLimits.get_maxComputeSharedMemorySize(this.segment()); }
     /// Sets `maxComputeSharedMemorySize` with the given value at the given index.
@@ -2332,11 +1929,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxComputeSharedMemorySize(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxComputeSharedMemorySize(segment, 0L, value); }
-    /// Sets `maxComputeSharedMemorySize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxComputeSharedMemorySizeAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxComputeSharedMemorySize(this.segment(), index, value); return this; }
     /// Sets `maxComputeSharedMemorySize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -2349,9 +1941,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxComputeWorkGroupCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t[3]") java.lang.foreign.MemorySegment get_maxComputeWorkGroupCount(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxComputeWorkGroupCount(segment, 0L); }
-    /// {@return `maxComputeWorkGroupCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t[3]") java.lang.foreign.MemorySegment maxComputeWorkGroupCountAt(long index) { return VkPhysicalDeviceLimits.get_maxComputeWorkGroupCount(this.segment(), index); }
     /// {@return `maxComputeWorkGroupCount`}
     public @CType("uint32_t[3]") java.lang.foreign.MemorySegment maxComputeWorkGroupCount() { return VkPhysicalDeviceLimits.get_maxComputeWorkGroupCount(this.segment()); }
     /// Sets `maxComputeWorkGroupCount` with the given value at the given index.
@@ -2363,11 +1952,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxComputeWorkGroupCount(MemorySegment segment, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_maxComputeWorkGroupCount(segment, 0L, value); }
-    /// Sets `maxComputeWorkGroupCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxComputeWorkGroupCountAt(long index, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_maxComputeWorkGroupCount(this.segment(), index, value); return this; }
     /// Sets `maxComputeWorkGroupCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -2380,9 +1964,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxComputeWorkGroupInvocations`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxComputeWorkGroupInvocations(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxComputeWorkGroupInvocations(segment, 0L); }
-    /// {@return `maxComputeWorkGroupInvocations` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxComputeWorkGroupInvocationsAt(long index) { return VkPhysicalDeviceLimits.get_maxComputeWorkGroupInvocations(this.segment(), index); }
     /// {@return `maxComputeWorkGroupInvocations`}
     public @CType("uint32_t") int maxComputeWorkGroupInvocations() { return VkPhysicalDeviceLimits.get_maxComputeWorkGroupInvocations(this.segment()); }
     /// Sets `maxComputeWorkGroupInvocations` with the given value at the given index.
@@ -2394,11 +1975,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxComputeWorkGroupInvocations(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxComputeWorkGroupInvocations(segment, 0L, value); }
-    /// Sets `maxComputeWorkGroupInvocations` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxComputeWorkGroupInvocationsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxComputeWorkGroupInvocations(this.segment(), index, value); return this; }
     /// Sets `maxComputeWorkGroupInvocations` with the given value.
     /// @param value the value
     /// @return `this`
@@ -2411,9 +1987,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxComputeWorkGroupSize`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t[3]") java.lang.foreign.MemorySegment get_maxComputeWorkGroupSize(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxComputeWorkGroupSize(segment, 0L); }
-    /// {@return `maxComputeWorkGroupSize` at the given index}
-    /// @param index the index
-    public @CType("uint32_t[3]") java.lang.foreign.MemorySegment maxComputeWorkGroupSizeAt(long index) { return VkPhysicalDeviceLimits.get_maxComputeWorkGroupSize(this.segment(), index); }
     /// {@return `maxComputeWorkGroupSize`}
     public @CType("uint32_t[3]") java.lang.foreign.MemorySegment maxComputeWorkGroupSize() { return VkPhysicalDeviceLimits.get_maxComputeWorkGroupSize(this.segment()); }
     /// Sets `maxComputeWorkGroupSize` with the given value at the given index.
@@ -2425,11 +1998,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxComputeWorkGroupSize(MemorySegment segment, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_maxComputeWorkGroupSize(segment, 0L, value); }
-    /// Sets `maxComputeWorkGroupSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxComputeWorkGroupSizeAt(long index, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_maxComputeWorkGroupSize(this.segment(), index, value); return this; }
     /// Sets `maxComputeWorkGroupSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -2442,9 +2010,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `subPixelPrecisionBits`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_subPixelPrecisionBits(MemorySegment segment) { return VkPhysicalDeviceLimits.get_subPixelPrecisionBits(segment, 0L); }
-    /// {@return `subPixelPrecisionBits` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int subPixelPrecisionBitsAt(long index) { return VkPhysicalDeviceLimits.get_subPixelPrecisionBits(this.segment(), index); }
     /// {@return `subPixelPrecisionBits`}
     public @CType("uint32_t") int subPixelPrecisionBits() { return VkPhysicalDeviceLimits.get_subPixelPrecisionBits(this.segment()); }
     /// Sets `subPixelPrecisionBits` with the given value at the given index.
@@ -2456,11 +2021,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_subPixelPrecisionBits(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_subPixelPrecisionBits(segment, 0L, value); }
-    /// Sets `subPixelPrecisionBits` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits subPixelPrecisionBitsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_subPixelPrecisionBits(this.segment(), index, value); return this; }
     /// Sets `subPixelPrecisionBits` with the given value.
     /// @param value the value
     /// @return `this`
@@ -2473,9 +2033,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `subTexelPrecisionBits`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_subTexelPrecisionBits(MemorySegment segment) { return VkPhysicalDeviceLimits.get_subTexelPrecisionBits(segment, 0L); }
-    /// {@return `subTexelPrecisionBits` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int subTexelPrecisionBitsAt(long index) { return VkPhysicalDeviceLimits.get_subTexelPrecisionBits(this.segment(), index); }
     /// {@return `subTexelPrecisionBits`}
     public @CType("uint32_t") int subTexelPrecisionBits() { return VkPhysicalDeviceLimits.get_subTexelPrecisionBits(this.segment()); }
     /// Sets `subTexelPrecisionBits` with the given value at the given index.
@@ -2487,11 +2044,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_subTexelPrecisionBits(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_subTexelPrecisionBits(segment, 0L, value); }
-    /// Sets `subTexelPrecisionBits` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits subTexelPrecisionBitsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_subTexelPrecisionBits(this.segment(), index, value); return this; }
     /// Sets `subTexelPrecisionBits` with the given value.
     /// @param value the value
     /// @return `this`
@@ -2504,9 +2056,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `mipmapPrecisionBits`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_mipmapPrecisionBits(MemorySegment segment) { return VkPhysicalDeviceLimits.get_mipmapPrecisionBits(segment, 0L); }
-    /// {@return `mipmapPrecisionBits` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int mipmapPrecisionBitsAt(long index) { return VkPhysicalDeviceLimits.get_mipmapPrecisionBits(this.segment(), index); }
     /// {@return `mipmapPrecisionBits`}
     public @CType("uint32_t") int mipmapPrecisionBits() { return VkPhysicalDeviceLimits.get_mipmapPrecisionBits(this.segment()); }
     /// Sets `mipmapPrecisionBits` with the given value at the given index.
@@ -2518,11 +2067,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_mipmapPrecisionBits(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_mipmapPrecisionBits(segment, 0L, value); }
-    /// Sets `mipmapPrecisionBits` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits mipmapPrecisionBitsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_mipmapPrecisionBits(this.segment(), index, value); return this; }
     /// Sets `mipmapPrecisionBits` with the given value.
     /// @param value the value
     /// @return `this`
@@ -2535,9 +2079,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxDrawIndexedIndexValue`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxDrawIndexedIndexValue(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxDrawIndexedIndexValue(segment, 0L); }
-    /// {@return `maxDrawIndexedIndexValue` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxDrawIndexedIndexValueAt(long index) { return VkPhysicalDeviceLimits.get_maxDrawIndexedIndexValue(this.segment(), index); }
     /// {@return `maxDrawIndexedIndexValue`}
     public @CType("uint32_t") int maxDrawIndexedIndexValue() { return VkPhysicalDeviceLimits.get_maxDrawIndexedIndexValue(this.segment()); }
     /// Sets `maxDrawIndexedIndexValue` with the given value at the given index.
@@ -2549,11 +2090,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxDrawIndexedIndexValue(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxDrawIndexedIndexValue(segment, 0L, value); }
-    /// Sets `maxDrawIndexedIndexValue` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxDrawIndexedIndexValueAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxDrawIndexedIndexValue(this.segment(), index, value); return this; }
     /// Sets `maxDrawIndexedIndexValue` with the given value.
     /// @param value the value
     /// @return `this`
@@ -2566,9 +2102,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxDrawIndirectCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxDrawIndirectCount(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxDrawIndirectCount(segment, 0L); }
-    /// {@return `maxDrawIndirectCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxDrawIndirectCountAt(long index) { return VkPhysicalDeviceLimits.get_maxDrawIndirectCount(this.segment(), index); }
     /// {@return `maxDrawIndirectCount`}
     public @CType("uint32_t") int maxDrawIndirectCount() { return VkPhysicalDeviceLimits.get_maxDrawIndirectCount(this.segment()); }
     /// Sets `maxDrawIndirectCount` with the given value at the given index.
@@ -2580,11 +2113,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxDrawIndirectCount(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxDrawIndirectCount(segment, 0L, value); }
-    /// Sets `maxDrawIndirectCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxDrawIndirectCountAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxDrawIndirectCount(this.segment(), index, value); return this; }
     /// Sets `maxDrawIndirectCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -2597,9 +2125,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxSamplerLodBias`}
     /// @param segment the segment of the struct
     public static @CType("float") float get_maxSamplerLodBias(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxSamplerLodBias(segment, 0L); }
-    /// {@return `maxSamplerLodBias` at the given index}
-    /// @param index the index
-    public @CType("float") float maxSamplerLodBiasAt(long index) { return VkPhysicalDeviceLimits.get_maxSamplerLodBias(this.segment(), index); }
     /// {@return `maxSamplerLodBias`}
     public @CType("float") float maxSamplerLodBias() { return VkPhysicalDeviceLimits.get_maxSamplerLodBias(this.segment()); }
     /// Sets `maxSamplerLodBias` with the given value at the given index.
@@ -2611,11 +2136,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxSamplerLodBias(MemorySegment segment, @CType("float") float value) { VkPhysicalDeviceLimits.set_maxSamplerLodBias(segment, 0L, value); }
-    /// Sets `maxSamplerLodBias` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxSamplerLodBiasAt(long index, @CType("float") float value) { VkPhysicalDeviceLimits.set_maxSamplerLodBias(this.segment(), index, value); return this; }
     /// Sets `maxSamplerLodBias` with the given value.
     /// @param value the value
     /// @return `this`
@@ -2628,9 +2148,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxSamplerAnisotropy`}
     /// @param segment the segment of the struct
     public static @CType("float") float get_maxSamplerAnisotropy(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxSamplerAnisotropy(segment, 0L); }
-    /// {@return `maxSamplerAnisotropy` at the given index}
-    /// @param index the index
-    public @CType("float") float maxSamplerAnisotropyAt(long index) { return VkPhysicalDeviceLimits.get_maxSamplerAnisotropy(this.segment(), index); }
     /// {@return `maxSamplerAnisotropy`}
     public @CType("float") float maxSamplerAnisotropy() { return VkPhysicalDeviceLimits.get_maxSamplerAnisotropy(this.segment()); }
     /// Sets `maxSamplerAnisotropy` with the given value at the given index.
@@ -2642,11 +2159,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxSamplerAnisotropy(MemorySegment segment, @CType("float") float value) { VkPhysicalDeviceLimits.set_maxSamplerAnisotropy(segment, 0L, value); }
-    /// Sets `maxSamplerAnisotropy` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxSamplerAnisotropyAt(long index, @CType("float") float value) { VkPhysicalDeviceLimits.set_maxSamplerAnisotropy(this.segment(), index, value); return this; }
     /// Sets `maxSamplerAnisotropy` with the given value.
     /// @param value the value
     /// @return `this`
@@ -2659,9 +2171,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxViewports`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxViewports(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxViewports(segment, 0L); }
-    /// {@return `maxViewports` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxViewportsAt(long index) { return VkPhysicalDeviceLimits.get_maxViewports(this.segment(), index); }
     /// {@return `maxViewports`}
     public @CType("uint32_t") int maxViewports() { return VkPhysicalDeviceLimits.get_maxViewports(this.segment()); }
     /// Sets `maxViewports` with the given value at the given index.
@@ -2673,11 +2182,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxViewports(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxViewports(segment, 0L, value); }
-    /// Sets `maxViewports` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxViewportsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxViewports(this.segment(), index, value); return this; }
     /// Sets `maxViewports` with the given value.
     /// @param value the value
     /// @return `this`
@@ -2690,9 +2194,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxViewportDimensions`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t[2]") java.lang.foreign.MemorySegment get_maxViewportDimensions(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxViewportDimensions(segment, 0L); }
-    /// {@return `maxViewportDimensions` at the given index}
-    /// @param index the index
-    public @CType("uint32_t[2]") java.lang.foreign.MemorySegment maxViewportDimensionsAt(long index) { return VkPhysicalDeviceLimits.get_maxViewportDimensions(this.segment(), index); }
     /// {@return `maxViewportDimensions`}
     public @CType("uint32_t[2]") java.lang.foreign.MemorySegment maxViewportDimensions() { return VkPhysicalDeviceLimits.get_maxViewportDimensions(this.segment()); }
     /// Sets `maxViewportDimensions` with the given value at the given index.
@@ -2704,11 +2205,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxViewportDimensions(MemorySegment segment, @CType("uint32_t[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_maxViewportDimensions(segment, 0L, value); }
-    /// Sets `maxViewportDimensions` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxViewportDimensionsAt(long index, @CType("uint32_t[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_maxViewportDimensions(this.segment(), index, value); return this; }
     /// Sets `maxViewportDimensions` with the given value.
     /// @param value the value
     /// @return `this`
@@ -2721,9 +2217,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `viewportBoundsRange`}
     /// @param segment the segment of the struct
     public static @CType("float[2]") java.lang.foreign.MemorySegment get_viewportBoundsRange(MemorySegment segment) { return VkPhysicalDeviceLimits.get_viewportBoundsRange(segment, 0L); }
-    /// {@return `viewportBoundsRange` at the given index}
-    /// @param index the index
-    public @CType("float[2]") java.lang.foreign.MemorySegment viewportBoundsRangeAt(long index) { return VkPhysicalDeviceLimits.get_viewportBoundsRange(this.segment(), index); }
     /// {@return `viewportBoundsRange`}
     public @CType("float[2]") java.lang.foreign.MemorySegment viewportBoundsRange() { return VkPhysicalDeviceLimits.get_viewportBoundsRange(this.segment()); }
     /// Sets `viewportBoundsRange` with the given value at the given index.
@@ -2735,11 +2228,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_viewportBoundsRange(MemorySegment segment, @CType("float[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_viewportBoundsRange(segment, 0L, value); }
-    /// Sets `viewportBoundsRange` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits viewportBoundsRangeAt(long index, @CType("float[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_viewportBoundsRange(this.segment(), index, value); return this; }
     /// Sets `viewportBoundsRange` with the given value.
     /// @param value the value
     /// @return `this`
@@ -2752,9 +2240,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `viewportSubPixelBits`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_viewportSubPixelBits(MemorySegment segment) { return VkPhysicalDeviceLimits.get_viewportSubPixelBits(segment, 0L); }
-    /// {@return `viewportSubPixelBits` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int viewportSubPixelBitsAt(long index) { return VkPhysicalDeviceLimits.get_viewportSubPixelBits(this.segment(), index); }
     /// {@return `viewportSubPixelBits`}
     public @CType("uint32_t") int viewportSubPixelBits() { return VkPhysicalDeviceLimits.get_viewportSubPixelBits(this.segment()); }
     /// Sets `viewportSubPixelBits` with the given value at the given index.
@@ -2766,11 +2251,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_viewportSubPixelBits(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_viewportSubPixelBits(segment, 0L, value); }
-    /// Sets `viewportSubPixelBits` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits viewportSubPixelBitsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_viewportSubPixelBits(this.segment(), index, value); return this; }
     /// Sets `viewportSubPixelBits` with the given value.
     /// @param value the value
     /// @return `this`
@@ -2783,9 +2263,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `minMemoryMapAlignment`}
     /// @param segment the segment of the struct
     public static @CType("size_t") long get_minMemoryMapAlignment(MemorySegment segment) { return VkPhysicalDeviceLimits.get_minMemoryMapAlignment(segment, 0L); }
-    /// {@return `minMemoryMapAlignment` at the given index}
-    /// @param index the index
-    public @CType("size_t") long minMemoryMapAlignmentAt(long index) { return VkPhysicalDeviceLimits.get_minMemoryMapAlignment(this.segment(), index); }
     /// {@return `minMemoryMapAlignment`}
     public @CType("size_t") long minMemoryMapAlignment() { return VkPhysicalDeviceLimits.get_minMemoryMapAlignment(this.segment()); }
     /// Sets `minMemoryMapAlignment` with the given value at the given index.
@@ -2797,11 +2274,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_minMemoryMapAlignment(MemorySegment segment, @CType("size_t") long value) { VkPhysicalDeviceLimits.set_minMemoryMapAlignment(segment, 0L, value); }
-    /// Sets `minMemoryMapAlignment` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits minMemoryMapAlignmentAt(long index, @CType("size_t") long value) { VkPhysicalDeviceLimits.set_minMemoryMapAlignment(this.segment(), index, value); return this; }
     /// Sets `minMemoryMapAlignment` with the given value.
     /// @param value the value
     /// @return `this`
@@ -2814,9 +2286,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `minTexelBufferOffsetAlignment`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_minTexelBufferOffsetAlignment(MemorySegment segment) { return VkPhysicalDeviceLimits.get_minTexelBufferOffsetAlignment(segment, 0L); }
-    /// {@return `minTexelBufferOffsetAlignment` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long minTexelBufferOffsetAlignmentAt(long index) { return VkPhysicalDeviceLimits.get_minTexelBufferOffsetAlignment(this.segment(), index); }
     /// {@return `minTexelBufferOffsetAlignment`}
     public @CType("VkDeviceSize") long minTexelBufferOffsetAlignment() { return VkPhysicalDeviceLimits.get_minTexelBufferOffsetAlignment(this.segment()); }
     /// Sets `minTexelBufferOffsetAlignment` with the given value at the given index.
@@ -2828,11 +2297,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_minTexelBufferOffsetAlignment(MemorySegment segment, @CType("VkDeviceSize") long value) { VkPhysicalDeviceLimits.set_minTexelBufferOffsetAlignment(segment, 0L, value); }
-    /// Sets `minTexelBufferOffsetAlignment` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits minTexelBufferOffsetAlignmentAt(long index, @CType("VkDeviceSize") long value) { VkPhysicalDeviceLimits.set_minTexelBufferOffsetAlignment(this.segment(), index, value); return this; }
     /// Sets `minTexelBufferOffsetAlignment` with the given value.
     /// @param value the value
     /// @return `this`
@@ -2845,9 +2309,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `minUniformBufferOffsetAlignment`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_minUniformBufferOffsetAlignment(MemorySegment segment) { return VkPhysicalDeviceLimits.get_minUniformBufferOffsetAlignment(segment, 0L); }
-    /// {@return `minUniformBufferOffsetAlignment` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long minUniformBufferOffsetAlignmentAt(long index) { return VkPhysicalDeviceLimits.get_minUniformBufferOffsetAlignment(this.segment(), index); }
     /// {@return `minUniformBufferOffsetAlignment`}
     public @CType("VkDeviceSize") long minUniformBufferOffsetAlignment() { return VkPhysicalDeviceLimits.get_minUniformBufferOffsetAlignment(this.segment()); }
     /// Sets `minUniformBufferOffsetAlignment` with the given value at the given index.
@@ -2859,11 +2320,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_minUniformBufferOffsetAlignment(MemorySegment segment, @CType("VkDeviceSize") long value) { VkPhysicalDeviceLimits.set_minUniformBufferOffsetAlignment(segment, 0L, value); }
-    /// Sets `minUniformBufferOffsetAlignment` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits minUniformBufferOffsetAlignmentAt(long index, @CType("VkDeviceSize") long value) { VkPhysicalDeviceLimits.set_minUniformBufferOffsetAlignment(this.segment(), index, value); return this; }
     /// Sets `minUniformBufferOffsetAlignment` with the given value.
     /// @param value the value
     /// @return `this`
@@ -2876,9 +2332,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `minStorageBufferOffsetAlignment`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_minStorageBufferOffsetAlignment(MemorySegment segment) { return VkPhysicalDeviceLimits.get_minStorageBufferOffsetAlignment(segment, 0L); }
-    /// {@return `minStorageBufferOffsetAlignment` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long minStorageBufferOffsetAlignmentAt(long index) { return VkPhysicalDeviceLimits.get_minStorageBufferOffsetAlignment(this.segment(), index); }
     /// {@return `minStorageBufferOffsetAlignment`}
     public @CType("VkDeviceSize") long minStorageBufferOffsetAlignment() { return VkPhysicalDeviceLimits.get_minStorageBufferOffsetAlignment(this.segment()); }
     /// Sets `minStorageBufferOffsetAlignment` with the given value at the given index.
@@ -2890,11 +2343,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_minStorageBufferOffsetAlignment(MemorySegment segment, @CType("VkDeviceSize") long value) { VkPhysicalDeviceLimits.set_minStorageBufferOffsetAlignment(segment, 0L, value); }
-    /// Sets `minStorageBufferOffsetAlignment` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits minStorageBufferOffsetAlignmentAt(long index, @CType("VkDeviceSize") long value) { VkPhysicalDeviceLimits.set_minStorageBufferOffsetAlignment(this.segment(), index, value); return this; }
     /// Sets `minStorageBufferOffsetAlignment` with the given value.
     /// @param value the value
     /// @return `this`
@@ -2907,9 +2355,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `minTexelOffset`}
     /// @param segment the segment of the struct
     public static @CType("int32_t") int get_minTexelOffset(MemorySegment segment) { return VkPhysicalDeviceLimits.get_minTexelOffset(segment, 0L); }
-    /// {@return `minTexelOffset` at the given index}
-    /// @param index the index
-    public @CType("int32_t") int minTexelOffsetAt(long index) { return VkPhysicalDeviceLimits.get_minTexelOffset(this.segment(), index); }
     /// {@return `minTexelOffset`}
     public @CType("int32_t") int minTexelOffset() { return VkPhysicalDeviceLimits.get_minTexelOffset(this.segment()); }
     /// Sets `minTexelOffset` with the given value at the given index.
@@ -2921,11 +2366,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_minTexelOffset(MemorySegment segment, @CType("int32_t") int value) { VkPhysicalDeviceLimits.set_minTexelOffset(segment, 0L, value); }
-    /// Sets `minTexelOffset` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits minTexelOffsetAt(long index, @CType("int32_t") int value) { VkPhysicalDeviceLimits.set_minTexelOffset(this.segment(), index, value); return this; }
     /// Sets `minTexelOffset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -2938,9 +2378,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxTexelOffset`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxTexelOffset(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxTexelOffset(segment, 0L); }
-    /// {@return `maxTexelOffset` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxTexelOffsetAt(long index) { return VkPhysicalDeviceLimits.get_maxTexelOffset(this.segment(), index); }
     /// {@return `maxTexelOffset`}
     public @CType("uint32_t") int maxTexelOffset() { return VkPhysicalDeviceLimits.get_maxTexelOffset(this.segment()); }
     /// Sets `maxTexelOffset` with the given value at the given index.
@@ -2952,11 +2389,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxTexelOffset(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxTexelOffset(segment, 0L, value); }
-    /// Sets `maxTexelOffset` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxTexelOffsetAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxTexelOffset(this.segment(), index, value); return this; }
     /// Sets `maxTexelOffset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -2969,9 +2401,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `minTexelGatherOffset`}
     /// @param segment the segment of the struct
     public static @CType("int32_t") int get_minTexelGatherOffset(MemorySegment segment) { return VkPhysicalDeviceLimits.get_minTexelGatherOffset(segment, 0L); }
-    /// {@return `minTexelGatherOffset` at the given index}
-    /// @param index the index
-    public @CType("int32_t") int minTexelGatherOffsetAt(long index) { return VkPhysicalDeviceLimits.get_minTexelGatherOffset(this.segment(), index); }
     /// {@return `minTexelGatherOffset`}
     public @CType("int32_t") int minTexelGatherOffset() { return VkPhysicalDeviceLimits.get_minTexelGatherOffset(this.segment()); }
     /// Sets `minTexelGatherOffset` with the given value at the given index.
@@ -2983,11 +2412,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_minTexelGatherOffset(MemorySegment segment, @CType("int32_t") int value) { VkPhysicalDeviceLimits.set_minTexelGatherOffset(segment, 0L, value); }
-    /// Sets `minTexelGatherOffset` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits minTexelGatherOffsetAt(long index, @CType("int32_t") int value) { VkPhysicalDeviceLimits.set_minTexelGatherOffset(this.segment(), index, value); return this; }
     /// Sets `minTexelGatherOffset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -3000,9 +2424,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxTexelGatherOffset`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxTexelGatherOffset(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxTexelGatherOffset(segment, 0L); }
-    /// {@return `maxTexelGatherOffset` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxTexelGatherOffsetAt(long index) { return VkPhysicalDeviceLimits.get_maxTexelGatherOffset(this.segment(), index); }
     /// {@return `maxTexelGatherOffset`}
     public @CType("uint32_t") int maxTexelGatherOffset() { return VkPhysicalDeviceLimits.get_maxTexelGatherOffset(this.segment()); }
     /// Sets `maxTexelGatherOffset` with the given value at the given index.
@@ -3014,11 +2435,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxTexelGatherOffset(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxTexelGatherOffset(segment, 0L, value); }
-    /// Sets `maxTexelGatherOffset` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxTexelGatherOffsetAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxTexelGatherOffset(this.segment(), index, value); return this; }
     /// Sets `maxTexelGatherOffset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -3031,9 +2447,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `minInterpolationOffset`}
     /// @param segment the segment of the struct
     public static @CType("float") float get_minInterpolationOffset(MemorySegment segment) { return VkPhysicalDeviceLimits.get_minInterpolationOffset(segment, 0L); }
-    /// {@return `minInterpolationOffset` at the given index}
-    /// @param index the index
-    public @CType("float") float minInterpolationOffsetAt(long index) { return VkPhysicalDeviceLimits.get_minInterpolationOffset(this.segment(), index); }
     /// {@return `minInterpolationOffset`}
     public @CType("float") float minInterpolationOffset() { return VkPhysicalDeviceLimits.get_minInterpolationOffset(this.segment()); }
     /// Sets `minInterpolationOffset` with the given value at the given index.
@@ -3045,11 +2458,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_minInterpolationOffset(MemorySegment segment, @CType("float") float value) { VkPhysicalDeviceLimits.set_minInterpolationOffset(segment, 0L, value); }
-    /// Sets `minInterpolationOffset` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits minInterpolationOffsetAt(long index, @CType("float") float value) { VkPhysicalDeviceLimits.set_minInterpolationOffset(this.segment(), index, value); return this; }
     /// Sets `minInterpolationOffset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -3062,9 +2470,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxInterpolationOffset`}
     /// @param segment the segment of the struct
     public static @CType("float") float get_maxInterpolationOffset(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxInterpolationOffset(segment, 0L); }
-    /// {@return `maxInterpolationOffset` at the given index}
-    /// @param index the index
-    public @CType("float") float maxInterpolationOffsetAt(long index) { return VkPhysicalDeviceLimits.get_maxInterpolationOffset(this.segment(), index); }
     /// {@return `maxInterpolationOffset`}
     public @CType("float") float maxInterpolationOffset() { return VkPhysicalDeviceLimits.get_maxInterpolationOffset(this.segment()); }
     /// Sets `maxInterpolationOffset` with the given value at the given index.
@@ -3076,11 +2481,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxInterpolationOffset(MemorySegment segment, @CType("float") float value) { VkPhysicalDeviceLimits.set_maxInterpolationOffset(segment, 0L, value); }
-    /// Sets `maxInterpolationOffset` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxInterpolationOffsetAt(long index, @CType("float") float value) { VkPhysicalDeviceLimits.set_maxInterpolationOffset(this.segment(), index, value); return this; }
     /// Sets `maxInterpolationOffset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -3093,9 +2493,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `subPixelInterpolationOffsetBits`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_subPixelInterpolationOffsetBits(MemorySegment segment) { return VkPhysicalDeviceLimits.get_subPixelInterpolationOffsetBits(segment, 0L); }
-    /// {@return `subPixelInterpolationOffsetBits` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int subPixelInterpolationOffsetBitsAt(long index) { return VkPhysicalDeviceLimits.get_subPixelInterpolationOffsetBits(this.segment(), index); }
     /// {@return `subPixelInterpolationOffsetBits`}
     public @CType("uint32_t") int subPixelInterpolationOffsetBits() { return VkPhysicalDeviceLimits.get_subPixelInterpolationOffsetBits(this.segment()); }
     /// Sets `subPixelInterpolationOffsetBits` with the given value at the given index.
@@ -3107,11 +2504,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_subPixelInterpolationOffsetBits(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_subPixelInterpolationOffsetBits(segment, 0L, value); }
-    /// Sets `subPixelInterpolationOffsetBits` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits subPixelInterpolationOffsetBitsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_subPixelInterpolationOffsetBits(this.segment(), index, value); return this; }
     /// Sets `subPixelInterpolationOffsetBits` with the given value.
     /// @param value the value
     /// @return `this`
@@ -3124,9 +2516,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxFramebufferWidth`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxFramebufferWidth(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxFramebufferWidth(segment, 0L); }
-    /// {@return `maxFramebufferWidth` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxFramebufferWidthAt(long index) { return VkPhysicalDeviceLimits.get_maxFramebufferWidth(this.segment(), index); }
     /// {@return `maxFramebufferWidth`}
     public @CType("uint32_t") int maxFramebufferWidth() { return VkPhysicalDeviceLimits.get_maxFramebufferWidth(this.segment()); }
     /// Sets `maxFramebufferWidth` with the given value at the given index.
@@ -3138,11 +2527,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxFramebufferWidth(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxFramebufferWidth(segment, 0L, value); }
-    /// Sets `maxFramebufferWidth` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxFramebufferWidthAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxFramebufferWidth(this.segment(), index, value); return this; }
     /// Sets `maxFramebufferWidth` with the given value.
     /// @param value the value
     /// @return `this`
@@ -3155,9 +2539,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxFramebufferHeight`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxFramebufferHeight(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxFramebufferHeight(segment, 0L); }
-    /// {@return `maxFramebufferHeight` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxFramebufferHeightAt(long index) { return VkPhysicalDeviceLimits.get_maxFramebufferHeight(this.segment(), index); }
     /// {@return `maxFramebufferHeight`}
     public @CType("uint32_t") int maxFramebufferHeight() { return VkPhysicalDeviceLimits.get_maxFramebufferHeight(this.segment()); }
     /// Sets `maxFramebufferHeight` with the given value at the given index.
@@ -3169,11 +2550,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxFramebufferHeight(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxFramebufferHeight(segment, 0L, value); }
-    /// Sets `maxFramebufferHeight` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxFramebufferHeightAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxFramebufferHeight(this.segment(), index, value); return this; }
     /// Sets `maxFramebufferHeight` with the given value.
     /// @param value the value
     /// @return `this`
@@ -3186,9 +2562,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxFramebufferLayers`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxFramebufferLayers(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxFramebufferLayers(segment, 0L); }
-    /// {@return `maxFramebufferLayers` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxFramebufferLayersAt(long index) { return VkPhysicalDeviceLimits.get_maxFramebufferLayers(this.segment(), index); }
     /// {@return `maxFramebufferLayers`}
     public @CType("uint32_t") int maxFramebufferLayers() { return VkPhysicalDeviceLimits.get_maxFramebufferLayers(this.segment()); }
     /// Sets `maxFramebufferLayers` with the given value at the given index.
@@ -3200,11 +2573,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxFramebufferLayers(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxFramebufferLayers(segment, 0L, value); }
-    /// Sets `maxFramebufferLayers` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxFramebufferLayersAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxFramebufferLayers(this.segment(), index, value); return this; }
     /// Sets `maxFramebufferLayers` with the given value.
     /// @param value the value
     /// @return `this`
@@ -3217,9 +2585,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `framebufferColorSampleCounts`}
     /// @param segment the segment of the struct
     public static @CType("VkSampleCountFlags") int get_framebufferColorSampleCounts(MemorySegment segment) { return VkPhysicalDeviceLimits.get_framebufferColorSampleCounts(segment, 0L); }
-    /// {@return `framebufferColorSampleCounts` at the given index}
-    /// @param index the index
-    public @CType("VkSampleCountFlags") int framebufferColorSampleCountsAt(long index) { return VkPhysicalDeviceLimits.get_framebufferColorSampleCounts(this.segment(), index); }
     /// {@return `framebufferColorSampleCounts`}
     public @CType("VkSampleCountFlags") int framebufferColorSampleCounts() { return VkPhysicalDeviceLimits.get_framebufferColorSampleCounts(this.segment()); }
     /// Sets `framebufferColorSampleCounts` with the given value at the given index.
@@ -3231,11 +2596,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_framebufferColorSampleCounts(MemorySegment segment, @CType("VkSampleCountFlags") int value) { VkPhysicalDeviceLimits.set_framebufferColorSampleCounts(segment, 0L, value); }
-    /// Sets `framebufferColorSampleCounts` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits framebufferColorSampleCountsAt(long index, @CType("VkSampleCountFlags") int value) { VkPhysicalDeviceLimits.set_framebufferColorSampleCounts(this.segment(), index, value); return this; }
     /// Sets `framebufferColorSampleCounts` with the given value.
     /// @param value the value
     /// @return `this`
@@ -3248,9 +2608,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `framebufferDepthSampleCounts`}
     /// @param segment the segment of the struct
     public static @CType("VkSampleCountFlags") int get_framebufferDepthSampleCounts(MemorySegment segment) { return VkPhysicalDeviceLimits.get_framebufferDepthSampleCounts(segment, 0L); }
-    /// {@return `framebufferDepthSampleCounts` at the given index}
-    /// @param index the index
-    public @CType("VkSampleCountFlags") int framebufferDepthSampleCountsAt(long index) { return VkPhysicalDeviceLimits.get_framebufferDepthSampleCounts(this.segment(), index); }
     /// {@return `framebufferDepthSampleCounts`}
     public @CType("VkSampleCountFlags") int framebufferDepthSampleCounts() { return VkPhysicalDeviceLimits.get_framebufferDepthSampleCounts(this.segment()); }
     /// Sets `framebufferDepthSampleCounts` with the given value at the given index.
@@ -3262,11 +2619,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_framebufferDepthSampleCounts(MemorySegment segment, @CType("VkSampleCountFlags") int value) { VkPhysicalDeviceLimits.set_framebufferDepthSampleCounts(segment, 0L, value); }
-    /// Sets `framebufferDepthSampleCounts` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits framebufferDepthSampleCountsAt(long index, @CType("VkSampleCountFlags") int value) { VkPhysicalDeviceLimits.set_framebufferDepthSampleCounts(this.segment(), index, value); return this; }
     /// Sets `framebufferDepthSampleCounts` with the given value.
     /// @param value the value
     /// @return `this`
@@ -3279,9 +2631,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `framebufferStencilSampleCounts`}
     /// @param segment the segment of the struct
     public static @CType("VkSampleCountFlags") int get_framebufferStencilSampleCounts(MemorySegment segment) { return VkPhysicalDeviceLimits.get_framebufferStencilSampleCounts(segment, 0L); }
-    /// {@return `framebufferStencilSampleCounts` at the given index}
-    /// @param index the index
-    public @CType("VkSampleCountFlags") int framebufferStencilSampleCountsAt(long index) { return VkPhysicalDeviceLimits.get_framebufferStencilSampleCounts(this.segment(), index); }
     /// {@return `framebufferStencilSampleCounts`}
     public @CType("VkSampleCountFlags") int framebufferStencilSampleCounts() { return VkPhysicalDeviceLimits.get_framebufferStencilSampleCounts(this.segment()); }
     /// Sets `framebufferStencilSampleCounts` with the given value at the given index.
@@ -3293,11 +2642,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_framebufferStencilSampleCounts(MemorySegment segment, @CType("VkSampleCountFlags") int value) { VkPhysicalDeviceLimits.set_framebufferStencilSampleCounts(segment, 0L, value); }
-    /// Sets `framebufferStencilSampleCounts` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits framebufferStencilSampleCountsAt(long index, @CType("VkSampleCountFlags") int value) { VkPhysicalDeviceLimits.set_framebufferStencilSampleCounts(this.segment(), index, value); return this; }
     /// Sets `framebufferStencilSampleCounts` with the given value.
     /// @param value the value
     /// @return `this`
@@ -3310,9 +2654,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `framebufferNoAttachmentsSampleCounts`}
     /// @param segment the segment of the struct
     public static @CType("VkSampleCountFlags") int get_framebufferNoAttachmentsSampleCounts(MemorySegment segment) { return VkPhysicalDeviceLimits.get_framebufferNoAttachmentsSampleCounts(segment, 0L); }
-    /// {@return `framebufferNoAttachmentsSampleCounts` at the given index}
-    /// @param index the index
-    public @CType("VkSampleCountFlags") int framebufferNoAttachmentsSampleCountsAt(long index) { return VkPhysicalDeviceLimits.get_framebufferNoAttachmentsSampleCounts(this.segment(), index); }
     /// {@return `framebufferNoAttachmentsSampleCounts`}
     public @CType("VkSampleCountFlags") int framebufferNoAttachmentsSampleCounts() { return VkPhysicalDeviceLimits.get_framebufferNoAttachmentsSampleCounts(this.segment()); }
     /// Sets `framebufferNoAttachmentsSampleCounts` with the given value at the given index.
@@ -3324,11 +2665,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_framebufferNoAttachmentsSampleCounts(MemorySegment segment, @CType("VkSampleCountFlags") int value) { VkPhysicalDeviceLimits.set_framebufferNoAttachmentsSampleCounts(segment, 0L, value); }
-    /// Sets `framebufferNoAttachmentsSampleCounts` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits framebufferNoAttachmentsSampleCountsAt(long index, @CType("VkSampleCountFlags") int value) { VkPhysicalDeviceLimits.set_framebufferNoAttachmentsSampleCounts(this.segment(), index, value); return this; }
     /// Sets `framebufferNoAttachmentsSampleCounts` with the given value.
     /// @param value the value
     /// @return `this`
@@ -3341,9 +2677,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxColorAttachments`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxColorAttachments(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxColorAttachments(segment, 0L); }
-    /// {@return `maxColorAttachments` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxColorAttachmentsAt(long index) { return VkPhysicalDeviceLimits.get_maxColorAttachments(this.segment(), index); }
     /// {@return `maxColorAttachments`}
     public @CType("uint32_t") int maxColorAttachments() { return VkPhysicalDeviceLimits.get_maxColorAttachments(this.segment()); }
     /// Sets `maxColorAttachments` with the given value at the given index.
@@ -3355,11 +2688,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxColorAttachments(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxColorAttachments(segment, 0L, value); }
-    /// Sets `maxColorAttachments` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxColorAttachmentsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxColorAttachments(this.segment(), index, value); return this; }
     /// Sets `maxColorAttachments` with the given value.
     /// @param value the value
     /// @return `this`
@@ -3372,9 +2700,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `sampledImageColorSampleCounts`}
     /// @param segment the segment of the struct
     public static @CType("VkSampleCountFlags") int get_sampledImageColorSampleCounts(MemorySegment segment) { return VkPhysicalDeviceLimits.get_sampledImageColorSampleCounts(segment, 0L); }
-    /// {@return `sampledImageColorSampleCounts` at the given index}
-    /// @param index the index
-    public @CType("VkSampleCountFlags") int sampledImageColorSampleCountsAt(long index) { return VkPhysicalDeviceLimits.get_sampledImageColorSampleCounts(this.segment(), index); }
     /// {@return `sampledImageColorSampleCounts`}
     public @CType("VkSampleCountFlags") int sampledImageColorSampleCounts() { return VkPhysicalDeviceLimits.get_sampledImageColorSampleCounts(this.segment()); }
     /// Sets `sampledImageColorSampleCounts` with the given value at the given index.
@@ -3386,11 +2711,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sampledImageColorSampleCounts(MemorySegment segment, @CType("VkSampleCountFlags") int value) { VkPhysicalDeviceLimits.set_sampledImageColorSampleCounts(segment, 0L, value); }
-    /// Sets `sampledImageColorSampleCounts` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits sampledImageColorSampleCountsAt(long index, @CType("VkSampleCountFlags") int value) { VkPhysicalDeviceLimits.set_sampledImageColorSampleCounts(this.segment(), index, value); return this; }
     /// Sets `sampledImageColorSampleCounts` with the given value.
     /// @param value the value
     /// @return `this`
@@ -3403,9 +2723,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `sampledImageIntegerSampleCounts`}
     /// @param segment the segment of the struct
     public static @CType("VkSampleCountFlags") int get_sampledImageIntegerSampleCounts(MemorySegment segment) { return VkPhysicalDeviceLimits.get_sampledImageIntegerSampleCounts(segment, 0L); }
-    /// {@return `sampledImageIntegerSampleCounts` at the given index}
-    /// @param index the index
-    public @CType("VkSampleCountFlags") int sampledImageIntegerSampleCountsAt(long index) { return VkPhysicalDeviceLimits.get_sampledImageIntegerSampleCounts(this.segment(), index); }
     /// {@return `sampledImageIntegerSampleCounts`}
     public @CType("VkSampleCountFlags") int sampledImageIntegerSampleCounts() { return VkPhysicalDeviceLimits.get_sampledImageIntegerSampleCounts(this.segment()); }
     /// Sets `sampledImageIntegerSampleCounts` with the given value at the given index.
@@ -3417,11 +2734,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sampledImageIntegerSampleCounts(MemorySegment segment, @CType("VkSampleCountFlags") int value) { VkPhysicalDeviceLimits.set_sampledImageIntegerSampleCounts(segment, 0L, value); }
-    /// Sets `sampledImageIntegerSampleCounts` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits sampledImageIntegerSampleCountsAt(long index, @CType("VkSampleCountFlags") int value) { VkPhysicalDeviceLimits.set_sampledImageIntegerSampleCounts(this.segment(), index, value); return this; }
     /// Sets `sampledImageIntegerSampleCounts` with the given value.
     /// @param value the value
     /// @return `this`
@@ -3434,9 +2746,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `sampledImageDepthSampleCounts`}
     /// @param segment the segment of the struct
     public static @CType("VkSampleCountFlags") int get_sampledImageDepthSampleCounts(MemorySegment segment) { return VkPhysicalDeviceLimits.get_sampledImageDepthSampleCounts(segment, 0L); }
-    /// {@return `sampledImageDepthSampleCounts` at the given index}
-    /// @param index the index
-    public @CType("VkSampleCountFlags") int sampledImageDepthSampleCountsAt(long index) { return VkPhysicalDeviceLimits.get_sampledImageDepthSampleCounts(this.segment(), index); }
     /// {@return `sampledImageDepthSampleCounts`}
     public @CType("VkSampleCountFlags") int sampledImageDepthSampleCounts() { return VkPhysicalDeviceLimits.get_sampledImageDepthSampleCounts(this.segment()); }
     /// Sets `sampledImageDepthSampleCounts` with the given value at the given index.
@@ -3448,11 +2757,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sampledImageDepthSampleCounts(MemorySegment segment, @CType("VkSampleCountFlags") int value) { VkPhysicalDeviceLimits.set_sampledImageDepthSampleCounts(segment, 0L, value); }
-    /// Sets `sampledImageDepthSampleCounts` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits sampledImageDepthSampleCountsAt(long index, @CType("VkSampleCountFlags") int value) { VkPhysicalDeviceLimits.set_sampledImageDepthSampleCounts(this.segment(), index, value); return this; }
     /// Sets `sampledImageDepthSampleCounts` with the given value.
     /// @param value the value
     /// @return `this`
@@ -3465,9 +2769,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `sampledImageStencilSampleCounts`}
     /// @param segment the segment of the struct
     public static @CType("VkSampleCountFlags") int get_sampledImageStencilSampleCounts(MemorySegment segment) { return VkPhysicalDeviceLimits.get_sampledImageStencilSampleCounts(segment, 0L); }
-    /// {@return `sampledImageStencilSampleCounts` at the given index}
-    /// @param index the index
-    public @CType("VkSampleCountFlags") int sampledImageStencilSampleCountsAt(long index) { return VkPhysicalDeviceLimits.get_sampledImageStencilSampleCounts(this.segment(), index); }
     /// {@return `sampledImageStencilSampleCounts`}
     public @CType("VkSampleCountFlags") int sampledImageStencilSampleCounts() { return VkPhysicalDeviceLimits.get_sampledImageStencilSampleCounts(this.segment()); }
     /// Sets `sampledImageStencilSampleCounts` with the given value at the given index.
@@ -3479,11 +2780,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sampledImageStencilSampleCounts(MemorySegment segment, @CType("VkSampleCountFlags") int value) { VkPhysicalDeviceLimits.set_sampledImageStencilSampleCounts(segment, 0L, value); }
-    /// Sets `sampledImageStencilSampleCounts` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits sampledImageStencilSampleCountsAt(long index, @CType("VkSampleCountFlags") int value) { VkPhysicalDeviceLimits.set_sampledImageStencilSampleCounts(this.segment(), index, value); return this; }
     /// Sets `sampledImageStencilSampleCounts` with the given value.
     /// @param value the value
     /// @return `this`
@@ -3496,9 +2792,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `storageImageSampleCounts`}
     /// @param segment the segment of the struct
     public static @CType("VkSampleCountFlags") int get_storageImageSampleCounts(MemorySegment segment) { return VkPhysicalDeviceLimits.get_storageImageSampleCounts(segment, 0L); }
-    /// {@return `storageImageSampleCounts` at the given index}
-    /// @param index the index
-    public @CType("VkSampleCountFlags") int storageImageSampleCountsAt(long index) { return VkPhysicalDeviceLimits.get_storageImageSampleCounts(this.segment(), index); }
     /// {@return `storageImageSampleCounts`}
     public @CType("VkSampleCountFlags") int storageImageSampleCounts() { return VkPhysicalDeviceLimits.get_storageImageSampleCounts(this.segment()); }
     /// Sets `storageImageSampleCounts` with the given value at the given index.
@@ -3510,11 +2803,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_storageImageSampleCounts(MemorySegment segment, @CType("VkSampleCountFlags") int value) { VkPhysicalDeviceLimits.set_storageImageSampleCounts(segment, 0L, value); }
-    /// Sets `storageImageSampleCounts` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits storageImageSampleCountsAt(long index, @CType("VkSampleCountFlags") int value) { VkPhysicalDeviceLimits.set_storageImageSampleCounts(this.segment(), index, value); return this; }
     /// Sets `storageImageSampleCounts` with the given value.
     /// @param value the value
     /// @return `this`
@@ -3527,9 +2815,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxSampleMaskWords`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxSampleMaskWords(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxSampleMaskWords(segment, 0L); }
-    /// {@return `maxSampleMaskWords` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxSampleMaskWordsAt(long index) { return VkPhysicalDeviceLimits.get_maxSampleMaskWords(this.segment(), index); }
     /// {@return `maxSampleMaskWords`}
     public @CType("uint32_t") int maxSampleMaskWords() { return VkPhysicalDeviceLimits.get_maxSampleMaskWords(this.segment()); }
     /// Sets `maxSampleMaskWords` with the given value at the given index.
@@ -3541,11 +2826,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxSampleMaskWords(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxSampleMaskWords(segment, 0L, value); }
-    /// Sets `maxSampleMaskWords` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxSampleMaskWordsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxSampleMaskWords(this.segment(), index, value); return this; }
     /// Sets `maxSampleMaskWords` with the given value.
     /// @param value the value
     /// @return `this`
@@ -3558,9 +2838,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `timestampComputeAndGraphics`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_timestampComputeAndGraphics(MemorySegment segment) { return VkPhysicalDeviceLimits.get_timestampComputeAndGraphics(segment, 0L); }
-    /// {@return `timestampComputeAndGraphics` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int timestampComputeAndGraphicsAt(long index) { return VkPhysicalDeviceLimits.get_timestampComputeAndGraphics(this.segment(), index); }
     /// {@return `timestampComputeAndGraphics`}
     public @CType("VkBool32") int timestampComputeAndGraphics() { return VkPhysicalDeviceLimits.get_timestampComputeAndGraphics(this.segment()); }
     /// Sets `timestampComputeAndGraphics` with the given value at the given index.
@@ -3572,11 +2849,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_timestampComputeAndGraphics(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceLimits.set_timestampComputeAndGraphics(segment, 0L, value); }
-    /// Sets `timestampComputeAndGraphics` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits timestampComputeAndGraphicsAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceLimits.set_timestampComputeAndGraphics(this.segment(), index, value); return this; }
     /// Sets `timestampComputeAndGraphics` with the given value.
     /// @param value the value
     /// @return `this`
@@ -3589,9 +2861,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `timestampPeriod`}
     /// @param segment the segment of the struct
     public static @CType("float") float get_timestampPeriod(MemorySegment segment) { return VkPhysicalDeviceLimits.get_timestampPeriod(segment, 0L); }
-    /// {@return `timestampPeriod` at the given index}
-    /// @param index the index
-    public @CType("float") float timestampPeriodAt(long index) { return VkPhysicalDeviceLimits.get_timestampPeriod(this.segment(), index); }
     /// {@return `timestampPeriod`}
     public @CType("float") float timestampPeriod() { return VkPhysicalDeviceLimits.get_timestampPeriod(this.segment()); }
     /// Sets `timestampPeriod` with the given value at the given index.
@@ -3603,11 +2872,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_timestampPeriod(MemorySegment segment, @CType("float") float value) { VkPhysicalDeviceLimits.set_timestampPeriod(segment, 0L, value); }
-    /// Sets `timestampPeriod` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits timestampPeriodAt(long index, @CType("float") float value) { VkPhysicalDeviceLimits.set_timestampPeriod(this.segment(), index, value); return this; }
     /// Sets `timestampPeriod` with the given value.
     /// @param value the value
     /// @return `this`
@@ -3620,9 +2884,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxClipDistances`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxClipDistances(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxClipDistances(segment, 0L); }
-    /// {@return `maxClipDistances` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxClipDistancesAt(long index) { return VkPhysicalDeviceLimits.get_maxClipDistances(this.segment(), index); }
     /// {@return `maxClipDistances`}
     public @CType("uint32_t") int maxClipDistances() { return VkPhysicalDeviceLimits.get_maxClipDistances(this.segment()); }
     /// Sets `maxClipDistances` with the given value at the given index.
@@ -3634,11 +2895,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxClipDistances(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxClipDistances(segment, 0L, value); }
-    /// Sets `maxClipDistances` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxClipDistancesAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxClipDistances(this.segment(), index, value); return this; }
     /// Sets `maxClipDistances` with the given value.
     /// @param value the value
     /// @return `this`
@@ -3651,9 +2907,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxCullDistances`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxCullDistances(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxCullDistances(segment, 0L); }
-    /// {@return `maxCullDistances` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxCullDistancesAt(long index) { return VkPhysicalDeviceLimits.get_maxCullDistances(this.segment(), index); }
     /// {@return `maxCullDistances`}
     public @CType("uint32_t") int maxCullDistances() { return VkPhysicalDeviceLimits.get_maxCullDistances(this.segment()); }
     /// Sets `maxCullDistances` with the given value at the given index.
@@ -3665,11 +2918,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxCullDistances(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxCullDistances(segment, 0L, value); }
-    /// Sets `maxCullDistances` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxCullDistancesAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxCullDistances(this.segment(), index, value); return this; }
     /// Sets `maxCullDistances` with the given value.
     /// @param value the value
     /// @return `this`
@@ -3682,9 +2930,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `maxCombinedClipAndCullDistances`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxCombinedClipAndCullDistances(MemorySegment segment) { return VkPhysicalDeviceLimits.get_maxCombinedClipAndCullDistances(segment, 0L); }
-    /// {@return `maxCombinedClipAndCullDistances` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxCombinedClipAndCullDistancesAt(long index) { return VkPhysicalDeviceLimits.get_maxCombinedClipAndCullDistances(this.segment(), index); }
     /// {@return `maxCombinedClipAndCullDistances`}
     public @CType("uint32_t") int maxCombinedClipAndCullDistances() { return VkPhysicalDeviceLimits.get_maxCombinedClipAndCullDistances(this.segment()); }
     /// Sets `maxCombinedClipAndCullDistances` with the given value at the given index.
@@ -3696,11 +2941,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxCombinedClipAndCullDistances(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxCombinedClipAndCullDistances(segment, 0L, value); }
-    /// Sets `maxCombinedClipAndCullDistances` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits maxCombinedClipAndCullDistancesAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxCombinedClipAndCullDistances(this.segment(), index, value); return this; }
     /// Sets `maxCombinedClipAndCullDistances` with the given value.
     /// @param value the value
     /// @return `this`
@@ -3713,9 +2953,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `discreteQueuePriorities`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_discreteQueuePriorities(MemorySegment segment) { return VkPhysicalDeviceLimits.get_discreteQueuePriorities(segment, 0L); }
-    /// {@return `discreteQueuePriorities` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int discreteQueuePrioritiesAt(long index) { return VkPhysicalDeviceLimits.get_discreteQueuePriorities(this.segment(), index); }
     /// {@return `discreteQueuePriorities`}
     public @CType("uint32_t") int discreteQueuePriorities() { return VkPhysicalDeviceLimits.get_discreteQueuePriorities(this.segment()); }
     /// Sets `discreteQueuePriorities` with the given value at the given index.
@@ -3727,11 +2964,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_discreteQueuePriorities(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_discreteQueuePriorities(segment, 0L, value); }
-    /// Sets `discreteQueuePriorities` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits discreteQueuePrioritiesAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_discreteQueuePriorities(this.segment(), index, value); return this; }
     /// Sets `discreteQueuePriorities` with the given value.
     /// @param value the value
     /// @return `this`
@@ -3744,9 +2976,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `pointSizeRange`}
     /// @param segment the segment of the struct
     public static @CType("float[2]") java.lang.foreign.MemorySegment get_pointSizeRange(MemorySegment segment) { return VkPhysicalDeviceLimits.get_pointSizeRange(segment, 0L); }
-    /// {@return `pointSizeRange` at the given index}
-    /// @param index the index
-    public @CType("float[2]") java.lang.foreign.MemorySegment pointSizeRangeAt(long index) { return VkPhysicalDeviceLimits.get_pointSizeRange(this.segment(), index); }
     /// {@return `pointSizeRange`}
     public @CType("float[2]") java.lang.foreign.MemorySegment pointSizeRange() { return VkPhysicalDeviceLimits.get_pointSizeRange(this.segment()); }
     /// Sets `pointSizeRange` with the given value at the given index.
@@ -3758,11 +2987,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pointSizeRange(MemorySegment segment, @CType("float[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_pointSizeRange(segment, 0L, value); }
-    /// Sets `pointSizeRange` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits pointSizeRangeAt(long index, @CType("float[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_pointSizeRange(this.segment(), index, value); return this; }
     /// Sets `pointSizeRange` with the given value.
     /// @param value the value
     /// @return `this`
@@ -3775,9 +2999,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `lineWidthRange`}
     /// @param segment the segment of the struct
     public static @CType("float[2]") java.lang.foreign.MemorySegment get_lineWidthRange(MemorySegment segment) { return VkPhysicalDeviceLimits.get_lineWidthRange(segment, 0L); }
-    /// {@return `lineWidthRange` at the given index}
-    /// @param index the index
-    public @CType("float[2]") java.lang.foreign.MemorySegment lineWidthRangeAt(long index) { return VkPhysicalDeviceLimits.get_lineWidthRange(this.segment(), index); }
     /// {@return `lineWidthRange`}
     public @CType("float[2]") java.lang.foreign.MemorySegment lineWidthRange() { return VkPhysicalDeviceLimits.get_lineWidthRange(this.segment()); }
     /// Sets `lineWidthRange` with the given value at the given index.
@@ -3789,11 +3010,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_lineWidthRange(MemorySegment segment, @CType("float[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_lineWidthRange(segment, 0L, value); }
-    /// Sets `lineWidthRange` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits lineWidthRangeAt(long index, @CType("float[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_lineWidthRange(this.segment(), index, value); return this; }
     /// Sets `lineWidthRange` with the given value.
     /// @param value the value
     /// @return `this`
@@ -3806,9 +3022,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `pointSizeGranularity`}
     /// @param segment the segment of the struct
     public static @CType("float") float get_pointSizeGranularity(MemorySegment segment) { return VkPhysicalDeviceLimits.get_pointSizeGranularity(segment, 0L); }
-    /// {@return `pointSizeGranularity` at the given index}
-    /// @param index the index
-    public @CType("float") float pointSizeGranularityAt(long index) { return VkPhysicalDeviceLimits.get_pointSizeGranularity(this.segment(), index); }
     /// {@return `pointSizeGranularity`}
     public @CType("float") float pointSizeGranularity() { return VkPhysicalDeviceLimits.get_pointSizeGranularity(this.segment()); }
     /// Sets `pointSizeGranularity` with the given value at the given index.
@@ -3820,11 +3033,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pointSizeGranularity(MemorySegment segment, @CType("float") float value) { VkPhysicalDeviceLimits.set_pointSizeGranularity(segment, 0L, value); }
-    /// Sets `pointSizeGranularity` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits pointSizeGranularityAt(long index, @CType("float") float value) { VkPhysicalDeviceLimits.set_pointSizeGranularity(this.segment(), index, value); return this; }
     /// Sets `pointSizeGranularity` with the given value.
     /// @param value the value
     /// @return `this`
@@ -3837,9 +3045,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `lineWidthGranularity`}
     /// @param segment the segment of the struct
     public static @CType("float") float get_lineWidthGranularity(MemorySegment segment) { return VkPhysicalDeviceLimits.get_lineWidthGranularity(segment, 0L); }
-    /// {@return `lineWidthGranularity` at the given index}
-    /// @param index the index
-    public @CType("float") float lineWidthGranularityAt(long index) { return VkPhysicalDeviceLimits.get_lineWidthGranularity(this.segment(), index); }
     /// {@return `lineWidthGranularity`}
     public @CType("float") float lineWidthGranularity() { return VkPhysicalDeviceLimits.get_lineWidthGranularity(this.segment()); }
     /// Sets `lineWidthGranularity` with the given value at the given index.
@@ -3851,11 +3056,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_lineWidthGranularity(MemorySegment segment, @CType("float") float value) { VkPhysicalDeviceLimits.set_lineWidthGranularity(segment, 0L, value); }
-    /// Sets `lineWidthGranularity` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits lineWidthGranularityAt(long index, @CType("float") float value) { VkPhysicalDeviceLimits.set_lineWidthGranularity(this.segment(), index, value); return this; }
     /// Sets `lineWidthGranularity` with the given value.
     /// @param value the value
     /// @return `this`
@@ -3868,9 +3068,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `strictLines`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_strictLines(MemorySegment segment) { return VkPhysicalDeviceLimits.get_strictLines(segment, 0L); }
-    /// {@return `strictLines` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int strictLinesAt(long index) { return VkPhysicalDeviceLimits.get_strictLines(this.segment(), index); }
     /// {@return `strictLines`}
     public @CType("VkBool32") int strictLines() { return VkPhysicalDeviceLimits.get_strictLines(this.segment()); }
     /// Sets `strictLines` with the given value at the given index.
@@ -3882,11 +3079,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_strictLines(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceLimits.set_strictLines(segment, 0L, value); }
-    /// Sets `strictLines` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits strictLinesAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceLimits.set_strictLines(this.segment(), index, value); return this; }
     /// Sets `strictLines` with the given value.
     /// @param value the value
     /// @return `this`
@@ -3899,9 +3091,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `standardSampleLocations`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_standardSampleLocations(MemorySegment segment) { return VkPhysicalDeviceLimits.get_standardSampleLocations(segment, 0L); }
-    /// {@return `standardSampleLocations` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int standardSampleLocationsAt(long index) { return VkPhysicalDeviceLimits.get_standardSampleLocations(this.segment(), index); }
     /// {@return `standardSampleLocations`}
     public @CType("VkBool32") int standardSampleLocations() { return VkPhysicalDeviceLimits.get_standardSampleLocations(this.segment()); }
     /// Sets `standardSampleLocations` with the given value at the given index.
@@ -3913,11 +3102,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_standardSampleLocations(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceLimits.set_standardSampleLocations(segment, 0L, value); }
-    /// Sets `standardSampleLocations` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits standardSampleLocationsAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceLimits.set_standardSampleLocations(this.segment(), index, value); return this; }
     /// Sets `standardSampleLocations` with the given value.
     /// @param value the value
     /// @return `this`
@@ -3930,9 +3114,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `optimalBufferCopyOffsetAlignment`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_optimalBufferCopyOffsetAlignment(MemorySegment segment) { return VkPhysicalDeviceLimits.get_optimalBufferCopyOffsetAlignment(segment, 0L); }
-    /// {@return `optimalBufferCopyOffsetAlignment` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long optimalBufferCopyOffsetAlignmentAt(long index) { return VkPhysicalDeviceLimits.get_optimalBufferCopyOffsetAlignment(this.segment(), index); }
     /// {@return `optimalBufferCopyOffsetAlignment`}
     public @CType("VkDeviceSize") long optimalBufferCopyOffsetAlignment() { return VkPhysicalDeviceLimits.get_optimalBufferCopyOffsetAlignment(this.segment()); }
     /// Sets `optimalBufferCopyOffsetAlignment` with the given value at the given index.
@@ -3944,11 +3125,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_optimalBufferCopyOffsetAlignment(MemorySegment segment, @CType("VkDeviceSize") long value) { VkPhysicalDeviceLimits.set_optimalBufferCopyOffsetAlignment(segment, 0L, value); }
-    /// Sets `optimalBufferCopyOffsetAlignment` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits optimalBufferCopyOffsetAlignmentAt(long index, @CType("VkDeviceSize") long value) { VkPhysicalDeviceLimits.set_optimalBufferCopyOffsetAlignment(this.segment(), index, value); return this; }
     /// Sets `optimalBufferCopyOffsetAlignment` with the given value.
     /// @param value the value
     /// @return `this`
@@ -3961,9 +3137,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `optimalBufferCopyRowPitchAlignment`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_optimalBufferCopyRowPitchAlignment(MemorySegment segment) { return VkPhysicalDeviceLimits.get_optimalBufferCopyRowPitchAlignment(segment, 0L); }
-    /// {@return `optimalBufferCopyRowPitchAlignment` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long optimalBufferCopyRowPitchAlignmentAt(long index) { return VkPhysicalDeviceLimits.get_optimalBufferCopyRowPitchAlignment(this.segment(), index); }
     /// {@return `optimalBufferCopyRowPitchAlignment`}
     public @CType("VkDeviceSize") long optimalBufferCopyRowPitchAlignment() { return VkPhysicalDeviceLimits.get_optimalBufferCopyRowPitchAlignment(this.segment()); }
     /// Sets `optimalBufferCopyRowPitchAlignment` with the given value at the given index.
@@ -3975,11 +3148,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_optimalBufferCopyRowPitchAlignment(MemorySegment segment, @CType("VkDeviceSize") long value) { VkPhysicalDeviceLimits.set_optimalBufferCopyRowPitchAlignment(segment, 0L, value); }
-    /// Sets `optimalBufferCopyRowPitchAlignment` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits optimalBufferCopyRowPitchAlignmentAt(long index, @CType("VkDeviceSize") long value) { VkPhysicalDeviceLimits.set_optimalBufferCopyRowPitchAlignment(this.segment(), index, value); return this; }
     /// Sets `optimalBufferCopyRowPitchAlignment` with the given value.
     /// @param value the value
     /// @return `this`
@@ -3992,9 +3160,6 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// {@return `nonCoherentAtomSize`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_nonCoherentAtomSize(MemorySegment segment) { return VkPhysicalDeviceLimits.get_nonCoherentAtomSize(segment, 0L); }
-    /// {@return `nonCoherentAtomSize` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long nonCoherentAtomSizeAt(long index) { return VkPhysicalDeviceLimits.get_nonCoherentAtomSize(this.segment(), index); }
     /// {@return `nonCoherentAtomSize`}
     public @CType("VkDeviceSize") long nonCoherentAtomSize() { return VkPhysicalDeviceLimits.get_nonCoherentAtomSize(this.segment()); }
     /// Sets `nonCoherentAtomSize` with the given value at the given index.
@@ -4006,14 +3171,986 @@ public final class VkPhysicalDeviceLimits extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_nonCoherentAtomSize(MemorySegment segment, @CType("VkDeviceSize") long value) { VkPhysicalDeviceLimits.set_nonCoherentAtomSize(segment, 0L, value); }
-    /// Sets `nonCoherentAtomSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceLimits nonCoherentAtomSizeAt(long index, @CType("VkDeviceSize") long value) { VkPhysicalDeviceLimits.set_nonCoherentAtomSize(this.segment(), index, value); return this; }
     /// Sets `nonCoherentAtomSize` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceLimits nonCoherentAtomSize(@CType("VkDeviceSize") long value) { VkPhysicalDeviceLimits.set_nonCoherentAtomSize(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDeviceLimits].
+    public static final class Buffer extends VkPhysicalDeviceLimits {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDeviceLimits.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDeviceLimits`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDeviceLimits`
+        public VkPhysicalDeviceLimits asSlice(long index) { return new VkPhysicalDeviceLimits(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDeviceLimits`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDeviceLimits`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `maxImageDimension1D` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxImageDimension1DAt(long index) { return VkPhysicalDeviceLimits.get_maxImageDimension1D(this.segment(), index); }
+        /// Sets `maxImageDimension1D` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxImageDimension1DAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxImageDimension1D(this.segment(), index, value); return this; }
+
+        /// {@return `maxImageDimension2D` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxImageDimension2DAt(long index) { return VkPhysicalDeviceLimits.get_maxImageDimension2D(this.segment(), index); }
+        /// Sets `maxImageDimension2D` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxImageDimension2DAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxImageDimension2D(this.segment(), index, value); return this; }
+
+        /// {@return `maxImageDimension3D` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxImageDimension3DAt(long index) { return VkPhysicalDeviceLimits.get_maxImageDimension3D(this.segment(), index); }
+        /// Sets `maxImageDimension3D` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxImageDimension3DAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxImageDimension3D(this.segment(), index, value); return this; }
+
+        /// {@return `maxImageDimensionCube` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxImageDimensionCubeAt(long index) { return VkPhysicalDeviceLimits.get_maxImageDimensionCube(this.segment(), index); }
+        /// Sets `maxImageDimensionCube` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxImageDimensionCubeAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxImageDimensionCube(this.segment(), index, value); return this; }
+
+        /// {@return `maxImageArrayLayers` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxImageArrayLayersAt(long index) { return VkPhysicalDeviceLimits.get_maxImageArrayLayers(this.segment(), index); }
+        /// Sets `maxImageArrayLayers` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxImageArrayLayersAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxImageArrayLayers(this.segment(), index, value); return this; }
+
+        /// {@return `maxTexelBufferElements` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxTexelBufferElementsAt(long index) { return VkPhysicalDeviceLimits.get_maxTexelBufferElements(this.segment(), index); }
+        /// Sets `maxTexelBufferElements` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxTexelBufferElementsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxTexelBufferElements(this.segment(), index, value); return this; }
+
+        /// {@return `maxUniformBufferRange` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxUniformBufferRangeAt(long index) { return VkPhysicalDeviceLimits.get_maxUniformBufferRange(this.segment(), index); }
+        /// Sets `maxUniformBufferRange` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxUniformBufferRangeAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxUniformBufferRange(this.segment(), index, value); return this; }
+
+        /// {@return `maxStorageBufferRange` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxStorageBufferRangeAt(long index) { return VkPhysicalDeviceLimits.get_maxStorageBufferRange(this.segment(), index); }
+        /// Sets `maxStorageBufferRange` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxStorageBufferRangeAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxStorageBufferRange(this.segment(), index, value); return this; }
+
+        /// {@return `maxPushConstantsSize` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxPushConstantsSizeAt(long index) { return VkPhysicalDeviceLimits.get_maxPushConstantsSize(this.segment(), index); }
+        /// Sets `maxPushConstantsSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxPushConstantsSizeAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxPushConstantsSize(this.segment(), index, value); return this; }
+
+        /// {@return `maxMemoryAllocationCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxMemoryAllocationCountAt(long index) { return VkPhysicalDeviceLimits.get_maxMemoryAllocationCount(this.segment(), index); }
+        /// Sets `maxMemoryAllocationCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxMemoryAllocationCountAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxMemoryAllocationCount(this.segment(), index, value); return this; }
+
+        /// {@return `maxSamplerAllocationCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxSamplerAllocationCountAt(long index) { return VkPhysicalDeviceLimits.get_maxSamplerAllocationCount(this.segment(), index); }
+        /// Sets `maxSamplerAllocationCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxSamplerAllocationCountAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxSamplerAllocationCount(this.segment(), index, value); return this; }
+
+        /// {@return `bufferImageGranularity` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long bufferImageGranularityAt(long index) { return VkPhysicalDeviceLimits.get_bufferImageGranularity(this.segment(), index); }
+        /// Sets `bufferImageGranularity` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer bufferImageGranularityAt(long index, @CType("VkDeviceSize") long value) { VkPhysicalDeviceLimits.set_bufferImageGranularity(this.segment(), index, value); return this; }
+
+        /// {@return `sparseAddressSpaceSize` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long sparseAddressSpaceSizeAt(long index) { return VkPhysicalDeviceLimits.get_sparseAddressSpaceSize(this.segment(), index); }
+        /// Sets `sparseAddressSpaceSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sparseAddressSpaceSizeAt(long index, @CType("VkDeviceSize") long value) { VkPhysicalDeviceLimits.set_sparseAddressSpaceSize(this.segment(), index, value); return this; }
+
+        /// {@return `maxBoundDescriptorSets` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxBoundDescriptorSetsAt(long index) { return VkPhysicalDeviceLimits.get_maxBoundDescriptorSets(this.segment(), index); }
+        /// Sets `maxBoundDescriptorSets` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxBoundDescriptorSetsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxBoundDescriptorSets(this.segment(), index, value); return this; }
+
+        /// {@return `maxPerStageDescriptorSamplers` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxPerStageDescriptorSamplersAt(long index) { return VkPhysicalDeviceLimits.get_maxPerStageDescriptorSamplers(this.segment(), index); }
+        /// Sets `maxPerStageDescriptorSamplers` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxPerStageDescriptorSamplersAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxPerStageDescriptorSamplers(this.segment(), index, value); return this; }
+
+        /// {@return `maxPerStageDescriptorUniformBuffers` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxPerStageDescriptorUniformBuffersAt(long index) { return VkPhysicalDeviceLimits.get_maxPerStageDescriptorUniformBuffers(this.segment(), index); }
+        /// Sets `maxPerStageDescriptorUniformBuffers` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxPerStageDescriptorUniformBuffersAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxPerStageDescriptorUniformBuffers(this.segment(), index, value); return this; }
+
+        /// {@return `maxPerStageDescriptorStorageBuffers` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxPerStageDescriptorStorageBuffersAt(long index) { return VkPhysicalDeviceLimits.get_maxPerStageDescriptorStorageBuffers(this.segment(), index); }
+        /// Sets `maxPerStageDescriptorStorageBuffers` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxPerStageDescriptorStorageBuffersAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxPerStageDescriptorStorageBuffers(this.segment(), index, value); return this; }
+
+        /// {@return `maxPerStageDescriptorSampledImages` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxPerStageDescriptorSampledImagesAt(long index) { return VkPhysicalDeviceLimits.get_maxPerStageDescriptorSampledImages(this.segment(), index); }
+        /// Sets `maxPerStageDescriptorSampledImages` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxPerStageDescriptorSampledImagesAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxPerStageDescriptorSampledImages(this.segment(), index, value); return this; }
+
+        /// {@return `maxPerStageDescriptorStorageImages` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxPerStageDescriptorStorageImagesAt(long index) { return VkPhysicalDeviceLimits.get_maxPerStageDescriptorStorageImages(this.segment(), index); }
+        /// Sets `maxPerStageDescriptorStorageImages` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxPerStageDescriptorStorageImagesAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxPerStageDescriptorStorageImages(this.segment(), index, value); return this; }
+
+        /// {@return `maxPerStageDescriptorInputAttachments` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxPerStageDescriptorInputAttachmentsAt(long index) { return VkPhysicalDeviceLimits.get_maxPerStageDescriptorInputAttachments(this.segment(), index); }
+        /// Sets `maxPerStageDescriptorInputAttachments` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxPerStageDescriptorInputAttachmentsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxPerStageDescriptorInputAttachments(this.segment(), index, value); return this; }
+
+        /// {@return `maxPerStageResources` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxPerStageResourcesAt(long index) { return VkPhysicalDeviceLimits.get_maxPerStageResources(this.segment(), index); }
+        /// Sets `maxPerStageResources` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxPerStageResourcesAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxPerStageResources(this.segment(), index, value); return this; }
+
+        /// {@return `maxDescriptorSetSamplers` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxDescriptorSetSamplersAt(long index) { return VkPhysicalDeviceLimits.get_maxDescriptorSetSamplers(this.segment(), index); }
+        /// Sets `maxDescriptorSetSamplers` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxDescriptorSetSamplersAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxDescriptorSetSamplers(this.segment(), index, value); return this; }
+
+        /// {@return `maxDescriptorSetUniformBuffers` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxDescriptorSetUniformBuffersAt(long index) { return VkPhysicalDeviceLimits.get_maxDescriptorSetUniformBuffers(this.segment(), index); }
+        /// Sets `maxDescriptorSetUniformBuffers` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxDescriptorSetUniformBuffersAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxDescriptorSetUniformBuffers(this.segment(), index, value); return this; }
+
+        /// {@return `maxDescriptorSetUniformBuffersDynamic` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxDescriptorSetUniformBuffersDynamicAt(long index) { return VkPhysicalDeviceLimits.get_maxDescriptorSetUniformBuffersDynamic(this.segment(), index); }
+        /// Sets `maxDescriptorSetUniformBuffersDynamic` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxDescriptorSetUniformBuffersDynamicAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxDescriptorSetUniformBuffersDynamic(this.segment(), index, value); return this; }
+
+        /// {@return `maxDescriptorSetStorageBuffers` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxDescriptorSetStorageBuffersAt(long index) { return VkPhysicalDeviceLimits.get_maxDescriptorSetStorageBuffers(this.segment(), index); }
+        /// Sets `maxDescriptorSetStorageBuffers` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxDescriptorSetStorageBuffersAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxDescriptorSetStorageBuffers(this.segment(), index, value); return this; }
+
+        /// {@return `maxDescriptorSetStorageBuffersDynamic` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxDescriptorSetStorageBuffersDynamicAt(long index) { return VkPhysicalDeviceLimits.get_maxDescriptorSetStorageBuffersDynamic(this.segment(), index); }
+        /// Sets `maxDescriptorSetStorageBuffersDynamic` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxDescriptorSetStorageBuffersDynamicAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxDescriptorSetStorageBuffersDynamic(this.segment(), index, value); return this; }
+
+        /// {@return `maxDescriptorSetSampledImages` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxDescriptorSetSampledImagesAt(long index) { return VkPhysicalDeviceLimits.get_maxDescriptorSetSampledImages(this.segment(), index); }
+        /// Sets `maxDescriptorSetSampledImages` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxDescriptorSetSampledImagesAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxDescriptorSetSampledImages(this.segment(), index, value); return this; }
+
+        /// {@return `maxDescriptorSetStorageImages` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxDescriptorSetStorageImagesAt(long index) { return VkPhysicalDeviceLimits.get_maxDescriptorSetStorageImages(this.segment(), index); }
+        /// Sets `maxDescriptorSetStorageImages` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxDescriptorSetStorageImagesAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxDescriptorSetStorageImages(this.segment(), index, value); return this; }
+
+        /// {@return `maxDescriptorSetInputAttachments` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxDescriptorSetInputAttachmentsAt(long index) { return VkPhysicalDeviceLimits.get_maxDescriptorSetInputAttachments(this.segment(), index); }
+        /// Sets `maxDescriptorSetInputAttachments` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxDescriptorSetInputAttachmentsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxDescriptorSetInputAttachments(this.segment(), index, value); return this; }
+
+        /// {@return `maxVertexInputAttributes` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxVertexInputAttributesAt(long index) { return VkPhysicalDeviceLimits.get_maxVertexInputAttributes(this.segment(), index); }
+        /// Sets `maxVertexInputAttributes` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxVertexInputAttributesAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxVertexInputAttributes(this.segment(), index, value); return this; }
+
+        /// {@return `maxVertexInputBindings` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxVertexInputBindingsAt(long index) { return VkPhysicalDeviceLimits.get_maxVertexInputBindings(this.segment(), index); }
+        /// Sets `maxVertexInputBindings` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxVertexInputBindingsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxVertexInputBindings(this.segment(), index, value); return this; }
+
+        /// {@return `maxVertexInputAttributeOffset` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxVertexInputAttributeOffsetAt(long index) { return VkPhysicalDeviceLimits.get_maxVertexInputAttributeOffset(this.segment(), index); }
+        /// Sets `maxVertexInputAttributeOffset` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxVertexInputAttributeOffsetAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxVertexInputAttributeOffset(this.segment(), index, value); return this; }
+
+        /// {@return `maxVertexInputBindingStride` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxVertexInputBindingStrideAt(long index) { return VkPhysicalDeviceLimits.get_maxVertexInputBindingStride(this.segment(), index); }
+        /// Sets `maxVertexInputBindingStride` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxVertexInputBindingStrideAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxVertexInputBindingStride(this.segment(), index, value); return this; }
+
+        /// {@return `maxVertexOutputComponents` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxVertexOutputComponentsAt(long index) { return VkPhysicalDeviceLimits.get_maxVertexOutputComponents(this.segment(), index); }
+        /// Sets `maxVertexOutputComponents` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxVertexOutputComponentsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxVertexOutputComponents(this.segment(), index, value); return this; }
+
+        /// {@return `maxTessellationGenerationLevel` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxTessellationGenerationLevelAt(long index) { return VkPhysicalDeviceLimits.get_maxTessellationGenerationLevel(this.segment(), index); }
+        /// Sets `maxTessellationGenerationLevel` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxTessellationGenerationLevelAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxTessellationGenerationLevel(this.segment(), index, value); return this; }
+
+        /// {@return `maxTessellationPatchSize` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxTessellationPatchSizeAt(long index) { return VkPhysicalDeviceLimits.get_maxTessellationPatchSize(this.segment(), index); }
+        /// Sets `maxTessellationPatchSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxTessellationPatchSizeAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxTessellationPatchSize(this.segment(), index, value); return this; }
+
+        /// {@return `maxTessellationControlPerVertexInputComponents` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxTessellationControlPerVertexInputComponentsAt(long index) { return VkPhysicalDeviceLimits.get_maxTessellationControlPerVertexInputComponents(this.segment(), index); }
+        /// Sets `maxTessellationControlPerVertexInputComponents` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxTessellationControlPerVertexInputComponentsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxTessellationControlPerVertexInputComponents(this.segment(), index, value); return this; }
+
+        /// {@return `maxTessellationControlPerVertexOutputComponents` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxTessellationControlPerVertexOutputComponentsAt(long index) { return VkPhysicalDeviceLimits.get_maxTessellationControlPerVertexOutputComponents(this.segment(), index); }
+        /// Sets `maxTessellationControlPerVertexOutputComponents` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxTessellationControlPerVertexOutputComponentsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxTessellationControlPerVertexOutputComponents(this.segment(), index, value); return this; }
+
+        /// {@return `maxTessellationControlPerPatchOutputComponents` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxTessellationControlPerPatchOutputComponentsAt(long index) { return VkPhysicalDeviceLimits.get_maxTessellationControlPerPatchOutputComponents(this.segment(), index); }
+        /// Sets `maxTessellationControlPerPatchOutputComponents` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxTessellationControlPerPatchOutputComponentsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxTessellationControlPerPatchOutputComponents(this.segment(), index, value); return this; }
+
+        /// {@return `maxTessellationControlTotalOutputComponents` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxTessellationControlTotalOutputComponentsAt(long index) { return VkPhysicalDeviceLimits.get_maxTessellationControlTotalOutputComponents(this.segment(), index); }
+        /// Sets `maxTessellationControlTotalOutputComponents` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxTessellationControlTotalOutputComponentsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxTessellationControlTotalOutputComponents(this.segment(), index, value); return this; }
+
+        /// {@return `maxTessellationEvaluationInputComponents` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxTessellationEvaluationInputComponentsAt(long index) { return VkPhysicalDeviceLimits.get_maxTessellationEvaluationInputComponents(this.segment(), index); }
+        /// Sets `maxTessellationEvaluationInputComponents` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxTessellationEvaluationInputComponentsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxTessellationEvaluationInputComponents(this.segment(), index, value); return this; }
+
+        /// {@return `maxTessellationEvaluationOutputComponents` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxTessellationEvaluationOutputComponentsAt(long index) { return VkPhysicalDeviceLimits.get_maxTessellationEvaluationOutputComponents(this.segment(), index); }
+        /// Sets `maxTessellationEvaluationOutputComponents` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxTessellationEvaluationOutputComponentsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxTessellationEvaluationOutputComponents(this.segment(), index, value); return this; }
+
+        /// {@return `maxGeometryShaderInvocations` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxGeometryShaderInvocationsAt(long index) { return VkPhysicalDeviceLimits.get_maxGeometryShaderInvocations(this.segment(), index); }
+        /// Sets `maxGeometryShaderInvocations` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxGeometryShaderInvocationsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxGeometryShaderInvocations(this.segment(), index, value); return this; }
+
+        /// {@return `maxGeometryInputComponents` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxGeometryInputComponentsAt(long index) { return VkPhysicalDeviceLimits.get_maxGeometryInputComponents(this.segment(), index); }
+        /// Sets `maxGeometryInputComponents` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxGeometryInputComponentsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxGeometryInputComponents(this.segment(), index, value); return this; }
+
+        /// {@return `maxGeometryOutputComponents` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxGeometryOutputComponentsAt(long index) { return VkPhysicalDeviceLimits.get_maxGeometryOutputComponents(this.segment(), index); }
+        /// Sets `maxGeometryOutputComponents` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxGeometryOutputComponentsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxGeometryOutputComponents(this.segment(), index, value); return this; }
+
+        /// {@return `maxGeometryOutputVertices` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxGeometryOutputVerticesAt(long index) { return VkPhysicalDeviceLimits.get_maxGeometryOutputVertices(this.segment(), index); }
+        /// Sets `maxGeometryOutputVertices` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxGeometryOutputVerticesAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxGeometryOutputVertices(this.segment(), index, value); return this; }
+
+        /// {@return `maxGeometryTotalOutputComponents` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxGeometryTotalOutputComponentsAt(long index) { return VkPhysicalDeviceLimits.get_maxGeometryTotalOutputComponents(this.segment(), index); }
+        /// Sets `maxGeometryTotalOutputComponents` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxGeometryTotalOutputComponentsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxGeometryTotalOutputComponents(this.segment(), index, value); return this; }
+
+        /// {@return `maxFragmentInputComponents` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxFragmentInputComponentsAt(long index) { return VkPhysicalDeviceLimits.get_maxFragmentInputComponents(this.segment(), index); }
+        /// Sets `maxFragmentInputComponents` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxFragmentInputComponentsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxFragmentInputComponents(this.segment(), index, value); return this; }
+
+        /// {@return `maxFragmentOutputAttachments` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxFragmentOutputAttachmentsAt(long index) { return VkPhysicalDeviceLimits.get_maxFragmentOutputAttachments(this.segment(), index); }
+        /// Sets `maxFragmentOutputAttachments` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxFragmentOutputAttachmentsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxFragmentOutputAttachments(this.segment(), index, value); return this; }
+
+        /// {@return `maxFragmentDualSrcAttachments` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxFragmentDualSrcAttachmentsAt(long index) { return VkPhysicalDeviceLimits.get_maxFragmentDualSrcAttachments(this.segment(), index); }
+        /// Sets `maxFragmentDualSrcAttachments` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxFragmentDualSrcAttachmentsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxFragmentDualSrcAttachments(this.segment(), index, value); return this; }
+
+        /// {@return `maxFragmentCombinedOutputResources` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxFragmentCombinedOutputResourcesAt(long index) { return VkPhysicalDeviceLimits.get_maxFragmentCombinedOutputResources(this.segment(), index); }
+        /// Sets `maxFragmentCombinedOutputResources` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxFragmentCombinedOutputResourcesAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxFragmentCombinedOutputResources(this.segment(), index, value); return this; }
+
+        /// {@return `maxComputeSharedMemorySize` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxComputeSharedMemorySizeAt(long index) { return VkPhysicalDeviceLimits.get_maxComputeSharedMemorySize(this.segment(), index); }
+        /// Sets `maxComputeSharedMemorySize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxComputeSharedMemorySizeAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxComputeSharedMemorySize(this.segment(), index, value); return this; }
+
+        /// {@return `maxComputeWorkGroupCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t[3]") java.lang.foreign.MemorySegment maxComputeWorkGroupCountAt(long index) { return VkPhysicalDeviceLimits.get_maxComputeWorkGroupCount(this.segment(), index); }
+        /// Sets `maxComputeWorkGroupCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxComputeWorkGroupCountAt(long index, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_maxComputeWorkGroupCount(this.segment(), index, value); return this; }
+
+        /// {@return `maxComputeWorkGroupInvocations` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxComputeWorkGroupInvocationsAt(long index) { return VkPhysicalDeviceLimits.get_maxComputeWorkGroupInvocations(this.segment(), index); }
+        /// Sets `maxComputeWorkGroupInvocations` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxComputeWorkGroupInvocationsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxComputeWorkGroupInvocations(this.segment(), index, value); return this; }
+
+        /// {@return `maxComputeWorkGroupSize` at the given index}
+        /// @param index the index
+        public @CType("uint32_t[3]") java.lang.foreign.MemorySegment maxComputeWorkGroupSizeAt(long index) { return VkPhysicalDeviceLimits.get_maxComputeWorkGroupSize(this.segment(), index); }
+        /// Sets `maxComputeWorkGroupSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxComputeWorkGroupSizeAt(long index, @CType("uint32_t[3]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_maxComputeWorkGroupSize(this.segment(), index, value); return this; }
+
+        /// {@return `subPixelPrecisionBits` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int subPixelPrecisionBitsAt(long index) { return VkPhysicalDeviceLimits.get_subPixelPrecisionBits(this.segment(), index); }
+        /// Sets `subPixelPrecisionBits` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer subPixelPrecisionBitsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_subPixelPrecisionBits(this.segment(), index, value); return this; }
+
+        /// {@return `subTexelPrecisionBits` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int subTexelPrecisionBitsAt(long index) { return VkPhysicalDeviceLimits.get_subTexelPrecisionBits(this.segment(), index); }
+        /// Sets `subTexelPrecisionBits` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer subTexelPrecisionBitsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_subTexelPrecisionBits(this.segment(), index, value); return this; }
+
+        /// {@return `mipmapPrecisionBits` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int mipmapPrecisionBitsAt(long index) { return VkPhysicalDeviceLimits.get_mipmapPrecisionBits(this.segment(), index); }
+        /// Sets `mipmapPrecisionBits` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer mipmapPrecisionBitsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_mipmapPrecisionBits(this.segment(), index, value); return this; }
+
+        /// {@return `maxDrawIndexedIndexValue` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxDrawIndexedIndexValueAt(long index) { return VkPhysicalDeviceLimits.get_maxDrawIndexedIndexValue(this.segment(), index); }
+        /// Sets `maxDrawIndexedIndexValue` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxDrawIndexedIndexValueAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxDrawIndexedIndexValue(this.segment(), index, value); return this; }
+
+        /// {@return `maxDrawIndirectCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxDrawIndirectCountAt(long index) { return VkPhysicalDeviceLimits.get_maxDrawIndirectCount(this.segment(), index); }
+        /// Sets `maxDrawIndirectCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxDrawIndirectCountAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxDrawIndirectCount(this.segment(), index, value); return this; }
+
+        /// {@return `maxSamplerLodBias` at the given index}
+        /// @param index the index
+        public @CType("float") float maxSamplerLodBiasAt(long index) { return VkPhysicalDeviceLimits.get_maxSamplerLodBias(this.segment(), index); }
+        /// Sets `maxSamplerLodBias` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxSamplerLodBiasAt(long index, @CType("float") float value) { VkPhysicalDeviceLimits.set_maxSamplerLodBias(this.segment(), index, value); return this; }
+
+        /// {@return `maxSamplerAnisotropy` at the given index}
+        /// @param index the index
+        public @CType("float") float maxSamplerAnisotropyAt(long index) { return VkPhysicalDeviceLimits.get_maxSamplerAnisotropy(this.segment(), index); }
+        /// Sets `maxSamplerAnisotropy` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxSamplerAnisotropyAt(long index, @CType("float") float value) { VkPhysicalDeviceLimits.set_maxSamplerAnisotropy(this.segment(), index, value); return this; }
+
+        /// {@return `maxViewports` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxViewportsAt(long index) { return VkPhysicalDeviceLimits.get_maxViewports(this.segment(), index); }
+        /// Sets `maxViewports` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxViewportsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxViewports(this.segment(), index, value); return this; }
+
+        /// {@return `maxViewportDimensions` at the given index}
+        /// @param index the index
+        public @CType("uint32_t[2]") java.lang.foreign.MemorySegment maxViewportDimensionsAt(long index) { return VkPhysicalDeviceLimits.get_maxViewportDimensions(this.segment(), index); }
+        /// Sets `maxViewportDimensions` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxViewportDimensionsAt(long index, @CType("uint32_t[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_maxViewportDimensions(this.segment(), index, value); return this; }
+
+        /// {@return `viewportBoundsRange` at the given index}
+        /// @param index the index
+        public @CType("float[2]") java.lang.foreign.MemorySegment viewportBoundsRangeAt(long index) { return VkPhysicalDeviceLimits.get_viewportBoundsRange(this.segment(), index); }
+        /// Sets `viewportBoundsRange` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer viewportBoundsRangeAt(long index, @CType("float[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_viewportBoundsRange(this.segment(), index, value); return this; }
+
+        /// {@return `viewportSubPixelBits` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int viewportSubPixelBitsAt(long index) { return VkPhysicalDeviceLimits.get_viewportSubPixelBits(this.segment(), index); }
+        /// Sets `viewportSubPixelBits` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer viewportSubPixelBitsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_viewportSubPixelBits(this.segment(), index, value); return this; }
+
+        /// {@return `minMemoryMapAlignment` at the given index}
+        /// @param index the index
+        public @CType("size_t") long minMemoryMapAlignmentAt(long index) { return VkPhysicalDeviceLimits.get_minMemoryMapAlignment(this.segment(), index); }
+        /// Sets `minMemoryMapAlignment` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer minMemoryMapAlignmentAt(long index, @CType("size_t") long value) { VkPhysicalDeviceLimits.set_minMemoryMapAlignment(this.segment(), index, value); return this; }
+
+        /// {@return `minTexelBufferOffsetAlignment` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long minTexelBufferOffsetAlignmentAt(long index) { return VkPhysicalDeviceLimits.get_minTexelBufferOffsetAlignment(this.segment(), index); }
+        /// Sets `minTexelBufferOffsetAlignment` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer minTexelBufferOffsetAlignmentAt(long index, @CType("VkDeviceSize") long value) { VkPhysicalDeviceLimits.set_minTexelBufferOffsetAlignment(this.segment(), index, value); return this; }
+
+        /// {@return `minUniformBufferOffsetAlignment` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long minUniformBufferOffsetAlignmentAt(long index) { return VkPhysicalDeviceLimits.get_minUniformBufferOffsetAlignment(this.segment(), index); }
+        /// Sets `minUniformBufferOffsetAlignment` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer minUniformBufferOffsetAlignmentAt(long index, @CType("VkDeviceSize") long value) { VkPhysicalDeviceLimits.set_minUniformBufferOffsetAlignment(this.segment(), index, value); return this; }
+
+        /// {@return `minStorageBufferOffsetAlignment` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long minStorageBufferOffsetAlignmentAt(long index) { return VkPhysicalDeviceLimits.get_minStorageBufferOffsetAlignment(this.segment(), index); }
+        /// Sets `minStorageBufferOffsetAlignment` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer minStorageBufferOffsetAlignmentAt(long index, @CType("VkDeviceSize") long value) { VkPhysicalDeviceLimits.set_minStorageBufferOffsetAlignment(this.segment(), index, value); return this; }
+
+        /// {@return `minTexelOffset` at the given index}
+        /// @param index the index
+        public @CType("int32_t") int minTexelOffsetAt(long index) { return VkPhysicalDeviceLimits.get_minTexelOffset(this.segment(), index); }
+        /// Sets `minTexelOffset` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer minTexelOffsetAt(long index, @CType("int32_t") int value) { VkPhysicalDeviceLimits.set_minTexelOffset(this.segment(), index, value); return this; }
+
+        /// {@return `maxTexelOffset` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxTexelOffsetAt(long index) { return VkPhysicalDeviceLimits.get_maxTexelOffset(this.segment(), index); }
+        /// Sets `maxTexelOffset` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxTexelOffsetAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxTexelOffset(this.segment(), index, value); return this; }
+
+        /// {@return `minTexelGatherOffset` at the given index}
+        /// @param index the index
+        public @CType("int32_t") int minTexelGatherOffsetAt(long index) { return VkPhysicalDeviceLimits.get_minTexelGatherOffset(this.segment(), index); }
+        /// Sets `minTexelGatherOffset` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer minTexelGatherOffsetAt(long index, @CType("int32_t") int value) { VkPhysicalDeviceLimits.set_minTexelGatherOffset(this.segment(), index, value); return this; }
+
+        /// {@return `maxTexelGatherOffset` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxTexelGatherOffsetAt(long index) { return VkPhysicalDeviceLimits.get_maxTexelGatherOffset(this.segment(), index); }
+        /// Sets `maxTexelGatherOffset` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxTexelGatherOffsetAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxTexelGatherOffset(this.segment(), index, value); return this; }
+
+        /// {@return `minInterpolationOffset` at the given index}
+        /// @param index the index
+        public @CType("float") float minInterpolationOffsetAt(long index) { return VkPhysicalDeviceLimits.get_minInterpolationOffset(this.segment(), index); }
+        /// Sets `minInterpolationOffset` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer minInterpolationOffsetAt(long index, @CType("float") float value) { VkPhysicalDeviceLimits.set_minInterpolationOffset(this.segment(), index, value); return this; }
+
+        /// {@return `maxInterpolationOffset` at the given index}
+        /// @param index the index
+        public @CType("float") float maxInterpolationOffsetAt(long index) { return VkPhysicalDeviceLimits.get_maxInterpolationOffset(this.segment(), index); }
+        /// Sets `maxInterpolationOffset` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxInterpolationOffsetAt(long index, @CType("float") float value) { VkPhysicalDeviceLimits.set_maxInterpolationOffset(this.segment(), index, value); return this; }
+
+        /// {@return `subPixelInterpolationOffsetBits` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int subPixelInterpolationOffsetBitsAt(long index) { return VkPhysicalDeviceLimits.get_subPixelInterpolationOffsetBits(this.segment(), index); }
+        /// Sets `subPixelInterpolationOffsetBits` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer subPixelInterpolationOffsetBitsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_subPixelInterpolationOffsetBits(this.segment(), index, value); return this; }
+
+        /// {@return `maxFramebufferWidth` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxFramebufferWidthAt(long index) { return VkPhysicalDeviceLimits.get_maxFramebufferWidth(this.segment(), index); }
+        /// Sets `maxFramebufferWidth` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxFramebufferWidthAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxFramebufferWidth(this.segment(), index, value); return this; }
+
+        /// {@return `maxFramebufferHeight` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxFramebufferHeightAt(long index) { return VkPhysicalDeviceLimits.get_maxFramebufferHeight(this.segment(), index); }
+        /// Sets `maxFramebufferHeight` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxFramebufferHeightAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxFramebufferHeight(this.segment(), index, value); return this; }
+
+        /// {@return `maxFramebufferLayers` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxFramebufferLayersAt(long index) { return VkPhysicalDeviceLimits.get_maxFramebufferLayers(this.segment(), index); }
+        /// Sets `maxFramebufferLayers` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxFramebufferLayersAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxFramebufferLayers(this.segment(), index, value); return this; }
+
+        /// {@return `framebufferColorSampleCounts` at the given index}
+        /// @param index the index
+        public @CType("VkSampleCountFlags") int framebufferColorSampleCountsAt(long index) { return VkPhysicalDeviceLimits.get_framebufferColorSampleCounts(this.segment(), index); }
+        /// Sets `framebufferColorSampleCounts` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer framebufferColorSampleCountsAt(long index, @CType("VkSampleCountFlags") int value) { VkPhysicalDeviceLimits.set_framebufferColorSampleCounts(this.segment(), index, value); return this; }
+
+        /// {@return `framebufferDepthSampleCounts` at the given index}
+        /// @param index the index
+        public @CType("VkSampleCountFlags") int framebufferDepthSampleCountsAt(long index) { return VkPhysicalDeviceLimits.get_framebufferDepthSampleCounts(this.segment(), index); }
+        /// Sets `framebufferDepthSampleCounts` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer framebufferDepthSampleCountsAt(long index, @CType("VkSampleCountFlags") int value) { VkPhysicalDeviceLimits.set_framebufferDepthSampleCounts(this.segment(), index, value); return this; }
+
+        /// {@return `framebufferStencilSampleCounts` at the given index}
+        /// @param index the index
+        public @CType("VkSampleCountFlags") int framebufferStencilSampleCountsAt(long index) { return VkPhysicalDeviceLimits.get_framebufferStencilSampleCounts(this.segment(), index); }
+        /// Sets `framebufferStencilSampleCounts` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer framebufferStencilSampleCountsAt(long index, @CType("VkSampleCountFlags") int value) { VkPhysicalDeviceLimits.set_framebufferStencilSampleCounts(this.segment(), index, value); return this; }
+
+        /// {@return `framebufferNoAttachmentsSampleCounts` at the given index}
+        /// @param index the index
+        public @CType("VkSampleCountFlags") int framebufferNoAttachmentsSampleCountsAt(long index) { return VkPhysicalDeviceLimits.get_framebufferNoAttachmentsSampleCounts(this.segment(), index); }
+        /// Sets `framebufferNoAttachmentsSampleCounts` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer framebufferNoAttachmentsSampleCountsAt(long index, @CType("VkSampleCountFlags") int value) { VkPhysicalDeviceLimits.set_framebufferNoAttachmentsSampleCounts(this.segment(), index, value); return this; }
+
+        /// {@return `maxColorAttachments` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxColorAttachmentsAt(long index) { return VkPhysicalDeviceLimits.get_maxColorAttachments(this.segment(), index); }
+        /// Sets `maxColorAttachments` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxColorAttachmentsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxColorAttachments(this.segment(), index, value); return this; }
+
+        /// {@return `sampledImageColorSampleCounts` at the given index}
+        /// @param index the index
+        public @CType("VkSampleCountFlags") int sampledImageColorSampleCountsAt(long index) { return VkPhysicalDeviceLimits.get_sampledImageColorSampleCounts(this.segment(), index); }
+        /// Sets `sampledImageColorSampleCounts` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sampledImageColorSampleCountsAt(long index, @CType("VkSampleCountFlags") int value) { VkPhysicalDeviceLimits.set_sampledImageColorSampleCounts(this.segment(), index, value); return this; }
+
+        /// {@return `sampledImageIntegerSampleCounts` at the given index}
+        /// @param index the index
+        public @CType("VkSampleCountFlags") int sampledImageIntegerSampleCountsAt(long index) { return VkPhysicalDeviceLimits.get_sampledImageIntegerSampleCounts(this.segment(), index); }
+        /// Sets `sampledImageIntegerSampleCounts` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sampledImageIntegerSampleCountsAt(long index, @CType("VkSampleCountFlags") int value) { VkPhysicalDeviceLimits.set_sampledImageIntegerSampleCounts(this.segment(), index, value); return this; }
+
+        /// {@return `sampledImageDepthSampleCounts` at the given index}
+        /// @param index the index
+        public @CType("VkSampleCountFlags") int sampledImageDepthSampleCountsAt(long index) { return VkPhysicalDeviceLimits.get_sampledImageDepthSampleCounts(this.segment(), index); }
+        /// Sets `sampledImageDepthSampleCounts` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sampledImageDepthSampleCountsAt(long index, @CType("VkSampleCountFlags") int value) { VkPhysicalDeviceLimits.set_sampledImageDepthSampleCounts(this.segment(), index, value); return this; }
+
+        /// {@return `sampledImageStencilSampleCounts` at the given index}
+        /// @param index the index
+        public @CType("VkSampleCountFlags") int sampledImageStencilSampleCountsAt(long index) { return VkPhysicalDeviceLimits.get_sampledImageStencilSampleCounts(this.segment(), index); }
+        /// Sets `sampledImageStencilSampleCounts` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sampledImageStencilSampleCountsAt(long index, @CType("VkSampleCountFlags") int value) { VkPhysicalDeviceLimits.set_sampledImageStencilSampleCounts(this.segment(), index, value); return this; }
+
+        /// {@return `storageImageSampleCounts` at the given index}
+        /// @param index the index
+        public @CType("VkSampleCountFlags") int storageImageSampleCountsAt(long index) { return VkPhysicalDeviceLimits.get_storageImageSampleCounts(this.segment(), index); }
+        /// Sets `storageImageSampleCounts` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer storageImageSampleCountsAt(long index, @CType("VkSampleCountFlags") int value) { VkPhysicalDeviceLimits.set_storageImageSampleCounts(this.segment(), index, value); return this; }
+
+        /// {@return `maxSampleMaskWords` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxSampleMaskWordsAt(long index) { return VkPhysicalDeviceLimits.get_maxSampleMaskWords(this.segment(), index); }
+        /// Sets `maxSampleMaskWords` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxSampleMaskWordsAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxSampleMaskWords(this.segment(), index, value); return this; }
+
+        /// {@return `timestampComputeAndGraphics` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int timestampComputeAndGraphicsAt(long index) { return VkPhysicalDeviceLimits.get_timestampComputeAndGraphics(this.segment(), index); }
+        /// Sets `timestampComputeAndGraphics` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer timestampComputeAndGraphicsAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceLimits.set_timestampComputeAndGraphics(this.segment(), index, value); return this; }
+
+        /// {@return `timestampPeriod` at the given index}
+        /// @param index the index
+        public @CType("float") float timestampPeriodAt(long index) { return VkPhysicalDeviceLimits.get_timestampPeriod(this.segment(), index); }
+        /// Sets `timestampPeriod` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer timestampPeriodAt(long index, @CType("float") float value) { VkPhysicalDeviceLimits.set_timestampPeriod(this.segment(), index, value); return this; }
+
+        /// {@return `maxClipDistances` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxClipDistancesAt(long index) { return VkPhysicalDeviceLimits.get_maxClipDistances(this.segment(), index); }
+        /// Sets `maxClipDistances` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxClipDistancesAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxClipDistances(this.segment(), index, value); return this; }
+
+        /// {@return `maxCullDistances` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxCullDistancesAt(long index) { return VkPhysicalDeviceLimits.get_maxCullDistances(this.segment(), index); }
+        /// Sets `maxCullDistances` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxCullDistancesAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxCullDistances(this.segment(), index, value); return this; }
+
+        /// {@return `maxCombinedClipAndCullDistances` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxCombinedClipAndCullDistancesAt(long index) { return VkPhysicalDeviceLimits.get_maxCombinedClipAndCullDistances(this.segment(), index); }
+        /// Sets `maxCombinedClipAndCullDistances` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxCombinedClipAndCullDistancesAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_maxCombinedClipAndCullDistances(this.segment(), index, value); return this; }
+
+        /// {@return `discreteQueuePriorities` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int discreteQueuePrioritiesAt(long index) { return VkPhysicalDeviceLimits.get_discreteQueuePriorities(this.segment(), index); }
+        /// Sets `discreteQueuePriorities` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer discreteQueuePrioritiesAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceLimits.set_discreteQueuePriorities(this.segment(), index, value); return this; }
+
+        /// {@return `pointSizeRange` at the given index}
+        /// @param index the index
+        public @CType("float[2]") java.lang.foreign.MemorySegment pointSizeRangeAt(long index) { return VkPhysicalDeviceLimits.get_pointSizeRange(this.segment(), index); }
+        /// Sets `pointSizeRange` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pointSizeRangeAt(long index, @CType("float[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_pointSizeRange(this.segment(), index, value); return this; }
+
+        /// {@return `lineWidthRange` at the given index}
+        /// @param index the index
+        public @CType("float[2]") java.lang.foreign.MemorySegment lineWidthRangeAt(long index) { return VkPhysicalDeviceLimits.get_lineWidthRange(this.segment(), index); }
+        /// Sets `lineWidthRange` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer lineWidthRangeAt(long index, @CType("float[2]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceLimits.set_lineWidthRange(this.segment(), index, value); return this; }
+
+        /// {@return `pointSizeGranularity` at the given index}
+        /// @param index the index
+        public @CType("float") float pointSizeGranularityAt(long index) { return VkPhysicalDeviceLimits.get_pointSizeGranularity(this.segment(), index); }
+        /// Sets `pointSizeGranularity` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pointSizeGranularityAt(long index, @CType("float") float value) { VkPhysicalDeviceLimits.set_pointSizeGranularity(this.segment(), index, value); return this; }
+
+        /// {@return `lineWidthGranularity` at the given index}
+        /// @param index the index
+        public @CType("float") float lineWidthGranularityAt(long index) { return VkPhysicalDeviceLimits.get_lineWidthGranularity(this.segment(), index); }
+        /// Sets `lineWidthGranularity` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer lineWidthGranularityAt(long index, @CType("float") float value) { VkPhysicalDeviceLimits.set_lineWidthGranularity(this.segment(), index, value); return this; }
+
+        /// {@return `strictLines` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int strictLinesAt(long index) { return VkPhysicalDeviceLimits.get_strictLines(this.segment(), index); }
+        /// Sets `strictLines` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer strictLinesAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceLimits.set_strictLines(this.segment(), index, value); return this; }
+
+        /// {@return `standardSampleLocations` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int standardSampleLocationsAt(long index) { return VkPhysicalDeviceLimits.get_standardSampleLocations(this.segment(), index); }
+        /// Sets `standardSampleLocations` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer standardSampleLocationsAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceLimits.set_standardSampleLocations(this.segment(), index, value); return this; }
+
+        /// {@return `optimalBufferCopyOffsetAlignment` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long optimalBufferCopyOffsetAlignmentAt(long index) { return VkPhysicalDeviceLimits.get_optimalBufferCopyOffsetAlignment(this.segment(), index); }
+        /// Sets `optimalBufferCopyOffsetAlignment` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer optimalBufferCopyOffsetAlignmentAt(long index, @CType("VkDeviceSize") long value) { VkPhysicalDeviceLimits.set_optimalBufferCopyOffsetAlignment(this.segment(), index, value); return this; }
+
+        /// {@return `optimalBufferCopyRowPitchAlignment` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long optimalBufferCopyRowPitchAlignmentAt(long index) { return VkPhysicalDeviceLimits.get_optimalBufferCopyRowPitchAlignment(this.segment(), index); }
+        /// Sets `optimalBufferCopyRowPitchAlignment` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer optimalBufferCopyRowPitchAlignmentAt(long index, @CType("VkDeviceSize") long value) { VkPhysicalDeviceLimits.set_optimalBufferCopyRowPitchAlignment(this.segment(), index, value); return this; }
+
+        /// {@return `nonCoherentAtomSize` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long nonCoherentAtomSizeAt(long index) { return VkPhysicalDeviceLimits.get_nonCoherentAtomSize(this.segment(), index); }
+        /// Sets `nonCoherentAtomSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer nonCoherentAtomSizeAt(long index, @CType("VkDeviceSize") long value) { VkPhysicalDeviceLimits.set_nonCoherentAtomSize(this.segment(), index, value); return this; }
+
+    }
 }

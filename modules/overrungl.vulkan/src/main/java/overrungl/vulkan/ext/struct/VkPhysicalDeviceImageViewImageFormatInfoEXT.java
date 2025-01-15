@@ -40,7 +40,7 @@ import overrungl.util.*;
 ///     VkImageViewType imageViewType;
 /// } VkPhysicalDeviceImageViewImageFormatInfoEXT;
 /// ```
-public final class VkPhysicalDeviceImageViewImageFormatInfoEXT extends Struct {
+public sealed class VkPhysicalDeviceImageViewImageFormatInfoEXT extends Struct {
     /// The struct layout of `VkPhysicalDeviceImageViewImageFormatInfoEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -64,6 +64,11 @@ public final class VkPhysicalDeviceImageViewImageFormatInfoEXT extends Struct {
     public static VkPhysicalDeviceImageViewImageFormatInfoEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceImageViewImageFormatInfoEXT(segment); }
 
     /// Creates `VkPhysicalDeviceImageViewImageFormatInfoEXT` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPhysicalDeviceImageViewImageFormatInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -76,7 +81,7 @@ public final class VkPhysicalDeviceImageViewImageFormatInfoEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceImageViewImageFormatInfoEXT ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceImageViewImageFormatInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceImageViewImageFormatInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -87,18 +92,21 @@ public final class VkPhysicalDeviceImageViewImageFormatInfoEXT extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceImageViewImageFormatInfoEXT`
-    public static VkPhysicalDeviceImageViewImageFormatInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceImageViewImageFormatInfoEXT(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkPhysicalDeviceImageViewImageFormatInfoEXT`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDeviceImageViewImageFormatInfoEXT`
-    public VkPhysicalDeviceImageViewImageFormatInfoEXT asSlice(long index) { return new VkPhysicalDeviceImageViewImageFormatInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkPhysicalDeviceImageViewImageFormatInfoEXT` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDeviceImageViewImageFormatInfoEXT`
+    public static VkPhysicalDeviceImageViewImageFormatInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkImageViewType") int imageViewType) { return alloc(allocator).sType(sType).pNext(pNext).imageViewType(imageViewType); }
 
-    /// Creates a slice of `VkPhysicalDeviceImageViewImageFormatInfoEXT`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDeviceImageViewImageFormatInfoEXT`
-    public VkPhysicalDeviceImageViewImageFormatInfoEXT asSlice(long index, long count) { return new VkPhysicalDeviceImageViewImageFormatInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDeviceImageViewImageFormatInfoEXT copyFrom(VkPhysicalDeviceImageViewImageFormatInfoEXT src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -107,9 +115,6 @@ public final class VkPhysicalDeviceImageViewImageFormatInfoEXT extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceImageViewImageFormatInfoEXT.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceImageViewImageFormatInfoEXT.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPhysicalDeviceImageViewImageFormatInfoEXT.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -121,11 +126,6 @@ public final class VkPhysicalDeviceImageViewImageFormatInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceImageViewImageFormatInfoEXT.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceImageViewImageFormatInfoEXT sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceImageViewImageFormatInfoEXT.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -138,9 +138,6 @@ public final class VkPhysicalDeviceImageViewImageFormatInfoEXT extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceImageViewImageFormatInfoEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceImageViewImageFormatInfoEXT.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceImageViewImageFormatInfoEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -152,11 +149,6 @@ public final class VkPhysicalDeviceImageViewImageFormatInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceImageViewImageFormatInfoEXT.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceImageViewImageFormatInfoEXT pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceImageViewImageFormatInfoEXT.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -169,9 +161,6 @@ public final class VkPhysicalDeviceImageViewImageFormatInfoEXT extends Struct {
     /// {@return `imageViewType`}
     /// @param segment the segment of the struct
     public static @CType("VkImageViewType") int get_imageViewType(MemorySegment segment) { return VkPhysicalDeviceImageViewImageFormatInfoEXT.get_imageViewType(segment, 0L); }
-    /// {@return `imageViewType` at the given index}
-    /// @param index the index
-    public @CType("VkImageViewType") int imageViewTypeAt(long index) { return VkPhysicalDeviceImageViewImageFormatInfoEXT.get_imageViewType(this.segment(), index); }
     /// {@return `imageViewType`}
     public @CType("VkImageViewType") int imageViewType() { return VkPhysicalDeviceImageViewImageFormatInfoEXT.get_imageViewType(this.segment()); }
     /// Sets `imageViewType` with the given value at the given index.
@@ -183,14 +172,59 @@ public final class VkPhysicalDeviceImageViewImageFormatInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_imageViewType(MemorySegment segment, @CType("VkImageViewType") int value) { VkPhysicalDeviceImageViewImageFormatInfoEXT.set_imageViewType(segment, 0L, value); }
-    /// Sets `imageViewType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceImageViewImageFormatInfoEXT imageViewTypeAt(long index, @CType("VkImageViewType") int value) { VkPhysicalDeviceImageViewImageFormatInfoEXT.set_imageViewType(this.segment(), index, value); return this; }
     /// Sets `imageViewType` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceImageViewImageFormatInfoEXT imageViewType(@CType("VkImageViewType") int value) { VkPhysicalDeviceImageViewImageFormatInfoEXT.set_imageViewType(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDeviceImageViewImageFormatInfoEXT].
+    public static final class Buffer extends VkPhysicalDeviceImageViewImageFormatInfoEXT {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDeviceImageViewImageFormatInfoEXT.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDeviceImageViewImageFormatInfoEXT`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDeviceImageViewImageFormatInfoEXT`
+        public VkPhysicalDeviceImageViewImageFormatInfoEXT asSlice(long index) { return new VkPhysicalDeviceImageViewImageFormatInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDeviceImageViewImageFormatInfoEXT`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDeviceImageViewImageFormatInfoEXT`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceImageViewImageFormatInfoEXT.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceImageViewImageFormatInfoEXT.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceImageViewImageFormatInfoEXT.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceImageViewImageFormatInfoEXT.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `imageViewType` at the given index}
+        /// @param index the index
+        public @CType("VkImageViewType") int imageViewTypeAt(long index) { return VkPhysicalDeviceImageViewImageFormatInfoEXT.get_imageViewType(this.segment(), index); }
+        /// Sets `imageViewType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer imageViewTypeAt(long index, @CType("VkImageViewType") int value) { VkPhysicalDeviceImageViewImageFormatInfoEXT.set_imageViewType(this.segment(), index, value); return this; }
+
+    }
 }

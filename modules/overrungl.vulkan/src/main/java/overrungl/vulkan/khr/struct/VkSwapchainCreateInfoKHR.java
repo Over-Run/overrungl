@@ -85,7 +85,7 @@ import overrungl.util.*;
 ///     VkSwapchainKHR oldSwapchain;
 /// } VkSwapchainCreateInfoKHR;
 /// ```
-public final class VkSwapchainCreateInfoKHR extends Struct {
+public sealed class VkSwapchainCreateInfoKHR extends Struct {
     /// The struct layout of `VkSwapchainCreateInfoKHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -156,6 +156,11 @@ public final class VkSwapchainCreateInfoKHR extends Struct {
     public static VkSwapchainCreateInfoKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkSwapchainCreateInfoKHR(segment); }
 
     /// Creates `VkSwapchainCreateInfoKHR` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkSwapchainCreateInfoKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -168,7 +173,7 @@ public final class VkSwapchainCreateInfoKHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSwapchainCreateInfoKHR ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkSwapchainCreateInfoKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkSwapchainCreateInfoKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -179,18 +184,21 @@ public final class VkSwapchainCreateInfoKHR extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkSwapchainCreateInfoKHR`
-    public static VkSwapchainCreateInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkSwapchainCreateInfoKHR(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkSwapchainCreateInfoKHR`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkSwapchainCreateInfoKHR`
-    public VkSwapchainCreateInfoKHR asSlice(long index) { return new VkSwapchainCreateInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkSwapchainCreateInfoKHR` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkSwapchainCreateInfoKHR`
+    public static VkSwapchainCreateInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkSwapchainCreateFlagsKHR") int flags, @CType("VkSurfaceKHR") java.lang.foreign.MemorySegment surface, @CType("uint32_t") int minImageCount, @CType("VkFormat") int imageFormat, @CType("VkColorSpaceKHR") int imageColorSpace, @CType("VkExtent2D") java.lang.foreign.MemorySegment imageExtent, @CType("uint32_t") int imageArrayLayers, @CType("VkImageUsageFlags") int imageUsage, @CType("VkSharingMode") int imageSharingMode, @CType("uint32_t") int queueFamilyIndexCount, @CType("const uint32_t *") java.lang.foreign.MemorySegment pQueueFamilyIndices, @CType("VkSurfaceTransformFlagBitsKHR") int preTransform, @CType("VkCompositeAlphaFlagBitsKHR") int compositeAlpha, @CType("VkPresentModeKHR") int presentMode, @CType("VkBool32") int clipped, @CType("VkSwapchainKHR") java.lang.foreign.MemorySegment oldSwapchain) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).surface(surface).minImageCount(minImageCount).imageFormat(imageFormat).imageColorSpace(imageColorSpace).imageExtent(imageExtent).imageArrayLayers(imageArrayLayers).imageUsage(imageUsage).imageSharingMode(imageSharingMode).queueFamilyIndexCount(queueFamilyIndexCount).pQueueFamilyIndices(pQueueFamilyIndices).preTransform(preTransform).compositeAlpha(compositeAlpha).presentMode(presentMode).clipped(clipped).oldSwapchain(oldSwapchain); }
 
-    /// Creates a slice of `VkSwapchainCreateInfoKHR`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkSwapchainCreateInfoKHR`
-    public VkSwapchainCreateInfoKHR asSlice(long index, long count) { return new VkSwapchainCreateInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkSwapchainCreateInfoKHR copyFrom(VkSwapchainCreateInfoKHR src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -199,9 +207,6 @@ public final class VkSwapchainCreateInfoKHR extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkSwapchainCreateInfoKHR.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkSwapchainCreateInfoKHR.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkSwapchainCreateInfoKHR.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -213,11 +218,6 @@ public final class VkSwapchainCreateInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkSwapchainCreateInfoKHR.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSwapchainCreateInfoKHR sTypeAt(long index, @CType("VkStructureType") int value) { VkSwapchainCreateInfoKHR.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -230,9 +230,6 @@ public final class VkSwapchainCreateInfoKHR extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkSwapchainCreateInfoKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkSwapchainCreateInfoKHR.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkSwapchainCreateInfoKHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -244,11 +241,6 @@ public final class VkSwapchainCreateInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkSwapchainCreateInfoKHR.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSwapchainCreateInfoKHR pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkSwapchainCreateInfoKHR.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -261,9 +253,6 @@ public final class VkSwapchainCreateInfoKHR extends Struct {
     /// {@return `flags`}
     /// @param segment the segment of the struct
     public static @CType("VkSwapchainCreateFlagsKHR") int get_flags(MemorySegment segment) { return VkSwapchainCreateInfoKHR.get_flags(segment, 0L); }
-    /// {@return `flags` at the given index}
-    /// @param index the index
-    public @CType("VkSwapchainCreateFlagsKHR") int flagsAt(long index) { return VkSwapchainCreateInfoKHR.get_flags(this.segment(), index); }
     /// {@return `flags`}
     public @CType("VkSwapchainCreateFlagsKHR") int flags() { return VkSwapchainCreateInfoKHR.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
@@ -275,11 +264,6 @@ public final class VkSwapchainCreateInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_flags(MemorySegment segment, @CType("VkSwapchainCreateFlagsKHR") int value) { VkSwapchainCreateInfoKHR.set_flags(segment, 0L, value); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSwapchainCreateInfoKHR flagsAt(long index, @CType("VkSwapchainCreateFlagsKHR") int value) { VkSwapchainCreateInfoKHR.set_flags(this.segment(), index, value); return this; }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -292,9 +276,6 @@ public final class VkSwapchainCreateInfoKHR extends Struct {
     /// {@return `surface`}
     /// @param segment the segment of the struct
     public static @CType("VkSurfaceKHR") java.lang.foreign.MemorySegment get_surface(MemorySegment segment) { return VkSwapchainCreateInfoKHR.get_surface(segment, 0L); }
-    /// {@return `surface` at the given index}
-    /// @param index the index
-    public @CType("VkSurfaceKHR") java.lang.foreign.MemorySegment surfaceAt(long index) { return VkSwapchainCreateInfoKHR.get_surface(this.segment(), index); }
     /// {@return `surface`}
     public @CType("VkSurfaceKHR") java.lang.foreign.MemorySegment surface() { return VkSwapchainCreateInfoKHR.get_surface(this.segment()); }
     /// Sets `surface` with the given value at the given index.
@@ -306,11 +287,6 @@ public final class VkSwapchainCreateInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_surface(MemorySegment segment, @CType("VkSurfaceKHR") java.lang.foreign.MemorySegment value) { VkSwapchainCreateInfoKHR.set_surface(segment, 0L, value); }
-    /// Sets `surface` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSwapchainCreateInfoKHR surfaceAt(long index, @CType("VkSurfaceKHR") java.lang.foreign.MemorySegment value) { VkSwapchainCreateInfoKHR.set_surface(this.segment(), index, value); return this; }
     /// Sets `surface` with the given value.
     /// @param value the value
     /// @return `this`
@@ -323,9 +299,6 @@ public final class VkSwapchainCreateInfoKHR extends Struct {
     /// {@return `minImageCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_minImageCount(MemorySegment segment) { return VkSwapchainCreateInfoKHR.get_minImageCount(segment, 0L); }
-    /// {@return `minImageCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int minImageCountAt(long index) { return VkSwapchainCreateInfoKHR.get_minImageCount(this.segment(), index); }
     /// {@return `minImageCount`}
     public @CType("uint32_t") int minImageCount() { return VkSwapchainCreateInfoKHR.get_minImageCount(this.segment()); }
     /// Sets `minImageCount` with the given value at the given index.
@@ -337,11 +310,6 @@ public final class VkSwapchainCreateInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_minImageCount(MemorySegment segment, @CType("uint32_t") int value) { VkSwapchainCreateInfoKHR.set_minImageCount(segment, 0L, value); }
-    /// Sets `minImageCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSwapchainCreateInfoKHR minImageCountAt(long index, @CType("uint32_t") int value) { VkSwapchainCreateInfoKHR.set_minImageCount(this.segment(), index, value); return this; }
     /// Sets `minImageCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -354,9 +322,6 @@ public final class VkSwapchainCreateInfoKHR extends Struct {
     /// {@return `imageFormat`}
     /// @param segment the segment of the struct
     public static @CType("VkFormat") int get_imageFormat(MemorySegment segment) { return VkSwapchainCreateInfoKHR.get_imageFormat(segment, 0L); }
-    /// {@return `imageFormat` at the given index}
-    /// @param index the index
-    public @CType("VkFormat") int imageFormatAt(long index) { return VkSwapchainCreateInfoKHR.get_imageFormat(this.segment(), index); }
     /// {@return `imageFormat`}
     public @CType("VkFormat") int imageFormat() { return VkSwapchainCreateInfoKHR.get_imageFormat(this.segment()); }
     /// Sets `imageFormat` with the given value at the given index.
@@ -368,11 +333,6 @@ public final class VkSwapchainCreateInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_imageFormat(MemorySegment segment, @CType("VkFormat") int value) { VkSwapchainCreateInfoKHR.set_imageFormat(segment, 0L, value); }
-    /// Sets `imageFormat` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSwapchainCreateInfoKHR imageFormatAt(long index, @CType("VkFormat") int value) { VkSwapchainCreateInfoKHR.set_imageFormat(this.segment(), index, value); return this; }
     /// Sets `imageFormat` with the given value.
     /// @param value the value
     /// @return `this`
@@ -385,9 +345,6 @@ public final class VkSwapchainCreateInfoKHR extends Struct {
     /// {@return `imageColorSpace`}
     /// @param segment the segment of the struct
     public static @CType("VkColorSpaceKHR") int get_imageColorSpace(MemorySegment segment) { return VkSwapchainCreateInfoKHR.get_imageColorSpace(segment, 0L); }
-    /// {@return `imageColorSpace` at the given index}
-    /// @param index the index
-    public @CType("VkColorSpaceKHR") int imageColorSpaceAt(long index) { return VkSwapchainCreateInfoKHR.get_imageColorSpace(this.segment(), index); }
     /// {@return `imageColorSpace`}
     public @CType("VkColorSpaceKHR") int imageColorSpace() { return VkSwapchainCreateInfoKHR.get_imageColorSpace(this.segment()); }
     /// Sets `imageColorSpace` with the given value at the given index.
@@ -399,11 +356,6 @@ public final class VkSwapchainCreateInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_imageColorSpace(MemorySegment segment, @CType("VkColorSpaceKHR") int value) { VkSwapchainCreateInfoKHR.set_imageColorSpace(segment, 0L, value); }
-    /// Sets `imageColorSpace` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSwapchainCreateInfoKHR imageColorSpaceAt(long index, @CType("VkColorSpaceKHR") int value) { VkSwapchainCreateInfoKHR.set_imageColorSpace(this.segment(), index, value); return this; }
     /// Sets `imageColorSpace` with the given value.
     /// @param value the value
     /// @return `this`
@@ -416,9 +368,6 @@ public final class VkSwapchainCreateInfoKHR extends Struct {
     /// {@return `imageExtent`}
     /// @param segment the segment of the struct
     public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_imageExtent(MemorySegment segment) { return VkSwapchainCreateInfoKHR.get_imageExtent(segment, 0L); }
-    /// {@return `imageExtent` at the given index}
-    /// @param index the index
-    public @CType("VkExtent2D") java.lang.foreign.MemorySegment imageExtentAt(long index) { return VkSwapchainCreateInfoKHR.get_imageExtent(this.segment(), index); }
     /// {@return `imageExtent`}
     public @CType("VkExtent2D") java.lang.foreign.MemorySegment imageExtent() { return VkSwapchainCreateInfoKHR.get_imageExtent(this.segment()); }
     /// Sets `imageExtent` with the given value at the given index.
@@ -430,11 +379,6 @@ public final class VkSwapchainCreateInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_imageExtent(MemorySegment segment, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkSwapchainCreateInfoKHR.set_imageExtent(segment, 0L, value); }
-    /// Sets `imageExtent` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSwapchainCreateInfoKHR imageExtentAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkSwapchainCreateInfoKHR.set_imageExtent(this.segment(), index, value); return this; }
     /// Sets `imageExtent` with the given value.
     /// @param value the value
     /// @return `this`
@@ -447,9 +391,6 @@ public final class VkSwapchainCreateInfoKHR extends Struct {
     /// {@return `imageArrayLayers`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_imageArrayLayers(MemorySegment segment) { return VkSwapchainCreateInfoKHR.get_imageArrayLayers(segment, 0L); }
-    /// {@return `imageArrayLayers` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int imageArrayLayersAt(long index) { return VkSwapchainCreateInfoKHR.get_imageArrayLayers(this.segment(), index); }
     /// {@return `imageArrayLayers`}
     public @CType("uint32_t") int imageArrayLayers() { return VkSwapchainCreateInfoKHR.get_imageArrayLayers(this.segment()); }
     /// Sets `imageArrayLayers` with the given value at the given index.
@@ -461,11 +402,6 @@ public final class VkSwapchainCreateInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_imageArrayLayers(MemorySegment segment, @CType("uint32_t") int value) { VkSwapchainCreateInfoKHR.set_imageArrayLayers(segment, 0L, value); }
-    /// Sets `imageArrayLayers` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSwapchainCreateInfoKHR imageArrayLayersAt(long index, @CType("uint32_t") int value) { VkSwapchainCreateInfoKHR.set_imageArrayLayers(this.segment(), index, value); return this; }
     /// Sets `imageArrayLayers` with the given value.
     /// @param value the value
     /// @return `this`
@@ -478,9 +414,6 @@ public final class VkSwapchainCreateInfoKHR extends Struct {
     /// {@return `imageUsage`}
     /// @param segment the segment of the struct
     public static @CType("VkImageUsageFlags") int get_imageUsage(MemorySegment segment) { return VkSwapchainCreateInfoKHR.get_imageUsage(segment, 0L); }
-    /// {@return `imageUsage` at the given index}
-    /// @param index the index
-    public @CType("VkImageUsageFlags") int imageUsageAt(long index) { return VkSwapchainCreateInfoKHR.get_imageUsage(this.segment(), index); }
     /// {@return `imageUsage`}
     public @CType("VkImageUsageFlags") int imageUsage() { return VkSwapchainCreateInfoKHR.get_imageUsage(this.segment()); }
     /// Sets `imageUsage` with the given value at the given index.
@@ -492,11 +425,6 @@ public final class VkSwapchainCreateInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_imageUsage(MemorySegment segment, @CType("VkImageUsageFlags") int value) { VkSwapchainCreateInfoKHR.set_imageUsage(segment, 0L, value); }
-    /// Sets `imageUsage` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSwapchainCreateInfoKHR imageUsageAt(long index, @CType("VkImageUsageFlags") int value) { VkSwapchainCreateInfoKHR.set_imageUsage(this.segment(), index, value); return this; }
     /// Sets `imageUsage` with the given value.
     /// @param value the value
     /// @return `this`
@@ -509,9 +437,6 @@ public final class VkSwapchainCreateInfoKHR extends Struct {
     /// {@return `imageSharingMode`}
     /// @param segment the segment of the struct
     public static @CType("VkSharingMode") int get_imageSharingMode(MemorySegment segment) { return VkSwapchainCreateInfoKHR.get_imageSharingMode(segment, 0L); }
-    /// {@return `imageSharingMode` at the given index}
-    /// @param index the index
-    public @CType("VkSharingMode") int imageSharingModeAt(long index) { return VkSwapchainCreateInfoKHR.get_imageSharingMode(this.segment(), index); }
     /// {@return `imageSharingMode`}
     public @CType("VkSharingMode") int imageSharingMode() { return VkSwapchainCreateInfoKHR.get_imageSharingMode(this.segment()); }
     /// Sets `imageSharingMode` with the given value at the given index.
@@ -523,11 +448,6 @@ public final class VkSwapchainCreateInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_imageSharingMode(MemorySegment segment, @CType("VkSharingMode") int value) { VkSwapchainCreateInfoKHR.set_imageSharingMode(segment, 0L, value); }
-    /// Sets `imageSharingMode` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSwapchainCreateInfoKHR imageSharingModeAt(long index, @CType("VkSharingMode") int value) { VkSwapchainCreateInfoKHR.set_imageSharingMode(this.segment(), index, value); return this; }
     /// Sets `imageSharingMode` with the given value.
     /// @param value the value
     /// @return `this`
@@ -540,9 +460,6 @@ public final class VkSwapchainCreateInfoKHR extends Struct {
     /// {@return `queueFamilyIndexCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_queueFamilyIndexCount(MemorySegment segment) { return VkSwapchainCreateInfoKHR.get_queueFamilyIndexCount(segment, 0L); }
-    /// {@return `queueFamilyIndexCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int queueFamilyIndexCountAt(long index) { return VkSwapchainCreateInfoKHR.get_queueFamilyIndexCount(this.segment(), index); }
     /// {@return `queueFamilyIndexCount`}
     public @CType("uint32_t") int queueFamilyIndexCount() { return VkSwapchainCreateInfoKHR.get_queueFamilyIndexCount(this.segment()); }
     /// Sets `queueFamilyIndexCount` with the given value at the given index.
@@ -554,11 +471,6 @@ public final class VkSwapchainCreateInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_queueFamilyIndexCount(MemorySegment segment, @CType("uint32_t") int value) { VkSwapchainCreateInfoKHR.set_queueFamilyIndexCount(segment, 0L, value); }
-    /// Sets `queueFamilyIndexCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSwapchainCreateInfoKHR queueFamilyIndexCountAt(long index, @CType("uint32_t") int value) { VkSwapchainCreateInfoKHR.set_queueFamilyIndexCount(this.segment(), index, value); return this; }
     /// Sets `queueFamilyIndexCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -571,9 +483,6 @@ public final class VkSwapchainCreateInfoKHR extends Struct {
     /// {@return `pQueueFamilyIndices`}
     /// @param segment the segment of the struct
     public static @CType("const uint32_t *") java.lang.foreign.MemorySegment get_pQueueFamilyIndices(MemorySegment segment) { return VkSwapchainCreateInfoKHR.get_pQueueFamilyIndices(segment, 0L); }
-    /// {@return `pQueueFamilyIndices` at the given index}
-    /// @param index the index
-    public @CType("const uint32_t *") java.lang.foreign.MemorySegment pQueueFamilyIndicesAt(long index) { return VkSwapchainCreateInfoKHR.get_pQueueFamilyIndices(this.segment(), index); }
     /// {@return `pQueueFamilyIndices`}
     public @CType("const uint32_t *") java.lang.foreign.MemorySegment pQueueFamilyIndices() { return VkSwapchainCreateInfoKHR.get_pQueueFamilyIndices(this.segment()); }
     /// Sets `pQueueFamilyIndices` with the given value at the given index.
@@ -585,11 +494,6 @@ public final class VkSwapchainCreateInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pQueueFamilyIndices(MemorySegment segment, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkSwapchainCreateInfoKHR.set_pQueueFamilyIndices(segment, 0L, value); }
-    /// Sets `pQueueFamilyIndices` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSwapchainCreateInfoKHR pQueueFamilyIndicesAt(long index, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkSwapchainCreateInfoKHR.set_pQueueFamilyIndices(this.segment(), index, value); return this; }
     /// Sets `pQueueFamilyIndices` with the given value.
     /// @param value the value
     /// @return `this`
@@ -602,9 +506,6 @@ public final class VkSwapchainCreateInfoKHR extends Struct {
     /// {@return `preTransform`}
     /// @param segment the segment of the struct
     public static @CType("VkSurfaceTransformFlagBitsKHR") int get_preTransform(MemorySegment segment) { return VkSwapchainCreateInfoKHR.get_preTransform(segment, 0L); }
-    /// {@return `preTransform` at the given index}
-    /// @param index the index
-    public @CType("VkSurfaceTransformFlagBitsKHR") int preTransformAt(long index) { return VkSwapchainCreateInfoKHR.get_preTransform(this.segment(), index); }
     /// {@return `preTransform`}
     public @CType("VkSurfaceTransformFlagBitsKHR") int preTransform() { return VkSwapchainCreateInfoKHR.get_preTransform(this.segment()); }
     /// Sets `preTransform` with the given value at the given index.
@@ -616,11 +517,6 @@ public final class VkSwapchainCreateInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_preTransform(MemorySegment segment, @CType("VkSurfaceTransformFlagBitsKHR") int value) { VkSwapchainCreateInfoKHR.set_preTransform(segment, 0L, value); }
-    /// Sets `preTransform` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSwapchainCreateInfoKHR preTransformAt(long index, @CType("VkSurfaceTransformFlagBitsKHR") int value) { VkSwapchainCreateInfoKHR.set_preTransform(this.segment(), index, value); return this; }
     /// Sets `preTransform` with the given value.
     /// @param value the value
     /// @return `this`
@@ -633,9 +529,6 @@ public final class VkSwapchainCreateInfoKHR extends Struct {
     /// {@return `compositeAlpha`}
     /// @param segment the segment of the struct
     public static @CType("VkCompositeAlphaFlagBitsKHR") int get_compositeAlpha(MemorySegment segment) { return VkSwapchainCreateInfoKHR.get_compositeAlpha(segment, 0L); }
-    /// {@return `compositeAlpha` at the given index}
-    /// @param index the index
-    public @CType("VkCompositeAlphaFlagBitsKHR") int compositeAlphaAt(long index) { return VkSwapchainCreateInfoKHR.get_compositeAlpha(this.segment(), index); }
     /// {@return `compositeAlpha`}
     public @CType("VkCompositeAlphaFlagBitsKHR") int compositeAlpha() { return VkSwapchainCreateInfoKHR.get_compositeAlpha(this.segment()); }
     /// Sets `compositeAlpha` with the given value at the given index.
@@ -647,11 +540,6 @@ public final class VkSwapchainCreateInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_compositeAlpha(MemorySegment segment, @CType("VkCompositeAlphaFlagBitsKHR") int value) { VkSwapchainCreateInfoKHR.set_compositeAlpha(segment, 0L, value); }
-    /// Sets `compositeAlpha` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSwapchainCreateInfoKHR compositeAlphaAt(long index, @CType("VkCompositeAlphaFlagBitsKHR") int value) { VkSwapchainCreateInfoKHR.set_compositeAlpha(this.segment(), index, value); return this; }
     /// Sets `compositeAlpha` with the given value.
     /// @param value the value
     /// @return `this`
@@ -664,9 +552,6 @@ public final class VkSwapchainCreateInfoKHR extends Struct {
     /// {@return `presentMode`}
     /// @param segment the segment of the struct
     public static @CType("VkPresentModeKHR") int get_presentMode(MemorySegment segment) { return VkSwapchainCreateInfoKHR.get_presentMode(segment, 0L); }
-    /// {@return `presentMode` at the given index}
-    /// @param index the index
-    public @CType("VkPresentModeKHR") int presentModeAt(long index) { return VkSwapchainCreateInfoKHR.get_presentMode(this.segment(), index); }
     /// {@return `presentMode`}
     public @CType("VkPresentModeKHR") int presentMode() { return VkSwapchainCreateInfoKHR.get_presentMode(this.segment()); }
     /// Sets `presentMode` with the given value at the given index.
@@ -678,11 +563,6 @@ public final class VkSwapchainCreateInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_presentMode(MemorySegment segment, @CType("VkPresentModeKHR") int value) { VkSwapchainCreateInfoKHR.set_presentMode(segment, 0L, value); }
-    /// Sets `presentMode` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSwapchainCreateInfoKHR presentModeAt(long index, @CType("VkPresentModeKHR") int value) { VkSwapchainCreateInfoKHR.set_presentMode(this.segment(), index, value); return this; }
     /// Sets `presentMode` with the given value.
     /// @param value the value
     /// @return `this`
@@ -695,9 +575,6 @@ public final class VkSwapchainCreateInfoKHR extends Struct {
     /// {@return `clipped`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_clipped(MemorySegment segment) { return VkSwapchainCreateInfoKHR.get_clipped(segment, 0L); }
-    /// {@return `clipped` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int clippedAt(long index) { return VkSwapchainCreateInfoKHR.get_clipped(this.segment(), index); }
     /// {@return `clipped`}
     public @CType("VkBool32") int clipped() { return VkSwapchainCreateInfoKHR.get_clipped(this.segment()); }
     /// Sets `clipped` with the given value at the given index.
@@ -709,11 +586,6 @@ public final class VkSwapchainCreateInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_clipped(MemorySegment segment, @CType("VkBool32") int value) { VkSwapchainCreateInfoKHR.set_clipped(segment, 0L, value); }
-    /// Sets `clipped` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSwapchainCreateInfoKHR clippedAt(long index, @CType("VkBool32") int value) { VkSwapchainCreateInfoKHR.set_clipped(this.segment(), index, value); return this; }
     /// Sets `clipped` with the given value.
     /// @param value the value
     /// @return `this`
@@ -726,9 +598,6 @@ public final class VkSwapchainCreateInfoKHR extends Struct {
     /// {@return `oldSwapchain`}
     /// @param segment the segment of the struct
     public static @CType("VkSwapchainKHR") java.lang.foreign.MemorySegment get_oldSwapchain(MemorySegment segment) { return VkSwapchainCreateInfoKHR.get_oldSwapchain(segment, 0L); }
-    /// {@return `oldSwapchain` at the given index}
-    /// @param index the index
-    public @CType("VkSwapchainKHR") java.lang.foreign.MemorySegment oldSwapchainAt(long index) { return VkSwapchainCreateInfoKHR.get_oldSwapchain(this.segment(), index); }
     /// {@return `oldSwapchain`}
     public @CType("VkSwapchainKHR") java.lang.foreign.MemorySegment oldSwapchain() { return VkSwapchainCreateInfoKHR.get_oldSwapchain(this.segment()); }
     /// Sets `oldSwapchain` with the given value at the given index.
@@ -740,14 +609,194 @@ public final class VkSwapchainCreateInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_oldSwapchain(MemorySegment segment, @CType("VkSwapchainKHR") java.lang.foreign.MemorySegment value) { VkSwapchainCreateInfoKHR.set_oldSwapchain(segment, 0L, value); }
-    /// Sets `oldSwapchain` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSwapchainCreateInfoKHR oldSwapchainAt(long index, @CType("VkSwapchainKHR") java.lang.foreign.MemorySegment value) { VkSwapchainCreateInfoKHR.set_oldSwapchain(this.segment(), index, value); return this; }
     /// Sets `oldSwapchain` with the given value.
     /// @param value the value
     /// @return `this`
     public VkSwapchainCreateInfoKHR oldSwapchain(@CType("VkSwapchainKHR") java.lang.foreign.MemorySegment value) { VkSwapchainCreateInfoKHR.set_oldSwapchain(this.segment(), value); return this; }
 
+    /// A buffer of [VkSwapchainCreateInfoKHR].
+    public static final class Buffer extends VkSwapchainCreateInfoKHR {
+        private final long elementCount;
+
+        /// Creates `VkSwapchainCreateInfoKHR.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkSwapchainCreateInfoKHR`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkSwapchainCreateInfoKHR`
+        public VkSwapchainCreateInfoKHR asSlice(long index) { return new VkSwapchainCreateInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkSwapchainCreateInfoKHR`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkSwapchainCreateInfoKHR`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkSwapchainCreateInfoKHR.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkSwapchainCreateInfoKHR.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkSwapchainCreateInfoKHR.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkSwapchainCreateInfoKHR.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `flags` at the given index}
+        /// @param index the index
+        public @CType("VkSwapchainCreateFlagsKHR") int flagsAt(long index) { return VkSwapchainCreateInfoKHR.get_flags(this.segment(), index); }
+        /// Sets `flags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer flagsAt(long index, @CType("VkSwapchainCreateFlagsKHR") int value) { VkSwapchainCreateInfoKHR.set_flags(this.segment(), index, value); return this; }
+
+        /// {@return `surface` at the given index}
+        /// @param index the index
+        public @CType("VkSurfaceKHR") java.lang.foreign.MemorySegment surfaceAt(long index) { return VkSwapchainCreateInfoKHR.get_surface(this.segment(), index); }
+        /// Sets `surface` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer surfaceAt(long index, @CType("VkSurfaceKHR") java.lang.foreign.MemorySegment value) { VkSwapchainCreateInfoKHR.set_surface(this.segment(), index, value); return this; }
+
+        /// {@return `minImageCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int minImageCountAt(long index) { return VkSwapchainCreateInfoKHR.get_minImageCount(this.segment(), index); }
+        /// Sets `minImageCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer minImageCountAt(long index, @CType("uint32_t") int value) { VkSwapchainCreateInfoKHR.set_minImageCount(this.segment(), index, value); return this; }
+
+        /// {@return `imageFormat` at the given index}
+        /// @param index the index
+        public @CType("VkFormat") int imageFormatAt(long index) { return VkSwapchainCreateInfoKHR.get_imageFormat(this.segment(), index); }
+        /// Sets `imageFormat` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer imageFormatAt(long index, @CType("VkFormat") int value) { VkSwapchainCreateInfoKHR.set_imageFormat(this.segment(), index, value); return this; }
+
+        /// {@return `imageColorSpace` at the given index}
+        /// @param index the index
+        public @CType("VkColorSpaceKHR") int imageColorSpaceAt(long index) { return VkSwapchainCreateInfoKHR.get_imageColorSpace(this.segment(), index); }
+        /// Sets `imageColorSpace` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer imageColorSpaceAt(long index, @CType("VkColorSpaceKHR") int value) { VkSwapchainCreateInfoKHR.set_imageColorSpace(this.segment(), index, value); return this; }
+
+        /// {@return `imageExtent` at the given index}
+        /// @param index the index
+        public @CType("VkExtent2D") java.lang.foreign.MemorySegment imageExtentAt(long index) { return VkSwapchainCreateInfoKHR.get_imageExtent(this.segment(), index); }
+        /// Sets `imageExtent` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer imageExtentAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkSwapchainCreateInfoKHR.set_imageExtent(this.segment(), index, value); return this; }
+
+        /// {@return `imageArrayLayers` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int imageArrayLayersAt(long index) { return VkSwapchainCreateInfoKHR.get_imageArrayLayers(this.segment(), index); }
+        /// Sets `imageArrayLayers` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer imageArrayLayersAt(long index, @CType("uint32_t") int value) { VkSwapchainCreateInfoKHR.set_imageArrayLayers(this.segment(), index, value); return this; }
+
+        /// {@return `imageUsage` at the given index}
+        /// @param index the index
+        public @CType("VkImageUsageFlags") int imageUsageAt(long index) { return VkSwapchainCreateInfoKHR.get_imageUsage(this.segment(), index); }
+        /// Sets `imageUsage` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer imageUsageAt(long index, @CType("VkImageUsageFlags") int value) { VkSwapchainCreateInfoKHR.set_imageUsage(this.segment(), index, value); return this; }
+
+        /// {@return `imageSharingMode` at the given index}
+        /// @param index the index
+        public @CType("VkSharingMode") int imageSharingModeAt(long index) { return VkSwapchainCreateInfoKHR.get_imageSharingMode(this.segment(), index); }
+        /// Sets `imageSharingMode` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer imageSharingModeAt(long index, @CType("VkSharingMode") int value) { VkSwapchainCreateInfoKHR.set_imageSharingMode(this.segment(), index, value); return this; }
+
+        /// {@return `queueFamilyIndexCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int queueFamilyIndexCountAt(long index) { return VkSwapchainCreateInfoKHR.get_queueFamilyIndexCount(this.segment(), index); }
+        /// Sets `queueFamilyIndexCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer queueFamilyIndexCountAt(long index, @CType("uint32_t") int value) { VkSwapchainCreateInfoKHR.set_queueFamilyIndexCount(this.segment(), index, value); return this; }
+
+        /// {@return `pQueueFamilyIndices` at the given index}
+        /// @param index the index
+        public @CType("const uint32_t *") java.lang.foreign.MemorySegment pQueueFamilyIndicesAt(long index) { return VkSwapchainCreateInfoKHR.get_pQueueFamilyIndices(this.segment(), index); }
+        /// Sets `pQueueFamilyIndices` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pQueueFamilyIndicesAt(long index, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkSwapchainCreateInfoKHR.set_pQueueFamilyIndices(this.segment(), index, value); return this; }
+
+        /// {@return `preTransform` at the given index}
+        /// @param index the index
+        public @CType("VkSurfaceTransformFlagBitsKHR") int preTransformAt(long index) { return VkSwapchainCreateInfoKHR.get_preTransform(this.segment(), index); }
+        /// Sets `preTransform` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer preTransformAt(long index, @CType("VkSurfaceTransformFlagBitsKHR") int value) { VkSwapchainCreateInfoKHR.set_preTransform(this.segment(), index, value); return this; }
+
+        /// {@return `compositeAlpha` at the given index}
+        /// @param index the index
+        public @CType("VkCompositeAlphaFlagBitsKHR") int compositeAlphaAt(long index) { return VkSwapchainCreateInfoKHR.get_compositeAlpha(this.segment(), index); }
+        /// Sets `compositeAlpha` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer compositeAlphaAt(long index, @CType("VkCompositeAlphaFlagBitsKHR") int value) { VkSwapchainCreateInfoKHR.set_compositeAlpha(this.segment(), index, value); return this; }
+
+        /// {@return `presentMode` at the given index}
+        /// @param index the index
+        public @CType("VkPresentModeKHR") int presentModeAt(long index) { return VkSwapchainCreateInfoKHR.get_presentMode(this.segment(), index); }
+        /// Sets `presentMode` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer presentModeAt(long index, @CType("VkPresentModeKHR") int value) { VkSwapchainCreateInfoKHR.set_presentMode(this.segment(), index, value); return this; }
+
+        /// {@return `clipped` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int clippedAt(long index) { return VkSwapchainCreateInfoKHR.get_clipped(this.segment(), index); }
+        /// Sets `clipped` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer clippedAt(long index, @CType("VkBool32") int value) { VkSwapchainCreateInfoKHR.set_clipped(this.segment(), index, value); return this; }
+
+        /// {@return `oldSwapchain` at the given index}
+        /// @param index the index
+        public @CType("VkSwapchainKHR") java.lang.foreign.MemorySegment oldSwapchainAt(long index) { return VkSwapchainCreateInfoKHR.get_oldSwapchain(this.segment(), index); }
+        /// Sets `oldSwapchain` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer oldSwapchainAt(long index, @CType("VkSwapchainKHR") java.lang.foreign.MemorySegment value) { VkSwapchainCreateInfoKHR.set_oldSwapchain(this.segment(), index, value); return this; }
+
+    }
 }

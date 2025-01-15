@@ -46,7 +46,7 @@ import overrungl.util.*;
 ///     VkBool32 nullDescriptor;
 /// } VkPhysicalDeviceRobustness2FeaturesEXT;
 /// ```
-public final class VkPhysicalDeviceRobustness2FeaturesEXT extends Struct {
+public sealed class VkPhysicalDeviceRobustness2FeaturesEXT extends Struct {
     /// The struct layout of `VkPhysicalDeviceRobustness2FeaturesEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -76,6 +76,11 @@ public final class VkPhysicalDeviceRobustness2FeaturesEXT extends Struct {
     public static VkPhysicalDeviceRobustness2FeaturesEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceRobustness2FeaturesEXT(segment); }
 
     /// Creates `VkPhysicalDeviceRobustness2FeaturesEXT` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPhysicalDeviceRobustness2FeaturesEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -88,7 +93,7 @@ public final class VkPhysicalDeviceRobustness2FeaturesEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceRobustness2FeaturesEXT ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceRobustness2FeaturesEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceRobustness2FeaturesEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -99,18 +104,21 @@ public final class VkPhysicalDeviceRobustness2FeaturesEXT extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceRobustness2FeaturesEXT`
-    public static VkPhysicalDeviceRobustness2FeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceRobustness2FeaturesEXT(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkPhysicalDeviceRobustness2FeaturesEXT`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDeviceRobustness2FeaturesEXT`
-    public VkPhysicalDeviceRobustness2FeaturesEXT asSlice(long index) { return new VkPhysicalDeviceRobustness2FeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkPhysicalDeviceRobustness2FeaturesEXT` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDeviceRobustness2FeaturesEXT`
+    public static VkPhysicalDeviceRobustness2FeaturesEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int robustBufferAccess2, @CType("VkBool32") int robustImageAccess2, @CType("VkBool32") int nullDescriptor) { return alloc(allocator).sType(sType).pNext(pNext).robustBufferAccess2(robustBufferAccess2).robustImageAccess2(robustImageAccess2).nullDescriptor(nullDescriptor); }
 
-    /// Creates a slice of `VkPhysicalDeviceRobustness2FeaturesEXT`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDeviceRobustness2FeaturesEXT`
-    public VkPhysicalDeviceRobustness2FeaturesEXT asSlice(long index, long count) { return new VkPhysicalDeviceRobustness2FeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDeviceRobustness2FeaturesEXT copyFrom(VkPhysicalDeviceRobustness2FeaturesEXT src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -119,9 +127,6 @@ public final class VkPhysicalDeviceRobustness2FeaturesEXT extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceRobustness2FeaturesEXT.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceRobustness2FeaturesEXT.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPhysicalDeviceRobustness2FeaturesEXT.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -133,11 +138,6 @@ public final class VkPhysicalDeviceRobustness2FeaturesEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceRobustness2FeaturesEXT.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceRobustness2FeaturesEXT sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceRobustness2FeaturesEXT.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,9 +150,6 @@ public final class VkPhysicalDeviceRobustness2FeaturesEXT extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceRobustness2FeaturesEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceRobustness2FeaturesEXT.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceRobustness2FeaturesEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -164,11 +161,6 @@ public final class VkPhysicalDeviceRobustness2FeaturesEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceRobustness2FeaturesEXT.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceRobustness2FeaturesEXT pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceRobustness2FeaturesEXT.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -181,9 +173,6 @@ public final class VkPhysicalDeviceRobustness2FeaturesEXT extends Struct {
     /// {@return `robustBufferAccess2`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_robustBufferAccess2(MemorySegment segment) { return VkPhysicalDeviceRobustness2FeaturesEXT.get_robustBufferAccess2(segment, 0L); }
-    /// {@return `robustBufferAccess2` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int robustBufferAccess2At(long index) { return VkPhysicalDeviceRobustness2FeaturesEXT.get_robustBufferAccess2(this.segment(), index); }
     /// {@return `robustBufferAccess2`}
     public @CType("VkBool32") int robustBufferAccess2() { return VkPhysicalDeviceRobustness2FeaturesEXT.get_robustBufferAccess2(this.segment()); }
     /// Sets `robustBufferAccess2` with the given value at the given index.
@@ -195,11 +184,6 @@ public final class VkPhysicalDeviceRobustness2FeaturesEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_robustBufferAccess2(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceRobustness2FeaturesEXT.set_robustBufferAccess2(segment, 0L, value); }
-    /// Sets `robustBufferAccess2` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceRobustness2FeaturesEXT robustBufferAccess2At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceRobustness2FeaturesEXT.set_robustBufferAccess2(this.segment(), index, value); return this; }
     /// Sets `robustBufferAccess2` with the given value.
     /// @param value the value
     /// @return `this`
@@ -212,9 +196,6 @@ public final class VkPhysicalDeviceRobustness2FeaturesEXT extends Struct {
     /// {@return `robustImageAccess2`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_robustImageAccess2(MemorySegment segment) { return VkPhysicalDeviceRobustness2FeaturesEXT.get_robustImageAccess2(segment, 0L); }
-    /// {@return `robustImageAccess2` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int robustImageAccess2At(long index) { return VkPhysicalDeviceRobustness2FeaturesEXT.get_robustImageAccess2(this.segment(), index); }
     /// {@return `robustImageAccess2`}
     public @CType("VkBool32") int robustImageAccess2() { return VkPhysicalDeviceRobustness2FeaturesEXT.get_robustImageAccess2(this.segment()); }
     /// Sets `robustImageAccess2` with the given value at the given index.
@@ -226,11 +207,6 @@ public final class VkPhysicalDeviceRobustness2FeaturesEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_robustImageAccess2(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceRobustness2FeaturesEXT.set_robustImageAccess2(segment, 0L, value); }
-    /// Sets `robustImageAccess2` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceRobustness2FeaturesEXT robustImageAccess2At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceRobustness2FeaturesEXT.set_robustImageAccess2(this.segment(), index, value); return this; }
     /// Sets `robustImageAccess2` with the given value.
     /// @param value the value
     /// @return `this`
@@ -243,9 +219,6 @@ public final class VkPhysicalDeviceRobustness2FeaturesEXT extends Struct {
     /// {@return `nullDescriptor`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_nullDescriptor(MemorySegment segment) { return VkPhysicalDeviceRobustness2FeaturesEXT.get_nullDescriptor(segment, 0L); }
-    /// {@return `nullDescriptor` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int nullDescriptorAt(long index) { return VkPhysicalDeviceRobustness2FeaturesEXT.get_nullDescriptor(this.segment(), index); }
     /// {@return `nullDescriptor`}
     public @CType("VkBool32") int nullDescriptor() { return VkPhysicalDeviceRobustness2FeaturesEXT.get_nullDescriptor(this.segment()); }
     /// Sets `nullDescriptor` with the given value at the given index.
@@ -257,14 +230,77 @@ public final class VkPhysicalDeviceRobustness2FeaturesEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_nullDescriptor(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceRobustness2FeaturesEXT.set_nullDescriptor(segment, 0L, value); }
-    /// Sets `nullDescriptor` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceRobustness2FeaturesEXT nullDescriptorAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceRobustness2FeaturesEXT.set_nullDescriptor(this.segment(), index, value); return this; }
     /// Sets `nullDescriptor` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceRobustness2FeaturesEXT nullDescriptor(@CType("VkBool32") int value) { VkPhysicalDeviceRobustness2FeaturesEXT.set_nullDescriptor(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDeviceRobustness2FeaturesEXT].
+    public static final class Buffer extends VkPhysicalDeviceRobustness2FeaturesEXT {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDeviceRobustness2FeaturesEXT.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDeviceRobustness2FeaturesEXT`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDeviceRobustness2FeaturesEXT`
+        public VkPhysicalDeviceRobustness2FeaturesEXT asSlice(long index) { return new VkPhysicalDeviceRobustness2FeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDeviceRobustness2FeaturesEXT`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDeviceRobustness2FeaturesEXT`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceRobustness2FeaturesEXT.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceRobustness2FeaturesEXT.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceRobustness2FeaturesEXT.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceRobustness2FeaturesEXT.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `robustBufferAccess2` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int robustBufferAccess2At(long index) { return VkPhysicalDeviceRobustness2FeaturesEXT.get_robustBufferAccess2(this.segment(), index); }
+        /// Sets `robustBufferAccess2` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer robustBufferAccess2At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceRobustness2FeaturesEXT.set_robustBufferAccess2(this.segment(), index, value); return this; }
+
+        /// {@return `robustImageAccess2` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int robustImageAccess2At(long index) { return VkPhysicalDeviceRobustness2FeaturesEXT.get_robustImageAccess2(this.segment(), index); }
+        /// Sets `robustImageAccess2` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer robustImageAccess2At(long index, @CType("VkBool32") int value) { VkPhysicalDeviceRobustness2FeaturesEXT.set_robustImageAccess2(this.segment(), index, value); return this; }
+
+        /// {@return `nullDescriptor` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int nullDescriptorAt(long index) { return VkPhysicalDeviceRobustness2FeaturesEXT.get_nullDescriptor(this.segment(), index); }
+        /// Sets `nullDescriptor` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer nullDescriptorAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceRobustness2FeaturesEXT.set_nullDescriptor(this.segment(), index, value); return this; }
+
+    }
 }

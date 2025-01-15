@@ -46,7 +46,7 @@ import overrungl.util.*;
 ///     VkExtent3D extent;
 /// } VkImageResolve;
 /// ```
-public final class VkImageResolve extends Struct {
+public sealed class VkImageResolve extends Struct {
     /// The struct layout of `VkImageResolve`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.struct.VkImageSubresourceLayers.LAYOUT.withName("srcSubresource"),
@@ -86,6 +86,11 @@ public final class VkImageResolve extends Struct {
     public static VkImageResolve of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkImageResolve(segment); }
 
     /// Creates `VkImageResolve` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkImageResolve` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -98,7 +103,7 @@ public final class VkImageResolve extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkImageResolve ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkImageResolve(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkImageResolve` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -109,18 +114,21 @@ public final class VkImageResolve extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkImageResolve`
-    public static VkImageResolve alloc(SegmentAllocator allocator, long count) { return new VkImageResolve(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkImageResolve`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkImageResolve`
-    public VkImageResolve asSlice(long index) { return new VkImageResolve(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkImageResolve` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkImageResolve`
+    public static VkImageResolve allocInit(SegmentAllocator allocator, @CType("VkImageSubresourceLayers") java.lang.foreign.MemorySegment srcSubresource, @CType("VkOffset3D") java.lang.foreign.MemorySegment srcOffset, @CType("VkImageSubresourceLayers") java.lang.foreign.MemorySegment dstSubresource, @CType("VkOffset3D") java.lang.foreign.MemorySegment dstOffset, @CType("VkExtent3D") java.lang.foreign.MemorySegment extent) { return alloc(allocator).srcSubresource(srcSubresource).srcOffset(srcOffset).dstSubresource(dstSubresource).dstOffset(dstOffset).extent(extent); }
 
-    /// Creates a slice of `VkImageResolve`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkImageResolve`
-    public VkImageResolve asSlice(long index, long count) { return new VkImageResolve(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkImageResolve copyFrom(VkImageResolve src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `srcSubresource` at the given index}
     /// @param segment the segment of the struct
@@ -129,9 +137,6 @@ public final class VkImageResolve extends Struct {
     /// {@return `srcSubresource`}
     /// @param segment the segment of the struct
     public static @CType("VkImageSubresourceLayers") java.lang.foreign.MemorySegment get_srcSubresource(MemorySegment segment) { return VkImageResolve.get_srcSubresource(segment, 0L); }
-    /// {@return `srcSubresource` at the given index}
-    /// @param index the index
-    public @CType("VkImageSubresourceLayers") java.lang.foreign.MemorySegment srcSubresourceAt(long index) { return VkImageResolve.get_srcSubresource(this.segment(), index); }
     /// {@return `srcSubresource`}
     public @CType("VkImageSubresourceLayers") java.lang.foreign.MemorySegment srcSubresource() { return VkImageResolve.get_srcSubresource(this.segment()); }
     /// Sets `srcSubresource` with the given value at the given index.
@@ -143,11 +148,6 @@ public final class VkImageResolve extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_srcSubresource(MemorySegment segment, @CType("VkImageSubresourceLayers") java.lang.foreign.MemorySegment value) { VkImageResolve.set_srcSubresource(segment, 0L, value); }
-    /// Sets `srcSubresource` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageResolve srcSubresourceAt(long index, @CType("VkImageSubresourceLayers") java.lang.foreign.MemorySegment value) { VkImageResolve.set_srcSubresource(this.segment(), index, value); return this; }
     /// Sets `srcSubresource` with the given value.
     /// @param value the value
     /// @return `this`
@@ -160,9 +160,6 @@ public final class VkImageResolve extends Struct {
     /// {@return `srcOffset`}
     /// @param segment the segment of the struct
     public static @CType("VkOffset3D") java.lang.foreign.MemorySegment get_srcOffset(MemorySegment segment) { return VkImageResolve.get_srcOffset(segment, 0L); }
-    /// {@return `srcOffset` at the given index}
-    /// @param index the index
-    public @CType("VkOffset3D") java.lang.foreign.MemorySegment srcOffsetAt(long index) { return VkImageResolve.get_srcOffset(this.segment(), index); }
     /// {@return `srcOffset`}
     public @CType("VkOffset3D") java.lang.foreign.MemorySegment srcOffset() { return VkImageResolve.get_srcOffset(this.segment()); }
     /// Sets `srcOffset` with the given value at the given index.
@@ -174,11 +171,6 @@ public final class VkImageResolve extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_srcOffset(MemorySegment segment, @CType("VkOffset3D") java.lang.foreign.MemorySegment value) { VkImageResolve.set_srcOffset(segment, 0L, value); }
-    /// Sets `srcOffset` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageResolve srcOffsetAt(long index, @CType("VkOffset3D") java.lang.foreign.MemorySegment value) { VkImageResolve.set_srcOffset(this.segment(), index, value); return this; }
     /// Sets `srcOffset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -191,9 +183,6 @@ public final class VkImageResolve extends Struct {
     /// {@return `dstSubresource`}
     /// @param segment the segment of the struct
     public static @CType("VkImageSubresourceLayers") java.lang.foreign.MemorySegment get_dstSubresource(MemorySegment segment) { return VkImageResolve.get_dstSubresource(segment, 0L); }
-    /// {@return `dstSubresource` at the given index}
-    /// @param index the index
-    public @CType("VkImageSubresourceLayers") java.lang.foreign.MemorySegment dstSubresourceAt(long index) { return VkImageResolve.get_dstSubresource(this.segment(), index); }
     /// {@return `dstSubresource`}
     public @CType("VkImageSubresourceLayers") java.lang.foreign.MemorySegment dstSubresource() { return VkImageResolve.get_dstSubresource(this.segment()); }
     /// Sets `dstSubresource` with the given value at the given index.
@@ -205,11 +194,6 @@ public final class VkImageResolve extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_dstSubresource(MemorySegment segment, @CType("VkImageSubresourceLayers") java.lang.foreign.MemorySegment value) { VkImageResolve.set_dstSubresource(segment, 0L, value); }
-    /// Sets `dstSubresource` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageResolve dstSubresourceAt(long index, @CType("VkImageSubresourceLayers") java.lang.foreign.MemorySegment value) { VkImageResolve.set_dstSubresource(this.segment(), index, value); return this; }
     /// Sets `dstSubresource` with the given value.
     /// @param value the value
     /// @return `this`
@@ -222,9 +206,6 @@ public final class VkImageResolve extends Struct {
     /// {@return `dstOffset`}
     /// @param segment the segment of the struct
     public static @CType("VkOffset3D") java.lang.foreign.MemorySegment get_dstOffset(MemorySegment segment) { return VkImageResolve.get_dstOffset(segment, 0L); }
-    /// {@return `dstOffset` at the given index}
-    /// @param index the index
-    public @CType("VkOffset3D") java.lang.foreign.MemorySegment dstOffsetAt(long index) { return VkImageResolve.get_dstOffset(this.segment(), index); }
     /// {@return `dstOffset`}
     public @CType("VkOffset3D") java.lang.foreign.MemorySegment dstOffset() { return VkImageResolve.get_dstOffset(this.segment()); }
     /// Sets `dstOffset` with the given value at the given index.
@@ -236,11 +217,6 @@ public final class VkImageResolve extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_dstOffset(MemorySegment segment, @CType("VkOffset3D") java.lang.foreign.MemorySegment value) { VkImageResolve.set_dstOffset(segment, 0L, value); }
-    /// Sets `dstOffset` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageResolve dstOffsetAt(long index, @CType("VkOffset3D") java.lang.foreign.MemorySegment value) { VkImageResolve.set_dstOffset(this.segment(), index, value); return this; }
     /// Sets `dstOffset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -253,9 +229,6 @@ public final class VkImageResolve extends Struct {
     /// {@return `extent`}
     /// @param segment the segment of the struct
     public static @CType("VkExtent3D") java.lang.foreign.MemorySegment get_extent(MemorySegment segment) { return VkImageResolve.get_extent(segment, 0L); }
-    /// {@return `extent` at the given index}
-    /// @param index the index
-    public @CType("VkExtent3D") java.lang.foreign.MemorySegment extentAt(long index) { return VkImageResolve.get_extent(this.segment(), index); }
     /// {@return `extent`}
     public @CType("VkExtent3D") java.lang.foreign.MemorySegment extent() { return VkImageResolve.get_extent(this.segment()); }
     /// Sets `extent` with the given value at the given index.
@@ -267,14 +240,77 @@ public final class VkImageResolve extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_extent(MemorySegment segment, @CType("VkExtent3D") java.lang.foreign.MemorySegment value) { VkImageResolve.set_extent(segment, 0L, value); }
-    /// Sets `extent` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImageResolve extentAt(long index, @CType("VkExtent3D") java.lang.foreign.MemorySegment value) { VkImageResolve.set_extent(this.segment(), index, value); return this; }
     /// Sets `extent` with the given value.
     /// @param value the value
     /// @return `this`
     public VkImageResolve extent(@CType("VkExtent3D") java.lang.foreign.MemorySegment value) { VkImageResolve.set_extent(this.segment(), value); return this; }
 
+    /// A buffer of [VkImageResolve].
+    public static final class Buffer extends VkImageResolve {
+        private final long elementCount;
+
+        /// Creates `VkImageResolve.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkImageResolve`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkImageResolve`
+        public VkImageResolve asSlice(long index) { return new VkImageResolve(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkImageResolve`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkImageResolve`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `srcSubresource` at the given index}
+        /// @param index the index
+        public @CType("VkImageSubresourceLayers") java.lang.foreign.MemorySegment srcSubresourceAt(long index) { return VkImageResolve.get_srcSubresource(this.segment(), index); }
+        /// Sets `srcSubresource` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer srcSubresourceAt(long index, @CType("VkImageSubresourceLayers") java.lang.foreign.MemorySegment value) { VkImageResolve.set_srcSubresource(this.segment(), index, value); return this; }
+
+        /// {@return `srcOffset` at the given index}
+        /// @param index the index
+        public @CType("VkOffset3D") java.lang.foreign.MemorySegment srcOffsetAt(long index) { return VkImageResolve.get_srcOffset(this.segment(), index); }
+        /// Sets `srcOffset` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer srcOffsetAt(long index, @CType("VkOffset3D") java.lang.foreign.MemorySegment value) { VkImageResolve.set_srcOffset(this.segment(), index, value); return this; }
+
+        /// {@return `dstSubresource` at the given index}
+        /// @param index the index
+        public @CType("VkImageSubresourceLayers") java.lang.foreign.MemorySegment dstSubresourceAt(long index) { return VkImageResolve.get_dstSubresource(this.segment(), index); }
+        /// Sets `dstSubresource` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer dstSubresourceAt(long index, @CType("VkImageSubresourceLayers") java.lang.foreign.MemorySegment value) { VkImageResolve.set_dstSubresource(this.segment(), index, value); return this; }
+
+        /// {@return `dstOffset` at the given index}
+        /// @param index the index
+        public @CType("VkOffset3D") java.lang.foreign.MemorySegment dstOffsetAt(long index) { return VkImageResolve.get_dstOffset(this.segment(), index); }
+        /// Sets `dstOffset` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer dstOffsetAt(long index, @CType("VkOffset3D") java.lang.foreign.MemorySegment value) { VkImageResolve.set_dstOffset(this.segment(), index, value); return this; }
+
+        /// {@return `extent` at the given index}
+        /// @param index the index
+        public @CType("VkExtent3D") java.lang.foreign.MemorySegment extentAt(long index) { return VkImageResolve.get_extent(this.segment(), index); }
+        /// Sets `extent` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer extentAt(long index, @CType("VkExtent3D") java.lang.foreign.MemorySegment value) { VkImageResolve.set_extent(this.segment(), index, value); return this; }
+
+    }
 }

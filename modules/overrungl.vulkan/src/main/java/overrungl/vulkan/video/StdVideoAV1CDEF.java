@@ -49,7 +49,7 @@ import overrungl.util.*;
 ///     uint8_t [ ] cdef_uv_sec_strength;
 /// } StdVideoAV1CDEF;
 /// ```
-public final class StdVideoAV1CDEF extends Struct {
+public sealed class StdVideoAV1CDEF extends Struct {
     /// The struct layout of `StdVideoAV1CDEF`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_BYTE.withName("cdef_damping_minus_3"),
@@ -82,6 +82,11 @@ public final class StdVideoAV1CDEF extends Struct {
     public static StdVideoAV1CDEF of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoAV1CDEF(segment); }
 
     /// Creates `StdVideoAV1CDEF` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `StdVideoAV1CDEF` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -94,7 +99,7 @@ public final class StdVideoAV1CDEF extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoAV1CDEF ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoAV1CDEF(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `StdVideoAV1CDEF` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -105,18 +110,21 @@ public final class StdVideoAV1CDEF extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `StdVideoAV1CDEF`
-    public static StdVideoAV1CDEF alloc(SegmentAllocator allocator, long count) { return new StdVideoAV1CDEF(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `StdVideoAV1CDEF`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `StdVideoAV1CDEF`
-    public StdVideoAV1CDEF asSlice(long index) { return new StdVideoAV1CDEF(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `StdVideoAV1CDEF` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `StdVideoAV1CDEF`
+    public static StdVideoAV1CDEF allocInit(SegmentAllocator allocator, @CType("uint8_t") byte cdef_damping_minus_3, @CType("uint8_t") byte cdef_bits, @CType("uint8_t [ ]") byte cdef_y_pri_strength, @CType("uint8_t [ ]") byte cdef_y_sec_strength, @CType("uint8_t [ ]") byte cdef_uv_pri_strength, @CType("uint8_t [ ]") byte cdef_uv_sec_strength) { return alloc(allocator).cdef_damping_minus_3(cdef_damping_minus_3).cdef_bits(cdef_bits).cdef_y_pri_strength(cdef_y_pri_strength).cdef_y_sec_strength(cdef_y_sec_strength).cdef_uv_pri_strength(cdef_uv_pri_strength).cdef_uv_sec_strength(cdef_uv_sec_strength); }
 
-    /// Creates a slice of `StdVideoAV1CDEF`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `StdVideoAV1CDEF`
-    public StdVideoAV1CDEF asSlice(long index, long count) { return new StdVideoAV1CDEF(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public StdVideoAV1CDEF copyFrom(StdVideoAV1CDEF src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `cdef_damping_minus_3` at the given index}
     /// @param segment the segment of the struct
@@ -125,9 +133,6 @@ public final class StdVideoAV1CDEF extends Struct {
     /// {@return `cdef_damping_minus_3`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t") byte get_cdef_damping_minus_3(MemorySegment segment) { return StdVideoAV1CDEF.get_cdef_damping_minus_3(segment, 0L); }
-    /// {@return `cdef_damping_minus_3` at the given index}
-    /// @param index the index
-    public @CType("uint8_t") byte cdef_damping_minus_3At(long index) { return StdVideoAV1CDEF.get_cdef_damping_minus_3(this.segment(), index); }
     /// {@return `cdef_damping_minus_3`}
     public @CType("uint8_t") byte cdef_damping_minus_3() { return StdVideoAV1CDEF.get_cdef_damping_minus_3(this.segment()); }
     /// Sets `cdef_damping_minus_3` with the given value at the given index.
@@ -139,11 +144,6 @@ public final class StdVideoAV1CDEF extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_cdef_damping_minus_3(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoAV1CDEF.set_cdef_damping_minus_3(segment, 0L, value); }
-    /// Sets `cdef_damping_minus_3` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1CDEF cdef_damping_minus_3At(long index, @CType("uint8_t") byte value) { StdVideoAV1CDEF.set_cdef_damping_minus_3(this.segment(), index, value); return this; }
     /// Sets `cdef_damping_minus_3` with the given value.
     /// @param value the value
     /// @return `this`
@@ -156,9 +156,6 @@ public final class StdVideoAV1CDEF extends Struct {
     /// {@return `cdef_bits`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t") byte get_cdef_bits(MemorySegment segment) { return StdVideoAV1CDEF.get_cdef_bits(segment, 0L); }
-    /// {@return `cdef_bits` at the given index}
-    /// @param index the index
-    public @CType("uint8_t") byte cdef_bitsAt(long index) { return StdVideoAV1CDEF.get_cdef_bits(this.segment(), index); }
     /// {@return `cdef_bits`}
     public @CType("uint8_t") byte cdef_bits() { return StdVideoAV1CDEF.get_cdef_bits(this.segment()); }
     /// Sets `cdef_bits` with the given value at the given index.
@@ -170,11 +167,6 @@ public final class StdVideoAV1CDEF extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_cdef_bits(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoAV1CDEF.set_cdef_bits(segment, 0L, value); }
-    /// Sets `cdef_bits` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1CDEF cdef_bitsAt(long index, @CType("uint8_t") byte value) { StdVideoAV1CDEF.set_cdef_bits(this.segment(), index, value); return this; }
     /// Sets `cdef_bits` with the given value.
     /// @param value the value
     /// @return `this`
@@ -187,9 +179,6 @@ public final class StdVideoAV1CDEF extends Struct {
     /// {@return `cdef_y_pri_strength`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t [ ]") byte get_cdef_y_pri_strength(MemorySegment segment) { return StdVideoAV1CDEF.get_cdef_y_pri_strength(segment, 0L); }
-    /// {@return `cdef_y_pri_strength` at the given index}
-    /// @param index the index
-    public @CType("uint8_t [ ]") byte cdef_y_pri_strengthAt(long index) { return StdVideoAV1CDEF.get_cdef_y_pri_strength(this.segment(), index); }
     /// {@return `cdef_y_pri_strength`}
     public @CType("uint8_t [ ]") byte cdef_y_pri_strength() { return StdVideoAV1CDEF.get_cdef_y_pri_strength(this.segment()); }
     /// Sets `cdef_y_pri_strength` with the given value at the given index.
@@ -201,11 +190,6 @@ public final class StdVideoAV1CDEF extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_cdef_y_pri_strength(MemorySegment segment, @CType("uint8_t [ ]") byte value) { StdVideoAV1CDEF.set_cdef_y_pri_strength(segment, 0L, value); }
-    /// Sets `cdef_y_pri_strength` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1CDEF cdef_y_pri_strengthAt(long index, @CType("uint8_t [ ]") byte value) { StdVideoAV1CDEF.set_cdef_y_pri_strength(this.segment(), index, value); return this; }
     /// Sets `cdef_y_pri_strength` with the given value.
     /// @param value the value
     /// @return `this`
@@ -218,9 +202,6 @@ public final class StdVideoAV1CDEF extends Struct {
     /// {@return `cdef_y_sec_strength`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t [ ]") byte get_cdef_y_sec_strength(MemorySegment segment) { return StdVideoAV1CDEF.get_cdef_y_sec_strength(segment, 0L); }
-    /// {@return `cdef_y_sec_strength` at the given index}
-    /// @param index the index
-    public @CType("uint8_t [ ]") byte cdef_y_sec_strengthAt(long index) { return StdVideoAV1CDEF.get_cdef_y_sec_strength(this.segment(), index); }
     /// {@return `cdef_y_sec_strength`}
     public @CType("uint8_t [ ]") byte cdef_y_sec_strength() { return StdVideoAV1CDEF.get_cdef_y_sec_strength(this.segment()); }
     /// Sets `cdef_y_sec_strength` with the given value at the given index.
@@ -232,11 +213,6 @@ public final class StdVideoAV1CDEF extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_cdef_y_sec_strength(MemorySegment segment, @CType("uint8_t [ ]") byte value) { StdVideoAV1CDEF.set_cdef_y_sec_strength(segment, 0L, value); }
-    /// Sets `cdef_y_sec_strength` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1CDEF cdef_y_sec_strengthAt(long index, @CType("uint8_t [ ]") byte value) { StdVideoAV1CDEF.set_cdef_y_sec_strength(this.segment(), index, value); return this; }
     /// Sets `cdef_y_sec_strength` with the given value.
     /// @param value the value
     /// @return `this`
@@ -249,9 +225,6 @@ public final class StdVideoAV1CDEF extends Struct {
     /// {@return `cdef_uv_pri_strength`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t [ ]") byte get_cdef_uv_pri_strength(MemorySegment segment) { return StdVideoAV1CDEF.get_cdef_uv_pri_strength(segment, 0L); }
-    /// {@return `cdef_uv_pri_strength` at the given index}
-    /// @param index the index
-    public @CType("uint8_t [ ]") byte cdef_uv_pri_strengthAt(long index) { return StdVideoAV1CDEF.get_cdef_uv_pri_strength(this.segment(), index); }
     /// {@return `cdef_uv_pri_strength`}
     public @CType("uint8_t [ ]") byte cdef_uv_pri_strength() { return StdVideoAV1CDEF.get_cdef_uv_pri_strength(this.segment()); }
     /// Sets `cdef_uv_pri_strength` with the given value at the given index.
@@ -263,11 +236,6 @@ public final class StdVideoAV1CDEF extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_cdef_uv_pri_strength(MemorySegment segment, @CType("uint8_t [ ]") byte value) { StdVideoAV1CDEF.set_cdef_uv_pri_strength(segment, 0L, value); }
-    /// Sets `cdef_uv_pri_strength` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1CDEF cdef_uv_pri_strengthAt(long index, @CType("uint8_t [ ]") byte value) { StdVideoAV1CDEF.set_cdef_uv_pri_strength(this.segment(), index, value); return this; }
     /// Sets `cdef_uv_pri_strength` with the given value.
     /// @param value the value
     /// @return `this`
@@ -280,9 +248,6 @@ public final class StdVideoAV1CDEF extends Struct {
     /// {@return `cdef_uv_sec_strength`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t [ ]") byte get_cdef_uv_sec_strength(MemorySegment segment) { return StdVideoAV1CDEF.get_cdef_uv_sec_strength(segment, 0L); }
-    /// {@return `cdef_uv_sec_strength` at the given index}
-    /// @param index the index
-    public @CType("uint8_t [ ]") byte cdef_uv_sec_strengthAt(long index) { return StdVideoAV1CDEF.get_cdef_uv_sec_strength(this.segment(), index); }
     /// {@return `cdef_uv_sec_strength`}
     public @CType("uint8_t [ ]") byte cdef_uv_sec_strength() { return StdVideoAV1CDEF.get_cdef_uv_sec_strength(this.segment()); }
     /// Sets `cdef_uv_sec_strength` with the given value at the given index.
@@ -294,14 +259,86 @@ public final class StdVideoAV1CDEF extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_cdef_uv_sec_strength(MemorySegment segment, @CType("uint8_t [ ]") byte value) { StdVideoAV1CDEF.set_cdef_uv_sec_strength(segment, 0L, value); }
-    /// Sets `cdef_uv_sec_strength` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1CDEF cdef_uv_sec_strengthAt(long index, @CType("uint8_t [ ]") byte value) { StdVideoAV1CDEF.set_cdef_uv_sec_strength(this.segment(), index, value); return this; }
     /// Sets `cdef_uv_sec_strength` with the given value.
     /// @param value the value
     /// @return `this`
     public StdVideoAV1CDEF cdef_uv_sec_strength(@CType("uint8_t [ ]") byte value) { StdVideoAV1CDEF.set_cdef_uv_sec_strength(this.segment(), value); return this; }
 
+    /// A buffer of [StdVideoAV1CDEF].
+    public static final class Buffer extends StdVideoAV1CDEF {
+        private final long elementCount;
+
+        /// Creates `StdVideoAV1CDEF.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `StdVideoAV1CDEF`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `StdVideoAV1CDEF`
+        public StdVideoAV1CDEF asSlice(long index) { return new StdVideoAV1CDEF(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `StdVideoAV1CDEF`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `StdVideoAV1CDEF`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `cdef_damping_minus_3` at the given index}
+        /// @param index the index
+        public @CType("uint8_t") byte cdef_damping_minus_3At(long index) { return StdVideoAV1CDEF.get_cdef_damping_minus_3(this.segment(), index); }
+        /// Sets `cdef_damping_minus_3` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer cdef_damping_minus_3At(long index, @CType("uint8_t") byte value) { StdVideoAV1CDEF.set_cdef_damping_minus_3(this.segment(), index, value); return this; }
+
+        /// {@return `cdef_bits` at the given index}
+        /// @param index the index
+        public @CType("uint8_t") byte cdef_bitsAt(long index) { return StdVideoAV1CDEF.get_cdef_bits(this.segment(), index); }
+        /// Sets `cdef_bits` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer cdef_bitsAt(long index, @CType("uint8_t") byte value) { StdVideoAV1CDEF.set_cdef_bits(this.segment(), index, value); return this; }
+
+        /// {@return `cdef_y_pri_strength` at the given index}
+        /// @param index the index
+        public @CType("uint8_t [ ]") byte cdef_y_pri_strengthAt(long index) { return StdVideoAV1CDEF.get_cdef_y_pri_strength(this.segment(), index); }
+        /// Sets `cdef_y_pri_strength` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer cdef_y_pri_strengthAt(long index, @CType("uint8_t [ ]") byte value) { StdVideoAV1CDEF.set_cdef_y_pri_strength(this.segment(), index, value); return this; }
+
+        /// {@return `cdef_y_sec_strength` at the given index}
+        /// @param index the index
+        public @CType("uint8_t [ ]") byte cdef_y_sec_strengthAt(long index) { return StdVideoAV1CDEF.get_cdef_y_sec_strength(this.segment(), index); }
+        /// Sets `cdef_y_sec_strength` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer cdef_y_sec_strengthAt(long index, @CType("uint8_t [ ]") byte value) { StdVideoAV1CDEF.set_cdef_y_sec_strength(this.segment(), index, value); return this; }
+
+        /// {@return `cdef_uv_pri_strength` at the given index}
+        /// @param index the index
+        public @CType("uint8_t [ ]") byte cdef_uv_pri_strengthAt(long index) { return StdVideoAV1CDEF.get_cdef_uv_pri_strength(this.segment(), index); }
+        /// Sets `cdef_uv_pri_strength` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer cdef_uv_pri_strengthAt(long index, @CType("uint8_t [ ]") byte value) { StdVideoAV1CDEF.set_cdef_uv_pri_strength(this.segment(), index, value); return this; }
+
+        /// {@return `cdef_uv_sec_strength` at the given index}
+        /// @param index the index
+        public @CType("uint8_t [ ]") byte cdef_uv_sec_strengthAt(long index) { return StdVideoAV1CDEF.get_cdef_uv_sec_strength(this.segment(), index); }
+        /// Sets `cdef_uv_sec_strength` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer cdef_uv_sec_strengthAt(long index, @CType("uint8_t [ ]") byte value) { StdVideoAV1CDEF.set_cdef_uv_sec_strength(this.segment(), index, value); return this; }
+
+    }
 }

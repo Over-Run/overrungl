@@ -8,6 +8,36 @@
 [![Java CI with Gradle](https://github.com/Over-Run/overrungl/actions/workflows/gradle.yml/badge.svg?event=push)](https://github.com/Over-Run/overrungl/actions/workflows/gradle.yml)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/8279/badge)](https://www.bestpractices.dev/projects/8279)
 
+## Overview
+
+```java
+void main() {
+    // invoke native functions via static methods
+    glfwInit();
+    // use MemorySegment to represent memory addresses
+    MemorySegment window = glfwCreateWindow(...);
+    
+    int width, height;
+    // use MemoryStack for one-time and quick allocation
+    try (var stack = MemoryStack.pushLocal()) {
+        // use SegmentAllocator to allocate memory
+        var pWidth = stack.allocate(ValueLayout.JAVA_INT);
+        var pHeight = stack.allocate(ValueLayout.JAVA_INT);
+        
+        glfwGetFramebufferSize(window, pWidth, pHeight);
+        
+        // use accessors in MemorySegment to read and write memory
+        width = pWidth.get(ValueLayout.JAVA_INT, 0L);
+        height = pHeight.get(ValueLayout.JAVA_INT, 0L);
+    }
+    
+    // for OpenGL and Vulkan, create instances of wrappers
+    var gl = new GL(GLFW::glfwGetProcAddress);
+    // invoke OpenGL/Vulkan functions via instance methods
+    gl.ClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+}
+```
+
 ## Introduction
 
 Overrun Game Library is a high-performance library implemented with Java 23,

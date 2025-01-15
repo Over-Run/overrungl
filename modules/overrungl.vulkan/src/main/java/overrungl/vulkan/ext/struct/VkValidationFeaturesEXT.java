@@ -49,7 +49,7 @@ import overrungl.util.*;
 ///     const VkValidationFeatureDisableEXT * pDisabledValidationFeatures;
 /// } VkValidationFeaturesEXT;
 /// ```
-public final class VkValidationFeaturesEXT extends Struct {
+public sealed class VkValidationFeaturesEXT extends Struct {
     /// The struct layout of `VkValidationFeaturesEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -82,6 +82,11 @@ public final class VkValidationFeaturesEXT extends Struct {
     public static VkValidationFeaturesEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkValidationFeaturesEXT(segment); }
 
     /// Creates `VkValidationFeaturesEXT` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkValidationFeaturesEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -94,7 +99,7 @@ public final class VkValidationFeaturesEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkValidationFeaturesEXT ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkValidationFeaturesEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkValidationFeaturesEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -105,18 +110,21 @@ public final class VkValidationFeaturesEXT extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkValidationFeaturesEXT`
-    public static VkValidationFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkValidationFeaturesEXT(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkValidationFeaturesEXT`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkValidationFeaturesEXT`
-    public VkValidationFeaturesEXT asSlice(long index) { return new VkValidationFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkValidationFeaturesEXT` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkValidationFeaturesEXT`
+    public static VkValidationFeaturesEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int enabledValidationFeatureCount, @CType("const VkValidationFeatureEnableEXT *") java.lang.foreign.MemorySegment pEnabledValidationFeatures, @CType("uint32_t") int disabledValidationFeatureCount, @CType("const VkValidationFeatureDisableEXT *") java.lang.foreign.MemorySegment pDisabledValidationFeatures) { return alloc(allocator).sType(sType).pNext(pNext).enabledValidationFeatureCount(enabledValidationFeatureCount).pEnabledValidationFeatures(pEnabledValidationFeatures).disabledValidationFeatureCount(disabledValidationFeatureCount).pDisabledValidationFeatures(pDisabledValidationFeatures); }
 
-    /// Creates a slice of `VkValidationFeaturesEXT`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkValidationFeaturesEXT`
-    public VkValidationFeaturesEXT asSlice(long index, long count) { return new VkValidationFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkValidationFeaturesEXT copyFrom(VkValidationFeaturesEXT src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -125,9 +133,6 @@ public final class VkValidationFeaturesEXT extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkValidationFeaturesEXT.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkValidationFeaturesEXT.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkValidationFeaturesEXT.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -139,11 +144,6 @@ public final class VkValidationFeaturesEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkValidationFeaturesEXT.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkValidationFeaturesEXT sTypeAt(long index, @CType("VkStructureType") int value) { VkValidationFeaturesEXT.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -156,9 +156,6 @@ public final class VkValidationFeaturesEXT extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkValidationFeaturesEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkValidationFeaturesEXT.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkValidationFeaturesEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -170,11 +167,6 @@ public final class VkValidationFeaturesEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkValidationFeaturesEXT.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkValidationFeaturesEXT pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkValidationFeaturesEXT.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -187,9 +179,6 @@ public final class VkValidationFeaturesEXT extends Struct {
     /// {@return `enabledValidationFeatureCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_enabledValidationFeatureCount(MemorySegment segment) { return VkValidationFeaturesEXT.get_enabledValidationFeatureCount(segment, 0L); }
-    /// {@return `enabledValidationFeatureCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int enabledValidationFeatureCountAt(long index) { return VkValidationFeaturesEXT.get_enabledValidationFeatureCount(this.segment(), index); }
     /// {@return `enabledValidationFeatureCount`}
     public @CType("uint32_t") int enabledValidationFeatureCount() { return VkValidationFeaturesEXT.get_enabledValidationFeatureCount(this.segment()); }
     /// Sets `enabledValidationFeatureCount` with the given value at the given index.
@@ -201,11 +190,6 @@ public final class VkValidationFeaturesEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_enabledValidationFeatureCount(MemorySegment segment, @CType("uint32_t") int value) { VkValidationFeaturesEXT.set_enabledValidationFeatureCount(segment, 0L, value); }
-    /// Sets `enabledValidationFeatureCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkValidationFeaturesEXT enabledValidationFeatureCountAt(long index, @CType("uint32_t") int value) { VkValidationFeaturesEXT.set_enabledValidationFeatureCount(this.segment(), index, value); return this; }
     /// Sets `enabledValidationFeatureCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -218,9 +202,6 @@ public final class VkValidationFeaturesEXT extends Struct {
     /// {@return `pEnabledValidationFeatures`}
     /// @param segment the segment of the struct
     public static @CType("const VkValidationFeatureEnableEXT *") java.lang.foreign.MemorySegment get_pEnabledValidationFeatures(MemorySegment segment) { return VkValidationFeaturesEXT.get_pEnabledValidationFeatures(segment, 0L); }
-    /// {@return `pEnabledValidationFeatures` at the given index}
-    /// @param index the index
-    public @CType("const VkValidationFeatureEnableEXT *") java.lang.foreign.MemorySegment pEnabledValidationFeaturesAt(long index) { return VkValidationFeaturesEXT.get_pEnabledValidationFeatures(this.segment(), index); }
     /// {@return `pEnabledValidationFeatures`}
     public @CType("const VkValidationFeatureEnableEXT *") java.lang.foreign.MemorySegment pEnabledValidationFeatures() { return VkValidationFeaturesEXT.get_pEnabledValidationFeatures(this.segment()); }
     /// Sets `pEnabledValidationFeatures` with the given value at the given index.
@@ -232,11 +213,6 @@ public final class VkValidationFeaturesEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pEnabledValidationFeatures(MemorySegment segment, @CType("const VkValidationFeatureEnableEXT *") java.lang.foreign.MemorySegment value) { VkValidationFeaturesEXT.set_pEnabledValidationFeatures(segment, 0L, value); }
-    /// Sets `pEnabledValidationFeatures` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkValidationFeaturesEXT pEnabledValidationFeaturesAt(long index, @CType("const VkValidationFeatureEnableEXT *") java.lang.foreign.MemorySegment value) { VkValidationFeaturesEXT.set_pEnabledValidationFeatures(this.segment(), index, value); return this; }
     /// Sets `pEnabledValidationFeatures` with the given value.
     /// @param value the value
     /// @return `this`
@@ -249,9 +225,6 @@ public final class VkValidationFeaturesEXT extends Struct {
     /// {@return `disabledValidationFeatureCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_disabledValidationFeatureCount(MemorySegment segment) { return VkValidationFeaturesEXT.get_disabledValidationFeatureCount(segment, 0L); }
-    /// {@return `disabledValidationFeatureCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int disabledValidationFeatureCountAt(long index) { return VkValidationFeaturesEXT.get_disabledValidationFeatureCount(this.segment(), index); }
     /// {@return `disabledValidationFeatureCount`}
     public @CType("uint32_t") int disabledValidationFeatureCount() { return VkValidationFeaturesEXT.get_disabledValidationFeatureCount(this.segment()); }
     /// Sets `disabledValidationFeatureCount` with the given value at the given index.
@@ -263,11 +236,6 @@ public final class VkValidationFeaturesEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_disabledValidationFeatureCount(MemorySegment segment, @CType("uint32_t") int value) { VkValidationFeaturesEXT.set_disabledValidationFeatureCount(segment, 0L, value); }
-    /// Sets `disabledValidationFeatureCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkValidationFeaturesEXT disabledValidationFeatureCountAt(long index, @CType("uint32_t") int value) { VkValidationFeaturesEXT.set_disabledValidationFeatureCount(this.segment(), index, value); return this; }
     /// Sets `disabledValidationFeatureCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -280,9 +248,6 @@ public final class VkValidationFeaturesEXT extends Struct {
     /// {@return `pDisabledValidationFeatures`}
     /// @param segment the segment of the struct
     public static @CType("const VkValidationFeatureDisableEXT *") java.lang.foreign.MemorySegment get_pDisabledValidationFeatures(MemorySegment segment) { return VkValidationFeaturesEXT.get_pDisabledValidationFeatures(segment, 0L); }
-    /// {@return `pDisabledValidationFeatures` at the given index}
-    /// @param index the index
-    public @CType("const VkValidationFeatureDisableEXT *") java.lang.foreign.MemorySegment pDisabledValidationFeaturesAt(long index) { return VkValidationFeaturesEXT.get_pDisabledValidationFeatures(this.segment(), index); }
     /// {@return `pDisabledValidationFeatures`}
     public @CType("const VkValidationFeatureDisableEXT *") java.lang.foreign.MemorySegment pDisabledValidationFeatures() { return VkValidationFeaturesEXT.get_pDisabledValidationFeatures(this.segment()); }
     /// Sets `pDisabledValidationFeatures` with the given value at the given index.
@@ -294,14 +259,86 @@ public final class VkValidationFeaturesEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pDisabledValidationFeatures(MemorySegment segment, @CType("const VkValidationFeatureDisableEXT *") java.lang.foreign.MemorySegment value) { VkValidationFeaturesEXT.set_pDisabledValidationFeatures(segment, 0L, value); }
-    /// Sets `pDisabledValidationFeatures` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkValidationFeaturesEXT pDisabledValidationFeaturesAt(long index, @CType("const VkValidationFeatureDisableEXT *") java.lang.foreign.MemorySegment value) { VkValidationFeaturesEXT.set_pDisabledValidationFeatures(this.segment(), index, value); return this; }
     /// Sets `pDisabledValidationFeatures` with the given value.
     /// @param value the value
     /// @return `this`
     public VkValidationFeaturesEXT pDisabledValidationFeatures(@CType("const VkValidationFeatureDisableEXT *") java.lang.foreign.MemorySegment value) { VkValidationFeaturesEXT.set_pDisabledValidationFeatures(this.segment(), value); return this; }
 
+    /// A buffer of [VkValidationFeaturesEXT].
+    public static final class Buffer extends VkValidationFeaturesEXT {
+        private final long elementCount;
+
+        /// Creates `VkValidationFeaturesEXT.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkValidationFeaturesEXT`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkValidationFeaturesEXT`
+        public VkValidationFeaturesEXT asSlice(long index) { return new VkValidationFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkValidationFeaturesEXT`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkValidationFeaturesEXT`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkValidationFeaturesEXT.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkValidationFeaturesEXT.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkValidationFeaturesEXT.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkValidationFeaturesEXT.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `enabledValidationFeatureCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int enabledValidationFeatureCountAt(long index) { return VkValidationFeaturesEXT.get_enabledValidationFeatureCount(this.segment(), index); }
+        /// Sets `enabledValidationFeatureCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer enabledValidationFeatureCountAt(long index, @CType("uint32_t") int value) { VkValidationFeaturesEXT.set_enabledValidationFeatureCount(this.segment(), index, value); return this; }
+
+        /// {@return `pEnabledValidationFeatures` at the given index}
+        /// @param index the index
+        public @CType("const VkValidationFeatureEnableEXT *") java.lang.foreign.MemorySegment pEnabledValidationFeaturesAt(long index) { return VkValidationFeaturesEXT.get_pEnabledValidationFeatures(this.segment(), index); }
+        /// Sets `pEnabledValidationFeatures` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pEnabledValidationFeaturesAt(long index, @CType("const VkValidationFeatureEnableEXT *") java.lang.foreign.MemorySegment value) { VkValidationFeaturesEXT.set_pEnabledValidationFeatures(this.segment(), index, value); return this; }
+
+        /// {@return `disabledValidationFeatureCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int disabledValidationFeatureCountAt(long index) { return VkValidationFeaturesEXT.get_disabledValidationFeatureCount(this.segment(), index); }
+        /// Sets `disabledValidationFeatureCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer disabledValidationFeatureCountAt(long index, @CType("uint32_t") int value) { VkValidationFeaturesEXT.set_disabledValidationFeatureCount(this.segment(), index, value); return this; }
+
+        /// {@return `pDisabledValidationFeatures` at the given index}
+        /// @param index the index
+        public @CType("const VkValidationFeatureDisableEXT *") java.lang.foreign.MemorySegment pDisabledValidationFeaturesAt(long index) { return VkValidationFeaturesEXT.get_pDisabledValidationFeatures(this.segment(), index); }
+        /// Sets `pDisabledValidationFeatures` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pDisabledValidationFeaturesAt(long index, @CType("const VkValidationFeatureDisableEXT *") java.lang.foreign.MemorySegment value) { VkValidationFeaturesEXT.set_pDisabledValidationFeatures(this.segment(), index, value); return this; }
+
+    }
 }

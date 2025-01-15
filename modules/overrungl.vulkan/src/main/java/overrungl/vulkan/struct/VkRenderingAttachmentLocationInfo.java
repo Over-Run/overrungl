@@ -43,7 +43,7 @@ import overrungl.util.*;
 ///     const uint32_t * pColorAttachmentLocations;
 /// } VkRenderingAttachmentLocationInfo;
 /// ```
-public final class VkRenderingAttachmentLocationInfo extends Struct {
+public sealed class VkRenderingAttachmentLocationInfo extends Struct {
     /// The struct layout of `VkRenderingAttachmentLocationInfo`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -70,6 +70,11 @@ public final class VkRenderingAttachmentLocationInfo extends Struct {
     public static VkRenderingAttachmentLocationInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkRenderingAttachmentLocationInfo(segment); }
 
     /// Creates `VkRenderingAttachmentLocationInfo` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkRenderingAttachmentLocationInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -82,7 +87,7 @@ public final class VkRenderingAttachmentLocationInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkRenderingAttachmentLocationInfo ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkRenderingAttachmentLocationInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkRenderingAttachmentLocationInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -93,18 +98,21 @@ public final class VkRenderingAttachmentLocationInfo extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkRenderingAttachmentLocationInfo`
-    public static VkRenderingAttachmentLocationInfo alloc(SegmentAllocator allocator, long count) { return new VkRenderingAttachmentLocationInfo(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkRenderingAttachmentLocationInfo`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkRenderingAttachmentLocationInfo`
-    public VkRenderingAttachmentLocationInfo asSlice(long index) { return new VkRenderingAttachmentLocationInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkRenderingAttachmentLocationInfo` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkRenderingAttachmentLocationInfo`
+    public static VkRenderingAttachmentLocationInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int colorAttachmentCount, @CType("const uint32_t *") java.lang.foreign.MemorySegment pColorAttachmentLocations) { return alloc(allocator).sType(sType).pNext(pNext).colorAttachmentCount(colorAttachmentCount).pColorAttachmentLocations(pColorAttachmentLocations); }
 
-    /// Creates a slice of `VkRenderingAttachmentLocationInfo`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkRenderingAttachmentLocationInfo`
-    public VkRenderingAttachmentLocationInfo asSlice(long index, long count) { return new VkRenderingAttachmentLocationInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkRenderingAttachmentLocationInfo copyFrom(VkRenderingAttachmentLocationInfo src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -113,9 +121,6 @@ public final class VkRenderingAttachmentLocationInfo extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkRenderingAttachmentLocationInfo.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkRenderingAttachmentLocationInfo.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkRenderingAttachmentLocationInfo.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -127,11 +132,6 @@ public final class VkRenderingAttachmentLocationInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkRenderingAttachmentLocationInfo.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRenderingAttachmentLocationInfo sTypeAt(long index, @CType("VkStructureType") int value) { VkRenderingAttachmentLocationInfo.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -144,9 +144,6 @@ public final class VkRenderingAttachmentLocationInfo extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkRenderingAttachmentLocationInfo.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkRenderingAttachmentLocationInfo.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkRenderingAttachmentLocationInfo.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -158,11 +155,6 @@ public final class VkRenderingAttachmentLocationInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkRenderingAttachmentLocationInfo.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRenderingAttachmentLocationInfo pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkRenderingAttachmentLocationInfo.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -175,9 +167,6 @@ public final class VkRenderingAttachmentLocationInfo extends Struct {
     /// {@return `colorAttachmentCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_colorAttachmentCount(MemorySegment segment) { return VkRenderingAttachmentLocationInfo.get_colorAttachmentCount(segment, 0L); }
-    /// {@return `colorAttachmentCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int colorAttachmentCountAt(long index) { return VkRenderingAttachmentLocationInfo.get_colorAttachmentCount(this.segment(), index); }
     /// {@return `colorAttachmentCount`}
     public @CType("uint32_t") int colorAttachmentCount() { return VkRenderingAttachmentLocationInfo.get_colorAttachmentCount(this.segment()); }
     /// Sets `colorAttachmentCount` with the given value at the given index.
@@ -189,11 +178,6 @@ public final class VkRenderingAttachmentLocationInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_colorAttachmentCount(MemorySegment segment, @CType("uint32_t") int value) { VkRenderingAttachmentLocationInfo.set_colorAttachmentCount(segment, 0L, value); }
-    /// Sets `colorAttachmentCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRenderingAttachmentLocationInfo colorAttachmentCountAt(long index, @CType("uint32_t") int value) { VkRenderingAttachmentLocationInfo.set_colorAttachmentCount(this.segment(), index, value); return this; }
     /// Sets `colorAttachmentCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -206,9 +190,6 @@ public final class VkRenderingAttachmentLocationInfo extends Struct {
     /// {@return `pColorAttachmentLocations`}
     /// @param segment the segment of the struct
     public static @CType("const uint32_t *") java.lang.foreign.MemorySegment get_pColorAttachmentLocations(MemorySegment segment) { return VkRenderingAttachmentLocationInfo.get_pColorAttachmentLocations(segment, 0L); }
-    /// {@return `pColorAttachmentLocations` at the given index}
-    /// @param index the index
-    public @CType("const uint32_t *") java.lang.foreign.MemorySegment pColorAttachmentLocationsAt(long index) { return VkRenderingAttachmentLocationInfo.get_pColorAttachmentLocations(this.segment(), index); }
     /// {@return `pColorAttachmentLocations`}
     public @CType("const uint32_t *") java.lang.foreign.MemorySegment pColorAttachmentLocations() { return VkRenderingAttachmentLocationInfo.get_pColorAttachmentLocations(this.segment()); }
     /// Sets `pColorAttachmentLocations` with the given value at the given index.
@@ -220,14 +201,68 @@ public final class VkRenderingAttachmentLocationInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pColorAttachmentLocations(MemorySegment segment, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkRenderingAttachmentLocationInfo.set_pColorAttachmentLocations(segment, 0L, value); }
-    /// Sets `pColorAttachmentLocations` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRenderingAttachmentLocationInfo pColorAttachmentLocationsAt(long index, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkRenderingAttachmentLocationInfo.set_pColorAttachmentLocations(this.segment(), index, value); return this; }
     /// Sets `pColorAttachmentLocations` with the given value.
     /// @param value the value
     /// @return `this`
     public VkRenderingAttachmentLocationInfo pColorAttachmentLocations(@CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkRenderingAttachmentLocationInfo.set_pColorAttachmentLocations(this.segment(), value); return this; }
 
+    /// A buffer of [VkRenderingAttachmentLocationInfo].
+    public static final class Buffer extends VkRenderingAttachmentLocationInfo {
+        private final long elementCount;
+
+        /// Creates `VkRenderingAttachmentLocationInfo.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkRenderingAttachmentLocationInfo`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkRenderingAttachmentLocationInfo`
+        public VkRenderingAttachmentLocationInfo asSlice(long index) { return new VkRenderingAttachmentLocationInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkRenderingAttachmentLocationInfo`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkRenderingAttachmentLocationInfo`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkRenderingAttachmentLocationInfo.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkRenderingAttachmentLocationInfo.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkRenderingAttachmentLocationInfo.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkRenderingAttachmentLocationInfo.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `colorAttachmentCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int colorAttachmentCountAt(long index) { return VkRenderingAttachmentLocationInfo.get_colorAttachmentCount(this.segment(), index); }
+        /// Sets `colorAttachmentCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer colorAttachmentCountAt(long index, @CType("uint32_t") int value) { VkRenderingAttachmentLocationInfo.set_colorAttachmentCount(this.segment(), index, value); return this; }
+
+        /// {@return `pColorAttachmentLocations` at the given index}
+        /// @param index the index
+        public @CType("const uint32_t *") java.lang.foreign.MemorySegment pColorAttachmentLocationsAt(long index) { return VkRenderingAttachmentLocationInfo.get_pColorAttachmentLocations(this.segment(), index); }
+        /// Sets `pColorAttachmentLocations` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pColorAttachmentLocationsAt(long index, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkRenderingAttachmentLocationInfo.set_pColorAttachmentLocations(this.segment(), index, value); return this; }
+
+    }
 }

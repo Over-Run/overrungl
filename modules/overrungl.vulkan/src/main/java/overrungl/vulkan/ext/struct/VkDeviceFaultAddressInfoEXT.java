@@ -40,7 +40,7 @@ import overrungl.util.*;
 ///     VkDeviceSize addressPrecision;
 /// } VkDeviceFaultAddressInfoEXT;
 /// ```
-public final class VkDeviceFaultAddressInfoEXT extends Struct {
+public sealed class VkDeviceFaultAddressInfoEXT extends Struct {
     /// The struct layout of `VkDeviceFaultAddressInfoEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("addressType"),
@@ -64,6 +64,11 @@ public final class VkDeviceFaultAddressInfoEXT extends Struct {
     public static VkDeviceFaultAddressInfoEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDeviceFaultAddressInfoEXT(segment); }
 
     /// Creates `VkDeviceFaultAddressInfoEXT` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkDeviceFaultAddressInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -76,7 +81,7 @@ public final class VkDeviceFaultAddressInfoEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDeviceFaultAddressInfoEXT ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkDeviceFaultAddressInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkDeviceFaultAddressInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -87,18 +92,21 @@ public final class VkDeviceFaultAddressInfoEXT extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDeviceFaultAddressInfoEXT`
-    public static VkDeviceFaultAddressInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkDeviceFaultAddressInfoEXT(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkDeviceFaultAddressInfoEXT`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkDeviceFaultAddressInfoEXT`
-    public VkDeviceFaultAddressInfoEXT asSlice(long index) { return new VkDeviceFaultAddressInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkDeviceFaultAddressInfoEXT` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkDeviceFaultAddressInfoEXT`
+    public static VkDeviceFaultAddressInfoEXT allocInit(SegmentAllocator allocator, @CType("VkDeviceFaultAddressTypeEXT") int addressType, @CType("VkDeviceAddress") long reportedAddress, @CType("VkDeviceSize") long addressPrecision) { return alloc(allocator).addressType(addressType).reportedAddress(reportedAddress).addressPrecision(addressPrecision); }
 
-    /// Creates a slice of `VkDeviceFaultAddressInfoEXT`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkDeviceFaultAddressInfoEXT`
-    public VkDeviceFaultAddressInfoEXT asSlice(long index, long count) { return new VkDeviceFaultAddressInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkDeviceFaultAddressInfoEXT copyFrom(VkDeviceFaultAddressInfoEXT src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `addressType` at the given index}
     /// @param segment the segment of the struct
@@ -107,9 +115,6 @@ public final class VkDeviceFaultAddressInfoEXT extends Struct {
     /// {@return `addressType`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceFaultAddressTypeEXT") int get_addressType(MemorySegment segment) { return VkDeviceFaultAddressInfoEXT.get_addressType(segment, 0L); }
-    /// {@return `addressType` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceFaultAddressTypeEXT") int addressTypeAt(long index) { return VkDeviceFaultAddressInfoEXT.get_addressType(this.segment(), index); }
     /// {@return `addressType`}
     public @CType("VkDeviceFaultAddressTypeEXT") int addressType() { return VkDeviceFaultAddressInfoEXT.get_addressType(this.segment()); }
     /// Sets `addressType` with the given value at the given index.
@@ -121,11 +126,6 @@ public final class VkDeviceFaultAddressInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_addressType(MemorySegment segment, @CType("VkDeviceFaultAddressTypeEXT") int value) { VkDeviceFaultAddressInfoEXT.set_addressType(segment, 0L, value); }
-    /// Sets `addressType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceFaultAddressInfoEXT addressTypeAt(long index, @CType("VkDeviceFaultAddressTypeEXT") int value) { VkDeviceFaultAddressInfoEXT.set_addressType(this.segment(), index, value); return this; }
     /// Sets `addressType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -138,9 +138,6 @@ public final class VkDeviceFaultAddressInfoEXT extends Struct {
     /// {@return `reportedAddress`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceAddress") long get_reportedAddress(MemorySegment segment) { return VkDeviceFaultAddressInfoEXT.get_reportedAddress(segment, 0L); }
-    /// {@return `reportedAddress` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceAddress") long reportedAddressAt(long index) { return VkDeviceFaultAddressInfoEXT.get_reportedAddress(this.segment(), index); }
     /// {@return `reportedAddress`}
     public @CType("VkDeviceAddress") long reportedAddress() { return VkDeviceFaultAddressInfoEXT.get_reportedAddress(this.segment()); }
     /// Sets `reportedAddress` with the given value at the given index.
@@ -152,11 +149,6 @@ public final class VkDeviceFaultAddressInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_reportedAddress(MemorySegment segment, @CType("VkDeviceAddress") long value) { VkDeviceFaultAddressInfoEXT.set_reportedAddress(segment, 0L, value); }
-    /// Sets `reportedAddress` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceFaultAddressInfoEXT reportedAddressAt(long index, @CType("VkDeviceAddress") long value) { VkDeviceFaultAddressInfoEXT.set_reportedAddress(this.segment(), index, value); return this; }
     /// Sets `reportedAddress` with the given value.
     /// @param value the value
     /// @return `this`
@@ -169,9 +161,6 @@ public final class VkDeviceFaultAddressInfoEXT extends Struct {
     /// {@return `addressPrecision`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_addressPrecision(MemorySegment segment) { return VkDeviceFaultAddressInfoEXT.get_addressPrecision(segment, 0L); }
-    /// {@return `addressPrecision` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long addressPrecisionAt(long index) { return VkDeviceFaultAddressInfoEXT.get_addressPrecision(this.segment(), index); }
     /// {@return `addressPrecision`}
     public @CType("VkDeviceSize") long addressPrecision() { return VkDeviceFaultAddressInfoEXT.get_addressPrecision(this.segment()); }
     /// Sets `addressPrecision` with the given value at the given index.
@@ -183,14 +172,59 @@ public final class VkDeviceFaultAddressInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_addressPrecision(MemorySegment segment, @CType("VkDeviceSize") long value) { VkDeviceFaultAddressInfoEXT.set_addressPrecision(segment, 0L, value); }
-    /// Sets `addressPrecision` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceFaultAddressInfoEXT addressPrecisionAt(long index, @CType("VkDeviceSize") long value) { VkDeviceFaultAddressInfoEXT.set_addressPrecision(this.segment(), index, value); return this; }
     /// Sets `addressPrecision` with the given value.
     /// @param value the value
     /// @return `this`
     public VkDeviceFaultAddressInfoEXT addressPrecision(@CType("VkDeviceSize") long value) { VkDeviceFaultAddressInfoEXT.set_addressPrecision(this.segment(), value); return this; }
 
+    /// A buffer of [VkDeviceFaultAddressInfoEXT].
+    public static final class Buffer extends VkDeviceFaultAddressInfoEXT {
+        private final long elementCount;
+
+        /// Creates `VkDeviceFaultAddressInfoEXT.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkDeviceFaultAddressInfoEXT`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkDeviceFaultAddressInfoEXT`
+        public VkDeviceFaultAddressInfoEXT asSlice(long index) { return new VkDeviceFaultAddressInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkDeviceFaultAddressInfoEXT`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkDeviceFaultAddressInfoEXT`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `addressType` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceFaultAddressTypeEXT") int addressTypeAt(long index) { return VkDeviceFaultAddressInfoEXT.get_addressType(this.segment(), index); }
+        /// Sets `addressType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer addressTypeAt(long index, @CType("VkDeviceFaultAddressTypeEXT") int value) { VkDeviceFaultAddressInfoEXT.set_addressType(this.segment(), index, value); return this; }
+
+        /// {@return `reportedAddress` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceAddress") long reportedAddressAt(long index) { return VkDeviceFaultAddressInfoEXT.get_reportedAddress(this.segment(), index); }
+        /// Sets `reportedAddress` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer reportedAddressAt(long index, @CType("VkDeviceAddress") long value) { VkDeviceFaultAddressInfoEXT.set_reportedAddress(this.segment(), index, value); return this; }
+
+        /// {@return `addressPrecision` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long addressPrecisionAt(long index) { return VkDeviceFaultAddressInfoEXT.get_addressPrecision(this.segment(), index); }
+        /// Sets `addressPrecision` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer addressPrecisionAt(long index, @CType("VkDeviceSize") long value) { VkDeviceFaultAddressInfoEXT.set_addressPrecision(this.segment(), index, value); return this; }
+
+    }
 }

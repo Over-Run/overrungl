@@ -49,7 +49,7 @@ import overrungl.util.*;
 ///     VkDeviceAddressBindingTypeEXT bindingType;
 /// } VkDeviceAddressBindingCallbackDataEXT;
 /// ```
-public final class VkDeviceAddressBindingCallbackDataEXT extends Struct {
+public sealed class VkDeviceAddressBindingCallbackDataEXT extends Struct {
     /// The struct layout of `VkDeviceAddressBindingCallbackDataEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -82,6 +82,11 @@ public final class VkDeviceAddressBindingCallbackDataEXT extends Struct {
     public static VkDeviceAddressBindingCallbackDataEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDeviceAddressBindingCallbackDataEXT(segment); }
 
     /// Creates `VkDeviceAddressBindingCallbackDataEXT` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkDeviceAddressBindingCallbackDataEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -94,7 +99,7 @@ public final class VkDeviceAddressBindingCallbackDataEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDeviceAddressBindingCallbackDataEXT ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkDeviceAddressBindingCallbackDataEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkDeviceAddressBindingCallbackDataEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -105,18 +110,21 @@ public final class VkDeviceAddressBindingCallbackDataEXT extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDeviceAddressBindingCallbackDataEXT`
-    public static VkDeviceAddressBindingCallbackDataEXT alloc(SegmentAllocator allocator, long count) { return new VkDeviceAddressBindingCallbackDataEXT(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkDeviceAddressBindingCallbackDataEXT`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkDeviceAddressBindingCallbackDataEXT`
-    public VkDeviceAddressBindingCallbackDataEXT asSlice(long index) { return new VkDeviceAddressBindingCallbackDataEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkDeviceAddressBindingCallbackDataEXT` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkDeviceAddressBindingCallbackDataEXT`
+    public static VkDeviceAddressBindingCallbackDataEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkDeviceAddressBindingFlagsEXT") int flags, @CType("VkDeviceAddress") long baseAddress, @CType("VkDeviceSize") long size, @CType("VkDeviceAddressBindingTypeEXT") int bindingType) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).baseAddress(baseAddress).size(size).bindingType(bindingType); }
 
-    /// Creates a slice of `VkDeviceAddressBindingCallbackDataEXT`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkDeviceAddressBindingCallbackDataEXT`
-    public VkDeviceAddressBindingCallbackDataEXT asSlice(long index, long count) { return new VkDeviceAddressBindingCallbackDataEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkDeviceAddressBindingCallbackDataEXT copyFrom(VkDeviceAddressBindingCallbackDataEXT src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -125,9 +133,6 @@ public final class VkDeviceAddressBindingCallbackDataEXT extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkDeviceAddressBindingCallbackDataEXT.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkDeviceAddressBindingCallbackDataEXT.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkDeviceAddressBindingCallbackDataEXT.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -139,11 +144,6 @@ public final class VkDeviceAddressBindingCallbackDataEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkDeviceAddressBindingCallbackDataEXT.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceAddressBindingCallbackDataEXT sTypeAt(long index, @CType("VkStructureType") int value) { VkDeviceAddressBindingCallbackDataEXT.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -156,9 +156,6 @@ public final class VkDeviceAddressBindingCallbackDataEXT extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkDeviceAddressBindingCallbackDataEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkDeviceAddressBindingCallbackDataEXT.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkDeviceAddressBindingCallbackDataEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -170,11 +167,6 @@ public final class VkDeviceAddressBindingCallbackDataEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkDeviceAddressBindingCallbackDataEXT.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceAddressBindingCallbackDataEXT pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkDeviceAddressBindingCallbackDataEXT.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -187,9 +179,6 @@ public final class VkDeviceAddressBindingCallbackDataEXT extends Struct {
     /// {@return `flags`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceAddressBindingFlagsEXT") int get_flags(MemorySegment segment) { return VkDeviceAddressBindingCallbackDataEXT.get_flags(segment, 0L); }
-    /// {@return `flags` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceAddressBindingFlagsEXT") int flagsAt(long index) { return VkDeviceAddressBindingCallbackDataEXT.get_flags(this.segment(), index); }
     /// {@return `flags`}
     public @CType("VkDeviceAddressBindingFlagsEXT") int flags() { return VkDeviceAddressBindingCallbackDataEXT.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
@@ -201,11 +190,6 @@ public final class VkDeviceAddressBindingCallbackDataEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_flags(MemorySegment segment, @CType("VkDeviceAddressBindingFlagsEXT") int value) { VkDeviceAddressBindingCallbackDataEXT.set_flags(segment, 0L, value); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceAddressBindingCallbackDataEXT flagsAt(long index, @CType("VkDeviceAddressBindingFlagsEXT") int value) { VkDeviceAddressBindingCallbackDataEXT.set_flags(this.segment(), index, value); return this; }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -218,9 +202,6 @@ public final class VkDeviceAddressBindingCallbackDataEXT extends Struct {
     /// {@return `baseAddress`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceAddress") long get_baseAddress(MemorySegment segment) { return VkDeviceAddressBindingCallbackDataEXT.get_baseAddress(segment, 0L); }
-    /// {@return `baseAddress` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceAddress") long baseAddressAt(long index) { return VkDeviceAddressBindingCallbackDataEXT.get_baseAddress(this.segment(), index); }
     /// {@return `baseAddress`}
     public @CType("VkDeviceAddress") long baseAddress() { return VkDeviceAddressBindingCallbackDataEXT.get_baseAddress(this.segment()); }
     /// Sets `baseAddress` with the given value at the given index.
@@ -232,11 +213,6 @@ public final class VkDeviceAddressBindingCallbackDataEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_baseAddress(MemorySegment segment, @CType("VkDeviceAddress") long value) { VkDeviceAddressBindingCallbackDataEXT.set_baseAddress(segment, 0L, value); }
-    /// Sets `baseAddress` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceAddressBindingCallbackDataEXT baseAddressAt(long index, @CType("VkDeviceAddress") long value) { VkDeviceAddressBindingCallbackDataEXT.set_baseAddress(this.segment(), index, value); return this; }
     /// Sets `baseAddress` with the given value.
     /// @param value the value
     /// @return `this`
@@ -249,9 +225,6 @@ public final class VkDeviceAddressBindingCallbackDataEXT extends Struct {
     /// {@return `size`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_size(MemorySegment segment) { return VkDeviceAddressBindingCallbackDataEXT.get_size(segment, 0L); }
-    /// {@return `size` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long sizeAt(long index) { return VkDeviceAddressBindingCallbackDataEXT.get_size(this.segment(), index); }
     /// {@return `size`}
     public @CType("VkDeviceSize") long size() { return VkDeviceAddressBindingCallbackDataEXT.get_size(this.segment()); }
     /// Sets `size` with the given value at the given index.
@@ -263,11 +236,6 @@ public final class VkDeviceAddressBindingCallbackDataEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_size(MemorySegment segment, @CType("VkDeviceSize") long value) { VkDeviceAddressBindingCallbackDataEXT.set_size(segment, 0L, value); }
-    /// Sets `size` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceAddressBindingCallbackDataEXT sizeAt(long index, @CType("VkDeviceSize") long value) { VkDeviceAddressBindingCallbackDataEXT.set_size(this.segment(), index, value); return this; }
     /// Sets `size` with the given value.
     /// @param value the value
     /// @return `this`
@@ -280,9 +248,6 @@ public final class VkDeviceAddressBindingCallbackDataEXT extends Struct {
     /// {@return `bindingType`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceAddressBindingTypeEXT") int get_bindingType(MemorySegment segment) { return VkDeviceAddressBindingCallbackDataEXT.get_bindingType(segment, 0L); }
-    /// {@return `bindingType` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceAddressBindingTypeEXT") int bindingTypeAt(long index) { return VkDeviceAddressBindingCallbackDataEXT.get_bindingType(this.segment(), index); }
     /// {@return `bindingType`}
     public @CType("VkDeviceAddressBindingTypeEXT") int bindingType() { return VkDeviceAddressBindingCallbackDataEXT.get_bindingType(this.segment()); }
     /// Sets `bindingType` with the given value at the given index.
@@ -294,14 +259,86 @@ public final class VkDeviceAddressBindingCallbackDataEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_bindingType(MemorySegment segment, @CType("VkDeviceAddressBindingTypeEXT") int value) { VkDeviceAddressBindingCallbackDataEXT.set_bindingType(segment, 0L, value); }
-    /// Sets `bindingType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceAddressBindingCallbackDataEXT bindingTypeAt(long index, @CType("VkDeviceAddressBindingTypeEXT") int value) { VkDeviceAddressBindingCallbackDataEXT.set_bindingType(this.segment(), index, value); return this; }
     /// Sets `bindingType` with the given value.
     /// @param value the value
     /// @return `this`
     public VkDeviceAddressBindingCallbackDataEXT bindingType(@CType("VkDeviceAddressBindingTypeEXT") int value) { VkDeviceAddressBindingCallbackDataEXT.set_bindingType(this.segment(), value); return this; }
 
+    /// A buffer of [VkDeviceAddressBindingCallbackDataEXT].
+    public static final class Buffer extends VkDeviceAddressBindingCallbackDataEXT {
+        private final long elementCount;
+
+        /// Creates `VkDeviceAddressBindingCallbackDataEXT.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkDeviceAddressBindingCallbackDataEXT`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkDeviceAddressBindingCallbackDataEXT`
+        public VkDeviceAddressBindingCallbackDataEXT asSlice(long index) { return new VkDeviceAddressBindingCallbackDataEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkDeviceAddressBindingCallbackDataEXT`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkDeviceAddressBindingCallbackDataEXT`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkDeviceAddressBindingCallbackDataEXT.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkDeviceAddressBindingCallbackDataEXT.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkDeviceAddressBindingCallbackDataEXT.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkDeviceAddressBindingCallbackDataEXT.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `flags` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceAddressBindingFlagsEXT") int flagsAt(long index) { return VkDeviceAddressBindingCallbackDataEXT.get_flags(this.segment(), index); }
+        /// Sets `flags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer flagsAt(long index, @CType("VkDeviceAddressBindingFlagsEXT") int value) { VkDeviceAddressBindingCallbackDataEXT.set_flags(this.segment(), index, value); return this; }
+
+        /// {@return `baseAddress` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceAddress") long baseAddressAt(long index) { return VkDeviceAddressBindingCallbackDataEXT.get_baseAddress(this.segment(), index); }
+        /// Sets `baseAddress` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer baseAddressAt(long index, @CType("VkDeviceAddress") long value) { VkDeviceAddressBindingCallbackDataEXT.set_baseAddress(this.segment(), index, value); return this; }
+
+        /// {@return `size` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long sizeAt(long index) { return VkDeviceAddressBindingCallbackDataEXT.get_size(this.segment(), index); }
+        /// Sets `size` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sizeAt(long index, @CType("VkDeviceSize") long value) { VkDeviceAddressBindingCallbackDataEXT.set_size(this.segment(), index, value); return this; }
+
+        /// {@return `bindingType` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceAddressBindingTypeEXT") int bindingTypeAt(long index) { return VkDeviceAddressBindingCallbackDataEXT.get_bindingType(this.segment(), index); }
+        /// Sets `bindingType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer bindingTypeAt(long index, @CType("VkDeviceAddressBindingTypeEXT") int value) { VkDeviceAddressBindingCallbackDataEXT.set_bindingType(this.segment(), index, value); return this; }
+
+    }
 }

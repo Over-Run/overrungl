@@ -37,7 +37,7 @@ import overrungl.util.*;
 ///     VkPerformanceValueDataINTEL data;
 /// } VkPerformanceValueINTEL;
 /// ```
-public final class VkPerformanceValueINTEL extends Struct {
+public sealed class VkPerformanceValueINTEL extends Struct {
     /// The struct layout of `VkPerformanceValueINTEL`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("type"),
@@ -60,6 +60,11 @@ public final class VkPerformanceValueINTEL extends Struct {
     public static VkPerformanceValueINTEL of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPerformanceValueINTEL(segment); }
 
     /// Creates `VkPerformanceValueINTEL` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPerformanceValueINTEL` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -72,7 +77,7 @@ public final class VkPerformanceValueINTEL extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPerformanceValueINTEL ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPerformanceValueINTEL(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPerformanceValueINTEL` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -83,18 +88,21 @@ public final class VkPerformanceValueINTEL extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPerformanceValueINTEL`
-    public static VkPerformanceValueINTEL alloc(SegmentAllocator allocator, long count) { return new VkPerformanceValueINTEL(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkPerformanceValueINTEL`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPerformanceValueINTEL`
-    public VkPerformanceValueINTEL asSlice(long index) { return new VkPerformanceValueINTEL(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkPerformanceValueINTEL` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPerformanceValueINTEL`
+    public static VkPerformanceValueINTEL allocInit(SegmentAllocator allocator, @CType("VkPerformanceValueTypeINTEL") int type, @CType("VkPerformanceValueDataINTEL") java.lang.foreign.MemorySegment data) { return alloc(allocator).type(type).data(data); }
 
-    /// Creates a slice of `VkPerformanceValueINTEL`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPerformanceValueINTEL`
-    public VkPerformanceValueINTEL asSlice(long index, long count) { return new VkPerformanceValueINTEL(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPerformanceValueINTEL copyFrom(VkPerformanceValueINTEL src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `type` at the given index}
     /// @param segment the segment of the struct
@@ -103,9 +111,6 @@ public final class VkPerformanceValueINTEL extends Struct {
     /// {@return `type`}
     /// @param segment the segment of the struct
     public static @CType("VkPerformanceValueTypeINTEL") int get_type(MemorySegment segment) { return VkPerformanceValueINTEL.get_type(segment, 0L); }
-    /// {@return `type` at the given index}
-    /// @param index the index
-    public @CType("VkPerformanceValueTypeINTEL") int typeAt(long index) { return VkPerformanceValueINTEL.get_type(this.segment(), index); }
     /// {@return `type`}
     public @CType("VkPerformanceValueTypeINTEL") int type() { return VkPerformanceValueINTEL.get_type(this.segment()); }
     /// Sets `type` with the given value at the given index.
@@ -117,11 +122,6 @@ public final class VkPerformanceValueINTEL extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_type(MemorySegment segment, @CType("VkPerformanceValueTypeINTEL") int value) { VkPerformanceValueINTEL.set_type(segment, 0L, value); }
-    /// Sets `type` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPerformanceValueINTEL typeAt(long index, @CType("VkPerformanceValueTypeINTEL") int value) { VkPerformanceValueINTEL.set_type(this.segment(), index, value); return this; }
     /// Sets `type` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,9 +134,6 @@ public final class VkPerformanceValueINTEL extends Struct {
     /// {@return `data`}
     /// @param segment the segment of the struct
     public static @CType("VkPerformanceValueDataINTEL") java.lang.foreign.MemorySegment get_data(MemorySegment segment) { return VkPerformanceValueINTEL.get_data(segment, 0L); }
-    /// {@return `data` at the given index}
-    /// @param index the index
-    public @CType("VkPerformanceValueDataINTEL") java.lang.foreign.MemorySegment dataAt(long index) { return VkPerformanceValueINTEL.get_data(this.segment(), index); }
     /// {@return `data`}
     public @CType("VkPerformanceValueDataINTEL") java.lang.foreign.MemorySegment data() { return VkPerformanceValueINTEL.get_data(this.segment()); }
     /// Sets `data` with the given value at the given index.
@@ -148,14 +145,50 @@ public final class VkPerformanceValueINTEL extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_data(MemorySegment segment, @CType("VkPerformanceValueDataINTEL") java.lang.foreign.MemorySegment value) { VkPerformanceValueINTEL.set_data(segment, 0L, value); }
-    /// Sets `data` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPerformanceValueINTEL dataAt(long index, @CType("VkPerformanceValueDataINTEL") java.lang.foreign.MemorySegment value) { VkPerformanceValueINTEL.set_data(this.segment(), index, value); return this; }
     /// Sets `data` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPerformanceValueINTEL data(@CType("VkPerformanceValueDataINTEL") java.lang.foreign.MemorySegment value) { VkPerformanceValueINTEL.set_data(this.segment(), value); return this; }
 
+    /// A buffer of [VkPerformanceValueINTEL].
+    public static final class Buffer extends VkPerformanceValueINTEL {
+        private final long elementCount;
+
+        /// Creates `VkPerformanceValueINTEL.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPerformanceValueINTEL`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPerformanceValueINTEL`
+        public VkPerformanceValueINTEL asSlice(long index) { return new VkPerformanceValueINTEL(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPerformanceValueINTEL`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPerformanceValueINTEL`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `type` at the given index}
+        /// @param index the index
+        public @CType("VkPerformanceValueTypeINTEL") int typeAt(long index) { return VkPerformanceValueINTEL.get_type(this.segment(), index); }
+        /// Sets `type` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer typeAt(long index, @CType("VkPerformanceValueTypeINTEL") int value) { VkPerformanceValueINTEL.set_type(this.segment(), index, value); return this; }
+
+        /// {@return `data` at the given index}
+        /// @param index the index
+        public @CType("VkPerformanceValueDataINTEL") java.lang.foreign.MemorySegment dataAt(long index) { return VkPerformanceValueINTEL.get_data(this.segment(), index); }
+        /// Sets `data` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer dataAt(long index, @CType("VkPerformanceValueDataINTEL") java.lang.foreign.MemorySegment value) { VkPerformanceValueINTEL.set_data(this.segment(), index, value); return this; }
+
+    }
 }

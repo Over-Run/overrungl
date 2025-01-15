@@ -52,7 +52,7 @@ import overrungl.util.*;
 ///     VkImageTiling tiling;
 /// } VkPhysicalDeviceSparseImageFormatInfo2;
 /// ```
-public final class VkPhysicalDeviceSparseImageFormatInfo2 extends Struct {
+public sealed class VkPhysicalDeviceSparseImageFormatInfo2 extends Struct {
     /// The struct layout of `VkPhysicalDeviceSparseImageFormatInfo2`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -88,6 +88,11 @@ public final class VkPhysicalDeviceSparseImageFormatInfo2 extends Struct {
     public static VkPhysicalDeviceSparseImageFormatInfo2 of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceSparseImageFormatInfo2(segment); }
 
     /// Creates `VkPhysicalDeviceSparseImageFormatInfo2` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPhysicalDeviceSparseImageFormatInfo2` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -100,7 +105,7 @@ public final class VkPhysicalDeviceSparseImageFormatInfo2 extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceSparseImageFormatInfo2 ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceSparseImageFormatInfo2(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceSparseImageFormatInfo2` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -111,18 +116,21 @@ public final class VkPhysicalDeviceSparseImageFormatInfo2 extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceSparseImageFormatInfo2`
-    public static VkPhysicalDeviceSparseImageFormatInfo2 alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceSparseImageFormatInfo2(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkPhysicalDeviceSparseImageFormatInfo2`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDeviceSparseImageFormatInfo2`
-    public VkPhysicalDeviceSparseImageFormatInfo2 asSlice(long index) { return new VkPhysicalDeviceSparseImageFormatInfo2(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkPhysicalDeviceSparseImageFormatInfo2` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDeviceSparseImageFormatInfo2`
+    public static VkPhysicalDeviceSparseImageFormatInfo2 allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkFormat") int format, @CType("VkImageType") int type, @CType("VkSampleCountFlagBits") int samples, @CType("VkImageUsageFlags") int usage, @CType("VkImageTiling") int tiling) { return alloc(allocator).sType(sType).pNext(pNext).format(format).type(type).samples(samples).usage(usage).tiling(tiling); }
 
-    /// Creates a slice of `VkPhysicalDeviceSparseImageFormatInfo2`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDeviceSparseImageFormatInfo2`
-    public VkPhysicalDeviceSparseImageFormatInfo2 asSlice(long index, long count) { return new VkPhysicalDeviceSparseImageFormatInfo2(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDeviceSparseImageFormatInfo2 copyFrom(VkPhysicalDeviceSparseImageFormatInfo2 src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -131,9 +139,6 @@ public final class VkPhysicalDeviceSparseImageFormatInfo2 extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceSparseImageFormatInfo2.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceSparseImageFormatInfo2.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPhysicalDeviceSparseImageFormatInfo2.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -145,11 +150,6 @@ public final class VkPhysicalDeviceSparseImageFormatInfo2 extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceSparseImageFormatInfo2.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceSparseImageFormatInfo2 sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceSparseImageFormatInfo2.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -162,9 +162,6 @@ public final class VkPhysicalDeviceSparseImageFormatInfo2 extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceSparseImageFormatInfo2.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceSparseImageFormatInfo2.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceSparseImageFormatInfo2.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -176,11 +173,6 @@ public final class VkPhysicalDeviceSparseImageFormatInfo2 extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceSparseImageFormatInfo2.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceSparseImageFormatInfo2 pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceSparseImageFormatInfo2.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -193,9 +185,6 @@ public final class VkPhysicalDeviceSparseImageFormatInfo2 extends Struct {
     /// {@return `format`}
     /// @param segment the segment of the struct
     public static @CType("VkFormat") int get_format(MemorySegment segment) { return VkPhysicalDeviceSparseImageFormatInfo2.get_format(segment, 0L); }
-    /// {@return `format` at the given index}
-    /// @param index the index
-    public @CType("VkFormat") int formatAt(long index) { return VkPhysicalDeviceSparseImageFormatInfo2.get_format(this.segment(), index); }
     /// {@return `format`}
     public @CType("VkFormat") int format() { return VkPhysicalDeviceSparseImageFormatInfo2.get_format(this.segment()); }
     /// Sets `format` with the given value at the given index.
@@ -207,11 +196,6 @@ public final class VkPhysicalDeviceSparseImageFormatInfo2 extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_format(MemorySegment segment, @CType("VkFormat") int value) { VkPhysicalDeviceSparseImageFormatInfo2.set_format(segment, 0L, value); }
-    /// Sets `format` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceSparseImageFormatInfo2 formatAt(long index, @CType("VkFormat") int value) { VkPhysicalDeviceSparseImageFormatInfo2.set_format(this.segment(), index, value); return this; }
     /// Sets `format` with the given value.
     /// @param value the value
     /// @return `this`
@@ -224,9 +208,6 @@ public final class VkPhysicalDeviceSparseImageFormatInfo2 extends Struct {
     /// {@return `type`}
     /// @param segment the segment of the struct
     public static @CType("VkImageType") int get_type(MemorySegment segment) { return VkPhysicalDeviceSparseImageFormatInfo2.get_type(segment, 0L); }
-    /// {@return `type` at the given index}
-    /// @param index the index
-    public @CType("VkImageType") int typeAt(long index) { return VkPhysicalDeviceSparseImageFormatInfo2.get_type(this.segment(), index); }
     /// {@return `type`}
     public @CType("VkImageType") int type() { return VkPhysicalDeviceSparseImageFormatInfo2.get_type(this.segment()); }
     /// Sets `type` with the given value at the given index.
@@ -238,11 +219,6 @@ public final class VkPhysicalDeviceSparseImageFormatInfo2 extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_type(MemorySegment segment, @CType("VkImageType") int value) { VkPhysicalDeviceSparseImageFormatInfo2.set_type(segment, 0L, value); }
-    /// Sets `type` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceSparseImageFormatInfo2 typeAt(long index, @CType("VkImageType") int value) { VkPhysicalDeviceSparseImageFormatInfo2.set_type(this.segment(), index, value); return this; }
     /// Sets `type` with the given value.
     /// @param value the value
     /// @return `this`
@@ -255,9 +231,6 @@ public final class VkPhysicalDeviceSparseImageFormatInfo2 extends Struct {
     /// {@return `samples`}
     /// @param segment the segment of the struct
     public static @CType("VkSampleCountFlagBits") int get_samples(MemorySegment segment) { return VkPhysicalDeviceSparseImageFormatInfo2.get_samples(segment, 0L); }
-    /// {@return `samples` at the given index}
-    /// @param index the index
-    public @CType("VkSampleCountFlagBits") int samplesAt(long index) { return VkPhysicalDeviceSparseImageFormatInfo2.get_samples(this.segment(), index); }
     /// {@return `samples`}
     public @CType("VkSampleCountFlagBits") int samples() { return VkPhysicalDeviceSparseImageFormatInfo2.get_samples(this.segment()); }
     /// Sets `samples` with the given value at the given index.
@@ -269,11 +242,6 @@ public final class VkPhysicalDeviceSparseImageFormatInfo2 extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_samples(MemorySegment segment, @CType("VkSampleCountFlagBits") int value) { VkPhysicalDeviceSparseImageFormatInfo2.set_samples(segment, 0L, value); }
-    /// Sets `samples` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceSparseImageFormatInfo2 samplesAt(long index, @CType("VkSampleCountFlagBits") int value) { VkPhysicalDeviceSparseImageFormatInfo2.set_samples(this.segment(), index, value); return this; }
     /// Sets `samples` with the given value.
     /// @param value the value
     /// @return `this`
@@ -286,9 +254,6 @@ public final class VkPhysicalDeviceSparseImageFormatInfo2 extends Struct {
     /// {@return `usage`}
     /// @param segment the segment of the struct
     public static @CType("VkImageUsageFlags") int get_usage(MemorySegment segment) { return VkPhysicalDeviceSparseImageFormatInfo2.get_usage(segment, 0L); }
-    /// {@return `usage` at the given index}
-    /// @param index the index
-    public @CType("VkImageUsageFlags") int usageAt(long index) { return VkPhysicalDeviceSparseImageFormatInfo2.get_usage(this.segment(), index); }
     /// {@return `usage`}
     public @CType("VkImageUsageFlags") int usage() { return VkPhysicalDeviceSparseImageFormatInfo2.get_usage(this.segment()); }
     /// Sets `usage` with the given value at the given index.
@@ -300,11 +265,6 @@ public final class VkPhysicalDeviceSparseImageFormatInfo2 extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_usage(MemorySegment segment, @CType("VkImageUsageFlags") int value) { VkPhysicalDeviceSparseImageFormatInfo2.set_usage(segment, 0L, value); }
-    /// Sets `usage` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceSparseImageFormatInfo2 usageAt(long index, @CType("VkImageUsageFlags") int value) { VkPhysicalDeviceSparseImageFormatInfo2.set_usage(this.segment(), index, value); return this; }
     /// Sets `usage` with the given value.
     /// @param value the value
     /// @return `this`
@@ -317,9 +277,6 @@ public final class VkPhysicalDeviceSparseImageFormatInfo2 extends Struct {
     /// {@return `tiling`}
     /// @param segment the segment of the struct
     public static @CType("VkImageTiling") int get_tiling(MemorySegment segment) { return VkPhysicalDeviceSparseImageFormatInfo2.get_tiling(segment, 0L); }
-    /// {@return `tiling` at the given index}
-    /// @param index the index
-    public @CType("VkImageTiling") int tilingAt(long index) { return VkPhysicalDeviceSparseImageFormatInfo2.get_tiling(this.segment(), index); }
     /// {@return `tiling`}
     public @CType("VkImageTiling") int tiling() { return VkPhysicalDeviceSparseImageFormatInfo2.get_tiling(this.segment()); }
     /// Sets `tiling` with the given value at the given index.
@@ -331,14 +288,95 @@ public final class VkPhysicalDeviceSparseImageFormatInfo2 extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_tiling(MemorySegment segment, @CType("VkImageTiling") int value) { VkPhysicalDeviceSparseImageFormatInfo2.set_tiling(segment, 0L, value); }
-    /// Sets `tiling` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceSparseImageFormatInfo2 tilingAt(long index, @CType("VkImageTiling") int value) { VkPhysicalDeviceSparseImageFormatInfo2.set_tiling(this.segment(), index, value); return this; }
     /// Sets `tiling` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceSparseImageFormatInfo2 tiling(@CType("VkImageTiling") int value) { VkPhysicalDeviceSparseImageFormatInfo2.set_tiling(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDeviceSparseImageFormatInfo2].
+    public static final class Buffer extends VkPhysicalDeviceSparseImageFormatInfo2 {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDeviceSparseImageFormatInfo2.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDeviceSparseImageFormatInfo2`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDeviceSparseImageFormatInfo2`
+        public VkPhysicalDeviceSparseImageFormatInfo2 asSlice(long index) { return new VkPhysicalDeviceSparseImageFormatInfo2(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDeviceSparseImageFormatInfo2`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDeviceSparseImageFormatInfo2`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceSparseImageFormatInfo2.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceSparseImageFormatInfo2.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceSparseImageFormatInfo2.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceSparseImageFormatInfo2.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `format` at the given index}
+        /// @param index the index
+        public @CType("VkFormat") int formatAt(long index) { return VkPhysicalDeviceSparseImageFormatInfo2.get_format(this.segment(), index); }
+        /// Sets `format` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer formatAt(long index, @CType("VkFormat") int value) { VkPhysicalDeviceSparseImageFormatInfo2.set_format(this.segment(), index, value); return this; }
+
+        /// {@return `type` at the given index}
+        /// @param index the index
+        public @CType("VkImageType") int typeAt(long index) { return VkPhysicalDeviceSparseImageFormatInfo2.get_type(this.segment(), index); }
+        /// Sets `type` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer typeAt(long index, @CType("VkImageType") int value) { VkPhysicalDeviceSparseImageFormatInfo2.set_type(this.segment(), index, value); return this; }
+
+        /// {@return `samples` at the given index}
+        /// @param index the index
+        public @CType("VkSampleCountFlagBits") int samplesAt(long index) { return VkPhysicalDeviceSparseImageFormatInfo2.get_samples(this.segment(), index); }
+        /// Sets `samples` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer samplesAt(long index, @CType("VkSampleCountFlagBits") int value) { VkPhysicalDeviceSparseImageFormatInfo2.set_samples(this.segment(), index, value); return this; }
+
+        /// {@return `usage` at the given index}
+        /// @param index the index
+        public @CType("VkImageUsageFlags") int usageAt(long index) { return VkPhysicalDeviceSparseImageFormatInfo2.get_usage(this.segment(), index); }
+        /// Sets `usage` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer usageAt(long index, @CType("VkImageUsageFlags") int value) { VkPhysicalDeviceSparseImageFormatInfo2.set_usage(this.segment(), index, value); return this; }
+
+        /// {@return `tiling` at the given index}
+        /// @param index the index
+        public @CType("VkImageTiling") int tilingAt(long index) { return VkPhysicalDeviceSparseImageFormatInfo2.get_tiling(this.segment(), index); }
+        /// Sets `tiling` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer tilingAt(long index, @CType("VkImageTiling") int value) { VkPhysicalDeviceSparseImageFormatInfo2.set_tiling(this.segment(), index, value); return this; }
+
+    }
 }

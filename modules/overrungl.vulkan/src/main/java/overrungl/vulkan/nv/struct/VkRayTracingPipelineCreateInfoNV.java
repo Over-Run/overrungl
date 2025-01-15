@@ -64,7 +64,7 @@ import overrungl.util.*;
 ///     int32_t basePipelineIndex;
 /// } VkRayTracingPipelineCreateInfoNV;
 /// ```
-public final class VkRayTracingPipelineCreateInfoNV extends Struct {
+public sealed class VkRayTracingPipelineCreateInfoNV extends Struct {
     /// The struct layout of `VkRayTracingPipelineCreateInfoNV`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -112,6 +112,11 @@ public final class VkRayTracingPipelineCreateInfoNV extends Struct {
     public static VkRayTracingPipelineCreateInfoNV of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkRayTracingPipelineCreateInfoNV(segment); }
 
     /// Creates `VkRayTracingPipelineCreateInfoNV` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkRayTracingPipelineCreateInfoNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -124,7 +129,7 @@ public final class VkRayTracingPipelineCreateInfoNV extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkRayTracingPipelineCreateInfoNV ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkRayTracingPipelineCreateInfoNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkRayTracingPipelineCreateInfoNV` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -135,18 +140,21 @@ public final class VkRayTracingPipelineCreateInfoNV extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkRayTracingPipelineCreateInfoNV`
-    public static VkRayTracingPipelineCreateInfoNV alloc(SegmentAllocator allocator, long count) { return new VkRayTracingPipelineCreateInfoNV(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkRayTracingPipelineCreateInfoNV`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkRayTracingPipelineCreateInfoNV`
-    public VkRayTracingPipelineCreateInfoNV asSlice(long index) { return new VkRayTracingPipelineCreateInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkRayTracingPipelineCreateInfoNV` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkRayTracingPipelineCreateInfoNV`
+    public static VkRayTracingPipelineCreateInfoNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkPipelineCreateFlags") int flags, @CType("uint32_t") int stageCount, @CType("const VkPipelineShaderStageCreateInfo *") java.lang.foreign.MemorySegment pStages, @CType("uint32_t") int groupCount, @CType("const VkRayTracingShaderGroupCreateInfoNV *") java.lang.foreign.MemorySegment pGroups, @CType("uint32_t") int maxRecursionDepth, @CType("VkPipelineLayout") java.lang.foreign.MemorySegment layout, @CType("VkPipeline") java.lang.foreign.MemorySegment basePipelineHandle, @CType("int32_t") int basePipelineIndex) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stageCount(stageCount).pStages(pStages).groupCount(groupCount).pGroups(pGroups).maxRecursionDepth(maxRecursionDepth).layout(layout).basePipelineHandle(basePipelineHandle).basePipelineIndex(basePipelineIndex); }
 
-    /// Creates a slice of `VkRayTracingPipelineCreateInfoNV`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkRayTracingPipelineCreateInfoNV`
-    public VkRayTracingPipelineCreateInfoNV asSlice(long index, long count) { return new VkRayTracingPipelineCreateInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkRayTracingPipelineCreateInfoNV copyFrom(VkRayTracingPipelineCreateInfoNV src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -155,9 +163,6 @@ public final class VkRayTracingPipelineCreateInfoNV extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkRayTracingPipelineCreateInfoNV.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkRayTracingPipelineCreateInfoNV.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkRayTracingPipelineCreateInfoNV.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -169,11 +174,6 @@ public final class VkRayTracingPipelineCreateInfoNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkRayTracingPipelineCreateInfoNV.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRayTracingPipelineCreateInfoNV sTypeAt(long index, @CType("VkStructureType") int value) { VkRayTracingPipelineCreateInfoNV.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -186,9 +186,6 @@ public final class VkRayTracingPipelineCreateInfoNV extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkRayTracingPipelineCreateInfoNV.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkRayTracingPipelineCreateInfoNV.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkRayTracingPipelineCreateInfoNV.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -200,11 +197,6 @@ public final class VkRayTracingPipelineCreateInfoNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkRayTracingPipelineCreateInfoNV.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRayTracingPipelineCreateInfoNV pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkRayTracingPipelineCreateInfoNV.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -217,9 +209,6 @@ public final class VkRayTracingPipelineCreateInfoNV extends Struct {
     /// {@return `flags`}
     /// @param segment the segment of the struct
     public static @CType("VkPipelineCreateFlags") int get_flags(MemorySegment segment) { return VkRayTracingPipelineCreateInfoNV.get_flags(segment, 0L); }
-    /// {@return `flags` at the given index}
-    /// @param index the index
-    public @CType("VkPipelineCreateFlags") int flagsAt(long index) { return VkRayTracingPipelineCreateInfoNV.get_flags(this.segment(), index); }
     /// {@return `flags`}
     public @CType("VkPipelineCreateFlags") int flags() { return VkRayTracingPipelineCreateInfoNV.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
@@ -231,11 +220,6 @@ public final class VkRayTracingPipelineCreateInfoNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_flags(MemorySegment segment, @CType("VkPipelineCreateFlags") int value) { VkRayTracingPipelineCreateInfoNV.set_flags(segment, 0L, value); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRayTracingPipelineCreateInfoNV flagsAt(long index, @CType("VkPipelineCreateFlags") int value) { VkRayTracingPipelineCreateInfoNV.set_flags(this.segment(), index, value); return this; }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -248,9 +232,6 @@ public final class VkRayTracingPipelineCreateInfoNV extends Struct {
     /// {@return `stageCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_stageCount(MemorySegment segment) { return VkRayTracingPipelineCreateInfoNV.get_stageCount(segment, 0L); }
-    /// {@return `stageCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int stageCountAt(long index) { return VkRayTracingPipelineCreateInfoNV.get_stageCount(this.segment(), index); }
     /// {@return `stageCount`}
     public @CType("uint32_t") int stageCount() { return VkRayTracingPipelineCreateInfoNV.get_stageCount(this.segment()); }
     /// Sets `stageCount` with the given value at the given index.
@@ -262,11 +243,6 @@ public final class VkRayTracingPipelineCreateInfoNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_stageCount(MemorySegment segment, @CType("uint32_t") int value) { VkRayTracingPipelineCreateInfoNV.set_stageCount(segment, 0L, value); }
-    /// Sets `stageCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRayTracingPipelineCreateInfoNV stageCountAt(long index, @CType("uint32_t") int value) { VkRayTracingPipelineCreateInfoNV.set_stageCount(this.segment(), index, value); return this; }
     /// Sets `stageCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -279,9 +255,6 @@ public final class VkRayTracingPipelineCreateInfoNV extends Struct {
     /// {@return `pStages`}
     /// @param segment the segment of the struct
     public static @CType("const VkPipelineShaderStageCreateInfo *") java.lang.foreign.MemorySegment get_pStages(MemorySegment segment) { return VkRayTracingPipelineCreateInfoNV.get_pStages(segment, 0L); }
-    /// {@return `pStages` at the given index}
-    /// @param index the index
-    public @CType("const VkPipelineShaderStageCreateInfo *") java.lang.foreign.MemorySegment pStagesAt(long index) { return VkRayTracingPipelineCreateInfoNV.get_pStages(this.segment(), index); }
     /// {@return `pStages`}
     public @CType("const VkPipelineShaderStageCreateInfo *") java.lang.foreign.MemorySegment pStages() { return VkRayTracingPipelineCreateInfoNV.get_pStages(this.segment()); }
     /// Sets `pStages` with the given value at the given index.
@@ -293,11 +266,6 @@ public final class VkRayTracingPipelineCreateInfoNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pStages(MemorySegment segment, @CType("const VkPipelineShaderStageCreateInfo *") java.lang.foreign.MemorySegment value) { VkRayTracingPipelineCreateInfoNV.set_pStages(segment, 0L, value); }
-    /// Sets `pStages` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRayTracingPipelineCreateInfoNV pStagesAt(long index, @CType("const VkPipelineShaderStageCreateInfo *") java.lang.foreign.MemorySegment value) { VkRayTracingPipelineCreateInfoNV.set_pStages(this.segment(), index, value); return this; }
     /// Sets `pStages` with the given value.
     /// @param value the value
     /// @return `this`
@@ -310,9 +278,6 @@ public final class VkRayTracingPipelineCreateInfoNV extends Struct {
     /// {@return `groupCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_groupCount(MemorySegment segment) { return VkRayTracingPipelineCreateInfoNV.get_groupCount(segment, 0L); }
-    /// {@return `groupCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int groupCountAt(long index) { return VkRayTracingPipelineCreateInfoNV.get_groupCount(this.segment(), index); }
     /// {@return `groupCount`}
     public @CType("uint32_t") int groupCount() { return VkRayTracingPipelineCreateInfoNV.get_groupCount(this.segment()); }
     /// Sets `groupCount` with the given value at the given index.
@@ -324,11 +289,6 @@ public final class VkRayTracingPipelineCreateInfoNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_groupCount(MemorySegment segment, @CType("uint32_t") int value) { VkRayTracingPipelineCreateInfoNV.set_groupCount(segment, 0L, value); }
-    /// Sets `groupCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRayTracingPipelineCreateInfoNV groupCountAt(long index, @CType("uint32_t") int value) { VkRayTracingPipelineCreateInfoNV.set_groupCount(this.segment(), index, value); return this; }
     /// Sets `groupCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -341,9 +301,6 @@ public final class VkRayTracingPipelineCreateInfoNV extends Struct {
     /// {@return `pGroups`}
     /// @param segment the segment of the struct
     public static @CType("const VkRayTracingShaderGroupCreateInfoNV *") java.lang.foreign.MemorySegment get_pGroups(MemorySegment segment) { return VkRayTracingPipelineCreateInfoNV.get_pGroups(segment, 0L); }
-    /// {@return `pGroups` at the given index}
-    /// @param index the index
-    public @CType("const VkRayTracingShaderGroupCreateInfoNV *") java.lang.foreign.MemorySegment pGroupsAt(long index) { return VkRayTracingPipelineCreateInfoNV.get_pGroups(this.segment(), index); }
     /// {@return `pGroups`}
     public @CType("const VkRayTracingShaderGroupCreateInfoNV *") java.lang.foreign.MemorySegment pGroups() { return VkRayTracingPipelineCreateInfoNV.get_pGroups(this.segment()); }
     /// Sets `pGroups` with the given value at the given index.
@@ -355,11 +312,6 @@ public final class VkRayTracingPipelineCreateInfoNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pGroups(MemorySegment segment, @CType("const VkRayTracingShaderGroupCreateInfoNV *") java.lang.foreign.MemorySegment value) { VkRayTracingPipelineCreateInfoNV.set_pGroups(segment, 0L, value); }
-    /// Sets `pGroups` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRayTracingPipelineCreateInfoNV pGroupsAt(long index, @CType("const VkRayTracingShaderGroupCreateInfoNV *") java.lang.foreign.MemorySegment value) { VkRayTracingPipelineCreateInfoNV.set_pGroups(this.segment(), index, value); return this; }
     /// Sets `pGroups` with the given value.
     /// @param value the value
     /// @return `this`
@@ -372,9 +324,6 @@ public final class VkRayTracingPipelineCreateInfoNV extends Struct {
     /// {@return `maxRecursionDepth`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxRecursionDepth(MemorySegment segment) { return VkRayTracingPipelineCreateInfoNV.get_maxRecursionDepth(segment, 0L); }
-    /// {@return `maxRecursionDepth` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxRecursionDepthAt(long index) { return VkRayTracingPipelineCreateInfoNV.get_maxRecursionDepth(this.segment(), index); }
     /// {@return `maxRecursionDepth`}
     public @CType("uint32_t") int maxRecursionDepth() { return VkRayTracingPipelineCreateInfoNV.get_maxRecursionDepth(this.segment()); }
     /// Sets `maxRecursionDepth` with the given value at the given index.
@@ -386,11 +335,6 @@ public final class VkRayTracingPipelineCreateInfoNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxRecursionDepth(MemorySegment segment, @CType("uint32_t") int value) { VkRayTracingPipelineCreateInfoNV.set_maxRecursionDepth(segment, 0L, value); }
-    /// Sets `maxRecursionDepth` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRayTracingPipelineCreateInfoNV maxRecursionDepthAt(long index, @CType("uint32_t") int value) { VkRayTracingPipelineCreateInfoNV.set_maxRecursionDepth(this.segment(), index, value); return this; }
     /// Sets `maxRecursionDepth` with the given value.
     /// @param value the value
     /// @return `this`
@@ -403,9 +347,6 @@ public final class VkRayTracingPipelineCreateInfoNV extends Struct {
     /// {@return `layout`}
     /// @param segment the segment of the struct
     public static @CType("VkPipelineLayout") java.lang.foreign.MemorySegment get_layout(MemorySegment segment) { return VkRayTracingPipelineCreateInfoNV.get_layout(segment, 0L); }
-    /// {@return `layout` at the given index}
-    /// @param index the index
-    public @CType("VkPipelineLayout") java.lang.foreign.MemorySegment layoutAt(long index) { return VkRayTracingPipelineCreateInfoNV.get_layout(this.segment(), index); }
     /// {@return `layout`}
     public @CType("VkPipelineLayout") java.lang.foreign.MemorySegment layout() { return VkRayTracingPipelineCreateInfoNV.get_layout(this.segment()); }
     /// Sets `layout` with the given value at the given index.
@@ -417,11 +358,6 @@ public final class VkRayTracingPipelineCreateInfoNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_layout(MemorySegment segment, @CType("VkPipelineLayout") java.lang.foreign.MemorySegment value) { VkRayTracingPipelineCreateInfoNV.set_layout(segment, 0L, value); }
-    /// Sets `layout` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRayTracingPipelineCreateInfoNV layoutAt(long index, @CType("VkPipelineLayout") java.lang.foreign.MemorySegment value) { VkRayTracingPipelineCreateInfoNV.set_layout(this.segment(), index, value); return this; }
     /// Sets `layout` with the given value.
     /// @param value the value
     /// @return `this`
@@ -434,9 +370,6 @@ public final class VkRayTracingPipelineCreateInfoNV extends Struct {
     /// {@return `basePipelineHandle`}
     /// @param segment the segment of the struct
     public static @CType("VkPipeline") java.lang.foreign.MemorySegment get_basePipelineHandle(MemorySegment segment) { return VkRayTracingPipelineCreateInfoNV.get_basePipelineHandle(segment, 0L); }
-    /// {@return `basePipelineHandle` at the given index}
-    /// @param index the index
-    public @CType("VkPipeline") java.lang.foreign.MemorySegment basePipelineHandleAt(long index) { return VkRayTracingPipelineCreateInfoNV.get_basePipelineHandle(this.segment(), index); }
     /// {@return `basePipelineHandle`}
     public @CType("VkPipeline") java.lang.foreign.MemorySegment basePipelineHandle() { return VkRayTracingPipelineCreateInfoNV.get_basePipelineHandle(this.segment()); }
     /// Sets `basePipelineHandle` with the given value at the given index.
@@ -448,11 +381,6 @@ public final class VkRayTracingPipelineCreateInfoNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_basePipelineHandle(MemorySegment segment, @CType("VkPipeline") java.lang.foreign.MemorySegment value) { VkRayTracingPipelineCreateInfoNV.set_basePipelineHandle(segment, 0L, value); }
-    /// Sets `basePipelineHandle` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRayTracingPipelineCreateInfoNV basePipelineHandleAt(long index, @CType("VkPipeline") java.lang.foreign.MemorySegment value) { VkRayTracingPipelineCreateInfoNV.set_basePipelineHandle(this.segment(), index, value); return this; }
     /// Sets `basePipelineHandle` with the given value.
     /// @param value the value
     /// @return `this`
@@ -465,9 +393,6 @@ public final class VkRayTracingPipelineCreateInfoNV extends Struct {
     /// {@return `basePipelineIndex`}
     /// @param segment the segment of the struct
     public static @CType("int32_t") int get_basePipelineIndex(MemorySegment segment) { return VkRayTracingPipelineCreateInfoNV.get_basePipelineIndex(segment, 0L); }
-    /// {@return `basePipelineIndex` at the given index}
-    /// @param index the index
-    public @CType("int32_t") int basePipelineIndexAt(long index) { return VkRayTracingPipelineCreateInfoNV.get_basePipelineIndex(this.segment(), index); }
     /// {@return `basePipelineIndex`}
     public @CType("int32_t") int basePipelineIndex() { return VkRayTracingPipelineCreateInfoNV.get_basePipelineIndex(this.segment()); }
     /// Sets `basePipelineIndex` with the given value at the given index.
@@ -479,14 +404,131 @@ public final class VkRayTracingPipelineCreateInfoNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_basePipelineIndex(MemorySegment segment, @CType("int32_t") int value) { VkRayTracingPipelineCreateInfoNV.set_basePipelineIndex(segment, 0L, value); }
-    /// Sets `basePipelineIndex` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRayTracingPipelineCreateInfoNV basePipelineIndexAt(long index, @CType("int32_t") int value) { VkRayTracingPipelineCreateInfoNV.set_basePipelineIndex(this.segment(), index, value); return this; }
     /// Sets `basePipelineIndex` with the given value.
     /// @param value the value
     /// @return `this`
     public VkRayTracingPipelineCreateInfoNV basePipelineIndex(@CType("int32_t") int value) { VkRayTracingPipelineCreateInfoNV.set_basePipelineIndex(this.segment(), value); return this; }
 
+    /// A buffer of [VkRayTracingPipelineCreateInfoNV].
+    public static final class Buffer extends VkRayTracingPipelineCreateInfoNV {
+        private final long elementCount;
+
+        /// Creates `VkRayTracingPipelineCreateInfoNV.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkRayTracingPipelineCreateInfoNV`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkRayTracingPipelineCreateInfoNV`
+        public VkRayTracingPipelineCreateInfoNV asSlice(long index) { return new VkRayTracingPipelineCreateInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkRayTracingPipelineCreateInfoNV`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkRayTracingPipelineCreateInfoNV`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkRayTracingPipelineCreateInfoNV.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkRayTracingPipelineCreateInfoNV.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkRayTracingPipelineCreateInfoNV.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkRayTracingPipelineCreateInfoNV.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `flags` at the given index}
+        /// @param index the index
+        public @CType("VkPipelineCreateFlags") int flagsAt(long index) { return VkRayTracingPipelineCreateInfoNV.get_flags(this.segment(), index); }
+        /// Sets `flags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer flagsAt(long index, @CType("VkPipelineCreateFlags") int value) { VkRayTracingPipelineCreateInfoNV.set_flags(this.segment(), index, value); return this; }
+
+        /// {@return `stageCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int stageCountAt(long index) { return VkRayTracingPipelineCreateInfoNV.get_stageCount(this.segment(), index); }
+        /// Sets `stageCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer stageCountAt(long index, @CType("uint32_t") int value) { VkRayTracingPipelineCreateInfoNV.set_stageCount(this.segment(), index, value); return this; }
+
+        /// {@return `pStages` at the given index}
+        /// @param index the index
+        public @CType("const VkPipelineShaderStageCreateInfo *") java.lang.foreign.MemorySegment pStagesAt(long index) { return VkRayTracingPipelineCreateInfoNV.get_pStages(this.segment(), index); }
+        /// Sets `pStages` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pStagesAt(long index, @CType("const VkPipelineShaderStageCreateInfo *") java.lang.foreign.MemorySegment value) { VkRayTracingPipelineCreateInfoNV.set_pStages(this.segment(), index, value); return this; }
+
+        /// {@return `groupCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int groupCountAt(long index) { return VkRayTracingPipelineCreateInfoNV.get_groupCount(this.segment(), index); }
+        /// Sets `groupCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer groupCountAt(long index, @CType("uint32_t") int value) { VkRayTracingPipelineCreateInfoNV.set_groupCount(this.segment(), index, value); return this; }
+
+        /// {@return `pGroups` at the given index}
+        /// @param index the index
+        public @CType("const VkRayTracingShaderGroupCreateInfoNV *") java.lang.foreign.MemorySegment pGroupsAt(long index) { return VkRayTracingPipelineCreateInfoNV.get_pGroups(this.segment(), index); }
+        /// Sets `pGroups` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pGroupsAt(long index, @CType("const VkRayTracingShaderGroupCreateInfoNV *") java.lang.foreign.MemorySegment value) { VkRayTracingPipelineCreateInfoNV.set_pGroups(this.segment(), index, value); return this; }
+
+        /// {@return `maxRecursionDepth` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxRecursionDepthAt(long index) { return VkRayTracingPipelineCreateInfoNV.get_maxRecursionDepth(this.segment(), index); }
+        /// Sets `maxRecursionDepth` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxRecursionDepthAt(long index, @CType("uint32_t") int value) { VkRayTracingPipelineCreateInfoNV.set_maxRecursionDepth(this.segment(), index, value); return this; }
+
+        /// {@return `layout` at the given index}
+        /// @param index the index
+        public @CType("VkPipelineLayout") java.lang.foreign.MemorySegment layoutAt(long index) { return VkRayTracingPipelineCreateInfoNV.get_layout(this.segment(), index); }
+        /// Sets `layout` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer layoutAt(long index, @CType("VkPipelineLayout") java.lang.foreign.MemorySegment value) { VkRayTracingPipelineCreateInfoNV.set_layout(this.segment(), index, value); return this; }
+
+        /// {@return `basePipelineHandle` at the given index}
+        /// @param index the index
+        public @CType("VkPipeline") java.lang.foreign.MemorySegment basePipelineHandleAt(long index) { return VkRayTracingPipelineCreateInfoNV.get_basePipelineHandle(this.segment(), index); }
+        /// Sets `basePipelineHandle` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer basePipelineHandleAt(long index, @CType("VkPipeline") java.lang.foreign.MemorySegment value) { VkRayTracingPipelineCreateInfoNV.set_basePipelineHandle(this.segment(), index, value); return this; }
+
+        /// {@return `basePipelineIndex` at the given index}
+        /// @param index the index
+        public @CType("int32_t") int basePipelineIndexAt(long index) { return VkRayTracingPipelineCreateInfoNV.get_basePipelineIndex(this.segment(), index); }
+        /// Sets `basePipelineIndex` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer basePipelineIndexAt(long index, @CType("int32_t") int value) { VkRayTracingPipelineCreateInfoNV.set_basePipelineIndex(this.segment(), index, value); return this; }
+
+    }
 }

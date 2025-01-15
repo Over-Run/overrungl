@@ -49,7 +49,7 @@ import overrungl.util.*;
 ///     size_t stride;
 /// } VkDescriptorUpdateTemplateEntry;
 /// ```
-public final class VkDescriptorUpdateTemplateEntry extends Struct {
+public sealed class VkDescriptorUpdateTemplateEntry extends Struct {
     /// The struct layout of `VkDescriptorUpdateTemplateEntry`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("dstBinding"),
@@ -82,6 +82,11 @@ public final class VkDescriptorUpdateTemplateEntry extends Struct {
     public static VkDescriptorUpdateTemplateEntry of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDescriptorUpdateTemplateEntry(segment); }
 
     /// Creates `VkDescriptorUpdateTemplateEntry` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkDescriptorUpdateTemplateEntry` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -94,7 +99,7 @@ public final class VkDescriptorUpdateTemplateEntry extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDescriptorUpdateTemplateEntry ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkDescriptorUpdateTemplateEntry(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkDescriptorUpdateTemplateEntry` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -105,18 +110,21 @@ public final class VkDescriptorUpdateTemplateEntry extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDescriptorUpdateTemplateEntry`
-    public static VkDescriptorUpdateTemplateEntry alloc(SegmentAllocator allocator, long count) { return new VkDescriptorUpdateTemplateEntry(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkDescriptorUpdateTemplateEntry`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkDescriptorUpdateTemplateEntry`
-    public VkDescriptorUpdateTemplateEntry asSlice(long index) { return new VkDescriptorUpdateTemplateEntry(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkDescriptorUpdateTemplateEntry` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkDescriptorUpdateTemplateEntry`
+    public static VkDescriptorUpdateTemplateEntry allocInit(SegmentAllocator allocator, @CType("uint32_t") int dstBinding, @CType("uint32_t") int dstArrayElement, @CType("uint32_t") int descriptorCount, @CType("VkDescriptorType") int descriptorType, @CType("size_t") long offset, @CType("size_t") long stride) { return alloc(allocator).dstBinding(dstBinding).dstArrayElement(dstArrayElement).descriptorCount(descriptorCount).descriptorType(descriptorType).offset(offset).stride(stride); }
 
-    /// Creates a slice of `VkDescriptorUpdateTemplateEntry`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkDescriptorUpdateTemplateEntry`
-    public VkDescriptorUpdateTemplateEntry asSlice(long index, long count) { return new VkDescriptorUpdateTemplateEntry(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkDescriptorUpdateTemplateEntry copyFrom(VkDescriptorUpdateTemplateEntry src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `dstBinding` at the given index}
     /// @param segment the segment of the struct
@@ -125,9 +133,6 @@ public final class VkDescriptorUpdateTemplateEntry extends Struct {
     /// {@return `dstBinding`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_dstBinding(MemorySegment segment) { return VkDescriptorUpdateTemplateEntry.get_dstBinding(segment, 0L); }
-    /// {@return `dstBinding` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int dstBindingAt(long index) { return VkDescriptorUpdateTemplateEntry.get_dstBinding(this.segment(), index); }
     /// {@return `dstBinding`}
     public @CType("uint32_t") int dstBinding() { return VkDescriptorUpdateTemplateEntry.get_dstBinding(this.segment()); }
     /// Sets `dstBinding` with the given value at the given index.
@@ -139,11 +144,6 @@ public final class VkDescriptorUpdateTemplateEntry extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_dstBinding(MemorySegment segment, @CType("uint32_t") int value) { VkDescriptorUpdateTemplateEntry.set_dstBinding(segment, 0L, value); }
-    /// Sets `dstBinding` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorUpdateTemplateEntry dstBindingAt(long index, @CType("uint32_t") int value) { VkDescriptorUpdateTemplateEntry.set_dstBinding(this.segment(), index, value); return this; }
     /// Sets `dstBinding` with the given value.
     /// @param value the value
     /// @return `this`
@@ -156,9 +156,6 @@ public final class VkDescriptorUpdateTemplateEntry extends Struct {
     /// {@return `dstArrayElement`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_dstArrayElement(MemorySegment segment) { return VkDescriptorUpdateTemplateEntry.get_dstArrayElement(segment, 0L); }
-    /// {@return `dstArrayElement` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int dstArrayElementAt(long index) { return VkDescriptorUpdateTemplateEntry.get_dstArrayElement(this.segment(), index); }
     /// {@return `dstArrayElement`}
     public @CType("uint32_t") int dstArrayElement() { return VkDescriptorUpdateTemplateEntry.get_dstArrayElement(this.segment()); }
     /// Sets `dstArrayElement` with the given value at the given index.
@@ -170,11 +167,6 @@ public final class VkDescriptorUpdateTemplateEntry extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_dstArrayElement(MemorySegment segment, @CType("uint32_t") int value) { VkDescriptorUpdateTemplateEntry.set_dstArrayElement(segment, 0L, value); }
-    /// Sets `dstArrayElement` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorUpdateTemplateEntry dstArrayElementAt(long index, @CType("uint32_t") int value) { VkDescriptorUpdateTemplateEntry.set_dstArrayElement(this.segment(), index, value); return this; }
     /// Sets `dstArrayElement` with the given value.
     /// @param value the value
     /// @return `this`
@@ -187,9 +179,6 @@ public final class VkDescriptorUpdateTemplateEntry extends Struct {
     /// {@return `descriptorCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_descriptorCount(MemorySegment segment) { return VkDescriptorUpdateTemplateEntry.get_descriptorCount(segment, 0L); }
-    /// {@return `descriptorCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int descriptorCountAt(long index) { return VkDescriptorUpdateTemplateEntry.get_descriptorCount(this.segment(), index); }
     /// {@return `descriptorCount`}
     public @CType("uint32_t") int descriptorCount() { return VkDescriptorUpdateTemplateEntry.get_descriptorCount(this.segment()); }
     /// Sets `descriptorCount` with the given value at the given index.
@@ -201,11 +190,6 @@ public final class VkDescriptorUpdateTemplateEntry extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_descriptorCount(MemorySegment segment, @CType("uint32_t") int value) { VkDescriptorUpdateTemplateEntry.set_descriptorCount(segment, 0L, value); }
-    /// Sets `descriptorCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorUpdateTemplateEntry descriptorCountAt(long index, @CType("uint32_t") int value) { VkDescriptorUpdateTemplateEntry.set_descriptorCount(this.segment(), index, value); return this; }
     /// Sets `descriptorCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -218,9 +202,6 @@ public final class VkDescriptorUpdateTemplateEntry extends Struct {
     /// {@return `descriptorType`}
     /// @param segment the segment of the struct
     public static @CType("VkDescriptorType") int get_descriptorType(MemorySegment segment) { return VkDescriptorUpdateTemplateEntry.get_descriptorType(segment, 0L); }
-    /// {@return `descriptorType` at the given index}
-    /// @param index the index
-    public @CType("VkDescriptorType") int descriptorTypeAt(long index) { return VkDescriptorUpdateTemplateEntry.get_descriptorType(this.segment(), index); }
     /// {@return `descriptorType`}
     public @CType("VkDescriptorType") int descriptorType() { return VkDescriptorUpdateTemplateEntry.get_descriptorType(this.segment()); }
     /// Sets `descriptorType` with the given value at the given index.
@@ -232,11 +213,6 @@ public final class VkDescriptorUpdateTemplateEntry extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_descriptorType(MemorySegment segment, @CType("VkDescriptorType") int value) { VkDescriptorUpdateTemplateEntry.set_descriptorType(segment, 0L, value); }
-    /// Sets `descriptorType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorUpdateTemplateEntry descriptorTypeAt(long index, @CType("VkDescriptorType") int value) { VkDescriptorUpdateTemplateEntry.set_descriptorType(this.segment(), index, value); return this; }
     /// Sets `descriptorType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -249,9 +225,6 @@ public final class VkDescriptorUpdateTemplateEntry extends Struct {
     /// {@return `offset`}
     /// @param segment the segment of the struct
     public static @CType("size_t") long get_offset(MemorySegment segment) { return VkDescriptorUpdateTemplateEntry.get_offset(segment, 0L); }
-    /// {@return `offset` at the given index}
-    /// @param index the index
-    public @CType("size_t") long offsetAt(long index) { return VkDescriptorUpdateTemplateEntry.get_offset(this.segment(), index); }
     /// {@return `offset`}
     public @CType("size_t") long offset() { return VkDescriptorUpdateTemplateEntry.get_offset(this.segment()); }
     /// Sets `offset` with the given value at the given index.
@@ -263,11 +236,6 @@ public final class VkDescriptorUpdateTemplateEntry extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_offset(MemorySegment segment, @CType("size_t") long value) { VkDescriptorUpdateTemplateEntry.set_offset(segment, 0L, value); }
-    /// Sets `offset` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorUpdateTemplateEntry offsetAt(long index, @CType("size_t") long value) { VkDescriptorUpdateTemplateEntry.set_offset(this.segment(), index, value); return this; }
     /// Sets `offset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -280,9 +248,6 @@ public final class VkDescriptorUpdateTemplateEntry extends Struct {
     /// {@return `stride`}
     /// @param segment the segment of the struct
     public static @CType("size_t") long get_stride(MemorySegment segment) { return VkDescriptorUpdateTemplateEntry.get_stride(segment, 0L); }
-    /// {@return `stride` at the given index}
-    /// @param index the index
-    public @CType("size_t") long strideAt(long index) { return VkDescriptorUpdateTemplateEntry.get_stride(this.segment(), index); }
     /// {@return `stride`}
     public @CType("size_t") long stride() { return VkDescriptorUpdateTemplateEntry.get_stride(this.segment()); }
     /// Sets `stride` with the given value at the given index.
@@ -294,14 +259,86 @@ public final class VkDescriptorUpdateTemplateEntry extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_stride(MemorySegment segment, @CType("size_t") long value) { VkDescriptorUpdateTemplateEntry.set_stride(segment, 0L, value); }
-    /// Sets `stride` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorUpdateTemplateEntry strideAt(long index, @CType("size_t") long value) { VkDescriptorUpdateTemplateEntry.set_stride(this.segment(), index, value); return this; }
     /// Sets `stride` with the given value.
     /// @param value the value
     /// @return `this`
     public VkDescriptorUpdateTemplateEntry stride(@CType("size_t") long value) { VkDescriptorUpdateTemplateEntry.set_stride(this.segment(), value); return this; }
 
+    /// A buffer of [VkDescriptorUpdateTemplateEntry].
+    public static final class Buffer extends VkDescriptorUpdateTemplateEntry {
+        private final long elementCount;
+
+        /// Creates `VkDescriptorUpdateTemplateEntry.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkDescriptorUpdateTemplateEntry`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkDescriptorUpdateTemplateEntry`
+        public VkDescriptorUpdateTemplateEntry asSlice(long index) { return new VkDescriptorUpdateTemplateEntry(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkDescriptorUpdateTemplateEntry`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkDescriptorUpdateTemplateEntry`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `dstBinding` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int dstBindingAt(long index) { return VkDescriptorUpdateTemplateEntry.get_dstBinding(this.segment(), index); }
+        /// Sets `dstBinding` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer dstBindingAt(long index, @CType("uint32_t") int value) { VkDescriptorUpdateTemplateEntry.set_dstBinding(this.segment(), index, value); return this; }
+
+        /// {@return `dstArrayElement` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int dstArrayElementAt(long index) { return VkDescriptorUpdateTemplateEntry.get_dstArrayElement(this.segment(), index); }
+        /// Sets `dstArrayElement` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer dstArrayElementAt(long index, @CType("uint32_t") int value) { VkDescriptorUpdateTemplateEntry.set_dstArrayElement(this.segment(), index, value); return this; }
+
+        /// {@return `descriptorCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int descriptorCountAt(long index) { return VkDescriptorUpdateTemplateEntry.get_descriptorCount(this.segment(), index); }
+        /// Sets `descriptorCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer descriptorCountAt(long index, @CType("uint32_t") int value) { VkDescriptorUpdateTemplateEntry.set_descriptorCount(this.segment(), index, value); return this; }
+
+        /// {@return `descriptorType` at the given index}
+        /// @param index the index
+        public @CType("VkDescriptorType") int descriptorTypeAt(long index) { return VkDescriptorUpdateTemplateEntry.get_descriptorType(this.segment(), index); }
+        /// Sets `descriptorType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer descriptorTypeAt(long index, @CType("VkDescriptorType") int value) { VkDescriptorUpdateTemplateEntry.set_descriptorType(this.segment(), index, value); return this; }
+
+        /// {@return `offset` at the given index}
+        /// @param index the index
+        public @CType("size_t") long offsetAt(long index) { return VkDescriptorUpdateTemplateEntry.get_offset(this.segment(), index); }
+        /// Sets `offset` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer offsetAt(long index, @CType("size_t") long value) { VkDescriptorUpdateTemplateEntry.set_offset(this.segment(), index, value); return this; }
+
+        /// {@return `stride` at the given index}
+        /// @param index the index
+        public @CType("size_t") long strideAt(long index) { return VkDescriptorUpdateTemplateEntry.get_stride(this.segment(), index); }
+        /// Sets `stride` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer strideAt(long index, @CType("size_t") long value) { VkDescriptorUpdateTemplateEntry.set_stride(this.segment(), index, value); return this; }
+
+    }
 }

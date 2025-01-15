@@ -40,7 +40,7 @@ import overrungl.util.*;
 ///     uint16_t long_term_pic_num;
 /// } StdVideoEncodeH264RefListModEntry;
 /// ```
-public final class StdVideoEncodeH264RefListModEntry extends Struct {
+public sealed class StdVideoEncodeH264RefListModEntry extends Struct {
     /// The struct layout of `StdVideoEncodeH264RefListModEntry`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("modification_of_pic_nums_idc"),
@@ -64,6 +64,11 @@ public final class StdVideoEncodeH264RefListModEntry extends Struct {
     public static StdVideoEncodeH264RefListModEntry of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoEncodeH264RefListModEntry(segment); }
 
     /// Creates `StdVideoEncodeH264RefListModEntry` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `StdVideoEncodeH264RefListModEntry` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -76,7 +81,7 @@ public final class StdVideoEncodeH264RefListModEntry extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoEncodeH264RefListModEntry ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoEncodeH264RefListModEntry(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `StdVideoEncodeH264RefListModEntry` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -87,18 +92,21 @@ public final class StdVideoEncodeH264RefListModEntry extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `StdVideoEncodeH264RefListModEntry`
-    public static StdVideoEncodeH264RefListModEntry alloc(SegmentAllocator allocator, long count) { return new StdVideoEncodeH264RefListModEntry(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `StdVideoEncodeH264RefListModEntry`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `StdVideoEncodeH264RefListModEntry`
-    public StdVideoEncodeH264RefListModEntry asSlice(long index) { return new StdVideoEncodeH264RefListModEntry(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `StdVideoEncodeH264RefListModEntry` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `StdVideoEncodeH264RefListModEntry`
+    public static StdVideoEncodeH264RefListModEntry allocInit(SegmentAllocator allocator, @CType("StdVideoH264ModificationOfPicNumsIdc") int modification_of_pic_nums_idc, @CType("uint16_t") short abs_diff_pic_num_minus1, @CType("uint16_t") short long_term_pic_num) { return alloc(allocator).modification_of_pic_nums_idc(modification_of_pic_nums_idc).abs_diff_pic_num_minus1(abs_diff_pic_num_minus1).long_term_pic_num(long_term_pic_num); }
 
-    /// Creates a slice of `StdVideoEncodeH264RefListModEntry`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `StdVideoEncodeH264RefListModEntry`
-    public StdVideoEncodeH264RefListModEntry asSlice(long index, long count) { return new StdVideoEncodeH264RefListModEntry(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public StdVideoEncodeH264RefListModEntry copyFrom(StdVideoEncodeH264RefListModEntry src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `modification_of_pic_nums_idc` at the given index}
     /// @param segment the segment of the struct
@@ -107,9 +115,6 @@ public final class StdVideoEncodeH264RefListModEntry extends Struct {
     /// {@return `modification_of_pic_nums_idc`}
     /// @param segment the segment of the struct
     public static @CType("StdVideoH264ModificationOfPicNumsIdc") int get_modification_of_pic_nums_idc(MemorySegment segment) { return StdVideoEncodeH264RefListModEntry.get_modification_of_pic_nums_idc(segment, 0L); }
-    /// {@return `modification_of_pic_nums_idc` at the given index}
-    /// @param index the index
-    public @CType("StdVideoH264ModificationOfPicNumsIdc") int modification_of_pic_nums_idcAt(long index) { return StdVideoEncodeH264RefListModEntry.get_modification_of_pic_nums_idc(this.segment(), index); }
     /// {@return `modification_of_pic_nums_idc`}
     public @CType("StdVideoH264ModificationOfPicNumsIdc") int modification_of_pic_nums_idc() { return StdVideoEncodeH264RefListModEntry.get_modification_of_pic_nums_idc(this.segment()); }
     /// Sets `modification_of_pic_nums_idc` with the given value at the given index.
@@ -121,11 +126,6 @@ public final class StdVideoEncodeH264RefListModEntry extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_modification_of_pic_nums_idc(MemorySegment segment, @CType("StdVideoH264ModificationOfPicNumsIdc") int value) { StdVideoEncodeH264RefListModEntry.set_modification_of_pic_nums_idc(segment, 0L, value); }
-    /// Sets `modification_of_pic_nums_idc` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeH264RefListModEntry modification_of_pic_nums_idcAt(long index, @CType("StdVideoH264ModificationOfPicNumsIdc") int value) { StdVideoEncodeH264RefListModEntry.set_modification_of_pic_nums_idc(this.segment(), index, value); return this; }
     /// Sets `modification_of_pic_nums_idc` with the given value.
     /// @param value the value
     /// @return `this`
@@ -138,9 +138,6 @@ public final class StdVideoEncodeH264RefListModEntry extends Struct {
     /// {@return `abs_diff_pic_num_minus1`}
     /// @param segment the segment of the struct
     public static @CType("uint16_t") short get_abs_diff_pic_num_minus1(MemorySegment segment) { return StdVideoEncodeH264RefListModEntry.get_abs_diff_pic_num_minus1(segment, 0L); }
-    /// {@return `abs_diff_pic_num_minus1` at the given index}
-    /// @param index the index
-    public @CType("uint16_t") short abs_diff_pic_num_minus1At(long index) { return StdVideoEncodeH264RefListModEntry.get_abs_diff_pic_num_minus1(this.segment(), index); }
     /// {@return `abs_diff_pic_num_minus1`}
     public @CType("uint16_t") short abs_diff_pic_num_minus1() { return StdVideoEncodeH264RefListModEntry.get_abs_diff_pic_num_minus1(this.segment()); }
     /// Sets `abs_diff_pic_num_minus1` with the given value at the given index.
@@ -152,11 +149,6 @@ public final class StdVideoEncodeH264RefListModEntry extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_abs_diff_pic_num_minus1(MemorySegment segment, @CType("uint16_t") short value) { StdVideoEncodeH264RefListModEntry.set_abs_diff_pic_num_minus1(segment, 0L, value); }
-    /// Sets `abs_diff_pic_num_minus1` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeH264RefListModEntry abs_diff_pic_num_minus1At(long index, @CType("uint16_t") short value) { StdVideoEncodeH264RefListModEntry.set_abs_diff_pic_num_minus1(this.segment(), index, value); return this; }
     /// Sets `abs_diff_pic_num_minus1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -169,9 +161,6 @@ public final class StdVideoEncodeH264RefListModEntry extends Struct {
     /// {@return `long_term_pic_num`}
     /// @param segment the segment of the struct
     public static @CType("uint16_t") short get_long_term_pic_num(MemorySegment segment) { return StdVideoEncodeH264RefListModEntry.get_long_term_pic_num(segment, 0L); }
-    /// {@return `long_term_pic_num` at the given index}
-    /// @param index the index
-    public @CType("uint16_t") short long_term_pic_numAt(long index) { return StdVideoEncodeH264RefListModEntry.get_long_term_pic_num(this.segment(), index); }
     /// {@return `long_term_pic_num`}
     public @CType("uint16_t") short long_term_pic_num() { return StdVideoEncodeH264RefListModEntry.get_long_term_pic_num(this.segment()); }
     /// Sets `long_term_pic_num` with the given value at the given index.
@@ -183,14 +172,59 @@ public final class StdVideoEncodeH264RefListModEntry extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_long_term_pic_num(MemorySegment segment, @CType("uint16_t") short value) { StdVideoEncodeH264RefListModEntry.set_long_term_pic_num(segment, 0L, value); }
-    /// Sets `long_term_pic_num` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeH264RefListModEntry long_term_pic_numAt(long index, @CType("uint16_t") short value) { StdVideoEncodeH264RefListModEntry.set_long_term_pic_num(this.segment(), index, value); return this; }
     /// Sets `long_term_pic_num` with the given value.
     /// @param value the value
     /// @return `this`
     public StdVideoEncodeH264RefListModEntry long_term_pic_num(@CType("uint16_t") short value) { StdVideoEncodeH264RefListModEntry.set_long_term_pic_num(this.segment(), value); return this; }
 
+    /// A buffer of [StdVideoEncodeH264RefListModEntry].
+    public static final class Buffer extends StdVideoEncodeH264RefListModEntry {
+        private final long elementCount;
+
+        /// Creates `StdVideoEncodeH264RefListModEntry.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `StdVideoEncodeH264RefListModEntry`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `StdVideoEncodeH264RefListModEntry`
+        public StdVideoEncodeH264RefListModEntry asSlice(long index) { return new StdVideoEncodeH264RefListModEntry(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `StdVideoEncodeH264RefListModEntry`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `StdVideoEncodeH264RefListModEntry`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `modification_of_pic_nums_idc` at the given index}
+        /// @param index the index
+        public @CType("StdVideoH264ModificationOfPicNumsIdc") int modification_of_pic_nums_idcAt(long index) { return StdVideoEncodeH264RefListModEntry.get_modification_of_pic_nums_idc(this.segment(), index); }
+        /// Sets `modification_of_pic_nums_idc` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer modification_of_pic_nums_idcAt(long index, @CType("StdVideoH264ModificationOfPicNumsIdc") int value) { StdVideoEncodeH264RefListModEntry.set_modification_of_pic_nums_idc(this.segment(), index, value); return this; }
+
+        /// {@return `abs_diff_pic_num_minus1` at the given index}
+        /// @param index the index
+        public @CType("uint16_t") short abs_diff_pic_num_minus1At(long index) { return StdVideoEncodeH264RefListModEntry.get_abs_diff_pic_num_minus1(this.segment(), index); }
+        /// Sets `abs_diff_pic_num_minus1` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer abs_diff_pic_num_minus1At(long index, @CType("uint16_t") short value) { StdVideoEncodeH264RefListModEntry.set_abs_diff_pic_num_minus1(this.segment(), index, value); return this; }
+
+        /// {@return `long_term_pic_num` at the given index}
+        /// @param index the index
+        public @CType("uint16_t") short long_term_pic_numAt(long index) { return StdVideoEncodeH264RefListModEntry.get_long_term_pic_num(this.segment(), index); }
+        /// Sets `long_term_pic_num` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer long_term_pic_numAt(long index, @CType("uint16_t") short value) { StdVideoEncodeH264RefListModEntry.set_long_term_pic_num(this.segment(), index, value); return this; }
+
+    }
 }

@@ -52,7 +52,7 @@ import overrungl.util.*;
 ///     uint32_t maxDescriptorSetUpdateAfterBindInlineUniformBlocks;
 /// } VkPhysicalDeviceInlineUniformBlockProperties;
 /// ```
-public final class VkPhysicalDeviceInlineUniformBlockProperties extends Struct {
+public sealed class VkPhysicalDeviceInlineUniformBlockProperties extends Struct {
     /// The struct layout of `VkPhysicalDeviceInlineUniformBlockProperties`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -88,6 +88,11 @@ public final class VkPhysicalDeviceInlineUniformBlockProperties extends Struct {
     public static VkPhysicalDeviceInlineUniformBlockProperties of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceInlineUniformBlockProperties(segment); }
 
     /// Creates `VkPhysicalDeviceInlineUniformBlockProperties` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPhysicalDeviceInlineUniformBlockProperties` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -100,7 +105,7 @@ public final class VkPhysicalDeviceInlineUniformBlockProperties extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceInlineUniformBlockProperties ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceInlineUniformBlockProperties(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceInlineUniformBlockProperties` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -111,18 +116,21 @@ public final class VkPhysicalDeviceInlineUniformBlockProperties extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceInlineUniformBlockProperties`
-    public static VkPhysicalDeviceInlineUniformBlockProperties alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceInlineUniformBlockProperties(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkPhysicalDeviceInlineUniformBlockProperties`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDeviceInlineUniformBlockProperties`
-    public VkPhysicalDeviceInlineUniformBlockProperties asSlice(long index) { return new VkPhysicalDeviceInlineUniformBlockProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkPhysicalDeviceInlineUniformBlockProperties` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDeviceInlineUniformBlockProperties`
+    public static VkPhysicalDeviceInlineUniformBlockProperties allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int maxInlineUniformBlockSize, @CType("uint32_t") int maxPerStageDescriptorInlineUniformBlocks, @CType("uint32_t") int maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks, @CType("uint32_t") int maxDescriptorSetInlineUniformBlocks, @CType("uint32_t") int maxDescriptorSetUpdateAfterBindInlineUniformBlocks) { return alloc(allocator).sType(sType).pNext(pNext).maxInlineUniformBlockSize(maxInlineUniformBlockSize).maxPerStageDescriptorInlineUniformBlocks(maxPerStageDescriptorInlineUniformBlocks).maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks).maxDescriptorSetInlineUniformBlocks(maxDescriptorSetInlineUniformBlocks).maxDescriptorSetUpdateAfterBindInlineUniformBlocks(maxDescriptorSetUpdateAfterBindInlineUniformBlocks); }
 
-    /// Creates a slice of `VkPhysicalDeviceInlineUniformBlockProperties`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDeviceInlineUniformBlockProperties`
-    public VkPhysicalDeviceInlineUniformBlockProperties asSlice(long index, long count) { return new VkPhysicalDeviceInlineUniformBlockProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDeviceInlineUniformBlockProperties copyFrom(VkPhysicalDeviceInlineUniformBlockProperties src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -131,9 +139,6 @@ public final class VkPhysicalDeviceInlineUniformBlockProperties extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceInlineUniformBlockProperties.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceInlineUniformBlockProperties.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPhysicalDeviceInlineUniformBlockProperties.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -145,11 +150,6 @@ public final class VkPhysicalDeviceInlineUniformBlockProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceInlineUniformBlockProperties.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceInlineUniformBlockProperties sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceInlineUniformBlockProperties.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -162,9 +162,6 @@ public final class VkPhysicalDeviceInlineUniformBlockProperties extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceInlineUniformBlockProperties.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceInlineUniformBlockProperties.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceInlineUniformBlockProperties.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -176,11 +173,6 @@ public final class VkPhysicalDeviceInlineUniformBlockProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceInlineUniformBlockProperties.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceInlineUniformBlockProperties pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceInlineUniformBlockProperties.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -193,9 +185,6 @@ public final class VkPhysicalDeviceInlineUniformBlockProperties extends Struct {
     /// {@return `maxInlineUniformBlockSize`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxInlineUniformBlockSize(MemorySegment segment) { return VkPhysicalDeviceInlineUniformBlockProperties.get_maxInlineUniformBlockSize(segment, 0L); }
-    /// {@return `maxInlineUniformBlockSize` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxInlineUniformBlockSizeAt(long index) { return VkPhysicalDeviceInlineUniformBlockProperties.get_maxInlineUniformBlockSize(this.segment(), index); }
     /// {@return `maxInlineUniformBlockSize`}
     public @CType("uint32_t") int maxInlineUniformBlockSize() { return VkPhysicalDeviceInlineUniformBlockProperties.get_maxInlineUniformBlockSize(this.segment()); }
     /// Sets `maxInlineUniformBlockSize` with the given value at the given index.
@@ -207,11 +196,6 @@ public final class VkPhysicalDeviceInlineUniformBlockProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxInlineUniformBlockSize(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceInlineUniformBlockProperties.set_maxInlineUniformBlockSize(segment, 0L, value); }
-    /// Sets `maxInlineUniformBlockSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceInlineUniformBlockProperties maxInlineUniformBlockSizeAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceInlineUniformBlockProperties.set_maxInlineUniformBlockSize(this.segment(), index, value); return this; }
     /// Sets `maxInlineUniformBlockSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -224,9 +208,6 @@ public final class VkPhysicalDeviceInlineUniformBlockProperties extends Struct {
     /// {@return `maxPerStageDescriptorInlineUniformBlocks`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxPerStageDescriptorInlineUniformBlocks(MemorySegment segment) { return VkPhysicalDeviceInlineUniformBlockProperties.get_maxPerStageDescriptorInlineUniformBlocks(segment, 0L); }
-    /// {@return `maxPerStageDescriptorInlineUniformBlocks` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxPerStageDescriptorInlineUniformBlocksAt(long index) { return VkPhysicalDeviceInlineUniformBlockProperties.get_maxPerStageDescriptorInlineUniformBlocks(this.segment(), index); }
     /// {@return `maxPerStageDescriptorInlineUniformBlocks`}
     public @CType("uint32_t") int maxPerStageDescriptorInlineUniformBlocks() { return VkPhysicalDeviceInlineUniformBlockProperties.get_maxPerStageDescriptorInlineUniformBlocks(this.segment()); }
     /// Sets `maxPerStageDescriptorInlineUniformBlocks` with the given value at the given index.
@@ -238,11 +219,6 @@ public final class VkPhysicalDeviceInlineUniformBlockProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxPerStageDescriptorInlineUniformBlocks(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceInlineUniformBlockProperties.set_maxPerStageDescriptorInlineUniformBlocks(segment, 0L, value); }
-    /// Sets `maxPerStageDescriptorInlineUniformBlocks` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceInlineUniformBlockProperties maxPerStageDescriptorInlineUniformBlocksAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceInlineUniformBlockProperties.set_maxPerStageDescriptorInlineUniformBlocks(this.segment(), index, value); return this; }
     /// Sets `maxPerStageDescriptorInlineUniformBlocks` with the given value.
     /// @param value the value
     /// @return `this`
@@ -255,9 +231,6 @@ public final class VkPhysicalDeviceInlineUniformBlockProperties extends Struct {
     /// {@return `maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(MemorySegment segment) { return VkPhysicalDeviceInlineUniformBlockProperties.get_maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(segment, 0L); }
-    /// {@return `maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxPerStageDescriptorUpdateAfterBindInlineUniformBlocksAt(long index) { return VkPhysicalDeviceInlineUniformBlockProperties.get_maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(this.segment(), index); }
     /// {@return `maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks`}
     public @CType("uint32_t") int maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks() { return VkPhysicalDeviceInlineUniformBlockProperties.get_maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(this.segment()); }
     /// Sets `maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks` with the given value at the given index.
@@ -269,11 +242,6 @@ public final class VkPhysicalDeviceInlineUniformBlockProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceInlineUniformBlockProperties.set_maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(segment, 0L, value); }
-    /// Sets `maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceInlineUniformBlockProperties maxPerStageDescriptorUpdateAfterBindInlineUniformBlocksAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceInlineUniformBlockProperties.set_maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(this.segment(), index, value); return this; }
     /// Sets `maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks` with the given value.
     /// @param value the value
     /// @return `this`
@@ -286,9 +254,6 @@ public final class VkPhysicalDeviceInlineUniformBlockProperties extends Struct {
     /// {@return `maxDescriptorSetInlineUniformBlocks`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxDescriptorSetInlineUniformBlocks(MemorySegment segment) { return VkPhysicalDeviceInlineUniformBlockProperties.get_maxDescriptorSetInlineUniformBlocks(segment, 0L); }
-    /// {@return `maxDescriptorSetInlineUniformBlocks` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxDescriptorSetInlineUniformBlocksAt(long index) { return VkPhysicalDeviceInlineUniformBlockProperties.get_maxDescriptorSetInlineUniformBlocks(this.segment(), index); }
     /// {@return `maxDescriptorSetInlineUniformBlocks`}
     public @CType("uint32_t") int maxDescriptorSetInlineUniformBlocks() { return VkPhysicalDeviceInlineUniformBlockProperties.get_maxDescriptorSetInlineUniformBlocks(this.segment()); }
     /// Sets `maxDescriptorSetInlineUniformBlocks` with the given value at the given index.
@@ -300,11 +265,6 @@ public final class VkPhysicalDeviceInlineUniformBlockProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxDescriptorSetInlineUniformBlocks(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceInlineUniformBlockProperties.set_maxDescriptorSetInlineUniformBlocks(segment, 0L, value); }
-    /// Sets `maxDescriptorSetInlineUniformBlocks` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceInlineUniformBlockProperties maxDescriptorSetInlineUniformBlocksAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceInlineUniformBlockProperties.set_maxDescriptorSetInlineUniformBlocks(this.segment(), index, value); return this; }
     /// Sets `maxDescriptorSetInlineUniformBlocks` with the given value.
     /// @param value the value
     /// @return `this`
@@ -317,9 +277,6 @@ public final class VkPhysicalDeviceInlineUniformBlockProperties extends Struct {
     /// {@return `maxDescriptorSetUpdateAfterBindInlineUniformBlocks`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxDescriptorSetUpdateAfterBindInlineUniformBlocks(MemorySegment segment) { return VkPhysicalDeviceInlineUniformBlockProperties.get_maxDescriptorSetUpdateAfterBindInlineUniformBlocks(segment, 0L); }
-    /// {@return `maxDescriptorSetUpdateAfterBindInlineUniformBlocks` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxDescriptorSetUpdateAfterBindInlineUniformBlocksAt(long index) { return VkPhysicalDeviceInlineUniformBlockProperties.get_maxDescriptorSetUpdateAfterBindInlineUniformBlocks(this.segment(), index); }
     /// {@return `maxDescriptorSetUpdateAfterBindInlineUniformBlocks`}
     public @CType("uint32_t") int maxDescriptorSetUpdateAfterBindInlineUniformBlocks() { return VkPhysicalDeviceInlineUniformBlockProperties.get_maxDescriptorSetUpdateAfterBindInlineUniformBlocks(this.segment()); }
     /// Sets `maxDescriptorSetUpdateAfterBindInlineUniformBlocks` with the given value at the given index.
@@ -331,14 +288,95 @@ public final class VkPhysicalDeviceInlineUniformBlockProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxDescriptorSetUpdateAfterBindInlineUniformBlocks(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceInlineUniformBlockProperties.set_maxDescriptorSetUpdateAfterBindInlineUniformBlocks(segment, 0L, value); }
-    /// Sets `maxDescriptorSetUpdateAfterBindInlineUniformBlocks` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceInlineUniformBlockProperties maxDescriptorSetUpdateAfterBindInlineUniformBlocksAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceInlineUniformBlockProperties.set_maxDescriptorSetUpdateAfterBindInlineUniformBlocks(this.segment(), index, value); return this; }
     /// Sets `maxDescriptorSetUpdateAfterBindInlineUniformBlocks` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceInlineUniformBlockProperties maxDescriptorSetUpdateAfterBindInlineUniformBlocks(@CType("uint32_t") int value) { VkPhysicalDeviceInlineUniformBlockProperties.set_maxDescriptorSetUpdateAfterBindInlineUniformBlocks(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDeviceInlineUniformBlockProperties].
+    public static final class Buffer extends VkPhysicalDeviceInlineUniformBlockProperties {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDeviceInlineUniformBlockProperties.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDeviceInlineUniformBlockProperties`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDeviceInlineUniformBlockProperties`
+        public VkPhysicalDeviceInlineUniformBlockProperties asSlice(long index) { return new VkPhysicalDeviceInlineUniformBlockProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDeviceInlineUniformBlockProperties`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDeviceInlineUniformBlockProperties`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceInlineUniformBlockProperties.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceInlineUniformBlockProperties.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceInlineUniformBlockProperties.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceInlineUniformBlockProperties.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `maxInlineUniformBlockSize` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxInlineUniformBlockSizeAt(long index) { return VkPhysicalDeviceInlineUniformBlockProperties.get_maxInlineUniformBlockSize(this.segment(), index); }
+        /// Sets `maxInlineUniformBlockSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxInlineUniformBlockSizeAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceInlineUniformBlockProperties.set_maxInlineUniformBlockSize(this.segment(), index, value); return this; }
+
+        /// {@return `maxPerStageDescriptorInlineUniformBlocks` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxPerStageDescriptorInlineUniformBlocksAt(long index) { return VkPhysicalDeviceInlineUniformBlockProperties.get_maxPerStageDescriptorInlineUniformBlocks(this.segment(), index); }
+        /// Sets `maxPerStageDescriptorInlineUniformBlocks` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxPerStageDescriptorInlineUniformBlocksAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceInlineUniformBlockProperties.set_maxPerStageDescriptorInlineUniformBlocks(this.segment(), index, value); return this; }
+
+        /// {@return `maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxPerStageDescriptorUpdateAfterBindInlineUniformBlocksAt(long index) { return VkPhysicalDeviceInlineUniformBlockProperties.get_maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(this.segment(), index); }
+        /// Sets `maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxPerStageDescriptorUpdateAfterBindInlineUniformBlocksAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceInlineUniformBlockProperties.set_maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(this.segment(), index, value); return this; }
+
+        /// {@return `maxDescriptorSetInlineUniformBlocks` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxDescriptorSetInlineUniformBlocksAt(long index) { return VkPhysicalDeviceInlineUniformBlockProperties.get_maxDescriptorSetInlineUniformBlocks(this.segment(), index); }
+        /// Sets `maxDescriptorSetInlineUniformBlocks` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxDescriptorSetInlineUniformBlocksAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceInlineUniformBlockProperties.set_maxDescriptorSetInlineUniformBlocks(this.segment(), index, value); return this; }
+
+        /// {@return `maxDescriptorSetUpdateAfterBindInlineUniformBlocks` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxDescriptorSetUpdateAfterBindInlineUniformBlocksAt(long index) { return VkPhysicalDeviceInlineUniformBlockProperties.get_maxDescriptorSetUpdateAfterBindInlineUniformBlocks(this.segment(), index); }
+        /// Sets `maxDescriptorSetUpdateAfterBindInlineUniformBlocks` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxDescriptorSetUpdateAfterBindInlineUniformBlocksAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceInlineUniformBlockProperties.set_maxDescriptorSetUpdateAfterBindInlineUniformBlocks(this.segment(), index, value); return this; }
+
+    }
 }

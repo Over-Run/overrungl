@@ -46,7 +46,7 @@ import overrungl.util.*;
 ///     VkBool32 noInvocationFragmentShadingRates;
 /// } VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV;
 /// ```
-public final class VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV extends Struct {
+public sealed class VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV extends Struct {
     /// The struct layout of `VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -76,6 +76,11 @@ public final class VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV extends St
     public static VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV(segment); }
 
     /// Creates `VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -88,7 +93,7 @@ public final class VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV extends St
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -99,18 +104,21 @@ public final class VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV extends St
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV`
-    public static VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV`
-    public VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV asSlice(long index) { return new VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV`
+    public static VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int fragmentShadingRateEnums, @CType("VkBool32") int supersampleFragmentShadingRates, @CType("VkBool32") int noInvocationFragmentShadingRates) { return alloc(allocator).sType(sType).pNext(pNext).fragmentShadingRateEnums(fragmentShadingRateEnums).supersampleFragmentShadingRates(supersampleFragmentShadingRates).noInvocationFragmentShadingRates(noInvocationFragmentShadingRates); }
 
-    /// Creates a slice of `VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV`
-    public VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV asSlice(long index, long count) { return new VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV copyFrom(VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -119,9 +127,6 @@ public final class VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV extends St
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -133,11 +138,6 @@ public final class VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV extends St
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,9 +150,6 @@ public final class VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV extends St
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -164,11 +161,6 @@ public final class VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV extends St
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -181,9 +173,6 @@ public final class VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV extends St
     /// {@return `fragmentShadingRateEnums`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_fragmentShadingRateEnums(MemorySegment segment) { return VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV.get_fragmentShadingRateEnums(segment, 0L); }
-    /// {@return `fragmentShadingRateEnums` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int fragmentShadingRateEnumsAt(long index) { return VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV.get_fragmentShadingRateEnums(this.segment(), index); }
     /// {@return `fragmentShadingRateEnums`}
     public @CType("VkBool32") int fragmentShadingRateEnums() { return VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV.get_fragmentShadingRateEnums(this.segment()); }
     /// Sets `fragmentShadingRateEnums` with the given value at the given index.
@@ -195,11 +184,6 @@ public final class VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV extends St
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_fragmentShadingRateEnums(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV.set_fragmentShadingRateEnums(segment, 0L, value); }
-    /// Sets `fragmentShadingRateEnums` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV fragmentShadingRateEnumsAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV.set_fragmentShadingRateEnums(this.segment(), index, value); return this; }
     /// Sets `fragmentShadingRateEnums` with the given value.
     /// @param value the value
     /// @return `this`
@@ -212,9 +196,6 @@ public final class VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV extends St
     /// {@return `supersampleFragmentShadingRates`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_supersampleFragmentShadingRates(MemorySegment segment) { return VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV.get_supersampleFragmentShadingRates(segment, 0L); }
-    /// {@return `supersampleFragmentShadingRates` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int supersampleFragmentShadingRatesAt(long index) { return VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV.get_supersampleFragmentShadingRates(this.segment(), index); }
     /// {@return `supersampleFragmentShadingRates`}
     public @CType("VkBool32") int supersampleFragmentShadingRates() { return VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV.get_supersampleFragmentShadingRates(this.segment()); }
     /// Sets `supersampleFragmentShadingRates` with the given value at the given index.
@@ -226,11 +207,6 @@ public final class VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV extends St
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_supersampleFragmentShadingRates(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV.set_supersampleFragmentShadingRates(segment, 0L, value); }
-    /// Sets `supersampleFragmentShadingRates` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV supersampleFragmentShadingRatesAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV.set_supersampleFragmentShadingRates(this.segment(), index, value); return this; }
     /// Sets `supersampleFragmentShadingRates` with the given value.
     /// @param value the value
     /// @return `this`
@@ -243,9 +219,6 @@ public final class VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV extends St
     /// {@return `noInvocationFragmentShadingRates`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_noInvocationFragmentShadingRates(MemorySegment segment) { return VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV.get_noInvocationFragmentShadingRates(segment, 0L); }
-    /// {@return `noInvocationFragmentShadingRates` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int noInvocationFragmentShadingRatesAt(long index) { return VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV.get_noInvocationFragmentShadingRates(this.segment(), index); }
     /// {@return `noInvocationFragmentShadingRates`}
     public @CType("VkBool32") int noInvocationFragmentShadingRates() { return VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV.get_noInvocationFragmentShadingRates(this.segment()); }
     /// Sets `noInvocationFragmentShadingRates` with the given value at the given index.
@@ -257,14 +230,77 @@ public final class VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV extends St
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_noInvocationFragmentShadingRates(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV.set_noInvocationFragmentShadingRates(segment, 0L, value); }
-    /// Sets `noInvocationFragmentShadingRates` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV noInvocationFragmentShadingRatesAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV.set_noInvocationFragmentShadingRates(this.segment(), index, value); return this; }
     /// Sets `noInvocationFragmentShadingRates` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV noInvocationFragmentShadingRates(@CType("VkBool32") int value) { VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV.set_noInvocationFragmentShadingRates(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV].
+    public static final class Buffer extends VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV`
+        public VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV asSlice(long index) { return new VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `fragmentShadingRateEnums` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int fragmentShadingRateEnumsAt(long index) { return VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV.get_fragmentShadingRateEnums(this.segment(), index); }
+        /// Sets `fragmentShadingRateEnums` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer fragmentShadingRateEnumsAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV.set_fragmentShadingRateEnums(this.segment(), index, value); return this; }
+
+        /// {@return `supersampleFragmentShadingRates` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int supersampleFragmentShadingRatesAt(long index) { return VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV.get_supersampleFragmentShadingRates(this.segment(), index); }
+        /// Sets `supersampleFragmentShadingRates` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer supersampleFragmentShadingRatesAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV.set_supersampleFragmentShadingRates(this.segment(), index, value); return this; }
+
+        /// {@return `noInvocationFragmentShadingRates` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int noInvocationFragmentShadingRatesAt(long index) { return VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV.get_noInvocationFragmentShadingRates(this.segment(), index); }
+        /// Sets `noInvocationFragmentShadingRates` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer noInvocationFragmentShadingRatesAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV.set_noInvocationFragmentShadingRates(this.segment(), index, value); return this; }
+
+    }
 }

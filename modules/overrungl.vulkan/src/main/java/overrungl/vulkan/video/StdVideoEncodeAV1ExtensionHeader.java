@@ -37,7 +37,7 @@ import overrungl.util.*;
 ///     uint8_t spatial_id;
 /// } StdVideoEncodeAV1ExtensionHeader;
 /// ```
-public final class StdVideoEncodeAV1ExtensionHeader extends Struct {
+public sealed class StdVideoEncodeAV1ExtensionHeader extends Struct {
     /// The struct layout of `StdVideoEncodeAV1ExtensionHeader`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_BYTE.withName("temporal_id"),
@@ -58,6 +58,11 @@ public final class StdVideoEncodeAV1ExtensionHeader extends Struct {
     public static StdVideoEncodeAV1ExtensionHeader of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoEncodeAV1ExtensionHeader(segment); }
 
     /// Creates `StdVideoEncodeAV1ExtensionHeader` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `StdVideoEncodeAV1ExtensionHeader` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -70,7 +75,7 @@ public final class StdVideoEncodeAV1ExtensionHeader extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoEncodeAV1ExtensionHeader ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoEncodeAV1ExtensionHeader(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `StdVideoEncodeAV1ExtensionHeader` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -81,18 +86,21 @@ public final class StdVideoEncodeAV1ExtensionHeader extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `StdVideoEncodeAV1ExtensionHeader`
-    public static StdVideoEncodeAV1ExtensionHeader alloc(SegmentAllocator allocator, long count) { return new StdVideoEncodeAV1ExtensionHeader(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `StdVideoEncodeAV1ExtensionHeader`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `StdVideoEncodeAV1ExtensionHeader`
-    public StdVideoEncodeAV1ExtensionHeader asSlice(long index) { return new StdVideoEncodeAV1ExtensionHeader(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `StdVideoEncodeAV1ExtensionHeader` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `StdVideoEncodeAV1ExtensionHeader`
+    public static StdVideoEncodeAV1ExtensionHeader allocInit(SegmentAllocator allocator, @CType("uint8_t") byte temporal_id, @CType("uint8_t") byte spatial_id) { return alloc(allocator).temporal_id(temporal_id).spatial_id(spatial_id); }
 
-    /// Creates a slice of `StdVideoEncodeAV1ExtensionHeader`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `StdVideoEncodeAV1ExtensionHeader`
-    public StdVideoEncodeAV1ExtensionHeader asSlice(long index, long count) { return new StdVideoEncodeAV1ExtensionHeader(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public StdVideoEncodeAV1ExtensionHeader copyFrom(StdVideoEncodeAV1ExtensionHeader src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `temporal_id` at the given index}
     /// @param segment the segment of the struct
@@ -101,9 +109,6 @@ public final class StdVideoEncodeAV1ExtensionHeader extends Struct {
     /// {@return `temporal_id`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t") byte get_temporal_id(MemorySegment segment) { return StdVideoEncodeAV1ExtensionHeader.get_temporal_id(segment, 0L); }
-    /// {@return `temporal_id` at the given index}
-    /// @param index the index
-    public @CType("uint8_t") byte temporal_idAt(long index) { return StdVideoEncodeAV1ExtensionHeader.get_temporal_id(this.segment(), index); }
     /// {@return `temporal_id`}
     public @CType("uint8_t") byte temporal_id() { return StdVideoEncodeAV1ExtensionHeader.get_temporal_id(this.segment()); }
     /// Sets `temporal_id` with the given value at the given index.
@@ -115,11 +120,6 @@ public final class StdVideoEncodeAV1ExtensionHeader extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_temporal_id(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoEncodeAV1ExtensionHeader.set_temporal_id(segment, 0L, value); }
-    /// Sets `temporal_id` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeAV1ExtensionHeader temporal_idAt(long index, @CType("uint8_t") byte value) { StdVideoEncodeAV1ExtensionHeader.set_temporal_id(this.segment(), index, value); return this; }
     /// Sets `temporal_id` with the given value.
     /// @param value the value
     /// @return `this`
@@ -132,9 +132,6 @@ public final class StdVideoEncodeAV1ExtensionHeader extends Struct {
     /// {@return `spatial_id`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t") byte get_spatial_id(MemorySegment segment) { return StdVideoEncodeAV1ExtensionHeader.get_spatial_id(segment, 0L); }
-    /// {@return `spatial_id` at the given index}
-    /// @param index the index
-    public @CType("uint8_t") byte spatial_idAt(long index) { return StdVideoEncodeAV1ExtensionHeader.get_spatial_id(this.segment(), index); }
     /// {@return `spatial_id`}
     public @CType("uint8_t") byte spatial_id() { return StdVideoEncodeAV1ExtensionHeader.get_spatial_id(this.segment()); }
     /// Sets `spatial_id` with the given value at the given index.
@@ -146,14 +143,50 @@ public final class StdVideoEncodeAV1ExtensionHeader extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_spatial_id(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoEncodeAV1ExtensionHeader.set_spatial_id(segment, 0L, value); }
-    /// Sets `spatial_id` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeAV1ExtensionHeader spatial_idAt(long index, @CType("uint8_t") byte value) { StdVideoEncodeAV1ExtensionHeader.set_spatial_id(this.segment(), index, value); return this; }
     /// Sets `spatial_id` with the given value.
     /// @param value the value
     /// @return `this`
     public StdVideoEncodeAV1ExtensionHeader spatial_id(@CType("uint8_t") byte value) { StdVideoEncodeAV1ExtensionHeader.set_spatial_id(this.segment(), value); return this; }
 
+    /// A buffer of [StdVideoEncodeAV1ExtensionHeader].
+    public static final class Buffer extends StdVideoEncodeAV1ExtensionHeader {
+        private final long elementCount;
+
+        /// Creates `StdVideoEncodeAV1ExtensionHeader.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `StdVideoEncodeAV1ExtensionHeader`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `StdVideoEncodeAV1ExtensionHeader`
+        public StdVideoEncodeAV1ExtensionHeader asSlice(long index) { return new StdVideoEncodeAV1ExtensionHeader(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `StdVideoEncodeAV1ExtensionHeader`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `StdVideoEncodeAV1ExtensionHeader`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `temporal_id` at the given index}
+        /// @param index the index
+        public @CType("uint8_t") byte temporal_idAt(long index) { return StdVideoEncodeAV1ExtensionHeader.get_temporal_id(this.segment(), index); }
+        /// Sets `temporal_id` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer temporal_idAt(long index, @CType("uint8_t") byte value) { StdVideoEncodeAV1ExtensionHeader.set_temporal_id(this.segment(), index, value); return this; }
+
+        /// {@return `spatial_id` at the given index}
+        /// @param index the index
+        public @CType("uint8_t") byte spatial_idAt(long index) { return StdVideoEncodeAV1ExtensionHeader.get_spatial_id(this.segment(), index); }
+        /// Sets `spatial_id` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer spatial_idAt(long index, @CType("uint8_t") byte value) { StdVideoEncodeAV1ExtensionHeader.set_spatial_id(this.segment(), index, value); return this; }
+
+    }
 }

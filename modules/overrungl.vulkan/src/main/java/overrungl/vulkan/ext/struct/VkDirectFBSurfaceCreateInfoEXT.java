@@ -46,7 +46,7 @@ import overrungl.util.*;
 ///     IDirectFBSurface * surface;
 /// } VkDirectFBSurfaceCreateInfoEXT;
 /// ```
-public final class VkDirectFBSurfaceCreateInfoEXT extends Struct {
+public sealed class VkDirectFBSurfaceCreateInfoEXT extends Struct {
     /// The struct layout of `VkDirectFBSurfaceCreateInfoEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -76,6 +76,11 @@ public final class VkDirectFBSurfaceCreateInfoEXT extends Struct {
     public static VkDirectFBSurfaceCreateInfoEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDirectFBSurfaceCreateInfoEXT(segment); }
 
     /// Creates `VkDirectFBSurfaceCreateInfoEXT` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkDirectFBSurfaceCreateInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -88,7 +93,7 @@ public final class VkDirectFBSurfaceCreateInfoEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDirectFBSurfaceCreateInfoEXT ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkDirectFBSurfaceCreateInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkDirectFBSurfaceCreateInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -99,18 +104,21 @@ public final class VkDirectFBSurfaceCreateInfoEXT extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDirectFBSurfaceCreateInfoEXT`
-    public static VkDirectFBSurfaceCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkDirectFBSurfaceCreateInfoEXT(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkDirectFBSurfaceCreateInfoEXT`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkDirectFBSurfaceCreateInfoEXT`
-    public VkDirectFBSurfaceCreateInfoEXT asSlice(long index) { return new VkDirectFBSurfaceCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkDirectFBSurfaceCreateInfoEXT` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkDirectFBSurfaceCreateInfoEXT`
+    public static VkDirectFBSurfaceCreateInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkDirectFBSurfaceCreateFlagsEXT") int flags, @CType("IDirectFB *") java.lang.foreign.MemorySegment dfb, @CType("IDirectFBSurface *") java.lang.foreign.MemorySegment surface) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).dfb(dfb).surface(surface); }
 
-    /// Creates a slice of `VkDirectFBSurfaceCreateInfoEXT`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkDirectFBSurfaceCreateInfoEXT`
-    public VkDirectFBSurfaceCreateInfoEXT asSlice(long index, long count) { return new VkDirectFBSurfaceCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkDirectFBSurfaceCreateInfoEXT copyFrom(VkDirectFBSurfaceCreateInfoEXT src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -119,9 +127,6 @@ public final class VkDirectFBSurfaceCreateInfoEXT extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkDirectFBSurfaceCreateInfoEXT.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkDirectFBSurfaceCreateInfoEXT.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkDirectFBSurfaceCreateInfoEXT.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -133,11 +138,6 @@ public final class VkDirectFBSurfaceCreateInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkDirectFBSurfaceCreateInfoEXT.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDirectFBSurfaceCreateInfoEXT sTypeAt(long index, @CType("VkStructureType") int value) { VkDirectFBSurfaceCreateInfoEXT.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,9 +150,6 @@ public final class VkDirectFBSurfaceCreateInfoEXT extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkDirectFBSurfaceCreateInfoEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkDirectFBSurfaceCreateInfoEXT.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkDirectFBSurfaceCreateInfoEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -164,11 +161,6 @@ public final class VkDirectFBSurfaceCreateInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDirectFBSurfaceCreateInfoEXT.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDirectFBSurfaceCreateInfoEXT pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDirectFBSurfaceCreateInfoEXT.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -181,9 +173,6 @@ public final class VkDirectFBSurfaceCreateInfoEXT extends Struct {
     /// {@return `flags`}
     /// @param segment the segment of the struct
     public static @CType("VkDirectFBSurfaceCreateFlagsEXT") int get_flags(MemorySegment segment) { return VkDirectFBSurfaceCreateInfoEXT.get_flags(segment, 0L); }
-    /// {@return `flags` at the given index}
-    /// @param index the index
-    public @CType("VkDirectFBSurfaceCreateFlagsEXT") int flagsAt(long index) { return VkDirectFBSurfaceCreateInfoEXT.get_flags(this.segment(), index); }
     /// {@return `flags`}
     public @CType("VkDirectFBSurfaceCreateFlagsEXT") int flags() { return VkDirectFBSurfaceCreateInfoEXT.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
@@ -195,11 +184,6 @@ public final class VkDirectFBSurfaceCreateInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_flags(MemorySegment segment, @CType("VkDirectFBSurfaceCreateFlagsEXT") int value) { VkDirectFBSurfaceCreateInfoEXT.set_flags(segment, 0L, value); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDirectFBSurfaceCreateInfoEXT flagsAt(long index, @CType("VkDirectFBSurfaceCreateFlagsEXT") int value) { VkDirectFBSurfaceCreateInfoEXT.set_flags(this.segment(), index, value); return this; }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -212,9 +196,6 @@ public final class VkDirectFBSurfaceCreateInfoEXT extends Struct {
     /// {@return `dfb`}
     /// @param segment the segment of the struct
     public static @CType("IDirectFB *") java.lang.foreign.MemorySegment get_dfb(MemorySegment segment) { return VkDirectFBSurfaceCreateInfoEXT.get_dfb(segment, 0L); }
-    /// {@return `dfb` at the given index}
-    /// @param index the index
-    public @CType("IDirectFB *") java.lang.foreign.MemorySegment dfbAt(long index) { return VkDirectFBSurfaceCreateInfoEXT.get_dfb(this.segment(), index); }
     /// {@return `dfb`}
     public @CType("IDirectFB *") java.lang.foreign.MemorySegment dfb() { return VkDirectFBSurfaceCreateInfoEXT.get_dfb(this.segment()); }
     /// Sets `dfb` with the given value at the given index.
@@ -226,11 +207,6 @@ public final class VkDirectFBSurfaceCreateInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_dfb(MemorySegment segment, @CType("IDirectFB *") java.lang.foreign.MemorySegment value) { VkDirectFBSurfaceCreateInfoEXT.set_dfb(segment, 0L, value); }
-    /// Sets `dfb` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDirectFBSurfaceCreateInfoEXT dfbAt(long index, @CType("IDirectFB *") java.lang.foreign.MemorySegment value) { VkDirectFBSurfaceCreateInfoEXT.set_dfb(this.segment(), index, value); return this; }
     /// Sets `dfb` with the given value.
     /// @param value the value
     /// @return `this`
@@ -243,9 +219,6 @@ public final class VkDirectFBSurfaceCreateInfoEXT extends Struct {
     /// {@return `surface`}
     /// @param segment the segment of the struct
     public static @CType("IDirectFBSurface *") java.lang.foreign.MemorySegment get_surface(MemorySegment segment) { return VkDirectFBSurfaceCreateInfoEXT.get_surface(segment, 0L); }
-    /// {@return `surface` at the given index}
-    /// @param index the index
-    public @CType("IDirectFBSurface *") java.lang.foreign.MemorySegment surfaceAt(long index) { return VkDirectFBSurfaceCreateInfoEXT.get_surface(this.segment(), index); }
     /// {@return `surface`}
     public @CType("IDirectFBSurface *") java.lang.foreign.MemorySegment surface() { return VkDirectFBSurfaceCreateInfoEXT.get_surface(this.segment()); }
     /// Sets `surface` with the given value at the given index.
@@ -257,14 +230,77 @@ public final class VkDirectFBSurfaceCreateInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_surface(MemorySegment segment, @CType("IDirectFBSurface *") java.lang.foreign.MemorySegment value) { VkDirectFBSurfaceCreateInfoEXT.set_surface(segment, 0L, value); }
-    /// Sets `surface` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDirectFBSurfaceCreateInfoEXT surfaceAt(long index, @CType("IDirectFBSurface *") java.lang.foreign.MemorySegment value) { VkDirectFBSurfaceCreateInfoEXT.set_surface(this.segment(), index, value); return this; }
     /// Sets `surface` with the given value.
     /// @param value the value
     /// @return `this`
     public VkDirectFBSurfaceCreateInfoEXT surface(@CType("IDirectFBSurface *") java.lang.foreign.MemorySegment value) { VkDirectFBSurfaceCreateInfoEXT.set_surface(this.segment(), value); return this; }
 
+    /// A buffer of [VkDirectFBSurfaceCreateInfoEXT].
+    public static final class Buffer extends VkDirectFBSurfaceCreateInfoEXT {
+        private final long elementCount;
+
+        /// Creates `VkDirectFBSurfaceCreateInfoEXT.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkDirectFBSurfaceCreateInfoEXT`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkDirectFBSurfaceCreateInfoEXT`
+        public VkDirectFBSurfaceCreateInfoEXT asSlice(long index) { return new VkDirectFBSurfaceCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkDirectFBSurfaceCreateInfoEXT`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkDirectFBSurfaceCreateInfoEXT`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkDirectFBSurfaceCreateInfoEXT.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkDirectFBSurfaceCreateInfoEXT.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkDirectFBSurfaceCreateInfoEXT.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDirectFBSurfaceCreateInfoEXT.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `flags` at the given index}
+        /// @param index the index
+        public @CType("VkDirectFBSurfaceCreateFlagsEXT") int flagsAt(long index) { return VkDirectFBSurfaceCreateInfoEXT.get_flags(this.segment(), index); }
+        /// Sets `flags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer flagsAt(long index, @CType("VkDirectFBSurfaceCreateFlagsEXT") int value) { VkDirectFBSurfaceCreateInfoEXT.set_flags(this.segment(), index, value); return this; }
+
+        /// {@return `dfb` at the given index}
+        /// @param index the index
+        public @CType("IDirectFB *") java.lang.foreign.MemorySegment dfbAt(long index) { return VkDirectFBSurfaceCreateInfoEXT.get_dfb(this.segment(), index); }
+        /// Sets `dfb` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer dfbAt(long index, @CType("IDirectFB *") java.lang.foreign.MemorySegment value) { VkDirectFBSurfaceCreateInfoEXT.set_dfb(this.segment(), index, value); return this; }
+
+        /// {@return `surface` at the given index}
+        /// @param index the index
+        public @CType("IDirectFBSurface *") java.lang.foreign.MemorySegment surfaceAt(long index) { return VkDirectFBSurfaceCreateInfoEXT.get_surface(this.segment(), index); }
+        /// Sets `surface` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer surfaceAt(long index, @CType("IDirectFBSurface *") java.lang.foreign.MemorySegment value) { VkDirectFBSurfaceCreateInfoEXT.set_surface(this.segment(), index, value); return this; }
+
+    }
 }

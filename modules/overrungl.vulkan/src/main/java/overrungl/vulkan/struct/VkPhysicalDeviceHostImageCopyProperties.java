@@ -56,7 +56,7 @@ import static overrungl.vulkan.VK10.*;
 ///     VkBool32 identicalMemoryTypeRequirements;
 /// } VkPhysicalDeviceHostImageCopyProperties;
 /// ```
-public final class VkPhysicalDeviceHostImageCopyProperties extends Struct {
+public sealed class VkPhysicalDeviceHostImageCopyProperties extends Struct {
     /// The struct layout of `VkPhysicalDeviceHostImageCopyProperties`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -97,6 +97,11 @@ public final class VkPhysicalDeviceHostImageCopyProperties extends Struct {
     public static VkPhysicalDeviceHostImageCopyProperties of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceHostImageCopyProperties(segment); }
 
     /// Creates `VkPhysicalDeviceHostImageCopyProperties` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPhysicalDeviceHostImageCopyProperties` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -109,7 +114,7 @@ public final class VkPhysicalDeviceHostImageCopyProperties extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceHostImageCopyProperties ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceHostImageCopyProperties(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceHostImageCopyProperties` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -120,18 +125,21 @@ public final class VkPhysicalDeviceHostImageCopyProperties extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceHostImageCopyProperties`
-    public static VkPhysicalDeviceHostImageCopyProperties alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceHostImageCopyProperties(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkPhysicalDeviceHostImageCopyProperties`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDeviceHostImageCopyProperties`
-    public VkPhysicalDeviceHostImageCopyProperties asSlice(long index) { return new VkPhysicalDeviceHostImageCopyProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkPhysicalDeviceHostImageCopyProperties` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDeviceHostImageCopyProperties`
+    public static VkPhysicalDeviceHostImageCopyProperties allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int copySrcLayoutCount, @CType("VkImageLayout *") java.lang.foreign.MemorySegment pCopySrcLayouts, @CType("uint32_t") int copyDstLayoutCount, @CType("VkImageLayout *") java.lang.foreign.MemorySegment pCopyDstLayouts, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment optimalTilingLayoutUUID, @CType("VkBool32") int identicalMemoryTypeRequirements) { return alloc(allocator).sType(sType).pNext(pNext).copySrcLayoutCount(copySrcLayoutCount).pCopySrcLayouts(pCopySrcLayouts).copyDstLayoutCount(copyDstLayoutCount).pCopyDstLayouts(pCopyDstLayouts).optimalTilingLayoutUUID(optimalTilingLayoutUUID).identicalMemoryTypeRequirements(identicalMemoryTypeRequirements); }
 
-    /// Creates a slice of `VkPhysicalDeviceHostImageCopyProperties`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDeviceHostImageCopyProperties`
-    public VkPhysicalDeviceHostImageCopyProperties asSlice(long index, long count) { return new VkPhysicalDeviceHostImageCopyProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDeviceHostImageCopyProperties copyFrom(VkPhysicalDeviceHostImageCopyProperties src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -140,9 +148,6 @@ public final class VkPhysicalDeviceHostImageCopyProperties extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceHostImageCopyProperties.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceHostImageCopyProperties.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPhysicalDeviceHostImageCopyProperties.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -154,11 +159,6 @@ public final class VkPhysicalDeviceHostImageCopyProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceHostImageCopyProperties.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceHostImageCopyProperties sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceHostImageCopyProperties.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -171,9 +171,6 @@ public final class VkPhysicalDeviceHostImageCopyProperties extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceHostImageCopyProperties.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceHostImageCopyProperties.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceHostImageCopyProperties.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -185,11 +182,6 @@ public final class VkPhysicalDeviceHostImageCopyProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceHostImageCopyProperties.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceHostImageCopyProperties pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceHostImageCopyProperties.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -202,9 +194,6 @@ public final class VkPhysicalDeviceHostImageCopyProperties extends Struct {
     /// {@return `copySrcLayoutCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_copySrcLayoutCount(MemorySegment segment) { return VkPhysicalDeviceHostImageCopyProperties.get_copySrcLayoutCount(segment, 0L); }
-    /// {@return `copySrcLayoutCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int copySrcLayoutCountAt(long index) { return VkPhysicalDeviceHostImageCopyProperties.get_copySrcLayoutCount(this.segment(), index); }
     /// {@return `copySrcLayoutCount`}
     public @CType("uint32_t") int copySrcLayoutCount() { return VkPhysicalDeviceHostImageCopyProperties.get_copySrcLayoutCount(this.segment()); }
     /// Sets `copySrcLayoutCount` with the given value at the given index.
@@ -216,11 +205,6 @@ public final class VkPhysicalDeviceHostImageCopyProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_copySrcLayoutCount(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceHostImageCopyProperties.set_copySrcLayoutCount(segment, 0L, value); }
-    /// Sets `copySrcLayoutCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceHostImageCopyProperties copySrcLayoutCountAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceHostImageCopyProperties.set_copySrcLayoutCount(this.segment(), index, value); return this; }
     /// Sets `copySrcLayoutCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -233,9 +217,6 @@ public final class VkPhysicalDeviceHostImageCopyProperties extends Struct {
     /// {@return `pCopySrcLayouts`}
     /// @param segment the segment of the struct
     public static @CType("VkImageLayout *") java.lang.foreign.MemorySegment get_pCopySrcLayouts(MemorySegment segment) { return VkPhysicalDeviceHostImageCopyProperties.get_pCopySrcLayouts(segment, 0L); }
-    /// {@return `pCopySrcLayouts` at the given index}
-    /// @param index the index
-    public @CType("VkImageLayout *") java.lang.foreign.MemorySegment pCopySrcLayoutsAt(long index) { return VkPhysicalDeviceHostImageCopyProperties.get_pCopySrcLayouts(this.segment(), index); }
     /// {@return `pCopySrcLayouts`}
     public @CType("VkImageLayout *") java.lang.foreign.MemorySegment pCopySrcLayouts() { return VkPhysicalDeviceHostImageCopyProperties.get_pCopySrcLayouts(this.segment()); }
     /// Sets `pCopySrcLayouts` with the given value at the given index.
@@ -247,11 +228,6 @@ public final class VkPhysicalDeviceHostImageCopyProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pCopySrcLayouts(MemorySegment segment, @CType("VkImageLayout *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceHostImageCopyProperties.set_pCopySrcLayouts(segment, 0L, value); }
-    /// Sets `pCopySrcLayouts` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceHostImageCopyProperties pCopySrcLayoutsAt(long index, @CType("VkImageLayout *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceHostImageCopyProperties.set_pCopySrcLayouts(this.segment(), index, value); return this; }
     /// Sets `pCopySrcLayouts` with the given value.
     /// @param value the value
     /// @return `this`
@@ -264,9 +240,6 @@ public final class VkPhysicalDeviceHostImageCopyProperties extends Struct {
     /// {@return `copyDstLayoutCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_copyDstLayoutCount(MemorySegment segment) { return VkPhysicalDeviceHostImageCopyProperties.get_copyDstLayoutCount(segment, 0L); }
-    /// {@return `copyDstLayoutCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int copyDstLayoutCountAt(long index) { return VkPhysicalDeviceHostImageCopyProperties.get_copyDstLayoutCount(this.segment(), index); }
     /// {@return `copyDstLayoutCount`}
     public @CType("uint32_t") int copyDstLayoutCount() { return VkPhysicalDeviceHostImageCopyProperties.get_copyDstLayoutCount(this.segment()); }
     /// Sets `copyDstLayoutCount` with the given value at the given index.
@@ -278,11 +251,6 @@ public final class VkPhysicalDeviceHostImageCopyProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_copyDstLayoutCount(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceHostImageCopyProperties.set_copyDstLayoutCount(segment, 0L, value); }
-    /// Sets `copyDstLayoutCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceHostImageCopyProperties copyDstLayoutCountAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceHostImageCopyProperties.set_copyDstLayoutCount(this.segment(), index, value); return this; }
     /// Sets `copyDstLayoutCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -295,9 +263,6 @@ public final class VkPhysicalDeviceHostImageCopyProperties extends Struct {
     /// {@return `pCopyDstLayouts`}
     /// @param segment the segment of the struct
     public static @CType("VkImageLayout *") java.lang.foreign.MemorySegment get_pCopyDstLayouts(MemorySegment segment) { return VkPhysicalDeviceHostImageCopyProperties.get_pCopyDstLayouts(segment, 0L); }
-    /// {@return `pCopyDstLayouts` at the given index}
-    /// @param index the index
-    public @CType("VkImageLayout *") java.lang.foreign.MemorySegment pCopyDstLayoutsAt(long index) { return VkPhysicalDeviceHostImageCopyProperties.get_pCopyDstLayouts(this.segment(), index); }
     /// {@return `pCopyDstLayouts`}
     public @CType("VkImageLayout *") java.lang.foreign.MemorySegment pCopyDstLayouts() { return VkPhysicalDeviceHostImageCopyProperties.get_pCopyDstLayouts(this.segment()); }
     /// Sets `pCopyDstLayouts` with the given value at the given index.
@@ -309,11 +274,6 @@ public final class VkPhysicalDeviceHostImageCopyProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pCopyDstLayouts(MemorySegment segment, @CType("VkImageLayout *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceHostImageCopyProperties.set_pCopyDstLayouts(segment, 0L, value); }
-    /// Sets `pCopyDstLayouts` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceHostImageCopyProperties pCopyDstLayoutsAt(long index, @CType("VkImageLayout *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceHostImageCopyProperties.set_pCopyDstLayouts(this.segment(), index, value); return this; }
     /// Sets `pCopyDstLayouts` with the given value.
     /// @param value the value
     /// @return `this`
@@ -326,9 +286,6 @@ public final class VkPhysicalDeviceHostImageCopyProperties extends Struct {
     /// {@return `optimalTilingLayoutUUID`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment get_optimalTilingLayoutUUID(MemorySegment segment) { return VkPhysicalDeviceHostImageCopyProperties.get_optimalTilingLayoutUUID(segment, 0L); }
-    /// {@return `optimalTilingLayoutUUID` at the given index}
-    /// @param index the index
-    public @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment optimalTilingLayoutUUIDAt(long index) { return VkPhysicalDeviceHostImageCopyProperties.get_optimalTilingLayoutUUID(this.segment(), index); }
     /// {@return `optimalTilingLayoutUUID`}
     public @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment optimalTilingLayoutUUID() { return VkPhysicalDeviceHostImageCopyProperties.get_optimalTilingLayoutUUID(this.segment()); }
     /// Sets `optimalTilingLayoutUUID` with the given value at the given index.
@@ -340,11 +297,6 @@ public final class VkPhysicalDeviceHostImageCopyProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_optimalTilingLayoutUUID(MemorySegment segment, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceHostImageCopyProperties.set_optimalTilingLayoutUUID(segment, 0L, value); }
-    /// Sets `optimalTilingLayoutUUID` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceHostImageCopyProperties optimalTilingLayoutUUIDAt(long index, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceHostImageCopyProperties.set_optimalTilingLayoutUUID(this.segment(), index, value); return this; }
     /// Sets `optimalTilingLayoutUUID` with the given value.
     /// @param value the value
     /// @return `this`
@@ -357,9 +309,6 @@ public final class VkPhysicalDeviceHostImageCopyProperties extends Struct {
     /// {@return `identicalMemoryTypeRequirements`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_identicalMemoryTypeRequirements(MemorySegment segment) { return VkPhysicalDeviceHostImageCopyProperties.get_identicalMemoryTypeRequirements(segment, 0L); }
-    /// {@return `identicalMemoryTypeRequirements` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int identicalMemoryTypeRequirementsAt(long index) { return VkPhysicalDeviceHostImageCopyProperties.get_identicalMemoryTypeRequirements(this.segment(), index); }
     /// {@return `identicalMemoryTypeRequirements`}
     public @CType("VkBool32") int identicalMemoryTypeRequirements() { return VkPhysicalDeviceHostImageCopyProperties.get_identicalMemoryTypeRequirements(this.segment()); }
     /// Sets `identicalMemoryTypeRequirements` with the given value at the given index.
@@ -371,14 +320,104 @@ public final class VkPhysicalDeviceHostImageCopyProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_identicalMemoryTypeRequirements(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceHostImageCopyProperties.set_identicalMemoryTypeRequirements(segment, 0L, value); }
-    /// Sets `identicalMemoryTypeRequirements` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceHostImageCopyProperties identicalMemoryTypeRequirementsAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceHostImageCopyProperties.set_identicalMemoryTypeRequirements(this.segment(), index, value); return this; }
     /// Sets `identicalMemoryTypeRequirements` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceHostImageCopyProperties identicalMemoryTypeRequirements(@CType("VkBool32") int value) { VkPhysicalDeviceHostImageCopyProperties.set_identicalMemoryTypeRequirements(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDeviceHostImageCopyProperties].
+    public static final class Buffer extends VkPhysicalDeviceHostImageCopyProperties {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDeviceHostImageCopyProperties.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDeviceHostImageCopyProperties`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDeviceHostImageCopyProperties`
+        public VkPhysicalDeviceHostImageCopyProperties asSlice(long index) { return new VkPhysicalDeviceHostImageCopyProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDeviceHostImageCopyProperties`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDeviceHostImageCopyProperties`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceHostImageCopyProperties.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceHostImageCopyProperties.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceHostImageCopyProperties.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceHostImageCopyProperties.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `copySrcLayoutCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int copySrcLayoutCountAt(long index) { return VkPhysicalDeviceHostImageCopyProperties.get_copySrcLayoutCount(this.segment(), index); }
+        /// Sets `copySrcLayoutCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer copySrcLayoutCountAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceHostImageCopyProperties.set_copySrcLayoutCount(this.segment(), index, value); return this; }
+
+        /// {@return `pCopySrcLayouts` at the given index}
+        /// @param index the index
+        public @CType("VkImageLayout *") java.lang.foreign.MemorySegment pCopySrcLayoutsAt(long index) { return VkPhysicalDeviceHostImageCopyProperties.get_pCopySrcLayouts(this.segment(), index); }
+        /// Sets `pCopySrcLayouts` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pCopySrcLayoutsAt(long index, @CType("VkImageLayout *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceHostImageCopyProperties.set_pCopySrcLayouts(this.segment(), index, value); return this; }
+
+        /// {@return `copyDstLayoutCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int copyDstLayoutCountAt(long index) { return VkPhysicalDeviceHostImageCopyProperties.get_copyDstLayoutCount(this.segment(), index); }
+        /// Sets `copyDstLayoutCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer copyDstLayoutCountAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceHostImageCopyProperties.set_copyDstLayoutCount(this.segment(), index, value); return this; }
+
+        /// {@return `pCopyDstLayouts` at the given index}
+        /// @param index the index
+        public @CType("VkImageLayout *") java.lang.foreign.MemorySegment pCopyDstLayoutsAt(long index) { return VkPhysicalDeviceHostImageCopyProperties.get_pCopyDstLayouts(this.segment(), index); }
+        /// Sets `pCopyDstLayouts` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pCopyDstLayoutsAt(long index, @CType("VkImageLayout *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceHostImageCopyProperties.set_pCopyDstLayouts(this.segment(), index, value); return this; }
+
+        /// {@return `optimalTilingLayoutUUID` at the given index}
+        /// @param index the index
+        public @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment optimalTilingLayoutUUIDAt(long index) { return VkPhysicalDeviceHostImageCopyProperties.get_optimalTilingLayoutUUID(this.segment(), index); }
+        /// Sets `optimalTilingLayoutUUID` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer optimalTilingLayoutUUIDAt(long index, @CType("uint8_t[VK_UUID_SIZE]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceHostImageCopyProperties.set_optimalTilingLayoutUUID(this.segment(), index, value); return this; }
+
+        /// {@return `identicalMemoryTypeRequirements` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int identicalMemoryTypeRequirementsAt(long index) { return VkPhysicalDeviceHostImageCopyProperties.get_identicalMemoryTypeRequirements(this.segment(), index); }
+        /// Sets `identicalMemoryTypeRequirements` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer identicalMemoryTypeRequirementsAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceHostImageCopyProperties.set_identicalMemoryTypeRequirements(this.segment(), index, value); return this; }
+
+    }
 }

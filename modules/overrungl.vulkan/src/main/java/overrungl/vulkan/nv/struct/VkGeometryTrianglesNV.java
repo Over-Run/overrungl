@@ -70,7 +70,7 @@ import overrungl.util.*;
 ///     VkDeviceSize transformOffset;
 /// } VkGeometryTrianglesNV;
 /// ```
-public final class VkGeometryTrianglesNV extends Struct {
+public sealed class VkGeometryTrianglesNV extends Struct {
     /// The struct layout of `VkGeometryTrianglesNV`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -124,6 +124,11 @@ public final class VkGeometryTrianglesNV extends Struct {
     public static VkGeometryTrianglesNV of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkGeometryTrianglesNV(segment); }
 
     /// Creates `VkGeometryTrianglesNV` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkGeometryTrianglesNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -136,7 +141,7 @@ public final class VkGeometryTrianglesNV extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkGeometryTrianglesNV ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkGeometryTrianglesNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkGeometryTrianglesNV` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -147,18 +152,21 @@ public final class VkGeometryTrianglesNV extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkGeometryTrianglesNV`
-    public static VkGeometryTrianglesNV alloc(SegmentAllocator allocator, long count) { return new VkGeometryTrianglesNV(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkGeometryTrianglesNV`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkGeometryTrianglesNV`
-    public VkGeometryTrianglesNV asSlice(long index) { return new VkGeometryTrianglesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkGeometryTrianglesNV` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkGeometryTrianglesNV`
+    public static VkGeometryTrianglesNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkBuffer") java.lang.foreign.MemorySegment vertexData, @CType("VkDeviceSize") long vertexOffset, @CType("uint32_t") int vertexCount, @CType("VkDeviceSize") long vertexStride, @CType("VkFormat") int vertexFormat, @CType("VkBuffer") java.lang.foreign.MemorySegment indexData, @CType("VkDeviceSize") long indexOffset, @CType("uint32_t") int indexCount, @CType("VkIndexType") int indexType, @CType("VkBuffer") java.lang.foreign.MemorySegment transformData, @CType("VkDeviceSize") long transformOffset) { return alloc(allocator).sType(sType).pNext(pNext).vertexData(vertexData).vertexOffset(vertexOffset).vertexCount(vertexCount).vertexStride(vertexStride).vertexFormat(vertexFormat).indexData(indexData).indexOffset(indexOffset).indexCount(indexCount).indexType(indexType).transformData(transformData).transformOffset(transformOffset); }
 
-    /// Creates a slice of `VkGeometryTrianglesNV`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkGeometryTrianglesNV`
-    public VkGeometryTrianglesNV asSlice(long index, long count) { return new VkGeometryTrianglesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkGeometryTrianglesNV copyFrom(VkGeometryTrianglesNV src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -167,9 +175,6 @@ public final class VkGeometryTrianglesNV extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkGeometryTrianglesNV.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkGeometryTrianglesNV.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkGeometryTrianglesNV.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -181,11 +186,6 @@ public final class VkGeometryTrianglesNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkGeometryTrianglesNV.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkGeometryTrianglesNV sTypeAt(long index, @CType("VkStructureType") int value) { VkGeometryTrianglesNV.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -198,9 +198,6 @@ public final class VkGeometryTrianglesNV extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkGeometryTrianglesNV.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkGeometryTrianglesNV.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkGeometryTrianglesNV.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -212,11 +209,6 @@ public final class VkGeometryTrianglesNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkGeometryTrianglesNV.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkGeometryTrianglesNV pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkGeometryTrianglesNV.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -229,9 +221,6 @@ public final class VkGeometryTrianglesNV extends Struct {
     /// {@return `vertexData`}
     /// @param segment the segment of the struct
     public static @CType("VkBuffer") java.lang.foreign.MemorySegment get_vertexData(MemorySegment segment) { return VkGeometryTrianglesNV.get_vertexData(segment, 0L); }
-    /// {@return `vertexData` at the given index}
-    /// @param index the index
-    public @CType("VkBuffer") java.lang.foreign.MemorySegment vertexDataAt(long index) { return VkGeometryTrianglesNV.get_vertexData(this.segment(), index); }
     /// {@return `vertexData`}
     public @CType("VkBuffer") java.lang.foreign.MemorySegment vertexData() { return VkGeometryTrianglesNV.get_vertexData(this.segment()); }
     /// Sets `vertexData` with the given value at the given index.
@@ -243,11 +232,6 @@ public final class VkGeometryTrianglesNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_vertexData(MemorySegment segment, @CType("VkBuffer") java.lang.foreign.MemorySegment value) { VkGeometryTrianglesNV.set_vertexData(segment, 0L, value); }
-    /// Sets `vertexData` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkGeometryTrianglesNV vertexDataAt(long index, @CType("VkBuffer") java.lang.foreign.MemorySegment value) { VkGeometryTrianglesNV.set_vertexData(this.segment(), index, value); return this; }
     /// Sets `vertexData` with the given value.
     /// @param value the value
     /// @return `this`
@@ -260,9 +244,6 @@ public final class VkGeometryTrianglesNV extends Struct {
     /// {@return `vertexOffset`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_vertexOffset(MemorySegment segment) { return VkGeometryTrianglesNV.get_vertexOffset(segment, 0L); }
-    /// {@return `vertexOffset` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long vertexOffsetAt(long index) { return VkGeometryTrianglesNV.get_vertexOffset(this.segment(), index); }
     /// {@return `vertexOffset`}
     public @CType("VkDeviceSize") long vertexOffset() { return VkGeometryTrianglesNV.get_vertexOffset(this.segment()); }
     /// Sets `vertexOffset` with the given value at the given index.
@@ -274,11 +255,6 @@ public final class VkGeometryTrianglesNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_vertexOffset(MemorySegment segment, @CType("VkDeviceSize") long value) { VkGeometryTrianglesNV.set_vertexOffset(segment, 0L, value); }
-    /// Sets `vertexOffset` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkGeometryTrianglesNV vertexOffsetAt(long index, @CType("VkDeviceSize") long value) { VkGeometryTrianglesNV.set_vertexOffset(this.segment(), index, value); return this; }
     /// Sets `vertexOffset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -291,9 +267,6 @@ public final class VkGeometryTrianglesNV extends Struct {
     /// {@return `vertexCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_vertexCount(MemorySegment segment) { return VkGeometryTrianglesNV.get_vertexCount(segment, 0L); }
-    /// {@return `vertexCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int vertexCountAt(long index) { return VkGeometryTrianglesNV.get_vertexCount(this.segment(), index); }
     /// {@return `vertexCount`}
     public @CType("uint32_t") int vertexCount() { return VkGeometryTrianglesNV.get_vertexCount(this.segment()); }
     /// Sets `vertexCount` with the given value at the given index.
@@ -305,11 +278,6 @@ public final class VkGeometryTrianglesNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_vertexCount(MemorySegment segment, @CType("uint32_t") int value) { VkGeometryTrianglesNV.set_vertexCount(segment, 0L, value); }
-    /// Sets `vertexCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkGeometryTrianglesNV vertexCountAt(long index, @CType("uint32_t") int value) { VkGeometryTrianglesNV.set_vertexCount(this.segment(), index, value); return this; }
     /// Sets `vertexCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -322,9 +290,6 @@ public final class VkGeometryTrianglesNV extends Struct {
     /// {@return `vertexStride`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_vertexStride(MemorySegment segment) { return VkGeometryTrianglesNV.get_vertexStride(segment, 0L); }
-    /// {@return `vertexStride` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long vertexStrideAt(long index) { return VkGeometryTrianglesNV.get_vertexStride(this.segment(), index); }
     /// {@return `vertexStride`}
     public @CType("VkDeviceSize") long vertexStride() { return VkGeometryTrianglesNV.get_vertexStride(this.segment()); }
     /// Sets `vertexStride` with the given value at the given index.
@@ -336,11 +301,6 @@ public final class VkGeometryTrianglesNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_vertexStride(MemorySegment segment, @CType("VkDeviceSize") long value) { VkGeometryTrianglesNV.set_vertexStride(segment, 0L, value); }
-    /// Sets `vertexStride` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkGeometryTrianglesNV vertexStrideAt(long index, @CType("VkDeviceSize") long value) { VkGeometryTrianglesNV.set_vertexStride(this.segment(), index, value); return this; }
     /// Sets `vertexStride` with the given value.
     /// @param value the value
     /// @return `this`
@@ -353,9 +313,6 @@ public final class VkGeometryTrianglesNV extends Struct {
     /// {@return `vertexFormat`}
     /// @param segment the segment of the struct
     public static @CType("VkFormat") int get_vertexFormat(MemorySegment segment) { return VkGeometryTrianglesNV.get_vertexFormat(segment, 0L); }
-    /// {@return `vertexFormat` at the given index}
-    /// @param index the index
-    public @CType("VkFormat") int vertexFormatAt(long index) { return VkGeometryTrianglesNV.get_vertexFormat(this.segment(), index); }
     /// {@return `vertexFormat`}
     public @CType("VkFormat") int vertexFormat() { return VkGeometryTrianglesNV.get_vertexFormat(this.segment()); }
     /// Sets `vertexFormat` with the given value at the given index.
@@ -367,11 +324,6 @@ public final class VkGeometryTrianglesNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_vertexFormat(MemorySegment segment, @CType("VkFormat") int value) { VkGeometryTrianglesNV.set_vertexFormat(segment, 0L, value); }
-    /// Sets `vertexFormat` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkGeometryTrianglesNV vertexFormatAt(long index, @CType("VkFormat") int value) { VkGeometryTrianglesNV.set_vertexFormat(this.segment(), index, value); return this; }
     /// Sets `vertexFormat` with the given value.
     /// @param value the value
     /// @return `this`
@@ -384,9 +336,6 @@ public final class VkGeometryTrianglesNV extends Struct {
     /// {@return `indexData`}
     /// @param segment the segment of the struct
     public static @CType("VkBuffer") java.lang.foreign.MemorySegment get_indexData(MemorySegment segment) { return VkGeometryTrianglesNV.get_indexData(segment, 0L); }
-    /// {@return `indexData` at the given index}
-    /// @param index the index
-    public @CType("VkBuffer") java.lang.foreign.MemorySegment indexDataAt(long index) { return VkGeometryTrianglesNV.get_indexData(this.segment(), index); }
     /// {@return `indexData`}
     public @CType("VkBuffer") java.lang.foreign.MemorySegment indexData() { return VkGeometryTrianglesNV.get_indexData(this.segment()); }
     /// Sets `indexData` with the given value at the given index.
@@ -398,11 +347,6 @@ public final class VkGeometryTrianglesNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_indexData(MemorySegment segment, @CType("VkBuffer") java.lang.foreign.MemorySegment value) { VkGeometryTrianglesNV.set_indexData(segment, 0L, value); }
-    /// Sets `indexData` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkGeometryTrianglesNV indexDataAt(long index, @CType("VkBuffer") java.lang.foreign.MemorySegment value) { VkGeometryTrianglesNV.set_indexData(this.segment(), index, value); return this; }
     /// Sets `indexData` with the given value.
     /// @param value the value
     /// @return `this`
@@ -415,9 +359,6 @@ public final class VkGeometryTrianglesNV extends Struct {
     /// {@return `indexOffset`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_indexOffset(MemorySegment segment) { return VkGeometryTrianglesNV.get_indexOffset(segment, 0L); }
-    /// {@return `indexOffset` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long indexOffsetAt(long index) { return VkGeometryTrianglesNV.get_indexOffset(this.segment(), index); }
     /// {@return `indexOffset`}
     public @CType("VkDeviceSize") long indexOffset() { return VkGeometryTrianglesNV.get_indexOffset(this.segment()); }
     /// Sets `indexOffset` with the given value at the given index.
@@ -429,11 +370,6 @@ public final class VkGeometryTrianglesNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_indexOffset(MemorySegment segment, @CType("VkDeviceSize") long value) { VkGeometryTrianglesNV.set_indexOffset(segment, 0L, value); }
-    /// Sets `indexOffset` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkGeometryTrianglesNV indexOffsetAt(long index, @CType("VkDeviceSize") long value) { VkGeometryTrianglesNV.set_indexOffset(this.segment(), index, value); return this; }
     /// Sets `indexOffset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -446,9 +382,6 @@ public final class VkGeometryTrianglesNV extends Struct {
     /// {@return `indexCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_indexCount(MemorySegment segment) { return VkGeometryTrianglesNV.get_indexCount(segment, 0L); }
-    /// {@return `indexCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int indexCountAt(long index) { return VkGeometryTrianglesNV.get_indexCount(this.segment(), index); }
     /// {@return `indexCount`}
     public @CType("uint32_t") int indexCount() { return VkGeometryTrianglesNV.get_indexCount(this.segment()); }
     /// Sets `indexCount` with the given value at the given index.
@@ -460,11 +393,6 @@ public final class VkGeometryTrianglesNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_indexCount(MemorySegment segment, @CType("uint32_t") int value) { VkGeometryTrianglesNV.set_indexCount(segment, 0L, value); }
-    /// Sets `indexCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkGeometryTrianglesNV indexCountAt(long index, @CType("uint32_t") int value) { VkGeometryTrianglesNV.set_indexCount(this.segment(), index, value); return this; }
     /// Sets `indexCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -477,9 +405,6 @@ public final class VkGeometryTrianglesNV extends Struct {
     /// {@return `indexType`}
     /// @param segment the segment of the struct
     public static @CType("VkIndexType") int get_indexType(MemorySegment segment) { return VkGeometryTrianglesNV.get_indexType(segment, 0L); }
-    /// {@return `indexType` at the given index}
-    /// @param index the index
-    public @CType("VkIndexType") int indexTypeAt(long index) { return VkGeometryTrianglesNV.get_indexType(this.segment(), index); }
     /// {@return `indexType`}
     public @CType("VkIndexType") int indexType() { return VkGeometryTrianglesNV.get_indexType(this.segment()); }
     /// Sets `indexType` with the given value at the given index.
@@ -491,11 +416,6 @@ public final class VkGeometryTrianglesNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_indexType(MemorySegment segment, @CType("VkIndexType") int value) { VkGeometryTrianglesNV.set_indexType(segment, 0L, value); }
-    /// Sets `indexType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkGeometryTrianglesNV indexTypeAt(long index, @CType("VkIndexType") int value) { VkGeometryTrianglesNV.set_indexType(this.segment(), index, value); return this; }
     /// Sets `indexType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -508,9 +428,6 @@ public final class VkGeometryTrianglesNV extends Struct {
     /// {@return `transformData`}
     /// @param segment the segment of the struct
     public static @CType("VkBuffer") java.lang.foreign.MemorySegment get_transformData(MemorySegment segment) { return VkGeometryTrianglesNV.get_transformData(segment, 0L); }
-    /// {@return `transformData` at the given index}
-    /// @param index the index
-    public @CType("VkBuffer") java.lang.foreign.MemorySegment transformDataAt(long index) { return VkGeometryTrianglesNV.get_transformData(this.segment(), index); }
     /// {@return `transformData`}
     public @CType("VkBuffer") java.lang.foreign.MemorySegment transformData() { return VkGeometryTrianglesNV.get_transformData(this.segment()); }
     /// Sets `transformData` with the given value at the given index.
@@ -522,11 +439,6 @@ public final class VkGeometryTrianglesNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_transformData(MemorySegment segment, @CType("VkBuffer") java.lang.foreign.MemorySegment value) { VkGeometryTrianglesNV.set_transformData(segment, 0L, value); }
-    /// Sets `transformData` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkGeometryTrianglesNV transformDataAt(long index, @CType("VkBuffer") java.lang.foreign.MemorySegment value) { VkGeometryTrianglesNV.set_transformData(this.segment(), index, value); return this; }
     /// Sets `transformData` with the given value.
     /// @param value the value
     /// @return `this`
@@ -539,9 +451,6 @@ public final class VkGeometryTrianglesNV extends Struct {
     /// {@return `transformOffset`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_transformOffset(MemorySegment segment) { return VkGeometryTrianglesNV.get_transformOffset(segment, 0L); }
-    /// {@return `transformOffset` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long transformOffsetAt(long index) { return VkGeometryTrianglesNV.get_transformOffset(this.segment(), index); }
     /// {@return `transformOffset`}
     public @CType("VkDeviceSize") long transformOffset() { return VkGeometryTrianglesNV.get_transformOffset(this.segment()); }
     /// Sets `transformOffset` with the given value at the given index.
@@ -553,14 +462,149 @@ public final class VkGeometryTrianglesNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_transformOffset(MemorySegment segment, @CType("VkDeviceSize") long value) { VkGeometryTrianglesNV.set_transformOffset(segment, 0L, value); }
-    /// Sets `transformOffset` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkGeometryTrianglesNV transformOffsetAt(long index, @CType("VkDeviceSize") long value) { VkGeometryTrianglesNV.set_transformOffset(this.segment(), index, value); return this; }
     /// Sets `transformOffset` with the given value.
     /// @param value the value
     /// @return `this`
     public VkGeometryTrianglesNV transformOffset(@CType("VkDeviceSize") long value) { VkGeometryTrianglesNV.set_transformOffset(this.segment(), value); return this; }
 
+    /// A buffer of [VkGeometryTrianglesNV].
+    public static final class Buffer extends VkGeometryTrianglesNV {
+        private final long elementCount;
+
+        /// Creates `VkGeometryTrianglesNV.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkGeometryTrianglesNV`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkGeometryTrianglesNV`
+        public VkGeometryTrianglesNV asSlice(long index) { return new VkGeometryTrianglesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkGeometryTrianglesNV`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkGeometryTrianglesNV`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkGeometryTrianglesNV.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkGeometryTrianglesNV.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkGeometryTrianglesNV.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkGeometryTrianglesNV.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `vertexData` at the given index}
+        /// @param index the index
+        public @CType("VkBuffer") java.lang.foreign.MemorySegment vertexDataAt(long index) { return VkGeometryTrianglesNV.get_vertexData(this.segment(), index); }
+        /// Sets `vertexData` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer vertexDataAt(long index, @CType("VkBuffer") java.lang.foreign.MemorySegment value) { VkGeometryTrianglesNV.set_vertexData(this.segment(), index, value); return this; }
+
+        /// {@return `vertexOffset` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long vertexOffsetAt(long index) { return VkGeometryTrianglesNV.get_vertexOffset(this.segment(), index); }
+        /// Sets `vertexOffset` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer vertexOffsetAt(long index, @CType("VkDeviceSize") long value) { VkGeometryTrianglesNV.set_vertexOffset(this.segment(), index, value); return this; }
+
+        /// {@return `vertexCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int vertexCountAt(long index) { return VkGeometryTrianglesNV.get_vertexCount(this.segment(), index); }
+        /// Sets `vertexCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer vertexCountAt(long index, @CType("uint32_t") int value) { VkGeometryTrianglesNV.set_vertexCount(this.segment(), index, value); return this; }
+
+        /// {@return `vertexStride` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long vertexStrideAt(long index) { return VkGeometryTrianglesNV.get_vertexStride(this.segment(), index); }
+        /// Sets `vertexStride` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer vertexStrideAt(long index, @CType("VkDeviceSize") long value) { VkGeometryTrianglesNV.set_vertexStride(this.segment(), index, value); return this; }
+
+        /// {@return `vertexFormat` at the given index}
+        /// @param index the index
+        public @CType("VkFormat") int vertexFormatAt(long index) { return VkGeometryTrianglesNV.get_vertexFormat(this.segment(), index); }
+        /// Sets `vertexFormat` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer vertexFormatAt(long index, @CType("VkFormat") int value) { VkGeometryTrianglesNV.set_vertexFormat(this.segment(), index, value); return this; }
+
+        /// {@return `indexData` at the given index}
+        /// @param index the index
+        public @CType("VkBuffer") java.lang.foreign.MemorySegment indexDataAt(long index) { return VkGeometryTrianglesNV.get_indexData(this.segment(), index); }
+        /// Sets `indexData` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer indexDataAt(long index, @CType("VkBuffer") java.lang.foreign.MemorySegment value) { VkGeometryTrianglesNV.set_indexData(this.segment(), index, value); return this; }
+
+        /// {@return `indexOffset` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long indexOffsetAt(long index) { return VkGeometryTrianglesNV.get_indexOffset(this.segment(), index); }
+        /// Sets `indexOffset` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer indexOffsetAt(long index, @CType("VkDeviceSize") long value) { VkGeometryTrianglesNV.set_indexOffset(this.segment(), index, value); return this; }
+
+        /// {@return `indexCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int indexCountAt(long index) { return VkGeometryTrianglesNV.get_indexCount(this.segment(), index); }
+        /// Sets `indexCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer indexCountAt(long index, @CType("uint32_t") int value) { VkGeometryTrianglesNV.set_indexCount(this.segment(), index, value); return this; }
+
+        /// {@return `indexType` at the given index}
+        /// @param index the index
+        public @CType("VkIndexType") int indexTypeAt(long index) { return VkGeometryTrianglesNV.get_indexType(this.segment(), index); }
+        /// Sets `indexType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer indexTypeAt(long index, @CType("VkIndexType") int value) { VkGeometryTrianglesNV.set_indexType(this.segment(), index, value); return this; }
+
+        /// {@return `transformData` at the given index}
+        /// @param index the index
+        public @CType("VkBuffer") java.lang.foreign.MemorySegment transformDataAt(long index) { return VkGeometryTrianglesNV.get_transformData(this.segment(), index); }
+        /// Sets `transformData` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer transformDataAt(long index, @CType("VkBuffer") java.lang.foreign.MemorySegment value) { VkGeometryTrianglesNV.set_transformData(this.segment(), index, value); return this; }
+
+        /// {@return `transformOffset` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long transformOffsetAt(long index) { return VkGeometryTrianglesNV.get_transformOffset(this.segment(), index); }
+        /// Sets `transformOffset` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer transformOffsetAt(long index, @CType("VkDeviceSize") long value) { VkGeometryTrianglesNV.set_transformOffset(this.segment(), index, value); return this; }
+
+    }
 }

@@ -46,7 +46,7 @@ import overrungl.util.*;
 ///     const StdVideoEncodeH265PictureInfo * pStdPictureInfo;
 /// } VkVideoEncodeH265PictureInfoKHR;
 /// ```
-public final class VkVideoEncodeH265PictureInfoKHR extends Struct {
+public sealed class VkVideoEncodeH265PictureInfoKHR extends Struct {
     /// The struct layout of `VkVideoEncodeH265PictureInfoKHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -76,6 +76,11 @@ public final class VkVideoEncodeH265PictureInfoKHR extends Struct {
     public static VkVideoEncodeH265PictureInfoKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkVideoEncodeH265PictureInfoKHR(segment); }
 
     /// Creates `VkVideoEncodeH265PictureInfoKHR` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkVideoEncodeH265PictureInfoKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -88,7 +93,7 @@ public final class VkVideoEncodeH265PictureInfoKHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkVideoEncodeH265PictureInfoKHR ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkVideoEncodeH265PictureInfoKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkVideoEncodeH265PictureInfoKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -99,18 +104,21 @@ public final class VkVideoEncodeH265PictureInfoKHR extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkVideoEncodeH265PictureInfoKHR`
-    public static VkVideoEncodeH265PictureInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoEncodeH265PictureInfoKHR(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkVideoEncodeH265PictureInfoKHR`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkVideoEncodeH265PictureInfoKHR`
-    public VkVideoEncodeH265PictureInfoKHR asSlice(long index) { return new VkVideoEncodeH265PictureInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkVideoEncodeH265PictureInfoKHR` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkVideoEncodeH265PictureInfoKHR`
+    public static VkVideoEncodeH265PictureInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int naluSliceSegmentEntryCount, @CType("const VkVideoEncodeH265NaluSliceSegmentInfoKHR *") java.lang.foreign.MemorySegment pNaluSliceSegmentEntries, @CType("const StdVideoEncodeH265PictureInfo *") java.lang.foreign.MemorySegment pStdPictureInfo) { return alloc(allocator).sType(sType).pNext(pNext).naluSliceSegmentEntryCount(naluSliceSegmentEntryCount).pNaluSliceSegmentEntries(pNaluSliceSegmentEntries).pStdPictureInfo(pStdPictureInfo); }
 
-    /// Creates a slice of `VkVideoEncodeH265PictureInfoKHR`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkVideoEncodeH265PictureInfoKHR`
-    public VkVideoEncodeH265PictureInfoKHR asSlice(long index, long count) { return new VkVideoEncodeH265PictureInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkVideoEncodeH265PictureInfoKHR copyFrom(VkVideoEncodeH265PictureInfoKHR src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -119,9 +127,6 @@ public final class VkVideoEncodeH265PictureInfoKHR extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkVideoEncodeH265PictureInfoKHR.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkVideoEncodeH265PictureInfoKHR.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkVideoEncodeH265PictureInfoKHR.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -133,11 +138,6 @@ public final class VkVideoEncodeH265PictureInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkVideoEncodeH265PictureInfoKHR.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH265PictureInfoKHR sTypeAt(long index, @CType("VkStructureType") int value) { VkVideoEncodeH265PictureInfoKHR.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,9 +150,6 @@ public final class VkVideoEncodeH265PictureInfoKHR extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkVideoEncodeH265PictureInfoKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkVideoEncodeH265PictureInfoKHR.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkVideoEncodeH265PictureInfoKHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -164,11 +161,6 @@ public final class VkVideoEncodeH265PictureInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkVideoEncodeH265PictureInfoKHR.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH265PictureInfoKHR pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkVideoEncodeH265PictureInfoKHR.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -181,9 +173,6 @@ public final class VkVideoEncodeH265PictureInfoKHR extends Struct {
     /// {@return `naluSliceSegmentEntryCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_naluSliceSegmentEntryCount(MemorySegment segment) { return VkVideoEncodeH265PictureInfoKHR.get_naluSliceSegmentEntryCount(segment, 0L); }
-    /// {@return `naluSliceSegmentEntryCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int naluSliceSegmentEntryCountAt(long index) { return VkVideoEncodeH265PictureInfoKHR.get_naluSliceSegmentEntryCount(this.segment(), index); }
     /// {@return `naluSliceSegmentEntryCount`}
     public @CType("uint32_t") int naluSliceSegmentEntryCount() { return VkVideoEncodeH265PictureInfoKHR.get_naluSliceSegmentEntryCount(this.segment()); }
     /// Sets `naluSliceSegmentEntryCount` with the given value at the given index.
@@ -195,11 +184,6 @@ public final class VkVideoEncodeH265PictureInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_naluSliceSegmentEntryCount(MemorySegment segment, @CType("uint32_t") int value) { VkVideoEncodeH265PictureInfoKHR.set_naluSliceSegmentEntryCount(segment, 0L, value); }
-    /// Sets `naluSliceSegmentEntryCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH265PictureInfoKHR naluSliceSegmentEntryCountAt(long index, @CType("uint32_t") int value) { VkVideoEncodeH265PictureInfoKHR.set_naluSliceSegmentEntryCount(this.segment(), index, value); return this; }
     /// Sets `naluSliceSegmentEntryCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -212,9 +196,6 @@ public final class VkVideoEncodeH265PictureInfoKHR extends Struct {
     /// {@return `pNaluSliceSegmentEntries`}
     /// @param segment the segment of the struct
     public static @CType("const VkVideoEncodeH265NaluSliceSegmentInfoKHR *") java.lang.foreign.MemorySegment get_pNaluSliceSegmentEntries(MemorySegment segment) { return VkVideoEncodeH265PictureInfoKHR.get_pNaluSliceSegmentEntries(segment, 0L); }
-    /// {@return `pNaluSliceSegmentEntries` at the given index}
-    /// @param index the index
-    public @CType("const VkVideoEncodeH265NaluSliceSegmentInfoKHR *") java.lang.foreign.MemorySegment pNaluSliceSegmentEntriesAt(long index) { return VkVideoEncodeH265PictureInfoKHR.get_pNaluSliceSegmentEntries(this.segment(), index); }
     /// {@return `pNaluSliceSegmentEntries`}
     public @CType("const VkVideoEncodeH265NaluSliceSegmentInfoKHR *") java.lang.foreign.MemorySegment pNaluSliceSegmentEntries() { return VkVideoEncodeH265PictureInfoKHR.get_pNaluSliceSegmentEntries(this.segment()); }
     /// Sets `pNaluSliceSegmentEntries` with the given value at the given index.
@@ -226,11 +207,6 @@ public final class VkVideoEncodeH265PictureInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNaluSliceSegmentEntries(MemorySegment segment, @CType("const VkVideoEncodeH265NaluSliceSegmentInfoKHR *") java.lang.foreign.MemorySegment value) { VkVideoEncodeH265PictureInfoKHR.set_pNaluSliceSegmentEntries(segment, 0L, value); }
-    /// Sets `pNaluSliceSegmentEntries` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH265PictureInfoKHR pNaluSliceSegmentEntriesAt(long index, @CType("const VkVideoEncodeH265NaluSliceSegmentInfoKHR *") java.lang.foreign.MemorySegment value) { VkVideoEncodeH265PictureInfoKHR.set_pNaluSliceSegmentEntries(this.segment(), index, value); return this; }
     /// Sets `pNaluSliceSegmentEntries` with the given value.
     /// @param value the value
     /// @return `this`
@@ -243,9 +219,6 @@ public final class VkVideoEncodeH265PictureInfoKHR extends Struct {
     /// {@return `pStdPictureInfo`}
     /// @param segment the segment of the struct
     public static @CType("const StdVideoEncodeH265PictureInfo *") java.lang.foreign.MemorySegment get_pStdPictureInfo(MemorySegment segment) { return VkVideoEncodeH265PictureInfoKHR.get_pStdPictureInfo(segment, 0L); }
-    /// {@return `pStdPictureInfo` at the given index}
-    /// @param index the index
-    public @CType("const StdVideoEncodeH265PictureInfo *") java.lang.foreign.MemorySegment pStdPictureInfoAt(long index) { return VkVideoEncodeH265PictureInfoKHR.get_pStdPictureInfo(this.segment(), index); }
     /// {@return `pStdPictureInfo`}
     public @CType("const StdVideoEncodeH265PictureInfo *") java.lang.foreign.MemorySegment pStdPictureInfo() { return VkVideoEncodeH265PictureInfoKHR.get_pStdPictureInfo(this.segment()); }
     /// Sets `pStdPictureInfo` with the given value at the given index.
@@ -257,14 +230,77 @@ public final class VkVideoEncodeH265PictureInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pStdPictureInfo(MemorySegment segment, @CType("const StdVideoEncodeH265PictureInfo *") java.lang.foreign.MemorySegment value) { VkVideoEncodeH265PictureInfoKHR.set_pStdPictureInfo(segment, 0L, value); }
-    /// Sets `pStdPictureInfo` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH265PictureInfoKHR pStdPictureInfoAt(long index, @CType("const StdVideoEncodeH265PictureInfo *") java.lang.foreign.MemorySegment value) { VkVideoEncodeH265PictureInfoKHR.set_pStdPictureInfo(this.segment(), index, value); return this; }
     /// Sets `pStdPictureInfo` with the given value.
     /// @param value the value
     /// @return `this`
     public VkVideoEncodeH265PictureInfoKHR pStdPictureInfo(@CType("const StdVideoEncodeH265PictureInfo *") java.lang.foreign.MemorySegment value) { VkVideoEncodeH265PictureInfoKHR.set_pStdPictureInfo(this.segment(), value); return this; }
 
+    /// A buffer of [VkVideoEncodeH265PictureInfoKHR].
+    public static final class Buffer extends VkVideoEncodeH265PictureInfoKHR {
+        private final long elementCount;
+
+        /// Creates `VkVideoEncodeH265PictureInfoKHR.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkVideoEncodeH265PictureInfoKHR`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkVideoEncodeH265PictureInfoKHR`
+        public VkVideoEncodeH265PictureInfoKHR asSlice(long index) { return new VkVideoEncodeH265PictureInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkVideoEncodeH265PictureInfoKHR`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkVideoEncodeH265PictureInfoKHR`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkVideoEncodeH265PictureInfoKHR.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkVideoEncodeH265PictureInfoKHR.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkVideoEncodeH265PictureInfoKHR.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkVideoEncodeH265PictureInfoKHR.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `naluSliceSegmentEntryCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int naluSliceSegmentEntryCountAt(long index) { return VkVideoEncodeH265PictureInfoKHR.get_naluSliceSegmentEntryCount(this.segment(), index); }
+        /// Sets `naluSliceSegmentEntryCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer naluSliceSegmentEntryCountAt(long index, @CType("uint32_t") int value) { VkVideoEncodeH265PictureInfoKHR.set_naluSliceSegmentEntryCount(this.segment(), index, value); return this; }
+
+        /// {@return `pNaluSliceSegmentEntries` at the given index}
+        /// @param index the index
+        public @CType("const VkVideoEncodeH265NaluSliceSegmentInfoKHR *") java.lang.foreign.MemorySegment pNaluSliceSegmentEntriesAt(long index) { return VkVideoEncodeH265PictureInfoKHR.get_pNaluSliceSegmentEntries(this.segment(), index); }
+        /// Sets `pNaluSliceSegmentEntries` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNaluSliceSegmentEntriesAt(long index, @CType("const VkVideoEncodeH265NaluSliceSegmentInfoKHR *") java.lang.foreign.MemorySegment value) { VkVideoEncodeH265PictureInfoKHR.set_pNaluSliceSegmentEntries(this.segment(), index, value); return this; }
+
+        /// {@return `pStdPictureInfo` at the given index}
+        /// @param index the index
+        public @CType("const StdVideoEncodeH265PictureInfo *") java.lang.foreign.MemorySegment pStdPictureInfoAt(long index) { return VkVideoEncodeH265PictureInfoKHR.get_pStdPictureInfo(this.segment(), index); }
+        /// Sets `pStdPictureInfo` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pStdPictureInfoAt(long index, @CType("const StdVideoEncodeH265PictureInfo *") java.lang.foreign.MemorySegment value) { VkVideoEncodeH265PictureInfoKHR.set_pStdPictureInfo(this.segment(), index, value); return this; }
+
+    }
 }

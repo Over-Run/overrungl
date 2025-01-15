@@ -52,7 +52,7 @@ import overrungl.util.*;
 ///     uint32_t temporalLayerCount;
 /// } VkVideoEncodeH264RateControlInfoKHR;
 /// ```
-public final class VkVideoEncodeH264RateControlInfoKHR extends Struct {
+public sealed class VkVideoEncodeH264RateControlInfoKHR extends Struct {
     /// The struct layout of `VkVideoEncodeH264RateControlInfoKHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -88,6 +88,11 @@ public final class VkVideoEncodeH264RateControlInfoKHR extends Struct {
     public static VkVideoEncodeH264RateControlInfoKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkVideoEncodeH264RateControlInfoKHR(segment); }
 
     /// Creates `VkVideoEncodeH264RateControlInfoKHR` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkVideoEncodeH264RateControlInfoKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -100,7 +105,7 @@ public final class VkVideoEncodeH264RateControlInfoKHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkVideoEncodeH264RateControlInfoKHR ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkVideoEncodeH264RateControlInfoKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkVideoEncodeH264RateControlInfoKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -111,18 +116,21 @@ public final class VkVideoEncodeH264RateControlInfoKHR extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkVideoEncodeH264RateControlInfoKHR`
-    public static VkVideoEncodeH264RateControlInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoEncodeH264RateControlInfoKHR(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkVideoEncodeH264RateControlInfoKHR`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkVideoEncodeH264RateControlInfoKHR`
-    public VkVideoEncodeH264RateControlInfoKHR asSlice(long index) { return new VkVideoEncodeH264RateControlInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkVideoEncodeH264RateControlInfoKHR` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkVideoEncodeH264RateControlInfoKHR`
+    public static VkVideoEncodeH264RateControlInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkVideoEncodeH264RateControlFlagsKHR") int flags, @CType("uint32_t") int gopFrameCount, @CType("uint32_t") int idrPeriod, @CType("uint32_t") int consecutiveBFrameCount, @CType("uint32_t") int temporalLayerCount) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).gopFrameCount(gopFrameCount).idrPeriod(idrPeriod).consecutiveBFrameCount(consecutiveBFrameCount).temporalLayerCount(temporalLayerCount); }
 
-    /// Creates a slice of `VkVideoEncodeH264RateControlInfoKHR`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkVideoEncodeH264RateControlInfoKHR`
-    public VkVideoEncodeH264RateControlInfoKHR asSlice(long index, long count) { return new VkVideoEncodeH264RateControlInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkVideoEncodeH264RateControlInfoKHR copyFrom(VkVideoEncodeH264RateControlInfoKHR src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -131,9 +139,6 @@ public final class VkVideoEncodeH264RateControlInfoKHR extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkVideoEncodeH264RateControlInfoKHR.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkVideoEncodeH264RateControlInfoKHR.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkVideoEncodeH264RateControlInfoKHR.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -145,11 +150,6 @@ public final class VkVideoEncodeH264RateControlInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkVideoEncodeH264RateControlInfoKHR.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH264RateControlInfoKHR sTypeAt(long index, @CType("VkStructureType") int value) { VkVideoEncodeH264RateControlInfoKHR.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -162,9 +162,6 @@ public final class VkVideoEncodeH264RateControlInfoKHR extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkVideoEncodeH264RateControlInfoKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkVideoEncodeH264RateControlInfoKHR.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkVideoEncodeH264RateControlInfoKHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -176,11 +173,6 @@ public final class VkVideoEncodeH264RateControlInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkVideoEncodeH264RateControlInfoKHR.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH264RateControlInfoKHR pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkVideoEncodeH264RateControlInfoKHR.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -193,9 +185,6 @@ public final class VkVideoEncodeH264RateControlInfoKHR extends Struct {
     /// {@return `flags`}
     /// @param segment the segment of the struct
     public static @CType("VkVideoEncodeH264RateControlFlagsKHR") int get_flags(MemorySegment segment) { return VkVideoEncodeH264RateControlInfoKHR.get_flags(segment, 0L); }
-    /// {@return `flags` at the given index}
-    /// @param index the index
-    public @CType("VkVideoEncodeH264RateControlFlagsKHR") int flagsAt(long index) { return VkVideoEncodeH264RateControlInfoKHR.get_flags(this.segment(), index); }
     /// {@return `flags`}
     public @CType("VkVideoEncodeH264RateControlFlagsKHR") int flags() { return VkVideoEncodeH264RateControlInfoKHR.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
@@ -207,11 +196,6 @@ public final class VkVideoEncodeH264RateControlInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_flags(MemorySegment segment, @CType("VkVideoEncodeH264RateControlFlagsKHR") int value) { VkVideoEncodeH264RateControlInfoKHR.set_flags(segment, 0L, value); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH264RateControlInfoKHR flagsAt(long index, @CType("VkVideoEncodeH264RateControlFlagsKHR") int value) { VkVideoEncodeH264RateControlInfoKHR.set_flags(this.segment(), index, value); return this; }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -224,9 +208,6 @@ public final class VkVideoEncodeH264RateControlInfoKHR extends Struct {
     /// {@return `gopFrameCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_gopFrameCount(MemorySegment segment) { return VkVideoEncodeH264RateControlInfoKHR.get_gopFrameCount(segment, 0L); }
-    /// {@return `gopFrameCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int gopFrameCountAt(long index) { return VkVideoEncodeH264RateControlInfoKHR.get_gopFrameCount(this.segment(), index); }
     /// {@return `gopFrameCount`}
     public @CType("uint32_t") int gopFrameCount() { return VkVideoEncodeH264RateControlInfoKHR.get_gopFrameCount(this.segment()); }
     /// Sets `gopFrameCount` with the given value at the given index.
@@ -238,11 +219,6 @@ public final class VkVideoEncodeH264RateControlInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_gopFrameCount(MemorySegment segment, @CType("uint32_t") int value) { VkVideoEncodeH264RateControlInfoKHR.set_gopFrameCount(segment, 0L, value); }
-    /// Sets `gopFrameCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH264RateControlInfoKHR gopFrameCountAt(long index, @CType("uint32_t") int value) { VkVideoEncodeH264RateControlInfoKHR.set_gopFrameCount(this.segment(), index, value); return this; }
     /// Sets `gopFrameCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -255,9 +231,6 @@ public final class VkVideoEncodeH264RateControlInfoKHR extends Struct {
     /// {@return `idrPeriod`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_idrPeriod(MemorySegment segment) { return VkVideoEncodeH264RateControlInfoKHR.get_idrPeriod(segment, 0L); }
-    /// {@return `idrPeriod` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int idrPeriodAt(long index) { return VkVideoEncodeH264RateControlInfoKHR.get_idrPeriod(this.segment(), index); }
     /// {@return `idrPeriod`}
     public @CType("uint32_t") int idrPeriod() { return VkVideoEncodeH264RateControlInfoKHR.get_idrPeriod(this.segment()); }
     /// Sets `idrPeriod` with the given value at the given index.
@@ -269,11 +242,6 @@ public final class VkVideoEncodeH264RateControlInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_idrPeriod(MemorySegment segment, @CType("uint32_t") int value) { VkVideoEncodeH264RateControlInfoKHR.set_idrPeriod(segment, 0L, value); }
-    /// Sets `idrPeriod` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH264RateControlInfoKHR idrPeriodAt(long index, @CType("uint32_t") int value) { VkVideoEncodeH264RateControlInfoKHR.set_idrPeriod(this.segment(), index, value); return this; }
     /// Sets `idrPeriod` with the given value.
     /// @param value the value
     /// @return `this`
@@ -286,9 +254,6 @@ public final class VkVideoEncodeH264RateControlInfoKHR extends Struct {
     /// {@return `consecutiveBFrameCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_consecutiveBFrameCount(MemorySegment segment) { return VkVideoEncodeH264RateControlInfoKHR.get_consecutiveBFrameCount(segment, 0L); }
-    /// {@return `consecutiveBFrameCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int consecutiveBFrameCountAt(long index) { return VkVideoEncodeH264RateControlInfoKHR.get_consecutiveBFrameCount(this.segment(), index); }
     /// {@return `consecutiveBFrameCount`}
     public @CType("uint32_t") int consecutiveBFrameCount() { return VkVideoEncodeH264RateControlInfoKHR.get_consecutiveBFrameCount(this.segment()); }
     /// Sets `consecutiveBFrameCount` with the given value at the given index.
@@ -300,11 +265,6 @@ public final class VkVideoEncodeH264RateControlInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_consecutiveBFrameCount(MemorySegment segment, @CType("uint32_t") int value) { VkVideoEncodeH264RateControlInfoKHR.set_consecutiveBFrameCount(segment, 0L, value); }
-    /// Sets `consecutiveBFrameCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH264RateControlInfoKHR consecutiveBFrameCountAt(long index, @CType("uint32_t") int value) { VkVideoEncodeH264RateControlInfoKHR.set_consecutiveBFrameCount(this.segment(), index, value); return this; }
     /// Sets `consecutiveBFrameCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -317,9 +277,6 @@ public final class VkVideoEncodeH264RateControlInfoKHR extends Struct {
     /// {@return `temporalLayerCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_temporalLayerCount(MemorySegment segment) { return VkVideoEncodeH264RateControlInfoKHR.get_temporalLayerCount(segment, 0L); }
-    /// {@return `temporalLayerCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int temporalLayerCountAt(long index) { return VkVideoEncodeH264RateControlInfoKHR.get_temporalLayerCount(this.segment(), index); }
     /// {@return `temporalLayerCount`}
     public @CType("uint32_t") int temporalLayerCount() { return VkVideoEncodeH264RateControlInfoKHR.get_temporalLayerCount(this.segment()); }
     /// Sets `temporalLayerCount` with the given value at the given index.
@@ -331,14 +288,95 @@ public final class VkVideoEncodeH264RateControlInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_temporalLayerCount(MemorySegment segment, @CType("uint32_t") int value) { VkVideoEncodeH264RateControlInfoKHR.set_temporalLayerCount(segment, 0L, value); }
-    /// Sets `temporalLayerCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkVideoEncodeH264RateControlInfoKHR temporalLayerCountAt(long index, @CType("uint32_t") int value) { VkVideoEncodeH264RateControlInfoKHR.set_temporalLayerCount(this.segment(), index, value); return this; }
     /// Sets `temporalLayerCount` with the given value.
     /// @param value the value
     /// @return `this`
     public VkVideoEncodeH264RateControlInfoKHR temporalLayerCount(@CType("uint32_t") int value) { VkVideoEncodeH264RateControlInfoKHR.set_temporalLayerCount(this.segment(), value); return this; }
 
+    /// A buffer of [VkVideoEncodeH264RateControlInfoKHR].
+    public static final class Buffer extends VkVideoEncodeH264RateControlInfoKHR {
+        private final long elementCount;
+
+        /// Creates `VkVideoEncodeH264RateControlInfoKHR.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkVideoEncodeH264RateControlInfoKHR`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkVideoEncodeH264RateControlInfoKHR`
+        public VkVideoEncodeH264RateControlInfoKHR asSlice(long index) { return new VkVideoEncodeH264RateControlInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkVideoEncodeH264RateControlInfoKHR`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkVideoEncodeH264RateControlInfoKHR`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkVideoEncodeH264RateControlInfoKHR.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkVideoEncodeH264RateControlInfoKHR.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkVideoEncodeH264RateControlInfoKHR.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkVideoEncodeH264RateControlInfoKHR.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `flags` at the given index}
+        /// @param index the index
+        public @CType("VkVideoEncodeH264RateControlFlagsKHR") int flagsAt(long index) { return VkVideoEncodeH264RateControlInfoKHR.get_flags(this.segment(), index); }
+        /// Sets `flags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer flagsAt(long index, @CType("VkVideoEncodeH264RateControlFlagsKHR") int value) { VkVideoEncodeH264RateControlInfoKHR.set_flags(this.segment(), index, value); return this; }
+
+        /// {@return `gopFrameCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int gopFrameCountAt(long index) { return VkVideoEncodeH264RateControlInfoKHR.get_gopFrameCount(this.segment(), index); }
+        /// Sets `gopFrameCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer gopFrameCountAt(long index, @CType("uint32_t") int value) { VkVideoEncodeH264RateControlInfoKHR.set_gopFrameCount(this.segment(), index, value); return this; }
+
+        /// {@return `idrPeriod` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int idrPeriodAt(long index) { return VkVideoEncodeH264RateControlInfoKHR.get_idrPeriod(this.segment(), index); }
+        /// Sets `idrPeriod` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer idrPeriodAt(long index, @CType("uint32_t") int value) { VkVideoEncodeH264RateControlInfoKHR.set_idrPeriod(this.segment(), index, value); return this; }
+
+        /// {@return `consecutiveBFrameCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int consecutiveBFrameCountAt(long index) { return VkVideoEncodeH264RateControlInfoKHR.get_consecutiveBFrameCount(this.segment(), index); }
+        /// Sets `consecutiveBFrameCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer consecutiveBFrameCountAt(long index, @CType("uint32_t") int value) { VkVideoEncodeH264RateControlInfoKHR.set_consecutiveBFrameCount(this.segment(), index, value); return this; }
+
+        /// {@return `temporalLayerCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int temporalLayerCountAt(long index) { return VkVideoEncodeH264RateControlInfoKHR.get_temporalLayerCount(this.segment(), index); }
+        /// Sets `temporalLayerCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer temporalLayerCountAt(long index, @CType("uint32_t") int value) { VkVideoEncodeH264RateControlInfoKHR.set_temporalLayerCount(this.segment(), index, value); return this; }
+
+    }
 }

@@ -46,7 +46,7 @@ import overrungl.util.*;
 ///     VkDeviceSize buildScratchSize;
 /// } VkAccelerationStructureBuildSizesInfoKHR;
 /// ```
-public final class VkAccelerationStructureBuildSizesInfoKHR extends Struct {
+public sealed class VkAccelerationStructureBuildSizesInfoKHR extends Struct {
     /// The struct layout of `VkAccelerationStructureBuildSizesInfoKHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -76,6 +76,11 @@ public final class VkAccelerationStructureBuildSizesInfoKHR extends Struct {
     public static VkAccelerationStructureBuildSizesInfoKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkAccelerationStructureBuildSizesInfoKHR(segment); }
 
     /// Creates `VkAccelerationStructureBuildSizesInfoKHR` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkAccelerationStructureBuildSizesInfoKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -88,7 +93,7 @@ public final class VkAccelerationStructureBuildSizesInfoKHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkAccelerationStructureBuildSizesInfoKHR ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkAccelerationStructureBuildSizesInfoKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkAccelerationStructureBuildSizesInfoKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -99,18 +104,21 @@ public final class VkAccelerationStructureBuildSizesInfoKHR extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkAccelerationStructureBuildSizesInfoKHR`
-    public static VkAccelerationStructureBuildSizesInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkAccelerationStructureBuildSizesInfoKHR(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkAccelerationStructureBuildSizesInfoKHR`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkAccelerationStructureBuildSizesInfoKHR`
-    public VkAccelerationStructureBuildSizesInfoKHR asSlice(long index) { return new VkAccelerationStructureBuildSizesInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkAccelerationStructureBuildSizesInfoKHR` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkAccelerationStructureBuildSizesInfoKHR`
+    public static VkAccelerationStructureBuildSizesInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkDeviceSize") long accelerationStructureSize, @CType("VkDeviceSize") long updateScratchSize, @CType("VkDeviceSize") long buildScratchSize) { return alloc(allocator).sType(sType).pNext(pNext).accelerationStructureSize(accelerationStructureSize).updateScratchSize(updateScratchSize).buildScratchSize(buildScratchSize); }
 
-    /// Creates a slice of `VkAccelerationStructureBuildSizesInfoKHR`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkAccelerationStructureBuildSizesInfoKHR`
-    public VkAccelerationStructureBuildSizesInfoKHR asSlice(long index, long count) { return new VkAccelerationStructureBuildSizesInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkAccelerationStructureBuildSizesInfoKHR copyFrom(VkAccelerationStructureBuildSizesInfoKHR src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -119,9 +127,6 @@ public final class VkAccelerationStructureBuildSizesInfoKHR extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkAccelerationStructureBuildSizesInfoKHR.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkAccelerationStructureBuildSizesInfoKHR.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkAccelerationStructureBuildSizesInfoKHR.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -133,11 +138,6 @@ public final class VkAccelerationStructureBuildSizesInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkAccelerationStructureBuildSizesInfoKHR.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAccelerationStructureBuildSizesInfoKHR sTypeAt(long index, @CType("VkStructureType") int value) { VkAccelerationStructureBuildSizesInfoKHR.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,9 +150,6 @@ public final class VkAccelerationStructureBuildSizesInfoKHR extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkAccelerationStructureBuildSizesInfoKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkAccelerationStructureBuildSizesInfoKHR.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkAccelerationStructureBuildSizesInfoKHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -164,11 +161,6 @@ public final class VkAccelerationStructureBuildSizesInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkAccelerationStructureBuildSizesInfoKHR.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAccelerationStructureBuildSizesInfoKHR pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkAccelerationStructureBuildSizesInfoKHR.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -181,9 +173,6 @@ public final class VkAccelerationStructureBuildSizesInfoKHR extends Struct {
     /// {@return `accelerationStructureSize`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_accelerationStructureSize(MemorySegment segment) { return VkAccelerationStructureBuildSizesInfoKHR.get_accelerationStructureSize(segment, 0L); }
-    /// {@return `accelerationStructureSize` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long accelerationStructureSizeAt(long index) { return VkAccelerationStructureBuildSizesInfoKHR.get_accelerationStructureSize(this.segment(), index); }
     /// {@return `accelerationStructureSize`}
     public @CType("VkDeviceSize") long accelerationStructureSize() { return VkAccelerationStructureBuildSizesInfoKHR.get_accelerationStructureSize(this.segment()); }
     /// Sets `accelerationStructureSize` with the given value at the given index.
@@ -195,11 +184,6 @@ public final class VkAccelerationStructureBuildSizesInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_accelerationStructureSize(MemorySegment segment, @CType("VkDeviceSize") long value) { VkAccelerationStructureBuildSizesInfoKHR.set_accelerationStructureSize(segment, 0L, value); }
-    /// Sets `accelerationStructureSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAccelerationStructureBuildSizesInfoKHR accelerationStructureSizeAt(long index, @CType("VkDeviceSize") long value) { VkAccelerationStructureBuildSizesInfoKHR.set_accelerationStructureSize(this.segment(), index, value); return this; }
     /// Sets `accelerationStructureSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -212,9 +196,6 @@ public final class VkAccelerationStructureBuildSizesInfoKHR extends Struct {
     /// {@return `updateScratchSize`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_updateScratchSize(MemorySegment segment) { return VkAccelerationStructureBuildSizesInfoKHR.get_updateScratchSize(segment, 0L); }
-    /// {@return `updateScratchSize` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long updateScratchSizeAt(long index) { return VkAccelerationStructureBuildSizesInfoKHR.get_updateScratchSize(this.segment(), index); }
     /// {@return `updateScratchSize`}
     public @CType("VkDeviceSize") long updateScratchSize() { return VkAccelerationStructureBuildSizesInfoKHR.get_updateScratchSize(this.segment()); }
     /// Sets `updateScratchSize` with the given value at the given index.
@@ -226,11 +207,6 @@ public final class VkAccelerationStructureBuildSizesInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_updateScratchSize(MemorySegment segment, @CType("VkDeviceSize") long value) { VkAccelerationStructureBuildSizesInfoKHR.set_updateScratchSize(segment, 0L, value); }
-    /// Sets `updateScratchSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAccelerationStructureBuildSizesInfoKHR updateScratchSizeAt(long index, @CType("VkDeviceSize") long value) { VkAccelerationStructureBuildSizesInfoKHR.set_updateScratchSize(this.segment(), index, value); return this; }
     /// Sets `updateScratchSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -243,9 +219,6 @@ public final class VkAccelerationStructureBuildSizesInfoKHR extends Struct {
     /// {@return `buildScratchSize`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_buildScratchSize(MemorySegment segment) { return VkAccelerationStructureBuildSizesInfoKHR.get_buildScratchSize(segment, 0L); }
-    /// {@return `buildScratchSize` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long buildScratchSizeAt(long index) { return VkAccelerationStructureBuildSizesInfoKHR.get_buildScratchSize(this.segment(), index); }
     /// {@return `buildScratchSize`}
     public @CType("VkDeviceSize") long buildScratchSize() { return VkAccelerationStructureBuildSizesInfoKHR.get_buildScratchSize(this.segment()); }
     /// Sets `buildScratchSize` with the given value at the given index.
@@ -257,14 +230,77 @@ public final class VkAccelerationStructureBuildSizesInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_buildScratchSize(MemorySegment segment, @CType("VkDeviceSize") long value) { VkAccelerationStructureBuildSizesInfoKHR.set_buildScratchSize(segment, 0L, value); }
-    /// Sets `buildScratchSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAccelerationStructureBuildSizesInfoKHR buildScratchSizeAt(long index, @CType("VkDeviceSize") long value) { VkAccelerationStructureBuildSizesInfoKHR.set_buildScratchSize(this.segment(), index, value); return this; }
     /// Sets `buildScratchSize` with the given value.
     /// @param value the value
     /// @return `this`
     public VkAccelerationStructureBuildSizesInfoKHR buildScratchSize(@CType("VkDeviceSize") long value) { VkAccelerationStructureBuildSizesInfoKHR.set_buildScratchSize(this.segment(), value); return this; }
 
+    /// A buffer of [VkAccelerationStructureBuildSizesInfoKHR].
+    public static final class Buffer extends VkAccelerationStructureBuildSizesInfoKHR {
+        private final long elementCount;
+
+        /// Creates `VkAccelerationStructureBuildSizesInfoKHR.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkAccelerationStructureBuildSizesInfoKHR`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkAccelerationStructureBuildSizesInfoKHR`
+        public VkAccelerationStructureBuildSizesInfoKHR asSlice(long index) { return new VkAccelerationStructureBuildSizesInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkAccelerationStructureBuildSizesInfoKHR`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkAccelerationStructureBuildSizesInfoKHR`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkAccelerationStructureBuildSizesInfoKHR.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkAccelerationStructureBuildSizesInfoKHR.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkAccelerationStructureBuildSizesInfoKHR.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkAccelerationStructureBuildSizesInfoKHR.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `accelerationStructureSize` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long accelerationStructureSizeAt(long index) { return VkAccelerationStructureBuildSizesInfoKHR.get_accelerationStructureSize(this.segment(), index); }
+        /// Sets `accelerationStructureSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer accelerationStructureSizeAt(long index, @CType("VkDeviceSize") long value) { VkAccelerationStructureBuildSizesInfoKHR.set_accelerationStructureSize(this.segment(), index, value); return this; }
+
+        /// {@return `updateScratchSize` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long updateScratchSizeAt(long index) { return VkAccelerationStructureBuildSizesInfoKHR.get_updateScratchSize(this.segment(), index); }
+        /// Sets `updateScratchSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer updateScratchSizeAt(long index, @CType("VkDeviceSize") long value) { VkAccelerationStructureBuildSizesInfoKHR.set_updateScratchSize(this.segment(), index, value); return this; }
+
+        /// {@return `buildScratchSize` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long buildScratchSizeAt(long index) { return VkAccelerationStructureBuildSizesInfoKHR.get_buildScratchSize(this.segment(), index); }
+        /// Sets `buildScratchSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer buildScratchSizeAt(long index, @CType("VkDeviceSize") long value) { VkAccelerationStructureBuildSizesInfoKHR.set_buildScratchSize(this.segment(), index, value); return this; }
+
+    }
 }

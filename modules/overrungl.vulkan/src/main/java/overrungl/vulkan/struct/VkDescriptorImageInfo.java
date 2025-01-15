@@ -40,7 +40,7 @@ import overrungl.util.*;
 ///     VkImageLayout imageLayout;
 /// } VkDescriptorImageInfo;
 /// ```
-public final class VkDescriptorImageInfo extends Struct {
+public sealed class VkDescriptorImageInfo extends Struct {
     /// The struct layout of `VkDescriptorImageInfo`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.ADDRESS.withName("sampler"),
@@ -64,6 +64,11 @@ public final class VkDescriptorImageInfo extends Struct {
     public static VkDescriptorImageInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDescriptorImageInfo(segment); }
 
     /// Creates `VkDescriptorImageInfo` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkDescriptorImageInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -76,7 +81,7 @@ public final class VkDescriptorImageInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDescriptorImageInfo ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkDescriptorImageInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkDescriptorImageInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -87,18 +92,21 @@ public final class VkDescriptorImageInfo extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDescriptorImageInfo`
-    public static VkDescriptorImageInfo alloc(SegmentAllocator allocator, long count) { return new VkDescriptorImageInfo(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkDescriptorImageInfo`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkDescriptorImageInfo`
-    public VkDescriptorImageInfo asSlice(long index) { return new VkDescriptorImageInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkDescriptorImageInfo` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkDescriptorImageInfo`
+    public static VkDescriptorImageInfo allocInit(SegmentAllocator allocator, @CType("VkSampler") java.lang.foreign.MemorySegment sampler, @CType("VkImageView") java.lang.foreign.MemorySegment imageView, @CType("VkImageLayout") int imageLayout) { return alloc(allocator).sampler(sampler).imageView(imageView).imageLayout(imageLayout); }
 
-    /// Creates a slice of `VkDescriptorImageInfo`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkDescriptorImageInfo`
-    public VkDescriptorImageInfo asSlice(long index, long count) { return new VkDescriptorImageInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkDescriptorImageInfo copyFrom(VkDescriptorImageInfo src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sampler` at the given index}
     /// @param segment the segment of the struct
@@ -107,9 +115,6 @@ public final class VkDescriptorImageInfo extends Struct {
     /// {@return `sampler`}
     /// @param segment the segment of the struct
     public static @CType("VkSampler") java.lang.foreign.MemorySegment get_sampler(MemorySegment segment) { return VkDescriptorImageInfo.get_sampler(segment, 0L); }
-    /// {@return `sampler` at the given index}
-    /// @param index the index
-    public @CType("VkSampler") java.lang.foreign.MemorySegment samplerAt(long index) { return VkDescriptorImageInfo.get_sampler(this.segment(), index); }
     /// {@return `sampler`}
     public @CType("VkSampler") java.lang.foreign.MemorySegment sampler() { return VkDescriptorImageInfo.get_sampler(this.segment()); }
     /// Sets `sampler` with the given value at the given index.
@@ -121,11 +126,6 @@ public final class VkDescriptorImageInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sampler(MemorySegment segment, @CType("VkSampler") java.lang.foreign.MemorySegment value) { VkDescriptorImageInfo.set_sampler(segment, 0L, value); }
-    /// Sets `sampler` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorImageInfo samplerAt(long index, @CType("VkSampler") java.lang.foreign.MemorySegment value) { VkDescriptorImageInfo.set_sampler(this.segment(), index, value); return this; }
     /// Sets `sampler` with the given value.
     /// @param value the value
     /// @return `this`
@@ -138,9 +138,6 @@ public final class VkDescriptorImageInfo extends Struct {
     /// {@return `imageView`}
     /// @param segment the segment of the struct
     public static @CType("VkImageView") java.lang.foreign.MemorySegment get_imageView(MemorySegment segment) { return VkDescriptorImageInfo.get_imageView(segment, 0L); }
-    /// {@return `imageView` at the given index}
-    /// @param index the index
-    public @CType("VkImageView") java.lang.foreign.MemorySegment imageViewAt(long index) { return VkDescriptorImageInfo.get_imageView(this.segment(), index); }
     /// {@return `imageView`}
     public @CType("VkImageView") java.lang.foreign.MemorySegment imageView() { return VkDescriptorImageInfo.get_imageView(this.segment()); }
     /// Sets `imageView` with the given value at the given index.
@@ -152,11 +149,6 @@ public final class VkDescriptorImageInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_imageView(MemorySegment segment, @CType("VkImageView") java.lang.foreign.MemorySegment value) { VkDescriptorImageInfo.set_imageView(segment, 0L, value); }
-    /// Sets `imageView` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorImageInfo imageViewAt(long index, @CType("VkImageView") java.lang.foreign.MemorySegment value) { VkDescriptorImageInfo.set_imageView(this.segment(), index, value); return this; }
     /// Sets `imageView` with the given value.
     /// @param value the value
     /// @return `this`
@@ -169,9 +161,6 @@ public final class VkDescriptorImageInfo extends Struct {
     /// {@return `imageLayout`}
     /// @param segment the segment of the struct
     public static @CType("VkImageLayout") int get_imageLayout(MemorySegment segment) { return VkDescriptorImageInfo.get_imageLayout(segment, 0L); }
-    /// {@return `imageLayout` at the given index}
-    /// @param index the index
-    public @CType("VkImageLayout") int imageLayoutAt(long index) { return VkDescriptorImageInfo.get_imageLayout(this.segment(), index); }
     /// {@return `imageLayout`}
     public @CType("VkImageLayout") int imageLayout() { return VkDescriptorImageInfo.get_imageLayout(this.segment()); }
     /// Sets `imageLayout` with the given value at the given index.
@@ -183,14 +172,59 @@ public final class VkDescriptorImageInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_imageLayout(MemorySegment segment, @CType("VkImageLayout") int value) { VkDescriptorImageInfo.set_imageLayout(segment, 0L, value); }
-    /// Sets `imageLayout` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorImageInfo imageLayoutAt(long index, @CType("VkImageLayout") int value) { VkDescriptorImageInfo.set_imageLayout(this.segment(), index, value); return this; }
     /// Sets `imageLayout` with the given value.
     /// @param value the value
     /// @return `this`
     public VkDescriptorImageInfo imageLayout(@CType("VkImageLayout") int value) { VkDescriptorImageInfo.set_imageLayout(this.segment(), value); return this; }
 
+    /// A buffer of [VkDescriptorImageInfo].
+    public static final class Buffer extends VkDescriptorImageInfo {
+        private final long elementCount;
+
+        /// Creates `VkDescriptorImageInfo.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkDescriptorImageInfo`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkDescriptorImageInfo`
+        public VkDescriptorImageInfo asSlice(long index) { return new VkDescriptorImageInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkDescriptorImageInfo`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkDescriptorImageInfo`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sampler` at the given index}
+        /// @param index the index
+        public @CType("VkSampler") java.lang.foreign.MemorySegment samplerAt(long index) { return VkDescriptorImageInfo.get_sampler(this.segment(), index); }
+        /// Sets `sampler` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer samplerAt(long index, @CType("VkSampler") java.lang.foreign.MemorySegment value) { VkDescriptorImageInfo.set_sampler(this.segment(), index, value); return this; }
+
+        /// {@return `imageView` at the given index}
+        /// @param index the index
+        public @CType("VkImageView") java.lang.foreign.MemorySegment imageViewAt(long index) { return VkDescriptorImageInfo.get_imageView(this.segment(), index); }
+        /// Sets `imageView` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer imageViewAt(long index, @CType("VkImageView") java.lang.foreign.MemorySegment value) { VkDescriptorImageInfo.set_imageView(this.segment(), index, value); return this; }
+
+        /// {@return `imageLayout` at the given index}
+        /// @param index the index
+        public @CType("VkImageLayout") int imageLayoutAt(long index) { return VkDescriptorImageInfo.get_imageLayout(this.segment(), index); }
+        /// Sets `imageLayout` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer imageLayoutAt(long index, @CType("VkImageLayout") int value) { VkDescriptorImageInfo.set_imageLayout(this.segment(), index, value); return this; }
+
+    }
 }

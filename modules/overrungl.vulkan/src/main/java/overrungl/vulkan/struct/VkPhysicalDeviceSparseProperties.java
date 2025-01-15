@@ -46,7 +46,7 @@ import overrungl.util.*;
 ///     VkBool32 residencyNonResidentStrict;
 /// } VkPhysicalDeviceSparseProperties;
 /// ```
-public final class VkPhysicalDeviceSparseProperties extends Struct {
+public sealed class VkPhysicalDeviceSparseProperties extends Struct {
     /// The struct layout of `VkPhysicalDeviceSparseProperties`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("residencyStandard2DBlockShape"),
@@ -76,6 +76,11 @@ public final class VkPhysicalDeviceSparseProperties extends Struct {
     public static VkPhysicalDeviceSparseProperties of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceSparseProperties(segment); }
 
     /// Creates `VkPhysicalDeviceSparseProperties` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPhysicalDeviceSparseProperties` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -88,7 +93,7 @@ public final class VkPhysicalDeviceSparseProperties extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceSparseProperties ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceSparseProperties(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceSparseProperties` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -99,18 +104,21 @@ public final class VkPhysicalDeviceSparseProperties extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceSparseProperties`
-    public static VkPhysicalDeviceSparseProperties alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceSparseProperties(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkPhysicalDeviceSparseProperties`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDeviceSparseProperties`
-    public VkPhysicalDeviceSparseProperties asSlice(long index) { return new VkPhysicalDeviceSparseProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkPhysicalDeviceSparseProperties` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDeviceSparseProperties`
+    public static VkPhysicalDeviceSparseProperties allocInit(SegmentAllocator allocator, @CType("VkBool32") int residencyStandard2DBlockShape, @CType("VkBool32") int residencyStandard2DMultisampleBlockShape, @CType("VkBool32") int residencyStandard3DBlockShape, @CType("VkBool32") int residencyAlignedMipSize, @CType("VkBool32") int residencyNonResidentStrict) { return alloc(allocator).residencyStandard2DBlockShape(residencyStandard2DBlockShape).residencyStandard2DMultisampleBlockShape(residencyStandard2DMultisampleBlockShape).residencyStandard3DBlockShape(residencyStandard3DBlockShape).residencyAlignedMipSize(residencyAlignedMipSize).residencyNonResidentStrict(residencyNonResidentStrict); }
 
-    /// Creates a slice of `VkPhysicalDeviceSparseProperties`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDeviceSparseProperties`
-    public VkPhysicalDeviceSparseProperties asSlice(long index, long count) { return new VkPhysicalDeviceSparseProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDeviceSparseProperties copyFrom(VkPhysicalDeviceSparseProperties src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `residencyStandard2DBlockShape` at the given index}
     /// @param segment the segment of the struct
@@ -119,9 +127,6 @@ public final class VkPhysicalDeviceSparseProperties extends Struct {
     /// {@return `residencyStandard2DBlockShape`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_residencyStandard2DBlockShape(MemorySegment segment) { return VkPhysicalDeviceSparseProperties.get_residencyStandard2DBlockShape(segment, 0L); }
-    /// {@return `residencyStandard2DBlockShape` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int residencyStandard2DBlockShapeAt(long index) { return VkPhysicalDeviceSparseProperties.get_residencyStandard2DBlockShape(this.segment(), index); }
     /// {@return `residencyStandard2DBlockShape`}
     public @CType("VkBool32") int residencyStandard2DBlockShape() { return VkPhysicalDeviceSparseProperties.get_residencyStandard2DBlockShape(this.segment()); }
     /// Sets `residencyStandard2DBlockShape` with the given value at the given index.
@@ -133,11 +138,6 @@ public final class VkPhysicalDeviceSparseProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_residencyStandard2DBlockShape(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceSparseProperties.set_residencyStandard2DBlockShape(segment, 0L, value); }
-    /// Sets `residencyStandard2DBlockShape` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceSparseProperties residencyStandard2DBlockShapeAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceSparseProperties.set_residencyStandard2DBlockShape(this.segment(), index, value); return this; }
     /// Sets `residencyStandard2DBlockShape` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,9 +150,6 @@ public final class VkPhysicalDeviceSparseProperties extends Struct {
     /// {@return `residencyStandard2DMultisampleBlockShape`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_residencyStandard2DMultisampleBlockShape(MemorySegment segment) { return VkPhysicalDeviceSparseProperties.get_residencyStandard2DMultisampleBlockShape(segment, 0L); }
-    /// {@return `residencyStandard2DMultisampleBlockShape` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int residencyStandard2DMultisampleBlockShapeAt(long index) { return VkPhysicalDeviceSparseProperties.get_residencyStandard2DMultisampleBlockShape(this.segment(), index); }
     /// {@return `residencyStandard2DMultisampleBlockShape`}
     public @CType("VkBool32") int residencyStandard2DMultisampleBlockShape() { return VkPhysicalDeviceSparseProperties.get_residencyStandard2DMultisampleBlockShape(this.segment()); }
     /// Sets `residencyStandard2DMultisampleBlockShape` with the given value at the given index.
@@ -164,11 +161,6 @@ public final class VkPhysicalDeviceSparseProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_residencyStandard2DMultisampleBlockShape(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceSparseProperties.set_residencyStandard2DMultisampleBlockShape(segment, 0L, value); }
-    /// Sets `residencyStandard2DMultisampleBlockShape` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceSparseProperties residencyStandard2DMultisampleBlockShapeAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceSparseProperties.set_residencyStandard2DMultisampleBlockShape(this.segment(), index, value); return this; }
     /// Sets `residencyStandard2DMultisampleBlockShape` with the given value.
     /// @param value the value
     /// @return `this`
@@ -181,9 +173,6 @@ public final class VkPhysicalDeviceSparseProperties extends Struct {
     /// {@return `residencyStandard3DBlockShape`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_residencyStandard3DBlockShape(MemorySegment segment) { return VkPhysicalDeviceSparseProperties.get_residencyStandard3DBlockShape(segment, 0L); }
-    /// {@return `residencyStandard3DBlockShape` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int residencyStandard3DBlockShapeAt(long index) { return VkPhysicalDeviceSparseProperties.get_residencyStandard3DBlockShape(this.segment(), index); }
     /// {@return `residencyStandard3DBlockShape`}
     public @CType("VkBool32") int residencyStandard3DBlockShape() { return VkPhysicalDeviceSparseProperties.get_residencyStandard3DBlockShape(this.segment()); }
     /// Sets `residencyStandard3DBlockShape` with the given value at the given index.
@@ -195,11 +184,6 @@ public final class VkPhysicalDeviceSparseProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_residencyStandard3DBlockShape(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceSparseProperties.set_residencyStandard3DBlockShape(segment, 0L, value); }
-    /// Sets `residencyStandard3DBlockShape` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceSparseProperties residencyStandard3DBlockShapeAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceSparseProperties.set_residencyStandard3DBlockShape(this.segment(), index, value); return this; }
     /// Sets `residencyStandard3DBlockShape` with the given value.
     /// @param value the value
     /// @return `this`
@@ -212,9 +196,6 @@ public final class VkPhysicalDeviceSparseProperties extends Struct {
     /// {@return `residencyAlignedMipSize`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_residencyAlignedMipSize(MemorySegment segment) { return VkPhysicalDeviceSparseProperties.get_residencyAlignedMipSize(segment, 0L); }
-    /// {@return `residencyAlignedMipSize` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int residencyAlignedMipSizeAt(long index) { return VkPhysicalDeviceSparseProperties.get_residencyAlignedMipSize(this.segment(), index); }
     /// {@return `residencyAlignedMipSize`}
     public @CType("VkBool32") int residencyAlignedMipSize() { return VkPhysicalDeviceSparseProperties.get_residencyAlignedMipSize(this.segment()); }
     /// Sets `residencyAlignedMipSize` with the given value at the given index.
@@ -226,11 +207,6 @@ public final class VkPhysicalDeviceSparseProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_residencyAlignedMipSize(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceSparseProperties.set_residencyAlignedMipSize(segment, 0L, value); }
-    /// Sets `residencyAlignedMipSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceSparseProperties residencyAlignedMipSizeAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceSparseProperties.set_residencyAlignedMipSize(this.segment(), index, value); return this; }
     /// Sets `residencyAlignedMipSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -243,9 +219,6 @@ public final class VkPhysicalDeviceSparseProperties extends Struct {
     /// {@return `residencyNonResidentStrict`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_residencyNonResidentStrict(MemorySegment segment) { return VkPhysicalDeviceSparseProperties.get_residencyNonResidentStrict(segment, 0L); }
-    /// {@return `residencyNonResidentStrict` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int residencyNonResidentStrictAt(long index) { return VkPhysicalDeviceSparseProperties.get_residencyNonResidentStrict(this.segment(), index); }
     /// {@return `residencyNonResidentStrict`}
     public @CType("VkBool32") int residencyNonResidentStrict() { return VkPhysicalDeviceSparseProperties.get_residencyNonResidentStrict(this.segment()); }
     /// Sets `residencyNonResidentStrict` with the given value at the given index.
@@ -257,14 +230,77 @@ public final class VkPhysicalDeviceSparseProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_residencyNonResidentStrict(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceSparseProperties.set_residencyNonResidentStrict(segment, 0L, value); }
-    /// Sets `residencyNonResidentStrict` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceSparseProperties residencyNonResidentStrictAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceSparseProperties.set_residencyNonResidentStrict(this.segment(), index, value); return this; }
     /// Sets `residencyNonResidentStrict` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceSparseProperties residencyNonResidentStrict(@CType("VkBool32") int value) { VkPhysicalDeviceSparseProperties.set_residencyNonResidentStrict(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDeviceSparseProperties].
+    public static final class Buffer extends VkPhysicalDeviceSparseProperties {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDeviceSparseProperties.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDeviceSparseProperties`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDeviceSparseProperties`
+        public VkPhysicalDeviceSparseProperties asSlice(long index) { return new VkPhysicalDeviceSparseProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDeviceSparseProperties`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDeviceSparseProperties`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `residencyStandard2DBlockShape` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int residencyStandard2DBlockShapeAt(long index) { return VkPhysicalDeviceSparseProperties.get_residencyStandard2DBlockShape(this.segment(), index); }
+        /// Sets `residencyStandard2DBlockShape` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer residencyStandard2DBlockShapeAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceSparseProperties.set_residencyStandard2DBlockShape(this.segment(), index, value); return this; }
+
+        /// {@return `residencyStandard2DMultisampleBlockShape` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int residencyStandard2DMultisampleBlockShapeAt(long index) { return VkPhysicalDeviceSparseProperties.get_residencyStandard2DMultisampleBlockShape(this.segment(), index); }
+        /// Sets `residencyStandard2DMultisampleBlockShape` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer residencyStandard2DMultisampleBlockShapeAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceSparseProperties.set_residencyStandard2DMultisampleBlockShape(this.segment(), index, value); return this; }
+
+        /// {@return `residencyStandard3DBlockShape` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int residencyStandard3DBlockShapeAt(long index) { return VkPhysicalDeviceSparseProperties.get_residencyStandard3DBlockShape(this.segment(), index); }
+        /// Sets `residencyStandard3DBlockShape` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer residencyStandard3DBlockShapeAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceSparseProperties.set_residencyStandard3DBlockShape(this.segment(), index, value); return this; }
+
+        /// {@return `residencyAlignedMipSize` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int residencyAlignedMipSizeAt(long index) { return VkPhysicalDeviceSparseProperties.get_residencyAlignedMipSize(this.segment(), index); }
+        /// Sets `residencyAlignedMipSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer residencyAlignedMipSizeAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceSparseProperties.set_residencyAlignedMipSize(this.segment(), index, value); return this; }
+
+        /// {@return `residencyNonResidentStrict` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int residencyNonResidentStrictAt(long index) { return VkPhysicalDeviceSparseProperties.get_residencyNonResidentStrict(this.segment(), index); }
+        /// Sets `residencyNonResidentStrict` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer residencyNonResidentStrictAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceSparseProperties.set_residencyNonResidentStrict(this.segment(), index, value); return this; }
+
+    }
 }

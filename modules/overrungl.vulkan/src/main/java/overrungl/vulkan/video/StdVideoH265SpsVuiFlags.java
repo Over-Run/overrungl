@@ -85,7 +85,7 @@ import overrungl.util.*;
 ///     uint32_t : 1 restricted_ref_pic_lists_flag;
 /// } StdVideoH265SpsVuiFlags;
 /// ```
-public final class StdVideoH265SpsVuiFlags extends Struct {
+public sealed class StdVideoH265SpsVuiFlags extends Struct {
     /// The struct layout of `StdVideoH265SpsVuiFlags`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("aspect_ratio_info_present_flag"),
@@ -154,6 +154,11 @@ public final class StdVideoH265SpsVuiFlags extends Struct {
     public static StdVideoH265SpsVuiFlags of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoH265SpsVuiFlags(segment); }
 
     /// Creates `StdVideoH265SpsVuiFlags` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `StdVideoH265SpsVuiFlags` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -166,7 +171,7 @@ public final class StdVideoH265SpsVuiFlags extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoH265SpsVuiFlags ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoH265SpsVuiFlags(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `StdVideoH265SpsVuiFlags` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -177,18 +182,21 @@ public final class StdVideoH265SpsVuiFlags extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `StdVideoH265SpsVuiFlags`
-    public static StdVideoH265SpsVuiFlags alloc(SegmentAllocator allocator, long count) { return new StdVideoH265SpsVuiFlags(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `StdVideoH265SpsVuiFlags`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `StdVideoH265SpsVuiFlags`
-    public StdVideoH265SpsVuiFlags asSlice(long index) { return new StdVideoH265SpsVuiFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `StdVideoH265SpsVuiFlags` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `StdVideoH265SpsVuiFlags`
+    public static StdVideoH265SpsVuiFlags allocInit(SegmentAllocator allocator, @CType("uint32_t : 1") int aspect_ratio_info_present_flag, @CType("uint32_t : 1") int overscan_info_present_flag, @CType("uint32_t : 1") int overscan_appropriate_flag, @CType("uint32_t : 1") int video_signal_type_present_flag, @CType("uint32_t : 1") int video_full_range_flag, @CType("uint32_t : 1") int colour_description_present_flag, @CType("uint32_t : 1") int chroma_loc_info_present_flag, @CType("uint32_t : 1") int neutral_chroma_indication_flag, @CType("uint32_t : 1") int field_seq_flag, @CType("uint32_t : 1") int frame_field_info_present_flag, @CType("uint32_t : 1") int default_display_window_flag, @CType("uint32_t : 1") int vui_timing_info_present_flag, @CType("uint32_t : 1") int vui_poc_proportional_to_timing_flag, @CType("uint32_t : 1") int vui_hrd_parameters_present_flag, @CType("uint32_t : 1") int bitstream_restriction_flag, @CType("uint32_t : 1") int tiles_fixed_structure_flag, @CType("uint32_t : 1") int motion_vectors_over_pic_boundaries_flag, @CType("uint32_t : 1") int restricted_ref_pic_lists_flag) { return alloc(allocator).aspect_ratio_info_present_flag(aspect_ratio_info_present_flag).overscan_info_present_flag(overscan_info_present_flag).overscan_appropriate_flag(overscan_appropriate_flag).video_signal_type_present_flag(video_signal_type_present_flag).video_full_range_flag(video_full_range_flag).colour_description_present_flag(colour_description_present_flag).chroma_loc_info_present_flag(chroma_loc_info_present_flag).neutral_chroma_indication_flag(neutral_chroma_indication_flag).field_seq_flag(field_seq_flag).frame_field_info_present_flag(frame_field_info_present_flag).default_display_window_flag(default_display_window_flag).vui_timing_info_present_flag(vui_timing_info_present_flag).vui_poc_proportional_to_timing_flag(vui_poc_proportional_to_timing_flag).vui_hrd_parameters_present_flag(vui_hrd_parameters_present_flag).bitstream_restriction_flag(bitstream_restriction_flag).tiles_fixed_structure_flag(tiles_fixed_structure_flag).motion_vectors_over_pic_boundaries_flag(motion_vectors_over_pic_boundaries_flag).restricted_ref_pic_lists_flag(restricted_ref_pic_lists_flag); }
 
-    /// Creates a slice of `StdVideoH265SpsVuiFlags`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `StdVideoH265SpsVuiFlags`
-    public StdVideoH265SpsVuiFlags asSlice(long index, long count) { return new StdVideoH265SpsVuiFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public StdVideoH265SpsVuiFlags copyFrom(StdVideoH265SpsVuiFlags src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `aspect_ratio_info_present_flag` at the given index}
     /// @param segment the segment of the struct
@@ -197,9 +205,6 @@ public final class StdVideoH265SpsVuiFlags extends Struct {
     /// {@return `aspect_ratio_info_present_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_aspect_ratio_info_present_flag(MemorySegment segment) { return StdVideoH265SpsVuiFlags.get_aspect_ratio_info_present_flag(segment, 0L); }
-    /// {@return `aspect_ratio_info_present_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int aspect_ratio_info_present_flagAt(long index) { return StdVideoH265SpsVuiFlags.get_aspect_ratio_info_present_flag(this.segment(), index); }
     /// {@return `aspect_ratio_info_present_flag`}
     public @CType("uint32_t : 1") int aspect_ratio_info_present_flag() { return StdVideoH265SpsVuiFlags.get_aspect_ratio_info_present_flag(this.segment()); }
     /// Sets `aspect_ratio_info_present_flag` with the given value at the given index.
@@ -211,11 +216,6 @@ public final class StdVideoH265SpsVuiFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_aspect_ratio_info_present_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_aspect_ratio_info_present_flag(segment, 0L, value); }
-    /// Sets `aspect_ratio_info_present_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH265SpsVuiFlags aspect_ratio_info_present_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_aspect_ratio_info_present_flag(this.segment(), index, value); return this; }
     /// Sets `aspect_ratio_info_present_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -228,9 +228,6 @@ public final class StdVideoH265SpsVuiFlags extends Struct {
     /// {@return `overscan_info_present_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_overscan_info_present_flag(MemorySegment segment) { return StdVideoH265SpsVuiFlags.get_overscan_info_present_flag(segment, 0L); }
-    /// {@return `overscan_info_present_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int overscan_info_present_flagAt(long index) { return StdVideoH265SpsVuiFlags.get_overscan_info_present_flag(this.segment(), index); }
     /// {@return `overscan_info_present_flag`}
     public @CType("uint32_t : 1") int overscan_info_present_flag() { return StdVideoH265SpsVuiFlags.get_overscan_info_present_flag(this.segment()); }
     /// Sets `overscan_info_present_flag` with the given value at the given index.
@@ -242,11 +239,6 @@ public final class StdVideoH265SpsVuiFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_overscan_info_present_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_overscan_info_present_flag(segment, 0L, value); }
-    /// Sets `overscan_info_present_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH265SpsVuiFlags overscan_info_present_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_overscan_info_present_flag(this.segment(), index, value); return this; }
     /// Sets `overscan_info_present_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -259,9 +251,6 @@ public final class StdVideoH265SpsVuiFlags extends Struct {
     /// {@return `overscan_appropriate_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_overscan_appropriate_flag(MemorySegment segment) { return StdVideoH265SpsVuiFlags.get_overscan_appropriate_flag(segment, 0L); }
-    /// {@return `overscan_appropriate_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int overscan_appropriate_flagAt(long index) { return StdVideoH265SpsVuiFlags.get_overscan_appropriate_flag(this.segment(), index); }
     /// {@return `overscan_appropriate_flag`}
     public @CType("uint32_t : 1") int overscan_appropriate_flag() { return StdVideoH265SpsVuiFlags.get_overscan_appropriate_flag(this.segment()); }
     /// Sets `overscan_appropriate_flag` with the given value at the given index.
@@ -273,11 +262,6 @@ public final class StdVideoH265SpsVuiFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_overscan_appropriate_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_overscan_appropriate_flag(segment, 0L, value); }
-    /// Sets `overscan_appropriate_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH265SpsVuiFlags overscan_appropriate_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_overscan_appropriate_flag(this.segment(), index, value); return this; }
     /// Sets `overscan_appropriate_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -290,9 +274,6 @@ public final class StdVideoH265SpsVuiFlags extends Struct {
     /// {@return `video_signal_type_present_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_video_signal_type_present_flag(MemorySegment segment) { return StdVideoH265SpsVuiFlags.get_video_signal_type_present_flag(segment, 0L); }
-    /// {@return `video_signal_type_present_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int video_signal_type_present_flagAt(long index) { return StdVideoH265SpsVuiFlags.get_video_signal_type_present_flag(this.segment(), index); }
     /// {@return `video_signal_type_present_flag`}
     public @CType("uint32_t : 1") int video_signal_type_present_flag() { return StdVideoH265SpsVuiFlags.get_video_signal_type_present_flag(this.segment()); }
     /// Sets `video_signal_type_present_flag` with the given value at the given index.
@@ -304,11 +285,6 @@ public final class StdVideoH265SpsVuiFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_video_signal_type_present_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_video_signal_type_present_flag(segment, 0L, value); }
-    /// Sets `video_signal_type_present_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH265SpsVuiFlags video_signal_type_present_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_video_signal_type_present_flag(this.segment(), index, value); return this; }
     /// Sets `video_signal_type_present_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -321,9 +297,6 @@ public final class StdVideoH265SpsVuiFlags extends Struct {
     /// {@return `video_full_range_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_video_full_range_flag(MemorySegment segment) { return StdVideoH265SpsVuiFlags.get_video_full_range_flag(segment, 0L); }
-    /// {@return `video_full_range_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int video_full_range_flagAt(long index) { return StdVideoH265SpsVuiFlags.get_video_full_range_flag(this.segment(), index); }
     /// {@return `video_full_range_flag`}
     public @CType("uint32_t : 1") int video_full_range_flag() { return StdVideoH265SpsVuiFlags.get_video_full_range_flag(this.segment()); }
     /// Sets `video_full_range_flag` with the given value at the given index.
@@ -335,11 +308,6 @@ public final class StdVideoH265SpsVuiFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_video_full_range_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_video_full_range_flag(segment, 0L, value); }
-    /// Sets `video_full_range_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH265SpsVuiFlags video_full_range_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_video_full_range_flag(this.segment(), index, value); return this; }
     /// Sets `video_full_range_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -352,9 +320,6 @@ public final class StdVideoH265SpsVuiFlags extends Struct {
     /// {@return `colour_description_present_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_colour_description_present_flag(MemorySegment segment) { return StdVideoH265SpsVuiFlags.get_colour_description_present_flag(segment, 0L); }
-    /// {@return `colour_description_present_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int colour_description_present_flagAt(long index) { return StdVideoH265SpsVuiFlags.get_colour_description_present_flag(this.segment(), index); }
     /// {@return `colour_description_present_flag`}
     public @CType("uint32_t : 1") int colour_description_present_flag() { return StdVideoH265SpsVuiFlags.get_colour_description_present_flag(this.segment()); }
     /// Sets `colour_description_present_flag` with the given value at the given index.
@@ -366,11 +331,6 @@ public final class StdVideoH265SpsVuiFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_colour_description_present_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_colour_description_present_flag(segment, 0L, value); }
-    /// Sets `colour_description_present_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH265SpsVuiFlags colour_description_present_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_colour_description_present_flag(this.segment(), index, value); return this; }
     /// Sets `colour_description_present_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -383,9 +343,6 @@ public final class StdVideoH265SpsVuiFlags extends Struct {
     /// {@return `chroma_loc_info_present_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_chroma_loc_info_present_flag(MemorySegment segment) { return StdVideoH265SpsVuiFlags.get_chroma_loc_info_present_flag(segment, 0L); }
-    /// {@return `chroma_loc_info_present_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int chroma_loc_info_present_flagAt(long index) { return StdVideoH265SpsVuiFlags.get_chroma_loc_info_present_flag(this.segment(), index); }
     /// {@return `chroma_loc_info_present_flag`}
     public @CType("uint32_t : 1") int chroma_loc_info_present_flag() { return StdVideoH265SpsVuiFlags.get_chroma_loc_info_present_flag(this.segment()); }
     /// Sets `chroma_loc_info_present_flag` with the given value at the given index.
@@ -397,11 +354,6 @@ public final class StdVideoH265SpsVuiFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_chroma_loc_info_present_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_chroma_loc_info_present_flag(segment, 0L, value); }
-    /// Sets `chroma_loc_info_present_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH265SpsVuiFlags chroma_loc_info_present_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_chroma_loc_info_present_flag(this.segment(), index, value); return this; }
     /// Sets `chroma_loc_info_present_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -414,9 +366,6 @@ public final class StdVideoH265SpsVuiFlags extends Struct {
     /// {@return `neutral_chroma_indication_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_neutral_chroma_indication_flag(MemorySegment segment) { return StdVideoH265SpsVuiFlags.get_neutral_chroma_indication_flag(segment, 0L); }
-    /// {@return `neutral_chroma_indication_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int neutral_chroma_indication_flagAt(long index) { return StdVideoH265SpsVuiFlags.get_neutral_chroma_indication_flag(this.segment(), index); }
     /// {@return `neutral_chroma_indication_flag`}
     public @CType("uint32_t : 1") int neutral_chroma_indication_flag() { return StdVideoH265SpsVuiFlags.get_neutral_chroma_indication_flag(this.segment()); }
     /// Sets `neutral_chroma_indication_flag` with the given value at the given index.
@@ -428,11 +377,6 @@ public final class StdVideoH265SpsVuiFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_neutral_chroma_indication_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_neutral_chroma_indication_flag(segment, 0L, value); }
-    /// Sets `neutral_chroma_indication_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH265SpsVuiFlags neutral_chroma_indication_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_neutral_chroma_indication_flag(this.segment(), index, value); return this; }
     /// Sets `neutral_chroma_indication_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -445,9 +389,6 @@ public final class StdVideoH265SpsVuiFlags extends Struct {
     /// {@return `field_seq_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_field_seq_flag(MemorySegment segment) { return StdVideoH265SpsVuiFlags.get_field_seq_flag(segment, 0L); }
-    /// {@return `field_seq_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int field_seq_flagAt(long index) { return StdVideoH265SpsVuiFlags.get_field_seq_flag(this.segment(), index); }
     /// {@return `field_seq_flag`}
     public @CType("uint32_t : 1") int field_seq_flag() { return StdVideoH265SpsVuiFlags.get_field_seq_flag(this.segment()); }
     /// Sets `field_seq_flag` with the given value at the given index.
@@ -459,11 +400,6 @@ public final class StdVideoH265SpsVuiFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_field_seq_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_field_seq_flag(segment, 0L, value); }
-    /// Sets `field_seq_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH265SpsVuiFlags field_seq_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_field_seq_flag(this.segment(), index, value); return this; }
     /// Sets `field_seq_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -476,9 +412,6 @@ public final class StdVideoH265SpsVuiFlags extends Struct {
     /// {@return `frame_field_info_present_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_frame_field_info_present_flag(MemorySegment segment) { return StdVideoH265SpsVuiFlags.get_frame_field_info_present_flag(segment, 0L); }
-    /// {@return `frame_field_info_present_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int frame_field_info_present_flagAt(long index) { return StdVideoH265SpsVuiFlags.get_frame_field_info_present_flag(this.segment(), index); }
     /// {@return `frame_field_info_present_flag`}
     public @CType("uint32_t : 1") int frame_field_info_present_flag() { return StdVideoH265SpsVuiFlags.get_frame_field_info_present_flag(this.segment()); }
     /// Sets `frame_field_info_present_flag` with the given value at the given index.
@@ -490,11 +423,6 @@ public final class StdVideoH265SpsVuiFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_frame_field_info_present_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_frame_field_info_present_flag(segment, 0L, value); }
-    /// Sets `frame_field_info_present_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH265SpsVuiFlags frame_field_info_present_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_frame_field_info_present_flag(this.segment(), index, value); return this; }
     /// Sets `frame_field_info_present_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -507,9 +435,6 @@ public final class StdVideoH265SpsVuiFlags extends Struct {
     /// {@return `default_display_window_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_default_display_window_flag(MemorySegment segment) { return StdVideoH265SpsVuiFlags.get_default_display_window_flag(segment, 0L); }
-    /// {@return `default_display_window_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int default_display_window_flagAt(long index) { return StdVideoH265SpsVuiFlags.get_default_display_window_flag(this.segment(), index); }
     /// {@return `default_display_window_flag`}
     public @CType("uint32_t : 1") int default_display_window_flag() { return StdVideoH265SpsVuiFlags.get_default_display_window_flag(this.segment()); }
     /// Sets `default_display_window_flag` with the given value at the given index.
@@ -521,11 +446,6 @@ public final class StdVideoH265SpsVuiFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_default_display_window_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_default_display_window_flag(segment, 0L, value); }
-    /// Sets `default_display_window_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH265SpsVuiFlags default_display_window_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_default_display_window_flag(this.segment(), index, value); return this; }
     /// Sets `default_display_window_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -538,9 +458,6 @@ public final class StdVideoH265SpsVuiFlags extends Struct {
     /// {@return `vui_timing_info_present_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_vui_timing_info_present_flag(MemorySegment segment) { return StdVideoH265SpsVuiFlags.get_vui_timing_info_present_flag(segment, 0L); }
-    /// {@return `vui_timing_info_present_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int vui_timing_info_present_flagAt(long index) { return StdVideoH265SpsVuiFlags.get_vui_timing_info_present_flag(this.segment(), index); }
     /// {@return `vui_timing_info_present_flag`}
     public @CType("uint32_t : 1") int vui_timing_info_present_flag() { return StdVideoH265SpsVuiFlags.get_vui_timing_info_present_flag(this.segment()); }
     /// Sets `vui_timing_info_present_flag` with the given value at the given index.
@@ -552,11 +469,6 @@ public final class StdVideoH265SpsVuiFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_vui_timing_info_present_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_vui_timing_info_present_flag(segment, 0L, value); }
-    /// Sets `vui_timing_info_present_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH265SpsVuiFlags vui_timing_info_present_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_vui_timing_info_present_flag(this.segment(), index, value); return this; }
     /// Sets `vui_timing_info_present_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -569,9 +481,6 @@ public final class StdVideoH265SpsVuiFlags extends Struct {
     /// {@return `vui_poc_proportional_to_timing_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_vui_poc_proportional_to_timing_flag(MemorySegment segment) { return StdVideoH265SpsVuiFlags.get_vui_poc_proportional_to_timing_flag(segment, 0L); }
-    /// {@return `vui_poc_proportional_to_timing_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int vui_poc_proportional_to_timing_flagAt(long index) { return StdVideoH265SpsVuiFlags.get_vui_poc_proportional_to_timing_flag(this.segment(), index); }
     /// {@return `vui_poc_proportional_to_timing_flag`}
     public @CType("uint32_t : 1") int vui_poc_proportional_to_timing_flag() { return StdVideoH265SpsVuiFlags.get_vui_poc_proportional_to_timing_flag(this.segment()); }
     /// Sets `vui_poc_proportional_to_timing_flag` with the given value at the given index.
@@ -583,11 +492,6 @@ public final class StdVideoH265SpsVuiFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_vui_poc_proportional_to_timing_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_vui_poc_proportional_to_timing_flag(segment, 0L, value); }
-    /// Sets `vui_poc_proportional_to_timing_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH265SpsVuiFlags vui_poc_proportional_to_timing_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_vui_poc_proportional_to_timing_flag(this.segment(), index, value); return this; }
     /// Sets `vui_poc_proportional_to_timing_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -600,9 +504,6 @@ public final class StdVideoH265SpsVuiFlags extends Struct {
     /// {@return `vui_hrd_parameters_present_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_vui_hrd_parameters_present_flag(MemorySegment segment) { return StdVideoH265SpsVuiFlags.get_vui_hrd_parameters_present_flag(segment, 0L); }
-    /// {@return `vui_hrd_parameters_present_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int vui_hrd_parameters_present_flagAt(long index) { return StdVideoH265SpsVuiFlags.get_vui_hrd_parameters_present_flag(this.segment(), index); }
     /// {@return `vui_hrd_parameters_present_flag`}
     public @CType("uint32_t : 1") int vui_hrd_parameters_present_flag() { return StdVideoH265SpsVuiFlags.get_vui_hrd_parameters_present_flag(this.segment()); }
     /// Sets `vui_hrd_parameters_present_flag` with the given value at the given index.
@@ -614,11 +515,6 @@ public final class StdVideoH265SpsVuiFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_vui_hrd_parameters_present_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_vui_hrd_parameters_present_flag(segment, 0L, value); }
-    /// Sets `vui_hrd_parameters_present_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH265SpsVuiFlags vui_hrd_parameters_present_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_vui_hrd_parameters_present_flag(this.segment(), index, value); return this; }
     /// Sets `vui_hrd_parameters_present_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -631,9 +527,6 @@ public final class StdVideoH265SpsVuiFlags extends Struct {
     /// {@return `bitstream_restriction_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_bitstream_restriction_flag(MemorySegment segment) { return StdVideoH265SpsVuiFlags.get_bitstream_restriction_flag(segment, 0L); }
-    /// {@return `bitstream_restriction_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int bitstream_restriction_flagAt(long index) { return StdVideoH265SpsVuiFlags.get_bitstream_restriction_flag(this.segment(), index); }
     /// {@return `bitstream_restriction_flag`}
     public @CType("uint32_t : 1") int bitstream_restriction_flag() { return StdVideoH265SpsVuiFlags.get_bitstream_restriction_flag(this.segment()); }
     /// Sets `bitstream_restriction_flag` with the given value at the given index.
@@ -645,11 +538,6 @@ public final class StdVideoH265SpsVuiFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_bitstream_restriction_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_bitstream_restriction_flag(segment, 0L, value); }
-    /// Sets `bitstream_restriction_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH265SpsVuiFlags bitstream_restriction_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_bitstream_restriction_flag(this.segment(), index, value); return this; }
     /// Sets `bitstream_restriction_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -662,9 +550,6 @@ public final class StdVideoH265SpsVuiFlags extends Struct {
     /// {@return `tiles_fixed_structure_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_tiles_fixed_structure_flag(MemorySegment segment) { return StdVideoH265SpsVuiFlags.get_tiles_fixed_structure_flag(segment, 0L); }
-    /// {@return `tiles_fixed_structure_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int tiles_fixed_structure_flagAt(long index) { return StdVideoH265SpsVuiFlags.get_tiles_fixed_structure_flag(this.segment(), index); }
     /// {@return `tiles_fixed_structure_flag`}
     public @CType("uint32_t : 1") int tiles_fixed_structure_flag() { return StdVideoH265SpsVuiFlags.get_tiles_fixed_structure_flag(this.segment()); }
     /// Sets `tiles_fixed_structure_flag` with the given value at the given index.
@@ -676,11 +561,6 @@ public final class StdVideoH265SpsVuiFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_tiles_fixed_structure_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_tiles_fixed_structure_flag(segment, 0L, value); }
-    /// Sets `tiles_fixed_structure_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH265SpsVuiFlags tiles_fixed_structure_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_tiles_fixed_structure_flag(this.segment(), index, value); return this; }
     /// Sets `tiles_fixed_structure_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -693,9 +573,6 @@ public final class StdVideoH265SpsVuiFlags extends Struct {
     /// {@return `motion_vectors_over_pic_boundaries_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_motion_vectors_over_pic_boundaries_flag(MemorySegment segment) { return StdVideoH265SpsVuiFlags.get_motion_vectors_over_pic_boundaries_flag(segment, 0L); }
-    /// {@return `motion_vectors_over_pic_boundaries_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int motion_vectors_over_pic_boundaries_flagAt(long index) { return StdVideoH265SpsVuiFlags.get_motion_vectors_over_pic_boundaries_flag(this.segment(), index); }
     /// {@return `motion_vectors_over_pic_boundaries_flag`}
     public @CType("uint32_t : 1") int motion_vectors_over_pic_boundaries_flag() { return StdVideoH265SpsVuiFlags.get_motion_vectors_over_pic_boundaries_flag(this.segment()); }
     /// Sets `motion_vectors_over_pic_boundaries_flag` with the given value at the given index.
@@ -707,11 +584,6 @@ public final class StdVideoH265SpsVuiFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_motion_vectors_over_pic_boundaries_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_motion_vectors_over_pic_boundaries_flag(segment, 0L, value); }
-    /// Sets `motion_vectors_over_pic_boundaries_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH265SpsVuiFlags motion_vectors_over_pic_boundaries_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_motion_vectors_over_pic_boundaries_flag(this.segment(), index, value); return this; }
     /// Sets `motion_vectors_over_pic_boundaries_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -724,9 +596,6 @@ public final class StdVideoH265SpsVuiFlags extends Struct {
     /// {@return `restricted_ref_pic_lists_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_restricted_ref_pic_lists_flag(MemorySegment segment) { return StdVideoH265SpsVuiFlags.get_restricted_ref_pic_lists_flag(segment, 0L); }
-    /// {@return `restricted_ref_pic_lists_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int restricted_ref_pic_lists_flagAt(long index) { return StdVideoH265SpsVuiFlags.get_restricted_ref_pic_lists_flag(this.segment(), index); }
     /// {@return `restricted_ref_pic_lists_flag`}
     public @CType("uint32_t : 1") int restricted_ref_pic_lists_flag() { return StdVideoH265SpsVuiFlags.get_restricted_ref_pic_lists_flag(this.segment()); }
     /// Sets `restricted_ref_pic_lists_flag` with the given value at the given index.
@@ -738,14 +607,194 @@ public final class StdVideoH265SpsVuiFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_restricted_ref_pic_lists_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_restricted_ref_pic_lists_flag(segment, 0L, value); }
-    /// Sets `restricted_ref_pic_lists_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH265SpsVuiFlags restricted_ref_pic_lists_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_restricted_ref_pic_lists_flag(this.segment(), index, value); return this; }
     /// Sets `restricted_ref_pic_lists_flag` with the given value.
     /// @param value the value
     /// @return `this`
     public StdVideoH265SpsVuiFlags restricted_ref_pic_lists_flag(@CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_restricted_ref_pic_lists_flag(this.segment(), value); return this; }
 
+    /// A buffer of [StdVideoH265SpsVuiFlags].
+    public static final class Buffer extends StdVideoH265SpsVuiFlags {
+        private final long elementCount;
+
+        /// Creates `StdVideoH265SpsVuiFlags.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `StdVideoH265SpsVuiFlags`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `StdVideoH265SpsVuiFlags`
+        public StdVideoH265SpsVuiFlags asSlice(long index) { return new StdVideoH265SpsVuiFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `StdVideoH265SpsVuiFlags`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `StdVideoH265SpsVuiFlags`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `aspect_ratio_info_present_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int aspect_ratio_info_present_flagAt(long index) { return StdVideoH265SpsVuiFlags.get_aspect_ratio_info_present_flag(this.segment(), index); }
+        /// Sets `aspect_ratio_info_present_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer aspect_ratio_info_present_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_aspect_ratio_info_present_flag(this.segment(), index, value); return this; }
+
+        /// {@return `overscan_info_present_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int overscan_info_present_flagAt(long index) { return StdVideoH265SpsVuiFlags.get_overscan_info_present_flag(this.segment(), index); }
+        /// Sets `overscan_info_present_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer overscan_info_present_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_overscan_info_present_flag(this.segment(), index, value); return this; }
+
+        /// {@return `overscan_appropriate_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int overscan_appropriate_flagAt(long index) { return StdVideoH265SpsVuiFlags.get_overscan_appropriate_flag(this.segment(), index); }
+        /// Sets `overscan_appropriate_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer overscan_appropriate_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_overscan_appropriate_flag(this.segment(), index, value); return this; }
+
+        /// {@return `video_signal_type_present_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int video_signal_type_present_flagAt(long index) { return StdVideoH265SpsVuiFlags.get_video_signal_type_present_flag(this.segment(), index); }
+        /// Sets `video_signal_type_present_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer video_signal_type_present_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_video_signal_type_present_flag(this.segment(), index, value); return this; }
+
+        /// {@return `video_full_range_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int video_full_range_flagAt(long index) { return StdVideoH265SpsVuiFlags.get_video_full_range_flag(this.segment(), index); }
+        /// Sets `video_full_range_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer video_full_range_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_video_full_range_flag(this.segment(), index, value); return this; }
+
+        /// {@return `colour_description_present_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int colour_description_present_flagAt(long index) { return StdVideoH265SpsVuiFlags.get_colour_description_present_flag(this.segment(), index); }
+        /// Sets `colour_description_present_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer colour_description_present_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_colour_description_present_flag(this.segment(), index, value); return this; }
+
+        /// {@return `chroma_loc_info_present_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int chroma_loc_info_present_flagAt(long index) { return StdVideoH265SpsVuiFlags.get_chroma_loc_info_present_flag(this.segment(), index); }
+        /// Sets `chroma_loc_info_present_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer chroma_loc_info_present_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_chroma_loc_info_present_flag(this.segment(), index, value); return this; }
+
+        /// {@return `neutral_chroma_indication_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int neutral_chroma_indication_flagAt(long index) { return StdVideoH265SpsVuiFlags.get_neutral_chroma_indication_flag(this.segment(), index); }
+        /// Sets `neutral_chroma_indication_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer neutral_chroma_indication_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_neutral_chroma_indication_flag(this.segment(), index, value); return this; }
+
+        /// {@return `field_seq_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int field_seq_flagAt(long index) { return StdVideoH265SpsVuiFlags.get_field_seq_flag(this.segment(), index); }
+        /// Sets `field_seq_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer field_seq_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_field_seq_flag(this.segment(), index, value); return this; }
+
+        /// {@return `frame_field_info_present_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int frame_field_info_present_flagAt(long index) { return StdVideoH265SpsVuiFlags.get_frame_field_info_present_flag(this.segment(), index); }
+        /// Sets `frame_field_info_present_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer frame_field_info_present_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_frame_field_info_present_flag(this.segment(), index, value); return this; }
+
+        /// {@return `default_display_window_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int default_display_window_flagAt(long index) { return StdVideoH265SpsVuiFlags.get_default_display_window_flag(this.segment(), index); }
+        /// Sets `default_display_window_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer default_display_window_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_default_display_window_flag(this.segment(), index, value); return this; }
+
+        /// {@return `vui_timing_info_present_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int vui_timing_info_present_flagAt(long index) { return StdVideoH265SpsVuiFlags.get_vui_timing_info_present_flag(this.segment(), index); }
+        /// Sets `vui_timing_info_present_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer vui_timing_info_present_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_vui_timing_info_present_flag(this.segment(), index, value); return this; }
+
+        /// {@return `vui_poc_proportional_to_timing_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int vui_poc_proportional_to_timing_flagAt(long index) { return StdVideoH265SpsVuiFlags.get_vui_poc_proportional_to_timing_flag(this.segment(), index); }
+        /// Sets `vui_poc_proportional_to_timing_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer vui_poc_proportional_to_timing_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_vui_poc_proportional_to_timing_flag(this.segment(), index, value); return this; }
+
+        /// {@return `vui_hrd_parameters_present_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int vui_hrd_parameters_present_flagAt(long index) { return StdVideoH265SpsVuiFlags.get_vui_hrd_parameters_present_flag(this.segment(), index); }
+        /// Sets `vui_hrd_parameters_present_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer vui_hrd_parameters_present_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_vui_hrd_parameters_present_flag(this.segment(), index, value); return this; }
+
+        /// {@return `bitstream_restriction_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int bitstream_restriction_flagAt(long index) { return StdVideoH265SpsVuiFlags.get_bitstream_restriction_flag(this.segment(), index); }
+        /// Sets `bitstream_restriction_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer bitstream_restriction_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_bitstream_restriction_flag(this.segment(), index, value); return this; }
+
+        /// {@return `tiles_fixed_structure_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int tiles_fixed_structure_flagAt(long index) { return StdVideoH265SpsVuiFlags.get_tiles_fixed_structure_flag(this.segment(), index); }
+        /// Sets `tiles_fixed_structure_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer tiles_fixed_structure_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_tiles_fixed_structure_flag(this.segment(), index, value); return this; }
+
+        /// {@return `motion_vectors_over_pic_boundaries_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int motion_vectors_over_pic_boundaries_flagAt(long index) { return StdVideoH265SpsVuiFlags.get_motion_vectors_over_pic_boundaries_flag(this.segment(), index); }
+        /// Sets `motion_vectors_over_pic_boundaries_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer motion_vectors_over_pic_boundaries_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_motion_vectors_over_pic_boundaries_flag(this.segment(), index, value); return this; }
+
+        /// {@return `restricted_ref_pic_lists_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int restricted_ref_pic_lists_flagAt(long index) { return StdVideoH265SpsVuiFlags.get_restricted_ref_pic_lists_flag(this.segment(), index); }
+        /// Sets `restricted_ref_pic_lists_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer restricted_ref_pic_lists_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265SpsVuiFlags.set_restricted_ref_pic_lists_flag(this.segment(), index, value); return this; }
+
+    }
 }

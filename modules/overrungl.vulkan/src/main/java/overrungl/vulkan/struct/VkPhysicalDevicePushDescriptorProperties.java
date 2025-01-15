@@ -40,7 +40,7 @@ import overrungl.util.*;
 ///     uint32_t maxPushDescriptors;
 /// } VkPhysicalDevicePushDescriptorProperties;
 /// ```
-public final class VkPhysicalDevicePushDescriptorProperties extends Struct {
+public sealed class VkPhysicalDevicePushDescriptorProperties extends Struct {
     /// The struct layout of `VkPhysicalDevicePushDescriptorProperties`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -64,6 +64,11 @@ public final class VkPhysicalDevicePushDescriptorProperties extends Struct {
     public static VkPhysicalDevicePushDescriptorProperties of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDevicePushDescriptorProperties(segment); }
 
     /// Creates `VkPhysicalDevicePushDescriptorProperties` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPhysicalDevicePushDescriptorProperties` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -76,7 +81,7 @@ public final class VkPhysicalDevicePushDescriptorProperties extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDevicePushDescriptorProperties ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDevicePushDescriptorProperties(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDevicePushDescriptorProperties` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -87,18 +92,21 @@ public final class VkPhysicalDevicePushDescriptorProperties extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDevicePushDescriptorProperties`
-    public static VkPhysicalDevicePushDescriptorProperties alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDevicePushDescriptorProperties(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkPhysicalDevicePushDescriptorProperties`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDevicePushDescriptorProperties`
-    public VkPhysicalDevicePushDescriptorProperties asSlice(long index) { return new VkPhysicalDevicePushDescriptorProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkPhysicalDevicePushDescriptorProperties` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDevicePushDescriptorProperties`
+    public static VkPhysicalDevicePushDescriptorProperties allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int maxPushDescriptors) { return alloc(allocator).sType(sType).pNext(pNext).maxPushDescriptors(maxPushDescriptors); }
 
-    /// Creates a slice of `VkPhysicalDevicePushDescriptorProperties`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDevicePushDescriptorProperties`
-    public VkPhysicalDevicePushDescriptorProperties asSlice(long index, long count) { return new VkPhysicalDevicePushDescriptorProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDevicePushDescriptorProperties copyFrom(VkPhysicalDevicePushDescriptorProperties src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -107,9 +115,6 @@ public final class VkPhysicalDevicePushDescriptorProperties extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDevicePushDescriptorProperties.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDevicePushDescriptorProperties.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPhysicalDevicePushDescriptorProperties.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -121,11 +126,6 @@ public final class VkPhysicalDevicePushDescriptorProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDevicePushDescriptorProperties.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePushDescriptorProperties sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDevicePushDescriptorProperties.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -138,9 +138,6 @@ public final class VkPhysicalDevicePushDescriptorProperties extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDevicePushDescriptorProperties.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDevicePushDescriptorProperties.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDevicePushDescriptorProperties.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -152,11 +149,6 @@ public final class VkPhysicalDevicePushDescriptorProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDevicePushDescriptorProperties.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePushDescriptorProperties pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDevicePushDescriptorProperties.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -169,9 +161,6 @@ public final class VkPhysicalDevicePushDescriptorProperties extends Struct {
     /// {@return `maxPushDescriptors`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxPushDescriptors(MemorySegment segment) { return VkPhysicalDevicePushDescriptorProperties.get_maxPushDescriptors(segment, 0L); }
-    /// {@return `maxPushDescriptors` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxPushDescriptorsAt(long index) { return VkPhysicalDevicePushDescriptorProperties.get_maxPushDescriptors(this.segment(), index); }
     /// {@return `maxPushDescriptors`}
     public @CType("uint32_t") int maxPushDescriptors() { return VkPhysicalDevicePushDescriptorProperties.get_maxPushDescriptors(this.segment()); }
     /// Sets `maxPushDescriptors` with the given value at the given index.
@@ -183,14 +172,59 @@ public final class VkPhysicalDevicePushDescriptorProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxPushDescriptors(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDevicePushDescriptorProperties.set_maxPushDescriptors(segment, 0L, value); }
-    /// Sets `maxPushDescriptors` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDevicePushDescriptorProperties maxPushDescriptorsAt(long index, @CType("uint32_t") int value) { VkPhysicalDevicePushDescriptorProperties.set_maxPushDescriptors(this.segment(), index, value); return this; }
     /// Sets `maxPushDescriptors` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDevicePushDescriptorProperties maxPushDescriptors(@CType("uint32_t") int value) { VkPhysicalDevicePushDescriptorProperties.set_maxPushDescriptors(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDevicePushDescriptorProperties].
+    public static final class Buffer extends VkPhysicalDevicePushDescriptorProperties {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDevicePushDescriptorProperties.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDevicePushDescriptorProperties`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDevicePushDescriptorProperties`
+        public VkPhysicalDevicePushDescriptorProperties asSlice(long index) { return new VkPhysicalDevicePushDescriptorProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDevicePushDescriptorProperties`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDevicePushDescriptorProperties`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDevicePushDescriptorProperties.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDevicePushDescriptorProperties.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDevicePushDescriptorProperties.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDevicePushDescriptorProperties.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `maxPushDescriptors` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxPushDescriptorsAt(long index) { return VkPhysicalDevicePushDescriptorProperties.get_maxPushDescriptors(this.segment(), index); }
+        /// Sets `maxPushDescriptors` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxPushDescriptorsAt(long index, @CType("uint32_t") int value) { VkPhysicalDevicePushDescriptorProperties.set_maxPushDescriptors(this.segment(), index, value); return this; }
+
+    }
 }

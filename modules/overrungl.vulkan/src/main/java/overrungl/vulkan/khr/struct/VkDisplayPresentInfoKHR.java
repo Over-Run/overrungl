@@ -46,7 +46,7 @@ import overrungl.util.*;
 ///     VkBool32 persistent;
 /// } VkDisplayPresentInfoKHR;
 /// ```
-public final class VkDisplayPresentInfoKHR extends Struct {
+public sealed class VkDisplayPresentInfoKHR extends Struct {
     /// The struct layout of `VkDisplayPresentInfoKHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -80,6 +80,11 @@ public final class VkDisplayPresentInfoKHR extends Struct {
     public static VkDisplayPresentInfoKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDisplayPresentInfoKHR(segment); }
 
     /// Creates `VkDisplayPresentInfoKHR` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkDisplayPresentInfoKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -92,7 +97,7 @@ public final class VkDisplayPresentInfoKHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDisplayPresentInfoKHR ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkDisplayPresentInfoKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkDisplayPresentInfoKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -103,18 +108,21 @@ public final class VkDisplayPresentInfoKHR extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDisplayPresentInfoKHR`
-    public static VkDisplayPresentInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkDisplayPresentInfoKHR(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkDisplayPresentInfoKHR`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkDisplayPresentInfoKHR`
-    public VkDisplayPresentInfoKHR asSlice(long index) { return new VkDisplayPresentInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkDisplayPresentInfoKHR` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkDisplayPresentInfoKHR`
+    public static VkDisplayPresentInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkRect2D") java.lang.foreign.MemorySegment srcRect, @CType("VkRect2D") java.lang.foreign.MemorySegment dstRect, @CType("VkBool32") int persistent) { return alloc(allocator).sType(sType).pNext(pNext).srcRect(srcRect).dstRect(dstRect).persistent(persistent); }
 
-    /// Creates a slice of `VkDisplayPresentInfoKHR`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkDisplayPresentInfoKHR`
-    public VkDisplayPresentInfoKHR asSlice(long index, long count) { return new VkDisplayPresentInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkDisplayPresentInfoKHR copyFrom(VkDisplayPresentInfoKHR src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -123,9 +131,6 @@ public final class VkDisplayPresentInfoKHR extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkDisplayPresentInfoKHR.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkDisplayPresentInfoKHR.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkDisplayPresentInfoKHR.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -137,11 +142,6 @@ public final class VkDisplayPresentInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkDisplayPresentInfoKHR.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPresentInfoKHR sTypeAt(long index, @CType("VkStructureType") int value) { VkDisplayPresentInfoKHR.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -154,9 +154,6 @@ public final class VkDisplayPresentInfoKHR extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkDisplayPresentInfoKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkDisplayPresentInfoKHR.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkDisplayPresentInfoKHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -168,11 +165,6 @@ public final class VkDisplayPresentInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDisplayPresentInfoKHR.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPresentInfoKHR pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDisplayPresentInfoKHR.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -185,9 +177,6 @@ public final class VkDisplayPresentInfoKHR extends Struct {
     /// {@return `srcRect`}
     /// @param segment the segment of the struct
     public static @CType("VkRect2D") java.lang.foreign.MemorySegment get_srcRect(MemorySegment segment) { return VkDisplayPresentInfoKHR.get_srcRect(segment, 0L); }
-    /// {@return `srcRect` at the given index}
-    /// @param index the index
-    public @CType("VkRect2D") java.lang.foreign.MemorySegment srcRectAt(long index) { return VkDisplayPresentInfoKHR.get_srcRect(this.segment(), index); }
     /// {@return `srcRect`}
     public @CType("VkRect2D") java.lang.foreign.MemorySegment srcRect() { return VkDisplayPresentInfoKHR.get_srcRect(this.segment()); }
     /// Sets `srcRect` with the given value at the given index.
@@ -199,11 +188,6 @@ public final class VkDisplayPresentInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_srcRect(MemorySegment segment, @CType("VkRect2D") java.lang.foreign.MemorySegment value) { VkDisplayPresentInfoKHR.set_srcRect(segment, 0L, value); }
-    /// Sets `srcRect` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPresentInfoKHR srcRectAt(long index, @CType("VkRect2D") java.lang.foreign.MemorySegment value) { VkDisplayPresentInfoKHR.set_srcRect(this.segment(), index, value); return this; }
     /// Sets `srcRect` with the given value.
     /// @param value the value
     /// @return `this`
@@ -216,9 +200,6 @@ public final class VkDisplayPresentInfoKHR extends Struct {
     /// {@return `dstRect`}
     /// @param segment the segment of the struct
     public static @CType("VkRect2D") java.lang.foreign.MemorySegment get_dstRect(MemorySegment segment) { return VkDisplayPresentInfoKHR.get_dstRect(segment, 0L); }
-    /// {@return `dstRect` at the given index}
-    /// @param index the index
-    public @CType("VkRect2D") java.lang.foreign.MemorySegment dstRectAt(long index) { return VkDisplayPresentInfoKHR.get_dstRect(this.segment(), index); }
     /// {@return `dstRect`}
     public @CType("VkRect2D") java.lang.foreign.MemorySegment dstRect() { return VkDisplayPresentInfoKHR.get_dstRect(this.segment()); }
     /// Sets `dstRect` with the given value at the given index.
@@ -230,11 +211,6 @@ public final class VkDisplayPresentInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_dstRect(MemorySegment segment, @CType("VkRect2D") java.lang.foreign.MemorySegment value) { VkDisplayPresentInfoKHR.set_dstRect(segment, 0L, value); }
-    /// Sets `dstRect` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPresentInfoKHR dstRectAt(long index, @CType("VkRect2D") java.lang.foreign.MemorySegment value) { VkDisplayPresentInfoKHR.set_dstRect(this.segment(), index, value); return this; }
     /// Sets `dstRect` with the given value.
     /// @param value the value
     /// @return `this`
@@ -247,9 +223,6 @@ public final class VkDisplayPresentInfoKHR extends Struct {
     /// {@return `persistent`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_persistent(MemorySegment segment) { return VkDisplayPresentInfoKHR.get_persistent(segment, 0L); }
-    /// {@return `persistent` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int persistentAt(long index) { return VkDisplayPresentInfoKHR.get_persistent(this.segment(), index); }
     /// {@return `persistent`}
     public @CType("VkBool32") int persistent() { return VkDisplayPresentInfoKHR.get_persistent(this.segment()); }
     /// Sets `persistent` with the given value at the given index.
@@ -261,14 +234,77 @@ public final class VkDisplayPresentInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_persistent(MemorySegment segment, @CType("VkBool32") int value) { VkDisplayPresentInfoKHR.set_persistent(segment, 0L, value); }
-    /// Sets `persistent` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayPresentInfoKHR persistentAt(long index, @CType("VkBool32") int value) { VkDisplayPresentInfoKHR.set_persistent(this.segment(), index, value); return this; }
     /// Sets `persistent` with the given value.
     /// @param value the value
     /// @return `this`
     public VkDisplayPresentInfoKHR persistent(@CType("VkBool32") int value) { VkDisplayPresentInfoKHR.set_persistent(this.segment(), value); return this; }
 
+    /// A buffer of [VkDisplayPresentInfoKHR].
+    public static final class Buffer extends VkDisplayPresentInfoKHR {
+        private final long elementCount;
+
+        /// Creates `VkDisplayPresentInfoKHR.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkDisplayPresentInfoKHR`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkDisplayPresentInfoKHR`
+        public VkDisplayPresentInfoKHR asSlice(long index) { return new VkDisplayPresentInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkDisplayPresentInfoKHR`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkDisplayPresentInfoKHR`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkDisplayPresentInfoKHR.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkDisplayPresentInfoKHR.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkDisplayPresentInfoKHR.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDisplayPresentInfoKHR.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `srcRect` at the given index}
+        /// @param index the index
+        public @CType("VkRect2D") java.lang.foreign.MemorySegment srcRectAt(long index) { return VkDisplayPresentInfoKHR.get_srcRect(this.segment(), index); }
+        /// Sets `srcRect` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer srcRectAt(long index, @CType("VkRect2D") java.lang.foreign.MemorySegment value) { VkDisplayPresentInfoKHR.set_srcRect(this.segment(), index, value); return this; }
+
+        /// {@return `dstRect` at the given index}
+        /// @param index the index
+        public @CType("VkRect2D") java.lang.foreign.MemorySegment dstRectAt(long index) { return VkDisplayPresentInfoKHR.get_dstRect(this.segment(), index); }
+        /// Sets `dstRect` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer dstRectAt(long index, @CType("VkRect2D") java.lang.foreign.MemorySegment value) { VkDisplayPresentInfoKHR.set_dstRect(this.segment(), index, value); return this; }
+
+        /// {@return `persistent` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int persistentAt(long index) { return VkDisplayPresentInfoKHR.get_persistent(this.segment(), index); }
+        /// Sets `persistent` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer persistentAt(long index, @CType("VkBool32") int value) { VkDisplayPresentInfoKHR.set_persistent(this.segment(), index, value); return this; }
+
+    }
 }

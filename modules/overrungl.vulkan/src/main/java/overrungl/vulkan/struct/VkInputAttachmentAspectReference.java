@@ -40,7 +40,7 @@ import overrungl.util.*;
 ///     VkImageAspectFlags aspectMask;
 /// } VkInputAttachmentAspectReference;
 /// ```
-public final class VkInputAttachmentAspectReference extends Struct {
+public sealed class VkInputAttachmentAspectReference extends Struct {
     /// The struct layout of `VkInputAttachmentAspectReference`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("subpass"),
@@ -64,6 +64,11 @@ public final class VkInputAttachmentAspectReference extends Struct {
     public static VkInputAttachmentAspectReference of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkInputAttachmentAspectReference(segment); }
 
     /// Creates `VkInputAttachmentAspectReference` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkInputAttachmentAspectReference` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -76,7 +81,7 @@ public final class VkInputAttachmentAspectReference extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkInputAttachmentAspectReference ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkInputAttachmentAspectReference(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkInputAttachmentAspectReference` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -87,18 +92,21 @@ public final class VkInputAttachmentAspectReference extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkInputAttachmentAspectReference`
-    public static VkInputAttachmentAspectReference alloc(SegmentAllocator allocator, long count) { return new VkInputAttachmentAspectReference(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkInputAttachmentAspectReference`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkInputAttachmentAspectReference`
-    public VkInputAttachmentAspectReference asSlice(long index) { return new VkInputAttachmentAspectReference(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkInputAttachmentAspectReference` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkInputAttachmentAspectReference`
+    public static VkInputAttachmentAspectReference allocInit(SegmentAllocator allocator, @CType("uint32_t") int subpass, @CType("uint32_t") int inputAttachmentIndex, @CType("VkImageAspectFlags") int aspectMask) { return alloc(allocator).subpass(subpass).inputAttachmentIndex(inputAttachmentIndex).aspectMask(aspectMask); }
 
-    /// Creates a slice of `VkInputAttachmentAspectReference`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkInputAttachmentAspectReference`
-    public VkInputAttachmentAspectReference asSlice(long index, long count) { return new VkInputAttachmentAspectReference(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkInputAttachmentAspectReference copyFrom(VkInputAttachmentAspectReference src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `subpass` at the given index}
     /// @param segment the segment of the struct
@@ -107,9 +115,6 @@ public final class VkInputAttachmentAspectReference extends Struct {
     /// {@return `subpass`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_subpass(MemorySegment segment) { return VkInputAttachmentAspectReference.get_subpass(segment, 0L); }
-    /// {@return `subpass` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int subpassAt(long index) { return VkInputAttachmentAspectReference.get_subpass(this.segment(), index); }
     /// {@return `subpass`}
     public @CType("uint32_t") int subpass() { return VkInputAttachmentAspectReference.get_subpass(this.segment()); }
     /// Sets `subpass` with the given value at the given index.
@@ -121,11 +126,6 @@ public final class VkInputAttachmentAspectReference extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_subpass(MemorySegment segment, @CType("uint32_t") int value) { VkInputAttachmentAspectReference.set_subpass(segment, 0L, value); }
-    /// Sets `subpass` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkInputAttachmentAspectReference subpassAt(long index, @CType("uint32_t") int value) { VkInputAttachmentAspectReference.set_subpass(this.segment(), index, value); return this; }
     /// Sets `subpass` with the given value.
     /// @param value the value
     /// @return `this`
@@ -138,9 +138,6 @@ public final class VkInputAttachmentAspectReference extends Struct {
     /// {@return `inputAttachmentIndex`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_inputAttachmentIndex(MemorySegment segment) { return VkInputAttachmentAspectReference.get_inputAttachmentIndex(segment, 0L); }
-    /// {@return `inputAttachmentIndex` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int inputAttachmentIndexAt(long index) { return VkInputAttachmentAspectReference.get_inputAttachmentIndex(this.segment(), index); }
     /// {@return `inputAttachmentIndex`}
     public @CType("uint32_t") int inputAttachmentIndex() { return VkInputAttachmentAspectReference.get_inputAttachmentIndex(this.segment()); }
     /// Sets `inputAttachmentIndex` with the given value at the given index.
@@ -152,11 +149,6 @@ public final class VkInputAttachmentAspectReference extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_inputAttachmentIndex(MemorySegment segment, @CType("uint32_t") int value) { VkInputAttachmentAspectReference.set_inputAttachmentIndex(segment, 0L, value); }
-    /// Sets `inputAttachmentIndex` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkInputAttachmentAspectReference inputAttachmentIndexAt(long index, @CType("uint32_t") int value) { VkInputAttachmentAspectReference.set_inputAttachmentIndex(this.segment(), index, value); return this; }
     /// Sets `inputAttachmentIndex` with the given value.
     /// @param value the value
     /// @return `this`
@@ -169,9 +161,6 @@ public final class VkInputAttachmentAspectReference extends Struct {
     /// {@return `aspectMask`}
     /// @param segment the segment of the struct
     public static @CType("VkImageAspectFlags") int get_aspectMask(MemorySegment segment) { return VkInputAttachmentAspectReference.get_aspectMask(segment, 0L); }
-    /// {@return `aspectMask` at the given index}
-    /// @param index the index
-    public @CType("VkImageAspectFlags") int aspectMaskAt(long index) { return VkInputAttachmentAspectReference.get_aspectMask(this.segment(), index); }
     /// {@return `aspectMask`}
     public @CType("VkImageAspectFlags") int aspectMask() { return VkInputAttachmentAspectReference.get_aspectMask(this.segment()); }
     /// Sets `aspectMask` with the given value at the given index.
@@ -183,14 +172,59 @@ public final class VkInputAttachmentAspectReference extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_aspectMask(MemorySegment segment, @CType("VkImageAspectFlags") int value) { VkInputAttachmentAspectReference.set_aspectMask(segment, 0L, value); }
-    /// Sets `aspectMask` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkInputAttachmentAspectReference aspectMaskAt(long index, @CType("VkImageAspectFlags") int value) { VkInputAttachmentAspectReference.set_aspectMask(this.segment(), index, value); return this; }
     /// Sets `aspectMask` with the given value.
     /// @param value the value
     /// @return `this`
     public VkInputAttachmentAspectReference aspectMask(@CType("VkImageAspectFlags") int value) { VkInputAttachmentAspectReference.set_aspectMask(this.segment(), value); return this; }
 
+    /// A buffer of [VkInputAttachmentAspectReference].
+    public static final class Buffer extends VkInputAttachmentAspectReference {
+        private final long elementCount;
+
+        /// Creates `VkInputAttachmentAspectReference.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkInputAttachmentAspectReference`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkInputAttachmentAspectReference`
+        public VkInputAttachmentAspectReference asSlice(long index) { return new VkInputAttachmentAspectReference(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkInputAttachmentAspectReference`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkInputAttachmentAspectReference`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `subpass` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int subpassAt(long index) { return VkInputAttachmentAspectReference.get_subpass(this.segment(), index); }
+        /// Sets `subpass` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer subpassAt(long index, @CType("uint32_t") int value) { VkInputAttachmentAspectReference.set_subpass(this.segment(), index, value); return this; }
+
+        /// {@return `inputAttachmentIndex` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int inputAttachmentIndexAt(long index) { return VkInputAttachmentAspectReference.get_inputAttachmentIndex(this.segment(), index); }
+        /// Sets `inputAttachmentIndex` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer inputAttachmentIndexAt(long index, @CType("uint32_t") int value) { VkInputAttachmentAspectReference.set_inputAttachmentIndex(this.segment(), index, value); return this; }
+
+        /// {@return `aspectMask` at the given index}
+        /// @param index the index
+        public @CType("VkImageAspectFlags") int aspectMaskAt(long index) { return VkInputAttachmentAspectReference.get_aspectMask(this.segment(), index); }
+        /// Sets `aspectMask` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer aspectMaskAt(long index, @CType("VkImageAspectFlags") int value) { VkInputAttachmentAspectReference.set_aspectMask(this.segment(), index, value); return this; }
+
+    }
 }

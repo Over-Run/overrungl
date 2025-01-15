@@ -49,7 +49,7 @@ import overrungl.util.*;
 ///     float maxZ;
 /// } VkAabbPositionsKHR;
 /// ```
-public final class VkAabbPositionsKHR extends Struct {
+public sealed class VkAabbPositionsKHR extends Struct {
     /// The struct layout of `VkAabbPositionsKHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_FLOAT.withName("minX"),
@@ -82,6 +82,11 @@ public final class VkAabbPositionsKHR extends Struct {
     public static VkAabbPositionsKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkAabbPositionsKHR(segment); }
 
     /// Creates `VkAabbPositionsKHR` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkAabbPositionsKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -94,7 +99,7 @@ public final class VkAabbPositionsKHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkAabbPositionsKHR ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkAabbPositionsKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkAabbPositionsKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -105,18 +110,21 @@ public final class VkAabbPositionsKHR extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkAabbPositionsKHR`
-    public static VkAabbPositionsKHR alloc(SegmentAllocator allocator, long count) { return new VkAabbPositionsKHR(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkAabbPositionsKHR`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkAabbPositionsKHR`
-    public VkAabbPositionsKHR asSlice(long index) { return new VkAabbPositionsKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkAabbPositionsKHR` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkAabbPositionsKHR`
+    public static VkAabbPositionsKHR allocInit(SegmentAllocator allocator, @CType("float") float minX, @CType("float") float minY, @CType("float") float minZ, @CType("float") float maxX, @CType("float") float maxY, @CType("float") float maxZ) { return alloc(allocator).minX(minX).minY(minY).minZ(minZ).maxX(maxX).maxY(maxY).maxZ(maxZ); }
 
-    /// Creates a slice of `VkAabbPositionsKHR`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkAabbPositionsKHR`
-    public VkAabbPositionsKHR asSlice(long index, long count) { return new VkAabbPositionsKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkAabbPositionsKHR copyFrom(VkAabbPositionsKHR src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `minX` at the given index}
     /// @param segment the segment of the struct
@@ -125,9 +133,6 @@ public final class VkAabbPositionsKHR extends Struct {
     /// {@return `minX`}
     /// @param segment the segment of the struct
     public static @CType("float") float get_minX(MemorySegment segment) { return VkAabbPositionsKHR.get_minX(segment, 0L); }
-    /// {@return `minX` at the given index}
-    /// @param index the index
-    public @CType("float") float minXAt(long index) { return VkAabbPositionsKHR.get_minX(this.segment(), index); }
     /// {@return `minX`}
     public @CType("float") float minX() { return VkAabbPositionsKHR.get_minX(this.segment()); }
     /// Sets `minX` with the given value at the given index.
@@ -139,11 +144,6 @@ public final class VkAabbPositionsKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_minX(MemorySegment segment, @CType("float") float value) { VkAabbPositionsKHR.set_minX(segment, 0L, value); }
-    /// Sets `minX` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAabbPositionsKHR minXAt(long index, @CType("float") float value) { VkAabbPositionsKHR.set_minX(this.segment(), index, value); return this; }
     /// Sets `minX` with the given value.
     /// @param value the value
     /// @return `this`
@@ -156,9 +156,6 @@ public final class VkAabbPositionsKHR extends Struct {
     /// {@return `minY`}
     /// @param segment the segment of the struct
     public static @CType("float") float get_minY(MemorySegment segment) { return VkAabbPositionsKHR.get_minY(segment, 0L); }
-    /// {@return `minY` at the given index}
-    /// @param index the index
-    public @CType("float") float minYAt(long index) { return VkAabbPositionsKHR.get_minY(this.segment(), index); }
     /// {@return `minY`}
     public @CType("float") float minY() { return VkAabbPositionsKHR.get_minY(this.segment()); }
     /// Sets `minY` with the given value at the given index.
@@ -170,11 +167,6 @@ public final class VkAabbPositionsKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_minY(MemorySegment segment, @CType("float") float value) { VkAabbPositionsKHR.set_minY(segment, 0L, value); }
-    /// Sets `minY` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAabbPositionsKHR minYAt(long index, @CType("float") float value) { VkAabbPositionsKHR.set_minY(this.segment(), index, value); return this; }
     /// Sets `minY` with the given value.
     /// @param value the value
     /// @return `this`
@@ -187,9 +179,6 @@ public final class VkAabbPositionsKHR extends Struct {
     /// {@return `minZ`}
     /// @param segment the segment of the struct
     public static @CType("float") float get_minZ(MemorySegment segment) { return VkAabbPositionsKHR.get_minZ(segment, 0L); }
-    /// {@return `minZ` at the given index}
-    /// @param index the index
-    public @CType("float") float minZAt(long index) { return VkAabbPositionsKHR.get_minZ(this.segment(), index); }
     /// {@return `minZ`}
     public @CType("float") float minZ() { return VkAabbPositionsKHR.get_minZ(this.segment()); }
     /// Sets `minZ` with the given value at the given index.
@@ -201,11 +190,6 @@ public final class VkAabbPositionsKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_minZ(MemorySegment segment, @CType("float") float value) { VkAabbPositionsKHR.set_minZ(segment, 0L, value); }
-    /// Sets `minZ` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAabbPositionsKHR minZAt(long index, @CType("float") float value) { VkAabbPositionsKHR.set_minZ(this.segment(), index, value); return this; }
     /// Sets `minZ` with the given value.
     /// @param value the value
     /// @return `this`
@@ -218,9 +202,6 @@ public final class VkAabbPositionsKHR extends Struct {
     /// {@return `maxX`}
     /// @param segment the segment of the struct
     public static @CType("float") float get_maxX(MemorySegment segment) { return VkAabbPositionsKHR.get_maxX(segment, 0L); }
-    /// {@return `maxX` at the given index}
-    /// @param index the index
-    public @CType("float") float maxXAt(long index) { return VkAabbPositionsKHR.get_maxX(this.segment(), index); }
     /// {@return `maxX`}
     public @CType("float") float maxX() { return VkAabbPositionsKHR.get_maxX(this.segment()); }
     /// Sets `maxX` with the given value at the given index.
@@ -232,11 +213,6 @@ public final class VkAabbPositionsKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxX(MemorySegment segment, @CType("float") float value) { VkAabbPositionsKHR.set_maxX(segment, 0L, value); }
-    /// Sets `maxX` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAabbPositionsKHR maxXAt(long index, @CType("float") float value) { VkAabbPositionsKHR.set_maxX(this.segment(), index, value); return this; }
     /// Sets `maxX` with the given value.
     /// @param value the value
     /// @return `this`
@@ -249,9 +225,6 @@ public final class VkAabbPositionsKHR extends Struct {
     /// {@return `maxY`}
     /// @param segment the segment of the struct
     public static @CType("float") float get_maxY(MemorySegment segment) { return VkAabbPositionsKHR.get_maxY(segment, 0L); }
-    /// {@return `maxY` at the given index}
-    /// @param index the index
-    public @CType("float") float maxYAt(long index) { return VkAabbPositionsKHR.get_maxY(this.segment(), index); }
     /// {@return `maxY`}
     public @CType("float") float maxY() { return VkAabbPositionsKHR.get_maxY(this.segment()); }
     /// Sets `maxY` with the given value at the given index.
@@ -263,11 +236,6 @@ public final class VkAabbPositionsKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxY(MemorySegment segment, @CType("float") float value) { VkAabbPositionsKHR.set_maxY(segment, 0L, value); }
-    /// Sets `maxY` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAabbPositionsKHR maxYAt(long index, @CType("float") float value) { VkAabbPositionsKHR.set_maxY(this.segment(), index, value); return this; }
     /// Sets `maxY` with the given value.
     /// @param value the value
     /// @return `this`
@@ -280,9 +248,6 @@ public final class VkAabbPositionsKHR extends Struct {
     /// {@return `maxZ`}
     /// @param segment the segment of the struct
     public static @CType("float") float get_maxZ(MemorySegment segment) { return VkAabbPositionsKHR.get_maxZ(segment, 0L); }
-    /// {@return `maxZ` at the given index}
-    /// @param index the index
-    public @CType("float") float maxZAt(long index) { return VkAabbPositionsKHR.get_maxZ(this.segment(), index); }
     /// {@return `maxZ`}
     public @CType("float") float maxZ() { return VkAabbPositionsKHR.get_maxZ(this.segment()); }
     /// Sets `maxZ` with the given value at the given index.
@@ -294,14 +259,86 @@ public final class VkAabbPositionsKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxZ(MemorySegment segment, @CType("float") float value) { VkAabbPositionsKHR.set_maxZ(segment, 0L, value); }
-    /// Sets `maxZ` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAabbPositionsKHR maxZAt(long index, @CType("float") float value) { VkAabbPositionsKHR.set_maxZ(this.segment(), index, value); return this; }
     /// Sets `maxZ` with the given value.
     /// @param value the value
     /// @return `this`
     public VkAabbPositionsKHR maxZ(@CType("float") float value) { VkAabbPositionsKHR.set_maxZ(this.segment(), value); return this; }
 
+    /// A buffer of [VkAabbPositionsKHR].
+    public static final class Buffer extends VkAabbPositionsKHR {
+        private final long elementCount;
+
+        /// Creates `VkAabbPositionsKHR.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkAabbPositionsKHR`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkAabbPositionsKHR`
+        public VkAabbPositionsKHR asSlice(long index) { return new VkAabbPositionsKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkAabbPositionsKHR`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkAabbPositionsKHR`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `minX` at the given index}
+        /// @param index the index
+        public @CType("float") float minXAt(long index) { return VkAabbPositionsKHR.get_minX(this.segment(), index); }
+        /// Sets `minX` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer minXAt(long index, @CType("float") float value) { VkAabbPositionsKHR.set_minX(this.segment(), index, value); return this; }
+
+        /// {@return `minY` at the given index}
+        /// @param index the index
+        public @CType("float") float minYAt(long index) { return VkAabbPositionsKHR.get_minY(this.segment(), index); }
+        /// Sets `minY` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer minYAt(long index, @CType("float") float value) { VkAabbPositionsKHR.set_minY(this.segment(), index, value); return this; }
+
+        /// {@return `minZ` at the given index}
+        /// @param index the index
+        public @CType("float") float minZAt(long index) { return VkAabbPositionsKHR.get_minZ(this.segment(), index); }
+        /// Sets `minZ` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer minZAt(long index, @CType("float") float value) { VkAabbPositionsKHR.set_minZ(this.segment(), index, value); return this; }
+
+        /// {@return `maxX` at the given index}
+        /// @param index the index
+        public @CType("float") float maxXAt(long index) { return VkAabbPositionsKHR.get_maxX(this.segment(), index); }
+        /// Sets `maxX` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxXAt(long index, @CType("float") float value) { VkAabbPositionsKHR.set_maxX(this.segment(), index, value); return this; }
+
+        /// {@return `maxY` at the given index}
+        /// @param index the index
+        public @CType("float") float maxYAt(long index) { return VkAabbPositionsKHR.get_maxY(this.segment(), index); }
+        /// Sets `maxY` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxYAt(long index, @CType("float") float value) { VkAabbPositionsKHR.set_maxY(this.segment(), index, value); return this; }
+
+        /// {@return `maxZ` at the given index}
+        /// @param index the index
+        public @CType("float") float maxZAt(long index) { return VkAabbPositionsKHR.get_maxZ(this.segment(), index); }
+        /// Sets `maxZ` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxZAt(long index, @CType("float") float value) { VkAabbPositionsKHR.set_maxZ(this.segment(), index, value); return this; }
+
+    }
 }

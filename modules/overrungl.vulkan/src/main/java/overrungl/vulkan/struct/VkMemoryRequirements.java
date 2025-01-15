@@ -40,7 +40,7 @@ import overrungl.util.*;
 ///     uint32_t memoryTypeBits;
 /// } VkMemoryRequirements;
 /// ```
-public final class VkMemoryRequirements extends Struct {
+public sealed class VkMemoryRequirements extends Struct {
     /// The struct layout of `VkMemoryRequirements`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_LONG.withName("size"),
@@ -64,6 +64,11 @@ public final class VkMemoryRequirements extends Struct {
     public static VkMemoryRequirements of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkMemoryRequirements(segment); }
 
     /// Creates `VkMemoryRequirements` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkMemoryRequirements` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -76,7 +81,7 @@ public final class VkMemoryRequirements extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkMemoryRequirements ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkMemoryRequirements(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkMemoryRequirements` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -87,18 +92,21 @@ public final class VkMemoryRequirements extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkMemoryRequirements`
-    public static VkMemoryRequirements alloc(SegmentAllocator allocator, long count) { return new VkMemoryRequirements(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkMemoryRequirements`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkMemoryRequirements`
-    public VkMemoryRequirements asSlice(long index) { return new VkMemoryRequirements(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkMemoryRequirements` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkMemoryRequirements`
+    public static VkMemoryRequirements allocInit(SegmentAllocator allocator, @CType("VkDeviceSize") long size, @CType("VkDeviceSize") long alignment, @CType("uint32_t") int memoryTypeBits) { return alloc(allocator).size(size).alignment(alignment).memoryTypeBits(memoryTypeBits); }
 
-    /// Creates a slice of `VkMemoryRequirements`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkMemoryRequirements`
-    public VkMemoryRequirements asSlice(long index, long count) { return new VkMemoryRequirements(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkMemoryRequirements copyFrom(VkMemoryRequirements src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `size` at the given index}
     /// @param segment the segment of the struct
@@ -107,9 +115,6 @@ public final class VkMemoryRequirements extends Struct {
     /// {@return `size`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_size(MemorySegment segment) { return VkMemoryRequirements.get_size(segment, 0L); }
-    /// {@return `size` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long sizeAt(long index) { return VkMemoryRequirements.get_size(this.segment(), index); }
     /// {@return `size`}
     public @CType("VkDeviceSize") long size() { return VkMemoryRequirements.get_size(this.segment()); }
     /// Sets `size` with the given value at the given index.
@@ -121,11 +126,6 @@ public final class VkMemoryRequirements extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_size(MemorySegment segment, @CType("VkDeviceSize") long value) { VkMemoryRequirements.set_size(segment, 0L, value); }
-    /// Sets `size` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkMemoryRequirements sizeAt(long index, @CType("VkDeviceSize") long value) { VkMemoryRequirements.set_size(this.segment(), index, value); return this; }
     /// Sets `size` with the given value.
     /// @param value the value
     /// @return `this`
@@ -138,9 +138,6 @@ public final class VkMemoryRequirements extends Struct {
     /// {@return `alignment`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_alignment(MemorySegment segment) { return VkMemoryRequirements.get_alignment(segment, 0L); }
-    /// {@return `alignment` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long alignmentAt(long index) { return VkMemoryRequirements.get_alignment(this.segment(), index); }
     /// {@return `alignment`}
     public @CType("VkDeviceSize") long alignment() { return VkMemoryRequirements.get_alignment(this.segment()); }
     /// Sets `alignment` with the given value at the given index.
@@ -152,11 +149,6 @@ public final class VkMemoryRequirements extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_alignment(MemorySegment segment, @CType("VkDeviceSize") long value) { VkMemoryRequirements.set_alignment(segment, 0L, value); }
-    /// Sets `alignment` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkMemoryRequirements alignmentAt(long index, @CType("VkDeviceSize") long value) { VkMemoryRequirements.set_alignment(this.segment(), index, value); return this; }
     /// Sets `alignment` with the given value.
     /// @param value the value
     /// @return `this`
@@ -169,9 +161,6 @@ public final class VkMemoryRequirements extends Struct {
     /// {@return `memoryTypeBits`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_memoryTypeBits(MemorySegment segment) { return VkMemoryRequirements.get_memoryTypeBits(segment, 0L); }
-    /// {@return `memoryTypeBits` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int memoryTypeBitsAt(long index) { return VkMemoryRequirements.get_memoryTypeBits(this.segment(), index); }
     /// {@return `memoryTypeBits`}
     public @CType("uint32_t") int memoryTypeBits() { return VkMemoryRequirements.get_memoryTypeBits(this.segment()); }
     /// Sets `memoryTypeBits` with the given value at the given index.
@@ -183,14 +172,59 @@ public final class VkMemoryRequirements extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_memoryTypeBits(MemorySegment segment, @CType("uint32_t") int value) { VkMemoryRequirements.set_memoryTypeBits(segment, 0L, value); }
-    /// Sets `memoryTypeBits` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkMemoryRequirements memoryTypeBitsAt(long index, @CType("uint32_t") int value) { VkMemoryRequirements.set_memoryTypeBits(this.segment(), index, value); return this; }
     /// Sets `memoryTypeBits` with the given value.
     /// @param value the value
     /// @return `this`
     public VkMemoryRequirements memoryTypeBits(@CType("uint32_t") int value) { VkMemoryRequirements.set_memoryTypeBits(this.segment(), value); return this; }
 
+    /// A buffer of [VkMemoryRequirements].
+    public static final class Buffer extends VkMemoryRequirements {
+        private final long elementCount;
+
+        /// Creates `VkMemoryRequirements.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkMemoryRequirements`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkMemoryRequirements`
+        public VkMemoryRequirements asSlice(long index) { return new VkMemoryRequirements(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkMemoryRequirements`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkMemoryRequirements`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `size` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long sizeAt(long index) { return VkMemoryRequirements.get_size(this.segment(), index); }
+        /// Sets `size` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sizeAt(long index, @CType("VkDeviceSize") long value) { VkMemoryRequirements.set_size(this.segment(), index, value); return this; }
+
+        /// {@return `alignment` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long alignmentAt(long index) { return VkMemoryRequirements.get_alignment(this.segment(), index); }
+        /// Sets `alignment` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer alignmentAt(long index, @CType("VkDeviceSize") long value) { VkMemoryRequirements.set_alignment(this.segment(), index, value); return this; }
+
+        /// {@return `memoryTypeBits` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int memoryTypeBitsAt(long index) { return VkMemoryRequirements.get_memoryTypeBits(this.segment(), index); }
+        /// Sets `memoryTypeBits` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer memoryTypeBitsAt(long index, @CType("uint32_t") int value) { VkMemoryRequirements.set_memoryTypeBits(this.segment(), index, value); return this; }
+
+    }
 }

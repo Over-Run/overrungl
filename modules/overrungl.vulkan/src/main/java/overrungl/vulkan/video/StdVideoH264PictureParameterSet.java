@@ -64,7 +64,7 @@ import overrungl.util.*;
 ///     const StdVideoH264ScalingLists * pScalingLists;
 /// } StdVideoH264PictureParameterSet;
 /// ```
-public final class StdVideoH264PictureParameterSet extends Struct {
+public sealed class StdVideoH264PictureParameterSet extends Struct {
     /// The struct layout of `StdVideoH264PictureParameterSet`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         StdVideoH264PpsFlags.LAYOUT.withName("flags"),
@@ -112,6 +112,11 @@ public final class StdVideoH264PictureParameterSet extends Struct {
     public static StdVideoH264PictureParameterSet of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoH264PictureParameterSet(segment); }
 
     /// Creates `StdVideoH264PictureParameterSet` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `StdVideoH264PictureParameterSet` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -124,7 +129,7 @@ public final class StdVideoH264PictureParameterSet extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoH264PictureParameterSet ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoH264PictureParameterSet(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `StdVideoH264PictureParameterSet` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -135,18 +140,21 @@ public final class StdVideoH264PictureParameterSet extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `StdVideoH264PictureParameterSet`
-    public static StdVideoH264PictureParameterSet alloc(SegmentAllocator allocator, long count) { return new StdVideoH264PictureParameterSet(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `StdVideoH264PictureParameterSet`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `StdVideoH264PictureParameterSet`
-    public StdVideoH264PictureParameterSet asSlice(long index) { return new StdVideoH264PictureParameterSet(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `StdVideoH264PictureParameterSet` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `StdVideoH264PictureParameterSet`
+    public static StdVideoH264PictureParameterSet allocInit(SegmentAllocator allocator, @CType("StdVideoH264PpsFlags") java.lang.foreign.MemorySegment flags, @CType("uint8_t") byte seq_parameter_set_id, @CType("uint8_t") byte pic_parameter_set_id, @CType("uint8_t") byte num_ref_idx_l0_default_active_minus1, @CType("uint8_t") byte num_ref_idx_l1_default_active_minus1, @CType("StdVideoH264WeightedBipredIdc") int weighted_bipred_idc, @CType("int8_t") byte pic_init_qp_minus26, @CType("int8_t") byte pic_init_qs_minus26, @CType("int8_t") byte chroma_qp_index_offset, @CType("int8_t") byte second_chroma_qp_index_offset, @CType("const StdVideoH264ScalingLists *") java.lang.foreign.MemorySegment pScalingLists) { return alloc(allocator).flags(flags).seq_parameter_set_id(seq_parameter_set_id).pic_parameter_set_id(pic_parameter_set_id).num_ref_idx_l0_default_active_minus1(num_ref_idx_l0_default_active_minus1).num_ref_idx_l1_default_active_minus1(num_ref_idx_l1_default_active_minus1).weighted_bipred_idc(weighted_bipred_idc).pic_init_qp_minus26(pic_init_qp_minus26).pic_init_qs_minus26(pic_init_qs_minus26).chroma_qp_index_offset(chroma_qp_index_offset).second_chroma_qp_index_offset(second_chroma_qp_index_offset).pScalingLists(pScalingLists); }
 
-    /// Creates a slice of `StdVideoH264PictureParameterSet`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `StdVideoH264PictureParameterSet`
-    public StdVideoH264PictureParameterSet asSlice(long index, long count) { return new StdVideoH264PictureParameterSet(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public StdVideoH264PictureParameterSet copyFrom(StdVideoH264PictureParameterSet src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
@@ -155,9 +163,6 @@ public final class StdVideoH264PictureParameterSet extends Struct {
     /// {@return `flags`}
     /// @param segment the segment of the struct
     public static @CType("StdVideoH264PpsFlags") java.lang.foreign.MemorySegment get_flags(MemorySegment segment) { return StdVideoH264PictureParameterSet.get_flags(segment, 0L); }
-    /// {@return `flags` at the given index}
-    /// @param index the index
-    public @CType("StdVideoH264PpsFlags") java.lang.foreign.MemorySegment flagsAt(long index) { return StdVideoH264PictureParameterSet.get_flags(this.segment(), index); }
     /// {@return `flags`}
     public @CType("StdVideoH264PpsFlags") java.lang.foreign.MemorySegment flags() { return StdVideoH264PictureParameterSet.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
@@ -169,11 +174,6 @@ public final class StdVideoH264PictureParameterSet extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_flags(MemorySegment segment, @CType("StdVideoH264PpsFlags") java.lang.foreign.MemorySegment value) { StdVideoH264PictureParameterSet.set_flags(segment, 0L, value); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264PictureParameterSet flagsAt(long index, @CType("StdVideoH264PpsFlags") java.lang.foreign.MemorySegment value) { StdVideoH264PictureParameterSet.set_flags(this.segment(), index, value); return this; }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -186,9 +186,6 @@ public final class StdVideoH264PictureParameterSet extends Struct {
     /// {@return `seq_parameter_set_id`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t") byte get_seq_parameter_set_id(MemorySegment segment) { return StdVideoH264PictureParameterSet.get_seq_parameter_set_id(segment, 0L); }
-    /// {@return `seq_parameter_set_id` at the given index}
-    /// @param index the index
-    public @CType("uint8_t") byte seq_parameter_set_idAt(long index) { return StdVideoH264PictureParameterSet.get_seq_parameter_set_id(this.segment(), index); }
     /// {@return `seq_parameter_set_id`}
     public @CType("uint8_t") byte seq_parameter_set_id() { return StdVideoH264PictureParameterSet.get_seq_parameter_set_id(this.segment()); }
     /// Sets `seq_parameter_set_id` with the given value at the given index.
@@ -200,11 +197,6 @@ public final class StdVideoH264PictureParameterSet extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_seq_parameter_set_id(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoH264PictureParameterSet.set_seq_parameter_set_id(segment, 0L, value); }
-    /// Sets `seq_parameter_set_id` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264PictureParameterSet seq_parameter_set_idAt(long index, @CType("uint8_t") byte value) { StdVideoH264PictureParameterSet.set_seq_parameter_set_id(this.segment(), index, value); return this; }
     /// Sets `seq_parameter_set_id` with the given value.
     /// @param value the value
     /// @return `this`
@@ -217,9 +209,6 @@ public final class StdVideoH264PictureParameterSet extends Struct {
     /// {@return `pic_parameter_set_id`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t") byte get_pic_parameter_set_id(MemorySegment segment) { return StdVideoH264PictureParameterSet.get_pic_parameter_set_id(segment, 0L); }
-    /// {@return `pic_parameter_set_id` at the given index}
-    /// @param index the index
-    public @CType("uint8_t") byte pic_parameter_set_idAt(long index) { return StdVideoH264PictureParameterSet.get_pic_parameter_set_id(this.segment(), index); }
     /// {@return `pic_parameter_set_id`}
     public @CType("uint8_t") byte pic_parameter_set_id() { return StdVideoH264PictureParameterSet.get_pic_parameter_set_id(this.segment()); }
     /// Sets `pic_parameter_set_id` with the given value at the given index.
@@ -231,11 +220,6 @@ public final class StdVideoH264PictureParameterSet extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pic_parameter_set_id(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoH264PictureParameterSet.set_pic_parameter_set_id(segment, 0L, value); }
-    /// Sets `pic_parameter_set_id` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264PictureParameterSet pic_parameter_set_idAt(long index, @CType("uint8_t") byte value) { StdVideoH264PictureParameterSet.set_pic_parameter_set_id(this.segment(), index, value); return this; }
     /// Sets `pic_parameter_set_id` with the given value.
     /// @param value the value
     /// @return `this`
@@ -248,9 +232,6 @@ public final class StdVideoH264PictureParameterSet extends Struct {
     /// {@return `num_ref_idx_l0_default_active_minus1`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t") byte get_num_ref_idx_l0_default_active_minus1(MemorySegment segment) { return StdVideoH264PictureParameterSet.get_num_ref_idx_l0_default_active_minus1(segment, 0L); }
-    /// {@return `num_ref_idx_l0_default_active_minus1` at the given index}
-    /// @param index the index
-    public @CType("uint8_t") byte num_ref_idx_l0_default_active_minus1At(long index) { return StdVideoH264PictureParameterSet.get_num_ref_idx_l0_default_active_minus1(this.segment(), index); }
     /// {@return `num_ref_idx_l0_default_active_minus1`}
     public @CType("uint8_t") byte num_ref_idx_l0_default_active_minus1() { return StdVideoH264PictureParameterSet.get_num_ref_idx_l0_default_active_minus1(this.segment()); }
     /// Sets `num_ref_idx_l0_default_active_minus1` with the given value at the given index.
@@ -262,11 +243,6 @@ public final class StdVideoH264PictureParameterSet extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_num_ref_idx_l0_default_active_minus1(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoH264PictureParameterSet.set_num_ref_idx_l0_default_active_minus1(segment, 0L, value); }
-    /// Sets `num_ref_idx_l0_default_active_minus1` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264PictureParameterSet num_ref_idx_l0_default_active_minus1At(long index, @CType("uint8_t") byte value) { StdVideoH264PictureParameterSet.set_num_ref_idx_l0_default_active_minus1(this.segment(), index, value); return this; }
     /// Sets `num_ref_idx_l0_default_active_minus1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -279,9 +255,6 @@ public final class StdVideoH264PictureParameterSet extends Struct {
     /// {@return `num_ref_idx_l1_default_active_minus1`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t") byte get_num_ref_idx_l1_default_active_minus1(MemorySegment segment) { return StdVideoH264PictureParameterSet.get_num_ref_idx_l1_default_active_minus1(segment, 0L); }
-    /// {@return `num_ref_idx_l1_default_active_minus1` at the given index}
-    /// @param index the index
-    public @CType("uint8_t") byte num_ref_idx_l1_default_active_minus1At(long index) { return StdVideoH264PictureParameterSet.get_num_ref_idx_l1_default_active_minus1(this.segment(), index); }
     /// {@return `num_ref_idx_l1_default_active_minus1`}
     public @CType("uint8_t") byte num_ref_idx_l1_default_active_minus1() { return StdVideoH264PictureParameterSet.get_num_ref_idx_l1_default_active_minus1(this.segment()); }
     /// Sets `num_ref_idx_l1_default_active_minus1` with the given value at the given index.
@@ -293,11 +266,6 @@ public final class StdVideoH264PictureParameterSet extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_num_ref_idx_l1_default_active_minus1(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoH264PictureParameterSet.set_num_ref_idx_l1_default_active_minus1(segment, 0L, value); }
-    /// Sets `num_ref_idx_l1_default_active_minus1` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264PictureParameterSet num_ref_idx_l1_default_active_minus1At(long index, @CType("uint8_t") byte value) { StdVideoH264PictureParameterSet.set_num_ref_idx_l1_default_active_minus1(this.segment(), index, value); return this; }
     /// Sets `num_ref_idx_l1_default_active_minus1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -310,9 +278,6 @@ public final class StdVideoH264PictureParameterSet extends Struct {
     /// {@return `weighted_bipred_idc`}
     /// @param segment the segment of the struct
     public static @CType("StdVideoH264WeightedBipredIdc") int get_weighted_bipred_idc(MemorySegment segment) { return StdVideoH264PictureParameterSet.get_weighted_bipred_idc(segment, 0L); }
-    /// {@return `weighted_bipred_idc` at the given index}
-    /// @param index the index
-    public @CType("StdVideoH264WeightedBipredIdc") int weighted_bipred_idcAt(long index) { return StdVideoH264PictureParameterSet.get_weighted_bipred_idc(this.segment(), index); }
     /// {@return `weighted_bipred_idc`}
     public @CType("StdVideoH264WeightedBipredIdc") int weighted_bipred_idc() { return StdVideoH264PictureParameterSet.get_weighted_bipred_idc(this.segment()); }
     /// Sets `weighted_bipred_idc` with the given value at the given index.
@@ -324,11 +289,6 @@ public final class StdVideoH264PictureParameterSet extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_weighted_bipred_idc(MemorySegment segment, @CType("StdVideoH264WeightedBipredIdc") int value) { StdVideoH264PictureParameterSet.set_weighted_bipred_idc(segment, 0L, value); }
-    /// Sets `weighted_bipred_idc` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264PictureParameterSet weighted_bipred_idcAt(long index, @CType("StdVideoH264WeightedBipredIdc") int value) { StdVideoH264PictureParameterSet.set_weighted_bipred_idc(this.segment(), index, value); return this; }
     /// Sets `weighted_bipred_idc` with the given value.
     /// @param value the value
     /// @return `this`
@@ -341,9 +301,6 @@ public final class StdVideoH264PictureParameterSet extends Struct {
     /// {@return `pic_init_qp_minus26`}
     /// @param segment the segment of the struct
     public static @CType("int8_t") byte get_pic_init_qp_minus26(MemorySegment segment) { return StdVideoH264PictureParameterSet.get_pic_init_qp_minus26(segment, 0L); }
-    /// {@return `pic_init_qp_minus26` at the given index}
-    /// @param index the index
-    public @CType("int8_t") byte pic_init_qp_minus26At(long index) { return StdVideoH264PictureParameterSet.get_pic_init_qp_minus26(this.segment(), index); }
     /// {@return `pic_init_qp_minus26`}
     public @CType("int8_t") byte pic_init_qp_minus26() { return StdVideoH264PictureParameterSet.get_pic_init_qp_minus26(this.segment()); }
     /// Sets `pic_init_qp_minus26` with the given value at the given index.
@@ -355,11 +312,6 @@ public final class StdVideoH264PictureParameterSet extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pic_init_qp_minus26(MemorySegment segment, @CType("int8_t") byte value) { StdVideoH264PictureParameterSet.set_pic_init_qp_minus26(segment, 0L, value); }
-    /// Sets `pic_init_qp_minus26` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264PictureParameterSet pic_init_qp_minus26At(long index, @CType("int8_t") byte value) { StdVideoH264PictureParameterSet.set_pic_init_qp_minus26(this.segment(), index, value); return this; }
     /// Sets `pic_init_qp_minus26` with the given value.
     /// @param value the value
     /// @return `this`
@@ -372,9 +324,6 @@ public final class StdVideoH264PictureParameterSet extends Struct {
     /// {@return `pic_init_qs_minus26`}
     /// @param segment the segment of the struct
     public static @CType("int8_t") byte get_pic_init_qs_minus26(MemorySegment segment) { return StdVideoH264PictureParameterSet.get_pic_init_qs_minus26(segment, 0L); }
-    /// {@return `pic_init_qs_minus26` at the given index}
-    /// @param index the index
-    public @CType("int8_t") byte pic_init_qs_minus26At(long index) { return StdVideoH264PictureParameterSet.get_pic_init_qs_minus26(this.segment(), index); }
     /// {@return `pic_init_qs_minus26`}
     public @CType("int8_t") byte pic_init_qs_minus26() { return StdVideoH264PictureParameterSet.get_pic_init_qs_minus26(this.segment()); }
     /// Sets `pic_init_qs_minus26` with the given value at the given index.
@@ -386,11 +335,6 @@ public final class StdVideoH264PictureParameterSet extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pic_init_qs_minus26(MemorySegment segment, @CType("int8_t") byte value) { StdVideoH264PictureParameterSet.set_pic_init_qs_minus26(segment, 0L, value); }
-    /// Sets `pic_init_qs_minus26` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264PictureParameterSet pic_init_qs_minus26At(long index, @CType("int8_t") byte value) { StdVideoH264PictureParameterSet.set_pic_init_qs_minus26(this.segment(), index, value); return this; }
     /// Sets `pic_init_qs_minus26` with the given value.
     /// @param value the value
     /// @return `this`
@@ -403,9 +347,6 @@ public final class StdVideoH264PictureParameterSet extends Struct {
     /// {@return `chroma_qp_index_offset`}
     /// @param segment the segment of the struct
     public static @CType("int8_t") byte get_chroma_qp_index_offset(MemorySegment segment) { return StdVideoH264PictureParameterSet.get_chroma_qp_index_offset(segment, 0L); }
-    /// {@return `chroma_qp_index_offset` at the given index}
-    /// @param index the index
-    public @CType("int8_t") byte chroma_qp_index_offsetAt(long index) { return StdVideoH264PictureParameterSet.get_chroma_qp_index_offset(this.segment(), index); }
     /// {@return `chroma_qp_index_offset`}
     public @CType("int8_t") byte chroma_qp_index_offset() { return StdVideoH264PictureParameterSet.get_chroma_qp_index_offset(this.segment()); }
     /// Sets `chroma_qp_index_offset` with the given value at the given index.
@@ -417,11 +358,6 @@ public final class StdVideoH264PictureParameterSet extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_chroma_qp_index_offset(MemorySegment segment, @CType("int8_t") byte value) { StdVideoH264PictureParameterSet.set_chroma_qp_index_offset(segment, 0L, value); }
-    /// Sets `chroma_qp_index_offset` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264PictureParameterSet chroma_qp_index_offsetAt(long index, @CType("int8_t") byte value) { StdVideoH264PictureParameterSet.set_chroma_qp_index_offset(this.segment(), index, value); return this; }
     /// Sets `chroma_qp_index_offset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -434,9 +370,6 @@ public final class StdVideoH264PictureParameterSet extends Struct {
     /// {@return `second_chroma_qp_index_offset`}
     /// @param segment the segment of the struct
     public static @CType("int8_t") byte get_second_chroma_qp_index_offset(MemorySegment segment) { return StdVideoH264PictureParameterSet.get_second_chroma_qp_index_offset(segment, 0L); }
-    /// {@return `second_chroma_qp_index_offset` at the given index}
-    /// @param index the index
-    public @CType("int8_t") byte second_chroma_qp_index_offsetAt(long index) { return StdVideoH264PictureParameterSet.get_second_chroma_qp_index_offset(this.segment(), index); }
     /// {@return `second_chroma_qp_index_offset`}
     public @CType("int8_t") byte second_chroma_qp_index_offset() { return StdVideoH264PictureParameterSet.get_second_chroma_qp_index_offset(this.segment()); }
     /// Sets `second_chroma_qp_index_offset` with the given value at the given index.
@@ -448,11 +381,6 @@ public final class StdVideoH264PictureParameterSet extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_second_chroma_qp_index_offset(MemorySegment segment, @CType("int8_t") byte value) { StdVideoH264PictureParameterSet.set_second_chroma_qp_index_offset(segment, 0L, value); }
-    /// Sets `second_chroma_qp_index_offset` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264PictureParameterSet second_chroma_qp_index_offsetAt(long index, @CType("int8_t") byte value) { StdVideoH264PictureParameterSet.set_second_chroma_qp_index_offset(this.segment(), index, value); return this; }
     /// Sets `second_chroma_qp_index_offset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -465,9 +393,6 @@ public final class StdVideoH264PictureParameterSet extends Struct {
     /// {@return `pScalingLists`}
     /// @param segment the segment of the struct
     public static @CType("const StdVideoH264ScalingLists *") java.lang.foreign.MemorySegment get_pScalingLists(MemorySegment segment) { return StdVideoH264PictureParameterSet.get_pScalingLists(segment, 0L); }
-    /// {@return `pScalingLists` at the given index}
-    /// @param index the index
-    public @CType("const StdVideoH264ScalingLists *") java.lang.foreign.MemorySegment pScalingListsAt(long index) { return StdVideoH264PictureParameterSet.get_pScalingLists(this.segment(), index); }
     /// {@return `pScalingLists`}
     public @CType("const StdVideoH264ScalingLists *") java.lang.foreign.MemorySegment pScalingLists() { return StdVideoH264PictureParameterSet.get_pScalingLists(this.segment()); }
     /// Sets `pScalingLists` with the given value at the given index.
@@ -479,14 +404,131 @@ public final class StdVideoH264PictureParameterSet extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pScalingLists(MemorySegment segment, @CType("const StdVideoH264ScalingLists *") java.lang.foreign.MemorySegment value) { StdVideoH264PictureParameterSet.set_pScalingLists(segment, 0L, value); }
-    /// Sets `pScalingLists` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264PictureParameterSet pScalingListsAt(long index, @CType("const StdVideoH264ScalingLists *") java.lang.foreign.MemorySegment value) { StdVideoH264PictureParameterSet.set_pScalingLists(this.segment(), index, value); return this; }
     /// Sets `pScalingLists` with the given value.
     /// @param value the value
     /// @return `this`
     public StdVideoH264PictureParameterSet pScalingLists(@CType("const StdVideoH264ScalingLists *") java.lang.foreign.MemorySegment value) { StdVideoH264PictureParameterSet.set_pScalingLists(this.segment(), value); return this; }
 
+    /// A buffer of [StdVideoH264PictureParameterSet].
+    public static final class Buffer extends StdVideoH264PictureParameterSet {
+        private final long elementCount;
+
+        /// Creates `StdVideoH264PictureParameterSet.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `StdVideoH264PictureParameterSet`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `StdVideoH264PictureParameterSet`
+        public StdVideoH264PictureParameterSet asSlice(long index) { return new StdVideoH264PictureParameterSet(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `StdVideoH264PictureParameterSet`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `StdVideoH264PictureParameterSet`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `flags` at the given index}
+        /// @param index the index
+        public @CType("StdVideoH264PpsFlags") java.lang.foreign.MemorySegment flagsAt(long index) { return StdVideoH264PictureParameterSet.get_flags(this.segment(), index); }
+        /// Sets `flags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer flagsAt(long index, @CType("StdVideoH264PpsFlags") java.lang.foreign.MemorySegment value) { StdVideoH264PictureParameterSet.set_flags(this.segment(), index, value); return this; }
+
+        /// {@return `seq_parameter_set_id` at the given index}
+        /// @param index the index
+        public @CType("uint8_t") byte seq_parameter_set_idAt(long index) { return StdVideoH264PictureParameterSet.get_seq_parameter_set_id(this.segment(), index); }
+        /// Sets `seq_parameter_set_id` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer seq_parameter_set_idAt(long index, @CType("uint8_t") byte value) { StdVideoH264PictureParameterSet.set_seq_parameter_set_id(this.segment(), index, value); return this; }
+
+        /// {@return `pic_parameter_set_id` at the given index}
+        /// @param index the index
+        public @CType("uint8_t") byte pic_parameter_set_idAt(long index) { return StdVideoH264PictureParameterSet.get_pic_parameter_set_id(this.segment(), index); }
+        /// Sets `pic_parameter_set_id` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pic_parameter_set_idAt(long index, @CType("uint8_t") byte value) { StdVideoH264PictureParameterSet.set_pic_parameter_set_id(this.segment(), index, value); return this; }
+
+        /// {@return `num_ref_idx_l0_default_active_minus1` at the given index}
+        /// @param index the index
+        public @CType("uint8_t") byte num_ref_idx_l0_default_active_minus1At(long index) { return StdVideoH264PictureParameterSet.get_num_ref_idx_l0_default_active_minus1(this.segment(), index); }
+        /// Sets `num_ref_idx_l0_default_active_minus1` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer num_ref_idx_l0_default_active_minus1At(long index, @CType("uint8_t") byte value) { StdVideoH264PictureParameterSet.set_num_ref_idx_l0_default_active_minus1(this.segment(), index, value); return this; }
+
+        /// {@return `num_ref_idx_l1_default_active_minus1` at the given index}
+        /// @param index the index
+        public @CType("uint8_t") byte num_ref_idx_l1_default_active_minus1At(long index) { return StdVideoH264PictureParameterSet.get_num_ref_idx_l1_default_active_minus1(this.segment(), index); }
+        /// Sets `num_ref_idx_l1_default_active_minus1` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer num_ref_idx_l1_default_active_minus1At(long index, @CType("uint8_t") byte value) { StdVideoH264PictureParameterSet.set_num_ref_idx_l1_default_active_minus1(this.segment(), index, value); return this; }
+
+        /// {@return `weighted_bipred_idc` at the given index}
+        /// @param index the index
+        public @CType("StdVideoH264WeightedBipredIdc") int weighted_bipred_idcAt(long index) { return StdVideoH264PictureParameterSet.get_weighted_bipred_idc(this.segment(), index); }
+        /// Sets `weighted_bipred_idc` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer weighted_bipred_idcAt(long index, @CType("StdVideoH264WeightedBipredIdc") int value) { StdVideoH264PictureParameterSet.set_weighted_bipred_idc(this.segment(), index, value); return this; }
+
+        /// {@return `pic_init_qp_minus26` at the given index}
+        /// @param index the index
+        public @CType("int8_t") byte pic_init_qp_minus26At(long index) { return StdVideoH264PictureParameterSet.get_pic_init_qp_minus26(this.segment(), index); }
+        /// Sets `pic_init_qp_minus26` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pic_init_qp_minus26At(long index, @CType("int8_t") byte value) { StdVideoH264PictureParameterSet.set_pic_init_qp_minus26(this.segment(), index, value); return this; }
+
+        /// {@return `pic_init_qs_minus26` at the given index}
+        /// @param index the index
+        public @CType("int8_t") byte pic_init_qs_minus26At(long index) { return StdVideoH264PictureParameterSet.get_pic_init_qs_minus26(this.segment(), index); }
+        /// Sets `pic_init_qs_minus26` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pic_init_qs_minus26At(long index, @CType("int8_t") byte value) { StdVideoH264PictureParameterSet.set_pic_init_qs_minus26(this.segment(), index, value); return this; }
+
+        /// {@return `chroma_qp_index_offset` at the given index}
+        /// @param index the index
+        public @CType("int8_t") byte chroma_qp_index_offsetAt(long index) { return StdVideoH264PictureParameterSet.get_chroma_qp_index_offset(this.segment(), index); }
+        /// Sets `chroma_qp_index_offset` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer chroma_qp_index_offsetAt(long index, @CType("int8_t") byte value) { StdVideoH264PictureParameterSet.set_chroma_qp_index_offset(this.segment(), index, value); return this; }
+
+        /// {@return `second_chroma_qp_index_offset` at the given index}
+        /// @param index the index
+        public @CType("int8_t") byte second_chroma_qp_index_offsetAt(long index) { return StdVideoH264PictureParameterSet.get_second_chroma_qp_index_offset(this.segment(), index); }
+        /// Sets `second_chroma_qp_index_offset` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer second_chroma_qp_index_offsetAt(long index, @CType("int8_t") byte value) { StdVideoH264PictureParameterSet.set_second_chroma_qp_index_offset(this.segment(), index, value); return this; }
+
+        /// {@return `pScalingLists` at the given index}
+        /// @param index the index
+        public @CType("const StdVideoH264ScalingLists *") java.lang.foreign.MemorySegment pScalingListsAt(long index) { return StdVideoH264PictureParameterSet.get_pScalingLists(this.segment(), index); }
+        /// Sets `pScalingLists` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pScalingListsAt(long index, @CType("const StdVideoH264ScalingLists *") java.lang.foreign.MemorySegment value) { StdVideoH264PictureParameterSet.set_pScalingLists(this.segment(), index, value); return this; }
+
+    }
 }

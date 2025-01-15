@@ -79,7 +79,7 @@ import overrungl.util.*;
 ///     const StdVideoH264HrdParameters * pHrdParameters;
 /// } StdVideoH264SequenceParameterSetVui;
 /// ```
-public final class StdVideoH264SequenceParameterSetVui extends Struct {
+public sealed class StdVideoH264SequenceParameterSetVui extends Struct {
     /// The struct layout of `StdVideoH264SequenceParameterSetVui`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         StdVideoH264SpsVuiFlags.LAYOUT.withName("flags"),
@@ -142,6 +142,11 @@ public final class StdVideoH264SequenceParameterSetVui extends Struct {
     public static StdVideoH264SequenceParameterSetVui of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoH264SequenceParameterSetVui(segment); }
 
     /// Creates `StdVideoH264SequenceParameterSetVui` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `StdVideoH264SequenceParameterSetVui` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -154,7 +159,7 @@ public final class StdVideoH264SequenceParameterSetVui extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoH264SequenceParameterSetVui ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoH264SequenceParameterSetVui(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `StdVideoH264SequenceParameterSetVui` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -165,18 +170,21 @@ public final class StdVideoH264SequenceParameterSetVui extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `StdVideoH264SequenceParameterSetVui`
-    public static StdVideoH264SequenceParameterSetVui alloc(SegmentAllocator allocator, long count) { return new StdVideoH264SequenceParameterSetVui(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `StdVideoH264SequenceParameterSetVui`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `StdVideoH264SequenceParameterSetVui`
-    public StdVideoH264SequenceParameterSetVui asSlice(long index) { return new StdVideoH264SequenceParameterSetVui(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `StdVideoH264SequenceParameterSetVui` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `StdVideoH264SequenceParameterSetVui`
+    public static StdVideoH264SequenceParameterSetVui allocInit(SegmentAllocator allocator, @CType("StdVideoH264SpsVuiFlags") java.lang.foreign.MemorySegment flags, @CType("StdVideoH264AspectRatioIdc") int aspect_ratio_idc, @CType("uint16_t") short sar_width, @CType("uint16_t") short sar_height, @CType("uint8_t") byte video_format, @CType("uint8_t") byte colour_primaries, @CType("uint8_t") byte transfer_characteristics, @CType("uint8_t") byte matrix_coefficients, @CType("uint32_t") int num_units_in_tick, @CType("uint32_t") int time_scale, @CType("uint8_t") byte max_num_reorder_frames, @CType("uint8_t") byte max_dec_frame_buffering, @CType("uint8_t") byte chroma_sample_loc_type_top_field, @CType("uint8_t") byte chroma_sample_loc_type_bottom_field, @CType("uint32_t") int reserved1, @CType("const StdVideoH264HrdParameters *") java.lang.foreign.MemorySegment pHrdParameters) { return alloc(allocator).flags(flags).aspect_ratio_idc(aspect_ratio_idc).sar_width(sar_width).sar_height(sar_height).video_format(video_format).colour_primaries(colour_primaries).transfer_characteristics(transfer_characteristics).matrix_coefficients(matrix_coefficients).num_units_in_tick(num_units_in_tick).time_scale(time_scale).max_num_reorder_frames(max_num_reorder_frames).max_dec_frame_buffering(max_dec_frame_buffering).chroma_sample_loc_type_top_field(chroma_sample_loc_type_top_field).chroma_sample_loc_type_bottom_field(chroma_sample_loc_type_bottom_field).reserved1(reserved1).pHrdParameters(pHrdParameters); }
 
-    /// Creates a slice of `StdVideoH264SequenceParameterSetVui`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `StdVideoH264SequenceParameterSetVui`
-    public StdVideoH264SequenceParameterSetVui asSlice(long index, long count) { return new StdVideoH264SequenceParameterSetVui(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public StdVideoH264SequenceParameterSetVui copyFrom(StdVideoH264SequenceParameterSetVui src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
@@ -185,9 +193,6 @@ public final class StdVideoH264SequenceParameterSetVui extends Struct {
     /// {@return `flags`}
     /// @param segment the segment of the struct
     public static @CType("StdVideoH264SpsVuiFlags") java.lang.foreign.MemorySegment get_flags(MemorySegment segment) { return StdVideoH264SequenceParameterSetVui.get_flags(segment, 0L); }
-    /// {@return `flags` at the given index}
-    /// @param index the index
-    public @CType("StdVideoH264SpsVuiFlags") java.lang.foreign.MemorySegment flagsAt(long index) { return StdVideoH264SequenceParameterSetVui.get_flags(this.segment(), index); }
     /// {@return `flags`}
     public @CType("StdVideoH264SpsVuiFlags") java.lang.foreign.MemorySegment flags() { return StdVideoH264SequenceParameterSetVui.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
@@ -199,11 +204,6 @@ public final class StdVideoH264SequenceParameterSetVui extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_flags(MemorySegment segment, @CType("StdVideoH264SpsVuiFlags") java.lang.foreign.MemorySegment value) { StdVideoH264SequenceParameterSetVui.set_flags(segment, 0L, value); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264SequenceParameterSetVui flagsAt(long index, @CType("StdVideoH264SpsVuiFlags") java.lang.foreign.MemorySegment value) { StdVideoH264SequenceParameterSetVui.set_flags(this.segment(), index, value); return this; }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -216,9 +216,6 @@ public final class StdVideoH264SequenceParameterSetVui extends Struct {
     /// {@return `aspect_ratio_idc`}
     /// @param segment the segment of the struct
     public static @CType("StdVideoH264AspectRatioIdc") int get_aspect_ratio_idc(MemorySegment segment) { return StdVideoH264SequenceParameterSetVui.get_aspect_ratio_idc(segment, 0L); }
-    /// {@return `aspect_ratio_idc` at the given index}
-    /// @param index the index
-    public @CType("StdVideoH264AspectRatioIdc") int aspect_ratio_idcAt(long index) { return StdVideoH264SequenceParameterSetVui.get_aspect_ratio_idc(this.segment(), index); }
     /// {@return `aspect_ratio_idc`}
     public @CType("StdVideoH264AspectRatioIdc") int aspect_ratio_idc() { return StdVideoH264SequenceParameterSetVui.get_aspect_ratio_idc(this.segment()); }
     /// Sets `aspect_ratio_idc` with the given value at the given index.
@@ -230,11 +227,6 @@ public final class StdVideoH264SequenceParameterSetVui extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_aspect_ratio_idc(MemorySegment segment, @CType("StdVideoH264AspectRatioIdc") int value) { StdVideoH264SequenceParameterSetVui.set_aspect_ratio_idc(segment, 0L, value); }
-    /// Sets `aspect_ratio_idc` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264SequenceParameterSetVui aspect_ratio_idcAt(long index, @CType("StdVideoH264AspectRatioIdc") int value) { StdVideoH264SequenceParameterSetVui.set_aspect_ratio_idc(this.segment(), index, value); return this; }
     /// Sets `aspect_ratio_idc` with the given value.
     /// @param value the value
     /// @return `this`
@@ -247,9 +239,6 @@ public final class StdVideoH264SequenceParameterSetVui extends Struct {
     /// {@return `sar_width`}
     /// @param segment the segment of the struct
     public static @CType("uint16_t") short get_sar_width(MemorySegment segment) { return StdVideoH264SequenceParameterSetVui.get_sar_width(segment, 0L); }
-    /// {@return `sar_width` at the given index}
-    /// @param index the index
-    public @CType("uint16_t") short sar_widthAt(long index) { return StdVideoH264SequenceParameterSetVui.get_sar_width(this.segment(), index); }
     /// {@return `sar_width`}
     public @CType("uint16_t") short sar_width() { return StdVideoH264SequenceParameterSetVui.get_sar_width(this.segment()); }
     /// Sets `sar_width` with the given value at the given index.
@@ -261,11 +250,6 @@ public final class StdVideoH264SequenceParameterSetVui extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sar_width(MemorySegment segment, @CType("uint16_t") short value) { StdVideoH264SequenceParameterSetVui.set_sar_width(segment, 0L, value); }
-    /// Sets `sar_width` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264SequenceParameterSetVui sar_widthAt(long index, @CType("uint16_t") short value) { StdVideoH264SequenceParameterSetVui.set_sar_width(this.segment(), index, value); return this; }
     /// Sets `sar_width` with the given value.
     /// @param value the value
     /// @return `this`
@@ -278,9 +262,6 @@ public final class StdVideoH264SequenceParameterSetVui extends Struct {
     /// {@return `sar_height`}
     /// @param segment the segment of the struct
     public static @CType("uint16_t") short get_sar_height(MemorySegment segment) { return StdVideoH264SequenceParameterSetVui.get_sar_height(segment, 0L); }
-    /// {@return `sar_height` at the given index}
-    /// @param index the index
-    public @CType("uint16_t") short sar_heightAt(long index) { return StdVideoH264SequenceParameterSetVui.get_sar_height(this.segment(), index); }
     /// {@return `sar_height`}
     public @CType("uint16_t") short sar_height() { return StdVideoH264SequenceParameterSetVui.get_sar_height(this.segment()); }
     /// Sets `sar_height` with the given value at the given index.
@@ -292,11 +273,6 @@ public final class StdVideoH264SequenceParameterSetVui extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sar_height(MemorySegment segment, @CType("uint16_t") short value) { StdVideoH264SequenceParameterSetVui.set_sar_height(segment, 0L, value); }
-    /// Sets `sar_height` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264SequenceParameterSetVui sar_heightAt(long index, @CType("uint16_t") short value) { StdVideoH264SequenceParameterSetVui.set_sar_height(this.segment(), index, value); return this; }
     /// Sets `sar_height` with the given value.
     /// @param value the value
     /// @return `this`
@@ -309,9 +285,6 @@ public final class StdVideoH264SequenceParameterSetVui extends Struct {
     /// {@return `video_format`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t") byte get_video_format(MemorySegment segment) { return StdVideoH264SequenceParameterSetVui.get_video_format(segment, 0L); }
-    /// {@return `video_format` at the given index}
-    /// @param index the index
-    public @CType("uint8_t") byte video_formatAt(long index) { return StdVideoH264SequenceParameterSetVui.get_video_format(this.segment(), index); }
     /// {@return `video_format`}
     public @CType("uint8_t") byte video_format() { return StdVideoH264SequenceParameterSetVui.get_video_format(this.segment()); }
     /// Sets `video_format` with the given value at the given index.
@@ -323,11 +296,6 @@ public final class StdVideoH264SequenceParameterSetVui extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_video_format(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoH264SequenceParameterSetVui.set_video_format(segment, 0L, value); }
-    /// Sets `video_format` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264SequenceParameterSetVui video_formatAt(long index, @CType("uint8_t") byte value) { StdVideoH264SequenceParameterSetVui.set_video_format(this.segment(), index, value); return this; }
     /// Sets `video_format` with the given value.
     /// @param value the value
     /// @return `this`
@@ -340,9 +308,6 @@ public final class StdVideoH264SequenceParameterSetVui extends Struct {
     /// {@return `colour_primaries`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t") byte get_colour_primaries(MemorySegment segment) { return StdVideoH264SequenceParameterSetVui.get_colour_primaries(segment, 0L); }
-    /// {@return `colour_primaries` at the given index}
-    /// @param index the index
-    public @CType("uint8_t") byte colour_primariesAt(long index) { return StdVideoH264SequenceParameterSetVui.get_colour_primaries(this.segment(), index); }
     /// {@return `colour_primaries`}
     public @CType("uint8_t") byte colour_primaries() { return StdVideoH264SequenceParameterSetVui.get_colour_primaries(this.segment()); }
     /// Sets `colour_primaries` with the given value at the given index.
@@ -354,11 +319,6 @@ public final class StdVideoH264SequenceParameterSetVui extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_colour_primaries(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoH264SequenceParameterSetVui.set_colour_primaries(segment, 0L, value); }
-    /// Sets `colour_primaries` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264SequenceParameterSetVui colour_primariesAt(long index, @CType("uint8_t") byte value) { StdVideoH264SequenceParameterSetVui.set_colour_primaries(this.segment(), index, value); return this; }
     /// Sets `colour_primaries` with the given value.
     /// @param value the value
     /// @return `this`
@@ -371,9 +331,6 @@ public final class StdVideoH264SequenceParameterSetVui extends Struct {
     /// {@return `transfer_characteristics`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t") byte get_transfer_characteristics(MemorySegment segment) { return StdVideoH264SequenceParameterSetVui.get_transfer_characteristics(segment, 0L); }
-    /// {@return `transfer_characteristics` at the given index}
-    /// @param index the index
-    public @CType("uint8_t") byte transfer_characteristicsAt(long index) { return StdVideoH264SequenceParameterSetVui.get_transfer_characteristics(this.segment(), index); }
     /// {@return `transfer_characteristics`}
     public @CType("uint8_t") byte transfer_characteristics() { return StdVideoH264SequenceParameterSetVui.get_transfer_characteristics(this.segment()); }
     /// Sets `transfer_characteristics` with the given value at the given index.
@@ -385,11 +342,6 @@ public final class StdVideoH264SequenceParameterSetVui extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_transfer_characteristics(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoH264SequenceParameterSetVui.set_transfer_characteristics(segment, 0L, value); }
-    /// Sets `transfer_characteristics` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264SequenceParameterSetVui transfer_characteristicsAt(long index, @CType("uint8_t") byte value) { StdVideoH264SequenceParameterSetVui.set_transfer_characteristics(this.segment(), index, value); return this; }
     /// Sets `transfer_characteristics` with the given value.
     /// @param value the value
     /// @return `this`
@@ -402,9 +354,6 @@ public final class StdVideoH264SequenceParameterSetVui extends Struct {
     /// {@return `matrix_coefficients`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t") byte get_matrix_coefficients(MemorySegment segment) { return StdVideoH264SequenceParameterSetVui.get_matrix_coefficients(segment, 0L); }
-    /// {@return `matrix_coefficients` at the given index}
-    /// @param index the index
-    public @CType("uint8_t") byte matrix_coefficientsAt(long index) { return StdVideoH264SequenceParameterSetVui.get_matrix_coefficients(this.segment(), index); }
     /// {@return `matrix_coefficients`}
     public @CType("uint8_t") byte matrix_coefficients() { return StdVideoH264SequenceParameterSetVui.get_matrix_coefficients(this.segment()); }
     /// Sets `matrix_coefficients` with the given value at the given index.
@@ -416,11 +365,6 @@ public final class StdVideoH264SequenceParameterSetVui extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_matrix_coefficients(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoH264SequenceParameterSetVui.set_matrix_coefficients(segment, 0L, value); }
-    /// Sets `matrix_coefficients` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264SequenceParameterSetVui matrix_coefficientsAt(long index, @CType("uint8_t") byte value) { StdVideoH264SequenceParameterSetVui.set_matrix_coefficients(this.segment(), index, value); return this; }
     /// Sets `matrix_coefficients` with the given value.
     /// @param value the value
     /// @return `this`
@@ -433,9 +377,6 @@ public final class StdVideoH264SequenceParameterSetVui extends Struct {
     /// {@return `num_units_in_tick`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_num_units_in_tick(MemorySegment segment) { return StdVideoH264SequenceParameterSetVui.get_num_units_in_tick(segment, 0L); }
-    /// {@return `num_units_in_tick` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int num_units_in_tickAt(long index) { return StdVideoH264SequenceParameterSetVui.get_num_units_in_tick(this.segment(), index); }
     /// {@return `num_units_in_tick`}
     public @CType("uint32_t") int num_units_in_tick() { return StdVideoH264SequenceParameterSetVui.get_num_units_in_tick(this.segment()); }
     /// Sets `num_units_in_tick` with the given value at the given index.
@@ -447,11 +388,6 @@ public final class StdVideoH264SequenceParameterSetVui extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_num_units_in_tick(MemorySegment segment, @CType("uint32_t") int value) { StdVideoH264SequenceParameterSetVui.set_num_units_in_tick(segment, 0L, value); }
-    /// Sets `num_units_in_tick` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264SequenceParameterSetVui num_units_in_tickAt(long index, @CType("uint32_t") int value) { StdVideoH264SequenceParameterSetVui.set_num_units_in_tick(this.segment(), index, value); return this; }
     /// Sets `num_units_in_tick` with the given value.
     /// @param value the value
     /// @return `this`
@@ -464,9 +400,6 @@ public final class StdVideoH264SequenceParameterSetVui extends Struct {
     /// {@return `time_scale`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_time_scale(MemorySegment segment) { return StdVideoH264SequenceParameterSetVui.get_time_scale(segment, 0L); }
-    /// {@return `time_scale` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int time_scaleAt(long index) { return StdVideoH264SequenceParameterSetVui.get_time_scale(this.segment(), index); }
     /// {@return `time_scale`}
     public @CType("uint32_t") int time_scale() { return StdVideoH264SequenceParameterSetVui.get_time_scale(this.segment()); }
     /// Sets `time_scale` with the given value at the given index.
@@ -478,11 +411,6 @@ public final class StdVideoH264SequenceParameterSetVui extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_time_scale(MemorySegment segment, @CType("uint32_t") int value) { StdVideoH264SequenceParameterSetVui.set_time_scale(segment, 0L, value); }
-    /// Sets `time_scale` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264SequenceParameterSetVui time_scaleAt(long index, @CType("uint32_t") int value) { StdVideoH264SequenceParameterSetVui.set_time_scale(this.segment(), index, value); return this; }
     /// Sets `time_scale` with the given value.
     /// @param value the value
     /// @return `this`
@@ -495,9 +423,6 @@ public final class StdVideoH264SequenceParameterSetVui extends Struct {
     /// {@return `max_num_reorder_frames`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t") byte get_max_num_reorder_frames(MemorySegment segment) { return StdVideoH264SequenceParameterSetVui.get_max_num_reorder_frames(segment, 0L); }
-    /// {@return `max_num_reorder_frames` at the given index}
-    /// @param index the index
-    public @CType("uint8_t") byte max_num_reorder_framesAt(long index) { return StdVideoH264SequenceParameterSetVui.get_max_num_reorder_frames(this.segment(), index); }
     /// {@return `max_num_reorder_frames`}
     public @CType("uint8_t") byte max_num_reorder_frames() { return StdVideoH264SequenceParameterSetVui.get_max_num_reorder_frames(this.segment()); }
     /// Sets `max_num_reorder_frames` with the given value at the given index.
@@ -509,11 +434,6 @@ public final class StdVideoH264SequenceParameterSetVui extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_max_num_reorder_frames(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoH264SequenceParameterSetVui.set_max_num_reorder_frames(segment, 0L, value); }
-    /// Sets `max_num_reorder_frames` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264SequenceParameterSetVui max_num_reorder_framesAt(long index, @CType("uint8_t") byte value) { StdVideoH264SequenceParameterSetVui.set_max_num_reorder_frames(this.segment(), index, value); return this; }
     /// Sets `max_num_reorder_frames` with the given value.
     /// @param value the value
     /// @return `this`
@@ -526,9 +446,6 @@ public final class StdVideoH264SequenceParameterSetVui extends Struct {
     /// {@return `max_dec_frame_buffering`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t") byte get_max_dec_frame_buffering(MemorySegment segment) { return StdVideoH264SequenceParameterSetVui.get_max_dec_frame_buffering(segment, 0L); }
-    /// {@return `max_dec_frame_buffering` at the given index}
-    /// @param index the index
-    public @CType("uint8_t") byte max_dec_frame_bufferingAt(long index) { return StdVideoH264SequenceParameterSetVui.get_max_dec_frame_buffering(this.segment(), index); }
     /// {@return `max_dec_frame_buffering`}
     public @CType("uint8_t") byte max_dec_frame_buffering() { return StdVideoH264SequenceParameterSetVui.get_max_dec_frame_buffering(this.segment()); }
     /// Sets `max_dec_frame_buffering` with the given value at the given index.
@@ -540,11 +457,6 @@ public final class StdVideoH264SequenceParameterSetVui extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_max_dec_frame_buffering(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoH264SequenceParameterSetVui.set_max_dec_frame_buffering(segment, 0L, value); }
-    /// Sets `max_dec_frame_buffering` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264SequenceParameterSetVui max_dec_frame_bufferingAt(long index, @CType("uint8_t") byte value) { StdVideoH264SequenceParameterSetVui.set_max_dec_frame_buffering(this.segment(), index, value); return this; }
     /// Sets `max_dec_frame_buffering` with the given value.
     /// @param value the value
     /// @return `this`
@@ -557,9 +469,6 @@ public final class StdVideoH264SequenceParameterSetVui extends Struct {
     /// {@return `chroma_sample_loc_type_top_field`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t") byte get_chroma_sample_loc_type_top_field(MemorySegment segment) { return StdVideoH264SequenceParameterSetVui.get_chroma_sample_loc_type_top_field(segment, 0L); }
-    /// {@return `chroma_sample_loc_type_top_field` at the given index}
-    /// @param index the index
-    public @CType("uint8_t") byte chroma_sample_loc_type_top_fieldAt(long index) { return StdVideoH264SequenceParameterSetVui.get_chroma_sample_loc_type_top_field(this.segment(), index); }
     /// {@return `chroma_sample_loc_type_top_field`}
     public @CType("uint8_t") byte chroma_sample_loc_type_top_field() { return StdVideoH264SequenceParameterSetVui.get_chroma_sample_loc_type_top_field(this.segment()); }
     /// Sets `chroma_sample_loc_type_top_field` with the given value at the given index.
@@ -571,11 +480,6 @@ public final class StdVideoH264SequenceParameterSetVui extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_chroma_sample_loc_type_top_field(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoH264SequenceParameterSetVui.set_chroma_sample_loc_type_top_field(segment, 0L, value); }
-    /// Sets `chroma_sample_loc_type_top_field` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264SequenceParameterSetVui chroma_sample_loc_type_top_fieldAt(long index, @CType("uint8_t") byte value) { StdVideoH264SequenceParameterSetVui.set_chroma_sample_loc_type_top_field(this.segment(), index, value); return this; }
     /// Sets `chroma_sample_loc_type_top_field` with the given value.
     /// @param value the value
     /// @return `this`
@@ -588,9 +492,6 @@ public final class StdVideoH264SequenceParameterSetVui extends Struct {
     /// {@return `chroma_sample_loc_type_bottom_field`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t") byte get_chroma_sample_loc_type_bottom_field(MemorySegment segment) { return StdVideoH264SequenceParameterSetVui.get_chroma_sample_loc_type_bottom_field(segment, 0L); }
-    /// {@return `chroma_sample_loc_type_bottom_field` at the given index}
-    /// @param index the index
-    public @CType("uint8_t") byte chroma_sample_loc_type_bottom_fieldAt(long index) { return StdVideoH264SequenceParameterSetVui.get_chroma_sample_loc_type_bottom_field(this.segment(), index); }
     /// {@return `chroma_sample_loc_type_bottom_field`}
     public @CType("uint8_t") byte chroma_sample_loc_type_bottom_field() { return StdVideoH264SequenceParameterSetVui.get_chroma_sample_loc_type_bottom_field(this.segment()); }
     /// Sets `chroma_sample_loc_type_bottom_field` with the given value at the given index.
@@ -602,11 +503,6 @@ public final class StdVideoH264SequenceParameterSetVui extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_chroma_sample_loc_type_bottom_field(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoH264SequenceParameterSetVui.set_chroma_sample_loc_type_bottom_field(segment, 0L, value); }
-    /// Sets `chroma_sample_loc_type_bottom_field` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264SequenceParameterSetVui chroma_sample_loc_type_bottom_fieldAt(long index, @CType("uint8_t") byte value) { StdVideoH264SequenceParameterSetVui.set_chroma_sample_loc_type_bottom_field(this.segment(), index, value); return this; }
     /// Sets `chroma_sample_loc_type_bottom_field` with the given value.
     /// @param value the value
     /// @return `this`
@@ -619,9 +515,6 @@ public final class StdVideoH264SequenceParameterSetVui extends Struct {
     /// {@return `reserved1`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_reserved1(MemorySegment segment) { return StdVideoH264SequenceParameterSetVui.get_reserved1(segment, 0L); }
-    /// {@return `reserved1` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int reserved1At(long index) { return StdVideoH264SequenceParameterSetVui.get_reserved1(this.segment(), index); }
     /// {@return `reserved1`}
     public @CType("uint32_t") int reserved1() { return StdVideoH264SequenceParameterSetVui.get_reserved1(this.segment()); }
     /// Sets `reserved1` with the given value at the given index.
@@ -633,11 +526,6 @@ public final class StdVideoH264SequenceParameterSetVui extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_reserved1(MemorySegment segment, @CType("uint32_t") int value) { StdVideoH264SequenceParameterSetVui.set_reserved1(segment, 0L, value); }
-    /// Sets `reserved1` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264SequenceParameterSetVui reserved1At(long index, @CType("uint32_t") int value) { StdVideoH264SequenceParameterSetVui.set_reserved1(this.segment(), index, value); return this; }
     /// Sets `reserved1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -650,9 +538,6 @@ public final class StdVideoH264SequenceParameterSetVui extends Struct {
     /// {@return `pHrdParameters`}
     /// @param segment the segment of the struct
     public static @CType("const StdVideoH264HrdParameters *") java.lang.foreign.MemorySegment get_pHrdParameters(MemorySegment segment) { return StdVideoH264SequenceParameterSetVui.get_pHrdParameters(segment, 0L); }
-    /// {@return `pHrdParameters` at the given index}
-    /// @param index the index
-    public @CType("const StdVideoH264HrdParameters *") java.lang.foreign.MemorySegment pHrdParametersAt(long index) { return StdVideoH264SequenceParameterSetVui.get_pHrdParameters(this.segment(), index); }
     /// {@return `pHrdParameters`}
     public @CType("const StdVideoH264HrdParameters *") java.lang.foreign.MemorySegment pHrdParameters() { return StdVideoH264SequenceParameterSetVui.get_pHrdParameters(this.segment()); }
     /// Sets `pHrdParameters` with the given value at the given index.
@@ -664,14 +549,176 @@ public final class StdVideoH264SequenceParameterSetVui extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pHrdParameters(MemorySegment segment, @CType("const StdVideoH264HrdParameters *") java.lang.foreign.MemorySegment value) { StdVideoH264SequenceParameterSetVui.set_pHrdParameters(segment, 0L, value); }
-    /// Sets `pHrdParameters` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264SequenceParameterSetVui pHrdParametersAt(long index, @CType("const StdVideoH264HrdParameters *") java.lang.foreign.MemorySegment value) { StdVideoH264SequenceParameterSetVui.set_pHrdParameters(this.segment(), index, value); return this; }
     /// Sets `pHrdParameters` with the given value.
     /// @param value the value
     /// @return `this`
     public StdVideoH264SequenceParameterSetVui pHrdParameters(@CType("const StdVideoH264HrdParameters *") java.lang.foreign.MemorySegment value) { StdVideoH264SequenceParameterSetVui.set_pHrdParameters(this.segment(), value); return this; }
 
+    /// A buffer of [StdVideoH264SequenceParameterSetVui].
+    public static final class Buffer extends StdVideoH264SequenceParameterSetVui {
+        private final long elementCount;
+
+        /// Creates `StdVideoH264SequenceParameterSetVui.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `StdVideoH264SequenceParameterSetVui`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `StdVideoH264SequenceParameterSetVui`
+        public StdVideoH264SequenceParameterSetVui asSlice(long index) { return new StdVideoH264SequenceParameterSetVui(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `StdVideoH264SequenceParameterSetVui`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `StdVideoH264SequenceParameterSetVui`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `flags` at the given index}
+        /// @param index the index
+        public @CType("StdVideoH264SpsVuiFlags") java.lang.foreign.MemorySegment flagsAt(long index) { return StdVideoH264SequenceParameterSetVui.get_flags(this.segment(), index); }
+        /// Sets `flags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer flagsAt(long index, @CType("StdVideoH264SpsVuiFlags") java.lang.foreign.MemorySegment value) { StdVideoH264SequenceParameterSetVui.set_flags(this.segment(), index, value); return this; }
+
+        /// {@return `aspect_ratio_idc` at the given index}
+        /// @param index the index
+        public @CType("StdVideoH264AspectRatioIdc") int aspect_ratio_idcAt(long index) { return StdVideoH264SequenceParameterSetVui.get_aspect_ratio_idc(this.segment(), index); }
+        /// Sets `aspect_ratio_idc` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer aspect_ratio_idcAt(long index, @CType("StdVideoH264AspectRatioIdc") int value) { StdVideoH264SequenceParameterSetVui.set_aspect_ratio_idc(this.segment(), index, value); return this; }
+
+        /// {@return `sar_width` at the given index}
+        /// @param index the index
+        public @CType("uint16_t") short sar_widthAt(long index) { return StdVideoH264SequenceParameterSetVui.get_sar_width(this.segment(), index); }
+        /// Sets `sar_width` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sar_widthAt(long index, @CType("uint16_t") short value) { StdVideoH264SequenceParameterSetVui.set_sar_width(this.segment(), index, value); return this; }
+
+        /// {@return `sar_height` at the given index}
+        /// @param index the index
+        public @CType("uint16_t") short sar_heightAt(long index) { return StdVideoH264SequenceParameterSetVui.get_sar_height(this.segment(), index); }
+        /// Sets `sar_height` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sar_heightAt(long index, @CType("uint16_t") short value) { StdVideoH264SequenceParameterSetVui.set_sar_height(this.segment(), index, value); return this; }
+
+        /// {@return `video_format` at the given index}
+        /// @param index the index
+        public @CType("uint8_t") byte video_formatAt(long index) { return StdVideoH264SequenceParameterSetVui.get_video_format(this.segment(), index); }
+        /// Sets `video_format` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer video_formatAt(long index, @CType("uint8_t") byte value) { StdVideoH264SequenceParameterSetVui.set_video_format(this.segment(), index, value); return this; }
+
+        /// {@return `colour_primaries` at the given index}
+        /// @param index the index
+        public @CType("uint8_t") byte colour_primariesAt(long index) { return StdVideoH264SequenceParameterSetVui.get_colour_primaries(this.segment(), index); }
+        /// Sets `colour_primaries` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer colour_primariesAt(long index, @CType("uint8_t") byte value) { StdVideoH264SequenceParameterSetVui.set_colour_primaries(this.segment(), index, value); return this; }
+
+        /// {@return `transfer_characteristics` at the given index}
+        /// @param index the index
+        public @CType("uint8_t") byte transfer_characteristicsAt(long index) { return StdVideoH264SequenceParameterSetVui.get_transfer_characteristics(this.segment(), index); }
+        /// Sets `transfer_characteristics` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer transfer_characteristicsAt(long index, @CType("uint8_t") byte value) { StdVideoH264SequenceParameterSetVui.set_transfer_characteristics(this.segment(), index, value); return this; }
+
+        /// {@return `matrix_coefficients` at the given index}
+        /// @param index the index
+        public @CType("uint8_t") byte matrix_coefficientsAt(long index) { return StdVideoH264SequenceParameterSetVui.get_matrix_coefficients(this.segment(), index); }
+        /// Sets `matrix_coefficients` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer matrix_coefficientsAt(long index, @CType("uint8_t") byte value) { StdVideoH264SequenceParameterSetVui.set_matrix_coefficients(this.segment(), index, value); return this; }
+
+        /// {@return `num_units_in_tick` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int num_units_in_tickAt(long index) { return StdVideoH264SequenceParameterSetVui.get_num_units_in_tick(this.segment(), index); }
+        /// Sets `num_units_in_tick` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer num_units_in_tickAt(long index, @CType("uint32_t") int value) { StdVideoH264SequenceParameterSetVui.set_num_units_in_tick(this.segment(), index, value); return this; }
+
+        /// {@return `time_scale` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int time_scaleAt(long index) { return StdVideoH264SequenceParameterSetVui.get_time_scale(this.segment(), index); }
+        /// Sets `time_scale` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer time_scaleAt(long index, @CType("uint32_t") int value) { StdVideoH264SequenceParameterSetVui.set_time_scale(this.segment(), index, value); return this; }
+
+        /// {@return `max_num_reorder_frames` at the given index}
+        /// @param index the index
+        public @CType("uint8_t") byte max_num_reorder_framesAt(long index) { return StdVideoH264SequenceParameterSetVui.get_max_num_reorder_frames(this.segment(), index); }
+        /// Sets `max_num_reorder_frames` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer max_num_reorder_framesAt(long index, @CType("uint8_t") byte value) { StdVideoH264SequenceParameterSetVui.set_max_num_reorder_frames(this.segment(), index, value); return this; }
+
+        /// {@return `max_dec_frame_buffering` at the given index}
+        /// @param index the index
+        public @CType("uint8_t") byte max_dec_frame_bufferingAt(long index) { return StdVideoH264SequenceParameterSetVui.get_max_dec_frame_buffering(this.segment(), index); }
+        /// Sets `max_dec_frame_buffering` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer max_dec_frame_bufferingAt(long index, @CType("uint8_t") byte value) { StdVideoH264SequenceParameterSetVui.set_max_dec_frame_buffering(this.segment(), index, value); return this; }
+
+        /// {@return `chroma_sample_loc_type_top_field` at the given index}
+        /// @param index the index
+        public @CType("uint8_t") byte chroma_sample_loc_type_top_fieldAt(long index) { return StdVideoH264SequenceParameterSetVui.get_chroma_sample_loc_type_top_field(this.segment(), index); }
+        /// Sets `chroma_sample_loc_type_top_field` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer chroma_sample_loc_type_top_fieldAt(long index, @CType("uint8_t") byte value) { StdVideoH264SequenceParameterSetVui.set_chroma_sample_loc_type_top_field(this.segment(), index, value); return this; }
+
+        /// {@return `chroma_sample_loc_type_bottom_field` at the given index}
+        /// @param index the index
+        public @CType("uint8_t") byte chroma_sample_loc_type_bottom_fieldAt(long index) { return StdVideoH264SequenceParameterSetVui.get_chroma_sample_loc_type_bottom_field(this.segment(), index); }
+        /// Sets `chroma_sample_loc_type_bottom_field` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer chroma_sample_loc_type_bottom_fieldAt(long index, @CType("uint8_t") byte value) { StdVideoH264SequenceParameterSetVui.set_chroma_sample_loc_type_bottom_field(this.segment(), index, value); return this; }
+
+        /// {@return `reserved1` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int reserved1At(long index) { return StdVideoH264SequenceParameterSetVui.get_reserved1(this.segment(), index); }
+        /// Sets `reserved1` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer reserved1At(long index, @CType("uint32_t") int value) { StdVideoH264SequenceParameterSetVui.set_reserved1(this.segment(), index, value); return this; }
+
+        /// {@return `pHrdParameters` at the given index}
+        /// @param index the index
+        public @CType("const StdVideoH264HrdParameters *") java.lang.foreign.MemorySegment pHrdParametersAt(long index) { return StdVideoH264SequenceParameterSetVui.get_pHrdParameters(this.segment(), index); }
+        /// Sets `pHrdParameters` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pHrdParametersAt(long index, @CType("const StdVideoH264HrdParameters *") java.lang.foreign.MemorySegment value) { StdVideoH264SequenceParameterSetVui.set_pHrdParameters(this.segment(), index, value); return this; }
+
+    }
 }

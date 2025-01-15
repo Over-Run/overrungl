@@ -46,7 +46,7 @@ import overrungl.util.*;
 ///     size_t scratchMemUsageInBytes;
 /// } VkShaderResourceUsageAMD;
 /// ```
-public final class VkShaderResourceUsageAMD extends Struct {
+public sealed class VkShaderResourceUsageAMD extends Struct {
     /// The struct layout of `VkShaderResourceUsageAMD`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("numUsedVgprs"),
@@ -76,6 +76,11 @@ public final class VkShaderResourceUsageAMD extends Struct {
     public static VkShaderResourceUsageAMD of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkShaderResourceUsageAMD(segment); }
 
     /// Creates `VkShaderResourceUsageAMD` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkShaderResourceUsageAMD` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -88,7 +93,7 @@ public final class VkShaderResourceUsageAMD extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkShaderResourceUsageAMD ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkShaderResourceUsageAMD(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkShaderResourceUsageAMD` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -99,18 +104,21 @@ public final class VkShaderResourceUsageAMD extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkShaderResourceUsageAMD`
-    public static VkShaderResourceUsageAMD alloc(SegmentAllocator allocator, long count) { return new VkShaderResourceUsageAMD(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkShaderResourceUsageAMD`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkShaderResourceUsageAMD`
-    public VkShaderResourceUsageAMD asSlice(long index) { return new VkShaderResourceUsageAMD(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkShaderResourceUsageAMD` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkShaderResourceUsageAMD`
+    public static VkShaderResourceUsageAMD allocInit(SegmentAllocator allocator, @CType("uint32_t") int numUsedVgprs, @CType("uint32_t") int numUsedSgprs, @CType("uint32_t") int ldsSizePerLocalWorkGroup, @CType("size_t") long ldsUsageSizeInBytes, @CType("size_t") long scratchMemUsageInBytes) { return alloc(allocator).numUsedVgprs(numUsedVgprs).numUsedSgprs(numUsedSgprs).ldsSizePerLocalWorkGroup(ldsSizePerLocalWorkGroup).ldsUsageSizeInBytes(ldsUsageSizeInBytes).scratchMemUsageInBytes(scratchMemUsageInBytes); }
 
-    /// Creates a slice of `VkShaderResourceUsageAMD`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkShaderResourceUsageAMD`
-    public VkShaderResourceUsageAMD asSlice(long index, long count) { return new VkShaderResourceUsageAMD(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkShaderResourceUsageAMD copyFrom(VkShaderResourceUsageAMD src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `numUsedVgprs` at the given index}
     /// @param segment the segment of the struct
@@ -119,9 +127,6 @@ public final class VkShaderResourceUsageAMD extends Struct {
     /// {@return `numUsedVgprs`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_numUsedVgprs(MemorySegment segment) { return VkShaderResourceUsageAMD.get_numUsedVgprs(segment, 0L); }
-    /// {@return `numUsedVgprs` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int numUsedVgprsAt(long index) { return VkShaderResourceUsageAMD.get_numUsedVgprs(this.segment(), index); }
     /// {@return `numUsedVgprs`}
     public @CType("uint32_t") int numUsedVgprs() { return VkShaderResourceUsageAMD.get_numUsedVgprs(this.segment()); }
     /// Sets `numUsedVgprs` with the given value at the given index.
@@ -133,11 +138,6 @@ public final class VkShaderResourceUsageAMD extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_numUsedVgprs(MemorySegment segment, @CType("uint32_t") int value) { VkShaderResourceUsageAMD.set_numUsedVgprs(segment, 0L, value); }
-    /// Sets `numUsedVgprs` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkShaderResourceUsageAMD numUsedVgprsAt(long index, @CType("uint32_t") int value) { VkShaderResourceUsageAMD.set_numUsedVgprs(this.segment(), index, value); return this; }
     /// Sets `numUsedVgprs` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,9 +150,6 @@ public final class VkShaderResourceUsageAMD extends Struct {
     /// {@return `numUsedSgprs`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_numUsedSgprs(MemorySegment segment) { return VkShaderResourceUsageAMD.get_numUsedSgprs(segment, 0L); }
-    /// {@return `numUsedSgprs` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int numUsedSgprsAt(long index) { return VkShaderResourceUsageAMD.get_numUsedSgprs(this.segment(), index); }
     /// {@return `numUsedSgprs`}
     public @CType("uint32_t") int numUsedSgprs() { return VkShaderResourceUsageAMD.get_numUsedSgprs(this.segment()); }
     /// Sets `numUsedSgprs` with the given value at the given index.
@@ -164,11 +161,6 @@ public final class VkShaderResourceUsageAMD extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_numUsedSgprs(MemorySegment segment, @CType("uint32_t") int value) { VkShaderResourceUsageAMD.set_numUsedSgprs(segment, 0L, value); }
-    /// Sets `numUsedSgprs` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkShaderResourceUsageAMD numUsedSgprsAt(long index, @CType("uint32_t") int value) { VkShaderResourceUsageAMD.set_numUsedSgprs(this.segment(), index, value); return this; }
     /// Sets `numUsedSgprs` with the given value.
     /// @param value the value
     /// @return `this`
@@ -181,9 +173,6 @@ public final class VkShaderResourceUsageAMD extends Struct {
     /// {@return `ldsSizePerLocalWorkGroup`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_ldsSizePerLocalWorkGroup(MemorySegment segment) { return VkShaderResourceUsageAMD.get_ldsSizePerLocalWorkGroup(segment, 0L); }
-    /// {@return `ldsSizePerLocalWorkGroup` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int ldsSizePerLocalWorkGroupAt(long index) { return VkShaderResourceUsageAMD.get_ldsSizePerLocalWorkGroup(this.segment(), index); }
     /// {@return `ldsSizePerLocalWorkGroup`}
     public @CType("uint32_t") int ldsSizePerLocalWorkGroup() { return VkShaderResourceUsageAMD.get_ldsSizePerLocalWorkGroup(this.segment()); }
     /// Sets `ldsSizePerLocalWorkGroup` with the given value at the given index.
@@ -195,11 +184,6 @@ public final class VkShaderResourceUsageAMD extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_ldsSizePerLocalWorkGroup(MemorySegment segment, @CType("uint32_t") int value) { VkShaderResourceUsageAMD.set_ldsSizePerLocalWorkGroup(segment, 0L, value); }
-    /// Sets `ldsSizePerLocalWorkGroup` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkShaderResourceUsageAMD ldsSizePerLocalWorkGroupAt(long index, @CType("uint32_t") int value) { VkShaderResourceUsageAMD.set_ldsSizePerLocalWorkGroup(this.segment(), index, value); return this; }
     /// Sets `ldsSizePerLocalWorkGroup` with the given value.
     /// @param value the value
     /// @return `this`
@@ -212,9 +196,6 @@ public final class VkShaderResourceUsageAMD extends Struct {
     /// {@return `ldsUsageSizeInBytes`}
     /// @param segment the segment of the struct
     public static @CType("size_t") long get_ldsUsageSizeInBytes(MemorySegment segment) { return VkShaderResourceUsageAMD.get_ldsUsageSizeInBytes(segment, 0L); }
-    /// {@return `ldsUsageSizeInBytes` at the given index}
-    /// @param index the index
-    public @CType("size_t") long ldsUsageSizeInBytesAt(long index) { return VkShaderResourceUsageAMD.get_ldsUsageSizeInBytes(this.segment(), index); }
     /// {@return `ldsUsageSizeInBytes`}
     public @CType("size_t") long ldsUsageSizeInBytes() { return VkShaderResourceUsageAMD.get_ldsUsageSizeInBytes(this.segment()); }
     /// Sets `ldsUsageSizeInBytes` with the given value at the given index.
@@ -226,11 +207,6 @@ public final class VkShaderResourceUsageAMD extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_ldsUsageSizeInBytes(MemorySegment segment, @CType("size_t") long value) { VkShaderResourceUsageAMD.set_ldsUsageSizeInBytes(segment, 0L, value); }
-    /// Sets `ldsUsageSizeInBytes` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkShaderResourceUsageAMD ldsUsageSizeInBytesAt(long index, @CType("size_t") long value) { VkShaderResourceUsageAMD.set_ldsUsageSizeInBytes(this.segment(), index, value); return this; }
     /// Sets `ldsUsageSizeInBytes` with the given value.
     /// @param value the value
     /// @return `this`
@@ -243,9 +219,6 @@ public final class VkShaderResourceUsageAMD extends Struct {
     /// {@return `scratchMemUsageInBytes`}
     /// @param segment the segment of the struct
     public static @CType("size_t") long get_scratchMemUsageInBytes(MemorySegment segment) { return VkShaderResourceUsageAMD.get_scratchMemUsageInBytes(segment, 0L); }
-    /// {@return `scratchMemUsageInBytes` at the given index}
-    /// @param index the index
-    public @CType("size_t") long scratchMemUsageInBytesAt(long index) { return VkShaderResourceUsageAMD.get_scratchMemUsageInBytes(this.segment(), index); }
     /// {@return `scratchMemUsageInBytes`}
     public @CType("size_t") long scratchMemUsageInBytes() { return VkShaderResourceUsageAMD.get_scratchMemUsageInBytes(this.segment()); }
     /// Sets `scratchMemUsageInBytes` with the given value at the given index.
@@ -257,14 +230,77 @@ public final class VkShaderResourceUsageAMD extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_scratchMemUsageInBytes(MemorySegment segment, @CType("size_t") long value) { VkShaderResourceUsageAMD.set_scratchMemUsageInBytes(segment, 0L, value); }
-    /// Sets `scratchMemUsageInBytes` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkShaderResourceUsageAMD scratchMemUsageInBytesAt(long index, @CType("size_t") long value) { VkShaderResourceUsageAMD.set_scratchMemUsageInBytes(this.segment(), index, value); return this; }
     /// Sets `scratchMemUsageInBytes` with the given value.
     /// @param value the value
     /// @return `this`
     public VkShaderResourceUsageAMD scratchMemUsageInBytes(@CType("size_t") long value) { VkShaderResourceUsageAMD.set_scratchMemUsageInBytes(this.segment(), value); return this; }
 
+    /// A buffer of [VkShaderResourceUsageAMD].
+    public static final class Buffer extends VkShaderResourceUsageAMD {
+        private final long elementCount;
+
+        /// Creates `VkShaderResourceUsageAMD.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkShaderResourceUsageAMD`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkShaderResourceUsageAMD`
+        public VkShaderResourceUsageAMD asSlice(long index) { return new VkShaderResourceUsageAMD(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkShaderResourceUsageAMD`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkShaderResourceUsageAMD`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `numUsedVgprs` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int numUsedVgprsAt(long index) { return VkShaderResourceUsageAMD.get_numUsedVgprs(this.segment(), index); }
+        /// Sets `numUsedVgprs` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer numUsedVgprsAt(long index, @CType("uint32_t") int value) { VkShaderResourceUsageAMD.set_numUsedVgprs(this.segment(), index, value); return this; }
+
+        /// {@return `numUsedSgprs` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int numUsedSgprsAt(long index) { return VkShaderResourceUsageAMD.get_numUsedSgprs(this.segment(), index); }
+        /// Sets `numUsedSgprs` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer numUsedSgprsAt(long index, @CType("uint32_t") int value) { VkShaderResourceUsageAMD.set_numUsedSgprs(this.segment(), index, value); return this; }
+
+        /// {@return `ldsSizePerLocalWorkGroup` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int ldsSizePerLocalWorkGroupAt(long index) { return VkShaderResourceUsageAMD.get_ldsSizePerLocalWorkGroup(this.segment(), index); }
+        /// Sets `ldsSizePerLocalWorkGroup` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer ldsSizePerLocalWorkGroupAt(long index, @CType("uint32_t") int value) { VkShaderResourceUsageAMD.set_ldsSizePerLocalWorkGroup(this.segment(), index, value); return this; }
+
+        /// {@return `ldsUsageSizeInBytes` at the given index}
+        /// @param index the index
+        public @CType("size_t") long ldsUsageSizeInBytesAt(long index) { return VkShaderResourceUsageAMD.get_ldsUsageSizeInBytes(this.segment(), index); }
+        /// Sets `ldsUsageSizeInBytes` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer ldsUsageSizeInBytesAt(long index, @CType("size_t") long value) { VkShaderResourceUsageAMD.set_ldsUsageSizeInBytes(this.segment(), index, value); return this; }
+
+        /// {@return `scratchMemUsageInBytes` at the given index}
+        /// @param index the index
+        public @CType("size_t") long scratchMemUsageInBytesAt(long index) { return VkShaderResourceUsageAMD.get_scratchMemUsageInBytes(this.segment(), index); }
+        /// Sets `scratchMemUsageInBytes` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer scratchMemUsageInBytesAt(long index, @CType("size_t") long value) { VkShaderResourceUsageAMD.set_scratchMemUsageInBytes(this.segment(), index, value); return this; }
+
+    }
 }

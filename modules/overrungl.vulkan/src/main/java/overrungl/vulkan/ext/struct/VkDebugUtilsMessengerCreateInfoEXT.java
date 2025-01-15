@@ -52,7 +52,7 @@ import overrungl.util.*;
 ///     void * pUserData;
 /// } VkDebugUtilsMessengerCreateInfoEXT;
 /// ```
-public final class VkDebugUtilsMessengerCreateInfoEXT extends Struct {
+public sealed class VkDebugUtilsMessengerCreateInfoEXT extends Struct {
     /// The struct layout of `VkDebugUtilsMessengerCreateInfoEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -88,6 +88,11 @@ public final class VkDebugUtilsMessengerCreateInfoEXT extends Struct {
     public static VkDebugUtilsMessengerCreateInfoEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDebugUtilsMessengerCreateInfoEXT(segment); }
 
     /// Creates `VkDebugUtilsMessengerCreateInfoEXT` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkDebugUtilsMessengerCreateInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -100,7 +105,7 @@ public final class VkDebugUtilsMessengerCreateInfoEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDebugUtilsMessengerCreateInfoEXT ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkDebugUtilsMessengerCreateInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkDebugUtilsMessengerCreateInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -111,18 +116,21 @@ public final class VkDebugUtilsMessengerCreateInfoEXT extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDebugUtilsMessengerCreateInfoEXT`
-    public static VkDebugUtilsMessengerCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkDebugUtilsMessengerCreateInfoEXT(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkDebugUtilsMessengerCreateInfoEXT`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkDebugUtilsMessengerCreateInfoEXT`
-    public VkDebugUtilsMessengerCreateInfoEXT asSlice(long index) { return new VkDebugUtilsMessengerCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkDebugUtilsMessengerCreateInfoEXT` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkDebugUtilsMessengerCreateInfoEXT`
+    public static VkDebugUtilsMessengerCreateInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkDebugUtilsMessengerCreateFlagsEXT") int flags, @CType("VkDebugUtilsMessageSeverityFlagsEXT") int messageSeverity, @CType("VkDebugUtilsMessageTypeFlagsEXT") int messageType, @CType("PFN_vkDebugUtilsMessengerCallbackEXT") java.lang.foreign.MemorySegment pfnUserCallback, @CType("void *") java.lang.foreign.MemorySegment pUserData) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).messageSeverity(messageSeverity).messageType(messageType).pfnUserCallback(pfnUserCallback).pUserData(pUserData); }
 
-    /// Creates a slice of `VkDebugUtilsMessengerCreateInfoEXT`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkDebugUtilsMessengerCreateInfoEXT`
-    public VkDebugUtilsMessengerCreateInfoEXT asSlice(long index, long count) { return new VkDebugUtilsMessengerCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkDebugUtilsMessengerCreateInfoEXT copyFrom(VkDebugUtilsMessengerCreateInfoEXT src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -131,9 +139,6 @@ public final class VkDebugUtilsMessengerCreateInfoEXT extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkDebugUtilsMessengerCreateInfoEXT.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkDebugUtilsMessengerCreateInfoEXT.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkDebugUtilsMessengerCreateInfoEXT.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -145,11 +150,6 @@ public final class VkDebugUtilsMessengerCreateInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkDebugUtilsMessengerCreateInfoEXT.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDebugUtilsMessengerCreateInfoEXT sTypeAt(long index, @CType("VkStructureType") int value) { VkDebugUtilsMessengerCreateInfoEXT.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -162,9 +162,6 @@ public final class VkDebugUtilsMessengerCreateInfoEXT extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkDebugUtilsMessengerCreateInfoEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkDebugUtilsMessengerCreateInfoEXT.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkDebugUtilsMessengerCreateInfoEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -176,11 +173,6 @@ public final class VkDebugUtilsMessengerCreateInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDebugUtilsMessengerCreateInfoEXT.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDebugUtilsMessengerCreateInfoEXT pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDebugUtilsMessengerCreateInfoEXT.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -193,9 +185,6 @@ public final class VkDebugUtilsMessengerCreateInfoEXT extends Struct {
     /// {@return `flags`}
     /// @param segment the segment of the struct
     public static @CType("VkDebugUtilsMessengerCreateFlagsEXT") int get_flags(MemorySegment segment) { return VkDebugUtilsMessengerCreateInfoEXT.get_flags(segment, 0L); }
-    /// {@return `flags` at the given index}
-    /// @param index the index
-    public @CType("VkDebugUtilsMessengerCreateFlagsEXT") int flagsAt(long index) { return VkDebugUtilsMessengerCreateInfoEXT.get_flags(this.segment(), index); }
     /// {@return `flags`}
     public @CType("VkDebugUtilsMessengerCreateFlagsEXT") int flags() { return VkDebugUtilsMessengerCreateInfoEXT.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
@@ -207,11 +196,6 @@ public final class VkDebugUtilsMessengerCreateInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_flags(MemorySegment segment, @CType("VkDebugUtilsMessengerCreateFlagsEXT") int value) { VkDebugUtilsMessengerCreateInfoEXT.set_flags(segment, 0L, value); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDebugUtilsMessengerCreateInfoEXT flagsAt(long index, @CType("VkDebugUtilsMessengerCreateFlagsEXT") int value) { VkDebugUtilsMessengerCreateInfoEXT.set_flags(this.segment(), index, value); return this; }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -224,9 +208,6 @@ public final class VkDebugUtilsMessengerCreateInfoEXT extends Struct {
     /// {@return `messageSeverity`}
     /// @param segment the segment of the struct
     public static @CType("VkDebugUtilsMessageSeverityFlagsEXT") int get_messageSeverity(MemorySegment segment) { return VkDebugUtilsMessengerCreateInfoEXT.get_messageSeverity(segment, 0L); }
-    /// {@return `messageSeverity` at the given index}
-    /// @param index the index
-    public @CType("VkDebugUtilsMessageSeverityFlagsEXT") int messageSeverityAt(long index) { return VkDebugUtilsMessengerCreateInfoEXT.get_messageSeverity(this.segment(), index); }
     /// {@return `messageSeverity`}
     public @CType("VkDebugUtilsMessageSeverityFlagsEXT") int messageSeverity() { return VkDebugUtilsMessengerCreateInfoEXT.get_messageSeverity(this.segment()); }
     /// Sets `messageSeverity` with the given value at the given index.
@@ -238,11 +219,6 @@ public final class VkDebugUtilsMessengerCreateInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_messageSeverity(MemorySegment segment, @CType("VkDebugUtilsMessageSeverityFlagsEXT") int value) { VkDebugUtilsMessengerCreateInfoEXT.set_messageSeverity(segment, 0L, value); }
-    /// Sets `messageSeverity` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDebugUtilsMessengerCreateInfoEXT messageSeverityAt(long index, @CType("VkDebugUtilsMessageSeverityFlagsEXT") int value) { VkDebugUtilsMessengerCreateInfoEXT.set_messageSeverity(this.segment(), index, value); return this; }
     /// Sets `messageSeverity` with the given value.
     /// @param value the value
     /// @return `this`
@@ -255,9 +231,6 @@ public final class VkDebugUtilsMessengerCreateInfoEXT extends Struct {
     /// {@return `messageType`}
     /// @param segment the segment of the struct
     public static @CType("VkDebugUtilsMessageTypeFlagsEXT") int get_messageType(MemorySegment segment) { return VkDebugUtilsMessengerCreateInfoEXT.get_messageType(segment, 0L); }
-    /// {@return `messageType` at the given index}
-    /// @param index the index
-    public @CType("VkDebugUtilsMessageTypeFlagsEXT") int messageTypeAt(long index) { return VkDebugUtilsMessengerCreateInfoEXT.get_messageType(this.segment(), index); }
     /// {@return `messageType`}
     public @CType("VkDebugUtilsMessageTypeFlagsEXT") int messageType() { return VkDebugUtilsMessengerCreateInfoEXT.get_messageType(this.segment()); }
     /// Sets `messageType` with the given value at the given index.
@@ -269,11 +242,6 @@ public final class VkDebugUtilsMessengerCreateInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_messageType(MemorySegment segment, @CType("VkDebugUtilsMessageTypeFlagsEXT") int value) { VkDebugUtilsMessengerCreateInfoEXT.set_messageType(segment, 0L, value); }
-    /// Sets `messageType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDebugUtilsMessengerCreateInfoEXT messageTypeAt(long index, @CType("VkDebugUtilsMessageTypeFlagsEXT") int value) { VkDebugUtilsMessengerCreateInfoEXT.set_messageType(this.segment(), index, value); return this; }
     /// Sets `messageType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -286,9 +254,6 @@ public final class VkDebugUtilsMessengerCreateInfoEXT extends Struct {
     /// {@return `pfnUserCallback`}
     /// @param segment the segment of the struct
     public static @CType("PFN_vkDebugUtilsMessengerCallbackEXT") java.lang.foreign.MemorySegment get_pfnUserCallback(MemorySegment segment) { return VkDebugUtilsMessengerCreateInfoEXT.get_pfnUserCallback(segment, 0L); }
-    /// {@return `pfnUserCallback` at the given index}
-    /// @param index the index
-    public @CType("PFN_vkDebugUtilsMessengerCallbackEXT") java.lang.foreign.MemorySegment pfnUserCallbackAt(long index) { return VkDebugUtilsMessengerCreateInfoEXT.get_pfnUserCallback(this.segment(), index); }
     /// {@return `pfnUserCallback`}
     public @CType("PFN_vkDebugUtilsMessengerCallbackEXT") java.lang.foreign.MemorySegment pfnUserCallback() { return VkDebugUtilsMessengerCreateInfoEXT.get_pfnUserCallback(this.segment()); }
     /// Sets `pfnUserCallback` with the given value at the given index.
@@ -300,11 +265,6 @@ public final class VkDebugUtilsMessengerCreateInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pfnUserCallback(MemorySegment segment, @CType("PFN_vkDebugUtilsMessengerCallbackEXT") java.lang.foreign.MemorySegment value) { VkDebugUtilsMessengerCreateInfoEXT.set_pfnUserCallback(segment, 0L, value); }
-    /// Sets `pfnUserCallback` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDebugUtilsMessengerCreateInfoEXT pfnUserCallbackAt(long index, @CType("PFN_vkDebugUtilsMessengerCallbackEXT") java.lang.foreign.MemorySegment value) { VkDebugUtilsMessengerCreateInfoEXT.set_pfnUserCallback(this.segment(), index, value); return this; }
     /// Sets `pfnUserCallback` with the given value.
     /// @param value the value
     /// @return `this`
@@ -317,9 +277,6 @@ public final class VkDebugUtilsMessengerCreateInfoEXT extends Struct {
     /// {@return `pUserData`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pUserData(MemorySegment segment) { return VkDebugUtilsMessengerCreateInfoEXT.get_pUserData(segment, 0L); }
-    /// {@return `pUserData` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pUserDataAt(long index) { return VkDebugUtilsMessengerCreateInfoEXT.get_pUserData(this.segment(), index); }
     /// {@return `pUserData`}
     public @CType("void *") java.lang.foreign.MemorySegment pUserData() { return VkDebugUtilsMessengerCreateInfoEXT.get_pUserData(this.segment()); }
     /// Sets `pUserData` with the given value at the given index.
@@ -331,14 +288,95 @@ public final class VkDebugUtilsMessengerCreateInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pUserData(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkDebugUtilsMessengerCreateInfoEXT.set_pUserData(segment, 0L, value); }
-    /// Sets `pUserData` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDebugUtilsMessengerCreateInfoEXT pUserDataAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkDebugUtilsMessengerCreateInfoEXT.set_pUserData(this.segment(), index, value); return this; }
     /// Sets `pUserData` with the given value.
     /// @param value the value
     /// @return `this`
     public VkDebugUtilsMessengerCreateInfoEXT pUserData(@CType("void *") java.lang.foreign.MemorySegment value) { VkDebugUtilsMessengerCreateInfoEXT.set_pUserData(this.segment(), value); return this; }
 
+    /// A buffer of [VkDebugUtilsMessengerCreateInfoEXT].
+    public static final class Buffer extends VkDebugUtilsMessengerCreateInfoEXT {
+        private final long elementCount;
+
+        /// Creates `VkDebugUtilsMessengerCreateInfoEXT.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkDebugUtilsMessengerCreateInfoEXT`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkDebugUtilsMessengerCreateInfoEXT`
+        public VkDebugUtilsMessengerCreateInfoEXT asSlice(long index) { return new VkDebugUtilsMessengerCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkDebugUtilsMessengerCreateInfoEXT`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkDebugUtilsMessengerCreateInfoEXT`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkDebugUtilsMessengerCreateInfoEXT.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkDebugUtilsMessengerCreateInfoEXT.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkDebugUtilsMessengerCreateInfoEXT.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDebugUtilsMessengerCreateInfoEXT.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `flags` at the given index}
+        /// @param index the index
+        public @CType("VkDebugUtilsMessengerCreateFlagsEXT") int flagsAt(long index) { return VkDebugUtilsMessengerCreateInfoEXT.get_flags(this.segment(), index); }
+        /// Sets `flags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer flagsAt(long index, @CType("VkDebugUtilsMessengerCreateFlagsEXT") int value) { VkDebugUtilsMessengerCreateInfoEXT.set_flags(this.segment(), index, value); return this; }
+
+        /// {@return `messageSeverity` at the given index}
+        /// @param index the index
+        public @CType("VkDebugUtilsMessageSeverityFlagsEXT") int messageSeverityAt(long index) { return VkDebugUtilsMessengerCreateInfoEXT.get_messageSeverity(this.segment(), index); }
+        /// Sets `messageSeverity` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer messageSeverityAt(long index, @CType("VkDebugUtilsMessageSeverityFlagsEXT") int value) { VkDebugUtilsMessengerCreateInfoEXT.set_messageSeverity(this.segment(), index, value); return this; }
+
+        /// {@return `messageType` at the given index}
+        /// @param index the index
+        public @CType("VkDebugUtilsMessageTypeFlagsEXT") int messageTypeAt(long index) { return VkDebugUtilsMessengerCreateInfoEXT.get_messageType(this.segment(), index); }
+        /// Sets `messageType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer messageTypeAt(long index, @CType("VkDebugUtilsMessageTypeFlagsEXT") int value) { VkDebugUtilsMessengerCreateInfoEXT.set_messageType(this.segment(), index, value); return this; }
+
+        /// {@return `pfnUserCallback` at the given index}
+        /// @param index the index
+        public @CType("PFN_vkDebugUtilsMessengerCallbackEXT") java.lang.foreign.MemorySegment pfnUserCallbackAt(long index) { return VkDebugUtilsMessengerCreateInfoEXT.get_pfnUserCallback(this.segment(), index); }
+        /// Sets `pfnUserCallback` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pfnUserCallbackAt(long index, @CType("PFN_vkDebugUtilsMessengerCallbackEXT") java.lang.foreign.MemorySegment value) { VkDebugUtilsMessengerCreateInfoEXT.set_pfnUserCallback(this.segment(), index, value); return this; }
+
+        /// {@return `pUserData` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pUserDataAt(long index) { return VkDebugUtilsMessengerCreateInfoEXT.get_pUserData(this.segment(), index); }
+        /// Sets `pUserData` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pUserDataAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkDebugUtilsMessengerCreateInfoEXT.set_pUserData(this.segment(), index, value); return this; }
+
+    }
 }

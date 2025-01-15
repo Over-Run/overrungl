@@ -40,7 +40,7 @@ import overrungl.util.*;
 ///     VkBool32 dynamicRendering;
 /// } VkPhysicalDeviceDynamicRenderingFeatures;
 /// ```
-public final class VkPhysicalDeviceDynamicRenderingFeatures extends Struct {
+public sealed class VkPhysicalDeviceDynamicRenderingFeatures extends Struct {
     /// The struct layout of `VkPhysicalDeviceDynamicRenderingFeatures`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -64,6 +64,11 @@ public final class VkPhysicalDeviceDynamicRenderingFeatures extends Struct {
     public static VkPhysicalDeviceDynamicRenderingFeatures of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceDynamicRenderingFeatures(segment); }
 
     /// Creates `VkPhysicalDeviceDynamicRenderingFeatures` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPhysicalDeviceDynamicRenderingFeatures` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -76,7 +81,7 @@ public final class VkPhysicalDeviceDynamicRenderingFeatures extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceDynamicRenderingFeatures ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceDynamicRenderingFeatures(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceDynamicRenderingFeatures` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -87,18 +92,21 @@ public final class VkPhysicalDeviceDynamicRenderingFeatures extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceDynamicRenderingFeatures`
-    public static VkPhysicalDeviceDynamicRenderingFeatures alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceDynamicRenderingFeatures(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkPhysicalDeviceDynamicRenderingFeatures`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDeviceDynamicRenderingFeatures`
-    public VkPhysicalDeviceDynamicRenderingFeatures asSlice(long index) { return new VkPhysicalDeviceDynamicRenderingFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkPhysicalDeviceDynamicRenderingFeatures` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDeviceDynamicRenderingFeatures`
+    public static VkPhysicalDeviceDynamicRenderingFeatures allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int dynamicRendering) { return alloc(allocator).sType(sType).pNext(pNext).dynamicRendering(dynamicRendering); }
 
-    /// Creates a slice of `VkPhysicalDeviceDynamicRenderingFeatures`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDeviceDynamicRenderingFeatures`
-    public VkPhysicalDeviceDynamicRenderingFeatures asSlice(long index, long count) { return new VkPhysicalDeviceDynamicRenderingFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDeviceDynamicRenderingFeatures copyFrom(VkPhysicalDeviceDynamicRenderingFeatures src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -107,9 +115,6 @@ public final class VkPhysicalDeviceDynamicRenderingFeatures extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceDynamicRenderingFeatures.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceDynamicRenderingFeatures.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPhysicalDeviceDynamicRenderingFeatures.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -121,11 +126,6 @@ public final class VkPhysicalDeviceDynamicRenderingFeatures extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceDynamicRenderingFeatures.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDynamicRenderingFeatures sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceDynamicRenderingFeatures.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -138,9 +138,6 @@ public final class VkPhysicalDeviceDynamicRenderingFeatures extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceDynamicRenderingFeatures.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceDynamicRenderingFeatures.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceDynamicRenderingFeatures.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -152,11 +149,6 @@ public final class VkPhysicalDeviceDynamicRenderingFeatures extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceDynamicRenderingFeatures.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDynamicRenderingFeatures pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceDynamicRenderingFeatures.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -169,9 +161,6 @@ public final class VkPhysicalDeviceDynamicRenderingFeatures extends Struct {
     /// {@return `dynamicRendering`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_dynamicRendering(MemorySegment segment) { return VkPhysicalDeviceDynamicRenderingFeatures.get_dynamicRendering(segment, 0L); }
-    /// {@return `dynamicRendering` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int dynamicRenderingAt(long index) { return VkPhysicalDeviceDynamicRenderingFeatures.get_dynamicRendering(this.segment(), index); }
     /// {@return `dynamicRendering`}
     public @CType("VkBool32") int dynamicRendering() { return VkPhysicalDeviceDynamicRenderingFeatures.get_dynamicRendering(this.segment()); }
     /// Sets `dynamicRendering` with the given value at the given index.
@@ -183,14 +172,59 @@ public final class VkPhysicalDeviceDynamicRenderingFeatures extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_dynamicRendering(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceDynamicRenderingFeatures.set_dynamicRendering(segment, 0L, value); }
-    /// Sets `dynamicRendering` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceDynamicRenderingFeatures dynamicRenderingAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceDynamicRenderingFeatures.set_dynamicRendering(this.segment(), index, value); return this; }
     /// Sets `dynamicRendering` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceDynamicRenderingFeatures dynamicRendering(@CType("VkBool32") int value) { VkPhysicalDeviceDynamicRenderingFeatures.set_dynamicRendering(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDeviceDynamicRenderingFeatures].
+    public static final class Buffer extends VkPhysicalDeviceDynamicRenderingFeatures {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDeviceDynamicRenderingFeatures.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDeviceDynamicRenderingFeatures`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDeviceDynamicRenderingFeatures`
+        public VkPhysicalDeviceDynamicRenderingFeatures asSlice(long index) { return new VkPhysicalDeviceDynamicRenderingFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDeviceDynamicRenderingFeatures`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDeviceDynamicRenderingFeatures`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceDynamicRenderingFeatures.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceDynamicRenderingFeatures.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceDynamicRenderingFeatures.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceDynamicRenderingFeatures.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `dynamicRendering` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int dynamicRenderingAt(long index) { return VkPhysicalDeviceDynamicRenderingFeatures.get_dynamicRendering(this.segment(), index); }
+        /// Sets `dynamicRendering` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer dynamicRenderingAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceDynamicRenderingFeatures.set_dynamicRendering(this.segment(), index, value); return this; }
+
+    }
 }

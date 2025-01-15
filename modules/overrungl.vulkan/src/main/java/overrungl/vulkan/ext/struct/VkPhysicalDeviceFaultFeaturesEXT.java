@@ -43,7 +43,7 @@ import overrungl.util.*;
 ///     VkBool32 deviceFaultVendorBinary;
 /// } VkPhysicalDeviceFaultFeaturesEXT;
 /// ```
-public final class VkPhysicalDeviceFaultFeaturesEXT extends Struct {
+public sealed class VkPhysicalDeviceFaultFeaturesEXT extends Struct {
     /// The struct layout of `VkPhysicalDeviceFaultFeaturesEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -70,6 +70,11 @@ public final class VkPhysicalDeviceFaultFeaturesEXT extends Struct {
     public static VkPhysicalDeviceFaultFeaturesEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceFaultFeaturesEXT(segment); }
 
     /// Creates `VkPhysicalDeviceFaultFeaturesEXT` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPhysicalDeviceFaultFeaturesEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -82,7 +87,7 @@ public final class VkPhysicalDeviceFaultFeaturesEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceFaultFeaturesEXT ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceFaultFeaturesEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceFaultFeaturesEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -93,18 +98,21 @@ public final class VkPhysicalDeviceFaultFeaturesEXT extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceFaultFeaturesEXT`
-    public static VkPhysicalDeviceFaultFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceFaultFeaturesEXT(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkPhysicalDeviceFaultFeaturesEXT`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDeviceFaultFeaturesEXT`
-    public VkPhysicalDeviceFaultFeaturesEXT asSlice(long index) { return new VkPhysicalDeviceFaultFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkPhysicalDeviceFaultFeaturesEXT` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDeviceFaultFeaturesEXT`
+    public static VkPhysicalDeviceFaultFeaturesEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int deviceFault, @CType("VkBool32") int deviceFaultVendorBinary) { return alloc(allocator).sType(sType).pNext(pNext).deviceFault(deviceFault).deviceFaultVendorBinary(deviceFaultVendorBinary); }
 
-    /// Creates a slice of `VkPhysicalDeviceFaultFeaturesEXT`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDeviceFaultFeaturesEXT`
-    public VkPhysicalDeviceFaultFeaturesEXT asSlice(long index, long count) { return new VkPhysicalDeviceFaultFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDeviceFaultFeaturesEXT copyFrom(VkPhysicalDeviceFaultFeaturesEXT src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -113,9 +121,6 @@ public final class VkPhysicalDeviceFaultFeaturesEXT extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceFaultFeaturesEXT.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceFaultFeaturesEXT.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPhysicalDeviceFaultFeaturesEXT.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -127,11 +132,6 @@ public final class VkPhysicalDeviceFaultFeaturesEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceFaultFeaturesEXT.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFaultFeaturesEXT sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceFaultFeaturesEXT.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -144,9 +144,6 @@ public final class VkPhysicalDeviceFaultFeaturesEXT extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceFaultFeaturesEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceFaultFeaturesEXT.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceFaultFeaturesEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -158,11 +155,6 @@ public final class VkPhysicalDeviceFaultFeaturesEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceFaultFeaturesEXT.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFaultFeaturesEXT pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceFaultFeaturesEXT.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -175,9 +167,6 @@ public final class VkPhysicalDeviceFaultFeaturesEXT extends Struct {
     /// {@return `deviceFault`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_deviceFault(MemorySegment segment) { return VkPhysicalDeviceFaultFeaturesEXT.get_deviceFault(segment, 0L); }
-    /// {@return `deviceFault` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int deviceFaultAt(long index) { return VkPhysicalDeviceFaultFeaturesEXT.get_deviceFault(this.segment(), index); }
     /// {@return `deviceFault`}
     public @CType("VkBool32") int deviceFault() { return VkPhysicalDeviceFaultFeaturesEXT.get_deviceFault(this.segment()); }
     /// Sets `deviceFault` with the given value at the given index.
@@ -189,11 +178,6 @@ public final class VkPhysicalDeviceFaultFeaturesEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_deviceFault(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceFaultFeaturesEXT.set_deviceFault(segment, 0L, value); }
-    /// Sets `deviceFault` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFaultFeaturesEXT deviceFaultAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFaultFeaturesEXT.set_deviceFault(this.segment(), index, value); return this; }
     /// Sets `deviceFault` with the given value.
     /// @param value the value
     /// @return `this`
@@ -206,9 +190,6 @@ public final class VkPhysicalDeviceFaultFeaturesEXT extends Struct {
     /// {@return `deviceFaultVendorBinary`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_deviceFaultVendorBinary(MemorySegment segment) { return VkPhysicalDeviceFaultFeaturesEXT.get_deviceFaultVendorBinary(segment, 0L); }
-    /// {@return `deviceFaultVendorBinary` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int deviceFaultVendorBinaryAt(long index) { return VkPhysicalDeviceFaultFeaturesEXT.get_deviceFaultVendorBinary(this.segment(), index); }
     /// {@return `deviceFaultVendorBinary`}
     public @CType("VkBool32") int deviceFaultVendorBinary() { return VkPhysicalDeviceFaultFeaturesEXT.get_deviceFaultVendorBinary(this.segment()); }
     /// Sets `deviceFaultVendorBinary` with the given value at the given index.
@@ -220,14 +201,68 @@ public final class VkPhysicalDeviceFaultFeaturesEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_deviceFaultVendorBinary(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceFaultFeaturesEXT.set_deviceFaultVendorBinary(segment, 0L, value); }
-    /// Sets `deviceFaultVendorBinary` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceFaultFeaturesEXT deviceFaultVendorBinaryAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFaultFeaturesEXT.set_deviceFaultVendorBinary(this.segment(), index, value); return this; }
     /// Sets `deviceFaultVendorBinary` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceFaultFeaturesEXT deviceFaultVendorBinary(@CType("VkBool32") int value) { VkPhysicalDeviceFaultFeaturesEXT.set_deviceFaultVendorBinary(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDeviceFaultFeaturesEXT].
+    public static final class Buffer extends VkPhysicalDeviceFaultFeaturesEXT {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDeviceFaultFeaturesEXT.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDeviceFaultFeaturesEXT`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDeviceFaultFeaturesEXT`
+        public VkPhysicalDeviceFaultFeaturesEXT asSlice(long index) { return new VkPhysicalDeviceFaultFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDeviceFaultFeaturesEXT`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDeviceFaultFeaturesEXT`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceFaultFeaturesEXT.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceFaultFeaturesEXT.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceFaultFeaturesEXT.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceFaultFeaturesEXT.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `deviceFault` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int deviceFaultAt(long index) { return VkPhysicalDeviceFaultFeaturesEXT.get_deviceFault(this.segment(), index); }
+        /// Sets `deviceFault` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer deviceFaultAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFaultFeaturesEXT.set_deviceFault(this.segment(), index, value); return this; }
+
+        /// {@return `deviceFaultVendorBinary` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int deviceFaultVendorBinaryAt(long index) { return VkPhysicalDeviceFaultFeaturesEXT.get_deviceFaultVendorBinary(this.segment(), index); }
+        /// Sets `deviceFaultVendorBinary` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer deviceFaultVendorBinaryAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceFaultFeaturesEXT.set_deviceFaultVendorBinary(this.segment(), index, value); return this; }
+
+    }
 }

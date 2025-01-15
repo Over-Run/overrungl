@@ -37,7 +37,7 @@ import overrungl.util.*;
 ///     VkClearDepthStencilValue depthStencil;
 /// } VkClearValue;
 /// ```
-public final class VkClearValue extends Union {
+public sealed class VkClearValue extends Union {
     /// The union layout of `VkClearValue`.
     public static final UnionLayout LAYOUT = MemoryLayout.unionLayout(
         overrungl.vulkan.union.VkClearColorValue.LAYOUT.withName("color"),
@@ -62,6 +62,11 @@ public final class VkClearValue extends Union {
     public static VkClearValue of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkClearValue(segment); }
 
     /// Creates `VkClearValue` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkClearValue` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -74,7 +79,7 @@ public final class VkClearValue extends Union {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkClearValue ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkClearValue(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkClearValue` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -85,18 +90,16 @@ public final class VkClearValue extends Union {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkClearValue`
-    public static VkClearValue alloc(SegmentAllocator allocator, long count) { return new VkClearValue(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkClearValue`.
-    /// @param index the index of the union buffer
-    /// @return the slice of `VkClearValue`
-    public VkClearValue asSlice(long index) { return new VkClearValue(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkClearValue copyFrom(VkClearValue src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Creates a slice of `VkClearValue`.
-    /// @param index the index of the union buffer
-    /// @param count the count
-    /// @return the slice of `VkClearValue`
-    public VkClearValue asSlice(long index, long count) { return new VkClearValue(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `color` at the given index}
     /// @param segment the segment of the union
@@ -105,9 +108,6 @@ public final class VkClearValue extends Union {
     /// {@return `color`}
     /// @param segment the segment of the union
     public static @CType("VkClearColorValue") java.lang.foreign.MemorySegment get_color(MemorySegment segment) { return VkClearValue.get_color(segment, 0L); }
-    /// {@return `color` at the given index}
-    /// @param index the index
-    public @CType("VkClearColorValue") java.lang.foreign.MemorySegment colorAt(long index) { return VkClearValue.get_color(this.segment(), index); }
     /// {@return `color`}
     public @CType("VkClearColorValue") java.lang.foreign.MemorySegment color() { return VkClearValue.get_color(this.segment()); }
     /// Sets `color` with the given value at the given index.
@@ -119,11 +119,6 @@ public final class VkClearValue extends Union {
     /// @param segment the segment of the union
     /// @param value   the value
     public static void set_color(MemorySegment segment, @CType("VkClearColorValue") java.lang.foreign.MemorySegment value) { VkClearValue.set_color(segment, 0L, value); }
-    /// Sets `color` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkClearValue colorAt(long index, @CType("VkClearColorValue") java.lang.foreign.MemorySegment value) { VkClearValue.set_color(this.segment(), index, value); return this; }
     /// Sets `color` with the given value.
     /// @param value the value
     /// @return `this`
@@ -136,9 +131,6 @@ public final class VkClearValue extends Union {
     /// {@return `depthStencil`}
     /// @param segment the segment of the union
     public static @CType("VkClearDepthStencilValue") java.lang.foreign.MemorySegment get_depthStencil(MemorySegment segment) { return VkClearValue.get_depthStencil(segment, 0L); }
-    /// {@return `depthStencil` at the given index}
-    /// @param index the index
-    public @CType("VkClearDepthStencilValue") java.lang.foreign.MemorySegment depthStencilAt(long index) { return VkClearValue.get_depthStencil(this.segment(), index); }
     /// {@return `depthStencil`}
     public @CType("VkClearDepthStencilValue") java.lang.foreign.MemorySegment depthStencil() { return VkClearValue.get_depthStencil(this.segment()); }
     /// Sets `depthStencil` with the given value at the given index.
@@ -150,14 +142,50 @@ public final class VkClearValue extends Union {
     /// @param segment the segment of the union
     /// @param value   the value
     public static void set_depthStencil(MemorySegment segment, @CType("VkClearDepthStencilValue") java.lang.foreign.MemorySegment value) { VkClearValue.set_depthStencil(segment, 0L, value); }
-    /// Sets `depthStencil` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkClearValue depthStencilAt(long index, @CType("VkClearDepthStencilValue") java.lang.foreign.MemorySegment value) { VkClearValue.set_depthStencil(this.segment(), index, value); return this; }
     /// Sets `depthStencil` with the given value.
     /// @param value the value
     /// @return `this`
     public VkClearValue depthStencil(@CType("VkClearDepthStencilValue") java.lang.foreign.MemorySegment value) { VkClearValue.set_depthStencil(this.segment(), value); return this; }
 
+    /// A buffer of [VkClearValue].
+    public static final class Buffer extends VkClearValue {
+        private final long elementCount;
+
+        /// Creates `VkClearValue.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkClearValue`.
+        /// @param index the index of the union buffer
+        /// @return the slice of `VkClearValue`
+        public VkClearValue asSlice(long index) { return new VkClearValue(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkClearValue`.
+        /// @param index the index of the union buffer
+        /// @param count the count
+        /// @return the slice of `VkClearValue`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `color` at the given index}
+        /// @param index the index
+        public @CType("VkClearColorValue") java.lang.foreign.MemorySegment colorAt(long index) { return VkClearValue.get_color(this.segment(), index); }
+        /// Sets `color` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer colorAt(long index, @CType("VkClearColorValue") java.lang.foreign.MemorySegment value) { VkClearValue.set_color(this.segment(), index, value); return this; }
+
+        /// {@return `depthStencil` at the given index}
+        /// @param index the index
+        public @CType("VkClearDepthStencilValue") java.lang.foreign.MemorySegment depthStencilAt(long index) { return VkClearValue.get_depthStencil(this.segment(), index); }
+        /// Sets `depthStencil` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer depthStencilAt(long index, @CType("VkClearDepthStencilValue") java.lang.foreign.MemorySegment value) { VkClearValue.set_depthStencil(this.segment(), index, value); return this; }
+
+    }
 }

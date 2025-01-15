@@ -46,7 +46,7 @@ import overrungl.util.*;
 ///     LPCWSTR name;
 /// } VkExportMemoryWin32HandleInfoKHR;
 /// ```
-public final class VkExportMemoryWin32HandleInfoKHR extends Struct {
+public sealed class VkExportMemoryWin32HandleInfoKHR extends Struct {
     /// The struct layout of `VkExportMemoryWin32HandleInfoKHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -76,6 +76,11 @@ public final class VkExportMemoryWin32HandleInfoKHR extends Struct {
     public static VkExportMemoryWin32HandleInfoKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkExportMemoryWin32HandleInfoKHR(segment); }
 
     /// Creates `VkExportMemoryWin32HandleInfoKHR` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkExportMemoryWin32HandleInfoKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -88,7 +93,7 @@ public final class VkExportMemoryWin32HandleInfoKHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkExportMemoryWin32HandleInfoKHR ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkExportMemoryWin32HandleInfoKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkExportMemoryWin32HandleInfoKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -99,18 +104,21 @@ public final class VkExportMemoryWin32HandleInfoKHR extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkExportMemoryWin32HandleInfoKHR`
-    public static VkExportMemoryWin32HandleInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkExportMemoryWin32HandleInfoKHR(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkExportMemoryWin32HandleInfoKHR`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkExportMemoryWin32HandleInfoKHR`
-    public VkExportMemoryWin32HandleInfoKHR asSlice(long index) { return new VkExportMemoryWin32HandleInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkExportMemoryWin32HandleInfoKHR` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkExportMemoryWin32HandleInfoKHR`
+    public static VkExportMemoryWin32HandleInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("const SECURITY_ATTRIBUTES *") java.lang.foreign.MemorySegment pAttributes, @CType("DWORD") int dwAccess, @CType("LPCWSTR") java.lang.foreign.MemorySegment name) { return alloc(allocator).sType(sType).pNext(pNext).pAttributes(pAttributes).dwAccess(dwAccess).name(name); }
 
-    /// Creates a slice of `VkExportMemoryWin32HandleInfoKHR`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkExportMemoryWin32HandleInfoKHR`
-    public VkExportMemoryWin32HandleInfoKHR asSlice(long index, long count) { return new VkExportMemoryWin32HandleInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkExportMemoryWin32HandleInfoKHR copyFrom(VkExportMemoryWin32HandleInfoKHR src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -119,9 +127,6 @@ public final class VkExportMemoryWin32HandleInfoKHR extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkExportMemoryWin32HandleInfoKHR.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkExportMemoryWin32HandleInfoKHR.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkExportMemoryWin32HandleInfoKHR.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -133,11 +138,6 @@ public final class VkExportMemoryWin32HandleInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkExportMemoryWin32HandleInfoKHR.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkExportMemoryWin32HandleInfoKHR sTypeAt(long index, @CType("VkStructureType") int value) { VkExportMemoryWin32HandleInfoKHR.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,9 +150,6 @@ public final class VkExportMemoryWin32HandleInfoKHR extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkExportMemoryWin32HandleInfoKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkExportMemoryWin32HandleInfoKHR.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkExportMemoryWin32HandleInfoKHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -164,11 +161,6 @@ public final class VkExportMemoryWin32HandleInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkExportMemoryWin32HandleInfoKHR.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkExportMemoryWin32HandleInfoKHR pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkExportMemoryWin32HandleInfoKHR.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -181,9 +173,6 @@ public final class VkExportMemoryWin32HandleInfoKHR extends Struct {
     /// {@return `pAttributes`}
     /// @param segment the segment of the struct
     public static @CType("const SECURITY_ATTRIBUTES *") java.lang.foreign.MemorySegment get_pAttributes(MemorySegment segment) { return VkExportMemoryWin32HandleInfoKHR.get_pAttributes(segment, 0L); }
-    /// {@return `pAttributes` at the given index}
-    /// @param index the index
-    public @CType("const SECURITY_ATTRIBUTES *") java.lang.foreign.MemorySegment pAttributesAt(long index) { return VkExportMemoryWin32HandleInfoKHR.get_pAttributes(this.segment(), index); }
     /// {@return `pAttributes`}
     public @CType("const SECURITY_ATTRIBUTES *") java.lang.foreign.MemorySegment pAttributes() { return VkExportMemoryWin32HandleInfoKHR.get_pAttributes(this.segment()); }
     /// Sets `pAttributes` with the given value at the given index.
@@ -195,11 +184,6 @@ public final class VkExportMemoryWin32HandleInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pAttributes(MemorySegment segment, @CType("const SECURITY_ATTRIBUTES *") java.lang.foreign.MemorySegment value) { VkExportMemoryWin32HandleInfoKHR.set_pAttributes(segment, 0L, value); }
-    /// Sets `pAttributes` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkExportMemoryWin32HandleInfoKHR pAttributesAt(long index, @CType("const SECURITY_ATTRIBUTES *") java.lang.foreign.MemorySegment value) { VkExportMemoryWin32HandleInfoKHR.set_pAttributes(this.segment(), index, value); return this; }
     /// Sets `pAttributes` with the given value.
     /// @param value the value
     /// @return `this`
@@ -212,9 +196,6 @@ public final class VkExportMemoryWin32HandleInfoKHR extends Struct {
     /// {@return `dwAccess`}
     /// @param segment the segment of the struct
     public static @CType("DWORD") int get_dwAccess(MemorySegment segment) { return VkExportMemoryWin32HandleInfoKHR.get_dwAccess(segment, 0L); }
-    /// {@return `dwAccess` at the given index}
-    /// @param index the index
-    public @CType("DWORD") int dwAccessAt(long index) { return VkExportMemoryWin32HandleInfoKHR.get_dwAccess(this.segment(), index); }
     /// {@return `dwAccess`}
     public @CType("DWORD") int dwAccess() { return VkExportMemoryWin32HandleInfoKHR.get_dwAccess(this.segment()); }
     /// Sets `dwAccess` with the given value at the given index.
@@ -226,11 +207,6 @@ public final class VkExportMemoryWin32HandleInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_dwAccess(MemorySegment segment, @CType("DWORD") int value) { VkExportMemoryWin32HandleInfoKHR.set_dwAccess(segment, 0L, value); }
-    /// Sets `dwAccess` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkExportMemoryWin32HandleInfoKHR dwAccessAt(long index, @CType("DWORD") int value) { VkExportMemoryWin32HandleInfoKHR.set_dwAccess(this.segment(), index, value); return this; }
     /// Sets `dwAccess` with the given value.
     /// @param value the value
     /// @return `this`
@@ -243,9 +219,6 @@ public final class VkExportMemoryWin32HandleInfoKHR extends Struct {
     /// {@return `name`}
     /// @param segment the segment of the struct
     public static @CType("LPCWSTR") java.lang.foreign.MemorySegment get_name(MemorySegment segment) { return VkExportMemoryWin32HandleInfoKHR.get_name(segment, 0L); }
-    /// {@return `name` at the given index}
-    /// @param index the index
-    public @CType("LPCWSTR") java.lang.foreign.MemorySegment nameAt(long index) { return VkExportMemoryWin32HandleInfoKHR.get_name(this.segment(), index); }
     /// {@return `name`}
     public @CType("LPCWSTR") java.lang.foreign.MemorySegment name() { return VkExportMemoryWin32HandleInfoKHR.get_name(this.segment()); }
     /// Sets `name` with the given value at the given index.
@@ -257,14 +230,77 @@ public final class VkExportMemoryWin32HandleInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_name(MemorySegment segment, @CType("LPCWSTR") java.lang.foreign.MemorySegment value) { VkExportMemoryWin32HandleInfoKHR.set_name(segment, 0L, value); }
-    /// Sets `name` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkExportMemoryWin32HandleInfoKHR nameAt(long index, @CType("LPCWSTR") java.lang.foreign.MemorySegment value) { VkExportMemoryWin32HandleInfoKHR.set_name(this.segment(), index, value); return this; }
     /// Sets `name` with the given value.
     /// @param value the value
     /// @return `this`
     public VkExportMemoryWin32HandleInfoKHR name(@CType("LPCWSTR") java.lang.foreign.MemorySegment value) { VkExportMemoryWin32HandleInfoKHR.set_name(this.segment(), value); return this; }
 
+    /// A buffer of [VkExportMemoryWin32HandleInfoKHR].
+    public static final class Buffer extends VkExportMemoryWin32HandleInfoKHR {
+        private final long elementCount;
+
+        /// Creates `VkExportMemoryWin32HandleInfoKHR.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkExportMemoryWin32HandleInfoKHR`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkExportMemoryWin32HandleInfoKHR`
+        public VkExportMemoryWin32HandleInfoKHR asSlice(long index) { return new VkExportMemoryWin32HandleInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkExportMemoryWin32HandleInfoKHR`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkExportMemoryWin32HandleInfoKHR`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkExportMemoryWin32HandleInfoKHR.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkExportMemoryWin32HandleInfoKHR.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkExportMemoryWin32HandleInfoKHR.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkExportMemoryWin32HandleInfoKHR.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `pAttributes` at the given index}
+        /// @param index the index
+        public @CType("const SECURITY_ATTRIBUTES *") java.lang.foreign.MemorySegment pAttributesAt(long index) { return VkExportMemoryWin32HandleInfoKHR.get_pAttributes(this.segment(), index); }
+        /// Sets `pAttributes` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pAttributesAt(long index, @CType("const SECURITY_ATTRIBUTES *") java.lang.foreign.MemorySegment value) { VkExportMemoryWin32HandleInfoKHR.set_pAttributes(this.segment(), index, value); return this; }
+
+        /// {@return `dwAccess` at the given index}
+        /// @param index the index
+        public @CType("DWORD") int dwAccessAt(long index) { return VkExportMemoryWin32HandleInfoKHR.get_dwAccess(this.segment(), index); }
+        /// Sets `dwAccess` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer dwAccessAt(long index, @CType("DWORD") int value) { VkExportMemoryWin32HandleInfoKHR.set_dwAccess(this.segment(), index, value); return this; }
+
+        /// {@return `name` at the given index}
+        /// @param index the index
+        public @CType("LPCWSTR") java.lang.foreign.MemorySegment nameAt(long index) { return VkExportMemoryWin32HandleInfoKHR.get_name(this.segment(), index); }
+        /// Sets `name` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer nameAt(long index, @CType("LPCWSTR") java.lang.foreign.MemorySegment value) { VkExportMemoryWin32HandleInfoKHR.set_name(this.segment(), index, value); return this; }
+
+    }
 }

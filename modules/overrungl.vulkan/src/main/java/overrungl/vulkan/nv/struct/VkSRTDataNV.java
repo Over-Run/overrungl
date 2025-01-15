@@ -79,7 +79,7 @@ import overrungl.util.*;
 ///     float tz;
 /// } VkSRTDataNV;
 /// ```
-public final class VkSRTDataNV extends Struct {
+public sealed class VkSRTDataNV extends Struct {
     /// The struct layout of `VkSRTDataNV`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_FLOAT.withName("sx"),
@@ -142,6 +142,11 @@ public final class VkSRTDataNV extends Struct {
     public static VkSRTDataNV of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkSRTDataNV(segment); }
 
     /// Creates `VkSRTDataNV` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkSRTDataNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -154,7 +159,7 @@ public final class VkSRTDataNV extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSRTDataNV ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkSRTDataNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkSRTDataNV` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -165,18 +170,21 @@ public final class VkSRTDataNV extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkSRTDataNV`
-    public static VkSRTDataNV alloc(SegmentAllocator allocator, long count) { return new VkSRTDataNV(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkSRTDataNV`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkSRTDataNV`
-    public VkSRTDataNV asSlice(long index) { return new VkSRTDataNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkSRTDataNV` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkSRTDataNV`
+    public static VkSRTDataNV allocInit(SegmentAllocator allocator, @CType("float") float sx, @CType("float") float a, @CType("float") float b, @CType("float") float pvx, @CType("float") float sy, @CType("float") float c, @CType("float") float pvy, @CType("float") float sz, @CType("float") float pvz, @CType("float") float qx, @CType("float") float qy, @CType("float") float qz, @CType("float") float qw, @CType("float") float tx, @CType("float") float ty, @CType("float") float tz) { return alloc(allocator).sx(sx).a(a).b(b).pvx(pvx).sy(sy).c(c).pvy(pvy).sz(sz).pvz(pvz).qx(qx).qy(qy).qz(qz).qw(qw).tx(tx).ty(ty).tz(tz); }
 
-    /// Creates a slice of `VkSRTDataNV`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkSRTDataNV`
-    public VkSRTDataNV asSlice(long index, long count) { return new VkSRTDataNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkSRTDataNV copyFrom(VkSRTDataNV src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sx` at the given index}
     /// @param segment the segment of the struct
@@ -185,9 +193,6 @@ public final class VkSRTDataNV extends Struct {
     /// {@return `sx`}
     /// @param segment the segment of the struct
     public static @CType("float") float get_sx(MemorySegment segment) { return VkSRTDataNV.get_sx(segment, 0L); }
-    /// {@return `sx` at the given index}
-    /// @param index the index
-    public @CType("float") float sxAt(long index) { return VkSRTDataNV.get_sx(this.segment(), index); }
     /// {@return `sx`}
     public @CType("float") float sx() { return VkSRTDataNV.get_sx(this.segment()); }
     /// Sets `sx` with the given value at the given index.
@@ -199,11 +204,6 @@ public final class VkSRTDataNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sx(MemorySegment segment, @CType("float") float value) { VkSRTDataNV.set_sx(segment, 0L, value); }
-    /// Sets `sx` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSRTDataNV sxAt(long index, @CType("float") float value) { VkSRTDataNV.set_sx(this.segment(), index, value); return this; }
     /// Sets `sx` with the given value.
     /// @param value the value
     /// @return `this`
@@ -216,9 +216,6 @@ public final class VkSRTDataNV extends Struct {
     /// {@return `a`}
     /// @param segment the segment of the struct
     public static @CType("float") float get_a(MemorySegment segment) { return VkSRTDataNV.get_a(segment, 0L); }
-    /// {@return `a` at the given index}
-    /// @param index the index
-    public @CType("float") float aAt(long index) { return VkSRTDataNV.get_a(this.segment(), index); }
     /// {@return `a`}
     public @CType("float") float a() { return VkSRTDataNV.get_a(this.segment()); }
     /// Sets `a` with the given value at the given index.
@@ -230,11 +227,6 @@ public final class VkSRTDataNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_a(MemorySegment segment, @CType("float") float value) { VkSRTDataNV.set_a(segment, 0L, value); }
-    /// Sets `a` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSRTDataNV aAt(long index, @CType("float") float value) { VkSRTDataNV.set_a(this.segment(), index, value); return this; }
     /// Sets `a` with the given value.
     /// @param value the value
     /// @return `this`
@@ -247,9 +239,6 @@ public final class VkSRTDataNV extends Struct {
     /// {@return `b`}
     /// @param segment the segment of the struct
     public static @CType("float") float get_b(MemorySegment segment) { return VkSRTDataNV.get_b(segment, 0L); }
-    /// {@return `b` at the given index}
-    /// @param index the index
-    public @CType("float") float bAt(long index) { return VkSRTDataNV.get_b(this.segment(), index); }
     /// {@return `b`}
     public @CType("float") float b() { return VkSRTDataNV.get_b(this.segment()); }
     /// Sets `b` with the given value at the given index.
@@ -261,11 +250,6 @@ public final class VkSRTDataNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_b(MemorySegment segment, @CType("float") float value) { VkSRTDataNV.set_b(segment, 0L, value); }
-    /// Sets `b` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSRTDataNV bAt(long index, @CType("float") float value) { VkSRTDataNV.set_b(this.segment(), index, value); return this; }
     /// Sets `b` with the given value.
     /// @param value the value
     /// @return `this`
@@ -278,9 +262,6 @@ public final class VkSRTDataNV extends Struct {
     /// {@return `pvx`}
     /// @param segment the segment of the struct
     public static @CType("float") float get_pvx(MemorySegment segment) { return VkSRTDataNV.get_pvx(segment, 0L); }
-    /// {@return `pvx` at the given index}
-    /// @param index the index
-    public @CType("float") float pvxAt(long index) { return VkSRTDataNV.get_pvx(this.segment(), index); }
     /// {@return `pvx`}
     public @CType("float") float pvx() { return VkSRTDataNV.get_pvx(this.segment()); }
     /// Sets `pvx` with the given value at the given index.
@@ -292,11 +273,6 @@ public final class VkSRTDataNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pvx(MemorySegment segment, @CType("float") float value) { VkSRTDataNV.set_pvx(segment, 0L, value); }
-    /// Sets `pvx` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSRTDataNV pvxAt(long index, @CType("float") float value) { VkSRTDataNV.set_pvx(this.segment(), index, value); return this; }
     /// Sets `pvx` with the given value.
     /// @param value the value
     /// @return `this`
@@ -309,9 +285,6 @@ public final class VkSRTDataNV extends Struct {
     /// {@return `sy`}
     /// @param segment the segment of the struct
     public static @CType("float") float get_sy(MemorySegment segment) { return VkSRTDataNV.get_sy(segment, 0L); }
-    /// {@return `sy` at the given index}
-    /// @param index the index
-    public @CType("float") float syAt(long index) { return VkSRTDataNV.get_sy(this.segment(), index); }
     /// {@return `sy`}
     public @CType("float") float sy() { return VkSRTDataNV.get_sy(this.segment()); }
     /// Sets `sy` with the given value at the given index.
@@ -323,11 +296,6 @@ public final class VkSRTDataNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sy(MemorySegment segment, @CType("float") float value) { VkSRTDataNV.set_sy(segment, 0L, value); }
-    /// Sets `sy` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSRTDataNV syAt(long index, @CType("float") float value) { VkSRTDataNV.set_sy(this.segment(), index, value); return this; }
     /// Sets `sy` with the given value.
     /// @param value the value
     /// @return `this`
@@ -340,9 +308,6 @@ public final class VkSRTDataNV extends Struct {
     /// {@return `c`}
     /// @param segment the segment of the struct
     public static @CType("float") float get_c(MemorySegment segment) { return VkSRTDataNV.get_c(segment, 0L); }
-    /// {@return `c` at the given index}
-    /// @param index the index
-    public @CType("float") float cAt(long index) { return VkSRTDataNV.get_c(this.segment(), index); }
     /// {@return `c`}
     public @CType("float") float c() { return VkSRTDataNV.get_c(this.segment()); }
     /// Sets `c` with the given value at the given index.
@@ -354,11 +319,6 @@ public final class VkSRTDataNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_c(MemorySegment segment, @CType("float") float value) { VkSRTDataNV.set_c(segment, 0L, value); }
-    /// Sets `c` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSRTDataNV cAt(long index, @CType("float") float value) { VkSRTDataNV.set_c(this.segment(), index, value); return this; }
     /// Sets `c` with the given value.
     /// @param value the value
     /// @return `this`
@@ -371,9 +331,6 @@ public final class VkSRTDataNV extends Struct {
     /// {@return `pvy`}
     /// @param segment the segment of the struct
     public static @CType("float") float get_pvy(MemorySegment segment) { return VkSRTDataNV.get_pvy(segment, 0L); }
-    /// {@return `pvy` at the given index}
-    /// @param index the index
-    public @CType("float") float pvyAt(long index) { return VkSRTDataNV.get_pvy(this.segment(), index); }
     /// {@return `pvy`}
     public @CType("float") float pvy() { return VkSRTDataNV.get_pvy(this.segment()); }
     /// Sets `pvy` with the given value at the given index.
@@ -385,11 +342,6 @@ public final class VkSRTDataNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pvy(MemorySegment segment, @CType("float") float value) { VkSRTDataNV.set_pvy(segment, 0L, value); }
-    /// Sets `pvy` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSRTDataNV pvyAt(long index, @CType("float") float value) { VkSRTDataNV.set_pvy(this.segment(), index, value); return this; }
     /// Sets `pvy` with the given value.
     /// @param value the value
     /// @return `this`
@@ -402,9 +354,6 @@ public final class VkSRTDataNV extends Struct {
     /// {@return `sz`}
     /// @param segment the segment of the struct
     public static @CType("float") float get_sz(MemorySegment segment) { return VkSRTDataNV.get_sz(segment, 0L); }
-    /// {@return `sz` at the given index}
-    /// @param index the index
-    public @CType("float") float szAt(long index) { return VkSRTDataNV.get_sz(this.segment(), index); }
     /// {@return `sz`}
     public @CType("float") float sz() { return VkSRTDataNV.get_sz(this.segment()); }
     /// Sets `sz` with the given value at the given index.
@@ -416,11 +365,6 @@ public final class VkSRTDataNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sz(MemorySegment segment, @CType("float") float value) { VkSRTDataNV.set_sz(segment, 0L, value); }
-    /// Sets `sz` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSRTDataNV szAt(long index, @CType("float") float value) { VkSRTDataNV.set_sz(this.segment(), index, value); return this; }
     /// Sets `sz` with the given value.
     /// @param value the value
     /// @return `this`
@@ -433,9 +377,6 @@ public final class VkSRTDataNV extends Struct {
     /// {@return `pvz`}
     /// @param segment the segment of the struct
     public static @CType("float") float get_pvz(MemorySegment segment) { return VkSRTDataNV.get_pvz(segment, 0L); }
-    /// {@return `pvz` at the given index}
-    /// @param index the index
-    public @CType("float") float pvzAt(long index) { return VkSRTDataNV.get_pvz(this.segment(), index); }
     /// {@return `pvz`}
     public @CType("float") float pvz() { return VkSRTDataNV.get_pvz(this.segment()); }
     /// Sets `pvz` with the given value at the given index.
@@ -447,11 +388,6 @@ public final class VkSRTDataNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pvz(MemorySegment segment, @CType("float") float value) { VkSRTDataNV.set_pvz(segment, 0L, value); }
-    /// Sets `pvz` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSRTDataNV pvzAt(long index, @CType("float") float value) { VkSRTDataNV.set_pvz(this.segment(), index, value); return this; }
     /// Sets `pvz` with the given value.
     /// @param value the value
     /// @return `this`
@@ -464,9 +400,6 @@ public final class VkSRTDataNV extends Struct {
     /// {@return `qx`}
     /// @param segment the segment of the struct
     public static @CType("float") float get_qx(MemorySegment segment) { return VkSRTDataNV.get_qx(segment, 0L); }
-    /// {@return `qx` at the given index}
-    /// @param index the index
-    public @CType("float") float qxAt(long index) { return VkSRTDataNV.get_qx(this.segment(), index); }
     /// {@return `qx`}
     public @CType("float") float qx() { return VkSRTDataNV.get_qx(this.segment()); }
     /// Sets `qx` with the given value at the given index.
@@ -478,11 +411,6 @@ public final class VkSRTDataNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_qx(MemorySegment segment, @CType("float") float value) { VkSRTDataNV.set_qx(segment, 0L, value); }
-    /// Sets `qx` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSRTDataNV qxAt(long index, @CType("float") float value) { VkSRTDataNV.set_qx(this.segment(), index, value); return this; }
     /// Sets `qx` with the given value.
     /// @param value the value
     /// @return `this`
@@ -495,9 +423,6 @@ public final class VkSRTDataNV extends Struct {
     /// {@return `qy`}
     /// @param segment the segment of the struct
     public static @CType("float") float get_qy(MemorySegment segment) { return VkSRTDataNV.get_qy(segment, 0L); }
-    /// {@return `qy` at the given index}
-    /// @param index the index
-    public @CType("float") float qyAt(long index) { return VkSRTDataNV.get_qy(this.segment(), index); }
     /// {@return `qy`}
     public @CType("float") float qy() { return VkSRTDataNV.get_qy(this.segment()); }
     /// Sets `qy` with the given value at the given index.
@@ -509,11 +434,6 @@ public final class VkSRTDataNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_qy(MemorySegment segment, @CType("float") float value) { VkSRTDataNV.set_qy(segment, 0L, value); }
-    /// Sets `qy` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSRTDataNV qyAt(long index, @CType("float") float value) { VkSRTDataNV.set_qy(this.segment(), index, value); return this; }
     /// Sets `qy` with the given value.
     /// @param value the value
     /// @return `this`
@@ -526,9 +446,6 @@ public final class VkSRTDataNV extends Struct {
     /// {@return `qz`}
     /// @param segment the segment of the struct
     public static @CType("float") float get_qz(MemorySegment segment) { return VkSRTDataNV.get_qz(segment, 0L); }
-    /// {@return `qz` at the given index}
-    /// @param index the index
-    public @CType("float") float qzAt(long index) { return VkSRTDataNV.get_qz(this.segment(), index); }
     /// {@return `qz`}
     public @CType("float") float qz() { return VkSRTDataNV.get_qz(this.segment()); }
     /// Sets `qz` with the given value at the given index.
@@ -540,11 +457,6 @@ public final class VkSRTDataNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_qz(MemorySegment segment, @CType("float") float value) { VkSRTDataNV.set_qz(segment, 0L, value); }
-    /// Sets `qz` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSRTDataNV qzAt(long index, @CType("float") float value) { VkSRTDataNV.set_qz(this.segment(), index, value); return this; }
     /// Sets `qz` with the given value.
     /// @param value the value
     /// @return `this`
@@ -557,9 +469,6 @@ public final class VkSRTDataNV extends Struct {
     /// {@return `qw`}
     /// @param segment the segment of the struct
     public static @CType("float") float get_qw(MemorySegment segment) { return VkSRTDataNV.get_qw(segment, 0L); }
-    /// {@return `qw` at the given index}
-    /// @param index the index
-    public @CType("float") float qwAt(long index) { return VkSRTDataNV.get_qw(this.segment(), index); }
     /// {@return `qw`}
     public @CType("float") float qw() { return VkSRTDataNV.get_qw(this.segment()); }
     /// Sets `qw` with the given value at the given index.
@@ -571,11 +480,6 @@ public final class VkSRTDataNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_qw(MemorySegment segment, @CType("float") float value) { VkSRTDataNV.set_qw(segment, 0L, value); }
-    /// Sets `qw` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSRTDataNV qwAt(long index, @CType("float") float value) { VkSRTDataNV.set_qw(this.segment(), index, value); return this; }
     /// Sets `qw` with the given value.
     /// @param value the value
     /// @return `this`
@@ -588,9 +492,6 @@ public final class VkSRTDataNV extends Struct {
     /// {@return `tx`}
     /// @param segment the segment of the struct
     public static @CType("float") float get_tx(MemorySegment segment) { return VkSRTDataNV.get_tx(segment, 0L); }
-    /// {@return `tx` at the given index}
-    /// @param index the index
-    public @CType("float") float txAt(long index) { return VkSRTDataNV.get_tx(this.segment(), index); }
     /// {@return `tx`}
     public @CType("float") float tx() { return VkSRTDataNV.get_tx(this.segment()); }
     /// Sets `tx` with the given value at the given index.
@@ -602,11 +503,6 @@ public final class VkSRTDataNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_tx(MemorySegment segment, @CType("float") float value) { VkSRTDataNV.set_tx(segment, 0L, value); }
-    /// Sets `tx` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSRTDataNV txAt(long index, @CType("float") float value) { VkSRTDataNV.set_tx(this.segment(), index, value); return this; }
     /// Sets `tx` with the given value.
     /// @param value the value
     /// @return `this`
@@ -619,9 +515,6 @@ public final class VkSRTDataNV extends Struct {
     /// {@return `ty`}
     /// @param segment the segment of the struct
     public static @CType("float") float get_ty(MemorySegment segment) { return VkSRTDataNV.get_ty(segment, 0L); }
-    /// {@return `ty` at the given index}
-    /// @param index the index
-    public @CType("float") float tyAt(long index) { return VkSRTDataNV.get_ty(this.segment(), index); }
     /// {@return `ty`}
     public @CType("float") float ty() { return VkSRTDataNV.get_ty(this.segment()); }
     /// Sets `ty` with the given value at the given index.
@@ -633,11 +526,6 @@ public final class VkSRTDataNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_ty(MemorySegment segment, @CType("float") float value) { VkSRTDataNV.set_ty(segment, 0L, value); }
-    /// Sets `ty` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSRTDataNV tyAt(long index, @CType("float") float value) { VkSRTDataNV.set_ty(this.segment(), index, value); return this; }
     /// Sets `ty` with the given value.
     /// @param value the value
     /// @return `this`
@@ -650,9 +538,6 @@ public final class VkSRTDataNV extends Struct {
     /// {@return `tz`}
     /// @param segment the segment of the struct
     public static @CType("float") float get_tz(MemorySegment segment) { return VkSRTDataNV.get_tz(segment, 0L); }
-    /// {@return `tz` at the given index}
-    /// @param index the index
-    public @CType("float") float tzAt(long index) { return VkSRTDataNV.get_tz(this.segment(), index); }
     /// {@return `tz`}
     public @CType("float") float tz() { return VkSRTDataNV.get_tz(this.segment()); }
     /// Sets `tz` with the given value at the given index.
@@ -664,14 +549,176 @@ public final class VkSRTDataNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_tz(MemorySegment segment, @CType("float") float value) { VkSRTDataNV.set_tz(segment, 0L, value); }
-    /// Sets `tz` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSRTDataNV tzAt(long index, @CType("float") float value) { VkSRTDataNV.set_tz(this.segment(), index, value); return this; }
     /// Sets `tz` with the given value.
     /// @param value the value
     /// @return `this`
     public VkSRTDataNV tz(@CType("float") float value) { VkSRTDataNV.set_tz(this.segment(), value); return this; }
 
+    /// A buffer of [VkSRTDataNV].
+    public static final class Buffer extends VkSRTDataNV {
+        private final long elementCount;
+
+        /// Creates `VkSRTDataNV.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkSRTDataNV`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkSRTDataNV`
+        public VkSRTDataNV asSlice(long index) { return new VkSRTDataNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkSRTDataNV`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkSRTDataNV`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sx` at the given index}
+        /// @param index the index
+        public @CType("float") float sxAt(long index) { return VkSRTDataNV.get_sx(this.segment(), index); }
+        /// Sets `sx` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sxAt(long index, @CType("float") float value) { VkSRTDataNV.set_sx(this.segment(), index, value); return this; }
+
+        /// {@return `a` at the given index}
+        /// @param index the index
+        public @CType("float") float aAt(long index) { return VkSRTDataNV.get_a(this.segment(), index); }
+        /// Sets `a` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer aAt(long index, @CType("float") float value) { VkSRTDataNV.set_a(this.segment(), index, value); return this; }
+
+        /// {@return `b` at the given index}
+        /// @param index the index
+        public @CType("float") float bAt(long index) { return VkSRTDataNV.get_b(this.segment(), index); }
+        /// Sets `b` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer bAt(long index, @CType("float") float value) { VkSRTDataNV.set_b(this.segment(), index, value); return this; }
+
+        /// {@return `pvx` at the given index}
+        /// @param index the index
+        public @CType("float") float pvxAt(long index) { return VkSRTDataNV.get_pvx(this.segment(), index); }
+        /// Sets `pvx` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pvxAt(long index, @CType("float") float value) { VkSRTDataNV.set_pvx(this.segment(), index, value); return this; }
+
+        /// {@return `sy` at the given index}
+        /// @param index the index
+        public @CType("float") float syAt(long index) { return VkSRTDataNV.get_sy(this.segment(), index); }
+        /// Sets `sy` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer syAt(long index, @CType("float") float value) { VkSRTDataNV.set_sy(this.segment(), index, value); return this; }
+
+        /// {@return `c` at the given index}
+        /// @param index the index
+        public @CType("float") float cAt(long index) { return VkSRTDataNV.get_c(this.segment(), index); }
+        /// Sets `c` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer cAt(long index, @CType("float") float value) { VkSRTDataNV.set_c(this.segment(), index, value); return this; }
+
+        /// {@return `pvy` at the given index}
+        /// @param index the index
+        public @CType("float") float pvyAt(long index) { return VkSRTDataNV.get_pvy(this.segment(), index); }
+        /// Sets `pvy` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pvyAt(long index, @CType("float") float value) { VkSRTDataNV.set_pvy(this.segment(), index, value); return this; }
+
+        /// {@return `sz` at the given index}
+        /// @param index the index
+        public @CType("float") float szAt(long index) { return VkSRTDataNV.get_sz(this.segment(), index); }
+        /// Sets `sz` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer szAt(long index, @CType("float") float value) { VkSRTDataNV.set_sz(this.segment(), index, value); return this; }
+
+        /// {@return `pvz` at the given index}
+        /// @param index the index
+        public @CType("float") float pvzAt(long index) { return VkSRTDataNV.get_pvz(this.segment(), index); }
+        /// Sets `pvz` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pvzAt(long index, @CType("float") float value) { VkSRTDataNV.set_pvz(this.segment(), index, value); return this; }
+
+        /// {@return `qx` at the given index}
+        /// @param index the index
+        public @CType("float") float qxAt(long index) { return VkSRTDataNV.get_qx(this.segment(), index); }
+        /// Sets `qx` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer qxAt(long index, @CType("float") float value) { VkSRTDataNV.set_qx(this.segment(), index, value); return this; }
+
+        /// {@return `qy` at the given index}
+        /// @param index the index
+        public @CType("float") float qyAt(long index) { return VkSRTDataNV.get_qy(this.segment(), index); }
+        /// Sets `qy` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer qyAt(long index, @CType("float") float value) { VkSRTDataNV.set_qy(this.segment(), index, value); return this; }
+
+        /// {@return `qz` at the given index}
+        /// @param index the index
+        public @CType("float") float qzAt(long index) { return VkSRTDataNV.get_qz(this.segment(), index); }
+        /// Sets `qz` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer qzAt(long index, @CType("float") float value) { VkSRTDataNV.set_qz(this.segment(), index, value); return this; }
+
+        /// {@return `qw` at the given index}
+        /// @param index the index
+        public @CType("float") float qwAt(long index) { return VkSRTDataNV.get_qw(this.segment(), index); }
+        /// Sets `qw` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer qwAt(long index, @CType("float") float value) { VkSRTDataNV.set_qw(this.segment(), index, value); return this; }
+
+        /// {@return `tx` at the given index}
+        /// @param index the index
+        public @CType("float") float txAt(long index) { return VkSRTDataNV.get_tx(this.segment(), index); }
+        /// Sets `tx` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer txAt(long index, @CType("float") float value) { VkSRTDataNV.set_tx(this.segment(), index, value); return this; }
+
+        /// {@return `ty` at the given index}
+        /// @param index the index
+        public @CType("float") float tyAt(long index) { return VkSRTDataNV.get_ty(this.segment(), index); }
+        /// Sets `ty` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer tyAt(long index, @CType("float") float value) { VkSRTDataNV.set_ty(this.segment(), index, value); return this; }
+
+        /// {@return `tz` at the given index}
+        /// @param index the index
+        public @CType("float") float tzAt(long index) { return VkSRTDataNV.get_tz(this.segment(), index); }
+        /// Sets `tz` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer tzAt(long index, @CType("float") float value) { VkSRTDataNV.set_tz(this.segment(), index, value); return this; }
+
+    }
 }

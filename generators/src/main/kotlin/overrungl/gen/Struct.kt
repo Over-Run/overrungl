@@ -134,7 +134,7 @@ class Struct(
 
         sb.appendLine(
             """
-                public final class $name extends ${if (union) "Union" else "Struct"} {
+                public sealed class $name extends ${if (union) "Union" else "Struct"} {
                     /// The $kindString layout of `$cType`.
                     public static final ${if (union) "Union" else "Struct"}Layout LAYOUT = ${if (union) "MemoryLayout.unionLayout" else "LayoutBuilder.struct"}(
             """.trimIndent()
@@ -181,6 +181,11 @@ class Struct(
                 |    public static $name of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new $name(segment); }
                 |
                 |    /// Creates `$name` with the given segment.
+                |    /// @param segment the memory segment
+                |    /// @return the created instance or `null` if the segment is `NULL`
+                |    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+                |
+                |    /// Creates `$name` with the given segment.
                 |    ///
                 |    /// Reinterprets the segment if zero-length.
                 |    /// @param segment the memory segment
@@ -193,7 +198,7 @@ class Struct(
                 |    /// @param segment the memory segment
                 |    /// @param count   the count of the buffer
                 |    /// @return the created instance or `null` if the segment is `NULL`
-                |    public static $name ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new $name(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+                |    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
                 |
             """.trimMargin()
         )
@@ -210,24 +215,43 @@ class Struct(
                 |    /// @param allocator the segment allocator
                 |    /// @param count     the count
                 |    /// @return the allocated `$name`
-                |    public static $name alloc(SegmentAllocator allocator, long count) { return new $name(allocator.allocate(LAYOUT, count)); }
+                |    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+                |
+            """.trimMargin()
+        )
+        if (!opaque && !union) {
+            sb.append(
+                """
+                |    /// Allocates a `$name` with the given segment allocator and the initializing arguments.
+                |    /// @param allocator the segment allocator
+                |    /// @return the allocated `$name`
+                |    public static $name allocInit(SegmentAllocator allocator
+            """.trimMargin()
+            )
+            members.forEach { sb.append(", ${it.type.carrierWithC()} ${it.name}") }
+            sb.append(") { return alloc(allocator)")
+            members.forEach { sb.append(".${it.name}(${it.name})") }
+            sb.appendLine("; }")
+            sb.appendLine()
+        }
+
+        // copy
+        sb.appendLine(
+            """
+                |    /// Copies from the given source.
+                |    /// @param src the source
+                |    /// @return `this`
+                |    public $name copyFrom($name src) { this.segment().copyFrom(src.segment()); return this; }
                 |
             """.trimMargin()
         )
 
-        // slice
+        // cast
         sb.appendLine(
             """
-                |    /// Creates a slice of `$name`.
-                |    /// @param index the index of the $kindString buffer
-                |    /// @return the slice of `$name`
-                |    public $name asSlice(long index) { return new $name(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
-                |
-                |    /// Creates a slice of `$name`.
-                |    /// @param index the index of the $kindString buffer
-                |    /// @param count the count
-                |    /// @return the slice of `$name`
-                |    public $name asSlice(long index, long count) { return new $name(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+                |    /// Converts this instance to a buffer.
+                |    /// @return the buffer
+                |    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
                 |
             """.trimMargin()
         )
@@ -262,13 +286,6 @@ class Struct(
                             """.trimMargin()
                         )
                         // instance
-                        sb.appendLine(
-                            """
-                                |    /// {@return `${it.name}` at the given index}
-                                |    /// @param index the index
-                                |    public ${it.type.carrierWithC()} ${it.name}At(long index) { return $name.get_${it.name}(this.segment(), index); }
-                            """.trimMargin()
-                        )
                         sb.appendLine(
                             """
                                 |    /// {@return `${it.name}`}
@@ -307,15 +324,6 @@ class Struct(
                         // instance
                         sb.appendLine(
                             """
-                                |    /// Sets `${it.name}` with the given value at the given index.
-                                |    /// @param index the index
-                                |    /// @param value the value
-                                |    /// @return `this`
-                                |    public $name ${it.name}At(long index, ${it.type.carrierWithC()} value) { $name.set_${it.name}(this.segment(), index, value); return this; }
-                            """.trimMargin()
-                        )
-                        sb.appendLine(
-                            """
                                 |    /// Sets `${it.name}` with the given value.
                                 |    /// @param value the value
                                 |    /// @return `this`
@@ -328,6 +336,85 @@ class Struct(
                 sb.appendLine()
             }
         }
+
+
+        // buffer
+        sb.appendLine("    /// A buffer of [$name].")
+        sb.appendLine("    public static final class Buffer extends $name {")
+        sb.appendLine("        private final long elementCount;")
+        sb.appendLine()
+
+        // constructor
+        sb.appendLine(
+            """
+                |        /// Creates `$name.Buffer` with the given segment.
+                |        /// @param segment      the memory segment
+                |        /// @param elementCount the element count
+                |        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+                |
+            """.trimMargin()
+        )
+
+        sb.appendLine(
+            """
+                |        @Override public long estimateCount() { return elementCount; }
+                |
+            """.trimMargin()
+        )
+
+        // slice
+        sb.appendLine(
+            """
+                |        /// Creates a slice of `$name`.
+                |        /// @param index the index of the $kindString buffer
+                |        /// @return the slice of `$name`
+                |        public $name asSlice(long index) { return new $name(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+                |
+                |        /// Creates a slice of `$name`.
+                |        /// @param index the index of the $kindString buffer
+                |        /// @param count the count
+                |        /// @return the slice of `$name`
+                |        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+                |
+            """.trimMargin()
+        )
+
+        if (!opaque) {
+            members.forEach {
+                // getters
+                when (it) {
+                    is ValueStructMember, is ByValueStructStructMember, is FixedSizeStructMember -> {
+                        // instance
+                        sb.appendLine(
+                            """
+                                |        /// {@return `${it.name}` at the given index}
+                                |        /// @param index the index
+                                |        public ${it.type.carrierWithC()} ${it.name}At(long index) { return $name.get_${it.name}(this.segment(), index); }
+                            """.trimMargin()
+                        )
+                    }
+                }
+
+                // setters
+                when (it) {
+                    is ValueStructMember, is ByValueStructStructMember, is FixedSizeStructMember -> {
+                        // instance
+                        sb.appendLine(
+                            """
+                                |        /// Sets `${it.name}` with the given value at the given index.
+                                |        /// @param index the index
+                                |        /// @param value the value
+                                |        /// @return `this`
+                                |        public Buffer ${it.name}At(long index, ${it.type.carrierWithC()} value) { $name.set_${it.name}(this.segment(), index, value); return this; }
+                            """.trimMargin()
+                        )
+                    }
+                }
+
+                sb.appendLine()
+            }
+        }
+        sb.appendLine("    }")
 
         doLast.invoke(sb)
         sb.appendLine("}")

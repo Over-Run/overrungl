@@ -37,7 +37,7 @@ import overrungl.util.*;
 ///     void* handle;
 /// } NFDWindowHandle;
 /// ```
-public final class NFDWindowHandle extends Struct {
+public sealed class NFDWindowHandle extends Struct {
     /// The struct layout of `nfdwindowhandle_t`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_LONG.withName("type"),
@@ -58,6 +58,11 @@ public final class NFDWindowHandle extends Struct {
     public static NFDWindowHandle of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new NFDWindowHandle(segment); }
 
     /// Creates `NFDWindowHandle` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `NFDWindowHandle` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -70,7 +75,7 @@ public final class NFDWindowHandle extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static NFDWindowHandle ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new NFDWindowHandle(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `NFDWindowHandle` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -81,18 +86,21 @@ public final class NFDWindowHandle extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `NFDWindowHandle`
-    public static NFDWindowHandle alloc(SegmentAllocator allocator, long count) { return new NFDWindowHandle(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `NFDWindowHandle`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `NFDWindowHandle`
-    public NFDWindowHandle asSlice(long index) { return new NFDWindowHandle(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `NFDWindowHandle` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `NFDWindowHandle`
+    public static NFDWindowHandle allocInit(SegmentAllocator allocator, @CType("size_t") long type, @CType("void*") java.lang.foreign.MemorySegment handle) { return alloc(allocator).type(type).handle(handle); }
 
-    /// Creates a slice of `NFDWindowHandle`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `NFDWindowHandle`
-    public NFDWindowHandle asSlice(long index, long count) { return new NFDWindowHandle(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public NFDWindowHandle copyFrom(NFDWindowHandle src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `type` at the given index}
     /// @param segment the segment of the struct
@@ -101,9 +109,6 @@ public final class NFDWindowHandle extends Struct {
     /// {@return `type`}
     /// @param segment the segment of the struct
     public static @CType("size_t") long get_type(MemorySegment segment) { return NFDWindowHandle.get_type(segment, 0L); }
-    /// {@return `type` at the given index}
-    /// @param index the index
-    public @CType("size_t") long typeAt(long index) { return NFDWindowHandle.get_type(this.segment(), index); }
     /// {@return `type`}
     public @CType("size_t") long type() { return NFDWindowHandle.get_type(this.segment()); }
     /// Sets `type` with the given value at the given index.
@@ -115,11 +120,6 @@ public final class NFDWindowHandle extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_type(MemorySegment segment, @CType("size_t") long value) { NFDWindowHandle.set_type(segment, 0L, value); }
-    /// Sets `type` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public NFDWindowHandle typeAt(long index, @CType("size_t") long value) { NFDWindowHandle.set_type(this.segment(), index, value); return this; }
     /// Sets `type` with the given value.
     /// @param value the value
     /// @return `this`
@@ -132,9 +132,6 @@ public final class NFDWindowHandle extends Struct {
     /// {@return `handle`}
     /// @param segment the segment of the struct
     public static @CType("void*") java.lang.foreign.MemorySegment get_handle(MemorySegment segment) { return NFDWindowHandle.get_handle(segment, 0L); }
-    /// {@return `handle` at the given index}
-    /// @param index the index
-    public @CType("void*") java.lang.foreign.MemorySegment handleAt(long index) { return NFDWindowHandle.get_handle(this.segment(), index); }
     /// {@return `handle`}
     public @CType("void*") java.lang.foreign.MemorySegment handle() { return NFDWindowHandle.get_handle(this.segment()); }
     /// Sets `handle` with the given value at the given index.
@@ -146,14 +143,50 @@ public final class NFDWindowHandle extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_handle(MemorySegment segment, @CType("void*") java.lang.foreign.MemorySegment value) { NFDWindowHandle.set_handle(segment, 0L, value); }
-    /// Sets `handle` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public NFDWindowHandle handleAt(long index, @CType("void*") java.lang.foreign.MemorySegment value) { NFDWindowHandle.set_handle(this.segment(), index, value); return this; }
     /// Sets `handle` with the given value.
     /// @param value the value
     /// @return `this`
     public NFDWindowHandle handle(@CType("void*") java.lang.foreign.MemorySegment value) { NFDWindowHandle.set_handle(this.segment(), value); return this; }
 
+    /// A buffer of [NFDWindowHandle].
+    public static final class Buffer extends NFDWindowHandle {
+        private final long elementCount;
+
+        /// Creates `NFDWindowHandle.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `NFDWindowHandle`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `NFDWindowHandle`
+        public NFDWindowHandle asSlice(long index) { return new NFDWindowHandle(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `NFDWindowHandle`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `NFDWindowHandle`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `type` at the given index}
+        /// @param index the index
+        public @CType("size_t") long typeAt(long index) { return NFDWindowHandle.get_type(this.segment(), index); }
+        /// Sets `type` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer typeAt(long index, @CType("size_t") long value) { NFDWindowHandle.set_type(this.segment(), index, value); return this; }
+
+        /// {@return `handle` at the given index}
+        /// @param index the index
+        public @CType("void*") java.lang.foreign.MemorySegment handleAt(long index) { return NFDWindowHandle.get_handle(this.segment(), index); }
+        /// Sets `handle` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer handleAt(long index, @CType("void*") java.lang.foreign.MemorySegment value) { NFDWindowHandle.set_handle(this.segment(), index, value); return this; }
+
+    }
 }

@@ -40,7 +40,7 @@ import overrungl.util.*;
 ///     VkRect2D stripeArea;
 /// } VkRenderPassStripeInfoARM;
 /// ```
-public final class VkRenderPassStripeInfoARM extends Struct {
+public sealed class VkRenderPassStripeInfoARM extends Struct {
     /// The struct layout of `VkRenderPassStripeInfoARM`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -66,6 +66,11 @@ public final class VkRenderPassStripeInfoARM extends Struct {
     public static VkRenderPassStripeInfoARM of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkRenderPassStripeInfoARM(segment); }
 
     /// Creates `VkRenderPassStripeInfoARM` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkRenderPassStripeInfoARM` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -78,7 +83,7 @@ public final class VkRenderPassStripeInfoARM extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkRenderPassStripeInfoARM ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkRenderPassStripeInfoARM(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkRenderPassStripeInfoARM` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -89,18 +94,21 @@ public final class VkRenderPassStripeInfoARM extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkRenderPassStripeInfoARM`
-    public static VkRenderPassStripeInfoARM alloc(SegmentAllocator allocator, long count) { return new VkRenderPassStripeInfoARM(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkRenderPassStripeInfoARM`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkRenderPassStripeInfoARM`
-    public VkRenderPassStripeInfoARM asSlice(long index) { return new VkRenderPassStripeInfoARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkRenderPassStripeInfoARM` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkRenderPassStripeInfoARM`
+    public static VkRenderPassStripeInfoARM allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkRect2D") java.lang.foreign.MemorySegment stripeArea) { return alloc(allocator).sType(sType).pNext(pNext).stripeArea(stripeArea); }
 
-    /// Creates a slice of `VkRenderPassStripeInfoARM`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkRenderPassStripeInfoARM`
-    public VkRenderPassStripeInfoARM asSlice(long index, long count) { return new VkRenderPassStripeInfoARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkRenderPassStripeInfoARM copyFrom(VkRenderPassStripeInfoARM src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -109,9 +117,6 @@ public final class VkRenderPassStripeInfoARM extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkRenderPassStripeInfoARM.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkRenderPassStripeInfoARM.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkRenderPassStripeInfoARM.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -123,11 +128,6 @@ public final class VkRenderPassStripeInfoARM extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkRenderPassStripeInfoARM.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRenderPassStripeInfoARM sTypeAt(long index, @CType("VkStructureType") int value) { VkRenderPassStripeInfoARM.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -140,9 +140,6 @@ public final class VkRenderPassStripeInfoARM extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkRenderPassStripeInfoARM.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkRenderPassStripeInfoARM.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkRenderPassStripeInfoARM.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -154,11 +151,6 @@ public final class VkRenderPassStripeInfoARM extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkRenderPassStripeInfoARM.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRenderPassStripeInfoARM pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkRenderPassStripeInfoARM.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -171,9 +163,6 @@ public final class VkRenderPassStripeInfoARM extends Struct {
     /// {@return `stripeArea`}
     /// @param segment the segment of the struct
     public static @CType("VkRect2D") java.lang.foreign.MemorySegment get_stripeArea(MemorySegment segment) { return VkRenderPassStripeInfoARM.get_stripeArea(segment, 0L); }
-    /// {@return `stripeArea` at the given index}
-    /// @param index the index
-    public @CType("VkRect2D") java.lang.foreign.MemorySegment stripeAreaAt(long index) { return VkRenderPassStripeInfoARM.get_stripeArea(this.segment(), index); }
     /// {@return `stripeArea`}
     public @CType("VkRect2D") java.lang.foreign.MemorySegment stripeArea() { return VkRenderPassStripeInfoARM.get_stripeArea(this.segment()); }
     /// Sets `stripeArea` with the given value at the given index.
@@ -185,14 +174,59 @@ public final class VkRenderPassStripeInfoARM extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_stripeArea(MemorySegment segment, @CType("VkRect2D") java.lang.foreign.MemorySegment value) { VkRenderPassStripeInfoARM.set_stripeArea(segment, 0L, value); }
-    /// Sets `stripeArea` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRenderPassStripeInfoARM stripeAreaAt(long index, @CType("VkRect2D") java.lang.foreign.MemorySegment value) { VkRenderPassStripeInfoARM.set_stripeArea(this.segment(), index, value); return this; }
     /// Sets `stripeArea` with the given value.
     /// @param value the value
     /// @return `this`
     public VkRenderPassStripeInfoARM stripeArea(@CType("VkRect2D") java.lang.foreign.MemorySegment value) { VkRenderPassStripeInfoARM.set_stripeArea(this.segment(), value); return this; }
 
+    /// A buffer of [VkRenderPassStripeInfoARM].
+    public static final class Buffer extends VkRenderPassStripeInfoARM {
+        private final long elementCount;
+
+        /// Creates `VkRenderPassStripeInfoARM.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkRenderPassStripeInfoARM`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkRenderPassStripeInfoARM`
+        public VkRenderPassStripeInfoARM asSlice(long index) { return new VkRenderPassStripeInfoARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkRenderPassStripeInfoARM`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkRenderPassStripeInfoARM`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkRenderPassStripeInfoARM.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkRenderPassStripeInfoARM.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkRenderPassStripeInfoARM.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkRenderPassStripeInfoARM.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `stripeArea` at the given index}
+        /// @param index the index
+        public @CType("VkRect2D") java.lang.foreign.MemorySegment stripeAreaAt(long index) { return VkRenderPassStripeInfoARM.get_stripeArea(this.segment(), index); }
+        /// Sets `stripeArea` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer stripeAreaAt(long index, @CType("VkRect2D") java.lang.foreign.MemorySegment value) { VkRenderPassStripeInfoARM.set_stripeArea(this.segment(), index, value); return this; }
+
+    }
 }

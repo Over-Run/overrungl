@@ -37,7 +37,7 @@ import overrungl.util.*;
 ///     int16_t [ ][ ] FeatureData;
 /// } StdVideoAV1Segmentation;
 /// ```
-public final class StdVideoAV1Segmentation extends Struct {
+public sealed class StdVideoAV1Segmentation extends Struct {
     /// The struct layout of `StdVideoAV1Segmentation`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_BYTE.withName("FeatureEnabled"),
@@ -58,6 +58,11 @@ public final class StdVideoAV1Segmentation extends Struct {
     public static StdVideoAV1Segmentation of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoAV1Segmentation(segment); }
 
     /// Creates `StdVideoAV1Segmentation` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `StdVideoAV1Segmentation` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -70,7 +75,7 @@ public final class StdVideoAV1Segmentation extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoAV1Segmentation ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoAV1Segmentation(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `StdVideoAV1Segmentation` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -81,18 +86,21 @@ public final class StdVideoAV1Segmentation extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `StdVideoAV1Segmentation`
-    public static StdVideoAV1Segmentation alloc(SegmentAllocator allocator, long count) { return new StdVideoAV1Segmentation(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `StdVideoAV1Segmentation`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `StdVideoAV1Segmentation`
-    public StdVideoAV1Segmentation asSlice(long index) { return new StdVideoAV1Segmentation(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `StdVideoAV1Segmentation` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `StdVideoAV1Segmentation`
+    public static StdVideoAV1Segmentation allocInit(SegmentAllocator allocator, @CType("uint8_t [ ]") byte FeatureEnabled, @CType("int16_t [ ][ ]") short FeatureData) { return alloc(allocator).FeatureEnabled(FeatureEnabled).FeatureData(FeatureData); }
 
-    /// Creates a slice of `StdVideoAV1Segmentation`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `StdVideoAV1Segmentation`
-    public StdVideoAV1Segmentation asSlice(long index, long count) { return new StdVideoAV1Segmentation(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public StdVideoAV1Segmentation copyFrom(StdVideoAV1Segmentation src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `FeatureEnabled` at the given index}
     /// @param segment the segment of the struct
@@ -101,9 +109,6 @@ public final class StdVideoAV1Segmentation extends Struct {
     /// {@return `FeatureEnabled`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t [ ]") byte get_FeatureEnabled(MemorySegment segment) { return StdVideoAV1Segmentation.get_FeatureEnabled(segment, 0L); }
-    /// {@return `FeatureEnabled` at the given index}
-    /// @param index the index
-    public @CType("uint8_t [ ]") byte FeatureEnabledAt(long index) { return StdVideoAV1Segmentation.get_FeatureEnabled(this.segment(), index); }
     /// {@return `FeatureEnabled`}
     public @CType("uint8_t [ ]") byte FeatureEnabled() { return StdVideoAV1Segmentation.get_FeatureEnabled(this.segment()); }
     /// Sets `FeatureEnabled` with the given value at the given index.
@@ -115,11 +120,6 @@ public final class StdVideoAV1Segmentation extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_FeatureEnabled(MemorySegment segment, @CType("uint8_t [ ]") byte value) { StdVideoAV1Segmentation.set_FeatureEnabled(segment, 0L, value); }
-    /// Sets `FeatureEnabled` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1Segmentation FeatureEnabledAt(long index, @CType("uint8_t [ ]") byte value) { StdVideoAV1Segmentation.set_FeatureEnabled(this.segment(), index, value); return this; }
     /// Sets `FeatureEnabled` with the given value.
     /// @param value the value
     /// @return `this`
@@ -132,9 +132,6 @@ public final class StdVideoAV1Segmentation extends Struct {
     /// {@return `FeatureData`}
     /// @param segment the segment of the struct
     public static @CType("int16_t [ ][ ]") short get_FeatureData(MemorySegment segment) { return StdVideoAV1Segmentation.get_FeatureData(segment, 0L); }
-    /// {@return `FeatureData` at the given index}
-    /// @param index the index
-    public @CType("int16_t [ ][ ]") short FeatureDataAt(long index) { return StdVideoAV1Segmentation.get_FeatureData(this.segment(), index); }
     /// {@return `FeatureData`}
     public @CType("int16_t [ ][ ]") short FeatureData() { return StdVideoAV1Segmentation.get_FeatureData(this.segment()); }
     /// Sets `FeatureData` with the given value at the given index.
@@ -146,14 +143,50 @@ public final class StdVideoAV1Segmentation extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_FeatureData(MemorySegment segment, @CType("int16_t [ ][ ]") short value) { StdVideoAV1Segmentation.set_FeatureData(segment, 0L, value); }
-    /// Sets `FeatureData` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1Segmentation FeatureDataAt(long index, @CType("int16_t [ ][ ]") short value) { StdVideoAV1Segmentation.set_FeatureData(this.segment(), index, value); return this; }
     /// Sets `FeatureData` with the given value.
     /// @param value the value
     /// @return `this`
     public StdVideoAV1Segmentation FeatureData(@CType("int16_t [ ][ ]") short value) { StdVideoAV1Segmentation.set_FeatureData(this.segment(), value); return this; }
 
+    /// A buffer of [StdVideoAV1Segmentation].
+    public static final class Buffer extends StdVideoAV1Segmentation {
+        private final long elementCount;
+
+        /// Creates `StdVideoAV1Segmentation.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `StdVideoAV1Segmentation`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `StdVideoAV1Segmentation`
+        public StdVideoAV1Segmentation asSlice(long index) { return new StdVideoAV1Segmentation(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `StdVideoAV1Segmentation`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `StdVideoAV1Segmentation`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `FeatureEnabled` at the given index}
+        /// @param index the index
+        public @CType("uint8_t [ ]") byte FeatureEnabledAt(long index) { return StdVideoAV1Segmentation.get_FeatureEnabled(this.segment(), index); }
+        /// Sets `FeatureEnabled` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer FeatureEnabledAt(long index, @CType("uint8_t [ ]") byte value) { StdVideoAV1Segmentation.set_FeatureEnabled(this.segment(), index, value); return this; }
+
+        /// {@return `FeatureData` at the given index}
+        /// @param index the index
+        public @CType("int16_t [ ][ ]") short FeatureDataAt(long index) { return StdVideoAV1Segmentation.get_FeatureData(this.segment(), index); }
+        /// Sets `FeatureData` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer FeatureDataAt(long index, @CType("int16_t [ ][ ]") short value) { StdVideoAV1Segmentation.set_FeatureData(this.segment(), index, value); return this; }
+
+    }
 }

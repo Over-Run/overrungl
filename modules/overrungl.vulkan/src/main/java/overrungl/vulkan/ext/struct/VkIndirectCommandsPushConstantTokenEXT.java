@@ -34,7 +34,7 @@ import overrungl.util.*;
 ///     VkPushConstantRange updateRange;
 /// } VkIndirectCommandsPushConstantTokenEXT;
 /// ```
-public final class VkIndirectCommandsPushConstantTokenEXT extends Struct {
+public sealed class VkIndirectCommandsPushConstantTokenEXT extends Struct {
     /// The struct layout of `VkIndirectCommandsPushConstantTokenEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.struct.VkPushConstantRange.LAYOUT.withName("updateRange")
@@ -54,6 +54,11 @@ public final class VkIndirectCommandsPushConstantTokenEXT extends Struct {
     public static VkIndirectCommandsPushConstantTokenEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkIndirectCommandsPushConstantTokenEXT(segment); }
 
     /// Creates `VkIndirectCommandsPushConstantTokenEXT` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkIndirectCommandsPushConstantTokenEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -66,7 +71,7 @@ public final class VkIndirectCommandsPushConstantTokenEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkIndirectCommandsPushConstantTokenEXT ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkIndirectCommandsPushConstantTokenEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkIndirectCommandsPushConstantTokenEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -77,18 +82,21 @@ public final class VkIndirectCommandsPushConstantTokenEXT extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkIndirectCommandsPushConstantTokenEXT`
-    public static VkIndirectCommandsPushConstantTokenEXT alloc(SegmentAllocator allocator, long count) { return new VkIndirectCommandsPushConstantTokenEXT(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkIndirectCommandsPushConstantTokenEXT`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkIndirectCommandsPushConstantTokenEXT`
-    public VkIndirectCommandsPushConstantTokenEXT asSlice(long index) { return new VkIndirectCommandsPushConstantTokenEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkIndirectCommandsPushConstantTokenEXT` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkIndirectCommandsPushConstantTokenEXT`
+    public static VkIndirectCommandsPushConstantTokenEXT allocInit(SegmentAllocator allocator, @CType("VkPushConstantRange") java.lang.foreign.MemorySegment updateRange) { return alloc(allocator).updateRange(updateRange); }
 
-    /// Creates a slice of `VkIndirectCommandsPushConstantTokenEXT`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkIndirectCommandsPushConstantTokenEXT`
-    public VkIndirectCommandsPushConstantTokenEXT asSlice(long index, long count) { return new VkIndirectCommandsPushConstantTokenEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkIndirectCommandsPushConstantTokenEXT copyFrom(VkIndirectCommandsPushConstantTokenEXT src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `updateRange` at the given index}
     /// @param segment the segment of the struct
@@ -97,9 +105,6 @@ public final class VkIndirectCommandsPushConstantTokenEXT extends Struct {
     /// {@return `updateRange`}
     /// @param segment the segment of the struct
     public static @CType("VkPushConstantRange") java.lang.foreign.MemorySegment get_updateRange(MemorySegment segment) { return VkIndirectCommandsPushConstantTokenEXT.get_updateRange(segment, 0L); }
-    /// {@return `updateRange` at the given index}
-    /// @param index the index
-    public @CType("VkPushConstantRange") java.lang.foreign.MemorySegment updateRangeAt(long index) { return VkIndirectCommandsPushConstantTokenEXT.get_updateRange(this.segment(), index); }
     /// {@return `updateRange`}
     public @CType("VkPushConstantRange") java.lang.foreign.MemorySegment updateRange() { return VkIndirectCommandsPushConstantTokenEXT.get_updateRange(this.segment()); }
     /// Sets `updateRange` with the given value at the given index.
@@ -111,14 +116,41 @@ public final class VkIndirectCommandsPushConstantTokenEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_updateRange(MemorySegment segment, @CType("VkPushConstantRange") java.lang.foreign.MemorySegment value) { VkIndirectCommandsPushConstantTokenEXT.set_updateRange(segment, 0L, value); }
-    /// Sets `updateRange` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsPushConstantTokenEXT updateRangeAt(long index, @CType("VkPushConstantRange") java.lang.foreign.MemorySegment value) { VkIndirectCommandsPushConstantTokenEXT.set_updateRange(this.segment(), index, value); return this; }
     /// Sets `updateRange` with the given value.
     /// @param value the value
     /// @return `this`
     public VkIndirectCommandsPushConstantTokenEXT updateRange(@CType("VkPushConstantRange") java.lang.foreign.MemorySegment value) { VkIndirectCommandsPushConstantTokenEXT.set_updateRange(this.segment(), value); return this; }
 
+    /// A buffer of [VkIndirectCommandsPushConstantTokenEXT].
+    public static final class Buffer extends VkIndirectCommandsPushConstantTokenEXT {
+        private final long elementCount;
+
+        /// Creates `VkIndirectCommandsPushConstantTokenEXT.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkIndirectCommandsPushConstantTokenEXT`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkIndirectCommandsPushConstantTokenEXT`
+        public VkIndirectCommandsPushConstantTokenEXT asSlice(long index) { return new VkIndirectCommandsPushConstantTokenEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkIndirectCommandsPushConstantTokenEXT`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkIndirectCommandsPushConstantTokenEXT`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `updateRange` at the given index}
+        /// @param index the index
+        public @CType("VkPushConstantRange") java.lang.foreign.MemorySegment updateRangeAt(long index) { return VkIndirectCommandsPushConstantTokenEXT.get_updateRange(this.segment(), index); }
+        /// Sets `updateRange` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer updateRangeAt(long index, @CType("VkPushConstantRange") java.lang.foreign.MemorySegment value) { VkIndirectCommandsPushConstantTokenEXT.set_updateRange(this.segment(), index, value); return this; }
+
+    }
 }

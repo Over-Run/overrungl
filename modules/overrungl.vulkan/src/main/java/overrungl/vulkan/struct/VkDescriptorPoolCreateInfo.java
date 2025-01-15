@@ -49,7 +49,7 @@ import overrungl.util.*;
 ///     const VkDescriptorPoolSize * pPoolSizes;
 /// } VkDescriptorPoolCreateInfo;
 /// ```
-public final class VkDescriptorPoolCreateInfo extends Struct {
+public sealed class VkDescriptorPoolCreateInfo extends Struct {
     /// The struct layout of `VkDescriptorPoolCreateInfo`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -82,6 +82,11 @@ public final class VkDescriptorPoolCreateInfo extends Struct {
     public static VkDescriptorPoolCreateInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDescriptorPoolCreateInfo(segment); }
 
     /// Creates `VkDescriptorPoolCreateInfo` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkDescriptorPoolCreateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -94,7 +99,7 @@ public final class VkDescriptorPoolCreateInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDescriptorPoolCreateInfo ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkDescriptorPoolCreateInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkDescriptorPoolCreateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -105,18 +110,21 @@ public final class VkDescriptorPoolCreateInfo extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDescriptorPoolCreateInfo`
-    public static VkDescriptorPoolCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkDescriptorPoolCreateInfo(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkDescriptorPoolCreateInfo`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkDescriptorPoolCreateInfo`
-    public VkDescriptorPoolCreateInfo asSlice(long index) { return new VkDescriptorPoolCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkDescriptorPoolCreateInfo` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkDescriptorPoolCreateInfo`
+    public static VkDescriptorPoolCreateInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkDescriptorPoolCreateFlags") int flags, @CType("uint32_t") int maxSets, @CType("uint32_t") int poolSizeCount, @CType("const VkDescriptorPoolSize *") java.lang.foreign.MemorySegment pPoolSizes) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxSets(maxSets).poolSizeCount(poolSizeCount).pPoolSizes(pPoolSizes); }
 
-    /// Creates a slice of `VkDescriptorPoolCreateInfo`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkDescriptorPoolCreateInfo`
-    public VkDescriptorPoolCreateInfo asSlice(long index, long count) { return new VkDescriptorPoolCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkDescriptorPoolCreateInfo copyFrom(VkDescriptorPoolCreateInfo src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -125,9 +133,6 @@ public final class VkDescriptorPoolCreateInfo extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkDescriptorPoolCreateInfo.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkDescriptorPoolCreateInfo.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkDescriptorPoolCreateInfo.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -139,11 +144,6 @@ public final class VkDescriptorPoolCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkDescriptorPoolCreateInfo.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorPoolCreateInfo sTypeAt(long index, @CType("VkStructureType") int value) { VkDescriptorPoolCreateInfo.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -156,9 +156,6 @@ public final class VkDescriptorPoolCreateInfo extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkDescriptorPoolCreateInfo.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkDescriptorPoolCreateInfo.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkDescriptorPoolCreateInfo.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -170,11 +167,6 @@ public final class VkDescriptorPoolCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDescriptorPoolCreateInfo.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorPoolCreateInfo pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDescriptorPoolCreateInfo.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -187,9 +179,6 @@ public final class VkDescriptorPoolCreateInfo extends Struct {
     /// {@return `flags`}
     /// @param segment the segment of the struct
     public static @CType("VkDescriptorPoolCreateFlags") int get_flags(MemorySegment segment) { return VkDescriptorPoolCreateInfo.get_flags(segment, 0L); }
-    /// {@return `flags` at the given index}
-    /// @param index the index
-    public @CType("VkDescriptorPoolCreateFlags") int flagsAt(long index) { return VkDescriptorPoolCreateInfo.get_flags(this.segment(), index); }
     /// {@return `flags`}
     public @CType("VkDescriptorPoolCreateFlags") int flags() { return VkDescriptorPoolCreateInfo.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
@@ -201,11 +190,6 @@ public final class VkDescriptorPoolCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_flags(MemorySegment segment, @CType("VkDescriptorPoolCreateFlags") int value) { VkDescriptorPoolCreateInfo.set_flags(segment, 0L, value); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorPoolCreateInfo flagsAt(long index, @CType("VkDescriptorPoolCreateFlags") int value) { VkDescriptorPoolCreateInfo.set_flags(this.segment(), index, value); return this; }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -218,9 +202,6 @@ public final class VkDescriptorPoolCreateInfo extends Struct {
     /// {@return `maxSets`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxSets(MemorySegment segment) { return VkDescriptorPoolCreateInfo.get_maxSets(segment, 0L); }
-    /// {@return `maxSets` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxSetsAt(long index) { return VkDescriptorPoolCreateInfo.get_maxSets(this.segment(), index); }
     /// {@return `maxSets`}
     public @CType("uint32_t") int maxSets() { return VkDescriptorPoolCreateInfo.get_maxSets(this.segment()); }
     /// Sets `maxSets` with the given value at the given index.
@@ -232,11 +213,6 @@ public final class VkDescriptorPoolCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxSets(MemorySegment segment, @CType("uint32_t") int value) { VkDescriptorPoolCreateInfo.set_maxSets(segment, 0L, value); }
-    /// Sets `maxSets` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorPoolCreateInfo maxSetsAt(long index, @CType("uint32_t") int value) { VkDescriptorPoolCreateInfo.set_maxSets(this.segment(), index, value); return this; }
     /// Sets `maxSets` with the given value.
     /// @param value the value
     /// @return `this`
@@ -249,9 +225,6 @@ public final class VkDescriptorPoolCreateInfo extends Struct {
     /// {@return `poolSizeCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_poolSizeCount(MemorySegment segment) { return VkDescriptorPoolCreateInfo.get_poolSizeCount(segment, 0L); }
-    /// {@return `poolSizeCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int poolSizeCountAt(long index) { return VkDescriptorPoolCreateInfo.get_poolSizeCount(this.segment(), index); }
     /// {@return `poolSizeCount`}
     public @CType("uint32_t") int poolSizeCount() { return VkDescriptorPoolCreateInfo.get_poolSizeCount(this.segment()); }
     /// Sets `poolSizeCount` with the given value at the given index.
@@ -263,11 +236,6 @@ public final class VkDescriptorPoolCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_poolSizeCount(MemorySegment segment, @CType("uint32_t") int value) { VkDescriptorPoolCreateInfo.set_poolSizeCount(segment, 0L, value); }
-    /// Sets `poolSizeCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorPoolCreateInfo poolSizeCountAt(long index, @CType("uint32_t") int value) { VkDescriptorPoolCreateInfo.set_poolSizeCount(this.segment(), index, value); return this; }
     /// Sets `poolSizeCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -280,9 +248,6 @@ public final class VkDescriptorPoolCreateInfo extends Struct {
     /// {@return `pPoolSizes`}
     /// @param segment the segment of the struct
     public static @CType("const VkDescriptorPoolSize *") java.lang.foreign.MemorySegment get_pPoolSizes(MemorySegment segment) { return VkDescriptorPoolCreateInfo.get_pPoolSizes(segment, 0L); }
-    /// {@return `pPoolSizes` at the given index}
-    /// @param index the index
-    public @CType("const VkDescriptorPoolSize *") java.lang.foreign.MemorySegment pPoolSizesAt(long index) { return VkDescriptorPoolCreateInfo.get_pPoolSizes(this.segment(), index); }
     /// {@return `pPoolSizes`}
     public @CType("const VkDescriptorPoolSize *") java.lang.foreign.MemorySegment pPoolSizes() { return VkDescriptorPoolCreateInfo.get_pPoolSizes(this.segment()); }
     /// Sets `pPoolSizes` with the given value at the given index.
@@ -294,14 +259,86 @@ public final class VkDescriptorPoolCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pPoolSizes(MemorySegment segment, @CType("const VkDescriptorPoolSize *") java.lang.foreign.MemorySegment value) { VkDescriptorPoolCreateInfo.set_pPoolSizes(segment, 0L, value); }
-    /// Sets `pPoolSizes` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorPoolCreateInfo pPoolSizesAt(long index, @CType("const VkDescriptorPoolSize *") java.lang.foreign.MemorySegment value) { VkDescriptorPoolCreateInfo.set_pPoolSizes(this.segment(), index, value); return this; }
     /// Sets `pPoolSizes` with the given value.
     /// @param value the value
     /// @return `this`
     public VkDescriptorPoolCreateInfo pPoolSizes(@CType("const VkDescriptorPoolSize *") java.lang.foreign.MemorySegment value) { VkDescriptorPoolCreateInfo.set_pPoolSizes(this.segment(), value); return this; }
 
+    /// A buffer of [VkDescriptorPoolCreateInfo].
+    public static final class Buffer extends VkDescriptorPoolCreateInfo {
+        private final long elementCount;
+
+        /// Creates `VkDescriptorPoolCreateInfo.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkDescriptorPoolCreateInfo`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkDescriptorPoolCreateInfo`
+        public VkDescriptorPoolCreateInfo asSlice(long index) { return new VkDescriptorPoolCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkDescriptorPoolCreateInfo`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkDescriptorPoolCreateInfo`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkDescriptorPoolCreateInfo.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkDescriptorPoolCreateInfo.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkDescriptorPoolCreateInfo.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDescriptorPoolCreateInfo.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `flags` at the given index}
+        /// @param index the index
+        public @CType("VkDescriptorPoolCreateFlags") int flagsAt(long index) { return VkDescriptorPoolCreateInfo.get_flags(this.segment(), index); }
+        /// Sets `flags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer flagsAt(long index, @CType("VkDescriptorPoolCreateFlags") int value) { VkDescriptorPoolCreateInfo.set_flags(this.segment(), index, value); return this; }
+
+        /// {@return `maxSets` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxSetsAt(long index) { return VkDescriptorPoolCreateInfo.get_maxSets(this.segment(), index); }
+        /// Sets `maxSets` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxSetsAt(long index, @CType("uint32_t") int value) { VkDescriptorPoolCreateInfo.set_maxSets(this.segment(), index, value); return this; }
+
+        /// {@return `poolSizeCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int poolSizeCountAt(long index) { return VkDescriptorPoolCreateInfo.get_poolSizeCount(this.segment(), index); }
+        /// Sets `poolSizeCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer poolSizeCountAt(long index, @CType("uint32_t") int value) { VkDescriptorPoolCreateInfo.set_poolSizeCount(this.segment(), index, value); return this; }
+
+        /// {@return `pPoolSizes` at the given index}
+        /// @param index the index
+        public @CType("const VkDescriptorPoolSize *") java.lang.foreign.MemorySegment pPoolSizesAt(long index) { return VkDescriptorPoolCreateInfo.get_pPoolSizes(this.segment(), index); }
+        /// Sets `pPoolSizes` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pPoolSizesAt(long index, @CType("const VkDescriptorPoolSize *") java.lang.foreign.MemorySegment value) { VkDescriptorPoolCreateInfo.set_pPoolSizes(this.segment(), index, value); return this; }
+
+    }
 }

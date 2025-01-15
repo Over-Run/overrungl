@@ -37,7 +37,7 @@ import overrungl.util.*;
 ///     VkGeometryAABBNV aabbs;
 /// } VkGeometryDataNV;
 /// ```
-public final class VkGeometryDataNV extends Struct {
+public sealed class VkGeometryDataNV extends Struct {
     /// The struct layout of `VkGeometryDataNV`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.nv.struct.VkGeometryTrianglesNV.LAYOUT.withName("triangles"),
@@ -62,6 +62,11 @@ public final class VkGeometryDataNV extends Struct {
     public static VkGeometryDataNV of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkGeometryDataNV(segment); }
 
     /// Creates `VkGeometryDataNV` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkGeometryDataNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -74,7 +79,7 @@ public final class VkGeometryDataNV extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkGeometryDataNV ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkGeometryDataNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkGeometryDataNV` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -85,18 +90,21 @@ public final class VkGeometryDataNV extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkGeometryDataNV`
-    public static VkGeometryDataNV alloc(SegmentAllocator allocator, long count) { return new VkGeometryDataNV(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkGeometryDataNV`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkGeometryDataNV`
-    public VkGeometryDataNV asSlice(long index) { return new VkGeometryDataNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkGeometryDataNV` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkGeometryDataNV`
+    public static VkGeometryDataNV allocInit(SegmentAllocator allocator, @CType("VkGeometryTrianglesNV") java.lang.foreign.MemorySegment triangles, @CType("VkGeometryAABBNV") java.lang.foreign.MemorySegment aabbs) { return alloc(allocator).triangles(triangles).aabbs(aabbs); }
 
-    /// Creates a slice of `VkGeometryDataNV`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkGeometryDataNV`
-    public VkGeometryDataNV asSlice(long index, long count) { return new VkGeometryDataNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkGeometryDataNV copyFrom(VkGeometryDataNV src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `triangles` at the given index}
     /// @param segment the segment of the struct
@@ -105,9 +113,6 @@ public final class VkGeometryDataNV extends Struct {
     /// {@return `triangles`}
     /// @param segment the segment of the struct
     public static @CType("VkGeometryTrianglesNV") java.lang.foreign.MemorySegment get_triangles(MemorySegment segment) { return VkGeometryDataNV.get_triangles(segment, 0L); }
-    /// {@return `triangles` at the given index}
-    /// @param index the index
-    public @CType("VkGeometryTrianglesNV") java.lang.foreign.MemorySegment trianglesAt(long index) { return VkGeometryDataNV.get_triangles(this.segment(), index); }
     /// {@return `triangles`}
     public @CType("VkGeometryTrianglesNV") java.lang.foreign.MemorySegment triangles() { return VkGeometryDataNV.get_triangles(this.segment()); }
     /// Sets `triangles` with the given value at the given index.
@@ -119,11 +124,6 @@ public final class VkGeometryDataNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_triangles(MemorySegment segment, @CType("VkGeometryTrianglesNV") java.lang.foreign.MemorySegment value) { VkGeometryDataNV.set_triangles(segment, 0L, value); }
-    /// Sets `triangles` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkGeometryDataNV trianglesAt(long index, @CType("VkGeometryTrianglesNV") java.lang.foreign.MemorySegment value) { VkGeometryDataNV.set_triangles(this.segment(), index, value); return this; }
     /// Sets `triangles` with the given value.
     /// @param value the value
     /// @return `this`
@@ -136,9 +136,6 @@ public final class VkGeometryDataNV extends Struct {
     /// {@return `aabbs`}
     /// @param segment the segment of the struct
     public static @CType("VkGeometryAABBNV") java.lang.foreign.MemorySegment get_aabbs(MemorySegment segment) { return VkGeometryDataNV.get_aabbs(segment, 0L); }
-    /// {@return `aabbs` at the given index}
-    /// @param index the index
-    public @CType("VkGeometryAABBNV") java.lang.foreign.MemorySegment aabbsAt(long index) { return VkGeometryDataNV.get_aabbs(this.segment(), index); }
     /// {@return `aabbs`}
     public @CType("VkGeometryAABBNV") java.lang.foreign.MemorySegment aabbs() { return VkGeometryDataNV.get_aabbs(this.segment()); }
     /// Sets `aabbs` with the given value at the given index.
@@ -150,14 +147,50 @@ public final class VkGeometryDataNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_aabbs(MemorySegment segment, @CType("VkGeometryAABBNV") java.lang.foreign.MemorySegment value) { VkGeometryDataNV.set_aabbs(segment, 0L, value); }
-    /// Sets `aabbs` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkGeometryDataNV aabbsAt(long index, @CType("VkGeometryAABBNV") java.lang.foreign.MemorySegment value) { VkGeometryDataNV.set_aabbs(this.segment(), index, value); return this; }
     /// Sets `aabbs` with the given value.
     /// @param value the value
     /// @return `this`
     public VkGeometryDataNV aabbs(@CType("VkGeometryAABBNV") java.lang.foreign.MemorySegment value) { VkGeometryDataNV.set_aabbs(this.segment(), value); return this; }
 
+    /// A buffer of [VkGeometryDataNV].
+    public static final class Buffer extends VkGeometryDataNV {
+        private final long elementCount;
+
+        /// Creates `VkGeometryDataNV.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkGeometryDataNV`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkGeometryDataNV`
+        public VkGeometryDataNV asSlice(long index) { return new VkGeometryDataNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkGeometryDataNV`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkGeometryDataNV`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `triangles` at the given index}
+        /// @param index the index
+        public @CType("VkGeometryTrianglesNV") java.lang.foreign.MemorySegment trianglesAt(long index) { return VkGeometryDataNV.get_triangles(this.segment(), index); }
+        /// Sets `triangles` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer trianglesAt(long index, @CType("VkGeometryTrianglesNV") java.lang.foreign.MemorySegment value) { VkGeometryDataNV.set_triangles(this.segment(), index, value); return this; }
+
+        /// {@return `aabbs` at the given index}
+        /// @param index the index
+        public @CType("VkGeometryAABBNV") java.lang.foreign.MemorySegment aabbsAt(long index) { return VkGeometryDataNV.get_aabbs(this.segment(), index); }
+        /// Sets `aabbs` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer aabbsAt(long index, @CType("VkGeometryAABBNV") java.lang.foreign.MemorySegment value) { VkGeometryDataNV.set_aabbs(this.segment(), index, value); return this; }
+
+    }
 }

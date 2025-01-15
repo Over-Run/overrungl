@@ -37,7 +37,7 @@ import overrungl.util.*;
 ///     VkShaderStageFlags shaderStages;
 /// } VkIndirectCommandsExecutionSetTokenEXT;
 /// ```
-public final class VkIndirectCommandsExecutionSetTokenEXT extends Struct {
+public sealed class VkIndirectCommandsExecutionSetTokenEXT extends Struct {
     /// The struct layout of `VkIndirectCommandsExecutionSetTokenEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("type"),
@@ -58,6 +58,11 @@ public final class VkIndirectCommandsExecutionSetTokenEXT extends Struct {
     public static VkIndirectCommandsExecutionSetTokenEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkIndirectCommandsExecutionSetTokenEXT(segment); }
 
     /// Creates `VkIndirectCommandsExecutionSetTokenEXT` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkIndirectCommandsExecutionSetTokenEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -70,7 +75,7 @@ public final class VkIndirectCommandsExecutionSetTokenEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkIndirectCommandsExecutionSetTokenEXT ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkIndirectCommandsExecutionSetTokenEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkIndirectCommandsExecutionSetTokenEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -81,18 +86,21 @@ public final class VkIndirectCommandsExecutionSetTokenEXT extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkIndirectCommandsExecutionSetTokenEXT`
-    public static VkIndirectCommandsExecutionSetTokenEXT alloc(SegmentAllocator allocator, long count) { return new VkIndirectCommandsExecutionSetTokenEXT(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkIndirectCommandsExecutionSetTokenEXT`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkIndirectCommandsExecutionSetTokenEXT`
-    public VkIndirectCommandsExecutionSetTokenEXT asSlice(long index) { return new VkIndirectCommandsExecutionSetTokenEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkIndirectCommandsExecutionSetTokenEXT` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkIndirectCommandsExecutionSetTokenEXT`
+    public static VkIndirectCommandsExecutionSetTokenEXT allocInit(SegmentAllocator allocator, @CType("VkIndirectExecutionSetInfoTypeEXT") int type, @CType("VkShaderStageFlags") int shaderStages) { return alloc(allocator).type(type).shaderStages(shaderStages); }
 
-    /// Creates a slice of `VkIndirectCommandsExecutionSetTokenEXT`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkIndirectCommandsExecutionSetTokenEXT`
-    public VkIndirectCommandsExecutionSetTokenEXT asSlice(long index, long count) { return new VkIndirectCommandsExecutionSetTokenEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkIndirectCommandsExecutionSetTokenEXT copyFrom(VkIndirectCommandsExecutionSetTokenEXT src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `type` at the given index}
     /// @param segment the segment of the struct
@@ -101,9 +109,6 @@ public final class VkIndirectCommandsExecutionSetTokenEXT extends Struct {
     /// {@return `type`}
     /// @param segment the segment of the struct
     public static @CType("VkIndirectExecutionSetInfoTypeEXT") int get_type(MemorySegment segment) { return VkIndirectCommandsExecutionSetTokenEXT.get_type(segment, 0L); }
-    /// {@return `type` at the given index}
-    /// @param index the index
-    public @CType("VkIndirectExecutionSetInfoTypeEXT") int typeAt(long index) { return VkIndirectCommandsExecutionSetTokenEXT.get_type(this.segment(), index); }
     /// {@return `type`}
     public @CType("VkIndirectExecutionSetInfoTypeEXT") int type() { return VkIndirectCommandsExecutionSetTokenEXT.get_type(this.segment()); }
     /// Sets `type` with the given value at the given index.
@@ -115,11 +120,6 @@ public final class VkIndirectCommandsExecutionSetTokenEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_type(MemorySegment segment, @CType("VkIndirectExecutionSetInfoTypeEXT") int value) { VkIndirectCommandsExecutionSetTokenEXT.set_type(segment, 0L, value); }
-    /// Sets `type` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsExecutionSetTokenEXT typeAt(long index, @CType("VkIndirectExecutionSetInfoTypeEXT") int value) { VkIndirectCommandsExecutionSetTokenEXT.set_type(this.segment(), index, value); return this; }
     /// Sets `type` with the given value.
     /// @param value the value
     /// @return `this`
@@ -132,9 +132,6 @@ public final class VkIndirectCommandsExecutionSetTokenEXT extends Struct {
     /// {@return `shaderStages`}
     /// @param segment the segment of the struct
     public static @CType("VkShaderStageFlags") int get_shaderStages(MemorySegment segment) { return VkIndirectCommandsExecutionSetTokenEXT.get_shaderStages(segment, 0L); }
-    /// {@return `shaderStages` at the given index}
-    /// @param index the index
-    public @CType("VkShaderStageFlags") int shaderStagesAt(long index) { return VkIndirectCommandsExecutionSetTokenEXT.get_shaderStages(this.segment(), index); }
     /// {@return `shaderStages`}
     public @CType("VkShaderStageFlags") int shaderStages() { return VkIndirectCommandsExecutionSetTokenEXT.get_shaderStages(this.segment()); }
     /// Sets `shaderStages` with the given value at the given index.
@@ -146,14 +143,50 @@ public final class VkIndirectCommandsExecutionSetTokenEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_shaderStages(MemorySegment segment, @CType("VkShaderStageFlags") int value) { VkIndirectCommandsExecutionSetTokenEXT.set_shaderStages(segment, 0L, value); }
-    /// Sets `shaderStages` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsExecutionSetTokenEXT shaderStagesAt(long index, @CType("VkShaderStageFlags") int value) { VkIndirectCommandsExecutionSetTokenEXT.set_shaderStages(this.segment(), index, value); return this; }
     /// Sets `shaderStages` with the given value.
     /// @param value the value
     /// @return `this`
     public VkIndirectCommandsExecutionSetTokenEXT shaderStages(@CType("VkShaderStageFlags") int value) { VkIndirectCommandsExecutionSetTokenEXT.set_shaderStages(this.segment(), value); return this; }
 
+    /// A buffer of [VkIndirectCommandsExecutionSetTokenEXT].
+    public static final class Buffer extends VkIndirectCommandsExecutionSetTokenEXT {
+        private final long elementCount;
+
+        /// Creates `VkIndirectCommandsExecutionSetTokenEXT.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkIndirectCommandsExecutionSetTokenEXT`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkIndirectCommandsExecutionSetTokenEXT`
+        public VkIndirectCommandsExecutionSetTokenEXT asSlice(long index) { return new VkIndirectCommandsExecutionSetTokenEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkIndirectCommandsExecutionSetTokenEXT`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkIndirectCommandsExecutionSetTokenEXT`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `type` at the given index}
+        /// @param index the index
+        public @CType("VkIndirectExecutionSetInfoTypeEXT") int typeAt(long index) { return VkIndirectCommandsExecutionSetTokenEXT.get_type(this.segment(), index); }
+        /// Sets `type` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer typeAt(long index, @CType("VkIndirectExecutionSetInfoTypeEXT") int value) { VkIndirectCommandsExecutionSetTokenEXT.set_type(this.segment(), index, value); return this; }
+
+        /// {@return `shaderStages` at the given index}
+        /// @param index the index
+        public @CType("VkShaderStageFlags") int shaderStagesAt(long index) { return VkIndirectCommandsExecutionSetTokenEXT.get_shaderStages(this.segment(), index); }
+        /// Sets `shaderStages` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer shaderStagesAt(long index, @CType("VkShaderStageFlags") int value) { VkIndirectCommandsExecutionSetTokenEXT.set_shaderStages(this.segment(), index, value); return this; }
+
+    }
 }

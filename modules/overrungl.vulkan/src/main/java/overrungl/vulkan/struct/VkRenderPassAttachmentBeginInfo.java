@@ -43,7 +43,7 @@ import overrungl.util.*;
 ///     const VkImageView * pAttachments;
 /// } VkRenderPassAttachmentBeginInfo;
 /// ```
-public final class VkRenderPassAttachmentBeginInfo extends Struct {
+public sealed class VkRenderPassAttachmentBeginInfo extends Struct {
     /// The struct layout of `VkRenderPassAttachmentBeginInfo`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -70,6 +70,11 @@ public final class VkRenderPassAttachmentBeginInfo extends Struct {
     public static VkRenderPassAttachmentBeginInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkRenderPassAttachmentBeginInfo(segment); }
 
     /// Creates `VkRenderPassAttachmentBeginInfo` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkRenderPassAttachmentBeginInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -82,7 +87,7 @@ public final class VkRenderPassAttachmentBeginInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkRenderPassAttachmentBeginInfo ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkRenderPassAttachmentBeginInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkRenderPassAttachmentBeginInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -93,18 +98,21 @@ public final class VkRenderPassAttachmentBeginInfo extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkRenderPassAttachmentBeginInfo`
-    public static VkRenderPassAttachmentBeginInfo alloc(SegmentAllocator allocator, long count) { return new VkRenderPassAttachmentBeginInfo(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkRenderPassAttachmentBeginInfo`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkRenderPassAttachmentBeginInfo`
-    public VkRenderPassAttachmentBeginInfo asSlice(long index) { return new VkRenderPassAttachmentBeginInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkRenderPassAttachmentBeginInfo` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkRenderPassAttachmentBeginInfo`
+    public static VkRenderPassAttachmentBeginInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int attachmentCount, @CType("const VkImageView *") java.lang.foreign.MemorySegment pAttachments) { return alloc(allocator).sType(sType).pNext(pNext).attachmentCount(attachmentCount).pAttachments(pAttachments); }
 
-    /// Creates a slice of `VkRenderPassAttachmentBeginInfo`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkRenderPassAttachmentBeginInfo`
-    public VkRenderPassAttachmentBeginInfo asSlice(long index, long count) { return new VkRenderPassAttachmentBeginInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkRenderPassAttachmentBeginInfo copyFrom(VkRenderPassAttachmentBeginInfo src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -113,9 +121,6 @@ public final class VkRenderPassAttachmentBeginInfo extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkRenderPassAttachmentBeginInfo.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkRenderPassAttachmentBeginInfo.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkRenderPassAttachmentBeginInfo.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -127,11 +132,6 @@ public final class VkRenderPassAttachmentBeginInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkRenderPassAttachmentBeginInfo.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRenderPassAttachmentBeginInfo sTypeAt(long index, @CType("VkStructureType") int value) { VkRenderPassAttachmentBeginInfo.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -144,9 +144,6 @@ public final class VkRenderPassAttachmentBeginInfo extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkRenderPassAttachmentBeginInfo.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkRenderPassAttachmentBeginInfo.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkRenderPassAttachmentBeginInfo.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -158,11 +155,6 @@ public final class VkRenderPassAttachmentBeginInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkRenderPassAttachmentBeginInfo.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRenderPassAttachmentBeginInfo pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkRenderPassAttachmentBeginInfo.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -175,9 +167,6 @@ public final class VkRenderPassAttachmentBeginInfo extends Struct {
     /// {@return `attachmentCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_attachmentCount(MemorySegment segment) { return VkRenderPassAttachmentBeginInfo.get_attachmentCount(segment, 0L); }
-    /// {@return `attachmentCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int attachmentCountAt(long index) { return VkRenderPassAttachmentBeginInfo.get_attachmentCount(this.segment(), index); }
     /// {@return `attachmentCount`}
     public @CType("uint32_t") int attachmentCount() { return VkRenderPassAttachmentBeginInfo.get_attachmentCount(this.segment()); }
     /// Sets `attachmentCount` with the given value at the given index.
@@ -189,11 +178,6 @@ public final class VkRenderPassAttachmentBeginInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_attachmentCount(MemorySegment segment, @CType("uint32_t") int value) { VkRenderPassAttachmentBeginInfo.set_attachmentCount(segment, 0L, value); }
-    /// Sets `attachmentCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRenderPassAttachmentBeginInfo attachmentCountAt(long index, @CType("uint32_t") int value) { VkRenderPassAttachmentBeginInfo.set_attachmentCount(this.segment(), index, value); return this; }
     /// Sets `attachmentCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -206,9 +190,6 @@ public final class VkRenderPassAttachmentBeginInfo extends Struct {
     /// {@return `pAttachments`}
     /// @param segment the segment of the struct
     public static @CType("const VkImageView *") java.lang.foreign.MemorySegment get_pAttachments(MemorySegment segment) { return VkRenderPassAttachmentBeginInfo.get_pAttachments(segment, 0L); }
-    /// {@return `pAttachments` at the given index}
-    /// @param index the index
-    public @CType("const VkImageView *") java.lang.foreign.MemorySegment pAttachmentsAt(long index) { return VkRenderPassAttachmentBeginInfo.get_pAttachments(this.segment(), index); }
     /// {@return `pAttachments`}
     public @CType("const VkImageView *") java.lang.foreign.MemorySegment pAttachments() { return VkRenderPassAttachmentBeginInfo.get_pAttachments(this.segment()); }
     /// Sets `pAttachments` with the given value at the given index.
@@ -220,14 +201,68 @@ public final class VkRenderPassAttachmentBeginInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pAttachments(MemorySegment segment, @CType("const VkImageView *") java.lang.foreign.MemorySegment value) { VkRenderPassAttachmentBeginInfo.set_pAttachments(segment, 0L, value); }
-    /// Sets `pAttachments` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRenderPassAttachmentBeginInfo pAttachmentsAt(long index, @CType("const VkImageView *") java.lang.foreign.MemorySegment value) { VkRenderPassAttachmentBeginInfo.set_pAttachments(this.segment(), index, value); return this; }
     /// Sets `pAttachments` with the given value.
     /// @param value the value
     /// @return `this`
     public VkRenderPassAttachmentBeginInfo pAttachments(@CType("const VkImageView *") java.lang.foreign.MemorySegment value) { VkRenderPassAttachmentBeginInfo.set_pAttachments(this.segment(), value); return this; }
 
+    /// A buffer of [VkRenderPassAttachmentBeginInfo].
+    public static final class Buffer extends VkRenderPassAttachmentBeginInfo {
+        private final long elementCount;
+
+        /// Creates `VkRenderPassAttachmentBeginInfo.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkRenderPassAttachmentBeginInfo`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkRenderPassAttachmentBeginInfo`
+        public VkRenderPassAttachmentBeginInfo asSlice(long index) { return new VkRenderPassAttachmentBeginInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkRenderPassAttachmentBeginInfo`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkRenderPassAttachmentBeginInfo`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkRenderPassAttachmentBeginInfo.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkRenderPassAttachmentBeginInfo.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkRenderPassAttachmentBeginInfo.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkRenderPassAttachmentBeginInfo.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `attachmentCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int attachmentCountAt(long index) { return VkRenderPassAttachmentBeginInfo.get_attachmentCount(this.segment(), index); }
+        /// Sets `attachmentCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer attachmentCountAt(long index, @CType("uint32_t") int value) { VkRenderPassAttachmentBeginInfo.set_attachmentCount(this.segment(), index, value); return this; }
+
+        /// {@return `pAttachments` at the given index}
+        /// @param index the index
+        public @CType("const VkImageView *") java.lang.foreign.MemorySegment pAttachmentsAt(long index) { return VkRenderPassAttachmentBeginInfo.get_pAttachments(this.segment(), index); }
+        /// Sets `pAttachments` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pAttachmentsAt(long index, @CType("const VkImageView *") java.lang.foreign.MemorySegment value) { VkRenderPassAttachmentBeginInfo.set_pAttachments(this.segment(), index, value); return this; }
+
+    }
 }

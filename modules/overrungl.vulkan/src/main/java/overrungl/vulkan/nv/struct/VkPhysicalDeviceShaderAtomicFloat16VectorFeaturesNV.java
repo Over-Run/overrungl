@@ -40,7 +40,7 @@ import overrungl.util.*;
 ///     VkBool32 shaderFloat16VectorAtomics;
 /// } VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV;
 /// ```
-public final class VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV extends Struct {
+public sealed class VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV extends Struct {
     /// The struct layout of `VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -64,6 +64,11 @@ public final class VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV extends S
     public static VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV(segment); }
 
     /// Creates `VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -76,7 +81,7 @@ public final class VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV extends S
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -87,18 +92,21 @@ public final class VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV extends S
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV`
-    public static VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV`
-    public VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV asSlice(long index) { return new VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV`
+    public static VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int shaderFloat16VectorAtomics) { return alloc(allocator).sType(sType).pNext(pNext).shaderFloat16VectorAtomics(shaderFloat16VectorAtomics); }
 
-    /// Creates a slice of `VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV`
-    public VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV asSlice(long index, long count) { return new VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV copyFrom(VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -107,9 +115,6 @@ public final class VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV extends S
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -121,11 +126,6 @@ public final class VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV extends S
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -138,9 +138,6 @@ public final class VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV extends S
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -152,11 +149,6 @@ public final class VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV extends S
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -169,9 +161,6 @@ public final class VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV extends S
     /// {@return `shaderFloat16VectorAtomics`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_shaderFloat16VectorAtomics(MemorySegment segment) { return VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV.get_shaderFloat16VectorAtomics(segment, 0L); }
-    /// {@return `shaderFloat16VectorAtomics` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int shaderFloat16VectorAtomicsAt(long index) { return VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV.get_shaderFloat16VectorAtomics(this.segment(), index); }
     /// {@return `shaderFloat16VectorAtomics`}
     public @CType("VkBool32") int shaderFloat16VectorAtomics() { return VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV.get_shaderFloat16VectorAtomics(this.segment()); }
     /// Sets `shaderFloat16VectorAtomics` with the given value at the given index.
@@ -183,14 +172,59 @@ public final class VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV extends S
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_shaderFloat16VectorAtomics(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV.set_shaderFloat16VectorAtomics(segment, 0L, value); }
-    /// Sets `shaderFloat16VectorAtomics` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV shaderFloat16VectorAtomicsAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV.set_shaderFloat16VectorAtomics(this.segment(), index, value); return this; }
     /// Sets `shaderFloat16VectorAtomics` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV shaderFloat16VectorAtomics(@CType("VkBool32") int value) { VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV.set_shaderFloat16VectorAtomics(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV].
+    public static final class Buffer extends VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV`
+        public VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV asSlice(long index) { return new VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `shaderFloat16VectorAtomics` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int shaderFloat16VectorAtomicsAt(long index) { return VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV.get_shaderFloat16VectorAtomics(this.segment(), index); }
+        /// Sets `shaderFloat16VectorAtomics` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer shaderFloat16VectorAtomicsAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV.set_shaderFloat16VectorAtomics(this.segment(), index, value); return this; }
+
+    }
 }

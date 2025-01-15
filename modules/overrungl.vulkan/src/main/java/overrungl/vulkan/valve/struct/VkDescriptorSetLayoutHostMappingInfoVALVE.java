@@ -43,7 +43,7 @@ import overrungl.util.*;
 ///     uint32_t descriptorSize;
 /// } VkDescriptorSetLayoutHostMappingInfoVALVE;
 /// ```
-public final class VkDescriptorSetLayoutHostMappingInfoVALVE extends Struct {
+public sealed class VkDescriptorSetLayoutHostMappingInfoVALVE extends Struct {
     /// The struct layout of `VkDescriptorSetLayoutHostMappingInfoVALVE`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -70,6 +70,11 @@ public final class VkDescriptorSetLayoutHostMappingInfoVALVE extends Struct {
     public static VkDescriptorSetLayoutHostMappingInfoVALVE of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDescriptorSetLayoutHostMappingInfoVALVE(segment); }
 
     /// Creates `VkDescriptorSetLayoutHostMappingInfoVALVE` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkDescriptorSetLayoutHostMappingInfoVALVE` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -82,7 +87,7 @@ public final class VkDescriptorSetLayoutHostMappingInfoVALVE extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDescriptorSetLayoutHostMappingInfoVALVE ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkDescriptorSetLayoutHostMappingInfoVALVE(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkDescriptorSetLayoutHostMappingInfoVALVE` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -93,18 +98,21 @@ public final class VkDescriptorSetLayoutHostMappingInfoVALVE extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDescriptorSetLayoutHostMappingInfoVALVE`
-    public static VkDescriptorSetLayoutHostMappingInfoVALVE alloc(SegmentAllocator allocator, long count) { return new VkDescriptorSetLayoutHostMappingInfoVALVE(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkDescriptorSetLayoutHostMappingInfoVALVE`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkDescriptorSetLayoutHostMappingInfoVALVE`
-    public VkDescriptorSetLayoutHostMappingInfoVALVE asSlice(long index) { return new VkDescriptorSetLayoutHostMappingInfoVALVE(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkDescriptorSetLayoutHostMappingInfoVALVE` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkDescriptorSetLayoutHostMappingInfoVALVE`
+    public static VkDescriptorSetLayoutHostMappingInfoVALVE allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("size_t") long descriptorOffset, @CType("uint32_t") int descriptorSize) { return alloc(allocator).sType(sType).pNext(pNext).descriptorOffset(descriptorOffset).descriptorSize(descriptorSize); }
 
-    /// Creates a slice of `VkDescriptorSetLayoutHostMappingInfoVALVE`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkDescriptorSetLayoutHostMappingInfoVALVE`
-    public VkDescriptorSetLayoutHostMappingInfoVALVE asSlice(long index, long count) { return new VkDescriptorSetLayoutHostMappingInfoVALVE(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkDescriptorSetLayoutHostMappingInfoVALVE copyFrom(VkDescriptorSetLayoutHostMappingInfoVALVE src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -113,9 +121,6 @@ public final class VkDescriptorSetLayoutHostMappingInfoVALVE extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkDescriptorSetLayoutHostMappingInfoVALVE.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkDescriptorSetLayoutHostMappingInfoVALVE.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkDescriptorSetLayoutHostMappingInfoVALVE.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -127,11 +132,6 @@ public final class VkDescriptorSetLayoutHostMappingInfoVALVE extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkDescriptorSetLayoutHostMappingInfoVALVE.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorSetLayoutHostMappingInfoVALVE sTypeAt(long index, @CType("VkStructureType") int value) { VkDescriptorSetLayoutHostMappingInfoVALVE.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -144,9 +144,6 @@ public final class VkDescriptorSetLayoutHostMappingInfoVALVE extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkDescriptorSetLayoutHostMappingInfoVALVE.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkDescriptorSetLayoutHostMappingInfoVALVE.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkDescriptorSetLayoutHostMappingInfoVALVE.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -158,11 +155,6 @@ public final class VkDescriptorSetLayoutHostMappingInfoVALVE extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkDescriptorSetLayoutHostMappingInfoVALVE.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorSetLayoutHostMappingInfoVALVE pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkDescriptorSetLayoutHostMappingInfoVALVE.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -175,9 +167,6 @@ public final class VkDescriptorSetLayoutHostMappingInfoVALVE extends Struct {
     /// {@return `descriptorOffset`}
     /// @param segment the segment of the struct
     public static @CType("size_t") long get_descriptorOffset(MemorySegment segment) { return VkDescriptorSetLayoutHostMappingInfoVALVE.get_descriptorOffset(segment, 0L); }
-    /// {@return `descriptorOffset` at the given index}
-    /// @param index the index
-    public @CType("size_t") long descriptorOffsetAt(long index) { return VkDescriptorSetLayoutHostMappingInfoVALVE.get_descriptorOffset(this.segment(), index); }
     /// {@return `descriptorOffset`}
     public @CType("size_t") long descriptorOffset() { return VkDescriptorSetLayoutHostMappingInfoVALVE.get_descriptorOffset(this.segment()); }
     /// Sets `descriptorOffset` with the given value at the given index.
@@ -189,11 +178,6 @@ public final class VkDescriptorSetLayoutHostMappingInfoVALVE extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_descriptorOffset(MemorySegment segment, @CType("size_t") long value) { VkDescriptorSetLayoutHostMappingInfoVALVE.set_descriptorOffset(segment, 0L, value); }
-    /// Sets `descriptorOffset` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorSetLayoutHostMappingInfoVALVE descriptorOffsetAt(long index, @CType("size_t") long value) { VkDescriptorSetLayoutHostMappingInfoVALVE.set_descriptorOffset(this.segment(), index, value); return this; }
     /// Sets `descriptorOffset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -206,9 +190,6 @@ public final class VkDescriptorSetLayoutHostMappingInfoVALVE extends Struct {
     /// {@return `descriptorSize`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_descriptorSize(MemorySegment segment) { return VkDescriptorSetLayoutHostMappingInfoVALVE.get_descriptorSize(segment, 0L); }
-    /// {@return `descriptorSize` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int descriptorSizeAt(long index) { return VkDescriptorSetLayoutHostMappingInfoVALVE.get_descriptorSize(this.segment(), index); }
     /// {@return `descriptorSize`}
     public @CType("uint32_t") int descriptorSize() { return VkDescriptorSetLayoutHostMappingInfoVALVE.get_descriptorSize(this.segment()); }
     /// Sets `descriptorSize` with the given value at the given index.
@@ -220,14 +201,68 @@ public final class VkDescriptorSetLayoutHostMappingInfoVALVE extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_descriptorSize(MemorySegment segment, @CType("uint32_t") int value) { VkDescriptorSetLayoutHostMappingInfoVALVE.set_descriptorSize(segment, 0L, value); }
-    /// Sets `descriptorSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorSetLayoutHostMappingInfoVALVE descriptorSizeAt(long index, @CType("uint32_t") int value) { VkDescriptorSetLayoutHostMappingInfoVALVE.set_descriptorSize(this.segment(), index, value); return this; }
     /// Sets `descriptorSize` with the given value.
     /// @param value the value
     /// @return `this`
     public VkDescriptorSetLayoutHostMappingInfoVALVE descriptorSize(@CType("uint32_t") int value) { VkDescriptorSetLayoutHostMappingInfoVALVE.set_descriptorSize(this.segment(), value); return this; }
 
+    /// A buffer of [VkDescriptorSetLayoutHostMappingInfoVALVE].
+    public static final class Buffer extends VkDescriptorSetLayoutHostMappingInfoVALVE {
+        private final long elementCount;
+
+        /// Creates `VkDescriptorSetLayoutHostMappingInfoVALVE.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkDescriptorSetLayoutHostMappingInfoVALVE`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkDescriptorSetLayoutHostMappingInfoVALVE`
+        public VkDescriptorSetLayoutHostMappingInfoVALVE asSlice(long index) { return new VkDescriptorSetLayoutHostMappingInfoVALVE(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkDescriptorSetLayoutHostMappingInfoVALVE`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkDescriptorSetLayoutHostMappingInfoVALVE`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkDescriptorSetLayoutHostMappingInfoVALVE.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkDescriptorSetLayoutHostMappingInfoVALVE.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkDescriptorSetLayoutHostMappingInfoVALVE.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkDescriptorSetLayoutHostMappingInfoVALVE.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `descriptorOffset` at the given index}
+        /// @param index the index
+        public @CType("size_t") long descriptorOffsetAt(long index) { return VkDescriptorSetLayoutHostMappingInfoVALVE.get_descriptorOffset(this.segment(), index); }
+        /// Sets `descriptorOffset` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer descriptorOffsetAt(long index, @CType("size_t") long value) { VkDescriptorSetLayoutHostMappingInfoVALVE.set_descriptorOffset(this.segment(), index, value); return this; }
+
+        /// {@return `descriptorSize` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int descriptorSizeAt(long index) { return VkDescriptorSetLayoutHostMappingInfoVALVE.get_descriptorSize(this.segment(), index); }
+        /// Sets `descriptorSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer descriptorSizeAt(long index, @CType("uint32_t") int value) { VkDescriptorSetLayoutHostMappingInfoVALVE.set_descriptorSize(this.segment(), index, value); return this; }
+
+    }
 }

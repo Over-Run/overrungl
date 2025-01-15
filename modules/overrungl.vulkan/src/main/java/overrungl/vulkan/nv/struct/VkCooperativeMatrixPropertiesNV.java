@@ -61,7 +61,7 @@ import overrungl.util.*;
 ///     VkScopeNV scope;
 /// } VkCooperativeMatrixPropertiesNV;
 /// ```
-public final class VkCooperativeMatrixPropertiesNV extends Struct {
+public sealed class VkCooperativeMatrixPropertiesNV extends Struct {
     /// The struct layout of `VkCooperativeMatrixPropertiesNV`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -106,6 +106,11 @@ public final class VkCooperativeMatrixPropertiesNV extends Struct {
     public static VkCooperativeMatrixPropertiesNV of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkCooperativeMatrixPropertiesNV(segment); }
 
     /// Creates `VkCooperativeMatrixPropertiesNV` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkCooperativeMatrixPropertiesNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -118,7 +123,7 @@ public final class VkCooperativeMatrixPropertiesNV extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkCooperativeMatrixPropertiesNV ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkCooperativeMatrixPropertiesNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkCooperativeMatrixPropertiesNV` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -129,18 +134,21 @@ public final class VkCooperativeMatrixPropertiesNV extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkCooperativeMatrixPropertiesNV`
-    public static VkCooperativeMatrixPropertiesNV alloc(SegmentAllocator allocator, long count) { return new VkCooperativeMatrixPropertiesNV(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkCooperativeMatrixPropertiesNV`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkCooperativeMatrixPropertiesNV`
-    public VkCooperativeMatrixPropertiesNV asSlice(long index) { return new VkCooperativeMatrixPropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkCooperativeMatrixPropertiesNV` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkCooperativeMatrixPropertiesNV`
+    public static VkCooperativeMatrixPropertiesNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int MSize, @CType("uint32_t") int NSize, @CType("uint32_t") int KSize, @CType("VkComponentTypeNV") int AType, @CType("VkComponentTypeNV") int BType, @CType("VkComponentTypeNV") int CType, @CType("VkComponentTypeNV") int DType, @CType("VkScopeNV") int scope) { return alloc(allocator).sType(sType).pNext(pNext).MSize(MSize).NSize(NSize).KSize(KSize).AType(AType).BType(BType).CType(CType).DType(DType).scope(scope); }
 
-    /// Creates a slice of `VkCooperativeMatrixPropertiesNV`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkCooperativeMatrixPropertiesNV`
-    public VkCooperativeMatrixPropertiesNV asSlice(long index, long count) { return new VkCooperativeMatrixPropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkCooperativeMatrixPropertiesNV copyFrom(VkCooperativeMatrixPropertiesNV src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -149,9 +157,6 @@ public final class VkCooperativeMatrixPropertiesNV extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkCooperativeMatrixPropertiesNV.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkCooperativeMatrixPropertiesNV.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkCooperativeMatrixPropertiesNV.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -163,11 +168,6 @@ public final class VkCooperativeMatrixPropertiesNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkCooperativeMatrixPropertiesNV.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCooperativeMatrixPropertiesNV sTypeAt(long index, @CType("VkStructureType") int value) { VkCooperativeMatrixPropertiesNV.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -180,9 +180,6 @@ public final class VkCooperativeMatrixPropertiesNV extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkCooperativeMatrixPropertiesNV.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkCooperativeMatrixPropertiesNV.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkCooperativeMatrixPropertiesNV.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -194,11 +191,6 @@ public final class VkCooperativeMatrixPropertiesNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkCooperativeMatrixPropertiesNV.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCooperativeMatrixPropertiesNV pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkCooperativeMatrixPropertiesNV.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -211,9 +203,6 @@ public final class VkCooperativeMatrixPropertiesNV extends Struct {
     /// {@return `MSize`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_MSize(MemorySegment segment) { return VkCooperativeMatrixPropertiesNV.get_MSize(segment, 0L); }
-    /// {@return `MSize` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int MSizeAt(long index) { return VkCooperativeMatrixPropertiesNV.get_MSize(this.segment(), index); }
     /// {@return `MSize`}
     public @CType("uint32_t") int MSize() { return VkCooperativeMatrixPropertiesNV.get_MSize(this.segment()); }
     /// Sets `MSize` with the given value at the given index.
@@ -225,11 +214,6 @@ public final class VkCooperativeMatrixPropertiesNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_MSize(MemorySegment segment, @CType("uint32_t") int value) { VkCooperativeMatrixPropertiesNV.set_MSize(segment, 0L, value); }
-    /// Sets `MSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCooperativeMatrixPropertiesNV MSizeAt(long index, @CType("uint32_t") int value) { VkCooperativeMatrixPropertiesNV.set_MSize(this.segment(), index, value); return this; }
     /// Sets `MSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -242,9 +226,6 @@ public final class VkCooperativeMatrixPropertiesNV extends Struct {
     /// {@return `NSize`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_NSize(MemorySegment segment) { return VkCooperativeMatrixPropertiesNV.get_NSize(segment, 0L); }
-    /// {@return `NSize` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int NSizeAt(long index) { return VkCooperativeMatrixPropertiesNV.get_NSize(this.segment(), index); }
     /// {@return `NSize`}
     public @CType("uint32_t") int NSize() { return VkCooperativeMatrixPropertiesNV.get_NSize(this.segment()); }
     /// Sets `NSize` with the given value at the given index.
@@ -256,11 +237,6 @@ public final class VkCooperativeMatrixPropertiesNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_NSize(MemorySegment segment, @CType("uint32_t") int value) { VkCooperativeMatrixPropertiesNV.set_NSize(segment, 0L, value); }
-    /// Sets `NSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCooperativeMatrixPropertiesNV NSizeAt(long index, @CType("uint32_t") int value) { VkCooperativeMatrixPropertiesNV.set_NSize(this.segment(), index, value); return this; }
     /// Sets `NSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -273,9 +249,6 @@ public final class VkCooperativeMatrixPropertiesNV extends Struct {
     /// {@return `KSize`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_KSize(MemorySegment segment) { return VkCooperativeMatrixPropertiesNV.get_KSize(segment, 0L); }
-    /// {@return `KSize` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int KSizeAt(long index) { return VkCooperativeMatrixPropertiesNV.get_KSize(this.segment(), index); }
     /// {@return `KSize`}
     public @CType("uint32_t") int KSize() { return VkCooperativeMatrixPropertiesNV.get_KSize(this.segment()); }
     /// Sets `KSize` with the given value at the given index.
@@ -287,11 +260,6 @@ public final class VkCooperativeMatrixPropertiesNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_KSize(MemorySegment segment, @CType("uint32_t") int value) { VkCooperativeMatrixPropertiesNV.set_KSize(segment, 0L, value); }
-    /// Sets `KSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCooperativeMatrixPropertiesNV KSizeAt(long index, @CType("uint32_t") int value) { VkCooperativeMatrixPropertiesNV.set_KSize(this.segment(), index, value); return this; }
     /// Sets `KSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -304,9 +272,6 @@ public final class VkCooperativeMatrixPropertiesNV extends Struct {
     /// {@return `AType`}
     /// @param segment the segment of the struct
     public static @CType("VkComponentTypeNV") int get_AType(MemorySegment segment) { return VkCooperativeMatrixPropertiesNV.get_AType(segment, 0L); }
-    /// {@return `AType` at the given index}
-    /// @param index the index
-    public @CType("VkComponentTypeNV") int ATypeAt(long index) { return VkCooperativeMatrixPropertiesNV.get_AType(this.segment(), index); }
     /// {@return `AType`}
     public @CType("VkComponentTypeNV") int AType() { return VkCooperativeMatrixPropertiesNV.get_AType(this.segment()); }
     /// Sets `AType` with the given value at the given index.
@@ -318,11 +283,6 @@ public final class VkCooperativeMatrixPropertiesNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_AType(MemorySegment segment, @CType("VkComponentTypeNV") int value) { VkCooperativeMatrixPropertiesNV.set_AType(segment, 0L, value); }
-    /// Sets `AType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCooperativeMatrixPropertiesNV ATypeAt(long index, @CType("VkComponentTypeNV") int value) { VkCooperativeMatrixPropertiesNV.set_AType(this.segment(), index, value); return this; }
     /// Sets `AType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -335,9 +295,6 @@ public final class VkCooperativeMatrixPropertiesNV extends Struct {
     /// {@return `BType`}
     /// @param segment the segment of the struct
     public static @CType("VkComponentTypeNV") int get_BType(MemorySegment segment) { return VkCooperativeMatrixPropertiesNV.get_BType(segment, 0L); }
-    /// {@return `BType` at the given index}
-    /// @param index the index
-    public @CType("VkComponentTypeNV") int BTypeAt(long index) { return VkCooperativeMatrixPropertiesNV.get_BType(this.segment(), index); }
     /// {@return `BType`}
     public @CType("VkComponentTypeNV") int BType() { return VkCooperativeMatrixPropertiesNV.get_BType(this.segment()); }
     /// Sets `BType` with the given value at the given index.
@@ -349,11 +306,6 @@ public final class VkCooperativeMatrixPropertiesNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_BType(MemorySegment segment, @CType("VkComponentTypeNV") int value) { VkCooperativeMatrixPropertiesNV.set_BType(segment, 0L, value); }
-    /// Sets `BType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCooperativeMatrixPropertiesNV BTypeAt(long index, @CType("VkComponentTypeNV") int value) { VkCooperativeMatrixPropertiesNV.set_BType(this.segment(), index, value); return this; }
     /// Sets `BType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -366,9 +318,6 @@ public final class VkCooperativeMatrixPropertiesNV extends Struct {
     /// {@return `CType`}
     /// @param segment the segment of the struct
     public static @CType("VkComponentTypeNV") int get_CType(MemorySegment segment) { return VkCooperativeMatrixPropertiesNV.get_CType(segment, 0L); }
-    /// {@return `CType` at the given index}
-    /// @param index the index
-    public @CType("VkComponentTypeNV") int CTypeAt(long index) { return VkCooperativeMatrixPropertiesNV.get_CType(this.segment(), index); }
     /// {@return `CType`}
     public @CType("VkComponentTypeNV") int CType() { return VkCooperativeMatrixPropertiesNV.get_CType(this.segment()); }
     /// Sets `CType` with the given value at the given index.
@@ -380,11 +329,6 @@ public final class VkCooperativeMatrixPropertiesNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_CType(MemorySegment segment, @CType("VkComponentTypeNV") int value) { VkCooperativeMatrixPropertiesNV.set_CType(segment, 0L, value); }
-    /// Sets `CType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCooperativeMatrixPropertiesNV CTypeAt(long index, @CType("VkComponentTypeNV") int value) { VkCooperativeMatrixPropertiesNV.set_CType(this.segment(), index, value); return this; }
     /// Sets `CType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -397,9 +341,6 @@ public final class VkCooperativeMatrixPropertiesNV extends Struct {
     /// {@return `DType`}
     /// @param segment the segment of the struct
     public static @CType("VkComponentTypeNV") int get_DType(MemorySegment segment) { return VkCooperativeMatrixPropertiesNV.get_DType(segment, 0L); }
-    /// {@return `DType` at the given index}
-    /// @param index the index
-    public @CType("VkComponentTypeNV") int DTypeAt(long index) { return VkCooperativeMatrixPropertiesNV.get_DType(this.segment(), index); }
     /// {@return `DType`}
     public @CType("VkComponentTypeNV") int DType() { return VkCooperativeMatrixPropertiesNV.get_DType(this.segment()); }
     /// Sets `DType` with the given value at the given index.
@@ -411,11 +352,6 @@ public final class VkCooperativeMatrixPropertiesNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_DType(MemorySegment segment, @CType("VkComponentTypeNV") int value) { VkCooperativeMatrixPropertiesNV.set_DType(segment, 0L, value); }
-    /// Sets `DType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCooperativeMatrixPropertiesNV DTypeAt(long index, @CType("VkComponentTypeNV") int value) { VkCooperativeMatrixPropertiesNV.set_DType(this.segment(), index, value); return this; }
     /// Sets `DType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -428,9 +364,6 @@ public final class VkCooperativeMatrixPropertiesNV extends Struct {
     /// {@return `scope`}
     /// @param segment the segment of the struct
     public static @CType("VkScopeNV") int get_scope(MemorySegment segment) { return VkCooperativeMatrixPropertiesNV.get_scope(segment, 0L); }
-    /// {@return `scope` at the given index}
-    /// @param index the index
-    public @CType("VkScopeNV") int scopeAt(long index) { return VkCooperativeMatrixPropertiesNV.get_scope(this.segment(), index); }
     /// {@return `scope`}
     public @CType("VkScopeNV") int scope() { return VkCooperativeMatrixPropertiesNV.get_scope(this.segment()); }
     /// Sets `scope` with the given value at the given index.
@@ -442,14 +375,122 @@ public final class VkCooperativeMatrixPropertiesNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_scope(MemorySegment segment, @CType("VkScopeNV") int value) { VkCooperativeMatrixPropertiesNV.set_scope(segment, 0L, value); }
-    /// Sets `scope` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCooperativeMatrixPropertiesNV scopeAt(long index, @CType("VkScopeNV") int value) { VkCooperativeMatrixPropertiesNV.set_scope(this.segment(), index, value); return this; }
     /// Sets `scope` with the given value.
     /// @param value the value
     /// @return `this`
     public VkCooperativeMatrixPropertiesNV scope(@CType("VkScopeNV") int value) { VkCooperativeMatrixPropertiesNV.set_scope(this.segment(), value); return this; }
 
+    /// A buffer of [VkCooperativeMatrixPropertiesNV].
+    public static final class Buffer extends VkCooperativeMatrixPropertiesNV {
+        private final long elementCount;
+
+        /// Creates `VkCooperativeMatrixPropertiesNV.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkCooperativeMatrixPropertiesNV`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkCooperativeMatrixPropertiesNV`
+        public VkCooperativeMatrixPropertiesNV asSlice(long index) { return new VkCooperativeMatrixPropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkCooperativeMatrixPropertiesNV`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkCooperativeMatrixPropertiesNV`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkCooperativeMatrixPropertiesNV.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkCooperativeMatrixPropertiesNV.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkCooperativeMatrixPropertiesNV.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkCooperativeMatrixPropertiesNV.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `MSize` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int MSizeAt(long index) { return VkCooperativeMatrixPropertiesNV.get_MSize(this.segment(), index); }
+        /// Sets `MSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer MSizeAt(long index, @CType("uint32_t") int value) { VkCooperativeMatrixPropertiesNV.set_MSize(this.segment(), index, value); return this; }
+
+        /// {@return `NSize` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int NSizeAt(long index) { return VkCooperativeMatrixPropertiesNV.get_NSize(this.segment(), index); }
+        /// Sets `NSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer NSizeAt(long index, @CType("uint32_t") int value) { VkCooperativeMatrixPropertiesNV.set_NSize(this.segment(), index, value); return this; }
+
+        /// {@return `KSize` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int KSizeAt(long index) { return VkCooperativeMatrixPropertiesNV.get_KSize(this.segment(), index); }
+        /// Sets `KSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer KSizeAt(long index, @CType("uint32_t") int value) { VkCooperativeMatrixPropertiesNV.set_KSize(this.segment(), index, value); return this; }
+
+        /// {@return `AType` at the given index}
+        /// @param index the index
+        public @CType("VkComponentTypeNV") int ATypeAt(long index) { return VkCooperativeMatrixPropertiesNV.get_AType(this.segment(), index); }
+        /// Sets `AType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer ATypeAt(long index, @CType("VkComponentTypeNV") int value) { VkCooperativeMatrixPropertiesNV.set_AType(this.segment(), index, value); return this; }
+
+        /// {@return `BType` at the given index}
+        /// @param index the index
+        public @CType("VkComponentTypeNV") int BTypeAt(long index) { return VkCooperativeMatrixPropertiesNV.get_BType(this.segment(), index); }
+        /// Sets `BType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer BTypeAt(long index, @CType("VkComponentTypeNV") int value) { VkCooperativeMatrixPropertiesNV.set_BType(this.segment(), index, value); return this; }
+
+        /// {@return `CType` at the given index}
+        /// @param index the index
+        public @CType("VkComponentTypeNV") int CTypeAt(long index) { return VkCooperativeMatrixPropertiesNV.get_CType(this.segment(), index); }
+        /// Sets `CType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer CTypeAt(long index, @CType("VkComponentTypeNV") int value) { VkCooperativeMatrixPropertiesNV.set_CType(this.segment(), index, value); return this; }
+
+        /// {@return `DType` at the given index}
+        /// @param index the index
+        public @CType("VkComponentTypeNV") int DTypeAt(long index) { return VkCooperativeMatrixPropertiesNV.get_DType(this.segment(), index); }
+        /// Sets `DType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer DTypeAt(long index, @CType("VkComponentTypeNV") int value) { VkCooperativeMatrixPropertiesNV.set_DType(this.segment(), index, value); return this; }
+
+        /// {@return `scope` at the given index}
+        /// @param index the index
+        public @CType("VkScopeNV") int scopeAt(long index) { return VkCooperativeMatrixPropertiesNV.get_scope(this.segment(), index); }
+        /// Sets `scope` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer scopeAt(long index, @CType("VkScopeNV") int value) { VkCooperativeMatrixPropertiesNV.set_scope(this.segment(), index, value); return this; }
+
+    }
 }

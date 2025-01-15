@@ -58,7 +58,7 @@ import overrungl.util.*;
 ///     int32_t basePipelineIndex;
 /// } VkExecutionGraphPipelineCreateInfoAMDX;
 /// ```
-public final class VkExecutionGraphPipelineCreateInfoAMDX extends Struct {
+public sealed class VkExecutionGraphPipelineCreateInfoAMDX extends Struct {
     /// The struct layout of `VkExecutionGraphPipelineCreateInfoAMDX`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -100,6 +100,11 @@ public final class VkExecutionGraphPipelineCreateInfoAMDX extends Struct {
     public static VkExecutionGraphPipelineCreateInfoAMDX of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkExecutionGraphPipelineCreateInfoAMDX(segment); }
 
     /// Creates `VkExecutionGraphPipelineCreateInfoAMDX` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkExecutionGraphPipelineCreateInfoAMDX` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -112,7 +117,7 @@ public final class VkExecutionGraphPipelineCreateInfoAMDX extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkExecutionGraphPipelineCreateInfoAMDX ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkExecutionGraphPipelineCreateInfoAMDX(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkExecutionGraphPipelineCreateInfoAMDX` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -123,18 +128,21 @@ public final class VkExecutionGraphPipelineCreateInfoAMDX extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkExecutionGraphPipelineCreateInfoAMDX`
-    public static VkExecutionGraphPipelineCreateInfoAMDX alloc(SegmentAllocator allocator, long count) { return new VkExecutionGraphPipelineCreateInfoAMDX(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkExecutionGraphPipelineCreateInfoAMDX`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkExecutionGraphPipelineCreateInfoAMDX`
-    public VkExecutionGraphPipelineCreateInfoAMDX asSlice(long index) { return new VkExecutionGraphPipelineCreateInfoAMDX(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkExecutionGraphPipelineCreateInfoAMDX` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkExecutionGraphPipelineCreateInfoAMDX`
+    public static VkExecutionGraphPipelineCreateInfoAMDX allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkPipelineCreateFlags") int flags, @CType("uint32_t") int stageCount, @CType("const VkPipelineShaderStageCreateInfo *") java.lang.foreign.MemorySegment pStages, @CType("const VkPipelineLibraryCreateInfoKHR *") java.lang.foreign.MemorySegment pLibraryInfo, @CType("VkPipelineLayout") java.lang.foreign.MemorySegment layout, @CType("VkPipeline") java.lang.foreign.MemorySegment basePipelineHandle, @CType("int32_t") int basePipelineIndex) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stageCount(stageCount).pStages(pStages).pLibraryInfo(pLibraryInfo).layout(layout).basePipelineHandle(basePipelineHandle).basePipelineIndex(basePipelineIndex); }
 
-    /// Creates a slice of `VkExecutionGraphPipelineCreateInfoAMDX`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkExecutionGraphPipelineCreateInfoAMDX`
-    public VkExecutionGraphPipelineCreateInfoAMDX asSlice(long index, long count) { return new VkExecutionGraphPipelineCreateInfoAMDX(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkExecutionGraphPipelineCreateInfoAMDX copyFrom(VkExecutionGraphPipelineCreateInfoAMDX src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -143,9 +151,6 @@ public final class VkExecutionGraphPipelineCreateInfoAMDX extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkExecutionGraphPipelineCreateInfoAMDX.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkExecutionGraphPipelineCreateInfoAMDX.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkExecutionGraphPipelineCreateInfoAMDX.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -157,11 +162,6 @@ public final class VkExecutionGraphPipelineCreateInfoAMDX extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkExecutionGraphPipelineCreateInfoAMDX.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkExecutionGraphPipelineCreateInfoAMDX sTypeAt(long index, @CType("VkStructureType") int value) { VkExecutionGraphPipelineCreateInfoAMDX.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,9 +174,6 @@ public final class VkExecutionGraphPipelineCreateInfoAMDX extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkExecutionGraphPipelineCreateInfoAMDX.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkExecutionGraphPipelineCreateInfoAMDX.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkExecutionGraphPipelineCreateInfoAMDX.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -188,11 +185,6 @@ public final class VkExecutionGraphPipelineCreateInfoAMDX extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkExecutionGraphPipelineCreateInfoAMDX.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkExecutionGraphPipelineCreateInfoAMDX pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkExecutionGraphPipelineCreateInfoAMDX.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -205,9 +197,6 @@ public final class VkExecutionGraphPipelineCreateInfoAMDX extends Struct {
     /// {@return `flags`}
     /// @param segment the segment of the struct
     public static @CType("VkPipelineCreateFlags") int get_flags(MemorySegment segment) { return VkExecutionGraphPipelineCreateInfoAMDX.get_flags(segment, 0L); }
-    /// {@return `flags` at the given index}
-    /// @param index the index
-    public @CType("VkPipelineCreateFlags") int flagsAt(long index) { return VkExecutionGraphPipelineCreateInfoAMDX.get_flags(this.segment(), index); }
     /// {@return `flags`}
     public @CType("VkPipelineCreateFlags") int flags() { return VkExecutionGraphPipelineCreateInfoAMDX.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
@@ -219,11 +208,6 @@ public final class VkExecutionGraphPipelineCreateInfoAMDX extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_flags(MemorySegment segment, @CType("VkPipelineCreateFlags") int value) { VkExecutionGraphPipelineCreateInfoAMDX.set_flags(segment, 0L, value); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkExecutionGraphPipelineCreateInfoAMDX flagsAt(long index, @CType("VkPipelineCreateFlags") int value) { VkExecutionGraphPipelineCreateInfoAMDX.set_flags(this.segment(), index, value); return this; }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -236,9 +220,6 @@ public final class VkExecutionGraphPipelineCreateInfoAMDX extends Struct {
     /// {@return `stageCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_stageCount(MemorySegment segment) { return VkExecutionGraphPipelineCreateInfoAMDX.get_stageCount(segment, 0L); }
-    /// {@return `stageCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int stageCountAt(long index) { return VkExecutionGraphPipelineCreateInfoAMDX.get_stageCount(this.segment(), index); }
     /// {@return `stageCount`}
     public @CType("uint32_t") int stageCount() { return VkExecutionGraphPipelineCreateInfoAMDX.get_stageCount(this.segment()); }
     /// Sets `stageCount` with the given value at the given index.
@@ -250,11 +231,6 @@ public final class VkExecutionGraphPipelineCreateInfoAMDX extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_stageCount(MemorySegment segment, @CType("uint32_t") int value) { VkExecutionGraphPipelineCreateInfoAMDX.set_stageCount(segment, 0L, value); }
-    /// Sets `stageCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkExecutionGraphPipelineCreateInfoAMDX stageCountAt(long index, @CType("uint32_t") int value) { VkExecutionGraphPipelineCreateInfoAMDX.set_stageCount(this.segment(), index, value); return this; }
     /// Sets `stageCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -267,9 +243,6 @@ public final class VkExecutionGraphPipelineCreateInfoAMDX extends Struct {
     /// {@return `pStages`}
     /// @param segment the segment of the struct
     public static @CType("const VkPipelineShaderStageCreateInfo *") java.lang.foreign.MemorySegment get_pStages(MemorySegment segment) { return VkExecutionGraphPipelineCreateInfoAMDX.get_pStages(segment, 0L); }
-    /// {@return `pStages` at the given index}
-    /// @param index the index
-    public @CType("const VkPipelineShaderStageCreateInfo *") java.lang.foreign.MemorySegment pStagesAt(long index) { return VkExecutionGraphPipelineCreateInfoAMDX.get_pStages(this.segment(), index); }
     /// {@return `pStages`}
     public @CType("const VkPipelineShaderStageCreateInfo *") java.lang.foreign.MemorySegment pStages() { return VkExecutionGraphPipelineCreateInfoAMDX.get_pStages(this.segment()); }
     /// Sets `pStages` with the given value at the given index.
@@ -281,11 +254,6 @@ public final class VkExecutionGraphPipelineCreateInfoAMDX extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pStages(MemorySegment segment, @CType("const VkPipelineShaderStageCreateInfo *") java.lang.foreign.MemorySegment value) { VkExecutionGraphPipelineCreateInfoAMDX.set_pStages(segment, 0L, value); }
-    /// Sets `pStages` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkExecutionGraphPipelineCreateInfoAMDX pStagesAt(long index, @CType("const VkPipelineShaderStageCreateInfo *") java.lang.foreign.MemorySegment value) { VkExecutionGraphPipelineCreateInfoAMDX.set_pStages(this.segment(), index, value); return this; }
     /// Sets `pStages` with the given value.
     /// @param value the value
     /// @return `this`
@@ -298,9 +266,6 @@ public final class VkExecutionGraphPipelineCreateInfoAMDX extends Struct {
     /// {@return `pLibraryInfo`}
     /// @param segment the segment of the struct
     public static @CType("const VkPipelineLibraryCreateInfoKHR *") java.lang.foreign.MemorySegment get_pLibraryInfo(MemorySegment segment) { return VkExecutionGraphPipelineCreateInfoAMDX.get_pLibraryInfo(segment, 0L); }
-    /// {@return `pLibraryInfo` at the given index}
-    /// @param index the index
-    public @CType("const VkPipelineLibraryCreateInfoKHR *") java.lang.foreign.MemorySegment pLibraryInfoAt(long index) { return VkExecutionGraphPipelineCreateInfoAMDX.get_pLibraryInfo(this.segment(), index); }
     /// {@return `pLibraryInfo`}
     public @CType("const VkPipelineLibraryCreateInfoKHR *") java.lang.foreign.MemorySegment pLibraryInfo() { return VkExecutionGraphPipelineCreateInfoAMDX.get_pLibraryInfo(this.segment()); }
     /// Sets `pLibraryInfo` with the given value at the given index.
@@ -312,11 +277,6 @@ public final class VkExecutionGraphPipelineCreateInfoAMDX extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pLibraryInfo(MemorySegment segment, @CType("const VkPipelineLibraryCreateInfoKHR *") java.lang.foreign.MemorySegment value) { VkExecutionGraphPipelineCreateInfoAMDX.set_pLibraryInfo(segment, 0L, value); }
-    /// Sets `pLibraryInfo` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkExecutionGraphPipelineCreateInfoAMDX pLibraryInfoAt(long index, @CType("const VkPipelineLibraryCreateInfoKHR *") java.lang.foreign.MemorySegment value) { VkExecutionGraphPipelineCreateInfoAMDX.set_pLibraryInfo(this.segment(), index, value); return this; }
     /// Sets `pLibraryInfo` with the given value.
     /// @param value the value
     /// @return `this`
@@ -329,9 +289,6 @@ public final class VkExecutionGraphPipelineCreateInfoAMDX extends Struct {
     /// {@return `layout`}
     /// @param segment the segment of the struct
     public static @CType("VkPipelineLayout") java.lang.foreign.MemorySegment get_layout(MemorySegment segment) { return VkExecutionGraphPipelineCreateInfoAMDX.get_layout(segment, 0L); }
-    /// {@return `layout` at the given index}
-    /// @param index the index
-    public @CType("VkPipelineLayout") java.lang.foreign.MemorySegment layoutAt(long index) { return VkExecutionGraphPipelineCreateInfoAMDX.get_layout(this.segment(), index); }
     /// {@return `layout`}
     public @CType("VkPipelineLayout") java.lang.foreign.MemorySegment layout() { return VkExecutionGraphPipelineCreateInfoAMDX.get_layout(this.segment()); }
     /// Sets `layout` with the given value at the given index.
@@ -343,11 +300,6 @@ public final class VkExecutionGraphPipelineCreateInfoAMDX extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_layout(MemorySegment segment, @CType("VkPipelineLayout") java.lang.foreign.MemorySegment value) { VkExecutionGraphPipelineCreateInfoAMDX.set_layout(segment, 0L, value); }
-    /// Sets `layout` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkExecutionGraphPipelineCreateInfoAMDX layoutAt(long index, @CType("VkPipelineLayout") java.lang.foreign.MemorySegment value) { VkExecutionGraphPipelineCreateInfoAMDX.set_layout(this.segment(), index, value); return this; }
     /// Sets `layout` with the given value.
     /// @param value the value
     /// @return `this`
@@ -360,9 +312,6 @@ public final class VkExecutionGraphPipelineCreateInfoAMDX extends Struct {
     /// {@return `basePipelineHandle`}
     /// @param segment the segment of the struct
     public static @CType("VkPipeline") java.lang.foreign.MemorySegment get_basePipelineHandle(MemorySegment segment) { return VkExecutionGraphPipelineCreateInfoAMDX.get_basePipelineHandle(segment, 0L); }
-    /// {@return `basePipelineHandle` at the given index}
-    /// @param index the index
-    public @CType("VkPipeline") java.lang.foreign.MemorySegment basePipelineHandleAt(long index) { return VkExecutionGraphPipelineCreateInfoAMDX.get_basePipelineHandle(this.segment(), index); }
     /// {@return `basePipelineHandle`}
     public @CType("VkPipeline") java.lang.foreign.MemorySegment basePipelineHandle() { return VkExecutionGraphPipelineCreateInfoAMDX.get_basePipelineHandle(this.segment()); }
     /// Sets `basePipelineHandle` with the given value at the given index.
@@ -374,11 +323,6 @@ public final class VkExecutionGraphPipelineCreateInfoAMDX extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_basePipelineHandle(MemorySegment segment, @CType("VkPipeline") java.lang.foreign.MemorySegment value) { VkExecutionGraphPipelineCreateInfoAMDX.set_basePipelineHandle(segment, 0L, value); }
-    /// Sets `basePipelineHandle` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkExecutionGraphPipelineCreateInfoAMDX basePipelineHandleAt(long index, @CType("VkPipeline") java.lang.foreign.MemorySegment value) { VkExecutionGraphPipelineCreateInfoAMDX.set_basePipelineHandle(this.segment(), index, value); return this; }
     /// Sets `basePipelineHandle` with the given value.
     /// @param value the value
     /// @return `this`
@@ -391,9 +335,6 @@ public final class VkExecutionGraphPipelineCreateInfoAMDX extends Struct {
     /// {@return `basePipelineIndex`}
     /// @param segment the segment of the struct
     public static @CType("int32_t") int get_basePipelineIndex(MemorySegment segment) { return VkExecutionGraphPipelineCreateInfoAMDX.get_basePipelineIndex(segment, 0L); }
-    /// {@return `basePipelineIndex` at the given index}
-    /// @param index the index
-    public @CType("int32_t") int basePipelineIndexAt(long index) { return VkExecutionGraphPipelineCreateInfoAMDX.get_basePipelineIndex(this.segment(), index); }
     /// {@return `basePipelineIndex`}
     public @CType("int32_t") int basePipelineIndex() { return VkExecutionGraphPipelineCreateInfoAMDX.get_basePipelineIndex(this.segment()); }
     /// Sets `basePipelineIndex` with the given value at the given index.
@@ -405,14 +346,113 @@ public final class VkExecutionGraphPipelineCreateInfoAMDX extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_basePipelineIndex(MemorySegment segment, @CType("int32_t") int value) { VkExecutionGraphPipelineCreateInfoAMDX.set_basePipelineIndex(segment, 0L, value); }
-    /// Sets `basePipelineIndex` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkExecutionGraphPipelineCreateInfoAMDX basePipelineIndexAt(long index, @CType("int32_t") int value) { VkExecutionGraphPipelineCreateInfoAMDX.set_basePipelineIndex(this.segment(), index, value); return this; }
     /// Sets `basePipelineIndex` with the given value.
     /// @param value the value
     /// @return `this`
     public VkExecutionGraphPipelineCreateInfoAMDX basePipelineIndex(@CType("int32_t") int value) { VkExecutionGraphPipelineCreateInfoAMDX.set_basePipelineIndex(this.segment(), value); return this; }
 
+    /// A buffer of [VkExecutionGraphPipelineCreateInfoAMDX].
+    public static final class Buffer extends VkExecutionGraphPipelineCreateInfoAMDX {
+        private final long elementCount;
+
+        /// Creates `VkExecutionGraphPipelineCreateInfoAMDX.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkExecutionGraphPipelineCreateInfoAMDX`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkExecutionGraphPipelineCreateInfoAMDX`
+        public VkExecutionGraphPipelineCreateInfoAMDX asSlice(long index) { return new VkExecutionGraphPipelineCreateInfoAMDX(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkExecutionGraphPipelineCreateInfoAMDX`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkExecutionGraphPipelineCreateInfoAMDX`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkExecutionGraphPipelineCreateInfoAMDX.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkExecutionGraphPipelineCreateInfoAMDX.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkExecutionGraphPipelineCreateInfoAMDX.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkExecutionGraphPipelineCreateInfoAMDX.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `flags` at the given index}
+        /// @param index the index
+        public @CType("VkPipelineCreateFlags") int flagsAt(long index) { return VkExecutionGraphPipelineCreateInfoAMDX.get_flags(this.segment(), index); }
+        /// Sets `flags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer flagsAt(long index, @CType("VkPipelineCreateFlags") int value) { VkExecutionGraphPipelineCreateInfoAMDX.set_flags(this.segment(), index, value); return this; }
+
+        /// {@return `stageCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int stageCountAt(long index) { return VkExecutionGraphPipelineCreateInfoAMDX.get_stageCount(this.segment(), index); }
+        /// Sets `stageCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer stageCountAt(long index, @CType("uint32_t") int value) { VkExecutionGraphPipelineCreateInfoAMDX.set_stageCount(this.segment(), index, value); return this; }
+
+        /// {@return `pStages` at the given index}
+        /// @param index the index
+        public @CType("const VkPipelineShaderStageCreateInfo *") java.lang.foreign.MemorySegment pStagesAt(long index) { return VkExecutionGraphPipelineCreateInfoAMDX.get_pStages(this.segment(), index); }
+        /// Sets `pStages` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pStagesAt(long index, @CType("const VkPipelineShaderStageCreateInfo *") java.lang.foreign.MemorySegment value) { VkExecutionGraphPipelineCreateInfoAMDX.set_pStages(this.segment(), index, value); return this; }
+
+        /// {@return `pLibraryInfo` at the given index}
+        /// @param index the index
+        public @CType("const VkPipelineLibraryCreateInfoKHR *") java.lang.foreign.MemorySegment pLibraryInfoAt(long index) { return VkExecutionGraphPipelineCreateInfoAMDX.get_pLibraryInfo(this.segment(), index); }
+        /// Sets `pLibraryInfo` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pLibraryInfoAt(long index, @CType("const VkPipelineLibraryCreateInfoKHR *") java.lang.foreign.MemorySegment value) { VkExecutionGraphPipelineCreateInfoAMDX.set_pLibraryInfo(this.segment(), index, value); return this; }
+
+        /// {@return `layout` at the given index}
+        /// @param index the index
+        public @CType("VkPipelineLayout") java.lang.foreign.MemorySegment layoutAt(long index) { return VkExecutionGraphPipelineCreateInfoAMDX.get_layout(this.segment(), index); }
+        /// Sets `layout` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer layoutAt(long index, @CType("VkPipelineLayout") java.lang.foreign.MemorySegment value) { VkExecutionGraphPipelineCreateInfoAMDX.set_layout(this.segment(), index, value); return this; }
+
+        /// {@return `basePipelineHandle` at the given index}
+        /// @param index the index
+        public @CType("VkPipeline") java.lang.foreign.MemorySegment basePipelineHandleAt(long index) { return VkExecutionGraphPipelineCreateInfoAMDX.get_basePipelineHandle(this.segment(), index); }
+        /// Sets `basePipelineHandle` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer basePipelineHandleAt(long index, @CType("VkPipeline") java.lang.foreign.MemorySegment value) { VkExecutionGraphPipelineCreateInfoAMDX.set_basePipelineHandle(this.segment(), index, value); return this; }
+
+        /// {@return `basePipelineIndex` at the given index}
+        /// @param index the index
+        public @CType("int32_t") int basePipelineIndexAt(long index) { return VkExecutionGraphPipelineCreateInfoAMDX.get_basePipelineIndex(this.segment(), index); }
+        /// Sets `basePipelineIndex` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer basePipelineIndexAt(long index, @CType("int32_t") int value) { VkExecutionGraphPipelineCreateInfoAMDX.set_basePipelineIndex(this.segment(), index, value); return this; }
+
+    }
 }

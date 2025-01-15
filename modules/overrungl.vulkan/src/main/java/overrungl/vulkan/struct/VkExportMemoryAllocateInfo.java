@@ -40,7 +40,7 @@ import overrungl.util.*;
 ///     VkExternalMemoryHandleTypeFlags handleTypes;
 /// } VkExportMemoryAllocateInfo;
 /// ```
-public final class VkExportMemoryAllocateInfo extends Struct {
+public sealed class VkExportMemoryAllocateInfo extends Struct {
     /// The struct layout of `VkExportMemoryAllocateInfo`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -64,6 +64,11 @@ public final class VkExportMemoryAllocateInfo extends Struct {
     public static VkExportMemoryAllocateInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkExportMemoryAllocateInfo(segment); }
 
     /// Creates `VkExportMemoryAllocateInfo` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkExportMemoryAllocateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -76,7 +81,7 @@ public final class VkExportMemoryAllocateInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkExportMemoryAllocateInfo ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkExportMemoryAllocateInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkExportMemoryAllocateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -87,18 +92,21 @@ public final class VkExportMemoryAllocateInfo extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkExportMemoryAllocateInfo`
-    public static VkExportMemoryAllocateInfo alloc(SegmentAllocator allocator, long count) { return new VkExportMemoryAllocateInfo(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkExportMemoryAllocateInfo`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkExportMemoryAllocateInfo`
-    public VkExportMemoryAllocateInfo asSlice(long index) { return new VkExportMemoryAllocateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkExportMemoryAllocateInfo` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkExportMemoryAllocateInfo`
+    public static VkExportMemoryAllocateInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkExternalMemoryHandleTypeFlags") int handleTypes) { return alloc(allocator).sType(sType).pNext(pNext).handleTypes(handleTypes); }
 
-    /// Creates a slice of `VkExportMemoryAllocateInfo`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkExportMemoryAllocateInfo`
-    public VkExportMemoryAllocateInfo asSlice(long index, long count) { return new VkExportMemoryAllocateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkExportMemoryAllocateInfo copyFrom(VkExportMemoryAllocateInfo src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -107,9 +115,6 @@ public final class VkExportMemoryAllocateInfo extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkExportMemoryAllocateInfo.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkExportMemoryAllocateInfo.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkExportMemoryAllocateInfo.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -121,11 +126,6 @@ public final class VkExportMemoryAllocateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkExportMemoryAllocateInfo.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkExportMemoryAllocateInfo sTypeAt(long index, @CType("VkStructureType") int value) { VkExportMemoryAllocateInfo.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -138,9 +138,6 @@ public final class VkExportMemoryAllocateInfo extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkExportMemoryAllocateInfo.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkExportMemoryAllocateInfo.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkExportMemoryAllocateInfo.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -152,11 +149,6 @@ public final class VkExportMemoryAllocateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkExportMemoryAllocateInfo.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkExportMemoryAllocateInfo pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkExportMemoryAllocateInfo.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -169,9 +161,6 @@ public final class VkExportMemoryAllocateInfo extends Struct {
     /// {@return `handleTypes`}
     /// @param segment the segment of the struct
     public static @CType("VkExternalMemoryHandleTypeFlags") int get_handleTypes(MemorySegment segment) { return VkExportMemoryAllocateInfo.get_handleTypes(segment, 0L); }
-    /// {@return `handleTypes` at the given index}
-    /// @param index the index
-    public @CType("VkExternalMemoryHandleTypeFlags") int handleTypesAt(long index) { return VkExportMemoryAllocateInfo.get_handleTypes(this.segment(), index); }
     /// {@return `handleTypes`}
     public @CType("VkExternalMemoryHandleTypeFlags") int handleTypes() { return VkExportMemoryAllocateInfo.get_handleTypes(this.segment()); }
     /// Sets `handleTypes` with the given value at the given index.
@@ -183,14 +172,59 @@ public final class VkExportMemoryAllocateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_handleTypes(MemorySegment segment, @CType("VkExternalMemoryHandleTypeFlags") int value) { VkExportMemoryAllocateInfo.set_handleTypes(segment, 0L, value); }
-    /// Sets `handleTypes` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkExportMemoryAllocateInfo handleTypesAt(long index, @CType("VkExternalMemoryHandleTypeFlags") int value) { VkExportMemoryAllocateInfo.set_handleTypes(this.segment(), index, value); return this; }
     /// Sets `handleTypes` with the given value.
     /// @param value the value
     /// @return `this`
     public VkExportMemoryAllocateInfo handleTypes(@CType("VkExternalMemoryHandleTypeFlags") int value) { VkExportMemoryAllocateInfo.set_handleTypes(this.segment(), value); return this; }
 
+    /// A buffer of [VkExportMemoryAllocateInfo].
+    public static final class Buffer extends VkExportMemoryAllocateInfo {
+        private final long elementCount;
+
+        /// Creates `VkExportMemoryAllocateInfo.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkExportMemoryAllocateInfo`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkExportMemoryAllocateInfo`
+        public VkExportMemoryAllocateInfo asSlice(long index) { return new VkExportMemoryAllocateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkExportMemoryAllocateInfo`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkExportMemoryAllocateInfo`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkExportMemoryAllocateInfo.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkExportMemoryAllocateInfo.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkExportMemoryAllocateInfo.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkExportMemoryAllocateInfo.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `handleTypes` at the given index}
+        /// @param index the index
+        public @CType("VkExternalMemoryHandleTypeFlags") int handleTypesAt(long index) { return VkExportMemoryAllocateInfo.get_handleTypes(this.segment(), index); }
+        /// Sets `handleTypes` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer handleTypesAt(long index, @CType("VkExternalMemoryHandleTypeFlags") int value) { VkExportMemoryAllocateInfo.set_handleTypes(this.segment(), index, value); return this; }
+
+    }
 }

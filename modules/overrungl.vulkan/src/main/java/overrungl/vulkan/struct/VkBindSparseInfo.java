@@ -67,7 +67,7 @@ import overrungl.util.*;
 ///     const VkSemaphore * pSignalSemaphores;
 /// } VkBindSparseInfo;
 /// ```
-public final class VkBindSparseInfo extends Struct {
+public sealed class VkBindSparseInfo extends Struct {
     /// The struct layout of `VkBindSparseInfo`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -118,6 +118,11 @@ public final class VkBindSparseInfo extends Struct {
     public static VkBindSparseInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkBindSparseInfo(segment); }
 
     /// Creates `VkBindSparseInfo` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkBindSparseInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -130,7 +135,7 @@ public final class VkBindSparseInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkBindSparseInfo ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkBindSparseInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkBindSparseInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -141,18 +146,21 @@ public final class VkBindSparseInfo extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkBindSparseInfo`
-    public static VkBindSparseInfo alloc(SegmentAllocator allocator, long count) { return new VkBindSparseInfo(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkBindSparseInfo`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkBindSparseInfo`
-    public VkBindSparseInfo asSlice(long index) { return new VkBindSparseInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkBindSparseInfo` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkBindSparseInfo`
+    public static VkBindSparseInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int waitSemaphoreCount, @CType("const VkSemaphore *") java.lang.foreign.MemorySegment pWaitSemaphores, @CType("uint32_t") int bufferBindCount, @CType("const VkSparseBufferMemoryBindInfo *") java.lang.foreign.MemorySegment pBufferBinds, @CType("uint32_t") int imageOpaqueBindCount, @CType("const VkSparseImageOpaqueMemoryBindInfo *") java.lang.foreign.MemorySegment pImageOpaqueBinds, @CType("uint32_t") int imageBindCount, @CType("const VkSparseImageMemoryBindInfo *") java.lang.foreign.MemorySegment pImageBinds, @CType("uint32_t") int signalSemaphoreCount, @CType("const VkSemaphore *") java.lang.foreign.MemorySegment pSignalSemaphores) { return alloc(allocator).sType(sType).pNext(pNext).waitSemaphoreCount(waitSemaphoreCount).pWaitSemaphores(pWaitSemaphores).bufferBindCount(bufferBindCount).pBufferBinds(pBufferBinds).imageOpaqueBindCount(imageOpaqueBindCount).pImageOpaqueBinds(pImageOpaqueBinds).imageBindCount(imageBindCount).pImageBinds(pImageBinds).signalSemaphoreCount(signalSemaphoreCount).pSignalSemaphores(pSignalSemaphores); }
 
-    /// Creates a slice of `VkBindSparseInfo`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkBindSparseInfo`
-    public VkBindSparseInfo asSlice(long index, long count) { return new VkBindSparseInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkBindSparseInfo copyFrom(VkBindSparseInfo src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -161,9 +169,6 @@ public final class VkBindSparseInfo extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkBindSparseInfo.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkBindSparseInfo.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkBindSparseInfo.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -175,11 +180,6 @@ public final class VkBindSparseInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkBindSparseInfo.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBindSparseInfo sTypeAt(long index, @CType("VkStructureType") int value) { VkBindSparseInfo.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -192,9 +192,6 @@ public final class VkBindSparseInfo extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkBindSparseInfo.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkBindSparseInfo.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkBindSparseInfo.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -206,11 +203,6 @@ public final class VkBindSparseInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkBindSparseInfo.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBindSparseInfo pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkBindSparseInfo.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -223,9 +215,6 @@ public final class VkBindSparseInfo extends Struct {
     /// {@return `waitSemaphoreCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_waitSemaphoreCount(MemorySegment segment) { return VkBindSparseInfo.get_waitSemaphoreCount(segment, 0L); }
-    /// {@return `waitSemaphoreCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int waitSemaphoreCountAt(long index) { return VkBindSparseInfo.get_waitSemaphoreCount(this.segment(), index); }
     /// {@return `waitSemaphoreCount`}
     public @CType("uint32_t") int waitSemaphoreCount() { return VkBindSparseInfo.get_waitSemaphoreCount(this.segment()); }
     /// Sets `waitSemaphoreCount` with the given value at the given index.
@@ -237,11 +226,6 @@ public final class VkBindSparseInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_waitSemaphoreCount(MemorySegment segment, @CType("uint32_t") int value) { VkBindSparseInfo.set_waitSemaphoreCount(segment, 0L, value); }
-    /// Sets `waitSemaphoreCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBindSparseInfo waitSemaphoreCountAt(long index, @CType("uint32_t") int value) { VkBindSparseInfo.set_waitSemaphoreCount(this.segment(), index, value); return this; }
     /// Sets `waitSemaphoreCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -254,9 +238,6 @@ public final class VkBindSparseInfo extends Struct {
     /// {@return `pWaitSemaphores`}
     /// @param segment the segment of the struct
     public static @CType("const VkSemaphore *") java.lang.foreign.MemorySegment get_pWaitSemaphores(MemorySegment segment) { return VkBindSparseInfo.get_pWaitSemaphores(segment, 0L); }
-    /// {@return `pWaitSemaphores` at the given index}
-    /// @param index the index
-    public @CType("const VkSemaphore *") java.lang.foreign.MemorySegment pWaitSemaphoresAt(long index) { return VkBindSparseInfo.get_pWaitSemaphores(this.segment(), index); }
     /// {@return `pWaitSemaphores`}
     public @CType("const VkSemaphore *") java.lang.foreign.MemorySegment pWaitSemaphores() { return VkBindSparseInfo.get_pWaitSemaphores(this.segment()); }
     /// Sets `pWaitSemaphores` with the given value at the given index.
@@ -268,11 +249,6 @@ public final class VkBindSparseInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pWaitSemaphores(MemorySegment segment, @CType("const VkSemaphore *") java.lang.foreign.MemorySegment value) { VkBindSparseInfo.set_pWaitSemaphores(segment, 0L, value); }
-    /// Sets `pWaitSemaphores` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBindSparseInfo pWaitSemaphoresAt(long index, @CType("const VkSemaphore *") java.lang.foreign.MemorySegment value) { VkBindSparseInfo.set_pWaitSemaphores(this.segment(), index, value); return this; }
     /// Sets `pWaitSemaphores` with the given value.
     /// @param value the value
     /// @return `this`
@@ -285,9 +261,6 @@ public final class VkBindSparseInfo extends Struct {
     /// {@return `bufferBindCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_bufferBindCount(MemorySegment segment) { return VkBindSparseInfo.get_bufferBindCount(segment, 0L); }
-    /// {@return `bufferBindCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int bufferBindCountAt(long index) { return VkBindSparseInfo.get_bufferBindCount(this.segment(), index); }
     /// {@return `bufferBindCount`}
     public @CType("uint32_t") int bufferBindCount() { return VkBindSparseInfo.get_bufferBindCount(this.segment()); }
     /// Sets `bufferBindCount` with the given value at the given index.
@@ -299,11 +272,6 @@ public final class VkBindSparseInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_bufferBindCount(MemorySegment segment, @CType("uint32_t") int value) { VkBindSparseInfo.set_bufferBindCount(segment, 0L, value); }
-    /// Sets `bufferBindCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBindSparseInfo bufferBindCountAt(long index, @CType("uint32_t") int value) { VkBindSparseInfo.set_bufferBindCount(this.segment(), index, value); return this; }
     /// Sets `bufferBindCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -316,9 +284,6 @@ public final class VkBindSparseInfo extends Struct {
     /// {@return `pBufferBinds`}
     /// @param segment the segment of the struct
     public static @CType("const VkSparseBufferMemoryBindInfo *") java.lang.foreign.MemorySegment get_pBufferBinds(MemorySegment segment) { return VkBindSparseInfo.get_pBufferBinds(segment, 0L); }
-    /// {@return `pBufferBinds` at the given index}
-    /// @param index the index
-    public @CType("const VkSparseBufferMemoryBindInfo *") java.lang.foreign.MemorySegment pBufferBindsAt(long index) { return VkBindSparseInfo.get_pBufferBinds(this.segment(), index); }
     /// {@return `pBufferBinds`}
     public @CType("const VkSparseBufferMemoryBindInfo *") java.lang.foreign.MemorySegment pBufferBinds() { return VkBindSparseInfo.get_pBufferBinds(this.segment()); }
     /// Sets `pBufferBinds` with the given value at the given index.
@@ -330,11 +295,6 @@ public final class VkBindSparseInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pBufferBinds(MemorySegment segment, @CType("const VkSparseBufferMemoryBindInfo *") java.lang.foreign.MemorySegment value) { VkBindSparseInfo.set_pBufferBinds(segment, 0L, value); }
-    /// Sets `pBufferBinds` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBindSparseInfo pBufferBindsAt(long index, @CType("const VkSparseBufferMemoryBindInfo *") java.lang.foreign.MemorySegment value) { VkBindSparseInfo.set_pBufferBinds(this.segment(), index, value); return this; }
     /// Sets `pBufferBinds` with the given value.
     /// @param value the value
     /// @return `this`
@@ -347,9 +307,6 @@ public final class VkBindSparseInfo extends Struct {
     /// {@return `imageOpaqueBindCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_imageOpaqueBindCount(MemorySegment segment) { return VkBindSparseInfo.get_imageOpaqueBindCount(segment, 0L); }
-    /// {@return `imageOpaqueBindCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int imageOpaqueBindCountAt(long index) { return VkBindSparseInfo.get_imageOpaqueBindCount(this.segment(), index); }
     /// {@return `imageOpaqueBindCount`}
     public @CType("uint32_t") int imageOpaqueBindCount() { return VkBindSparseInfo.get_imageOpaqueBindCount(this.segment()); }
     /// Sets `imageOpaqueBindCount` with the given value at the given index.
@@ -361,11 +318,6 @@ public final class VkBindSparseInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_imageOpaqueBindCount(MemorySegment segment, @CType("uint32_t") int value) { VkBindSparseInfo.set_imageOpaqueBindCount(segment, 0L, value); }
-    /// Sets `imageOpaqueBindCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBindSparseInfo imageOpaqueBindCountAt(long index, @CType("uint32_t") int value) { VkBindSparseInfo.set_imageOpaqueBindCount(this.segment(), index, value); return this; }
     /// Sets `imageOpaqueBindCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -378,9 +330,6 @@ public final class VkBindSparseInfo extends Struct {
     /// {@return `pImageOpaqueBinds`}
     /// @param segment the segment of the struct
     public static @CType("const VkSparseImageOpaqueMemoryBindInfo *") java.lang.foreign.MemorySegment get_pImageOpaqueBinds(MemorySegment segment) { return VkBindSparseInfo.get_pImageOpaqueBinds(segment, 0L); }
-    /// {@return `pImageOpaqueBinds` at the given index}
-    /// @param index the index
-    public @CType("const VkSparseImageOpaqueMemoryBindInfo *") java.lang.foreign.MemorySegment pImageOpaqueBindsAt(long index) { return VkBindSparseInfo.get_pImageOpaqueBinds(this.segment(), index); }
     /// {@return `pImageOpaqueBinds`}
     public @CType("const VkSparseImageOpaqueMemoryBindInfo *") java.lang.foreign.MemorySegment pImageOpaqueBinds() { return VkBindSparseInfo.get_pImageOpaqueBinds(this.segment()); }
     /// Sets `pImageOpaqueBinds` with the given value at the given index.
@@ -392,11 +341,6 @@ public final class VkBindSparseInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pImageOpaqueBinds(MemorySegment segment, @CType("const VkSparseImageOpaqueMemoryBindInfo *") java.lang.foreign.MemorySegment value) { VkBindSparseInfo.set_pImageOpaqueBinds(segment, 0L, value); }
-    /// Sets `pImageOpaqueBinds` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBindSparseInfo pImageOpaqueBindsAt(long index, @CType("const VkSparseImageOpaqueMemoryBindInfo *") java.lang.foreign.MemorySegment value) { VkBindSparseInfo.set_pImageOpaqueBinds(this.segment(), index, value); return this; }
     /// Sets `pImageOpaqueBinds` with the given value.
     /// @param value the value
     /// @return `this`
@@ -409,9 +353,6 @@ public final class VkBindSparseInfo extends Struct {
     /// {@return `imageBindCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_imageBindCount(MemorySegment segment) { return VkBindSparseInfo.get_imageBindCount(segment, 0L); }
-    /// {@return `imageBindCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int imageBindCountAt(long index) { return VkBindSparseInfo.get_imageBindCount(this.segment(), index); }
     /// {@return `imageBindCount`}
     public @CType("uint32_t") int imageBindCount() { return VkBindSparseInfo.get_imageBindCount(this.segment()); }
     /// Sets `imageBindCount` with the given value at the given index.
@@ -423,11 +364,6 @@ public final class VkBindSparseInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_imageBindCount(MemorySegment segment, @CType("uint32_t") int value) { VkBindSparseInfo.set_imageBindCount(segment, 0L, value); }
-    /// Sets `imageBindCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBindSparseInfo imageBindCountAt(long index, @CType("uint32_t") int value) { VkBindSparseInfo.set_imageBindCount(this.segment(), index, value); return this; }
     /// Sets `imageBindCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -440,9 +376,6 @@ public final class VkBindSparseInfo extends Struct {
     /// {@return `pImageBinds`}
     /// @param segment the segment of the struct
     public static @CType("const VkSparseImageMemoryBindInfo *") java.lang.foreign.MemorySegment get_pImageBinds(MemorySegment segment) { return VkBindSparseInfo.get_pImageBinds(segment, 0L); }
-    /// {@return `pImageBinds` at the given index}
-    /// @param index the index
-    public @CType("const VkSparseImageMemoryBindInfo *") java.lang.foreign.MemorySegment pImageBindsAt(long index) { return VkBindSparseInfo.get_pImageBinds(this.segment(), index); }
     /// {@return `pImageBinds`}
     public @CType("const VkSparseImageMemoryBindInfo *") java.lang.foreign.MemorySegment pImageBinds() { return VkBindSparseInfo.get_pImageBinds(this.segment()); }
     /// Sets `pImageBinds` with the given value at the given index.
@@ -454,11 +387,6 @@ public final class VkBindSparseInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pImageBinds(MemorySegment segment, @CType("const VkSparseImageMemoryBindInfo *") java.lang.foreign.MemorySegment value) { VkBindSparseInfo.set_pImageBinds(segment, 0L, value); }
-    /// Sets `pImageBinds` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBindSparseInfo pImageBindsAt(long index, @CType("const VkSparseImageMemoryBindInfo *") java.lang.foreign.MemorySegment value) { VkBindSparseInfo.set_pImageBinds(this.segment(), index, value); return this; }
     /// Sets `pImageBinds` with the given value.
     /// @param value the value
     /// @return `this`
@@ -471,9 +399,6 @@ public final class VkBindSparseInfo extends Struct {
     /// {@return `signalSemaphoreCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_signalSemaphoreCount(MemorySegment segment) { return VkBindSparseInfo.get_signalSemaphoreCount(segment, 0L); }
-    /// {@return `signalSemaphoreCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int signalSemaphoreCountAt(long index) { return VkBindSparseInfo.get_signalSemaphoreCount(this.segment(), index); }
     /// {@return `signalSemaphoreCount`}
     public @CType("uint32_t") int signalSemaphoreCount() { return VkBindSparseInfo.get_signalSemaphoreCount(this.segment()); }
     /// Sets `signalSemaphoreCount` with the given value at the given index.
@@ -485,11 +410,6 @@ public final class VkBindSparseInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_signalSemaphoreCount(MemorySegment segment, @CType("uint32_t") int value) { VkBindSparseInfo.set_signalSemaphoreCount(segment, 0L, value); }
-    /// Sets `signalSemaphoreCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBindSparseInfo signalSemaphoreCountAt(long index, @CType("uint32_t") int value) { VkBindSparseInfo.set_signalSemaphoreCount(this.segment(), index, value); return this; }
     /// Sets `signalSemaphoreCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -502,9 +422,6 @@ public final class VkBindSparseInfo extends Struct {
     /// {@return `pSignalSemaphores`}
     /// @param segment the segment of the struct
     public static @CType("const VkSemaphore *") java.lang.foreign.MemorySegment get_pSignalSemaphores(MemorySegment segment) { return VkBindSparseInfo.get_pSignalSemaphores(segment, 0L); }
-    /// {@return `pSignalSemaphores` at the given index}
-    /// @param index the index
-    public @CType("const VkSemaphore *") java.lang.foreign.MemorySegment pSignalSemaphoresAt(long index) { return VkBindSparseInfo.get_pSignalSemaphores(this.segment(), index); }
     /// {@return `pSignalSemaphores`}
     public @CType("const VkSemaphore *") java.lang.foreign.MemorySegment pSignalSemaphores() { return VkBindSparseInfo.get_pSignalSemaphores(this.segment()); }
     /// Sets `pSignalSemaphores` with the given value at the given index.
@@ -516,14 +433,140 @@ public final class VkBindSparseInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pSignalSemaphores(MemorySegment segment, @CType("const VkSemaphore *") java.lang.foreign.MemorySegment value) { VkBindSparseInfo.set_pSignalSemaphores(segment, 0L, value); }
-    /// Sets `pSignalSemaphores` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkBindSparseInfo pSignalSemaphoresAt(long index, @CType("const VkSemaphore *") java.lang.foreign.MemorySegment value) { VkBindSparseInfo.set_pSignalSemaphores(this.segment(), index, value); return this; }
     /// Sets `pSignalSemaphores` with the given value.
     /// @param value the value
     /// @return `this`
     public VkBindSparseInfo pSignalSemaphores(@CType("const VkSemaphore *") java.lang.foreign.MemorySegment value) { VkBindSparseInfo.set_pSignalSemaphores(this.segment(), value); return this; }
 
+    /// A buffer of [VkBindSparseInfo].
+    public static final class Buffer extends VkBindSparseInfo {
+        private final long elementCount;
+
+        /// Creates `VkBindSparseInfo.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkBindSparseInfo`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkBindSparseInfo`
+        public VkBindSparseInfo asSlice(long index) { return new VkBindSparseInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkBindSparseInfo`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkBindSparseInfo`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkBindSparseInfo.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkBindSparseInfo.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkBindSparseInfo.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkBindSparseInfo.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `waitSemaphoreCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int waitSemaphoreCountAt(long index) { return VkBindSparseInfo.get_waitSemaphoreCount(this.segment(), index); }
+        /// Sets `waitSemaphoreCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer waitSemaphoreCountAt(long index, @CType("uint32_t") int value) { VkBindSparseInfo.set_waitSemaphoreCount(this.segment(), index, value); return this; }
+
+        /// {@return `pWaitSemaphores` at the given index}
+        /// @param index the index
+        public @CType("const VkSemaphore *") java.lang.foreign.MemorySegment pWaitSemaphoresAt(long index) { return VkBindSparseInfo.get_pWaitSemaphores(this.segment(), index); }
+        /// Sets `pWaitSemaphores` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pWaitSemaphoresAt(long index, @CType("const VkSemaphore *") java.lang.foreign.MemorySegment value) { VkBindSparseInfo.set_pWaitSemaphores(this.segment(), index, value); return this; }
+
+        /// {@return `bufferBindCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int bufferBindCountAt(long index) { return VkBindSparseInfo.get_bufferBindCount(this.segment(), index); }
+        /// Sets `bufferBindCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer bufferBindCountAt(long index, @CType("uint32_t") int value) { VkBindSparseInfo.set_bufferBindCount(this.segment(), index, value); return this; }
+
+        /// {@return `pBufferBinds` at the given index}
+        /// @param index the index
+        public @CType("const VkSparseBufferMemoryBindInfo *") java.lang.foreign.MemorySegment pBufferBindsAt(long index) { return VkBindSparseInfo.get_pBufferBinds(this.segment(), index); }
+        /// Sets `pBufferBinds` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pBufferBindsAt(long index, @CType("const VkSparseBufferMemoryBindInfo *") java.lang.foreign.MemorySegment value) { VkBindSparseInfo.set_pBufferBinds(this.segment(), index, value); return this; }
+
+        /// {@return `imageOpaqueBindCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int imageOpaqueBindCountAt(long index) { return VkBindSparseInfo.get_imageOpaqueBindCount(this.segment(), index); }
+        /// Sets `imageOpaqueBindCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer imageOpaqueBindCountAt(long index, @CType("uint32_t") int value) { VkBindSparseInfo.set_imageOpaqueBindCount(this.segment(), index, value); return this; }
+
+        /// {@return `pImageOpaqueBinds` at the given index}
+        /// @param index the index
+        public @CType("const VkSparseImageOpaqueMemoryBindInfo *") java.lang.foreign.MemorySegment pImageOpaqueBindsAt(long index) { return VkBindSparseInfo.get_pImageOpaqueBinds(this.segment(), index); }
+        /// Sets `pImageOpaqueBinds` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pImageOpaqueBindsAt(long index, @CType("const VkSparseImageOpaqueMemoryBindInfo *") java.lang.foreign.MemorySegment value) { VkBindSparseInfo.set_pImageOpaqueBinds(this.segment(), index, value); return this; }
+
+        /// {@return `imageBindCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int imageBindCountAt(long index) { return VkBindSparseInfo.get_imageBindCount(this.segment(), index); }
+        /// Sets `imageBindCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer imageBindCountAt(long index, @CType("uint32_t") int value) { VkBindSparseInfo.set_imageBindCount(this.segment(), index, value); return this; }
+
+        /// {@return `pImageBinds` at the given index}
+        /// @param index the index
+        public @CType("const VkSparseImageMemoryBindInfo *") java.lang.foreign.MemorySegment pImageBindsAt(long index) { return VkBindSparseInfo.get_pImageBinds(this.segment(), index); }
+        /// Sets `pImageBinds` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pImageBindsAt(long index, @CType("const VkSparseImageMemoryBindInfo *") java.lang.foreign.MemorySegment value) { VkBindSparseInfo.set_pImageBinds(this.segment(), index, value); return this; }
+
+        /// {@return `signalSemaphoreCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int signalSemaphoreCountAt(long index) { return VkBindSparseInfo.get_signalSemaphoreCount(this.segment(), index); }
+        /// Sets `signalSemaphoreCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer signalSemaphoreCountAt(long index, @CType("uint32_t") int value) { VkBindSparseInfo.set_signalSemaphoreCount(this.segment(), index, value); return this; }
+
+        /// {@return `pSignalSemaphores` at the given index}
+        /// @param index the index
+        public @CType("const VkSemaphore *") java.lang.foreign.MemorySegment pSignalSemaphoresAt(long index) { return VkBindSparseInfo.get_pSignalSemaphores(this.segment(), index); }
+        /// Sets `pSignalSemaphores` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pSignalSemaphoresAt(long index, @CType("const VkSemaphore *") java.lang.foreign.MemorySegment value) { VkBindSparseInfo.set_pSignalSemaphores(this.segment(), index, value); return this; }
+
+    }
 }

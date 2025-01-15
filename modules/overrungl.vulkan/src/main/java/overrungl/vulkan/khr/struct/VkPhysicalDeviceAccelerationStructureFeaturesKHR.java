@@ -52,7 +52,7 @@ import overrungl.util.*;
 ///     VkBool32 descriptorBindingAccelerationStructureUpdateAfterBind;
 /// } VkPhysicalDeviceAccelerationStructureFeaturesKHR;
 /// ```
-public final class VkPhysicalDeviceAccelerationStructureFeaturesKHR extends Struct {
+public sealed class VkPhysicalDeviceAccelerationStructureFeaturesKHR extends Struct {
     /// The struct layout of `VkPhysicalDeviceAccelerationStructureFeaturesKHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -88,6 +88,11 @@ public final class VkPhysicalDeviceAccelerationStructureFeaturesKHR extends Stru
     public static VkPhysicalDeviceAccelerationStructureFeaturesKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceAccelerationStructureFeaturesKHR(segment); }
 
     /// Creates `VkPhysicalDeviceAccelerationStructureFeaturesKHR` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPhysicalDeviceAccelerationStructureFeaturesKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -100,7 +105,7 @@ public final class VkPhysicalDeviceAccelerationStructureFeaturesKHR extends Stru
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceAccelerationStructureFeaturesKHR ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceAccelerationStructureFeaturesKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceAccelerationStructureFeaturesKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -111,18 +116,21 @@ public final class VkPhysicalDeviceAccelerationStructureFeaturesKHR extends Stru
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceAccelerationStructureFeaturesKHR`
-    public static VkPhysicalDeviceAccelerationStructureFeaturesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceAccelerationStructureFeaturesKHR(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkPhysicalDeviceAccelerationStructureFeaturesKHR`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDeviceAccelerationStructureFeaturesKHR`
-    public VkPhysicalDeviceAccelerationStructureFeaturesKHR asSlice(long index) { return new VkPhysicalDeviceAccelerationStructureFeaturesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkPhysicalDeviceAccelerationStructureFeaturesKHR` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDeviceAccelerationStructureFeaturesKHR`
+    public static VkPhysicalDeviceAccelerationStructureFeaturesKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int accelerationStructure, @CType("VkBool32") int accelerationStructureCaptureReplay, @CType("VkBool32") int accelerationStructureIndirectBuild, @CType("VkBool32") int accelerationStructureHostCommands, @CType("VkBool32") int descriptorBindingAccelerationStructureUpdateAfterBind) { return alloc(allocator).sType(sType).pNext(pNext).accelerationStructure(accelerationStructure).accelerationStructureCaptureReplay(accelerationStructureCaptureReplay).accelerationStructureIndirectBuild(accelerationStructureIndirectBuild).accelerationStructureHostCommands(accelerationStructureHostCommands).descriptorBindingAccelerationStructureUpdateAfterBind(descriptorBindingAccelerationStructureUpdateAfterBind); }
 
-    /// Creates a slice of `VkPhysicalDeviceAccelerationStructureFeaturesKHR`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDeviceAccelerationStructureFeaturesKHR`
-    public VkPhysicalDeviceAccelerationStructureFeaturesKHR asSlice(long index, long count) { return new VkPhysicalDeviceAccelerationStructureFeaturesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDeviceAccelerationStructureFeaturesKHR copyFrom(VkPhysicalDeviceAccelerationStructureFeaturesKHR src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -131,9 +139,6 @@ public final class VkPhysicalDeviceAccelerationStructureFeaturesKHR extends Stru
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceAccelerationStructureFeaturesKHR.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceAccelerationStructureFeaturesKHR.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPhysicalDeviceAccelerationStructureFeaturesKHR.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -145,11 +150,6 @@ public final class VkPhysicalDeviceAccelerationStructureFeaturesKHR extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceAccelerationStructureFeaturesKHR.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAccelerationStructureFeaturesKHR sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceAccelerationStructureFeaturesKHR.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -162,9 +162,6 @@ public final class VkPhysicalDeviceAccelerationStructureFeaturesKHR extends Stru
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceAccelerationStructureFeaturesKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceAccelerationStructureFeaturesKHR.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceAccelerationStructureFeaturesKHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -176,11 +173,6 @@ public final class VkPhysicalDeviceAccelerationStructureFeaturesKHR extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceAccelerationStructureFeaturesKHR.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAccelerationStructureFeaturesKHR pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceAccelerationStructureFeaturesKHR.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -193,9 +185,6 @@ public final class VkPhysicalDeviceAccelerationStructureFeaturesKHR extends Stru
     /// {@return `accelerationStructure`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_accelerationStructure(MemorySegment segment) { return VkPhysicalDeviceAccelerationStructureFeaturesKHR.get_accelerationStructure(segment, 0L); }
-    /// {@return `accelerationStructure` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int accelerationStructureAt(long index) { return VkPhysicalDeviceAccelerationStructureFeaturesKHR.get_accelerationStructure(this.segment(), index); }
     /// {@return `accelerationStructure`}
     public @CType("VkBool32") int accelerationStructure() { return VkPhysicalDeviceAccelerationStructureFeaturesKHR.get_accelerationStructure(this.segment()); }
     /// Sets `accelerationStructure` with the given value at the given index.
@@ -207,11 +196,6 @@ public final class VkPhysicalDeviceAccelerationStructureFeaturesKHR extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_accelerationStructure(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceAccelerationStructureFeaturesKHR.set_accelerationStructure(segment, 0L, value); }
-    /// Sets `accelerationStructure` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAccelerationStructureFeaturesKHR accelerationStructureAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceAccelerationStructureFeaturesKHR.set_accelerationStructure(this.segment(), index, value); return this; }
     /// Sets `accelerationStructure` with the given value.
     /// @param value the value
     /// @return `this`
@@ -224,9 +208,6 @@ public final class VkPhysicalDeviceAccelerationStructureFeaturesKHR extends Stru
     /// {@return `accelerationStructureCaptureReplay`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_accelerationStructureCaptureReplay(MemorySegment segment) { return VkPhysicalDeviceAccelerationStructureFeaturesKHR.get_accelerationStructureCaptureReplay(segment, 0L); }
-    /// {@return `accelerationStructureCaptureReplay` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int accelerationStructureCaptureReplayAt(long index) { return VkPhysicalDeviceAccelerationStructureFeaturesKHR.get_accelerationStructureCaptureReplay(this.segment(), index); }
     /// {@return `accelerationStructureCaptureReplay`}
     public @CType("VkBool32") int accelerationStructureCaptureReplay() { return VkPhysicalDeviceAccelerationStructureFeaturesKHR.get_accelerationStructureCaptureReplay(this.segment()); }
     /// Sets `accelerationStructureCaptureReplay` with the given value at the given index.
@@ -238,11 +219,6 @@ public final class VkPhysicalDeviceAccelerationStructureFeaturesKHR extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_accelerationStructureCaptureReplay(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceAccelerationStructureFeaturesKHR.set_accelerationStructureCaptureReplay(segment, 0L, value); }
-    /// Sets `accelerationStructureCaptureReplay` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAccelerationStructureFeaturesKHR accelerationStructureCaptureReplayAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceAccelerationStructureFeaturesKHR.set_accelerationStructureCaptureReplay(this.segment(), index, value); return this; }
     /// Sets `accelerationStructureCaptureReplay` with the given value.
     /// @param value the value
     /// @return `this`
@@ -255,9 +231,6 @@ public final class VkPhysicalDeviceAccelerationStructureFeaturesKHR extends Stru
     /// {@return `accelerationStructureIndirectBuild`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_accelerationStructureIndirectBuild(MemorySegment segment) { return VkPhysicalDeviceAccelerationStructureFeaturesKHR.get_accelerationStructureIndirectBuild(segment, 0L); }
-    /// {@return `accelerationStructureIndirectBuild` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int accelerationStructureIndirectBuildAt(long index) { return VkPhysicalDeviceAccelerationStructureFeaturesKHR.get_accelerationStructureIndirectBuild(this.segment(), index); }
     /// {@return `accelerationStructureIndirectBuild`}
     public @CType("VkBool32") int accelerationStructureIndirectBuild() { return VkPhysicalDeviceAccelerationStructureFeaturesKHR.get_accelerationStructureIndirectBuild(this.segment()); }
     /// Sets `accelerationStructureIndirectBuild` with the given value at the given index.
@@ -269,11 +242,6 @@ public final class VkPhysicalDeviceAccelerationStructureFeaturesKHR extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_accelerationStructureIndirectBuild(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceAccelerationStructureFeaturesKHR.set_accelerationStructureIndirectBuild(segment, 0L, value); }
-    /// Sets `accelerationStructureIndirectBuild` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAccelerationStructureFeaturesKHR accelerationStructureIndirectBuildAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceAccelerationStructureFeaturesKHR.set_accelerationStructureIndirectBuild(this.segment(), index, value); return this; }
     /// Sets `accelerationStructureIndirectBuild` with the given value.
     /// @param value the value
     /// @return `this`
@@ -286,9 +254,6 @@ public final class VkPhysicalDeviceAccelerationStructureFeaturesKHR extends Stru
     /// {@return `accelerationStructureHostCommands`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_accelerationStructureHostCommands(MemorySegment segment) { return VkPhysicalDeviceAccelerationStructureFeaturesKHR.get_accelerationStructureHostCommands(segment, 0L); }
-    /// {@return `accelerationStructureHostCommands` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int accelerationStructureHostCommandsAt(long index) { return VkPhysicalDeviceAccelerationStructureFeaturesKHR.get_accelerationStructureHostCommands(this.segment(), index); }
     /// {@return `accelerationStructureHostCommands`}
     public @CType("VkBool32") int accelerationStructureHostCommands() { return VkPhysicalDeviceAccelerationStructureFeaturesKHR.get_accelerationStructureHostCommands(this.segment()); }
     /// Sets `accelerationStructureHostCommands` with the given value at the given index.
@@ -300,11 +265,6 @@ public final class VkPhysicalDeviceAccelerationStructureFeaturesKHR extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_accelerationStructureHostCommands(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceAccelerationStructureFeaturesKHR.set_accelerationStructureHostCommands(segment, 0L, value); }
-    /// Sets `accelerationStructureHostCommands` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAccelerationStructureFeaturesKHR accelerationStructureHostCommandsAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceAccelerationStructureFeaturesKHR.set_accelerationStructureHostCommands(this.segment(), index, value); return this; }
     /// Sets `accelerationStructureHostCommands` with the given value.
     /// @param value the value
     /// @return `this`
@@ -317,9 +277,6 @@ public final class VkPhysicalDeviceAccelerationStructureFeaturesKHR extends Stru
     /// {@return `descriptorBindingAccelerationStructureUpdateAfterBind`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_descriptorBindingAccelerationStructureUpdateAfterBind(MemorySegment segment) { return VkPhysicalDeviceAccelerationStructureFeaturesKHR.get_descriptorBindingAccelerationStructureUpdateAfterBind(segment, 0L); }
-    /// {@return `descriptorBindingAccelerationStructureUpdateAfterBind` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int descriptorBindingAccelerationStructureUpdateAfterBindAt(long index) { return VkPhysicalDeviceAccelerationStructureFeaturesKHR.get_descriptorBindingAccelerationStructureUpdateAfterBind(this.segment(), index); }
     /// {@return `descriptorBindingAccelerationStructureUpdateAfterBind`}
     public @CType("VkBool32") int descriptorBindingAccelerationStructureUpdateAfterBind() { return VkPhysicalDeviceAccelerationStructureFeaturesKHR.get_descriptorBindingAccelerationStructureUpdateAfterBind(this.segment()); }
     /// Sets `descriptorBindingAccelerationStructureUpdateAfterBind` with the given value at the given index.
@@ -331,14 +288,95 @@ public final class VkPhysicalDeviceAccelerationStructureFeaturesKHR extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_descriptorBindingAccelerationStructureUpdateAfterBind(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceAccelerationStructureFeaturesKHR.set_descriptorBindingAccelerationStructureUpdateAfterBind(segment, 0L, value); }
-    /// Sets `descriptorBindingAccelerationStructureUpdateAfterBind` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceAccelerationStructureFeaturesKHR descriptorBindingAccelerationStructureUpdateAfterBindAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceAccelerationStructureFeaturesKHR.set_descriptorBindingAccelerationStructureUpdateAfterBind(this.segment(), index, value); return this; }
     /// Sets `descriptorBindingAccelerationStructureUpdateAfterBind` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceAccelerationStructureFeaturesKHR descriptorBindingAccelerationStructureUpdateAfterBind(@CType("VkBool32") int value) { VkPhysicalDeviceAccelerationStructureFeaturesKHR.set_descriptorBindingAccelerationStructureUpdateAfterBind(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDeviceAccelerationStructureFeaturesKHR].
+    public static final class Buffer extends VkPhysicalDeviceAccelerationStructureFeaturesKHR {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDeviceAccelerationStructureFeaturesKHR.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDeviceAccelerationStructureFeaturesKHR`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDeviceAccelerationStructureFeaturesKHR`
+        public VkPhysicalDeviceAccelerationStructureFeaturesKHR asSlice(long index) { return new VkPhysicalDeviceAccelerationStructureFeaturesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDeviceAccelerationStructureFeaturesKHR`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDeviceAccelerationStructureFeaturesKHR`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceAccelerationStructureFeaturesKHR.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceAccelerationStructureFeaturesKHR.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceAccelerationStructureFeaturesKHR.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceAccelerationStructureFeaturesKHR.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `accelerationStructure` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int accelerationStructureAt(long index) { return VkPhysicalDeviceAccelerationStructureFeaturesKHR.get_accelerationStructure(this.segment(), index); }
+        /// Sets `accelerationStructure` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer accelerationStructureAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceAccelerationStructureFeaturesKHR.set_accelerationStructure(this.segment(), index, value); return this; }
+
+        /// {@return `accelerationStructureCaptureReplay` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int accelerationStructureCaptureReplayAt(long index) { return VkPhysicalDeviceAccelerationStructureFeaturesKHR.get_accelerationStructureCaptureReplay(this.segment(), index); }
+        /// Sets `accelerationStructureCaptureReplay` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer accelerationStructureCaptureReplayAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceAccelerationStructureFeaturesKHR.set_accelerationStructureCaptureReplay(this.segment(), index, value); return this; }
+
+        /// {@return `accelerationStructureIndirectBuild` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int accelerationStructureIndirectBuildAt(long index) { return VkPhysicalDeviceAccelerationStructureFeaturesKHR.get_accelerationStructureIndirectBuild(this.segment(), index); }
+        /// Sets `accelerationStructureIndirectBuild` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer accelerationStructureIndirectBuildAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceAccelerationStructureFeaturesKHR.set_accelerationStructureIndirectBuild(this.segment(), index, value); return this; }
+
+        /// {@return `accelerationStructureHostCommands` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int accelerationStructureHostCommandsAt(long index) { return VkPhysicalDeviceAccelerationStructureFeaturesKHR.get_accelerationStructureHostCommands(this.segment(), index); }
+        /// Sets `accelerationStructureHostCommands` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer accelerationStructureHostCommandsAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceAccelerationStructureFeaturesKHR.set_accelerationStructureHostCommands(this.segment(), index, value); return this; }
+
+        /// {@return `descriptorBindingAccelerationStructureUpdateAfterBind` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int descriptorBindingAccelerationStructureUpdateAfterBindAt(long index) { return VkPhysicalDeviceAccelerationStructureFeaturesKHR.get_descriptorBindingAccelerationStructureUpdateAfterBind(this.segment(), index); }
+        /// Sets `descriptorBindingAccelerationStructureUpdateAfterBind` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer descriptorBindingAccelerationStructureUpdateAfterBindAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceAccelerationStructureFeaturesKHR.set_descriptorBindingAccelerationStructureUpdateAfterBind(this.segment(), index, value); return this; }
+
+    }
 }

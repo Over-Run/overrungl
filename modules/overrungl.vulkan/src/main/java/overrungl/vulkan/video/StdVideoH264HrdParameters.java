@@ -64,7 +64,7 @@ import overrungl.util.*;
 ///     uint32_t time_offset_length;
 /// } StdVideoH264HrdParameters;
 /// ```
-public final class StdVideoH264HrdParameters extends Struct {
+public sealed class StdVideoH264HrdParameters extends Struct {
     /// The struct layout of `StdVideoH264HrdParameters`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_BYTE.withName("cpb_cnt_minus1"),
@@ -112,6 +112,11 @@ public final class StdVideoH264HrdParameters extends Struct {
     public static StdVideoH264HrdParameters of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoH264HrdParameters(segment); }
 
     /// Creates `StdVideoH264HrdParameters` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `StdVideoH264HrdParameters` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -124,7 +129,7 @@ public final class StdVideoH264HrdParameters extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoH264HrdParameters ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoH264HrdParameters(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `StdVideoH264HrdParameters` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -135,18 +140,21 @@ public final class StdVideoH264HrdParameters extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `StdVideoH264HrdParameters`
-    public static StdVideoH264HrdParameters alloc(SegmentAllocator allocator, long count) { return new StdVideoH264HrdParameters(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `StdVideoH264HrdParameters`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `StdVideoH264HrdParameters`
-    public StdVideoH264HrdParameters asSlice(long index) { return new StdVideoH264HrdParameters(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `StdVideoH264HrdParameters` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `StdVideoH264HrdParameters`
+    public static StdVideoH264HrdParameters allocInit(SegmentAllocator allocator, @CType("uint8_t") byte cpb_cnt_minus1, @CType("uint8_t") byte bit_rate_scale, @CType("uint8_t") byte cpb_size_scale, @CType("uint8_t") byte reserved1, @CType("uint32_t [ ]") int bit_rate_value_minus1, @CType("uint32_t [ ]") int cpb_size_value_minus1, @CType("uint8_t [ ]") byte cbr_flag, @CType("uint32_t") int initial_cpb_removal_delay_length_minus1, @CType("uint32_t") int cpb_removal_delay_length_minus1, @CType("uint32_t") int dpb_output_delay_length_minus1, @CType("uint32_t") int time_offset_length) { return alloc(allocator).cpb_cnt_minus1(cpb_cnt_minus1).bit_rate_scale(bit_rate_scale).cpb_size_scale(cpb_size_scale).reserved1(reserved1).bit_rate_value_minus1(bit_rate_value_minus1).cpb_size_value_minus1(cpb_size_value_minus1).cbr_flag(cbr_flag).initial_cpb_removal_delay_length_minus1(initial_cpb_removal_delay_length_minus1).cpb_removal_delay_length_minus1(cpb_removal_delay_length_minus1).dpb_output_delay_length_minus1(dpb_output_delay_length_minus1).time_offset_length(time_offset_length); }
 
-    /// Creates a slice of `StdVideoH264HrdParameters`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `StdVideoH264HrdParameters`
-    public StdVideoH264HrdParameters asSlice(long index, long count) { return new StdVideoH264HrdParameters(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public StdVideoH264HrdParameters copyFrom(StdVideoH264HrdParameters src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `cpb_cnt_minus1` at the given index}
     /// @param segment the segment of the struct
@@ -155,9 +163,6 @@ public final class StdVideoH264HrdParameters extends Struct {
     /// {@return `cpb_cnt_minus1`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t") byte get_cpb_cnt_minus1(MemorySegment segment) { return StdVideoH264HrdParameters.get_cpb_cnt_minus1(segment, 0L); }
-    /// {@return `cpb_cnt_minus1` at the given index}
-    /// @param index the index
-    public @CType("uint8_t") byte cpb_cnt_minus1At(long index) { return StdVideoH264HrdParameters.get_cpb_cnt_minus1(this.segment(), index); }
     /// {@return `cpb_cnt_minus1`}
     public @CType("uint8_t") byte cpb_cnt_minus1() { return StdVideoH264HrdParameters.get_cpb_cnt_minus1(this.segment()); }
     /// Sets `cpb_cnt_minus1` with the given value at the given index.
@@ -169,11 +174,6 @@ public final class StdVideoH264HrdParameters extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_cpb_cnt_minus1(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoH264HrdParameters.set_cpb_cnt_minus1(segment, 0L, value); }
-    /// Sets `cpb_cnt_minus1` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264HrdParameters cpb_cnt_minus1At(long index, @CType("uint8_t") byte value) { StdVideoH264HrdParameters.set_cpb_cnt_minus1(this.segment(), index, value); return this; }
     /// Sets `cpb_cnt_minus1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -186,9 +186,6 @@ public final class StdVideoH264HrdParameters extends Struct {
     /// {@return `bit_rate_scale`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t") byte get_bit_rate_scale(MemorySegment segment) { return StdVideoH264HrdParameters.get_bit_rate_scale(segment, 0L); }
-    /// {@return `bit_rate_scale` at the given index}
-    /// @param index the index
-    public @CType("uint8_t") byte bit_rate_scaleAt(long index) { return StdVideoH264HrdParameters.get_bit_rate_scale(this.segment(), index); }
     /// {@return `bit_rate_scale`}
     public @CType("uint8_t") byte bit_rate_scale() { return StdVideoH264HrdParameters.get_bit_rate_scale(this.segment()); }
     /// Sets `bit_rate_scale` with the given value at the given index.
@@ -200,11 +197,6 @@ public final class StdVideoH264HrdParameters extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_bit_rate_scale(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoH264HrdParameters.set_bit_rate_scale(segment, 0L, value); }
-    /// Sets `bit_rate_scale` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264HrdParameters bit_rate_scaleAt(long index, @CType("uint8_t") byte value) { StdVideoH264HrdParameters.set_bit_rate_scale(this.segment(), index, value); return this; }
     /// Sets `bit_rate_scale` with the given value.
     /// @param value the value
     /// @return `this`
@@ -217,9 +209,6 @@ public final class StdVideoH264HrdParameters extends Struct {
     /// {@return `cpb_size_scale`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t") byte get_cpb_size_scale(MemorySegment segment) { return StdVideoH264HrdParameters.get_cpb_size_scale(segment, 0L); }
-    /// {@return `cpb_size_scale` at the given index}
-    /// @param index the index
-    public @CType("uint8_t") byte cpb_size_scaleAt(long index) { return StdVideoH264HrdParameters.get_cpb_size_scale(this.segment(), index); }
     /// {@return `cpb_size_scale`}
     public @CType("uint8_t") byte cpb_size_scale() { return StdVideoH264HrdParameters.get_cpb_size_scale(this.segment()); }
     /// Sets `cpb_size_scale` with the given value at the given index.
@@ -231,11 +220,6 @@ public final class StdVideoH264HrdParameters extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_cpb_size_scale(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoH264HrdParameters.set_cpb_size_scale(segment, 0L, value); }
-    /// Sets `cpb_size_scale` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264HrdParameters cpb_size_scaleAt(long index, @CType("uint8_t") byte value) { StdVideoH264HrdParameters.set_cpb_size_scale(this.segment(), index, value); return this; }
     /// Sets `cpb_size_scale` with the given value.
     /// @param value the value
     /// @return `this`
@@ -248,9 +232,6 @@ public final class StdVideoH264HrdParameters extends Struct {
     /// {@return `reserved1`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t") byte get_reserved1(MemorySegment segment) { return StdVideoH264HrdParameters.get_reserved1(segment, 0L); }
-    /// {@return `reserved1` at the given index}
-    /// @param index the index
-    public @CType("uint8_t") byte reserved1At(long index) { return StdVideoH264HrdParameters.get_reserved1(this.segment(), index); }
     /// {@return `reserved1`}
     public @CType("uint8_t") byte reserved1() { return StdVideoH264HrdParameters.get_reserved1(this.segment()); }
     /// Sets `reserved1` with the given value at the given index.
@@ -262,11 +243,6 @@ public final class StdVideoH264HrdParameters extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_reserved1(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoH264HrdParameters.set_reserved1(segment, 0L, value); }
-    /// Sets `reserved1` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264HrdParameters reserved1At(long index, @CType("uint8_t") byte value) { StdVideoH264HrdParameters.set_reserved1(this.segment(), index, value); return this; }
     /// Sets `reserved1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -279,9 +255,6 @@ public final class StdVideoH264HrdParameters extends Struct {
     /// {@return `bit_rate_value_minus1`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t [ ]") int get_bit_rate_value_minus1(MemorySegment segment) { return StdVideoH264HrdParameters.get_bit_rate_value_minus1(segment, 0L); }
-    /// {@return `bit_rate_value_minus1` at the given index}
-    /// @param index the index
-    public @CType("uint32_t [ ]") int bit_rate_value_minus1At(long index) { return StdVideoH264HrdParameters.get_bit_rate_value_minus1(this.segment(), index); }
     /// {@return `bit_rate_value_minus1`}
     public @CType("uint32_t [ ]") int bit_rate_value_minus1() { return StdVideoH264HrdParameters.get_bit_rate_value_minus1(this.segment()); }
     /// Sets `bit_rate_value_minus1` with the given value at the given index.
@@ -293,11 +266,6 @@ public final class StdVideoH264HrdParameters extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_bit_rate_value_minus1(MemorySegment segment, @CType("uint32_t [ ]") int value) { StdVideoH264HrdParameters.set_bit_rate_value_minus1(segment, 0L, value); }
-    /// Sets `bit_rate_value_minus1` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264HrdParameters bit_rate_value_minus1At(long index, @CType("uint32_t [ ]") int value) { StdVideoH264HrdParameters.set_bit_rate_value_minus1(this.segment(), index, value); return this; }
     /// Sets `bit_rate_value_minus1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -310,9 +278,6 @@ public final class StdVideoH264HrdParameters extends Struct {
     /// {@return `cpb_size_value_minus1`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t [ ]") int get_cpb_size_value_minus1(MemorySegment segment) { return StdVideoH264HrdParameters.get_cpb_size_value_minus1(segment, 0L); }
-    /// {@return `cpb_size_value_minus1` at the given index}
-    /// @param index the index
-    public @CType("uint32_t [ ]") int cpb_size_value_minus1At(long index) { return StdVideoH264HrdParameters.get_cpb_size_value_minus1(this.segment(), index); }
     /// {@return `cpb_size_value_minus1`}
     public @CType("uint32_t [ ]") int cpb_size_value_minus1() { return StdVideoH264HrdParameters.get_cpb_size_value_minus1(this.segment()); }
     /// Sets `cpb_size_value_minus1` with the given value at the given index.
@@ -324,11 +289,6 @@ public final class StdVideoH264HrdParameters extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_cpb_size_value_minus1(MemorySegment segment, @CType("uint32_t [ ]") int value) { StdVideoH264HrdParameters.set_cpb_size_value_minus1(segment, 0L, value); }
-    /// Sets `cpb_size_value_minus1` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264HrdParameters cpb_size_value_minus1At(long index, @CType("uint32_t [ ]") int value) { StdVideoH264HrdParameters.set_cpb_size_value_minus1(this.segment(), index, value); return this; }
     /// Sets `cpb_size_value_minus1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -341,9 +301,6 @@ public final class StdVideoH264HrdParameters extends Struct {
     /// {@return `cbr_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t [ ]") byte get_cbr_flag(MemorySegment segment) { return StdVideoH264HrdParameters.get_cbr_flag(segment, 0L); }
-    /// {@return `cbr_flag` at the given index}
-    /// @param index the index
-    public @CType("uint8_t [ ]") byte cbr_flagAt(long index) { return StdVideoH264HrdParameters.get_cbr_flag(this.segment(), index); }
     /// {@return `cbr_flag`}
     public @CType("uint8_t [ ]") byte cbr_flag() { return StdVideoH264HrdParameters.get_cbr_flag(this.segment()); }
     /// Sets `cbr_flag` with the given value at the given index.
@@ -355,11 +312,6 @@ public final class StdVideoH264HrdParameters extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_cbr_flag(MemorySegment segment, @CType("uint8_t [ ]") byte value) { StdVideoH264HrdParameters.set_cbr_flag(segment, 0L, value); }
-    /// Sets `cbr_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264HrdParameters cbr_flagAt(long index, @CType("uint8_t [ ]") byte value) { StdVideoH264HrdParameters.set_cbr_flag(this.segment(), index, value); return this; }
     /// Sets `cbr_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -372,9 +324,6 @@ public final class StdVideoH264HrdParameters extends Struct {
     /// {@return `initial_cpb_removal_delay_length_minus1`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_initial_cpb_removal_delay_length_minus1(MemorySegment segment) { return StdVideoH264HrdParameters.get_initial_cpb_removal_delay_length_minus1(segment, 0L); }
-    /// {@return `initial_cpb_removal_delay_length_minus1` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int initial_cpb_removal_delay_length_minus1At(long index) { return StdVideoH264HrdParameters.get_initial_cpb_removal_delay_length_minus1(this.segment(), index); }
     /// {@return `initial_cpb_removal_delay_length_minus1`}
     public @CType("uint32_t") int initial_cpb_removal_delay_length_minus1() { return StdVideoH264HrdParameters.get_initial_cpb_removal_delay_length_minus1(this.segment()); }
     /// Sets `initial_cpb_removal_delay_length_minus1` with the given value at the given index.
@@ -386,11 +335,6 @@ public final class StdVideoH264HrdParameters extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_initial_cpb_removal_delay_length_minus1(MemorySegment segment, @CType("uint32_t") int value) { StdVideoH264HrdParameters.set_initial_cpb_removal_delay_length_minus1(segment, 0L, value); }
-    /// Sets `initial_cpb_removal_delay_length_minus1` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264HrdParameters initial_cpb_removal_delay_length_minus1At(long index, @CType("uint32_t") int value) { StdVideoH264HrdParameters.set_initial_cpb_removal_delay_length_minus1(this.segment(), index, value); return this; }
     /// Sets `initial_cpb_removal_delay_length_minus1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -403,9 +347,6 @@ public final class StdVideoH264HrdParameters extends Struct {
     /// {@return `cpb_removal_delay_length_minus1`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_cpb_removal_delay_length_minus1(MemorySegment segment) { return StdVideoH264HrdParameters.get_cpb_removal_delay_length_minus1(segment, 0L); }
-    /// {@return `cpb_removal_delay_length_minus1` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int cpb_removal_delay_length_minus1At(long index) { return StdVideoH264HrdParameters.get_cpb_removal_delay_length_minus1(this.segment(), index); }
     /// {@return `cpb_removal_delay_length_minus1`}
     public @CType("uint32_t") int cpb_removal_delay_length_minus1() { return StdVideoH264HrdParameters.get_cpb_removal_delay_length_minus1(this.segment()); }
     /// Sets `cpb_removal_delay_length_minus1` with the given value at the given index.
@@ -417,11 +358,6 @@ public final class StdVideoH264HrdParameters extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_cpb_removal_delay_length_minus1(MemorySegment segment, @CType("uint32_t") int value) { StdVideoH264HrdParameters.set_cpb_removal_delay_length_minus1(segment, 0L, value); }
-    /// Sets `cpb_removal_delay_length_minus1` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264HrdParameters cpb_removal_delay_length_minus1At(long index, @CType("uint32_t") int value) { StdVideoH264HrdParameters.set_cpb_removal_delay_length_minus1(this.segment(), index, value); return this; }
     /// Sets `cpb_removal_delay_length_minus1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -434,9 +370,6 @@ public final class StdVideoH264HrdParameters extends Struct {
     /// {@return `dpb_output_delay_length_minus1`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_dpb_output_delay_length_minus1(MemorySegment segment) { return StdVideoH264HrdParameters.get_dpb_output_delay_length_minus1(segment, 0L); }
-    /// {@return `dpb_output_delay_length_minus1` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int dpb_output_delay_length_minus1At(long index) { return StdVideoH264HrdParameters.get_dpb_output_delay_length_minus1(this.segment(), index); }
     /// {@return `dpb_output_delay_length_minus1`}
     public @CType("uint32_t") int dpb_output_delay_length_minus1() { return StdVideoH264HrdParameters.get_dpb_output_delay_length_minus1(this.segment()); }
     /// Sets `dpb_output_delay_length_minus1` with the given value at the given index.
@@ -448,11 +381,6 @@ public final class StdVideoH264HrdParameters extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_dpb_output_delay_length_minus1(MemorySegment segment, @CType("uint32_t") int value) { StdVideoH264HrdParameters.set_dpb_output_delay_length_minus1(segment, 0L, value); }
-    /// Sets `dpb_output_delay_length_minus1` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264HrdParameters dpb_output_delay_length_minus1At(long index, @CType("uint32_t") int value) { StdVideoH264HrdParameters.set_dpb_output_delay_length_minus1(this.segment(), index, value); return this; }
     /// Sets `dpb_output_delay_length_minus1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -465,9 +393,6 @@ public final class StdVideoH264HrdParameters extends Struct {
     /// {@return `time_offset_length`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_time_offset_length(MemorySegment segment) { return StdVideoH264HrdParameters.get_time_offset_length(segment, 0L); }
-    /// {@return `time_offset_length` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int time_offset_lengthAt(long index) { return StdVideoH264HrdParameters.get_time_offset_length(this.segment(), index); }
     /// {@return `time_offset_length`}
     public @CType("uint32_t") int time_offset_length() { return StdVideoH264HrdParameters.get_time_offset_length(this.segment()); }
     /// Sets `time_offset_length` with the given value at the given index.
@@ -479,14 +404,131 @@ public final class StdVideoH264HrdParameters extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_time_offset_length(MemorySegment segment, @CType("uint32_t") int value) { StdVideoH264HrdParameters.set_time_offset_length(segment, 0L, value); }
-    /// Sets `time_offset_length` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH264HrdParameters time_offset_lengthAt(long index, @CType("uint32_t") int value) { StdVideoH264HrdParameters.set_time_offset_length(this.segment(), index, value); return this; }
     /// Sets `time_offset_length` with the given value.
     /// @param value the value
     /// @return `this`
     public StdVideoH264HrdParameters time_offset_length(@CType("uint32_t") int value) { StdVideoH264HrdParameters.set_time_offset_length(this.segment(), value); return this; }
 
+    /// A buffer of [StdVideoH264HrdParameters].
+    public static final class Buffer extends StdVideoH264HrdParameters {
+        private final long elementCount;
+
+        /// Creates `StdVideoH264HrdParameters.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `StdVideoH264HrdParameters`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `StdVideoH264HrdParameters`
+        public StdVideoH264HrdParameters asSlice(long index) { return new StdVideoH264HrdParameters(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `StdVideoH264HrdParameters`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `StdVideoH264HrdParameters`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `cpb_cnt_minus1` at the given index}
+        /// @param index the index
+        public @CType("uint8_t") byte cpb_cnt_minus1At(long index) { return StdVideoH264HrdParameters.get_cpb_cnt_minus1(this.segment(), index); }
+        /// Sets `cpb_cnt_minus1` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer cpb_cnt_minus1At(long index, @CType("uint8_t") byte value) { StdVideoH264HrdParameters.set_cpb_cnt_minus1(this.segment(), index, value); return this; }
+
+        /// {@return `bit_rate_scale` at the given index}
+        /// @param index the index
+        public @CType("uint8_t") byte bit_rate_scaleAt(long index) { return StdVideoH264HrdParameters.get_bit_rate_scale(this.segment(), index); }
+        /// Sets `bit_rate_scale` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer bit_rate_scaleAt(long index, @CType("uint8_t") byte value) { StdVideoH264HrdParameters.set_bit_rate_scale(this.segment(), index, value); return this; }
+
+        /// {@return `cpb_size_scale` at the given index}
+        /// @param index the index
+        public @CType("uint8_t") byte cpb_size_scaleAt(long index) { return StdVideoH264HrdParameters.get_cpb_size_scale(this.segment(), index); }
+        /// Sets `cpb_size_scale` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer cpb_size_scaleAt(long index, @CType("uint8_t") byte value) { StdVideoH264HrdParameters.set_cpb_size_scale(this.segment(), index, value); return this; }
+
+        /// {@return `reserved1` at the given index}
+        /// @param index the index
+        public @CType("uint8_t") byte reserved1At(long index) { return StdVideoH264HrdParameters.get_reserved1(this.segment(), index); }
+        /// Sets `reserved1` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer reserved1At(long index, @CType("uint8_t") byte value) { StdVideoH264HrdParameters.set_reserved1(this.segment(), index, value); return this; }
+
+        /// {@return `bit_rate_value_minus1` at the given index}
+        /// @param index the index
+        public @CType("uint32_t [ ]") int bit_rate_value_minus1At(long index) { return StdVideoH264HrdParameters.get_bit_rate_value_minus1(this.segment(), index); }
+        /// Sets `bit_rate_value_minus1` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer bit_rate_value_minus1At(long index, @CType("uint32_t [ ]") int value) { StdVideoH264HrdParameters.set_bit_rate_value_minus1(this.segment(), index, value); return this; }
+
+        /// {@return `cpb_size_value_minus1` at the given index}
+        /// @param index the index
+        public @CType("uint32_t [ ]") int cpb_size_value_minus1At(long index) { return StdVideoH264HrdParameters.get_cpb_size_value_minus1(this.segment(), index); }
+        /// Sets `cpb_size_value_minus1` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer cpb_size_value_minus1At(long index, @CType("uint32_t [ ]") int value) { StdVideoH264HrdParameters.set_cpb_size_value_minus1(this.segment(), index, value); return this; }
+
+        /// {@return `cbr_flag` at the given index}
+        /// @param index the index
+        public @CType("uint8_t [ ]") byte cbr_flagAt(long index) { return StdVideoH264HrdParameters.get_cbr_flag(this.segment(), index); }
+        /// Sets `cbr_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer cbr_flagAt(long index, @CType("uint8_t [ ]") byte value) { StdVideoH264HrdParameters.set_cbr_flag(this.segment(), index, value); return this; }
+
+        /// {@return `initial_cpb_removal_delay_length_minus1` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int initial_cpb_removal_delay_length_minus1At(long index) { return StdVideoH264HrdParameters.get_initial_cpb_removal_delay_length_minus1(this.segment(), index); }
+        /// Sets `initial_cpb_removal_delay_length_minus1` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer initial_cpb_removal_delay_length_minus1At(long index, @CType("uint32_t") int value) { StdVideoH264HrdParameters.set_initial_cpb_removal_delay_length_minus1(this.segment(), index, value); return this; }
+
+        /// {@return `cpb_removal_delay_length_minus1` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int cpb_removal_delay_length_minus1At(long index) { return StdVideoH264HrdParameters.get_cpb_removal_delay_length_minus1(this.segment(), index); }
+        /// Sets `cpb_removal_delay_length_minus1` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer cpb_removal_delay_length_minus1At(long index, @CType("uint32_t") int value) { StdVideoH264HrdParameters.set_cpb_removal_delay_length_minus1(this.segment(), index, value); return this; }
+
+        /// {@return `dpb_output_delay_length_minus1` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int dpb_output_delay_length_minus1At(long index) { return StdVideoH264HrdParameters.get_dpb_output_delay_length_minus1(this.segment(), index); }
+        /// Sets `dpb_output_delay_length_minus1` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer dpb_output_delay_length_minus1At(long index, @CType("uint32_t") int value) { StdVideoH264HrdParameters.set_dpb_output_delay_length_minus1(this.segment(), index, value); return this; }
+
+        /// {@return `time_offset_length` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int time_offset_lengthAt(long index) { return StdVideoH264HrdParameters.get_time_offset_length(this.segment(), index); }
+        /// Sets `time_offset_length` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer time_offset_lengthAt(long index, @CType("uint32_t") int value) { StdVideoH264HrdParameters.set_time_offset_length(this.segment(), index, value); return this; }
+
+    }
 }

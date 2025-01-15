@@ -52,7 +52,7 @@ import static overrungl.vulkan.VK10.*;
 ///     char[VK_MAX_DESCRIPTION_SIZE] description;
 /// } VkPerformanceCounterDescriptionKHR;
 /// ```
-public final class VkPerformanceCounterDescriptionKHR extends Struct {
+public sealed class VkPerformanceCounterDescriptionKHR extends Struct {
     /// The struct layout of `VkPerformanceCounterDescriptionKHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -91,6 +91,11 @@ public final class VkPerformanceCounterDescriptionKHR extends Struct {
     public static VkPerformanceCounterDescriptionKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPerformanceCounterDescriptionKHR(segment); }
 
     /// Creates `VkPerformanceCounterDescriptionKHR` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPerformanceCounterDescriptionKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -103,7 +108,7 @@ public final class VkPerformanceCounterDescriptionKHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPerformanceCounterDescriptionKHR ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPerformanceCounterDescriptionKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPerformanceCounterDescriptionKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -114,18 +119,21 @@ public final class VkPerformanceCounterDescriptionKHR extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPerformanceCounterDescriptionKHR`
-    public static VkPerformanceCounterDescriptionKHR alloc(SegmentAllocator allocator, long count) { return new VkPerformanceCounterDescriptionKHR(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkPerformanceCounterDescriptionKHR`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPerformanceCounterDescriptionKHR`
-    public VkPerformanceCounterDescriptionKHR asSlice(long index) { return new VkPerformanceCounterDescriptionKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkPerformanceCounterDescriptionKHR` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPerformanceCounterDescriptionKHR`
+    public static VkPerformanceCounterDescriptionKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkPerformanceCounterDescriptionFlagsKHR") int flags, @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment name, @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment category, @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment description) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).name(name).category(category).description(description); }
 
-    /// Creates a slice of `VkPerformanceCounterDescriptionKHR`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPerformanceCounterDescriptionKHR`
-    public VkPerformanceCounterDescriptionKHR asSlice(long index, long count) { return new VkPerformanceCounterDescriptionKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPerformanceCounterDescriptionKHR copyFrom(VkPerformanceCounterDescriptionKHR src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -134,9 +142,6 @@ public final class VkPerformanceCounterDescriptionKHR extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPerformanceCounterDescriptionKHR.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPerformanceCounterDescriptionKHR.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPerformanceCounterDescriptionKHR.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -148,11 +153,6 @@ public final class VkPerformanceCounterDescriptionKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPerformanceCounterDescriptionKHR.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPerformanceCounterDescriptionKHR sTypeAt(long index, @CType("VkStructureType") int value) { VkPerformanceCounterDescriptionKHR.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -165,9 +165,6 @@ public final class VkPerformanceCounterDescriptionKHR extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPerformanceCounterDescriptionKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPerformanceCounterDescriptionKHR.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPerformanceCounterDescriptionKHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -179,11 +176,6 @@ public final class VkPerformanceCounterDescriptionKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPerformanceCounterDescriptionKHR.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPerformanceCounterDescriptionKHR pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPerformanceCounterDescriptionKHR.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -196,9 +188,6 @@ public final class VkPerformanceCounterDescriptionKHR extends Struct {
     /// {@return `flags`}
     /// @param segment the segment of the struct
     public static @CType("VkPerformanceCounterDescriptionFlagsKHR") int get_flags(MemorySegment segment) { return VkPerformanceCounterDescriptionKHR.get_flags(segment, 0L); }
-    /// {@return `flags` at the given index}
-    /// @param index the index
-    public @CType("VkPerformanceCounterDescriptionFlagsKHR") int flagsAt(long index) { return VkPerformanceCounterDescriptionKHR.get_flags(this.segment(), index); }
     /// {@return `flags`}
     public @CType("VkPerformanceCounterDescriptionFlagsKHR") int flags() { return VkPerformanceCounterDescriptionKHR.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
@@ -210,11 +199,6 @@ public final class VkPerformanceCounterDescriptionKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_flags(MemorySegment segment, @CType("VkPerformanceCounterDescriptionFlagsKHR") int value) { VkPerformanceCounterDescriptionKHR.set_flags(segment, 0L, value); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPerformanceCounterDescriptionKHR flagsAt(long index, @CType("VkPerformanceCounterDescriptionFlagsKHR") int value) { VkPerformanceCounterDescriptionKHR.set_flags(this.segment(), index, value); return this; }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -227,9 +211,6 @@ public final class VkPerformanceCounterDescriptionKHR extends Struct {
     /// {@return `name`}
     /// @param segment the segment of the struct
     public static @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment get_name(MemorySegment segment) { return VkPerformanceCounterDescriptionKHR.get_name(segment, 0L); }
-    /// {@return `name` at the given index}
-    /// @param index the index
-    public @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment nameAt(long index) { return VkPerformanceCounterDescriptionKHR.get_name(this.segment(), index); }
     /// {@return `name`}
     public @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment name() { return VkPerformanceCounterDescriptionKHR.get_name(this.segment()); }
     /// Sets `name` with the given value at the given index.
@@ -241,11 +222,6 @@ public final class VkPerformanceCounterDescriptionKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_name(MemorySegment segment, @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment value) { VkPerformanceCounterDescriptionKHR.set_name(segment, 0L, value); }
-    /// Sets `name` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPerformanceCounterDescriptionKHR nameAt(long index, @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment value) { VkPerformanceCounterDescriptionKHR.set_name(this.segment(), index, value); return this; }
     /// Sets `name` with the given value.
     /// @param value the value
     /// @return `this`
@@ -258,9 +234,6 @@ public final class VkPerformanceCounterDescriptionKHR extends Struct {
     /// {@return `category`}
     /// @param segment the segment of the struct
     public static @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment get_category(MemorySegment segment) { return VkPerformanceCounterDescriptionKHR.get_category(segment, 0L); }
-    /// {@return `category` at the given index}
-    /// @param index the index
-    public @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment categoryAt(long index) { return VkPerformanceCounterDescriptionKHR.get_category(this.segment(), index); }
     /// {@return `category`}
     public @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment category() { return VkPerformanceCounterDescriptionKHR.get_category(this.segment()); }
     /// Sets `category` with the given value at the given index.
@@ -272,11 +245,6 @@ public final class VkPerformanceCounterDescriptionKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_category(MemorySegment segment, @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment value) { VkPerformanceCounterDescriptionKHR.set_category(segment, 0L, value); }
-    /// Sets `category` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPerformanceCounterDescriptionKHR categoryAt(long index, @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment value) { VkPerformanceCounterDescriptionKHR.set_category(this.segment(), index, value); return this; }
     /// Sets `category` with the given value.
     /// @param value the value
     /// @return `this`
@@ -289,9 +257,6 @@ public final class VkPerformanceCounterDescriptionKHR extends Struct {
     /// {@return `description`}
     /// @param segment the segment of the struct
     public static @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment get_description(MemorySegment segment) { return VkPerformanceCounterDescriptionKHR.get_description(segment, 0L); }
-    /// {@return `description` at the given index}
-    /// @param index the index
-    public @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment descriptionAt(long index) { return VkPerformanceCounterDescriptionKHR.get_description(this.segment(), index); }
     /// {@return `description`}
     public @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment description() { return VkPerformanceCounterDescriptionKHR.get_description(this.segment()); }
     /// Sets `description` with the given value at the given index.
@@ -303,14 +268,86 @@ public final class VkPerformanceCounterDescriptionKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_description(MemorySegment segment, @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment value) { VkPerformanceCounterDescriptionKHR.set_description(segment, 0L, value); }
-    /// Sets `description` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPerformanceCounterDescriptionKHR descriptionAt(long index, @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment value) { VkPerformanceCounterDescriptionKHR.set_description(this.segment(), index, value); return this; }
     /// Sets `description` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPerformanceCounterDescriptionKHR description(@CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment value) { VkPerformanceCounterDescriptionKHR.set_description(this.segment(), value); return this; }
 
+    /// A buffer of [VkPerformanceCounterDescriptionKHR].
+    public static final class Buffer extends VkPerformanceCounterDescriptionKHR {
+        private final long elementCount;
+
+        /// Creates `VkPerformanceCounterDescriptionKHR.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPerformanceCounterDescriptionKHR`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPerformanceCounterDescriptionKHR`
+        public VkPerformanceCounterDescriptionKHR asSlice(long index) { return new VkPerformanceCounterDescriptionKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPerformanceCounterDescriptionKHR`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPerformanceCounterDescriptionKHR`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPerformanceCounterDescriptionKHR.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPerformanceCounterDescriptionKHR.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPerformanceCounterDescriptionKHR.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPerformanceCounterDescriptionKHR.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `flags` at the given index}
+        /// @param index the index
+        public @CType("VkPerformanceCounterDescriptionFlagsKHR") int flagsAt(long index) { return VkPerformanceCounterDescriptionKHR.get_flags(this.segment(), index); }
+        /// Sets `flags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer flagsAt(long index, @CType("VkPerformanceCounterDescriptionFlagsKHR") int value) { VkPerformanceCounterDescriptionKHR.set_flags(this.segment(), index, value); return this; }
+
+        /// {@return `name` at the given index}
+        /// @param index the index
+        public @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment nameAt(long index) { return VkPerformanceCounterDescriptionKHR.get_name(this.segment(), index); }
+        /// Sets `name` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer nameAt(long index, @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment value) { VkPerformanceCounterDescriptionKHR.set_name(this.segment(), index, value); return this; }
+
+        /// {@return `category` at the given index}
+        /// @param index the index
+        public @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment categoryAt(long index) { return VkPerformanceCounterDescriptionKHR.get_category(this.segment(), index); }
+        /// Sets `category` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer categoryAt(long index, @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment value) { VkPerformanceCounterDescriptionKHR.set_category(this.segment(), index, value); return this; }
+
+        /// {@return `description` at the given index}
+        /// @param index the index
+        public @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment descriptionAt(long index) { return VkPerformanceCounterDescriptionKHR.get_description(this.segment(), index); }
+        /// Sets `description` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer descriptionAt(long index, @CType("char[VK_MAX_DESCRIPTION_SIZE]") java.lang.foreign.MemorySegment value) { VkPerformanceCounterDescriptionKHR.set_description(this.segment(), index, value); return this; }
+
+    }
 }

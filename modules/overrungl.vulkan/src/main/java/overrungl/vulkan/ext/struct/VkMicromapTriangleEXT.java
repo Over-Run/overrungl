@@ -40,7 +40,7 @@ import overrungl.util.*;
 ///     uint16_t format;
 /// } VkMicromapTriangleEXT;
 /// ```
-public final class VkMicromapTriangleEXT extends Struct {
+public sealed class VkMicromapTriangleEXT extends Struct {
     /// The struct layout of `VkMicromapTriangleEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("dataOffset"),
@@ -64,6 +64,11 @@ public final class VkMicromapTriangleEXT extends Struct {
     public static VkMicromapTriangleEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkMicromapTriangleEXT(segment); }
 
     /// Creates `VkMicromapTriangleEXT` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkMicromapTriangleEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -76,7 +81,7 @@ public final class VkMicromapTriangleEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkMicromapTriangleEXT ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkMicromapTriangleEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkMicromapTriangleEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -87,18 +92,21 @@ public final class VkMicromapTriangleEXT extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkMicromapTriangleEXT`
-    public static VkMicromapTriangleEXT alloc(SegmentAllocator allocator, long count) { return new VkMicromapTriangleEXT(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkMicromapTriangleEXT`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkMicromapTriangleEXT`
-    public VkMicromapTriangleEXT asSlice(long index) { return new VkMicromapTriangleEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkMicromapTriangleEXT` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkMicromapTriangleEXT`
+    public static VkMicromapTriangleEXT allocInit(SegmentAllocator allocator, @CType("uint32_t") int dataOffset, @CType("uint16_t") short subdivisionLevel, @CType("uint16_t") short format) { return alloc(allocator).dataOffset(dataOffset).subdivisionLevel(subdivisionLevel).format(format); }
 
-    /// Creates a slice of `VkMicromapTriangleEXT`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkMicromapTriangleEXT`
-    public VkMicromapTriangleEXT asSlice(long index, long count) { return new VkMicromapTriangleEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkMicromapTriangleEXT copyFrom(VkMicromapTriangleEXT src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `dataOffset` at the given index}
     /// @param segment the segment of the struct
@@ -107,9 +115,6 @@ public final class VkMicromapTriangleEXT extends Struct {
     /// {@return `dataOffset`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_dataOffset(MemorySegment segment) { return VkMicromapTriangleEXT.get_dataOffset(segment, 0L); }
-    /// {@return `dataOffset` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int dataOffsetAt(long index) { return VkMicromapTriangleEXT.get_dataOffset(this.segment(), index); }
     /// {@return `dataOffset`}
     public @CType("uint32_t") int dataOffset() { return VkMicromapTriangleEXT.get_dataOffset(this.segment()); }
     /// Sets `dataOffset` with the given value at the given index.
@@ -121,11 +126,6 @@ public final class VkMicromapTriangleEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_dataOffset(MemorySegment segment, @CType("uint32_t") int value) { VkMicromapTriangleEXT.set_dataOffset(segment, 0L, value); }
-    /// Sets `dataOffset` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkMicromapTriangleEXT dataOffsetAt(long index, @CType("uint32_t") int value) { VkMicromapTriangleEXT.set_dataOffset(this.segment(), index, value); return this; }
     /// Sets `dataOffset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -138,9 +138,6 @@ public final class VkMicromapTriangleEXT extends Struct {
     /// {@return `subdivisionLevel`}
     /// @param segment the segment of the struct
     public static @CType("uint16_t") short get_subdivisionLevel(MemorySegment segment) { return VkMicromapTriangleEXT.get_subdivisionLevel(segment, 0L); }
-    /// {@return `subdivisionLevel` at the given index}
-    /// @param index the index
-    public @CType("uint16_t") short subdivisionLevelAt(long index) { return VkMicromapTriangleEXT.get_subdivisionLevel(this.segment(), index); }
     /// {@return `subdivisionLevel`}
     public @CType("uint16_t") short subdivisionLevel() { return VkMicromapTriangleEXT.get_subdivisionLevel(this.segment()); }
     /// Sets `subdivisionLevel` with the given value at the given index.
@@ -152,11 +149,6 @@ public final class VkMicromapTriangleEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_subdivisionLevel(MemorySegment segment, @CType("uint16_t") short value) { VkMicromapTriangleEXT.set_subdivisionLevel(segment, 0L, value); }
-    /// Sets `subdivisionLevel` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkMicromapTriangleEXT subdivisionLevelAt(long index, @CType("uint16_t") short value) { VkMicromapTriangleEXT.set_subdivisionLevel(this.segment(), index, value); return this; }
     /// Sets `subdivisionLevel` with the given value.
     /// @param value the value
     /// @return `this`
@@ -169,9 +161,6 @@ public final class VkMicromapTriangleEXT extends Struct {
     /// {@return `format`}
     /// @param segment the segment of the struct
     public static @CType("uint16_t") short get_format(MemorySegment segment) { return VkMicromapTriangleEXT.get_format(segment, 0L); }
-    /// {@return `format` at the given index}
-    /// @param index the index
-    public @CType("uint16_t") short formatAt(long index) { return VkMicromapTriangleEXT.get_format(this.segment(), index); }
     /// {@return `format`}
     public @CType("uint16_t") short format() { return VkMicromapTriangleEXT.get_format(this.segment()); }
     /// Sets `format` with the given value at the given index.
@@ -183,14 +172,59 @@ public final class VkMicromapTriangleEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_format(MemorySegment segment, @CType("uint16_t") short value) { VkMicromapTriangleEXT.set_format(segment, 0L, value); }
-    /// Sets `format` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkMicromapTriangleEXT formatAt(long index, @CType("uint16_t") short value) { VkMicromapTriangleEXT.set_format(this.segment(), index, value); return this; }
     /// Sets `format` with the given value.
     /// @param value the value
     /// @return `this`
     public VkMicromapTriangleEXT format(@CType("uint16_t") short value) { VkMicromapTriangleEXT.set_format(this.segment(), value); return this; }
 
+    /// A buffer of [VkMicromapTriangleEXT].
+    public static final class Buffer extends VkMicromapTriangleEXT {
+        private final long elementCount;
+
+        /// Creates `VkMicromapTriangleEXT.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkMicromapTriangleEXT`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkMicromapTriangleEXT`
+        public VkMicromapTriangleEXT asSlice(long index) { return new VkMicromapTriangleEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkMicromapTriangleEXT`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkMicromapTriangleEXT`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `dataOffset` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int dataOffsetAt(long index) { return VkMicromapTriangleEXT.get_dataOffset(this.segment(), index); }
+        /// Sets `dataOffset` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer dataOffsetAt(long index, @CType("uint32_t") int value) { VkMicromapTriangleEXT.set_dataOffset(this.segment(), index, value); return this; }
+
+        /// {@return `subdivisionLevel` at the given index}
+        /// @param index the index
+        public @CType("uint16_t") short subdivisionLevelAt(long index) { return VkMicromapTriangleEXT.get_subdivisionLevel(this.segment(), index); }
+        /// Sets `subdivisionLevel` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer subdivisionLevelAt(long index, @CType("uint16_t") short value) { VkMicromapTriangleEXT.set_subdivisionLevel(this.segment(), index, value); return this; }
+
+        /// {@return `format` at the given index}
+        /// @param index the index
+        public @CType("uint16_t") short formatAt(long index) { return VkMicromapTriangleEXT.get_format(this.segment(), index); }
+        /// Sets `format` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer formatAt(long index, @CType("uint16_t") short value) { VkMicromapTriangleEXT.set_format(this.segment(), index, value); return this; }
+
+    }
 }

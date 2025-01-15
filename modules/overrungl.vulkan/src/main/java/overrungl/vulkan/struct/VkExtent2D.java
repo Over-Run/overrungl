@@ -37,7 +37,7 @@ import overrungl.util.*;
 ///     uint32_t height;
 /// } VkExtent2D;
 /// ```
-public final class VkExtent2D extends Struct {
+public sealed class VkExtent2D extends Struct {
     /// The struct layout of `VkExtent2D`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("width"),
@@ -58,6 +58,11 @@ public final class VkExtent2D extends Struct {
     public static VkExtent2D of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkExtent2D(segment); }
 
     /// Creates `VkExtent2D` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkExtent2D` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -70,7 +75,7 @@ public final class VkExtent2D extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkExtent2D ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkExtent2D(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkExtent2D` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -81,18 +86,21 @@ public final class VkExtent2D extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkExtent2D`
-    public static VkExtent2D alloc(SegmentAllocator allocator, long count) { return new VkExtent2D(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkExtent2D`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkExtent2D`
-    public VkExtent2D asSlice(long index) { return new VkExtent2D(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkExtent2D` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkExtent2D`
+    public static VkExtent2D allocInit(SegmentAllocator allocator, @CType("uint32_t") int width, @CType("uint32_t") int height) { return alloc(allocator).width(width).height(height); }
 
-    /// Creates a slice of `VkExtent2D`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkExtent2D`
-    public VkExtent2D asSlice(long index, long count) { return new VkExtent2D(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkExtent2D copyFrom(VkExtent2D src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `width` at the given index}
     /// @param segment the segment of the struct
@@ -101,9 +109,6 @@ public final class VkExtent2D extends Struct {
     /// {@return `width`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_width(MemorySegment segment) { return VkExtent2D.get_width(segment, 0L); }
-    /// {@return `width` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int widthAt(long index) { return VkExtent2D.get_width(this.segment(), index); }
     /// {@return `width`}
     public @CType("uint32_t") int width() { return VkExtent2D.get_width(this.segment()); }
     /// Sets `width` with the given value at the given index.
@@ -115,11 +120,6 @@ public final class VkExtent2D extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_width(MemorySegment segment, @CType("uint32_t") int value) { VkExtent2D.set_width(segment, 0L, value); }
-    /// Sets `width` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkExtent2D widthAt(long index, @CType("uint32_t") int value) { VkExtent2D.set_width(this.segment(), index, value); return this; }
     /// Sets `width` with the given value.
     /// @param value the value
     /// @return `this`
@@ -132,9 +132,6 @@ public final class VkExtent2D extends Struct {
     /// {@return `height`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_height(MemorySegment segment) { return VkExtent2D.get_height(segment, 0L); }
-    /// {@return `height` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int heightAt(long index) { return VkExtent2D.get_height(this.segment(), index); }
     /// {@return `height`}
     public @CType("uint32_t") int height() { return VkExtent2D.get_height(this.segment()); }
     /// Sets `height` with the given value at the given index.
@@ -146,14 +143,50 @@ public final class VkExtent2D extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_height(MemorySegment segment, @CType("uint32_t") int value) { VkExtent2D.set_height(segment, 0L, value); }
-    /// Sets `height` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkExtent2D heightAt(long index, @CType("uint32_t") int value) { VkExtent2D.set_height(this.segment(), index, value); return this; }
     /// Sets `height` with the given value.
     /// @param value the value
     /// @return `this`
     public VkExtent2D height(@CType("uint32_t") int value) { VkExtent2D.set_height(this.segment(), value); return this; }
 
+    /// A buffer of [VkExtent2D].
+    public static final class Buffer extends VkExtent2D {
+        private final long elementCount;
+
+        /// Creates `VkExtent2D.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkExtent2D`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkExtent2D`
+        public VkExtent2D asSlice(long index) { return new VkExtent2D(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkExtent2D`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkExtent2D`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `width` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int widthAt(long index) { return VkExtent2D.get_width(this.segment(), index); }
+        /// Sets `width` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer widthAt(long index, @CType("uint32_t") int value) { VkExtent2D.set_width(this.segment(), index, value); return this; }
+
+        /// {@return `height` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int heightAt(long index) { return VkExtent2D.get_height(this.segment(), index); }
+        /// Sets `height` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer heightAt(long index, @CType("uint32_t") int value) { VkExtent2D.set_height(this.segment(), index, value); return this; }
+
+    }
 }

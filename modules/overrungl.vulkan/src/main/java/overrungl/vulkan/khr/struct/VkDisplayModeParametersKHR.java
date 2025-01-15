@@ -37,7 +37,7 @@ import overrungl.util.*;
 ///     uint32_t refreshRate;
 /// } VkDisplayModeParametersKHR;
 /// ```
-public final class VkDisplayModeParametersKHR extends Struct {
+public sealed class VkDisplayModeParametersKHR extends Struct {
     /// The struct layout of `VkDisplayModeParametersKHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.struct.VkExtent2D.LAYOUT.withName("visibleRegion"),
@@ -60,6 +60,11 @@ public final class VkDisplayModeParametersKHR extends Struct {
     public static VkDisplayModeParametersKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDisplayModeParametersKHR(segment); }
 
     /// Creates `VkDisplayModeParametersKHR` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkDisplayModeParametersKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -72,7 +77,7 @@ public final class VkDisplayModeParametersKHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDisplayModeParametersKHR ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkDisplayModeParametersKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkDisplayModeParametersKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -83,18 +88,21 @@ public final class VkDisplayModeParametersKHR extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDisplayModeParametersKHR`
-    public static VkDisplayModeParametersKHR alloc(SegmentAllocator allocator, long count) { return new VkDisplayModeParametersKHR(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkDisplayModeParametersKHR`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkDisplayModeParametersKHR`
-    public VkDisplayModeParametersKHR asSlice(long index) { return new VkDisplayModeParametersKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkDisplayModeParametersKHR` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkDisplayModeParametersKHR`
+    public static VkDisplayModeParametersKHR allocInit(SegmentAllocator allocator, @CType("VkExtent2D") java.lang.foreign.MemorySegment visibleRegion, @CType("uint32_t") int refreshRate) { return alloc(allocator).visibleRegion(visibleRegion).refreshRate(refreshRate); }
 
-    /// Creates a slice of `VkDisplayModeParametersKHR`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkDisplayModeParametersKHR`
-    public VkDisplayModeParametersKHR asSlice(long index, long count) { return new VkDisplayModeParametersKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkDisplayModeParametersKHR copyFrom(VkDisplayModeParametersKHR src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `visibleRegion` at the given index}
     /// @param segment the segment of the struct
@@ -103,9 +111,6 @@ public final class VkDisplayModeParametersKHR extends Struct {
     /// {@return `visibleRegion`}
     /// @param segment the segment of the struct
     public static @CType("VkExtent2D") java.lang.foreign.MemorySegment get_visibleRegion(MemorySegment segment) { return VkDisplayModeParametersKHR.get_visibleRegion(segment, 0L); }
-    /// {@return `visibleRegion` at the given index}
-    /// @param index the index
-    public @CType("VkExtent2D") java.lang.foreign.MemorySegment visibleRegionAt(long index) { return VkDisplayModeParametersKHR.get_visibleRegion(this.segment(), index); }
     /// {@return `visibleRegion`}
     public @CType("VkExtent2D") java.lang.foreign.MemorySegment visibleRegion() { return VkDisplayModeParametersKHR.get_visibleRegion(this.segment()); }
     /// Sets `visibleRegion` with the given value at the given index.
@@ -117,11 +122,6 @@ public final class VkDisplayModeParametersKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_visibleRegion(MemorySegment segment, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkDisplayModeParametersKHR.set_visibleRegion(segment, 0L, value); }
-    /// Sets `visibleRegion` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayModeParametersKHR visibleRegionAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkDisplayModeParametersKHR.set_visibleRegion(this.segment(), index, value); return this; }
     /// Sets `visibleRegion` with the given value.
     /// @param value the value
     /// @return `this`
@@ -134,9 +134,6 @@ public final class VkDisplayModeParametersKHR extends Struct {
     /// {@return `refreshRate`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_refreshRate(MemorySegment segment) { return VkDisplayModeParametersKHR.get_refreshRate(segment, 0L); }
-    /// {@return `refreshRate` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int refreshRateAt(long index) { return VkDisplayModeParametersKHR.get_refreshRate(this.segment(), index); }
     /// {@return `refreshRate`}
     public @CType("uint32_t") int refreshRate() { return VkDisplayModeParametersKHR.get_refreshRate(this.segment()); }
     /// Sets `refreshRate` with the given value at the given index.
@@ -148,14 +145,50 @@ public final class VkDisplayModeParametersKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_refreshRate(MemorySegment segment, @CType("uint32_t") int value) { VkDisplayModeParametersKHR.set_refreshRate(segment, 0L, value); }
-    /// Sets `refreshRate` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDisplayModeParametersKHR refreshRateAt(long index, @CType("uint32_t") int value) { VkDisplayModeParametersKHR.set_refreshRate(this.segment(), index, value); return this; }
     /// Sets `refreshRate` with the given value.
     /// @param value the value
     /// @return `this`
     public VkDisplayModeParametersKHR refreshRate(@CType("uint32_t") int value) { VkDisplayModeParametersKHR.set_refreshRate(this.segment(), value); return this; }
 
+    /// A buffer of [VkDisplayModeParametersKHR].
+    public static final class Buffer extends VkDisplayModeParametersKHR {
+        private final long elementCount;
+
+        /// Creates `VkDisplayModeParametersKHR.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkDisplayModeParametersKHR`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkDisplayModeParametersKHR`
+        public VkDisplayModeParametersKHR asSlice(long index) { return new VkDisplayModeParametersKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkDisplayModeParametersKHR`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkDisplayModeParametersKHR`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `visibleRegion` at the given index}
+        /// @param index the index
+        public @CType("VkExtent2D") java.lang.foreign.MemorySegment visibleRegionAt(long index) { return VkDisplayModeParametersKHR.get_visibleRegion(this.segment(), index); }
+        /// Sets `visibleRegion` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer visibleRegionAt(long index, @CType("VkExtent2D") java.lang.foreign.MemorySegment value) { VkDisplayModeParametersKHR.set_visibleRegion(this.segment(), index, value); return this; }
+
+        /// {@return `refreshRate` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int refreshRateAt(long index) { return VkDisplayModeParametersKHR.get_refreshRate(this.segment(), index); }
+        /// Sets `refreshRate` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer refreshRateAt(long index, @CType("uint32_t") int value) { VkDisplayModeParametersKHR.set_refreshRate(this.segment(), index, value); return this; }
+
+    }
 }

@@ -34,7 +34,7 @@ import overrungl.util.*;
 ///     float[3] matrix;
 /// } VkTransformMatrixKHR;
 /// ```
-public final class VkTransformMatrixKHR extends Struct {
+public sealed class VkTransformMatrixKHR extends Struct {
     /// The struct layout of `VkTransformMatrixKHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_FLOAT).withName("matrix")
@@ -54,6 +54,11 @@ public final class VkTransformMatrixKHR extends Struct {
     public static VkTransformMatrixKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkTransformMatrixKHR(segment); }
 
     /// Creates `VkTransformMatrixKHR` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkTransformMatrixKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -66,7 +71,7 @@ public final class VkTransformMatrixKHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkTransformMatrixKHR ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkTransformMatrixKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkTransformMatrixKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -77,18 +82,21 @@ public final class VkTransformMatrixKHR extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkTransformMatrixKHR`
-    public static VkTransformMatrixKHR alloc(SegmentAllocator allocator, long count) { return new VkTransformMatrixKHR(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkTransformMatrixKHR`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkTransformMatrixKHR`
-    public VkTransformMatrixKHR asSlice(long index) { return new VkTransformMatrixKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkTransformMatrixKHR` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkTransformMatrixKHR`
+    public static VkTransformMatrixKHR allocInit(SegmentAllocator allocator, @CType("float[3]") java.lang.foreign.MemorySegment matrix) { return alloc(allocator).matrix(matrix); }
 
-    /// Creates a slice of `VkTransformMatrixKHR`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkTransformMatrixKHR`
-    public VkTransformMatrixKHR asSlice(long index, long count) { return new VkTransformMatrixKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkTransformMatrixKHR copyFrom(VkTransformMatrixKHR src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `matrix` at the given index}
     /// @param segment the segment of the struct
@@ -97,9 +105,6 @@ public final class VkTransformMatrixKHR extends Struct {
     /// {@return `matrix`}
     /// @param segment the segment of the struct
     public static @CType("float[3]") java.lang.foreign.MemorySegment get_matrix(MemorySegment segment) { return VkTransformMatrixKHR.get_matrix(segment, 0L); }
-    /// {@return `matrix` at the given index}
-    /// @param index the index
-    public @CType("float[3]") java.lang.foreign.MemorySegment matrixAt(long index) { return VkTransformMatrixKHR.get_matrix(this.segment(), index); }
     /// {@return `matrix`}
     public @CType("float[3]") java.lang.foreign.MemorySegment matrix() { return VkTransformMatrixKHR.get_matrix(this.segment()); }
     /// Sets `matrix` with the given value at the given index.
@@ -111,14 +116,41 @@ public final class VkTransformMatrixKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_matrix(MemorySegment segment, @CType("float[3]") java.lang.foreign.MemorySegment value) { VkTransformMatrixKHR.set_matrix(segment, 0L, value); }
-    /// Sets `matrix` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkTransformMatrixKHR matrixAt(long index, @CType("float[3]") java.lang.foreign.MemorySegment value) { VkTransformMatrixKHR.set_matrix(this.segment(), index, value); return this; }
     /// Sets `matrix` with the given value.
     /// @param value the value
     /// @return `this`
     public VkTransformMatrixKHR matrix(@CType("float[3]") java.lang.foreign.MemorySegment value) { VkTransformMatrixKHR.set_matrix(this.segment(), value); return this; }
 
+    /// A buffer of [VkTransformMatrixKHR].
+    public static final class Buffer extends VkTransformMatrixKHR {
+        private final long elementCount;
+
+        /// Creates `VkTransformMatrixKHR.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkTransformMatrixKHR`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkTransformMatrixKHR`
+        public VkTransformMatrixKHR asSlice(long index) { return new VkTransformMatrixKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkTransformMatrixKHR`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkTransformMatrixKHR`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `matrix` at the given index}
+        /// @param index the index
+        public @CType("float[3]") java.lang.foreign.MemorySegment matrixAt(long index) { return VkTransformMatrixKHR.get_matrix(this.segment(), index); }
+        /// Sets `matrix` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer matrixAt(long index, @CType("float[3]") java.lang.foreign.MemorySegment value) { VkTransformMatrixKHR.set_matrix(this.segment(), index, value); return this; }
+
+    }
 }

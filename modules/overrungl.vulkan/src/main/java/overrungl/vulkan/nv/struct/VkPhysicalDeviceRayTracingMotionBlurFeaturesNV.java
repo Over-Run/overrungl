@@ -43,7 +43,7 @@ import overrungl.util.*;
 ///     VkBool32 rayTracingMotionBlurPipelineTraceRaysIndirect;
 /// } VkPhysicalDeviceRayTracingMotionBlurFeaturesNV;
 /// ```
-public final class VkPhysicalDeviceRayTracingMotionBlurFeaturesNV extends Struct {
+public sealed class VkPhysicalDeviceRayTracingMotionBlurFeaturesNV extends Struct {
     /// The struct layout of `VkPhysicalDeviceRayTracingMotionBlurFeaturesNV`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -70,6 +70,11 @@ public final class VkPhysicalDeviceRayTracingMotionBlurFeaturesNV extends Struct
     public static VkPhysicalDeviceRayTracingMotionBlurFeaturesNV of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceRayTracingMotionBlurFeaturesNV(segment); }
 
     /// Creates `VkPhysicalDeviceRayTracingMotionBlurFeaturesNV` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPhysicalDeviceRayTracingMotionBlurFeaturesNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -82,7 +87,7 @@ public final class VkPhysicalDeviceRayTracingMotionBlurFeaturesNV extends Struct
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceRayTracingMotionBlurFeaturesNV ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceRayTracingMotionBlurFeaturesNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceRayTracingMotionBlurFeaturesNV` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -93,18 +98,21 @@ public final class VkPhysicalDeviceRayTracingMotionBlurFeaturesNV extends Struct
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceRayTracingMotionBlurFeaturesNV`
-    public static VkPhysicalDeviceRayTracingMotionBlurFeaturesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceRayTracingMotionBlurFeaturesNV(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkPhysicalDeviceRayTracingMotionBlurFeaturesNV`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDeviceRayTracingMotionBlurFeaturesNV`
-    public VkPhysicalDeviceRayTracingMotionBlurFeaturesNV asSlice(long index) { return new VkPhysicalDeviceRayTracingMotionBlurFeaturesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkPhysicalDeviceRayTracingMotionBlurFeaturesNV` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDeviceRayTracingMotionBlurFeaturesNV`
+    public static VkPhysicalDeviceRayTracingMotionBlurFeaturesNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int rayTracingMotionBlur, @CType("VkBool32") int rayTracingMotionBlurPipelineTraceRaysIndirect) { return alloc(allocator).sType(sType).pNext(pNext).rayTracingMotionBlur(rayTracingMotionBlur).rayTracingMotionBlurPipelineTraceRaysIndirect(rayTracingMotionBlurPipelineTraceRaysIndirect); }
 
-    /// Creates a slice of `VkPhysicalDeviceRayTracingMotionBlurFeaturesNV`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDeviceRayTracingMotionBlurFeaturesNV`
-    public VkPhysicalDeviceRayTracingMotionBlurFeaturesNV asSlice(long index, long count) { return new VkPhysicalDeviceRayTracingMotionBlurFeaturesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDeviceRayTracingMotionBlurFeaturesNV copyFrom(VkPhysicalDeviceRayTracingMotionBlurFeaturesNV src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -113,9 +121,6 @@ public final class VkPhysicalDeviceRayTracingMotionBlurFeaturesNV extends Struct
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceRayTracingMotionBlurFeaturesNV.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceRayTracingMotionBlurFeaturesNV.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPhysicalDeviceRayTracingMotionBlurFeaturesNV.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -127,11 +132,6 @@ public final class VkPhysicalDeviceRayTracingMotionBlurFeaturesNV extends Struct
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceRayTracingMotionBlurFeaturesNV.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceRayTracingMotionBlurFeaturesNV sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceRayTracingMotionBlurFeaturesNV.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -144,9 +144,6 @@ public final class VkPhysicalDeviceRayTracingMotionBlurFeaturesNV extends Struct
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceRayTracingMotionBlurFeaturesNV.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceRayTracingMotionBlurFeaturesNV.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceRayTracingMotionBlurFeaturesNV.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -158,11 +155,6 @@ public final class VkPhysicalDeviceRayTracingMotionBlurFeaturesNV extends Struct
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceRayTracingMotionBlurFeaturesNV.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceRayTracingMotionBlurFeaturesNV pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceRayTracingMotionBlurFeaturesNV.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -175,9 +167,6 @@ public final class VkPhysicalDeviceRayTracingMotionBlurFeaturesNV extends Struct
     /// {@return `rayTracingMotionBlur`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_rayTracingMotionBlur(MemorySegment segment) { return VkPhysicalDeviceRayTracingMotionBlurFeaturesNV.get_rayTracingMotionBlur(segment, 0L); }
-    /// {@return `rayTracingMotionBlur` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int rayTracingMotionBlurAt(long index) { return VkPhysicalDeviceRayTracingMotionBlurFeaturesNV.get_rayTracingMotionBlur(this.segment(), index); }
     /// {@return `rayTracingMotionBlur`}
     public @CType("VkBool32") int rayTracingMotionBlur() { return VkPhysicalDeviceRayTracingMotionBlurFeaturesNV.get_rayTracingMotionBlur(this.segment()); }
     /// Sets `rayTracingMotionBlur` with the given value at the given index.
@@ -189,11 +178,6 @@ public final class VkPhysicalDeviceRayTracingMotionBlurFeaturesNV extends Struct
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_rayTracingMotionBlur(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceRayTracingMotionBlurFeaturesNV.set_rayTracingMotionBlur(segment, 0L, value); }
-    /// Sets `rayTracingMotionBlur` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceRayTracingMotionBlurFeaturesNV rayTracingMotionBlurAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceRayTracingMotionBlurFeaturesNV.set_rayTracingMotionBlur(this.segment(), index, value); return this; }
     /// Sets `rayTracingMotionBlur` with the given value.
     /// @param value the value
     /// @return `this`
@@ -206,9 +190,6 @@ public final class VkPhysicalDeviceRayTracingMotionBlurFeaturesNV extends Struct
     /// {@return `rayTracingMotionBlurPipelineTraceRaysIndirect`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_rayTracingMotionBlurPipelineTraceRaysIndirect(MemorySegment segment) { return VkPhysicalDeviceRayTracingMotionBlurFeaturesNV.get_rayTracingMotionBlurPipelineTraceRaysIndirect(segment, 0L); }
-    /// {@return `rayTracingMotionBlurPipelineTraceRaysIndirect` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int rayTracingMotionBlurPipelineTraceRaysIndirectAt(long index) { return VkPhysicalDeviceRayTracingMotionBlurFeaturesNV.get_rayTracingMotionBlurPipelineTraceRaysIndirect(this.segment(), index); }
     /// {@return `rayTracingMotionBlurPipelineTraceRaysIndirect`}
     public @CType("VkBool32") int rayTracingMotionBlurPipelineTraceRaysIndirect() { return VkPhysicalDeviceRayTracingMotionBlurFeaturesNV.get_rayTracingMotionBlurPipelineTraceRaysIndirect(this.segment()); }
     /// Sets `rayTracingMotionBlurPipelineTraceRaysIndirect` with the given value at the given index.
@@ -220,14 +201,68 @@ public final class VkPhysicalDeviceRayTracingMotionBlurFeaturesNV extends Struct
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_rayTracingMotionBlurPipelineTraceRaysIndirect(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceRayTracingMotionBlurFeaturesNV.set_rayTracingMotionBlurPipelineTraceRaysIndirect(segment, 0L, value); }
-    /// Sets `rayTracingMotionBlurPipelineTraceRaysIndirect` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceRayTracingMotionBlurFeaturesNV rayTracingMotionBlurPipelineTraceRaysIndirectAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceRayTracingMotionBlurFeaturesNV.set_rayTracingMotionBlurPipelineTraceRaysIndirect(this.segment(), index, value); return this; }
     /// Sets `rayTracingMotionBlurPipelineTraceRaysIndirect` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceRayTracingMotionBlurFeaturesNV rayTracingMotionBlurPipelineTraceRaysIndirect(@CType("VkBool32") int value) { VkPhysicalDeviceRayTracingMotionBlurFeaturesNV.set_rayTracingMotionBlurPipelineTraceRaysIndirect(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDeviceRayTracingMotionBlurFeaturesNV].
+    public static final class Buffer extends VkPhysicalDeviceRayTracingMotionBlurFeaturesNV {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDeviceRayTracingMotionBlurFeaturesNV.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDeviceRayTracingMotionBlurFeaturesNV`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDeviceRayTracingMotionBlurFeaturesNV`
+        public VkPhysicalDeviceRayTracingMotionBlurFeaturesNV asSlice(long index) { return new VkPhysicalDeviceRayTracingMotionBlurFeaturesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDeviceRayTracingMotionBlurFeaturesNV`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDeviceRayTracingMotionBlurFeaturesNV`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceRayTracingMotionBlurFeaturesNV.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceRayTracingMotionBlurFeaturesNV.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceRayTracingMotionBlurFeaturesNV.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceRayTracingMotionBlurFeaturesNV.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `rayTracingMotionBlur` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int rayTracingMotionBlurAt(long index) { return VkPhysicalDeviceRayTracingMotionBlurFeaturesNV.get_rayTracingMotionBlur(this.segment(), index); }
+        /// Sets `rayTracingMotionBlur` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer rayTracingMotionBlurAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceRayTracingMotionBlurFeaturesNV.set_rayTracingMotionBlur(this.segment(), index, value); return this; }
+
+        /// {@return `rayTracingMotionBlurPipelineTraceRaysIndirect` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int rayTracingMotionBlurPipelineTraceRaysIndirectAt(long index) { return VkPhysicalDeviceRayTracingMotionBlurFeaturesNV.get_rayTracingMotionBlurPipelineTraceRaysIndirect(this.segment(), index); }
+        /// Sets `rayTracingMotionBlurPipelineTraceRaysIndirect` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer rayTracingMotionBlurPipelineTraceRaysIndirectAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceRayTracingMotionBlurFeaturesNV.set_rayTracingMotionBlurPipelineTraceRaysIndirect(this.segment(), index, value); return this; }
+
+    }
 }

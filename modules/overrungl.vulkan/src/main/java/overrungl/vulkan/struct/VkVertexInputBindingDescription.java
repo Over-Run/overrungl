@@ -40,7 +40,7 @@ import overrungl.util.*;
 ///     VkVertexInputRate inputRate;
 /// } VkVertexInputBindingDescription;
 /// ```
-public final class VkVertexInputBindingDescription extends Struct {
+public sealed class VkVertexInputBindingDescription extends Struct {
     /// The struct layout of `VkVertexInputBindingDescription`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("binding"),
@@ -64,6 +64,11 @@ public final class VkVertexInputBindingDescription extends Struct {
     public static VkVertexInputBindingDescription of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkVertexInputBindingDescription(segment); }
 
     /// Creates `VkVertexInputBindingDescription` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkVertexInputBindingDescription` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -76,7 +81,7 @@ public final class VkVertexInputBindingDescription extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkVertexInputBindingDescription ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkVertexInputBindingDescription(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkVertexInputBindingDescription` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -87,18 +92,21 @@ public final class VkVertexInputBindingDescription extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkVertexInputBindingDescription`
-    public static VkVertexInputBindingDescription alloc(SegmentAllocator allocator, long count) { return new VkVertexInputBindingDescription(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkVertexInputBindingDescription`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkVertexInputBindingDescription`
-    public VkVertexInputBindingDescription asSlice(long index) { return new VkVertexInputBindingDescription(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkVertexInputBindingDescription` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkVertexInputBindingDescription`
+    public static VkVertexInputBindingDescription allocInit(SegmentAllocator allocator, @CType("uint32_t") int binding, @CType("uint32_t") int stride, @CType("VkVertexInputRate") int inputRate) { return alloc(allocator).binding(binding).stride(stride).inputRate(inputRate); }
 
-    /// Creates a slice of `VkVertexInputBindingDescription`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkVertexInputBindingDescription`
-    public VkVertexInputBindingDescription asSlice(long index, long count) { return new VkVertexInputBindingDescription(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkVertexInputBindingDescription copyFrom(VkVertexInputBindingDescription src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `binding` at the given index}
     /// @param segment the segment of the struct
@@ -107,9 +115,6 @@ public final class VkVertexInputBindingDescription extends Struct {
     /// {@return `binding`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_binding(MemorySegment segment) { return VkVertexInputBindingDescription.get_binding(segment, 0L); }
-    /// {@return `binding` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int bindingAt(long index) { return VkVertexInputBindingDescription.get_binding(this.segment(), index); }
     /// {@return `binding`}
     public @CType("uint32_t") int binding() { return VkVertexInputBindingDescription.get_binding(this.segment()); }
     /// Sets `binding` with the given value at the given index.
@@ -121,11 +126,6 @@ public final class VkVertexInputBindingDescription extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_binding(MemorySegment segment, @CType("uint32_t") int value) { VkVertexInputBindingDescription.set_binding(segment, 0L, value); }
-    /// Sets `binding` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkVertexInputBindingDescription bindingAt(long index, @CType("uint32_t") int value) { VkVertexInputBindingDescription.set_binding(this.segment(), index, value); return this; }
     /// Sets `binding` with the given value.
     /// @param value the value
     /// @return `this`
@@ -138,9 +138,6 @@ public final class VkVertexInputBindingDescription extends Struct {
     /// {@return `stride`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_stride(MemorySegment segment) { return VkVertexInputBindingDescription.get_stride(segment, 0L); }
-    /// {@return `stride` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int strideAt(long index) { return VkVertexInputBindingDescription.get_stride(this.segment(), index); }
     /// {@return `stride`}
     public @CType("uint32_t") int stride() { return VkVertexInputBindingDescription.get_stride(this.segment()); }
     /// Sets `stride` with the given value at the given index.
@@ -152,11 +149,6 @@ public final class VkVertexInputBindingDescription extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_stride(MemorySegment segment, @CType("uint32_t") int value) { VkVertexInputBindingDescription.set_stride(segment, 0L, value); }
-    /// Sets `stride` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkVertexInputBindingDescription strideAt(long index, @CType("uint32_t") int value) { VkVertexInputBindingDescription.set_stride(this.segment(), index, value); return this; }
     /// Sets `stride` with the given value.
     /// @param value the value
     /// @return `this`
@@ -169,9 +161,6 @@ public final class VkVertexInputBindingDescription extends Struct {
     /// {@return `inputRate`}
     /// @param segment the segment of the struct
     public static @CType("VkVertexInputRate") int get_inputRate(MemorySegment segment) { return VkVertexInputBindingDescription.get_inputRate(segment, 0L); }
-    /// {@return `inputRate` at the given index}
-    /// @param index the index
-    public @CType("VkVertexInputRate") int inputRateAt(long index) { return VkVertexInputBindingDescription.get_inputRate(this.segment(), index); }
     /// {@return `inputRate`}
     public @CType("VkVertexInputRate") int inputRate() { return VkVertexInputBindingDescription.get_inputRate(this.segment()); }
     /// Sets `inputRate` with the given value at the given index.
@@ -183,14 +172,59 @@ public final class VkVertexInputBindingDescription extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_inputRate(MemorySegment segment, @CType("VkVertexInputRate") int value) { VkVertexInputBindingDescription.set_inputRate(segment, 0L, value); }
-    /// Sets `inputRate` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkVertexInputBindingDescription inputRateAt(long index, @CType("VkVertexInputRate") int value) { VkVertexInputBindingDescription.set_inputRate(this.segment(), index, value); return this; }
     /// Sets `inputRate` with the given value.
     /// @param value the value
     /// @return `this`
     public VkVertexInputBindingDescription inputRate(@CType("VkVertexInputRate") int value) { VkVertexInputBindingDescription.set_inputRate(this.segment(), value); return this; }
 
+    /// A buffer of [VkVertexInputBindingDescription].
+    public static final class Buffer extends VkVertexInputBindingDescription {
+        private final long elementCount;
+
+        /// Creates `VkVertexInputBindingDescription.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkVertexInputBindingDescription`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkVertexInputBindingDescription`
+        public VkVertexInputBindingDescription asSlice(long index) { return new VkVertexInputBindingDescription(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkVertexInputBindingDescription`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkVertexInputBindingDescription`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `binding` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int bindingAt(long index) { return VkVertexInputBindingDescription.get_binding(this.segment(), index); }
+        /// Sets `binding` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer bindingAt(long index, @CType("uint32_t") int value) { VkVertexInputBindingDescription.set_binding(this.segment(), index, value); return this; }
+
+        /// {@return `stride` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int strideAt(long index) { return VkVertexInputBindingDescription.get_stride(this.segment(), index); }
+        /// Sets `stride` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer strideAt(long index, @CType("uint32_t") int value) { VkVertexInputBindingDescription.set_stride(this.segment(), index, value); return this; }
+
+        /// {@return `inputRate` at the given index}
+        /// @param index the index
+        public @CType("VkVertexInputRate") int inputRateAt(long index) { return VkVertexInputBindingDescription.get_inputRate(this.segment(), index); }
+        /// Sets `inputRate` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer inputRateAt(long index, @CType("VkVertexInputRate") int value) { VkVertexInputBindingDescription.set_inputRate(this.segment(), index, value); return this; }
+
+    }
 }

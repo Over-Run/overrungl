@@ -46,7 +46,7 @@ import overrungl.util.*;
 ///     void * handle;
 /// } VkImportSemaphoreSciSyncInfoNV;
 /// ```
-public final class VkImportSemaphoreSciSyncInfoNV extends Struct {
+public sealed class VkImportSemaphoreSciSyncInfoNV extends Struct {
     /// The struct layout of `VkImportSemaphoreSciSyncInfoNV`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -76,6 +76,11 @@ public final class VkImportSemaphoreSciSyncInfoNV extends Struct {
     public static VkImportSemaphoreSciSyncInfoNV of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkImportSemaphoreSciSyncInfoNV(segment); }
 
     /// Creates `VkImportSemaphoreSciSyncInfoNV` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkImportSemaphoreSciSyncInfoNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -88,7 +93,7 @@ public final class VkImportSemaphoreSciSyncInfoNV extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkImportSemaphoreSciSyncInfoNV ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkImportSemaphoreSciSyncInfoNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkImportSemaphoreSciSyncInfoNV` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -99,18 +104,21 @@ public final class VkImportSemaphoreSciSyncInfoNV extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkImportSemaphoreSciSyncInfoNV`
-    public static VkImportSemaphoreSciSyncInfoNV alloc(SegmentAllocator allocator, long count) { return new VkImportSemaphoreSciSyncInfoNV(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkImportSemaphoreSciSyncInfoNV`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkImportSemaphoreSciSyncInfoNV`
-    public VkImportSemaphoreSciSyncInfoNV asSlice(long index) { return new VkImportSemaphoreSciSyncInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkImportSemaphoreSciSyncInfoNV` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkImportSemaphoreSciSyncInfoNV`
+    public static VkImportSemaphoreSciSyncInfoNV allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkSemaphore") java.lang.foreign.MemorySegment semaphore, @CType("VkExternalSemaphoreHandleTypeFlagBits") int handleType, @CType("void *") java.lang.foreign.MemorySegment handle) { return alloc(allocator).sType(sType).pNext(pNext).semaphore(semaphore).handleType(handleType).handle(handle); }
 
-    /// Creates a slice of `VkImportSemaphoreSciSyncInfoNV`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkImportSemaphoreSciSyncInfoNV`
-    public VkImportSemaphoreSciSyncInfoNV asSlice(long index, long count) { return new VkImportSemaphoreSciSyncInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkImportSemaphoreSciSyncInfoNV copyFrom(VkImportSemaphoreSciSyncInfoNV src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -119,9 +127,6 @@ public final class VkImportSemaphoreSciSyncInfoNV extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkImportSemaphoreSciSyncInfoNV.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkImportSemaphoreSciSyncInfoNV.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkImportSemaphoreSciSyncInfoNV.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -133,11 +138,6 @@ public final class VkImportSemaphoreSciSyncInfoNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkImportSemaphoreSciSyncInfoNV.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImportSemaphoreSciSyncInfoNV sTypeAt(long index, @CType("VkStructureType") int value) { VkImportSemaphoreSciSyncInfoNV.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,9 +150,6 @@ public final class VkImportSemaphoreSciSyncInfoNV extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkImportSemaphoreSciSyncInfoNV.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkImportSemaphoreSciSyncInfoNV.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkImportSemaphoreSciSyncInfoNV.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -164,11 +161,6 @@ public final class VkImportSemaphoreSciSyncInfoNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkImportSemaphoreSciSyncInfoNV.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImportSemaphoreSciSyncInfoNV pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkImportSemaphoreSciSyncInfoNV.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -181,9 +173,6 @@ public final class VkImportSemaphoreSciSyncInfoNV extends Struct {
     /// {@return `semaphore`}
     /// @param segment the segment of the struct
     public static @CType("VkSemaphore") java.lang.foreign.MemorySegment get_semaphore(MemorySegment segment) { return VkImportSemaphoreSciSyncInfoNV.get_semaphore(segment, 0L); }
-    /// {@return `semaphore` at the given index}
-    /// @param index the index
-    public @CType("VkSemaphore") java.lang.foreign.MemorySegment semaphoreAt(long index) { return VkImportSemaphoreSciSyncInfoNV.get_semaphore(this.segment(), index); }
     /// {@return `semaphore`}
     public @CType("VkSemaphore") java.lang.foreign.MemorySegment semaphore() { return VkImportSemaphoreSciSyncInfoNV.get_semaphore(this.segment()); }
     /// Sets `semaphore` with the given value at the given index.
@@ -195,11 +184,6 @@ public final class VkImportSemaphoreSciSyncInfoNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_semaphore(MemorySegment segment, @CType("VkSemaphore") java.lang.foreign.MemorySegment value) { VkImportSemaphoreSciSyncInfoNV.set_semaphore(segment, 0L, value); }
-    /// Sets `semaphore` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImportSemaphoreSciSyncInfoNV semaphoreAt(long index, @CType("VkSemaphore") java.lang.foreign.MemorySegment value) { VkImportSemaphoreSciSyncInfoNV.set_semaphore(this.segment(), index, value); return this; }
     /// Sets `semaphore` with the given value.
     /// @param value the value
     /// @return `this`
@@ -212,9 +196,6 @@ public final class VkImportSemaphoreSciSyncInfoNV extends Struct {
     /// {@return `handleType`}
     /// @param segment the segment of the struct
     public static @CType("VkExternalSemaphoreHandleTypeFlagBits") int get_handleType(MemorySegment segment) { return VkImportSemaphoreSciSyncInfoNV.get_handleType(segment, 0L); }
-    /// {@return `handleType` at the given index}
-    /// @param index the index
-    public @CType("VkExternalSemaphoreHandleTypeFlagBits") int handleTypeAt(long index) { return VkImportSemaphoreSciSyncInfoNV.get_handleType(this.segment(), index); }
     /// {@return `handleType`}
     public @CType("VkExternalSemaphoreHandleTypeFlagBits") int handleType() { return VkImportSemaphoreSciSyncInfoNV.get_handleType(this.segment()); }
     /// Sets `handleType` with the given value at the given index.
@@ -226,11 +207,6 @@ public final class VkImportSemaphoreSciSyncInfoNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_handleType(MemorySegment segment, @CType("VkExternalSemaphoreHandleTypeFlagBits") int value) { VkImportSemaphoreSciSyncInfoNV.set_handleType(segment, 0L, value); }
-    /// Sets `handleType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImportSemaphoreSciSyncInfoNV handleTypeAt(long index, @CType("VkExternalSemaphoreHandleTypeFlagBits") int value) { VkImportSemaphoreSciSyncInfoNV.set_handleType(this.segment(), index, value); return this; }
     /// Sets `handleType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -243,9 +219,6 @@ public final class VkImportSemaphoreSciSyncInfoNV extends Struct {
     /// {@return `handle`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_handle(MemorySegment segment) { return VkImportSemaphoreSciSyncInfoNV.get_handle(segment, 0L); }
-    /// {@return `handle` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment handleAt(long index) { return VkImportSemaphoreSciSyncInfoNV.get_handle(this.segment(), index); }
     /// {@return `handle`}
     public @CType("void *") java.lang.foreign.MemorySegment handle() { return VkImportSemaphoreSciSyncInfoNV.get_handle(this.segment()); }
     /// Sets `handle` with the given value at the given index.
@@ -257,14 +230,77 @@ public final class VkImportSemaphoreSciSyncInfoNV extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_handle(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkImportSemaphoreSciSyncInfoNV.set_handle(segment, 0L, value); }
-    /// Sets `handle` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkImportSemaphoreSciSyncInfoNV handleAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkImportSemaphoreSciSyncInfoNV.set_handle(this.segment(), index, value); return this; }
     /// Sets `handle` with the given value.
     /// @param value the value
     /// @return `this`
     public VkImportSemaphoreSciSyncInfoNV handle(@CType("void *") java.lang.foreign.MemorySegment value) { VkImportSemaphoreSciSyncInfoNV.set_handle(this.segment(), value); return this; }
 
+    /// A buffer of [VkImportSemaphoreSciSyncInfoNV].
+    public static final class Buffer extends VkImportSemaphoreSciSyncInfoNV {
+        private final long elementCount;
+
+        /// Creates `VkImportSemaphoreSciSyncInfoNV.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkImportSemaphoreSciSyncInfoNV`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkImportSemaphoreSciSyncInfoNV`
+        public VkImportSemaphoreSciSyncInfoNV asSlice(long index) { return new VkImportSemaphoreSciSyncInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkImportSemaphoreSciSyncInfoNV`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkImportSemaphoreSciSyncInfoNV`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkImportSemaphoreSciSyncInfoNV.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkImportSemaphoreSciSyncInfoNV.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkImportSemaphoreSciSyncInfoNV.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkImportSemaphoreSciSyncInfoNV.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `semaphore` at the given index}
+        /// @param index the index
+        public @CType("VkSemaphore") java.lang.foreign.MemorySegment semaphoreAt(long index) { return VkImportSemaphoreSciSyncInfoNV.get_semaphore(this.segment(), index); }
+        /// Sets `semaphore` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer semaphoreAt(long index, @CType("VkSemaphore") java.lang.foreign.MemorySegment value) { VkImportSemaphoreSciSyncInfoNV.set_semaphore(this.segment(), index, value); return this; }
+
+        /// {@return `handleType` at the given index}
+        /// @param index the index
+        public @CType("VkExternalSemaphoreHandleTypeFlagBits") int handleTypeAt(long index) { return VkImportSemaphoreSciSyncInfoNV.get_handleType(this.segment(), index); }
+        /// Sets `handleType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer handleTypeAt(long index, @CType("VkExternalSemaphoreHandleTypeFlagBits") int value) { VkImportSemaphoreSciSyncInfoNV.set_handleType(this.segment(), index, value); return this; }
+
+        /// {@return `handle` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment handleAt(long index) { return VkImportSemaphoreSciSyncInfoNV.get_handle(this.segment(), index); }
+        /// Sets `handle` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer handleAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkImportSemaphoreSciSyncInfoNV.set_handle(this.segment(), index, value); return this; }
+
+    }
 }

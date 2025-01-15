@@ -73,7 +73,7 @@ import overrungl.util.*;
 ///     VkBool32 sparseImageFloat32AtomicMinMax;
 /// } VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT;
 /// ```
-public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends Struct {
+public sealed class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends Struct {
     /// The struct layout of `VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -130,6 +130,11 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends Struct 
     public static VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT(segment); }
 
     /// Creates `VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -142,7 +147,7 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends Struct 
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -153,18 +158,21 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends Struct 
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT`
-    public static VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT`
-    public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT asSlice(long index) { return new VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT`
+    public static VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int shaderBufferFloat16Atomics, @CType("VkBool32") int shaderBufferFloat16AtomicAdd, @CType("VkBool32") int shaderBufferFloat16AtomicMinMax, @CType("VkBool32") int shaderBufferFloat32AtomicMinMax, @CType("VkBool32") int shaderBufferFloat64AtomicMinMax, @CType("VkBool32") int shaderSharedFloat16Atomics, @CType("VkBool32") int shaderSharedFloat16AtomicAdd, @CType("VkBool32") int shaderSharedFloat16AtomicMinMax, @CType("VkBool32") int shaderSharedFloat32AtomicMinMax, @CType("VkBool32") int shaderSharedFloat64AtomicMinMax, @CType("VkBool32") int shaderImageFloat32AtomicMinMax, @CType("VkBool32") int sparseImageFloat32AtomicMinMax) { return alloc(allocator).sType(sType).pNext(pNext).shaderBufferFloat16Atomics(shaderBufferFloat16Atomics).shaderBufferFloat16AtomicAdd(shaderBufferFloat16AtomicAdd).shaderBufferFloat16AtomicMinMax(shaderBufferFloat16AtomicMinMax).shaderBufferFloat32AtomicMinMax(shaderBufferFloat32AtomicMinMax).shaderBufferFloat64AtomicMinMax(shaderBufferFloat64AtomicMinMax).shaderSharedFloat16Atomics(shaderSharedFloat16Atomics).shaderSharedFloat16AtomicAdd(shaderSharedFloat16AtomicAdd).shaderSharedFloat16AtomicMinMax(shaderSharedFloat16AtomicMinMax).shaderSharedFloat32AtomicMinMax(shaderSharedFloat32AtomicMinMax).shaderSharedFloat64AtomicMinMax(shaderSharedFloat64AtomicMinMax).shaderImageFloat32AtomicMinMax(shaderImageFloat32AtomicMinMax).sparseImageFloat32AtomicMinMax(sparseImageFloat32AtomicMinMax); }
 
-    /// Creates a slice of `VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT`
-    public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT asSlice(long index, long count) { return new VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT copyFrom(VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -173,9 +181,6 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends Struct 
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -187,11 +192,6 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -204,9 +204,6 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends Struct 
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -218,11 +215,6 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -235,9 +227,6 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends Struct 
     /// {@return `shaderBufferFloat16Atomics`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_shaderBufferFloat16Atomics(MemorySegment segment) { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_shaderBufferFloat16Atomics(segment, 0L); }
-    /// {@return `shaderBufferFloat16Atomics` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int shaderBufferFloat16AtomicsAt(long index) { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_shaderBufferFloat16Atomics(this.segment(), index); }
     /// {@return `shaderBufferFloat16Atomics`}
     public @CType("VkBool32") int shaderBufferFloat16Atomics() { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_shaderBufferFloat16Atomics(this.segment()); }
     /// Sets `shaderBufferFloat16Atomics` with the given value at the given index.
@@ -249,11 +238,6 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_shaderBufferFloat16Atomics(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.set_shaderBufferFloat16Atomics(segment, 0L, value); }
-    /// Sets `shaderBufferFloat16Atomics` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT shaderBufferFloat16AtomicsAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.set_shaderBufferFloat16Atomics(this.segment(), index, value); return this; }
     /// Sets `shaderBufferFloat16Atomics` with the given value.
     /// @param value the value
     /// @return `this`
@@ -266,9 +250,6 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends Struct 
     /// {@return `shaderBufferFloat16AtomicAdd`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_shaderBufferFloat16AtomicAdd(MemorySegment segment) { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_shaderBufferFloat16AtomicAdd(segment, 0L); }
-    /// {@return `shaderBufferFloat16AtomicAdd` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int shaderBufferFloat16AtomicAddAt(long index) { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_shaderBufferFloat16AtomicAdd(this.segment(), index); }
     /// {@return `shaderBufferFloat16AtomicAdd`}
     public @CType("VkBool32") int shaderBufferFloat16AtomicAdd() { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_shaderBufferFloat16AtomicAdd(this.segment()); }
     /// Sets `shaderBufferFloat16AtomicAdd` with the given value at the given index.
@@ -280,11 +261,6 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_shaderBufferFloat16AtomicAdd(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.set_shaderBufferFloat16AtomicAdd(segment, 0L, value); }
-    /// Sets `shaderBufferFloat16AtomicAdd` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT shaderBufferFloat16AtomicAddAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.set_shaderBufferFloat16AtomicAdd(this.segment(), index, value); return this; }
     /// Sets `shaderBufferFloat16AtomicAdd` with the given value.
     /// @param value the value
     /// @return `this`
@@ -297,9 +273,6 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends Struct 
     /// {@return `shaderBufferFloat16AtomicMinMax`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_shaderBufferFloat16AtomicMinMax(MemorySegment segment) { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_shaderBufferFloat16AtomicMinMax(segment, 0L); }
-    /// {@return `shaderBufferFloat16AtomicMinMax` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int shaderBufferFloat16AtomicMinMaxAt(long index) { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_shaderBufferFloat16AtomicMinMax(this.segment(), index); }
     /// {@return `shaderBufferFloat16AtomicMinMax`}
     public @CType("VkBool32") int shaderBufferFloat16AtomicMinMax() { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_shaderBufferFloat16AtomicMinMax(this.segment()); }
     /// Sets `shaderBufferFloat16AtomicMinMax` with the given value at the given index.
@@ -311,11 +284,6 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_shaderBufferFloat16AtomicMinMax(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.set_shaderBufferFloat16AtomicMinMax(segment, 0L, value); }
-    /// Sets `shaderBufferFloat16AtomicMinMax` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT shaderBufferFloat16AtomicMinMaxAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.set_shaderBufferFloat16AtomicMinMax(this.segment(), index, value); return this; }
     /// Sets `shaderBufferFloat16AtomicMinMax` with the given value.
     /// @param value the value
     /// @return `this`
@@ -328,9 +296,6 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends Struct 
     /// {@return `shaderBufferFloat32AtomicMinMax`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_shaderBufferFloat32AtomicMinMax(MemorySegment segment) { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_shaderBufferFloat32AtomicMinMax(segment, 0L); }
-    /// {@return `shaderBufferFloat32AtomicMinMax` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int shaderBufferFloat32AtomicMinMaxAt(long index) { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_shaderBufferFloat32AtomicMinMax(this.segment(), index); }
     /// {@return `shaderBufferFloat32AtomicMinMax`}
     public @CType("VkBool32") int shaderBufferFloat32AtomicMinMax() { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_shaderBufferFloat32AtomicMinMax(this.segment()); }
     /// Sets `shaderBufferFloat32AtomicMinMax` with the given value at the given index.
@@ -342,11 +307,6 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_shaderBufferFloat32AtomicMinMax(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.set_shaderBufferFloat32AtomicMinMax(segment, 0L, value); }
-    /// Sets `shaderBufferFloat32AtomicMinMax` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT shaderBufferFloat32AtomicMinMaxAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.set_shaderBufferFloat32AtomicMinMax(this.segment(), index, value); return this; }
     /// Sets `shaderBufferFloat32AtomicMinMax` with the given value.
     /// @param value the value
     /// @return `this`
@@ -359,9 +319,6 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends Struct 
     /// {@return `shaderBufferFloat64AtomicMinMax`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_shaderBufferFloat64AtomicMinMax(MemorySegment segment) { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_shaderBufferFloat64AtomicMinMax(segment, 0L); }
-    /// {@return `shaderBufferFloat64AtomicMinMax` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int shaderBufferFloat64AtomicMinMaxAt(long index) { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_shaderBufferFloat64AtomicMinMax(this.segment(), index); }
     /// {@return `shaderBufferFloat64AtomicMinMax`}
     public @CType("VkBool32") int shaderBufferFloat64AtomicMinMax() { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_shaderBufferFloat64AtomicMinMax(this.segment()); }
     /// Sets `shaderBufferFloat64AtomicMinMax` with the given value at the given index.
@@ -373,11 +330,6 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_shaderBufferFloat64AtomicMinMax(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.set_shaderBufferFloat64AtomicMinMax(segment, 0L, value); }
-    /// Sets `shaderBufferFloat64AtomicMinMax` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT shaderBufferFloat64AtomicMinMaxAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.set_shaderBufferFloat64AtomicMinMax(this.segment(), index, value); return this; }
     /// Sets `shaderBufferFloat64AtomicMinMax` with the given value.
     /// @param value the value
     /// @return `this`
@@ -390,9 +342,6 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends Struct 
     /// {@return `shaderSharedFloat16Atomics`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_shaderSharedFloat16Atomics(MemorySegment segment) { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_shaderSharedFloat16Atomics(segment, 0L); }
-    /// {@return `shaderSharedFloat16Atomics` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int shaderSharedFloat16AtomicsAt(long index) { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_shaderSharedFloat16Atomics(this.segment(), index); }
     /// {@return `shaderSharedFloat16Atomics`}
     public @CType("VkBool32") int shaderSharedFloat16Atomics() { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_shaderSharedFloat16Atomics(this.segment()); }
     /// Sets `shaderSharedFloat16Atomics` with the given value at the given index.
@@ -404,11 +353,6 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_shaderSharedFloat16Atomics(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.set_shaderSharedFloat16Atomics(segment, 0L, value); }
-    /// Sets `shaderSharedFloat16Atomics` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT shaderSharedFloat16AtomicsAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.set_shaderSharedFloat16Atomics(this.segment(), index, value); return this; }
     /// Sets `shaderSharedFloat16Atomics` with the given value.
     /// @param value the value
     /// @return `this`
@@ -421,9 +365,6 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends Struct 
     /// {@return `shaderSharedFloat16AtomicAdd`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_shaderSharedFloat16AtomicAdd(MemorySegment segment) { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_shaderSharedFloat16AtomicAdd(segment, 0L); }
-    /// {@return `shaderSharedFloat16AtomicAdd` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int shaderSharedFloat16AtomicAddAt(long index) { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_shaderSharedFloat16AtomicAdd(this.segment(), index); }
     /// {@return `shaderSharedFloat16AtomicAdd`}
     public @CType("VkBool32") int shaderSharedFloat16AtomicAdd() { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_shaderSharedFloat16AtomicAdd(this.segment()); }
     /// Sets `shaderSharedFloat16AtomicAdd` with the given value at the given index.
@@ -435,11 +376,6 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_shaderSharedFloat16AtomicAdd(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.set_shaderSharedFloat16AtomicAdd(segment, 0L, value); }
-    /// Sets `shaderSharedFloat16AtomicAdd` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT shaderSharedFloat16AtomicAddAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.set_shaderSharedFloat16AtomicAdd(this.segment(), index, value); return this; }
     /// Sets `shaderSharedFloat16AtomicAdd` with the given value.
     /// @param value the value
     /// @return `this`
@@ -452,9 +388,6 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends Struct 
     /// {@return `shaderSharedFloat16AtomicMinMax`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_shaderSharedFloat16AtomicMinMax(MemorySegment segment) { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_shaderSharedFloat16AtomicMinMax(segment, 0L); }
-    /// {@return `shaderSharedFloat16AtomicMinMax` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int shaderSharedFloat16AtomicMinMaxAt(long index) { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_shaderSharedFloat16AtomicMinMax(this.segment(), index); }
     /// {@return `shaderSharedFloat16AtomicMinMax`}
     public @CType("VkBool32") int shaderSharedFloat16AtomicMinMax() { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_shaderSharedFloat16AtomicMinMax(this.segment()); }
     /// Sets `shaderSharedFloat16AtomicMinMax` with the given value at the given index.
@@ -466,11 +399,6 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_shaderSharedFloat16AtomicMinMax(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.set_shaderSharedFloat16AtomicMinMax(segment, 0L, value); }
-    /// Sets `shaderSharedFloat16AtomicMinMax` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT shaderSharedFloat16AtomicMinMaxAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.set_shaderSharedFloat16AtomicMinMax(this.segment(), index, value); return this; }
     /// Sets `shaderSharedFloat16AtomicMinMax` with the given value.
     /// @param value the value
     /// @return `this`
@@ -483,9 +411,6 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends Struct 
     /// {@return `shaderSharedFloat32AtomicMinMax`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_shaderSharedFloat32AtomicMinMax(MemorySegment segment) { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_shaderSharedFloat32AtomicMinMax(segment, 0L); }
-    /// {@return `shaderSharedFloat32AtomicMinMax` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int shaderSharedFloat32AtomicMinMaxAt(long index) { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_shaderSharedFloat32AtomicMinMax(this.segment(), index); }
     /// {@return `shaderSharedFloat32AtomicMinMax`}
     public @CType("VkBool32") int shaderSharedFloat32AtomicMinMax() { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_shaderSharedFloat32AtomicMinMax(this.segment()); }
     /// Sets `shaderSharedFloat32AtomicMinMax` with the given value at the given index.
@@ -497,11 +422,6 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_shaderSharedFloat32AtomicMinMax(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.set_shaderSharedFloat32AtomicMinMax(segment, 0L, value); }
-    /// Sets `shaderSharedFloat32AtomicMinMax` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT shaderSharedFloat32AtomicMinMaxAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.set_shaderSharedFloat32AtomicMinMax(this.segment(), index, value); return this; }
     /// Sets `shaderSharedFloat32AtomicMinMax` with the given value.
     /// @param value the value
     /// @return `this`
@@ -514,9 +434,6 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends Struct 
     /// {@return `shaderSharedFloat64AtomicMinMax`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_shaderSharedFloat64AtomicMinMax(MemorySegment segment) { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_shaderSharedFloat64AtomicMinMax(segment, 0L); }
-    /// {@return `shaderSharedFloat64AtomicMinMax` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int shaderSharedFloat64AtomicMinMaxAt(long index) { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_shaderSharedFloat64AtomicMinMax(this.segment(), index); }
     /// {@return `shaderSharedFloat64AtomicMinMax`}
     public @CType("VkBool32") int shaderSharedFloat64AtomicMinMax() { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_shaderSharedFloat64AtomicMinMax(this.segment()); }
     /// Sets `shaderSharedFloat64AtomicMinMax` with the given value at the given index.
@@ -528,11 +445,6 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_shaderSharedFloat64AtomicMinMax(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.set_shaderSharedFloat64AtomicMinMax(segment, 0L, value); }
-    /// Sets `shaderSharedFloat64AtomicMinMax` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT shaderSharedFloat64AtomicMinMaxAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.set_shaderSharedFloat64AtomicMinMax(this.segment(), index, value); return this; }
     /// Sets `shaderSharedFloat64AtomicMinMax` with the given value.
     /// @param value the value
     /// @return `this`
@@ -545,9 +457,6 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends Struct 
     /// {@return `shaderImageFloat32AtomicMinMax`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_shaderImageFloat32AtomicMinMax(MemorySegment segment) { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_shaderImageFloat32AtomicMinMax(segment, 0L); }
-    /// {@return `shaderImageFloat32AtomicMinMax` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int shaderImageFloat32AtomicMinMaxAt(long index) { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_shaderImageFloat32AtomicMinMax(this.segment(), index); }
     /// {@return `shaderImageFloat32AtomicMinMax`}
     public @CType("VkBool32") int shaderImageFloat32AtomicMinMax() { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_shaderImageFloat32AtomicMinMax(this.segment()); }
     /// Sets `shaderImageFloat32AtomicMinMax` with the given value at the given index.
@@ -559,11 +468,6 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_shaderImageFloat32AtomicMinMax(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.set_shaderImageFloat32AtomicMinMax(segment, 0L, value); }
-    /// Sets `shaderImageFloat32AtomicMinMax` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT shaderImageFloat32AtomicMinMaxAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.set_shaderImageFloat32AtomicMinMax(this.segment(), index, value); return this; }
     /// Sets `shaderImageFloat32AtomicMinMax` with the given value.
     /// @param value the value
     /// @return `this`
@@ -576,9 +480,6 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends Struct 
     /// {@return `sparseImageFloat32AtomicMinMax`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_sparseImageFloat32AtomicMinMax(MemorySegment segment) { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_sparseImageFloat32AtomicMinMax(segment, 0L); }
-    /// {@return `sparseImageFloat32AtomicMinMax` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int sparseImageFloat32AtomicMinMaxAt(long index) { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_sparseImageFloat32AtomicMinMax(this.segment(), index); }
     /// {@return `sparseImageFloat32AtomicMinMax`}
     public @CType("VkBool32") int sparseImageFloat32AtomicMinMax() { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_sparseImageFloat32AtomicMinMax(this.segment()); }
     /// Sets `sparseImageFloat32AtomicMinMax` with the given value at the given index.
@@ -590,14 +491,158 @@ public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sparseImageFloat32AtomicMinMax(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.set_sparseImageFloat32AtomicMinMax(segment, 0L, value); }
-    /// Sets `sparseImageFloat32AtomicMinMax` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT sparseImageFloat32AtomicMinMaxAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.set_sparseImageFloat32AtomicMinMax(this.segment(), index, value); return this; }
     /// Sets `sparseImageFloat32AtomicMinMax` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT sparseImageFloat32AtomicMinMax(@CType("VkBool32") int value) { VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.set_sparseImageFloat32AtomicMinMax(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT].
+    public static final class Buffer extends VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT`
+        public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT asSlice(long index) { return new VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `shaderBufferFloat16Atomics` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int shaderBufferFloat16AtomicsAt(long index) { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_shaderBufferFloat16Atomics(this.segment(), index); }
+        /// Sets `shaderBufferFloat16Atomics` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer shaderBufferFloat16AtomicsAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.set_shaderBufferFloat16Atomics(this.segment(), index, value); return this; }
+
+        /// {@return `shaderBufferFloat16AtomicAdd` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int shaderBufferFloat16AtomicAddAt(long index) { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_shaderBufferFloat16AtomicAdd(this.segment(), index); }
+        /// Sets `shaderBufferFloat16AtomicAdd` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer shaderBufferFloat16AtomicAddAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.set_shaderBufferFloat16AtomicAdd(this.segment(), index, value); return this; }
+
+        /// {@return `shaderBufferFloat16AtomicMinMax` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int shaderBufferFloat16AtomicMinMaxAt(long index) { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_shaderBufferFloat16AtomicMinMax(this.segment(), index); }
+        /// Sets `shaderBufferFloat16AtomicMinMax` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer shaderBufferFloat16AtomicMinMaxAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.set_shaderBufferFloat16AtomicMinMax(this.segment(), index, value); return this; }
+
+        /// {@return `shaderBufferFloat32AtomicMinMax` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int shaderBufferFloat32AtomicMinMaxAt(long index) { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_shaderBufferFloat32AtomicMinMax(this.segment(), index); }
+        /// Sets `shaderBufferFloat32AtomicMinMax` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer shaderBufferFloat32AtomicMinMaxAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.set_shaderBufferFloat32AtomicMinMax(this.segment(), index, value); return this; }
+
+        /// {@return `shaderBufferFloat64AtomicMinMax` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int shaderBufferFloat64AtomicMinMaxAt(long index) { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_shaderBufferFloat64AtomicMinMax(this.segment(), index); }
+        /// Sets `shaderBufferFloat64AtomicMinMax` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer shaderBufferFloat64AtomicMinMaxAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.set_shaderBufferFloat64AtomicMinMax(this.segment(), index, value); return this; }
+
+        /// {@return `shaderSharedFloat16Atomics` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int shaderSharedFloat16AtomicsAt(long index) { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_shaderSharedFloat16Atomics(this.segment(), index); }
+        /// Sets `shaderSharedFloat16Atomics` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer shaderSharedFloat16AtomicsAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.set_shaderSharedFloat16Atomics(this.segment(), index, value); return this; }
+
+        /// {@return `shaderSharedFloat16AtomicAdd` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int shaderSharedFloat16AtomicAddAt(long index) { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_shaderSharedFloat16AtomicAdd(this.segment(), index); }
+        /// Sets `shaderSharedFloat16AtomicAdd` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer shaderSharedFloat16AtomicAddAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.set_shaderSharedFloat16AtomicAdd(this.segment(), index, value); return this; }
+
+        /// {@return `shaderSharedFloat16AtomicMinMax` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int shaderSharedFloat16AtomicMinMaxAt(long index) { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_shaderSharedFloat16AtomicMinMax(this.segment(), index); }
+        /// Sets `shaderSharedFloat16AtomicMinMax` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer shaderSharedFloat16AtomicMinMaxAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.set_shaderSharedFloat16AtomicMinMax(this.segment(), index, value); return this; }
+
+        /// {@return `shaderSharedFloat32AtomicMinMax` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int shaderSharedFloat32AtomicMinMaxAt(long index) { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_shaderSharedFloat32AtomicMinMax(this.segment(), index); }
+        /// Sets `shaderSharedFloat32AtomicMinMax` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer shaderSharedFloat32AtomicMinMaxAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.set_shaderSharedFloat32AtomicMinMax(this.segment(), index, value); return this; }
+
+        /// {@return `shaderSharedFloat64AtomicMinMax` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int shaderSharedFloat64AtomicMinMaxAt(long index) { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_shaderSharedFloat64AtomicMinMax(this.segment(), index); }
+        /// Sets `shaderSharedFloat64AtomicMinMax` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer shaderSharedFloat64AtomicMinMaxAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.set_shaderSharedFloat64AtomicMinMax(this.segment(), index, value); return this; }
+
+        /// {@return `shaderImageFloat32AtomicMinMax` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int shaderImageFloat32AtomicMinMaxAt(long index) { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_shaderImageFloat32AtomicMinMax(this.segment(), index); }
+        /// Sets `shaderImageFloat32AtomicMinMax` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer shaderImageFloat32AtomicMinMaxAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.set_shaderImageFloat32AtomicMinMax(this.segment(), index, value); return this; }
+
+        /// {@return `sparseImageFloat32AtomicMinMax` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int sparseImageFloat32AtomicMinMaxAt(long index) { return VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.get_sparseImageFloat32AtomicMinMax(this.segment(), index); }
+        /// Sets `sparseImageFloat32AtomicMinMax` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sparseImageFloat32AtomicMinMaxAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.set_sparseImageFloat32AtomicMinMax(this.segment(), index, value); return this; }
+
+    }
 }

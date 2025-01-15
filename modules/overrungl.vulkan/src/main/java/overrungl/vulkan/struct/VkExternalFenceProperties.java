@@ -46,7 +46,7 @@ import overrungl.util.*;
 ///     VkExternalFenceFeatureFlags externalFenceFeatures;
 /// } VkExternalFenceProperties;
 /// ```
-public final class VkExternalFenceProperties extends Struct {
+public sealed class VkExternalFenceProperties extends Struct {
     /// The struct layout of `VkExternalFenceProperties`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -76,6 +76,11 @@ public final class VkExternalFenceProperties extends Struct {
     public static VkExternalFenceProperties of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkExternalFenceProperties(segment); }
 
     /// Creates `VkExternalFenceProperties` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkExternalFenceProperties` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -88,7 +93,7 @@ public final class VkExternalFenceProperties extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkExternalFenceProperties ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkExternalFenceProperties(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkExternalFenceProperties` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -99,18 +104,21 @@ public final class VkExternalFenceProperties extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkExternalFenceProperties`
-    public static VkExternalFenceProperties alloc(SegmentAllocator allocator, long count) { return new VkExternalFenceProperties(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkExternalFenceProperties`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkExternalFenceProperties`
-    public VkExternalFenceProperties asSlice(long index) { return new VkExternalFenceProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkExternalFenceProperties` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkExternalFenceProperties`
+    public static VkExternalFenceProperties allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkExternalFenceHandleTypeFlags") int exportFromImportedHandleTypes, @CType("VkExternalFenceHandleTypeFlags") int compatibleHandleTypes, @CType("VkExternalFenceFeatureFlags") int externalFenceFeatures) { return alloc(allocator).sType(sType).pNext(pNext).exportFromImportedHandleTypes(exportFromImportedHandleTypes).compatibleHandleTypes(compatibleHandleTypes).externalFenceFeatures(externalFenceFeatures); }
 
-    /// Creates a slice of `VkExternalFenceProperties`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkExternalFenceProperties`
-    public VkExternalFenceProperties asSlice(long index, long count) { return new VkExternalFenceProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkExternalFenceProperties copyFrom(VkExternalFenceProperties src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -119,9 +127,6 @@ public final class VkExternalFenceProperties extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkExternalFenceProperties.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkExternalFenceProperties.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkExternalFenceProperties.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -133,11 +138,6 @@ public final class VkExternalFenceProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkExternalFenceProperties.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkExternalFenceProperties sTypeAt(long index, @CType("VkStructureType") int value) { VkExternalFenceProperties.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,9 +150,6 @@ public final class VkExternalFenceProperties extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkExternalFenceProperties.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkExternalFenceProperties.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkExternalFenceProperties.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -164,11 +161,6 @@ public final class VkExternalFenceProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkExternalFenceProperties.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkExternalFenceProperties pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkExternalFenceProperties.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -181,9 +173,6 @@ public final class VkExternalFenceProperties extends Struct {
     /// {@return `exportFromImportedHandleTypes`}
     /// @param segment the segment of the struct
     public static @CType("VkExternalFenceHandleTypeFlags") int get_exportFromImportedHandleTypes(MemorySegment segment) { return VkExternalFenceProperties.get_exportFromImportedHandleTypes(segment, 0L); }
-    /// {@return `exportFromImportedHandleTypes` at the given index}
-    /// @param index the index
-    public @CType("VkExternalFenceHandleTypeFlags") int exportFromImportedHandleTypesAt(long index) { return VkExternalFenceProperties.get_exportFromImportedHandleTypes(this.segment(), index); }
     /// {@return `exportFromImportedHandleTypes`}
     public @CType("VkExternalFenceHandleTypeFlags") int exportFromImportedHandleTypes() { return VkExternalFenceProperties.get_exportFromImportedHandleTypes(this.segment()); }
     /// Sets `exportFromImportedHandleTypes` with the given value at the given index.
@@ -195,11 +184,6 @@ public final class VkExternalFenceProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_exportFromImportedHandleTypes(MemorySegment segment, @CType("VkExternalFenceHandleTypeFlags") int value) { VkExternalFenceProperties.set_exportFromImportedHandleTypes(segment, 0L, value); }
-    /// Sets `exportFromImportedHandleTypes` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkExternalFenceProperties exportFromImportedHandleTypesAt(long index, @CType("VkExternalFenceHandleTypeFlags") int value) { VkExternalFenceProperties.set_exportFromImportedHandleTypes(this.segment(), index, value); return this; }
     /// Sets `exportFromImportedHandleTypes` with the given value.
     /// @param value the value
     /// @return `this`
@@ -212,9 +196,6 @@ public final class VkExternalFenceProperties extends Struct {
     /// {@return `compatibleHandleTypes`}
     /// @param segment the segment of the struct
     public static @CType("VkExternalFenceHandleTypeFlags") int get_compatibleHandleTypes(MemorySegment segment) { return VkExternalFenceProperties.get_compatibleHandleTypes(segment, 0L); }
-    /// {@return `compatibleHandleTypes` at the given index}
-    /// @param index the index
-    public @CType("VkExternalFenceHandleTypeFlags") int compatibleHandleTypesAt(long index) { return VkExternalFenceProperties.get_compatibleHandleTypes(this.segment(), index); }
     /// {@return `compatibleHandleTypes`}
     public @CType("VkExternalFenceHandleTypeFlags") int compatibleHandleTypes() { return VkExternalFenceProperties.get_compatibleHandleTypes(this.segment()); }
     /// Sets `compatibleHandleTypes` with the given value at the given index.
@@ -226,11 +207,6 @@ public final class VkExternalFenceProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_compatibleHandleTypes(MemorySegment segment, @CType("VkExternalFenceHandleTypeFlags") int value) { VkExternalFenceProperties.set_compatibleHandleTypes(segment, 0L, value); }
-    /// Sets `compatibleHandleTypes` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkExternalFenceProperties compatibleHandleTypesAt(long index, @CType("VkExternalFenceHandleTypeFlags") int value) { VkExternalFenceProperties.set_compatibleHandleTypes(this.segment(), index, value); return this; }
     /// Sets `compatibleHandleTypes` with the given value.
     /// @param value the value
     /// @return `this`
@@ -243,9 +219,6 @@ public final class VkExternalFenceProperties extends Struct {
     /// {@return `externalFenceFeatures`}
     /// @param segment the segment of the struct
     public static @CType("VkExternalFenceFeatureFlags") int get_externalFenceFeatures(MemorySegment segment) { return VkExternalFenceProperties.get_externalFenceFeatures(segment, 0L); }
-    /// {@return `externalFenceFeatures` at the given index}
-    /// @param index the index
-    public @CType("VkExternalFenceFeatureFlags") int externalFenceFeaturesAt(long index) { return VkExternalFenceProperties.get_externalFenceFeatures(this.segment(), index); }
     /// {@return `externalFenceFeatures`}
     public @CType("VkExternalFenceFeatureFlags") int externalFenceFeatures() { return VkExternalFenceProperties.get_externalFenceFeatures(this.segment()); }
     /// Sets `externalFenceFeatures` with the given value at the given index.
@@ -257,14 +230,77 @@ public final class VkExternalFenceProperties extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_externalFenceFeatures(MemorySegment segment, @CType("VkExternalFenceFeatureFlags") int value) { VkExternalFenceProperties.set_externalFenceFeatures(segment, 0L, value); }
-    /// Sets `externalFenceFeatures` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkExternalFenceProperties externalFenceFeaturesAt(long index, @CType("VkExternalFenceFeatureFlags") int value) { VkExternalFenceProperties.set_externalFenceFeatures(this.segment(), index, value); return this; }
     /// Sets `externalFenceFeatures` with the given value.
     /// @param value the value
     /// @return `this`
     public VkExternalFenceProperties externalFenceFeatures(@CType("VkExternalFenceFeatureFlags") int value) { VkExternalFenceProperties.set_externalFenceFeatures(this.segment(), value); return this; }
 
+    /// A buffer of [VkExternalFenceProperties].
+    public static final class Buffer extends VkExternalFenceProperties {
+        private final long elementCount;
+
+        /// Creates `VkExternalFenceProperties.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkExternalFenceProperties`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkExternalFenceProperties`
+        public VkExternalFenceProperties asSlice(long index) { return new VkExternalFenceProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkExternalFenceProperties`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkExternalFenceProperties`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkExternalFenceProperties.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkExternalFenceProperties.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkExternalFenceProperties.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkExternalFenceProperties.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `exportFromImportedHandleTypes` at the given index}
+        /// @param index the index
+        public @CType("VkExternalFenceHandleTypeFlags") int exportFromImportedHandleTypesAt(long index) { return VkExternalFenceProperties.get_exportFromImportedHandleTypes(this.segment(), index); }
+        /// Sets `exportFromImportedHandleTypes` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer exportFromImportedHandleTypesAt(long index, @CType("VkExternalFenceHandleTypeFlags") int value) { VkExternalFenceProperties.set_exportFromImportedHandleTypes(this.segment(), index, value); return this; }
+
+        /// {@return `compatibleHandleTypes` at the given index}
+        /// @param index the index
+        public @CType("VkExternalFenceHandleTypeFlags") int compatibleHandleTypesAt(long index) { return VkExternalFenceProperties.get_compatibleHandleTypes(this.segment(), index); }
+        /// Sets `compatibleHandleTypes` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer compatibleHandleTypesAt(long index, @CType("VkExternalFenceHandleTypeFlags") int value) { VkExternalFenceProperties.set_compatibleHandleTypes(this.segment(), index, value); return this; }
+
+        /// {@return `externalFenceFeatures` at the given index}
+        /// @param index the index
+        public @CType("VkExternalFenceFeatureFlags") int externalFenceFeaturesAt(long index) { return VkExternalFenceProperties.get_externalFenceFeatures(this.segment(), index); }
+        /// Sets `externalFenceFeatures` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer externalFenceFeaturesAt(long index, @CType("VkExternalFenceFeatureFlags") int value) { VkExternalFenceProperties.set_externalFenceFeatures(this.segment(), index, value); return this; }
+
+    }
 }

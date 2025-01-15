@@ -43,7 +43,7 @@ import overrungl.util.*;
 ///     const VkDepthClampRangeEXT * pDepthClampRange;
 /// } VkPipelineViewportDepthClampControlCreateInfoEXT;
 /// ```
-public final class VkPipelineViewportDepthClampControlCreateInfoEXT extends Struct {
+public sealed class VkPipelineViewportDepthClampControlCreateInfoEXT extends Struct {
     /// The struct layout of `VkPipelineViewportDepthClampControlCreateInfoEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -70,6 +70,11 @@ public final class VkPipelineViewportDepthClampControlCreateInfoEXT extends Stru
     public static VkPipelineViewportDepthClampControlCreateInfoEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineViewportDepthClampControlCreateInfoEXT(segment); }
 
     /// Creates `VkPipelineViewportDepthClampControlCreateInfoEXT` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPipelineViewportDepthClampControlCreateInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -82,7 +87,7 @@ public final class VkPipelineViewportDepthClampControlCreateInfoEXT extends Stru
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineViewportDepthClampControlCreateInfoEXT ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineViewportDepthClampControlCreateInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPipelineViewportDepthClampControlCreateInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -93,18 +98,21 @@ public final class VkPipelineViewportDepthClampControlCreateInfoEXT extends Stru
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPipelineViewportDepthClampControlCreateInfoEXT`
-    public static VkPipelineViewportDepthClampControlCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkPipelineViewportDepthClampControlCreateInfoEXT(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkPipelineViewportDepthClampControlCreateInfoEXT`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPipelineViewportDepthClampControlCreateInfoEXT`
-    public VkPipelineViewportDepthClampControlCreateInfoEXT asSlice(long index) { return new VkPipelineViewportDepthClampControlCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkPipelineViewportDepthClampControlCreateInfoEXT` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPipelineViewportDepthClampControlCreateInfoEXT`
+    public static VkPipelineViewportDepthClampControlCreateInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkDepthClampModeEXT") int depthClampMode, @CType("const VkDepthClampRangeEXT *") java.lang.foreign.MemorySegment pDepthClampRange) { return alloc(allocator).sType(sType).pNext(pNext).depthClampMode(depthClampMode).pDepthClampRange(pDepthClampRange); }
 
-    /// Creates a slice of `VkPipelineViewportDepthClampControlCreateInfoEXT`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPipelineViewportDepthClampControlCreateInfoEXT`
-    public VkPipelineViewportDepthClampControlCreateInfoEXT asSlice(long index, long count) { return new VkPipelineViewportDepthClampControlCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPipelineViewportDepthClampControlCreateInfoEXT copyFrom(VkPipelineViewportDepthClampControlCreateInfoEXT src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -113,9 +121,6 @@ public final class VkPipelineViewportDepthClampControlCreateInfoEXT extends Stru
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPipelineViewportDepthClampControlCreateInfoEXT.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPipelineViewportDepthClampControlCreateInfoEXT.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPipelineViewportDepthClampControlCreateInfoEXT.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -127,11 +132,6 @@ public final class VkPipelineViewportDepthClampControlCreateInfoEXT extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPipelineViewportDepthClampControlCreateInfoEXT.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineViewportDepthClampControlCreateInfoEXT sTypeAt(long index, @CType("VkStructureType") int value) { VkPipelineViewportDepthClampControlCreateInfoEXT.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -144,9 +144,6 @@ public final class VkPipelineViewportDepthClampControlCreateInfoEXT extends Stru
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPipelineViewportDepthClampControlCreateInfoEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPipelineViewportDepthClampControlCreateInfoEXT.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkPipelineViewportDepthClampControlCreateInfoEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -158,11 +155,6 @@ public final class VkPipelineViewportDepthClampControlCreateInfoEXT extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineViewportDepthClampControlCreateInfoEXT.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineViewportDepthClampControlCreateInfoEXT pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineViewportDepthClampControlCreateInfoEXT.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -175,9 +167,6 @@ public final class VkPipelineViewportDepthClampControlCreateInfoEXT extends Stru
     /// {@return `depthClampMode`}
     /// @param segment the segment of the struct
     public static @CType("VkDepthClampModeEXT") int get_depthClampMode(MemorySegment segment) { return VkPipelineViewportDepthClampControlCreateInfoEXT.get_depthClampMode(segment, 0L); }
-    /// {@return `depthClampMode` at the given index}
-    /// @param index the index
-    public @CType("VkDepthClampModeEXT") int depthClampModeAt(long index) { return VkPipelineViewportDepthClampControlCreateInfoEXT.get_depthClampMode(this.segment(), index); }
     /// {@return `depthClampMode`}
     public @CType("VkDepthClampModeEXT") int depthClampMode() { return VkPipelineViewportDepthClampControlCreateInfoEXT.get_depthClampMode(this.segment()); }
     /// Sets `depthClampMode` with the given value at the given index.
@@ -189,11 +178,6 @@ public final class VkPipelineViewportDepthClampControlCreateInfoEXT extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_depthClampMode(MemorySegment segment, @CType("VkDepthClampModeEXT") int value) { VkPipelineViewportDepthClampControlCreateInfoEXT.set_depthClampMode(segment, 0L, value); }
-    /// Sets `depthClampMode` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineViewportDepthClampControlCreateInfoEXT depthClampModeAt(long index, @CType("VkDepthClampModeEXT") int value) { VkPipelineViewportDepthClampControlCreateInfoEXT.set_depthClampMode(this.segment(), index, value); return this; }
     /// Sets `depthClampMode` with the given value.
     /// @param value the value
     /// @return `this`
@@ -206,9 +190,6 @@ public final class VkPipelineViewportDepthClampControlCreateInfoEXT extends Stru
     /// {@return `pDepthClampRange`}
     /// @param segment the segment of the struct
     public static @CType("const VkDepthClampRangeEXT *") java.lang.foreign.MemorySegment get_pDepthClampRange(MemorySegment segment) { return VkPipelineViewportDepthClampControlCreateInfoEXT.get_pDepthClampRange(segment, 0L); }
-    /// {@return `pDepthClampRange` at the given index}
-    /// @param index the index
-    public @CType("const VkDepthClampRangeEXT *") java.lang.foreign.MemorySegment pDepthClampRangeAt(long index) { return VkPipelineViewportDepthClampControlCreateInfoEXT.get_pDepthClampRange(this.segment(), index); }
     /// {@return `pDepthClampRange`}
     public @CType("const VkDepthClampRangeEXT *") java.lang.foreign.MemorySegment pDepthClampRange() { return VkPipelineViewportDepthClampControlCreateInfoEXT.get_pDepthClampRange(this.segment()); }
     /// Sets `pDepthClampRange` with the given value at the given index.
@@ -220,14 +201,68 @@ public final class VkPipelineViewportDepthClampControlCreateInfoEXT extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pDepthClampRange(MemorySegment segment, @CType("const VkDepthClampRangeEXT *") java.lang.foreign.MemorySegment value) { VkPipelineViewportDepthClampControlCreateInfoEXT.set_pDepthClampRange(segment, 0L, value); }
-    /// Sets `pDepthClampRange` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineViewportDepthClampControlCreateInfoEXT pDepthClampRangeAt(long index, @CType("const VkDepthClampRangeEXT *") java.lang.foreign.MemorySegment value) { VkPipelineViewportDepthClampControlCreateInfoEXT.set_pDepthClampRange(this.segment(), index, value); return this; }
     /// Sets `pDepthClampRange` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPipelineViewportDepthClampControlCreateInfoEXT pDepthClampRange(@CType("const VkDepthClampRangeEXT *") java.lang.foreign.MemorySegment value) { VkPipelineViewportDepthClampControlCreateInfoEXT.set_pDepthClampRange(this.segment(), value); return this; }
 
+    /// A buffer of [VkPipelineViewportDepthClampControlCreateInfoEXT].
+    public static final class Buffer extends VkPipelineViewportDepthClampControlCreateInfoEXT {
+        private final long elementCount;
+
+        /// Creates `VkPipelineViewportDepthClampControlCreateInfoEXT.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPipelineViewportDepthClampControlCreateInfoEXT`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPipelineViewportDepthClampControlCreateInfoEXT`
+        public VkPipelineViewportDepthClampControlCreateInfoEXT asSlice(long index) { return new VkPipelineViewportDepthClampControlCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPipelineViewportDepthClampControlCreateInfoEXT`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPipelineViewportDepthClampControlCreateInfoEXT`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPipelineViewportDepthClampControlCreateInfoEXT.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPipelineViewportDepthClampControlCreateInfoEXT.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPipelineViewportDepthClampControlCreateInfoEXT.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineViewportDepthClampControlCreateInfoEXT.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `depthClampMode` at the given index}
+        /// @param index the index
+        public @CType("VkDepthClampModeEXT") int depthClampModeAt(long index) { return VkPipelineViewportDepthClampControlCreateInfoEXT.get_depthClampMode(this.segment(), index); }
+        /// Sets `depthClampMode` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer depthClampModeAt(long index, @CType("VkDepthClampModeEXT") int value) { VkPipelineViewportDepthClampControlCreateInfoEXT.set_depthClampMode(this.segment(), index, value); return this; }
+
+        /// {@return `pDepthClampRange` at the given index}
+        /// @param index the index
+        public @CType("const VkDepthClampRangeEXT *") java.lang.foreign.MemorySegment pDepthClampRangeAt(long index) { return VkPipelineViewportDepthClampControlCreateInfoEXT.get_pDepthClampRange(this.segment(), index); }
+        /// Sets `pDepthClampRange` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pDepthClampRangeAt(long index, @CType("const VkDepthClampRangeEXT *") java.lang.foreign.MemorySegment value) { VkPipelineViewportDepthClampControlCreateInfoEXT.set_pDepthClampRange(this.segment(), index, value); return this; }
+
+    }
 }

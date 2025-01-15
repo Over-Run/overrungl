@@ -58,7 +58,7 @@ import overrungl.util.*;
 ///     VkImageLayout finalLayout;
 /// } VkAttachmentDescription;
 /// ```
-public final class VkAttachmentDescription extends Struct {
+public sealed class VkAttachmentDescription extends Struct {
     /// The struct layout of `VkAttachmentDescription`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("flags"),
@@ -100,6 +100,11 @@ public final class VkAttachmentDescription extends Struct {
     public static VkAttachmentDescription of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkAttachmentDescription(segment); }
 
     /// Creates `VkAttachmentDescription` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkAttachmentDescription` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -112,7 +117,7 @@ public final class VkAttachmentDescription extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkAttachmentDescription ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkAttachmentDescription(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkAttachmentDescription` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -123,18 +128,21 @@ public final class VkAttachmentDescription extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkAttachmentDescription`
-    public static VkAttachmentDescription alloc(SegmentAllocator allocator, long count) { return new VkAttachmentDescription(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkAttachmentDescription`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkAttachmentDescription`
-    public VkAttachmentDescription asSlice(long index) { return new VkAttachmentDescription(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkAttachmentDescription` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkAttachmentDescription`
+    public static VkAttachmentDescription allocInit(SegmentAllocator allocator, @CType("VkAttachmentDescriptionFlags") int flags, @CType("VkFormat") int format, @CType("VkSampleCountFlagBits") int samples, @CType("VkAttachmentLoadOp") int loadOp, @CType("VkAttachmentStoreOp") int storeOp, @CType("VkAttachmentLoadOp") int stencilLoadOp, @CType("VkAttachmentStoreOp") int stencilStoreOp, @CType("VkImageLayout") int initialLayout, @CType("VkImageLayout") int finalLayout) { return alloc(allocator).flags(flags).format(format).samples(samples).loadOp(loadOp).storeOp(storeOp).stencilLoadOp(stencilLoadOp).stencilStoreOp(stencilStoreOp).initialLayout(initialLayout).finalLayout(finalLayout); }
 
-    /// Creates a slice of `VkAttachmentDescription`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkAttachmentDescription`
-    public VkAttachmentDescription asSlice(long index, long count) { return new VkAttachmentDescription(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkAttachmentDescription copyFrom(VkAttachmentDescription src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
@@ -143,9 +151,6 @@ public final class VkAttachmentDescription extends Struct {
     /// {@return `flags`}
     /// @param segment the segment of the struct
     public static @CType("VkAttachmentDescriptionFlags") int get_flags(MemorySegment segment) { return VkAttachmentDescription.get_flags(segment, 0L); }
-    /// {@return `flags` at the given index}
-    /// @param index the index
-    public @CType("VkAttachmentDescriptionFlags") int flagsAt(long index) { return VkAttachmentDescription.get_flags(this.segment(), index); }
     /// {@return `flags`}
     public @CType("VkAttachmentDescriptionFlags") int flags() { return VkAttachmentDescription.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
@@ -157,11 +162,6 @@ public final class VkAttachmentDescription extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_flags(MemorySegment segment, @CType("VkAttachmentDescriptionFlags") int value) { VkAttachmentDescription.set_flags(segment, 0L, value); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAttachmentDescription flagsAt(long index, @CType("VkAttachmentDescriptionFlags") int value) { VkAttachmentDescription.set_flags(this.segment(), index, value); return this; }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -174,9 +174,6 @@ public final class VkAttachmentDescription extends Struct {
     /// {@return `format`}
     /// @param segment the segment of the struct
     public static @CType("VkFormat") int get_format(MemorySegment segment) { return VkAttachmentDescription.get_format(segment, 0L); }
-    /// {@return `format` at the given index}
-    /// @param index the index
-    public @CType("VkFormat") int formatAt(long index) { return VkAttachmentDescription.get_format(this.segment(), index); }
     /// {@return `format`}
     public @CType("VkFormat") int format() { return VkAttachmentDescription.get_format(this.segment()); }
     /// Sets `format` with the given value at the given index.
@@ -188,11 +185,6 @@ public final class VkAttachmentDescription extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_format(MemorySegment segment, @CType("VkFormat") int value) { VkAttachmentDescription.set_format(segment, 0L, value); }
-    /// Sets `format` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAttachmentDescription formatAt(long index, @CType("VkFormat") int value) { VkAttachmentDescription.set_format(this.segment(), index, value); return this; }
     /// Sets `format` with the given value.
     /// @param value the value
     /// @return `this`
@@ -205,9 +197,6 @@ public final class VkAttachmentDescription extends Struct {
     /// {@return `samples`}
     /// @param segment the segment of the struct
     public static @CType("VkSampleCountFlagBits") int get_samples(MemorySegment segment) { return VkAttachmentDescription.get_samples(segment, 0L); }
-    /// {@return `samples` at the given index}
-    /// @param index the index
-    public @CType("VkSampleCountFlagBits") int samplesAt(long index) { return VkAttachmentDescription.get_samples(this.segment(), index); }
     /// {@return `samples`}
     public @CType("VkSampleCountFlagBits") int samples() { return VkAttachmentDescription.get_samples(this.segment()); }
     /// Sets `samples` with the given value at the given index.
@@ -219,11 +208,6 @@ public final class VkAttachmentDescription extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_samples(MemorySegment segment, @CType("VkSampleCountFlagBits") int value) { VkAttachmentDescription.set_samples(segment, 0L, value); }
-    /// Sets `samples` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAttachmentDescription samplesAt(long index, @CType("VkSampleCountFlagBits") int value) { VkAttachmentDescription.set_samples(this.segment(), index, value); return this; }
     /// Sets `samples` with the given value.
     /// @param value the value
     /// @return `this`
@@ -236,9 +220,6 @@ public final class VkAttachmentDescription extends Struct {
     /// {@return `loadOp`}
     /// @param segment the segment of the struct
     public static @CType("VkAttachmentLoadOp") int get_loadOp(MemorySegment segment) { return VkAttachmentDescription.get_loadOp(segment, 0L); }
-    /// {@return `loadOp` at the given index}
-    /// @param index the index
-    public @CType("VkAttachmentLoadOp") int loadOpAt(long index) { return VkAttachmentDescription.get_loadOp(this.segment(), index); }
     /// {@return `loadOp`}
     public @CType("VkAttachmentLoadOp") int loadOp() { return VkAttachmentDescription.get_loadOp(this.segment()); }
     /// Sets `loadOp` with the given value at the given index.
@@ -250,11 +231,6 @@ public final class VkAttachmentDescription extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_loadOp(MemorySegment segment, @CType("VkAttachmentLoadOp") int value) { VkAttachmentDescription.set_loadOp(segment, 0L, value); }
-    /// Sets `loadOp` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAttachmentDescription loadOpAt(long index, @CType("VkAttachmentLoadOp") int value) { VkAttachmentDescription.set_loadOp(this.segment(), index, value); return this; }
     /// Sets `loadOp` with the given value.
     /// @param value the value
     /// @return `this`
@@ -267,9 +243,6 @@ public final class VkAttachmentDescription extends Struct {
     /// {@return `storeOp`}
     /// @param segment the segment of the struct
     public static @CType("VkAttachmentStoreOp") int get_storeOp(MemorySegment segment) { return VkAttachmentDescription.get_storeOp(segment, 0L); }
-    /// {@return `storeOp` at the given index}
-    /// @param index the index
-    public @CType("VkAttachmentStoreOp") int storeOpAt(long index) { return VkAttachmentDescription.get_storeOp(this.segment(), index); }
     /// {@return `storeOp`}
     public @CType("VkAttachmentStoreOp") int storeOp() { return VkAttachmentDescription.get_storeOp(this.segment()); }
     /// Sets `storeOp` with the given value at the given index.
@@ -281,11 +254,6 @@ public final class VkAttachmentDescription extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_storeOp(MemorySegment segment, @CType("VkAttachmentStoreOp") int value) { VkAttachmentDescription.set_storeOp(segment, 0L, value); }
-    /// Sets `storeOp` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAttachmentDescription storeOpAt(long index, @CType("VkAttachmentStoreOp") int value) { VkAttachmentDescription.set_storeOp(this.segment(), index, value); return this; }
     /// Sets `storeOp` with the given value.
     /// @param value the value
     /// @return `this`
@@ -298,9 +266,6 @@ public final class VkAttachmentDescription extends Struct {
     /// {@return `stencilLoadOp`}
     /// @param segment the segment of the struct
     public static @CType("VkAttachmentLoadOp") int get_stencilLoadOp(MemorySegment segment) { return VkAttachmentDescription.get_stencilLoadOp(segment, 0L); }
-    /// {@return `stencilLoadOp` at the given index}
-    /// @param index the index
-    public @CType("VkAttachmentLoadOp") int stencilLoadOpAt(long index) { return VkAttachmentDescription.get_stencilLoadOp(this.segment(), index); }
     /// {@return `stencilLoadOp`}
     public @CType("VkAttachmentLoadOp") int stencilLoadOp() { return VkAttachmentDescription.get_stencilLoadOp(this.segment()); }
     /// Sets `stencilLoadOp` with the given value at the given index.
@@ -312,11 +277,6 @@ public final class VkAttachmentDescription extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_stencilLoadOp(MemorySegment segment, @CType("VkAttachmentLoadOp") int value) { VkAttachmentDescription.set_stencilLoadOp(segment, 0L, value); }
-    /// Sets `stencilLoadOp` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAttachmentDescription stencilLoadOpAt(long index, @CType("VkAttachmentLoadOp") int value) { VkAttachmentDescription.set_stencilLoadOp(this.segment(), index, value); return this; }
     /// Sets `stencilLoadOp` with the given value.
     /// @param value the value
     /// @return `this`
@@ -329,9 +289,6 @@ public final class VkAttachmentDescription extends Struct {
     /// {@return `stencilStoreOp`}
     /// @param segment the segment of the struct
     public static @CType("VkAttachmentStoreOp") int get_stencilStoreOp(MemorySegment segment) { return VkAttachmentDescription.get_stencilStoreOp(segment, 0L); }
-    /// {@return `stencilStoreOp` at the given index}
-    /// @param index the index
-    public @CType("VkAttachmentStoreOp") int stencilStoreOpAt(long index) { return VkAttachmentDescription.get_stencilStoreOp(this.segment(), index); }
     /// {@return `stencilStoreOp`}
     public @CType("VkAttachmentStoreOp") int stencilStoreOp() { return VkAttachmentDescription.get_stencilStoreOp(this.segment()); }
     /// Sets `stencilStoreOp` with the given value at the given index.
@@ -343,11 +300,6 @@ public final class VkAttachmentDescription extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_stencilStoreOp(MemorySegment segment, @CType("VkAttachmentStoreOp") int value) { VkAttachmentDescription.set_stencilStoreOp(segment, 0L, value); }
-    /// Sets `stencilStoreOp` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAttachmentDescription stencilStoreOpAt(long index, @CType("VkAttachmentStoreOp") int value) { VkAttachmentDescription.set_stencilStoreOp(this.segment(), index, value); return this; }
     /// Sets `stencilStoreOp` with the given value.
     /// @param value the value
     /// @return `this`
@@ -360,9 +312,6 @@ public final class VkAttachmentDescription extends Struct {
     /// {@return `initialLayout`}
     /// @param segment the segment of the struct
     public static @CType("VkImageLayout") int get_initialLayout(MemorySegment segment) { return VkAttachmentDescription.get_initialLayout(segment, 0L); }
-    /// {@return `initialLayout` at the given index}
-    /// @param index the index
-    public @CType("VkImageLayout") int initialLayoutAt(long index) { return VkAttachmentDescription.get_initialLayout(this.segment(), index); }
     /// {@return `initialLayout`}
     public @CType("VkImageLayout") int initialLayout() { return VkAttachmentDescription.get_initialLayout(this.segment()); }
     /// Sets `initialLayout` with the given value at the given index.
@@ -374,11 +323,6 @@ public final class VkAttachmentDescription extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_initialLayout(MemorySegment segment, @CType("VkImageLayout") int value) { VkAttachmentDescription.set_initialLayout(segment, 0L, value); }
-    /// Sets `initialLayout` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAttachmentDescription initialLayoutAt(long index, @CType("VkImageLayout") int value) { VkAttachmentDescription.set_initialLayout(this.segment(), index, value); return this; }
     /// Sets `initialLayout` with the given value.
     /// @param value the value
     /// @return `this`
@@ -391,9 +335,6 @@ public final class VkAttachmentDescription extends Struct {
     /// {@return `finalLayout`}
     /// @param segment the segment of the struct
     public static @CType("VkImageLayout") int get_finalLayout(MemorySegment segment) { return VkAttachmentDescription.get_finalLayout(segment, 0L); }
-    /// {@return `finalLayout` at the given index}
-    /// @param index the index
-    public @CType("VkImageLayout") int finalLayoutAt(long index) { return VkAttachmentDescription.get_finalLayout(this.segment(), index); }
     /// {@return `finalLayout`}
     public @CType("VkImageLayout") int finalLayout() { return VkAttachmentDescription.get_finalLayout(this.segment()); }
     /// Sets `finalLayout` with the given value at the given index.
@@ -405,14 +346,113 @@ public final class VkAttachmentDescription extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_finalLayout(MemorySegment segment, @CType("VkImageLayout") int value) { VkAttachmentDescription.set_finalLayout(segment, 0L, value); }
-    /// Sets `finalLayout` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAttachmentDescription finalLayoutAt(long index, @CType("VkImageLayout") int value) { VkAttachmentDescription.set_finalLayout(this.segment(), index, value); return this; }
     /// Sets `finalLayout` with the given value.
     /// @param value the value
     /// @return `this`
     public VkAttachmentDescription finalLayout(@CType("VkImageLayout") int value) { VkAttachmentDescription.set_finalLayout(this.segment(), value); return this; }
 
+    /// A buffer of [VkAttachmentDescription].
+    public static final class Buffer extends VkAttachmentDescription {
+        private final long elementCount;
+
+        /// Creates `VkAttachmentDescription.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkAttachmentDescription`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkAttachmentDescription`
+        public VkAttachmentDescription asSlice(long index) { return new VkAttachmentDescription(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkAttachmentDescription`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkAttachmentDescription`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `flags` at the given index}
+        /// @param index the index
+        public @CType("VkAttachmentDescriptionFlags") int flagsAt(long index) { return VkAttachmentDescription.get_flags(this.segment(), index); }
+        /// Sets `flags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer flagsAt(long index, @CType("VkAttachmentDescriptionFlags") int value) { VkAttachmentDescription.set_flags(this.segment(), index, value); return this; }
+
+        /// {@return `format` at the given index}
+        /// @param index the index
+        public @CType("VkFormat") int formatAt(long index) { return VkAttachmentDescription.get_format(this.segment(), index); }
+        /// Sets `format` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer formatAt(long index, @CType("VkFormat") int value) { VkAttachmentDescription.set_format(this.segment(), index, value); return this; }
+
+        /// {@return `samples` at the given index}
+        /// @param index the index
+        public @CType("VkSampleCountFlagBits") int samplesAt(long index) { return VkAttachmentDescription.get_samples(this.segment(), index); }
+        /// Sets `samples` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer samplesAt(long index, @CType("VkSampleCountFlagBits") int value) { VkAttachmentDescription.set_samples(this.segment(), index, value); return this; }
+
+        /// {@return `loadOp` at the given index}
+        /// @param index the index
+        public @CType("VkAttachmentLoadOp") int loadOpAt(long index) { return VkAttachmentDescription.get_loadOp(this.segment(), index); }
+        /// Sets `loadOp` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer loadOpAt(long index, @CType("VkAttachmentLoadOp") int value) { VkAttachmentDescription.set_loadOp(this.segment(), index, value); return this; }
+
+        /// {@return `storeOp` at the given index}
+        /// @param index the index
+        public @CType("VkAttachmentStoreOp") int storeOpAt(long index) { return VkAttachmentDescription.get_storeOp(this.segment(), index); }
+        /// Sets `storeOp` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer storeOpAt(long index, @CType("VkAttachmentStoreOp") int value) { VkAttachmentDescription.set_storeOp(this.segment(), index, value); return this; }
+
+        /// {@return `stencilLoadOp` at the given index}
+        /// @param index the index
+        public @CType("VkAttachmentLoadOp") int stencilLoadOpAt(long index) { return VkAttachmentDescription.get_stencilLoadOp(this.segment(), index); }
+        /// Sets `stencilLoadOp` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer stencilLoadOpAt(long index, @CType("VkAttachmentLoadOp") int value) { VkAttachmentDescription.set_stencilLoadOp(this.segment(), index, value); return this; }
+
+        /// {@return `stencilStoreOp` at the given index}
+        /// @param index the index
+        public @CType("VkAttachmentStoreOp") int stencilStoreOpAt(long index) { return VkAttachmentDescription.get_stencilStoreOp(this.segment(), index); }
+        /// Sets `stencilStoreOp` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer stencilStoreOpAt(long index, @CType("VkAttachmentStoreOp") int value) { VkAttachmentDescription.set_stencilStoreOp(this.segment(), index, value); return this; }
+
+        /// {@return `initialLayout` at the given index}
+        /// @param index the index
+        public @CType("VkImageLayout") int initialLayoutAt(long index) { return VkAttachmentDescription.get_initialLayout(this.segment(), index); }
+        /// Sets `initialLayout` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer initialLayoutAt(long index, @CType("VkImageLayout") int value) { VkAttachmentDescription.set_initialLayout(this.segment(), index, value); return this; }
+
+        /// {@return `finalLayout` at the given index}
+        /// @param index the index
+        public @CType("VkImageLayout") int finalLayoutAt(long index) { return VkAttachmentDescription.get_finalLayout(this.segment(), index); }
+        /// Sets `finalLayout` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer finalLayoutAt(long index, @CType("VkImageLayout") int value) { VkAttachmentDescription.set_finalLayout(this.segment(), index, value); return this; }
+
+    }
 }

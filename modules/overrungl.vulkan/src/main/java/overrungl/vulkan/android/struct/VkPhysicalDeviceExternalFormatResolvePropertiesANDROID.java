@@ -46,7 +46,7 @@ import overrungl.util.*;
 ///     VkChromaLocation externalFormatResolveChromaOffsetY;
 /// } VkPhysicalDeviceExternalFormatResolvePropertiesANDROID;
 /// ```
-public final class VkPhysicalDeviceExternalFormatResolvePropertiesANDROID extends Struct {
+public sealed class VkPhysicalDeviceExternalFormatResolvePropertiesANDROID extends Struct {
     /// The struct layout of `VkPhysicalDeviceExternalFormatResolvePropertiesANDROID`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -76,6 +76,11 @@ public final class VkPhysicalDeviceExternalFormatResolvePropertiesANDROID extend
     public static VkPhysicalDeviceExternalFormatResolvePropertiesANDROID of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceExternalFormatResolvePropertiesANDROID(segment); }
 
     /// Creates `VkPhysicalDeviceExternalFormatResolvePropertiesANDROID` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPhysicalDeviceExternalFormatResolvePropertiesANDROID` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -88,7 +93,7 @@ public final class VkPhysicalDeviceExternalFormatResolvePropertiesANDROID extend
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceExternalFormatResolvePropertiesANDROID ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceExternalFormatResolvePropertiesANDROID(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceExternalFormatResolvePropertiesANDROID` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -99,18 +104,21 @@ public final class VkPhysicalDeviceExternalFormatResolvePropertiesANDROID extend
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceExternalFormatResolvePropertiesANDROID`
-    public static VkPhysicalDeviceExternalFormatResolvePropertiesANDROID alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceExternalFormatResolvePropertiesANDROID(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkPhysicalDeviceExternalFormatResolvePropertiesANDROID`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDeviceExternalFormatResolvePropertiesANDROID`
-    public VkPhysicalDeviceExternalFormatResolvePropertiesANDROID asSlice(long index) { return new VkPhysicalDeviceExternalFormatResolvePropertiesANDROID(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkPhysicalDeviceExternalFormatResolvePropertiesANDROID` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDeviceExternalFormatResolvePropertiesANDROID`
+    public static VkPhysicalDeviceExternalFormatResolvePropertiesANDROID allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int nullColorAttachmentWithExternalFormatResolve, @CType("VkChromaLocation") int externalFormatResolveChromaOffsetX, @CType("VkChromaLocation") int externalFormatResolveChromaOffsetY) { return alloc(allocator).sType(sType).pNext(pNext).nullColorAttachmentWithExternalFormatResolve(nullColorAttachmentWithExternalFormatResolve).externalFormatResolveChromaOffsetX(externalFormatResolveChromaOffsetX).externalFormatResolveChromaOffsetY(externalFormatResolveChromaOffsetY); }
 
-    /// Creates a slice of `VkPhysicalDeviceExternalFormatResolvePropertiesANDROID`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDeviceExternalFormatResolvePropertiesANDROID`
-    public VkPhysicalDeviceExternalFormatResolvePropertiesANDROID asSlice(long index, long count) { return new VkPhysicalDeviceExternalFormatResolvePropertiesANDROID(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDeviceExternalFormatResolvePropertiesANDROID copyFrom(VkPhysicalDeviceExternalFormatResolvePropertiesANDROID src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -119,9 +127,6 @@ public final class VkPhysicalDeviceExternalFormatResolvePropertiesANDROID extend
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -133,11 +138,6 @@ public final class VkPhysicalDeviceExternalFormatResolvePropertiesANDROID extend
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExternalFormatResolvePropertiesANDROID sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,9 +150,6 @@ public final class VkPhysicalDeviceExternalFormatResolvePropertiesANDROID extend
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -164,11 +161,6 @@ public final class VkPhysicalDeviceExternalFormatResolvePropertiesANDROID extend
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExternalFormatResolvePropertiesANDROID pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -181,9 +173,6 @@ public final class VkPhysicalDeviceExternalFormatResolvePropertiesANDROID extend
     /// {@return `nullColorAttachmentWithExternalFormatResolve`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_nullColorAttachmentWithExternalFormatResolve(MemorySegment segment) { return VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.get_nullColorAttachmentWithExternalFormatResolve(segment, 0L); }
-    /// {@return `nullColorAttachmentWithExternalFormatResolve` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int nullColorAttachmentWithExternalFormatResolveAt(long index) { return VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.get_nullColorAttachmentWithExternalFormatResolve(this.segment(), index); }
     /// {@return `nullColorAttachmentWithExternalFormatResolve`}
     public @CType("VkBool32") int nullColorAttachmentWithExternalFormatResolve() { return VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.get_nullColorAttachmentWithExternalFormatResolve(this.segment()); }
     /// Sets `nullColorAttachmentWithExternalFormatResolve` with the given value at the given index.
@@ -195,11 +184,6 @@ public final class VkPhysicalDeviceExternalFormatResolvePropertiesANDROID extend
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_nullColorAttachmentWithExternalFormatResolve(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.set_nullColorAttachmentWithExternalFormatResolve(segment, 0L, value); }
-    /// Sets `nullColorAttachmentWithExternalFormatResolve` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExternalFormatResolvePropertiesANDROID nullColorAttachmentWithExternalFormatResolveAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.set_nullColorAttachmentWithExternalFormatResolve(this.segment(), index, value); return this; }
     /// Sets `nullColorAttachmentWithExternalFormatResolve` with the given value.
     /// @param value the value
     /// @return `this`
@@ -212,9 +196,6 @@ public final class VkPhysicalDeviceExternalFormatResolvePropertiesANDROID extend
     /// {@return `externalFormatResolveChromaOffsetX`}
     /// @param segment the segment of the struct
     public static @CType("VkChromaLocation") int get_externalFormatResolveChromaOffsetX(MemorySegment segment) { return VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.get_externalFormatResolveChromaOffsetX(segment, 0L); }
-    /// {@return `externalFormatResolveChromaOffsetX` at the given index}
-    /// @param index the index
-    public @CType("VkChromaLocation") int externalFormatResolveChromaOffsetXAt(long index) { return VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.get_externalFormatResolveChromaOffsetX(this.segment(), index); }
     /// {@return `externalFormatResolveChromaOffsetX`}
     public @CType("VkChromaLocation") int externalFormatResolveChromaOffsetX() { return VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.get_externalFormatResolveChromaOffsetX(this.segment()); }
     /// Sets `externalFormatResolveChromaOffsetX` with the given value at the given index.
@@ -226,11 +207,6 @@ public final class VkPhysicalDeviceExternalFormatResolvePropertiesANDROID extend
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_externalFormatResolveChromaOffsetX(MemorySegment segment, @CType("VkChromaLocation") int value) { VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.set_externalFormatResolveChromaOffsetX(segment, 0L, value); }
-    /// Sets `externalFormatResolveChromaOffsetX` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExternalFormatResolvePropertiesANDROID externalFormatResolveChromaOffsetXAt(long index, @CType("VkChromaLocation") int value) { VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.set_externalFormatResolveChromaOffsetX(this.segment(), index, value); return this; }
     /// Sets `externalFormatResolveChromaOffsetX` with the given value.
     /// @param value the value
     /// @return `this`
@@ -243,9 +219,6 @@ public final class VkPhysicalDeviceExternalFormatResolvePropertiesANDROID extend
     /// {@return `externalFormatResolveChromaOffsetY`}
     /// @param segment the segment of the struct
     public static @CType("VkChromaLocation") int get_externalFormatResolveChromaOffsetY(MemorySegment segment) { return VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.get_externalFormatResolveChromaOffsetY(segment, 0L); }
-    /// {@return `externalFormatResolveChromaOffsetY` at the given index}
-    /// @param index the index
-    public @CType("VkChromaLocation") int externalFormatResolveChromaOffsetYAt(long index) { return VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.get_externalFormatResolveChromaOffsetY(this.segment(), index); }
     /// {@return `externalFormatResolveChromaOffsetY`}
     public @CType("VkChromaLocation") int externalFormatResolveChromaOffsetY() { return VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.get_externalFormatResolveChromaOffsetY(this.segment()); }
     /// Sets `externalFormatResolveChromaOffsetY` with the given value at the given index.
@@ -257,14 +230,77 @@ public final class VkPhysicalDeviceExternalFormatResolvePropertiesANDROID extend
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_externalFormatResolveChromaOffsetY(MemorySegment segment, @CType("VkChromaLocation") int value) { VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.set_externalFormatResolveChromaOffsetY(segment, 0L, value); }
-    /// Sets `externalFormatResolveChromaOffsetY` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceExternalFormatResolvePropertiesANDROID externalFormatResolveChromaOffsetYAt(long index, @CType("VkChromaLocation") int value) { VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.set_externalFormatResolveChromaOffsetY(this.segment(), index, value); return this; }
     /// Sets `externalFormatResolveChromaOffsetY` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceExternalFormatResolvePropertiesANDROID externalFormatResolveChromaOffsetY(@CType("VkChromaLocation") int value) { VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.set_externalFormatResolveChromaOffsetY(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDeviceExternalFormatResolvePropertiesANDROID].
+    public static final class Buffer extends VkPhysicalDeviceExternalFormatResolvePropertiesANDROID {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDeviceExternalFormatResolvePropertiesANDROID`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDeviceExternalFormatResolvePropertiesANDROID`
+        public VkPhysicalDeviceExternalFormatResolvePropertiesANDROID asSlice(long index) { return new VkPhysicalDeviceExternalFormatResolvePropertiesANDROID(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDeviceExternalFormatResolvePropertiesANDROID`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDeviceExternalFormatResolvePropertiesANDROID`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `nullColorAttachmentWithExternalFormatResolve` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int nullColorAttachmentWithExternalFormatResolveAt(long index) { return VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.get_nullColorAttachmentWithExternalFormatResolve(this.segment(), index); }
+        /// Sets `nullColorAttachmentWithExternalFormatResolve` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer nullColorAttachmentWithExternalFormatResolveAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.set_nullColorAttachmentWithExternalFormatResolve(this.segment(), index, value); return this; }
+
+        /// {@return `externalFormatResolveChromaOffsetX` at the given index}
+        /// @param index the index
+        public @CType("VkChromaLocation") int externalFormatResolveChromaOffsetXAt(long index) { return VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.get_externalFormatResolveChromaOffsetX(this.segment(), index); }
+        /// Sets `externalFormatResolveChromaOffsetX` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer externalFormatResolveChromaOffsetXAt(long index, @CType("VkChromaLocation") int value) { VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.set_externalFormatResolveChromaOffsetX(this.segment(), index, value); return this; }
+
+        /// {@return `externalFormatResolveChromaOffsetY` at the given index}
+        /// @param index the index
+        public @CType("VkChromaLocation") int externalFormatResolveChromaOffsetYAt(long index) { return VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.get_externalFormatResolveChromaOffsetY(this.segment(), index); }
+        /// Sets `externalFormatResolveChromaOffsetY` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer externalFormatResolveChromaOffsetYAt(long index, @CType("VkChromaLocation") int value) { VkPhysicalDeviceExternalFormatResolvePropertiesANDROID.set_externalFormatResolveChromaOffsetY(this.segment(), index, value); return this; }
+
+    }
 }

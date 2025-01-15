@@ -46,7 +46,7 @@ import overrungl.util.*;
 ///     VkBool32 primitiveRestartEnable;
 /// } VkPipelineInputAssemblyStateCreateInfo;
 /// ```
-public final class VkPipelineInputAssemblyStateCreateInfo extends Struct {
+public sealed class VkPipelineInputAssemblyStateCreateInfo extends Struct {
     /// The struct layout of `VkPipelineInputAssemblyStateCreateInfo`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -76,6 +76,11 @@ public final class VkPipelineInputAssemblyStateCreateInfo extends Struct {
     public static VkPipelineInputAssemblyStateCreateInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineInputAssemblyStateCreateInfo(segment); }
 
     /// Creates `VkPipelineInputAssemblyStateCreateInfo` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPipelineInputAssemblyStateCreateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -88,7 +93,7 @@ public final class VkPipelineInputAssemblyStateCreateInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineInputAssemblyStateCreateInfo ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPipelineInputAssemblyStateCreateInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPipelineInputAssemblyStateCreateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -99,18 +104,21 @@ public final class VkPipelineInputAssemblyStateCreateInfo extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPipelineInputAssemblyStateCreateInfo`
-    public static VkPipelineInputAssemblyStateCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkPipelineInputAssemblyStateCreateInfo(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkPipelineInputAssemblyStateCreateInfo`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPipelineInputAssemblyStateCreateInfo`
-    public VkPipelineInputAssemblyStateCreateInfo asSlice(long index) { return new VkPipelineInputAssemblyStateCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkPipelineInputAssemblyStateCreateInfo` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPipelineInputAssemblyStateCreateInfo`
+    public static VkPipelineInputAssemblyStateCreateInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkPipelineInputAssemblyStateCreateFlags") int flags, @CType("VkPrimitiveTopology") int topology, @CType("VkBool32") int primitiveRestartEnable) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).topology(topology).primitiveRestartEnable(primitiveRestartEnable); }
 
-    /// Creates a slice of `VkPipelineInputAssemblyStateCreateInfo`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPipelineInputAssemblyStateCreateInfo`
-    public VkPipelineInputAssemblyStateCreateInfo asSlice(long index, long count) { return new VkPipelineInputAssemblyStateCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPipelineInputAssemblyStateCreateInfo copyFrom(VkPipelineInputAssemblyStateCreateInfo src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -119,9 +127,6 @@ public final class VkPipelineInputAssemblyStateCreateInfo extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPipelineInputAssemblyStateCreateInfo.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPipelineInputAssemblyStateCreateInfo.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPipelineInputAssemblyStateCreateInfo.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -133,11 +138,6 @@ public final class VkPipelineInputAssemblyStateCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPipelineInputAssemblyStateCreateInfo.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineInputAssemblyStateCreateInfo sTypeAt(long index, @CType("VkStructureType") int value) { VkPipelineInputAssemblyStateCreateInfo.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,9 +150,6 @@ public final class VkPipelineInputAssemblyStateCreateInfo extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPipelineInputAssemblyStateCreateInfo.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPipelineInputAssemblyStateCreateInfo.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkPipelineInputAssemblyStateCreateInfo.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -164,11 +161,6 @@ public final class VkPipelineInputAssemblyStateCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineInputAssemblyStateCreateInfo.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineInputAssemblyStateCreateInfo pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineInputAssemblyStateCreateInfo.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -181,9 +173,6 @@ public final class VkPipelineInputAssemblyStateCreateInfo extends Struct {
     /// {@return `flags`}
     /// @param segment the segment of the struct
     public static @CType("VkPipelineInputAssemblyStateCreateFlags") int get_flags(MemorySegment segment) { return VkPipelineInputAssemblyStateCreateInfo.get_flags(segment, 0L); }
-    /// {@return `flags` at the given index}
-    /// @param index the index
-    public @CType("VkPipelineInputAssemblyStateCreateFlags") int flagsAt(long index) { return VkPipelineInputAssemblyStateCreateInfo.get_flags(this.segment(), index); }
     /// {@return `flags`}
     public @CType("VkPipelineInputAssemblyStateCreateFlags") int flags() { return VkPipelineInputAssemblyStateCreateInfo.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
@@ -195,11 +184,6 @@ public final class VkPipelineInputAssemblyStateCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_flags(MemorySegment segment, @CType("VkPipelineInputAssemblyStateCreateFlags") int value) { VkPipelineInputAssemblyStateCreateInfo.set_flags(segment, 0L, value); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineInputAssemblyStateCreateInfo flagsAt(long index, @CType("VkPipelineInputAssemblyStateCreateFlags") int value) { VkPipelineInputAssemblyStateCreateInfo.set_flags(this.segment(), index, value); return this; }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -212,9 +196,6 @@ public final class VkPipelineInputAssemblyStateCreateInfo extends Struct {
     /// {@return `topology`}
     /// @param segment the segment of the struct
     public static @CType("VkPrimitiveTopology") int get_topology(MemorySegment segment) { return VkPipelineInputAssemblyStateCreateInfo.get_topology(segment, 0L); }
-    /// {@return `topology` at the given index}
-    /// @param index the index
-    public @CType("VkPrimitiveTopology") int topologyAt(long index) { return VkPipelineInputAssemblyStateCreateInfo.get_topology(this.segment(), index); }
     /// {@return `topology`}
     public @CType("VkPrimitiveTopology") int topology() { return VkPipelineInputAssemblyStateCreateInfo.get_topology(this.segment()); }
     /// Sets `topology` with the given value at the given index.
@@ -226,11 +207,6 @@ public final class VkPipelineInputAssemblyStateCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_topology(MemorySegment segment, @CType("VkPrimitiveTopology") int value) { VkPipelineInputAssemblyStateCreateInfo.set_topology(segment, 0L, value); }
-    /// Sets `topology` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineInputAssemblyStateCreateInfo topologyAt(long index, @CType("VkPrimitiveTopology") int value) { VkPipelineInputAssemblyStateCreateInfo.set_topology(this.segment(), index, value); return this; }
     /// Sets `topology` with the given value.
     /// @param value the value
     /// @return `this`
@@ -243,9 +219,6 @@ public final class VkPipelineInputAssemblyStateCreateInfo extends Struct {
     /// {@return `primitiveRestartEnable`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_primitiveRestartEnable(MemorySegment segment) { return VkPipelineInputAssemblyStateCreateInfo.get_primitiveRestartEnable(segment, 0L); }
-    /// {@return `primitiveRestartEnable` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int primitiveRestartEnableAt(long index) { return VkPipelineInputAssemblyStateCreateInfo.get_primitiveRestartEnable(this.segment(), index); }
     /// {@return `primitiveRestartEnable`}
     public @CType("VkBool32") int primitiveRestartEnable() { return VkPipelineInputAssemblyStateCreateInfo.get_primitiveRestartEnable(this.segment()); }
     /// Sets `primitiveRestartEnable` with the given value at the given index.
@@ -257,14 +230,77 @@ public final class VkPipelineInputAssemblyStateCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_primitiveRestartEnable(MemorySegment segment, @CType("VkBool32") int value) { VkPipelineInputAssemblyStateCreateInfo.set_primitiveRestartEnable(segment, 0L, value); }
-    /// Sets `primitiveRestartEnable` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPipelineInputAssemblyStateCreateInfo primitiveRestartEnableAt(long index, @CType("VkBool32") int value) { VkPipelineInputAssemblyStateCreateInfo.set_primitiveRestartEnable(this.segment(), index, value); return this; }
     /// Sets `primitiveRestartEnable` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPipelineInputAssemblyStateCreateInfo primitiveRestartEnable(@CType("VkBool32") int value) { VkPipelineInputAssemblyStateCreateInfo.set_primitiveRestartEnable(this.segment(), value); return this; }
 
+    /// A buffer of [VkPipelineInputAssemblyStateCreateInfo].
+    public static final class Buffer extends VkPipelineInputAssemblyStateCreateInfo {
+        private final long elementCount;
+
+        /// Creates `VkPipelineInputAssemblyStateCreateInfo.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPipelineInputAssemblyStateCreateInfo`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPipelineInputAssemblyStateCreateInfo`
+        public VkPipelineInputAssemblyStateCreateInfo asSlice(long index) { return new VkPipelineInputAssemblyStateCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPipelineInputAssemblyStateCreateInfo`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPipelineInputAssemblyStateCreateInfo`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPipelineInputAssemblyStateCreateInfo.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPipelineInputAssemblyStateCreateInfo.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPipelineInputAssemblyStateCreateInfo.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPipelineInputAssemblyStateCreateInfo.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `flags` at the given index}
+        /// @param index the index
+        public @CType("VkPipelineInputAssemblyStateCreateFlags") int flagsAt(long index) { return VkPipelineInputAssemblyStateCreateInfo.get_flags(this.segment(), index); }
+        /// Sets `flags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer flagsAt(long index, @CType("VkPipelineInputAssemblyStateCreateFlags") int value) { VkPipelineInputAssemblyStateCreateInfo.set_flags(this.segment(), index, value); return this; }
+
+        /// {@return `topology` at the given index}
+        /// @param index the index
+        public @CType("VkPrimitiveTopology") int topologyAt(long index) { return VkPipelineInputAssemblyStateCreateInfo.get_topology(this.segment(), index); }
+        /// Sets `topology` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer topologyAt(long index, @CType("VkPrimitiveTopology") int value) { VkPipelineInputAssemblyStateCreateInfo.set_topology(this.segment(), index, value); return this; }
+
+        /// {@return `primitiveRestartEnable` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int primitiveRestartEnableAt(long index) { return VkPipelineInputAssemblyStateCreateInfo.get_primitiveRestartEnable(this.segment(), index); }
+        /// Sets `primitiveRestartEnable` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer primitiveRestartEnableAt(long index, @CType("VkBool32") int value) { VkPipelineInputAssemblyStateCreateInfo.set_primitiveRestartEnable(this.segment(), index, value); return this; }
+
+    }
 }

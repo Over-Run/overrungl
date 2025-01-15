@@ -34,7 +34,7 @@ import overrungl.util.*;
 ///     VkIndirectCommandsInputModeFlagBitsEXT mode;
 /// } VkIndirectCommandsIndexBufferTokenEXT;
 /// ```
-public final class VkIndirectCommandsIndexBufferTokenEXT extends Struct {
+public sealed class VkIndirectCommandsIndexBufferTokenEXT extends Struct {
     /// The struct layout of `VkIndirectCommandsIndexBufferTokenEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("mode")
@@ -52,6 +52,11 @@ public final class VkIndirectCommandsIndexBufferTokenEXT extends Struct {
     public static VkIndirectCommandsIndexBufferTokenEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkIndirectCommandsIndexBufferTokenEXT(segment); }
 
     /// Creates `VkIndirectCommandsIndexBufferTokenEXT` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkIndirectCommandsIndexBufferTokenEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -64,7 +69,7 @@ public final class VkIndirectCommandsIndexBufferTokenEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkIndirectCommandsIndexBufferTokenEXT ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkIndirectCommandsIndexBufferTokenEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkIndirectCommandsIndexBufferTokenEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -75,18 +80,21 @@ public final class VkIndirectCommandsIndexBufferTokenEXT extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkIndirectCommandsIndexBufferTokenEXT`
-    public static VkIndirectCommandsIndexBufferTokenEXT alloc(SegmentAllocator allocator, long count) { return new VkIndirectCommandsIndexBufferTokenEXT(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkIndirectCommandsIndexBufferTokenEXT`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkIndirectCommandsIndexBufferTokenEXT`
-    public VkIndirectCommandsIndexBufferTokenEXT asSlice(long index) { return new VkIndirectCommandsIndexBufferTokenEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkIndirectCommandsIndexBufferTokenEXT` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkIndirectCommandsIndexBufferTokenEXT`
+    public static VkIndirectCommandsIndexBufferTokenEXT allocInit(SegmentAllocator allocator, @CType("VkIndirectCommandsInputModeFlagBitsEXT") int mode) { return alloc(allocator).mode(mode); }
 
-    /// Creates a slice of `VkIndirectCommandsIndexBufferTokenEXT`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkIndirectCommandsIndexBufferTokenEXT`
-    public VkIndirectCommandsIndexBufferTokenEXT asSlice(long index, long count) { return new VkIndirectCommandsIndexBufferTokenEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkIndirectCommandsIndexBufferTokenEXT copyFrom(VkIndirectCommandsIndexBufferTokenEXT src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `mode` at the given index}
     /// @param segment the segment of the struct
@@ -95,9 +103,6 @@ public final class VkIndirectCommandsIndexBufferTokenEXT extends Struct {
     /// {@return `mode`}
     /// @param segment the segment of the struct
     public static @CType("VkIndirectCommandsInputModeFlagBitsEXT") int get_mode(MemorySegment segment) { return VkIndirectCommandsIndexBufferTokenEXT.get_mode(segment, 0L); }
-    /// {@return `mode` at the given index}
-    /// @param index the index
-    public @CType("VkIndirectCommandsInputModeFlagBitsEXT") int modeAt(long index) { return VkIndirectCommandsIndexBufferTokenEXT.get_mode(this.segment(), index); }
     /// {@return `mode`}
     public @CType("VkIndirectCommandsInputModeFlagBitsEXT") int mode() { return VkIndirectCommandsIndexBufferTokenEXT.get_mode(this.segment()); }
     /// Sets `mode` with the given value at the given index.
@@ -109,14 +114,41 @@ public final class VkIndirectCommandsIndexBufferTokenEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_mode(MemorySegment segment, @CType("VkIndirectCommandsInputModeFlagBitsEXT") int value) { VkIndirectCommandsIndexBufferTokenEXT.set_mode(segment, 0L, value); }
-    /// Sets `mode` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkIndirectCommandsIndexBufferTokenEXT modeAt(long index, @CType("VkIndirectCommandsInputModeFlagBitsEXT") int value) { VkIndirectCommandsIndexBufferTokenEXT.set_mode(this.segment(), index, value); return this; }
     /// Sets `mode` with the given value.
     /// @param value the value
     /// @return `this`
     public VkIndirectCommandsIndexBufferTokenEXT mode(@CType("VkIndirectCommandsInputModeFlagBitsEXT") int value) { VkIndirectCommandsIndexBufferTokenEXT.set_mode(this.segment(), value); return this; }
 
+    /// A buffer of [VkIndirectCommandsIndexBufferTokenEXT].
+    public static final class Buffer extends VkIndirectCommandsIndexBufferTokenEXT {
+        private final long elementCount;
+
+        /// Creates `VkIndirectCommandsIndexBufferTokenEXT.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkIndirectCommandsIndexBufferTokenEXT`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkIndirectCommandsIndexBufferTokenEXT`
+        public VkIndirectCommandsIndexBufferTokenEXT asSlice(long index) { return new VkIndirectCommandsIndexBufferTokenEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkIndirectCommandsIndexBufferTokenEXT`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkIndirectCommandsIndexBufferTokenEXT`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `mode` at the given index}
+        /// @param index the index
+        public @CType("VkIndirectCommandsInputModeFlagBitsEXT") int modeAt(long index) { return VkIndirectCommandsIndexBufferTokenEXT.get_mode(this.segment(), index); }
+        /// Sets `mode` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer modeAt(long index, @CType("VkIndirectCommandsInputModeFlagBitsEXT") int value) { VkIndirectCommandsIndexBufferTokenEXT.set_mode(this.segment(), index, value); return this; }
+
+    }
 }

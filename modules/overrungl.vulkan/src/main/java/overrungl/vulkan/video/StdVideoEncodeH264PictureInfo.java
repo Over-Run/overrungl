@@ -61,7 +61,7 @@ import overrungl.util.*;
 ///     const StdVideoEncodeH264ReferenceListsInfo * pRefLists;
 /// } StdVideoEncodeH264PictureInfo;
 /// ```
-public final class StdVideoEncodeH264PictureInfo extends Struct {
+public sealed class StdVideoEncodeH264PictureInfo extends Struct {
     /// The struct layout of `StdVideoEncodeH264PictureInfo`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         StdVideoEncodeH264PictureInfoFlags.LAYOUT.withName("flags"),
@@ -106,6 +106,11 @@ public final class StdVideoEncodeH264PictureInfo extends Struct {
     public static StdVideoEncodeH264PictureInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoEncodeH264PictureInfo(segment); }
 
     /// Creates `StdVideoEncodeH264PictureInfo` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `StdVideoEncodeH264PictureInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -118,7 +123,7 @@ public final class StdVideoEncodeH264PictureInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoEncodeH264PictureInfo ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoEncodeH264PictureInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `StdVideoEncodeH264PictureInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -129,18 +134,21 @@ public final class StdVideoEncodeH264PictureInfo extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `StdVideoEncodeH264PictureInfo`
-    public static StdVideoEncodeH264PictureInfo alloc(SegmentAllocator allocator, long count) { return new StdVideoEncodeH264PictureInfo(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `StdVideoEncodeH264PictureInfo`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `StdVideoEncodeH264PictureInfo`
-    public StdVideoEncodeH264PictureInfo asSlice(long index) { return new StdVideoEncodeH264PictureInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `StdVideoEncodeH264PictureInfo` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `StdVideoEncodeH264PictureInfo`
+    public static StdVideoEncodeH264PictureInfo allocInit(SegmentAllocator allocator, @CType("StdVideoEncodeH264PictureInfoFlags") java.lang.foreign.MemorySegment flags, @CType("uint8_t") byte seq_parameter_set_id, @CType("uint8_t") byte pic_parameter_set_id, @CType("uint16_t") short idr_pic_id, @CType("StdVideoH264PictureType") int primary_pic_type, @CType("uint32_t") int frame_num, @CType("int32_t") int PicOrderCnt, @CType("uint8_t") byte temporal_id, @CType("uint8_t [3]") byte reserved1, @CType("const StdVideoEncodeH264ReferenceListsInfo *") java.lang.foreign.MemorySegment pRefLists) { return alloc(allocator).flags(flags).seq_parameter_set_id(seq_parameter_set_id).pic_parameter_set_id(pic_parameter_set_id).idr_pic_id(idr_pic_id).primary_pic_type(primary_pic_type).frame_num(frame_num).PicOrderCnt(PicOrderCnt).temporal_id(temporal_id).reserved1(reserved1).pRefLists(pRefLists); }
 
-    /// Creates a slice of `StdVideoEncodeH264PictureInfo`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `StdVideoEncodeH264PictureInfo`
-    public StdVideoEncodeH264PictureInfo asSlice(long index, long count) { return new StdVideoEncodeH264PictureInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public StdVideoEncodeH264PictureInfo copyFrom(StdVideoEncodeH264PictureInfo src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
@@ -149,9 +157,6 @@ public final class StdVideoEncodeH264PictureInfo extends Struct {
     /// {@return `flags`}
     /// @param segment the segment of the struct
     public static @CType("StdVideoEncodeH264PictureInfoFlags") java.lang.foreign.MemorySegment get_flags(MemorySegment segment) { return StdVideoEncodeH264PictureInfo.get_flags(segment, 0L); }
-    /// {@return `flags` at the given index}
-    /// @param index the index
-    public @CType("StdVideoEncodeH264PictureInfoFlags") java.lang.foreign.MemorySegment flagsAt(long index) { return StdVideoEncodeH264PictureInfo.get_flags(this.segment(), index); }
     /// {@return `flags`}
     public @CType("StdVideoEncodeH264PictureInfoFlags") java.lang.foreign.MemorySegment flags() { return StdVideoEncodeH264PictureInfo.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
@@ -163,11 +168,6 @@ public final class StdVideoEncodeH264PictureInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_flags(MemorySegment segment, @CType("StdVideoEncodeH264PictureInfoFlags") java.lang.foreign.MemorySegment value) { StdVideoEncodeH264PictureInfo.set_flags(segment, 0L, value); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeH264PictureInfo flagsAt(long index, @CType("StdVideoEncodeH264PictureInfoFlags") java.lang.foreign.MemorySegment value) { StdVideoEncodeH264PictureInfo.set_flags(this.segment(), index, value); return this; }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -180,9 +180,6 @@ public final class StdVideoEncodeH264PictureInfo extends Struct {
     /// {@return `seq_parameter_set_id`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t") byte get_seq_parameter_set_id(MemorySegment segment) { return StdVideoEncodeH264PictureInfo.get_seq_parameter_set_id(segment, 0L); }
-    /// {@return `seq_parameter_set_id` at the given index}
-    /// @param index the index
-    public @CType("uint8_t") byte seq_parameter_set_idAt(long index) { return StdVideoEncodeH264PictureInfo.get_seq_parameter_set_id(this.segment(), index); }
     /// {@return `seq_parameter_set_id`}
     public @CType("uint8_t") byte seq_parameter_set_id() { return StdVideoEncodeH264PictureInfo.get_seq_parameter_set_id(this.segment()); }
     /// Sets `seq_parameter_set_id` with the given value at the given index.
@@ -194,11 +191,6 @@ public final class StdVideoEncodeH264PictureInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_seq_parameter_set_id(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoEncodeH264PictureInfo.set_seq_parameter_set_id(segment, 0L, value); }
-    /// Sets `seq_parameter_set_id` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeH264PictureInfo seq_parameter_set_idAt(long index, @CType("uint8_t") byte value) { StdVideoEncodeH264PictureInfo.set_seq_parameter_set_id(this.segment(), index, value); return this; }
     /// Sets `seq_parameter_set_id` with the given value.
     /// @param value the value
     /// @return `this`
@@ -211,9 +203,6 @@ public final class StdVideoEncodeH264PictureInfo extends Struct {
     /// {@return `pic_parameter_set_id`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t") byte get_pic_parameter_set_id(MemorySegment segment) { return StdVideoEncodeH264PictureInfo.get_pic_parameter_set_id(segment, 0L); }
-    /// {@return `pic_parameter_set_id` at the given index}
-    /// @param index the index
-    public @CType("uint8_t") byte pic_parameter_set_idAt(long index) { return StdVideoEncodeH264PictureInfo.get_pic_parameter_set_id(this.segment(), index); }
     /// {@return `pic_parameter_set_id`}
     public @CType("uint8_t") byte pic_parameter_set_id() { return StdVideoEncodeH264PictureInfo.get_pic_parameter_set_id(this.segment()); }
     /// Sets `pic_parameter_set_id` with the given value at the given index.
@@ -225,11 +214,6 @@ public final class StdVideoEncodeH264PictureInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pic_parameter_set_id(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoEncodeH264PictureInfo.set_pic_parameter_set_id(segment, 0L, value); }
-    /// Sets `pic_parameter_set_id` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeH264PictureInfo pic_parameter_set_idAt(long index, @CType("uint8_t") byte value) { StdVideoEncodeH264PictureInfo.set_pic_parameter_set_id(this.segment(), index, value); return this; }
     /// Sets `pic_parameter_set_id` with the given value.
     /// @param value the value
     /// @return `this`
@@ -242,9 +226,6 @@ public final class StdVideoEncodeH264PictureInfo extends Struct {
     /// {@return `idr_pic_id`}
     /// @param segment the segment of the struct
     public static @CType("uint16_t") short get_idr_pic_id(MemorySegment segment) { return StdVideoEncodeH264PictureInfo.get_idr_pic_id(segment, 0L); }
-    /// {@return `idr_pic_id` at the given index}
-    /// @param index the index
-    public @CType("uint16_t") short idr_pic_idAt(long index) { return StdVideoEncodeH264PictureInfo.get_idr_pic_id(this.segment(), index); }
     /// {@return `idr_pic_id`}
     public @CType("uint16_t") short idr_pic_id() { return StdVideoEncodeH264PictureInfo.get_idr_pic_id(this.segment()); }
     /// Sets `idr_pic_id` with the given value at the given index.
@@ -256,11 +237,6 @@ public final class StdVideoEncodeH264PictureInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_idr_pic_id(MemorySegment segment, @CType("uint16_t") short value) { StdVideoEncodeH264PictureInfo.set_idr_pic_id(segment, 0L, value); }
-    /// Sets `idr_pic_id` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeH264PictureInfo idr_pic_idAt(long index, @CType("uint16_t") short value) { StdVideoEncodeH264PictureInfo.set_idr_pic_id(this.segment(), index, value); return this; }
     /// Sets `idr_pic_id` with the given value.
     /// @param value the value
     /// @return `this`
@@ -273,9 +249,6 @@ public final class StdVideoEncodeH264PictureInfo extends Struct {
     /// {@return `primary_pic_type`}
     /// @param segment the segment of the struct
     public static @CType("StdVideoH264PictureType") int get_primary_pic_type(MemorySegment segment) { return StdVideoEncodeH264PictureInfo.get_primary_pic_type(segment, 0L); }
-    /// {@return `primary_pic_type` at the given index}
-    /// @param index the index
-    public @CType("StdVideoH264PictureType") int primary_pic_typeAt(long index) { return StdVideoEncodeH264PictureInfo.get_primary_pic_type(this.segment(), index); }
     /// {@return `primary_pic_type`}
     public @CType("StdVideoH264PictureType") int primary_pic_type() { return StdVideoEncodeH264PictureInfo.get_primary_pic_type(this.segment()); }
     /// Sets `primary_pic_type` with the given value at the given index.
@@ -287,11 +260,6 @@ public final class StdVideoEncodeH264PictureInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_primary_pic_type(MemorySegment segment, @CType("StdVideoH264PictureType") int value) { StdVideoEncodeH264PictureInfo.set_primary_pic_type(segment, 0L, value); }
-    /// Sets `primary_pic_type` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeH264PictureInfo primary_pic_typeAt(long index, @CType("StdVideoH264PictureType") int value) { StdVideoEncodeH264PictureInfo.set_primary_pic_type(this.segment(), index, value); return this; }
     /// Sets `primary_pic_type` with the given value.
     /// @param value the value
     /// @return `this`
@@ -304,9 +272,6 @@ public final class StdVideoEncodeH264PictureInfo extends Struct {
     /// {@return `frame_num`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_frame_num(MemorySegment segment) { return StdVideoEncodeH264PictureInfo.get_frame_num(segment, 0L); }
-    /// {@return `frame_num` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int frame_numAt(long index) { return StdVideoEncodeH264PictureInfo.get_frame_num(this.segment(), index); }
     /// {@return `frame_num`}
     public @CType("uint32_t") int frame_num() { return StdVideoEncodeH264PictureInfo.get_frame_num(this.segment()); }
     /// Sets `frame_num` with the given value at the given index.
@@ -318,11 +283,6 @@ public final class StdVideoEncodeH264PictureInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_frame_num(MemorySegment segment, @CType("uint32_t") int value) { StdVideoEncodeH264PictureInfo.set_frame_num(segment, 0L, value); }
-    /// Sets `frame_num` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeH264PictureInfo frame_numAt(long index, @CType("uint32_t") int value) { StdVideoEncodeH264PictureInfo.set_frame_num(this.segment(), index, value); return this; }
     /// Sets `frame_num` with the given value.
     /// @param value the value
     /// @return `this`
@@ -335,9 +295,6 @@ public final class StdVideoEncodeH264PictureInfo extends Struct {
     /// {@return `PicOrderCnt`}
     /// @param segment the segment of the struct
     public static @CType("int32_t") int get_PicOrderCnt(MemorySegment segment) { return StdVideoEncodeH264PictureInfo.get_PicOrderCnt(segment, 0L); }
-    /// {@return `PicOrderCnt` at the given index}
-    /// @param index the index
-    public @CType("int32_t") int PicOrderCntAt(long index) { return StdVideoEncodeH264PictureInfo.get_PicOrderCnt(this.segment(), index); }
     /// {@return `PicOrderCnt`}
     public @CType("int32_t") int PicOrderCnt() { return StdVideoEncodeH264PictureInfo.get_PicOrderCnt(this.segment()); }
     /// Sets `PicOrderCnt` with the given value at the given index.
@@ -349,11 +306,6 @@ public final class StdVideoEncodeH264PictureInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_PicOrderCnt(MemorySegment segment, @CType("int32_t") int value) { StdVideoEncodeH264PictureInfo.set_PicOrderCnt(segment, 0L, value); }
-    /// Sets `PicOrderCnt` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeH264PictureInfo PicOrderCntAt(long index, @CType("int32_t") int value) { StdVideoEncodeH264PictureInfo.set_PicOrderCnt(this.segment(), index, value); return this; }
     /// Sets `PicOrderCnt` with the given value.
     /// @param value the value
     /// @return `this`
@@ -366,9 +318,6 @@ public final class StdVideoEncodeH264PictureInfo extends Struct {
     /// {@return `temporal_id`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t") byte get_temporal_id(MemorySegment segment) { return StdVideoEncodeH264PictureInfo.get_temporal_id(segment, 0L); }
-    /// {@return `temporal_id` at the given index}
-    /// @param index the index
-    public @CType("uint8_t") byte temporal_idAt(long index) { return StdVideoEncodeH264PictureInfo.get_temporal_id(this.segment(), index); }
     /// {@return `temporal_id`}
     public @CType("uint8_t") byte temporal_id() { return StdVideoEncodeH264PictureInfo.get_temporal_id(this.segment()); }
     /// Sets `temporal_id` with the given value at the given index.
@@ -380,11 +329,6 @@ public final class StdVideoEncodeH264PictureInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_temporal_id(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoEncodeH264PictureInfo.set_temporal_id(segment, 0L, value); }
-    /// Sets `temporal_id` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeH264PictureInfo temporal_idAt(long index, @CType("uint8_t") byte value) { StdVideoEncodeH264PictureInfo.set_temporal_id(this.segment(), index, value); return this; }
     /// Sets `temporal_id` with the given value.
     /// @param value the value
     /// @return `this`
@@ -397,9 +341,6 @@ public final class StdVideoEncodeH264PictureInfo extends Struct {
     /// {@return `reserved1`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t [3]") byte get_reserved1(MemorySegment segment) { return StdVideoEncodeH264PictureInfo.get_reserved1(segment, 0L); }
-    /// {@return `reserved1` at the given index}
-    /// @param index the index
-    public @CType("uint8_t [3]") byte reserved1At(long index) { return StdVideoEncodeH264PictureInfo.get_reserved1(this.segment(), index); }
     /// {@return `reserved1`}
     public @CType("uint8_t [3]") byte reserved1() { return StdVideoEncodeH264PictureInfo.get_reserved1(this.segment()); }
     /// Sets `reserved1` with the given value at the given index.
@@ -411,11 +352,6 @@ public final class StdVideoEncodeH264PictureInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_reserved1(MemorySegment segment, @CType("uint8_t [3]") byte value) { StdVideoEncodeH264PictureInfo.set_reserved1(segment, 0L, value); }
-    /// Sets `reserved1` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeH264PictureInfo reserved1At(long index, @CType("uint8_t [3]") byte value) { StdVideoEncodeH264PictureInfo.set_reserved1(this.segment(), index, value); return this; }
     /// Sets `reserved1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -428,9 +364,6 @@ public final class StdVideoEncodeH264PictureInfo extends Struct {
     /// {@return `pRefLists`}
     /// @param segment the segment of the struct
     public static @CType("const StdVideoEncodeH264ReferenceListsInfo *") java.lang.foreign.MemorySegment get_pRefLists(MemorySegment segment) { return StdVideoEncodeH264PictureInfo.get_pRefLists(segment, 0L); }
-    /// {@return `pRefLists` at the given index}
-    /// @param index the index
-    public @CType("const StdVideoEncodeH264ReferenceListsInfo *") java.lang.foreign.MemorySegment pRefListsAt(long index) { return StdVideoEncodeH264PictureInfo.get_pRefLists(this.segment(), index); }
     /// {@return `pRefLists`}
     public @CType("const StdVideoEncodeH264ReferenceListsInfo *") java.lang.foreign.MemorySegment pRefLists() { return StdVideoEncodeH264PictureInfo.get_pRefLists(this.segment()); }
     /// Sets `pRefLists` with the given value at the given index.
@@ -442,14 +375,122 @@ public final class StdVideoEncodeH264PictureInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pRefLists(MemorySegment segment, @CType("const StdVideoEncodeH264ReferenceListsInfo *") java.lang.foreign.MemorySegment value) { StdVideoEncodeH264PictureInfo.set_pRefLists(segment, 0L, value); }
-    /// Sets `pRefLists` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeH264PictureInfo pRefListsAt(long index, @CType("const StdVideoEncodeH264ReferenceListsInfo *") java.lang.foreign.MemorySegment value) { StdVideoEncodeH264PictureInfo.set_pRefLists(this.segment(), index, value); return this; }
     /// Sets `pRefLists` with the given value.
     /// @param value the value
     /// @return `this`
     public StdVideoEncodeH264PictureInfo pRefLists(@CType("const StdVideoEncodeH264ReferenceListsInfo *") java.lang.foreign.MemorySegment value) { StdVideoEncodeH264PictureInfo.set_pRefLists(this.segment(), value); return this; }
 
+    /// A buffer of [StdVideoEncodeH264PictureInfo].
+    public static final class Buffer extends StdVideoEncodeH264PictureInfo {
+        private final long elementCount;
+
+        /// Creates `StdVideoEncodeH264PictureInfo.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `StdVideoEncodeH264PictureInfo`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `StdVideoEncodeH264PictureInfo`
+        public StdVideoEncodeH264PictureInfo asSlice(long index) { return new StdVideoEncodeH264PictureInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `StdVideoEncodeH264PictureInfo`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `StdVideoEncodeH264PictureInfo`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `flags` at the given index}
+        /// @param index the index
+        public @CType("StdVideoEncodeH264PictureInfoFlags") java.lang.foreign.MemorySegment flagsAt(long index) { return StdVideoEncodeH264PictureInfo.get_flags(this.segment(), index); }
+        /// Sets `flags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer flagsAt(long index, @CType("StdVideoEncodeH264PictureInfoFlags") java.lang.foreign.MemorySegment value) { StdVideoEncodeH264PictureInfo.set_flags(this.segment(), index, value); return this; }
+
+        /// {@return `seq_parameter_set_id` at the given index}
+        /// @param index the index
+        public @CType("uint8_t") byte seq_parameter_set_idAt(long index) { return StdVideoEncodeH264PictureInfo.get_seq_parameter_set_id(this.segment(), index); }
+        /// Sets `seq_parameter_set_id` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer seq_parameter_set_idAt(long index, @CType("uint8_t") byte value) { StdVideoEncodeH264PictureInfo.set_seq_parameter_set_id(this.segment(), index, value); return this; }
+
+        /// {@return `pic_parameter_set_id` at the given index}
+        /// @param index the index
+        public @CType("uint8_t") byte pic_parameter_set_idAt(long index) { return StdVideoEncodeH264PictureInfo.get_pic_parameter_set_id(this.segment(), index); }
+        /// Sets `pic_parameter_set_id` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pic_parameter_set_idAt(long index, @CType("uint8_t") byte value) { StdVideoEncodeH264PictureInfo.set_pic_parameter_set_id(this.segment(), index, value); return this; }
+
+        /// {@return `idr_pic_id` at the given index}
+        /// @param index the index
+        public @CType("uint16_t") short idr_pic_idAt(long index) { return StdVideoEncodeH264PictureInfo.get_idr_pic_id(this.segment(), index); }
+        /// Sets `idr_pic_id` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer idr_pic_idAt(long index, @CType("uint16_t") short value) { StdVideoEncodeH264PictureInfo.set_idr_pic_id(this.segment(), index, value); return this; }
+
+        /// {@return `primary_pic_type` at the given index}
+        /// @param index the index
+        public @CType("StdVideoH264PictureType") int primary_pic_typeAt(long index) { return StdVideoEncodeH264PictureInfo.get_primary_pic_type(this.segment(), index); }
+        /// Sets `primary_pic_type` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer primary_pic_typeAt(long index, @CType("StdVideoH264PictureType") int value) { StdVideoEncodeH264PictureInfo.set_primary_pic_type(this.segment(), index, value); return this; }
+
+        /// {@return `frame_num` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int frame_numAt(long index) { return StdVideoEncodeH264PictureInfo.get_frame_num(this.segment(), index); }
+        /// Sets `frame_num` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer frame_numAt(long index, @CType("uint32_t") int value) { StdVideoEncodeH264PictureInfo.set_frame_num(this.segment(), index, value); return this; }
+
+        /// {@return `PicOrderCnt` at the given index}
+        /// @param index the index
+        public @CType("int32_t") int PicOrderCntAt(long index) { return StdVideoEncodeH264PictureInfo.get_PicOrderCnt(this.segment(), index); }
+        /// Sets `PicOrderCnt` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer PicOrderCntAt(long index, @CType("int32_t") int value) { StdVideoEncodeH264PictureInfo.set_PicOrderCnt(this.segment(), index, value); return this; }
+
+        /// {@return `temporal_id` at the given index}
+        /// @param index the index
+        public @CType("uint8_t") byte temporal_idAt(long index) { return StdVideoEncodeH264PictureInfo.get_temporal_id(this.segment(), index); }
+        /// Sets `temporal_id` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer temporal_idAt(long index, @CType("uint8_t") byte value) { StdVideoEncodeH264PictureInfo.set_temporal_id(this.segment(), index, value); return this; }
+
+        /// {@return `reserved1` at the given index}
+        /// @param index the index
+        public @CType("uint8_t [3]") byte reserved1At(long index) { return StdVideoEncodeH264PictureInfo.get_reserved1(this.segment(), index); }
+        /// Sets `reserved1` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer reserved1At(long index, @CType("uint8_t [3]") byte value) { StdVideoEncodeH264PictureInfo.set_reserved1(this.segment(), index, value); return this; }
+
+        /// {@return `pRefLists` at the given index}
+        /// @param index the index
+        public @CType("const StdVideoEncodeH264ReferenceListsInfo *") java.lang.foreign.MemorySegment pRefListsAt(long index) { return StdVideoEncodeH264PictureInfo.get_pRefLists(this.segment(), index); }
+        /// Sets `pRefLists` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pRefListsAt(long index, @CType("const StdVideoEncodeH264ReferenceListsInfo *") java.lang.foreign.MemorySegment value) { StdVideoEncodeH264PictureInfo.set_pRefLists(this.segment(), index, value); return this; }
+
+    }
 }

@@ -40,7 +40,7 @@ import overrungl.util.*;
 ///     VkBool32 supported;
 /// } VkDescriptorSetLayoutSupport;
 /// ```
-public final class VkDescriptorSetLayoutSupport extends Struct {
+public sealed class VkDescriptorSetLayoutSupport extends Struct {
     /// The struct layout of `VkDescriptorSetLayoutSupport`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -64,6 +64,11 @@ public final class VkDescriptorSetLayoutSupport extends Struct {
     public static VkDescriptorSetLayoutSupport of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDescriptorSetLayoutSupport(segment); }
 
     /// Creates `VkDescriptorSetLayoutSupport` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkDescriptorSetLayoutSupport` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -76,7 +81,7 @@ public final class VkDescriptorSetLayoutSupport extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDescriptorSetLayoutSupport ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkDescriptorSetLayoutSupport(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkDescriptorSetLayoutSupport` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -87,18 +92,21 @@ public final class VkDescriptorSetLayoutSupport extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDescriptorSetLayoutSupport`
-    public static VkDescriptorSetLayoutSupport alloc(SegmentAllocator allocator, long count) { return new VkDescriptorSetLayoutSupport(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkDescriptorSetLayoutSupport`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkDescriptorSetLayoutSupport`
-    public VkDescriptorSetLayoutSupport asSlice(long index) { return new VkDescriptorSetLayoutSupport(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkDescriptorSetLayoutSupport` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkDescriptorSetLayoutSupport`
+    public static VkDescriptorSetLayoutSupport allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int supported) { return alloc(allocator).sType(sType).pNext(pNext).supported(supported); }
 
-    /// Creates a slice of `VkDescriptorSetLayoutSupport`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkDescriptorSetLayoutSupport`
-    public VkDescriptorSetLayoutSupport asSlice(long index, long count) { return new VkDescriptorSetLayoutSupport(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkDescriptorSetLayoutSupport copyFrom(VkDescriptorSetLayoutSupport src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -107,9 +115,6 @@ public final class VkDescriptorSetLayoutSupport extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkDescriptorSetLayoutSupport.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkDescriptorSetLayoutSupport.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkDescriptorSetLayoutSupport.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -121,11 +126,6 @@ public final class VkDescriptorSetLayoutSupport extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkDescriptorSetLayoutSupport.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorSetLayoutSupport sTypeAt(long index, @CType("VkStructureType") int value) { VkDescriptorSetLayoutSupport.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -138,9 +138,6 @@ public final class VkDescriptorSetLayoutSupport extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkDescriptorSetLayoutSupport.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkDescriptorSetLayoutSupport.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkDescriptorSetLayoutSupport.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -152,11 +149,6 @@ public final class VkDescriptorSetLayoutSupport extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkDescriptorSetLayoutSupport.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorSetLayoutSupport pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkDescriptorSetLayoutSupport.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -169,9 +161,6 @@ public final class VkDescriptorSetLayoutSupport extends Struct {
     /// {@return `supported`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_supported(MemorySegment segment) { return VkDescriptorSetLayoutSupport.get_supported(segment, 0L); }
-    /// {@return `supported` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int supportedAt(long index) { return VkDescriptorSetLayoutSupport.get_supported(this.segment(), index); }
     /// {@return `supported`}
     public @CType("VkBool32") int supported() { return VkDescriptorSetLayoutSupport.get_supported(this.segment()); }
     /// Sets `supported` with the given value at the given index.
@@ -183,14 +172,59 @@ public final class VkDescriptorSetLayoutSupport extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_supported(MemorySegment segment, @CType("VkBool32") int value) { VkDescriptorSetLayoutSupport.set_supported(segment, 0L, value); }
-    /// Sets `supported` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDescriptorSetLayoutSupport supportedAt(long index, @CType("VkBool32") int value) { VkDescriptorSetLayoutSupport.set_supported(this.segment(), index, value); return this; }
     /// Sets `supported` with the given value.
     /// @param value the value
     /// @return `this`
     public VkDescriptorSetLayoutSupport supported(@CType("VkBool32") int value) { VkDescriptorSetLayoutSupport.set_supported(this.segment(), value); return this; }
 
+    /// A buffer of [VkDescriptorSetLayoutSupport].
+    public static final class Buffer extends VkDescriptorSetLayoutSupport {
+        private final long elementCount;
+
+        /// Creates `VkDescriptorSetLayoutSupport.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkDescriptorSetLayoutSupport`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkDescriptorSetLayoutSupport`
+        public VkDescriptorSetLayoutSupport asSlice(long index) { return new VkDescriptorSetLayoutSupport(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkDescriptorSetLayoutSupport`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkDescriptorSetLayoutSupport`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkDescriptorSetLayoutSupport.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkDescriptorSetLayoutSupport.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkDescriptorSetLayoutSupport.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkDescriptorSetLayoutSupport.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `supported` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int supportedAt(long index) { return VkDescriptorSetLayoutSupport.get_supported(this.segment(), index); }
+        /// Sets `supported` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer supportedAt(long index, @CType("VkBool32") int value) { VkDescriptorSetLayoutSupport.set_supported(this.segment(), index, value); return this; }
+
+    }
 }

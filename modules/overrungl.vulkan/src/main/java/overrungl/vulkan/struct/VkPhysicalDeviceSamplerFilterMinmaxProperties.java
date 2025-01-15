@@ -43,7 +43,7 @@ import overrungl.util.*;
 ///     VkBool32 filterMinmaxImageComponentMapping;
 /// } VkPhysicalDeviceSamplerFilterMinmaxProperties;
 /// ```
-public final class VkPhysicalDeviceSamplerFilterMinmaxProperties extends Struct {
+public sealed class VkPhysicalDeviceSamplerFilterMinmaxProperties extends Struct {
     /// The struct layout of `VkPhysicalDeviceSamplerFilterMinmaxProperties`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -70,6 +70,11 @@ public final class VkPhysicalDeviceSamplerFilterMinmaxProperties extends Struct 
     public static VkPhysicalDeviceSamplerFilterMinmaxProperties of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceSamplerFilterMinmaxProperties(segment); }
 
     /// Creates `VkPhysicalDeviceSamplerFilterMinmaxProperties` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPhysicalDeviceSamplerFilterMinmaxProperties` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -82,7 +87,7 @@ public final class VkPhysicalDeviceSamplerFilterMinmaxProperties extends Struct 
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceSamplerFilterMinmaxProperties ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceSamplerFilterMinmaxProperties(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceSamplerFilterMinmaxProperties` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -93,18 +98,21 @@ public final class VkPhysicalDeviceSamplerFilterMinmaxProperties extends Struct 
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceSamplerFilterMinmaxProperties`
-    public static VkPhysicalDeviceSamplerFilterMinmaxProperties alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceSamplerFilterMinmaxProperties(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkPhysicalDeviceSamplerFilterMinmaxProperties`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDeviceSamplerFilterMinmaxProperties`
-    public VkPhysicalDeviceSamplerFilterMinmaxProperties asSlice(long index) { return new VkPhysicalDeviceSamplerFilterMinmaxProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkPhysicalDeviceSamplerFilterMinmaxProperties` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDeviceSamplerFilterMinmaxProperties`
+    public static VkPhysicalDeviceSamplerFilterMinmaxProperties allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int filterMinmaxSingleComponentFormats, @CType("VkBool32") int filterMinmaxImageComponentMapping) { return alloc(allocator).sType(sType).pNext(pNext).filterMinmaxSingleComponentFormats(filterMinmaxSingleComponentFormats).filterMinmaxImageComponentMapping(filterMinmaxImageComponentMapping); }
 
-    /// Creates a slice of `VkPhysicalDeviceSamplerFilterMinmaxProperties`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDeviceSamplerFilterMinmaxProperties`
-    public VkPhysicalDeviceSamplerFilterMinmaxProperties asSlice(long index, long count) { return new VkPhysicalDeviceSamplerFilterMinmaxProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDeviceSamplerFilterMinmaxProperties copyFrom(VkPhysicalDeviceSamplerFilterMinmaxProperties src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -113,9 +121,6 @@ public final class VkPhysicalDeviceSamplerFilterMinmaxProperties extends Struct 
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceSamplerFilterMinmaxProperties.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceSamplerFilterMinmaxProperties.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPhysicalDeviceSamplerFilterMinmaxProperties.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -127,11 +132,6 @@ public final class VkPhysicalDeviceSamplerFilterMinmaxProperties extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceSamplerFilterMinmaxProperties.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceSamplerFilterMinmaxProperties sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceSamplerFilterMinmaxProperties.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -144,9 +144,6 @@ public final class VkPhysicalDeviceSamplerFilterMinmaxProperties extends Struct 
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceSamplerFilterMinmaxProperties.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceSamplerFilterMinmaxProperties.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceSamplerFilterMinmaxProperties.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -158,11 +155,6 @@ public final class VkPhysicalDeviceSamplerFilterMinmaxProperties extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceSamplerFilterMinmaxProperties.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceSamplerFilterMinmaxProperties pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceSamplerFilterMinmaxProperties.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -175,9 +167,6 @@ public final class VkPhysicalDeviceSamplerFilterMinmaxProperties extends Struct 
     /// {@return `filterMinmaxSingleComponentFormats`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_filterMinmaxSingleComponentFormats(MemorySegment segment) { return VkPhysicalDeviceSamplerFilterMinmaxProperties.get_filterMinmaxSingleComponentFormats(segment, 0L); }
-    /// {@return `filterMinmaxSingleComponentFormats` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int filterMinmaxSingleComponentFormatsAt(long index) { return VkPhysicalDeviceSamplerFilterMinmaxProperties.get_filterMinmaxSingleComponentFormats(this.segment(), index); }
     /// {@return `filterMinmaxSingleComponentFormats`}
     public @CType("VkBool32") int filterMinmaxSingleComponentFormats() { return VkPhysicalDeviceSamplerFilterMinmaxProperties.get_filterMinmaxSingleComponentFormats(this.segment()); }
     /// Sets `filterMinmaxSingleComponentFormats` with the given value at the given index.
@@ -189,11 +178,6 @@ public final class VkPhysicalDeviceSamplerFilterMinmaxProperties extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_filterMinmaxSingleComponentFormats(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceSamplerFilterMinmaxProperties.set_filterMinmaxSingleComponentFormats(segment, 0L, value); }
-    /// Sets `filterMinmaxSingleComponentFormats` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceSamplerFilterMinmaxProperties filterMinmaxSingleComponentFormatsAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceSamplerFilterMinmaxProperties.set_filterMinmaxSingleComponentFormats(this.segment(), index, value); return this; }
     /// Sets `filterMinmaxSingleComponentFormats` with the given value.
     /// @param value the value
     /// @return `this`
@@ -206,9 +190,6 @@ public final class VkPhysicalDeviceSamplerFilterMinmaxProperties extends Struct 
     /// {@return `filterMinmaxImageComponentMapping`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_filterMinmaxImageComponentMapping(MemorySegment segment) { return VkPhysicalDeviceSamplerFilterMinmaxProperties.get_filterMinmaxImageComponentMapping(segment, 0L); }
-    /// {@return `filterMinmaxImageComponentMapping` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int filterMinmaxImageComponentMappingAt(long index) { return VkPhysicalDeviceSamplerFilterMinmaxProperties.get_filterMinmaxImageComponentMapping(this.segment(), index); }
     /// {@return `filterMinmaxImageComponentMapping`}
     public @CType("VkBool32") int filterMinmaxImageComponentMapping() { return VkPhysicalDeviceSamplerFilterMinmaxProperties.get_filterMinmaxImageComponentMapping(this.segment()); }
     /// Sets `filterMinmaxImageComponentMapping` with the given value at the given index.
@@ -220,14 +201,68 @@ public final class VkPhysicalDeviceSamplerFilterMinmaxProperties extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_filterMinmaxImageComponentMapping(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceSamplerFilterMinmaxProperties.set_filterMinmaxImageComponentMapping(segment, 0L, value); }
-    /// Sets `filterMinmaxImageComponentMapping` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceSamplerFilterMinmaxProperties filterMinmaxImageComponentMappingAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceSamplerFilterMinmaxProperties.set_filterMinmaxImageComponentMapping(this.segment(), index, value); return this; }
     /// Sets `filterMinmaxImageComponentMapping` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceSamplerFilterMinmaxProperties filterMinmaxImageComponentMapping(@CType("VkBool32") int value) { VkPhysicalDeviceSamplerFilterMinmaxProperties.set_filterMinmaxImageComponentMapping(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDeviceSamplerFilterMinmaxProperties].
+    public static final class Buffer extends VkPhysicalDeviceSamplerFilterMinmaxProperties {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDeviceSamplerFilterMinmaxProperties.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDeviceSamplerFilterMinmaxProperties`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDeviceSamplerFilterMinmaxProperties`
+        public VkPhysicalDeviceSamplerFilterMinmaxProperties asSlice(long index) { return new VkPhysicalDeviceSamplerFilterMinmaxProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDeviceSamplerFilterMinmaxProperties`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDeviceSamplerFilterMinmaxProperties`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceSamplerFilterMinmaxProperties.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceSamplerFilterMinmaxProperties.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceSamplerFilterMinmaxProperties.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceSamplerFilterMinmaxProperties.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `filterMinmaxSingleComponentFormats` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int filterMinmaxSingleComponentFormatsAt(long index) { return VkPhysicalDeviceSamplerFilterMinmaxProperties.get_filterMinmaxSingleComponentFormats(this.segment(), index); }
+        /// Sets `filterMinmaxSingleComponentFormats` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer filterMinmaxSingleComponentFormatsAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceSamplerFilterMinmaxProperties.set_filterMinmaxSingleComponentFormats(this.segment(), index, value); return this; }
+
+        /// {@return `filterMinmaxImageComponentMapping` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int filterMinmaxImageComponentMappingAt(long index) { return VkPhysicalDeviceSamplerFilterMinmaxProperties.get_filterMinmaxImageComponentMapping(this.segment(), index); }
+        /// Sets `filterMinmaxImageComponentMapping` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer filterMinmaxImageComponentMappingAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceSamplerFilterMinmaxProperties.set_filterMinmaxImageComponentMapping(this.segment(), index, value); return this; }
+
+    }
 }

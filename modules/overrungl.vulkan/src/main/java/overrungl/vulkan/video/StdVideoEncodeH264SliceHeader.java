@@ -61,7 +61,7 @@ import overrungl.util.*;
 ///     const StdVideoEncodeH264WeightTable * pWeightTable;
 /// } StdVideoEncodeH264SliceHeader;
 /// ```
-public final class StdVideoEncodeH264SliceHeader extends Struct {
+public sealed class StdVideoEncodeH264SliceHeader extends Struct {
     /// The struct layout of `StdVideoEncodeH264SliceHeader`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         StdVideoEncodeH264SliceHeaderFlags.LAYOUT.withName("flags"),
@@ -106,6 +106,11 @@ public final class StdVideoEncodeH264SliceHeader extends Struct {
     public static StdVideoEncodeH264SliceHeader of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoEncodeH264SliceHeader(segment); }
 
     /// Creates `StdVideoEncodeH264SliceHeader` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `StdVideoEncodeH264SliceHeader` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -118,7 +123,7 @@ public final class StdVideoEncodeH264SliceHeader extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoEncodeH264SliceHeader ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoEncodeH264SliceHeader(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `StdVideoEncodeH264SliceHeader` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -129,18 +134,21 @@ public final class StdVideoEncodeH264SliceHeader extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `StdVideoEncodeH264SliceHeader`
-    public static StdVideoEncodeH264SliceHeader alloc(SegmentAllocator allocator, long count) { return new StdVideoEncodeH264SliceHeader(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `StdVideoEncodeH264SliceHeader`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `StdVideoEncodeH264SliceHeader`
-    public StdVideoEncodeH264SliceHeader asSlice(long index) { return new StdVideoEncodeH264SliceHeader(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `StdVideoEncodeH264SliceHeader` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `StdVideoEncodeH264SliceHeader`
+    public static StdVideoEncodeH264SliceHeader allocInit(SegmentAllocator allocator, @CType("StdVideoEncodeH264SliceHeaderFlags") java.lang.foreign.MemorySegment flags, @CType("uint32_t") int first_mb_in_slice, @CType("StdVideoH264SliceType") int slice_type, @CType("int8_t") byte slice_alpha_c0_offset_div2, @CType("int8_t") byte slice_beta_offset_div2, @CType("int8_t") byte slice_qp_delta, @CType("uint8_t") byte reserved1, @CType("StdVideoH264CabacInitIdc") int cabac_init_idc, @CType("StdVideoH264DisableDeblockingFilterIdc") int disable_deblocking_filter_idc, @CType("const StdVideoEncodeH264WeightTable *") java.lang.foreign.MemorySegment pWeightTable) { return alloc(allocator).flags(flags).first_mb_in_slice(first_mb_in_slice).slice_type(slice_type).slice_alpha_c0_offset_div2(slice_alpha_c0_offset_div2).slice_beta_offset_div2(slice_beta_offset_div2).slice_qp_delta(slice_qp_delta).reserved1(reserved1).cabac_init_idc(cabac_init_idc).disable_deblocking_filter_idc(disable_deblocking_filter_idc).pWeightTable(pWeightTable); }
 
-    /// Creates a slice of `StdVideoEncodeH264SliceHeader`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `StdVideoEncodeH264SliceHeader`
-    public StdVideoEncodeH264SliceHeader asSlice(long index, long count) { return new StdVideoEncodeH264SliceHeader(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public StdVideoEncodeH264SliceHeader copyFrom(StdVideoEncodeH264SliceHeader src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
@@ -149,9 +157,6 @@ public final class StdVideoEncodeH264SliceHeader extends Struct {
     /// {@return `flags`}
     /// @param segment the segment of the struct
     public static @CType("StdVideoEncodeH264SliceHeaderFlags") java.lang.foreign.MemorySegment get_flags(MemorySegment segment) { return StdVideoEncodeH264SliceHeader.get_flags(segment, 0L); }
-    /// {@return `flags` at the given index}
-    /// @param index the index
-    public @CType("StdVideoEncodeH264SliceHeaderFlags") java.lang.foreign.MemorySegment flagsAt(long index) { return StdVideoEncodeH264SliceHeader.get_flags(this.segment(), index); }
     /// {@return `flags`}
     public @CType("StdVideoEncodeH264SliceHeaderFlags") java.lang.foreign.MemorySegment flags() { return StdVideoEncodeH264SliceHeader.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
@@ -163,11 +168,6 @@ public final class StdVideoEncodeH264SliceHeader extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_flags(MemorySegment segment, @CType("StdVideoEncodeH264SliceHeaderFlags") java.lang.foreign.MemorySegment value) { StdVideoEncodeH264SliceHeader.set_flags(segment, 0L, value); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeH264SliceHeader flagsAt(long index, @CType("StdVideoEncodeH264SliceHeaderFlags") java.lang.foreign.MemorySegment value) { StdVideoEncodeH264SliceHeader.set_flags(this.segment(), index, value); return this; }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -180,9 +180,6 @@ public final class StdVideoEncodeH264SliceHeader extends Struct {
     /// {@return `first_mb_in_slice`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_first_mb_in_slice(MemorySegment segment) { return StdVideoEncodeH264SliceHeader.get_first_mb_in_slice(segment, 0L); }
-    /// {@return `first_mb_in_slice` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int first_mb_in_sliceAt(long index) { return StdVideoEncodeH264SliceHeader.get_first_mb_in_slice(this.segment(), index); }
     /// {@return `first_mb_in_slice`}
     public @CType("uint32_t") int first_mb_in_slice() { return StdVideoEncodeH264SliceHeader.get_first_mb_in_slice(this.segment()); }
     /// Sets `first_mb_in_slice` with the given value at the given index.
@@ -194,11 +191,6 @@ public final class StdVideoEncodeH264SliceHeader extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_first_mb_in_slice(MemorySegment segment, @CType("uint32_t") int value) { StdVideoEncodeH264SliceHeader.set_first_mb_in_slice(segment, 0L, value); }
-    /// Sets `first_mb_in_slice` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeH264SliceHeader first_mb_in_sliceAt(long index, @CType("uint32_t") int value) { StdVideoEncodeH264SliceHeader.set_first_mb_in_slice(this.segment(), index, value); return this; }
     /// Sets `first_mb_in_slice` with the given value.
     /// @param value the value
     /// @return `this`
@@ -211,9 +203,6 @@ public final class StdVideoEncodeH264SliceHeader extends Struct {
     /// {@return `slice_type`}
     /// @param segment the segment of the struct
     public static @CType("StdVideoH264SliceType") int get_slice_type(MemorySegment segment) { return StdVideoEncodeH264SliceHeader.get_slice_type(segment, 0L); }
-    /// {@return `slice_type` at the given index}
-    /// @param index the index
-    public @CType("StdVideoH264SliceType") int slice_typeAt(long index) { return StdVideoEncodeH264SliceHeader.get_slice_type(this.segment(), index); }
     /// {@return `slice_type`}
     public @CType("StdVideoH264SliceType") int slice_type() { return StdVideoEncodeH264SliceHeader.get_slice_type(this.segment()); }
     /// Sets `slice_type` with the given value at the given index.
@@ -225,11 +214,6 @@ public final class StdVideoEncodeH264SliceHeader extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_slice_type(MemorySegment segment, @CType("StdVideoH264SliceType") int value) { StdVideoEncodeH264SliceHeader.set_slice_type(segment, 0L, value); }
-    /// Sets `slice_type` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeH264SliceHeader slice_typeAt(long index, @CType("StdVideoH264SliceType") int value) { StdVideoEncodeH264SliceHeader.set_slice_type(this.segment(), index, value); return this; }
     /// Sets `slice_type` with the given value.
     /// @param value the value
     /// @return `this`
@@ -242,9 +226,6 @@ public final class StdVideoEncodeH264SliceHeader extends Struct {
     /// {@return `slice_alpha_c0_offset_div2`}
     /// @param segment the segment of the struct
     public static @CType("int8_t") byte get_slice_alpha_c0_offset_div2(MemorySegment segment) { return StdVideoEncodeH264SliceHeader.get_slice_alpha_c0_offset_div2(segment, 0L); }
-    /// {@return `slice_alpha_c0_offset_div2` at the given index}
-    /// @param index the index
-    public @CType("int8_t") byte slice_alpha_c0_offset_div2At(long index) { return StdVideoEncodeH264SliceHeader.get_slice_alpha_c0_offset_div2(this.segment(), index); }
     /// {@return `slice_alpha_c0_offset_div2`}
     public @CType("int8_t") byte slice_alpha_c0_offset_div2() { return StdVideoEncodeH264SliceHeader.get_slice_alpha_c0_offset_div2(this.segment()); }
     /// Sets `slice_alpha_c0_offset_div2` with the given value at the given index.
@@ -256,11 +237,6 @@ public final class StdVideoEncodeH264SliceHeader extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_slice_alpha_c0_offset_div2(MemorySegment segment, @CType("int8_t") byte value) { StdVideoEncodeH264SliceHeader.set_slice_alpha_c0_offset_div2(segment, 0L, value); }
-    /// Sets `slice_alpha_c0_offset_div2` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeH264SliceHeader slice_alpha_c0_offset_div2At(long index, @CType("int8_t") byte value) { StdVideoEncodeH264SliceHeader.set_slice_alpha_c0_offset_div2(this.segment(), index, value); return this; }
     /// Sets `slice_alpha_c0_offset_div2` with the given value.
     /// @param value the value
     /// @return `this`
@@ -273,9 +249,6 @@ public final class StdVideoEncodeH264SliceHeader extends Struct {
     /// {@return `slice_beta_offset_div2`}
     /// @param segment the segment of the struct
     public static @CType("int8_t") byte get_slice_beta_offset_div2(MemorySegment segment) { return StdVideoEncodeH264SliceHeader.get_slice_beta_offset_div2(segment, 0L); }
-    /// {@return `slice_beta_offset_div2` at the given index}
-    /// @param index the index
-    public @CType("int8_t") byte slice_beta_offset_div2At(long index) { return StdVideoEncodeH264SliceHeader.get_slice_beta_offset_div2(this.segment(), index); }
     /// {@return `slice_beta_offset_div2`}
     public @CType("int8_t") byte slice_beta_offset_div2() { return StdVideoEncodeH264SliceHeader.get_slice_beta_offset_div2(this.segment()); }
     /// Sets `slice_beta_offset_div2` with the given value at the given index.
@@ -287,11 +260,6 @@ public final class StdVideoEncodeH264SliceHeader extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_slice_beta_offset_div2(MemorySegment segment, @CType("int8_t") byte value) { StdVideoEncodeH264SliceHeader.set_slice_beta_offset_div2(segment, 0L, value); }
-    /// Sets `slice_beta_offset_div2` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeH264SliceHeader slice_beta_offset_div2At(long index, @CType("int8_t") byte value) { StdVideoEncodeH264SliceHeader.set_slice_beta_offset_div2(this.segment(), index, value); return this; }
     /// Sets `slice_beta_offset_div2` with the given value.
     /// @param value the value
     /// @return `this`
@@ -304,9 +272,6 @@ public final class StdVideoEncodeH264SliceHeader extends Struct {
     /// {@return `slice_qp_delta`}
     /// @param segment the segment of the struct
     public static @CType("int8_t") byte get_slice_qp_delta(MemorySegment segment) { return StdVideoEncodeH264SliceHeader.get_slice_qp_delta(segment, 0L); }
-    /// {@return `slice_qp_delta` at the given index}
-    /// @param index the index
-    public @CType("int8_t") byte slice_qp_deltaAt(long index) { return StdVideoEncodeH264SliceHeader.get_slice_qp_delta(this.segment(), index); }
     /// {@return `slice_qp_delta`}
     public @CType("int8_t") byte slice_qp_delta() { return StdVideoEncodeH264SliceHeader.get_slice_qp_delta(this.segment()); }
     /// Sets `slice_qp_delta` with the given value at the given index.
@@ -318,11 +283,6 @@ public final class StdVideoEncodeH264SliceHeader extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_slice_qp_delta(MemorySegment segment, @CType("int8_t") byte value) { StdVideoEncodeH264SliceHeader.set_slice_qp_delta(segment, 0L, value); }
-    /// Sets `slice_qp_delta` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeH264SliceHeader slice_qp_deltaAt(long index, @CType("int8_t") byte value) { StdVideoEncodeH264SliceHeader.set_slice_qp_delta(this.segment(), index, value); return this; }
     /// Sets `slice_qp_delta` with the given value.
     /// @param value the value
     /// @return `this`
@@ -335,9 +295,6 @@ public final class StdVideoEncodeH264SliceHeader extends Struct {
     /// {@return `reserved1`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t") byte get_reserved1(MemorySegment segment) { return StdVideoEncodeH264SliceHeader.get_reserved1(segment, 0L); }
-    /// {@return `reserved1` at the given index}
-    /// @param index the index
-    public @CType("uint8_t") byte reserved1At(long index) { return StdVideoEncodeH264SliceHeader.get_reserved1(this.segment(), index); }
     /// {@return `reserved1`}
     public @CType("uint8_t") byte reserved1() { return StdVideoEncodeH264SliceHeader.get_reserved1(this.segment()); }
     /// Sets `reserved1` with the given value at the given index.
@@ -349,11 +306,6 @@ public final class StdVideoEncodeH264SliceHeader extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_reserved1(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoEncodeH264SliceHeader.set_reserved1(segment, 0L, value); }
-    /// Sets `reserved1` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeH264SliceHeader reserved1At(long index, @CType("uint8_t") byte value) { StdVideoEncodeH264SliceHeader.set_reserved1(this.segment(), index, value); return this; }
     /// Sets `reserved1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -366,9 +318,6 @@ public final class StdVideoEncodeH264SliceHeader extends Struct {
     /// {@return `cabac_init_idc`}
     /// @param segment the segment of the struct
     public static @CType("StdVideoH264CabacInitIdc") int get_cabac_init_idc(MemorySegment segment) { return StdVideoEncodeH264SliceHeader.get_cabac_init_idc(segment, 0L); }
-    /// {@return `cabac_init_idc` at the given index}
-    /// @param index the index
-    public @CType("StdVideoH264CabacInitIdc") int cabac_init_idcAt(long index) { return StdVideoEncodeH264SliceHeader.get_cabac_init_idc(this.segment(), index); }
     /// {@return `cabac_init_idc`}
     public @CType("StdVideoH264CabacInitIdc") int cabac_init_idc() { return StdVideoEncodeH264SliceHeader.get_cabac_init_idc(this.segment()); }
     /// Sets `cabac_init_idc` with the given value at the given index.
@@ -380,11 +329,6 @@ public final class StdVideoEncodeH264SliceHeader extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_cabac_init_idc(MemorySegment segment, @CType("StdVideoH264CabacInitIdc") int value) { StdVideoEncodeH264SliceHeader.set_cabac_init_idc(segment, 0L, value); }
-    /// Sets `cabac_init_idc` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeH264SliceHeader cabac_init_idcAt(long index, @CType("StdVideoH264CabacInitIdc") int value) { StdVideoEncodeH264SliceHeader.set_cabac_init_idc(this.segment(), index, value); return this; }
     /// Sets `cabac_init_idc` with the given value.
     /// @param value the value
     /// @return `this`
@@ -397,9 +341,6 @@ public final class StdVideoEncodeH264SliceHeader extends Struct {
     /// {@return `disable_deblocking_filter_idc`}
     /// @param segment the segment of the struct
     public static @CType("StdVideoH264DisableDeblockingFilterIdc") int get_disable_deblocking_filter_idc(MemorySegment segment) { return StdVideoEncodeH264SliceHeader.get_disable_deblocking_filter_idc(segment, 0L); }
-    /// {@return `disable_deblocking_filter_idc` at the given index}
-    /// @param index the index
-    public @CType("StdVideoH264DisableDeblockingFilterIdc") int disable_deblocking_filter_idcAt(long index) { return StdVideoEncodeH264SliceHeader.get_disable_deblocking_filter_idc(this.segment(), index); }
     /// {@return `disable_deblocking_filter_idc`}
     public @CType("StdVideoH264DisableDeblockingFilterIdc") int disable_deblocking_filter_idc() { return StdVideoEncodeH264SliceHeader.get_disable_deblocking_filter_idc(this.segment()); }
     /// Sets `disable_deblocking_filter_idc` with the given value at the given index.
@@ -411,11 +352,6 @@ public final class StdVideoEncodeH264SliceHeader extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_disable_deblocking_filter_idc(MemorySegment segment, @CType("StdVideoH264DisableDeblockingFilterIdc") int value) { StdVideoEncodeH264SliceHeader.set_disable_deblocking_filter_idc(segment, 0L, value); }
-    /// Sets `disable_deblocking_filter_idc` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeH264SliceHeader disable_deblocking_filter_idcAt(long index, @CType("StdVideoH264DisableDeblockingFilterIdc") int value) { StdVideoEncodeH264SliceHeader.set_disable_deblocking_filter_idc(this.segment(), index, value); return this; }
     /// Sets `disable_deblocking_filter_idc` with the given value.
     /// @param value the value
     /// @return `this`
@@ -428,9 +364,6 @@ public final class StdVideoEncodeH264SliceHeader extends Struct {
     /// {@return `pWeightTable`}
     /// @param segment the segment of the struct
     public static @CType("const StdVideoEncodeH264WeightTable *") java.lang.foreign.MemorySegment get_pWeightTable(MemorySegment segment) { return StdVideoEncodeH264SliceHeader.get_pWeightTable(segment, 0L); }
-    /// {@return `pWeightTable` at the given index}
-    /// @param index the index
-    public @CType("const StdVideoEncodeH264WeightTable *") java.lang.foreign.MemorySegment pWeightTableAt(long index) { return StdVideoEncodeH264SliceHeader.get_pWeightTable(this.segment(), index); }
     /// {@return `pWeightTable`}
     public @CType("const StdVideoEncodeH264WeightTable *") java.lang.foreign.MemorySegment pWeightTable() { return StdVideoEncodeH264SliceHeader.get_pWeightTable(this.segment()); }
     /// Sets `pWeightTable` with the given value at the given index.
@@ -442,14 +375,122 @@ public final class StdVideoEncodeH264SliceHeader extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pWeightTable(MemorySegment segment, @CType("const StdVideoEncodeH264WeightTable *") java.lang.foreign.MemorySegment value) { StdVideoEncodeH264SliceHeader.set_pWeightTable(segment, 0L, value); }
-    /// Sets `pWeightTable` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoEncodeH264SliceHeader pWeightTableAt(long index, @CType("const StdVideoEncodeH264WeightTable *") java.lang.foreign.MemorySegment value) { StdVideoEncodeH264SliceHeader.set_pWeightTable(this.segment(), index, value); return this; }
     /// Sets `pWeightTable` with the given value.
     /// @param value the value
     /// @return `this`
     public StdVideoEncodeH264SliceHeader pWeightTable(@CType("const StdVideoEncodeH264WeightTable *") java.lang.foreign.MemorySegment value) { StdVideoEncodeH264SliceHeader.set_pWeightTable(this.segment(), value); return this; }
 
+    /// A buffer of [StdVideoEncodeH264SliceHeader].
+    public static final class Buffer extends StdVideoEncodeH264SliceHeader {
+        private final long elementCount;
+
+        /// Creates `StdVideoEncodeH264SliceHeader.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `StdVideoEncodeH264SliceHeader`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `StdVideoEncodeH264SliceHeader`
+        public StdVideoEncodeH264SliceHeader asSlice(long index) { return new StdVideoEncodeH264SliceHeader(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `StdVideoEncodeH264SliceHeader`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `StdVideoEncodeH264SliceHeader`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `flags` at the given index}
+        /// @param index the index
+        public @CType("StdVideoEncodeH264SliceHeaderFlags") java.lang.foreign.MemorySegment flagsAt(long index) { return StdVideoEncodeH264SliceHeader.get_flags(this.segment(), index); }
+        /// Sets `flags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer flagsAt(long index, @CType("StdVideoEncodeH264SliceHeaderFlags") java.lang.foreign.MemorySegment value) { StdVideoEncodeH264SliceHeader.set_flags(this.segment(), index, value); return this; }
+
+        /// {@return `first_mb_in_slice` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int first_mb_in_sliceAt(long index) { return StdVideoEncodeH264SliceHeader.get_first_mb_in_slice(this.segment(), index); }
+        /// Sets `first_mb_in_slice` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer first_mb_in_sliceAt(long index, @CType("uint32_t") int value) { StdVideoEncodeH264SliceHeader.set_first_mb_in_slice(this.segment(), index, value); return this; }
+
+        /// {@return `slice_type` at the given index}
+        /// @param index the index
+        public @CType("StdVideoH264SliceType") int slice_typeAt(long index) { return StdVideoEncodeH264SliceHeader.get_slice_type(this.segment(), index); }
+        /// Sets `slice_type` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer slice_typeAt(long index, @CType("StdVideoH264SliceType") int value) { StdVideoEncodeH264SliceHeader.set_slice_type(this.segment(), index, value); return this; }
+
+        /// {@return `slice_alpha_c0_offset_div2` at the given index}
+        /// @param index the index
+        public @CType("int8_t") byte slice_alpha_c0_offset_div2At(long index) { return StdVideoEncodeH264SliceHeader.get_slice_alpha_c0_offset_div2(this.segment(), index); }
+        /// Sets `slice_alpha_c0_offset_div2` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer slice_alpha_c0_offset_div2At(long index, @CType("int8_t") byte value) { StdVideoEncodeH264SliceHeader.set_slice_alpha_c0_offset_div2(this.segment(), index, value); return this; }
+
+        /// {@return `slice_beta_offset_div2` at the given index}
+        /// @param index the index
+        public @CType("int8_t") byte slice_beta_offset_div2At(long index) { return StdVideoEncodeH264SliceHeader.get_slice_beta_offset_div2(this.segment(), index); }
+        /// Sets `slice_beta_offset_div2` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer slice_beta_offset_div2At(long index, @CType("int8_t") byte value) { StdVideoEncodeH264SliceHeader.set_slice_beta_offset_div2(this.segment(), index, value); return this; }
+
+        /// {@return `slice_qp_delta` at the given index}
+        /// @param index the index
+        public @CType("int8_t") byte slice_qp_deltaAt(long index) { return StdVideoEncodeH264SliceHeader.get_slice_qp_delta(this.segment(), index); }
+        /// Sets `slice_qp_delta` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer slice_qp_deltaAt(long index, @CType("int8_t") byte value) { StdVideoEncodeH264SliceHeader.set_slice_qp_delta(this.segment(), index, value); return this; }
+
+        /// {@return `reserved1` at the given index}
+        /// @param index the index
+        public @CType("uint8_t") byte reserved1At(long index) { return StdVideoEncodeH264SliceHeader.get_reserved1(this.segment(), index); }
+        /// Sets `reserved1` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer reserved1At(long index, @CType("uint8_t") byte value) { StdVideoEncodeH264SliceHeader.set_reserved1(this.segment(), index, value); return this; }
+
+        /// {@return `cabac_init_idc` at the given index}
+        /// @param index the index
+        public @CType("StdVideoH264CabacInitIdc") int cabac_init_idcAt(long index) { return StdVideoEncodeH264SliceHeader.get_cabac_init_idc(this.segment(), index); }
+        /// Sets `cabac_init_idc` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer cabac_init_idcAt(long index, @CType("StdVideoH264CabacInitIdc") int value) { StdVideoEncodeH264SliceHeader.set_cabac_init_idc(this.segment(), index, value); return this; }
+
+        /// {@return `disable_deblocking_filter_idc` at the given index}
+        /// @param index the index
+        public @CType("StdVideoH264DisableDeblockingFilterIdc") int disable_deblocking_filter_idcAt(long index) { return StdVideoEncodeH264SliceHeader.get_disable_deblocking_filter_idc(this.segment(), index); }
+        /// Sets `disable_deblocking_filter_idc` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer disable_deblocking_filter_idcAt(long index, @CType("StdVideoH264DisableDeblockingFilterIdc") int value) { StdVideoEncodeH264SliceHeader.set_disable_deblocking_filter_idc(this.segment(), index, value); return this; }
+
+        /// {@return `pWeightTable` at the given index}
+        /// @param index the index
+        public @CType("const StdVideoEncodeH264WeightTable *") java.lang.foreign.MemorySegment pWeightTableAt(long index) { return StdVideoEncodeH264SliceHeader.get_pWeightTable(this.segment(), index); }
+        /// Sets `pWeightTable` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pWeightTableAt(long index, @CType("const StdVideoEncodeH264WeightTable *") java.lang.foreign.MemorySegment value) { StdVideoEncodeH264SliceHeader.set_pWeightTable(this.segment(), index, value); return this; }
+
+    }
 }

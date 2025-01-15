@@ -40,7 +40,7 @@ import overrungl.util.*;
 ///     VkBool32 mutableDescriptorType;
 /// } VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT;
 /// ```
-public final class VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT extends Struct {
+public sealed class VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT extends Struct {
     /// The struct layout of `VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -64,6 +64,11 @@ public final class VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT extends Stru
     public static VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT(segment); }
 
     /// Creates `VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -76,7 +81,7 @@ public final class VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT extends Stru
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -87,18 +92,21 @@ public final class VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT extends Stru
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT`
-    public static VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT`
-    public VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT asSlice(long index) { return new VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT`
+    public static VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int mutableDescriptorType) { return alloc(allocator).sType(sType).pNext(pNext).mutableDescriptorType(mutableDescriptorType); }
 
-    /// Creates a slice of `VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT`
-    public VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT asSlice(long index, long count) { return new VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT copyFrom(VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -107,9 +115,6 @@ public final class VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT extends Stru
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -121,11 +126,6 @@ public final class VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -138,9 +138,6 @@ public final class VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT extends Stru
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -152,11 +149,6 @@ public final class VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -169,9 +161,6 @@ public final class VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT extends Stru
     /// {@return `mutableDescriptorType`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_mutableDescriptorType(MemorySegment segment) { return VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT.get_mutableDescriptorType(segment, 0L); }
-    /// {@return `mutableDescriptorType` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int mutableDescriptorTypeAt(long index) { return VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT.get_mutableDescriptorType(this.segment(), index); }
     /// {@return `mutableDescriptorType`}
     public @CType("VkBool32") int mutableDescriptorType() { return VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT.get_mutableDescriptorType(this.segment()); }
     /// Sets `mutableDescriptorType` with the given value at the given index.
@@ -183,14 +172,59 @@ public final class VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT extends Stru
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_mutableDescriptorType(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT.set_mutableDescriptorType(segment, 0L, value); }
-    /// Sets `mutableDescriptorType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT mutableDescriptorTypeAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT.set_mutableDescriptorType(this.segment(), index, value); return this; }
     /// Sets `mutableDescriptorType` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT mutableDescriptorType(@CType("VkBool32") int value) { VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT.set_mutableDescriptorType(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT].
+    public static final class Buffer extends VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT`
+        public VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT asSlice(long index) { return new VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `mutableDescriptorType` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int mutableDescriptorTypeAt(long index) { return VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT.get_mutableDescriptorType(this.segment(), index); }
+        /// Sets `mutableDescriptorType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer mutableDescriptorTypeAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceMutableDescriptorTypeFeaturesEXT.set_mutableDescriptorType(this.segment(), index, value); return this; }
+
+    }
 }

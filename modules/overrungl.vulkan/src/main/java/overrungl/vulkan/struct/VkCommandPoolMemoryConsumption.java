@@ -46,7 +46,7 @@ import overrungl.util.*;
 ///     VkDeviceSize commandBufferAllocated;
 /// } VkCommandPoolMemoryConsumption;
 /// ```
-public final class VkCommandPoolMemoryConsumption extends Struct {
+public sealed class VkCommandPoolMemoryConsumption extends Struct {
     /// The struct layout of `VkCommandPoolMemoryConsumption`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -76,6 +76,11 @@ public final class VkCommandPoolMemoryConsumption extends Struct {
     public static VkCommandPoolMemoryConsumption of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkCommandPoolMemoryConsumption(segment); }
 
     /// Creates `VkCommandPoolMemoryConsumption` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkCommandPoolMemoryConsumption` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -88,7 +93,7 @@ public final class VkCommandPoolMemoryConsumption extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkCommandPoolMemoryConsumption ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkCommandPoolMemoryConsumption(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkCommandPoolMemoryConsumption` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -99,18 +104,21 @@ public final class VkCommandPoolMemoryConsumption extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkCommandPoolMemoryConsumption`
-    public static VkCommandPoolMemoryConsumption alloc(SegmentAllocator allocator, long count) { return new VkCommandPoolMemoryConsumption(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkCommandPoolMemoryConsumption`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkCommandPoolMemoryConsumption`
-    public VkCommandPoolMemoryConsumption asSlice(long index) { return new VkCommandPoolMemoryConsumption(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkCommandPoolMemoryConsumption` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkCommandPoolMemoryConsumption`
+    public static VkCommandPoolMemoryConsumption allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkDeviceSize") long commandPoolAllocated, @CType("VkDeviceSize") long commandPoolReservedSize, @CType("VkDeviceSize") long commandBufferAllocated) { return alloc(allocator).sType(sType).pNext(pNext).commandPoolAllocated(commandPoolAllocated).commandPoolReservedSize(commandPoolReservedSize).commandBufferAllocated(commandBufferAllocated); }
 
-    /// Creates a slice of `VkCommandPoolMemoryConsumption`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkCommandPoolMemoryConsumption`
-    public VkCommandPoolMemoryConsumption asSlice(long index, long count) { return new VkCommandPoolMemoryConsumption(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkCommandPoolMemoryConsumption copyFrom(VkCommandPoolMemoryConsumption src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -119,9 +127,6 @@ public final class VkCommandPoolMemoryConsumption extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkCommandPoolMemoryConsumption.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkCommandPoolMemoryConsumption.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkCommandPoolMemoryConsumption.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -133,11 +138,6 @@ public final class VkCommandPoolMemoryConsumption extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkCommandPoolMemoryConsumption.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCommandPoolMemoryConsumption sTypeAt(long index, @CType("VkStructureType") int value) { VkCommandPoolMemoryConsumption.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,9 +150,6 @@ public final class VkCommandPoolMemoryConsumption extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkCommandPoolMemoryConsumption.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkCommandPoolMemoryConsumption.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkCommandPoolMemoryConsumption.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -164,11 +161,6 @@ public final class VkCommandPoolMemoryConsumption extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkCommandPoolMemoryConsumption.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCommandPoolMemoryConsumption pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkCommandPoolMemoryConsumption.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -181,9 +173,6 @@ public final class VkCommandPoolMemoryConsumption extends Struct {
     /// {@return `commandPoolAllocated`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_commandPoolAllocated(MemorySegment segment) { return VkCommandPoolMemoryConsumption.get_commandPoolAllocated(segment, 0L); }
-    /// {@return `commandPoolAllocated` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long commandPoolAllocatedAt(long index) { return VkCommandPoolMemoryConsumption.get_commandPoolAllocated(this.segment(), index); }
     /// {@return `commandPoolAllocated`}
     public @CType("VkDeviceSize") long commandPoolAllocated() { return VkCommandPoolMemoryConsumption.get_commandPoolAllocated(this.segment()); }
     /// Sets `commandPoolAllocated` with the given value at the given index.
@@ -195,11 +184,6 @@ public final class VkCommandPoolMemoryConsumption extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_commandPoolAllocated(MemorySegment segment, @CType("VkDeviceSize") long value) { VkCommandPoolMemoryConsumption.set_commandPoolAllocated(segment, 0L, value); }
-    /// Sets `commandPoolAllocated` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCommandPoolMemoryConsumption commandPoolAllocatedAt(long index, @CType("VkDeviceSize") long value) { VkCommandPoolMemoryConsumption.set_commandPoolAllocated(this.segment(), index, value); return this; }
     /// Sets `commandPoolAllocated` with the given value.
     /// @param value the value
     /// @return `this`
@@ -212,9 +196,6 @@ public final class VkCommandPoolMemoryConsumption extends Struct {
     /// {@return `commandPoolReservedSize`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_commandPoolReservedSize(MemorySegment segment) { return VkCommandPoolMemoryConsumption.get_commandPoolReservedSize(segment, 0L); }
-    /// {@return `commandPoolReservedSize` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long commandPoolReservedSizeAt(long index) { return VkCommandPoolMemoryConsumption.get_commandPoolReservedSize(this.segment(), index); }
     /// {@return `commandPoolReservedSize`}
     public @CType("VkDeviceSize") long commandPoolReservedSize() { return VkCommandPoolMemoryConsumption.get_commandPoolReservedSize(this.segment()); }
     /// Sets `commandPoolReservedSize` with the given value at the given index.
@@ -226,11 +207,6 @@ public final class VkCommandPoolMemoryConsumption extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_commandPoolReservedSize(MemorySegment segment, @CType("VkDeviceSize") long value) { VkCommandPoolMemoryConsumption.set_commandPoolReservedSize(segment, 0L, value); }
-    /// Sets `commandPoolReservedSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCommandPoolMemoryConsumption commandPoolReservedSizeAt(long index, @CType("VkDeviceSize") long value) { VkCommandPoolMemoryConsumption.set_commandPoolReservedSize(this.segment(), index, value); return this; }
     /// Sets `commandPoolReservedSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -243,9 +219,6 @@ public final class VkCommandPoolMemoryConsumption extends Struct {
     /// {@return `commandBufferAllocated`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize") long get_commandBufferAllocated(MemorySegment segment) { return VkCommandPoolMemoryConsumption.get_commandBufferAllocated(segment, 0L); }
-    /// {@return `commandBufferAllocated` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize") long commandBufferAllocatedAt(long index) { return VkCommandPoolMemoryConsumption.get_commandBufferAllocated(this.segment(), index); }
     /// {@return `commandBufferAllocated`}
     public @CType("VkDeviceSize") long commandBufferAllocated() { return VkCommandPoolMemoryConsumption.get_commandBufferAllocated(this.segment()); }
     /// Sets `commandBufferAllocated` with the given value at the given index.
@@ -257,14 +230,77 @@ public final class VkCommandPoolMemoryConsumption extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_commandBufferAllocated(MemorySegment segment, @CType("VkDeviceSize") long value) { VkCommandPoolMemoryConsumption.set_commandBufferAllocated(segment, 0L, value); }
-    /// Sets `commandBufferAllocated` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkCommandPoolMemoryConsumption commandBufferAllocatedAt(long index, @CType("VkDeviceSize") long value) { VkCommandPoolMemoryConsumption.set_commandBufferAllocated(this.segment(), index, value); return this; }
     /// Sets `commandBufferAllocated` with the given value.
     /// @param value the value
     /// @return `this`
     public VkCommandPoolMemoryConsumption commandBufferAllocated(@CType("VkDeviceSize") long value) { VkCommandPoolMemoryConsumption.set_commandBufferAllocated(this.segment(), value); return this; }
 
+    /// A buffer of [VkCommandPoolMemoryConsumption].
+    public static final class Buffer extends VkCommandPoolMemoryConsumption {
+        private final long elementCount;
+
+        /// Creates `VkCommandPoolMemoryConsumption.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkCommandPoolMemoryConsumption`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkCommandPoolMemoryConsumption`
+        public VkCommandPoolMemoryConsumption asSlice(long index) { return new VkCommandPoolMemoryConsumption(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkCommandPoolMemoryConsumption`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkCommandPoolMemoryConsumption`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkCommandPoolMemoryConsumption.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkCommandPoolMemoryConsumption.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkCommandPoolMemoryConsumption.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkCommandPoolMemoryConsumption.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `commandPoolAllocated` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long commandPoolAllocatedAt(long index) { return VkCommandPoolMemoryConsumption.get_commandPoolAllocated(this.segment(), index); }
+        /// Sets `commandPoolAllocated` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer commandPoolAllocatedAt(long index, @CType("VkDeviceSize") long value) { VkCommandPoolMemoryConsumption.set_commandPoolAllocated(this.segment(), index, value); return this; }
+
+        /// {@return `commandPoolReservedSize` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long commandPoolReservedSizeAt(long index) { return VkCommandPoolMemoryConsumption.get_commandPoolReservedSize(this.segment(), index); }
+        /// Sets `commandPoolReservedSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer commandPoolReservedSizeAt(long index, @CType("VkDeviceSize") long value) { VkCommandPoolMemoryConsumption.set_commandPoolReservedSize(this.segment(), index, value); return this; }
+
+        /// {@return `commandBufferAllocated` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize") long commandBufferAllocatedAt(long index) { return VkCommandPoolMemoryConsumption.get_commandBufferAllocated(this.segment(), index); }
+        /// Sets `commandBufferAllocated` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer commandBufferAllocatedAt(long index, @CType("VkDeviceSize") long value) { VkCommandPoolMemoryConsumption.set_commandBufferAllocated(this.segment(), index, value); return this; }
+
+    }
 }

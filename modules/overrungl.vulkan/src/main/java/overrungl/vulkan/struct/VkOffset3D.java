@@ -40,7 +40,7 @@ import overrungl.util.*;
 ///     int32_t z;
 /// } VkOffset3D;
 /// ```
-public final class VkOffset3D extends Struct {
+public sealed class VkOffset3D extends Struct {
     /// The struct layout of `VkOffset3D`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("x"),
@@ -64,6 +64,11 @@ public final class VkOffset3D extends Struct {
     public static VkOffset3D of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkOffset3D(segment); }
 
     /// Creates `VkOffset3D` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkOffset3D` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -76,7 +81,7 @@ public final class VkOffset3D extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkOffset3D ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkOffset3D(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkOffset3D` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -87,18 +92,21 @@ public final class VkOffset3D extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkOffset3D`
-    public static VkOffset3D alloc(SegmentAllocator allocator, long count) { return new VkOffset3D(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkOffset3D`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkOffset3D`
-    public VkOffset3D asSlice(long index) { return new VkOffset3D(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkOffset3D` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkOffset3D`
+    public static VkOffset3D allocInit(SegmentAllocator allocator, @CType("int32_t") int x, @CType("int32_t") int y, @CType("int32_t") int z) { return alloc(allocator).x(x).y(y).z(z); }
 
-    /// Creates a slice of `VkOffset3D`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkOffset3D`
-    public VkOffset3D asSlice(long index, long count) { return new VkOffset3D(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkOffset3D copyFrom(VkOffset3D src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `x` at the given index}
     /// @param segment the segment of the struct
@@ -107,9 +115,6 @@ public final class VkOffset3D extends Struct {
     /// {@return `x`}
     /// @param segment the segment of the struct
     public static @CType("int32_t") int get_x(MemorySegment segment) { return VkOffset3D.get_x(segment, 0L); }
-    /// {@return `x` at the given index}
-    /// @param index the index
-    public @CType("int32_t") int xAt(long index) { return VkOffset3D.get_x(this.segment(), index); }
     /// {@return `x`}
     public @CType("int32_t") int x() { return VkOffset3D.get_x(this.segment()); }
     /// Sets `x` with the given value at the given index.
@@ -121,11 +126,6 @@ public final class VkOffset3D extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_x(MemorySegment segment, @CType("int32_t") int value) { VkOffset3D.set_x(segment, 0L, value); }
-    /// Sets `x` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkOffset3D xAt(long index, @CType("int32_t") int value) { VkOffset3D.set_x(this.segment(), index, value); return this; }
     /// Sets `x` with the given value.
     /// @param value the value
     /// @return `this`
@@ -138,9 +138,6 @@ public final class VkOffset3D extends Struct {
     /// {@return `y`}
     /// @param segment the segment of the struct
     public static @CType("int32_t") int get_y(MemorySegment segment) { return VkOffset3D.get_y(segment, 0L); }
-    /// {@return `y` at the given index}
-    /// @param index the index
-    public @CType("int32_t") int yAt(long index) { return VkOffset3D.get_y(this.segment(), index); }
     /// {@return `y`}
     public @CType("int32_t") int y() { return VkOffset3D.get_y(this.segment()); }
     /// Sets `y` with the given value at the given index.
@@ -152,11 +149,6 @@ public final class VkOffset3D extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_y(MemorySegment segment, @CType("int32_t") int value) { VkOffset3D.set_y(segment, 0L, value); }
-    /// Sets `y` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkOffset3D yAt(long index, @CType("int32_t") int value) { VkOffset3D.set_y(this.segment(), index, value); return this; }
     /// Sets `y` with the given value.
     /// @param value the value
     /// @return `this`
@@ -169,9 +161,6 @@ public final class VkOffset3D extends Struct {
     /// {@return `z`}
     /// @param segment the segment of the struct
     public static @CType("int32_t") int get_z(MemorySegment segment) { return VkOffset3D.get_z(segment, 0L); }
-    /// {@return `z` at the given index}
-    /// @param index the index
-    public @CType("int32_t") int zAt(long index) { return VkOffset3D.get_z(this.segment(), index); }
     /// {@return `z`}
     public @CType("int32_t") int z() { return VkOffset3D.get_z(this.segment()); }
     /// Sets `z` with the given value at the given index.
@@ -183,14 +172,59 @@ public final class VkOffset3D extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_z(MemorySegment segment, @CType("int32_t") int value) { VkOffset3D.set_z(segment, 0L, value); }
-    /// Sets `z` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkOffset3D zAt(long index, @CType("int32_t") int value) { VkOffset3D.set_z(this.segment(), index, value); return this; }
     /// Sets `z` with the given value.
     /// @param value the value
     /// @return `this`
     public VkOffset3D z(@CType("int32_t") int value) { VkOffset3D.set_z(this.segment(), value); return this; }
 
+    /// A buffer of [VkOffset3D].
+    public static final class Buffer extends VkOffset3D {
+        private final long elementCount;
+
+        /// Creates `VkOffset3D.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkOffset3D`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkOffset3D`
+        public VkOffset3D asSlice(long index) { return new VkOffset3D(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkOffset3D`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkOffset3D`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `x` at the given index}
+        /// @param index the index
+        public @CType("int32_t") int xAt(long index) { return VkOffset3D.get_x(this.segment(), index); }
+        /// Sets `x` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer xAt(long index, @CType("int32_t") int value) { VkOffset3D.set_x(this.segment(), index, value); return this; }
+
+        /// {@return `y` at the given index}
+        /// @param index the index
+        public @CType("int32_t") int yAt(long index) { return VkOffset3D.get_y(this.segment(), index); }
+        /// Sets `y` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer yAt(long index, @CType("int32_t") int value) { VkOffset3D.set_y(this.segment(), index, value); return this; }
+
+        /// {@return `z` at the given index}
+        /// @param index the index
+        public @CType("int32_t") int zAt(long index) { return VkOffset3D.get_z(this.segment(), index); }
+        /// Sets `z` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer zAt(long index, @CType("int32_t") int value) { VkOffset3D.set_z(this.segment(), index, value); return this; }
+
+    }
 }

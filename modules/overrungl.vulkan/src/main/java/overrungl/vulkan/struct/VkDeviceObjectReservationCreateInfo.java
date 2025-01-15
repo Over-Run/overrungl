@@ -160,7 +160,7 @@ import overrungl.util.*;
 ///     uint32_t maxImmutableSamplersPerDescriptorSetLayout;
 /// } VkDeviceObjectReservationCreateInfo;
 /// ```
-public final class VkDeviceObjectReservationCreateInfo extends Struct {
+public sealed class VkDeviceObjectReservationCreateInfo extends Struct {
     /// The struct layout of `VkDeviceObjectReservationCreateInfo`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -304,6 +304,11 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     public static VkDeviceObjectReservationCreateInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkDeviceObjectReservationCreateInfo(segment); }
 
     /// Creates `VkDeviceObjectReservationCreateInfo` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkDeviceObjectReservationCreateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -316,7 +321,7 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDeviceObjectReservationCreateInfo ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkDeviceObjectReservationCreateInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkDeviceObjectReservationCreateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -327,18 +332,21 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDeviceObjectReservationCreateInfo`
-    public static VkDeviceObjectReservationCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkDeviceObjectReservationCreateInfo(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkDeviceObjectReservationCreateInfo`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkDeviceObjectReservationCreateInfo`
-    public VkDeviceObjectReservationCreateInfo asSlice(long index) { return new VkDeviceObjectReservationCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkDeviceObjectReservationCreateInfo` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkDeviceObjectReservationCreateInfo`
+    public static VkDeviceObjectReservationCreateInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("uint32_t") int pipelineCacheCreateInfoCount, @CType("const VkPipelineCacheCreateInfo *") java.lang.foreign.MemorySegment pPipelineCacheCreateInfos, @CType("uint32_t") int pipelinePoolSizeCount, @CType("const VkPipelinePoolSize *") java.lang.foreign.MemorySegment pPipelinePoolSizes, @CType("uint32_t") int semaphoreRequestCount, @CType("uint32_t") int commandBufferRequestCount, @CType("uint32_t") int fenceRequestCount, @CType("uint32_t") int deviceMemoryRequestCount, @CType("uint32_t") int bufferRequestCount, @CType("uint32_t") int imageRequestCount, @CType("uint32_t") int eventRequestCount, @CType("uint32_t") int queryPoolRequestCount, @CType("uint32_t") int bufferViewRequestCount, @CType("uint32_t") int imageViewRequestCount, @CType("uint32_t") int layeredImageViewRequestCount, @CType("uint32_t") int pipelineCacheRequestCount, @CType("uint32_t") int pipelineLayoutRequestCount, @CType("uint32_t") int renderPassRequestCount, @CType("uint32_t") int graphicsPipelineRequestCount, @CType("uint32_t") int computePipelineRequestCount, @CType("uint32_t") int descriptorSetLayoutRequestCount, @CType("uint32_t") int samplerRequestCount, @CType("uint32_t") int descriptorPoolRequestCount, @CType("uint32_t") int descriptorSetRequestCount, @CType("uint32_t") int framebufferRequestCount, @CType("uint32_t") int commandPoolRequestCount, @CType("uint32_t") int samplerYcbcrConversionRequestCount, @CType("uint32_t") int surfaceRequestCount, @CType("uint32_t") int swapchainRequestCount, @CType("uint32_t") int displayModeRequestCount, @CType("uint32_t") int subpassDescriptionRequestCount, @CType("uint32_t") int attachmentDescriptionRequestCount, @CType("uint32_t") int descriptorSetLayoutBindingRequestCount, @CType("uint32_t") int descriptorSetLayoutBindingLimit, @CType("uint32_t") int maxImageViewMipLevels, @CType("uint32_t") int maxImageViewArrayLayers, @CType("uint32_t") int maxLayeredImageViewMipLevels, @CType("uint32_t") int maxOcclusionQueriesPerPool, @CType("uint32_t") int maxPipelineStatisticsQueriesPerPool, @CType("uint32_t") int maxTimestampQueriesPerPool, @CType("uint32_t") int maxImmutableSamplersPerDescriptorSetLayout) { return alloc(allocator).sType(sType).pNext(pNext).pipelineCacheCreateInfoCount(pipelineCacheCreateInfoCount).pPipelineCacheCreateInfos(pPipelineCacheCreateInfos).pipelinePoolSizeCount(pipelinePoolSizeCount).pPipelinePoolSizes(pPipelinePoolSizes).semaphoreRequestCount(semaphoreRequestCount).commandBufferRequestCount(commandBufferRequestCount).fenceRequestCount(fenceRequestCount).deviceMemoryRequestCount(deviceMemoryRequestCount).bufferRequestCount(bufferRequestCount).imageRequestCount(imageRequestCount).eventRequestCount(eventRequestCount).queryPoolRequestCount(queryPoolRequestCount).bufferViewRequestCount(bufferViewRequestCount).imageViewRequestCount(imageViewRequestCount).layeredImageViewRequestCount(layeredImageViewRequestCount).pipelineCacheRequestCount(pipelineCacheRequestCount).pipelineLayoutRequestCount(pipelineLayoutRequestCount).renderPassRequestCount(renderPassRequestCount).graphicsPipelineRequestCount(graphicsPipelineRequestCount).computePipelineRequestCount(computePipelineRequestCount).descriptorSetLayoutRequestCount(descriptorSetLayoutRequestCount).samplerRequestCount(samplerRequestCount).descriptorPoolRequestCount(descriptorPoolRequestCount).descriptorSetRequestCount(descriptorSetRequestCount).framebufferRequestCount(framebufferRequestCount).commandPoolRequestCount(commandPoolRequestCount).samplerYcbcrConversionRequestCount(samplerYcbcrConversionRequestCount).surfaceRequestCount(surfaceRequestCount).swapchainRequestCount(swapchainRequestCount).displayModeRequestCount(displayModeRequestCount).subpassDescriptionRequestCount(subpassDescriptionRequestCount).attachmentDescriptionRequestCount(attachmentDescriptionRequestCount).descriptorSetLayoutBindingRequestCount(descriptorSetLayoutBindingRequestCount).descriptorSetLayoutBindingLimit(descriptorSetLayoutBindingLimit).maxImageViewMipLevels(maxImageViewMipLevels).maxImageViewArrayLayers(maxImageViewArrayLayers).maxLayeredImageViewMipLevels(maxLayeredImageViewMipLevels).maxOcclusionQueriesPerPool(maxOcclusionQueriesPerPool).maxPipelineStatisticsQueriesPerPool(maxPipelineStatisticsQueriesPerPool).maxTimestampQueriesPerPool(maxTimestampQueriesPerPool).maxImmutableSamplersPerDescriptorSetLayout(maxImmutableSamplersPerDescriptorSetLayout); }
 
-    /// Creates a slice of `VkDeviceObjectReservationCreateInfo`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkDeviceObjectReservationCreateInfo`
-    public VkDeviceObjectReservationCreateInfo asSlice(long index, long count) { return new VkDeviceObjectReservationCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo copyFrom(VkDeviceObjectReservationCreateInfo src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -347,9 +355,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkDeviceObjectReservationCreateInfo.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkDeviceObjectReservationCreateInfo.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -361,11 +366,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkDeviceObjectReservationCreateInfo.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceObjectReservationCreateInfo sTypeAt(long index, @CType("VkStructureType") int value) { VkDeviceObjectReservationCreateInfo.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -378,9 +378,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkDeviceObjectReservationCreateInfo.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkDeviceObjectReservationCreateInfo.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -392,11 +389,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDeviceObjectReservationCreateInfo.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceObjectReservationCreateInfo pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDeviceObjectReservationCreateInfo.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -409,9 +401,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `pipelineCacheCreateInfoCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_pipelineCacheCreateInfoCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_pipelineCacheCreateInfoCount(segment, 0L); }
-    /// {@return `pipelineCacheCreateInfoCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int pipelineCacheCreateInfoCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_pipelineCacheCreateInfoCount(this.segment(), index); }
     /// {@return `pipelineCacheCreateInfoCount`}
     public @CType("uint32_t") int pipelineCacheCreateInfoCount() { return VkDeviceObjectReservationCreateInfo.get_pipelineCacheCreateInfoCount(this.segment()); }
     /// Sets `pipelineCacheCreateInfoCount` with the given value at the given index.
@@ -423,11 +412,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pipelineCacheCreateInfoCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_pipelineCacheCreateInfoCount(segment, 0L, value); }
-    /// Sets `pipelineCacheCreateInfoCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceObjectReservationCreateInfo pipelineCacheCreateInfoCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_pipelineCacheCreateInfoCount(this.segment(), index, value); return this; }
     /// Sets `pipelineCacheCreateInfoCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -440,9 +424,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `pPipelineCacheCreateInfos`}
     /// @param segment the segment of the struct
     public static @CType("const VkPipelineCacheCreateInfo *") java.lang.foreign.MemorySegment get_pPipelineCacheCreateInfos(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_pPipelineCacheCreateInfos(segment, 0L); }
-    /// {@return `pPipelineCacheCreateInfos` at the given index}
-    /// @param index the index
-    public @CType("const VkPipelineCacheCreateInfo *") java.lang.foreign.MemorySegment pPipelineCacheCreateInfosAt(long index) { return VkDeviceObjectReservationCreateInfo.get_pPipelineCacheCreateInfos(this.segment(), index); }
     /// {@return `pPipelineCacheCreateInfos`}
     public @CType("const VkPipelineCacheCreateInfo *") java.lang.foreign.MemorySegment pPipelineCacheCreateInfos() { return VkDeviceObjectReservationCreateInfo.get_pPipelineCacheCreateInfos(this.segment()); }
     /// Sets `pPipelineCacheCreateInfos` with the given value at the given index.
@@ -454,11 +435,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pPipelineCacheCreateInfos(MemorySegment segment, @CType("const VkPipelineCacheCreateInfo *") java.lang.foreign.MemorySegment value) { VkDeviceObjectReservationCreateInfo.set_pPipelineCacheCreateInfos(segment, 0L, value); }
-    /// Sets `pPipelineCacheCreateInfos` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceObjectReservationCreateInfo pPipelineCacheCreateInfosAt(long index, @CType("const VkPipelineCacheCreateInfo *") java.lang.foreign.MemorySegment value) { VkDeviceObjectReservationCreateInfo.set_pPipelineCacheCreateInfos(this.segment(), index, value); return this; }
     /// Sets `pPipelineCacheCreateInfos` with the given value.
     /// @param value the value
     /// @return `this`
@@ -471,9 +447,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `pipelinePoolSizeCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_pipelinePoolSizeCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_pipelinePoolSizeCount(segment, 0L); }
-    /// {@return `pipelinePoolSizeCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int pipelinePoolSizeCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_pipelinePoolSizeCount(this.segment(), index); }
     /// {@return `pipelinePoolSizeCount`}
     public @CType("uint32_t") int pipelinePoolSizeCount() { return VkDeviceObjectReservationCreateInfo.get_pipelinePoolSizeCount(this.segment()); }
     /// Sets `pipelinePoolSizeCount` with the given value at the given index.
@@ -485,11 +458,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pipelinePoolSizeCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_pipelinePoolSizeCount(segment, 0L, value); }
-    /// Sets `pipelinePoolSizeCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceObjectReservationCreateInfo pipelinePoolSizeCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_pipelinePoolSizeCount(this.segment(), index, value); return this; }
     /// Sets `pipelinePoolSizeCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -502,9 +470,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `pPipelinePoolSizes`}
     /// @param segment the segment of the struct
     public static @CType("const VkPipelinePoolSize *") java.lang.foreign.MemorySegment get_pPipelinePoolSizes(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_pPipelinePoolSizes(segment, 0L); }
-    /// {@return `pPipelinePoolSizes` at the given index}
-    /// @param index the index
-    public @CType("const VkPipelinePoolSize *") java.lang.foreign.MemorySegment pPipelinePoolSizesAt(long index) { return VkDeviceObjectReservationCreateInfo.get_pPipelinePoolSizes(this.segment(), index); }
     /// {@return `pPipelinePoolSizes`}
     public @CType("const VkPipelinePoolSize *") java.lang.foreign.MemorySegment pPipelinePoolSizes() { return VkDeviceObjectReservationCreateInfo.get_pPipelinePoolSizes(this.segment()); }
     /// Sets `pPipelinePoolSizes` with the given value at the given index.
@@ -516,11 +481,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pPipelinePoolSizes(MemorySegment segment, @CType("const VkPipelinePoolSize *") java.lang.foreign.MemorySegment value) { VkDeviceObjectReservationCreateInfo.set_pPipelinePoolSizes(segment, 0L, value); }
-    /// Sets `pPipelinePoolSizes` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceObjectReservationCreateInfo pPipelinePoolSizesAt(long index, @CType("const VkPipelinePoolSize *") java.lang.foreign.MemorySegment value) { VkDeviceObjectReservationCreateInfo.set_pPipelinePoolSizes(this.segment(), index, value); return this; }
     /// Sets `pPipelinePoolSizes` with the given value.
     /// @param value the value
     /// @return `this`
@@ -533,9 +493,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `semaphoreRequestCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_semaphoreRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_semaphoreRequestCount(segment, 0L); }
-    /// {@return `semaphoreRequestCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int semaphoreRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_semaphoreRequestCount(this.segment(), index); }
     /// {@return `semaphoreRequestCount`}
     public @CType("uint32_t") int semaphoreRequestCount() { return VkDeviceObjectReservationCreateInfo.get_semaphoreRequestCount(this.segment()); }
     /// Sets `semaphoreRequestCount` with the given value at the given index.
@@ -547,11 +504,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_semaphoreRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_semaphoreRequestCount(segment, 0L, value); }
-    /// Sets `semaphoreRequestCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceObjectReservationCreateInfo semaphoreRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_semaphoreRequestCount(this.segment(), index, value); return this; }
     /// Sets `semaphoreRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -564,9 +516,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `commandBufferRequestCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_commandBufferRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_commandBufferRequestCount(segment, 0L); }
-    /// {@return `commandBufferRequestCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int commandBufferRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_commandBufferRequestCount(this.segment(), index); }
     /// {@return `commandBufferRequestCount`}
     public @CType("uint32_t") int commandBufferRequestCount() { return VkDeviceObjectReservationCreateInfo.get_commandBufferRequestCount(this.segment()); }
     /// Sets `commandBufferRequestCount` with the given value at the given index.
@@ -578,11 +527,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_commandBufferRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_commandBufferRequestCount(segment, 0L, value); }
-    /// Sets `commandBufferRequestCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceObjectReservationCreateInfo commandBufferRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_commandBufferRequestCount(this.segment(), index, value); return this; }
     /// Sets `commandBufferRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -595,9 +539,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `fenceRequestCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_fenceRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_fenceRequestCount(segment, 0L); }
-    /// {@return `fenceRequestCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int fenceRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_fenceRequestCount(this.segment(), index); }
     /// {@return `fenceRequestCount`}
     public @CType("uint32_t") int fenceRequestCount() { return VkDeviceObjectReservationCreateInfo.get_fenceRequestCount(this.segment()); }
     /// Sets `fenceRequestCount` with the given value at the given index.
@@ -609,11 +550,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_fenceRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_fenceRequestCount(segment, 0L, value); }
-    /// Sets `fenceRequestCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceObjectReservationCreateInfo fenceRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_fenceRequestCount(this.segment(), index, value); return this; }
     /// Sets `fenceRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -626,9 +562,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `deviceMemoryRequestCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_deviceMemoryRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_deviceMemoryRequestCount(segment, 0L); }
-    /// {@return `deviceMemoryRequestCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int deviceMemoryRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_deviceMemoryRequestCount(this.segment(), index); }
     /// {@return `deviceMemoryRequestCount`}
     public @CType("uint32_t") int deviceMemoryRequestCount() { return VkDeviceObjectReservationCreateInfo.get_deviceMemoryRequestCount(this.segment()); }
     /// Sets `deviceMemoryRequestCount` with the given value at the given index.
@@ -640,11 +573,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_deviceMemoryRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_deviceMemoryRequestCount(segment, 0L, value); }
-    /// Sets `deviceMemoryRequestCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceObjectReservationCreateInfo deviceMemoryRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_deviceMemoryRequestCount(this.segment(), index, value); return this; }
     /// Sets `deviceMemoryRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -657,9 +585,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `bufferRequestCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_bufferRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_bufferRequestCount(segment, 0L); }
-    /// {@return `bufferRequestCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int bufferRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_bufferRequestCount(this.segment(), index); }
     /// {@return `bufferRequestCount`}
     public @CType("uint32_t") int bufferRequestCount() { return VkDeviceObjectReservationCreateInfo.get_bufferRequestCount(this.segment()); }
     /// Sets `bufferRequestCount` with the given value at the given index.
@@ -671,11 +596,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_bufferRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_bufferRequestCount(segment, 0L, value); }
-    /// Sets `bufferRequestCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceObjectReservationCreateInfo bufferRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_bufferRequestCount(this.segment(), index, value); return this; }
     /// Sets `bufferRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -688,9 +608,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `imageRequestCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_imageRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_imageRequestCount(segment, 0L); }
-    /// {@return `imageRequestCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int imageRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_imageRequestCount(this.segment(), index); }
     /// {@return `imageRequestCount`}
     public @CType("uint32_t") int imageRequestCount() { return VkDeviceObjectReservationCreateInfo.get_imageRequestCount(this.segment()); }
     /// Sets `imageRequestCount` with the given value at the given index.
@@ -702,11 +619,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_imageRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_imageRequestCount(segment, 0L, value); }
-    /// Sets `imageRequestCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceObjectReservationCreateInfo imageRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_imageRequestCount(this.segment(), index, value); return this; }
     /// Sets `imageRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -719,9 +631,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `eventRequestCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_eventRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_eventRequestCount(segment, 0L); }
-    /// {@return `eventRequestCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int eventRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_eventRequestCount(this.segment(), index); }
     /// {@return `eventRequestCount`}
     public @CType("uint32_t") int eventRequestCount() { return VkDeviceObjectReservationCreateInfo.get_eventRequestCount(this.segment()); }
     /// Sets `eventRequestCount` with the given value at the given index.
@@ -733,11 +642,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_eventRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_eventRequestCount(segment, 0L, value); }
-    /// Sets `eventRequestCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceObjectReservationCreateInfo eventRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_eventRequestCount(this.segment(), index, value); return this; }
     /// Sets `eventRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -750,9 +654,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `queryPoolRequestCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_queryPoolRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_queryPoolRequestCount(segment, 0L); }
-    /// {@return `queryPoolRequestCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int queryPoolRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_queryPoolRequestCount(this.segment(), index); }
     /// {@return `queryPoolRequestCount`}
     public @CType("uint32_t") int queryPoolRequestCount() { return VkDeviceObjectReservationCreateInfo.get_queryPoolRequestCount(this.segment()); }
     /// Sets `queryPoolRequestCount` with the given value at the given index.
@@ -764,11 +665,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_queryPoolRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_queryPoolRequestCount(segment, 0L, value); }
-    /// Sets `queryPoolRequestCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceObjectReservationCreateInfo queryPoolRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_queryPoolRequestCount(this.segment(), index, value); return this; }
     /// Sets `queryPoolRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -781,9 +677,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `bufferViewRequestCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_bufferViewRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_bufferViewRequestCount(segment, 0L); }
-    /// {@return `bufferViewRequestCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int bufferViewRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_bufferViewRequestCount(this.segment(), index); }
     /// {@return `bufferViewRequestCount`}
     public @CType("uint32_t") int bufferViewRequestCount() { return VkDeviceObjectReservationCreateInfo.get_bufferViewRequestCount(this.segment()); }
     /// Sets `bufferViewRequestCount` with the given value at the given index.
@@ -795,11 +688,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_bufferViewRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_bufferViewRequestCount(segment, 0L, value); }
-    /// Sets `bufferViewRequestCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceObjectReservationCreateInfo bufferViewRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_bufferViewRequestCount(this.segment(), index, value); return this; }
     /// Sets `bufferViewRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -812,9 +700,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `imageViewRequestCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_imageViewRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_imageViewRequestCount(segment, 0L); }
-    /// {@return `imageViewRequestCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int imageViewRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_imageViewRequestCount(this.segment(), index); }
     /// {@return `imageViewRequestCount`}
     public @CType("uint32_t") int imageViewRequestCount() { return VkDeviceObjectReservationCreateInfo.get_imageViewRequestCount(this.segment()); }
     /// Sets `imageViewRequestCount` with the given value at the given index.
@@ -826,11 +711,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_imageViewRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_imageViewRequestCount(segment, 0L, value); }
-    /// Sets `imageViewRequestCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceObjectReservationCreateInfo imageViewRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_imageViewRequestCount(this.segment(), index, value); return this; }
     /// Sets `imageViewRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -843,9 +723,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `layeredImageViewRequestCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_layeredImageViewRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_layeredImageViewRequestCount(segment, 0L); }
-    /// {@return `layeredImageViewRequestCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int layeredImageViewRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_layeredImageViewRequestCount(this.segment(), index); }
     /// {@return `layeredImageViewRequestCount`}
     public @CType("uint32_t") int layeredImageViewRequestCount() { return VkDeviceObjectReservationCreateInfo.get_layeredImageViewRequestCount(this.segment()); }
     /// Sets `layeredImageViewRequestCount` with the given value at the given index.
@@ -857,11 +734,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_layeredImageViewRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_layeredImageViewRequestCount(segment, 0L, value); }
-    /// Sets `layeredImageViewRequestCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceObjectReservationCreateInfo layeredImageViewRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_layeredImageViewRequestCount(this.segment(), index, value); return this; }
     /// Sets `layeredImageViewRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -874,9 +746,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `pipelineCacheRequestCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_pipelineCacheRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_pipelineCacheRequestCount(segment, 0L); }
-    /// {@return `pipelineCacheRequestCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int pipelineCacheRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_pipelineCacheRequestCount(this.segment(), index); }
     /// {@return `pipelineCacheRequestCount`}
     public @CType("uint32_t") int pipelineCacheRequestCount() { return VkDeviceObjectReservationCreateInfo.get_pipelineCacheRequestCount(this.segment()); }
     /// Sets `pipelineCacheRequestCount` with the given value at the given index.
@@ -888,11 +757,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pipelineCacheRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_pipelineCacheRequestCount(segment, 0L, value); }
-    /// Sets `pipelineCacheRequestCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceObjectReservationCreateInfo pipelineCacheRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_pipelineCacheRequestCount(this.segment(), index, value); return this; }
     /// Sets `pipelineCacheRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -905,9 +769,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `pipelineLayoutRequestCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_pipelineLayoutRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_pipelineLayoutRequestCount(segment, 0L); }
-    /// {@return `pipelineLayoutRequestCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int pipelineLayoutRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_pipelineLayoutRequestCount(this.segment(), index); }
     /// {@return `pipelineLayoutRequestCount`}
     public @CType("uint32_t") int pipelineLayoutRequestCount() { return VkDeviceObjectReservationCreateInfo.get_pipelineLayoutRequestCount(this.segment()); }
     /// Sets `pipelineLayoutRequestCount` with the given value at the given index.
@@ -919,11 +780,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pipelineLayoutRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_pipelineLayoutRequestCount(segment, 0L, value); }
-    /// Sets `pipelineLayoutRequestCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceObjectReservationCreateInfo pipelineLayoutRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_pipelineLayoutRequestCount(this.segment(), index, value); return this; }
     /// Sets `pipelineLayoutRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -936,9 +792,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `renderPassRequestCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_renderPassRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_renderPassRequestCount(segment, 0L); }
-    /// {@return `renderPassRequestCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int renderPassRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_renderPassRequestCount(this.segment(), index); }
     /// {@return `renderPassRequestCount`}
     public @CType("uint32_t") int renderPassRequestCount() { return VkDeviceObjectReservationCreateInfo.get_renderPassRequestCount(this.segment()); }
     /// Sets `renderPassRequestCount` with the given value at the given index.
@@ -950,11 +803,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_renderPassRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_renderPassRequestCount(segment, 0L, value); }
-    /// Sets `renderPassRequestCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceObjectReservationCreateInfo renderPassRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_renderPassRequestCount(this.segment(), index, value); return this; }
     /// Sets `renderPassRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -967,9 +815,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `graphicsPipelineRequestCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_graphicsPipelineRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_graphicsPipelineRequestCount(segment, 0L); }
-    /// {@return `graphicsPipelineRequestCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int graphicsPipelineRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_graphicsPipelineRequestCount(this.segment(), index); }
     /// {@return `graphicsPipelineRequestCount`}
     public @CType("uint32_t") int graphicsPipelineRequestCount() { return VkDeviceObjectReservationCreateInfo.get_graphicsPipelineRequestCount(this.segment()); }
     /// Sets `graphicsPipelineRequestCount` with the given value at the given index.
@@ -981,11 +826,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_graphicsPipelineRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_graphicsPipelineRequestCount(segment, 0L, value); }
-    /// Sets `graphicsPipelineRequestCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceObjectReservationCreateInfo graphicsPipelineRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_graphicsPipelineRequestCount(this.segment(), index, value); return this; }
     /// Sets `graphicsPipelineRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -998,9 +838,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `computePipelineRequestCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_computePipelineRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_computePipelineRequestCount(segment, 0L); }
-    /// {@return `computePipelineRequestCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int computePipelineRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_computePipelineRequestCount(this.segment(), index); }
     /// {@return `computePipelineRequestCount`}
     public @CType("uint32_t") int computePipelineRequestCount() { return VkDeviceObjectReservationCreateInfo.get_computePipelineRequestCount(this.segment()); }
     /// Sets `computePipelineRequestCount` with the given value at the given index.
@@ -1012,11 +849,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_computePipelineRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_computePipelineRequestCount(segment, 0L, value); }
-    /// Sets `computePipelineRequestCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceObjectReservationCreateInfo computePipelineRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_computePipelineRequestCount(this.segment(), index, value); return this; }
     /// Sets `computePipelineRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1029,9 +861,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `descriptorSetLayoutRequestCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_descriptorSetLayoutRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_descriptorSetLayoutRequestCount(segment, 0L); }
-    /// {@return `descriptorSetLayoutRequestCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int descriptorSetLayoutRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_descriptorSetLayoutRequestCount(this.segment(), index); }
     /// {@return `descriptorSetLayoutRequestCount`}
     public @CType("uint32_t") int descriptorSetLayoutRequestCount() { return VkDeviceObjectReservationCreateInfo.get_descriptorSetLayoutRequestCount(this.segment()); }
     /// Sets `descriptorSetLayoutRequestCount` with the given value at the given index.
@@ -1043,11 +872,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_descriptorSetLayoutRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_descriptorSetLayoutRequestCount(segment, 0L, value); }
-    /// Sets `descriptorSetLayoutRequestCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceObjectReservationCreateInfo descriptorSetLayoutRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_descriptorSetLayoutRequestCount(this.segment(), index, value); return this; }
     /// Sets `descriptorSetLayoutRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1060,9 +884,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `samplerRequestCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_samplerRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_samplerRequestCount(segment, 0L); }
-    /// {@return `samplerRequestCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int samplerRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_samplerRequestCount(this.segment(), index); }
     /// {@return `samplerRequestCount`}
     public @CType("uint32_t") int samplerRequestCount() { return VkDeviceObjectReservationCreateInfo.get_samplerRequestCount(this.segment()); }
     /// Sets `samplerRequestCount` with the given value at the given index.
@@ -1074,11 +895,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_samplerRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_samplerRequestCount(segment, 0L, value); }
-    /// Sets `samplerRequestCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceObjectReservationCreateInfo samplerRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_samplerRequestCount(this.segment(), index, value); return this; }
     /// Sets `samplerRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1091,9 +907,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `descriptorPoolRequestCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_descriptorPoolRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_descriptorPoolRequestCount(segment, 0L); }
-    /// {@return `descriptorPoolRequestCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int descriptorPoolRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_descriptorPoolRequestCount(this.segment(), index); }
     /// {@return `descriptorPoolRequestCount`}
     public @CType("uint32_t") int descriptorPoolRequestCount() { return VkDeviceObjectReservationCreateInfo.get_descriptorPoolRequestCount(this.segment()); }
     /// Sets `descriptorPoolRequestCount` with the given value at the given index.
@@ -1105,11 +918,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_descriptorPoolRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_descriptorPoolRequestCount(segment, 0L, value); }
-    /// Sets `descriptorPoolRequestCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceObjectReservationCreateInfo descriptorPoolRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_descriptorPoolRequestCount(this.segment(), index, value); return this; }
     /// Sets `descriptorPoolRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1122,9 +930,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `descriptorSetRequestCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_descriptorSetRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_descriptorSetRequestCount(segment, 0L); }
-    /// {@return `descriptorSetRequestCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int descriptorSetRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_descriptorSetRequestCount(this.segment(), index); }
     /// {@return `descriptorSetRequestCount`}
     public @CType("uint32_t") int descriptorSetRequestCount() { return VkDeviceObjectReservationCreateInfo.get_descriptorSetRequestCount(this.segment()); }
     /// Sets `descriptorSetRequestCount` with the given value at the given index.
@@ -1136,11 +941,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_descriptorSetRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_descriptorSetRequestCount(segment, 0L, value); }
-    /// Sets `descriptorSetRequestCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceObjectReservationCreateInfo descriptorSetRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_descriptorSetRequestCount(this.segment(), index, value); return this; }
     /// Sets `descriptorSetRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1153,9 +953,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `framebufferRequestCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_framebufferRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_framebufferRequestCount(segment, 0L); }
-    /// {@return `framebufferRequestCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int framebufferRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_framebufferRequestCount(this.segment(), index); }
     /// {@return `framebufferRequestCount`}
     public @CType("uint32_t") int framebufferRequestCount() { return VkDeviceObjectReservationCreateInfo.get_framebufferRequestCount(this.segment()); }
     /// Sets `framebufferRequestCount` with the given value at the given index.
@@ -1167,11 +964,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_framebufferRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_framebufferRequestCount(segment, 0L, value); }
-    /// Sets `framebufferRequestCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceObjectReservationCreateInfo framebufferRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_framebufferRequestCount(this.segment(), index, value); return this; }
     /// Sets `framebufferRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1184,9 +976,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `commandPoolRequestCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_commandPoolRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_commandPoolRequestCount(segment, 0L); }
-    /// {@return `commandPoolRequestCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int commandPoolRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_commandPoolRequestCount(this.segment(), index); }
     /// {@return `commandPoolRequestCount`}
     public @CType("uint32_t") int commandPoolRequestCount() { return VkDeviceObjectReservationCreateInfo.get_commandPoolRequestCount(this.segment()); }
     /// Sets `commandPoolRequestCount` with the given value at the given index.
@@ -1198,11 +987,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_commandPoolRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_commandPoolRequestCount(segment, 0L, value); }
-    /// Sets `commandPoolRequestCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceObjectReservationCreateInfo commandPoolRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_commandPoolRequestCount(this.segment(), index, value); return this; }
     /// Sets `commandPoolRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1215,9 +999,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `samplerYcbcrConversionRequestCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_samplerYcbcrConversionRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_samplerYcbcrConversionRequestCount(segment, 0L); }
-    /// {@return `samplerYcbcrConversionRequestCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int samplerYcbcrConversionRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_samplerYcbcrConversionRequestCount(this.segment(), index); }
     /// {@return `samplerYcbcrConversionRequestCount`}
     public @CType("uint32_t") int samplerYcbcrConversionRequestCount() { return VkDeviceObjectReservationCreateInfo.get_samplerYcbcrConversionRequestCount(this.segment()); }
     /// Sets `samplerYcbcrConversionRequestCount` with the given value at the given index.
@@ -1229,11 +1010,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_samplerYcbcrConversionRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_samplerYcbcrConversionRequestCount(segment, 0L, value); }
-    /// Sets `samplerYcbcrConversionRequestCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceObjectReservationCreateInfo samplerYcbcrConversionRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_samplerYcbcrConversionRequestCount(this.segment(), index, value); return this; }
     /// Sets `samplerYcbcrConversionRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1246,9 +1022,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `surfaceRequestCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_surfaceRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_surfaceRequestCount(segment, 0L); }
-    /// {@return `surfaceRequestCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int surfaceRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_surfaceRequestCount(this.segment(), index); }
     /// {@return `surfaceRequestCount`}
     public @CType("uint32_t") int surfaceRequestCount() { return VkDeviceObjectReservationCreateInfo.get_surfaceRequestCount(this.segment()); }
     /// Sets `surfaceRequestCount` with the given value at the given index.
@@ -1260,11 +1033,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_surfaceRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_surfaceRequestCount(segment, 0L, value); }
-    /// Sets `surfaceRequestCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceObjectReservationCreateInfo surfaceRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_surfaceRequestCount(this.segment(), index, value); return this; }
     /// Sets `surfaceRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1277,9 +1045,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `swapchainRequestCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_swapchainRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_swapchainRequestCount(segment, 0L); }
-    /// {@return `swapchainRequestCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int swapchainRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_swapchainRequestCount(this.segment(), index); }
     /// {@return `swapchainRequestCount`}
     public @CType("uint32_t") int swapchainRequestCount() { return VkDeviceObjectReservationCreateInfo.get_swapchainRequestCount(this.segment()); }
     /// Sets `swapchainRequestCount` with the given value at the given index.
@@ -1291,11 +1056,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_swapchainRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_swapchainRequestCount(segment, 0L, value); }
-    /// Sets `swapchainRequestCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceObjectReservationCreateInfo swapchainRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_swapchainRequestCount(this.segment(), index, value); return this; }
     /// Sets `swapchainRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1308,9 +1068,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `displayModeRequestCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_displayModeRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_displayModeRequestCount(segment, 0L); }
-    /// {@return `displayModeRequestCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int displayModeRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_displayModeRequestCount(this.segment(), index); }
     /// {@return `displayModeRequestCount`}
     public @CType("uint32_t") int displayModeRequestCount() { return VkDeviceObjectReservationCreateInfo.get_displayModeRequestCount(this.segment()); }
     /// Sets `displayModeRequestCount` with the given value at the given index.
@@ -1322,11 +1079,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_displayModeRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_displayModeRequestCount(segment, 0L, value); }
-    /// Sets `displayModeRequestCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceObjectReservationCreateInfo displayModeRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_displayModeRequestCount(this.segment(), index, value); return this; }
     /// Sets `displayModeRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1339,9 +1091,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `subpassDescriptionRequestCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_subpassDescriptionRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_subpassDescriptionRequestCount(segment, 0L); }
-    /// {@return `subpassDescriptionRequestCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int subpassDescriptionRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_subpassDescriptionRequestCount(this.segment(), index); }
     /// {@return `subpassDescriptionRequestCount`}
     public @CType("uint32_t") int subpassDescriptionRequestCount() { return VkDeviceObjectReservationCreateInfo.get_subpassDescriptionRequestCount(this.segment()); }
     /// Sets `subpassDescriptionRequestCount` with the given value at the given index.
@@ -1353,11 +1102,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_subpassDescriptionRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_subpassDescriptionRequestCount(segment, 0L, value); }
-    /// Sets `subpassDescriptionRequestCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceObjectReservationCreateInfo subpassDescriptionRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_subpassDescriptionRequestCount(this.segment(), index, value); return this; }
     /// Sets `subpassDescriptionRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1370,9 +1114,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `attachmentDescriptionRequestCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_attachmentDescriptionRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_attachmentDescriptionRequestCount(segment, 0L); }
-    /// {@return `attachmentDescriptionRequestCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int attachmentDescriptionRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_attachmentDescriptionRequestCount(this.segment(), index); }
     /// {@return `attachmentDescriptionRequestCount`}
     public @CType("uint32_t") int attachmentDescriptionRequestCount() { return VkDeviceObjectReservationCreateInfo.get_attachmentDescriptionRequestCount(this.segment()); }
     /// Sets `attachmentDescriptionRequestCount` with the given value at the given index.
@@ -1384,11 +1125,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_attachmentDescriptionRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_attachmentDescriptionRequestCount(segment, 0L, value); }
-    /// Sets `attachmentDescriptionRequestCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceObjectReservationCreateInfo attachmentDescriptionRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_attachmentDescriptionRequestCount(this.segment(), index, value); return this; }
     /// Sets `attachmentDescriptionRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1401,9 +1137,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `descriptorSetLayoutBindingRequestCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_descriptorSetLayoutBindingRequestCount(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_descriptorSetLayoutBindingRequestCount(segment, 0L); }
-    /// {@return `descriptorSetLayoutBindingRequestCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int descriptorSetLayoutBindingRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_descriptorSetLayoutBindingRequestCount(this.segment(), index); }
     /// {@return `descriptorSetLayoutBindingRequestCount`}
     public @CType("uint32_t") int descriptorSetLayoutBindingRequestCount() { return VkDeviceObjectReservationCreateInfo.get_descriptorSetLayoutBindingRequestCount(this.segment()); }
     /// Sets `descriptorSetLayoutBindingRequestCount` with the given value at the given index.
@@ -1415,11 +1148,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_descriptorSetLayoutBindingRequestCount(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_descriptorSetLayoutBindingRequestCount(segment, 0L, value); }
-    /// Sets `descriptorSetLayoutBindingRequestCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceObjectReservationCreateInfo descriptorSetLayoutBindingRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_descriptorSetLayoutBindingRequestCount(this.segment(), index, value); return this; }
     /// Sets `descriptorSetLayoutBindingRequestCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1432,9 +1160,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `descriptorSetLayoutBindingLimit`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_descriptorSetLayoutBindingLimit(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_descriptorSetLayoutBindingLimit(segment, 0L); }
-    /// {@return `descriptorSetLayoutBindingLimit` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int descriptorSetLayoutBindingLimitAt(long index) { return VkDeviceObjectReservationCreateInfo.get_descriptorSetLayoutBindingLimit(this.segment(), index); }
     /// {@return `descriptorSetLayoutBindingLimit`}
     public @CType("uint32_t") int descriptorSetLayoutBindingLimit() { return VkDeviceObjectReservationCreateInfo.get_descriptorSetLayoutBindingLimit(this.segment()); }
     /// Sets `descriptorSetLayoutBindingLimit` with the given value at the given index.
@@ -1446,11 +1171,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_descriptorSetLayoutBindingLimit(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_descriptorSetLayoutBindingLimit(segment, 0L, value); }
-    /// Sets `descriptorSetLayoutBindingLimit` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceObjectReservationCreateInfo descriptorSetLayoutBindingLimitAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_descriptorSetLayoutBindingLimit(this.segment(), index, value); return this; }
     /// Sets `descriptorSetLayoutBindingLimit` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1463,9 +1183,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `maxImageViewMipLevels`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxImageViewMipLevels(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_maxImageViewMipLevels(segment, 0L); }
-    /// {@return `maxImageViewMipLevels` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxImageViewMipLevelsAt(long index) { return VkDeviceObjectReservationCreateInfo.get_maxImageViewMipLevels(this.segment(), index); }
     /// {@return `maxImageViewMipLevels`}
     public @CType("uint32_t") int maxImageViewMipLevels() { return VkDeviceObjectReservationCreateInfo.get_maxImageViewMipLevels(this.segment()); }
     /// Sets `maxImageViewMipLevels` with the given value at the given index.
@@ -1477,11 +1194,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxImageViewMipLevels(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_maxImageViewMipLevels(segment, 0L, value); }
-    /// Sets `maxImageViewMipLevels` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceObjectReservationCreateInfo maxImageViewMipLevelsAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_maxImageViewMipLevels(this.segment(), index, value); return this; }
     /// Sets `maxImageViewMipLevels` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1494,9 +1206,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `maxImageViewArrayLayers`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxImageViewArrayLayers(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_maxImageViewArrayLayers(segment, 0L); }
-    /// {@return `maxImageViewArrayLayers` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxImageViewArrayLayersAt(long index) { return VkDeviceObjectReservationCreateInfo.get_maxImageViewArrayLayers(this.segment(), index); }
     /// {@return `maxImageViewArrayLayers`}
     public @CType("uint32_t") int maxImageViewArrayLayers() { return VkDeviceObjectReservationCreateInfo.get_maxImageViewArrayLayers(this.segment()); }
     /// Sets `maxImageViewArrayLayers` with the given value at the given index.
@@ -1508,11 +1217,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxImageViewArrayLayers(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_maxImageViewArrayLayers(segment, 0L, value); }
-    /// Sets `maxImageViewArrayLayers` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceObjectReservationCreateInfo maxImageViewArrayLayersAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_maxImageViewArrayLayers(this.segment(), index, value); return this; }
     /// Sets `maxImageViewArrayLayers` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1525,9 +1229,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `maxLayeredImageViewMipLevels`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxLayeredImageViewMipLevels(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_maxLayeredImageViewMipLevels(segment, 0L); }
-    /// {@return `maxLayeredImageViewMipLevels` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxLayeredImageViewMipLevelsAt(long index) { return VkDeviceObjectReservationCreateInfo.get_maxLayeredImageViewMipLevels(this.segment(), index); }
     /// {@return `maxLayeredImageViewMipLevels`}
     public @CType("uint32_t") int maxLayeredImageViewMipLevels() { return VkDeviceObjectReservationCreateInfo.get_maxLayeredImageViewMipLevels(this.segment()); }
     /// Sets `maxLayeredImageViewMipLevels` with the given value at the given index.
@@ -1539,11 +1240,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxLayeredImageViewMipLevels(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_maxLayeredImageViewMipLevels(segment, 0L, value); }
-    /// Sets `maxLayeredImageViewMipLevels` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceObjectReservationCreateInfo maxLayeredImageViewMipLevelsAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_maxLayeredImageViewMipLevels(this.segment(), index, value); return this; }
     /// Sets `maxLayeredImageViewMipLevels` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1556,9 +1252,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `maxOcclusionQueriesPerPool`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxOcclusionQueriesPerPool(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_maxOcclusionQueriesPerPool(segment, 0L); }
-    /// {@return `maxOcclusionQueriesPerPool` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxOcclusionQueriesPerPoolAt(long index) { return VkDeviceObjectReservationCreateInfo.get_maxOcclusionQueriesPerPool(this.segment(), index); }
     /// {@return `maxOcclusionQueriesPerPool`}
     public @CType("uint32_t") int maxOcclusionQueriesPerPool() { return VkDeviceObjectReservationCreateInfo.get_maxOcclusionQueriesPerPool(this.segment()); }
     /// Sets `maxOcclusionQueriesPerPool` with the given value at the given index.
@@ -1570,11 +1263,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxOcclusionQueriesPerPool(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_maxOcclusionQueriesPerPool(segment, 0L, value); }
-    /// Sets `maxOcclusionQueriesPerPool` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceObjectReservationCreateInfo maxOcclusionQueriesPerPoolAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_maxOcclusionQueriesPerPool(this.segment(), index, value); return this; }
     /// Sets `maxOcclusionQueriesPerPool` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1587,9 +1275,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `maxPipelineStatisticsQueriesPerPool`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxPipelineStatisticsQueriesPerPool(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_maxPipelineStatisticsQueriesPerPool(segment, 0L); }
-    /// {@return `maxPipelineStatisticsQueriesPerPool` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxPipelineStatisticsQueriesPerPoolAt(long index) { return VkDeviceObjectReservationCreateInfo.get_maxPipelineStatisticsQueriesPerPool(this.segment(), index); }
     /// {@return `maxPipelineStatisticsQueriesPerPool`}
     public @CType("uint32_t") int maxPipelineStatisticsQueriesPerPool() { return VkDeviceObjectReservationCreateInfo.get_maxPipelineStatisticsQueriesPerPool(this.segment()); }
     /// Sets `maxPipelineStatisticsQueriesPerPool` with the given value at the given index.
@@ -1601,11 +1286,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxPipelineStatisticsQueriesPerPool(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_maxPipelineStatisticsQueriesPerPool(segment, 0L, value); }
-    /// Sets `maxPipelineStatisticsQueriesPerPool` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceObjectReservationCreateInfo maxPipelineStatisticsQueriesPerPoolAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_maxPipelineStatisticsQueriesPerPool(this.segment(), index, value); return this; }
     /// Sets `maxPipelineStatisticsQueriesPerPool` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1618,9 +1298,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `maxTimestampQueriesPerPool`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxTimestampQueriesPerPool(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_maxTimestampQueriesPerPool(segment, 0L); }
-    /// {@return `maxTimestampQueriesPerPool` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxTimestampQueriesPerPoolAt(long index) { return VkDeviceObjectReservationCreateInfo.get_maxTimestampQueriesPerPool(this.segment(), index); }
     /// {@return `maxTimestampQueriesPerPool`}
     public @CType("uint32_t") int maxTimestampQueriesPerPool() { return VkDeviceObjectReservationCreateInfo.get_maxTimestampQueriesPerPool(this.segment()); }
     /// Sets `maxTimestampQueriesPerPool` with the given value at the given index.
@@ -1632,11 +1309,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxTimestampQueriesPerPool(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_maxTimestampQueriesPerPool(segment, 0L, value); }
-    /// Sets `maxTimestampQueriesPerPool` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceObjectReservationCreateInfo maxTimestampQueriesPerPoolAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_maxTimestampQueriesPerPool(this.segment(), index, value); return this; }
     /// Sets `maxTimestampQueriesPerPool` with the given value.
     /// @param value the value
     /// @return `this`
@@ -1649,9 +1321,6 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// {@return `maxImmutableSamplersPerDescriptorSetLayout`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_maxImmutableSamplersPerDescriptorSetLayout(MemorySegment segment) { return VkDeviceObjectReservationCreateInfo.get_maxImmutableSamplersPerDescriptorSetLayout(segment, 0L); }
-    /// {@return `maxImmutableSamplersPerDescriptorSetLayout` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maxImmutableSamplersPerDescriptorSetLayoutAt(long index) { return VkDeviceObjectReservationCreateInfo.get_maxImmutableSamplersPerDescriptorSetLayout(this.segment(), index); }
     /// {@return `maxImmutableSamplersPerDescriptorSetLayout`}
     public @CType("uint32_t") int maxImmutableSamplersPerDescriptorSetLayout() { return VkDeviceObjectReservationCreateInfo.get_maxImmutableSamplersPerDescriptorSetLayout(this.segment()); }
     /// Sets `maxImmutableSamplersPerDescriptorSetLayout` with the given value at the given index.
@@ -1663,14 +1332,419 @@ public final class VkDeviceObjectReservationCreateInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_maxImmutableSamplersPerDescriptorSetLayout(MemorySegment segment, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_maxImmutableSamplersPerDescriptorSetLayout(segment, 0L, value); }
-    /// Sets `maxImmutableSamplersPerDescriptorSetLayout` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkDeviceObjectReservationCreateInfo maxImmutableSamplersPerDescriptorSetLayoutAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_maxImmutableSamplersPerDescriptorSetLayout(this.segment(), index, value); return this; }
     /// Sets `maxImmutableSamplersPerDescriptorSetLayout` with the given value.
     /// @param value the value
     /// @return `this`
     public VkDeviceObjectReservationCreateInfo maxImmutableSamplersPerDescriptorSetLayout(@CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_maxImmutableSamplersPerDescriptorSetLayout(this.segment(), value); return this; }
 
+    /// A buffer of [VkDeviceObjectReservationCreateInfo].
+    public static final class Buffer extends VkDeviceObjectReservationCreateInfo {
+        private final long elementCount;
+
+        /// Creates `VkDeviceObjectReservationCreateInfo.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkDeviceObjectReservationCreateInfo`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkDeviceObjectReservationCreateInfo`
+        public VkDeviceObjectReservationCreateInfo asSlice(long index) { return new VkDeviceObjectReservationCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkDeviceObjectReservationCreateInfo`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkDeviceObjectReservationCreateInfo`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkDeviceObjectReservationCreateInfo.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkDeviceObjectReservationCreateInfo.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkDeviceObjectReservationCreateInfo.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkDeviceObjectReservationCreateInfo.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `pipelineCacheCreateInfoCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int pipelineCacheCreateInfoCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_pipelineCacheCreateInfoCount(this.segment(), index); }
+        /// Sets `pipelineCacheCreateInfoCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pipelineCacheCreateInfoCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_pipelineCacheCreateInfoCount(this.segment(), index, value); return this; }
+
+        /// {@return `pPipelineCacheCreateInfos` at the given index}
+        /// @param index the index
+        public @CType("const VkPipelineCacheCreateInfo *") java.lang.foreign.MemorySegment pPipelineCacheCreateInfosAt(long index) { return VkDeviceObjectReservationCreateInfo.get_pPipelineCacheCreateInfos(this.segment(), index); }
+        /// Sets `pPipelineCacheCreateInfos` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pPipelineCacheCreateInfosAt(long index, @CType("const VkPipelineCacheCreateInfo *") java.lang.foreign.MemorySegment value) { VkDeviceObjectReservationCreateInfo.set_pPipelineCacheCreateInfos(this.segment(), index, value); return this; }
+
+        /// {@return `pipelinePoolSizeCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int pipelinePoolSizeCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_pipelinePoolSizeCount(this.segment(), index); }
+        /// Sets `pipelinePoolSizeCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pipelinePoolSizeCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_pipelinePoolSizeCount(this.segment(), index, value); return this; }
+
+        /// {@return `pPipelinePoolSizes` at the given index}
+        /// @param index the index
+        public @CType("const VkPipelinePoolSize *") java.lang.foreign.MemorySegment pPipelinePoolSizesAt(long index) { return VkDeviceObjectReservationCreateInfo.get_pPipelinePoolSizes(this.segment(), index); }
+        /// Sets `pPipelinePoolSizes` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pPipelinePoolSizesAt(long index, @CType("const VkPipelinePoolSize *") java.lang.foreign.MemorySegment value) { VkDeviceObjectReservationCreateInfo.set_pPipelinePoolSizes(this.segment(), index, value); return this; }
+
+        /// {@return `semaphoreRequestCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int semaphoreRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_semaphoreRequestCount(this.segment(), index); }
+        /// Sets `semaphoreRequestCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer semaphoreRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_semaphoreRequestCount(this.segment(), index, value); return this; }
+
+        /// {@return `commandBufferRequestCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int commandBufferRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_commandBufferRequestCount(this.segment(), index); }
+        /// Sets `commandBufferRequestCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer commandBufferRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_commandBufferRequestCount(this.segment(), index, value); return this; }
+
+        /// {@return `fenceRequestCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int fenceRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_fenceRequestCount(this.segment(), index); }
+        /// Sets `fenceRequestCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer fenceRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_fenceRequestCount(this.segment(), index, value); return this; }
+
+        /// {@return `deviceMemoryRequestCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int deviceMemoryRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_deviceMemoryRequestCount(this.segment(), index); }
+        /// Sets `deviceMemoryRequestCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer deviceMemoryRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_deviceMemoryRequestCount(this.segment(), index, value); return this; }
+
+        /// {@return `bufferRequestCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int bufferRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_bufferRequestCount(this.segment(), index); }
+        /// Sets `bufferRequestCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer bufferRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_bufferRequestCount(this.segment(), index, value); return this; }
+
+        /// {@return `imageRequestCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int imageRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_imageRequestCount(this.segment(), index); }
+        /// Sets `imageRequestCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer imageRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_imageRequestCount(this.segment(), index, value); return this; }
+
+        /// {@return `eventRequestCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int eventRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_eventRequestCount(this.segment(), index); }
+        /// Sets `eventRequestCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer eventRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_eventRequestCount(this.segment(), index, value); return this; }
+
+        /// {@return `queryPoolRequestCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int queryPoolRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_queryPoolRequestCount(this.segment(), index); }
+        /// Sets `queryPoolRequestCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer queryPoolRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_queryPoolRequestCount(this.segment(), index, value); return this; }
+
+        /// {@return `bufferViewRequestCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int bufferViewRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_bufferViewRequestCount(this.segment(), index); }
+        /// Sets `bufferViewRequestCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer bufferViewRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_bufferViewRequestCount(this.segment(), index, value); return this; }
+
+        /// {@return `imageViewRequestCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int imageViewRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_imageViewRequestCount(this.segment(), index); }
+        /// Sets `imageViewRequestCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer imageViewRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_imageViewRequestCount(this.segment(), index, value); return this; }
+
+        /// {@return `layeredImageViewRequestCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int layeredImageViewRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_layeredImageViewRequestCount(this.segment(), index); }
+        /// Sets `layeredImageViewRequestCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer layeredImageViewRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_layeredImageViewRequestCount(this.segment(), index, value); return this; }
+
+        /// {@return `pipelineCacheRequestCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int pipelineCacheRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_pipelineCacheRequestCount(this.segment(), index); }
+        /// Sets `pipelineCacheRequestCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pipelineCacheRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_pipelineCacheRequestCount(this.segment(), index, value); return this; }
+
+        /// {@return `pipelineLayoutRequestCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int pipelineLayoutRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_pipelineLayoutRequestCount(this.segment(), index); }
+        /// Sets `pipelineLayoutRequestCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pipelineLayoutRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_pipelineLayoutRequestCount(this.segment(), index, value); return this; }
+
+        /// {@return `renderPassRequestCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int renderPassRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_renderPassRequestCount(this.segment(), index); }
+        /// Sets `renderPassRequestCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer renderPassRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_renderPassRequestCount(this.segment(), index, value); return this; }
+
+        /// {@return `graphicsPipelineRequestCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int graphicsPipelineRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_graphicsPipelineRequestCount(this.segment(), index); }
+        /// Sets `graphicsPipelineRequestCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer graphicsPipelineRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_graphicsPipelineRequestCount(this.segment(), index, value); return this; }
+
+        /// {@return `computePipelineRequestCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int computePipelineRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_computePipelineRequestCount(this.segment(), index); }
+        /// Sets `computePipelineRequestCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer computePipelineRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_computePipelineRequestCount(this.segment(), index, value); return this; }
+
+        /// {@return `descriptorSetLayoutRequestCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int descriptorSetLayoutRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_descriptorSetLayoutRequestCount(this.segment(), index); }
+        /// Sets `descriptorSetLayoutRequestCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer descriptorSetLayoutRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_descriptorSetLayoutRequestCount(this.segment(), index, value); return this; }
+
+        /// {@return `samplerRequestCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int samplerRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_samplerRequestCount(this.segment(), index); }
+        /// Sets `samplerRequestCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer samplerRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_samplerRequestCount(this.segment(), index, value); return this; }
+
+        /// {@return `descriptorPoolRequestCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int descriptorPoolRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_descriptorPoolRequestCount(this.segment(), index); }
+        /// Sets `descriptorPoolRequestCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer descriptorPoolRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_descriptorPoolRequestCount(this.segment(), index, value); return this; }
+
+        /// {@return `descriptorSetRequestCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int descriptorSetRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_descriptorSetRequestCount(this.segment(), index); }
+        /// Sets `descriptorSetRequestCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer descriptorSetRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_descriptorSetRequestCount(this.segment(), index, value); return this; }
+
+        /// {@return `framebufferRequestCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int framebufferRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_framebufferRequestCount(this.segment(), index); }
+        /// Sets `framebufferRequestCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer framebufferRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_framebufferRequestCount(this.segment(), index, value); return this; }
+
+        /// {@return `commandPoolRequestCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int commandPoolRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_commandPoolRequestCount(this.segment(), index); }
+        /// Sets `commandPoolRequestCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer commandPoolRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_commandPoolRequestCount(this.segment(), index, value); return this; }
+
+        /// {@return `samplerYcbcrConversionRequestCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int samplerYcbcrConversionRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_samplerYcbcrConversionRequestCount(this.segment(), index); }
+        /// Sets `samplerYcbcrConversionRequestCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer samplerYcbcrConversionRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_samplerYcbcrConversionRequestCount(this.segment(), index, value); return this; }
+
+        /// {@return `surfaceRequestCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int surfaceRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_surfaceRequestCount(this.segment(), index); }
+        /// Sets `surfaceRequestCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer surfaceRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_surfaceRequestCount(this.segment(), index, value); return this; }
+
+        /// {@return `swapchainRequestCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int swapchainRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_swapchainRequestCount(this.segment(), index); }
+        /// Sets `swapchainRequestCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer swapchainRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_swapchainRequestCount(this.segment(), index, value); return this; }
+
+        /// {@return `displayModeRequestCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int displayModeRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_displayModeRequestCount(this.segment(), index); }
+        /// Sets `displayModeRequestCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer displayModeRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_displayModeRequestCount(this.segment(), index, value); return this; }
+
+        /// {@return `subpassDescriptionRequestCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int subpassDescriptionRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_subpassDescriptionRequestCount(this.segment(), index); }
+        /// Sets `subpassDescriptionRequestCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer subpassDescriptionRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_subpassDescriptionRequestCount(this.segment(), index, value); return this; }
+
+        /// {@return `attachmentDescriptionRequestCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int attachmentDescriptionRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_attachmentDescriptionRequestCount(this.segment(), index); }
+        /// Sets `attachmentDescriptionRequestCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer attachmentDescriptionRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_attachmentDescriptionRequestCount(this.segment(), index, value); return this; }
+
+        /// {@return `descriptorSetLayoutBindingRequestCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int descriptorSetLayoutBindingRequestCountAt(long index) { return VkDeviceObjectReservationCreateInfo.get_descriptorSetLayoutBindingRequestCount(this.segment(), index); }
+        /// Sets `descriptorSetLayoutBindingRequestCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer descriptorSetLayoutBindingRequestCountAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_descriptorSetLayoutBindingRequestCount(this.segment(), index, value); return this; }
+
+        /// {@return `descriptorSetLayoutBindingLimit` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int descriptorSetLayoutBindingLimitAt(long index) { return VkDeviceObjectReservationCreateInfo.get_descriptorSetLayoutBindingLimit(this.segment(), index); }
+        /// Sets `descriptorSetLayoutBindingLimit` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer descriptorSetLayoutBindingLimitAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_descriptorSetLayoutBindingLimit(this.segment(), index, value); return this; }
+
+        /// {@return `maxImageViewMipLevels` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxImageViewMipLevelsAt(long index) { return VkDeviceObjectReservationCreateInfo.get_maxImageViewMipLevels(this.segment(), index); }
+        /// Sets `maxImageViewMipLevels` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxImageViewMipLevelsAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_maxImageViewMipLevels(this.segment(), index, value); return this; }
+
+        /// {@return `maxImageViewArrayLayers` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxImageViewArrayLayersAt(long index) { return VkDeviceObjectReservationCreateInfo.get_maxImageViewArrayLayers(this.segment(), index); }
+        /// Sets `maxImageViewArrayLayers` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxImageViewArrayLayersAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_maxImageViewArrayLayers(this.segment(), index, value); return this; }
+
+        /// {@return `maxLayeredImageViewMipLevels` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxLayeredImageViewMipLevelsAt(long index) { return VkDeviceObjectReservationCreateInfo.get_maxLayeredImageViewMipLevels(this.segment(), index); }
+        /// Sets `maxLayeredImageViewMipLevels` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxLayeredImageViewMipLevelsAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_maxLayeredImageViewMipLevels(this.segment(), index, value); return this; }
+
+        /// {@return `maxOcclusionQueriesPerPool` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxOcclusionQueriesPerPoolAt(long index) { return VkDeviceObjectReservationCreateInfo.get_maxOcclusionQueriesPerPool(this.segment(), index); }
+        /// Sets `maxOcclusionQueriesPerPool` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxOcclusionQueriesPerPoolAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_maxOcclusionQueriesPerPool(this.segment(), index, value); return this; }
+
+        /// {@return `maxPipelineStatisticsQueriesPerPool` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxPipelineStatisticsQueriesPerPoolAt(long index) { return VkDeviceObjectReservationCreateInfo.get_maxPipelineStatisticsQueriesPerPool(this.segment(), index); }
+        /// Sets `maxPipelineStatisticsQueriesPerPool` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxPipelineStatisticsQueriesPerPoolAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_maxPipelineStatisticsQueriesPerPool(this.segment(), index, value); return this; }
+
+        /// {@return `maxTimestampQueriesPerPool` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxTimestampQueriesPerPoolAt(long index) { return VkDeviceObjectReservationCreateInfo.get_maxTimestampQueriesPerPool(this.segment(), index); }
+        /// Sets `maxTimestampQueriesPerPool` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxTimestampQueriesPerPoolAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_maxTimestampQueriesPerPool(this.segment(), index, value); return this; }
+
+        /// {@return `maxImmutableSamplersPerDescriptorSetLayout` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maxImmutableSamplersPerDescriptorSetLayoutAt(long index) { return VkDeviceObjectReservationCreateInfo.get_maxImmutableSamplersPerDescriptorSetLayout(this.segment(), index); }
+        /// Sets `maxImmutableSamplersPerDescriptorSetLayout` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maxImmutableSamplersPerDescriptorSetLayoutAt(long index, @CType("uint32_t") int value) { VkDeviceObjectReservationCreateInfo.set_maxImmutableSamplersPerDescriptorSetLayout(this.segment(), index, value); return this; }
+
+    }
 }

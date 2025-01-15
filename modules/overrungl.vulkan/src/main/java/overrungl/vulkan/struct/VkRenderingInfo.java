@@ -61,7 +61,7 @@ import overrungl.util.*;
 ///     const VkRenderingAttachmentInfo * pStencilAttachment;
 /// } VkRenderingInfo;
 /// ```
-public final class VkRenderingInfo extends Struct {
+public sealed class VkRenderingInfo extends Struct {
     /// The struct layout of `VkRenderingInfo`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -108,6 +108,11 @@ public final class VkRenderingInfo extends Struct {
     public static VkRenderingInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkRenderingInfo(segment); }
 
     /// Creates `VkRenderingInfo` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkRenderingInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -120,7 +125,7 @@ public final class VkRenderingInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkRenderingInfo ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkRenderingInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkRenderingInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -131,18 +136,21 @@ public final class VkRenderingInfo extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkRenderingInfo`
-    public static VkRenderingInfo alloc(SegmentAllocator allocator, long count) { return new VkRenderingInfo(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkRenderingInfo`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkRenderingInfo`
-    public VkRenderingInfo asSlice(long index) { return new VkRenderingInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkRenderingInfo` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkRenderingInfo`
+    public static VkRenderingInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkRenderingFlags") int flags, @CType("VkRect2D") java.lang.foreign.MemorySegment renderArea, @CType("uint32_t") int layerCount, @CType("uint32_t") int viewMask, @CType("uint32_t") int colorAttachmentCount, @CType("const VkRenderingAttachmentInfo *") java.lang.foreign.MemorySegment pColorAttachments, @CType("const VkRenderingAttachmentInfo *") java.lang.foreign.MemorySegment pDepthAttachment, @CType("const VkRenderingAttachmentInfo *") java.lang.foreign.MemorySegment pStencilAttachment) { return alloc(allocator).sType(sType).pNext(pNext).flags(flags).renderArea(renderArea).layerCount(layerCount).viewMask(viewMask).colorAttachmentCount(colorAttachmentCount).pColorAttachments(pColorAttachments).pDepthAttachment(pDepthAttachment).pStencilAttachment(pStencilAttachment); }
 
-    /// Creates a slice of `VkRenderingInfo`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkRenderingInfo`
-    public VkRenderingInfo asSlice(long index, long count) { return new VkRenderingInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkRenderingInfo copyFrom(VkRenderingInfo src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -151,9 +159,6 @@ public final class VkRenderingInfo extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkRenderingInfo.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkRenderingInfo.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkRenderingInfo.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -165,11 +170,6 @@ public final class VkRenderingInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkRenderingInfo.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRenderingInfo sTypeAt(long index, @CType("VkStructureType") int value) { VkRenderingInfo.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -182,9 +182,6 @@ public final class VkRenderingInfo extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkRenderingInfo.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkRenderingInfo.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkRenderingInfo.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -196,11 +193,6 @@ public final class VkRenderingInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkRenderingInfo.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRenderingInfo pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkRenderingInfo.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -213,9 +205,6 @@ public final class VkRenderingInfo extends Struct {
     /// {@return `flags`}
     /// @param segment the segment of the struct
     public static @CType("VkRenderingFlags") int get_flags(MemorySegment segment) { return VkRenderingInfo.get_flags(segment, 0L); }
-    /// {@return `flags` at the given index}
-    /// @param index the index
-    public @CType("VkRenderingFlags") int flagsAt(long index) { return VkRenderingInfo.get_flags(this.segment(), index); }
     /// {@return `flags`}
     public @CType("VkRenderingFlags") int flags() { return VkRenderingInfo.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
@@ -227,11 +216,6 @@ public final class VkRenderingInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_flags(MemorySegment segment, @CType("VkRenderingFlags") int value) { VkRenderingInfo.set_flags(segment, 0L, value); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRenderingInfo flagsAt(long index, @CType("VkRenderingFlags") int value) { VkRenderingInfo.set_flags(this.segment(), index, value); return this; }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -244,9 +228,6 @@ public final class VkRenderingInfo extends Struct {
     /// {@return `renderArea`}
     /// @param segment the segment of the struct
     public static @CType("VkRect2D") java.lang.foreign.MemorySegment get_renderArea(MemorySegment segment) { return VkRenderingInfo.get_renderArea(segment, 0L); }
-    /// {@return `renderArea` at the given index}
-    /// @param index the index
-    public @CType("VkRect2D") java.lang.foreign.MemorySegment renderAreaAt(long index) { return VkRenderingInfo.get_renderArea(this.segment(), index); }
     /// {@return `renderArea`}
     public @CType("VkRect2D") java.lang.foreign.MemorySegment renderArea() { return VkRenderingInfo.get_renderArea(this.segment()); }
     /// Sets `renderArea` with the given value at the given index.
@@ -258,11 +239,6 @@ public final class VkRenderingInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_renderArea(MemorySegment segment, @CType("VkRect2D") java.lang.foreign.MemorySegment value) { VkRenderingInfo.set_renderArea(segment, 0L, value); }
-    /// Sets `renderArea` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRenderingInfo renderAreaAt(long index, @CType("VkRect2D") java.lang.foreign.MemorySegment value) { VkRenderingInfo.set_renderArea(this.segment(), index, value); return this; }
     /// Sets `renderArea` with the given value.
     /// @param value the value
     /// @return `this`
@@ -275,9 +251,6 @@ public final class VkRenderingInfo extends Struct {
     /// {@return `layerCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_layerCount(MemorySegment segment) { return VkRenderingInfo.get_layerCount(segment, 0L); }
-    /// {@return `layerCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int layerCountAt(long index) { return VkRenderingInfo.get_layerCount(this.segment(), index); }
     /// {@return `layerCount`}
     public @CType("uint32_t") int layerCount() { return VkRenderingInfo.get_layerCount(this.segment()); }
     /// Sets `layerCount` with the given value at the given index.
@@ -289,11 +262,6 @@ public final class VkRenderingInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_layerCount(MemorySegment segment, @CType("uint32_t") int value) { VkRenderingInfo.set_layerCount(segment, 0L, value); }
-    /// Sets `layerCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRenderingInfo layerCountAt(long index, @CType("uint32_t") int value) { VkRenderingInfo.set_layerCount(this.segment(), index, value); return this; }
     /// Sets `layerCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -306,9 +274,6 @@ public final class VkRenderingInfo extends Struct {
     /// {@return `viewMask`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_viewMask(MemorySegment segment) { return VkRenderingInfo.get_viewMask(segment, 0L); }
-    /// {@return `viewMask` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int viewMaskAt(long index) { return VkRenderingInfo.get_viewMask(this.segment(), index); }
     /// {@return `viewMask`}
     public @CType("uint32_t") int viewMask() { return VkRenderingInfo.get_viewMask(this.segment()); }
     /// Sets `viewMask` with the given value at the given index.
@@ -320,11 +285,6 @@ public final class VkRenderingInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_viewMask(MemorySegment segment, @CType("uint32_t") int value) { VkRenderingInfo.set_viewMask(segment, 0L, value); }
-    /// Sets `viewMask` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRenderingInfo viewMaskAt(long index, @CType("uint32_t") int value) { VkRenderingInfo.set_viewMask(this.segment(), index, value); return this; }
     /// Sets `viewMask` with the given value.
     /// @param value the value
     /// @return `this`
@@ -337,9 +297,6 @@ public final class VkRenderingInfo extends Struct {
     /// {@return `colorAttachmentCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_colorAttachmentCount(MemorySegment segment) { return VkRenderingInfo.get_colorAttachmentCount(segment, 0L); }
-    /// {@return `colorAttachmentCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int colorAttachmentCountAt(long index) { return VkRenderingInfo.get_colorAttachmentCount(this.segment(), index); }
     /// {@return `colorAttachmentCount`}
     public @CType("uint32_t") int colorAttachmentCount() { return VkRenderingInfo.get_colorAttachmentCount(this.segment()); }
     /// Sets `colorAttachmentCount` with the given value at the given index.
@@ -351,11 +308,6 @@ public final class VkRenderingInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_colorAttachmentCount(MemorySegment segment, @CType("uint32_t") int value) { VkRenderingInfo.set_colorAttachmentCount(segment, 0L, value); }
-    /// Sets `colorAttachmentCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRenderingInfo colorAttachmentCountAt(long index, @CType("uint32_t") int value) { VkRenderingInfo.set_colorAttachmentCount(this.segment(), index, value); return this; }
     /// Sets `colorAttachmentCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -368,9 +320,6 @@ public final class VkRenderingInfo extends Struct {
     /// {@return `pColorAttachments`}
     /// @param segment the segment of the struct
     public static @CType("const VkRenderingAttachmentInfo *") java.lang.foreign.MemorySegment get_pColorAttachments(MemorySegment segment) { return VkRenderingInfo.get_pColorAttachments(segment, 0L); }
-    /// {@return `pColorAttachments` at the given index}
-    /// @param index the index
-    public @CType("const VkRenderingAttachmentInfo *") java.lang.foreign.MemorySegment pColorAttachmentsAt(long index) { return VkRenderingInfo.get_pColorAttachments(this.segment(), index); }
     /// {@return `pColorAttachments`}
     public @CType("const VkRenderingAttachmentInfo *") java.lang.foreign.MemorySegment pColorAttachments() { return VkRenderingInfo.get_pColorAttachments(this.segment()); }
     /// Sets `pColorAttachments` with the given value at the given index.
@@ -382,11 +331,6 @@ public final class VkRenderingInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pColorAttachments(MemorySegment segment, @CType("const VkRenderingAttachmentInfo *") java.lang.foreign.MemorySegment value) { VkRenderingInfo.set_pColorAttachments(segment, 0L, value); }
-    /// Sets `pColorAttachments` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRenderingInfo pColorAttachmentsAt(long index, @CType("const VkRenderingAttachmentInfo *") java.lang.foreign.MemorySegment value) { VkRenderingInfo.set_pColorAttachments(this.segment(), index, value); return this; }
     /// Sets `pColorAttachments` with the given value.
     /// @param value the value
     /// @return `this`
@@ -399,9 +343,6 @@ public final class VkRenderingInfo extends Struct {
     /// {@return `pDepthAttachment`}
     /// @param segment the segment of the struct
     public static @CType("const VkRenderingAttachmentInfo *") java.lang.foreign.MemorySegment get_pDepthAttachment(MemorySegment segment) { return VkRenderingInfo.get_pDepthAttachment(segment, 0L); }
-    /// {@return `pDepthAttachment` at the given index}
-    /// @param index the index
-    public @CType("const VkRenderingAttachmentInfo *") java.lang.foreign.MemorySegment pDepthAttachmentAt(long index) { return VkRenderingInfo.get_pDepthAttachment(this.segment(), index); }
     /// {@return `pDepthAttachment`}
     public @CType("const VkRenderingAttachmentInfo *") java.lang.foreign.MemorySegment pDepthAttachment() { return VkRenderingInfo.get_pDepthAttachment(this.segment()); }
     /// Sets `pDepthAttachment` with the given value at the given index.
@@ -413,11 +354,6 @@ public final class VkRenderingInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pDepthAttachment(MemorySegment segment, @CType("const VkRenderingAttachmentInfo *") java.lang.foreign.MemorySegment value) { VkRenderingInfo.set_pDepthAttachment(segment, 0L, value); }
-    /// Sets `pDepthAttachment` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRenderingInfo pDepthAttachmentAt(long index, @CType("const VkRenderingAttachmentInfo *") java.lang.foreign.MemorySegment value) { VkRenderingInfo.set_pDepthAttachment(this.segment(), index, value); return this; }
     /// Sets `pDepthAttachment` with the given value.
     /// @param value the value
     /// @return `this`
@@ -430,9 +366,6 @@ public final class VkRenderingInfo extends Struct {
     /// {@return `pStencilAttachment`}
     /// @param segment the segment of the struct
     public static @CType("const VkRenderingAttachmentInfo *") java.lang.foreign.MemorySegment get_pStencilAttachment(MemorySegment segment) { return VkRenderingInfo.get_pStencilAttachment(segment, 0L); }
-    /// {@return `pStencilAttachment` at the given index}
-    /// @param index the index
-    public @CType("const VkRenderingAttachmentInfo *") java.lang.foreign.MemorySegment pStencilAttachmentAt(long index) { return VkRenderingInfo.get_pStencilAttachment(this.segment(), index); }
     /// {@return `pStencilAttachment`}
     public @CType("const VkRenderingAttachmentInfo *") java.lang.foreign.MemorySegment pStencilAttachment() { return VkRenderingInfo.get_pStencilAttachment(this.segment()); }
     /// Sets `pStencilAttachment` with the given value at the given index.
@@ -444,14 +377,122 @@ public final class VkRenderingInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pStencilAttachment(MemorySegment segment, @CType("const VkRenderingAttachmentInfo *") java.lang.foreign.MemorySegment value) { VkRenderingInfo.set_pStencilAttachment(segment, 0L, value); }
-    /// Sets `pStencilAttachment` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRenderingInfo pStencilAttachmentAt(long index, @CType("const VkRenderingAttachmentInfo *") java.lang.foreign.MemorySegment value) { VkRenderingInfo.set_pStencilAttachment(this.segment(), index, value); return this; }
     /// Sets `pStencilAttachment` with the given value.
     /// @param value the value
     /// @return `this`
     public VkRenderingInfo pStencilAttachment(@CType("const VkRenderingAttachmentInfo *") java.lang.foreign.MemorySegment value) { VkRenderingInfo.set_pStencilAttachment(this.segment(), value); return this; }
 
+    /// A buffer of [VkRenderingInfo].
+    public static final class Buffer extends VkRenderingInfo {
+        private final long elementCount;
+
+        /// Creates `VkRenderingInfo.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkRenderingInfo`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkRenderingInfo`
+        public VkRenderingInfo asSlice(long index) { return new VkRenderingInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkRenderingInfo`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkRenderingInfo`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkRenderingInfo.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkRenderingInfo.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkRenderingInfo.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkRenderingInfo.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `flags` at the given index}
+        /// @param index the index
+        public @CType("VkRenderingFlags") int flagsAt(long index) { return VkRenderingInfo.get_flags(this.segment(), index); }
+        /// Sets `flags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer flagsAt(long index, @CType("VkRenderingFlags") int value) { VkRenderingInfo.set_flags(this.segment(), index, value); return this; }
+
+        /// {@return `renderArea` at the given index}
+        /// @param index the index
+        public @CType("VkRect2D") java.lang.foreign.MemorySegment renderAreaAt(long index) { return VkRenderingInfo.get_renderArea(this.segment(), index); }
+        /// Sets `renderArea` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer renderAreaAt(long index, @CType("VkRect2D") java.lang.foreign.MemorySegment value) { VkRenderingInfo.set_renderArea(this.segment(), index, value); return this; }
+
+        /// {@return `layerCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int layerCountAt(long index) { return VkRenderingInfo.get_layerCount(this.segment(), index); }
+        /// Sets `layerCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer layerCountAt(long index, @CType("uint32_t") int value) { VkRenderingInfo.set_layerCount(this.segment(), index, value); return this; }
+
+        /// {@return `viewMask` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int viewMaskAt(long index) { return VkRenderingInfo.get_viewMask(this.segment(), index); }
+        /// Sets `viewMask` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer viewMaskAt(long index, @CType("uint32_t") int value) { VkRenderingInfo.set_viewMask(this.segment(), index, value); return this; }
+
+        /// {@return `colorAttachmentCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int colorAttachmentCountAt(long index) { return VkRenderingInfo.get_colorAttachmentCount(this.segment(), index); }
+        /// Sets `colorAttachmentCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer colorAttachmentCountAt(long index, @CType("uint32_t") int value) { VkRenderingInfo.set_colorAttachmentCount(this.segment(), index, value); return this; }
+
+        /// {@return `pColorAttachments` at the given index}
+        /// @param index the index
+        public @CType("const VkRenderingAttachmentInfo *") java.lang.foreign.MemorySegment pColorAttachmentsAt(long index) { return VkRenderingInfo.get_pColorAttachments(this.segment(), index); }
+        /// Sets `pColorAttachments` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pColorAttachmentsAt(long index, @CType("const VkRenderingAttachmentInfo *") java.lang.foreign.MemorySegment value) { VkRenderingInfo.set_pColorAttachments(this.segment(), index, value); return this; }
+
+        /// {@return `pDepthAttachment` at the given index}
+        /// @param index the index
+        public @CType("const VkRenderingAttachmentInfo *") java.lang.foreign.MemorySegment pDepthAttachmentAt(long index) { return VkRenderingInfo.get_pDepthAttachment(this.segment(), index); }
+        /// Sets `pDepthAttachment` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pDepthAttachmentAt(long index, @CType("const VkRenderingAttachmentInfo *") java.lang.foreign.MemorySegment value) { VkRenderingInfo.set_pDepthAttachment(this.segment(), index, value); return this; }
+
+        /// {@return `pStencilAttachment` at the given index}
+        /// @param index the index
+        public @CType("const VkRenderingAttachmentInfo *") java.lang.foreign.MemorySegment pStencilAttachmentAt(long index) { return VkRenderingInfo.get_pStencilAttachment(this.segment(), index); }
+        /// Sets `pStencilAttachment` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pStencilAttachmentAt(long index, @CType("const VkRenderingAttachmentInfo *") java.lang.foreign.MemorySegment value) { VkRenderingInfo.set_pStencilAttachment(this.segment(), index, value); return this; }
+
+    }
 }

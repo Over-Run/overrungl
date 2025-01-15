@@ -52,7 +52,7 @@ import overrungl.util.*;
 ///     const VkClearValue * pClearValues;
 /// } VkRenderPassBeginInfo;
 /// ```
-public final class VkRenderPassBeginInfo extends Struct {
+public sealed class VkRenderPassBeginInfo extends Struct {
     /// The struct layout of `VkRenderPassBeginInfo`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -90,6 +90,11 @@ public final class VkRenderPassBeginInfo extends Struct {
     public static VkRenderPassBeginInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkRenderPassBeginInfo(segment); }
 
     /// Creates `VkRenderPassBeginInfo` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkRenderPassBeginInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -102,7 +107,7 @@ public final class VkRenderPassBeginInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkRenderPassBeginInfo ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkRenderPassBeginInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkRenderPassBeginInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -113,18 +118,21 @@ public final class VkRenderPassBeginInfo extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkRenderPassBeginInfo`
-    public static VkRenderPassBeginInfo alloc(SegmentAllocator allocator, long count) { return new VkRenderPassBeginInfo(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkRenderPassBeginInfo`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkRenderPassBeginInfo`
-    public VkRenderPassBeginInfo asSlice(long index) { return new VkRenderPassBeginInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkRenderPassBeginInfo` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkRenderPassBeginInfo`
+    public static VkRenderPassBeginInfo allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkRenderPass") java.lang.foreign.MemorySegment renderPass, @CType("VkFramebuffer") java.lang.foreign.MemorySegment framebuffer, @CType("VkRect2D") java.lang.foreign.MemorySegment renderArea, @CType("uint32_t") int clearValueCount, @CType("const VkClearValue *") java.lang.foreign.MemorySegment pClearValues) { return alloc(allocator).sType(sType).pNext(pNext).renderPass(renderPass).framebuffer(framebuffer).renderArea(renderArea).clearValueCount(clearValueCount).pClearValues(pClearValues); }
 
-    /// Creates a slice of `VkRenderPassBeginInfo`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkRenderPassBeginInfo`
-    public VkRenderPassBeginInfo asSlice(long index, long count) { return new VkRenderPassBeginInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkRenderPassBeginInfo copyFrom(VkRenderPassBeginInfo src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -133,9 +141,6 @@ public final class VkRenderPassBeginInfo extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkRenderPassBeginInfo.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkRenderPassBeginInfo.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkRenderPassBeginInfo.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -147,11 +152,6 @@ public final class VkRenderPassBeginInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkRenderPassBeginInfo.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRenderPassBeginInfo sTypeAt(long index, @CType("VkStructureType") int value) { VkRenderPassBeginInfo.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -164,9 +164,6 @@ public final class VkRenderPassBeginInfo extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkRenderPassBeginInfo.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkRenderPassBeginInfo.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkRenderPassBeginInfo.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -178,11 +175,6 @@ public final class VkRenderPassBeginInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkRenderPassBeginInfo.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRenderPassBeginInfo pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkRenderPassBeginInfo.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -195,9 +187,6 @@ public final class VkRenderPassBeginInfo extends Struct {
     /// {@return `renderPass`}
     /// @param segment the segment of the struct
     public static @CType("VkRenderPass") java.lang.foreign.MemorySegment get_renderPass(MemorySegment segment) { return VkRenderPassBeginInfo.get_renderPass(segment, 0L); }
-    /// {@return `renderPass` at the given index}
-    /// @param index the index
-    public @CType("VkRenderPass") java.lang.foreign.MemorySegment renderPassAt(long index) { return VkRenderPassBeginInfo.get_renderPass(this.segment(), index); }
     /// {@return `renderPass`}
     public @CType("VkRenderPass") java.lang.foreign.MemorySegment renderPass() { return VkRenderPassBeginInfo.get_renderPass(this.segment()); }
     /// Sets `renderPass` with the given value at the given index.
@@ -209,11 +198,6 @@ public final class VkRenderPassBeginInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_renderPass(MemorySegment segment, @CType("VkRenderPass") java.lang.foreign.MemorySegment value) { VkRenderPassBeginInfo.set_renderPass(segment, 0L, value); }
-    /// Sets `renderPass` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRenderPassBeginInfo renderPassAt(long index, @CType("VkRenderPass") java.lang.foreign.MemorySegment value) { VkRenderPassBeginInfo.set_renderPass(this.segment(), index, value); return this; }
     /// Sets `renderPass` with the given value.
     /// @param value the value
     /// @return `this`
@@ -226,9 +210,6 @@ public final class VkRenderPassBeginInfo extends Struct {
     /// {@return `framebuffer`}
     /// @param segment the segment of the struct
     public static @CType("VkFramebuffer") java.lang.foreign.MemorySegment get_framebuffer(MemorySegment segment) { return VkRenderPassBeginInfo.get_framebuffer(segment, 0L); }
-    /// {@return `framebuffer` at the given index}
-    /// @param index the index
-    public @CType("VkFramebuffer") java.lang.foreign.MemorySegment framebufferAt(long index) { return VkRenderPassBeginInfo.get_framebuffer(this.segment(), index); }
     /// {@return `framebuffer`}
     public @CType("VkFramebuffer") java.lang.foreign.MemorySegment framebuffer() { return VkRenderPassBeginInfo.get_framebuffer(this.segment()); }
     /// Sets `framebuffer` with the given value at the given index.
@@ -240,11 +221,6 @@ public final class VkRenderPassBeginInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_framebuffer(MemorySegment segment, @CType("VkFramebuffer") java.lang.foreign.MemorySegment value) { VkRenderPassBeginInfo.set_framebuffer(segment, 0L, value); }
-    /// Sets `framebuffer` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRenderPassBeginInfo framebufferAt(long index, @CType("VkFramebuffer") java.lang.foreign.MemorySegment value) { VkRenderPassBeginInfo.set_framebuffer(this.segment(), index, value); return this; }
     /// Sets `framebuffer` with the given value.
     /// @param value the value
     /// @return `this`
@@ -257,9 +233,6 @@ public final class VkRenderPassBeginInfo extends Struct {
     /// {@return `renderArea`}
     /// @param segment the segment of the struct
     public static @CType("VkRect2D") java.lang.foreign.MemorySegment get_renderArea(MemorySegment segment) { return VkRenderPassBeginInfo.get_renderArea(segment, 0L); }
-    /// {@return `renderArea` at the given index}
-    /// @param index the index
-    public @CType("VkRect2D") java.lang.foreign.MemorySegment renderAreaAt(long index) { return VkRenderPassBeginInfo.get_renderArea(this.segment(), index); }
     /// {@return `renderArea`}
     public @CType("VkRect2D") java.lang.foreign.MemorySegment renderArea() { return VkRenderPassBeginInfo.get_renderArea(this.segment()); }
     /// Sets `renderArea` with the given value at the given index.
@@ -271,11 +244,6 @@ public final class VkRenderPassBeginInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_renderArea(MemorySegment segment, @CType("VkRect2D") java.lang.foreign.MemorySegment value) { VkRenderPassBeginInfo.set_renderArea(segment, 0L, value); }
-    /// Sets `renderArea` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRenderPassBeginInfo renderAreaAt(long index, @CType("VkRect2D") java.lang.foreign.MemorySegment value) { VkRenderPassBeginInfo.set_renderArea(this.segment(), index, value); return this; }
     /// Sets `renderArea` with the given value.
     /// @param value the value
     /// @return `this`
@@ -288,9 +256,6 @@ public final class VkRenderPassBeginInfo extends Struct {
     /// {@return `clearValueCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_clearValueCount(MemorySegment segment) { return VkRenderPassBeginInfo.get_clearValueCount(segment, 0L); }
-    /// {@return `clearValueCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int clearValueCountAt(long index) { return VkRenderPassBeginInfo.get_clearValueCount(this.segment(), index); }
     /// {@return `clearValueCount`}
     public @CType("uint32_t") int clearValueCount() { return VkRenderPassBeginInfo.get_clearValueCount(this.segment()); }
     /// Sets `clearValueCount` with the given value at the given index.
@@ -302,11 +267,6 @@ public final class VkRenderPassBeginInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_clearValueCount(MemorySegment segment, @CType("uint32_t") int value) { VkRenderPassBeginInfo.set_clearValueCount(segment, 0L, value); }
-    /// Sets `clearValueCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRenderPassBeginInfo clearValueCountAt(long index, @CType("uint32_t") int value) { VkRenderPassBeginInfo.set_clearValueCount(this.segment(), index, value); return this; }
     /// Sets `clearValueCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -319,9 +279,6 @@ public final class VkRenderPassBeginInfo extends Struct {
     /// {@return `pClearValues`}
     /// @param segment the segment of the struct
     public static @CType("const VkClearValue *") java.lang.foreign.MemorySegment get_pClearValues(MemorySegment segment) { return VkRenderPassBeginInfo.get_pClearValues(segment, 0L); }
-    /// {@return `pClearValues` at the given index}
-    /// @param index the index
-    public @CType("const VkClearValue *") java.lang.foreign.MemorySegment pClearValuesAt(long index) { return VkRenderPassBeginInfo.get_pClearValues(this.segment(), index); }
     /// {@return `pClearValues`}
     public @CType("const VkClearValue *") java.lang.foreign.MemorySegment pClearValues() { return VkRenderPassBeginInfo.get_pClearValues(this.segment()); }
     /// Sets `pClearValues` with the given value at the given index.
@@ -333,14 +290,95 @@ public final class VkRenderPassBeginInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pClearValues(MemorySegment segment, @CType("const VkClearValue *") java.lang.foreign.MemorySegment value) { VkRenderPassBeginInfo.set_pClearValues(segment, 0L, value); }
-    /// Sets `pClearValues` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkRenderPassBeginInfo pClearValuesAt(long index, @CType("const VkClearValue *") java.lang.foreign.MemorySegment value) { VkRenderPassBeginInfo.set_pClearValues(this.segment(), index, value); return this; }
     /// Sets `pClearValues` with the given value.
     /// @param value the value
     /// @return `this`
     public VkRenderPassBeginInfo pClearValues(@CType("const VkClearValue *") java.lang.foreign.MemorySegment value) { VkRenderPassBeginInfo.set_pClearValues(this.segment(), value); return this; }
 
+    /// A buffer of [VkRenderPassBeginInfo].
+    public static final class Buffer extends VkRenderPassBeginInfo {
+        private final long elementCount;
+
+        /// Creates `VkRenderPassBeginInfo.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkRenderPassBeginInfo`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkRenderPassBeginInfo`
+        public VkRenderPassBeginInfo asSlice(long index) { return new VkRenderPassBeginInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkRenderPassBeginInfo`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkRenderPassBeginInfo`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkRenderPassBeginInfo.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkRenderPassBeginInfo.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkRenderPassBeginInfo.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkRenderPassBeginInfo.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `renderPass` at the given index}
+        /// @param index the index
+        public @CType("VkRenderPass") java.lang.foreign.MemorySegment renderPassAt(long index) { return VkRenderPassBeginInfo.get_renderPass(this.segment(), index); }
+        /// Sets `renderPass` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer renderPassAt(long index, @CType("VkRenderPass") java.lang.foreign.MemorySegment value) { VkRenderPassBeginInfo.set_renderPass(this.segment(), index, value); return this; }
+
+        /// {@return `framebuffer` at the given index}
+        /// @param index the index
+        public @CType("VkFramebuffer") java.lang.foreign.MemorySegment framebufferAt(long index) { return VkRenderPassBeginInfo.get_framebuffer(this.segment(), index); }
+        /// Sets `framebuffer` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer framebufferAt(long index, @CType("VkFramebuffer") java.lang.foreign.MemorySegment value) { VkRenderPassBeginInfo.set_framebuffer(this.segment(), index, value); return this; }
+
+        /// {@return `renderArea` at the given index}
+        /// @param index the index
+        public @CType("VkRect2D") java.lang.foreign.MemorySegment renderAreaAt(long index) { return VkRenderPassBeginInfo.get_renderArea(this.segment(), index); }
+        /// Sets `renderArea` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer renderAreaAt(long index, @CType("VkRect2D") java.lang.foreign.MemorySegment value) { VkRenderPassBeginInfo.set_renderArea(this.segment(), index, value); return this; }
+
+        /// {@return `clearValueCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int clearValueCountAt(long index) { return VkRenderPassBeginInfo.get_clearValueCount(this.segment(), index); }
+        /// Sets `clearValueCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer clearValueCountAt(long index, @CType("uint32_t") int value) { VkRenderPassBeginInfo.set_clearValueCount(this.segment(), index, value); return this; }
+
+        /// {@return `pClearValues` at the given index}
+        /// @param index the index
+        public @CType("const VkClearValue *") java.lang.foreign.MemorySegment pClearValuesAt(long index) { return VkRenderPassBeginInfo.get_pClearValues(this.segment(), index); }
+        /// Sets `pClearValues` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pClearValuesAt(long index, @CType("const VkClearValue *") java.lang.foreign.MemorySegment value) { VkRenderPassBeginInfo.set_pClearValues(this.segment(), index, value); return this; }
+
+    }
 }

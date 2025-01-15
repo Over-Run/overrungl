@@ -43,7 +43,7 @@ import overrungl.util.*;
 ///     uint32_t qualityLevel;
 /// } VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR;
 /// ```
-public final class VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR extends Struct {
+public sealed class VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR extends Struct {
     /// The struct layout of `VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -70,6 +70,11 @@ public final class VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR extends Struct
     public static VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR(segment); }
 
     /// Creates `VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -82,7 +87,7 @@ public final class VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR extends Struct
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -93,18 +98,21 @@ public final class VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR extends Struct
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR`
-    public static VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR`
-    public VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR asSlice(long index) { return new VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR`
+    public static VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("const VkVideoProfileInfoKHR *") java.lang.foreign.MemorySegment pVideoProfile, @CType("uint32_t") int qualityLevel) { return alloc(allocator).sType(sType).pNext(pNext).pVideoProfile(pVideoProfile).qualityLevel(qualityLevel); }
 
-    /// Creates a slice of `VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR`
-    public VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR asSlice(long index, long count) { return new VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR copyFrom(VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -113,9 +121,6 @@ public final class VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR extends Struct
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -127,11 +132,6 @@ public final class VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR extends Struct
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -144,9 +144,6 @@ public final class VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR extends Struct
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -158,11 +155,6 @@ public final class VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR extends Struct
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -175,9 +167,6 @@ public final class VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR extends Struct
     /// {@return `pVideoProfile`}
     /// @param segment the segment of the struct
     public static @CType("const VkVideoProfileInfoKHR *") java.lang.foreign.MemorySegment get_pVideoProfile(MemorySegment segment) { return VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR.get_pVideoProfile(segment, 0L); }
-    /// {@return `pVideoProfile` at the given index}
-    /// @param index the index
-    public @CType("const VkVideoProfileInfoKHR *") java.lang.foreign.MemorySegment pVideoProfileAt(long index) { return VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR.get_pVideoProfile(this.segment(), index); }
     /// {@return `pVideoProfile`}
     public @CType("const VkVideoProfileInfoKHR *") java.lang.foreign.MemorySegment pVideoProfile() { return VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR.get_pVideoProfile(this.segment()); }
     /// Sets `pVideoProfile` with the given value at the given index.
@@ -189,11 +178,6 @@ public final class VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR extends Struct
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pVideoProfile(MemorySegment segment, @CType("const VkVideoProfileInfoKHR *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR.set_pVideoProfile(segment, 0L, value); }
-    /// Sets `pVideoProfile` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR pVideoProfileAt(long index, @CType("const VkVideoProfileInfoKHR *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR.set_pVideoProfile(this.segment(), index, value); return this; }
     /// Sets `pVideoProfile` with the given value.
     /// @param value the value
     /// @return `this`
@@ -206,9 +190,6 @@ public final class VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR extends Struct
     /// {@return `qualityLevel`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_qualityLevel(MemorySegment segment) { return VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR.get_qualityLevel(segment, 0L); }
-    /// {@return `qualityLevel` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int qualityLevelAt(long index) { return VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR.get_qualityLevel(this.segment(), index); }
     /// {@return `qualityLevel`}
     public @CType("uint32_t") int qualityLevel() { return VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR.get_qualityLevel(this.segment()); }
     /// Sets `qualityLevel` with the given value at the given index.
@@ -220,14 +201,68 @@ public final class VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR extends Struct
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_qualityLevel(MemorySegment segment, @CType("uint32_t") int value) { VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR.set_qualityLevel(segment, 0L, value); }
-    /// Sets `qualityLevel` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR qualityLevelAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR.set_qualityLevel(this.segment(), index, value); return this; }
     /// Sets `qualityLevel` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR qualityLevel(@CType("uint32_t") int value) { VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR.set_qualityLevel(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR].
+    public static final class Buffer extends VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR`
+        public VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR asSlice(long index) { return new VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `pVideoProfile` at the given index}
+        /// @param index the index
+        public @CType("const VkVideoProfileInfoKHR *") java.lang.foreign.MemorySegment pVideoProfileAt(long index) { return VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR.get_pVideoProfile(this.segment(), index); }
+        /// Sets `pVideoProfile` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pVideoProfileAt(long index, @CType("const VkVideoProfileInfoKHR *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR.set_pVideoProfile(this.segment(), index, value); return this; }
+
+        /// {@return `qualityLevel` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int qualityLevelAt(long index) { return VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR.get_qualityLevel(this.segment(), index); }
+        /// Sets `qualityLevel` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer qualityLevelAt(long index, @CType("uint32_t") int value) { VkPhysicalDeviceVideoEncodeQualityLevelInfoKHR.set_qualityLevel(this.segment(), index, value); return this; }
+
+    }
 }

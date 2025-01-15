@@ -43,7 +43,7 @@ import overrungl.util.*;
 ///     uint32_t : 1 vps_poc_proportional_to_timing_flag;
 /// } StdVideoH265VpsFlags;
 /// ```
-public final class StdVideoH265VpsFlags extends Struct {
+public sealed class StdVideoH265VpsFlags extends Struct {
     /// The struct layout of `StdVideoH265VpsFlags`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("vps_temporal_id_nesting_flag"),
@@ -70,6 +70,11 @@ public final class StdVideoH265VpsFlags extends Struct {
     public static StdVideoH265VpsFlags of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoH265VpsFlags(segment); }
 
     /// Creates `StdVideoH265VpsFlags` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `StdVideoH265VpsFlags` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -82,7 +87,7 @@ public final class StdVideoH265VpsFlags extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoH265VpsFlags ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoH265VpsFlags(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `StdVideoH265VpsFlags` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -93,18 +98,21 @@ public final class StdVideoH265VpsFlags extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `StdVideoH265VpsFlags`
-    public static StdVideoH265VpsFlags alloc(SegmentAllocator allocator, long count) { return new StdVideoH265VpsFlags(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `StdVideoH265VpsFlags`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `StdVideoH265VpsFlags`
-    public StdVideoH265VpsFlags asSlice(long index) { return new StdVideoH265VpsFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `StdVideoH265VpsFlags` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `StdVideoH265VpsFlags`
+    public static StdVideoH265VpsFlags allocInit(SegmentAllocator allocator, @CType("uint32_t : 1") int vps_temporal_id_nesting_flag, @CType("uint32_t : 1") int vps_sub_layer_ordering_info_present_flag, @CType("uint32_t : 1") int vps_timing_info_present_flag, @CType("uint32_t : 1") int vps_poc_proportional_to_timing_flag) { return alloc(allocator).vps_temporal_id_nesting_flag(vps_temporal_id_nesting_flag).vps_sub_layer_ordering_info_present_flag(vps_sub_layer_ordering_info_present_flag).vps_timing_info_present_flag(vps_timing_info_present_flag).vps_poc_proportional_to_timing_flag(vps_poc_proportional_to_timing_flag); }
 
-    /// Creates a slice of `StdVideoH265VpsFlags`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `StdVideoH265VpsFlags`
-    public StdVideoH265VpsFlags asSlice(long index, long count) { return new StdVideoH265VpsFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public StdVideoH265VpsFlags copyFrom(StdVideoH265VpsFlags src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `vps_temporal_id_nesting_flag` at the given index}
     /// @param segment the segment of the struct
@@ -113,9 +121,6 @@ public final class StdVideoH265VpsFlags extends Struct {
     /// {@return `vps_temporal_id_nesting_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_vps_temporal_id_nesting_flag(MemorySegment segment) { return StdVideoH265VpsFlags.get_vps_temporal_id_nesting_flag(segment, 0L); }
-    /// {@return `vps_temporal_id_nesting_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int vps_temporal_id_nesting_flagAt(long index) { return StdVideoH265VpsFlags.get_vps_temporal_id_nesting_flag(this.segment(), index); }
     /// {@return `vps_temporal_id_nesting_flag`}
     public @CType("uint32_t : 1") int vps_temporal_id_nesting_flag() { return StdVideoH265VpsFlags.get_vps_temporal_id_nesting_flag(this.segment()); }
     /// Sets `vps_temporal_id_nesting_flag` with the given value at the given index.
@@ -127,11 +132,6 @@ public final class StdVideoH265VpsFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_vps_temporal_id_nesting_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoH265VpsFlags.set_vps_temporal_id_nesting_flag(segment, 0L, value); }
-    /// Sets `vps_temporal_id_nesting_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH265VpsFlags vps_temporal_id_nesting_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265VpsFlags.set_vps_temporal_id_nesting_flag(this.segment(), index, value); return this; }
     /// Sets `vps_temporal_id_nesting_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -144,9 +144,6 @@ public final class StdVideoH265VpsFlags extends Struct {
     /// {@return `vps_sub_layer_ordering_info_present_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_vps_sub_layer_ordering_info_present_flag(MemorySegment segment) { return StdVideoH265VpsFlags.get_vps_sub_layer_ordering_info_present_flag(segment, 0L); }
-    /// {@return `vps_sub_layer_ordering_info_present_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int vps_sub_layer_ordering_info_present_flagAt(long index) { return StdVideoH265VpsFlags.get_vps_sub_layer_ordering_info_present_flag(this.segment(), index); }
     /// {@return `vps_sub_layer_ordering_info_present_flag`}
     public @CType("uint32_t : 1") int vps_sub_layer_ordering_info_present_flag() { return StdVideoH265VpsFlags.get_vps_sub_layer_ordering_info_present_flag(this.segment()); }
     /// Sets `vps_sub_layer_ordering_info_present_flag` with the given value at the given index.
@@ -158,11 +155,6 @@ public final class StdVideoH265VpsFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_vps_sub_layer_ordering_info_present_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoH265VpsFlags.set_vps_sub_layer_ordering_info_present_flag(segment, 0L, value); }
-    /// Sets `vps_sub_layer_ordering_info_present_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH265VpsFlags vps_sub_layer_ordering_info_present_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265VpsFlags.set_vps_sub_layer_ordering_info_present_flag(this.segment(), index, value); return this; }
     /// Sets `vps_sub_layer_ordering_info_present_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -175,9 +167,6 @@ public final class StdVideoH265VpsFlags extends Struct {
     /// {@return `vps_timing_info_present_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_vps_timing_info_present_flag(MemorySegment segment) { return StdVideoH265VpsFlags.get_vps_timing_info_present_flag(segment, 0L); }
-    /// {@return `vps_timing_info_present_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int vps_timing_info_present_flagAt(long index) { return StdVideoH265VpsFlags.get_vps_timing_info_present_flag(this.segment(), index); }
     /// {@return `vps_timing_info_present_flag`}
     public @CType("uint32_t : 1") int vps_timing_info_present_flag() { return StdVideoH265VpsFlags.get_vps_timing_info_present_flag(this.segment()); }
     /// Sets `vps_timing_info_present_flag` with the given value at the given index.
@@ -189,11 +178,6 @@ public final class StdVideoH265VpsFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_vps_timing_info_present_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoH265VpsFlags.set_vps_timing_info_present_flag(segment, 0L, value); }
-    /// Sets `vps_timing_info_present_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH265VpsFlags vps_timing_info_present_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265VpsFlags.set_vps_timing_info_present_flag(this.segment(), index, value); return this; }
     /// Sets `vps_timing_info_present_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -206,9 +190,6 @@ public final class StdVideoH265VpsFlags extends Struct {
     /// {@return `vps_poc_proportional_to_timing_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_vps_poc_proportional_to_timing_flag(MemorySegment segment) { return StdVideoH265VpsFlags.get_vps_poc_proportional_to_timing_flag(segment, 0L); }
-    /// {@return `vps_poc_proportional_to_timing_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int vps_poc_proportional_to_timing_flagAt(long index) { return StdVideoH265VpsFlags.get_vps_poc_proportional_to_timing_flag(this.segment(), index); }
     /// {@return `vps_poc_proportional_to_timing_flag`}
     public @CType("uint32_t : 1") int vps_poc_proportional_to_timing_flag() { return StdVideoH265VpsFlags.get_vps_poc_proportional_to_timing_flag(this.segment()); }
     /// Sets `vps_poc_proportional_to_timing_flag` with the given value at the given index.
@@ -220,14 +201,68 @@ public final class StdVideoH265VpsFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_vps_poc_proportional_to_timing_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoH265VpsFlags.set_vps_poc_proportional_to_timing_flag(segment, 0L, value); }
-    /// Sets `vps_poc_proportional_to_timing_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoH265VpsFlags vps_poc_proportional_to_timing_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265VpsFlags.set_vps_poc_proportional_to_timing_flag(this.segment(), index, value); return this; }
     /// Sets `vps_poc_proportional_to_timing_flag` with the given value.
     /// @param value the value
     /// @return `this`
     public StdVideoH265VpsFlags vps_poc_proportional_to_timing_flag(@CType("uint32_t : 1") int value) { StdVideoH265VpsFlags.set_vps_poc_proportional_to_timing_flag(this.segment(), value); return this; }
 
+    /// A buffer of [StdVideoH265VpsFlags].
+    public static final class Buffer extends StdVideoH265VpsFlags {
+        private final long elementCount;
+
+        /// Creates `StdVideoH265VpsFlags.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `StdVideoH265VpsFlags`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `StdVideoH265VpsFlags`
+        public StdVideoH265VpsFlags asSlice(long index) { return new StdVideoH265VpsFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `StdVideoH265VpsFlags`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `StdVideoH265VpsFlags`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `vps_temporal_id_nesting_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int vps_temporal_id_nesting_flagAt(long index) { return StdVideoH265VpsFlags.get_vps_temporal_id_nesting_flag(this.segment(), index); }
+        /// Sets `vps_temporal_id_nesting_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer vps_temporal_id_nesting_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265VpsFlags.set_vps_temporal_id_nesting_flag(this.segment(), index, value); return this; }
+
+        /// {@return `vps_sub_layer_ordering_info_present_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int vps_sub_layer_ordering_info_present_flagAt(long index) { return StdVideoH265VpsFlags.get_vps_sub_layer_ordering_info_present_flag(this.segment(), index); }
+        /// Sets `vps_sub_layer_ordering_info_present_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer vps_sub_layer_ordering_info_present_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265VpsFlags.set_vps_sub_layer_ordering_info_present_flag(this.segment(), index, value); return this; }
+
+        /// {@return `vps_timing_info_present_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int vps_timing_info_present_flagAt(long index) { return StdVideoH265VpsFlags.get_vps_timing_info_present_flag(this.segment(), index); }
+        /// Sets `vps_timing_info_present_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer vps_timing_info_present_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265VpsFlags.set_vps_timing_info_present_flag(this.segment(), index, value); return this; }
+
+        /// {@return `vps_poc_proportional_to_timing_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int vps_poc_proportional_to_timing_flagAt(long index) { return StdVideoH265VpsFlags.get_vps_poc_proportional_to_timing_flag(this.segment(), index); }
+        /// Sets `vps_poc_proportional_to_timing_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer vps_poc_proportional_to_timing_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoH265VpsFlags.set_vps_poc_proportional_to_timing_flag(this.segment(), index, value); return this; }
+
+    }
 }

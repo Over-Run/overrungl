@@ -56,7 +56,7 @@ import static overrungl.vulkan.khr.VKKHRVideoDecodeAv1.*;
 ///     const uint32_t * pTileSizes;
 /// } VkVideoDecodeAV1PictureInfoKHR;
 /// ```
-public final class VkVideoDecodeAV1PictureInfoKHR extends Struct {
+public sealed class VkVideoDecodeAV1PictureInfoKHR extends Struct {
     /// The struct layout of `VkVideoDecodeAV1PictureInfoKHR`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -97,6 +97,11 @@ public final class VkVideoDecodeAV1PictureInfoKHR extends Struct {
     public static VkVideoDecodeAV1PictureInfoKHR of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkVideoDecodeAV1PictureInfoKHR(segment); }
 
     /// Creates `VkVideoDecodeAV1PictureInfoKHR` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkVideoDecodeAV1PictureInfoKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -109,7 +114,7 @@ public final class VkVideoDecodeAV1PictureInfoKHR extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkVideoDecodeAV1PictureInfoKHR ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkVideoDecodeAV1PictureInfoKHR(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkVideoDecodeAV1PictureInfoKHR` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -120,18 +125,21 @@ public final class VkVideoDecodeAV1PictureInfoKHR extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkVideoDecodeAV1PictureInfoKHR`
-    public static VkVideoDecodeAV1PictureInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoDecodeAV1PictureInfoKHR(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkVideoDecodeAV1PictureInfoKHR`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkVideoDecodeAV1PictureInfoKHR`
-    public VkVideoDecodeAV1PictureInfoKHR asSlice(long index) { return new VkVideoDecodeAV1PictureInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkVideoDecodeAV1PictureInfoKHR` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkVideoDecodeAV1PictureInfoKHR`
+    public static VkVideoDecodeAV1PictureInfoKHR allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("const StdVideoDecodeAV1PictureInfo *") java.lang.foreign.MemorySegment pStdPictureInfo, @CType("int32_t[VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR]") java.lang.foreign.MemorySegment referenceNameSlotIndices, @CType("uint32_t") int frameHeaderOffset, @CType("uint32_t") int tileCount, @CType("const uint32_t *") java.lang.foreign.MemorySegment pTileOffsets, @CType("const uint32_t *") java.lang.foreign.MemorySegment pTileSizes) { return alloc(allocator).sType(sType).pNext(pNext).pStdPictureInfo(pStdPictureInfo).referenceNameSlotIndices(referenceNameSlotIndices).frameHeaderOffset(frameHeaderOffset).tileCount(tileCount).pTileOffsets(pTileOffsets).pTileSizes(pTileSizes); }
 
-    /// Creates a slice of `VkVideoDecodeAV1PictureInfoKHR`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkVideoDecodeAV1PictureInfoKHR`
-    public VkVideoDecodeAV1PictureInfoKHR asSlice(long index, long count) { return new VkVideoDecodeAV1PictureInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkVideoDecodeAV1PictureInfoKHR copyFrom(VkVideoDecodeAV1PictureInfoKHR src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -140,9 +148,6 @@ public final class VkVideoDecodeAV1PictureInfoKHR extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkVideoDecodeAV1PictureInfoKHR.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkVideoDecodeAV1PictureInfoKHR.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkVideoDecodeAV1PictureInfoKHR.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -154,11 +159,6 @@ public final class VkVideoDecodeAV1PictureInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkVideoDecodeAV1PictureInfoKHR.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeAV1PictureInfoKHR sTypeAt(long index, @CType("VkStructureType") int value) { VkVideoDecodeAV1PictureInfoKHR.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -171,9 +171,6 @@ public final class VkVideoDecodeAV1PictureInfoKHR extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkVideoDecodeAV1PictureInfoKHR.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkVideoDecodeAV1PictureInfoKHR.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkVideoDecodeAV1PictureInfoKHR.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -185,11 +182,6 @@ public final class VkVideoDecodeAV1PictureInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkVideoDecodeAV1PictureInfoKHR.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeAV1PictureInfoKHR pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkVideoDecodeAV1PictureInfoKHR.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -202,9 +194,6 @@ public final class VkVideoDecodeAV1PictureInfoKHR extends Struct {
     /// {@return `pStdPictureInfo`}
     /// @param segment the segment of the struct
     public static @CType("const StdVideoDecodeAV1PictureInfo *") java.lang.foreign.MemorySegment get_pStdPictureInfo(MemorySegment segment) { return VkVideoDecodeAV1PictureInfoKHR.get_pStdPictureInfo(segment, 0L); }
-    /// {@return `pStdPictureInfo` at the given index}
-    /// @param index the index
-    public @CType("const StdVideoDecodeAV1PictureInfo *") java.lang.foreign.MemorySegment pStdPictureInfoAt(long index) { return VkVideoDecodeAV1PictureInfoKHR.get_pStdPictureInfo(this.segment(), index); }
     /// {@return `pStdPictureInfo`}
     public @CType("const StdVideoDecodeAV1PictureInfo *") java.lang.foreign.MemorySegment pStdPictureInfo() { return VkVideoDecodeAV1PictureInfoKHR.get_pStdPictureInfo(this.segment()); }
     /// Sets `pStdPictureInfo` with the given value at the given index.
@@ -216,11 +205,6 @@ public final class VkVideoDecodeAV1PictureInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pStdPictureInfo(MemorySegment segment, @CType("const StdVideoDecodeAV1PictureInfo *") java.lang.foreign.MemorySegment value) { VkVideoDecodeAV1PictureInfoKHR.set_pStdPictureInfo(segment, 0L, value); }
-    /// Sets `pStdPictureInfo` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeAV1PictureInfoKHR pStdPictureInfoAt(long index, @CType("const StdVideoDecodeAV1PictureInfo *") java.lang.foreign.MemorySegment value) { VkVideoDecodeAV1PictureInfoKHR.set_pStdPictureInfo(this.segment(), index, value); return this; }
     /// Sets `pStdPictureInfo` with the given value.
     /// @param value the value
     /// @return `this`
@@ -233,9 +217,6 @@ public final class VkVideoDecodeAV1PictureInfoKHR extends Struct {
     /// {@return `referenceNameSlotIndices`}
     /// @param segment the segment of the struct
     public static @CType("int32_t[VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR]") java.lang.foreign.MemorySegment get_referenceNameSlotIndices(MemorySegment segment) { return VkVideoDecodeAV1PictureInfoKHR.get_referenceNameSlotIndices(segment, 0L); }
-    /// {@return `referenceNameSlotIndices` at the given index}
-    /// @param index the index
-    public @CType("int32_t[VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR]") java.lang.foreign.MemorySegment referenceNameSlotIndicesAt(long index) { return VkVideoDecodeAV1PictureInfoKHR.get_referenceNameSlotIndices(this.segment(), index); }
     /// {@return `referenceNameSlotIndices`}
     public @CType("int32_t[VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR]") java.lang.foreign.MemorySegment referenceNameSlotIndices() { return VkVideoDecodeAV1PictureInfoKHR.get_referenceNameSlotIndices(this.segment()); }
     /// Sets `referenceNameSlotIndices` with the given value at the given index.
@@ -247,11 +228,6 @@ public final class VkVideoDecodeAV1PictureInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_referenceNameSlotIndices(MemorySegment segment, @CType("int32_t[VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR]") java.lang.foreign.MemorySegment value) { VkVideoDecodeAV1PictureInfoKHR.set_referenceNameSlotIndices(segment, 0L, value); }
-    /// Sets `referenceNameSlotIndices` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeAV1PictureInfoKHR referenceNameSlotIndicesAt(long index, @CType("int32_t[VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR]") java.lang.foreign.MemorySegment value) { VkVideoDecodeAV1PictureInfoKHR.set_referenceNameSlotIndices(this.segment(), index, value); return this; }
     /// Sets `referenceNameSlotIndices` with the given value.
     /// @param value the value
     /// @return `this`
@@ -264,9 +240,6 @@ public final class VkVideoDecodeAV1PictureInfoKHR extends Struct {
     /// {@return `frameHeaderOffset`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_frameHeaderOffset(MemorySegment segment) { return VkVideoDecodeAV1PictureInfoKHR.get_frameHeaderOffset(segment, 0L); }
-    /// {@return `frameHeaderOffset` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int frameHeaderOffsetAt(long index) { return VkVideoDecodeAV1PictureInfoKHR.get_frameHeaderOffset(this.segment(), index); }
     /// {@return `frameHeaderOffset`}
     public @CType("uint32_t") int frameHeaderOffset() { return VkVideoDecodeAV1PictureInfoKHR.get_frameHeaderOffset(this.segment()); }
     /// Sets `frameHeaderOffset` with the given value at the given index.
@@ -278,11 +251,6 @@ public final class VkVideoDecodeAV1PictureInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_frameHeaderOffset(MemorySegment segment, @CType("uint32_t") int value) { VkVideoDecodeAV1PictureInfoKHR.set_frameHeaderOffset(segment, 0L, value); }
-    /// Sets `frameHeaderOffset` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeAV1PictureInfoKHR frameHeaderOffsetAt(long index, @CType("uint32_t") int value) { VkVideoDecodeAV1PictureInfoKHR.set_frameHeaderOffset(this.segment(), index, value); return this; }
     /// Sets `frameHeaderOffset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -295,9 +263,6 @@ public final class VkVideoDecodeAV1PictureInfoKHR extends Struct {
     /// {@return `tileCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_tileCount(MemorySegment segment) { return VkVideoDecodeAV1PictureInfoKHR.get_tileCount(segment, 0L); }
-    /// {@return `tileCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int tileCountAt(long index) { return VkVideoDecodeAV1PictureInfoKHR.get_tileCount(this.segment(), index); }
     /// {@return `tileCount`}
     public @CType("uint32_t") int tileCount() { return VkVideoDecodeAV1PictureInfoKHR.get_tileCount(this.segment()); }
     /// Sets `tileCount` with the given value at the given index.
@@ -309,11 +274,6 @@ public final class VkVideoDecodeAV1PictureInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_tileCount(MemorySegment segment, @CType("uint32_t") int value) { VkVideoDecodeAV1PictureInfoKHR.set_tileCount(segment, 0L, value); }
-    /// Sets `tileCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeAV1PictureInfoKHR tileCountAt(long index, @CType("uint32_t") int value) { VkVideoDecodeAV1PictureInfoKHR.set_tileCount(this.segment(), index, value); return this; }
     /// Sets `tileCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -326,9 +286,6 @@ public final class VkVideoDecodeAV1PictureInfoKHR extends Struct {
     /// {@return `pTileOffsets`}
     /// @param segment the segment of the struct
     public static @CType("const uint32_t *") java.lang.foreign.MemorySegment get_pTileOffsets(MemorySegment segment) { return VkVideoDecodeAV1PictureInfoKHR.get_pTileOffsets(segment, 0L); }
-    /// {@return `pTileOffsets` at the given index}
-    /// @param index the index
-    public @CType("const uint32_t *") java.lang.foreign.MemorySegment pTileOffsetsAt(long index) { return VkVideoDecodeAV1PictureInfoKHR.get_pTileOffsets(this.segment(), index); }
     /// {@return `pTileOffsets`}
     public @CType("const uint32_t *") java.lang.foreign.MemorySegment pTileOffsets() { return VkVideoDecodeAV1PictureInfoKHR.get_pTileOffsets(this.segment()); }
     /// Sets `pTileOffsets` with the given value at the given index.
@@ -340,11 +297,6 @@ public final class VkVideoDecodeAV1PictureInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pTileOffsets(MemorySegment segment, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkVideoDecodeAV1PictureInfoKHR.set_pTileOffsets(segment, 0L, value); }
-    /// Sets `pTileOffsets` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeAV1PictureInfoKHR pTileOffsetsAt(long index, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkVideoDecodeAV1PictureInfoKHR.set_pTileOffsets(this.segment(), index, value); return this; }
     /// Sets `pTileOffsets` with the given value.
     /// @param value the value
     /// @return `this`
@@ -357,9 +309,6 @@ public final class VkVideoDecodeAV1PictureInfoKHR extends Struct {
     /// {@return `pTileSizes`}
     /// @param segment the segment of the struct
     public static @CType("const uint32_t *") java.lang.foreign.MemorySegment get_pTileSizes(MemorySegment segment) { return VkVideoDecodeAV1PictureInfoKHR.get_pTileSizes(segment, 0L); }
-    /// {@return `pTileSizes` at the given index}
-    /// @param index the index
-    public @CType("const uint32_t *") java.lang.foreign.MemorySegment pTileSizesAt(long index) { return VkVideoDecodeAV1PictureInfoKHR.get_pTileSizes(this.segment(), index); }
     /// {@return `pTileSizes`}
     public @CType("const uint32_t *") java.lang.foreign.MemorySegment pTileSizes() { return VkVideoDecodeAV1PictureInfoKHR.get_pTileSizes(this.segment()); }
     /// Sets `pTileSizes` with the given value at the given index.
@@ -371,14 +320,104 @@ public final class VkVideoDecodeAV1PictureInfoKHR extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pTileSizes(MemorySegment segment, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkVideoDecodeAV1PictureInfoKHR.set_pTileSizes(segment, 0L, value); }
-    /// Sets `pTileSizes` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkVideoDecodeAV1PictureInfoKHR pTileSizesAt(long index, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkVideoDecodeAV1PictureInfoKHR.set_pTileSizes(this.segment(), index, value); return this; }
     /// Sets `pTileSizes` with the given value.
     /// @param value the value
     /// @return `this`
     public VkVideoDecodeAV1PictureInfoKHR pTileSizes(@CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkVideoDecodeAV1PictureInfoKHR.set_pTileSizes(this.segment(), value); return this; }
 
+    /// A buffer of [VkVideoDecodeAV1PictureInfoKHR].
+    public static final class Buffer extends VkVideoDecodeAV1PictureInfoKHR {
+        private final long elementCount;
+
+        /// Creates `VkVideoDecodeAV1PictureInfoKHR.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkVideoDecodeAV1PictureInfoKHR`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkVideoDecodeAV1PictureInfoKHR`
+        public VkVideoDecodeAV1PictureInfoKHR asSlice(long index) { return new VkVideoDecodeAV1PictureInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkVideoDecodeAV1PictureInfoKHR`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkVideoDecodeAV1PictureInfoKHR`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkVideoDecodeAV1PictureInfoKHR.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkVideoDecodeAV1PictureInfoKHR.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkVideoDecodeAV1PictureInfoKHR.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkVideoDecodeAV1PictureInfoKHR.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `pStdPictureInfo` at the given index}
+        /// @param index the index
+        public @CType("const StdVideoDecodeAV1PictureInfo *") java.lang.foreign.MemorySegment pStdPictureInfoAt(long index) { return VkVideoDecodeAV1PictureInfoKHR.get_pStdPictureInfo(this.segment(), index); }
+        /// Sets `pStdPictureInfo` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pStdPictureInfoAt(long index, @CType("const StdVideoDecodeAV1PictureInfo *") java.lang.foreign.MemorySegment value) { VkVideoDecodeAV1PictureInfoKHR.set_pStdPictureInfo(this.segment(), index, value); return this; }
+
+        /// {@return `referenceNameSlotIndices` at the given index}
+        /// @param index the index
+        public @CType("int32_t[VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR]") java.lang.foreign.MemorySegment referenceNameSlotIndicesAt(long index) { return VkVideoDecodeAV1PictureInfoKHR.get_referenceNameSlotIndices(this.segment(), index); }
+        /// Sets `referenceNameSlotIndices` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer referenceNameSlotIndicesAt(long index, @CType("int32_t[VK_MAX_VIDEO_AV1_REFERENCES_PER_FRAME_KHR]") java.lang.foreign.MemorySegment value) { VkVideoDecodeAV1PictureInfoKHR.set_referenceNameSlotIndices(this.segment(), index, value); return this; }
+
+        /// {@return `frameHeaderOffset` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int frameHeaderOffsetAt(long index) { return VkVideoDecodeAV1PictureInfoKHR.get_frameHeaderOffset(this.segment(), index); }
+        /// Sets `frameHeaderOffset` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer frameHeaderOffsetAt(long index, @CType("uint32_t") int value) { VkVideoDecodeAV1PictureInfoKHR.set_frameHeaderOffset(this.segment(), index, value); return this; }
+
+        /// {@return `tileCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int tileCountAt(long index) { return VkVideoDecodeAV1PictureInfoKHR.get_tileCount(this.segment(), index); }
+        /// Sets `tileCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer tileCountAt(long index, @CType("uint32_t") int value) { VkVideoDecodeAV1PictureInfoKHR.set_tileCount(this.segment(), index, value); return this; }
+
+        /// {@return `pTileOffsets` at the given index}
+        /// @param index the index
+        public @CType("const uint32_t *") java.lang.foreign.MemorySegment pTileOffsetsAt(long index) { return VkVideoDecodeAV1PictureInfoKHR.get_pTileOffsets(this.segment(), index); }
+        /// Sets `pTileOffsets` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pTileOffsetsAt(long index, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkVideoDecodeAV1PictureInfoKHR.set_pTileOffsets(this.segment(), index, value); return this; }
+
+        /// {@return `pTileSizes` at the given index}
+        /// @param index the index
+        public @CType("const uint32_t *") java.lang.foreign.MemorySegment pTileSizesAt(long index) { return VkVideoDecodeAV1PictureInfoKHR.get_pTileSizes(this.segment(), index); }
+        /// Sets `pTileSizes` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pTileSizesAt(long index, @CType("const uint32_t *") java.lang.foreign.MemorySegment value) { VkVideoDecodeAV1PictureInfoKHR.set_pTileSizes(this.segment(), index, value); return this; }
+
+    }
 }

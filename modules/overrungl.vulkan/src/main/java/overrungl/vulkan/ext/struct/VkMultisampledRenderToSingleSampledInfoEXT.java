@@ -43,7 +43,7 @@ import overrungl.util.*;
 ///     VkSampleCountFlagBits rasterizationSamples;
 /// } VkMultisampledRenderToSingleSampledInfoEXT;
 /// ```
-public final class VkMultisampledRenderToSingleSampledInfoEXT extends Struct {
+public sealed class VkMultisampledRenderToSingleSampledInfoEXT extends Struct {
     /// The struct layout of `VkMultisampledRenderToSingleSampledInfoEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -70,6 +70,11 @@ public final class VkMultisampledRenderToSingleSampledInfoEXT extends Struct {
     public static VkMultisampledRenderToSingleSampledInfoEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkMultisampledRenderToSingleSampledInfoEXT(segment); }
 
     /// Creates `VkMultisampledRenderToSingleSampledInfoEXT` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkMultisampledRenderToSingleSampledInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -82,7 +87,7 @@ public final class VkMultisampledRenderToSingleSampledInfoEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkMultisampledRenderToSingleSampledInfoEXT ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkMultisampledRenderToSingleSampledInfoEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkMultisampledRenderToSingleSampledInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -93,18 +98,21 @@ public final class VkMultisampledRenderToSingleSampledInfoEXT extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkMultisampledRenderToSingleSampledInfoEXT`
-    public static VkMultisampledRenderToSingleSampledInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkMultisampledRenderToSingleSampledInfoEXT(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkMultisampledRenderToSingleSampledInfoEXT`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkMultisampledRenderToSingleSampledInfoEXT`
-    public VkMultisampledRenderToSingleSampledInfoEXT asSlice(long index) { return new VkMultisampledRenderToSingleSampledInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkMultisampledRenderToSingleSampledInfoEXT` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkMultisampledRenderToSingleSampledInfoEXT`
+    public static VkMultisampledRenderToSingleSampledInfoEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("const void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int multisampledRenderToSingleSampledEnable, @CType("VkSampleCountFlagBits") int rasterizationSamples) { return alloc(allocator).sType(sType).pNext(pNext).multisampledRenderToSingleSampledEnable(multisampledRenderToSingleSampledEnable).rasterizationSamples(rasterizationSamples); }
 
-    /// Creates a slice of `VkMultisampledRenderToSingleSampledInfoEXT`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkMultisampledRenderToSingleSampledInfoEXT`
-    public VkMultisampledRenderToSingleSampledInfoEXT asSlice(long index, long count) { return new VkMultisampledRenderToSingleSampledInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkMultisampledRenderToSingleSampledInfoEXT copyFrom(VkMultisampledRenderToSingleSampledInfoEXT src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -113,9 +121,6 @@ public final class VkMultisampledRenderToSingleSampledInfoEXT extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkMultisampledRenderToSingleSampledInfoEXT.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkMultisampledRenderToSingleSampledInfoEXT.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkMultisampledRenderToSingleSampledInfoEXT.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -127,11 +132,6 @@ public final class VkMultisampledRenderToSingleSampledInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkMultisampledRenderToSingleSampledInfoEXT.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkMultisampledRenderToSingleSampledInfoEXT sTypeAt(long index, @CType("VkStructureType") int value) { VkMultisampledRenderToSingleSampledInfoEXT.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -144,9 +144,6 @@ public final class VkMultisampledRenderToSingleSampledInfoEXT extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkMultisampledRenderToSingleSampledInfoEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkMultisampledRenderToSingleSampledInfoEXT.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("const void *") java.lang.foreign.MemorySegment pNext() { return VkMultisampledRenderToSingleSampledInfoEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -158,11 +155,6 @@ public final class VkMultisampledRenderToSingleSampledInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkMultisampledRenderToSingleSampledInfoEXT.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkMultisampledRenderToSingleSampledInfoEXT pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkMultisampledRenderToSingleSampledInfoEXT.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -175,9 +167,6 @@ public final class VkMultisampledRenderToSingleSampledInfoEXT extends Struct {
     /// {@return `multisampledRenderToSingleSampledEnable`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_multisampledRenderToSingleSampledEnable(MemorySegment segment) { return VkMultisampledRenderToSingleSampledInfoEXT.get_multisampledRenderToSingleSampledEnable(segment, 0L); }
-    /// {@return `multisampledRenderToSingleSampledEnable` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int multisampledRenderToSingleSampledEnableAt(long index) { return VkMultisampledRenderToSingleSampledInfoEXT.get_multisampledRenderToSingleSampledEnable(this.segment(), index); }
     /// {@return `multisampledRenderToSingleSampledEnable`}
     public @CType("VkBool32") int multisampledRenderToSingleSampledEnable() { return VkMultisampledRenderToSingleSampledInfoEXT.get_multisampledRenderToSingleSampledEnable(this.segment()); }
     /// Sets `multisampledRenderToSingleSampledEnable` with the given value at the given index.
@@ -189,11 +178,6 @@ public final class VkMultisampledRenderToSingleSampledInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_multisampledRenderToSingleSampledEnable(MemorySegment segment, @CType("VkBool32") int value) { VkMultisampledRenderToSingleSampledInfoEXT.set_multisampledRenderToSingleSampledEnable(segment, 0L, value); }
-    /// Sets `multisampledRenderToSingleSampledEnable` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkMultisampledRenderToSingleSampledInfoEXT multisampledRenderToSingleSampledEnableAt(long index, @CType("VkBool32") int value) { VkMultisampledRenderToSingleSampledInfoEXT.set_multisampledRenderToSingleSampledEnable(this.segment(), index, value); return this; }
     /// Sets `multisampledRenderToSingleSampledEnable` with the given value.
     /// @param value the value
     /// @return `this`
@@ -206,9 +190,6 @@ public final class VkMultisampledRenderToSingleSampledInfoEXT extends Struct {
     /// {@return `rasterizationSamples`}
     /// @param segment the segment of the struct
     public static @CType("VkSampleCountFlagBits") int get_rasterizationSamples(MemorySegment segment) { return VkMultisampledRenderToSingleSampledInfoEXT.get_rasterizationSamples(segment, 0L); }
-    /// {@return `rasterizationSamples` at the given index}
-    /// @param index the index
-    public @CType("VkSampleCountFlagBits") int rasterizationSamplesAt(long index) { return VkMultisampledRenderToSingleSampledInfoEXT.get_rasterizationSamples(this.segment(), index); }
     /// {@return `rasterizationSamples`}
     public @CType("VkSampleCountFlagBits") int rasterizationSamples() { return VkMultisampledRenderToSingleSampledInfoEXT.get_rasterizationSamples(this.segment()); }
     /// Sets `rasterizationSamples` with the given value at the given index.
@@ -220,14 +201,68 @@ public final class VkMultisampledRenderToSingleSampledInfoEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_rasterizationSamples(MemorySegment segment, @CType("VkSampleCountFlagBits") int value) { VkMultisampledRenderToSingleSampledInfoEXT.set_rasterizationSamples(segment, 0L, value); }
-    /// Sets `rasterizationSamples` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkMultisampledRenderToSingleSampledInfoEXT rasterizationSamplesAt(long index, @CType("VkSampleCountFlagBits") int value) { VkMultisampledRenderToSingleSampledInfoEXT.set_rasterizationSamples(this.segment(), index, value); return this; }
     /// Sets `rasterizationSamples` with the given value.
     /// @param value the value
     /// @return `this`
     public VkMultisampledRenderToSingleSampledInfoEXT rasterizationSamples(@CType("VkSampleCountFlagBits") int value) { VkMultisampledRenderToSingleSampledInfoEXT.set_rasterizationSamples(this.segment(), value); return this; }
 
+    /// A buffer of [VkMultisampledRenderToSingleSampledInfoEXT].
+    public static final class Buffer extends VkMultisampledRenderToSingleSampledInfoEXT {
+        private final long elementCount;
+
+        /// Creates `VkMultisampledRenderToSingleSampledInfoEXT.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkMultisampledRenderToSingleSampledInfoEXT`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkMultisampledRenderToSingleSampledInfoEXT`
+        public VkMultisampledRenderToSingleSampledInfoEXT asSlice(long index) { return new VkMultisampledRenderToSingleSampledInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkMultisampledRenderToSingleSampledInfoEXT`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkMultisampledRenderToSingleSampledInfoEXT`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkMultisampledRenderToSingleSampledInfoEXT.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkMultisampledRenderToSingleSampledInfoEXT.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkMultisampledRenderToSingleSampledInfoEXT.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkMultisampledRenderToSingleSampledInfoEXT.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `multisampledRenderToSingleSampledEnable` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int multisampledRenderToSingleSampledEnableAt(long index) { return VkMultisampledRenderToSingleSampledInfoEXT.get_multisampledRenderToSingleSampledEnable(this.segment(), index); }
+        /// Sets `multisampledRenderToSingleSampledEnable` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer multisampledRenderToSingleSampledEnableAt(long index, @CType("VkBool32") int value) { VkMultisampledRenderToSingleSampledInfoEXT.set_multisampledRenderToSingleSampledEnable(this.segment(), index, value); return this; }
+
+        /// {@return `rasterizationSamples` at the given index}
+        /// @param index the index
+        public @CType("VkSampleCountFlagBits") int rasterizationSamplesAt(long index) { return VkMultisampledRenderToSingleSampledInfoEXT.get_rasterizationSamples(this.segment(), index); }
+        /// Sets `rasterizationSamples` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer rasterizationSamplesAt(long index, @CType("VkSampleCountFlagBits") int value) { VkMultisampledRenderToSingleSampledInfoEXT.set_rasterizationSamples(this.segment(), index, value); return this; }
+
+    }
 }

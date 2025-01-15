@@ -52,7 +52,7 @@ import overrungl.util.*;
 ///     uint64_t accelerationStructureReference;
 /// } VkAccelerationStructureMatrixMotionInstanceNV;
 /// ```
-public final class VkAccelerationStructureMatrixMotionInstanceNV extends Struct {
+public sealed class VkAccelerationStructureMatrixMotionInstanceNV extends Struct {
     /// The struct layout of `VkAccelerationStructureMatrixMotionInstanceNV`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.khr.struct.VkTransformMatrixKHR.LAYOUT.withName("transformT0"),
@@ -92,6 +92,11 @@ public final class VkAccelerationStructureMatrixMotionInstanceNV extends Struct 
     public static VkAccelerationStructureMatrixMotionInstanceNV of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkAccelerationStructureMatrixMotionInstanceNV(segment); }
 
     /// Creates `VkAccelerationStructureMatrixMotionInstanceNV` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkAccelerationStructureMatrixMotionInstanceNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -104,7 +109,7 @@ public final class VkAccelerationStructureMatrixMotionInstanceNV extends Struct 
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkAccelerationStructureMatrixMotionInstanceNV ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkAccelerationStructureMatrixMotionInstanceNV(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkAccelerationStructureMatrixMotionInstanceNV` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -115,18 +120,21 @@ public final class VkAccelerationStructureMatrixMotionInstanceNV extends Struct 
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkAccelerationStructureMatrixMotionInstanceNV`
-    public static VkAccelerationStructureMatrixMotionInstanceNV alloc(SegmentAllocator allocator, long count) { return new VkAccelerationStructureMatrixMotionInstanceNV(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkAccelerationStructureMatrixMotionInstanceNV`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkAccelerationStructureMatrixMotionInstanceNV`
-    public VkAccelerationStructureMatrixMotionInstanceNV asSlice(long index) { return new VkAccelerationStructureMatrixMotionInstanceNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkAccelerationStructureMatrixMotionInstanceNV` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkAccelerationStructureMatrixMotionInstanceNV`
+    public static VkAccelerationStructureMatrixMotionInstanceNV allocInit(SegmentAllocator allocator, @CType("VkTransformMatrixKHR") java.lang.foreign.MemorySegment transformT0, @CType("VkTransformMatrixKHR") java.lang.foreign.MemorySegment transformT1, @CType("uint32_t") int instanceCustomIndex, @CType("uint32_t") int mask, @CType("uint32_t") int instanceShaderBindingTableRecordOffset, @CType("VkGeometryInstanceFlagsKHR") int flags, @CType("uint64_t") long accelerationStructureReference) { return alloc(allocator).transformT0(transformT0).transformT1(transformT1).instanceCustomIndex(instanceCustomIndex).mask(mask).instanceShaderBindingTableRecordOffset(instanceShaderBindingTableRecordOffset).flags(flags).accelerationStructureReference(accelerationStructureReference); }
 
-    /// Creates a slice of `VkAccelerationStructureMatrixMotionInstanceNV`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkAccelerationStructureMatrixMotionInstanceNV`
-    public VkAccelerationStructureMatrixMotionInstanceNV asSlice(long index, long count) { return new VkAccelerationStructureMatrixMotionInstanceNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkAccelerationStructureMatrixMotionInstanceNV copyFrom(VkAccelerationStructureMatrixMotionInstanceNV src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `transformT0` at the given index}
     /// @param segment the segment of the struct
@@ -135,9 +143,6 @@ public final class VkAccelerationStructureMatrixMotionInstanceNV extends Struct 
     /// {@return `transformT0`}
     /// @param segment the segment of the struct
     public static @CType("VkTransformMatrixKHR") java.lang.foreign.MemorySegment get_transformT0(MemorySegment segment) { return VkAccelerationStructureMatrixMotionInstanceNV.get_transformT0(segment, 0L); }
-    /// {@return `transformT0` at the given index}
-    /// @param index the index
-    public @CType("VkTransformMatrixKHR") java.lang.foreign.MemorySegment transformT0At(long index) { return VkAccelerationStructureMatrixMotionInstanceNV.get_transformT0(this.segment(), index); }
     /// {@return `transformT0`}
     public @CType("VkTransformMatrixKHR") java.lang.foreign.MemorySegment transformT0() { return VkAccelerationStructureMatrixMotionInstanceNV.get_transformT0(this.segment()); }
     /// Sets `transformT0` with the given value at the given index.
@@ -149,11 +154,6 @@ public final class VkAccelerationStructureMatrixMotionInstanceNV extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_transformT0(MemorySegment segment, @CType("VkTransformMatrixKHR") java.lang.foreign.MemorySegment value) { VkAccelerationStructureMatrixMotionInstanceNV.set_transformT0(segment, 0L, value); }
-    /// Sets `transformT0` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAccelerationStructureMatrixMotionInstanceNV transformT0At(long index, @CType("VkTransformMatrixKHR") java.lang.foreign.MemorySegment value) { VkAccelerationStructureMatrixMotionInstanceNV.set_transformT0(this.segment(), index, value); return this; }
     /// Sets `transformT0` with the given value.
     /// @param value the value
     /// @return `this`
@@ -166,9 +166,6 @@ public final class VkAccelerationStructureMatrixMotionInstanceNV extends Struct 
     /// {@return `transformT1`}
     /// @param segment the segment of the struct
     public static @CType("VkTransformMatrixKHR") java.lang.foreign.MemorySegment get_transformT1(MemorySegment segment) { return VkAccelerationStructureMatrixMotionInstanceNV.get_transformT1(segment, 0L); }
-    /// {@return `transformT1` at the given index}
-    /// @param index the index
-    public @CType("VkTransformMatrixKHR") java.lang.foreign.MemorySegment transformT1At(long index) { return VkAccelerationStructureMatrixMotionInstanceNV.get_transformT1(this.segment(), index); }
     /// {@return `transformT1`}
     public @CType("VkTransformMatrixKHR") java.lang.foreign.MemorySegment transformT1() { return VkAccelerationStructureMatrixMotionInstanceNV.get_transformT1(this.segment()); }
     /// Sets `transformT1` with the given value at the given index.
@@ -180,11 +177,6 @@ public final class VkAccelerationStructureMatrixMotionInstanceNV extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_transformT1(MemorySegment segment, @CType("VkTransformMatrixKHR") java.lang.foreign.MemorySegment value) { VkAccelerationStructureMatrixMotionInstanceNV.set_transformT1(segment, 0L, value); }
-    /// Sets `transformT1` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAccelerationStructureMatrixMotionInstanceNV transformT1At(long index, @CType("VkTransformMatrixKHR") java.lang.foreign.MemorySegment value) { VkAccelerationStructureMatrixMotionInstanceNV.set_transformT1(this.segment(), index, value); return this; }
     /// Sets `transformT1` with the given value.
     /// @param value the value
     /// @return `this`
@@ -197,9 +189,6 @@ public final class VkAccelerationStructureMatrixMotionInstanceNV extends Struct 
     /// {@return `instanceCustomIndex`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_instanceCustomIndex(MemorySegment segment) { return VkAccelerationStructureMatrixMotionInstanceNV.get_instanceCustomIndex(segment, 0L); }
-    /// {@return `instanceCustomIndex` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int instanceCustomIndexAt(long index) { return VkAccelerationStructureMatrixMotionInstanceNV.get_instanceCustomIndex(this.segment(), index); }
     /// {@return `instanceCustomIndex`}
     public @CType("uint32_t") int instanceCustomIndex() { return VkAccelerationStructureMatrixMotionInstanceNV.get_instanceCustomIndex(this.segment()); }
     /// Sets `instanceCustomIndex` with the given value at the given index.
@@ -211,11 +200,6 @@ public final class VkAccelerationStructureMatrixMotionInstanceNV extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_instanceCustomIndex(MemorySegment segment, @CType("uint32_t") int value) { VkAccelerationStructureMatrixMotionInstanceNV.set_instanceCustomIndex(segment, 0L, value); }
-    /// Sets `instanceCustomIndex` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAccelerationStructureMatrixMotionInstanceNV instanceCustomIndexAt(long index, @CType("uint32_t") int value) { VkAccelerationStructureMatrixMotionInstanceNV.set_instanceCustomIndex(this.segment(), index, value); return this; }
     /// Sets `instanceCustomIndex` with the given value.
     /// @param value the value
     /// @return `this`
@@ -228,9 +212,6 @@ public final class VkAccelerationStructureMatrixMotionInstanceNV extends Struct 
     /// {@return `mask`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_mask(MemorySegment segment) { return VkAccelerationStructureMatrixMotionInstanceNV.get_mask(segment, 0L); }
-    /// {@return `mask` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int maskAt(long index) { return VkAccelerationStructureMatrixMotionInstanceNV.get_mask(this.segment(), index); }
     /// {@return `mask`}
     public @CType("uint32_t") int mask() { return VkAccelerationStructureMatrixMotionInstanceNV.get_mask(this.segment()); }
     /// Sets `mask` with the given value at the given index.
@@ -242,11 +223,6 @@ public final class VkAccelerationStructureMatrixMotionInstanceNV extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_mask(MemorySegment segment, @CType("uint32_t") int value) { VkAccelerationStructureMatrixMotionInstanceNV.set_mask(segment, 0L, value); }
-    /// Sets `mask` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAccelerationStructureMatrixMotionInstanceNV maskAt(long index, @CType("uint32_t") int value) { VkAccelerationStructureMatrixMotionInstanceNV.set_mask(this.segment(), index, value); return this; }
     /// Sets `mask` with the given value.
     /// @param value the value
     /// @return `this`
@@ -259,9 +235,6 @@ public final class VkAccelerationStructureMatrixMotionInstanceNV extends Struct 
     /// {@return `instanceShaderBindingTableRecordOffset`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_instanceShaderBindingTableRecordOffset(MemorySegment segment) { return VkAccelerationStructureMatrixMotionInstanceNV.get_instanceShaderBindingTableRecordOffset(segment, 0L); }
-    /// {@return `instanceShaderBindingTableRecordOffset` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int instanceShaderBindingTableRecordOffsetAt(long index) { return VkAccelerationStructureMatrixMotionInstanceNV.get_instanceShaderBindingTableRecordOffset(this.segment(), index); }
     /// {@return `instanceShaderBindingTableRecordOffset`}
     public @CType("uint32_t") int instanceShaderBindingTableRecordOffset() { return VkAccelerationStructureMatrixMotionInstanceNV.get_instanceShaderBindingTableRecordOffset(this.segment()); }
     /// Sets `instanceShaderBindingTableRecordOffset` with the given value at the given index.
@@ -273,11 +246,6 @@ public final class VkAccelerationStructureMatrixMotionInstanceNV extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_instanceShaderBindingTableRecordOffset(MemorySegment segment, @CType("uint32_t") int value) { VkAccelerationStructureMatrixMotionInstanceNV.set_instanceShaderBindingTableRecordOffset(segment, 0L, value); }
-    /// Sets `instanceShaderBindingTableRecordOffset` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAccelerationStructureMatrixMotionInstanceNV instanceShaderBindingTableRecordOffsetAt(long index, @CType("uint32_t") int value) { VkAccelerationStructureMatrixMotionInstanceNV.set_instanceShaderBindingTableRecordOffset(this.segment(), index, value); return this; }
     /// Sets `instanceShaderBindingTableRecordOffset` with the given value.
     /// @param value the value
     /// @return `this`
@@ -290,9 +258,6 @@ public final class VkAccelerationStructureMatrixMotionInstanceNV extends Struct 
     /// {@return `flags`}
     /// @param segment the segment of the struct
     public static @CType("VkGeometryInstanceFlagsKHR") int get_flags(MemorySegment segment) { return VkAccelerationStructureMatrixMotionInstanceNV.get_flags(segment, 0L); }
-    /// {@return `flags` at the given index}
-    /// @param index the index
-    public @CType("VkGeometryInstanceFlagsKHR") int flagsAt(long index) { return VkAccelerationStructureMatrixMotionInstanceNV.get_flags(this.segment(), index); }
     /// {@return `flags`}
     public @CType("VkGeometryInstanceFlagsKHR") int flags() { return VkAccelerationStructureMatrixMotionInstanceNV.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
@@ -304,11 +269,6 @@ public final class VkAccelerationStructureMatrixMotionInstanceNV extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_flags(MemorySegment segment, @CType("VkGeometryInstanceFlagsKHR") int value) { VkAccelerationStructureMatrixMotionInstanceNV.set_flags(segment, 0L, value); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAccelerationStructureMatrixMotionInstanceNV flagsAt(long index, @CType("VkGeometryInstanceFlagsKHR") int value) { VkAccelerationStructureMatrixMotionInstanceNV.set_flags(this.segment(), index, value); return this; }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -321,9 +281,6 @@ public final class VkAccelerationStructureMatrixMotionInstanceNV extends Struct 
     /// {@return `accelerationStructureReference`}
     /// @param segment the segment of the struct
     public static @CType("uint64_t") long get_accelerationStructureReference(MemorySegment segment) { return VkAccelerationStructureMatrixMotionInstanceNV.get_accelerationStructureReference(segment, 0L); }
-    /// {@return `accelerationStructureReference` at the given index}
-    /// @param index the index
-    public @CType("uint64_t") long accelerationStructureReferenceAt(long index) { return VkAccelerationStructureMatrixMotionInstanceNV.get_accelerationStructureReference(this.segment(), index); }
     /// {@return `accelerationStructureReference`}
     public @CType("uint64_t") long accelerationStructureReference() { return VkAccelerationStructureMatrixMotionInstanceNV.get_accelerationStructureReference(this.segment()); }
     /// Sets `accelerationStructureReference` with the given value at the given index.
@@ -335,14 +292,95 @@ public final class VkAccelerationStructureMatrixMotionInstanceNV extends Struct 
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_accelerationStructureReference(MemorySegment segment, @CType("uint64_t") long value) { VkAccelerationStructureMatrixMotionInstanceNV.set_accelerationStructureReference(segment, 0L, value); }
-    /// Sets `accelerationStructureReference` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkAccelerationStructureMatrixMotionInstanceNV accelerationStructureReferenceAt(long index, @CType("uint64_t") long value) { VkAccelerationStructureMatrixMotionInstanceNV.set_accelerationStructureReference(this.segment(), index, value); return this; }
     /// Sets `accelerationStructureReference` with the given value.
     /// @param value the value
     /// @return `this`
     public VkAccelerationStructureMatrixMotionInstanceNV accelerationStructureReference(@CType("uint64_t") long value) { VkAccelerationStructureMatrixMotionInstanceNV.set_accelerationStructureReference(this.segment(), value); return this; }
 
+    /// A buffer of [VkAccelerationStructureMatrixMotionInstanceNV].
+    public static final class Buffer extends VkAccelerationStructureMatrixMotionInstanceNV {
+        private final long elementCount;
+
+        /// Creates `VkAccelerationStructureMatrixMotionInstanceNV.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkAccelerationStructureMatrixMotionInstanceNV`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkAccelerationStructureMatrixMotionInstanceNV`
+        public VkAccelerationStructureMatrixMotionInstanceNV asSlice(long index) { return new VkAccelerationStructureMatrixMotionInstanceNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkAccelerationStructureMatrixMotionInstanceNV`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkAccelerationStructureMatrixMotionInstanceNV`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `transformT0` at the given index}
+        /// @param index the index
+        public @CType("VkTransformMatrixKHR") java.lang.foreign.MemorySegment transformT0At(long index) { return VkAccelerationStructureMatrixMotionInstanceNV.get_transformT0(this.segment(), index); }
+        /// Sets `transformT0` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer transformT0At(long index, @CType("VkTransformMatrixKHR") java.lang.foreign.MemorySegment value) { VkAccelerationStructureMatrixMotionInstanceNV.set_transformT0(this.segment(), index, value); return this; }
+
+        /// {@return `transformT1` at the given index}
+        /// @param index the index
+        public @CType("VkTransformMatrixKHR") java.lang.foreign.MemorySegment transformT1At(long index) { return VkAccelerationStructureMatrixMotionInstanceNV.get_transformT1(this.segment(), index); }
+        /// Sets `transformT1` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer transformT1At(long index, @CType("VkTransformMatrixKHR") java.lang.foreign.MemorySegment value) { VkAccelerationStructureMatrixMotionInstanceNV.set_transformT1(this.segment(), index, value); return this; }
+
+        /// {@return `instanceCustomIndex` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int instanceCustomIndexAt(long index) { return VkAccelerationStructureMatrixMotionInstanceNV.get_instanceCustomIndex(this.segment(), index); }
+        /// Sets `instanceCustomIndex` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer instanceCustomIndexAt(long index, @CType("uint32_t") int value) { VkAccelerationStructureMatrixMotionInstanceNV.set_instanceCustomIndex(this.segment(), index, value); return this; }
+
+        /// {@return `mask` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int maskAt(long index) { return VkAccelerationStructureMatrixMotionInstanceNV.get_mask(this.segment(), index); }
+        /// Sets `mask` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer maskAt(long index, @CType("uint32_t") int value) { VkAccelerationStructureMatrixMotionInstanceNV.set_mask(this.segment(), index, value); return this; }
+
+        /// {@return `instanceShaderBindingTableRecordOffset` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int instanceShaderBindingTableRecordOffsetAt(long index) { return VkAccelerationStructureMatrixMotionInstanceNV.get_instanceShaderBindingTableRecordOffset(this.segment(), index); }
+        /// Sets `instanceShaderBindingTableRecordOffset` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer instanceShaderBindingTableRecordOffsetAt(long index, @CType("uint32_t") int value) { VkAccelerationStructureMatrixMotionInstanceNV.set_instanceShaderBindingTableRecordOffset(this.segment(), index, value); return this; }
+
+        /// {@return `flags` at the given index}
+        /// @param index the index
+        public @CType("VkGeometryInstanceFlagsKHR") int flagsAt(long index) { return VkAccelerationStructureMatrixMotionInstanceNV.get_flags(this.segment(), index); }
+        /// Sets `flags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer flagsAt(long index, @CType("VkGeometryInstanceFlagsKHR") int value) { VkAccelerationStructureMatrixMotionInstanceNV.set_flags(this.segment(), index, value); return this; }
+
+        /// {@return `accelerationStructureReference` at the given index}
+        /// @param index the index
+        public @CType("uint64_t") long accelerationStructureReferenceAt(long index) { return VkAccelerationStructureMatrixMotionInstanceNV.get_accelerationStructureReference(this.segment(), index); }
+        /// Sets `accelerationStructureReference` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer accelerationStructureReferenceAt(long index, @CType("uint64_t") long value) { VkAccelerationStructureMatrixMotionInstanceNV.set_accelerationStructureReference(this.segment(), index, value); return this; }
+
+    }
 }

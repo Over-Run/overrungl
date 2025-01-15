@@ -61,7 +61,7 @@ import overrungl.util.*;
 ///     uint8_t qm_v;
 /// } StdVideoAV1Quantization;
 /// ```
-public final class StdVideoAV1Quantization extends Struct {
+public sealed class StdVideoAV1Quantization extends Struct {
     /// The struct layout of `StdVideoAV1Quantization`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         StdVideoAV1QuantizationFlags.LAYOUT.withName("flags"),
@@ -106,6 +106,11 @@ public final class StdVideoAV1Quantization extends Struct {
     public static StdVideoAV1Quantization of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoAV1Quantization(segment); }
 
     /// Creates `StdVideoAV1Quantization` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `StdVideoAV1Quantization` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -118,7 +123,7 @@ public final class StdVideoAV1Quantization extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoAV1Quantization ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoAV1Quantization(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `StdVideoAV1Quantization` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -129,18 +134,21 @@ public final class StdVideoAV1Quantization extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `StdVideoAV1Quantization`
-    public static StdVideoAV1Quantization alloc(SegmentAllocator allocator, long count) { return new StdVideoAV1Quantization(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `StdVideoAV1Quantization`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `StdVideoAV1Quantization`
-    public StdVideoAV1Quantization asSlice(long index) { return new StdVideoAV1Quantization(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `StdVideoAV1Quantization` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `StdVideoAV1Quantization`
+    public static StdVideoAV1Quantization allocInit(SegmentAllocator allocator, @CType("StdVideoAV1QuantizationFlags") java.lang.foreign.MemorySegment flags, @CType("uint8_t") byte base_q_idx, @CType("int8_t") byte DeltaQYDc, @CType("int8_t") byte DeltaQUDc, @CType("int8_t") byte DeltaQUAc, @CType("int8_t") byte DeltaQVDc, @CType("int8_t") byte DeltaQVAc, @CType("uint8_t") byte qm_y, @CType("uint8_t") byte qm_u, @CType("uint8_t") byte qm_v) { return alloc(allocator).flags(flags).base_q_idx(base_q_idx).DeltaQYDc(DeltaQYDc).DeltaQUDc(DeltaQUDc).DeltaQUAc(DeltaQUAc).DeltaQVDc(DeltaQVDc).DeltaQVAc(DeltaQVAc).qm_y(qm_y).qm_u(qm_u).qm_v(qm_v); }
 
-    /// Creates a slice of `StdVideoAV1Quantization`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `StdVideoAV1Quantization`
-    public StdVideoAV1Quantization asSlice(long index, long count) { return new StdVideoAV1Quantization(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public StdVideoAV1Quantization copyFrom(StdVideoAV1Quantization src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
@@ -149,9 +157,6 @@ public final class StdVideoAV1Quantization extends Struct {
     /// {@return `flags`}
     /// @param segment the segment of the struct
     public static @CType("StdVideoAV1QuantizationFlags") java.lang.foreign.MemorySegment get_flags(MemorySegment segment) { return StdVideoAV1Quantization.get_flags(segment, 0L); }
-    /// {@return `flags` at the given index}
-    /// @param index the index
-    public @CType("StdVideoAV1QuantizationFlags") java.lang.foreign.MemorySegment flagsAt(long index) { return StdVideoAV1Quantization.get_flags(this.segment(), index); }
     /// {@return `flags`}
     public @CType("StdVideoAV1QuantizationFlags") java.lang.foreign.MemorySegment flags() { return StdVideoAV1Quantization.get_flags(this.segment()); }
     /// Sets `flags` with the given value at the given index.
@@ -163,11 +168,6 @@ public final class StdVideoAV1Quantization extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_flags(MemorySegment segment, @CType("StdVideoAV1QuantizationFlags") java.lang.foreign.MemorySegment value) { StdVideoAV1Quantization.set_flags(segment, 0L, value); }
-    /// Sets `flags` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1Quantization flagsAt(long index, @CType("StdVideoAV1QuantizationFlags") java.lang.foreign.MemorySegment value) { StdVideoAV1Quantization.set_flags(this.segment(), index, value); return this; }
     /// Sets `flags` with the given value.
     /// @param value the value
     /// @return `this`
@@ -180,9 +180,6 @@ public final class StdVideoAV1Quantization extends Struct {
     /// {@return `base_q_idx`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t") byte get_base_q_idx(MemorySegment segment) { return StdVideoAV1Quantization.get_base_q_idx(segment, 0L); }
-    /// {@return `base_q_idx` at the given index}
-    /// @param index the index
-    public @CType("uint8_t") byte base_q_idxAt(long index) { return StdVideoAV1Quantization.get_base_q_idx(this.segment(), index); }
     /// {@return `base_q_idx`}
     public @CType("uint8_t") byte base_q_idx() { return StdVideoAV1Quantization.get_base_q_idx(this.segment()); }
     /// Sets `base_q_idx` with the given value at the given index.
@@ -194,11 +191,6 @@ public final class StdVideoAV1Quantization extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_base_q_idx(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoAV1Quantization.set_base_q_idx(segment, 0L, value); }
-    /// Sets `base_q_idx` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1Quantization base_q_idxAt(long index, @CType("uint8_t") byte value) { StdVideoAV1Quantization.set_base_q_idx(this.segment(), index, value); return this; }
     /// Sets `base_q_idx` with the given value.
     /// @param value the value
     /// @return `this`
@@ -211,9 +203,6 @@ public final class StdVideoAV1Quantization extends Struct {
     /// {@return `DeltaQYDc`}
     /// @param segment the segment of the struct
     public static @CType("int8_t") byte get_DeltaQYDc(MemorySegment segment) { return StdVideoAV1Quantization.get_DeltaQYDc(segment, 0L); }
-    /// {@return `DeltaQYDc` at the given index}
-    /// @param index the index
-    public @CType("int8_t") byte DeltaQYDcAt(long index) { return StdVideoAV1Quantization.get_DeltaQYDc(this.segment(), index); }
     /// {@return `DeltaQYDc`}
     public @CType("int8_t") byte DeltaQYDc() { return StdVideoAV1Quantization.get_DeltaQYDc(this.segment()); }
     /// Sets `DeltaQYDc` with the given value at the given index.
@@ -225,11 +214,6 @@ public final class StdVideoAV1Quantization extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_DeltaQYDc(MemorySegment segment, @CType("int8_t") byte value) { StdVideoAV1Quantization.set_DeltaQYDc(segment, 0L, value); }
-    /// Sets `DeltaQYDc` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1Quantization DeltaQYDcAt(long index, @CType("int8_t") byte value) { StdVideoAV1Quantization.set_DeltaQYDc(this.segment(), index, value); return this; }
     /// Sets `DeltaQYDc` with the given value.
     /// @param value the value
     /// @return `this`
@@ -242,9 +226,6 @@ public final class StdVideoAV1Quantization extends Struct {
     /// {@return `DeltaQUDc`}
     /// @param segment the segment of the struct
     public static @CType("int8_t") byte get_DeltaQUDc(MemorySegment segment) { return StdVideoAV1Quantization.get_DeltaQUDc(segment, 0L); }
-    /// {@return `DeltaQUDc` at the given index}
-    /// @param index the index
-    public @CType("int8_t") byte DeltaQUDcAt(long index) { return StdVideoAV1Quantization.get_DeltaQUDc(this.segment(), index); }
     /// {@return `DeltaQUDc`}
     public @CType("int8_t") byte DeltaQUDc() { return StdVideoAV1Quantization.get_DeltaQUDc(this.segment()); }
     /// Sets `DeltaQUDc` with the given value at the given index.
@@ -256,11 +237,6 @@ public final class StdVideoAV1Quantization extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_DeltaQUDc(MemorySegment segment, @CType("int8_t") byte value) { StdVideoAV1Quantization.set_DeltaQUDc(segment, 0L, value); }
-    /// Sets `DeltaQUDc` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1Quantization DeltaQUDcAt(long index, @CType("int8_t") byte value) { StdVideoAV1Quantization.set_DeltaQUDc(this.segment(), index, value); return this; }
     /// Sets `DeltaQUDc` with the given value.
     /// @param value the value
     /// @return `this`
@@ -273,9 +249,6 @@ public final class StdVideoAV1Quantization extends Struct {
     /// {@return `DeltaQUAc`}
     /// @param segment the segment of the struct
     public static @CType("int8_t") byte get_DeltaQUAc(MemorySegment segment) { return StdVideoAV1Quantization.get_DeltaQUAc(segment, 0L); }
-    /// {@return `DeltaQUAc` at the given index}
-    /// @param index the index
-    public @CType("int8_t") byte DeltaQUAcAt(long index) { return StdVideoAV1Quantization.get_DeltaQUAc(this.segment(), index); }
     /// {@return `DeltaQUAc`}
     public @CType("int8_t") byte DeltaQUAc() { return StdVideoAV1Quantization.get_DeltaQUAc(this.segment()); }
     /// Sets `DeltaQUAc` with the given value at the given index.
@@ -287,11 +260,6 @@ public final class StdVideoAV1Quantization extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_DeltaQUAc(MemorySegment segment, @CType("int8_t") byte value) { StdVideoAV1Quantization.set_DeltaQUAc(segment, 0L, value); }
-    /// Sets `DeltaQUAc` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1Quantization DeltaQUAcAt(long index, @CType("int8_t") byte value) { StdVideoAV1Quantization.set_DeltaQUAc(this.segment(), index, value); return this; }
     /// Sets `DeltaQUAc` with the given value.
     /// @param value the value
     /// @return `this`
@@ -304,9 +272,6 @@ public final class StdVideoAV1Quantization extends Struct {
     /// {@return `DeltaQVDc`}
     /// @param segment the segment of the struct
     public static @CType("int8_t") byte get_DeltaQVDc(MemorySegment segment) { return StdVideoAV1Quantization.get_DeltaQVDc(segment, 0L); }
-    /// {@return `DeltaQVDc` at the given index}
-    /// @param index the index
-    public @CType("int8_t") byte DeltaQVDcAt(long index) { return StdVideoAV1Quantization.get_DeltaQVDc(this.segment(), index); }
     /// {@return `DeltaQVDc`}
     public @CType("int8_t") byte DeltaQVDc() { return StdVideoAV1Quantization.get_DeltaQVDc(this.segment()); }
     /// Sets `DeltaQVDc` with the given value at the given index.
@@ -318,11 +283,6 @@ public final class StdVideoAV1Quantization extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_DeltaQVDc(MemorySegment segment, @CType("int8_t") byte value) { StdVideoAV1Quantization.set_DeltaQVDc(segment, 0L, value); }
-    /// Sets `DeltaQVDc` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1Quantization DeltaQVDcAt(long index, @CType("int8_t") byte value) { StdVideoAV1Quantization.set_DeltaQVDc(this.segment(), index, value); return this; }
     /// Sets `DeltaQVDc` with the given value.
     /// @param value the value
     /// @return `this`
@@ -335,9 +295,6 @@ public final class StdVideoAV1Quantization extends Struct {
     /// {@return `DeltaQVAc`}
     /// @param segment the segment of the struct
     public static @CType("int8_t") byte get_DeltaQVAc(MemorySegment segment) { return StdVideoAV1Quantization.get_DeltaQVAc(segment, 0L); }
-    /// {@return `DeltaQVAc` at the given index}
-    /// @param index the index
-    public @CType("int8_t") byte DeltaQVAcAt(long index) { return StdVideoAV1Quantization.get_DeltaQVAc(this.segment(), index); }
     /// {@return `DeltaQVAc`}
     public @CType("int8_t") byte DeltaQVAc() { return StdVideoAV1Quantization.get_DeltaQVAc(this.segment()); }
     /// Sets `DeltaQVAc` with the given value at the given index.
@@ -349,11 +306,6 @@ public final class StdVideoAV1Quantization extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_DeltaQVAc(MemorySegment segment, @CType("int8_t") byte value) { StdVideoAV1Quantization.set_DeltaQVAc(segment, 0L, value); }
-    /// Sets `DeltaQVAc` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1Quantization DeltaQVAcAt(long index, @CType("int8_t") byte value) { StdVideoAV1Quantization.set_DeltaQVAc(this.segment(), index, value); return this; }
     /// Sets `DeltaQVAc` with the given value.
     /// @param value the value
     /// @return `this`
@@ -366,9 +318,6 @@ public final class StdVideoAV1Quantization extends Struct {
     /// {@return `qm_y`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t") byte get_qm_y(MemorySegment segment) { return StdVideoAV1Quantization.get_qm_y(segment, 0L); }
-    /// {@return `qm_y` at the given index}
-    /// @param index the index
-    public @CType("uint8_t") byte qm_yAt(long index) { return StdVideoAV1Quantization.get_qm_y(this.segment(), index); }
     /// {@return `qm_y`}
     public @CType("uint8_t") byte qm_y() { return StdVideoAV1Quantization.get_qm_y(this.segment()); }
     /// Sets `qm_y` with the given value at the given index.
@@ -380,11 +329,6 @@ public final class StdVideoAV1Quantization extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_qm_y(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoAV1Quantization.set_qm_y(segment, 0L, value); }
-    /// Sets `qm_y` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1Quantization qm_yAt(long index, @CType("uint8_t") byte value) { StdVideoAV1Quantization.set_qm_y(this.segment(), index, value); return this; }
     /// Sets `qm_y` with the given value.
     /// @param value the value
     /// @return `this`
@@ -397,9 +341,6 @@ public final class StdVideoAV1Quantization extends Struct {
     /// {@return `qm_u`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t") byte get_qm_u(MemorySegment segment) { return StdVideoAV1Quantization.get_qm_u(segment, 0L); }
-    /// {@return `qm_u` at the given index}
-    /// @param index the index
-    public @CType("uint8_t") byte qm_uAt(long index) { return StdVideoAV1Quantization.get_qm_u(this.segment(), index); }
     /// {@return `qm_u`}
     public @CType("uint8_t") byte qm_u() { return StdVideoAV1Quantization.get_qm_u(this.segment()); }
     /// Sets `qm_u` with the given value at the given index.
@@ -411,11 +352,6 @@ public final class StdVideoAV1Quantization extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_qm_u(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoAV1Quantization.set_qm_u(segment, 0L, value); }
-    /// Sets `qm_u` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1Quantization qm_uAt(long index, @CType("uint8_t") byte value) { StdVideoAV1Quantization.set_qm_u(this.segment(), index, value); return this; }
     /// Sets `qm_u` with the given value.
     /// @param value the value
     /// @return `this`
@@ -428,9 +364,6 @@ public final class StdVideoAV1Quantization extends Struct {
     /// {@return `qm_v`}
     /// @param segment the segment of the struct
     public static @CType("uint8_t") byte get_qm_v(MemorySegment segment) { return StdVideoAV1Quantization.get_qm_v(segment, 0L); }
-    /// {@return `qm_v` at the given index}
-    /// @param index the index
-    public @CType("uint8_t") byte qm_vAt(long index) { return StdVideoAV1Quantization.get_qm_v(this.segment(), index); }
     /// {@return `qm_v`}
     public @CType("uint8_t") byte qm_v() { return StdVideoAV1Quantization.get_qm_v(this.segment()); }
     /// Sets `qm_v` with the given value at the given index.
@@ -442,14 +375,122 @@ public final class StdVideoAV1Quantization extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_qm_v(MemorySegment segment, @CType("uint8_t") byte value) { StdVideoAV1Quantization.set_qm_v(segment, 0L, value); }
-    /// Sets `qm_v` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1Quantization qm_vAt(long index, @CType("uint8_t") byte value) { StdVideoAV1Quantization.set_qm_v(this.segment(), index, value); return this; }
     /// Sets `qm_v` with the given value.
     /// @param value the value
     /// @return `this`
     public StdVideoAV1Quantization qm_v(@CType("uint8_t") byte value) { StdVideoAV1Quantization.set_qm_v(this.segment(), value); return this; }
 
+    /// A buffer of [StdVideoAV1Quantization].
+    public static final class Buffer extends StdVideoAV1Quantization {
+        private final long elementCount;
+
+        /// Creates `StdVideoAV1Quantization.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `StdVideoAV1Quantization`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `StdVideoAV1Quantization`
+        public StdVideoAV1Quantization asSlice(long index) { return new StdVideoAV1Quantization(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `StdVideoAV1Quantization`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `StdVideoAV1Quantization`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `flags` at the given index}
+        /// @param index the index
+        public @CType("StdVideoAV1QuantizationFlags") java.lang.foreign.MemorySegment flagsAt(long index) { return StdVideoAV1Quantization.get_flags(this.segment(), index); }
+        /// Sets `flags` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer flagsAt(long index, @CType("StdVideoAV1QuantizationFlags") java.lang.foreign.MemorySegment value) { StdVideoAV1Quantization.set_flags(this.segment(), index, value); return this; }
+
+        /// {@return `base_q_idx` at the given index}
+        /// @param index the index
+        public @CType("uint8_t") byte base_q_idxAt(long index) { return StdVideoAV1Quantization.get_base_q_idx(this.segment(), index); }
+        /// Sets `base_q_idx` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer base_q_idxAt(long index, @CType("uint8_t") byte value) { StdVideoAV1Quantization.set_base_q_idx(this.segment(), index, value); return this; }
+
+        /// {@return `DeltaQYDc` at the given index}
+        /// @param index the index
+        public @CType("int8_t") byte DeltaQYDcAt(long index) { return StdVideoAV1Quantization.get_DeltaQYDc(this.segment(), index); }
+        /// Sets `DeltaQYDc` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer DeltaQYDcAt(long index, @CType("int8_t") byte value) { StdVideoAV1Quantization.set_DeltaQYDc(this.segment(), index, value); return this; }
+
+        /// {@return `DeltaQUDc` at the given index}
+        /// @param index the index
+        public @CType("int8_t") byte DeltaQUDcAt(long index) { return StdVideoAV1Quantization.get_DeltaQUDc(this.segment(), index); }
+        /// Sets `DeltaQUDc` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer DeltaQUDcAt(long index, @CType("int8_t") byte value) { StdVideoAV1Quantization.set_DeltaQUDc(this.segment(), index, value); return this; }
+
+        /// {@return `DeltaQUAc` at the given index}
+        /// @param index the index
+        public @CType("int8_t") byte DeltaQUAcAt(long index) { return StdVideoAV1Quantization.get_DeltaQUAc(this.segment(), index); }
+        /// Sets `DeltaQUAc` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer DeltaQUAcAt(long index, @CType("int8_t") byte value) { StdVideoAV1Quantization.set_DeltaQUAc(this.segment(), index, value); return this; }
+
+        /// {@return `DeltaQVDc` at the given index}
+        /// @param index the index
+        public @CType("int8_t") byte DeltaQVDcAt(long index) { return StdVideoAV1Quantization.get_DeltaQVDc(this.segment(), index); }
+        /// Sets `DeltaQVDc` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer DeltaQVDcAt(long index, @CType("int8_t") byte value) { StdVideoAV1Quantization.set_DeltaQVDc(this.segment(), index, value); return this; }
+
+        /// {@return `DeltaQVAc` at the given index}
+        /// @param index the index
+        public @CType("int8_t") byte DeltaQVAcAt(long index) { return StdVideoAV1Quantization.get_DeltaQVAc(this.segment(), index); }
+        /// Sets `DeltaQVAc` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer DeltaQVAcAt(long index, @CType("int8_t") byte value) { StdVideoAV1Quantization.set_DeltaQVAc(this.segment(), index, value); return this; }
+
+        /// {@return `qm_y` at the given index}
+        /// @param index the index
+        public @CType("uint8_t") byte qm_yAt(long index) { return StdVideoAV1Quantization.get_qm_y(this.segment(), index); }
+        /// Sets `qm_y` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer qm_yAt(long index, @CType("uint8_t") byte value) { StdVideoAV1Quantization.set_qm_y(this.segment(), index, value); return this; }
+
+        /// {@return `qm_u` at the given index}
+        /// @param index the index
+        public @CType("uint8_t") byte qm_uAt(long index) { return StdVideoAV1Quantization.get_qm_u(this.segment(), index); }
+        /// Sets `qm_u` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer qm_uAt(long index, @CType("uint8_t") byte value) { StdVideoAV1Quantization.set_qm_u(this.segment(), index, value); return this; }
+
+        /// {@return `qm_v` at the given index}
+        /// @param index the index
+        public @CType("uint8_t") byte qm_vAt(long index) { return StdVideoAV1Quantization.get_qm_v(this.segment(), index); }
+        /// Sets `qm_v` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer qm_vAt(long index, @CType("uint8_t") byte value) { StdVideoAV1Quantization.set_qm_v(this.segment(), index, value); return this; }
+
+    }
 }

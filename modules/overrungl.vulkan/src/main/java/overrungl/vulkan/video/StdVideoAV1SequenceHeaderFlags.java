@@ -91,7 +91,7 @@ import overrungl.util.*;
 ///     uint32_t : 13 reserved;
 /// } StdVideoAV1SequenceHeaderFlags;
 /// ```
-public final class StdVideoAV1SequenceHeaderFlags extends Struct {
+public sealed class StdVideoAV1SequenceHeaderFlags extends Struct {
     /// The struct layout of `StdVideoAV1SequenceHeaderFlags`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("still_picture"),
@@ -166,6 +166,11 @@ public final class StdVideoAV1SequenceHeaderFlags extends Struct {
     public static StdVideoAV1SequenceHeaderFlags of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoAV1SequenceHeaderFlags(segment); }
 
     /// Creates `StdVideoAV1SequenceHeaderFlags` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `StdVideoAV1SequenceHeaderFlags` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -178,7 +183,7 @@ public final class StdVideoAV1SequenceHeaderFlags extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoAV1SequenceHeaderFlags ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new StdVideoAV1SequenceHeaderFlags(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `StdVideoAV1SequenceHeaderFlags` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -189,18 +194,21 @@ public final class StdVideoAV1SequenceHeaderFlags extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `StdVideoAV1SequenceHeaderFlags`
-    public static StdVideoAV1SequenceHeaderFlags alloc(SegmentAllocator allocator, long count) { return new StdVideoAV1SequenceHeaderFlags(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `StdVideoAV1SequenceHeaderFlags`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `StdVideoAV1SequenceHeaderFlags`
-    public StdVideoAV1SequenceHeaderFlags asSlice(long index) { return new StdVideoAV1SequenceHeaderFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `StdVideoAV1SequenceHeaderFlags` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `StdVideoAV1SequenceHeaderFlags`
+    public static StdVideoAV1SequenceHeaderFlags allocInit(SegmentAllocator allocator, @CType("uint32_t : 1") int still_picture, @CType("uint32_t : 1") int reduced_still_picture_header, @CType("uint32_t : 1") int use_128x128_superblock, @CType("uint32_t : 1") int enable_filter_intra, @CType("uint32_t : 1") int enable_intra_edge_filter, @CType("uint32_t : 1") int enable_interintra_compound, @CType("uint32_t : 1") int enable_masked_compound, @CType("uint32_t : 1") int enable_warped_motion, @CType("uint32_t : 1") int enable_dual_filter, @CType("uint32_t : 1") int enable_order_hint, @CType("uint32_t : 1") int enable_jnt_comp, @CType("uint32_t : 1") int enable_ref_frame_mvs, @CType("uint32_t : 1") int frame_id_numbers_present_flag, @CType("uint32_t : 1") int enable_superres, @CType("uint32_t : 1") int enable_cdef, @CType("uint32_t : 1") int enable_restoration, @CType("uint32_t : 1") int film_grain_params_present, @CType("uint32_t : 1") int timing_info_present_flag, @CType("uint32_t : 1") int initial_display_delay_present_flag, @CType("uint32_t : 13") int reserved) { return alloc(allocator).still_picture(still_picture).reduced_still_picture_header(reduced_still_picture_header).use_128x128_superblock(use_128x128_superblock).enable_filter_intra(enable_filter_intra).enable_intra_edge_filter(enable_intra_edge_filter).enable_interintra_compound(enable_interintra_compound).enable_masked_compound(enable_masked_compound).enable_warped_motion(enable_warped_motion).enable_dual_filter(enable_dual_filter).enable_order_hint(enable_order_hint).enable_jnt_comp(enable_jnt_comp).enable_ref_frame_mvs(enable_ref_frame_mvs).frame_id_numbers_present_flag(frame_id_numbers_present_flag).enable_superres(enable_superres).enable_cdef(enable_cdef).enable_restoration(enable_restoration).film_grain_params_present(film_grain_params_present).timing_info_present_flag(timing_info_present_flag).initial_display_delay_present_flag(initial_display_delay_present_flag).reserved(reserved); }
 
-    /// Creates a slice of `StdVideoAV1SequenceHeaderFlags`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `StdVideoAV1SequenceHeaderFlags`
-    public StdVideoAV1SequenceHeaderFlags asSlice(long index, long count) { return new StdVideoAV1SequenceHeaderFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public StdVideoAV1SequenceHeaderFlags copyFrom(StdVideoAV1SequenceHeaderFlags src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `still_picture` at the given index}
     /// @param segment the segment of the struct
@@ -209,9 +217,6 @@ public final class StdVideoAV1SequenceHeaderFlags extends Struct {
     /// {@return `still_picture`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_still_picture(MemorySegment segment) { return StdVideoAV1SequenceHeaderFlags.get_still_picture(segment, 0L); }
-    /// {@return `still_picture` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int still_pictureAt(long index) { return StdVideoAV1SequenceHeaderFlags.get_still_picture(this.segment(), index); }
     /// {@return `still_picture`}
     public @CType("uint32_t : 1") int still_picture() { return StdVideoAV1SequenceHeaderFlags.get_still_picture(this.segment()); }
     /// Sets `still_picture` with the given value at the given index.
@@ -223,11 +228,6 @@ public final class StdVideoAV1SequenceHeaderFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_still_picture(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_still_picture(segment, 0L, value); }
-    /// Sets `still_picture` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1SequenceHeaderFlags still_pictureAt(long index, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_still_picture(this.segment(), index, value); return this; }
     /// Sets `still_picture` with the given value.
     /// @param value the value
     /// @return `this`
@@ -240,9 +240,6 @@ public final class StdVideoAV1SequenceHeaderFlags extends Struct {
     /// {@return `reduced_still_picture_header`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_reduced_still_picture_header(MemorySegment segment) { return StdVideoAV1SequenceHeaderFlags.get_reduced_still_picture_header(segment, 0L); }
-    /// {@return `reduced_still_picture_header` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int reduced_still_picture_headerAt(long index) { return StdVideoAV1SequenceHeaderFlags.get_reduced_still_picture_header(this.segment(), index); }
     /// {@return `reduced_still_picture_header`}
     public @CType("uint32_t : 1") int reduced_still_picture_header() { return StdVideoAV1SequenceHeaderFlags.get_reduced_still_picture_header(this.segment()); }
     /// Sets `reduced_still_picture_header` with the given value at the given index.
@@ -254,11 +251,6 @@ public final class StdVideoAV1SequenceHeaderFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_reduced_still_picture_header(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_reduced_still_picture_header(segment, 0L, value); }
-    /// Sets `reduced_still_picture_header` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1SequenceHeaderFlags reduced_still_picture_headerAt(long index, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_reduced_still_picture_header(this.segment(), index, value); return this; }
     /// Sets `reduced_still_picture_header` with the given value.
     /// @param value the value
     /// @return `this`
@@ -271,9 +263,6 @@ public final class StdVideoAV1SequenceHeaderFlags extends Struct {
     /// {@return `use_128x128_superblock`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_use_128x128_superblock(MemorySegment segment) { return StdVideoAV1SequenceHeaderFlags.get_use_128x128_superblock(segment, 0L); }
-    /// {@return `use_128x128_superblock` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int use_128x128_superblockAt(long index) { return StdVideoAV1SequenceHeaderFlags.get_use_128x128_superblock(this.segment(), index); }
     /// {@return `use_128x128_superblock`}
     public @CType("uint32_t : 1") int use_128x128_superblock() { return StdVideoAV1SequenceHeaderFlags.get_use_128x128_superblock(this.segment()); }
     /// Sets `use_128x128_superblock` with the given value at the given index.
@@ -285,11 +274,6 @@ public final class StdVideoAV1SequenceHeaderFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_use_128x128_superblock(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_use_128x128_superblock(segment, 0L, value); }
-    /// Sets `use_128x128_superblock` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1SequenceHeaderFlags use_128x128_superblockAt(long index, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_use_128x128_superblock(this.segment(), index, value); return this; }
     /// Sets `use_128x128_superblock` with the given value.
     /// @param value the value
     /// @return `this`
@@ -302,9 +286,6 @@ public final class StdVideoAV1SequenceHeaderFlags extends Struct {
     /// {@return `enable_filter_intra`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_enable_filter_intra(MemorySegment segment) { return StdVideoAV1SequenceHeaderFlags.get_enable_filter_intra(segment, 0L); }
-    /// {@return `enable_filter_intra` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int enable_filter_intraAt(long index) { return StdVideoAV1SequenceHeaderFlags.get_enable_filter_intra(this.segment(), index); }
     /// {@return `enable_filter_intra`}
     public @CType("uint32_t : 1") int enable_filter_intra() { return StdVideoAV1SequenceHeaderFlags.get_enable_filter_intra(this.segment()); }
     /// Sets `enable_filter_intra` with the given value at the given index.
@@ -316,11 +297,6 @@ public final class StdVideoAV1SequenceHeaderFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_enable_filter_intra(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_enable_filter_intra(segment, 0L, value); }
-    /// Sets `enable_filter_intra` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1SequenceHeaderFlags enable_filter_intraAt(long index, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_enable_filter_intra(this.segment(), index, value); return this; }
     /// Sets `enable_filter_intra` with the given value.
     /// @param value the value
     /// @return `this`
@@ -333,9 +309,6 @@ public final class StdVideoAV1SequenceHeaderFlags extends Struct {
     /// {@return `enable_intra_edge_filter`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_enable_intra_edge_filter(MemorySegment segment) { return StdVideoAV1SequenceHeaderFlags.get_enable_intra_edge_filter(segment, 0L); }
-    /// {@return `enable_intra_edge_filter` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int enable_intra_edge_filterAt(long index) { return StdVideoAV1SequenceHeaderFlags.get_enable_intra_edge_filter(this.segment(), index); }
     /// {@return `enable_intra_edge_filter`}
     public @CType("uint32_t : 1") int enable_intra_edge_filter() { return StdVideoAV1SequenceHeaderFlags.get_enable_intra_edge_filter(this.segment()); }
     /// Sets `enable_intra_edge_filter` with the given value at the given index.
@@ -347,11 +320,6 @@ public final class StdVideoAV1SequenceHeaderFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_enable_intra_edge_filter(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_enable_intra_edge_filter(segment, 0L, value); }
-    /// Sets `enable_intra_edge_filter` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1SequenceHeaderFlags enable_intra_edge_filterAt(long index, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_enable_intra_edge_filter(this.segment(), index, value); return this; }
     /// Sets `enable_intra_edge_filter` with the given value.
     /// @param value the value
     /// @return `this`
@@ -364,9 +332,6 @@ public final class StdVideoAV1SequenceHeaderFlags extends Struct {
     /// {@return `enable_interintra_compound`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_enable_interintra_compound(MemorySegment segment) { return StdVideoAV1SequenceHeaderFlags.get_enable_interintra_compound(segment, 0L); }
-    /// {@return `enable_interintra_compound` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int enable_interintra_compoundAt(long index) { return StdVideoAV1SequenceHeaderFlags.get_enable_interintra_compound(this.segment(), index); }
     /// {@return `enable_interintra_compound`}
     public @CType("uint32_t : 1") int enable_interintra_compound() { return StdVideoAV1SequenceHeaderFlags.get_enable_interintra_compound(this.segment()); }
     /// Sets `enable_interintra_compound` with the given value at the given index.
@@ -378,11 +343,6 @@ public final class StdVideoAV1SequenceHeaderFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_enable_interintra_compound(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_enable_interintra_compound(segment, 0L, value); }
-    /// Sets `enable_interintra_compound` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1SequenceHeaderFlags enable_interintra_compoundAt(long index, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_enable_interintra_compound(this.segment(), index, value); return this; }
     /// Sets `enable_interintra_compound` with the given value.
     /// @param value the value
     /// @return `this`
@@ -395,9 +355,6 @@ public final class StdVideoAV1SequenceHeaderFlags extends Struct {
     /// {@return `enable_masked_compound`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_enable_masked_compound(MemorySegment segment) { return StdVideoAV1SequenceHeaderFlags.get_enable_masked_compound(segment, 0L); }
-    /// {@return `enable_masked_compound` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int enable_masked_compoundAt(long index) { return StdVideoAV1SequenceHeaderFlags.get_enable_masked_compound(this.segment(), index); }
     /// {@return `enable_masked_compound`}
     public @CType("uint32_t : 1") int enable_masked_compound() { return StdVideoAV1SequenceHeaderFlags.get_enable_masked_compound(this.segment()); }
     /// Sets `enable_masked_compound` with the given value at the given index.
@@ -409,11 +366,6 @@ public final class StdVideoAV1SequenceHeaderFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_enable_masked_compound(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_enable_masked_compound(segment, 0L, value); }
-    /// Sets `enable_masked_compound` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1SequenceHeaderFlags enable_masked_compoundAt(long index, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_enable_masked_compound(this.segment(), index, value); return this; }
     /// Sets `enable_masked_compound` with the given value.
     /// @param value the value
     /// @return `this`
@@ -426,9 +378,6 @@ public final class StdVideoAV1SequenceHeaderFlags extends Struct {
     /// {@return `enable_warped_motion`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_enable_warped_motion(MemorySegment segment) { return StdVideoAV1SequenceHeaderFlags.get_enable_warped_motion(segment, 0L); }
-    /// {@return `enable_warped_motion` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int enable_warped_motionAt(long index) { return StdVideoAV1SequenceHeaderFlags.get_enable_warped_motion(this.segment(), index); }
     /// {@return `enable_warped_motion`}
     public @CType("uint32_t : 1") int enable_warped_motion() { return StdVideoAV1SequenceHeaderFlags.get_enable_warped_motion(this.segment()); }
     /// Sets `enable_warped_motion` with the given value at the given index.
@@ -440,11 +389,6 @@ public final class StdVideoAV1SequenceHeaderFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_enable_warped_motion(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_enable_warped_motion(segment, 0L, value); }
-    /// Sets `enable_warped_motion` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1SequenceHeaderFlags enable_warped_motionAt(long index, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_enable_warped_motion(this.segment(), index, value); return this; }
     /// Sets `enable_warped_motion` with the given value.
     /// @param value the value
     /// @return `this`
@@ -457,9 +401,6 @@ public final class StdVideoAV1SequenceHeaderFlags extends Struct {
     /// {@return `enable_dual_filter`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_enable_dual_filter(MemorySegment segment) { return StdVideoAV1SequenceHeaderFlags.get_enable_dual_filter(segment, 0L); }
-    /// {@return `enable_dual_filter` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int enable_dual_filterAt(long index) { return StdVideoAV1SequenceHeaderFlags.get_enable_dual_filter(this.segment(), index); }
     /// {@return `enable_dual_filter`}
     public @CType("uint32_t : 1") int enable_dual_filter() { return StdVideoAV1SequenceHeaderFlags.get_enable_dual_filter(this.segment()); }
     /// Sets `enable_dual_filter` with the given value at the given index.
@@ -471,11 +412,6 @@ public final class StdVideoAV1SequenceHeaderFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_enable_dual_filter(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_enable_dual_filter(segment, 0L, value); }
-    /// Sets `enable_dual_filter` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1SequenceHeaderFlags enable_dual_filterAt(long index, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_enable_dual_filter(this.segment(), index, value); return this; }
     /// Sets `enable_dual_filter` with the given value.
     /// @param value the value
     /// @return `this`
@@ -488,9 +424,6 @@ public final class StdVideoAV1SequenceHeaderFlags extends Struct {
     /// {@return `enable_order_hint`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_enable_order_hint(MemorySegment segment) { return StdVideoAV1SequenceHeaderFlags.get_enable_order_hint(segment, 0L); }
-    /// {@return `enable_order_hint` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int enable_order_hintAt(long index) { return StdVideoAV1SequenceHeaderFlags.get_enable_order_hint(this.segment(), index); }
     /// {@return `enable_order_hint`}
     public @CType("uint32_t : 1") int enable_order_hint() { return StdVideoAV1SequenceHeaderFlags.get_enable_order_hint(this.segment()); }
     /// Sets `enable_order_hint` with the given value at the given index.
@@ -502,11 +435,6 @@ public final class StdVideoAV1SequenceHeaderFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_enable_order_hint(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_enable_order_hint(segment, 0L, value); }
-    /// Sets `enable_order_hint` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1SequenceHeaderFlags enable_order_hintAt(long index, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_enable_order_hint(this.segment(), index, value); return this; }
     /// Sets `enable_order_hint` with the given value.
     /// @param value the value
     /// @return `this`
@@ -519,9 +447,6 @@ public final class StdVideoAV1SequenceHeaderFlags extends Struct {
     /// {@return `enable_jnt_comp`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_enable_jnt_comp(MemorySegment segment) { return StdVideoAV1SequenceHeaderFlags.get_enable_jnt_comp(segment, 0L); }
-    /// {@return `enable_jnt_comp` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int enable_jnt_compAt(long index) { return StdVideoAV1SequenceHeaderFlags.get_enable_jnt_comp(this.segment(), index); }
     /// {@return `enable_jnt_comp`}
     public @CType("uint32_t : 1") int enable_jnt_comp() { return StdVideoAV1SequenceHeaderFlags.get_enable_jnt_comp(this.segment()); }
     /// Sets `enable_jnt_comp` with the given value at the given index.
@@ -533,11 +458,6 @@ public final class StdVideoAV1SequenceHeaderFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_enable_jnt_comp(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_enable_jnt_comp(segment, 0L, value); }
-    /// Sets `enable_jnt_comp` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1SequenceHeaderFlags enable_jnt_compAt(long index, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_enable_jnt_comp(this.segment(), index, value); return this; }
     /// Sets `enable_jnt_comp` with the given value.
     /// @param value the value
     /// @return `this`
@@ -550,9 +470,6 @@ public final class StdVideoAV1SequenceHeaderFlags extends Struct {
     /// {@return `enable_ref_frame_mvs`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_enable_ref_frame_mvs(MemorySegment segment) { return StdVideoAV1SequenceHeaderFlags.get_enable_ref_frame_mvs(segment, 0L); }
-    /// {@return `enable_ref_frame_mvs` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int enable_ref_frame_mvsAt(long index) { return StdVideoAV1SequenceHeaderFlags.get_enable_ref_frame_mvs(this.segment(), index); }
     /// {@return `enable_ref_frame_mvs`}
     public @CType("uint32_t : 1") int enable_ref_frame_mvs() { return StdVideoAV1SequenceHeaderFlags.get_enable_ref_frame_mvs(this.segment()); }
     /// Sets `enable_ref_frame_mvs` with the given value at the given index.
@@ -564,11 +481,6 @@ public final class StdVideoAV1SequenceHeaderFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_enable_ref_frame_mvs(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_enable_ref_frame_mvs(segment, 0L, value); }
-    /// Sets `enable_ref_frame_mvs` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1SequenceHeaderFlags enable_ref_frame_mvsAt(long index, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_enable_ref_frame_mvs(this.segment(), index, value); return this; }
     /// Sets `enable_ref_frame_mvs` with the given value.
     /// @param value the value
     /// @return `this`
@@ -581,9 +493,6 @@ public final class StdVideoAV1SequenceHeaderFlags extends Struct {
     /// {@return `frame_id_numbers_present_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_frame_id_numbers_present_flag(MemorySegment segment) { return StdVideoAV1SequenceHeaderFlags.get_frame_id_numbers_present_flag(segment, 0L); }
-    /// {@return `frame_id_numbers_present_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int frame_id_numbers_present_flagAt(long index) { return StdVideoAV1SequenceHeaderFlags.get_frame_id_numbers_present_flag(this.segment(), index); }
     /// {@return `frame_id_numbers_present_flag`}
     public @CType("uint32_t : 1") int frame_id_numbers_present_flag() { return StdVideoAV1SequenceHeaderFlags.get_frame_id_numbers_present_flag(this.segment()); }
     /// Sets `frame_id_numbers_present_flag` with the given value at the given index.
@@ -595,11 +504,6 @@ public final class StdVideoAV1SequenceHeaderFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_frame_id_numbers_present_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_frame_id_numbers_present_flag(segment, 0L, value); }
-    /// Sets `frame_id_numbers_present_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1SequenceHeaderFlags frame_id_numbers_present_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_frame_id_numbers_present_flag(this.segment(), index, value); return this; }
     /// Sets `frame_id_numbers_present_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -612,9 +516,6 @@ public final class StdVideoAV1SequenceHeaderFlags extends Struct {
     /// {@return `enable_superres`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_enable_superres(MemorySegment segment) { return StdVideoAV1SequenceHeaderFlags.get_enable_superres(segment, 0L); }
-    /// {@return `enable_superres` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int enable_superresAt(long index) { return StdVideoAV1SequenceHeaderFlags.get_enable_superres(this.segment(), index); }
     /// {@return `enable_superres`}
     public @CType("uint32_t : 1") int enable_superres() { return StdVideoAV1SequenceHeaderFlags.get_enable_superres(this.segment()); }
     /// Sets `enable_superres` with the given value at the given index.
@@ -626,11 +527,6 @@ public final class StdVideoAV1SequenceHeaderFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_enable_superres(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_enable_superres(segment, 0L, value); }
-    /// Sets `enable_superres` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1SequenceHeaderFlags enable_superresAt(long index, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_enable_superres(this.segment(), index, value); return this; }
     /// Sets `enable_superres` with the given value.
     /// @param value the value
     /// @return `this`
@@ -643,9 +539,6 @@ public final class StdVideoAV1SequenceHeaderFlags extends Struct {
     /// {@return `enable_cdef`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_enable_cdef(MemorySegment segment) { return StdVideoAV1SequenceHeaderFlags.get_enable_cdef(segment, 0L); }
-    /// {@return `enable_cdef` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int enable_cdefAt(long index) { return StdVideoAV1SequenceHeaderFlags.get_enable_cdef(this.segment(), index); }
     /// {@return `enable_cdef`}
     public @CType("uint32_t : 1") int enable_cdef() { return StdVideoAV1SequenceHeaderFlags.get_enable_cdef(this.segment()); }
     /// Sets `enable_cdef` with the given value at the given index.
@@ -657,11 +550,6 @@ public final class StdVideoAV1SequenceHeaderFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_enable_cdef(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_enable_cdef(segment, 0L, value); }
-    /// Sets `enable_cdef` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1SequenceHeaderFlags enable_cdefAt(long index, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_enable_cdef(this.segment(), index, value); return this; }
     /// Sets `enable_cdef` with the given value.
     /// @param value the value
     /// @return `this`
@@ -674,9 +562,6 @@ public final class StdVideoAV1SequenceHeaderFlags extends Struct {
     /// {@return `enable_restoration`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_enable_restoration(MemorySegment segment) { return StdVideoAV1SequenceHeaderFlags.get_enable_restoration(segment, 0L); }
-    /// {@return `enable_restoration` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int enable_restorationAt(long index) { return StdVideoAV1SequenceHeaderFlags.get_enable_restoration(this.segment(), index); }
     /// {@return `enable_restoration`}
     public @CType("uint32_t : 1") int enable_restoration() { return StdVideoAV1SequenceHeaderFlags.get_enable_restoration(this.segment()); }
     /// Sets `enable_restoration` with the given value at the given index.
@@ -688,11 +573,6 @@ public final class StdVideoAV1SequenceHeaderFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_enable_restoration(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_enable_restoration(segment, 0L, value); }
-    /// Sets `enable_restoration` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1SequenceHeaderFlags enable_restorationAt(long index, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_enable_restoration(this.segment(), index, value); return this; }
     /// Sets `enable_restoration` with the given value.
     /// @param value the value
     /// @return `this`
@@ -705,9 +585,6 @@ public final class StdVideoAV1SequenceHeaderFlags extends Struct {
     /// {@return `film_grain_params_present`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_film_grain_params_present(MemorySegment segment) { return StdVideoAV1SequenceHeaderFlags.get_film_grain_params_present(segment, 0L); }
-    /// {@return `film_grain_params_present` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int film_grain_params_presentAt(long index) { return StdVideoAV1SequenceHeaderFlags.get_film_grain_params_present(this.segment(), index); }
     /// {@return `film_grain_params_present`}
     public @CType("uint32_t : 1") int film_grain_params_present() { return StdVideoAV1SequenceHeaderFlags.get_film_grain_params_present(this.segment()); }
     /// Sets `film_grain_params_present` with the given value at the given index.
@@ -719,11 +596,6 @@ public final class StdVideoAV1SequenceHeaderFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_film_grain_params_present(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_film_grain_params_present(segment, 0L, value); }
-    /// Sets `film_grain_params_present` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1SequenceHeaderFlags film_grain_params_presentAt(long index, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_film_grain_params_present(this.segment(), index, value); return this; }
     /// Sets `film_grain_params_present` with the given value.
     /// @param value the value
     /// @return `this`
@@ -736,9 +608,6 @@ public final class StdVideoAV1SequenceHeaderFlags extends Struct {
     /// {@return `timing_info_present_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_timing_info_present_flag(MemorySegment segment) { return StdVideoAV1SequenceHeaderFlags.get_timing_info_present_flag(segment, 0L); }
-    /// {@return `timing_info_present_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int timing_info_present_flagAt(long index) { return StdVideoAV1SequenceHeaderFlags.get_timing_info_present_flag(this.segment(), index); }
     /// {@return `timing_info_present_flag`}
     public @CType("uint32_t : 1") int timing_info_present_flag() { return StdVideoAV1SequenceHeaderFlags.get_timing_info_present_flag(this.segment()); }
     /// Sets `timing_info_present_flag` with the given value at the given index.
@@ -750,11 +619,6 @@ public final class StdVideoAV1SequenceHeaderFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_timing_info_present_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_timing_info_present_flag(segment, 0L, value); }
-    /// Sets `timing_info_present_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1SequenceHeaderFlags timing_info_present_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_timing_info_present_flag(this.segment(), index, value); return this; }
     /// Sets `timing_info_present_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -767,9 +631,6 @@ public final class StdVideoAV1SequenceHeaderFlags extends Struct {
     /// {@return `initial_display_delay_present_flag`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 1") int get_initial_display_delay_present_flag(MemorySegment segment) { return StdVideoAV1SequenceHeaderFlags.get_initial_display_delay_present_flag(segment, 0L); }
-    /// {@return `initial_display_delay_present_flag` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 1") int initial_display_delay_present_flagAt(long index) { return StdVideoAV1SequenceHeaderFlags.get_initial_display_delay_present_flag(this.segment(), index); }
     /// {@return `initial_display_delay_present_flag`}
     public @CType("uint32_t : 1") int initial_display_delay_present_flag() { return StdVideoAV1SequenceHeaderFlags.get_initial_display_delay_present_flag(this.segment()); }
     /// Sets `initial_display_delay_present_flag` with the given value at the given index.
@@ -781,11 +642,6 @@ public final class StdVideoAV1SequenceHeaderFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_initial_display_delay_present_flag(MemorySegment segment, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_initial_display_delay_present_flag(segment, 0L, value); }
-    /// Sets `initial_display_delay_present_flag` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1SequenceHeaderFlags initial_display_delay_present_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_initial_display_delay_present_flag(this.segment(), index, value); return this; }
     /// Sets `initial_display_delay_present_flag` with the given value.
     /// @param value the value
     /// @return `this`
@@ -798,9 +654,6 @@ public final class StdVideoAV1SequenceHeaderFlags extends Struct {
     /// {@return `reserved`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t : 13") int get_reserved(MemorySegment segment) { return StdVideoAV1SequenceHeaderFlags.get_reserved(segment, 0L); }
-    /// {@return `reserved` at the given index}
-    /// @param index the index
-    public @CType("uint32_t : 13") int reservedAt(long index) { return StdVideoAV1SequenceHeaderFlags.get_reserved(this.segment(), index); }
     /// {@return `reserved`}
     public @CType("uint32_t : 13") int reserved() { return StdVideoAV1SequenceHeaderFlags.get_reserved(this.segment()); }
     /// Sets `reserved` with the given value at the given index.
@@ -812,14 +665,212 @@ public final class StdVideoAV1SequenceHeaderFlags extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_reserved(MemorySegment segment, @CType("uint32_t : 13") int value) { StdVideoAV1SequenceHeaderFlags.set_reserved(segment, 0L, value); }
-    /// Sets `reserved` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public StdVideoAV1SequenceHeaderFlags reservedAt(long index, @CType("uint32_t : 13") int value) { StdVideoAV1SequenceHeaderFlags.set_reserved(this.segment(), index, value); return this; }
     /// Sets `reserved` with the given value.
     /// @param value the value
     /// @return `this`
     public StdVideoAV1SequenceHeaderFlags reserved(@CType("uint32_t : 13") int value) { StdVideoAV1SequenceHeaderFlags.set_reserved(this.segment(), value); return this; }
 
+    /// A buffer of [StdVideoAV1SequenceHeaderFlags].
+    public static final class Buffer extends StdVideoAV1SequenceHeaderFlags {
+        private final long elementCount;
+
+        /// Creates `StdVideoAV1SequenceHeaderFlags.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `StdVideoAV1SequenceHeaderFlags`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `StdVideoAV1SequenceHeaderFlags`
+        public StdVideoAV1SequenceHeaderFlags asSlice(long index) { return new StdVideoAV1SequenceHeaderFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `StdVideoAV1SequenceHeaderFlags`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `StdVideoAV1SequenceHeaderFlags`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `still_picture` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int still_pictureAt(long index) { return StdVideoAV1SequenceHeaderFlags.get_still_picture(this.segment(), index); }
+        /// Sets `still_picture` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer still_pictureAt(long index, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_still_picture(this.segment(), index, value); return this; }
+
+        /// {@return `reduced_still_picture_header` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int reduced_still_picture_headerAt(long index) { return StdVideoAV1SequenceHeaderFlags.get_reduced_still_picture_header(this.segment(), index); }
+        /// Sets `reduced_still_picture_header` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer reduced_still_picture_headerAt(long index, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_reduced_still_picture_header(this.segment(), index, value); return this; }
+
+        /// {@return `use_128x128_superblock` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int use_128x128_superblockAt(long index) { return StdVideoAV1SequenceHeaderFlags.get_use_128x128_superblock(this.segment(), index); }
+        /// Sets `use_128x128_superblock` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer use_128x128_superblockAt(long index, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_use_128x128_superblock(this.segment(), index, value); return this; }
+
+        /// {@return `enable_filter_intra` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int enable_filter_intraAt(long index) { return StdVideoAV1SequenceHeaderFlags.get_enable_filter_intra(this.segment(), index); }
+        /// Sets `enable_filter_intra` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer enable_filter_intraAt(long index, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_enable_filter_intra(this.segment(), index, value); return this; }
+
+        /// {@return `enable_intra_edge_filter` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int enable_intra_edge_filterAt(long index) { return StdVideoAV1SequenceHeaderFlags.get_enable_intra_edge_filter(this.segment(), index); }
+        /// Sets `enable_intra_edge_filter` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer enable_intra_edge_filterAt(long index, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_enable_intra_edge_filter(this.segment(), index, value); return this; }
+
+        /// {@return `enable_interintra_compound` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int enable_interintra_compoundAt(long index) { return StdVideoAV1SequenceHeaderFlags.get_enable_interintra_compound(this.segment(), index); }
+        /// Sets `enable_interintra_compound` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer enable_interintra_compoundAt(long index, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_enable_interintra_compound(this.segment(), index, value); return this; }
+
+        /// {@return `enable_masked_compound` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int enable_masked_compoundAt(long index) { return StdVideoAV1SequenceHeaderFlags.get_enable_masked_compound(this.segment(), index); }
+        /// Sets `enable_masked_compound` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer enable_masked_compoundAt(long index, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_enable_masked_compound(this.segment(), index, value); return this; }
+
+        /// {@return `enable_warped_motion` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int enable_warped_motionAt(long index) { return StdVideoAV1SequenceHeaderFlags.get_enable_warped_motion(this.segment(), index); }
+        /// Sets `enable_warped_motion` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer enable_warped_motionAt(long index, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_enable_warped_motion(this.segment(), index, value); return this; }
+
+        /// {@return `enable_dual_filter` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int enable_dual_filterAt(long index) { return StdVideoAV1SequenceHeaderFlags.get_enable_dual_filter(this.segment(), index); }
+        /// Sets `enable_dual_filter` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer enable_dual_filterAt(long index, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_enable_dual_filter(this.segment(), index, value); return this; }
+
+        /// {@return `enable_order_hint` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int enable_order_hintAt(long index) { return StdVideoAV1SequenceHeaderFlags.get_enable_order_hint(this.segment(), index); }
+        /// Sets `enable_order_hint` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer enable_order_hintAt(long index, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_enable_order_hint(this.segment(), index, value); return this; }
+
+        /// {@return `enable_jnt_comp` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int enable_jnt_compAt(long index) { return StdVideoAV1SequenceHeaderFlags.get_enable_jnt_comp(this.segment(), index); }
+        /// Sets `enable_jnt_comp` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer enable_jnt_compAt(long index, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_enable_jnt_comp(this.segment(), index, value); return this; }
+
+        /// {@return `enable_ref_frame_mvs` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int enable_ref_frame_mvsAt(long index) { return StdVideoAV1SequenceHeaderFlags.get_enable_ref_frame_mvs(this.segment(), index); }
+        /// Sets `enable_ref_frame_mvs` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer enable_ref_frame_mvsAt(long index, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_enable_ref_frame_mvs(this.segment(), index, value); return this; }
+
+        /// {@return `frame_id_numbers_present_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int frame_id_numbers_present_flagAt(long index) { return StdVideoAV1SequenceHeaderFlags.get_frame_id_numbers_present_flag(this.segment(), index); }
+        /// Sets `frame_id_numbers_present_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer frame_id_numbers_present_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_frame_id_numbers_present_flag(this.segment(), index, value); return this; }
+
+        /// {@return `enable_superres` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int enable_superresAt(long index) { return StdVideoAV1SequenceHeaderFlags.get_enable_superres(this.segment(), index); }
+        /// Sets `enable_superres` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer enable_superresAt(long index, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_enable_superres(this.segment(), index, value); return this; }
+
+        /// {@return `enable_cdef` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int enable_cdefAt(long index) { return StdVideoAV1SequenceHeaderFlags.get_enable_cdef(this.segment(), index); }
+        /// Sets `enable_cdef` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer enable_cdefAt(long index, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_enable_cdef(this.segment(), index, value); return this; }
+
+        /// {@return `enable_restoration` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int enable_restorationAt(long index) { return StdVideoAV1SequenceHeaderFlags.get_enable_restoration(this.segment(), index); }
+        /// Sets `enable_restoration` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer enable_restorationAt(long index, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_enable_restoration(this.segment(), index, value); return this; }
+
+        /// {@return `film_grain_params_present` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int film_grain_params_presentAt(long index) { return StdVideoAV1SequenceHeaderFlags.get_film_grain_params_present(this.segment(), index); }
+        /// Sets `film_grain_params_present` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer film_grain_params_presentAt(long index, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_film_grain_params_present(this.segment(), index, value); return this; }
+
+        /// {@return `timing_info_present_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int timing_info_present_flagAt(long index) { return StdVideoAV1SequenceHeaderFlags.get_timing_info_present_flag(this.segment(), index); }
+        /// Sets `timing_info_present_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer timing_info_present_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_timing_info_present_flag(this.segment(), index, value); return this; }
+
+        /// {@return `initial_display_delay_present_flag` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 1") int initial_display_delay_present_flagAt(long index) { return StdVideoAV1SequenceHeaderFlags.get_initial_display_delay_present_flag(this.segment(), index); }
+        /// Sets `initial_display_delay_present_flag` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer initial_display_delay_present_flagAt(long index, @CType("uint32_t : 1") int value) { StdVideoAV1SequenceHeaderFlags.set_initial_display_delay_present_flag(this.segment(), index, value); return this; }
+
+        /// {@return `reserved` at the given index}
+        /// @param index the index
+        public @CType("uint32_t : 13") int reservedAt(long index) { return StdVideoAV1SequenceHeaderFlags.get_reserved(this.segment(), index); }
+        /// Sets `reserved` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer reservedAt(long index, @CType("uint32_t : 13") int value) { StdVideoAV1SequenceHeaderFlags.set_reserved(this.segment(), index, value); return this; }
+
+    }
 }

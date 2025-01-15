@@ -46,7 +46,7 @@ import overrungl.util.*;
 ///     VkBool32 vulkanMemoryModelAvailabilityVisibilityChains;
 /// } VkPhysicalDeviceVulkanMemoryModelFeatures;
 /// ```
-public final class VkPhysicalDeviceVulkanMemoryModelFeatures extends Struct {
+public sealed class VkPhysicalDeviceVulkanMemoryModelFeatures extends Struct {
     /// The struct layout of `VkPhysicalDeviceVulkanMemoryModelFeatures`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -76,6 +76,11 @@ public final class VkPhysicalDeviceVulkanMemoryModelFeatures extends Struct {
     public static VkPhysicalDeviceVulkanMemoryModelFeatures of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceVulkanMemoryModelFeatures(segment); }
 
     /// Creates `VkPhysicalDeviceVulkanMemoryModelFeatures` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPhysicalDeviceVulkanMemoryModelFeatures` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -88,7 +93,7 @@ public final class VkPhysicalDeviceVulkanMemoryModelFeatures extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceVulkanMemoryModelFeatures ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceVulkanMemoryModelFeatures(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceVulkanMemoryModelFeatures` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -99,18 +104,21 @@ public final class VkPhysicalDeviceVulkanMemoryModelFeatures extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceVulkanMemoryModelFeatures`
-    public static VkPhysicalDeviceVulkanMemoryModelFeatures alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceVulkanMemoryModelFeatures(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkPhysicalDeviceVulkanMemoryModelFeatures`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDeviceVulkanMemoryModelFeatures`
-    public VkPhysicalDeviceVulkanMemoryModelFeatures asSlice(long index) { return new VkPhysicalDeviceVulkanMemoryModelFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkPhysicalDeviceVulkanMemoryModelFeatures` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDeviceVulkanMemoryModelFeatures`
+    public static VkPhysicalDeviceVulkanMemoryModelFeatures allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkBool32") int vulkanMemoryModel, @CType("VkBool32") int vulkanMemoryModelDeviceScope, @CType("VkBool32") int vulkanMemoryModelAvailabilityVisibilityChains) { return alloc(allocator).sType(sType).pNext(pNext).vulkanMemoryModel(vulkanMemoryModel).vulkanMemoryModelDeviceScope(vulkanMemoryModelDeviceScope).vulkanMemoryModelAvailabilityVisibilityChains(vulkanMemoryModelAvailabilityVisibilityChains); }
 
-    /// Creates a slice of `VkPhysicalDeviceVulkanMemoryModelFeatures`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDeviceVulkanMemoryModelFeatures`
-    public VkPhysicalDeviceVulkanMemoryModelFeatures asSlice(long index, long count) { return new VkPhysicalDeviceVulkanMemoryModelFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDeviceVulkanMemoryModelFeatures copyFrom(VkPhysicalDeviceVulkanMemoryModelFeatures src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -119,9 +127,6 @@ public final class VkPhysicalDeviceVulkanMemoryModelFeatures extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceVulkanMemoryModelFeatures.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceVulkanMemoryModelFeatures.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPhysicalDeviceVulkanMemoryModelFeatures.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -133,11 +138,6 @@ public final class VkPhysicalDeviceVulkanMemoryModelFeatures extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceVulkanMemoryModelFeatures.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceVulkanMemoryModelFeatures sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceVulkanMemoryModelFeatures.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,9 +150,6 @@ public final class VkPhysicalDeviceVulkanMemoryModelFeatures extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceVulkanMemoryModelFeatures.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceVulkanMemoryModelFeatures.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceVulkanMemoryModelFeatures.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -164,11 +161,6 @@ public final class VkPhysicalDeviceVulkanMemoryModelFeatures extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkanMemoryModelFeatures.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceVulkanMemoryModelFeatures pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkanMemoryModelFeatures.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -181,9 +173,6 @@ public final class VkPhysicalDeviceVulkanMemoryModelFeatures extends Struct {
     /// {@return `vulkanMemoryModel`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_vulkanMemoryModel(MemorySegment segment) { return VkPhysicalDeviceVulkanMemoryModelFeatures.get_vulkanMemoryModel(segment, 0L); }
-    /// {@return `vulkanMemoryModel` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int vulkanMemoryModelAt(long index) { return VkPhysicalDeviceVulkanMemoryModelFeatures.get_vulkanMemoryModel(this.segment(), index); }
     /// {@return `vulkanMemoryModel`}
     public @CType("VkBool32") int vulkanMemoryModel() { return VkPhysicalDeviceVulkanMemoryModelFeatures.get_vulkanMemoryModel(this.segment()); }
     /// Sets `vulkanMemoryModel` with the given value at the given index.
@@ -195,11 +184,6 @@ public final class VkPhysicalDeviceVulkanMemoryModelFeatures extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_vulkanMemoryModel(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkanMemoryModelFeatures.set_vulkanMemoryModel(segment, 0L, value); }
-    /// Sets `vulkanMemoryModel` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceVulkanMemoryModelFeatures vulkanMemoryModelAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkanMemoryModelFeatures.set_vulkanMemoryModel(this.segment(), index, value); return this; }
     /// Sets `vulkanMemoryModel` with the given value.
     /// @param value the value
     /// @return `this`
@@ -212,9 +196,6 @@ public final class VkPhysicalDeviceVulkanMemoryModelFeatures extends Struct {
     /// {@return `vulkanMemoryModelDeviceScope`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_vulkanMemoryModelDeviceScope(MemorySegment segment) { return VkPhysicalDeviceVulkanMemoryModelFeatures.get_vulkanMemoryModelDeviceScope(segment, 0L); }
-    /// {@return `vulkanMemoryModelDeviceScope` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int vulkanMemoryModelDeviceScopeAt(long index) { return VkPhysicalDeviceVulkanMemoryModelFeatures.get_vulkanMemoryModelDeviceScope(this.segment(), index); }
     /// {@return `vulkanMemoryModelDeviceScope`}
     public @CType("VkBool32") int vulkanMemoryModelDeviceScope() { return VkPhysicalDeviceVulkanMemoryModelFeatures.get_vulkanMemoryModelDeviceScope(this.segment()); }
     /// Sets `vulkanMemoryModelDeviceScope` with the given value at the given index.
@@ -226,11 +207,6 @@ public final class VkPhysicalDeviceVulkanMemoryModelFeatures extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_vulkanMemoryModelDeviceScope(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkanMemoryModelFeatures.set_vulkanMemoryModelDeviceScope(segment, 0L, value); }
-    /// Sets `vulkanMemoryModelDeviceScope` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceVulkanMemoryModelFeatures vulkanMemoryModelDeviceScopeAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkanMemoryModelFeatures.set_vulkanMemoryModelDeviceScope(this.segment(), index, value); return this; }
     /// Sets `vulkanMemoryModelDeviceScope` with the given value.
     /// @param value the value
     /// @return `this`
@@ -243,9 +219,6 @@ public final class VkPhysicalDeviceVulkanMemoryModelFeatures extends Struct {
     /// {@return `vulkanMemoryModelAvailabilityVisibilityChains`}
     /// @param segment the segment of the struct
     public static @CType("VkBool32") int get_vulkanMemoryModelAvailabilityVisibilityChains(MemorySegment segment) { return VkPhysicalDeviceVulkanMemoryModelFeatures.get_vulkanMemoryModelAvailabilityVisibilityChains(segment, 0L); }
-    /// {@return `vulkanMemoryModelAvailabilityVisibilityChains` at the given index}
-    /// @param index the index
-    public @CType("VkBool32") int vulkanMemoryModelAvailabilityVisibilityChainsAt(long index) { return VkPhysicalDeviceVulkanMemoryModelFeatures.get_vulkanMemoryModelAvailabilityVisibilityChains(this.segment(), index); }
     /// {@return `vulkanMemoryModelAvailabilityVisibilityChains`}
     public @CType("VkBool32") int vulkanMemoryModelAvailabilityVisibilityChains() { return VkPhysicalDeviceVulkanMemoryModelFeatures.get_vulkanMemoryModelAvailabilityVisibilityChains(this.segment()); }
     /// Sets `vulkanMemoryModelAvailabilityVisibilityChains` with the given value at the given index.
@@ -257,14 +230,77 @@ public final class VkPhysicalDeviceVulkanMemoryModelFeatures extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_vulkanMemoryModelAvailabilityVisibilityChains(MemorySegment segment, @CType("VkBool32") int value) { VkPhysicalDeviceVulkanMemoryModelFeatures.set_vulkanMemoryModelAvailabilityVisibilityChains(segment, 0L, value); }
-    /// Sets `vulkanMemoryModelAvailabilityVisibilityChains` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceVulkanMemoryModelFeatures vulkanMemoryModelAvailabilityVisibilityChainsAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkanMemoryModelFeatures.set_vulkanMemoryModelAvailabilityVisibilityChains(this.segment(), index, value); return this; }
     /// Sets `vulkanMemoryModelAvailabilityVisibilityChains` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceVulkanMemoryModelFeatures vulkanMemoryModelAvailabilityVisibilityChains(@CType("VkBool32") int value) { VkPhysicalDeviceVulkanMemoryModelFeatures.set_vulkanMemoryModelAvailabilityVisibilityChains(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDeviceVulkanMemoryModelFeatures].
+    public static final class Buffer extends VkPhysicalDeviceVulkanMemoryModelFeatures {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDeviceVulkanMemoryModelFeatures.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDeviceVulkanMemoryModelFeatures`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDeviceVulkanMemoryModelFeatures`
+        public VkPhysicalDeviceVulkanMemoryModelFeatures asSlice(long index) { return new VkPhysicalDeviceVulkanMemoryModelFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDeviceVulkanMemoryModelFeatures`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDeviceVulkanMemoryModelFeatures`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceVulkanMemoryModelFeatures.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceVulkanMemoryModelFeatures.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceVulkanMemoryModelFeatures.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceVulkanMemoryModelFeatures.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `vulkanMemoryModel` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int vulkanMemoryModelAt(long index) { return VkPhysicalDeviceVulkanMemoryModelFeatures.get_vulkanMemoryModel(this.segment(), index); }
+        /// Sets `vulkanMemoryModel` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer vulkanMemoryModelAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkanMemoryModelFeatures.set_vulkanMemoryModel(this.segment(), index, value); return this; }
+
+        /// {@return `vulkanMemoryModelDeviceScope` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int vulkanMemoryModelDeviceScopeAt(long index) { return VkPhysicalDeviceVulkanMemoryModelFeatures.get_vulkanMemoryModelDeviceScope(this.segment(), index); }
+        /// Sets `vulkanMemoryModelDeviceScope` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer vulkanMemoryModelDeviceScopeAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkanMemoryModelFeatures.set_vulkanMemoryModelDeviceScope(this.segment(), index, value); return this; }
+
+        /// {@return `vulkanMemoryModelAvailabilityVisibilityChains` at the given index}
+        /// @param index the index
+        public @CType("VkBool32") int vulkanMemoryModelAvailabilityVisibilityChainsAt(long index) { return VkPhysicalDeviceVulkanMemoryModelFeatures.get_vulkanMemoryModelAvailabilityVisibilityChains(this.segment(), index); }
+        /// Sets `vulkanMemoryModelAvailabilityVisibilityChains` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer vulkanMemoryModelAvailabilityVisibilityChainsAt(long index, @CType("VkBool32") int value) { VkPhysicalDeviceVulkanMemoryModelFeatures.set_vulkanMemoryModelAvailabilityVisibilityChains(this.segment(), index, value); return this; }
+
+    }
 }

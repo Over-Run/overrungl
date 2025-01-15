@@ -45,7 +45,7 @@ import static overrungl.vulkan.VK10.*;
 ///     VkDeviceSize[VK_MAX_MEMORY_HEAPS] heapUsage;
 /// } VkPhysicalDeviceMemoryBudgetPropertiesEXT;
 /// ```
-public final class VkPhysicalDeviceMemoryBudgetPropertiesEXT extends Struct {
+public sealed class VkPhysicalDeviceMemoryBudgetPropertiesEXT extends Struct {
     /// The struct layout of `VkPhysicalDeviceMemoryBudgetPropertiesEXT`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -76,6 +76,11 @@ public final class VkPhysicalDeviceMemoryBudgetPropertiesEXT extends Struct {
     public static VkPhysicalDeviceMemoryBudgetPropertiesEXT of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceMemoryBudgetPropertiesEXT(segment); }
 
     /// Creates `VkPhysicalDeviceMemoryBudgetPropertiesEXT` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkPhysicalDeviceMemoryBudgetPropertiesEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -88,7 +93,7 @@ public final class VkPhysicalDeviceMemoryBudgetPropertiesEXT extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceMemoryBudgetPropertiesEXT ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkPhysicalDeviceMemoryBudgetPropertiesEXT(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkPhysicalDeviceMemoryBudgetPropertiesEXT` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -99,18 +104,21 @@ public final class VkPhysicalDeviceMemoryBudgetPropertiesEXT extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceMemoryBudgetPropertiesEXT`
-    public static VkPhysicalDeviceMemoryBudgetPropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceMemoryBudgetPropertiesEXT(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkPhysicalDeviceMemoryBudgetPropertiesEXT`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkPhysicalDeviceMemoryBudgetPropertiesEXT`
-    public VkPhysicalDeviceMemoryBudgetPropertiesEXT asSlice(long index) { return new VkPhysicalDeviceMemoryBudgetPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkPhysicalDeviceMemoryBudgetPropertiesEXT` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkPhysicalDeviceMemoryBudgetPropertiesEXT`
+    public static VkPhysicalDeviceMemoryBudgetPropertiesEXT allocInit(SegmentAllocator allocator, @CType("VkStructureType") int sType, @CType("void *") java.lang.foreign.MemorySegment pNext, @CType("VkDeviceSize[VK_MAX_MEMORY_HEAPS]") java.lang.foreign.MemorySegment heapBudget, @CType("VkDeviceSize[VK_MAX_MEMORY_HEAPS]") java.lang.foreign.MemorySegment heapUsage) { return alloc(allocator).sType(sType).pNext(pNext).heapBudget(heapBudget).heapUsage(heapUsage); }
 
-    /// Creates a slice of `VkPhysicalDeviceMemoryBudgetPropertiesEXT`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkPhysicalDeviceMemoryBudgetPropertiesEXT`
-    public VkPhysicalDeviceMemoryBudgetPropertiesEXT asSlice(long index, long count) { return new VkPhysicalDeviceMemoryBudgetPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkPhysicalDeviceMemoryBudgetPropertiesEXT copyFrom(VkPhysicalDeviceMemoryBudgetPropertiesEXT src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -119,9 +127,6 @@ public final class VkPhysicalDeviceMemoryBudgetPropertiesEXT extends Struct {
     /// {@return `sType`}
     /// @param segment the segment of the struct
     public static @CType("VkStructureType") int get_sType(MemorySegment segment) { return VkPhysicalDeviceMemoryBudgetPropertiesEXT.get_sType(segment, 0L); }
-    /// {@return `sType` at the given index}
-    /// @param index the index
-    public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceMemoryBudgetPropertiesEXT.get_sType(this.segment(), index); }
     /// {@return `sType`}
     public @CType("VkStructureType") int sType() { return VkPhysicalDeviceMemoryBudgetPropertiesEXT.get_sType(this.segment()); }
     /// Sets `sType` with the given value at the given index.
@@ -133,11 +138,6 @@ public final class VkPhysicalDeviceMemoryBudgetPropertiesEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_sType(MemorySegment segment, @CType("VkStructureType") int value) { VkPhysicalDeviceMemoryBudgetPropertiesEXT.set_sType(segment, 0L, value); }
-    /// Sets `sType` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceMemoryBudgetPropertiesEXT sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceMemoryBudgetPropertiesEXT.set_sType(this.segment(), index, value); return this; }
     /// Sets `sType` with the given value.
     /// @param value the value
     /// @return `this`
@@ -150,9 +150,6 @@ public final class VkPhysicalDeviceMemoryBudgetPropertiesEXT extends Struct {
     /// {@return `pNext`}
     /// @param segment the segment of the struct
     public static @CType("void *") java.lang.foreign.MemorySegment get_pNext(MemorySegment segment) { return VkPhysicalDeviceMemoryBudgetPropertiesEXT.get_pNext(segment, 0L); }
-    /// {@return `pNext` at the given index}
-    /// @param index the index
-    public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceMemoryBudgetPropertiesEXT.get_pNext(this.segment(), index); }
     /// {@return `pNext`}
     public @CType("void *") java.lang.foreign.MemorySegment pNext() { return VkPhysicalDeviceMemoryBudgetPropertiesEXT.get_pNext(this.segment()); }
     /// Sets `pNext` with the given value at the given index.
@@ -164,11 +161,6 @@ public final class VkPhysicalDeviceMemoryBudgetPropertiesEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pNext(MemorySegment segment, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceMemoryBudgetPropertiesEXT.set_pNext(segment, 0L, value); }
-    /// Sets `pNext` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceMemoryBudgetPropertiesEXT pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceMemoryBudgetPropertiesEXT.set_pNext(this.segment(), index, value); return this; }
     /// Sets `pNext` with the given value.
     /// @param value the value
     /// @return `this`
@@ -181,9 +173,6 @@ public final class VkPhysicalDeviceMemoryBudgetPropertiesEXT extends Struct {
     /// {@return `heapBudget`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize[VK_MAX_MEMORY_HEAPS]") java.lang.foreign.MemorySegment get_heapBudget(MemorySegment segment) { return VkPhysicalDeviceMemoryBudgetPropertiesEXT.get_heapBudget(segment, 0L); }
-    /// {@return `heapBudget` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize[VK_MAX_MEMORY_HEAPS]") java.lang.foreign.MemorySegment heapBudgetAt(long index) { return VkPhysicalDeviceMemoryBudgetPropertiesEXT.get_heapBudget(this.segment(), index); }
     /// {@return `heapBudget`}
     public @CType("VkDeviceSize[VK_MAX_MEMORY_HEAPS]") java.lang.foreign.MemorySegment heapBudget() { return VkPhysicalDeviceMemoryBudgetPropertiesEXT.get_heapBudget(this.segment()); }
     /// Sets `heapBudget` with the given value at the given index.
@@ -195,11 +184,6 @@ public final class VkPhysicalDeviceMemoryBudgetPropertiesEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_heapBudget(MemorySegment segment, @CType("VkDeviceSize[VK_MAX_MEMORY_HEAPS]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceMemoryBudgetPropertiesEXT.set_heapBudget(segment, 0L, value); }
-    /// Sets `heapBudget` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceMemoryBudgetPropertiesEXT heapBudgetAt(long index, @CType("VkDeviceSize[VK_MAX_MEMORY_HEAPS]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceMemoryBudgetPropertiesEXT.set_heapBudget(this.segment(), index, value); return this; }
     /// Sets `heapBudget` with the given value.
     /// @param value the value
     /// @return `this`
@@ -212,9 +196,6 @@ public final class VkPhysicalDeviceMemoryBudgetPropertiesEXT extends Struct {
     /// {@return `heapUsage`}
     /// @param segment the segment of the struct
     public static @CType("VkDeviceSize[VK_MAX_MEMORY_HEAPS]") java.lang.foreign.MemorySegment get_heapUsage(MemorySegment segment) { return VkPhysicalDeviceMemoryBudgetPropertiesEXT.get_heapUsage(segment, 0L); }
-    /// {@return `heapUsage` at the given index}
-    /// @param index the index
-    public @CType("VkDeviceSize[VK_MAX_MEMORY_HEAPS]") java.lang.foreign.MemorySegment heapUsageAt(long index) { return VkPhysicalDeviceMemoryBudgetPropertiesEXT.get_heapUsage(this.segment(), index); }
     /// {@return `heapUsage`}
     public @CType("VkDeviceSize[VK_MAX_MEMORY_HEAPS]") java.lang.foreign.MemorySegment heapUsage() { return VkPhysicalDeviceMemoryBudgetPropertiesEXT.get_heapUsage(this.segment()); }
     /// Sets `heapUsage` with the given value at the given index.
@@ -226,14 +207,68 @@ public final class VkPhysicalDeviceMemoryBudgetPropertiesEXT extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_heapUsage(MemorySegment segment, @CType("VkDeviceSize[VK_MAX_MEMORY_HEAPS]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceMemoryBudgetPropertiesEXT.set_heapUsage(segment, 0L, value); }
-    /// Sets `heapUsage` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkPhysicalDeviceMemoryBudgetPropertiesEXT heapUsageAt(long index, @CType("VkDeviceSize[VK_MAX_MEMORY_HEAPS]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceMemoryBudgetPropertiesEXT.set_heapUsage(this.segment(), index, value); return this; }
     /// Sets `heapUsage` with the given value.
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceMemoryBudgetPropertiesEXT heapUsage(@CType("VkDeviceSize[VK_MAX_MEMORY_HEAPS]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceMemoryBudgetPropertiesEXT.set_heapUsage(this.segment(), value); return this; }
 
+    /// A buffer of [VkPhysicalDeviceMemoryBudgetPropertiesEXT].
+    public static final class Buffer extends VkPhysicalDeviceMemoryBudgetPropertiesEXT {
+        private final long elementCount;
+
+        /// Creates `VkPhysicalDeviceMemoryBudgetPropertiesEXT.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkPhysicalDeviceMemoryBudgetPropertiesEXT`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkPhysicalDeviceMemoryBudgetPropertiesEXT`
+        public VkPhysicalDeviceMemoryBudgetPropertiesEXT asSlice(long index) { return new VkPhysicalDeviceMemoryBudgetPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkPhysicalDeviceMemoryBudgetPropertiesEXT`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkPhysicalDeviceMemoryBudgetPropertiesEXT`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `sType` at the given index}
+        /// @param index the index
+        public @CType("VkStructureType") int sTypeAt(long index) { return VkPhysicalDeviceMemoryBudgetPropertiesEXT.get_sType(this.segment(), index); }
+        /// Sets `sType` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer sTypeAt(long index, @CType("VkStructureType") int value) { VkPhysicalDeviceMemoryBudgetPropertiesEXT.set_sType(this.segment(), index, value); return this; }
+
+        /// {@return `pNext` at the given index}
+        /// @param index the index
+        public @CType("void *") java.lang.foreign.MemorySegment pNextAt(long index) { return VkPhysicalDeviceMemoryBudgetPropertiesEXT.get_pNext(this.segment(), index); }
+        /// Sets `pNext` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pNextAt(long index, @CType("void *") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceMemoryBudgetPropertiesEXT.set_pNext(this.segment(), index, value); return this; }
+
+        /// {@return `heapBudget` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize[VK_MAX_MEMORY_HEAPS]") java.lang.foreign.MemorySegment heapBudgetAt(long index) { return VkPhysicalDeviceMemoryBudgetPropertiesEXT.get_heapBudget(this.segment(), index); }
+        /// Sets `heapBudget` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer heapBudgetAt(long index, @CType("VkDeviceSize[VK_MAX_MEMORY_HEAPS]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceMemoryBudgetPropertiesEXT.set_heapBudget(this.segment(), index, value); return this; }
+
+        /// {@return `heapUsage` at the given index}
+        /// @param index the index
+        public @CType("VkDeviceSize[VK_MAX_MEMORY_HEAPS]") java.lang.foreign.MemorySegment heapUsageAt(long index) { return VkPhysicalDeviceMemoryBudgetPropertiesEXT.get_heapUsage(this.segment(), index); }
+        /// Sets `heapUsage` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer heapUsageAt(long index, @CType("VkDeviceSize[VK_MAX_MEMORY_HEAPS]") java.lang.foreign.MemorySegment value) { VkPhysicalDeviceMemoryBudgetPropertiesEXT.set_heapUsage(this.segment(), index, value); return this; }
+
+    }
 }

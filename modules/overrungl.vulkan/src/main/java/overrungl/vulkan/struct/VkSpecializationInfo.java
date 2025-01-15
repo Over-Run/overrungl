@@ -43,7 +43,7 @@ import overrungl.util.*;
 ///     const void * pData;
 /// } VkSpecializationInfo;
 /// ```
-public final class VkSpecializationInfo extends Struct {
+public sealed class VkSpecializationInfo extends Struct {
     /// The struct layout of `VkSpecializationInfo`.
     public static final StructLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("mapEntryCount"),
@@ -70,6 +70,11 @@ public final class VkSpecializationInfo extends Struct {
     public static VkSpecializationInfo of(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new VkSpecializationInfo(segment); }
 
     /// Creates `VkSpecializationInfo` with the given segment.
+    /// @param segment the memory segment
+    /// @return the created instance or `null` if the segment is `NULL`
+    public static Buffer ofBuffer(MemorySegment segment) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+
+    /// Creates `VkSpecializationInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
@@ -82,7 +87,7 @@ public final class VkSpecializationInfo extends Struct {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSpecializationInfo ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new VkSpecializationInfo(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment); }
+    public static Buffer ofNative(MemorySegment segment, long count) { return Unmarshal.isNullPointer(segment) ? null : new Buffer(segment.byteSize() == 0 ? segment.reinterpret(LAYOUT.scale(0, count)) : segment, count); }
 
     /// Allocates a `VkSpecializationInfo` with the given segment allocator.
     /// @param allocator the segment allocator
@@ -93,18 +98,21 @@ public final class VkSpecializationInfo extends Struct {
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkSpecializationInfo`
-    public static VkSpecializationInfo alloc(SegmentAllocator allocator, long count) { return new VkSpecializationInfo(allocator.allocate(LAYOUT, count)); }
+    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
-    /// Creates a slice of `VkSpecializationInfo`.
-    /// @param index the index of the struct buffer
-    /// @return the slice of `VkSpecializationInfo`
-    public VkSpecializationInfo asSlice(long index) { return new VkSpecializationInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// Allocates a `VkSpecializationInfo` with the given segment allocator and the initializing arguments.
+    /// @param allocator the segment allocator
+    /// @return the allocated `VkSpecializationInfo`
+    public static VkSpecializationInfo allocInit(SegmentAllocator allocator, @CType("uint32_t") int mapEntryCount, @CType("const VkSpecializationMapEntry *") java.lang.foreign.MemorySegment pMapEntries, @CType("size_t") long dataSize, @CType("const void *") java.lang.foreign.MemorySegment pData) { return alloc(allocator).mapEntryCount(mapEntryCount).pMapEntries(pMapEntries).dataSize(dataSize).pData(pData); }
 
-    /// Creates a slice of `VkSpecializationInfo`.
-    /// @param index the index of the struct buffer
-    /// @param count the count
-    /// @return the slice of `VkSpecializationInfo`
-    public VkSpecializationInfo asSlice(long index, long count) { return new VkSpecializationInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count)); }
+    /// Copies from the given source.
+    /// @param src the source
+    /// @return `this`
+    public VkSpecializationInfo copyFrom(VkSpecializationInfo src) { this.segment().copyFrom(src.segment()); return this; }
+
+    /// Converts this instance to a buffer.
+    /// @return the buffer
+    public Buffer asBuffer() { return new Buffer(this.segment(), this.estimateCount()); }
 
     /// {@return `mapEntryCount` at the given index}
     /// @param segment the segment of the struct
@@ -113,9 +121,6 @@ public final class VkSpecializationInfo extends Struct {
     /// {@return `mapEntryCount`}
     /// @param segment the segment of the struct
     public static @CType("uint32_t") int get_mapEntryCount(MemorySegment segment) { return VkSpecializationInfo.get_mapEntryCount(segment, 0L); }
-    /// {@return `mapEntryCount` at the given index}
-    /// @param index the index
-    public @CType("uint32_t") int mapEntryCountAt(long index) { return VkSpecializationInfo.get_mapEntryCount(this.segment(), index); }
     /// {@return `mapEntryCount`}
     public @CType("uint32_t") int mapEntryCount() { return VkSpecializationInfo.get_mapEntryCount(this.segment()); }
     /// Sets `mapEntryCount` with the given value at the given index.
@@ -127,11 +132,6 @@ public final class VkSpecializationInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_mapEntryCount(MemorySegment segment, @CType("uint32_t") int value) { VkSpecializationInfo.set_mapEntryCount(segment, 0L, value); }
-    /// Sets `mapEntryCount` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSpecializationInfo mapEntryCountAt(long index, @CType("uint32_t") int value) { VkSpecializationInfo.set_mapEntryCount(this.segment(), index, value); return this; }
     /// Sets `mapEntryCount` with the given value.
     /// @param value the value
     /// @return `this`
@@ -144,9 +144,6 @@ public final class VkSpecializationInfo extends Struct {
     /// {@return `pMapEntries`}
     /// @param segment the segment of the struct
     public static @CType("const VkSpecializationMapEntry *") java.lang.foreign.MemorySegment get_pMapEntries(MemorySegment segment) { return VkSpecializationInfo.get_pMapEntries(segment, 0L); }
-    /// {@return `pMapEntries` at the given index}
-    /// @param index the index
-    public @CType("const VkSpecializationMapEntry *") java.lang.foreign.MemorySegment pMapEntriesAt(long index) { return VkSpecializationInfo.get_pMapEntries(this.segment(), index); }
     /// {@return `pMapEntries`}
     public @CType("const VkSpecializationMapEntry *") java.lang.foreign.MemorySegment pMapEntries() { return VkSpecializationInfo.get_pMapEntries(this.segment()); }
     /// Sets `pMapEntries` with the given value at the given index.
@@ -158,11 +155,6 @@ public final class VkSpecializationInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pMapEntries(MemorySegment segment, @CType("const VkSpecializationMapEntry *") java.lang.foreign.MemorySegment value) { VkSpecializationInfo.set_pMapEntries(segment, 0L, value); }
-    /// Sets `pMapEntries` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSpecializationInfo pMapEntriesAt(long index, @CType("const VkSpecializationMapEntry *") java.lang.foreign.MemorySegment value) { VkSpecializationInfo.set_pMapEntries(this.segment(), index, value); return this; }
     /// Sets `pMapEntries` with the given value.
     /// @param value the value
     /// @return `this`
@@ -175,9 +167,6 @@ public final class VkSpecializationInfo extends Struct {
     /// {@return `dataSize`}
     /// @param segment the segment of the struct
     public static @CType("size_t") long get_dataSize(MemorySegment segment) { return VkSpecializationInfo.get_dataSize(segment, 0L); }
-    /// {@return `dataSize` at the given index}
-    /// @param index the index
-    public @CType("size_t") long dataSizeAt(long index) { return VkSpecializationInfo.get_dataSize(this.segment(), index); }
     /// {@return `dataSize`}
     public @CType("size_t") long dataSize() { return VkSpecializationInfo.get_dataSize(this.segment()); }
     /// Sets `dataSize` with the given value at the given index.
@@ -189,11 +178,6 @@ public final class VkSpecializationInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_dataSize(MemorySegment segment, @CType("size_t") long value) { VkSpecializationInfo.set_dataSize(segment, 0L, value); }
-    /// Sets `dataSize` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSpecializationInfo dataSizeAt(long index, @CType("size_t") long value) { VkSpecializationInfo.set_dataSize(this.segment(), index, value); return this; }
     /// Sets `dataSize` with the given value.
     /// @param value the value
     /// @return `this`
@@ -206,9 +190,6 @@ public final class VkSpecializationInfo extends Struct {
     /// {@return `pData`}
     /// @param segment the segment of the struct
     public static @CType("const void *") java.lang.foreign.MemorySegment get_pData(MemorySegment segment) { return VkSpecializationInfo.get_pData(segment, 0L); }
-    /// {@return `pData` at the given index}
-    /// @param index the index
-    public @CType("const void *") java.lang.foreign.MemorySegment pDataAt(long index) { return VkSpecializationInfo.get_pData(this.segment(), index); }
     /// {@return `pData`}
     public @CType("const void *") java.lang.foreign.MemorySegment pData() { return VkSpecializationInfo.get_pData(this.segment()); }
     /// Sets `pData` with the given value at the given index.
@@ -220,14 +201,68 @@ public final class VkSpecializationInfo extends Struct {
     /// @param segment the segment of the struct
     /// @param value   the value
     public static void set_pData(MemorySegment segment, @CType("const void *") java.lang.foreign.MemorySegment value) { VkSpecializationInfo.set_pData(segment, 0L, value); }
-    /// Sets `pData` with the given value at the given index.
-    /// @param index the index
-    /// @param value the value
-    /// @return `this`
-    public VkSpecializationInfo pDataAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkSpecializationInfo.set_pData(this.segment(), index, value); return this; }
     /// Sets `pData` with the given value.
     /// @param value the value
     /// @return `this`
     public VkSpecializationInfo pData(@CType("const void *") java.lang.foreign.MemorySegment value) { VkSpecializationInfo.set_pData(this.segment(), value); return this; }
 
+    /// A buffer of [VkSpecializationInfo].
+    public static final class Buffer extends VkSpecializationInfo {
+        private final long elementCount;
+
+        /// Creates `VkSpecializationInfo.Buffer` with the given segment.
+        /// @param segment      the memory segment
+        /// @param elementCount the element count
+        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+
+        @Override public long estimateCount() { return elementCount; }
+
+        /// Creates a slice of `VkSpecializationInfo`.
+        /// @param index the index of the struct buffer
+        /// @return the slice of `VkSpecializationInfo`
+        public VkSpecializationInfo asSlice(long index) { return new VkSpecializationInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+
+        /// Creates a slice of `VkSpecializationInfo`.
+        /// @param index the index of the struct buffer
+        /// @param count the count
+        /// @return the slice of `VkSpecializationInfo`
+        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+
+        /// {@return `mapEntryCount` at the given index}
+        /// @param index the index
+        public @CType("uint32_t") int mapEntryCountAt(long index) { return VkSpecializationInfo.get_mapEntryCount(this.segment(), index); }
+        /// Sets `mapEntryCount` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer mapEntryCountAt(long index, @CType("uint32_t") int value) { VkSpecializationInfo.set_mapEntryCount(this.segment(), index, value); return this; }
+
+        /// {@return `pMapEntries` at the given index}
+        /// @param index the index
+        public @CType("const VkSpecializationMapEntry *") java.lang.foreign.MemorySegment pMapEntriesAt(long index) { return VkSpecializationInfo.get_pMapEntries(this.segment(), index); }
+        /// Sets `pMapEntries` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pMapEntriesAt(long index, @CType("const VkSpecializationMapEntry *") java.lang.foreign.MemorySegment value) { VkSpecializationInfo.set_pMapEntries(this.segment(), index, value); return this; }
+
+        /// {@return `dataSize` at the given index}
+        /// @param index the index
+        public @CType("size_t") long dataSizeAt(long index) { return VkSpecializationInfo.get_dataSize(this.segment(), index); }
+        /// Sets `dataSize` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer dataSizeAt(long index, @CType("size_t") long value) { VkSpecializationInfo.set_dataSize(this.segment(), index, value); return this; }
+
+        /// {@return `pData` at the given index}
+        /// @param index the index
+        public @CType("const void *") java.lang.foreign.MemorySegment pDataAt(long index) { return VkSpecializationInfo.get_pData(this.segment(), index); }
+        /// Sets `pData` with the given value at the given index.
+        /// @param index the index
+        /// @param value the value
+        /// @return `this`
+        public Buffer pDataAt(long index, @CType("const void *") java.lang.foreign.MemorySegment value) { VkSpecializationInfo.set_pData(this.segment(), index, value); return this; }
+
+    }
 }
