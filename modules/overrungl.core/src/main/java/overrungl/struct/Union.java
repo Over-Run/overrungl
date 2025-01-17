@@ -16,6 +16,7 @@
 
 package overrungl.struct;
 
+import overrungl.util.Addressable;
 import overrungl.util.Unmarshal;
 
 import java.lang.foreign.MemorySegment;
@@ -25,7 +26,7 @@ import java.lang.foreign.UnionLayout;
 ///
 /// @author squid233
 /// @since 0.1.0
-public abstract class Union {
+public abstract class Union implements Addressable {
     private final MemorySegment segment;
     private final UnionLayout layout;
 
@@ -60,6 +61,7 @@ public abstract class Union {
     }
 
     /// {@return the segment of this union}
+    @Override
     public MemorySegment segment() {
         return segment;
     }

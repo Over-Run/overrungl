@@ -16,6 +16,7 @@
 
 package overrungl.struct;
 
+import overrungl.util.Addressable;
 import overrungl.util.Unmarshal;
 
 import java.lang.foreign.MemorySegment;
@@ -29,7 +30,7 @@ import java.lang.foreign.StructLayout;
 ///
 /// @author squid233
 /// @since 0.1.0
-public abstract class Struct {
+public abstract class Struct implements Addressable {
     private final MemorySegment segment;
     private final StructLayout layout;
 
@@ -64,6 +65,7 @@ public abstract class Struct {
     }
 
     /// {@return the segment of this struct}
+    @Override
     public MemorySegment segment() {
         return segment;
     }

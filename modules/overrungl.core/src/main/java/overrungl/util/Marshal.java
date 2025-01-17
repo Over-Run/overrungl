@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2024 Overrun Organization
+ * Copyright (c) 2024-2025 Overrun Organization
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -17,7 +17,6 @@
 package overrungl.util;
 
 import org.jetbrains.annotations.Nullable;
-import overrungl.struct.Struct;
 import overrungl.upcall.Upcall;
 
 import java.lang.foreign.Arena;
@@ -64,14 +63,14 @@ public final class Marshal {
     }
 
     /**
-     * Converts the given struct to a segment.
+     * Converts the given addressable object to a segment.
      *
-     * @param struct the struct
+     * @param addressable the addressable object
      * @return the segment
      */
-    public static MemorySegment marshal(@Nullable Struct struct) {
-        if (struct == null) return MemorySegment.NULL;
-        return struct.segment();
+    public static MemorySegment marshal(@Nullable Addressable addressable) {
+        if (addressable == null) return MemorySegment.NULL;
+        return addressable.segment();
     }
 
     /**
