@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -41,16 +40,6 @@ public final class GLARBOcclusionQuery {
         public static final FunctionDescriptor FD_glGetQueryivARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetQueryObjectivARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetQueryObjectuivARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glGenQueriesARB,
-            FD_glDeleteQueriesARB,
-            FD_glIsQueryARB,
-            FD_glBeginQueryARB,
-            FD_glEndQueryARB,
-            FD_glGetQueryivARB,
-            FD_glGetQueryObjectivARB,
-            FD_glGetQueryObjectuivARB
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glGenQueriesARB = RuntimeHelper.downcall(Descriptors.FD_glGenQueriesARB);

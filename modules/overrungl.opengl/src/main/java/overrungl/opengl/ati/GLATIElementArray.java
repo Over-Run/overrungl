@@ -19,7 +19,6 @@ package overrungl.opengl.ati;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -34,11 +33,6 @@ public final class GLATIElementArray {
         public static final FunctionDescriptor FD_glElementPointerATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glDrawElementArrayATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glDrawRangeElementArrayATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glElementPointerATI,
-            FD_glDrawElementArrayATI,
-            FD_glDrawRangeElementArrayATI
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glElementPointerATI = RuntimeHelper.downcall(Descriptors.FD_glElementPointerATI);

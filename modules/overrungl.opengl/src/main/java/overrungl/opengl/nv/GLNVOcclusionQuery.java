@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -39,15 +38,6 @@ public final class GLNVOcclusionQuery {
         public static final FunctionDescriptor FD_glEndOcclusionQueryNV = FunctionDescriptor.ofVoid();
         public static final FunctionDescriptor FD_glGetOcclusionQueryivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetOcclusionQueryuivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glGenOcclusionQueriesNV,
-            FD_glDeleteOcclusionQueriesNV,
-            FD_glIsOcclusionQueryNV,
-            FD_glBeginOcclusionQueryNV,
-            FD_glEndOcclusionQueryNV,
-            FD_glGetOcclusionQueryivNV,
-            FD_glGetOcclusionQueryuivNV
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glGenOcclusionQueriesNV = RuntimeHelper.downcall(Descriptors.FD_glGenOcclusionQueriesNV);

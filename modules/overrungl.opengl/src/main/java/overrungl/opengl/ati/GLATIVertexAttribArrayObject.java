@@ -19,7 +19,6 @@ package overrungl.opengl.ati;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -31,11 +30,6 @@ public final class GLATIVertexAttribArrayObject {
         public static final FunctionDescriptor FD_glVertexAttribArrayObjectATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glGetVertexAttribArrayObjectfvATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetVertexAttribArrayObjectivATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glVertexAttribArrayObjectATI,
-            FD_glGetVertexAttribArrayObjectfvATI,
-            FD_glGetVertexAttribArrayObjectivATI
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glVertexAttribArrayObjectATI = RuntimeHelper.downcall(Descriptors.FD_glVertexAttribArrayObjectATI);

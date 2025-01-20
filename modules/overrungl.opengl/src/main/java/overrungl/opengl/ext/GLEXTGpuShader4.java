@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -90,42 +89,6 @@ public final class GLEXTGpuShader4 {
         public static final FunctionDescriptor FD_glVertexAttribIPointerEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetVertexAttribIivEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetVertexAttribIuivEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glGetUniformuivEXT,
-            FD_glBindFragDataLocationEXT,
-            FD_glGetFragDataLocationEXT,
-            FD_glUniform1uiEXT,
-            FD_glUniform2uiEXT,
-            FD_glUniform3uiEXT,
-            FD_glUniform4uiEXT,
-            FD_glUniform1uivEXT,
-            FD_glUniform2uivEXT,
-            FD_glUniform3uivEXT,
-            FD_glUniform4uivEXT,
-            FD_glVertexAttribI1iEXT,
-            FD_glVertexAttribI2iEXT,
-            FD_glVertexAttribI3iEXT,
-            FD_glVertexAttribI4iEXT,
-            FD_glVertexAttribI1uiEXT,
-            FD_glVertexAttribI2uiEXT,
-            FD_glVertexAttribI3uiEXT,
-            FD_glVertexAttribI4uiEXT,
-            FD_glVertexAttribI1ivEXT,
-            FD_glVertexAttribI2ivEXT,
-            FD_glVertexAttribI3ivEXT,
-            FD_glVertexAttribI4ivEXT,
-            FD_glVertexAttribI1uivEXT,
-            FD_glVertexAttribI2uivEXT,
-            FD_glVertexAttribI3uivEXT,
-            FD_glVertexAttribI4uivEXT,
-            FD_glVertexAttribI4bvEXT,
-            FD_glVertexAttribI4svEXT,
-            FD_glVertexAttribI4ubvEXT,
-            FD_glVertexAttribI4usvEXT,
-            FD_glVertexAttribIPointerEXT,
-            FD_glGetVertexAttribIivEXT,
-            FD_glGetVertexAttribIuivEXT
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glGetUniformuivEXT = RuntimeHelper.downcall(Descriptors.FD_glGetUniformuivEXT);

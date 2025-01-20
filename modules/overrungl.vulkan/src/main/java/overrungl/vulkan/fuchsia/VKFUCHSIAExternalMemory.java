@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKFUCHSIAExternalMemory {
     public static final int VK_FUCHSIA_EXTERNAL_MEMORY_SPEC_VERSION = 1;
     public static final String VK_FUCHSIA_EXTERNAL_MEMORY_EXTENSION_NAME = "VK_FUCHSIA_external_memory";
@@ -34,10 +33,6 @@ public class VKFUCHSIAExternalMemory {
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkGetMemoryZirconHandleFUCHSIA = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkGetMemoryZirconHandlePropertiesFUCHSIA = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetMemoryZirconHandleFUCHSIA,
-            FD_vkGetMemoryZirconHandlePropertiesFUCHSIA
-        );
         private Descriptors() {}
     }
     public static final class Handles {

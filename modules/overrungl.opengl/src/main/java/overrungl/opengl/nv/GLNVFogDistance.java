@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.nv;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLNVFogDistance {
     public static final int GL_FOG_DISTANCE_MODE_NV = 0x855A;
     public static final int GL_EYE_RADIAL_NV = 0x855B;

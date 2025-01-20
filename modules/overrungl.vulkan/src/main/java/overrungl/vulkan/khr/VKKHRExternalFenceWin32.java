@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKKHRExternalFenceWin32 {
     public static final int VK_KHR_EXTERNAL_FENCE_WIN32_SPEC_VERSION = 1;
     public static final String VK_KHR_EXTERNAL_FENCE_WIN32_EXTENSION_NAME = "VK_KHR_external_fence_win32";
@@ -33,10 +32,6 @@ public class VKKHRExternalFenceWin32 {
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkImportFenceWin32HandleKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkGetFenceWin32HandleKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkImportFenceWin32HandleKHR,
-            FD_vkGetFenceWin32HandleKHR
-        );
         private Descriptors() {}
     }
     public static final class Handles {

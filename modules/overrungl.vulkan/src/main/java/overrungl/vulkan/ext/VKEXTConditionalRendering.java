@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKEXTConditionalRendering {
     public static final int VK_CONDITIONAL_RENDERING_INVERTED_BIT_EXT = 0x00000001;
     public static final int VK_EXT_CONDITIONAL_RENDERING_SPEC_VERSION = 2;
@@ -37,10 +36,6 @@ public class VKEXTConditionalRendering {
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkCmdBeginConditionalRenderingEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkCmdEndConditionalRenderingEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCmdBeginConditionalRenderingEXT,
-            FD_vkCmdEndConditionalRenderingEXT
-        );
         private Descriptors() {}
     }
     public static final class Handles {

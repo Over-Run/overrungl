@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.nv.VKNVDeviceGeneratedCommands.*;
 public class VKEXTDeviceGeneratedCommands {
     public static final int VK_INDIRECT_COMMANDS_TOKEN_TYPE_EXECUTION_SET_EXT = 0;
@@ -76,17 +75,6 @@ public class VKEXTDeviceGeneratedCommands {
         public static final FunctionDescriptor FD_vkDestroyIndirectExecutionSetEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkUpdateIndirectExecutionSetPipelineEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkUpdateIndirectExecutionSetShaderEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetGeneratedCommandsMemoryRequirementsEXT,
-            FD_vkCmdPreprocessGeneratedCommandsEXT,
-            FD_vkCmdExecuteGeneratedCommandsEXT,
-            FD_vkCreateIndirectCommandsLayoutEXT,
-            FD_vkDestroyIndirectCommandsLayoutEXT,
-            FD_vkCreateIndirectExecutionSetEXT,
-            FD_vkDestroyIndirectExecutionSetEXT,
-            FD_vkUpdateIndirectExecutionSetPipelineEXT,
-            FD_vkUpdateIndirectExecutionSetShaderEXT
-        );
         private Descriptors() {}
     }
     public static final class Handles {

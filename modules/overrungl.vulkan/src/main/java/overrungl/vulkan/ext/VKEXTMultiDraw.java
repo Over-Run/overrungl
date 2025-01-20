@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKEXTMultiDraw {
     public static final int VK_EXT_MULTI_DRAW_SPEC_VERSION = 1;
     public static final String VK_EXT_MULTI_DRAW_EXTENSION_NAME = "VK_EXT_multi_draw";
@@ -32,10 +31,6 @@ public class VKEXTMultiDraw {
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkCmdDrawMultiEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_vkCmdDrawMultiIndexedEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCmdDrawMultiEXT,
-            FD_vkCmdDrawMultiIndexedEXT
-        );
         private Descriptors() {}
     }
     public static final class Handles {

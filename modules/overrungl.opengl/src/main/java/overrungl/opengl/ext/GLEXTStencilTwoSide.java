@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -31,9 +30,6 @@ public final class GLEXTStencilTwoSide {
     public static final class Descriptors {
         private Descriptors() {}
         public static final FunctionDescriptor FD_glActiveStencilFaceEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glActiveStencilFaceEXT
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glActiveStencilFaceEXT = RuntimeHelper.downcall(Descriptors.FD_glActiveStencilFaceEXT);

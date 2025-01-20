@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKEXTShaderModuleIdentifier {
     public static final int VK_EXT_SHADER_MODULE_IDENTIFIER_SPEC_VERSION = 1;
     public static final String VK_EXT_SHADER_MODULE_IDENTIFIER_EXTENSION_NAME = "VK_EXT_shader_module_identifier";
@@ -35,10 +34,6 @@ public class VKEXTShaderModuleIdentifier {
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkGetShaderModuleIdentifierEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkGetShaderModuleCreateInfoIdentifierEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetShaderModuleIdentifierEXT,
-            FD_vkGetShaderModuleCreateInfoIdentifierEXT
-        );
         private Descriptors() {}
     }
     public static final class Handles {

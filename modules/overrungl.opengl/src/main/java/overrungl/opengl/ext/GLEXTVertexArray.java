@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -69,17 +68,6 @@ public final class GLEXTVertexArray {
         public static final FunctionDescriptor FD_glNormalPointerEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glTexCoordPointerEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glVertexPointerEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glArrayElementEXT,
-            FD_glColorPointerEXT,
-            FD_glDrawArraysEXT,
-            FD_glEdgeFlagPointerEXT,
-            FD_glGetPointervEXT,
-            FD_glIndexPointerEXT,
-            FD_glNormalPointerEXT,
-            FD_glTexCoordPointerEXT,
-            FD_glVertexPointerEXT
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glArrayElementEXT = RuntimeHelper.downcall(Descriptors.FD_glArrayElementEXT);

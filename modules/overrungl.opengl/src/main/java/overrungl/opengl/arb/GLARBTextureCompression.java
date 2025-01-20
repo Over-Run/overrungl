@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -46,15 +45,6 @@ public final class GLARBTextureCompression {
         public static final FunctionDescriptor FD_glCompressedTexSubImage2DARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glCompressedTexSubImage1DARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetCompressedTexImageARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glCompressedTexImage3DARB,
-            FD_glCompressedTexImage2DARB,
-            FD_glCompressedTexImage1DARB,
-            FD_glCompressedTexSubImage3DARB,
-            FD_glCompressedTexSubImage2DARB,
-            FD_glCompressedTexSubImage1DARB,
-            FD_glGetCompressedTexImageARB
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glCompressedTexImage3DARB = RuntimeHelper.downcall(Descriptors.FD_glCompressedTexImage3DARB);

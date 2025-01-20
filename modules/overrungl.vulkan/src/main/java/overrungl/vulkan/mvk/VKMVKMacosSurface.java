@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKMVKMacosSurface {
     public static final int VK_MVK_MACOS_SURFACE_SPEC_VERSION = 3;
     public static final String VK_MVK_MACOS_SURFACE_EXTENSION_NAME = "VK_MVK_macos_surface";
@@ -30,9 +29,6 @@ public class VKMVKMacosSurface {
     private final Handles handles;
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkCreateMacOSSurfaceMVK = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCreateMacOSSurfaceMVK
-        );
         private Descriptors() {}
     }
     public static final class Handles {

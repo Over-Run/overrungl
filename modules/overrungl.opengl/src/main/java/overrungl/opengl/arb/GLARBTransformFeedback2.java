@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -39,15 +38,6 @@ public final class GLARBTransformFeedback2 {
         public static final FunctionDescriptor FD_glPauseTransformFeedback = FunctionDescriptor.ofVoid();
         public static final FunctionDescriptor FD_glResumeTransformFeedback = FunctionDescriptor.ofVoid();
         public static final FunctionDescriptor FD_glDrawTransformFeedback = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glBindTransformFeedback,
-            FD_glDeleteTransformFeedbacks,
-            FD_glGenTransformFeedbacks,
-            FD_glIsTransformFeedback,
-            FD_glPauseTransformFeedback,
-            FD_glResumeTransformFeedback,
-            FD_glDrawTransformFeedback
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glBindTransformFeedback = RuntimeHelper.downcall(Descriptors.FD_glBindTransformFeedback);

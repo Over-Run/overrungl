@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.VK13.*;
 import static overrungl.vulkan.khr.VKKHRSynchronization2.*;
 public class VKKHRSynchronization2 {
@@ -128,14 +127,6 @@ public class VKKHRSynchronization2 {
         public static final FunctionDescriptor FD_vkCmdPipelineBarrier2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkCmdWriteTimestamp2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_vkQueueSubmit2KHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCmdSetEvent2KHR,
-            FD_vkCmdResetEvent2KHR,
-            FD_vkCmdWaitEvents2KHR,
-            FD_vkCmdPipelineBarrier2KHR,
-            FD_vkCmdWriteTimestamp2KHR,
-            FD_vkQueueSubmit2KHR
-        );
         private Descriptors() {}
     }
     public static final class Handles {

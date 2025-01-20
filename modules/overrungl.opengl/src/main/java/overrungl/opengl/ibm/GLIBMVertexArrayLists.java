@@ -19,7 +19,6 @@ package overrungl.opengl.ibm;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -52,16 +51,6 @@ public final class GLIBMVertexArrayLists {
         public static final FunctionDescriptor FD_glNormalPointerListIBM = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glTexCoordPointerListIBM = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glVertexPointerListIBM = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glColorPointerListIBM,
-            FD_glSecondaryColorPointerListIBM,
-            FD_glEdgeFlagPointerListIBM,
-            FD_glFogCoordPointerListIBM,
-            FD_glIndexPointerListIBM,
-            FD_glNormalPointerListIBM,
-            FD_glTexCoordPointerListIBM,
-            FD_glVertexPointerListIBM
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glColorPointerListIBM = RuntimeHelper.downcall(Descriptors.FD_glColorPointerListIBM);

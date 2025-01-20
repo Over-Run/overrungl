@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.VK13.*;
 public class VKEXTPrivateData {
     public static final int VK_EXT_PRIVATE_DATA_SPEC_VERSION = 1;
@@ -37,12 +36,6 @@ public class VKEXTPrivateData {
         public static final FunctionDescriptor FD_vkDestroyPrivateDataSlotEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkSetPrivateDataEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG);
         public static final FunctionDescriptor FD_vkGetPrivateDataEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCreatePrivateDataSlotEXT,
-            FD_vkDestroyPrivateDataSlotEXT,
-            FD_vkSetPrivateDataEXT,
-            FD_vkGetPrivateDataEXT
-        );
         private Descriptors() {}
     }
     public static final class Handles {

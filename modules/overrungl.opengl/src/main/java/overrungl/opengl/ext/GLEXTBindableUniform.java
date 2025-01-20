@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -37,11 +36,6 @@ public final class GLEXTBindableUniform {
         public static final FunctionDescriptor FD_glUniformBufferEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glGetUniformBufferSizeEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glGetUniformOffsetEXT = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glUniformBufferEXT,
-            FD_glGetUniformBufferSizeEXT,
-            FD_glGetUniformOffsetEXT
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glUniformBufferEXT = RuntimeHelper.downcall(Descriptors.FD_glUniformBufferEXT);

@@ -18,7 +18,6 @@
 package overrungl.openal;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.*;
 import overrungl.util.*;
@@ -80,52 +79,67 @@ public final class ALSOFTBufferSamples {
         public static final FunctionDescriptor FD_alGetBufferSamplesSOFT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         /// The function descriptor of `alIsBufferFormatSupportedSOFT`.
         public static final FunctionDescriptor FD_alIsBufferFormatSupportedSOFT = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT);
-        /// Function descriptors.
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_alBufferSamplesSOFT,
-            FD_alBufferSubSamplesSOFT,
-            FD_alGetBufferSamplesSOFT,
-            FD_alIsBufferFormatSupportedSOFT
-        );
     }
     /// Method handles.
     public static final class Handles {
-        private Handles() { }
         /// The method handle of `alBufferSamplesSOFT`.
-        public static final MethodHandle MH_alBufferSamplesSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alBufferSamplesSOFT", Descriptors.FD_alBufferSamplesSOFT);
+        public static final MethodHandle MH_alBufferSamplesSOFT = RuntimeHelper.downcall(Descriptors.FD_alBufferSamplesSOFT);
         /// The method handle of `alBufferSubSamplesSOFT`.
-        public static final MethodHandle MH_alBufferSubSamplesSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alBufferSubSamplesSOFT", Descriptors.FD_alBufferSubSamplesSOFT);
+        public static final MethodHandle MH_alBufferSubSamplesSOFT = RuntimeHelper.downcall(Descriptors.FD_alBufferSubSamplesSOFT);
         /// The method handle of `alGetBufferSamplesSOFT`.
-        public static final MethodHandle MH_alGetBufferSamplesSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetBufferSamplesSOFT", Descriptors.FD_alGetBufferSamplesSOFT);
+        public static final MethodHandle MH_alGetBufferSamplesSOFT = RuntimeHelper.downcall(Descriptors.FD_alGetBufferSamplesSOFT);
         /// The method handle of `alIsBufferFormatSupportedSOFT`.
-        public static final MethodHandle MH_alIsBufferFormatSupportedSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alIsBufferFormatSupportedSOFT", Descriptors.FD_alIsBufferFormatSupportedSOFT);
+        public static final MethodHandle MH_alIsBufferFormatSupportedSOFT = RuntimeHelper.downcall(Descriptors.FD_alIsBufferFormatSupportedSOFT);
+        /// The function address of `alBufferSamplesSOFT`.
+        public final MemorySegment PFN_alBufferSamplesSOFT;
+        /// The function address of `alBufferSubSamplesSOFT`.
+        public final MemorySegment PFN_alBufferSubSamplesSOFT;
+        /// The function address of `alGetBufferSamplesSOFT`.
+        public final MemorySegment PFN_alGetBufferSamplesSOFT;
+        /// The function address of `alIsBufferFormatSupportedSOFT`.
+        public final MemorySegment PFN_alIsBufferFormatSupportedSOFT;
+        private Handles() {
+            PFN_alBufferSamplesSOFT = ALInternal.lookup().find("alBufferSamplesSOFT").orElse(MemorySegment.NULL);
+            PFN_alBufferSubSamplesSOFT = ALInternal.lookup().find("alBufferSubSamplesSOFT").orElse(MemorySegment.NULL);
+            PFN_alGetBufferSamplesSOFT = ALInternal.lookup().find("alGetBufferSamplesSOFT").orElse(MemorySegment.NULL);
+            PFN_alIsBufferFormatSupportedSOFT = ALInternal.lookup().find("alIsBufferFormatSupportedSOFT").orElse(MemorySegment.NULL);
+        }
+        private static volatile Handles instance;
+        private static Handles get() {
+            if (instance == null) {
+                synchronized (Handles.class) {
+                    if (instance == null) { instance = new Handles(); }
+                }
+            }
+            return instance;
+        }
     }
 
     public static void alBufferSamplesSOFT(@CType("ALuint") int buffer, @CType("ALuint") int samplerate, @CType("ALenum") int internalformat, @CType("ALsizei") int samples, @CType("ALenum") int channels, @CType("ALenum") int type, @CType("const ALvoid *") java.lang.foreign.MemorySegment data) {
         if (Handles.MH_alBufferSamplesSOFT == null) throw new SymbolNotFoundError("Symbol not found: alBufferSamplesSOFT");
         try {
-            Handles.MH_alBufferSamplesSOFT.invokeExact(buffer, samplerate, internalformat, samples, channels, type, data);
+            Handles.MH_alBufferSamplesSOFT.invokeExact(Handles.get().PFN_alBufferSamplesSOFT, buffer, samplerate, internalformat, samples, channels, type, data);
         } catch (Throwable e) { throw new RuntimeException("error in alBufferSamplesSOFT", e); }
     }
 
     public static void alBufferSubSamplesSOFT(@CType("ALuint") int buffer, @CType("ALsizei") int offset, @CType("ALsizei") int samples, @CType("ALenum") int channels, @CType("ALenum") int type, @CType("const ALvoid *") java.lang.foreign.MemorySegment data) {
         if (Handles.MH_alBufferSubSamplesSOFT == null) throw new SymbolNotFoundError("Symbol not found: alBufferSubSamplesSOFT");
         try {
-            Handles.MH_alBufferSubSamplesSOFT.invokeExact(buffer, offset, samples, channels, type, data);
+            Handles.MH_alBufferSubSamplesSOFT.invokeExact(Handles.get().PFN_alBufferSubSamplesSOFT, buffer, offset, samples, channels, type, data);
         } catch (Throwable e) { throw new RuntimeException("error in alBufferSubSamplesSOFT", e); }
     }
 
     public static void alGetBufferSamplesSOFT(@CType("ALuint") int buffer, @CType("ALsizei") int offset, @CType("ALsizei") int samples, @CType("ALenum") int channels, @CType("ALenum") int type, @CType("ALvoid *") java.lang.foreign.MemorySegment data) {
         if (Handles.MH_alGetBufferSamplesSOFT == null) throw new SymbolNotFoundError("Symbol not found: alGetBufferSamplesSOFT");
         try {
-            Handles.MH_alGetBufferSamplesSOFT.invokeExact(buffer, offset, samples, channels, type, data);
+            Handles.MH_alGetBufferSamplesSOFT.invokeExact(Handles.get().PFN_alGetBufferSamplesSOFT, buffer, offset, samples, channels, type, data);
         } catch (Throwable e) { throw new RuntimeException("error in alGetBufferSamplesSOFT", e); }
     }
 
     public static @CType("ALboolean") boolean alIsBufferFormatSupportedSOFT(@CType("ALenum") int format) {
         if (Handles.MH_alIsBufferFormatSupportedSOFT == null) throw new SymbolNotFoundError("Symbol not found: alIsBufferFormatSupportedSOFT");
         try {
-            return (boolean) Handles.MH_alIsBufferFormatSupportedSOFT.invokeExact(format);
+            return (boolean) Handles.MH_alIsBufferFormatSupportedSOFT.invokeExact(Handles.get().PFN_alIsBufferFormatSupportedSOFT, format);
         } catch (Throwable e) { throw new RuntimeException("error in alIsBufferFormatSupportedSOFT", e); }
     }
 

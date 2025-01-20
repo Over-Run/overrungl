@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKKHRDrawIndirectCount {
     public static final int VK_KHR_DRAW_INDIRECT_COUNT_SPEC_VERSION = 1;
     public static final String VK_KHR_DRAW_INDIRECT_COUNT_EXTENSION_NAME = "VK_KHR_draw_indirect_count";
@@ -30,10 +29,6 @@ public class VKKHRDrawIndirectCount {
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkCmdDrawIndirectCountKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_vkCmdDrawIndexedIndirectCountKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCmdDrawIndirectCountKHR,
-            FD_vkCmdDrawIndexedIndirectCountKHR
-        );
         private Descriptors() {}
     }
     public static final class Handles {

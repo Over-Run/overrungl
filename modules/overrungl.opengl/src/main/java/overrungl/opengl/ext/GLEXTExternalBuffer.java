@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -30,10 +29,6 @@ public final class GLEXTExternalBuffer {
         private Descriptors() {}
         public static final FunctionDescriptor FD_glBufferStorageExternalEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glNamedBufferStorageExternalEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glBufferStorageExternalEXT,
-            FD_glNamedBufferStorageExternalEXT
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glBufferStorageExternalEXT = RuntimeHelper.downcall(Descriptors.FD_glBufferStorageExternalEXT);

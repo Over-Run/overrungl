@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -36,11 +35,6 @@ public final class GLNVParameterBufferObject {
         public static final FunctionDescriptor FD_glProgramBufferParametersfvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glProgramBufferParametersIivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glProgramBufferParametersIuivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glProgramBufferParametersfvNV,
-            FD_glProgramBufferParametersIivNV,
-            FD_glProgramBufferParametersIuivNV
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glProgramBufferParametersfvNV = RuntimeHelper.downcall(Descriptors.FD_glProgramBufferParametersfvNV);

@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -34,14 +33,6 @@ public final class GLEXTDrawBuffers2 {
         public static final FunctionDescriptor FD_glEnableIndexedEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glDisableIndexedEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glIsEnabledIndexedEXT = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glColorMaskIndexedEXT,
-            FD_glGetBooleanIndexedvEXT,
-            FD_glGetIntegerIndexedvEXT,
-            FD_glEnableIndexedEXT,
-            FD_glDisableIndexedEXT,
-            FD_glIsEnabledIndexedEXT
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glColorMaskIndexedEXT = RuntimeHelper.downcall(Descriptors.FD_glColorMaskIndexedEXT);

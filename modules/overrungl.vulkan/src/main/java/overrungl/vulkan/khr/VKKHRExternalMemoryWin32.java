@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKKHRExternalMemoryWin32 {
     public static final int VK_KHR_EXTERNAL_MEMORY_WIN32_SPEC_VERSION = 1;
     public static final String VK_KHR_EXTERNAL_MEMORY_WIN32_EXTENSION_NAME = "VK_KHR_external_memory_win32";
@@ -34,10 +33,6 @@ public class VKKHRExternalMemoryWin32 {
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkGetMemoryWin32HandleKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkGetMemoryWin32HandlePropertiesKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetMemoryWin32HandleKHR,
-            FD_vkGetMemoryWin32HandlePropertiesKHR
-        );
         private Descriptors() {}
     }
     public static final class Handles {

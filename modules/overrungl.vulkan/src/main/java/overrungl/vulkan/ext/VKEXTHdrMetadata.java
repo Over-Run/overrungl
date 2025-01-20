@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKEXTHdrMetadata {
     public static final int VK_EXT_HDR_METADATA_SPEC_VERSION = 3;
     public static final String VK_EXT_HDR_METADATA_EXTENSION_NAME = "VK_EXT_hdr_metadata";
@@ -30,9 +29,6 @@ public class VKEXTHdrMetadata {
     private final Handles handles;
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkSetHdrMetadataEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkSetHdrMetadataEXT
-        );
         private Descriptors() {}
     }
     public static final class Handles {

@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKKHRDeferredHostOperations {
     public static final int VK_KHR_DEFERRED_HOST_OPERATIONS_SPEC_VERSION = 4;
     public static final String VK_KHR_DEFERRED_HOST_OPERATIONS_EXTENSION_NAME = "VK_KHR_deferred_host_operations";
@@ -38,13 +37,6 @@ public class VKKHRDeferredHostOperations {
         public static final FunctionDescriptor FD_vkGetDeferredOperationMaxConcurrencyKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkGetDeferredOperationResultKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkDeferredOperationJoinKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCreateDeferredOperationKHR,
-            FD_vkDestroyDeferredOperationKHR,
-            FD_vkGetDeferredOperationMaxConcurrencyKHR,
-            FD_vkGetDeferredOperationResultKHR,
-            FD_vkDeferredOperationJoinKHR
-        );
         private Descriptors() {}
     }
     public static final class Handles {

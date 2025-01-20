@@ -19,7 +19,6 @@ package overrungl.opengl;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -71,21 +70,6 @@ public class GL11 extends GL10 {
         public static final FunctionDescriptor FD_glDeleteTextures = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGenTextures = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glIsTexture = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glDrawArrays,
-            FD_glDrawElements,
-            FD_glPolygonOffset,
-            FD_glCopyTexImage1D,
-            FD_glCopyTexImage2D,
-            FD_glCopyTexSubImage1D,
-            FD_glCopyTexSubImage2D,
-            FD_glTexSubImage1D,
-            FD_glTexSubImage2D,
-            FD_glBindTexture,
-            FD_glDeleteTextures,
-            FD_glGenTextures,
-            FD_glIsTexture
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glDrawArrays = RuntimeHelper.downcall(Descriptors.FD_glDrawArrays);

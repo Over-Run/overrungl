@@ -19,7 +19,6 @@ package overrungl.opengl.sgix;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -35,14 +34,6 @@ public final class GLSGIXListPriority {
         public static final FunctionDescriptor FD_glListParameterfvSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glListParameteriSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glListParameterivSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glGetListParameterfvSGIX,
-            FD_glGetListParameterivSGIX,
-            FD_glListParameterfSGIX,
-            FD_glListParameterfvSGIX,
-            FD_glListParameteriSGIX,
-            FD_glListParameterivSGIX
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glGetListParameterfvSGIX = RuntimeHelper.downcall(Descriptors.FD_glGetListParameterfvSGIX);

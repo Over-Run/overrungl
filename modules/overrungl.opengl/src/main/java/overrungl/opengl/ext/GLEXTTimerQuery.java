@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -31,10 +30,6 @@ public final class GLEXTTimerQuery {
         private Descriptors() {}
         public static final FunctionDescriptor FD_glGetQueryObjecti64vEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetQueryObjectui64vEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glGetQueryObjecti64vEXT,
-            FD_glGetQueryObjectui64vEXT
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glGetQueryObjecti64vEXT = RuntimeHelper.downcall(Descriptors.FD_glGetQueryObjecti64vEXT);

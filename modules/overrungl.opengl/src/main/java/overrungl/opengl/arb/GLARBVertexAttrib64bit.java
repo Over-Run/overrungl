@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -51,18 +50,6 @@ public final class GLARBVertexAttrib64bit {
         public static final FunctionDescriptor FD_glVertexAttribL4dv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glVertexAttribLPointer = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetVertexAttribLdv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glVertexAttribL1d,
-            FD_glVertexAttribL2d,
-            FD_glVertexAttribL3d,
-            FD_glVertexAttribL4d,
-            FD_glVertexAttribL1dv,
-            FD_glVertexAttribL2dv,
-            FD_glVertexAttribL3dv,
-            FD_glVertexAttribL4dv,
-            FD_glVertexAttribLPointer,
-            FD_glGetVertexAttribLdv
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glVertexAttribL1d = RuntimeHelper.downcall(Descriptors.FD_glVertexAttribL1d);

@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -52,18 +51,6 @@ public final class GLEXTHistogram {
         public static final FunctionDescriptor FD_glMinmaxEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN);
         public static final FunctionDescriptor FD_glResetHistogramEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glResetMinmaxEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glGetHistogramEXT,
-            FD_glGetHistogramParameterfvEXT,
-            FD_glGetHistogramParameterivEXT,
-            FD_glGetMinmaxEXT,
-            FD_glGetMinmaxParameterfvEXT,
-            FD_glGetMinmaxParameterivEXT,
-            FD_glHistogramEXT,
-            FD_glMinmaxEXT,
-            FD_glResetHistogramEXT,
-            FD_glResetMinmaxEXT
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glGetHistogramEXT = RuntimeHelper.downcall(Descriptors.FD_glGetHistogramEXT);

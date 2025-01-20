@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -33,11 +32,6 @@ public final class GLARBTimerQuery {
         public static final FunctionDescriptor FD_glQueryCounter = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glGetQueryObjecti64v = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetQueryObjectui64v = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glQueryCounter,
-            FD_glGetQueryObjecti64v,
-            FD_glGetQueryObjectui64v
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glQueryCounter = RuntimeHelper.downcall(Descriptors.FD_glQueryCounter);

@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKNVExternalMemoryRdma {
     public static final int VK_NV_EXTERNAL_MEMORY_RDMA_SPEC_VERSION = 1;
     public static final String VK_NV_EXTERNAL_MEMORY_RDMA_EXTENSION_NAME = "VK_NV_external_memory_rdma";
@@ -33,9 +32,6 @@ public class VKNVExternalMemoryRdma {
     private final Handles handles;
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkGetMemoryRemoteAddressNV = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetMemoryRemoteAddressNV
-        );
         private Descriptors() {}
     }
     public static final class Handles {

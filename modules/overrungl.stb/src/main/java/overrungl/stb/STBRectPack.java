@@ -24,7 +24,6 @@ import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
-import java.util.List;
 
 /// [stb_rect_pack.h](https://github.com/nothings/stb/blob/master/stb_rect_pack.h)
 ///
@@ -50,72 +49,87 @@ public final class STBRectPack {
         public static final FunctionDescriptor FD_stbrp_setup_allow_out_of_mem = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBRPContext.LAYOUT), ValueLayout.JAVA_BOOLEAN);
         /// The function descriptor of `stbrp_setup_heuristic`.
         public static final FunctionDescriptor FD_stbrp_setup_heuristic = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS.withTargetLayout(overrungl.stb.STBRPContext.LAYOUT), ValueLayout.JAVA_INT);
-        /// Function descriptors.
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_stbrp_pack_rects,
-            FD_stbrp_init_target,
-            FD_stbrp_setup_allow_out_of_mem,
-            FD_stbrp_setup_heuristic
-        );
     }
     /// Method handles.
     public static final class Handles {
-        private Handles() { }
         /// The method handle of `stbrp_pack_rects`.
-        public static final MethodHandle MH_stbrp_pack_rects = RuntimeHelper.downcall(STBInternal.lookup(), "stbrp_pack_rects", Descriptors.FD_stbrp_pack_rects);
+        public static final MethodHandle MH_stbrp_pack_rects = RuntimeHelper.downcall(Descriptors.FD_stbrp_pack_rects);
         /// The method handle of `stbrp_init_target`.
-        public static final MethodHandle MH_stbrp_init_target = RuntimeHelper.downcall(STBInternal.lookup(), "stbrp_init_target", Descriptors.FD_stbrp_init_target);
+        public static final MethodHandle MH_stbrp_init_target = RuntimeHelper.downcall(Descriptors.FD_stbrp_init_target);
         /// The method handle of `stbrp_setup_allow_out_of_mem`.
-        public static final MethodHandle MH_stbrp_setup_allow_out_of_mem = RuntimeHelper.downcall(STBInternal.lookup(), "stbrp_setup_allow_out_of_mem", Descriptors.FD_stbrp_setup_allow_out_of_mem);
+        public static final MethodHandle MH_stbrp_setup_allow_out_of_mem = RuntimeHelper.downcall(Descriptors.FD_stbrp_setup_allow_out_of_mem);
         /// The method handle of `stbrp_setup_heuristic`.
-        public static final MethodHandle MH_stbrp_setup_heuristic = RuntimeHelper.downcall(STBInternal.lookup(), "stbrp_setup_heuristic", Descriptors.FD_stbrp_setup_heuristic);
+        public static final MethodHandle MH_stbrp_setup_heuristic = RuntimeHelper.downcall(Descriptors.FD_stbrp_setup_heuristic);
+        /// The function address of `stbrp_pack_rects`.
+        public final MemorySegment PFN_stbrp_pack_rects;
+        /// The function address of `stbrp_init_target`.
+        public final MemorySegment PFN_stbrp_init_target;
+        /// The function address of `stbrp_setup_allow_out_of_mem`.
+        public final MemorySegment PFN_stbrp_setup_allow_out_of_mem;
+        /// The function address of `stbrp_setup_heuristic`.
+        public final MemorySegment PFN_stbrp_setup_heuristic;
+        private Handles() {
+            PFN_stbrp_pack_rects = STBInternal.lookup().findOrThrow("stbrp_pack_rects");
+            PFN_stbrp_init_target = STBInternal.lookup().findOrThrow("stbrp_init_target");
+            PFN_stbrp_setup_allow_out_of_mem = STBInternal.lookup().findOrThrow("stbrp_setup_allow_out_of_mem");
+            PFN_stbrp_setup_heuristic = STBInternal.lookup().findOrThrow("stbrp_setup_heuristic");
+        }
+        private static volatile Handles instance;
+        private static Handles get() {
+            if (instance == null) {
+                synchronized (Handles.class) {
+                    if (instance == null) { instance = new Handles(); }
+                }
+            }
+            return instance;
+        }
     }
 
     public static @CType("int") int stbrp_pack_rects(@CType("stbrp_context *") java.lang.foreign.MemorySegment context, @CType("stbrp_rect *") java.lang.foreign.MemorySegment rects, @CType("int") int num_rects) {
         try {
-            return (int) Handles.MH_stbrp_pack_rects.invokeExact(context, rects, num_rects);
+            return (int) Handles.MH_stbrp_pack_rects.invokeExact(Handles.get().PFN_stbrp_pack_rects, context, rects, num_rects);
         } catch (Throwable e) { throw new RuntimeException("error in stbrp_pack_rects", e); }
     }
 
     public static @CType("int") int stbrp_pack_rects(@CType("stbrp_context *") overrungl.stb.STBRPContext context, @CType("stbrp_rect *") overrungl.stb.STBRPRect rects, @CType("int") int num_rects) {
         try {
-            return (int) Handles.MH_stbrp_pack_rects.invokeExact(Marshal.marshal(context), Marshal.marshal(rects), num_rects);
+            return (int) Handles.MH_stbrp_pack_rects.invokeExact(Handles.get().PFN_stbrp_pack_rects, Marshal.marshal(context), Marshal.marshal(rects), num_rects);
         } catch (Throwable e) { throw new RuntimeException("error in stbrp_pack_rects", e); }
     }
 
     public static void stbrp_init_target(@CType("stbrp_context *") java.lang.foreign.MemorySegment context, @CType("int") int width, @CType("int") int height, @CType("stbrp_node *") java.lang.foreign.MemorySegment nodes, @CType("int") int num_nodes) {
         try {
-            Handles.MH_stbrp_init_target.invokeExact(context, width, height, nodes, num_nodes);
+            Handles.MH_stbrp_init_target.invokeExact(Handles.get().PFN_stbrp_init_target, context, width, height, nodes, num_nodes);
         } catch (Throwable e) { throw new RuntimeException("error in stbrp_init_target", e); }
     }
 
     public static void stbrp_init_target(@CType("stbrp_context *") overrungl.stb.STBRPContext context, @CType("int") int width, @CType("int") int height, @CType("stbrp_node *") overrungl.stb.STBRPNode nodes, @CType("int") int num_nodes) {
         try {
-            Handles.MH_stbrp_init_target.invokeExact(Marshal.marshal(context), width, height, Marshal.marshal(nodes), num_nodes);
+            Handles.MH_stbrp_init_target.invokeExact(Handles.get().PFN_stbrp_init_target, Marshal.marshal(context), width, height, Marshal.marshal(nodes), num_nodes);
         } catch (Throwable e) { throw new RuntimeException("error in stbrp_init_target", e); }
     }
 
     public static void stbrp_setup_allow_out_of_mem(@CType("stbrp_context *") java.lang.foreign.MemorySegment context, @CType("int") boolean allow_out_of_mem) {
         try {
-            Handles.MH_stbrp_setup_allow_out_of_mem.invokeExact(context, allow_out_of_mem);
+            Handles.MH_stbrp_setup_allow_out_of_mem.invokeExact(Handles.get().PFN_stbrp_setup_allow_out_of_mem, context, allow_out_of_mem);
         } catch (Throwable e) { throw new RuntimeException("error in stbrp_setup_allow_out_of_mem", e); }
     }
 
     public static void stbrp_setup_allow_out_of_mem(@CType("stbrp_context *") overrungl.stb.STBRPContext context, @CType("int") boolean allow_out_of_mem) {
         try {
-            Handles.MH_stbrp_setup_allow_out_of_mem.invokeExact(Marshal.marshal(context), allow_out_of_mem);
+            Handles.MH_stbrp_setup_allow_out_of_mem.invokeExact(Handles.get().PFN_stbrp_setup_allow_out_of_mem, Marshal.marshal(context), allow_out_of_mem);
         } catch (Throwable e) { throw new RuntimeException("error in stbrp_setup_allow_out_of_mem", e); }
     }
 
     public static void stbrp_setup_heuristic(@CType("stbrp_context *") java.lang.foreign.MemorySegment context, @CType("int") int heuristic) {
         try {
-            Handles.MH_stbrp_setup_heuristic.invokeExact(context, heuristic);
+            Handles.MH_stbrp_setup_heuristic.invokeExact(Handles.get().PFN_stbrp_setup_heuristic, context, heuristic);
         } catch (Throwable e) { throw new RuntimeException("error in stbrp_setup_heuristic", e); }
     }
 
     public static void stbrp_setup_heuristic(@CType("stbrp_context *") overrungl.stb.STBRPContext context, @CType("int") int heuristic) {
         try {
-            Handles.MH_stbrp_setup_heuristic.invokeExact(Marshal.marshal(context), heuristic);
+            Handles.MH_stbrp_setup_heuristic.invokeExact(Handles.get().PFN_stbrp_setup_heuristic, Marshal.marshal(context), heuristic);
         } catch (Throwable e) { throw new RuntimeException("error in stbrp_setup_heuristic", e); }
     }
 

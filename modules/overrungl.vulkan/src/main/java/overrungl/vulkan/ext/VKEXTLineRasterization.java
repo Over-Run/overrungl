@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.VK14.*;
 public class VKEXTLineRasterization {
     public static final int VK_EXT_LINE_RASTERIZATION_SPEC_VERSION = 1;
@@ -38,9 +37,6 @@ public class VKEXTLineRasterization {
     private final Handles handles;
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkCmdSetLineStippleEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_SHORT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCmdSetLineStippleEXT
-        );
         private Descriptors() {}
     }
     public static final class Handles {

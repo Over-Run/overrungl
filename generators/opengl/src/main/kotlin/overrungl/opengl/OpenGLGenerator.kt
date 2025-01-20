@@ -28,6 +28,7 @@ import kotlin.io.path.createDirectories
 // gl.xml updated: 2025/01/01
 
 private val recordingErrorType = mutableSetOf<String>()
+private val downcallDescriptors = mutableListOf<String>()
 
 const val openglPackage = "overrungl.opengl"
 fun extPackage(vendor: String): String {
@@ -627,6 +628,7 @@ fun main() {
                 value = computeFunctionDescriptor(get)
             )
         )
+        downcallDescriptors.add("$packageName.$name.Descriptors.FD_${get.name}")
 
         // handle
         handleFields.add(
@@ -811,6 +813,7 @@ fun main() {
                     |
                     |    requires transitive overrungl.core;
                     |    requires static org.jetbrains.annotations;
+                    |    requires org.graalvm.nativeimage;
                 """.trimMargin()
             )
             appendLine("}")
@@ -878,6 +881,8 @@ fun main() {
             System.err.println(it)
         }
     }
+
+    writeNativeImageRegistration(openglPackage, downcall = downcallDescriptors)
 }
 
 // Define special upcall

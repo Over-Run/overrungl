@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.khr.VKKHRFragmentShadingRate.*;
 public class VKNVShadingRateImage {
     public static final int VK_SHADING_RATE_PALETTE_ENTRY_NO_INVOCATIONS_NV = 0;
@@ -58,11 +57,6 @@ public class VKNVShadingRateImage {
         public static final FunctionDescriptor FD_vkCmdBindShadingRateImageNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_vkCmdSetViewportShadingRatePaletteNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkCmdSetCoarseSampleOrderNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCmdBindShadingRateImageNV,
-            FD_vkCmdSetViewportShadingRatePaletteNV,
-            FD_vkCmdSetCoarseSampleOrderNV
-        );
         private Descriptors() {}
     }
     public static final class Handles {

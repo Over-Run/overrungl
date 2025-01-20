@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -58,27 +57,6 @@ public final class GLEXTMemoryObject {
         public static final FunctionDescriptor FD_glNamedBufferStorageMemEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
         public static final FunctionDescriptor FD_glTexStorageMem1DEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
         public static final FunctionDescriptor FD_glTextureStorageMem1DEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glGetUnsignedBytevEXT,
-            FD_glGetUnsignedBytei_vEXT,
-            FD_glDeleteMemoryObjectsEXT,
-            FD_glIsMemoryObjectEXT,
-            FD_glCreateMemoryObjectsEXT,
-            FD_glMemoryObjectParameterivEXT,
-            FD_glGetMemoryObjectParameterivEXT,
-            FD_glTexStorageMem2DEXT,
-            FD_glTexStorageMem2DMultisampleEXT,
-            FD_glTexStorageMem3DEXT,
-            FD_glTexStorageMem3DMultisampleEXT,
-            FD_glBufferStorageMemEXT,
-            FD_glTextureStorageMem2DEXT,
-            FD_glTextureStorageMem2DMultisampleEXT,
-            FD_glTextureStorageMem3DEXT,
-            FD_glTextureStorageMem3DMultisampleEXT,
-            FD_glNamedBufferStorageMemEXT,
-            FD_glTexStorageMem1DEXT,
-            FD_glTextureStorageMem1DEXT
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glGetUnsignedBytevEXT = RuntimeHelper.downcall(Descriptors.FD_glGetUnsignedBytevEXT);

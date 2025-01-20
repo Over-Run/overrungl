@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKKHRAndroidSurface {
     public static final int VK_KHR_ANDROID_SURFACE_SPEC_VERSION = 6;
     public static final String VK_KHR_ANDROID_SURFACE_EXTENSION_NAME = "VK_KHR_android_surface";
@@ -30,9 +29,6 @@ public class VKKHRAndroidSurface {
     private final Handles handles;
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkCreateAndroidSurfaceKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCreateAndroidSurfaceKHR
-        );
         private Descriptors() {}
     }
     public static final class Handles {

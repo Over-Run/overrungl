@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.VK12.*;
 public class VKKHRTimelineSemaphore {
     public static final int VK_KHR_TIMELINE_SEMAPHORE_SPEC_VERSION = 2;
@@ -41,11 +40,6 @@ public class VKKHRTimelineSemaphore {
         public static final FunctionDescriptor FD_vkGetSemaphoreCounterValueKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkWaitSemaphoresKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG);
         public static final FunctionDescriptor FD_vkSignalSemaphoreKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetSemaphoreCounterValueKHR,
-            FD_vkWaitSemaphoresKHR,
-            FD_vkSignalSemaphoreKHR
-        );
         private Descriptors() {}
     }
     public static final class Handles {

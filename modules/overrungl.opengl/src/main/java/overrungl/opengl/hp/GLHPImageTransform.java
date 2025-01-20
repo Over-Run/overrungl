@@ -19,7 +19,6 @@ package overrungl.opengl.hp;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -49,14 +48,6 @@ public final class GLHPImageTransform {
         public static final FunctionDescriptor FD_glImageTransformParameterfvHP = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetImageTransformParameterivHP = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetImageTransformParameterfvHP = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glImageTransformParameteriHP,
-            FD_glImageTransformParameterfHP,
-            FD_glImageTransformParameterivHP,
-            FD_glImageTransformParameterfvHP,
-            FD_glGetImageTransformParameterivHP,
-            FD_glGetImageTransformParameterfvHP
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glImageTransformParameteriHP = RuntimeHelper.downcall(Descriptors.FD_glImageTransformParameteriHP);

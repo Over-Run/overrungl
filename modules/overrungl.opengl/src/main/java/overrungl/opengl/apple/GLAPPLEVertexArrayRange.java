@@ -19,7 +19,6 @@ package overrungl.opengl.apple;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -38,11 +37,6 @@ public final class GLAPPLEVertexArrayRange {
         public static final FunctionDescriptor FD_glVertexArrayRangeAPPLE = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glFlushVertexArrayRangeAPPLE = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glVertexArrayParameteriAPPLE = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glVertexArrayRangeAPPLE,
-            FD_glFlushVertexArrayRangeAPPLE,
-            FD_glVertexArrayParameteriAPPLE
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glVertexArrayRangeAPPLE = RuntimeHelper.downcall(Descriptors.FD_glVertexArrayRangeAPPLE);

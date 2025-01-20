@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKNVExternalMemoryWin32 {
     public static final int VK_NV_EXTERNAL_MEMORY_WIN32_SPEC_VERSION = 1;
     public static final String VK_NV_EXTERNAL_MEMORY_WIN32_EXTENSION_NAME = "VK_NV_external_memory_win32";
@@ -31,9 +30,6 @@ public class VKNVExternalMemoryWin32 {
     private final Handles handles;
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkGetMemoryWin32HandleNV = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetMemoryWin32HandleNV
-        );
         private Descriptors() {}
     }
     public static final class Handles {

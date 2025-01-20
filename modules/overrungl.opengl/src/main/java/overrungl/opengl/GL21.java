@@ -19,7 +19,6 @@ package overrungl.opengl;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -50,14 +49,6 @@ public class GL21 extends GL20 {
         public static final FunctionDescriptor FD_glUniformMatrix4x2fv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glUniformMatrix3x4fv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glUniformMatrix4x3fv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glUniformMatrix2x3fv,
-            FD_glUniformMatrix3x2fv,
-            FD_glUniformMatrix2x4fv,
-            FD_glUniformMatrix4x2fv,
-            FD_glUniformMatrix3x4fv,
-            FD_glUniformMatrix4x3fv
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glUniformMatrix2x3fv = RuntimeHelper.downcall(Descriptors.FD_glUniformMatrix2x3fv);

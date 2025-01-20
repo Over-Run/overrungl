@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -175,72 +174,6 @@ public final class GLNVVertexProgram {
         public static final FunctionDescriptor FD_glVertexAttribs4fvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glVertexAttribs4svNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glVertexAttribs4ubvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glAreProgramsResidentNV,
-            FD_glBindProgramNV,
-            FD_glDeleteProgramsNV,
-            FD_glExecuteProgramNV,
-            FD_glGenProgramsNV,
-            FD_glGetProgramParameterdvNV,
-            FD_glGetProgramParameterfvNV,
-            FD_glGetProgramivNV,
-            FD_glGetProgramStringNV,
-            FD_glGetTrackMatrixivNV,
-            FD_glGetVertexAttribdvNV,
-            FD_glGetVertexAttribfvNV,
-            FD_glGetVertexAttribivNV,
-            FD_glGetVertexAttribPointervNV,
-            FD_glIsProgramNV,
-            FD_glLoadProgramNV,
-            FD_glProgramParameter4dNV,
-            FD_glProgramParameter4dvNV,
-            FD_glProgramParameter4fNV,
-            FD_glProgramParameter4fvNV,
-            FD_glProgramParameters4dvNV,
-            FD_glProgramParameters4fvNV,
-            FD_glRequestResidentProgramsNV,
-            FD_glTrackMatrixNV,
-            FD_glVertexAttribPointerNV,
-            FD_glVertexAttrib1dNV,
-            FD_glVertexAttrib1dvNV,
-            FD_glVertexAttrib1fNV,
-            FD_glVertexAttrib1fvNV,
-            FD_glVertexAttrib1sNV,
-            FD_glVertexAttrib1svNV,
-            FD_glVertexAttrib2dNV,
-            FD_glVertexAttrib2dvNV,
-            FD_glVertexAttrib2fNV,
-            FD_glVertexAttrib2fvNV,
-            FD_glVertexAttrib2sNV,
-            FD_glVertexAttrib2svNV,
-            FD_glVertexAttrib3dNV,
-            FD_glVertexAttrib3dvNV,
-            FD_glVertexAttrib3fNV,
-            FD_glVertexAttrib3fvNV,
-            FD_glVertexAttrib3sNV,
-            FD_glVertexAttrib3svNV,
-            FD_glVertexAttrib4dNV,
-            FD_glVertexAttrib4dvNV,
-            FD_glVertexAttrib4fNV,
-            FD_glVertexAttrib4fvNV,
-            FD_glVertexAttrib4sNV,
-            FD_glVertexAttrib4svNV,
-            FD_glVertexAttrib4ubNV,
-            FD_glVertexAttrib4ubvNV,
-            FD_glVertexAttribs1dvNV,
-            FD_glVertexAttribs1fvNV,
-            FD_glVertexAttribs1svNV,
-            FD_glVertexAttribs2dvNV,
-            FD_glVertexAttribs2fvNV,
-            FD_glVertexAttribs2svNV,
-            FD_glVertexAttribs3dvNV,
-            FD_glVertexAttribs3fvNV,
-            FD_glVertexAttribs3svNV,
-            FD_glVertexAttribs4dvNV,
-            FD_glVertexAttribs4fvNV,
-            FD_glVertexAttribs4svNV,
-            FD_glVertexAttribs4ubvNV
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glAreProgramsResidentNV = RuntimeHelper.downcall(Descriptors.FD_glAreProgramsResidentNV);

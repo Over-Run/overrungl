@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -64,30 +63,6 @@ public final class GLEXTCoordinateFrame {
         public static final FunctionDescriptor FD_glBinormal3svEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glTangentPointerEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glBinormalPointerEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glTangent3bEXT,
-            FD_glTangent3bvEXT,
-            FD_glTangent3dEXT,
-            FD_glTangent3dvEXT,
-            FD_glTangent3fEXT,
-            FD_glTangent3fvEXT,
-            FD_glTangent3iEXT,
-            FD_glTangent3ivEXT,
-            FD_glTangent3sEXT,
-            FD_glTangent3svEXT,
-            FD_glBinormal3bEXT,
-            FD_glBinormal3bvEXT,
-            FD_glBinormal3dEXT,
-            FD_glBinormal3dvEXT,
-            FD_glBinormal3fEXT,
-            FD_glBinormal3fvEXT,
-            FD_glBinormal3iEXT,
-            FD_glBinormal3ivEXT,
-            FD_glBinormal3sEXT,
-            FD_glBinormal3svEXT,
-            FD_glTangentPointerEXT,
-            FD_glBinormalPointerEXT
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glTangent3bEXT = RuntimeHelper.downcall(Descriptors.FD_glTangent3bEXT);

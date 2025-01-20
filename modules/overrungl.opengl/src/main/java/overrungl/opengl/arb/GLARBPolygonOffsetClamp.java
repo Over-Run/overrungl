@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -30,9 +29,6 @@ public final class GLARBPolygonOffsetClamp {
     public static final class Descriptors {
         private Descriptors() {}
         public static final FunctionDescriptor FD_glPolygonOffsetClamp = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glPolygonOffsetClamp
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glPolygonOffsetClamp = RuntimeHelper.downcall(Descriptors.FD_glPolygonOffsetClamp);

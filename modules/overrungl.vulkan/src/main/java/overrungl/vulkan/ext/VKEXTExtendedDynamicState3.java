@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKEXTExtendedDynamicState3 {
     public static final int VK_EXT_EXTENDED_DYNAMIC_STATE_3_SPEC_VERSION = 2;
     public static final String VK_EXT_EXTENDED_DYNAMIC_STATE_3_EXTENSION_NAME = "VK_EXT_extended_dynamic_state3";
@@ -92,39 +91,6 @@ public class VKEXTExtendedDynamicState3 {
         public static final FunctionDescriptor FD_vkCmdSetShadingRateImageEnableNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_vkCmdSetRepresentativeFragmentTestEnableNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_vkCmdSetCoverageReductionModeNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCmdSetDepthClampEnableEXT,
-            FD_vkCmdSetPolygonModeEXT,
-            FD_vkCmdSetRasterizationSamplesEXT,
-            FD_vkCmdSetSampleMaskEXT,
-            FD_vkCmdSetAlphaToCoverageEnableEXT,
-            FD_vkCmdSetAlphaToOneEnableEXT,
-            FD_vkCmdSetLogicOpEnableEXT,
-            FD_vkCmdSetColorBlendEnableEXT,
-            FD_vkCmdSetColorBlendEquationEXT,
-            FD_vkCmdSetColorWriteMaskEXT,
-            FD_vkCmdSetTessellationDomainOriginEXT,
-            FD_vkCmdSetRasterizationStreamEXT,
-            FD_vkCmdSetConservativeRasterizationModeEXT,
-            FD_vkCmdSetExtraPrimitiveOverestimationSizeEXT,
-            FD_vkCmdSetDepthClipEnableEXT,
-            FD_vkCmdSetSampleLocationsEnableEXT,
-            FD_vkCmdSetColorBlendAdvancedEXT,
-            FD_vkCmdSetProvokingVertexModeEXT,
-            FD_vkCmdSetLineRasterizationModeEXT,
-            FD_vkCmdSetLineStippleEnableEXT,
-            FD_vkCmdSetDepthClipNegativeOneToOneEXT,
-            FD_vkCmdSetViewportWScalingEnableNV,
-            FD_vkCmdSetViewportSwizzleNV,
-            FD_vkCmdSetCoverageToColorEnableNV,
-            FD_vkCmdSetCoverageToColorLocationNV,
-            FD_vkCmdSetCoverageModulationModeNV,
-            FD_vkCmdSetCoverageModulationTableEnableNV,
-            FD_vkCmdSetCoverageModulationTableNV,
-            FD_vkCmdSetShadingRateImageEnableNV,
-            FD_vkCmdSetRepresentativeFragmentTestEnableNV,
-            FD_vkCmdSetCoverageReductionModeNV
-        );
         private Descriptors() {}
     }
     public static final class Handles {

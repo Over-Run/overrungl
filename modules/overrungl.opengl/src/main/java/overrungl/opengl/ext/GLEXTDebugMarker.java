@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -31,11 +30,6 @@ public final class GLEXTDebugMarker {
         public static final FunctionDescriptor FD_glInsertEventMarkerEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glPushGroupMarkerEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glPopGroupMarkerEXT = FunctionDescriptor.ofVoid();
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glInsertEventMarkerEXT,
-            FD_glPushGroupMarkerEXT,
-            FD_glPopGroupMarkerEXT
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glInsertEventMarkerEXT = RuntimeHelper.downcall(Descriptors.FD_glInsertEventMarkerEXT);

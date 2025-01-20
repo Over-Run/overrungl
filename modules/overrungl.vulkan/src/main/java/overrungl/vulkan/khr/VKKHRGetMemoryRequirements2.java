@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.VK11.*;
 public class VKKHRGetMemoryRequirements2 {
     public static final int VK_KHR_GET_MEMORY_REQUIREMENTS_2_SPEC_VERSION = 1;
@@ -37,11 +36,6 @@ public class VKKHRGetMemoryRequirements2 {
         public static final FunctionDescriptor FD_vkGetImageMemoryRequirements2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkGetBufferMemoryRequirements2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkGetImageSparseMemoryRequirements2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetImageMemoryRequirements2KHR,
-            FD_vkGetBufferMemoryRequirements2KHR,
-            FD_vkGetImageSparseMemoryRequirements2KHR
-        );
         private Descriptors() {}
     }
     public static final class Handles {

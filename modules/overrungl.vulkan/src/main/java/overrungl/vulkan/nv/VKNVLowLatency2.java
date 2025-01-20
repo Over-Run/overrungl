@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKNVLowLatency2 {
     public static final int VK_LATENCY_MARKER_SIMULATION_START_NV = 0;
     public static final int VK_LATENCY_MARKER_SIMULATION_END_NV = 1;
@@ -56,13 +55,6 @@ public class VKNVLowLatency2 {
         public static final FunctionDescriptor FD_vkSetLatencyMarkerNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkGetLatencyTimingsNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkQueueNotifyOutOfBandNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkSetLatencySleepModeNV,
-            FD_vkLatencySleepNV,
-            FD_vkSetLatencyMarkerNV,
-            FD_vkGetLatencyTimingsNV,
-            FD_vkQueueNotifyOutOfBandNV
-        );
         private Descriptors() {}
     }
     public static final class Handles {

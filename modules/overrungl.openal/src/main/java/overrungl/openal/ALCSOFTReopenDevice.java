@@ -18,7 +18,6 @@
 package overrungl.openal;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.*;
 import overrungl.util.*;
@@ -32,22 +31,31 @@ public final class ALCSOFTReopenDevice {
         private Descriptors() { }
         /// The function descriptor of `alcReopenDeviceSOFT`.
         public static final FunctionDescriptor FD_alcReopenDeviceSOFT = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS);
-        /// Function descriptors.
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_alcReopenDeviceSOFT
-        );
     }
     /// Method handles.
     public static final class Handles {
-        private Handles() { }
         /// The method handle of `alcReopenDeviceSOFT`.
-        public static final MethodHandle MH_alcReopenDeviceSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alcReopenDeviceSOFT", Descriptors.FD_alcReopenDeviceSOFT);
+        public static final MethodHandle MH_alcReopenDeviceSOFT = RuntimeHelper.downcall(Descriptors.FD_alcReopenDeviceSOFT);
+        /// The function address of `alcReopenDeviceSOFT`.
+        public final MemorySegment PFN_alcReopenDeviceSOFT;
+        private Handles() {
+            PFN_alcReopenDeviceSOFT = ALInternal.lookup().find("alcReopenDeviceSOFT").orElse(MemorySegment.NULL);
+        }
+        private static volatile Handles instance;
+        private static Handles get() {
+            if (instance == null) {
+                synchronized (Handles.class) {
+                    if (instance == null) { instance = new Handles(); }
+                }
+            }
+            return instance;
+        }
     }
 
     public static @CType("ALCboolean") boolean alcReopenDeviceSOFT(@CType("ALCdevice *") java.lang.foreign.MemorySegment device, @CType("const ALCchar*") java.lang.foreign.MemorySegment deviceName, @CType("const ALCint *") java.lang.foreign.MemorySegment attribs) {
         if (Handles.MH_alcReopenDeviceSOFT == null) throw new SymbolNotFoundError("Symbol not found: alcReopenDeviceSOFT");
         try {
-            return (boolean) Handles.MH_alcReopenDeviceSOFT.invokeExact(device, deviceName, attribs);
+            return (boolean) Handles.MH_alcReopenDeviceSOFT.invokeExact(Handles.get().PFN_alcReopenDeviceSOFT, device, deviceName, attribs);
         } catch (Throwable e) { throw new RuntimeException("error in alcReopenDeviceSOFT", e); }
     }
 

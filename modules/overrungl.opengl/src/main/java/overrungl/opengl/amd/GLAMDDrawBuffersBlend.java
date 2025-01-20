@@ -19,7 +19,6 @@ package overrungl.opengl.amd;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -32,12 +31,6 @@ public final class GLAMDDrawBuffersBlend {
         public static final FunctionDescriptor FD_glBlendFuncSeparateIndexedAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glBlendEquationIndexedAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glBlendEquationSeparateIndexedAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glBlendFuncIndexedAMD,
-            FD_glBlendFuncSeparateIndexedAMD,
-            FD_glBlendEquationIndexedAMD,
-            FD_glBlendEquationSeparateIndexedAMD
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glBlendFuncIndexedAMD = RuntimeHelper.downcall(Descriptors.FD_glBlendFuncIndexedAMD);

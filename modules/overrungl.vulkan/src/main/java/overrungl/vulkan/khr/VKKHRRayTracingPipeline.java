@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKKHRRayTracingPipeline {
     public static final int VK_RAY_TRACING_SHADER_GROUP_TYPE_GENERAL_KHR = 0;
     public static final int VK_RAY_TRACING_SHADER_GROUP_TYPE_TRIANGLES_HIT_GROUP_KHR = 1;
@@ -65,15 +64,6 @@ public class VKKHRRayTracingPipeline {
         public static final FunctionDescriptor FD_vkCmdTraceRaysIndirectKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG);
         public static final FunctionDescriptor FD_vkGetRayTracingShaderGroupStackSizeKHR = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_vkCmdSetRayTracingPipelineStackSizeKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCmdTraceRaysKHR,
-            FD_vkCreateRayTracingPipelinesKHR,
-            FD_vkGetRayTracingShaderGroupHandlesKHR,
-            FD_vkGetRayTracingCaptureReplayShaderGroupHandlesKHR,
-            FD_vkCmdTraceRaysIndirectKHR,
-            FD_vkGetRayTracingShaderGroupStackSizeKHR,
-            FD_vkCmdSetRayTracingPipelineStackSizeKHR
-        );
         private Descriptors() {}
     }
     public static final class Handles {

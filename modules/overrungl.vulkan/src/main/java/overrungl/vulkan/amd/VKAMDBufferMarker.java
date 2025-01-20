@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKAMDBufferMarker {
     public static final int VK_AMD_BUFFER_MARKER_SPEC_VERSION = 1;
     public static final String VK_AMD_BUFFER_MARKER_EXTENSION_NAME = "VK_AMD_buffer_marker";
@@ -30,10 +29,6 @@ public class VKAMDBufferMarker {
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkCmdWriteBufferMarkerAMD = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_vkCmdWriteBufferMarker2AMD = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCmdWriteBufferMarkerAMD,
-            FD_vkCmdWriteBufferMarker2AMD
-        );
         private Descriptors() {}
     }
     public static final class Handles {

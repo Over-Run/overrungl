@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -53,20 +52,6 @@ public final class GLARBViewportArray {
         public static final FunctionDescriptor FD_glGetDoublei_v = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glDepthRangeArraydvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glDepthRangeIndexeddNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glViewportArrayv,
-            FD_glViewportIndexedf,
-            FD_glViewportIndexedfv,
-            FD_glScissorArrayv,
-            FD_glScissorIndexed,
-            FD_glScissorIndexedv,
-            FD_glDepthRangeArrayv,
-            FD_glDepthRangeIndexed,
-            FD_glGetFloati_v,
-            FD_glGetDoublei_v,
-            FD_glDepthRangeArraydvNV,
-            FD_glDepthRangeIndexeddNV
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glViewportArrayv = RuntimeHelper.downcall(Descriptors.FD_glViewportArrayv);

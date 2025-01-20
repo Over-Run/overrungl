@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKKHRWaylandSurface {
     public static final int VK_KHR_WAYLAND_SURFACE_SPEC_VERSION = 6;
     public static final String VK_KHR_WAYLAND_SURFACE_EXTENSION_NAME = "VK_KHR_wayland_surface";
@@ -31,10 +30,6 @@ public class VKKHRWaylandSurface {
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkCreateWaylandSurfaceKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkGetPhysicalDeviceWaylandPresentationSupportKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCreateWaylandSurfaceKHR,
-            FD_vkGetPhysicalDeviceWaylandPresentationSupportKHR
-        );
         private Descriptors() {}
     }
     public static final class Handles {

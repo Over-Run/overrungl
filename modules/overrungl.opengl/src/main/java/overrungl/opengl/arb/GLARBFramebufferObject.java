@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -121,28 +120,6 @@ public final class GLARBFramebufferObject {
         public static final FunctionDescriptor FD_glBlitFramebuffer = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glRenderbufferStorageMultisample = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glFramebufferTextureLayer = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glIsRenderbuffer,
-            FD_glBindRenderbuffer,
-            FD_glDeleteRenderbuffers,
-            FD_glGenRenderbuffers,
-            FD_glRenderbufferStorage,
-            FD_glGetRenderbufferParameteriv,
-            FD_glIsFramebuffer,
-            FD_glBindFramebuffer,
-            FD_glDeleteFramebuffers,
-            FD_glGenFramebuffers,
-            FD_glCheckFramebufferStatus,
-            FD_glFramebufferTexture1D,
-            FD_glFramebufferTexture2D,
-            FD_glFramebufferTexture3D,
-            FD_glFramebufferRenderbuffer,
-            FD_glGetFramebufferAttachmentParameteriv,
-            FD_glGenerateMipmap,
-            FD_glBlitFramebuffer,
-            FD_glRenderbufferStorageMultisample,
-            FD_glFramebufferTextureLayer
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glIsRenderbuffer = RuntimeHelper.downcall(Descriptors.FD_glIsRenderbuffer);

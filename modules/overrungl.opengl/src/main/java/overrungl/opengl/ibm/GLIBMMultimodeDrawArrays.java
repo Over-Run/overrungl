@@ -19,7 +19,6 @@ package overrungl.opengl.ibm;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -30,10 +29,6 @@ public final class GLIBMMultimodeDrawArrays {
         private Descriptors() {}
         public static final FunctionDescriptor FD_glMultiModeDrawArraysIBM = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glMultiModeDrawElementsIBM = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glMultiModeDrawArraysIBM,
-            FD_glMultiModeDrawElementsIBM
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glMultiModeDrawArraysIBM = RuntimeHelper.downcall(Descriptors.FD_glMultiModeDrawArraysIBM);

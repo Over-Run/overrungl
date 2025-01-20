@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKKHRVideoQueue {
     public static final int VK_VIDEO_CODEC_OPERATION_NONE_KHR = 0;
     public static final int VK_VIDEO_CHROMA_SUBSAMPLING_INVALID_KHR = 0;
@@ -84,20 +83,6 @@ public class VKKHRVideoQueue {
         public static final FunctionDescriptor FD_vkCmdBeginVideoCodingKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkCmdEndVideoCodingKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkCmdControlVideoCodingKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetPhysicalDeviceVideoCapabilitiesKHR,
-            FD_vkGetPhysicalDeviceVideoFormatPropertiesKHR,
-            FD_vkCreateVideoSessionKHR,
-            FD_vkDestroyVideoSessionKHR,
-            FD_vkGetVideoSessionMemoryRequirementsKHR,
-            FD_vkBindVideoSessionMemoryKHR,
-            FD_vkCreateVideoSessionParametersKHR,
-            FD_vkUpdateVideoSessionParametersKHR,
-            FD_vkDestroyVideoSessionParametersKHR,
-            FD_vkCmdBeginVideoCodingKHR,
-            FD_vkCmdEndVideoCodingKHR,
-            FD_vkCmdControlVideoCodingKHR
-        );
         private Descriptors() {}
     }
     public static final class Handles {

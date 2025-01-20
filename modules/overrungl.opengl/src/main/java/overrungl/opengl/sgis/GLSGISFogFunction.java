@@ -19,7 +19,6 @@ package overrungl.opengl.sgis;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -33,10 +32,6 @@ public final class GLSGISFogFunction {
         private Descriptors() {}
         public static final FunctionDescriptor FD_glFogFuncSGIS = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetFogFuncSGIS = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glFogFuncSGIS,
-            FD_glGetFogFuncSGIS
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glFogFuncSGIS = RuntimeHelper.downcall(Descriptors.FD_glFogFuncSGIS);

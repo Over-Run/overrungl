@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -44,14 +43,6 @@ public final class GLNVMemoryAttachment {
         public static final FunctionDescriptor FD_glBufferAttachMemoryNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
         public static final FunctionDescriptor FD_glTextureAttachMemoryNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
         public static final FunctionDescriptor FD_glNamedBufferAttachMemoryNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glGetMemoryObjectDetachedResourcesuivNV,
-            FD_glResetMemoryObjectParameterNV,
-            FD_glTexAttachMemoryNV,
-            FD_glBufferAttachMemoryNV,
-            FD_glTextureAttachMemoryNV,
-            FD_glNamedBufferAttachMemoryNV
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glGetMemoryObjectDetachedResourcesuivNV = RuntimeHelper.downcall(Descriptors.FD_glGetMemoryObjectDetachedResourcesuivNV);

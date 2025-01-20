@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.VK11.*;
 public class VKKHRGetPhysicalDeviceProperties2 {
     public static final int VK_KHR_GET_PHYSICAL_DEVICE_PROPERTIES_2_SPEC_VERSION = 2;
@@ -45,15 +44,6 @@ public class VKKHRGetPhysicalDeviceProperties2 {
         public static final FunctionDescriptor FD_vkGetPhysicalDeviceQueueFamilyProperties2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkGetPhysicalDeviceMemoryProperties2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkGetPhysicalDeviceSparseImageFormatProperties2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetPhysicalDeviceFeatures2KHR,
-            FD_vkGetPhysicalDeviceProperties2KHR,
-            FD_vkGetPhysicalDeviceFormatProperties2KHR,
-            FD_vkGetPhysicalDeviceImageFormatProperties2KHR,
-            FD_vkGetPhysicalDeviceQueueFamilyProperties2KHR,
-            FD_vkGetPhysicalDeviceMemoryProperties2KHR,
-            FD_vkGetPhysicalDeviceSparseImageFormatProperties2KHR
-        );
         private Descriptors() {}
     }
     public static final class Handles {

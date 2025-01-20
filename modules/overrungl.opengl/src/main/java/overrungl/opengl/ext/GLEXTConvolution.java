@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -61,21 +60,6 @@ public final class GLEXTConvolution {
         public static final FunctionDescriptor FD_glGetConvolutionParameterivEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetSeparableFilterEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glSeparableFilter2DEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glConvolutionFilter1DEXT,
-            FD_glConvolutionFilter2DEXT,
-            FD_glConvolutionParameterfEXT,
-            FD_glConvolutionParameterfvEXT,
-            FD_glConvolutionParameteriEXT,
-            FD_glConvolutionParameterivEXT,
-            FD_glCopyConvolutionFilter1DEXT,
-            FD_glCopyConvolutionFilter2DEXT,
-            FD_glGetConvolutionFilterEXT,
-            FD_glGetConvolutionParameterfvEXT,
-            FD_glGetConvolutionParameterivEXT,
-            FD_glGetSeparableFilterEXT,
-            FD_glSeparableFilter2DEXT
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glConvolutionFilter1DEXT = RuntimeHelper.downcall(Descriptors.FD_glConvolutionFilter1DEXT);

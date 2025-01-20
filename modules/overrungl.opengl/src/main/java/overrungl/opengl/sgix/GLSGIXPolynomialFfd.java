@@ -19,7 +19,6 @@ package overrungl.opengl.sgix;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -38,12 +37,6 @@ public final class GLSGIXPolynomialFfd {
         public static final FunctionDescriptor FD_glDeformationMap3fSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glDeformSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glLoadIdentityDeformationMapSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glDeformationMap3dSGIX,
-            FD_glDeformationMap3fSGIX,
-            FD_glDeformSGIX,
-            FD_glLoadIdentityDeformationMapSGIX
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glDeformationMap3dSGIX = RuntimeHelper.downcall(Descriptors.FD_glDeformationMap3dSGIX);

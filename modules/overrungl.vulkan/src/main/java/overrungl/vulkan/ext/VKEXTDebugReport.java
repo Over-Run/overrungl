@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.ext.VKEXTDebugReport.*;
 public class VKEXTDebugReport {
     public static final int VK_DEBUG_REPORT_INFORMATION_BIT_EXT = 0x00000001;
@@ -77,11 +76,6 @@ public class VKEXTDebugReport {
         public static final FunctionDescriptor FD_vkCreateDebugReportCallbackEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkDestroyDebugReportCallbackEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkDebugReportMessageEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCreateDebugReportCallbackEXT,
-            FD_vkDestroyDebugReportCallbackEXT,
-            FD_vkDebugReportMessageEXT
-        );
         private Descriptors() {}
     }
     public static final class Handles {

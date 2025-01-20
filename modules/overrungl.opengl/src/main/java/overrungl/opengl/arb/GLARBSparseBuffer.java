@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -33,11 +32,6 @@ public final class GLARBSparseBuffer {
         public static final FunctionDescriptor FD_glBufferPageCommitmentARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_BOOLEAN);
         public static final FunctionDescriptor FD_glNamedBufferPageCommitmentEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_BOOLEAN);
         public static final FunctionDescriptor FD_glNamedBufferPageCommitmentARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_BOOLEAN);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glBufferPageCommitmentARB,
-            FD_glNamedBufferPageCommitmentEXT,
-            FD_glNamedBufferPageCommitmentARB
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glBufferPageCommitmentARB = RuntimeHelper.downcall(Descriptors.FD_glBufferPageCommitmentARB);

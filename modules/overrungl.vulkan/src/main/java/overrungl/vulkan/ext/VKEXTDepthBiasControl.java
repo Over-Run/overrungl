@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKEXTDepthBiasControl {
     public static final int VK_DEPTH_BIAS_REPRESENTATION_LEAST_REPRESENTABLE_VALUE_FORMAT_EXT = 0;
     public static final int VK_DEPTH_BIAS_REPRESENTATION_LEAST_REPRESENTABLE_VALUE_FORCE_UNORM_EXT = 1;
@@ -35,9 +34,6 @@ public class VKEXTDepthBiasControl {
     private final Handles handles;
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkCmdSetDepthBias2EXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCmdSetDepthBias2EXT
-        );
         private Descriptors() {}
     }
     public static final class Handles {

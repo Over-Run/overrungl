@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -41,21 +40,6 @@ public final class GLNVBindlessTexture {
         public static final FunctionDescriptor FD_glProgramUniformHandleui64vNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glIsTextureHandleResidentNV = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_LONG);
         public static final FunctionDescriptor FD_glIsImageHandleResidentNV = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_LONG);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glGetTextureHandleNV,
-            FD_glGetTextureSamplerHandleNV,
-            FD_glMakeTextureHandleResidentNV,
-            FD_glMakeTextureHandleNonResidentNV,
-            FD_glGetImageHandleNV,
-            FD_glMakeImageHandleResidentNV,
-            FD_glMakeImageHandleNonResidentNV,
-            FD_glUniformHandleui64NV,
-            FD_glUniformHandleui64vNV,
-            FD_glProgramUniformHandleui64NV,
-            FD_glProgramUniformHandleui64vNV,
-            FD_glIsTextureHandleResidentNV,
-            FD_glIsImageHandleResidentNV
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glGetTextureHandleNV = RuntimeHelper.downcall(Descriptors.FD_glGetTextureHandleNV);

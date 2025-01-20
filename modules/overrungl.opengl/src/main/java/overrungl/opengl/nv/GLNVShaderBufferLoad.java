@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -45,22 +44,6 @@ public final class GLNVShaderBufferLoad {
         public static final FunctionDescriptor FD_glGetUniformui64vNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glProgramUniformui64NV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
         public static final FunctionDescriptor FD_glProgramUniformui64vNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glMakeBufferResidentNV,
-            FD_glMakeBufferNonResidentNV,
-            FD_glIsBufferResidentNV,
-            FD_glMakeNamedBufferResidentNV,
-            FD_glMakeNamedBufferNonResidentNV,
-            FD_glIsNamedBufferResidentNV,
-            FD_glGetBufferParameterui64vNV,
-            FD_glGetNamedBufferParameterui64vNV,
-            FD_glGetIntegerui64vNV,
-            FD_glUniformui64NV,
-            FD_glUniformui64vNV,
-            FD_glGetUniformui64vNV,
-            FD_glProgramUniformui64NV,
-            FD_glProgramUniformui64vNV
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glMakeBufferResidentNV = RuntimeHelper.downcall(Descriptors.FD_glMakeBufferResidentNV);

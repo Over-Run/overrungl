@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -65,20 +64,6 @@ public final class GLNVVertexBufferUnifiedMemory {
         public static final FunctionDescriptor FD_glVertexAttribFormatNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glVertexAttribIFormatNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glGetIntegerui64i_vNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glBufferAddressRangeNV,
-            FD_glVertexFormatNV,
-            FD_glNormalFormatNV,
-            FD_glColorFormatNV,
-            FD_glIndexFormatNV,
-            FD_glTexCoordFormatNV,
-            FD_glEdgeFlagFormatNV,
-            FD_glSecondaryColorFormatNV,
-            FD_glFogCoordFormatNV,
-            FD_glVertexAttribFormatNV,
-            FD_glVertexAttribIFormatNV,
-            FD_glGetIntegerui64i_vNV
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glBufferAddressRangeNV = RuntimeHelper.downcall(Descriptors.FD_glBufferAddressRangeNV);

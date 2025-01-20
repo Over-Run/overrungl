@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -36,12 +35,6 @@ public final class GLARBTransposeMatrix {
         public static final FunctionDescriptor FD_glLoadTransposeMatrixdARB = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glMultTransposeMatrixfARB = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glMultTransposeMatrixdARB = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glLoadTransposeMatrixfARB,
-            FD_glLoadTransposeMatrixdARB,
-            FD_glMultTransposeMatrixfARB,
-            FD_glMultTransposeMatrixdARB
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glLoadTransposeMatrixfARB = RuntimeHelper.downcall(Descriptors.FD_glLoadTransposeMatrixfARB);

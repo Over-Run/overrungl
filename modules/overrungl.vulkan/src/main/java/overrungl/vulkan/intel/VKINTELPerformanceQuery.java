@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.intel.VKINTELPerformanceQuery.*;
 public class VKINTELPerformanceQuery {
     public static final int VK_PERFORMANCE_CONFIGURATION_TYPE_COMMAND_QUEUE_METRICS_DISCOVERY_ACTIVATED_INTEL = 0;
@@ -58,17 +57,6 @@ public class VKINTELPerformanceQuery {
         public static final FunctionDescriptor FD_vkReleasePerformanceConfigurationINTEL = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkQueueSetPerformanceConfigurationINTEL = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkGetPerformanceParameterINTEL = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkInitializePerformanceApiINTEL,
-            FD_vkUninitializePerformanceApiINTEL,
-            FD_vkCmdSetPerformanceMarkerINTEL,
-            FD_vkCmdSetPerformanceStreamMarkerINTEL,
-            FD_vkCmdSetPerformanceOverrideINTEL,
-            FD_vkAcquirePerformanceConfigurationINTEL,
-            FD_vkReleasePerformanceConfigurationINTEL,
-            FD_vkQueueSetPerformanceConfigurationINTEL,
-            FD_vkGetPerformanceParameterINTEL
-        );
         private Descriptors() {}
     }
     public static final class Handles {

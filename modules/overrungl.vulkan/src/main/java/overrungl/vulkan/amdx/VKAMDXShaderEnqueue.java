@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKAMDXShaderEnqueue {
     public static final int VK_AMDX_SHADER_ENQUEUE_SPEC_VERSION = 2;
     public static final String VK_AMDX_SHADER_ENQUEUE_EXTENSION_NAME = "VK_AMDX_shader_enqueue";
@@ -45,15 +44,6 @@ public class VKAMDXShaderEnqueue {
         public static final FunctionDescriptor FD_vkCmdDispatchGraphAMDX = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkCmdDispatchGraphIndirectAMDX = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkCmdDispatchGraphIndirectCountAMDX = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCreateExecutionGraphPipelinesAMDX,
-            FD_vkGetExecutionGraphPipelineScratchSizeAMDX,
-            FD_vkGetExecutionGraphPipelineNodeIndexAMDX,
-            FD_vkCmdInitializeGraphScratchMemoryAMDX,
-            FD_vkCmdDispatchGraphAMDX,
-            FD_vkCmdDispatchGraphIndirectAMDX,
-            FD_vkCmdDispatchGraphIndirectCountAMDX
-        );
         private Descriptors() {}
     }
     public static final class Handles {

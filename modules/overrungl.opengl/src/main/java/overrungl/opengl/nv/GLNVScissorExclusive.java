@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -32,10 +31,6 @@ public final class GLNVScissorExclusive {
         private Descriptors() {}
         public static final FunctionDescriptor FD_glScissorExclusiveNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glScissorExclusiveArrayvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glScissorExclusiveNV,
-            FD_glScissorExclusiveArrayvNV
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glScissorExclusiveNV = RuntimeHelper.downcall(Descriptors.FD_glScissorExclusiveNV);

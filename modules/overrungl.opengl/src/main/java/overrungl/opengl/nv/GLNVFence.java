@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -38,15 +37,6 @@ public final class GLNVFence {
         public static final FunctionDescriptor FD_glGetFenceivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glFinishFenceNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glSetFenceNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glDeleteFencesNV,
-            FD_glGenFencesNV,
-            FD_glIsFenceNV,
-            FD_glTestFenceNV,
-            FD_glGetFenceivNV,
-            FD_glFinishFenceNV,
-            FD_glSetFenceNV
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glDeleteFencesNV = RuntimeHelper.downcall(Descriptors.FD_glDeleteFencesNV);

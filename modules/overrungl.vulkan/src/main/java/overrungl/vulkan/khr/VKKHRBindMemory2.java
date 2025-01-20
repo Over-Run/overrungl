@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.VK11.*;
 public class VKKHRBindMemory2 {
     public static final int VK_KHR_BIND_MEMORY_2_SPEC_VERSION = 1;
@@ -34,10 +33,6 @@ public class VKKHRBindMemory2 {
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkBindBufferMemory2KHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkBindImageMemory2KHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkBindBufferMemory2KHR,
-            FD_vkBindImageMemory2KHR
-        );
         private Descriptors() {}
     }
     public static final class Handles {

@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.huawei.VKHUAWEISubpassShading.*;
 public class VKHUAWEISubpassShading {
     public static final int VK_HUAWEI_SUBPASS_SHADING_SPEC_VERSION = 3;
@@ -38,10 +37,6 @@ public class VKHUAWEISubpassShading {
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkCmdSubpassShadingHUAWEI = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI,
-            FD_vkCmdSubpassShadingHUAWEI
-        );
         private Descriptors() {}
     }
     public static final class Handles {

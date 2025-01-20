@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKKHRCalibratedTimestamps {
     public static final int VK_TIME_DOMAIN_DEVICE_KHR = 0;
     public static final int VK_TIME_DOMAIN_CLOCK_MONOTONIC_KHR = 1;
@@ -35,10 +34,6 @@ public class VKKHRCalibratedTimestamps {
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkGetPhysicalDeviceCalibrateableTimeDomainsKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkGetCalibratedTimestampsKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetPhysicalDeviceCalibrateableTimeDomainsKHR,
-            FD_vkGetCalibratedTimestampsKHR
-        );
         private Descriptors() {}
     }
     public static final class Handles {

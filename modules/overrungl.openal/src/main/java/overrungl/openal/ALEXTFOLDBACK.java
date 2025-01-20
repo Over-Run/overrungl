@@ -18,7 +18,6 @@
 package overrungl.openal;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.*;
 import overrungl.util.*;
@@ -40,32 +39,43 @@ public final class ALEXTFOLDBACK {
         public static final FunctionDescriptor FD_alRequestFoldbackStart = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         /// The function descriptor of `alRequestFoldbackStop`.
         public static final FunctionDescriptor FD_alRequestFoldbackStop = FunctionDescriptor.ofVoid();
-        /// Function descriptors.
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_alRequestFoldbackStart,
-            FD_alRequestFoldbackStop
-        );
     }
     /// Method handles.
     public static final class Handles {
-        private Handles() { }
         /// The method handle of `alRequestFoldbackStart`.
-        public static final MethodHandle MH_alRequestFoldbackStart = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alRequestFoldbackStart", Descriptors.FD_alRequestFoldbackStart);
+        public static final MethodHandle MH_alRequestFoldbackStart = RuntimeHelper.downcall(Descriptors.FD_alRequestFoldbackStart);
         /// The method handle of `alRequestFoldbackStop`.
-        public static final MethodHandle MH_alRequestFoldbackStop = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alRequestFoldbackStop", Descriptors.FD_alRequestFoldbackStop);
+        public static final MethodHandle MH_alRequestFoldbackStop = RuntimeHelper.downcall(Descriptors.FD_alRequestFoldbackStop);
+        /// The function address of `alRequestFoldbackStart`.
+        public final MemorySegment PFN_alRequestFoldbackStart;
+        /// The function address of `alRequestFoldbackStop`.
+        public final MemorySegment PFN_alRequestFoldbackStop;
+        private Handles() {
+            PFN_alRequestFoldbackStart = ALInternal.lookup().find("alRequestFoldbackStart").orElse(MemorySegment.NULL);
+            PFN_alRequestFoldbackStop = ALInternal.lookup().find("alRequestFoldbackStop").orElse(MemorySegment.NULL);
+        }
+        private static volatile Handles instance;
+        private static Handles get() {
+            if (instance == null) {
+                synchronized (Handles.class) {
+                    if (instance == null) { instance = new Handles(); }
+                }
+            }
+            return instance;
+        }
     }
 
     public static void alRequestFoldbackStart(@CType("ALenum") int mode, @CType("ALsizei") int count, @CType("ALsizei") int length, @CType("ALfloat *") java.lang.foreign.MemorySegment mem, @CType("LPALFOLDBACKCALLBACK") java.lang.foreign.MemorySegment callback) {
         if (Handles.MH_alRequestFoldbackStart == null) throw new SymbolNotFoundError("Symbol not found: alRequestFoldbackStart");
         try {
-            Handles.MH_alRequestFoldbackStart.invokeExact(mode, count, length, mem, callback);
+            Handles.MH_alRequestFoldbackStart.invokeExact(Handles.get().PFN_alRequestFoldbackStart, mode, count, length, mem, callback);
         } catch (Throwable e) { throw new RuntimeException("error in alRequestFoldbackStart", e); }
     }
 
     public static void alRequestFoldbackStop() {
         if (Handles.MH_alRequestFoldbackStop == null) throw new SymbolNotFoundError("Symbol not found: alRequestFoldbackStop");
         try {
-            Handles.MH_alRequestFoldbackStop.invokeExact();
+            Handles.MH_alRequestFoldbackStop.invokeExact(Handles.get().PFN_alRequestFoldbackStop);
         } catch (Throwable e) { throw new RuntimeException("error in alRequestFoldbackStop", e); }
     }
 

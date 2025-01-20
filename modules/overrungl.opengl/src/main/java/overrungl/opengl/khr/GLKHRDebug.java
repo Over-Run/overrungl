@@ -19,7 +19,6 @@ package overrungl.opengl.khr;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -131,30 +130,6 @@ public final class GLKHRDebug {
         public static final FunctionDescriptor FD_glObjectPtrLabelKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetObjectPtrLabelKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetPointervKHR = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glDebugMessageControl,
-            FD_glDebugMessageInsert,
-            FD_glDebugMessageCallback,
-            FD_glGetDebugMessageLog,
-            FD_glPushDebugGroup,
-            FD_glPopDebugGroup,
-            FD_glObjectLabel,
-            FD_glGetObjectLabel,
-            FD_glObjectPtrLabel,
-            FD_glGetObjectPtrLabel,
-            FD_glGetPointerv,
-            FD_glDebugMessageControlKHR,
-            FD_glDebugMessageInsertKHR,
-            FD_glDebugMessageCallbackKHR,
-            FD_glGetDebugMessageLogKHR,
-            FD_glPushDebugGroupKHR,
-            FD_glPopDebugGroupKHR,
-            FD_glObjectLabelKHR,
-            FD_glGetObjectLabelKHR,
-            FD_glObjectPtrLabelKHR,
-            FD_glGetObjectPtrLabelKHR,
-            FD_glGetPointervKHR
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glDebugMessageControl = RuntimeHelper.downcall(Descriptors.FD_glDebugMessageControl);

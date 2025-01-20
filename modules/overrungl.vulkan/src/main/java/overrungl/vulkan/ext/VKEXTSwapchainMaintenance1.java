@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKEXTSwapchainMaintenance1 {
     public static final int VK_EXT_SWAPCHAIN_MAINTENANCE_1_SPEC_VERSION = 1;
     public static final String VK_EXT_SWAPCHAIN_MAINTENANCE_1_EXTENSION_NAME = "VK_EXT_swapchain_maintenance1";
@@ -36,9 +35,6 @@ public class VKEXTSwapchainMaintenance1 {
     private final Handles handles;
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkReleaseSwapchainImagesEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkReleaseSwapchainImagesEXT
-        );
         private Descriptors() {}
     }
     public static final class Handles {

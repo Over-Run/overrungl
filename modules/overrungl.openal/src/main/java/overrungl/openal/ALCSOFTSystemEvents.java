@@ -18,7 +18,6 @@
 package overrungl.openal;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.*;
 import overrungl.util.*;
@@ -43,42 +42,55 @@ public final class ALCSOFTSystemEvents {
         public static final FunctionDescriptor FD_alcEventControlSOFT = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_BOOLEAN);
         /// The function descriptor of `alcEventCallbackSOFT`.
         public static final FunctionDescriptor FD_alcEventCallbackSOFT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        /// Function descriptors.
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_alcEventIsSupportedSOFT,
-            FD_alcEventControlSOFT,
-            FD_alcEventCallbackSOFT
-        );
     }
     /// Method handles.
     public static final class Handles {
-        private Handles() { }
         /// The method handle of `alcEventIsSupportedSOFT`.
-        public static final MethodHandle MH_alcEventIsSupportedSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alcEventIsSupportedSOFT", Descriptors.FD_alcEventIsSupportedSOFT);
+        public static final MethodHandle MH_alcEventIsSupportedSOFT = RuntimeHelper.downcall(Descriptors.FD_alcEventIsSupportedSOFT);
         /// The method handle of `alcEventControlSOFT`.
-        public static final MethodHandle MH_alcEventControlSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alcEventControlSOFT", Descriptors.FD_alcEventControlSOFT);
+        public static final MethodHandle MH_alcEventControlSOFT = RuntimeHelper.downcall(Descriptors.FD_alcEventControlSOFT);
         /// The method handle of `alcEventCallbackSOFT`.
-        public static final MethodHandle MH_alcEventCallbackSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alcEventCallbackSOFT", Descriptors.FD_alcEventCallbackSOFT);
+        public static final MethodHandle MH_alcEventCallbackSOFT = RuntimeHelper.downcall(Descriptors.FD_alcEventCallbackSOFT);
+        /// The function address of `alcEventIsSupportedSOFT`.
+        public final MemorySegment PFN_alcEventIsSupportedSOFT;
+        /// The function address of `alcEventControlSOFT`.
+        public final MemorySegment PFN_alcEventControlSOFT;
+        /// The function address of `alcEventCallbackSOFT`.
+        public final MemorySegment PFN_alcEventCallbackSOFT;
+        private Handles() {
+            PFN_alcEventIsSupportedSOFT = ALInternal.lookup().find("alcEventIsSupportedSOFT").orElse(MemorySegment.NULL);
+            PFN_alcEventControlSOFT = ALInternal.lookup().find("alcEventControlSOFT").orElse(MemorySegment.NULL);
+            PFN_alcEventCallbackSOFT = ALInternal.lookup().find("alcEventCallbackSOFT").orElse(MemorySegment.NULL);
+        }
+        private static volatile Handles instance;
+        private static Handles get() {
+            if (instance == null) {
+                synchronized (Handles.class) {
+                    if (instance == null) { instance = new Handles(); }
+                }
+            }
+            return instance;
+        }
     }
 
     public static @CType("ALCenum") int alcEventIsSupportedSOFT(@CType("ALCenum") int eventType, @CType("ALCenum") int deviceType) {
         if (Handles.MH_alcEventIsSupportedSOFT == null) throw new SymbolNotFoundError("Symbol not found: alcEventIsSupportedSOFT");
         try {
-            return (int) Handles.MH_alcEventIsSupportedSOFT.invokeExact(eventType, deviceType);
+            return (int) Handles.MH_alcEventIsSupportedSOFT.invokeExact(Handles.get().PFN_alcEventIsSupportedSOFT, eventType, deviceType);
         } catch (Throwable e) { throw new RuntimeException("error in alcEventIsSupportedSOFT", e); }
     }
 
     public static @CType("ALCboolean") boolean alcEventControlSOFT(@CType("ALCsizei") int count, @CType("const ALCenum *") java.lang.foreign.MemorySegment events, @CType("ALCboolean") boolean enable) {
         if (Handles.MH_alcEventControlSOFT == null) throw new SymbolNotFoundError("Symbol not found: alcEventControlSOFT");
         try {
-            return (boolean) Handles.MH_alcEventControlSOFT.invokeExact(count, events, enable);
+            return (boolean) Handles.MH_alcEventControlSOFT.invokeExact(Handles.get().PFN_alcEventControlSOFT, count, events, enable);
         } catch (Throwable e) { throw new RuntimeException("error in alcEventControlSOFT", e); }
     }
 
     public static void alcEventCallbackSOFT(@CType("ALCEVENTPROCTYPESOFT") java.lang.foreign.MemorySegment callback, @CType("void*") java.lang.foreign.MemorySegment userParam) {
         if (Handles.MH_alcEventCallbackSOFT == null) throw new SymbolNotFoundError("Symbol not found: alcEventCallbackSOFT");
         try {
-            Handles.MH_alcEventCallbackSOFT.invokeExact(callback, userParam);
+            Handles.MH_alcEventCallbackSOFT.invokeExact(Handles.get().PFN_alcEventCallbackSOFT, callback, userParam);
         } catch (Throwable e) { throw new RuntimeException("error in alcEventCallbackSOFT", e); }
     }
 

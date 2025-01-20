@@ -19,7 +19,6 @@ package overrungl.opengl;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -72,36 +71,6 @@ public class GL33 extends GL32 {
         public static final FunctionDescriptor FD_glVertexAttribP3uiv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glVertexAttribP4ui = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glVertexAttribP4uiv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glBindFragDataLocationIndexed,
-            FD_glGetFragDataIndex,
-            FD_glGenSamplers,
-            FD_glDeleteSamplers,
-            FD_glIsSampler,
-            FD_glBindSampler,
-            FD_glSamplerParameteri,
-            FD_glSamplerParameteriv,
-            FD_glSamplerParameterf,
-            FD_glSamplerParameterfv,
-            FD_glSamplerParameterIiv,
-            FD_glSamplerParameterIuiv,
-            FD_glGetSamplerParameteriv,
-            FD_glGetSamplerParameterIiv,
-            FD_glGetSamplerParameterfv,
-            FD_glGetSamplerParameterIuiv,
-            FD_glQueryCounter,
-            FD_glGetQueryObjecti64v,
-            FD_glGetQueryObjectui64v,
-            FD_glVertexAttribDivisor,
-            FD_glVertexAttribP1ui,
-            FD_glVertexAttribP1uiv,
-            FD_glVertexAttribP2ui,
-            FD_glVertexAttribP2uiv,
-            FD_glVertexAttribP3ui,
-            FD_glVertexAttribP3uiv,
-            FD_glVertexAttribP4ui,
-            FD_glVertexAttribP4uiv
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glBindFragDataLocationIndexed = RuntimeHelper.downcall(Descriptors.FD_glBindFragDataLocationIndexed);

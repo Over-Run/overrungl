@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKKHRXcbSurface {
     public static final int VK_KHR_XCB_SURFACE_SPEC_VERSION = 6;
     public static final String VK_KHR_XCB_SURFACE_EXTENSION_NAME = "VK_KHR_xcb_surface";
@@ -31,10 +30,6 @@ public class VKKHRXcbSurface {
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkCreateXcbSurfaceKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkGetPhysicalDeviceXcbPresentationSupportKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCreateXcbSurfaceKHR,
-            FD_vkGetPhysicalDeviceXcbPresentationSupportKHR
-        );
         private Descriptors() {}
     }
     public static final class Handles {

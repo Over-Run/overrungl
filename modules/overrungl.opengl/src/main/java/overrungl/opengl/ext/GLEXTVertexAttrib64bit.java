@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -51,18 +50,6 @@ public final class GLEXTVertexAttrib64bit {
         public static final FunctionDescriptor FD_glVertexAttribL4dvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glVertexAttribLPointerEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetVertexAttribLdvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glVertexAttribL1dEXT,
-            FD_glVertexAttribL2dEXT,
-            FD_glVertexAttribL3dEXT,
-            FD_glVertexAttribL4dEXT,
-            FD_glVertexAttribL1dvEXT,
-            FD_glVertexAttribL2dvEXT,
-            FD_glVertexAttribL3dvEXT,
-            FD_glVertexAttribL4dvEXT,
-            FD_glVertexAttribLPointerEXT,
-            FD_glGetVertexAttribLdvEXT
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glVertexAttribL1dEXT = RuntimeHelper.downcall(Descriptors.FD_glVertexAttribL1dEXT);

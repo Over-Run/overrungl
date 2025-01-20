@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKNVCudaKernelLaunch {
     public static final int VK_NV_CUDA_KERNEL_LAUNCH_SPEC_VERSION = 2;
     public static final String VK_NV_CUDA_KERNEL_LAUNCH_EXTENSION_NAME = "VK_NV_cuda_kernel_launch";
@@ -43,14 +42,6 @@ public class VKNVCudaKernelLaunch {
         public static final FunctionDescriptor FD_vkDestroyCudaModuleNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkDestroyCudaFunctionNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkCmdCudaLaunchKernelNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCreateCudaModuleNV,
-            FD_vkGetCudaModuleCacheNV,
-            FD_vkCreateCudaFunctionNV,
-            FD_vkDestroyCudaModuleNV,
-            FD_vkDestroyCudaFunctionNV,
-            FD_vkCmdCudaLaunchKernelNV
-        );
         private Descriptors() {}
     }
     public static final class Handles {

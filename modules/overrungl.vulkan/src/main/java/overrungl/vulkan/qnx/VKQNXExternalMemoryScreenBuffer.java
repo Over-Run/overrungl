@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKQNXExternalMemoryScreenBuffer {
     public static final int VK_QNX_EXTERNAL_MEMORY_SCREEN_BUFFER_SPEC_VERSION = 1;
     public static final String VK_QNX_EXTERNAL_MEMORY_SCREEN_BUFFER_EXTENSION_NAME = "VK_QNX_external_memory_screen_buffer";
@@ -35,9 +34,6 @@ public class VKQNXExternalMemoryScreenBuffer {
     private final Handles handles;
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkGetScreenBufferPropertiesQNX = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetScreenBufferPropertiesQNX
-        );
         private Descriptors() {}
     }
     public static final class Handles {

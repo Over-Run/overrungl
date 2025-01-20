@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.VK14.*;
 public class VKKHRMaintenance6 {
     public static final int VK_KHR_MAINTENANCE_6_SPEC_VERSION = 1;
@@ -44,14 +43,6 @@ public class VKKHRMaintenance6 {
         public static final FunctionDescriptor FD_vkCmdPushDescriptorSetWithTemplate2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkCmdSetDescriptorBufferOffsets2EXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkCmdBindDescriptorBufferEmbeddedSamplers2EXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCmdBindDescriptorSets2KHR,
-            FD_vkCmdPushConstants2KHR,
-            FD_vkCmdPushDescriptorSet2KHR,
-            FD_vkCmdPushDescriptorSetWithTemplate2KHR,
-            FD_vkCmdSetDescriptorBufferOffsets2EXT,
-            FD_vkCmdBindDescriptorBufferEmbeddedSamplers2EXT
-        );
         private Descriptors() {}
     }
     public static final class Handles {

@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.VK11.*;
 public class VKKHRDeviceGroupCreation {
     public static final int VK_KHR_DEVICE_GROUP_CREATION_SPEC_VERSION = 1;
@@ -34,9 +33,6 @@ public class VKKHRDeviceGroupCreation {
     private final Handles handles;
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkEnumeratePhysicalDeviceGroupsKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkEnumeratePhysicalDeviceGroupsKHR
-        );
         private Descriptors() {}
     }
     public static final class Handles {

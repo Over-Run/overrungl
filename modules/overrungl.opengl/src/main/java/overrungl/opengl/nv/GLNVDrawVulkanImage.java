@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -33,13 +32,6 @@ public final class GLNVDrawVulkanImage {
         public static final FunctionDescriptor FD_glWaitVkSemaphoreNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG);
         public static final FunctionDescriptor FD_glSignalVkSemaphoreNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG);
         public static final FunctionDescriptor FD_glSignalVkFenceNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glDrawVkImageNV,
-            FD_glGetVkProcAddrNV,
-            FD_glWaitVkSemaphoreNV,
-            FD_glSignalVkSemaphoreNV,
-            FD_glSignalVkFenceNV
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glDrawVkImageNV = RuntimeHelper.downcall(Descriptors.FD_glDrawVkImageNV);

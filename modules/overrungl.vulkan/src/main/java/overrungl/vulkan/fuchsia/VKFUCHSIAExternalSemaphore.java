@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKFUCHSIAExternalSemaphore {
     public static final int VK_FUCHSIA_EXTERNAL_SEMAPHORE_SPEC_VERSION = 1;
     public static final String VK_FUCHSIA_EXTERNAL_SEMAPHORE_EXTENSION_NAME = "VK_FUCHSIA_external_semaphore";
@@ -33,10 +32,6 @@ public class VKFUCHSIAExternalSemaphore {
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkImportSemaphoreZirconHandleFUCHSIA = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkGetSemaphoreZirconHandleFUCHSIA = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkImportSemaphoreZirconHandleFUCHSIA,
-            FD_vkGetSemaphoreZirconHandleFUCHSIA
-        );
         private Descriptors() {}
     }
     public static final class Handles {

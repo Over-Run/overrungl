@@ -19,7 +19,6 @@ package overrungl.opengl.ovr;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -34,10 +33,6 @@ public final class GLOVRMultiview {
         private Descriptors() {}
         public static final FunctionDescriptor FD_glFramebufferTextureMultiviewOVR = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glNamedFramebufferTextureMultiviewOVR = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glFramebufferTextureMultiviewOVR,
-            FD_glNamedFramebufferTextureMultiviewOVR
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glFramebufferTextureMultiviewOVR = RuntimeHelper.downcall(Descriptors.FD_glFramebufferTextureMultiviewOVR);

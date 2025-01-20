@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -43,14 +42,6 @@ public final class GLEXTPixelTransform {
         public static final FunctionDescriptor FD_glPixelTransformParameterfvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetPixelTransformParameterivEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetPixelTransformParameterfvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glPixelTransformParameteriEXT,
-            FD_glPixelTransformParameterfEXT,
-            FD_glPixelTransformParameterivEXT,
-            FD_glPixelTransformParameterfvEXT,
-            FD_glGetPixelTransformParameterivEXT,
-            FD_glGetPixelTransformParameterfvEXT
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glPixelTransformParameteriEXT = RuntimeHelper.downcall(Descriptors.FD_glPixelTransformParameteriEXT);

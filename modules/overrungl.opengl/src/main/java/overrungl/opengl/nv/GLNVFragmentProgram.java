@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -40,14 +39,6 @@ public final class GLNVFragmentProgram {
         public static final FunctionDescriptor FD_glProgramNamedParameter4dvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetProgramNamedParameterfvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetProgramNamedParameterdvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glProgramNamedParameter4fNV,
-            FD_glProgramNamedParameter4fvNV,
-            FD_glProgramNamedParameter4dNV,
-            FD_glProgramNamedParameter4dvNV,
-            FD_glGetProgramNamedParameterfvNV,
-            FD_glGetProgramNamedParameterdvNV
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glProgramNamedParameter4fNV = RuntimeHelper.downcall(Descriptors.FD_glProgramNamedParameter4fNV);

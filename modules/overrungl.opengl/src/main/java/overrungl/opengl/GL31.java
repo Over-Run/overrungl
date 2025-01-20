@@ -19,7 +19,6 @@ package overrungl.opengl;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -101,20 +100,6 @@ public class GL31 extends GL30 {
         public static final FunctionDescriptor FD_glGetActiveUniformBlockiv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetActiveUniformBlockName = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glUniformBlockBinding = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glDrawArraysInstanced,
-            FD_glDrawElementsInstanced,
-            FD_glTexBuffer,
-            FD_glPrimitiveRestartIndex,
-            FD_glCopyBufferSubData,
-            FD_glGetUniformIndices,
-            FD_glGetActiveUniformsiv,
-            FD_glGetActiveUniformName,
-            FD_glGetUniformBlockIndex,
-            FD_glGetActiveUniformBlockiv,
-            FD_glGetActiveUniformBlockName,
-            FD_glUniformBlockBinding
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glDrawArraysInstanced = RuntimeHelper.downcall(Descriptors.FD_glDrawArraysInstanced);

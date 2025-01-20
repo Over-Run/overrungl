@@ -19,7 +19,6 @@ package overrungl.opengl.amd;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -36,12 +35,6 @@ public final class GLAMDFramebufferSamplePositions {
         public static final FunctionDescriptor FD_glNamedFramebufferSamplePositionsfvAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetFramebufferParameterfvAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetNamedFramebufferParameterfvAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glFramebufferSamplePositionsfvAMD,
-            FD_glNamedFramebufferSamplePositionsfvAMD,
-            FD_glGetFramebufferParameterfvAMD,
-            FD_glGetNamedFramebufferParameterfvAMD
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glFramebufferSamplePositionsfvAMD = RuntimeHelper.downcall(Descriptors.FD_glFramebufferSamplePositionsfvAMD);

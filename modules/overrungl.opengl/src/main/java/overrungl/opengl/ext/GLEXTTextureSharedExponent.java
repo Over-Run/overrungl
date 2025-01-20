@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLEXTTextureSharedExponent {
     public static final int GL_RGB9_E5_EXT = 0x8C3D;
     public static final int GL_UNSIGNED_INT_5_9_9_9_REV_EXT = 0x8C3E;

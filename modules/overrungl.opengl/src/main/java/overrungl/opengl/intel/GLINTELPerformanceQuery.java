@@ -19,7 +19,6 @@ package overrungl.opengl.intel;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -58,18 +57,6 @@ public final class GLINTELPerformanceQuery {
         public static final FunctionDescriptor FD_glGetPerfQueryDataINTEL = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetPerfQueryIdByNameINTEL = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetPerfQueryInfoINTEL = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glBeginPerfQueryINTEL,
-            FD_glCreatePerfQueryINTEL,
-            FD_glDeletePerfQueryINTEL,
-            FD_glEndPerfQueryINTEL,
-            FD_glGetFirstPerfQueryIdINTEL,
-            FD_glGetNextPerfQueryIdINTEL,
-            FD_glGetPerfCounterInfoINTEL,
-            FD_glGetPerfQueryDataINTEL,
-            FD_glGetPerfQueryIdByNameINTEL,
-            FD_glGetPerfQueryInfoINTEL
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glBeginPerfQueryINTEL = RuntimeHelper.downcall(Descriptors.FD_glBeginPerfQueryINTEL);

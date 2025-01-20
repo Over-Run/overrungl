@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKNVDeviceGeneratedCommands {
     public static final int VK_INDIRECT_STATE_FLAG_FRONTFACE_BIT_NV = 0x00000001;
     public static final int VK_INDIRECT_COMMANDS_TOKEN_TYPE_SHADER_GROUP_NV = 0;
@@ -59,14 +58,6 @@ public class VKNVDeviceGeneratedCommands {
         public static final FunctionDescriptor FD_vkCmdBindPipelineShaderGroupNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_vkCreateIndirectCommandsLayoutNV = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkDestroyIndirectCommandsLayoutNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetGeneratedCommandsMemoryRequirementsNV,
-            FD_vkCmdPreprocessGeneratedCommandsNV,
-            FD_vkCmdExecuteGeneratedCommandsNV,
-            FD_vkCmdBindPipelineShaderGroupNV,
-            FD_vkCreateIndirectCommandsLayoutNV,
-            FD_vkDestroyIndirectCommandsLayoutNV
-        );
         private Descriptors() {}
     }
     public static final class Handles {

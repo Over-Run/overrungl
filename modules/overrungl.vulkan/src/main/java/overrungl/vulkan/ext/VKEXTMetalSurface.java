@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKEXTMetalSurface {
     public static final int VK_EXT_METAL_SURFACE_SPEC_VERSION = 1;
     public static final String VK_EXT_METAL_SURFACE_EXTENSION_NAME = "VK_EXT_metal_surface";
@@ -30,9 +29,6 @@ public class VKEXTMetalSurface {
     private final Handles handles;
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkCreateMetalSurfaceEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCreateMetalSurfaceEXT
-        );
         private Descriptors() {}
     }
     public static final class Handles {

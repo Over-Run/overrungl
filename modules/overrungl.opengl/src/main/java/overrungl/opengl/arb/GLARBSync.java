@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -50,15 +49,6 @@ public final class GLARBSync {
         public static final FunctionDescriptor FD_glWaitSync = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
         public static final FunctionDescriptor FD_glGetInteger64v = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetSynciv = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glFenceSync,
-            FD_glIsSync,
-            FD_glDeleteSync,
-            FD_glClientWaitSync,
-            FD_glWaitSync,
-            FD_glGetInteger64v,
-            FD_glGetSynciv
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glFenceSync = RuntimeHelper.downcall(Descriptors.FD_glFenceSync);

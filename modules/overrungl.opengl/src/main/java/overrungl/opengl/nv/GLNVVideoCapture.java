@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -69,20 +68,6 @@ public final class GLNVVideoCapture {
         public static final FunctionDescriptor FD_glVideoCaptureStreamParameterivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glVideoCaptureStreamParameterfvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glVideoCaptureStreamParameterdvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glBeginVideoCaptureNV,
-            FD_glBindVideoCaptureStreamBufferNV,
-            FD_glBindVideoCaptureStreamTextureNV,
-            FD_glEndVideoCaptureNV,
-            FD_glGetVideoCaptureivNV,
-            FD_glGetVideoCaptureStreamivNV,
-            FD_glGetVideoCaptureStreamfvNV,
-            FD_glGetVideoCaptureStreamdvNV,
-            FD_glVideoCaptureNV,
-            FD_glVideoCaptureStreamParameterivNV,
-            FD_glVideoCaptureStreamParameterfvNV,
-            FD_glVideoCaptureStreamParameterdvNV
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glBeginVideoCaptureNV = RuntimeHelper.downcall(Descriptors.FD_glBeginVideoCaptureNV);

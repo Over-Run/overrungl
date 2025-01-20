@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKEXTAttachmentFeedbackLoopDynamicState {
     public static final int VK_EXT_ATTACHMENT_FEEDBACK_LOOP_DYNAMIC_STATE_SPEC_VERSION = 1;
     public static final String VK_EXT_ATTACHMENT_FEEDBACK_LOOP_DYNAMIC_STATE_EXTENSION_NAME = "VK_EXT_attachment_feedback_loop_dynamic_state";
@@ -31,9 +30,6 @@ public class VKEXTAttachmentFeedbackLoopDynamicState {
     private final Handles handles;
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkCmdSetAttachmentFeedbackLoopEnableEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCmdSetAttachmentFeedbackLoopEnableEXT
-        );
         private Descriptors() {}
     }
     public static final class Handles {

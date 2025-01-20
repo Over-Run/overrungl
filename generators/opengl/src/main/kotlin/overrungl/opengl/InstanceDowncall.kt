@@ -23,8 +23,8 @@ import overrungl.gen.writeString
 import kotlin.io.path.Path
 
 class InstanceDowncall(
-    packageName: String,
-    name: String,
+    val packageName: String,
+    val name: String,
     action: InstanceDowncall.() -> Unit
 ) {
     var modifier: String? = null
@@ -63,20 +63,21 @@ class InstanceDowncall(
         val sb = StringBuilder()
 
         sb.appendLine(commentedFileHeader)
-        sb.append(
-            """
-                package $packageName;
+        sb.appendLine("package $packageName;")
+        sb.appendLine()
+        if (handleFields.isNotEmpty()) {
+            sb.appendLine(
+                """
+                    import java.lang.foreign.*;
+                    import java.lang.invoke.*;
+                    import overrungl.annotation.*;
+                    import overrungl.internal.RuntimeHelper;
+                    import overrungl.util.*;
 
-                import java.lang.foreign.*;
-                import java.lang.invoke.*;
-                import java.util.*;
-                import overrungl.annotation.*;
-                import overrungl.internal.RuntimeHelper;
-                import overrungl.util.*;
-
-                public
-            """.trimIndent()
-        )
+                """.trimIndent()
+            )
+        }
+        sb.append("public")
         if (modifier != null) {
             sb.append(" ")
             sb.append(modifier)
@@ -107,16 +108,6 @@ class InstanceDowncall(
             sb.appendLine("    public static final class Descriptors {")
             sb.appendLine("        private Descriptors() {}")
             writeFields(descriptorFields, 8)
-            sb.appendLine("        public static final List<FunctionDescriptor> LIST = List.of(")
-            descriptorFields.forEachIndexed { index, it ->
-                sb.append("            ${it.name}")
-                if (index + 1 == descriptorFields.size) {
-                    sb.appendLine()
-                } else {
-                    sb.appendLine(",")
-                }
-            }
-            sb.appendLine("        );")
             sb.appendLine("    }")
         }
         if (handleFields.isNotEmpty()) {

@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -71,18 +70,6 @@ public final class GLARBUniformBufferObject {
         public static final FunctionDescriptor FD_glBindBufferRange = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG);
         public static final FunctionDescriptor FD_glBindBufferBase = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glGetIntegeri_v = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glGetUniformIndices,
-            FD_glGetActiveUniformsiv,
-            FD_glGetActiveUniformName,
-            FD_glGetUniformBlockIndex,
-            FD_glGetActiveUniformBlockiv,
-            FD_glGetActiveUniformBlockName,
-            FD_glUniformBlockBinding,
-            FD_glBindBufferRange,
-            FD_glBindBufferBase,
-            FD_glGetIntegeri_v
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glGetUniformIndices = RuntimeHelper.downcall(Descriptors.FD_glGetUniformIndices);

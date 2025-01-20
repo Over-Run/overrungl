@@ -19,7 +19,6 @@ package overrungl.opengl.khr;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -55,18 +54,6 @@ public final class GLKHRRobustness {
         public static final FunctionDescriptor FD_glGetnUniformfvKHR = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetnUniformivKHR = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetnUniformuivKHR = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glGetGraphicsResetStatus,
-            FD_glReadnPixels,
-            FD_glGetnUniformfv,
-            FD_glGetnUniformiv,
-            FD_glGetnUniformuiv,
-            FD_glGetGraphicsResetStatusKHR,
-            FD_glReadnPixelsKHR,
-            FD_glGetnUniformfvKHR,
-            FD_glGetnUniformivKHR,
-            FD_glGetnUniformuivKHR
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glGetGraphicsResetStatus = RuntimeHelper.downcall(Descriptors.FD_glGetGraphicsResetStatus);

@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.VK13.*;
 import static overrungl.vulkan.ext.VKEXTShaderObject.*;
 public class VKEXTShaderObject {
@@ -102,62 +101,6 @@ public class VKEXTShaderObject {
         public static final FunctionDescriptor FD_vkCmdSetRepresentativeFragmentTestEnableNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_vkCmdSetCoverageReductionModeNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_vkCmdSetDepthClampRangeEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCreateShadersEXT,
-            FD_vkDestroyShaderEXT,
-            FD_vkGetShaderBinaryDataEXT,
-            FD_vkCmdBindShadersEXT,
-            FD_vkCmdSetCullModeEXT,
-            FD_vkCmdSetFrontFaceEXT,
-            FD_vkCmdSetPrimitiveTopologyEXT,
-            FD_vkCmdSetViewportWithCountEXT,
-            FD_vkCmdSetScissorWithCountEXT,
-            FD_vkCmdBindVertexBuffers2EXT,
-            FD_vkCmdSetDepthTestEnableEXT,
-            FD_vkCmdSetDepthWriteEnableEXT,
-            FD_vkCmdSetDepthCompareOpEXT,
-            FD_vkCmdSetDepthBoundsTestEnableEXT,
-            FD_vkCmdSetStencilTestEnableEXT,
-            FD_vkCmdSetStencilOpEXT,
-            FD_vkCmdSetVertexInputEXT,
-            FD_vkCmdSetPatchControlPointsEXT,
-            FD_vkCmdSetRasterizerDiscardEnableEXT,
-            FD_vkCmdSetDepthBiasEnableEXT,
-            FD_vkCmdSetLogicOpEXT,
-            FD_vkCmdSetPrimitiveRestartEnableEXT,
-            FD_vkCmdSetTessellationDomainOriginEXT,
-            FD_vkCmdSetDepthClampEnableEXT,
-            FD_vkCmdSetPolygonModeEXT,
-            FD_vkCmdSetRasterizationSamplesEXT,
-            FD_vkCmdSetSampleMaskEXT,
-            FD_vkCmdSetAlphaToCoverageEnableEXT,
-            FD_vkCmdSetAlphaToOneEnableEXT,
-            FD_vkCmdSetLogicOpEnableEXT,
-            FD_vkCmdSetColorBlendEnableEXT,
-            FD_vkCmdSetColorBlendEquationEXT,
-            FD_vkCmdSetColorWriteMaskEXT,
-            FD_vkCmdSetRasterizationStreamEXT,
-            FD_vkCmdSetConservativeRasterizationModeEXT,
-            FD_vkCmdSetExtraPrimitiveOverestimationSizeEXT,
-            FD_vkCmdSetDepthClipEnableEXT,
-            FD_vkCmdSetSampleLocationsEnableEXT,
-            FD_vkCmdSetColorBlendAdvancedEXT,
-            FD_vkCmdSetProvokingVertexModeEXT,
-            FD_vkCmdSetLineRasterizationModeEXT,
-            FD_vkCmdSetLineStippleEnableEXT,
-            FD_vkCmdSetDepthClipNegativeOneToOneEXT,
-            FD_vkCmdSetViewportWScalingEnableNV,
-            FD_vkCmdSetViewportSwizzleNV,
-            FD_vkCmdSetCoverageToColorEnableNV,
-            FD_vkCmdSetCoverageToColorLocationNV,
-            FD_vkCmdSetCoverageModulationModeNV,
-            FD_vkCmdSetCoverageModulationTableEnableNV,
-            FD_vkCmdSetCoverageModulationTableNV,
-            FD_vkCmdSetShadingRateImageEnableNV,
-            FD_vkCmdSetRepresentativeFragmentTestEnableNV,
-            FD_vkCmdSetCoverageReductionModeNV,
-            FD_vkCmdSetDepthClampRangeEXT
-        );
         private Descriptors() {}
     }
     public static final class Handles {

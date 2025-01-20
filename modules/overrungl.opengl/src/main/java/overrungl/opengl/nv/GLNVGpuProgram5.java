@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -38,10 +37,6 @@ public final class GLNVGpuProgram5 {
         private Descriptors() {}
         public static final FunctionDescriptor FD_glProgramSubroutineParametersuivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetProgramSubroutineParameteruivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glProgramSubroutineParametersuivNV,
-            FD_glGetProgramSubroutineParameteruivNV
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glProgramSubroutineParametersuivNV = RuntimeHelper.downcall(Descriptors.FD_glProgramSubroutineParametersuivNV);

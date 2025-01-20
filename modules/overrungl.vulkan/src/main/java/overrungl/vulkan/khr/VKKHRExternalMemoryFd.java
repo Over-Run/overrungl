@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKKHRExternalMemoryFd {
     public static final int VK_KHR_EXTERNAL_MEMORY_FD_SPEC_VERSION = 1;
     public static final String VK_KHR_EXTERNAL_MEMORY_FD_EXTENSION_NAME = "VK_KHR_external_memory_fd";
@@ -33,10 +32,6 @@ public class VKKHRExternalMemoryFd {
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkGetMemoryFdKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkGetMemoryFdPropertiesKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetMemoryFdKHR,
-            FD_vkGetMemoryFdPropertiesKHR
-        );
         private Descriptors() {}
     }
     public static final class Handles {

@@ -19,7 +19,6 @@ package overrungl.opengl.intel;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -37,12 +36,6 @@ public final class GLINTELParallelArrays {
         public static final FunctionDescriptor FD_glNormalPointervINTEL = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glColorPointervINTEL = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glTexCoordPointervINTEL = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glVertexPointervINTEL,
-            FD_glNormalPointervINTEL,
-            FD_glColorPointervINTEL,
-            FD_glTexCoordPointervINTEL
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glVertexPointervINTEL = RuntimeHelper.downcall(Descriptors.FD_glVertexPointervINTEL);

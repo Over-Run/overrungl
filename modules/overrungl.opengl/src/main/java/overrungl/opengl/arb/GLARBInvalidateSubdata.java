@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -34,14 +33,6 @@ public final class GLARBInvalidateSubdata {
         public static final FunctionDescriptor FD_glInvalidateBufferData = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glInvalidateFramebuffer = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glInvalidateSubFramebuffer = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glInvalidateTexSubImage,
-            FD_glInvalidateTexImage,
-            FD_glInvalidateBufferSubData,
-            FD_glInvalidateBufferData,
-            FD_glInvalidateFramebuffer,
-            FD_glInvalidateSubFramebuffer
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glInvalidateTexSubImage = RuntimeHelper.downcall(Descriptors.FD_glInvalidateTexSubImage);

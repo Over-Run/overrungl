@@ -19,7 +19,6 @@ package overrungl.opengl.ibm;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -31,9 +30,6 @@ public final class GLIBMStaticData {
     public static final class Descriptors {
         private Descriptors() {}
         public static final FunctionDescriptor FD_glFlushStaticDataIBM = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glFlushStaticDataIBM
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glFlushStaticDataIBM = RuntimeHelper.downcall(Descriptors.FD_glFlushStaticDataIBM);

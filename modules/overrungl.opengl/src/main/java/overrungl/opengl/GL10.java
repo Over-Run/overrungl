@@ -19,7 +19,6 @@ package overrungl.opengl;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -246,56 +245,6 @@ public class GL10 {
         public static final FunctionDescriptor FD_glIsEnabled = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glDepthRange = FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE);
         public static final FunctionDescriptor FD_glViewport = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glCullFace,
-            FD_glFrontFace,
-            FD_glHint,
-            FD_glLineWidth,
-            FD_glPointSize,
-            FD_glPolygonMode,
-            FD_glScissor,
-            FD_glTexParameterf,
-            FD_glTexParameterfv,
-            FD_glTexParameteri,
-            FD_glTexParameteriv,
-            FD_glTexImage1D,
-            FD_glTexImage2D,
-            FD_glDrawBuffer,
-            FD_glClear,
-            FD_glClearColor,
-            FD_glClearStencil,
-            FD_glClearDepth,
-            FD_glStencilMask,
-            FD_glColorMask,
-            FD_glDepthMask,
-            FD_glDisable,
-            FD_glEnable,
-            FD_glFinish,
-            FD_glFlush,
-            FD_glBlendFunc,
-            FD_glLogicOp,
-            FD_glStencilFunc,
-            FD_glStencilOp,
-            FD_glDepthFunc,
-            FD_glPixelStoref,
-            FD_glPixelStorei,
-            FD_glReadBuffer,
-            FD_glReadPixels,
-            FD_glGetBooleanv,
-            FD_glGetDoublev,
-            FD_glGetError,
-            FD_glGetFloatv,
-            FD_glGetIntegerv,
-            FD_glGetString,
-            FD_glGetTexImage,
-            FD_glGetTexParameterfv,
-            FD_glGetTexParameteriv,
-            FD_glGetTexLevelParameterfv,
-            FD_glGetTexLevelParameteriv,
-            FD_glIsEnabled,
-            FD_glDepthRange,
-            FD_glViewport
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glCullFace = RuntimeHelper.downcall(Descriptors.FD_glCullFace);

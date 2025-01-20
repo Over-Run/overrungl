@@ -19,7 +19,6 @@ package overrungl.opengl.ati;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -34,10 +33,6 @@ public final class GLATISeparateStencil {
         private Descriptors() {}
         public static final FunctionDescriptor FD_glStencilOpSeparateATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glStencilFuncSeparateATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glStencilOpSeparateATI,
-            FD_glStencilFuncSeparateATI
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glStencilOpSeparateATI = RuntimeHelper.downcall(Descriptors.FD_glStencilOpSeparateATI);

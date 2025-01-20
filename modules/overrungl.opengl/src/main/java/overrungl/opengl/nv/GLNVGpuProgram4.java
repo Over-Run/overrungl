@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -52,24 +51,6 @@ public final class GLNVGpuProgram4 {
         public static final FunctionDescriptor FD_glGetProgramLocalParameterIuivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetProgramEnvParameterIivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetProgramEnvParameterIuivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glProgramLocalParameterI4iNV,
-            FD_glProgramLocalParameterI4ivNV,
-            FD_glProgramLocalParametersI4ivNV,
-            FD_glProgramLocalParameterI4uiNV,
-            FD_glProgramLocalParameterI4uivNV,
-            FD_glProgramLocalParametersI4uivNV,
-            FD_glProgramEnvParameterI4iNV,
-            FD_glProgramEnvParameterI4ivNV,
-            FD_glProgramEnvParametersI4ivNV,
-            FD_glProgramEnvParameterI4uiNV,
-            FD_glProgramEnvParameterI4uivNV,
-            FD_glProgramEnvParametersI4uivNV,
-            FD_glGetProgramLocalParameterIivNV,
-            FD_glGetProgramLocalParameterIuivNV,
-            FD_glGetProgramEnvParameterIivNV,
-            FD_glGetProgramEnvParameterIuivNV
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glProgramLocalParameterI4iNV = RuntimeHelper.downcall(Descriptors.FD_glProgramLocalParameterI4iNV);

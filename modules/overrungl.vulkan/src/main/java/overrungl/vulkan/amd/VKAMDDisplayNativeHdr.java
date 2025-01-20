@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKAMDDisplayNativeHdr {
     public static final int VK_AMD_DISPLAY_NATIVE_HDR_SPEC_VERSION = 1;
     public static final String VK_AMD_DISPLAY_NATIVE_HDR_EXTENSION_NAME = "VK_AMD_display_native_hdr";
@@ -32,9 +31,6 @@ public class VKAMDDisplayNativeHdr {
     private final Handles handles;
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkSetLocalDimmingAMD = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkSetLocalDimmingAMD
-        );
         private Descriptors() {}
     }
     public static final class Handles {

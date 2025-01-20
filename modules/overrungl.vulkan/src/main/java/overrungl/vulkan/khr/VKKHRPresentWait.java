@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKKHRPresentWait {
     public static final int VK_KHR_PRESENT_WAIT_SPEC_VERSION = 1;
     public static final String VK_KHR_PRESENT_WAIT_EXTENSION_NAME = "VK_KHR_present_wait";
@@ -30,9 +29,6 @@ public class VKKHRPresentWait {
     private final Handles handles;
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkWaitForPresentKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkWaitForPresentKHR
-        );
         private Descriptors() {}
     }
     public static final class Handles {

@@ -19,7 +19,6 @@ package overrungl.opengl.amd;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -36,11 +35,6 @@ public final class GLAMDNameGenDelete {
         public static final FunctionDescriptor FD_glGenNamesAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glDeleteNamesAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glIsNameAMD = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glGenNamesAMD,
-            FD_glDeleteNamesAMD,
-            FD_glIsNameAMD
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glGenNamesAMD = RuntimeHelper.downcall(Descriptors.FD_glGenNamesAMD);

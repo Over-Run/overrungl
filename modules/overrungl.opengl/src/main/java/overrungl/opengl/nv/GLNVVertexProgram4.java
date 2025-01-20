@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -52,31 +51,6 @@ public final class GLNVVertexProgram4 {
         public static final FunctionDescriptor FD_glVertexAttribIPointerEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetVertexAttribIivEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetVertexAttribIuivEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glVertexAttribI1iEXT,
-            FD_glVertexAttribI2iEXT,
-            FD_glVertexAttribI3iEXT,
-            FD_glVertexAttribI4iEXT,
-            FD_glVertexAttribI1uiEXT,
-            FD_glVertexAttribI2uiEXT,
-            FD_glVertexAttribI3uiEXT,
-            FD_glVertexAttribI4uiEXT,
-            FD_glVertexAttribI1ivEXT,
-            FD_glVertexAttribI2ivEXT,
-            FD_glVertexAttribI3ivEXT,
-            FD_glVertexAttribI4ivEXT,
-            FD_glVertexAttribI1uivEXT,
-            FD_glVertexAttribI2uivEXT,
-            FD_glVertexAttribI3uivEXT,
-            FD_glVertexAttribI4uivEXT,
-            FD_glVertexAttribI4bvEXT,
-            FD_glVertexAttribI4svEXT,
-            FD_glVertexAttribI4ubvEXT,
-            FD_glVertexAttribI4usvEXT,
-            FD_glVertexAttribIPointerEXT,
-            FD_glGetVertexAttribIivEXT,
-            FD_glGetVertexAttribIuivEXT
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glVertexAttribI1iEXT = RuntimeHelper.downcall(Descriptors.FD_glVertexAttribI1iEXT);

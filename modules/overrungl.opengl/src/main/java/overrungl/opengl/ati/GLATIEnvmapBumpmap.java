@@ -19,7 +19,6 @@ package overrungl.opengl.ati;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -40,12 +39,6 @@ public final class GLATIEnvmapBumpmap {
         public static final FunctionDescriptor FD_glTexBumpParameterfvATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetTexBumpParameterivATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetTexBumpParameterfvATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glTexBumpParameterivATI,
-            FD_glTexBumpParameterfvATI,
-            FD_glGetTexBumpParameterivATI,
-            FD_glGetTexBumpParameterfvATI
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glTexBumpParameterivATI = RuntimeHelper.downcall(Descriptors.FD_glTexBumpParameterivATI);

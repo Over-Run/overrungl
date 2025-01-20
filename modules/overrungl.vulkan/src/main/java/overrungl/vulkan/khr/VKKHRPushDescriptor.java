@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.VK14.*;
 public class VKKHRPushDescriptor {
     public static final int VK_KHR_PUSH_DESCRIPTOR_SPEC_VERSION = 2;
@@ -34,10 +33,6 @@ public class VKKHRPushDescriptor {
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkCmdPushDescriptorSetKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkCmdPushDescriptorSetWithTemplateKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCmdPushDescriptorSetKHR,
-            FD_vkCmdPushDescriptorSetWithTemplateKHR
-        );
         private Descriptors() {}
     }
     public static final class Handles {

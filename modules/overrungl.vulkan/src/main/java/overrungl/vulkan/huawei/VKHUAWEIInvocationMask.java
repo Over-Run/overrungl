@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKHUAWEIInvocationMask {
     public static final int VK_HUAWEI_INVOCATION_MASK_SPEC_VERSION = 1;
     public static final String VK_HUAWEI_INVOCATION_MASK_EXTENSION_NAME = "VK_HUAWEI_invocation_mask";
@@ -33,9 +32,6 @@ public class VKHUAWEIInvocationMask {
     private final Handles handles;
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkCmdBindInvocationMaskHUAWEI = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCmdBindInvocationMaskHUAWEI
-        );
         private Descriptors() {}
     }
     public static final class Handles {

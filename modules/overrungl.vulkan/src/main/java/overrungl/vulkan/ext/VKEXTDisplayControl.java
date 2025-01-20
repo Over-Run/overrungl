@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKEXTDisplayControl {
     public static final int VK_DISPLAY_POWER_STATE_OFF_EXT = 0;
     public static final int VK_DISPLAY_POWER_STATE_SUSPEND_EXT = 1;
@@ -41,12 +40,6 @@ public class VKEXTDisplayControl {
         public static final FunctionDescriptor FD_vkRegisterDeviceEventEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkRegisterDisplayEventEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkGetSwapchainCounterEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkDisplayPowerControlEXT,
-            FD_vkRegisterDeviceEventEXT,
-            FD_vkRegisterDisplayEventEXT,
-            FD_vkGetSwapchainCounterEXT
-        );
         private Descriptors() {}
     }
     public static final class Handles {

@@ -19,7 +19,6 @@ package overrungl.opengl.sgix;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -66,26 +65,6 @@ public final class GLSGIXFragmentLighting {
         public static final FunctionDescriptor FD_glGetFragmentMaterialfvSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetFragmentMaterialivSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glLightEnviSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glFragmentColorMaterialSGIX,
-            FD_glFragmentLightfSGIX,
-            FD_glFragmentLightfvSGIX,
-            FD_glFragmentLightiSGIX,
-            FD_glFragmentLightivSGIX,
-            FD_glFragmentLightModelfSGIX,
-            FD_glFragmentLightModelfvSGIX,
-            FD_glFragmentLightModeliSGIX,
-            FD_glFragmentLightModelivSGIX,
-            FD_glFragmentMaterialfSGIX,
-            FD_glFragmentMaterialfvSGIX,
-            FD_glFragmentMaterialiSGIX,
-            FD_glFragmentMaterialivSGIX,
-            FD_glGetFragmentLightfvSGIX,
-            FD_glGetFragmentLightivSGIX,
-            FD_glGetFragmentMaterialfvSGIX,
-            FD_glGetFragmentMaterialivSGIX,
-            FD_glLightEnviSGIX
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glFragmentColorMaterialSGIX = RuntimeHelper.downcall(Descriptors.FD_glFragmentColorMaterialSGIX);

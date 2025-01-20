@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -38,9 +37,6 @@ public final class GLARBMultisample {
     public static final class Descriptors {
         private Descriptors() {}
         public static final FunctionDescriptor FD_glSampleCoverageARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_BOOLEAN);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glSampleCoverageARB
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glSampleCoverageARB = RuntimeHelper.downcall(Descriptors.FD_glSampleCoverageARB);

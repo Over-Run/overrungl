@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -35,11 +34,6 @@ public final class GLNVDepthBufferFloat {
         public static final FunctionDescriptor FD_glDepthRangedNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE);
         public static final FunctionDescriptor FD_glClearDepthdNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE);
         public static final FunctionDescriptor FD_glDepthBoundsdNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glDepthRangedNV,
-            FD_glClearDepthdNV,
-            FD_glDepthBoundsdNV
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glDepthRangedNV = RuntimeHelper.downcall(Descriptors.FD_glDepthRangedNV);

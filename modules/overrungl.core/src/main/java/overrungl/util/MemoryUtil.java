@@ -30,19 +30,32 @@ import static java.lang.foreign.ValueLayout.*;
  * @since 0.1.0
  */
 public final class MemoryUtil {
-    private static final Linker LINKER = Linker.nativeLinker();
-    private static final SymbolLookup LOOKUP = LINKER.defaultLookup();
-    private static final MethodHandle
-        m_malloc = downcall("malloc", FunctionDescriptor.of(ADDRESS, JAVA_LONG)),
-        m_calloc = downcall("calloc", FunctionDescriptor.of(ADDRESS, JAVA_LONG, JAVA_LONG)),
-        m_realloc = downcall("realloc", FunctionDescriptor.of(ADDRESS, ADDRESS, JAVA_LONG)),
-        m_free = downcall("free", FunctionDescriptor.ofVoid(ADDRESS)),
-        m_memcpy = downcall("memcpy", FunctionDescriptor.of(ADDRESS, ADDRESS, ADDRESS, JAVA_LONG)),
-        m_memmove = downcall("memmove", FunctionDescriptor.of(ADDRESS, ADDRESS, ADDRESS, JAVA_LONG)),
-        m_memset = downcall("memset", FunctionDescriptor.of(ADDRESS, ADDRESS, JAVA_INT, JAVA_LONG));
+    public static final class Descriptors {
+        public static final FunctionDescriptor
+            FD_malloc = FunctionDescriptor.of(ADDRESS, JAVA_LONG),
+            FD_calloc = FunctionDescriptor.of(ADDRESS, JAVA_LONG, JAVA_LONG),
+            FD_realloc = FunctionDescriptor.of(ADDRESS, ADDRESS, JAVA_LONG),
+            FD_free = FunctionDescriptor.ofVoid(ADDRESS),
+            FD_memcpy = FunctionDescriptor.of(ADDRESS, ADDRESS, ADDRESS, JAVA_LONG),
+            FD_memmove = FunctionDescriptor.of(ADDRESS, ADDRESS, ADDRESS, JAVA_LONG),
+            FD_memset = FunctionDescriptor.of(ADDRESS, ADDRESS, JAVA_INT, JAVA_LONG);
+    }
 
-    private static MethodHandle downcall(String name, FunctionDescriptor function) {
-        return LINKER.downcallHandle(LOOKUP.findOrThrow(name), function);
+    private static final class Handles {
+        private static final Linker LINKER = Linker.nativeLinker();
+        private static final SymbolLookup LOOKUP = LINKER.defaultLookup();
+        private static final MethodHandle
+            m_malloc = downcall("malloc", Descriptors.FD_malloc),
+            m_calloc = downcall("calloc", Descriptors.FD_calloc),
+            m_realloc = downcall("realloc", Descriptors.FD_realloc),
+            m_free = downcall("free", Descriptors.FD_free),
+            m_memcpy = downcall("memcpy", Descriptors.FD_memcpy),
+            m_memmove = downcall("memmove", Descriptors.FD_memmove),
+            m_memset = downcall("memset", Descriptors.FD_memset);
+
+        private static MethodHandle downcall(String name, FunctionDescriptor function) {
+            return LINKER.downcallHandle(LOOKUP.findOrThrow(name), function);
+        }
     }
 
     private MemoryUtil() {
@@ -93,7 +106,7 @@ public final class MemoryUtil {
      */
     public static MemorySegment malloc(long size) {
         try {
-            return ((MemorySegment) m_malloc.invokeExact(size))
+            return ((MemorySegment) Handles.m_malloc.invokeExact(size))
                 .reinterpret(size);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
@@ -126,7 +139,7 @@ public final class MemoryUtil {
     public static MemorySegment calloc(long number, long size) {
         try {
             long byteSize = number * size;
-            return ((MemorySegment) m_calloc.invokeExact(number, size))
+            return ((MemorySegment) Handles.m_calloc.invokeExact(number, size))
                 .reinterpret(byteSize);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
@@ -180,7 +193,7 @@ public final class MemoryUtil {
     public static MemorySegment realloc(@Nullable MemorySegment memblock, long size) {
         try {
             final MemorySegment mem = memblock != null ? memblock : MemorySegment.NULL;
-            return ((MemorySegment) m_realloc.invokeExact(mem, size))
+            return ((MemorySegment) Handles.m_realloc.invokeExact(mem, size))
                 .reinterpret(size);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
@@ -203,7 +216,7 @@ public final class MemoryUtil {
     public static void free(@Nullable MemorySegment memblock) {
         if (Unmarshal.isNullPointer(memblock)) return;
         try {
-            m_free.invokeExact(memblock);
+            Handles.m_free.invokeExact(memblock);
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
         }
@@ -225,7 +238,7 @@ public final class MemoryUtil {
      */
     public static MemorySegment memcpy(MemorySegment dest, MemorySegment src, long count) {
         try {
-            final var _ = (MemorySegment) m_memcpy.invokeExact(dest, src, count);
+            final var _ = (MemorySegment) Handles.m_memcpy.invokeExact(dest, src, count);
             return dest;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
@@ -250,7 +263,7 @@ public final class MemoryUtil {
      */
     public static MemorySegment memmove(MemorySegment dest, MemorySegment src, long count) {
         try {
-            final var _ = (MemorySegment) m_memmove.invokeExact(dest, src, count);
+            final var _ = (MemorySegment) Handles.m_memmove.invokeExact(dest, src, count);
             return dest;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);
@@ -273,7 +286,7 @@ public final class MemoryUtil {
      */
     public static MemorySegment memset(MemorySegment dest, int c, long count) {
         try {
-            final var _ = (MemorySegment) m_memset.invokeExact(dest, c, count);
+            final var _ = (MemorySegment) Handles.m_memset.invokeExact(dest, c, count);
             return dest;
         } catch (Throwable e) {
             throw new AssertionError("should not reach here", e);

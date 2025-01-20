@@ -18,7 +18,6 @@
 package overrungl.openal;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.*;
 import overrungl.util.*;
@@ -46,32 +45,43 @@ public final class ALCSOFTHRTF {
         public static final FunctionDescriptor FD_alcGetStringiSOFT = FunctionDescriptor.of(Unmarshal.STR_LAYOUT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         /// The function descriptor of `alcResetDeviceSOFT`.
         public static final FunctionDescriptor FD_alcResetDeviceSOFT = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        /// Function descriptors.
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_alcGetStringiSOFT,
-            FD_alcResetDeviceSOFT
-        );
     }
     /// Method handles.
     public static final class Handles {
-        private Handles() { }
         /// The method handle of `alcGetStringiSOFT`.
-        public static final MethodHandle MH_alcGetStringiSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alcGetStringiSOFT", Descriptors.FD_alcGetStringiSOFT);
+        public static final MethodHandle MH_alcGetStringiSOFT = RuntimeHelper.downcall(Descriptors.FD_alcGetStringiSOFT);
         /// The method handle of `alcResetDeviceSOFT`.
-        public static final MethodHandle MH_alcResetDeviceSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alcResetDeviceSOFT", Descriptors.FD_alcResetDeviceSOFT);
+        public static final MethodHandle MH_alcResetDeviceSOFT = RuntimeHelper.downcall(Descriptors.FD_alcResetDeviceSOFT);
+        /// The function address of `alcGetStringiSOFT`.
+        public final MemorySegment PFN_alcGetStringiSOFT;
+        /// The function address of `alcResetDeviceSOFT`.
+        public final MemorySegment PFN_alcResetDeviceSOFT;
+        private Handles() {
+            PFN_alcGetStringiSOFT = ALInternal.lookup().find("alcGetStringiSOFT").orElse(MemorySegment.NULL);
+            PFN_alcResetDeviceSOFT = ALInternal.lookup().find("alcResetDeviceSOFT").orElse(MemorySegment.NULL);
+        }
+        private static volatile Handles instance;
+        private static Handles get() {
+            if (instance == null) {
+                synchronized (Handles.class) {
+                    if (instance == null) { instance = new Handles(); }
+                }
+            }
+            return instance;
+        }
     }
 
     public static @CType("const ALCchar*") java.lang.foreign.MemorySegment alcGetStringiSOFT(@CType("ALCdevice *") java.lang.foreign.MemorySegment device, @CType("ALCenum") int paramName, @CType("ALCsizei") int index) {
         if (Handles.MH_alcGetStringiSOFT == null) throw new SymbolNotFoundError("Symbol not found: alcGetStringiSOFT");
         try {
-            return (java.lang.foreign.MemorySegment) Handles.MH_alcGetStringiSOFT.invokeExact(device, paramName, index);
+            return (java.lang.foreign.MemorySegment) Handles.MH_alcGetStringiSOFT.invokeExact(Handles.get().PFN_alcGetStringiSOFT, device, paramName, index);
         } catch (Throwable e) { throw new RuntimeException("error in alcGetStringiSOFT", e); }
     }
 
     public static @CType("ALCboolean") boolean alcResetDeviceSOFT(@CType("ALCdevice *") java.lang.foreign.MemorySegment device, @CType("const ALCint *") java.lang.foreign.MemorySegment attribs) {
         if (Handles.MH_alcResetDeviceSOFT == null) throw new SymbolNotFoundError("Symbol not found: alcResetDeviceSOFT");
         try {
-            return (boolean) Handles.MH_alcResetDeviceSOFT.invokeExact(device, attribs);
+            return (boolean) Handles.MH_alcResetDeviceSOFT.invokeExact(Handles.get().PFN_alcResetDeviceSOFT, device, attribs);
         } catch (Throwable e) { throw new RuntimeException("error in alcResetDeviceSOFT", e); }
     }
 

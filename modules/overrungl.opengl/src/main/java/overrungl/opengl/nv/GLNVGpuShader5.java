@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -90,41 +89,6 @@ public final class GLNVGpuShader5 {
         public static final FunctionDescriptor FD_glProgramUniform2ui64vNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glProgramUniform3ui64vNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glProgramUniform4ui64vNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glUniform1i64NV,
-            FD_glUniform2i64NV,
-            FD_glUniform3i64NV,
-            FD_glUniform4i64NV,
-            FD_glUniform1i64vNV,
-            FD_glUniform2i64vNV,
-            FD_glUniform3i64vNV,
-            FD_glUniform4i64vNV,
-            FD_glUniform1ui64NV,
-            FD_glUniform2ui64NV,
-            FD_glUniform3ui64NV,
-            FD_glUniform4ui64NV,
-            FD_glUniform1ui64vNV,
-            FD_glUniform2ui64vNV,
-            FD_glUniform3ui64vNV,
-            FD_glUniform4ui64vNV,
-            FD_glGetUniformi64vNV,
-            FD_glProgramUniform1i64NV,
-            FD_glProgramUniform2i64NV,
-            FD_glProgramUniform3i64NV,
-            FD_glProgramUniform4i64NV,
-            FD_glProgramUniform1i64vNV,
-            FD_glProgramUniform2i64vNV,
-            FD_glProgramUniform3i64vNV,
-            FD_glProgramUniform4i64vNV,
-            FD_glProgramUniform1ui64NV,
-            FD_glProgramUniform2ui64NV,
-            FD_glProgramUniform3ui64NV,
-            FD_glProgramUniform4ui64NV,
-            FD_glProgramUniform1ui64vNV,
-            FD_glProgramUniform2ui64vNV,
-            FD_glProgramUniform3ui64vNV,
-            FD_glProgramUniform4ui64vNV
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glUniform1i64NV = RuntimeHelper.downcall(Descriptors.FD_glUniform1i64NV);

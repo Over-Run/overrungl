@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.VK12.*;
 public class VKKHRBufferDeviceAddress {
     public static final int VK_KHR_BUFFER_DEVICE_ADDRESS_SPEC_VERSION = 1;
@@ -42,11 +41,6 @@ public class VKKHRBufferDeviceAddress {
         public static final FunctionDescriptor FD_vkGetBufferDeviceAddressKHR = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkGetBufferOpaqueCaptureAddressKHR = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkGetDeviceMemoryOpaqueCaptureAddressKHR = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetBufferDeviceAddressKHR,
-            FD_vkGetBufferOpaqueCaptureAddressKHR,
-            FD_vkGetDeviceMemoryOpaqueCaptureAddressKHR
-        );
         private Descriptors() {}
     }
     public static final class Handles {

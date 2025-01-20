@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -97,21 +96,6 @@ public final class GLNVRegisterCombiners {
         public static final FunctionDescriptor FD_glGetCombinerOutputParameterivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetFinalCombinerInputParameterfvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetFinalCombinerInputParameterivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glCombinerParameterfvNV,
-            FD_glCombinerParameterfNV,
-            FD_glCombinerParameterivNV,
-            FD_glCombinerParameteriNV,
-            FD_glCombinerInputNV,
-            FD_glCombinerOutputNV,
-            FD_glFinalCombinerInputNV,
-            FD_glGetCombinerInputParameterfvNV,
-            FD_glGetCombinerInputParameterivNV,
-            FD_glGetCombinerOutputParameterfvNV,
-            FD_glGetCombinerOutputParameterivNV,
-            FD_glGetFinalCombinerInputParameterfvNV,
-            FD_glGetFinalCombinerInputParameterivNV
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glCombinerParameterfvNV = RuntimeHelper.downcall(Descriptors.FD_glCombinerParameterfvNV);

@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -39,11 +38,6 @@ public final class GLNVSampleLocations {
         public static final FunctionDescriptor FD_glFramebufferSampleLocationsfvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glNamedFramebufferSampleLocationsfvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glResolveDepthValuesNV = FunctionDescriptor.ofVoid();
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glFramebufferSampleLocationsfvNV,
-            FD_glNamedFramebufferSampleLocationsfvNV,
-            FD_glResolveDepthValuesNV
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glFramebufferSampleLocationsfvNV = RuntimeHelper.downcall(Descriptors.FD_glFramebufferSampleLocationsfvNV);

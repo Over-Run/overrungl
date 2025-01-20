@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKEXTColorWriteEnable {
     public static final int VK_EXT_COLOR_WRITE_ENABLE_SPEC_VERSION = 1;
     public static final String VK_EXT_COLOR_WRITE_ENABLE_EXTENSION_NAME = "VK_EXT_color_write_enable";
@@ -32,9 +31,6 @@ public class VKEXTColorWriteEnable {
     private final Handles handles;
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkCmdSetColorWriteEnableEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCmdSetColorWriteEnableEXT
-        );
         private Descriptors() {}
     }
     public static final class Handles {

@@ -93,7 +93,6 @@ class StaticDowncall(
                     """
                         import java.lang.foreign.*;
                         import java.lang.invoke.*;
-                        import java.util.*;
                         import overrungl.annotation.*;
                         import overrungl.internal.*;
                         import overrungl.util.*;
@@ -153,36 +152,51 @@ class StaticDowncall(
                         |        public static final FunctionDescriptor FD_${it.entrypoint} = ${it.functionDescriptor};
                     """.trimMargin()
                 )
+                nativeImageDowncallDescriptors.add("$packageName.$name.Descriptors.FD_${it.entrypoint}")
             }
-            sb.appendLine(
-                """
-                    |        /// Function descriptors.
-                    |        public static final List<FunctionDescriptor> LIST = List.of(
-                """.trimMargin()
-            )
-            list.forEachIndexed { index, it ->
-                sb.append("            FD_${it.entrypoint}")
-                if (index + 1 == list.size) {
-                    sb.appendLine()
-                } else {
-                    sb.appendLine(",")
-                }
-            }
-            sb.appendLine("        );")
             sb.appendLine("    }")
 
             // method handles
             sb.appendLine("    /// Method handles.")
             sb.appendLine("    public static final class Handles {")
-            sb.appendLine("        private Handles() { }")
             list.forEach {
                 sb.appendLine(
                     """
                         |        /// The method handle of `${it.entrypoint}`.
-                        |        public static final MethodHandle MH_${it.entrypoint} = RuntimeHelper.${if (it.optional) "downcallOrNull" else "downcall"}($symbolLookup, "${it.entrypoint}", Descriptors.FD_${it.entrypoint});
+                        |        public static final MethodHandle MH_${it.entrypoint} = RuntimeHelper.downcall(Descriptors.FD_${it.entrypoint});
                     """.trimMargin()
                 )
             }
+            list.forEach {
+                sb.appendLine(
+                    """
+                        |        /// The function address of `${it.entrypoint}`.
+                        |        public final MemorySegment PFN_${it.entrypoint};
+                    """.trimMargin()
+                )
+            }
+            sb.appendLine("        private Handles() {")
+            list.forEach {
+                if (it.optional) {
+                    sb.appendLine("""            PFN_${it.entrypoint} = $symbolLookup.find("${it.entrypoint}").orElse(MemorySegment.NULL);""")
+                } else {
+                    sb.appendLine("""            PFN_${it.entrypoint} = $symbolLookup.findOrThrow("${it.entrypoint}");""")
+                }
+            }
+            sb.appendLine("        }")
+            sb.appendLine(
+                """
+                    |        private static volatile Handles instance;
+                    |        private static Handles get() {
+                    |            if (instance == null) {
+                    |                synchronized (Handles.class) {
+                    |                    if (instance == null) { instance = new Handles(); }
+                    |                }
+                    |            }
+                    |            return instance;
+                    |        }
+                """.trimMargin()
+            )
             sb.appendLine("    }")
 
             sb.appendLine()
@@ -264,18 +278,19 @@ class StaticDowncall(
                         if (!returnVoid) {
                             b.append("(${m.returnType.carrier}) ")
                         }
-                        b.append("Handles.MH_${m.entrypoint}.invokeExact(")
-                        b.append(writtenParams.joinToString { p ->
+                        b.append("Handles.MH_${m.entrypoint}.invokeExact(Handles.get().PFN_${m.entrypoint}")
+                        writtenParams.forEach { p ->
+                            b.append(", ")
                             if (m.overload) {
-                                buildString {
-                                    p.type.processor.marshal(
-                                        ProcessorContext(
-                                            allocatorName = allocatorName,
-                                            this
-                                        ) { it.append(p.name) })
-                                }
-                            } else p.name
-                        })
+                                p.type.processor.marshal(
+                                    ProcessorContext(
+                                        allocatorName = allocatorName,
+                                        b
+                                    ) { it.append(p.name) })
+                            } else {
+                                b.append(p.name)
+                            }
+                        }
                         b.append(")")
                         Unit
                     }

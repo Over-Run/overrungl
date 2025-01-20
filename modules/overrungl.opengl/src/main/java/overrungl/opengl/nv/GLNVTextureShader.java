@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.nv;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLNVTextureShader {
     public static final int GL_OFFSET_TEXTURE_RECTANGLE_NV = 0x864C;
     public static final int GL_OFFSET_TEXTURE_RECTANGLE_SCALE_NV = 0x864D;

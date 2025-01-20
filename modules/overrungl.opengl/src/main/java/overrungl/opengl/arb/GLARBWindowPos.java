@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -44,24 +43,6 @@ public final class GLARBWindowPos {
         public static final FunctionDescriptor FD_glWindowPos3ivARB = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glWindowPos3sARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT);
         public static final FunctionDescriptor FD_glWindowPos3svARB = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glWindowPos2dARB,
-            FD_glWindowPos2dvARB,
-            FD_glWindowPos2fARB,
-            FD_glWindowPos2fvARB,
-            FD_glWindowPos2iARB,
-            FD_glWindowPos2ivARB,
-            FD_glWindowPos2sARB,
-            FD_glWindowPos2svARB,
-            FD_glWindowPos3dARB,
-            FD_glWindowPos3dvARB,
-            FD_glWindowPos3fARB,
-            FD_glWindowPos3fvARB,
-            FD_glWindowPos3iARB,
-            FD_glWindowPos3ivARB,
-            FD_glWindowPos3sARB,
-            FD_glWindowPos3svARB
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glWindowPos2dARB = RuntimeHelper.downcall(Descriptors.FD_glWindowPos2dARB);

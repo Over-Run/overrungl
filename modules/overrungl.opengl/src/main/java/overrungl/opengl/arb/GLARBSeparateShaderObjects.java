@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -98,69 +97,6 @@ public final class GLARBSeparateShaderObjects {
         public static final FunctionDescriptor FD_glProgramUniformMatrix4x3dv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glValidateProgramPipeline = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glGetProgramPipelineInfoLog = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glUseProgramStages,
-            FD_glActiveShaderProgram,
-            FD_glCreateShaderProgramv,
-            FD_glBindProgramPipeline,
-            FD_glDeleteProgramPipelines,
-            FD_glGenProgramPipelines,
-            FD_glIsProgramPipeline,
-            FD_glGetProgramPipelineiv,
-            FD_glProgramParameteri,
-            FD_glProgramUniform1i,
-            FD_glProgramUniform1iv,
-            FD_glProgramUniform1f,
-            FD_glProgramUniform1fv,
-            FD_glProgramUniform1d,
-            FD_glProgramUniform1dv,
-            FD_glProgramUniform1ui,
-            FD_glProgramUniform1uiv,
-            FD_glProgramUniform2i,
-            FD_glProgramUniform2iv,
-            FD_glProgramUniform2f,
-            FD_glProgramUniform2fv,
-            FD_glProgramUniform2d,
-            FD_glProgramUniform2dv,
-            FD_glProgramUniform2ui,
-            FD_glProgramUniform2uiv,
-            FD_glProgramUniform3i,
-            FD_glProgramUniform3iv,
-            FD_glProgramUniform3f,
-            FD_glProgramUniform3fv,
-            FD_glProgramUniform3d,
-            FD_glProgramUniform3dv,
-            FD_glProgramUniform3ui,
-            FD_glProgramUniform3uiv,
-            FD_glProgramUniform4i,
-            FD_glProgramUniform4iv,
-            FD_glProgramUniform4f,
-            FD_glProgramUniform4fv,
-            FD_glProgramUniform4d,
-            FD_glProgramUniform4dv,
-            FD_glProgramUniform4ui,
-            FD_glProgramUniform4uiv,
-            FD_glProgramUniformMatrix2fv,
-            FD_glProgramUniformMatrix3fv,
-            FD_glProgramUniformMatrix4fv,
-            FD_glProgramUniformMatrix2dv,
-            FD_glProgramUniformMatrix3dv,
-            FD_glProgramUniformMatrix4dv,
-            FD_glProgramUniformMatrix2x3fv,
-            FD_glProgramUniformMatrix3x2fv,
-            FD_glProgramUniformMatrix2x4fv,
-            FD_glProgramUniformMatrix4x2fv,
-            FD_glProgramUniformMatrix3x4fv,
-            FD_glProgramUniformMatrix4x3fv,
-            FD_glProgramUniformMatrix2x3dv,
-            FD_glProgramUniformMatrix3x2dv,
-            FD_glProgramUniformMatrix2x4dv,
-            FD_glProgramUniformMatrix4x2dv,
-            FD_glProgramUniformMatrix3x4dv,
-            FD_glProgramUniformMatrix4x3dv,
-            FD_glValidateProgramPipeline,
-            FD_glGetProgramPipelineInfoLog
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glUseProgramStages = RuntimeHelper.downcall(Descriptors.FD_glUseProgramStages);

@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.VK11.*;
 import static overrungl.vulkan.VK14.*;
 import static overrungl.vulkan.ext.VKEXTDebugReport.*;
@@ -40,12 +39,6 @@ public class VKKHRDescriptorUpdateTemplate {
         public static final FunctionDescriptor FD_vkDestroyDescriptorUpdateTemplateKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkUpdateDescriptorSetWithTemplateKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkCmdPushDescriptorSetWithTemplateKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCreateDescriptorUpdateTemplateKHR,
-            FD_vkDestroyDescriptorUpdateTemplateKHR,
-            FD_vkUpdateDescriptorSetWithTemplateKHR,
-            FD_vkCmdPushDescriptorSetWithTemplateKHR
-        );
         private Descriptors() {}
     }
     public static final class Handles {

@@ -19,7 +19,6 @@ package overrungl.opengl.apple;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -37,11 +36,6 @@ public final class GLAPPLEObjectPurgeable {
         public static final FunctionDescriptor FD_glObjectPurgeableAPPLE = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glObjectUnpurgeableAPPLE = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glGetObjectParameterivAPPLE = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glObjectPurgeableAPPLE,
-            FD_glObjectUnpurgeableAPPLE,
-            FD_glGetObjectParameterivAPPLE
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glObjectPurgeableAPPLE = RuntimeHelper.downcall(Descriptors.FD_glObjectPurgeableAPPLE);

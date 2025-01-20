@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -50,15 +49,6 @@ public final class GLEXTTransformFeedback {
         public static final FunctionDescriptor FD_glBindBufferBaseEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glTransformFeedbackVaryingsEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glGetTransformFeedbackVaryingEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glBeginTransformFeedbackEXT,
-            FD_glEndTransformFeedbackEXT,
-            FD_glBindBufferRangeEXT,
-            FD_glBindBufferOffsetEXT,
-            FD_glBindBufferBaseEXT,
-            FD_glTransformFeedbackVaryingsEXT,
-            FD_glGetTransformFeedbackVaryingEXT
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glBeginTransformFeedbackEXT = RuntimeHelper.downcall(Descriptors.FD_glBeginTransformFeedbackEXT);

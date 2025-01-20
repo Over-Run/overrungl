@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKKHRGetDisplayProperties2 {
     public static final int VK_KHR_GET_DISPLAY_PROPERTIES_2_SPEC_VERSION = 1;
     public static final String VK_KHR_GET_DISPLAY_PROPERTIES_2_EXTENSION_NAME = "VK_KHR_get_display_properties2";
@@ -37,12 +36,6 @@ public class VKKHRGetDisplayProperties2 {
         public static final FunctionDescriptor FD_vkGetPhysicalDeviceDisplayPlaneProperties2KHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkGetDisplayModeProperties2KHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkGetDisplayPlaneCapabilities2KHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetPhysicalDeviceDisplayProperties2KHR,
-            FD_vkGetPhysicalDeviceDisplayPlaneProperties2KHR,
-            FD_vkGetDisplayModeProperties2KHR,
-            FD_vkGetDisplayPlaneCapabilities2KHR
-        );
         private Descriptors() {}
     }
     public static final class Handles {

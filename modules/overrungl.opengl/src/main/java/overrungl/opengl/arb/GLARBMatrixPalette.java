@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -43,13 +42,6 @@ public final class GLARBMatrixPalette {
         public static final FunctionDescriptor FD_glMatrixIndexusvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glMatrixIndexuivARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glMatrixIndexPointerARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glCurrentPaletteMatrixARB,
-            FD_glMatrixIndexubvARB,
-            FD_glMatrixIndexusvARB,
-            FD_glMatrixIndexuivARB,
-            FD_glMatrixIndexPointerARB
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glCurrentPaletteMatrixARB = RuntimeHelper.downcall(Descriptors.FD_glCurrentPaletteMatrixARB);

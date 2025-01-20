@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKEXTDebugMarker {
     public static final int VK_DEBUG_REPORT_OBJECT_TYPE_UNKNOWN_EXT = 0;
     public static final int VK_DEBUG_REPORT_OBJECT_TYPE_INSTANCE_EXT = 1;
@@ -70,13 +69,6 @@ public class VKEXTDebugMarker {
         public static final FunctionDescriptor FD_vkCmdDebugMarkerBeginEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkCmdDebugMarkerEndEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkCmdDebugMarkerInsertEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkDebugMarkerSetObjectTagEXT,
-            FD_vkDebugMarkerSetObjectNameEXT,
-            FD_vkCmdDebugMarkerBeginEXT,
-            FD_vkCmdDebugMarkerEndEXT,
-            FD_vkCmdDebugMarkerInsertEXT
-        );
         private Descriptors() {}
     }
     public static final class Handles {

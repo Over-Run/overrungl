@@ -22,16 +22,12 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKEXTDirectModeDisplay {
     public static final int VK_EXT_DIRECT_MODE_DISPLAY_SPEC_VERSION = 1;
     public static final String VK_EXT_DIRECT_MODE_DISPLAY_EXTENSION_NAME = "VK_EXT_direct_mode_display";
     private final Handles handles;
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkReleaseDisplayEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkReleaseDisplayEXT
-        );
         private Descriptors() {}
     }
     public static final class Handles {

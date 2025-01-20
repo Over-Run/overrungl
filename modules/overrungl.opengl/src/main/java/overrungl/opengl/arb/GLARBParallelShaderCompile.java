@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -31,9 +30,6 @@ public final class GLARBParallelShaderCompile {
     public static final class Descriptors {
         private Descriptors() {}
         public static final FunctionDescriptor FD_glMaxShaderCompilerThreadsARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glMaxShaderCompilerThreadsARB
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glMaxShaderCompilerThreadsARB = RuntimeHelper.downcall(Descriptors.FD_glMaxShaderCompilerThreadsARB);

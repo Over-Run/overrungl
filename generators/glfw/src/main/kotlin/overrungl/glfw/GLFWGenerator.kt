@@ -1221,6 +1221,8 @@ fun main() {
         )
         //endregion
     }
+
+    writeNativeImageRegistration(glfwPackage)
 }
 
 private fun DowncallMethod.callbackOverload(arena: String): DowncallMethod =

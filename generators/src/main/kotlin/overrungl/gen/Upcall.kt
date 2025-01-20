@@ -47,6 +47,7 @@ class Upcall(
     init {
         action(this)
         write()
+        nativeImageUpcallDescriptors.add("$packageName.$name.DESCRIPTOR")
     }
 
     operator fun CustomTypeSpec.invoke(name: String): UpcallMethodParameter =

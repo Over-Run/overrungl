@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -61,17 +60,6 @@ public final class GLNVEvaluators {
         public static final FunctionDescriptor FD_glGetMapAttribParameterivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetMapAttribParameterfvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glEvalMapsNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glMapControlPointsNV,
-            FD_glMapParameterivNV,
-            FD_glMapParameterfvNV,
-            FD_glGetMapControlPointsNV,
-            FD_glGetMapParameterivNV,
-            FD_glGetMapParameterfvNV,
-            FD_glGetMapAttribParameterivNV,
-            FD_glGetMapAttribParameterfvNV,
-            FD_glEvalMapsNV
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glMapControlPointsNV = RuntimeHelper.downcall(Descriptors.FD_glMapControlPointsNV);

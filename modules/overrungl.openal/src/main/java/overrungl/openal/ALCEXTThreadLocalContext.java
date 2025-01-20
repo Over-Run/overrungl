@@ -18,7 +18,6 @@
 package overrungl.openal;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.*;
 import overrungl.util.*;
@@ -34,32 +33,43 @@ public final class ALCEXTThreadLocalContext {
         public static final FunctionDescriptor FD_alcSetThreadContext = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
         /// The function descriptor of `alcGetThreadContext`.
         public static final FunctionDescriptor FD_alcGetThreadContext = FunctionDescriptor.of(ValueLayout.ADDRESS);
-        /// Function descriptors.
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_alcSetThreadContext,
-            FD_alcGetThreadContext
-        );
     }
     /// Method handles.
     public static final class Handles {
-        private Handles() { }
         /// The method handle of `alcSetThreadContext`.
-        public static final MethodHandle MH_alcSetThreadContext = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alcSetThreadContext", Descriptors.FD_alcSetThreadContext);
+        public static final MethodHandle MH_alcSetThreadContext = RuntimeHelper.downcall(Descriptors.FD_alcSetThreadContext);
         /// The method handle of `alcGetThreadContext`.
-        public static final MethodHandle MH_alcGetThreadContext = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alcGetThreadContext", Descriptors.FD_alcGetThreadContext);
+        public static final MethodHandle MH_alcGetThreadContext = RuntimeHelper.downcall(Descriptors.FD_alcGetThreadContext);
+        /// The function address of `alcSetThreadContext`.
+        public final MemorySegment PFN_alcSetThreadContext;
+        /// The function address of `alcGetThreadContext`.
+        public final MemorySegment PFN_alcGetThreadContext;
+        private Handles() {
+            PFN_alcSetThreadContext = ALInternal.lookup().find("alcSetThreadContext").orElse(MemorySegment.NULL);
+            PFN_alcGetThreadContext = ALInternal.lookup().find("alcGetThreadContext").orElse(MemorySegment.NULL);
+        }
+        private static volatile Handles instance;
+        private static Handles get() {
+            if (instance == null) {
+                synchronized (Handles.class) {
+                    if (instance == null) { instance = new Handles(); }
+                }
+            }
+            return instance;
+        }
     }
 
     public static @CType("ALCboolean") boolean alcSetThreadContext(@CType("ALCcontext *") java.lang.foreign.MemorySegment context) {
         if (Handles.MH_alcSetThreadContext == null) throw new SymbolNotFoundError("Symbol not found: alcSetThreadContext");
         try {
-            return (boolean) Handles.MH_alcSetThreadContext.invokeExact(context);
+            return (boolean) Handles.MH_alcSetThreadContext.invokeExact(Handles.get().PFN_alcSetThreadContext, context);
         } catch (Throwable e) { throw new RuntimeException("error in alcSetThreadContext", e); }
     }
 
     public static @CType("ALCcontext *") java.lang.foreign.MemorySegment alcGetThreadContext() {
         if (Handles.MH_alcGetThreadContext == null) throw new SymbolNotFoundError("Symbol not found: alcGetThreadContext");
         try {
-            return (java.lang.foreign.MemorySegment) Handles.MH_alcGetThreadContext.invokeExact();
+            return (java.lang.foreign.MemorySegment) Handles.MH_alcGetThreadContext.invokeExact(Handles.get().PFN_alcGetThreadContext);
         } catch (Throwable e) { throw new RuntimeException("error in alcGetThreadContext", e); }
     }
 

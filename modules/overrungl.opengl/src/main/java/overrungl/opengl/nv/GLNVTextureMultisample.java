@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -36,14 +35,6 @@ public final class GLNVTextureMultisample {
         public static final FunctionDescriptor FD_glTextureImage3DMultisampleNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN);
         public static final FunctionDescriptor FD_glTextureImage2DMultisampleCoverageNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN);
         public static final FunctionDescriptor FD_glTextureImage3DMultisampleCoverageNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glTexImage2DMultisampleCoverageNV,
-            FD_glTexImage3DMultisampleCoverageNV,
-            FD_glTextureImage2DMultisampleNV,
-            FD_glTextureImage3DMultisampleNV,
-            FD_glTextureImage2DMultisampleCoverageNV,
-            FD_glTextureImage3DMultisampleCoverageNV
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glTexImage2DMultisampleCoverageNV = RuntimeHelper.downcall(Descriptors.FD_glTexImage2DMultisampleCoverageNV);

@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -75,54 +74,6 @@ public final class GLNVHalfFloat {
         public static final FunctionDescriptor FD_glSecondaryColor3hvNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glVertexWeighthNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_SHORT);
         public static final FunctionDescriptor FD_glVertexWeighthvNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glVertex2hNV,
-            FD_glVertex2hvNV,
-            FD_glVertex3hNV,
-            FD_glVertex3hvNV,
-            FD_glVertex4hNV,
-            FD_glVertex4hvNV,
-            FD_glNormal3hNV,
-            FD_glNormal3hvNV,
-            FD_glColor3hNV,
-            FD_glColor3hvNV,
-            FD_glColor4hNV,
-            FD_glColor4hvNV,
-            FD_glTexCoord1hNV,
-            FD_glTexCoord1hvNV,
-            FD_glTexCoord2hNV,
-            FD_glTexCoord2hvNV,
-            FD_glTexCoord3hNV,
-            FD_glTexCoord3hvNV,
-            FD_glTexCoord4hNV,
-            FD_glTexCoord4hvNV,
-            FD_glMultiTexCoord1hNV,
-            FD_glMultiTexCoord1hvNV,
-            FD_glMultiTexCoord2hNV,
-            FD_glMultiTexCoord2hvNV,
-            FD_glMultiTexCoord3hNV,
-            FD_glMultiTexCoord3hvNV,
-            FD_glMultiTexCoord4hNV,
-            FD_glMultiTexCoord4hvNV,
-            FD_glVertexAttrib1hNV,
-            FD_glVertexAttrib1hvNV,
-            FD_glVertexAttrib2hNV,
-            FD_glVertexAttrib2hvNV,
-            FD_glVertexAttrib3hNV,
-            FD_glVertexAttrib3hvNV,
-            FD_glVertexAttrib4hNV,
-            FD_glVertexAttrib4hvNV,
-            FD_glVertexAttribs1hvNV,
-            FD_glVertexAttribs2hvNV,
-            FD_glVertexAttribs3hvNV,
-            FD_glVertexAttribs4hvNV,
-            FD_glFogCoordhNV,
-            FD_glFogCoordhvNV,
-            FD_glSecondaryColor3hNV,
-            FD_glSecondaryColor3hvNV,
-            FD_glVertexWeighthNV,
-            FD_glVertexWeighthvNV
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glVertex2hNV = RuntimeHelper.downcall(Descriptors.FD_glVertex2hNV);

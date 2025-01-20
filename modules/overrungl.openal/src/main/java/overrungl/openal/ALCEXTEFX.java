@@ -18,7 +18,6 @@
 package overrungl.openal;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.*;
 import overrungl.util.*;
@@ -573,342 +572,415 @@ public final class ALCEXTEFX {
         public static final FunctionDescriptor FD_alGetAuxiliaryEffectSlotf = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         /// The function descriptor of `alGetAuxiliaryEffectSlotfv`.
         public static final FunctionDescriptor FD_alGetAuxiliaryEffectSlotfv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        /// Function descriptors.
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_alGenEffects,
-            FD_alDeleteEffects,
-            FD_alIsEffect,
-            FD_alEffecti,
-            FD_alEffectiv,
-            FD_alEffectf,
-            FD_alEffectfv,
-            FD_alGetEffecti,
-            FD_alGetEffectiv,
-            FD_alGetEffectf,
-            FD_alGetEffectfv,
-            FD_alGenFilters,
-            FD_alDeleteFilters,
-            FD_alIsFilter,
-            FD_alFilteri,
-            FD_alFilteriv,
-            FD_alFilterf,
-            FD_alFilterfv,
-            FD_alGetFilteri,
-            FD_alGetFilteriv,
-            FD_alGetFilterf,
-            FD_alGetFilterfv,
-            FD_alGenAuxiliaryEffectSlots,
-            FD_alDeleteAuxiliaryEffectSlots,
-            FD_alIsAuxiliaryEffectSlot,
-            FD_alAuxiliaryEffectSloti,
-            FD_alAuxiliaryEffectSlotiv,
-            FD_alAuxiliaryEffectSlotf,
-            FD_alAuxiliaryEffectSlotfv,
-            FD_alGetAuxiliaryEffectSloti,
-            FD_alGetAuxiliaryEffectSlotiv,
-            FD_alGetAuxiliaryEffectSlotf,
-            FD_alGetAuxiliaryEffectSlotfv
-        );
     }
     /// Method handles.
     public static final class Handles {
-        private Handles() { }
         /// The method handle of `alGenEffects`.
-        public static final MethodHandle MH_alGenEffects = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGenEffects", Descriptors.FD_alGenEffects);
+        public static final MethodHandle MH_alGenEffects = RuntimeHelper.downcall(Descriptors.FD_alGenEffects);
         /// The method handle of `alDeleteEffects`.
-        public static final MethodHandle MH_alDeleteEffects = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alDeleteEffects", Descriptors.FD_alDeleteEffects);
+        public static final MethodHandle MH_alDeleteEffects = RuntimeHelper.downcall(Descriptors.FD_alDeleteEffects);
         /// The method handle of `alIsEffect`.
-        public static final MethodHandle MH_alIsEffect = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alIsEffect", Descriptors.FD_alIsEffect);
+        public static final MethodHandle MH_alIsEffect = RuntimeHelper.downcall(Descriptors.FD_alIsEffect);
         /// The method handle of `alEffecti`.
-        public static final MethodHandle MH_alEffecti = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alEffecti", Descriptors.FD_alEffecti);
+        public static final MethodHandle MH_alEffecti = RuntimeHelper.downcall(Descriptors.FD_alEffecti);
         /// The method handle of `alEffectiv`.
-        public static final MethodHandle MH_alEffectiv = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alEffectiv", Descriptors.FD_alEffectiv);
+        public static final MethodHandle MH_alEffectiv = RuntimeHelper.downcall(Descriptors.FD_alEffectiv);
         /// The method handle of `alEffectf`.
-        public static final MethodHandle MH_alEffectf = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alEffectf", Descriptors.FD_alEffectf);
+        public static final MethodHandle MH_alEffectf = RuntimeHelper.downcall(Descriptors.FD_alEffectf);
         /// The method handle of `alEffectfv`.
-        public static final MethodHandle MH_alEffectfv = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alEffectfv", Descriptors.FD_alEffectfv);
+        public static final MethodHandle MH_alEffectfv = RuntimeHelper.downcall(Descriptors.FD_alEffectfv);
         /// The method handle of `alGetEffecti`.
-        public static final MethodHandle MH_alGetEffecti = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetEffecti", Descriptors.FD_alGetEffecti);
+        public static final MethodHandle MH_alGetEffecti = RuntimeHelper.downcall(Descriptors.FD_alGetEffecti);
         /// The method handle of `alGetEffectiv`.
-        public static final MethodHandle MH_alGetEffectiv = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetEffectiv", Descriptors.FD_alGetEffectiv);
+        public static final MethodHandle MH_alGetEffectiv = RuntimeHelper.downcall(Descriptors.FD_alGetEffectiv);
         /// The method handle of `alGetEffectf`.
-        public static final MethodHandle MH_alGetEffectf = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetEffectf", Descriptors.FD_alGetEffectf);
+        public static final MethodHandle MH_alGetEffectf = RuntimeHelper.downcall(Descriptors.FD_alGetEffectf);
         /// The method handle of `alGetEffectfv`.
-        public static final MethodHandle MH_alGetEffectfv = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetEffectfv", Descriptors.FD_alGetEffectfv);
+        public static final MethodHandle MH_alGetEffectfv = RuntimeHelper.downcall(Descriptors.FD_alGetEffectfv);
         /// The method handle of `alGenFilters`.
-        public static final MethodHandle MH_alGenFilters = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGenFilters", Descriptors.FD_alGenFilters);
+        public static final MethodHandle MH_alGenFilters = RuntimeHelper.downcall(Descriptors.FD_alGenFilters);
         /// The method handle of `alDeleteFilters`.
-        public static final MethodHandle MH_alDeleteFilters = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alDeleteFilters", Descriptors.FD_alDeleteFilters);
+        public static final MethodHandle MH_alDeleteFilters = RuntimeHelper.downcall(Descriptors.FD_alDeleteFilters);
         /// The method handle of `alIsFilter`.
-        public static final MethodHandle MH_alIsFilter = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alIsFilter", Descriptors.FD_alIsFilter);
+        public static final MethodHandle MH_alIsFilter = RuntimeHelper.downcall(Descriptors.FD_alIsFilter);
         /// The method handle of `alFilteri`.
-        public static final MethodHandle MH_alFilteri = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alFilteri", Descriptors.FD_alFilteri);
+        public static final MethodHandle MH_alFilteri = RuntimeHelper.downcall(Descriptors.FD_alFilteri);
         /// The method handle of `alFilteriv`.
-        public static final MethodHandle MH_alFilteriv = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alFilteriv", Descriptors.FD_alFilteriv);
+        public static final MethodHandle MH_alFilteriv = RuntimeHelper.downcall(Descriptors.FD_alFilteriv);
         /// The method handle of `alFilterf`.
-        public static final MethodHandle MH_alFilterf = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alFilterf", Descriptors.FD_alFilterf);
+        public static final MethodHandle MH_alFilterf = RuntimeHelper.downcall(Descriptors.FD_alFilterf);
         /// The method handle of `alFilterfv`.
-        public static final MethodHandle MH_alFilterfv = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alFilterfv", Descriptors.FD_alFilterfv);
+        public static final MethodHandle MH_alFilterfv = RuntimeHelper.downcall(Descriptors.FD_alFilterfv);
         /// The method handle of `alGetFilteri`.
-        public static final MethodHandle MH_alGetFilteri = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetFilteri", Descriptors.FD_alGetFilteri);
+        public static final MethodHandle MH_alGetFilteri = RuntimeHelper.downcall(Descriptors.FD_alGetFilteri);
         /// The method handle of `alGetFilteriv`.
-        public static final MethodHandle MH_alGetFilteriv = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetFilteriv", Descriptors.FD_alGetFilteriv);
+        public static final MethodHandle MH_alGetFilteriv = RuntimeHelper.downcall(Descriptors.FD_alGetFilteriv);
         /// The method handle of `alGetFilterf`.
-        public static final MethodHandle MH_alGetFilterf = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetFilterf", Descriptors.FD_alGetFilterf);
+        public static final MethodHandle MH_alGetFilterf = RuntimeHelper.downcall(Descriptors.FD_alGetFilterf);
         /// The method handle of `alGetFilterfv`.
-        public static final MethodHandle MH_alGetFilterfv = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetFilterfv", Descriptors.FD_alGetFilterfv);
+        public static final MethodHandle MH_alGetFilterfv = RuntimeHelper.downcall(Descriptors.FD_alGetFilterfv);
         /// The method handle of `alGenAuxiliaryEffectSlots`.
-        public static final MethodHandle MH_alGenAuxiliaryEffectSlots = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGenAuxiliaryEffectSlots", Descriptors.FD_alGenAuxiliaryEffectSlots);
+        public static final MethodHandle MH_alGenAuxiliaryEffectSlots = RuntimeHelper.downcall(Descriptors.FD_alGenAuxiliaryEffectSlots);
         /// The method handle of `alDeleteAuxiliaryEffectSlots`.
-        public static final MethodHandle MH_alDeleteAuxiliaryEffectSlots = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alDeleteAuxiliaryEffectSlots", Descriptors.FD_alDeleteAuxiliaryEffectSlots);
+        public static final MethodHandle MH_alDeleteAuxiliaryEffectSlots = RuntimeHelper.downcall(Descriptors.FD_alDeleteAuxiliaryEffectSlots);
         /// The method handle of `alIsAuxiliaryEffectSlot`.
-        public static final MethodHandle MH_alIsAuxiliaryEffectSlot = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alIsAuxiliaryEffectSlot", Descriptors.FD_alIsAuxiliaryEffectSlot);
+        public static final MethodHandle MH_alIsAuxiliaryEffectSlot = RuntimeHelper.downcall(Descriptors.FD_alIsAuxiliaryEffectSlot);
         /// The method handle of `alAuxiliaryEffectSloti`.
-        public static final MethodHandle MH_alAuxiliaryEffectSloti = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alAuxiliaryEffectSloti", Descriptors.FD_alAuxiliaryEffectSloti);
+        public static final MethodHandle MH_alAuxiliaryEffectSloti = RuntimeHelper.downcall(Descriptors.FD_alAuxiliaryEffectSloti);
         /// The method handle of `alAuxiliaryEffectSlotiv`.
-        public static final MethodHandle MH_alAuxiliaryEffectSlotiv = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alAuxiliaryEffectSlotiv", Descriptors.FD_alAuxiliaryEffectSlotiv);
+        public static final MethodHandle MH_alAuxiliaryEffectSlotiv = RuntimeHelper.downcall(Descriptors.FD_alAuxiliaryEffectSlotiv);
         /// The method handle of `alAuxiliaryEffectSlotf`.
-        public static final MethodHandle MH_alAuxiliaryEffectSlotf = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alAuxiliaryEffectSlotf", Descriptors.FD_alAuxiliaryEffectSlotf);
+        public static final MethodHandle MH_alAuxiliaryEffectSlotf = RuntimeHelper.downcall(Descriptors.FD_alAuxiliaryEffectSlotf);
         /// The method handle of `alAuxiliaryEffectSlotfv`.
-        public static final MethodHandle MH_alAuxiliaryEffectSlotfv = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alAuxiliaryEffectSlotfv", Descriptors.FD_alAuxiliaryEffectSlotfv);
+        public static final MethodHandle MH_alAuxiliaryEffectSlotfv = RuntimeHelper.downcall(Descriptors.FD_alAuxiliaryEffectSlotfv);
         /// The method handle of `alGetAuxiliaryEffectSloti`.
-        public static final MethodHandle MH_alGetAuxiliaryEffectSloti = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetAuxiliaryEffectSloti", Descriptors.FD_alGetAuxiliaryEffectSloti);
+        public static final MethodHandle MH_alGetAuxiliaryEffectSloti = RuntimeHelper.downcall(Descriptors.FD_alGetAuxiliaryEffectSloti);
         /// The method handle of `alGetAuxiliaryEffectSlotiv`.
-        public static final MethodHandle MH_alGetAuxiliaryEffectSlotiv = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetAuxiliaryEffectSlotiv", Descriptors.FD_alGetAuxiliaryEffectSlotiv);
+        public static final MethodHandle MH_alGetAuxiliaryEffectSlotiv = RuntimeHelper.downcall(Descriptors.FD_alGetAuxiliaryEffectSlotiv);
         /// The method handle of `alGetAuxiliaryEffectSlotf`.
-        public static final MethodHandle MH_alGetAuxiliaryEffectSlotf = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetAuxiliaryEffectSlotf", Descriptors.FD_alGetAuxiliaryEffectSlotf);
+        public static final MethodHandle MH_alGetAuxiliaryEffectSlotf = RuntimeHelper.downcall(Descriptors.FD_alGetAuxiliaryEffectSlotf);
         /// The method handle of `alGetAuxiliaryEffectSlotfv`.
-        public static final MethodHandle MH_alGetAuxiliaryEffectSlotfv = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetAuxiliaryEffectSlotfv", Descriptors.FD_alGetAuxiliaryEffectSlotfv);
+        public static final MethodHandle MH_alGetAuxiliaryEffectSlotfv = RuntimeHelper.downcall(Descriptors.FD_alGetAuxiliaryEffectSlotfv);
+        /// The function address of `alGenEffects`.
+        public final MemorySegment PFN_alGenEffects;
+        /// The function address of `alDeleteEffects`.
+        public final MemorySegment PFN_alDeleteEffects;
+        /// The function address of `alIsEffect`.
+        public final MemorySegment PFN_alIsEffect;
+        /// The function address of `alEffecti`.
+        public final MemorySegment PFN_alEffecti;
+        /// The function address of `alEffectiv`.
+        public final MemorySegment PFN_alEffectiv;
+        /// The function address of `alEffectf`.
+        public final MemorySegment PFN_alEffectf;
+        /// The function address of `alEffectfv`.
+        public final MemorySegment PFN_alEffectfv;
+        /// The function address of `alGetEffecti`.
+        public final MemorySegment PFN_alGetEffecti;
+        /// The function address of `alGetEffectiv`.
+        public final MemorySegment PFN_alGetEffectiv;
+        /// The function address of `alGetEffectf`.
+        public final MemorySegment PFN_alGetEffectf;
+        /// The function address of `alGetEffectfv`.
+        public final MemorySegment PFN_alGetEffectfv;
+        /// The function address of `alGenFilters`.
+        public final MemorySegment PFN_alGenFilters;
+        /// The function address of `alDeleteFilters`.
+        public final MemorySegment PFN_alDeleteFilters;
+        /// The function address of `alIsFilter`.
+        public final MemorySegment PFN_alIsFilter;
+        /// The function address of `alFilteri`.
+        public final MemorySegment PFN_alFilteri;
+        /// The function address of `alFilteriv`.
+        public final MemorySegment PFN_alFilteriv;
+        /// The function address of `alFilterf`.
+        public final MemorySegment PFN_alFilterf;
+        /// The function address of `alFilterfv`.
+        public final MemorySegment PFN_alFilterfv;
+        /// The function address of `alGetFilteri`.
+        public final MemorySegment PFN_alGetFilteri;
+        /// The function address of `alGetFilteriv`.
+        public final MemorySegment PFN_alGetFilteriv;
+        /// The function address of `alGetFilterf`.
+        public final MemorySegment PFN_alGetFilterf;
+        /// The function address of `alGetFilterfv`.
+        public final MemorySegment PFN_alGetFilterfv;
+        /// The function address of `alGenAuxiliaryEffectSlots`.
+        public final MemorySegment PFN_alGenAuxiliaryEffectSlots;
+        /// The function address of `alDeleteAuxiliaryEffectSlots`.
+        public final MemorySegment PFN_alDeleteAuxiliaryEffectSlots;
+        /// The function address of `alIsAuxiliaryEffectSlot`.
+        public final MemorySegment PFN_alIsAuxiliaryEffectSlot;
+        /// The function address of `alAuxiliaryEffectSloti`.
+        public final MemorySegment PFN_alAuxiliaryEffectSloti;
+        /// The function address of `alAuxiliaryEffectSlotiv`.
+        public final MemorySegment PFN_alAuxiliaryEffectSlotiv;
+        /// The function address of `alAuxiliaryEffectSlotf`.
+        public final MemorySegment PFN_alAuxiliaryEffectSlotf;
+        /// The function address of `alAuxiliaryEffectSlotfv`.
+        public final MemorySegment PFN_alAuxiliaryEffectSlotfv;
+        /// The function address of `alGetAuxiliaryEffectSloti`.
+        public final MemorySegment PFN_alGetAuxiliaryEffectSloti;
+        /// The function address of `alGetAuxiliaryEffectSlotiv`.
+        public final MemorySegment PFN_alGetAuxiliaryEffectSlotiv;
+        /// The function address of `alGetAuxiliaryEffectSlotf`.
+        public final MemorySegment PFN_alGetAuxiliaryEffectSlotf;
+        /// The function address of `alGetAuxiliaryEffectSlotfv`.
+        public final MemorySegment PFN_alGetAuxiliaryEffectSlotfv;
+        private Handles() {
+            PFN_alGenEffects = ALInternal.lookup().find("alGenEffects").orElse(MemorySegment.NULL);
+            PFN_alDeleteEffects = ALInternal.lookup().find("alDeleteEffects").orElse(MemorySegment.NULL);
+            PFN_alIsEffect = ALInternal.lookup().find("alIsEffect").orElse(MemorySegment.NULL);
+            PFN_alEffecti = ALInternal.lookup().find("alEffecti").orElse(MemorySegment.NULL);
+            PFN_alEffectiv = ALInternal.lookup().find("alEffectiv").orElse(MemorySegment.NULL);
+            PFN_alEffectf = ALInternal.lookup().find("alEffectf").orElse(MemorySegment.NULL);
+            PFN_alEffectfv = ALInternal.lookup().find("alEffectfv").orElse(MemorySegment.NULL);
+            PFN_alGetEffecti = ALInternal.lookup().find("alGetEffecti").orElse(MemorySegment.NULL);
+            PFN_alGetEffectiv = ALInternal.lookup().find("alGetEffectiv").orElse(MemorySegment.NULL);
+            PFN_alGetEffectf = ALInternal.lookup().find("alGetEffectf").orElse(MemorySegment.NULL);
+            PFN_alGetEffectfv = ALInternal.lookup().find("alGetEffectfv").orElse(MemorySegment.NULL);
+            PFN_alGenFilters = ALInternal.lookup().find("alGenFilters").orElse(MemorySegment.NULL);
+            PFN_alDeleteFilters = ALInternal.lookup().find("alDeleteFilters").orElse(MemorySegment.NULL);
+            PFN_alIsFilter = ALInternal.lookup().find("alIsFilter").orElse(MemorySegment.NULL);
+            PFN_alFilteri = ALInternal.lookup().find("alFilteri").orElse(MemorySegment.NULL);
+            PFN_alFilteriv = ALInternal.lookup().find("alFilteriv").orElse(MemorySegment.NULL);
+            PFN_alFilterf = ALInternal.lookup().find("alFilterf").orElse(MemorySegment.NULL);
+            PFN_alFilterfv = ALInternal.lookup().find("alFilterfv").orElse(MemorySegment.NULL);
+            PFN_alGetFilteri = ALInternal.lookup().find("alGetFilteri").orElse(MemorySegment.NULL);
+            PFN_alGetFilteriv = ALInternal.lookup().find("alGetFilteriv").orElse(MemorySegment.NULL);
+            PFN_alGetFilterf = ALInternal.lookup().find("alGetFilterf").orElse(MemorySegment.NULL);
+            PFN_alGetFilterfv = ALInternal.lookup().find("alGetFilterfv").orElse(MemorySegment.NULL);
+            PFN_alGenAuxiliaryEffectSlots = ALInternal.lookup().find("alGenAuxiliaryEffectSlots").orElse(MemorySegment.NULL);
+            PFN_alDeleteAuxiliaryEffectSlots = ALInternal.lookup().find("alDeleteAuxiliaryEffectSlots").orElse(MemorySegment.NULL);
+            PFN_alIsAuxiliaryEffectSlot = ALInternal.lookup().find("alIsAuxiliaryEffectSlot").orElse(MemorySegment.NULL);
+            PFN_alAuxiliaryEffectSloti = ALInternal.lookup().find("alAuxiliaryEffectSloti").orElse(MemorySegment.NULL);
+            PFN_alAuxiliaryEffectSlotiv = ALInternal.lookup().find("alAuxiliaryEffectSlotiv").orElse(MemorySegment.NULL);
+            PFN_alAuxiliaryEffectSlotf = ALInternal.lookup().find("alAuxiliaryEffectSlotf").orElse(MemorySegment.NULL);
+            PFN_alAuxiliaryEffectSlotfv = ALInternal.lookup().find("alAuxiliaryEffectSlotfv").orElse(MemorySegment.NULL);
+            PFN_alGetAuxiliaryEffectSloti = ALInternal.lookup().find("alGetAuxiliaryEffectSloti").orElse(MemorySegment.NULL);
+            PFN_alGetAuxiliaryEffectSlotiv = ALInternal.lookup().find("alGetAuxiliaryEffectSlotiv").orElse(MemorySegment.NULL);
+            PFN_alGetAuxiliaryEffectSlotf = ALInternal.lookup().find("alGetAuxiliaryEffectSlotf").orElse(MemorySegment.NULL);
+            PFN_alGetAuxiliaryEffectSlotfv = ALInternal.lookup().find("alGetAuxiliaryEffectSlotfv").orElse(MemorySegment.NULL);
+        }
+        private static volatile Handles instance;
+        private static Handles get() {
+            if (instance == null) {
+                synchronized (Handles.class) {
+                    if (instance == null) { instance = new Handles(); }
+                }
+            }
+            return instance;
+        }
     }
 
     public static void alGenEffects(@CType("ALsizei") int n, @CType("ALuint *") java.lang.foreign.MemorySegment effects) {
         if (Handles.MH_alGenEffects == null) throw new SymbolNotFoundError("Symbol not found: alGenEffects");
         try {
-            Handles.MH_alGenEffects.invokeExact(n, effects);
+            Handles.MH_alGenEffects.invokeExact(Handles.get().PFN_alGenEffects, n, effects);
         } catch (Throwable e) { throw new RuntimeException("error in alGenEffects", e); }
     }
 
     public static void alDeleteEffects(@CType("ALsizei") int n, @CType("const ALuint *") java.lang.foreign.MemorySegment effects) {
         if (Handles.MH_alDeleteEffects == null) throw new SymbolNotFoundError("Symbol not found: alDeleteEffects");
         try {
-            Handles.MH_alDeleteEffects.invokeExact(n, effects);
+            Handles.MH_alDeleteEffects.invokeExact(Handles.get().PFN_alDeleteEffects, n, effects);
         } catch (Throwable e) { throw new RuntimeException("error in alDeleteEffects", e); }
     }
 
     public static @CType("ALboolean") boolean alIsEffect(@CType("ALuint") int effect) {
         if (Handles.MH_alIsEffect == null) throw new SymbolNotFoundError("Symbol not found: alIsEffect");
         try {
-            return (boolean) Handles.MH_alIsEffect.invokeExact(effect);
+            return (boolean) Handles.MH_alIsEffect.invokeExact(Handles.get().PFN_alIsEffect, effect);
         } catch (Throwable e) { throw new RuntimeException("error in alIsEffect", e); }
     }
 
     public static void alEffecti(@CType("ALuint") int effect, @CType("ALenum") int param, @CType("ALint") int iValue) {
         if (Handles.MH_alEffecti == null) throw new SymbolNotFoundError("Symbol not found: alEffecti");
         try {
-            Handles.MH_alEffecti.invokeExact(effect, param, iValue);
+            Handles.MH_alEffecti.invokeExact(Handles.get().PFN_alEffecti, effect, param, iValue);
         } catch (Throwable e) { throw new RuntimeException("error in alEffecti", e); }
     }
 
     public static void alEffectiv(@CType("ALuint") int effect, @CType("ALenum") int param, @CType("const ALint *") java.lang.foreign.MemorySegment piValues) {
         if (Handles.MH_alEffectiv == null) throw new SymbolNotFoundError("Symbol not found: alEffectiv");
         try {
-            Handles.MH_alEffectiv.invokeExact(effect, param, piValues);
+            Handles.MH_alEffectiv.invokeExact(Handles.get().PFN_alEffectiv, effect, param, piValues);
         } catch (Throwable e) { throw new RuntimeException("error in alEffectiv", e); }
     }
 
     public static void alEffectf(@CType("ALuint") int effect, @CType("ALenum") int param, @CType("ALfloat") float flValue) {
         if (Handles.MH_alEffectf == null) throw new SymbolNotFoundError("Symbol not found: alEffectf");
         try {
-            Handles.MH_alEffectf.invokeExact(effect, param, flValue);
+            Handles.MH_alEffectf.invokeExact(Handles.get().PFN_alEffectf, effect, param, flValue);
         } catch (Throwable e) { throw new RuntimeException("error in alEffectf", e); }
     }
 
     public static void alEffectfv(@CType("ALuint") int effect, @CType("ALenum") int param, @CType("const ALfloat *") java.lang.foreign.MemorySegment pflValues) {
         if (Handles.MH_alEffectfv == null) throw new SymbolNotFoundError("Symbol not found: alEffectfv");
         try {
-            Handles.MH_alEffectfv.invokeExact(effect, param, pflValues);
+            Handles.MH_alEffectfv.invokeExact(Handles.get().PFN_alEffectfv, effect, param, pflValues);
         } catch (Throwable e) { throw new RuntimeException("error in alEffectfv", e); }
     }
 
     public static void alGetEffecti(@CType("ALuint") int effect, @CType("ALenum") int param, @CType("ALint *") java.lang.foreign.MemorySegment piValue) {
         if (Handles.MH_alGetEffecti == null) throw new SymbolNotFoundError("Symbol not found: alGetEffecti");
         try {
-            Handles.MH_alGetEffecti.invokeExact(effect, param, piValue);
+            Handles.MH_alGetEffecti.invokeExact(Handles.get().PFN_alGetEffecti, effect, param, piValue);
         } catch (Throwable e) { throw new RuntimeException("error in alGetEffecti", e); }
     }
 
     public static void alGetEffectiv(@CType("ALuint") int effect, @CType("ALenum") int param, @CType("ALint *") java.lang.foreign.MemorySegment piValues) {
         if (Handles.MH_alGetEffectiv == null) throw new SymbolNotFoundError("Symbol not found: alGetEffectiv");
         try {
-            Handles.MH_alGetEffectiv.invokeExact(effect, param, piValues);
+            Handles.MH_alGetEffectiv.invokeExact(Handles.get().PFN_alGetEffectiv, effect, param, piValues);
         } catch (Throwable e) { throw new RuntimeException("error in alGetEffectiv", e); }
     }
 
     public static void alGetEffectf(@CType("ALuint") int effect, @CType("ALenum") int param, @CType("ALfloat *") java.lang.foreign.MemorySegment pflValue) {
         if (Handles.MH_alGetEffectf == null) throw new SymbolNotFoundError("Symbol not found: alGetEffectf");
         try {
-            Handles.MH_alGetEffectf.invokeExact(effect, param, pflValue);
+            Handles.MH_alGetEffectf.invokeExact(Handles.get().PFN_alGetEffectf, effect, param, pflValue);
         } catch (Throwable e) { throw new RuntimeException("error in alGetEffectf", e); }
     }
 
     public static void alGetEffectfv(@CType("ALuint") int effect, @CType("ALenum") int param, @CType("ALfloat *") java.lang.foreign.MemorySegment pflValues) {
         if (Handles.MH_alGetEffectfv == null) throw new SymbolNotFoundError("Symbol not found: alGetEffectfv");
         try {
-            Handles.MH_alGetEffectfv.invokeExact(effect, param, pflValues);
+            Handles.MH_alGetEffectfv.invokeExact(Handles.get().PFN_alGetEffectfv, effect, param, pflValues);
         } catch (Throwable e) { throw new RuntimeException("error in alGetEffectfv", e); }
     }
 
     public static void alGenFilters(@CType("ALsizei") int n, @CType("ALuint *") java.lang.foreign.MemorySegment filters) {
         if (Handles.MH_alGenFilters == null) throw new SymbolNotFoundError("Symbol not found: alGenFilters");
         try {
-            Handles.MH_alGenFilters.invokeExact(n, filters);
+            Handles.MH_alGenFilters.invokeExact(Handles.get().PFN_alGenFilters, n, filters);
         } catch (Throwable e) { throw new RuntimeException("error in alGenFilters", e); }
     }
 
     public static void alDeleteFilters(@CType("ALsizei") int n, @CType("const ALuint *") java.lang.foreign.MemorySegment filters) {
         if (Handles.MH_alDeleteFilters == null) throw new SymbolNotFoundError("Symbol not found: alDeleteFilters");
         try {
-            Handles.MH_alDeleteFilters.invokeExact(n, filters);
+            Handles.MH_alDeleteFilters.invokeExact(Handles.get().PFN_alDeleteFilters, n, filters);
         } catch (Throwable e) { throw new RuntimeException("error in alDeleteFilters", e); }
     }
 
     public static @CType("ALboolean") boolean alIsFilter(@CType("ALuint") int filter) {
         if (Handles.MH_alIsFilter == null) throw new SymbolNotFoundError("Symbol not found: alIsFilter");
         try {
-            return (boolean) Handles.MH_alIsFilter.invokeExact(filter);
+            return (boolean) Handles.MH_alIsFilter.invokeExact(Handles.get().PFN_alIsFilter, filter);
         } catch (Throwable e) { throw new RuntimeException("error in alIsFilter", e); }
     }
 
     public static void alFilteri(@CType("ALuint") int filter, @CType("ALenum") int param, @CType("ALint") int iValue) {
         if (Handles.MH_alFilteri == null) throw new SymbolNotFoundError("Symbol not found: alFilteri");
         try {
-            Handles.MH_alFilteri.invokeExact(filter, param, iValue);
+            Handles.MH_alFilteri.invokeExact(Handles.get().PFN_alFilteri, filter, param, iValue);
         } catch (Throwable e) { throw new RuntimeException("error in alFilteri", e); }
     }
 
     public static void alFilteriv(@CType("ALuint") int filter, @CType("ALenum") int param, @CType("const ALint *") java.lang.foreign.MemorySegment piValues) {
         if (Handles.MH_alFilteriv == null) throw new SymbolNotFoundError("Symbol not found: alFilteriv");
         try {
-            Handles.MH_alFilteriv.invokeExact(filter, param, piValues);
+            Handles.MH_alFilteriv.invokeExact(Handles.get().PFN_alFilteriv, filter, param, piValues);
         } catch (Throwable e) { throw new RuntimeException("error in alFilteriv", e); }
     }
 
     public static void alFilterf(@CType("ALuint") int filter, @CType("ALenum") int param, @CType("ALfloat") float flValue) {
         if (Handles.MH_alFilterf == null) throw new SymbolNotFoundError("Symbol not found: alFilterf");
         try {
-            Handles.MH_alFilterf.invokeExact(filter, param, flValue);
+            Handles.MH_alFilterf.invokeExact(Handles.get().PFN_alFilterf, filter, param, flValue);
         } catch (Throwable e) { throw new RuntimeException("error in alFilterf", e); }
     }
 
     public static void alFilterfv(@CType("ALuint") int filter, @CType("ALenum") int param, @CType("const ALfloat *") java.lang.foreign.MemorySegment pflValues) {
         if (Handles.MH_alFilterfv == null) throw new SymbolNotFoundError("Symbol not found: alFilterfv");
         try {
-            Handles.MH_alFilterfv.invokeExact(filter, param, pflValues);
+            Handles.MH_alFilterfv.invokeExact(Handles.get().PFN_alFilterfv, filter, param, pflValues);
         } catch (Throwable e) { throw new RuntimeException("error in alFilterfv", e); }
     }
 
     public static void alGetFilteri(@CType("ALuint") int filter, @CType("ALenum") int param, @CType("ALint *") java.lang.foreign.MemorySegment piValue) {
         if (Handles.MH_alGetFilteri == null) throw new SymbolNotFoundError("Symbol not found: alGetFilteri");
         try {
-            Handles.MH_alGetFilteri.invokeExact(filter, param, piValue);
+            Handles.MH_alGetFilteri.invokeExact(Handles.get().PFN_alGetFilteri, filter, param, piValue);
         } catch (Throwable e) { throw new RuntimeException("error in alGetFilteri", e); }
     }
 
     public static void alGetFilteriv(@CType("ALuint") int filter, @CType("ALenum") int param, @CType("ALint *") java.lang.foreign.MemorySegment piValues) {
         if (Handles.MH_alGetFilteriv == null) throw new SymbolNotFoundError("Symbol not found: alGetFilteriv");
         try {
-            Handles.MH_alGetFilteriv.invokeExact(filter, param, piValues);
+            Handles.MH_alGetFilteriv.invokeExact(Handles.get().PFN_alGetFilteriv, filter, param, piValues);
         } catch (Throwable e) { throw new RuntimeException("error in alGetFilteriv", e); }
     }
 
     public static void alGetFilterf(@CType("ALuint") int filter, @CType("ALenum") int param, @CType("ALfloat *") java.lang.foreign.MemorySegment pflValue) {
         if (Handles.MH_alGetFilterf == null) throw new SymbolNotFoundError("Symbol not found: alGetFilterf");
         try {
-            Handles.MH_alGetFilterf.invokeExact(filter, param, pflValue);
+            Handles.MH_alGetFilterf.invokeExact(Handles.get().PFN_alGetFilterf, filter, param, pflValue);
         } catch (Throwable e) { throw new RuntimeException("error in alGetFilterf", e); }
     }
 
     public static void alGetFilterfv(@CType("ALuint") int filter, @CType("ALenum") int param, @CType("ALfloat *") java.lang.foreign.MemorySegment pflValues) {
         if (Handles.MH_alGetFilterfv == null) throw new SymbolNotFoundError("Symbol not found: alGetFilterfv");
         try {
-            Handles.MH_alGetFilterfv.invokeExact(filter, param, pflValues);
+            Handles.MH_alGetFilterfv.invokeExact(Handles.get().PFN_alGetFilterfv, filter, param, pflValues);
         } catch (Throwable e) { throw new RuntimeException("error in alGetFilterfv", e); }
     }
 
     public static void alGenAuxiliaryEffectSlots(@CType("ALsizei") int n, @CType("ALuint *") java.lang.foreign.MemorySegment effectslots) {
         if (Handles.MH_alGenAuxiliaryEffectSlots == null) throw new SymbolNotFoundError("Symbol not found: alGenAuxiliaryEffectSlots");
         try {
-            Handles.MH_alGenAuxiliaryEffectSlots.invokeExact(n, effectslots);
+            Handles.MH_alGenAuxiliaryEffectSlots.invokeExact(Handles.get().PFN_alGenAuxiliaryEffectSlots, n, effectslots);
         } catch (Throwable e) { throw new RuntimeException("error in alGenAuxiliaryEffectSlots", e); }
     }
 
     public static void alDeleteAuxiliaryEffectSlots(@CType("ALsizei") int n, @CType("const ALuint *") java.lang.foreign.MemorySegment effectslots) {
         if (Handles.MH_alDeleteAuxiliaryEffectSlots == null) throw new SymbolNotFoundError("Symbol not found: alDeleteAuxiliaryEffectSlots");
         try {
-            Handles.MH_alDeleteAuxiliaryEffectSlots.invokeExact(n, effectslots);
+            Handles.MH_alDeleteAuxiliaryEffectSlots.invokeExact(Handles.get().PFN_alDeleteAuxiliaryEffectSlots, n, effectslots);
         } catch (Throwable e) { throw new RuntimeException("error in alDeleteAuxiliaryEffectSlots", e); }
     }
 
     public static @CType("ALboolean") boolean alIsAuxiliaryEffectSlot(@CType("ALuint") int effectslot) {
         if (Handles.MH_alIsAuxiliaryEffectSlot == null) throw new SymbolNotFoundError("Symbol not found: alIsAuxiliaryEffectSlot");
         try {
-            return (boolean) Handles.MH_alIsAuxiliaryEffectSlot.invokeExact(effectslot);
+            return (boolean) Handles.MH_alIsAuxiliaryEffectSlot.invokeExact(Handles.get().PFN_alIsAuxiliaryEffectSlot, effectslot);
         } catch (Throwable e) { throw new RuntimeException("error in alIsAuxiliaryEffectSlot", e); }
     }
 
     public static void alAuxiliaryEffectSloti(@CType("ALuint") int effectslot, @CType("ALenum") int param, @CType("ALint") int iValue) {
         if (Handles.MH_alAuxiliaryEffectSloti == null) throw new SymbolNotFoundError("Symbol not found: alAuxiliaryEffectSloti");
         try {
-            Handles.MH_alAuxiliaryEffectSloti.invokeExact(effectslot, param, iValue);
+            Handles.MH_alAuxiliaryEffectSloti.invokeExact(Handles.get().PFN_alAuxiliaryEffectSloti, effectslot, param, iValue);
         } catch (Throwable e) { throw new RuntimeException("error in alAuxiliaryEffectSloti", e); }
     }
 
     public static void alAuxiliaryEffectSlotiv(@CType("ALuint") int effectslot, @CType("ALenum") int param, @CType("const ALint *") java.lang.foreign.MemorySegment piValues) {
         if (Handles.MH_alAuxiliaryEffectSlotiv == null) throw new SymbolNotFoundError("Symbol not found: alAuxiliaryEffectSlotiv");
         try {
-            Handles.MH_alAuxiliaryEffectSlotiv.invokeExact(effectslot, param, piValues);
+            Handles.MH_alAuxiliaryEffectSlotiv.invokeExact(Handles.get().PFN_alAuxiliaryEffectSlotiv, effectslot, param, piValues);
         } catch (Throwable e) { throw new RuntimeException("error in alAuxiliaryEffectSlotiv", e); }
     }
 
     public static void alAuxiliaryEffectSlotf(@CType("ALuint") int effectslot, @CType("ALenum") int param, @CType("ALfloat") float flValue) {
         if (Handles.MH_alAuxiliaryEffectSlotf == null) throw new SymbolNotFoundError("Symbol not found: alAuxiliaryEffectSlotf");
         try {
-            Handles.MH_alAuxiliaryEffectSlotf.invokeExact(effectslot, param, flValue);
+            Handles.MH_alAuxiliaryEffectSlotf.invokeExact(Handles.get().PFN_alAuxiliaryEffectSlotf, effectslot, param, flValue);
         } catch (Throwable e) { throw new RuntimeException("error in alAuxiliaryEffectSlotf", e); }
     }
 
     public static void alAuxiliaryEffectSlotfv(@CType("ALuint") int effectslot, @CType("ALenum") int param, @CType("const ALfloat *") java.lang.foreign.MemorySegment pflValues) {
         if (Handles.MH_alAuxiliaryEffectSlotfv == null) throw new SymbolNotFoundError("Symbol not found: alAuxiliaryEffectSlotfv");
         try {
-            Handles.MH_alAuxiliaryEffectSlotfv.invokeExact(effectslot, param, pflValues);
+            Handles.MH_alAuxiliaryEffectSlotfv.invokeExact(Handles.get().PFN_alAuxiliaryEffectSlotfv, effectslot, param, pflValues);
         } catch (Throwable e) { throw new RuntimeException("error in alAuxiliaryEffectSlotfv", e); }
     }
 
     public static void alGetAuxiliaryEffectSloti(@CType("ALuint") int effectslot, @CType("ALenum") int param, @CType("ALint *") java.lang.foreign.MemorySegment piValue) {
         if (Handles.MH_alGetAuxiliaryEffectSloti == null) throw new SymbolNotFoundError("Symbol not found: alGetAuxiliaryEffectSloti");
         try {
-            Handles.MH_alGetAuxiliaryEffectSloti.invokeExact(effectslot, param, piValue);
+            Handles.MH_alGetAuxiliaryEffectSloti.invokeExact(Handles.get().PFN_alGetAuxiliaryEffectSloti, effectslot, param, piValue);
         } catch (Throwable e) { throw new RuntimeException("error in alGetAuxiliaryEffectSloti", e); }
     }
 
     public static void alGetAuxiliaryEffectSlotiv(@CType("ALuint") int effectslot, @CType("ALenum") int param, @CType("ALint *") java.lang.foreign.MemorySegment piValues) {
         if (Handles.MH_alGetAuxiliaryEffectSlotiv == null) throw new SymbolNotFoundError("Symbol not found: alGetAuxiliaryEffectSlotiv");
         try {
-            Handles.MH_alGetAuxiliaryEffectSlotiv.invokeExact(effectslot, param, piValues);
+            Handles.MH_alGetAuxiliaryEffectSlotiv.invokeExact(Handles.get().PFN_alGetAuxiliaryEffectSlotiv, effectslot, param, piValues);
         } catch (Throwable e) { throw new RuntimeException("error in alGetAuxiliaryEffectSlotiv", e); }
     }
 
     public static void alGetAuxiliaryEffectSlotf(@CType("ALuint") int effectslot, @CType("ALenum") int param, @CType("ALfloat *") java.lang.foreign.MemorySegment pflValue) {
         if (Handles.MH_alGetAuxiliaryEffectSlotf == null) throw new SymbolNotFoundError("Symbol not found: alGetAuxiliaryEffectSlotf");
         try {
-            Handles.MH_alGetAuxiliaryEffectSlotf.invokeExact(effectslot, param, pflValue);
+            Handles.MH_alGetAuxiliaryEffectSlotf.invokeExact(Handles.get().PFN_alGetAuxiliaryEffectSlotf, effectslot, param, pflValue);
         } catch (Throwable e) { throw new RuntimeException("error in alGetAuxiliaryEffectSlotf", e); }
     }
 
     public static void alGetAuxiliaryEffectSlotfv(@CType("ALuint") int effectslot, @CType("ALenum") int param, @CType("ALfloat *") java.lang.foreign.MemorySegment pflValues) {
         if (Handles.MH_alGetAuxiliaryEffectSlotfv == null) throw new SymbolNotFoundError("Symbol not found: alGetAuxiliaryEffectSlotfv");
         try {
-            Handles.MH_alGetAuxiliaryEffectSlotfv.invokeExact(effectslot, param, pflValues);
+            Handles.MH_alGetAuxiliaryEffectSlotfv.invokeExact(Handles.get().PFN_alGetAuxiliaryEffectSlotfv, effectslot, param, pflValues);
         } catch (Throwable e) { throw new RuntimeException("error in alGetAuxiliaryEffectSlotfv", e); }
     }
 

@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKEXTDepthClampControl {
     public static final int VK_DEPTH_CLAMP_MODE_VIEWPORT_RANGE_EXT = 0;
     public static final int VK_DEPTH_CLAMP_MODE_USER_DEFINED_RANGE_EXT = 1;
@@ -34,9 +33,6 @@ public class VKEXTDepthClampControl {
     private final Handles handles;
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkCmdSetDepthClampRangeEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCmdSetDepthClampRangeEXT
-        );
         private Descriptors() {}
     }
     public static final class Handles {

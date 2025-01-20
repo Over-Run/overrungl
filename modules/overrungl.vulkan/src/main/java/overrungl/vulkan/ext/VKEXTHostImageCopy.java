@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.VK14.*;
 public class VKEXTHostImageCopy {
     public static final int VK_EXT_HOST_IMAGE_COPY_SPEC_VERSION = 1;
@@ -47,13 +46,6 @@ public class VKEXTHostImageCopy {
         public static final FunctionDescriptor FD_vkCopyImageToImageEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkTransitionImageLayoutEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkGetImageSubresourceLayout2EXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCopyMemoryToImageEXT,
-            FD_vkCopyImageToMemoryEXT,
-            FD_vkCopyImageToImageEXT,
-            FD_vkTransitionImageLayoutEXT,
-            FD_vkGetImageSubresourceLayout2EXT
-        );
         private Descriptors() {}
     }
     public static final class Handles {

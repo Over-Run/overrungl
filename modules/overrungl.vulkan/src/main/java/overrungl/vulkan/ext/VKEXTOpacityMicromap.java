@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKEXTOpacityMicromap {
     public static final int VK_MICROMAP_TYPE_OPACITY_MICROMAP_EXT = 0;
     public static final int VK_BUILD_MICROMAP_PREFER_FAST_TRACE_BIT_EXT = 0x00000001;
@@ -82,22 +81,6 @@ public class VKEXTOpacityMicromap {
         public static final FunctionDescriptor FD_vkCmdWriteMicromapsPropertiesEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_vkGetDeviceMicromapCompatibilityEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkGetMicromapBuildSizesEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCreateMicromapEXT,
-            FD_vkDestroyMicromapEXT,
-            FD_vkCmdBuildMicromapsEXT,
-            FD_vkBuildMicromapsEXT,
-            FD_vkCopyMicromapEXT,
-            FD_vkCopyMicromapToMemoryEXT,
-            FD_vkCopyMemoryToMicromapEXT,
-            FD_vkWriteMicromapsPropertiesEXT,
-            FD_vkCmdCopyMicromapEXT,
-            FD_vkCmdCopyMicromapToMemoryEXT,
-            FD_vkCmdCopyMemoryToMicromapEXT,
-            FD_vkCmdWriteMicromapsPropertiesEXT,
-            FD_vkGetDeviceMicromapCompatibilityEXT,
-            FD_vkGetMicromapBuildSizesEXT
-        );
         private Descriptors() {}
     }
     public static final class Handles {

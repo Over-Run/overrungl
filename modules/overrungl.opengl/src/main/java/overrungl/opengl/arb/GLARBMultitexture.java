@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -97,42 +96,6 @@ public final class GLARBMultitexture {
         public static final FunctionDescriptor FD_glMultiTexCoord4ivARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glMultiTexCoord4sARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT);
         public static final FunctionDescriptor FD_glMultiTexCoord4svARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glActiveTextureARB,
-            FD_glClientActiveTextureARB,
-            FD_glMultiTexCoord1dARB,
-            FD_glMultiTexCoord1dvARB,
-            FD_glMultiTexCoord1fARB,
-            FD_glMultiTexCoord1fvARB,
-            FD_glMultiTexCoord1iARB,
-            FD_glMultiTexCoord1ivARB,
-            FD_glMultiTexCoord1sARB,
-            FD_glMultiTexCoord1svARB,
-            FD_glMultiTexCoord2dARB,
-            FD_glMultiTexCoord2dvARB,
-            FD_glMultiTexCoord2fARB,
-            FD_glMultiTexCoord2fvARB,
-            FD_glMultiTexCoord2iARB,
-            FD_glMultiTexCoord2ivARB,
-            FD_glMultiTexCoord2sARB,
-            FD_glMultiTexCoord2svARB,
-            FD_glMultiTexCoord3dARB,
-            FD_glMultiTexCoord3dvARB,
-            FD_glMultiTexCoord3fARB,
-            FD_glMultiTexCoord3fvARB,
-            FD_glMultiTexCoord3iARB,
-            FD_glMultiTexCoord3ivARB,
-            FD_glMultiTexCoord3sARB,
-            FD_glMultiTexCoord3svARB,
-            FD_glMultiTexCoord4dARB,
-            FD_glMultiTexCoord4dvARB,
-            FD_glMultiTexCoord4fARB,
-            FD_glMultiTexCoord4fvARB,
-            FD_glMultiTexCoord4iARB,
-            FD_glMultiTexCoord4ivARB,
-            FD_glMultiTexCoord4sARB,
-            FD_glMultiTexCoord4svARB
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glActiveTextureARB = RuntimeHelper.downcall(Descriptors.FD_glActiveTextureARB);

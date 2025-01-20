@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -47,16 +46,6 @@ public final class GLARBShaderSubroutine {
         public static final FunctionDescriptor FD_glUniformSubroutinesuiv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetUniformSubroutineuiv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetProgramStageiv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glGetSubroutineUniformLocation,
-            FD_glGetSubroutineIndex,
-            FD_glGetActiveSubroutineUniformiv,
-            FD_glGetActiveSubroutineUniformName,
-            FD_glGetActiveSubroutineName,
-            FD_glUniformSubroutinesuiv,
-            FD_glGetUniformSubroutineuiv,
-            FD_glGetProgramStageiv
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glGetSubroutineUniformLocation = RuntimeHelper.downcall(Descriptors.FD_glGetSubroutineUniformLocation);

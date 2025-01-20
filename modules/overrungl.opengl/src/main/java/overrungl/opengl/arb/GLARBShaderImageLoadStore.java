@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -94,10 +93,6 @@ public final class GLARBShaderImageLoadStore {
         private Descriptors() {}
         public static final FunctionDescriptor FD_glBindImageTexture = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glMemoryBarrier = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glBindImageTexture,
-            FD_glMemoryBarrier
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glBindImageTexture = RuntimeHelper.downcall(Descriptors.FD_glBindImageTexture);

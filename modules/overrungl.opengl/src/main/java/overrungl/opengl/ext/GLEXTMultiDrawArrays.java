@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -30,10 +29,6 @@ public final class GLEXTMultiDrawArrays {
         private Descriptors() {}
         public static final FunctionDescriptor FD_glMultiDrawArraysEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glMultiDrawElementsEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glMultiDrawArraysEXT,
-            FD_glMultiDrawElementsEXT
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glMultiDrawArraysEXT = RuntimeHelper.downcall(Descriptors.FD_glMultiDrawArraysEXT);

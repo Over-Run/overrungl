@@ -19,7 +19,6 @@ package overrungl.opengl.nvx;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -32,12 +31,6 @@ public final class GLNVXProgressFence {
         public static final FunctionDescriptor FD_glSignalSemaphoreui64NVX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glWaitSemaphoreui64NVX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glClientWaitSemaphoreui64NVX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glCreateProgressFenceNVX,
-            FD_glSignalSemaphoreui64NVX,
-            FD_glWaitSemaphoreui64NVX,
-            FD_glClientWaitSemaphoreui64NVX
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glCreateProgressFenceNVX = RuntimeHelper.downcall(Descriptors.FD_glCreateProgressFenceNVX);

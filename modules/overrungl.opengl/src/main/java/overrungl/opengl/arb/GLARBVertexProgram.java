@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -169,70 +168,6 @@ public final class GLARBVertexProgram {
         public static final FunctionDescriptor FD_glGetVertexAttribivARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetVertexAttribPointervARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glIsProgramARB = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glVertexAttrib1dARB,
-            FD_glVertexAttrib1dvARB,
-            FD_glVertexAttrib1fARB,
-            FD_glVertexAttrib1fvARB,
-            FD_glVertexAttrib1sARB,
-            FD_glVertexAttrib1svARB,
-            FD_glVertexAttrib2dARB,
-            FD_glVertexAttrib2dvARB,
-            FD_glVertexAttrib2fARB,
-            FD_glVertexAttrib2fvARB,
-            FD_glVertexAttrib2sARB,
-            FD_glVertexAttrib2svARB,
-            FD_glVertexAttrib3dARB,
-            FD_glVertexAttrib3dvARB,
-            FD_glVertexAttrib3fARB,
-            FD_glVertexAttrib3fvARB,
-            FD_glVertexAttrib3sARB,
-            FD_glVertexAttrib3svARB,
-            FD_glVertexAttrib4NbvARB,
-            FD_glVertexAttrib4NivARB,
-            FD_glVertexAttrib4NsvARB,
-            FD_glVertexAttrib4NubARB,
-            FD_glVertexAttrib4NubvARB,
-            FD_glVertexAttrib4NuivARB,
-            FD_glVertexAttrib4NusvARB,
-            FD_glVertexAttrib4bvARB,
-            FD_glVertexAttrib4dARB,
-            FD_glVertexAttrib4dvARB,
-            FD_glVertexAttrib4fARB,
-            FD_glVertexAttrib4fvARB,
-            FD_glVertexAttrib4ivARB,
-            FD_glVertexAttrib4sARB,
-            FD_glVertexAttrib4svARB,
-            FD_glVertexAttrib4ubvARB,
-            FD_glVertexAttrib4uivARB,
-            FD_glVertexAttrib4usvARB,
-            FD_glVertexAttribPointerARB,
-            FD_glEnableVertexAttribArrayARB,
-            FD_glDisableVertexAttribArrayARB,
-            FD_glProgramStringARB,
-            FD_glBindProgramARB,
-            FD_glDeleteProgramsARB,
-            FD_glGenProgramsARB,
-            FD_glProgramEnvParameter4dARB,
-            FD_glProgramEnvParameter4dvARB,
-            FD_glProgramEnvParameter4fARB,
-            FD_glProgramEnvParameter4fvARB,
-            FD_glProgramLocalParameter4dARB,
-            FD_glProgramLocalParameter4dvARB,
-            FD_glProgramLocalParameter4fARB,
-            FD_glProgramLocalParameter4fvARB,
-            FD_glGetProgramEnvParameterdvARB,
-            FD_glGetProgramEnvParameterfvARB,
-            FD_glGetProgramLocalParameterdvARB,
-            FD_glGetProgramLocalParameterfvARB,
-            FD_glGetProgramivARB,
-            FD_glGetProgramStringARB,
-            FD_glGetVertexAttribdvARB,
-            FD_glGetVertexAttribfvARB,
-            FD_glGetVertexAttribivARB,
-            FD_glGetVertexAttribPointervARB,
-            FD_glIsProgramARB
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glVertexAttrib1dARB = RuntimeHelper.downcall(Descriptors.FD_glVertexAttrib1dARB);

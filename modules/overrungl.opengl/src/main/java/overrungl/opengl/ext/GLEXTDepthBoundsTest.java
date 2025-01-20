@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -31,9 +30,6 @@ public final class GLEXTDepthBoundsTest {
     public static final class Descriptors {
         private Descriptors() {}
         public static final FunctionDescriptor FD_glDepthBoundsEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glDepthBoundsEXT
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glDepthBoundsEXT = RuntimeHelper.downcall(Descriptors.FD_glDepthBoundsEXT);

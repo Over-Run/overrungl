@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.VK12.*;
 public class VKKHRCreateRenderpass2 {
     public static final int VK_KHR_CREATE_RENDERPASS_2_SPEC_VERSION = 1;
@@ -40,12 +39,6 @@ public class VKKHRCreateRenderpass2 {
         public static final FunctionDescriptor FD_vkCmdBeginRenderPass2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkCmdNextSubpass2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkCmdEndRenderPass2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCreateRenderPass2KHR,
-            FD_vkCmdBeginRenderPass2KHR,
-            FD_vkCmdNextSubpass2KHR,
-            FD_vkCmdEndRenderPass2KHR
-        );
         private Descriptors() {}
     }
     public static final class Handles {

@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKNVScissorExclusive {
     public static final int VK_NV_SCISSOR_EXCLUSIVE_SPEC_VERSION = 2;
     public static final String VK_NV_SCISSOR_EXCLUSIVE_EXTENSION_NAME = "VK_NV_scissor_exclusive";
@@ -34,10 +33,6 @@ public class VKNVScissorExclusive {
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkCmdSetExclusiveScissorEnableNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkCmdSetExclusiveScissorNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCmdSetExclusiveScissorEnableNV,
-            FD_vkCmdSetExclusiveScissorNV
-        );
         private Descriptors() {}
     }
     public static final class Handles {

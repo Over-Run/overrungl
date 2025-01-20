@@ -18,7 +18,6 @@
 package overrungl.openal;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.*;
 import overrungl.util.*;
@@ -35,32 +34,43 @@ public final class ALSOFTDeferredUpdates {
         public static final FunctionDescriptor FD_alDeferUpdatesSOFT = FunctionDescriptor.ofVoid();
         /// The function descriptor of `alProcessUpdatesSOFT`.
         public static final FunctionDescriptor FD_alProcessUpdatesSOFT = FunctionDescriptor.ofVoid();
-        /// Function descriptors.
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_alDeferUpdatesSOFT,
-            FD_alProcessUpdatesSOFT
-        );
     }
     /// Method handles.
     public static final class Handles {
-        private Handles() { }
         /// The method handle of `alDeferUpdatesSOFT`.
-        public static final MethodHandle MH_alDeferUpdatesSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alDeferUpdatesSOFT", Descriptors.FD_alDeferUpdatesSOFT);
+        public static final MethodHandle MH_alDeferUpdatesSOFT = RuntimeHelper.downcall(Descriptors.FD_alDeferUpdatesSOFT);
         /// The method handle of `alProcessUpdatesSOFT`.
-        public static final MethodHandle MH_alProcessUpdatesSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alProcessUpdatesSOFT", Descriptors.FD_alProcessUpdatesSOFT);
+        public static final MethodHandle MH_alProcessUpdatesSOFT = RuntimeHelper.downcall(Descriptors.FD_alProcessUpdatesSOFT);
+        /// The function address of `alDeferUpdatesSOFT`.
+        public final MemorySegment PFN_alDeferUpdatesSOFT;
+        /// The function address of `alProcessUpdatesSOFT`.
+        public final MemorySegment PFN_alProcessUpdatesSOFT;
+        private Handles() {
+            PFN_alDeferUpdatesSOFT = ALInternal.lookup().find("alDeferUpdatesSOFT").orElse(MemorySegment.NULL);
+            PFN_alProcessUpdatesSOFT = ALInternal.lookup().find("alProcessUpdatesSOFT").orElse(MemorySegment.NULL);
+        }
+        private static volatile Handles instance;
+        private static Handles get() {
+            if (instance == null) {
+                synchronized (Handles.class) {
+                    if (instance == null) { instance = new Handles(); }
+                }
+            }
+            return instance;
+        }
     }
 
     public static void alDeferUpdatesSOFT() {
         if (Handles.MH_alDeferUpdatesSOFT == null) throw new SymbolNotFoundError("Symbol not found: alDeferUpdatesSOFT");
         try {
-            Handles.MH_alDeferUpdatesSOFT.invokeExact();
+            Handles.MH_alDeferUpdatesSOFT.invokeExact(Handles.get().PFN_alDeferUpdatesSOFT);
         } catch (Throwable e) { throw new RuntimeException("error in alDeferUpdatesSOFT", e); }
     }
 
     public static void alProcessUpdatesSOFT() {
         if (Handles.MH_alProcessUpdatesSOFT == null) throw new SymbolNotFoundError("Symbol not found: alProcessUpdatesSOFT");
         try {
-            Handles.MH_alProcessUpdatesSOFT.invokeExact();
+            Handles.MH_alProcessUpdatesSOFT.invokeExact(Handles.get().PFN_alProcessUpdatesSOFT);
         } catch (Throwable e) { throw new RuntimeException("error in alProcessUpdatesSOFT", e); }
     }
 

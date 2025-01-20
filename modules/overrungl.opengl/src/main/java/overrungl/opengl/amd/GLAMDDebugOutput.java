@@ -19,7 +19,6 @@ package overrungl.opengl.amd;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -46,12 +45,6 @@ public final class GLAMDDebugOutput {
         public static final FunctionDescriptor FD_glDebugMessageInsertAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glDebugMessageCallbackAMD = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetDebugMessageLogAMD = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glDebugMessageEnableAMD,
-            FD_glDebugMessageInsertAMD,
-            FD_glDebugMessageCallbackAMD,
-            FD_glGetDebugMessageLogAMD
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glDebugMessageEnableAMD = RuntimeHelper.downcall(Descriptors.FD_glDebugMessageEnableAMD);

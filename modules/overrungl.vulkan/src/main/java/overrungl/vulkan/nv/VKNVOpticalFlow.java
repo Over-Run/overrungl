@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.nv.VKNVOpticalFlow.*;
 public class VKNVOpticalFlow {
     public static final int VK_OPTICAL_FLOW_USAGE_UNKNOWN_NV = 0;
@@ -81,13 +80,6 @@ public class VKNVOpticalFlow {
         public static final FunctionDescriptor FD_vkDestroyOpticalFlowSessionNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkBindOpticalFlowSessionImageNV = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_vkCmdOpticalFlowExecuteNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetPhysicalDeviceOpticalFlowImageFormatsNV,
-            FD_vkCreateOpticalFlowSessionNV,
-            FD_vkDestroyOpticalFlowSessionNV,
-            FD_vkBindOpticalFlowSessionImageNV,
-            FD_vkCmdOpticalFlowExecuteNV
-        );
         private Descriptors() {}
     }
     public static final class Handles {

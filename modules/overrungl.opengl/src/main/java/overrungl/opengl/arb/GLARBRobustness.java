@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -56,28 +55,6 @@ public final class GLARBRobustness {
         public static final FunctionDescriptor FD_glGetnSeparableFilterARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetnHistogramARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetnMinmaxARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glGetGraphicsResetStatusARB,
-            FD_glGetnTexImageARB,
-            FD_glReadnPixelsARB,
-            FD_glGetnCompressedTexImageARB,
-            FD_glGetnUniformfvARB,
-            FD_glGetnUniformivARB,
-            FD_glGetnUniformuivARB,
-            FD_glGetnUniformdvARB,
-            FD_glGetnMapdvARB,
-            FD_glGetnMapfvARB,
-            FD_glGetnMapivARB,
-            FD_glGetnPixelMapfvARB,
-            FD_glGetnPixelMapuivARB,
-            FD_glGetnPixelMapusvARB,
-            FD_glGetnPolygonStippleARB,
-            FD_glGetnColorTableARB,
-            FD_glGetnConvolutionFilterARB,
-            FD_glGetnSeparableFilterARB,
-            FD_glGetnHistogramARB,
-            FD_glGetnMinmaxARB
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glGetGraphicsResetStatusARB = RuntimeHelper.downcall(Descriptors.FD_glGetGraphicsResetStatusARB);

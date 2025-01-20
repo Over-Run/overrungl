@@ -18,7 +18,6 @@
 package overrungl.openal;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.*;
 import overrungl.util.*;
@@ -36,22 +35,31 @@ public final class ALSOFTSourceResampler {
         private Descriptors() { }
         /// The function descriptor of `alGetStringiSOFT`.
         public static final FunctionDescriptor FD_alGetStringiSOFT = FunctionDescriptor.of(Unmarshal.STR_LAYOUT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        /// Function descriptors.
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_alGetStringiSOFT
-        );
     }
     /// Method handles.
     public static final class Handles {
-        private Handles() { }
         /// The method handle of `alGetStringiSOFT`.
-        public static final MethodHandle MH_alGetStringiSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetStringiSOFT", Descriptors.FD_alGetStringiSOFT);
+        public static final MethodHandle MH_alGetStringiSOFT = RuntimeHelper.downcall(Descriptors.FD_alGetStringiSOFT);
+        /// The function address of `alGetStringiSOFT`.
+        public final MemorySegment PFN_alGetStringiSOFT;
+        private Handles() {
+            PFN_alGetStringiSOFT = ALInternal.lookup().find("alGetStringiSOFT").orElse(MemorySegment.NULL);
+        }
+        private static volatile Handles instance;
+        private static Handles get() {
+            if (instance == null) {
+                synchronized (Handles.class) {
+                    if (instance == null) { instance = new Handles(); }
+                }
+            }
+            return instance;
+        }
     }
 
     public static @CType("const ALchar*") java.lang.foreign.MemorySegment alGetStringiSOFT(@CType("ALenum") int pname, @CType("ALsizei") int index) {
         if (Handles.MH_alGetStringiSOFT == null) throw new SymbolNotFoundError("Symbol not found: alGetStringiSOFT");
         try {
-            return (java.lang.foreign.MemorySegment) Handles.MH_alGetStringiSOFT.invokeExact(pname, index);
+            return (java.lang.foreign.MemorySegment) Handles.MH_alGetStringiSOFT.invokeExact(Handles.get().PFN_alGetStringiSOFT, pname, index);
         } catch (Throwable e) { throw new RuntimeException("error in alGetStringiSOFT", e); }
     }
 

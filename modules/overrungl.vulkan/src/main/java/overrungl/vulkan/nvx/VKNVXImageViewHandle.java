@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKNVXImageViewHandle {
     public static final int VK_NVX_IMAGE_VIEW_HANDLE_SPEC_VERSION = 3;
     public static final String VK_NVX_IMAGE_VIEW_HANDLE_EXTENSION_NAME = "VK_NVX_image_view_handle";
@@ -33,11 +32,6 @@ public class VKNVXImageViewHandle {
         public static final FunctionDescriptor FD_vkGetImageViewHandleNVX = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkGetImageViewHandle64NVX = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkGetImageViewAddressNVX = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetImageViewHandleNVX,
-            FD_vkGetImageViewHandle64NVX,
-            FD_vkGetImageViewAddressNVX
-        );
         private Descriptors() {}
     }
     public static final class Handles {

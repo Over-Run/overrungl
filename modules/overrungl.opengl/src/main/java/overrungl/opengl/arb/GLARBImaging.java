@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -137,42 +136,6 @@ public final class GLARBImaging {
         public static final FunctionDescriptor FD_glMinmax = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN);
         public static final FunctionDescriptor FD_glResetHistogram = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glResetMinmax = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glBlendColor,
-            FD_glBlendEquation,
-            FD_glColorTable,
-            FD_glColorTableParameterfv,
-            FD_glColorTableParameteriv,
-            FD_glCopyColorTable,
-            FD_glGetColorTable,
-            FD_glGetColorTableParameterfv,
-            FD_glGetColorTableParameteriv,
-            FD_glColorSubTable,
-            FD_glCopyColorSubTable,
-            FD_glConvolutionFilter1D,
-            FD_glConvolutionFilter2D,
-            FD_glConvolutionParameterf,
-            FD_glConvolutionParameterfv,
-            FD_glConvolutionParameteri,
-            FD_glConvolutionParameteriv,
-            FD_glCopyConvolutionFilter1D,
-            FD_glCopyConvolutionFilter2D,
-            FD_glGetConvolutionFilter,
-            FD_glGetConvolutionParameterfv,
-            FD_glGetConvolutionParameteriv,
-            FD_glGetSeparableFilter,
-            FD_glSeparableFilter2D,
-            FD_glGetHistogram,
-            FD_glGetHistogramParameterfv,
-            FD_glGetHistogramParameteriv,
-            FD_glGetMinmax,
-            FD_glGetMinmaxParameterfv,
-            FD_glGetMinmaxParameteriv,
-            FD_glHistogram,
-            FD_glMinmax,
-            FD_glResetHistogram,
-            FD_glResetMinmax
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glBlendColor = RuntimeHelper.downcall(Descriptors.FD_glBlendColor);

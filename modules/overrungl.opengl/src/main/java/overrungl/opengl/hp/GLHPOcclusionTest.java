@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.hp;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLHPOcclusionTest {
     public static final int GL_OCCLUSION_TEST_HP = 0x8165;
     public static final int GL_OCCLUSION_TEST_RESULT_HP = 0x8166;

@@ -21,7 +21,6 @@ import java.lang.invoke.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
-import java.util.*;
 public class VK12 extends VK11 {
     public static final int VK_DRIVER_ID_AMD_PROPRIETARY = 1;
     public static final int VK_DRIVER_ID_AMD_OPEN_SOURCE = 2;
@@ -150,21 +149,6 @@ public class VK12 extends VK11 {
         public static final FunctionDescriptor FD_vkGetBufferDeviceAddress = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkGetBufferOpaqueCaptureAddress = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkGetDeviceMemoryOpaqueCaptureAddress = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCmdDrawIndirectCount,
-            FD_vkCmdDrawIndexedIndirectCount,
-            FD_vkCreateRenderPass2,
-            FD_vkCmdBeginRenderPass2,
-            FD_vkCmdNextSubpass2,
-            FD_vkCmdEndRenderPass2,
-            FD_vkResetQueryPool,
-            FD_vkGetSemaphoreCounterValue,
-            FD_vkWaitSemaphores,
-            FD_vkSignalSemaphore,
-            FD_vkGetBufferDeviceAddress,
-            FD_vkGetBufferOpaqueCaptureAddress,
-            FD_vkGetDeviceMemoryOpaqueCaptureAddress
-        );
         private Descriptors() {}
     }
     public static final class Handles {

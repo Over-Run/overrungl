@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKNVMemoryDecompression {
     public static final long VK_MEMORY_DECOMPRESSION_METHOD_GDEFLATE_1_0_BIT_NV = 0x00000001L;
     public static final int VK_NV_MEMORY_DECOMPRESSION_SPEC_VERSION = 1;
@@ -33,10 +32,6 @@ public class VKNVMemoryDecompression {
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkCmdDecompressMemoryNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkCmdDecompressMemoryIndirectCountNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCmdDecompressMemoryNV,
-            FD_vkCmdDecompressMemoryIndirectCountNV
-        );
         private Descriptors() {}
     }
     public static final class Handles {

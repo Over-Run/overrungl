@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -84,14 +83,6 @@ public final class GLARBProgramInterfaceQuery {
         public static final FunctionDescriptor FD_glGetProgramResourceiv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetProgramResourceLocation = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetProgramResourceLocationIndex = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glGetProgramInterfaceiv,
-            FD_glGetProgramResourceIndex,
-            FD_glGetProgramResourceName,
-            FD_glGetProgramResourceiv,
-            FD_glGetProgramResourceLocation,
-            FD_glGetProgramResourceLocationIndex
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glGetProgramInterfaceiv = RuntimeHelper.downcall(Descriptors.FD_glGetProgramInterfaceiv);

@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -39,11 +38,6 @@ public final class GLARBSampleLocations {
         public static final FunctionDescriptor FD_glFramebufferSampleLocationsfvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glNamedFramebufferSampleLocationsfvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glEvaluateDepthValuesARB = FunctionDescriptor.ofVoid();
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glFramebufferSampleLocationsfvARB,
-            FD_glNamedFramebufferSampleLocationsfvARB,
-            FD_glEvaluateDepthValuesARB
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glFramebufferSampleLocationsfvARB = RuntimeHelper.downcall(Descriptors.FD_glFramebufferSampleLocationsfvARB);

@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKGOOGLEDisplayTiming {
     public static final int VK_GOOGLE_DISPLAY_TIMING_SPEC_VERSION = 1;
     public static final String VK_GOOGLE_DISPLAY_TIMING_EXTENSION_NAME = "VK_GOOGLE_display_timing";
@@ -31,10 +30,6 @@ public class VKGOOGLEDisplayTiming {
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkGetRefreshCycleDurationGOOGLE = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkGetPastPresentationTimingGOOGLE = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetRefreshCycleDurationGOOGLE,
-            FD_vkGetPastPresentationTimingGOOGLE
-        );
         private Descriptors() {}
     }
     public static final class Handles {

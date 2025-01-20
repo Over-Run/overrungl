@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.VK12.*;
 import static overrungl.vulkan.ext.VKEXTBufferDeviceAddress.*;
 public class VKEXTBufferDeviceAddress {
@@ -38,9 +37,6 @@ public class VKEXTBufferDeviceAddress {
     private final Handles handles;
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkGetBufferDeviceAddressEXT = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetBufferDeviceAddressEXT
-        );
         private Descriptors() {}
     }
     public static final class Handles {

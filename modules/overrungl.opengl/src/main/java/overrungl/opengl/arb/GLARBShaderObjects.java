@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -101,47 +100,6 @@ public final class GLARBShaderObjects {
         public static final FunctionDescriptor FD_glGetUniformfvARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetUniformivARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetShaderSourceARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glDeleteObjectARB,
-            FD_glGetHandleARB,
-            FD_glDetachObjectARB,
-            FD_glCreateShaderObjectARB,
-            FD_glShaderSourceARB,
-            FD_glCompileShaderARB,
-            FD_glCreateProgramObjectARB,
-            FD_glAttachObjectARB,
-            FD_glLinkProgramARB,
-            FD_glUseProgramObjectARB,
-            FD_glValidateProgramARB,
-            FD_glUniform1fARB,
-            FD_glUniform2fARB,
-            FD_glUniform3fARB,
-            FD_glUniform4fARB,
-            FD_glUniform1iARB,
-            FD_glUniform2iARB,
-            FD_glUniform3iARB,
-            FD_glUniform4iARB,
-            FD_glUniform1fvARB,
-            FD_glUniform2fvARB,
-            FD_glUniform3fvARB,
-            FD_glUniform4fvARB,
-            FD_glUniform1ivARB,
-            FD_glUniform2ivARB,
-            FD_glUniform3ivARB,
-            FD_glUniform4ivARB,
-            FD_glUniformMatrix2fvARB,
-            FD_glUniformMatrix3fvARB,
-            FD_glUniformMatrix4fvARB,
-            FD_glGetObjectParameterfvARB,
-            FD_glGetObjectParameterivARB,
-            FD_glGetInfoLogARB,
-            FD_glGetAttachedObjectsARB,
-            FD_glGetUniformLocationARB,
-            FD_glGetActiveUniformARB,
-            FD_glGetUniformfvARB,
-            FD_glGetUniformivARB,
-            FD_glGetShaderSourceARB
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glDeleteObjectARB = RuntimeHelper.downcall(Descriptors.FD_glDeleteObjectARB);

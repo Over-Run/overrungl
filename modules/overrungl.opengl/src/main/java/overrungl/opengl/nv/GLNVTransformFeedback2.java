@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -39,15 +38,6 @@ public final class GLNVTransformFeedback2 {
         public static final FunctionDescriptor FD_glPauseTransformFeedbackNV = FunctionDescriptor.ofVoid();
         public static final FunctionDescriptor FD_glResumeTransformFeedbackNV = FunctionDescriptor.ofVoid();
         public static final FunctionDescriptor FD_glDrawTransformFeedbackNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glBindTransformFeedbackNV,
-            FD_glDeleteTransformFeedbacksNV,
-            FD_glGenTransformFeedbacksNV,
-            FD_glIsTransformFeedbackNV,
-            FD_glPauseTransformFeedbackNV,
-            FD_glResumeTransformFeedbackNV,
-            FD_glDrawTransformFeedbackNV
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glBindTransformFeedbackNV = RuntimeHelper.downcall(Descriptors.FD_glBindTransformFeedbackNV);

@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.khr.VKKHRFragmentShadingRate.*;
 public class VKKHRFragmentShadingRate {
     public static final int VK_FRAGMENT_SHADING_RATE_COMBINER_OP_KEEP_KHR = 0;
@@ -51,10 +50,6 @@ public class VKKHRFragmentShadingRate {
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkGetPhysicalDeviceFragmentShadingRatesKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkCmdSetFragmentShadingRateKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetPhysicalDeviceFragmentShadingRatesKHR,
-            FD_vkCmdSetFragmentShadingRateKHR
-        );
         private Descriptors() {}
     }
     public static final class Handles {

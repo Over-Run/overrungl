@@ -40,6 +40,8 @@ val vkExtends = mapOf(
     "1.4" to "13",
 )
 
+internal val downcallDescriptors = mutableListOf<String>()
+
 fun videoXML(xmlBuilder: DocumentBuilder) {
     val document = ClassLoader.getSystemResourceAsStream("video.xml")!!.use { xmlBuilder.parse(it) }
     val root = document.documentElement
@@ -782,6 +784,7 @@ fun main() {
         appendLine("    exports $vulkanPackage.video;")
         appendLine()
         appendLine("    requires transitive overrungl.core;")
+        appendLine("    requires org.graalvm.nativeimage;")
         appendLine("}")
         appendLine()
     })
@@ -792,6 +795,8 @@ fun main() {
             System.err.println(it)
         }
     }
+
+    writeNativeImageRegistration(vulkanPackage, downcall = downcallDescriptors)
 }
 
 fun Element.findAttribute(name: String): String? = if (hasAttribute(name)) getAttribute(name) else null

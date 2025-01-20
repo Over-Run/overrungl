@@ -18,7 +18,6 @@
 package overrungl.openal;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.*;
 import overrungl.util.*;
@@ -43,52 +42,67 @@ public final class ALSOFTEvents {
         public static final FunctionDescriptor FD_alGetPointerSOFT = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
         /// The function descriptor of `alGetPointervSOFT`.
         public static final FunctionDescriptor FD_alGetPointervSOFT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        /// Function descriptors.
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_alEventControlSOFT,
-            FD_alEventCallbackSOFT,
-            FD_alGetPointerSOFT,
-            FD_alGetPointervSOFT
-        );
     }
     /// Method handles.
     public static final class Handles {
-        private Handles() { }
         /// The method handle of `alEventControlSOFT`.
-        public static final MethodHandle MH_alEventControlSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alEventControlSOFT", Descriptors.FD_alEventControlSOFT);
+        public static final MethodHandle MH_alEventControlSOFT = RuntimeHelper.downcall(Descriptors.FD_alEventControlSOFT);
         /// The method handle of `alEventCallbackSOFT`.
-        public static final MethodHandle MH_alEventCallbackSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alEventCallbackSOFT", Descriptors.FD_alEventCallbackSOFT);
+        public static final MethodHandle MH_alEventCallbackSOFT = RuntimeHelper.downcall(Descriptors.FD_alEventCallbackSOFT);
         /// The method handle of `alGetPointerSOFT`.
-        public static final MethodHandle MH_alGetPointerSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetPointerSOFT", Descriptors.FD_alGetPointerSOFT);
+        public static final MethodHandle MH_alGetPointerSOFT = RuntimeHelper.downcall(Descriptors.FD_alGetPointerSOFT);
         /// The method handle of `alGetPointervSOFT`.
-        public static final MethodHandle MH_alGetPointervSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetPointervSOFT", Descriptors.FD_alGetPointervSOFT);
+        public static final MethodHandle MH_alGetPointervSOFT = RuntimeHelper.downcall(Descriptors.FD_alGetPointervSOFT);
+        /// The function address of `alEventControlSOFT`.
+        public final MemorySegment PFN_alEventControlSOFT;
+        /// The function address of `alEventCallbackSOFT`.
+        public final MemorySegment PFN_alEventCallbackSOFT;
+        /// The function address of `alGetPointerSOFT`.
+        public final MemorySegment PFN_alGetPointerSOFT;
+        /// The function address of `alGetPointervSOFT`.
+        public final MemorySegment PFN_alGetPointervSOFT;
+        private Handles() {
+            PFN_alEventControlSOFT = ALInternal.lookup().find("alEventControlSOFT").orElse(MemorySegment.NULL);
+            PFN_alEventCallbackSOFT = ALInternal.lookup().find("alEventCallbackSOFT").orElse(MemorySegment.NULL);
+            PFN_alGetPointerSOFT = ALInternal.lookup().find("alGetPointerSOFT").orElse(MemorySegment.NULL);
+            PFN_alGetPointervSOFT = ALInternal.lookup().find("alGetPointervSOFT").orElse(MemorySegment.NULL);
+        }
+        private static volatile Handles instance;
+        private static Handles get() {
+            if (instance == null) {
+                synchronized (Handles.class) {
+                    if (instance == null) { instance = new Handles(); }
+                }
+            }
+            return instance;
+        }
     }
 
     public static void alEventControlSOFT(@CType("ALsizei") int count, @CType("const ALenum *") java.lang.foreign.MemorySegment types, @CType("ALboolean") boolean enable) {
         if (Handles.MH_alEventControlSOFT == null) throw new SymbolNotFoundError("Symbol not found: alEventControlSOFT");
         try {
-            Handles.MH_alEventControlSOFT.invokeExact(count, types, enable);
+            Handles.MH_alEventControlSOFT.invokeExact(Handles.get().PFN_alEventControlSOFT, count, types, enable);
         } catch (Throwable e) { throw new RuntimeException("error in alEventControlSOFT", e); }
     }
 
     public static void alEventCallbackSOFT(@CType("ALEVENTPROCSOFT") java.lang.foreign.MemorySegment callback, @CType("void*") java.lang.foreign.MemorySegment userParam) {
         if (Handles.MH_alEventCallbackSOFT == null) throw new SymbolNotFoundError("Symbol not found: alEventCallbackSOFT");
         try {
-            Handles.MH_alEventCallbackSOFT.invokeExact(callback, userParam);
+            Handles.MH_alEventCallbackSOFT.invokeExact(Handles.get().PFN_alEventCallbackSOFT, callback, userParam);
         } catch (Throwable e) { throw new RuntimeException("error in alEventCallbackSOFT", e); }
     }
 
     public static @CType("void*") java.lang.foreign.MemorySegment alGetPointerSOFT(@CType("ALenum") int pname) {
         if (Handles.MH_alGetPointerSOFT == null) throw new SymbolNotFoundError("Symbol not found: alGetPointerSOFT");
         try {
-            return (java.lang.foreign.MemorySegment) Handles.MH_alGetPointerSOFT.invokeExact(pname);
+            return (java.lang.foreign.MemorySegment) Handles.MH_alGetPointerSOFT.invokeExact(Handles.get().PFN_alGetPointerSOFT, pname);
         } catch (Throwable e) { throw new RuntimeException("error in alGetPointerSOFT", e); }
     }
 
     public static void alGetPointervSOFT(@CType("ALenum") int pname, @CType("void**") java.lang.foreign.MemorySegment values) {
         if (Handles.MH_alGetPointervSOFT == null) throw new SymbolNotFoundError("Symbol not found: alGetPointervSOFT");
         try {
-            Handles.MH_alGetPointervSOFT.invokeExact(pname, values);
+            Handles.MH_alGetPointervSOFT.invokeExact(Handles.get().PFN_alGetPointervSOFT, pname, values);
         } catch (Throwable e) { throw new RuntimeException("error in alGetPointervSOFT", e); }
     }
 

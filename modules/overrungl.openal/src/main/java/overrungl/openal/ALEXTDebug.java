@@ -18,7 +18,6 @@
 package overrungl.openal;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.*;
 import overrungl.util.*;
@@ -86,112 +85,139 @@ public final class ALEXTDebug {
         public static final FunctionDescriptor FD_alGetPointerEXT = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
         /// The function descriptor of `alGetPointervEXT`.
         public static final FunctionDescriptor FD_alGetPointervEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        /// Function descriptors.
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_alDebugMessageCallbackEXT,
-            FD_alDebugMessageInsertEXT,
-            FD_alDebugMessageControlEXT,
-            FD_alPushDebugGroupEXT,
-            FD_alPopDebugGroupEXT,
-            FD_alGetDebugMessageLogEXT,
-            FD_alObjectLabelEXT,
-            FD_alGetObjectLabelEXT,
-            FD_alGetPointerEXT,
-            FD_alGetPointervEXT
-        );
     }
     /// Method handles.
     public static final class Handles {
-        private Handles() { }
         /// The method handle of `alDebugMessageCallbackEXT`.
-        public static final MethodHandle MH_alDebugMessageCallbackEXT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alDebugMessageCallbackEXT", Descriptors.FD_alDebugMessageCallbackEXT);
+        public static final MethodHandle MH_alDebugMessageCallbackEXT = RuntimeHelper.downcall(Descriptors.FD_alDebugMessageCallbackEXT);
         /// The method handle of `alDebugMessageInsertEXT`.
-        public static final MethodHandle MH_alDebugMessageInsertEXT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alDebugMessageInsertEXT", Descriptors.FD_alDebugMessageInsertEXT);
+        public static final MethodHandle MH_alDebugMessageInsertEXT = RuntimeHelper.downcall(Descriptors.FD_alDebugMessageInsertEXT);
         /// The method handle of `alDebugMessageControlEXT`.
-        public static final MethodHandle MH_alDebugMessageControlEXT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alDebugMessageControlEXT", Descriptors.FD_alDebugMessageControlEXT);
+        public static final MethodHandle MH_alDebugMessageControlEXT = RuntimeHelper.downcall(Descriptors.FD_alDebugMessageControlEXT);
         /// The method handle of `alPushDebugGroupEXT`.
-        public static final MethodHandle MH_alPushDebugGroupEXT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alPushDebugGroupEXT", Descriptors.FD_alPushDebugGroupEXT);
+        public static final MethodHandle MH_alPushDebugGroupEXT = RuntimeHelper.downcall(Descriptors.FD_alPushDebugGroupEXT);
         /// The method handle of `alPopDebugGroupEXT`.
-        public static final MethodHandle MH_alPopDebugGroupEXT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alPopDebugGroupEXT", Descriptors.FD_alPopDebugGroupEXT);
+        public static final MethodHandle MH_alPopDebugGroupEXT = RuntimeHelper.downcall(Descriptors.FD_alPopDebugGroupEXT);
         /// The method handle of `alGetDebugMessageLogEXT`.
-        public static final MethodHandle MH_alGetDebugMessageLogEXT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetDebugMessageLogEXT", Descriptors.FD_alGetDebugMessageLogEXT);
+        public static final MethodHandle MH_alGetDebugMessageLogEXT = RuntimeHelper.downcall(Descriptors.FD_alGetDebugMessageLogEXT);
         /// The method handle of `alObjectLabelEXT`.
-        public static final MethodHandle MH_alObjectLabelEXT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alObjectLabelEXT", Descriptors.FD_alObjectLabelEXT);
+        public static final MethodHandle MH_alObjectLabelEXT = RuntimeHelper.downcall(Descriptors.FD_alObjectLabelEXT);
         /// The method handle of `alGetObjectLabelEXT`.
-        public static final MethodHandle MH_alGetObjectLabelEXT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetObjectLabelEXT", Descriptors.FD_alGetObjectLabelEXT);
+        public static final MethodHandle MH_alGetObjectLabelEXT = RuntimeHelper.downcall(Descriptors.FD_alGetObjectLabelEXT);
         /// The method handle of `alGetPointerEXT`.
-        public static final MethodHandle MH_alGetPointerEXT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetPointerEXT", Descriptors.FD_alGetPointerEXT);
+        public static final MethodHandle MH_alGetPointerEXT = RuntimeHelper.downcall(Descriptors.FD_alGetPointerEXT);
         /// The method handle of `alGetPointervEXT`.
-        public static final MethodHandle MH_alGetPointervEXT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetPointervEXT", Descriptors.FD_alGetPointervEXT);
+        public static final MethodHandle MH_alGetPointervEXT = RuntimeHelper.downcall(Descriptors.FD_alGetPointervEXT);
+        /// The function address of `alDebugMessageCallbackEXT`.
+        public final MemorySegment PFN_alDebugMessageCallbackEXT;
+        /// The function address of `alDebugMessageInsertEXT`.
+        public final MemorySegment PFN_alDebugMessageInsertEXT;
+        /// The function address of `alDebugMessageControlEXT`.
+        public final MemorySegment PFN_alDebugMessageControlEXT;
+        /// The function address of `alPushDebugGroupEXT`.
+        public final MemorySegment PFN_alPushDebugGroupEXT;
+        /// The function address of `alPopDebugGroupEXT`.
+        public final MemorySegment PFN_alPopDebugGroupEXT;
+        /// The function address of `alGetDebugMessageLogEXT`.
+        public final MemorySegment PFN_alGetDebugMessageLogEXT;
+        /// The function address of `alObjectLabelEXT`.
+        public final MemorySegment PFN_alObjectLabelEXT;
+        /// The function address of `alGetObjectLabelEXT`.
+        public final MemorySegment PFN_alGetObjectLabelEXT;
+        /// The function address of `alGetPointerEXT`.
+        public final MemorySegment PFN_alGetPointerEXT;
+        /// The function address of `alGetPointervEXT`.
+        public final MemorySegment PFN_alGetPointervEXT;
+        private Handles() {
+            PFN_alDebugMessageCallbackEXT = ALInternal.lookup().find("alDebugMessageCallbackEXT").orElse(MemorySegment.NULL);
+            PFN_alDebugMessageInsertEXT = ALInternal.lookup().find("alDebugMessageInsertEXT").orElse(MemorySegment.NULL);
+            PFN_alDebugMessageControlEXT = ALInternal.lookup().find("alDebugMessageControlEXT").orElse(MemorySegment.NULL);
+            PFN_alPushDebugGroupEXT = ALInternal.lookup().find("alPushDebugGroupEXT").orElse(MemorySegment.NULL);
+            PFN_alPopDebugGroupEXT = ALInternal.lookup().find("alPopDebugGroupEXT").orElse(MemorySegment.NULL);
+            PFN_alGetDebugMessageLogEXT = ALInternal.lookup().find("alGetDebugMessageLogEXT").orElse(MemorySegment.NULL);
+            PFN_alObjectLabelEXT = ALInternal.lookup().find("alObjectLabelEXT").orElse(MemorySegment.NULL);
+            PFN_alGetObjectLabelEXT = ALInternal.lookup().find("alGetObjectLabelEXT").orElse(MemorySegment.NULL);
+            PFN_alGetPointerEXT = ALInternal.lookup().find("alGetPointerEXT").orElse(MemorySegment.NULL);
+            PFN_alGetPointervEXT = ALInternal.lookup().find("alGetPointervEXT").orElse(MemorySegment.NULL);
+        }
+        private static volatile Handles instance;
+        private static Handles get() {
+            if (instance == null) {
+                synchronized (Handles.class) {
+                    if (instance == null) { instance = new Handles(); }
+                }
+            }
+            return instance;
+        }
     }
 
     public static void alDebugMessageCallbackEXT(@CType("ALDEBUGPROCEXT") java.lang.foreign.MemorySegment callback, @CType("void*") java.lang.foreign.MemorySegment userParam) {
         if (Handles.MH_alDebugMessageCallbackEXT == null) throw new SymbolNotFoundError("Symbol not found: alDebugMessageCallbackEXT");
         try {
-            Handles.MH_alDebugMessageCallbackEXT.invokeExact(callback, userParam);
+            Handles.MH_alDebugMessageCallbackEXT.invokeExact(Handles.get().PFN_alDebugMessageCallbackEXT, callback, userParam);
         } catch (Throwable e) { throw new RuntimeException("error in alDebugMessageCallbackEXT", e); }
     }
 
     public static void alDebugMessageInsertEXT(@CType("ALenum") int source, @CType("ALenum") int type, @CType("ALuint") int id, @CType("ALenum") int severity, @CType("ALsizei") int length, @CType("const ALchar*") java.lang.foreign.MemorySegment message) {
         if (Handles.MH_alDebugMessageInsertEXT == null) throw new SymbolNotFoundError("Symbol not found: alDebugMessageInsertEXT");
         try {
-            Handles.MH_alDebugMessageInsertEXT.invokeExact(source, type, id, severity, length, message);
+            Handles.MH_alDebugMessageInsertEXT.invokeExact(Handles.get().PFN_alDebugMessageInsertEXT, source, type, id, severity, length, message);
         } catch (Throwable e) { throw new RuntimeException("error in alDebugMessageInsertEXT", e); }
     }
 
     public static void alDebugMessageControlEXT(@CType("ALenum") int source, @CType("ALenum") int type, @CType("ALenum") int severity, @CType("ALsizei") int count, @CType("const ALuint *") java.lang.foreign.MemorySegment ids, @CType("ALboolean") boolean enable) {
         if (Handles.MH_alDebugMessageControlEXT == null) throw new SymbolNotFoundError("Symbol not found: alDebugMessageControlEXT");
         try {
-            Handles.MH_alDebugMessageControlEXT.invokeExact(source, type, severity, count, ids, enable);
+            Handles.MH_alDebugMessageControlEXT.invokeExact(Handles.get().PFN_alDebugMessageControlEXT, source, type, severity, count, ids, enable);
         } catch (Throwable e) { throw new RuntimeException("error in alDebugMessageControlEXT", e); }
     }
 
     public static void alPushDebugGroupEXT(@CType("ALenum") int source, @CType("ALuint") int id, @CType("ALsizei") int length, @CType("const ALchar*") java.lang.foreign.MemorySegment message) {
         if (Handles.MH_alPushDebugGroupEXT == null) throw new SymbolNotFoundError("Symbol not found: alPushDebugGroupEXT");
         try {
-            Handles.MH_alPushDebugGroupEXT.invokeExact(source, id, length, message);
+            Handles.MH_alPushDebugGroupEXT.invokeExact(Handles.get().PFN_alPushDebugGroupEXT, source, id, length, message);
         } catch (Throwable e) { throw new RuntimeException("error in alPushDebugGroupEXT", e); }
     }
 
     public static void alPopDebugGroupEXT() {
         if (Handles.MH_alPopDebugGroupEXT == null) throw new SymbolNotFoundError("Symbol not found: alPopDebugGroupEXT");
         try {
-            Handles.MH_alPopDebugGroupEXT.invokeExact();
+            Handles.MH_alPopDebugGroupEXT.invokeExact(Handles.get().PFN_alPopDebugGroupEXT);
         } catch (Throwable e) { throw new RuntimeException("error in alPopDebugGroupEXT", e); }
     }
 
     public static @CType("ALuint") int alGetDebugMessageLogEXT(@CType("ALuint") int count, @CType("ALsizei") int logBufSize, @CType("ALenum *") java.lang.foreign.MemorySegment sources, @CType("ALenum *") java.lang.foreign.MemorySegment types, @CType("ALuint *") java.lang.foreign.MemorySegment ids, @CType("ALenum *") java.lang.foreign.MemorySegment severities, @CType("ALsizei *") java.lang.foreign.MemorySegment lengths, @CType("ALchar*") java.lang.foreign.MemorySegment logBuf) {
         if (Handles.MH_alGetDebugMessageLogEXT == null) throw new SymbolNotFoundError("Symbol not found: alGetDebugMessageLogEXT");
         try {
-            return (int) Handles.MH_alGetDebugMessageLogEXT.invokeExact(count, logBufSize, sources, types, ids, severities, lengths, logBuf);
+            return (int) Handles.MH_alGetDebugMessageLogEXT.invokeExact(Handles.get().PFN_alGetDebugMessageLogEXT, count, logBufSize, sources, types, ids, severities, lengths, logBuf);
         } catch (Throwable e) { throw new RuntimeException("error in alGetDebugMessageLogEXT", e); }
     }
 
     public static void alObjectLabelEXT(@CType("ALenum") int identifier, @CType("ALuint") int name, @CType("ALsizei") int length, @CType("const ALchar*") java.lang.foreign.MemorySegment label) {
         if (Handles.MH_alObjectLabelEXT == null) throw new SymbolNotFoundError("Symbol not found: alObjectLabelEXT");
         try {
-            Handles.MH_alObjectLabelEXT.invokeExact(identifier, name, length, label);
+            Handles.MH_alObjectLabelEXT.invokeExact(Handles.get().PFN_alObjectLabelEXT, identifier, name, length, label);
         } catch (Throwable e) { throw new RuntimeException("error in alObjectLabelEXT", e); }
     }
 
     public static void alGetObjectLabelEXT(@CType("ALenum") int identifier, @CType("ALuint") int name, @CType("ALsizei") int bufSize, @CType("ALsizei *") java.lang.foreign.MemorySegment length, @CType("ALchar*") java.lang.foreign.MemorySegment label) {
         if (Handles.MH_alGetObjectLabelEXT == null) throw new SymbolNotFoundError("Symbol not found: alGetObjectLabelEXT");
         try {
-            Handles.MH_alGetObjectLabelEXT.invokeExact(identifier, name, bufSize, length, label);
+            Handles.MH_alGetObjectLabelEXT.invokeExact(Handles.get().PFN_alGetObjectLabelEXT, identifier, name, bufSize, length, label);
         } catch (Throwable e) { throw new RuntimeException("error in alGetObjectLabelEXT", e); }
     }
 
     public static @CType("void*") java.lang.foreign.MemorySegment alGetPointerEXT(@CType("ALenum") int pname) {
         if (Handles.MH_alGetPointerEXT == null) throw new SymbolNotFoundError("Symbol not found: alGetPointerEXT");
         try {
-            return (java.lang.foreign.MemorySegment) Handles.MH_alGetPointerEXT.invokeExact(pname);
+            return (java.lang.foreign.MemorySegment) Handles.MH_alGetPointerEXT.invokeExact(Handles.get().PFN_alGetPointerEXT, pname);
         } catch (Throwable e) { throw new RuntimeException("error in alGetPointerEXT", e); }
     }
 
     public static void alGetPointervEXT(@CType("ALenum") int pname, @CType("void**") java.lang.foreign.MemorySegment values) {
         if (Handles.MH_alGetPointervEXT == null) throw new SymbolNotFoundError("Symbol not found: alGetPointervEXT");
         try {
-            Handles.MH_alGetPointervEXT.invokeExact(pname, values);
+            Handles.MH_alGetPointervEXT.invokeExact(Handles.get().PFN_alGetPointervEXT, pname, values);
         } catch (Throwable e) { throw new RuntimeException("error in alGetPointervEXT", e); }
     }
 

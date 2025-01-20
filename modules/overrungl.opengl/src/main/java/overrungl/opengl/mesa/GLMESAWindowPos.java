@@ -19,7 +19,6 @@ package overrungl.opengl.mesa;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -52,32 +51,6 @@ public final class GLMESAWindowPos {
         public static final FunctionDescriptor FD_glWindowPos4ivMESA = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glWindowPos4sMESA = FunctionDescriptor.ofVoid(ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT);
         public static final FunctionDescriptor FD_glWindowPos4svMESA = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glWindowPos2dMESA,
-            FD_glWindowPos2dvMESA,
-            FD_glWindowPos2fMESA,
-            FD_glWindowPos2fvMESA,
-            FD_glWindowPos2iMESA,
-            FD_glWindowPos2ivMESA,
-            FD_glWindowPos2sMESA,
-            FD_glWindowPos2svMESA,
-            FD_glWindowPos3dMESA,
-            FD_glWindowPos3dvMESA,
-            FD_glWindowPos3fMESA,
-            FD_glWindowPos3fvMESA,
-            FD_glWindowPos3iMESA,
-            FD_glWindowPos3ivMESA,
-            FD_glWindowPos3sMESA,
-            FD_glWindowPos3svMESA,
-            FD_glWindowPos4dMESA,
-            FD_glWindowPos4dvMESA,
-            FD_glWindowPos4fMESA,
-            FD_glWindowPos4fvMESA,
-            FD_glWindowPos4iMESA,
-            FD_glWindowPos4ivMESA,
-            FD_glWindowPos4sMESA,
-            FD_glWindowPos4svMESA
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glWindowPos2dMESA = RuntimeHelper.downcall(Descriptors.FD_glWindowPos2dMESA);

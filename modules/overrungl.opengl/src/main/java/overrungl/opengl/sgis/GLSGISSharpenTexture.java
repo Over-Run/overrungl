@@ -19,7 +19,6 @@ package overrungl.opengl.sgis;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -34,10 +33,6 @@ public final class GLSGISSharpenTexture {
         private Descriptors() {}
         public static final FunctionDescriptor FD_glSharpenTexFuncSGIS = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetSharpenTexFuncSGIS = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glSharpenTexFuncSGIS,
-            FD_glGetSharpenTexFuncSGIS
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glSharpenTexFuncSGIS = RuntimeHelper.downcall(Descriptors.FD_glSharpenTexFuncSGIS);

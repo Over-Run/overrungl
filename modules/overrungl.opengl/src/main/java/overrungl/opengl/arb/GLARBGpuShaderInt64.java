@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -72,44 +71,6 @@ public final class GLARBGpuShaderInt64 {
         public static final FunctionDescriptor FD_glProgramUniform2ui64vARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glProgramUniform3ui64vARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glProgramUniform4ui64vARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glUniform1i64ARB,
-            FD_glUniform2i64ARB,
-            FD_glUniform3i64ARB,
-            FD_glUniform4i64ARB,
-            FD_glUniform1i64vARB,
-            FD_glUniform2i64vARB,
-            FD_glUniform3i64vARB,
-            FD_glUniform4i64vARB,
-            FD_glUniform1ui64ARB,
-            FD_glUniform2ui64ARB,
-            FD_glUniform3ui64ARB,
-            FD_glUniform4ui64ARB,
-            FD_glUniform1ui64vARB,
-            FD_glUniform2ui64vARB,
-            FD_glUniform3ui64vARB,
-            FD_glUniform4ui64vARB,
-            FD_glGetUniformi64vARB,
-            FD_glGetUniformui64vARB,
-            FD_glGetnUniformi64vARB,
-            FD_glGetnUniformui64vARB,
-            FD_glProgramUniform1i64ARB,
-            FD_glProgramUniform2i64ARB,
-            FD_glProgramUniform3i64ARB,
-            FD_glProgramUniform4i64ARB,
-            FD_glProgramUniform1i64vARB,
-            FD_glProgramUniform2i64vARB,
-            FD_glProgramUniform3i64vARB,
-            FD_glProgramUniform4i64vARB,
-            FD_glProgramUniform1ui64ARB,
-            FD_glProgramUniform2ui64ARB,
-            FD_glProgramUniform3ui64ARB,
-            FD_glProgramUniform4ui64ARB,
-            FD_glProgramUniform1ui64vARB,
-            FD_glProgramUniform2ui64vARB,
-            FD_glProgramUniform3ui64vARB,
-            FD_glProgramUniform4ui64vARB
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glUniform1i64ARB = RuntimeHelper.downcall(Descriptors.FD_glUniform1i64ARB);

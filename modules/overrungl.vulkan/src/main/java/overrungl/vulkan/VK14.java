@@ -21,7 +21,6 @@ import java.lang.invoke.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
-import java.util.*;
 public class VK14 extends VK13 {
     public static final int VK_QUEUE_GLOBAL_PRIORITY_LOW = 128;
     public static final int VK_QUEUE_GLOBAL_PRIORITY_MEDIUM = 256;
@@ -146,27 +145,6 @@ public class VK14 extends VK13 {
         public static final FunctionDescriptor FD_vkCopyImageToMemory = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkCopyImageToImage = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkTransitionImageLayout = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCmdSetLineStipple,
-            FD_vkMapMemory2,
-            FD_vkUnmapMemory2,
-            FD_vkCmdBindIndexBuffer2,
-            FD_vkGetRenderingAreaGranularity,
-            FD_vkGetDeviceImageSubresourceLayout,
-            FD_vkGetImageSubresourceLayout2,
-            FD_vkCmdPushDescriptorSet,
-            FD_vkCmdPushDescriptorSetWithTemplate,
-            FD_vkCmdSetRenderingAttachmentLocations,
-            FD_vkCmdSetRenderingInputAttachmentIndices,
-            FD_vkCmdBindDescriptorSets2,
-            FD_vkCmdPushConstants2,
-            FD_vkCmdPushDescriptorSet2,
-            FD_vkCmdPushDescriptorSetWithTemplate2,
-            FD_vkCopyMemoryToImage,
-            FD_vkCopyImageToMemory,
-            FD_vkCopyImageToImage,
-            FD_vkTransitionImageLayout
-        );
         private Descriptors() {}
     }
     public static final class Handles {

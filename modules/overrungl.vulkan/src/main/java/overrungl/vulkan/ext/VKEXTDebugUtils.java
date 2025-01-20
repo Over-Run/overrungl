@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKEXTDebugUtils {
     public static final int VK_DEBUG_UTILS_MESSAGE_SEVERITY_VERBOSE_BIT_EXT = 0x00000001;
     public static final int VK_DEBUG_UTILS_MESSAGE_SEVERITY_INFO_BIT_EXT = 0x00000010;
@@ -52,19 +51,6 @@ public class VKEXTDebugUtils {
         public static final FunctionDescriptor FD_vkCreateDebugUtilsMessengerEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkDestroyDebugUtilsMessengerEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkSubmitDebugUtilsMessageEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkSetDebugUtilsObjectNameEXT,
-            FD_vkSetDebugUtilsObjectTagEXT,
-            FD_vkQueueBeginDebugUtilsLabelEXT,
-            FD_vkQueueEndDebugUtilsLabelEXT,
-            FD_vkQueueInsertDebugUtilsLabelEXT,
-            FD_vkCmdBeginDebugUtilsLabelEXT,
-            FD_vkCmdEndDebugUtilsLabelEXT,
-            FD_vkCmdInsertDebugUtilsLabelEXT,
-            FD_vkCreateDebugUtilsMessengerEXT,
-            FD_vkDestroyDebugUtilsMessengerEXT,
-            FD_vkSubmitDebugUtilsMessageEXT
-        );
         private Descriptors() {}
     }
     public static final class Handles {

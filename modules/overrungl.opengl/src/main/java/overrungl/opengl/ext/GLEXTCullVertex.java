@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -33,10 +32,6 @@ public final class GLEXTCullVertex {
         private Descriptors() {}
         public static final FunctionDescriptor FD_glCullParameterdvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glCullParameterfvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glCullParameterdvEXT,
-            FD_glCullParameterfvEXT
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glCullParameterdvEXT = RuntimeHelper.downcall(Descriptors.FD_glCullParameterdvEXT);

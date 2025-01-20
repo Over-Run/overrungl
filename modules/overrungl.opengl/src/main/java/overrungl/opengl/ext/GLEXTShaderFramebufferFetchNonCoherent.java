@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -30,9 +29,6 @@ public final class GLEXTShaderFramebufferFetchNonCoherent {
     public static final class Descriptors {
         private Descriptors() {}
         public static final FunctionDescriptor FD_glFramebufferFetchBarrierEXT = FunctionDescriptor.ofVoid();
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glFramebufferFetchBarrierEXT
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glFramebufferFetchBarrierEXT = RuntimeHelper.downcall(Descriptors.FD_glFramebufferFetchBarrierEXT);

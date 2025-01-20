@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -68,46 +67,6 @@ public final class GLARBVertexType2101010Rev {
         public static final FunctionDescriptor FD_glColorP4uiv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glSecondaryColorP3ui = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glSecondaryColorP3uiv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glVertexAttribP1ui,
-            FD_glVertexAttribP1uiv,
-            FD_glVertexAttribP2ui,
-            FD_glVertexAttribP2uiv,
-            FD_glVertexAttribP3ui,
-            FD_glVertexAttribP3uiv,
-            FD_glVertexAttribP4ui,
-            FD_glVertexAttribP4uiv,
-            FD_glVertexP2ui,
-            FD_glVertexP2uiv,
-            FD_glVertexP3ui,
-            FD_glVertexP3uiv,
-            FD_glVertexP4ui,
-            FD_glVertexP4uiv,
-            FD_glTexCoordP1ui,
-            FD_glTexCoordP1uiv,
-            FD_glTexCoordP2ui,
-            FD_glTexCoordP2uiv,
-            FD_glTexCoordP3ui,
-            FD_glTexCoordP3uiv,
-            FD_glTexCoordP4ui,
-            FD_glTexCoordP4uiv,
-            FD_glMultiTexCoordP1ui,
-            FD_glMultiTexCoordP1uiv,
-            FD_glMultiTexCoordP2ui,
-            FD_glMultiTexCoordP2uiv,
-            FD_glMultiTexCoordP3ui,
-            FD_glMultiTexCoordP3uiv,
-            FD_glMultiTexCoordP4ui,
-            FD_glMultiTexCoordP4uiv,
-            FD_glNormalP3ui,
-            FD_glNormalP3uiv,
-            FD_glColorP3ui,
-            FD_glColorP3uiv,
-            FD_glColorP4ui,
-            FD_glColorP4uiv,
-            FD_glSecondaryColorP3ui,
-            FD_glSecondaryColorP3uiv
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glVertexAttribP1ui = RuntimeHelper.downcall(Descriptors.FD_glVertexAttribP1ui);

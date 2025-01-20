@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKKHRDisplay {
     public static final int VK_DISPLAY_PLANE_ALPHA_OPAQUE_BIT_KHR = 0x00000001;
     public static final int VK_DISPLAY_PLANE_ALPHA_GLOBAL_BIT_KHR = 0x00000002;
@@ -43,15 +42,6 @@ public class VKKHRDisplay {
         public static final FunctionDescriptor FD_vkCreateDisplayModeKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkGetDisplayPlaneCapabilitiesKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkCreateDisplayPlaneSurfaceKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetPhysicalDeviceDisplayPropertiesKHR,
-            FD_vkGetPhysicalDeviceDisplayPlanePropertiesKHR,
-            FD_vkGetDisplayPlaneSupportedDisplaysKHR,
-            FD_vkGetDisplayModePropertiesKHR,
-            FD_vkCreateDisplayModeKHR,
-            FD_vkGetDisplayPlaneCapabilitiesKHR,
-            FD_vkCreateDisplayPlaneSurfaceKHR
-        );
         private Descriptors() {}
     }
     public static final class Handles {

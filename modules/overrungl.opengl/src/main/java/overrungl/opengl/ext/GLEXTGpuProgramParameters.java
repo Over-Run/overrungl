@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -30,10 +29,6 @@ public final class GLEXTGpuProgramParameters {
         private Descriptors() {}
         public static final FunctionDescriptor FD_glProgramEnvParameters4fvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glProgramLocalParameters4fvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glProgramEnvParameters4fvEXT,
-            FD_glProgramLocalParameters4fvEXT
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glProgramEnvParameters4fvEXT = RuntimeHelper.downcall(Descriptors.FD_glProgramEnvParameters4fvEXT);

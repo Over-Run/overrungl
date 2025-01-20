@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -32,9 +31,6 @@ public final class GLEXTIndexMaterial {
     public static final class Descriptors {
         private Descriptors() {}
         public static final FunctionDescriptor FD_glIndexMaterialEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glIndexMaterialEXT
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glIndexMaterialEXT = RuntimeHelper.downcall(Descriptors.FD_glIndexMaterialEXT);

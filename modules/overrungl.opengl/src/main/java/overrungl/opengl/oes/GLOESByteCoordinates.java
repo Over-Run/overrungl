@@ -19,7 +19,6 @@ package overrungl.opengl.oes;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -51,30 +50,6 @@ public final class GLOESByteCoordinates {
         public static final FunctionDescriptor FD_glVertex3bvOES = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glVertex4bOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE);
         public static final FunctionDescriptor FD_glVertex4bvOES = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glMultiTexCoord1bOES,
-            FD_glMultiTexCoord1bvOES,
-            FD_glMultiTexCoord2bOES,
-            FD_glMultiTexCoord2bvOES,
-            FD_glMultiTexCoord3bOES,
-            FD_glMultiTexCoord3bvOES,
-            FD_glMultiTexCoord4bOES,
-            FD_glMultiTexCoord4bvOES,
-            FD_glTexCoord1bOES,
-            FD_glTexCoord1bvOES,
-            FD_glTexCoord2bOES,
-            FD_glTexCoord2bvOES,
-            FD_glTexCoord3bOES,
-            FD_glTexCoord3bvOES,
-            FD_glTexCoord4bOES,
-            FD_glTexCoord4bvOES,
-            FD_glVertex2bOES,
-            FD_glVertex2bvOES,
-            FD_glVertex3bOES,
-            FD_glVertex3bvOES,
-            FD_glVertex4bOES,
-            FD_glVertex4bvOES
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glMultiTexCoord1bOES = RuntimeHelper.downcall(Descriptors.FD_glMultiTexCoord1bOES);

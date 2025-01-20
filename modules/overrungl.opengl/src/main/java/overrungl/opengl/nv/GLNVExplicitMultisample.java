@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -41,11 +40,6 @@ public final class GLNVExplicitMultisample {
         public static final FunctionDescriptor FD_glGetMultisamplefvNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glSampleMaskIndexedNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glTexRenderbufferNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glGetMultisamplefvNV,
-            FD_glSampleMaskIndexedNV,
-            FD_glTexRenderbufferNV
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glGetMultisamplefvNV = RuntimeHelper.downcall(Descriptors.FD_glGetMultisamplefvNV);

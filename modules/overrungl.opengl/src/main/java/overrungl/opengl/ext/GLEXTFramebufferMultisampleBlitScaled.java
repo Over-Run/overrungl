@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.ext;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLEXTFramebufferMultisampleBlitScaled {
     public static final int GL_SCALED_RESOLVE_FASTEST_EXT = 0x90BA;
     public static final int GL_SCALED_RESOLVE_NICEST_EXT = 0x90BB;

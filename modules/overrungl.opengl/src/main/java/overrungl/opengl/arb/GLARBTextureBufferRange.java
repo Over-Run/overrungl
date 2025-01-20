@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -32,9 +31,6 @@ public final class GLARBTextureBufferRange {
     public static final class Descriptors {
         private Descriptors() {}
         public static final FunctionDescriptor FD_glTexBufferRange = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glTexBufferRange
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glTexBufferRange = RuntimeHelper.downcall(Descriptors.FD_glTexBufferRange);

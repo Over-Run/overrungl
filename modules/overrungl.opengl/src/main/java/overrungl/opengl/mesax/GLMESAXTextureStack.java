@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.mesax;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLMESAXTextureStack {
     public static final int GL_TEXTURE_1D_STACK_MESAX = 0x8759;
     public static final int GL_TEXTURE_2D_STACK_MESAX = 0x875A;

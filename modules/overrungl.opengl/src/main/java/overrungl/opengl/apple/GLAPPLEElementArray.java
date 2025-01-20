@@ -19,7 +19,6 @@ package overrungl.opengl.apple;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -36,13 +35,6 @@ public final class GLAPPLEElementArray {
         public static final FunctionDescriptor FD_glDrawRangeElementArrayAPPLE = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glMultiDrawElementArrayAPPLE = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glMultiDrawRangeElementArrayAPPLE = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glElementPointerAPPLE,
-            FD_glDrawElementArrayAPPLE,
-            FD_glDrawRangeElementArrayAPPLE,
-            FD_glMultiDrawElementArrayAPPLE,
-            FD_glMultiDrawRangeElementArrayAPPLE
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glElementPointerAPPLE = RuntimeHelper.downcall(Descriptors.FD_glElementPointerAPPLE);

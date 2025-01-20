@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKKHRSurface {
     public static final int VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR = 0x00000001;
     public static final int VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR = 0x00000002;
@@ -55,13 +54,6 @@ public class VKKHRSurface {
         public static final FunctionDescriptor FD_vkGetPhysicalDeviceSurfaceCapabilitiesKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkGetPhysicalDeviceSurfaceFormatsKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkGetPhysicalDeviceSurfacePresentModesKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkDestroySurfaceKHR,
-            FD_vkGetPhysicalDeviceSurfaceSupportKHR,
-            FD_vkGetPhysicalDeviceSurfaceCapabilitiesKHR,
-            FD_vkGetPhysicalDeviceSurfaceFormatsKHR,
-            FD_vkGetPhysicalDeviceSurfacePresentModesKHR
-        );
         private Descriptors() {}
     }
     public static final class Handles {

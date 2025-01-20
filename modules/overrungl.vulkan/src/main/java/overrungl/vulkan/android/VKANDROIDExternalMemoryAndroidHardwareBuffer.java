@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKANDROIDExternalMemoryAndroidHardwareBuffer {
     public static final int VK_ANDROID_EXTERNAL_MEMORY_ANDROID_HARDWARE_BUFFER_SPEC_VERSION = 5;
     public static final String VK_ANDROID_EXTERNAL_MEMORY_ANDROID_HARDWARE_BUFFER_EXTENSION_NAME = "VK_ANDROID_external_memory_android_hardware_buffer";
@@ -38,10 +37,6 @@ public class VKANDROIDExternalMemoryAndroidHardwareBuffer {
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkGetAndroidHardwareBufferPropertiesANDROID = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkGetMemoryAndroidHardwareBufferANDROID = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetAndroidHardwareBufferPropertiesANDROID,
-            FD_vkGetMemoryAndroidHardwareBufferANDROID
-        );
         private Descriptors() {}
     }
     public static final class Handles {

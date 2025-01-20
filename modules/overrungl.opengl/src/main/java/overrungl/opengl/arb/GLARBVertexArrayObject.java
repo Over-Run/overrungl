@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -33,12 +32,6 @@ public final class GLARBVertexArrayObject {
         public static final FunctionDescriptor FD_glDeleteVertexArrays = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGenVertexArrays = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glIsVertexArray = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glBindVertexArray,
-            FD_glDeleteVertexArrays,
-            FD_glGenVertexArrays,
-            FD_glIsVertexArray
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glBindVertexArray = RuntimeHelper.downcall(Descriptors.FD_glBindVertexArray);

@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.ext.VKEXTMeshShader.*;
 public class VKNVMeshShader {
     public static final int VK_NV_MESH_SHADER_SPEC_VERSION = 1;
@@ -40,11 +39,6 @@ public class VKNVMeshShader {
         public static final FunctionDescriptor FD_vkCmdDrawMeshTasksNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_vkCmdDrawMeshTasksIndirectNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_vkCmdDrawMeshTasksIndirectCountNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCmdDrawMeshTasksNV,
-            FD_vkCmdDrawMeshTasksIndirectNV,
-            FD_vkCmdDrawMeshTasksIndirectCountNV
-        );
         private Descriptors() {}
     }
     public static final class Handles {

@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -35,10 +34,6 @@ public final class GLNVVertexArrayRange {
         private Descriptors() {}
         public static final FunctionDescriptor FD_glFlushVertexArrayRangeNV = FunctionDescriptor.ofVoid();
         public static final FunctionDescriptor FD_glVertexArrayRangeNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glFlushVertexArrayRangeNV,
-            FD_glVertexArrayRangeNV
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glFlushVertexArrayRangeNV = RuntimeHelper.downcall(Descriptors.FD_glFlushVertexArrayRangeNV);

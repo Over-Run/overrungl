@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -32,12 +31,6 @@ public final class GLARBDrawBuffersBlend {
         public static final FunctionDescriptor FD_glBlendEquationSeparateiARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glBlendFunciARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glBlendFuncSeparateiARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glBlendEquationiARB,
-            FD_glBlendEquationSeparateiARB,
-            FD_glBlendFunciARB,
-            FD_glBlendFuncSeparateiARB
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glBlendEquationiARB = RuntimeHelper.downcall(Descriptors.FD_glBlendEquationiARB);

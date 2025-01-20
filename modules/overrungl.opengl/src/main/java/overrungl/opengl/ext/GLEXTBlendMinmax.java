@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -33,9 +32,6 @@ public final class GLEXTBlendMinmax {
     public static final class Descriptors {
         private Descriptors() {}
         public static final FunctionDescriptor FD_glBlendEquationEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glBlendEquationEXT
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glBlendEquationEXT = RuntimeHelper.downcall(Descriptors.FD_glBlendEquationEXT);

@@ -19,7 +19,6 @@ package overrungl.opengl.oes;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -34,14 +33,6 @@ public final class GLOESSinglePrecision {
         public static final FunctionDescriptor FD_glFrustumfOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
         public static final FunctionDescriptor FD_glGetClipPlanefOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glOrthofOES = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glClearDepthfOES,
-            FD_glClipPlanefOES,
-            FD_glDepthRangefOES,
-            FD_glFrustumfOES,
-            FD_glGetClipPlanefOES,
-            FD_glOrthofOES
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glClearDepthfOES = RuntimeHelper.downcall(Descriptors.FD_glClearDepthfOES);

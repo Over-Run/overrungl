@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLARBPixelBufferObject {
     public static final int GL_PIXEL_PACK_BUFFER_ARB = 0x88EB;
     public static final int GL_PIXEL_UNPACK_BUFFER_ARB = 0x88EC;

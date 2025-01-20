@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKEXTTransformFeedback {
     public static final int VK_EXT_TRANSFORM_FEEDBACK_SPEC_VERSION = 1;
     public static final String VK_EXT_TRANSFORM_FEEDBACK_EXTENSION_NAME = "VK_EXT_transform_feedback";
@@ -44,14 +43,6 @@ public class VKEXTTransformFeedback {
         public static final FunctionDescriptor FD_vkCmdBeginQueryIndexedEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_vkCmdEndQueryIndexedEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_vkCmdDrawIndirectByteCountEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCmdBindTransformFeedbackBuffersEXT,
-            FD_vkCmdBeginTransformFeedbackEXT,
-            FD_vkCmdEndTransformFeedbackEXT,
-            FD_vkCmdBeginQueryIndexedEXT,
-            FD_vkCmdEndQueryIndexedEXT,
-            FD_vkCmdDrawIndirectByteCountEXT
-        );
         private Descriptors() {}
     }
     public static final class Handles {

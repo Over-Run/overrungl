@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -80,18 +79,6 @@ public final class GLARBVertexBlend {
         public static final FunctionDescriptor FD_glWeightuivARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glWeightPointerARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glVertexBlendARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glWeightbvARB,
-            FD_glWeightsvARB,
-            FD_glWeightivARB,
-            FD_glWeightfvARB,
-            FD_glWeightdvARB,
-            FD_glWeightubvARB,
-            FD_glWeightusvARB,
-            FD_glWeightuivARB,
-            FD_glWeightPointerARB,
-            FD_glVertexBlendARB
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glWeightbvARB = RuntimeHelper.downcall(Descriptors.FD_glWeightbvARB);

@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKNVDeviceGeneratedCommandsCompute {
     public static final int VK_NV_DEVICE_GENERATED_COMMANDS_COMPUTE_SPEC_VERSION = 2;
     public static final String VK_NV_DEVICE_GENERATED_COMMANDS_COMPUTE_EXTENSION_NAME = "VK_NV_device_generated_commands_compute";
@@ -37,11 +36,6 @@ public class VKNVDeviceGeneratedCommandsCompute {
         public static final FunctionDescriptor FD_vkGetPipelineIndirectMemoryRequirementsNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkCmdUpdatePipelineIndirectBufferNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkGetPipelineIndirectDeviceAddressNV = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetPipelineIndirectMemoryRequirementsNV,
-            FD_vkCmdUpdatePipelineIndirectBufferNV,
-            FD_vkGetPipelineIndirectDeviceAddressNV
-        );
         private Descriptors() {}
     }
     public static final class Handles {

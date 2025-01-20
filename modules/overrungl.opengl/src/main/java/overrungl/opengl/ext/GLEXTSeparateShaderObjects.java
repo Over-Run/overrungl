@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -81,55 +80,6 @@ public final class GLEXTSeparateShaderObjects {
         public static final FunctionDescriptor FD_glProgramUniformMatrix4x2fvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glProgramUniformMatrix3x4fvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glProgramUniformMatrix4x3fvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glUseShaderProgramEXT,
-            FD_glActiveProgramEXT,
-            FD_glCreateShaderProgramEXT,
-            FD_glActiveShaderProgramEXT,
-            FD_glBindProgramPipelineEXT,
-            FD_glCreateShaderProgramvEXT,
-            FD_glDeleteProgramPipelinesEXT,
-            FD_glGenProgramPipelinesEXT,
-            FD_glGetProgramPipelineInfoLogEXT,
-            FD_glGetProgramPipelineivEXT,
-            FD_glIsProgramPipelineEXT,
-            FD_glProgramParameteriEXT,
-            FD_glProgramUniform1fEXT,
-            FD_glProgramUniform1fvEXT,
-            FD_glProgramUniform1iEXT,
-            FD_glProgramUniform1ivEXT,
-            FD_glProgramUniform2fEXT,
-            FD_glProgramUniform2fvEXT,
-            FD_glProgramUniform2iEXT,
-            FD_glProgramUniform2ivEXT,
-            FD_glProgramUniform3fEXT,
-            FD_glProgramUniform3fvEXT,
-            FD_glProgramUniform3iEXT,
-            FD_glProgramUniform3ivEXT,
-            FD_glProgramUniform4fEXT,
-            FD_glProgramUniform4fvEXT,
-            FD_glProgramUniform4iEXT,
-            FD_glProgramUniform4ivEXT,
-            FD_glProgramUniformMatrix2fvEXT,
-            FD_glProgramUniformMatrix3fvEXT,
-            FD_glProgramUniformMatrix4fvEXT,
-            FD_glUseProgramStagesEXT,
-            FD_glValidateProgramPipelineEXT,
-            FD_glProgramUniform1uiEXT,
-            FD_glProgramUniform2uiEXT,
-            FD_glProgramUniform3uiEXT,
-            FD_glProgramUniform4uiEXT,
-            FD_glProgramUniform1uivEXT,
-            FD_glProgramUniform2uivEXT,
-            FD_glProgramUniform3uivEXT,
-            FD_glProgramUniform4uivEXT,
-            FD_glProgramUniformMatrix2x3fvEXT,
-            FD_glProgramUniformMatrix3x2fvEXT,
-            FD_glProgramUniformMatrix2x4fvEXT,
-            FD_glProgramUniformMatrix4x2fvEXT,
-            FD_glProgramUniformMatrix3x4fvEXT,
-            FD_glProgramUniformMatrix4x3fvEXT
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glUseShaderProgramEXT = RuntimeHelper.downcall(Descriptors.FD_glUseShaderProgramEXT);

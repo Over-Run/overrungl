@@ -21,7 +21,6 @@ import java.lang.invoke.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
-import java.util.*;
 public class VK13 extends VK12 {
     public static final int VK_PIPELINE_CREATION_FEEDBACK_VALID_BIT = 0x00000001;
     public static final int VK_PIPELINE_CREATION_FEEDBACK_APPLICATION_PIPELINE_CACHE_HIT_BIT = 0x00000002;
@@ -250,45 +249,6 @@ public class VK13 extends VK12 {
         public static final FunctionDescriptor FD_vkGetDeviceBufferMemoryRequirements = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkGetDeviceImageMemoryRequirements = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkGetDeviceImageSparseMemoryRequirements = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetPhysicalDeviceToolProperties,
-            FD_vkCreatePrivateDataSlot,
-            FD_vkDestroyPrivateDataSlot,
-            FD_vkSetPrivateData,
-            FD_vkGetPrivateData,
-            FD_vkCmdSetEvent2,
-            FD_vkCmdResetEvent2,
-            FD_vkCmdWaitEvents2,
-            FD_vkCmdPipelineBarrier2,
-            FD_vkCmdWriteTimestamp2,
-            FD_vkQueueSubmit2,
-            FD_vkCmdCopyBuffer2,
-            FD_vkCmdCopyImage2,
-            FD_vkCmdCopyBufferToImage2,
-            FD_vkCmdCopyImageToBuffer2,
-            FD_vkCmdBlitImage2,
-            FD_vkCmdResolveImage2,
-            FD_vkCmdBeginRendering,
-            FD_vkCmdEndRendering,
-            FD_vkCmdSetCullMode,
-            FD_vkCmdSetFrontFace,
-            FD_vkCmdSetPrimitiveTopology,
-            FD_vkCmdSetViewportWithCount,
-            FD_vkCmdSetScissorWithCount,
-            FD_vkCmdBindVertexBuffers2,
-            FD_vkCmdSetDepthTestEnable,
-            FD_vkCmdSetDepthWriteEnable,
-            FD_vkCmdSetDepthCompareOp,
-            FD_vkCmdSetDepthBoundsTestEnable,
-            FD_vkCmdSetStencilTestEnable,
-            FD_vkCmdSetStencilOp,
-            FD_vkCmdSetRasterizerDiscardEnable,
-            FD_vkCmdSetDepthBiasEnable,
-            FD_vkCmdSetPrimitiveRestartEnable,
-            FD_vkGetDeviceBufferMemoryRequirements,
-            FD_vkGetDeviceImageMemoryRequirements,
-            FD_vkGetDeviceImageSparseMemoryRequirements
-        );
         private Descriptors() {}
     }
     public static final class Handles {

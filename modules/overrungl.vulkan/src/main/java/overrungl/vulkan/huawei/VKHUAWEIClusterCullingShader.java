@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKHUAWEIClusterCullingShader {
     public static final int VK_HUAWEI_CLUSTER_CULLING_SHADER_SPEC_VERSION = 3;
     public static final String VK_HUAWEI_CLUSTER_CULLING_SHADER_EXTENSION_NAME = "VK_HUAWEI_cluster_culling_shader";
@@ -36,10 +35,6 @@ public class VKHUAWEIClusterCullingShader {
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkCmdDrawClusterHUAWEI = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_vkCmdDrawClusterIndirectHUAWEI = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCmdDrawClusterHUAWEI,
-            FD_vkCmdDrawClusterIndirectHUAWEI
-        );
         private Descriptors() {}
     }
     public static final class Handles {

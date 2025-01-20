@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -37,14 +36,6 @@ public final class GLARBShadingLanguageInclude {
         public static final FunctionDescriptor FD_glIsNamedStringARB = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetNamedStringARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetNamedStringivARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glNamedStringARB,
-            FD_glDeleteNamedStringARB,
-            FD_glCompileShaderIncludeARB,
-            FD_glIsNamedStringARB,
-            FD_glGetNamedStringARB,
-            FD_glGetNamedStringivARB
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glNamedStringARB = RuntimeHelper.downcall(Descriptors.FD_glNamedStringARB);

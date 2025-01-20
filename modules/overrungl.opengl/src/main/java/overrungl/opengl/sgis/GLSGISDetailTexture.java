@@ -19,7 +19,6 @@ package overrungl.opengl.sgis;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -38,10 +37,6 @@ public final class GLSGISDetailTexture {
         private Descriptors() {}
         public static final FunctionDescriptor FD_glDetailTexFuncSGIS = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetDetailTexFuncSGIS = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glDetailTexFuncSGIS,
-            FD_glGetDetailTexFuncSGIS
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glDetailTexFuncSGIS = RuntimeHelper.downcall(Descriptors.FD_glDetailTexFuncSGIS);

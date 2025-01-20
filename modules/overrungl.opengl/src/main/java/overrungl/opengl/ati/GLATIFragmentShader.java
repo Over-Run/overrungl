@@ -19,7 +19,6 @@ package overrungl.opengl.ati;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -146,22 +145,6 @@ public final class GLATIFragmentShader {
         public static final FunctionDescriptor FD_glAlphaFragmentOp2ATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glAlphaFragmentOp3ATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glSetFragmentShaderConstantATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glGenFragmentShadersATI,
-            FD_glBindFragmentShaderATI,
-            FD_glDeleteFragmentShaderATI,
-            FD_glBeginFragmentShaderATI,
-            FD_glEndFragmentShaderATI,
-            FD_glPassTexCoordATI,
-            FD_glSampleMapATI,
-            FD_glColorFragmentOp1ATI,
-            FD_glColorFragmentOp2ATI,
-            FD_glColorFragmentOp3ATI,
-            FD_glAlphaFragmentOp1ATI,
-            FD_glAlphaFragmentOp2ATI,
-            FD_glAlphaFragmentOp3ATI,
-            FD_glSetFragmentShaderConstantATI
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glGenFragmentShadersATI = RuntimeHelper.downcall(Descriptors.FD_glGenFragmentShadersATI);

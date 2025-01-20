@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -41,13 +40,6 @@ public final class GLEXTFogCoord {
         public static final FunctionDescriptor FD_glFogCoorddEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE);
         public static final FunctionDescriptor FD_glFogCoorddvEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glFogCoordPointerEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glFogCoordfEXT,
-            FD_glFogCoordfvEXT,
-            FD_glFogCoorddEXT,
-            FD_glFogCoorddvEXT,
-            FD_glFogCoordPointerEXT
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glFogCoordfEXT = RuntimeHelper.downcall(Descriptors.FD_glFogCoordfEXT);

@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.VK13.*;
 public class VKEXTExtendedDynamicState2 {
     public static final int VK_EXT_EXTENDED_DYNAMIC_STATE_2_SPEC_VERSION = 1;
@@ -40,13 +39,6 @@ public class VKEXTExtendedDynamicState2 {
         public static final FunctionDescriptor FD_vkCmdSetDepthBiasEnableEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_vkCmdSetLogicOpEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_vkCmdSetPrimitiveRestartEnableEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCmdSetPatchControlPointsEXT,
-            FD_vkCmdSetRasterizerDiscardEnableEXT,
-            FD_vkCmdSetDepthBiasEnableEXT,
-            FD_vkCmdSetLogicOpEXT,
-            FD_vkCmdSetPrimitiveRestartEnableEXT
-        );
         private Descriptors() {}
     }
     public static final class Handles {

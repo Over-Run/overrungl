@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -34,10 +33,6 @@ public final class GLEXTPointParameters {
         private Descriptors() {}
         public static final FunctionDescriptor FD_glPointParameterfEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT);
         public static final FunctionDescriptor FD_glPointParameterfvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glPointParameterfEXT,
-            FD_glPointParameterfvEXT
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glPointParameterfEXT = RuntimeHelper.downcall(Descriptors.FD_glPointParameterfEXT);

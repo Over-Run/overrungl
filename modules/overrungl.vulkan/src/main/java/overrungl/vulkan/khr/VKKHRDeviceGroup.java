@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.VK11.*;
 public class VKKHRDeviceGroup {
     public static final int VK_DEVICE_GROUP_PRESENT_MODE_LOCAL_BIT_KHR = 0x00000001;
@@ -63,15 +62,6 @@ public class VKKHRDeviceGroup {
         public static final FunctionDescriptor FD_vkGetDeviceGroupSurfacePresentModesKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkGetPhysicalDevicePresentRectanglesKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkAcquireNextImage2KHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetDeviceGroupPeerMemoryFeaturesKHR,
-            FD_vkCmdSetDeviceMaskKHR,
-            FD_vkCmdDispatchBaseKHR,
-            FD_vkGetDeviceGroupPresentCapabilitiesKHR,
-            FD_vkGetDeviceGroupSurfacePresentModesKHR,
-            FD_vkGetPhysicalDevicePresentRectanglesKHR,
-            FD_vkAcquireNextImage2KHR
-        );
         private Descriptors() {}
     }
     public static final class Handles {

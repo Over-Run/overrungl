@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKAMDAntiLag {
     public static final int VK_ANTI_LAG_MODE_DRIVER_CONTROL_AMD = 0;
     public static final int VK_ANTI_LAG_MODE_ON_AMD = 1;
@@ -37,9 +36,6 @@ public class VKAMDAntiLag {
     private final Handles handles;
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkAntiLagUpdateAMD = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkAntiLagUpdateAMD
-        );
         private Descriptors() {}
     }
     public static final class Handles {

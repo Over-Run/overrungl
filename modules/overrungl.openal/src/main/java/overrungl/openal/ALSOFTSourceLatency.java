@@ -18,7 +18,6 @@
 package overrungl.openal;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.*;
 import overrungl.util.*;
@@ -56,132 +55,163 @@ public final class ALSOFTSourceLatency {
         public static final FunctionDescriptor FD_alGetSource3i64SOFT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         /// The function descriptor of `alGetSourcei64vSOFT`.
         public static final FunctionDescriptor FD_alGetSourcei64vSOFT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        /// Function descriptors.
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_alSourcedSOFT,
-            FD_alSource3dSOFT,
-            FD_alSourcedvSOFT,
-            FD_alGetSourcedSOFT,
-            FD_alGetSource3dSOFT,
-            FD_alGetSourcedvSOFT,
-            FD_alSourcei64SOFT,
-            FD_alSource3i64SOFT,
-            FD_alSourcei64vSOFT,
-            FD_alGetSourcei64SOFT,
-            FD_alGetSource3i64SOFT,
-            FD_alGetSourcei64vSOFT
-        );
     }
     /// Method handles.
     public static final class Handles {
-        private Handles() { }
         /// The method handle of `alSourcedSOFT`.
-        public static final MethodHandle MH_alSourcedSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourcedSOFT", Descriptors.FD_alSourcedSOFT);
+        public static final MethodHandle MH_alSourcedSOFT = RuntimeHelper.downcall(Descriptors.FD_alSourcedSOFT);
         /// The method handle of `alSource3dSOFT`.
-        public static final MethodHandle MH_alSource3dSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSource3dSOFT", Descriptors.FD_alSource3dSOFT);
+        public static final MethodHandle MH_alSource3dSOFT = RuntimeHelper.downcall(Descriptors.FD_alSource3dSOFT);
         /// The method handle of `alSourcedvSOFT`.
-        public static final MethodHandle MH_alSourcedvSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourcedvSOFT", Descriptors.FD_alSourcedvSOFT);
+        public static final MethodHandle MH_alSourcedvSOFT = RuntimeHelper.downcall(Descriptors.FD_alSourcedvSOFT);
         /// The method handle of `alGetSourcedSOFT`.
-        public static final MethodHandle MH_alGetSourcedSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetSourcedSOFT", Descriptors.FD_alGetSourcedSOFT);
+        public static final MethodHandle MH_alGetSourcedSOFT = RuntimeHelper.downcall(Descriptors.FD_alGetSourcedSOFT);
         /// The method handle of `alGetSource3dSOFT`.
-        public static final MethodHandle MH_alGetSource3dSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetSource3dSOFT", Descriptors.FD_alGetSource3dSOFT);
+        public static final MethodHandle MH_alGetSource3dSOFT = RuntimeHelper.downcall(Descriptors.FD_alGetSource3dSOFT);
         /// The method handle of `alGetSourcedvSOFT`.
-        public static final MethodHandle MH_alGetSourcedvSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetSourcedvSOFT", Descriptors.FD_alGetSourcedvSOFT);
+        public static final MethodHandle MH_alGetSourcedvSOFT = RuntimeHelper.downcall(Descriptors.FD_alGetSourcedvSOFT);
         /// The method handle of `alSourcei64SOFT`.
-        public static final MethodHandle MH_alSourcei64SOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourcei64SOFT", Descriptors.FD_alSourcei64SOFT);
+        public static final MethodHandle MH_alSourcei64SOFT = RuntimeHelper.downcall(Descriptors.FD_alSourcei64SOFT);
         /// The method handle of `alSource3i64SOFT`.
-        public static final MethodHandle MH_alSource3i64SOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSource3i64SOFT", Descriptors.FD_alSource3i64SOFT);
+        public static final MethodHandle MH_alSource3i64SOFT = RuntimeHelper.downcall(Descriptors.FD_alSource3i64SOFT);
         /// The method handle of `alSourcei64vSOFT`.
-        public static final MethodHandle MH_alSourcei64vSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alSourcei64vSOFT", Descriptors.FD_alSourcei64vSOFT);
+        public static final MethodHandle MH_alSourcei64vSOFT = RuntimeHelper.downcall(Descriptors.FD_alSourcei64vSOFT);
         /// The method handle of `alGetSourcei64SOFT`.
-        public static final MethodHandle MH_alGetSourcei64SOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetSourcei64SOFT", Descriptors.FD_alGetSourcei64SOFT);
+        public static final MethodHandle MH_alGetSourcei64SOFT = RuntimeHelper.downcall(Descriptors.FD_alGetSourcei64SOFT);
         /// The method handle of `alGetSource3i64SOFT`.
-        public static final MethodHandle MH_alGetSource3i64SOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetSource3i64SOFT", Descriptors.FD_alGetSource3i64SOFT);
+        public static final MethodHandle MH_alGetSource3i64SOFT = RuntimeHelper.downcall(Descriptors.FD_alGetSource3i64SOFT);
         /// The method handle of `alGetSourcei64vSOFT`.
-        public static final MethodHandle MH_alGetSourcei64vSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alGetSourcei64vSOFT", Descriptors.FD_alGetSourcei64vSOFT);
+        public static final MethodHandle MH_alGetSourcei64vSOFT = RuntimeHelper.downcall(Descriptors.FD_alGetSourcei64vSOFT);
+        /// The function address of `alSourcedSOFT`.
+        public final MemorySegment PFN_alSourcedSOFT;
+        /// The function address of `alSource3dSOFT`.
+        public final MemorySegment PFN_alSource3dSOFT;
+        /// The function address of `alSourcedvSOFT`.
+        public final MemorySegment PFN_alSourcedvSOFT;
+        /// The function address of `alGetSourcedSOFT`.
+        public final MemorySegment PFN_alGetSourcedSOFT;
+        /// The function address of `alGetSource3dSOFT`.
+        public final MemorySegment PFN_alGetSource3dSOFT;
+        /// The function address of `alGetSourcedvSOFT`.
+        public final MemorySegment PFN_alGetSourcedvSOFT;
+        /// The function address of `alSourcei64SOFT`.
+        public final MemorySegment PFN_alSourcei64SOFT;
+        /// The function address of `alSource3i64SOFT`.
+        public final MemorySegment PFN_alSource3i64SOFT;
+        /// The function address of `alSourcei64vSOFT`.
+        public final MemorySegment PFN_alSourcei64vSOFT;
+        /// The function address of `alGetSourcei64SOFT`.
+        public final MemorySegment PFN_alGetSourcei64SOFT;
+        /// The function address of `alGetSource3i64SOFT`.
+        public final MemorySegment PFN_alGetSource3i64SOFT;
+        /// The function address of `alGetSourcei64vSOFT`.
+        public final MemorySegment PFN_alGetSourcei64vSOFT;
+        private Handles() {
+            PFN_alSourcedSOFT = ALInternal.lookup().find("alSourcedSOFT").orElse(MemorySegment.NULL);
+            PFN_alSource3dSOFT = ALInternal.lookup().find("alSource3dSOFT").orElse(MemorySegment.NULL);
+            PFN_alSourcedvSOFT = ALInternal.lookup().find("alSourcedvSOFT").orElse(MemorySegment.NULL);
+            PFN_alGetSourcedSOFT = ALInternal.lookup().find("alGetSourcedSOFT").orElse(MemorySegment.NULL);
+            PFN_alGetSource3dSOFT = ALInternal.lookup().find("alGetSource3dSOFT").orElse(MemorySegment.NULL);
+            PFN_alGetSourcedvSOFT = ALInternal.lookup().find("alGetSourcedvSOFT").orElse(MemorySegment.NULL);
+            PFN_alSourcei64SOFT = ALInternal.lookup().find("alSourcei64SOFT").orElse(MemorySegment.NULL);
+            PFN_alSource3i64SOFT = ALInternal.lookup().find("alSource3i64SOFT").orElse(MemorySegment.NULL);
+            PFN_alSourcei64vSOFT = ALInternal.lookup().find("alSourcei64vSOFT").orElse(MemorySegment.NULL);
+            PFN_alGetSourcei64SOFT = ALInternal.lookup().find("alGetSourcei64SOFT").orElse(MemorySegment.NULL);
+            PFN_alGetSource3i64SOFT = ALInternal.lookup().find("alGetSource3i64SOFT").orElse(MemorySegment.NULL);
+            PFN_alGetSourcei64vSOFT = ALInternal.lookup().find("alGetSourcei64vSOFT").orElse(MemorySegment.NULL);
+        }
+        private static volatile Handles instance;
+        private static Handles get() {
+            if (instance == null) {
+                synchronized (Handles.class) {
+                    if (instance == null) { instance = new Handles(); }
+                }
+            }
+            return instance;
+        }
     }
 
     public static void alSourcedSOFT(@CType("ALuint") int source, @CType("ALenum") int param, @CType("ALdouble") double value) {
         if (Handles.MH_alSourcedSOFT == null) throw new SymbolNotFoundError("Symbol not found: alSourcedSOFT");
         try {
-            Handles.MH_alSourcedSOFT.invokeExact(source, param, value);
+            Handles.MH_alSourcedSOFT.invokeExact(Handles.get().PFN_alSourcedSOFT, source, param, value);
         } catch (Throwable e) { throw new RuntimeException("error in alSourcedSOFT", e); }
     }
 
     public static void alSource3dSOFT(@CType("ALuint") int source, @CType("ALenum") int param, @CType("ALdouble") double value1, @CType("ALdouble") double value2, @CType("ALdouble") double value3) {
         if (Handles.MH_alSource3dSOFT == null) throw new SymbolNotFoundError("Symbol not found: alSource3dSOFT");
         try {
-            Handles.MH_alSource3dSOFT.invokeExact(source, param, value1, value2, value3);
+            Handles.MH_alSource3dSOFT.invokeExact(Handles.get().PFN_alSource3dSOFT, source, param, value1, value2, value3);
         } catch (Throwable e) { throw new RuntimeException("error in alSource3dSOFT", e); }
     }
 
     public static void alSourcedvSOFT(@CType("ALuint") int source, @CType("ALenum") int param, @CType("const ALdouble *") java.lang.foreign.MemorySegment values) {
         if (Handles.MH_alSourcedvSOFT == null) throw new SymbolNotFoundError("Symbol not found: alSourcedvSOFT");
         try {
-            Handles.MH_alSourcedvSOFT.invokeExact(source, param, values);
+            Handles.MH_alSourcedvSOFT.invokeExact(Handles.get().PFN_alSourcedvSOFT, source, param, values);
         } catch (Throwable e) { throw new RuntimeException("error in alSourcedvSOFT", e); }
     }
 
     public static void alGetSourcedSOFT(@CType("ALuint") int source, @CType("ALenum") int param, @CType("ALdouble *") java.lang.foreign.MemorySegment value) {
         if (Handles.MH_alGetSourcedSOFT == null) throw new SymbolNotFoundError("Symbol not found: alGetSourcedSOFT");
         try {
-            Handles.MH_alGetSourcedSOFT.invokeExact(source, param, value);
+            Handles.MH_alGetSourcedSOFT.invokeExact(Handles.get().PFN_alGetSourcedSOFT, source, param, value);
         } catch (Throwable e) { throw new RuntimeException("error in alGetSourcedSOFT", e); }
     }
 
     public static void alGetSource3dSOFT(@CType("ALuint") int source, @CType("ALenum") int param, @CType("ALdouble *") java.lang.foreign.MemorySegment value1, @CType("ALdouble *") java.lang.foreign.MemorySegment value2, @CType("ALdouble *") java.lang.foreign.MemorySegment value3) {
         if (Handles.MH_alGetSource3dSOFT == null) throw new SymbolNotFoundError("Symbol not found: alGetSource3dSOFT");
         try {
-            Handles.MH_alGetSource3dSOFT.invokeExact(source, param, value1, value2, value3);
+            Handles.MH_alGetSource3dSOFT.invokeExact(Handles.get().PFN_alGetSource3dSOFT, source, param, value1, value2, value3);
         } catch (Throwable e) { throw new RuntimeException("error in alGetSource3dSOFT", e); }
     }
 
     public static void alGetSourcedvSOFT(@CType("ALuint") int source, @CType("ALenum") int param, @CType("ALdouble *") java.lang.foreign.MemorySegment values) {
         if (Handles.MH_alGetSourcedvSOFT == null) throw new SymbolNotFoundError("Symbol not found: alGetSourcedvSOFT");
         try {
-            Handles.MH_alGetSourcedvSOFT.invokeExact(source, param, values);
+            Handles.MH_alGetSourcedvSOFT.invokeExact(Handles.get().PFN_alGetSourcedvSOFT, source, param, values);
         } catch (Throwable e) { throw new RuntimeException("error in alGetSourcedvSOFT", e); }
     }
 
     public static void alSourcei64SOFT(@CType("ALuint") int source, @CType("ALenum") int param, @CType("ALint64SOFT") long value) {
         if (Handles.MH_alSourcei64SOFT == null) throw new SymbolNotFoundError("Symbol not found: alSourcei64SOFT");
         try {
-            Handles.MH_alSourcei64SOFT.invokeExact(source, param, value);
+            Handles.MH_alSourcei64SOFT.invokeExact(Handles.get().PFN_alSourcei64SOFT, source, param, value);
         } catch (Throwable e) { throw new RuntimeException("error in alSourcei64SOFT", e); }
     }
 
     public static void alSource3i64SOFT(@CType("ALuint") int source, @CType("ALenum") int param, @CType("ALint64SOFT") long value1, @CType("ALint64SOFT") long value2, @CType("ALint64SOFT") long value3) {
         if (Handles.MH_alSource3i64SOFT == null) throw new SymbolNotFoundError("Symbol not found: alSource3i64SOFT");
         try {
-            Handles.MH_alSource3i64SOFT.invokeExact(source, param, value1, value2, value3);
+            Handles.MH_alSource3i64SOFT.invokeExact(Handles.get().PFN_alSource3i64SOFT, source, param, value1, value2, value3);
         } catch (Throwable e) { throw new RuntimeException("error in alSource3i64SOFT", e); }
     }
 
     public static void alSourcei64vSOFT(@CType("ALuint") int source, @CType("ALenum") int param, @CType("const ALint64SOFT *") java.lang.foreign.MemorySegment values) {
         if (Handles.MH_alSourcei64vSOFT == null) throw new SymbolNotFoundError("Symbol not found: alSourcei64vSOFT");
         try {
-            Handles.MH_alSourcei64vSOFT.invokeExact(source, param, values);
+            Handles.MH_alSourcei64vSOFT.invokeExact(Handles.get().PFN_alSourcei64vSOFT, source, param, values);
         } catch (Throwable e) { throw new RuntimeException("error in alSourcei64vSOFT", e); }
     }
 
     public static void alGetSourcei64SOFT(@CType("ALuint") int source, @CType("ALenum") int param, @CType("ALint64SOFT *") java.lang.foreign.MemorySegment value) {
         if (Handles.MH_alGetSourcei64SOFT == null) throw new SymbolNotFoundError("Symbol not found: alGetSourcei64SOFT");
         try {
-            Handles.MH_alGetSourcei64SOFT.invokeExact(source, param, value);
+            Handles.MH_alGetSourcei64SOFT.invokeExact(Handles.get().PFN_alGetSourcei64SOFT, source, param, value);
         } catch (Throwable e) { throw new RuntimeException("error in alGetSourcei64SOFT", e); }
     }
 
     public static void alGetSource3i64SOFT(@CType("ALuint") int source, @CType("ALenum") int param, @CType("ALint64SOFT *") java.lang.foreign.MemorySegment value1, @CType("ALint64SOFT *") java.lang.foreign.MemorySegment value2, @CType("ALint64SOFT *") java.lang.foreign.MemorySegment value3) {
         if (Handles.MH_alGetSource3i64SOFT == null) throw new SymbolNotFoundError("Symbol not found: alGetSource3i64SOFT");
         try {
-            Handles.MH_alGetSource3i64SOFT.invokeExact(source, param, value1, value2, value3);
+            Handles.MH_alGetSource3i64SOFT.invokeExact(Handles.get().PFN_alGetSource3i64SOFT, source, param, value1, value2, value3);
         } catch (Throwable e) { throw new RuntimeException("error in alGetSource3i64SOFT", e); }
     }
 
     public static void alGetSourcei64vSOFT(@CType("ALuint") int source, @CType("ALenum") int param, @CType("ALint64SOFT *") java.lang.foreign.MemorySegment values) {
         if (Handles.MH_alGetSourcei64vSOFT == null) throw new SymbolNotFoundError("Symbol not found: alGetSourcei64vSOFT");
         try {
-            Handles.MH_alGetSourcei64vSOFT.invokeExact(source, param, values);
+            Handles.MH_alGetSourcei64vSOFT.invokeExact(Handles.get().PFN_alGetSourcei64vSOFT, source, param, values);
         } catch (Throwable e) { throw new RuntimeException("error in alGetSourcei64vSOFT", e); }
     }
 

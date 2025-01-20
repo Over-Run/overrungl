@@ -18,7 +18,6 @@
 package overrungl.openal;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.*;
 import overrungl.util.*;
@@ -34,22 +33,31 @@ public final class ALSOFTBufferSubData {
         private Descriptors() { }
         /// The function descriptor of `alBufferSubDataSOFT`.
         public static final FunctionDescriptor FD_alBufferSubDataSOFT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        /// Function descriptors.
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_alBufferSubDataSOFT
-        );
     }
     /// Method handles.
     public static final class Handles {
-        private Handles() { }
         /// The method handle of `alBufferSubDataSOFT`.
-        public static final MethodHandle MH_alBufferSubDataSOFT = RuntimeHelper.downcallOrNull(ALInternal.lookup(), "alBufferSubDataSOFT", Descriptors.FD_alBufferSubDataSOFT);
+        public static final MethodHandle MH_alBufferSubDataSOFT = RuntimeHelper.downcall(Descriptors.FD_alBufferSubDataSOFT);
+        /// The function address of `alBufferSubDataSOFT`.
+        public final MemorySegment PFN_alBufferSubDataSOFT;
+        private Handles() {
+            PFN_alBufferSubDataSOFT = ALInternal.lookup().find("alBufferSubDataSOFT").orElse(MemorySegment.NULL);
+        }
+        private static volatile Handles instance;
+        private static Handles get() {
+            if (instance == null) {
+                synchronized (Handles.class) {
+                    if (instance == null) { instance = new Handles(); }
+                }
+            }
+            return instance;
+        }
     }
 
     public static void alBufferSubDataSOFT(@CType("ALuint") int buffer, @CType("ALenum") int format, @CType("const ALvoid *") java.lang.foreign.MemorySegment data, @CType("ALsizei") int offset, @CType("ALsizei") int length) {
         if (Handles.MH_alBufferSubDataSOFT == null) throw new SymbolNotFoundError("Symbol not found: alBufferSubDataSOFT");
         try {
-            Handles.MH_alBufferSubDataSOFT.invokeExact(buffer, format, data, offset, length);
+            Handles.MH_alBufferSubDataSOFT.invokeExact(Handles.get().PFN_alBufferSubDataSOFT, buffer, format, data, offset, length);
         } catch (Throwable e) { throw new RuntimeException("error in alBufferSubDataSOFT", e); }
     }
 

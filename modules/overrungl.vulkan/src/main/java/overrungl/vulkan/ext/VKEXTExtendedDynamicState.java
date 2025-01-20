@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.VK13.*;
 public class VKEXTExtendedDynamicState {
     public static final int VK_EXT_EXTENDED_DYNAMIC_STATE_SPEC_VERSION = 1;
@@ -54,20 +53,6 @@ public class VKEXTExtendedDynamicState {
         public static final FunctionDescriptor FD_vkCmdSetDepthBoundsTestEnableEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_vkCmdSetStencilTestEnableEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_vkCmdSetStencilOpEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCmdSetCullModeEXT,
-            FD_vkCmdSetFrontFaceEXT,
-            FD_vkCmdSetPrimitiveTopologyEXT,
-            FD_vkCmdSetViewportWithCountEXT,
-            FD_vkCmdSetScissorWithCountEXT,
-            FD_vkCmdBindVertexBuffers2EXT,
-            FD_vkCmdSetDepthTestEnableEXT,
-            FD_vkCmdSetDepthWriteEnableEXT,
-            FD_vkCmdSetDepthCompareOpEXT,
-            FD_vkCmdSetDepthBoundsTestEnableEXT,
-            FD_vkCmdSetStencilTestEnableEXT,
-            FD_vkCmdSetStencilOpEXT
-        );
         private Descriptors() {}
     }
     public static final class Handles {

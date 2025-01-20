@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKEXTDescriptorBuffer {
     public static final int VK_EXT_DESCRIPTOR_BUFFER_SPEC_VERSION = 1;
     public static final String VK_EXT_DESCRIPTOR_BUFFER_EXTENSION_NAME = "VK_EXT_descriptor_buffer";
@@ -64,19 +63,6 @@ public class VKEXTDescriptorBuffer {
         public static final FunctionDescriptor FD_vkGetImageViewOpaqueCaptureDescriptorDataEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkGetSamplerOpaqueCaptureDescriptorDataEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetDescriptorSetLayoutSizeEXT,
-            FD_vkGetDescriptorSetLayoutBindingOffsetEXT,
-            FD_vkGetDescriptorEXT,
-            FD_vkCmdBindDescriptorBuffersEXT,
-            FD_vkCmdSetDescriptorBufferOffsetsEXT,
-            FD_vkCmdBindDescriptorBufferEmbeddedSamplersEXT,
-            FD_vkGetBufferOpaqueCaptureDescriptorDataEXT,
-            FD_vkGetImageOpaqueCaptureDescriptorDataEXT,
-            FD_vkGetImageViewOpaqueCaptureDescriptorDataEXT,
-            FD_vkGetSamplerOpaqueCaptureDescriptorDataEXT,
-            FD_vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT
-        );
         private Descriptors() {}
     }
     public static final class Handles {

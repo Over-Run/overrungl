@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -96,25 +95,6 @@ public final class GLEXTFramebufferObject {
         public static final FunctionDescriptor FD_glFramebufferRenderbufferEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glGetFramebufferAttachmentParameterivEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGenerateMipmapEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glIsRenderbufferEXT,
-            FD_glBindRenderbufferEXT,
-            FD_glDeleteRenderbuffersEXT,
-            FD_glGenRenderbuffersEXT,
-            FD_glRenderbufferStorageEXT,
-            FD_glGetRenderbufferParameterivEXT,
-            FD_glIsFramebufferEXT,
-            FD_glBindFramebufferEXT,
-            FD_glDeleteFramebuffersEXT,
-            FD_glGenFramebuffersEXT,
-            FD_glCheckFramebufferStatusEXT,
-            FD_glFramebufferTexture1DEXT,
-            FD_glFramebufferTexture2DEXT,
-            FD_glFramebufferTexture3DEXT,
-            FD_glFramebufferRenderbufferEXT,
-            FD_glGetFramebufferAttachmentParameterivEXT,
-            FD_glGenerateMipmapEXT
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glIsRenderbufferEXT = RuntimeHelper.downcall(Descriptors.FD_glIsRenderbufferEXT);

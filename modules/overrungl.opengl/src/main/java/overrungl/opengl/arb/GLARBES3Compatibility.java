@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.arb;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLARBES3Compatibility {
     public static final int GL_COMPRESSED_RGB8_ETC2 = 0x9274;
     public static final int GL_COMPRESSED_SRGB8_ETC2 = 0x9275;

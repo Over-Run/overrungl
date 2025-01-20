@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.khr.VKKHRAccelerationStructure.*;
 import static overrungl.vulkan.khr.VKKHRRayTracingPipeline.*;
 public class VKNVRayTracing {
@@ -95,20 +94,6 @@ public class VKNVRayTracing {
         public static final FunctionDescriptor FD_vkGetAccelerationStructureHandleNV = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkCmdWriteAccelerationStructuresPropertiesNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_vkCompileDeferredNV = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCreateAccelerationStructureNV,
-            FD_vkDestroyAccelerationStructureNV,
-            FD_vkGetAccelerationStructureMemoryRequirementsNV,
-            FD_vkBindAccelerationStructureMemoryNV,
-            FD_vkCmdBuildAccelerationStructureNV,
-            FD_vkCmdCopyAccelerationStructureNV,
-            FD_vkCmdTraceRaysNV,
-            FD_vkCreateRayTracingPipelinesNV,
-            FD_vkGetRayTracingShaderGroupHandlesNV,
-            FD_vkGetAccelerationStructureHandleNV,
-            FD_vkCmdWriteAccelerationStructuresPropertiesNV,
-            FD_vkCompileDeferredNV
-        );
         private Descriptors() {}
     }
     public static final class Handles {

@@ -19,7 +19,6 @@ package overrungl.opengl.oes;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -29,9 +28,6 @@ public final class GLOESQueryMatrix {
     public static final class Descriptors {
         private Descriptors() {}
         public static final FunctionDescriptor FD_glQueryMatrixxOES = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glQueryMatrixxOES
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glQueryMatrixxOES = RuntimeHelper.downcall(Descriptors.FD_glQueryMatrixxOES);

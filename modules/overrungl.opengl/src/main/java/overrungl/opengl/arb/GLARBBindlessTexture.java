@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -45,24 +44,6 @@ public final class GLARBBindlessTexture {
         public static final FunctionDescriptor FD_glVertexAttribL1ui64ARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
         public static final FunctionDescriptor FD_glVertexAttribL1ui64vARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetVertexAttribLui64vARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glGetTextureHandleARB,
-            FD_glGetTextureSamplerHandleARB,
-            FD_glMakeTextureHandleResidentARB,
-            FD_glMakeTextureHandleNonResidentARB,
-            FD_glGetImageHandleARB,
-            FD_glMakeImageHandleResidentARB,
-            FD_glMakeImageHandleNonResidentARB,
-            FD_glUniformHandleui64ARB,
-            FD_glUniformHandleui64vARB,
-            FD_glProgramUniformHandleui64ARB,
-            FD_glProgramUniformHandleui64vARB,
-            FD_glIsTextureHandleResidentARB,
-            FD_glIsImageHandleResidentARB,
-            FD_glVertexAttribL1ui64ARB,
-            FD_glVertexAttribL1ui64vARB,
-            FD_glGetVertexAttribLui64vARB
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glGetTextureHandleARB = RuntimeHelper.downcall(Descriptors.FD_glGetTextureHandleARB);

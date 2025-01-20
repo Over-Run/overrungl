@@ -19,7 +19,6 @@ package overrungl.opengl.sgis;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -38,14 +37,6 @@ public final class GLSGISPixelTexture {
         public static final FunctionDescriptor FD_glPixelTexGenParameterfvSGIS = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetPixelTexGenParameterivSGIS = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetPixelTexGenParameterfvSGIS = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glPixelTexGenParameteriSGIS,
-            FD_glPixelTexGenParameterivSGIS,
-            FD_glPixelTexGenParameterfSGIS,
-            FD_glPixelTexGenParameterfvSGIS,
-            FD_glGetPixelTexGenParameterivSGIS,
-            FD_glGetPixelTexGenParameterfvSGIS
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glPixelTexGenParameteriSGIS = RuntimeHelper.downcall(Descriptors.FD_glPixelTexGenParameteriSGIS);

@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.VK14.*;
 public class VKKHRDynamicRenderingLocalRead {
     public static final int VK_KHR_DYNAMIC_RENDERING_LOCAL_READ_SPEC_VERSION = 1;
@@ -35,10 +34,6 @@ public class VKKHRDynamicRenderingLocalRead {
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkCmdSetRenderingAttachmentLocationsKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkCmdSetRenderingInputAttachmentIndicesKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCmdSetRenderingAttachmentLocationsKHR,
-            FD_vkCmdSetRenderingInputAttachmentIndicesKHR
-        );
         private Descriptors() {}
     }
     public static final class Handles {

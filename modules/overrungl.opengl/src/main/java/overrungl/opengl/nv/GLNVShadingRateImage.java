@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -56,15 +55,6 @@ public final class GLNVShadingRateImage {
         public static final FunctionDescriptor FD_glShadingRateImagePaletteNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glShadingRateSampleOrderNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glShadingRateSampleOrderCustomNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glBindShadingRateImageNV,
-            FD_glGetShadingRateImagePaletteNV,
-            FD_glGetShadingRateSampleLocationivNV,
-            FD_glShadingRateImageBarrierNV,
-            FD_glShadingRateImagePaletteNV,
-            FD_glShadingRateSampleOrderNV,
-            FD_glShadingRateSampleOrderCustomNV
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glBindShadingRateImageNV = RuntimeHelper.downcall(Descriptors.FD_glBindShadingRateImageNV);

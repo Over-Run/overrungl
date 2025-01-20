@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -46,12 +45,6 @@ public final class GLNVFramebufferMixedSamples {
         public static final FunctionDescriptor FD_glCoverageModulationTableNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetCoverageModulationTableNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glCoverageModulationNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glRasterSamplesEXT,
-            FD_glCoverageModulationTableNV,
-            FD_glGetCoverageModulationTableNV,
-            FD_glCoverageModulationNV
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glRasterSamplesEXT = RuntimeHelper.downcall(Descriptors.FD_glRasterSamplesEXT);

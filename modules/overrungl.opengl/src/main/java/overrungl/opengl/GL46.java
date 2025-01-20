@@ -19,7 +19,6 @@ package overrungl.opengl;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -54,12 +53,6 @@ public class GL46 extends GL45 {
         public static final FunctionDescriptor FD_glMultiDrawArraysIndirectCount = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glMultiDrawElementsIndirectCount = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glPolygonOffsetClamp = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glSpecializeShader,
-            FD_glMultiDrawArraysIndirectCount,
-            FD_glMultiDrawElementsIndirectCount,
-            FD_glPolygonOffsetClamp
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glSpecializeShader = RuntimeHelper.downcall(Descriptors.FD_glSpecializeShader);

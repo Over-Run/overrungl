@@ -19,7 +19,6 @@ package overrungl.opengl;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -75,27 +74,6 @@ public class GL15 extends GL14 {
         public static final FunctionDescriptor FD_glUnmapBuffer = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glGetBufferParameteriv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetBufferPointerv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glGenQueries,
-            FD_glDeleteQueries,
-            FD_glIsQuery,
-            FD_glBeginQuery,
-            FD_glEndQuery,
-            FD_glGetQueryiv,
-            FD_glGetQueryObjectiv,
-            FD_glGetQueryObjectuiv,
-            FD_glBindBuffer,
-            FD_glDeleteBuffers,
-            FD_glGenBuffers,
-            FD_glIsBuffer,
-            FD_glBufferData,
-            FD_glBufferSubData,
-            FD_glGetBufferSubData,
-            FD_glMapBuffer,
-            FD_glUnmapBuffer,
-            FD_glGetBufferParameteriv,
-            FD_glGetBufferPointerv
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glGenQueries = RuntimeHelper.downcall(Descriptors.FD_glGenQueries);

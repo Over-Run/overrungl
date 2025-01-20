@@ -19,7 +19,6 @@ package overrungl.opengl;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -333,52 +332,6 @@ public class GL43 extends GL42 {
         public static final FunctionDescriptor FD_glObjectPtrLabel = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetObjectPtrLabel = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetPointerv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glClearBufferData,
-            FD_glClearBufferSubData,
-            FD_glDispatchCompute,
-            FD_glDispatchComputeIndirect,
-            FD_glCopyImageSubData,
-            FD_glFramebufferParameteri,
-            FD_glGetFramebufferParameteriv,
-            FD_glGetInternalformati64v,
-            FD_glInvalidateTexSubImage,
-            FD_glInvalidateTexImage,
-            FD_glInvalidateBufferSubData,
-            FD_glInvalidateBufferData,
-            FD_glInvalidateFramebuffer,
-            FD_glInvalidateSubFramebuffer,
-            FD_glMultiDrawArraysIndirect,
-            FD_glMultiDrawElementsIndirect,
-            FD_glGetProgramInterfaceiv,
-            FD_glGetProgramResourceIndex,
-            FD_glGetProgramResourceName,
-            FD_glGetProgramResourceiv,
-            FD_glGetProgramResourceLocation,
-            FD_glGetProgramResourceLocationIndex,
-            FD_glShaderStorageBlockBinding,
-            FD_glTexBufferRange,
-            FD_glTexStorage2DMultisample,
-            FD_glTexStorage3DMultisample,
-            FD_glTextureView,
-            FD_glBindVertexBuffer,
-            FD_glVertexAttribFormat,
-            FD_glVertexAttribIFormat,
-            FD_glVertexAttribLFormat,
-            FD_glVertexAttribBinding,
-            FD_glVertexBindingDivisor,
-            FD_glDebugMessageControl,
-            FD_glDebugMessageInsert,
-            FD_glDebugMessageCallback,
-            FD_glGetDebugMessageLog,
-            FD_glPushDebugGroup,
-            FD_glPopDebugGroup,
-            FD_glObjectLabel,
-            FD_glGetObjectLabel,
-            FD_glObjectPtrLabel,
-            FD_glGetObjectPtrLabel,
-            FD_glGetPointerv
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glClearBufferData = RuntimeHelper.downcall(Descriptors.FD_glClearBufferData);

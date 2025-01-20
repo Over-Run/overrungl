@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -32,12 +31,6 @@ public final class GLARBDrawElementsBaseVertex {
         public static final FunctionDescriptor FD_glDrawRangeElementsBaseVertex = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glDrawElementsInstancedBaseVertex = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glMultiDrawElementsBaseVertex = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glDrawElementsBaseVertex,
-            FD_glDrawRangeElementsBaseVertex,
-            FD_glDrawElementsInstancedBaseVertex,
-            FD_glMultiDrawElementsBaseVertex
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glDrawElementsBaseVertex = RuntimeHelper.downcall(Descriptors.FD_glDrawElementsBaseVertex);

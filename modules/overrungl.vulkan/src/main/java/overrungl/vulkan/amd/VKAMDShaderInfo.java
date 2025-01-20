@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKAMDShaderInfo {
     public static final int VK_SHADER_INFO_TYPE_STATISTICS_AMD = 0;
     public static final int VK_SHADER_INFO_TYPE_BINARY_AMD = 1;
@@ -32,9 +31,6 @@ public class VKAMDShaderInfo {
     private final Handles handles;
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkGetShaderInfoAMD = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetShaderInfoAMD
-        );
         private Descriptors() {}
     }
     public static final class Handles {

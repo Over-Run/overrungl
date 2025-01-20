@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.khr.VKKHRCooperativeMatrix.*;
 public class VKNVCooperativeMatrix {
     public static final int VK_NV_COOPERATIVE_MATRIX_SPEC_VERSION = 1;
@@ -48,9 +47,6 @@ public class VKNVCooperativeMatrix {
     private final Handles handles;
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV
-        );
         private Descriptors() {}
     }
     public static final class Handles {

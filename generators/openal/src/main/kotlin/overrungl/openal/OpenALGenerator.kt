@@ -100,4 +100,6 @@ fun main() {
     ALC()
     alext()
     efx()
+
+    writeNativeImageRegistration(alPackage)
 }

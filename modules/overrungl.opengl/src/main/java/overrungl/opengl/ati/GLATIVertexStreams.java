@@ -19,7 +19,6 @@ package overrungl.opengl.ati;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -83,53 +82,6 @@ public final class GLATIVertexStreams {
         public static final FunctionDescriptor FD_glClientActiveVertexStreamATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glVertexBlendEnviATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glVertexBlendEnvfATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glVertexStream1sATI,
-            FD_glVertexStream1svATI,
-            FD_glVertexStream1iATI,
-            FD_glVertexStream1ivATI,
-            FD_glVertexStream1fATI,
-            FD_glVertexStream1fvATI,
-            FD_glVertexStream1dATI,
-            FD_glVertexStream1dvATI,
-            FD_glVertexStream2sATI,
-            FD_glVertexStream2svATI,
-            FD_glVertexStream2iATI,
-            FD_glVertexStream2ivATI,
-            FD_glVertexStream2fATI,
-            FD_glVertexStream2fvATI,
-            FD_glVertexStream2dATI,
-            FD_glVertexStream2dvATI,
-            FD_glVertexStream3sATI,
-            FD_glVertexStream3svATI,
-            FD_glVertexStream3iATI,
-            FD_glVertexStream3ivATI,
-            FD_glVertexStream3fATI,
-            FD_glVertexStream3fvATI,
-            FD_glVertexStream3dATI,
-            FD_glVertexStream3dvATI,
-            FD_glVertexStream4sATI,
-            FD_glVertexStream4svATI,
-            FD_glVertexStream4iATI,
-            FD_glVertexStream4ivATI,
-            FD_glVertexStream4fATI,
-            FD_glVertexStream4fvATI,
-            FD_glVertexStream4dATI,
-            FD_glVertexStream4dvATI,
-            FD_glNormalStream3bATI,
-            FD_glNormalStream3bvATI,
-            FD_glNormalStream3sATI,
-            FD_glNormalStream3svATI,
-            FD_glNormalStream3iATI,
-            FD_glNormalStream3ivATI,
-            FD_glNormalStream3fATI,
-            FD_glNormalStream3fvATI,
-            FD_glNormalStream3dATI,
-            FD_glNormalStream3dvATI,
-            FD_glClientActiveVertexStreamATI,
-            FD_glVertexBlendEnviATI,
-            FD_glVertexBlendEnvfATI
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glVertexStream1sATI = RuntimeHelper.downcall(Descriptors.FD_glVertexStream1sATI);

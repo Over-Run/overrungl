@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -38,10 +37,6 @@ public final class GLEXTDebugLabel {
         private Descriptors() {}
         public static final FunctionDescriptor FD_glLabelObjectEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetObjectLabelEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glLabelObjectEXT,
-            FD_glGetObjectLabelEXT
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glLabelObjectEXT = RuntimeHelper.downcall(Descriptors.FD_glLabelObjectEXT);

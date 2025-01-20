@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -33,9 +32,6 @@ public final class GLARBProvokingVertex {
     public static final class Descriptors {
         private Descriptors() {}
         public static final FunctionDescriptor FD_glProvokingVertex = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glProvokingVertex
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glProvokingVertex = RuntimeHelper.downcall(Descriptors.FD_glProvokingVertex);

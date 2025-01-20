@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -57,14 +56,6 @@ public final class GLEXTTextureStorage {
         public static final FunctionDescriptor FD_glTextureStorage1DEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glTextureStorage2DEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glTextureStorage3DEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glTexStorage1DEXT,
-            FD_glTexStorage2DEXT,
-            FD_glTexStorage3DEXT,
-            FD_glTextureStorage1DEXT,
-            FD_glTextureStorage2DEXT,
-            FD_glTextureStorage3DEXT
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glTexStorage1DEXT = RuntimeHelper.downcall(Descriptors.FD_glTexStorage1DEXT);

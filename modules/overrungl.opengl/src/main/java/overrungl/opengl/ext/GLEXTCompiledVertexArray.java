@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -32,10 +31,6 @@ public final class GLEXTCompiledVertexArray {
         private Descriptors() {}
         public static final FunctionDescriptor FD_glLockArraysEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glUnlockArraysEXT = FunctionDescriptor.ofVoid();
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glLockArraysEXT,
-            FD_glUnlockArraysEXT
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glLockArraysEXT = RuntimeHelper.downcall(Descriptors.FD_glLockArraysEXT);

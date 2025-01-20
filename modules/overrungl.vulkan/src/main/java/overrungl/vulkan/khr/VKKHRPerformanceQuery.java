@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKKHRPerformanceQuery {
     public static final int VK_PERFORMANCE_COUNTER_DESCRIPTION_PERFORMANCE_IMPACTING_BIT_KHR = 0x00000001;
     public static final int VK_PERFORMANCE_COUNTER_DESCRIPTION_CONCURRENTLY_IMPACTED_BIT_KHR = 0x00000002;
@@ -68,12 +67,6 @@ public class VKKHRPerformanceQuery {
         public static final FunctionDescriptor FD_vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkAcquireProfilingLockKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkReleaseProfilingLockKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR,
-            FD_vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR,
-            FD_vkAcquireProfilingLockKHR,
-            FD_vkReleaseProfilingLockKHR
-        );
         private Descriptors() {}
     }
     public static final class Handles {

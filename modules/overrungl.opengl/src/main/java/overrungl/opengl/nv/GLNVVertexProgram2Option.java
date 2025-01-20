@@ -17,13 +17,6 @@
 // This file is auto-generated. DO NOT EDIT!
 package overrungl.opengl.nv;
 
-import java.lang.foreign.*;
-import java.lang.invoke.*;
-import java.util.*;
-import overrungl.annotation.*;
-import overrungl.internal.RuntimeHelper;
-import overrungl.util.*;
-
 public final class GLNVVertexProgram2Option {
     public static final int GL_MAX_PROGRAM_EXEC_INSTRUCTIONS_NV = 0x88F4;
     public static final int GL_MAX_PROGRAM_CALL_DEPTH_NV = 0x88F5;

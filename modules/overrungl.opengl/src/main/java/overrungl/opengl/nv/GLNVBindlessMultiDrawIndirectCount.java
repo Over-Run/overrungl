@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -30,10 +29,6 @@ public final class GLNVBindlessMultiDrawIndirectCount {
         private Descriptors() {}
         public static final FunctionDescriptor FD_glMultiDrawArraysIndirectBindlessCountNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glMultiDrawElementsIndirectBindlessCountNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glMultiDrawArraysIndirectBindlessCountNV,
-            FD_glMultiDrawElementsIndirectBindlessCountNV
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glMultiDrawArraysIndirectBindlessCountNV = RuntimeHelper.downcall(Descriptors.FD_glMultiDrawArraysIndirectBindlessCountNV);

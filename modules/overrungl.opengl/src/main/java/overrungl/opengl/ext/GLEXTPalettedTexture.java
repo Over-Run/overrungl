@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -39,12 +38,6 @@ public final class GLEXTPalettedTexture {
         public static final FunctionDescriptor FD_glGetColorTableEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetColorTableParameterivEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetColorTableParameterfvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glColorTableEXT,
-            FD_glGetColorTableEXT,
-            FD_glGetColorTableParameterivEXT,
-            FD_glGetColorTableParameterfvEXT
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glColorTableEXT = RuntimeHelper.downcall(Descriptors.FD_glColorTableEXT);

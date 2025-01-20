@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.VK11.*;
 import static overrungl.vulkan.khr.VKKHRMaintenance1.*;
 public class VKKHRMaintenance1 {
@@ -37,9 +36,6 @@ public class VKKHRMaintenance1 {
     private final Handles handles;
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkTrimCommandPoolKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkTrimCommandPoolKHR
-        );
         private Descriptors() {}
     }
     public static final class Handles {

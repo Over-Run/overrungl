@@ -19,7 +19,6 @@ package overrungl.opengl.sgix;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -36,14 +35,6 @@ public final class GLSGIXInstruments {
         public static final FunctionDescriptor FD_glReadInstrumentsSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glStartInstrumentsSGIX = FunctionDescriptor.ofVoid();
         public static final FunctionDescriptor FD_glStopInstrumentsSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glGetInstrumentsSGIX,
-            FD_glInstrumentsBufferSGIX,
-            FD_glPollInstrumentsSGIX,
-            FD_glReadInstrumentsSGIX,
-            FD_glStartInstrumentsSGIX,
-            FD_glStopInstrumentsSGIX
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glGetInstrumentsSGIX = RuntimeHelper.downcall(Descriptors.FD_glGetInstrumentsSGIX);

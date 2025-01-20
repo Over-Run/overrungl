@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -47,10 +46,6 @@ public final class GLEXTMultisample {
         private Descriptors() {}
         public static final FunctionDescriptor FD_glSampleMaskEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_BOOLEAN);
         public static final FunctionDescriptor FD_glSamplePatternEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glSampleMaskEXT,
-            FD_glSamplePatternEXT
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glSampleMaskEXT = RuntimeHelper.downcall(Descriptors.FD_glSampleMaskEXT);

@@ -161,6 +161,7 @@ class VkDowncall(
                     }
                 )
             )
+            downcallDescriptors.add("$packageName.$className.Descriptors.FD_$reqCommand")
             handleFields.add(
                 VkDowncallField(
                     "MethodHandle",
@@ -201,7 +202,6 @@ class VkDowncall(
             """.trimIndent()
         )
         if (packageName != vulkanPackage) sb.appendLine("import overrungl.vulkan.*;")
-        if (descriptorFields.isNotEmpty()) sb.appendLine("import java.util.*;")
         imports.sorted().forEach { sb.appendLine("import $it;") }
         sb.append("public ")
         if (modifier != null) {
@@ -231,16 +231,6 @@ class VkDowncall(
             sb.appendLine("    private final Handles handles;")
             sb.appendLine("    public static final class Descriptors {")
             writeFields(descriptorFields, 8)
-            sb.appendLine("        public static final List<FunctionDescriptor> LIST = List.of(")
-            descriptorFields.forEachIndexed { index, it ->
-                sb.append("            ${it.name}")
-                if (index + 1 == descriptorFields.size) {
-                    sb.appendLine()
-                } else {
-                    sb.appendLine(",")
-                }
-            }
-            sb.appendLine("        );")
             sb.appendLine("        private Descriptors() {}")
             sb.appendLine("    }")
 

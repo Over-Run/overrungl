@@ -19,7 +19,6 @@ package overrungl.opengl.sgix;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -29,9 +28,6 @@ public final class GLSGIXIglooInterface {
     public static final class Descriptors {
         private Descriptors() {}
         public static final FunctionDescriptor FD_glIglooInterfaceSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glIglooInterfaceSGIX
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glIglooInterfaceSGIX = RuntimeHelper.downcall(Descriptors.FD_glIglooInterfaceSGIX);

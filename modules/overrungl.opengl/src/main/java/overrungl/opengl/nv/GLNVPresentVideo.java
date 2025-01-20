@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -40,14 +39,6 @@ public final class GLNVPresentVideo {
         public static final FunctionDescriptor FD_glGetVideouivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetVideoi64vNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetVideoui64vNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glPresentFrameKeyedNV,
-            FD_glPresentFrameDualFillNV,
-            FD_glGetVideoivNV,
-            FD_glGetVideouivNV,
-            FD_glGetVideoi64vNV,
-            FD_glGetVideoui64vNV
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glPresentFrameKeyedNV = RuntimeHelper.downcall(Descriptors.FD_glPresentFrameKeyedNV);

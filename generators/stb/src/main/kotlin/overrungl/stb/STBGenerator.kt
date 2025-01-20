@@ -18,6 +18,7 @@ package overrungl.stb
 
 import overrungl.gen.address
 import overrungl.gen.jboolean
+import overrungl.gen.writeNativeImageRegistration
 
 const val stbPackage = "overrungl.stb"
 const val stbLookup = "STBInternal.lookup()"
@@ -37,4 +38,6 @@ fun main() {
     STBRectPack()
     STBTruetype()
     STBVorbis()
+
+    writeNativeImageRegistration(stbPackage)
 }

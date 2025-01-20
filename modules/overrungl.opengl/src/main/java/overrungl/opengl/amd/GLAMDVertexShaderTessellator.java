@@ -19,7 +19,6 @@ package overrungl.opengl.amd;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -37,10 +36,6 @@ public final class GLAMDVertexShaderTessellator {
         private Descriptors() {}
         public static final FunctionDescriptor FD_glTessellationFactorAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT);
         public static final FunctionDescriptor FD_glTessellationModeAMD = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glTessellationFactorAMD,
-            FD_glTessellationModeAMD
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glTessellationFactorAMD = RuntimeHelper.downcall(Descriptors.FD_glTessellationFactorAMD);

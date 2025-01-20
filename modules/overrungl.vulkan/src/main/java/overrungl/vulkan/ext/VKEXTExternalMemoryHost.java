@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKEXTExternalMemoryHost {
     public static final int VK_EXT_EXTERNAL_MEMORY_HOST_SPEC_VERSION = 1;
     public static final String VK_EXT_EXTERNAL_MEMORY_HOST_EXTENSION_NAME = "VK_EXT_external_memory_host";
@@ -34,9 +33,6 @@ public class VKEXTExternalMemoryHost {
     private final Handles handles;
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkGetMemoryHostPointerPropertiesEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetMemoryHostPointerPropertiesEXT
-        );
         private Descriptors() {}
     }
     public static final class Handles {

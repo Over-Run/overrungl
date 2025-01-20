@@ -21,7 +21,6 @@ import java.lang.invoke.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
-import java.util.*;
 public class VK11 extends VK10 {
     public static final int VK_SUBGROUP_FEATURE_BASIC_BIT = 0x00000001;
     public static final int VK_SUBGROUP_FEATURE_VOTE_BIT = 0x00000002;
@@ -246,36 +245,6 @@ public class VK11 extends VK10 {
         public static final FunctionDescriptor FD_vkGetPhysicalDeviceExternalFenceProperties = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkGetPhysicalDeviceExternalSemaphoreProperties = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkGetDescriptorSetLayoutSupport = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkEnumerateInstanceVersion,
-            FD_vkBindBufferMemory2,
-            FD_vkBindImageMemory2,
-            FD_vkGetDeviceGroupPeerMemoryFeatures,
-            FD_vkCmdSetDeviceMask,
-            FD_vkCmdDispatchBase,
-            FD_vkEnumeratePhysicalDeviceGroups,
-            FD_vkGetImageMemoryRequirements2,
-            FD_vkGetBufferMemoryRequirements2,
-            FD_vkGetImageSparseMemoryRequirements2,
-            FD_vkGetPhysicalDeviceFeatures2,
-            FD_vkGetPhysicalDeviceProperties2,
-            FD_vkGetPhysicalDeviceFormatProperties2,
-            FD_vkGetPhysicalDeviceImageFormatProperties2,
-            FD_vkGetPhysicalDeviceQueueFamilyProperties2,
-            FD_vkGetPhysicalDeviceMemoryProperties2,
-            FD_vkGetPhysicalDeviceSparseImageFormatProperties2,
-            FD_vkTrimCommandPool,
-            FD_vkGetDeviceQueue2,
-            FD_vkCreateSamplerYcbcrConversion,
-            FD_vkDestroySamplerYcbcrConversion,
-            FD_vkCreateDescriptorUpdateTemplate,
-            FD_vkDestroyDescriptorUpdateTemplate,
-            FD_vkUpdateDescriptorSetWithTemplate,
-            FD_vkGetPhysicalDeviceExternalBufferProperties,
-            FD_vkGetPhysicalDeviceExternalFenceProperties,
-            FD_vkGetPhysicalDeviceExternalSemaphoreProperties,
-            FD_vkGetDescriptorSetLayoutSupport
-        );
         private Descriptors() {}
     }
     public static final class Handles {

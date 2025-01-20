@@ -19,7 +19,6 @@ package overrungl.opengl;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -64,17 +63,6 @@ public class GL14 extends GL13 {
         public static final FunctionDescriptor FD_glPointParameteriv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glBlendColor = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
         public static final FunctionDescriptor FD_glBlendEquation = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glBlendFuncSeparate,
-            FD_glMultiDrawArrays,
-            FD_glMultiDrawElements,
-            FD_glPointParameterf,
-            FD_glPointParameterfv,
-            FD_glPointParameteri,
-            FD_glPointParameteriv,
-            FD_glBlendColor,
-            FD_glBlendEquation
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glBlendFuncSeparate = RuntimeHelper.downcall(Descriptors.FD_glBlendFuncSeparate);

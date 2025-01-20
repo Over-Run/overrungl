@@ -19,7 +19,6 @@ package overrungl.opengl.sun;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -68,48 +67,6 @@ public final class GLSUNVertex {
         public static final FunctionDescriptor FD_glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
         public static final FunctionDescriptor FD_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glColor4ubVertex2fSUN,
-            FD_glColor4ubVertex2fvSUN,
-            FD_glColor4ubVertex3fSUN,
-            FD_glColor4ubVertex3fvSUN,
-            FD_glColor3fVertex3fSUN,
-            FD_glColor3fVertex3fvSUN,
-            FD_glNormal3fVertex3fSUN,
-            FD_glNormal3fVertex3fvSUN,
-            FD_glColor4fNormal3fVertex3fSUN,
-            FD_glColor4fNormal3fVertex3fvSUN,
-            FD_glTexCoord2fVertex3fSUN,
-            FD_glTexCoord2fVertex3fvSUN,
-            FD_glTexCoord4fVertex4fSUN,
-            FD_glTexCoord4fVertex4fvSUN,
-            FD_glTexCoord2fColor4ubVertex3fSUN,
-            FD_glTexCoord2fColor4ubVertex3fvSUN,
-            FD_glTexCoord2fColor3fVertex3fSUN,
-            FD_glTexCoord2fColor3fVertex3fvSUN,
-            FD_glTexCoord2fNormal3fVertex3fSUN,
-            FD_glTexCoord2fNormal3fVertex3fvSUN,
-            FD_glTexCoord2fColor4fNormal3fVertex3fSUN,
-            FD_glTexCoord2fColor4fNormal3fVertex3fvSUN,
-            FD_glTexCoord4fColor4fNormal3fVertex4fSUN,
-            FD_glTexCoord4fColor4fNormal3fVertex4fvSUN,
-            FD_glReplacementCodeuiVertex3fSUN,
-            FD_glReplacementCodeuiVertex3fvSUN,
-            FD_glReplacementCodeuiColor4ubVertex3fSUN,
-            FD_glReplacementCodeuiColor4ubVertex3fvSUN,
-            FD_glReplacementCodeuiColor3fVertex3fSUN,
-            FD_glReplacementCodeuiColor3fVertex3fvSUN,
-            FD_glReplacementCodeuiNormal3fVertex3fSUN,
-            FD_glReplacementCodeuiNormal3fVertex3fvSUN,
-            FD_glReplacementCodeuiColor4fNormal3fVertex3fSUN,
-            FD_glReplacementCodeuiColor4fNormal3fVertex3fvSUN,
-            FD_glReplacementCodeuiTexCoord2fVertex3fSUN,
-            FD_glReplacementCodeuiTexCoord2fVertex3fvSUN,
-            FD_glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN,
-            FD_glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN,
-            FD_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN,
-            FD_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glColor4ubVertex2fSUN = RuntimeHelper.downcall(Descriptors.FD_glColor4ubVertex2fSUN);

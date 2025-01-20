@@ -19,7 +19,6 @@ package overrungl.opengl.apple;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -38,16 +37,6 @@ public final class GLAPPLEFence {
         public static final FunctionDescriptor FD_glFinishFenceAPPLE = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glTestObjectAPPLE = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glFinishObjectAPPLE = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glGenFencesAPPLE,
-            FD_glDeleteFencesAPPLE,
-            FD_glSetFenceAPPLE,
-            FD_glIsFenceAPPLE,
-            FD_glTestFenceAPPLE,
-            FD_glFinishFenceAPPLE,
-            FD_glTestObjectAPPLE,
-            FD_glFinishObjectAPPLE
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glGenFencesAPPLE = RuntimeHelper.downcall(Descriptors.FD_glGenFencesAPPLE);

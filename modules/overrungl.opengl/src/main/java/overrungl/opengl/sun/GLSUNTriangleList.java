@@ -19,7 +19,6 @@ package overrungl.opengl.sun;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -52,15 +51,6 @@ public final class GLSUNTriangleList {
         public static final FunctionDescriptor FD_glReplacementCodeusvSUN = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glReplacementCodeubvSUN = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glReplacementCodePointerSUN = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glReplacementCodeuiSUN,
-            FD_glReplacementCodeusSUN,
-            FD_glReplacementCodeubSUN,
-            FD_glReplacementCodeuivSUN,
-            FD_glReplacementCodeusvSUN,
-            FD_glReplacementCodeubvSUN,
-            FD_glReplacementCodePointerSUN
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glReplacementCodeuiSUN = RuntimeHelper.downcall(Descriptors.FD_glReplacementCodeuiSUN);

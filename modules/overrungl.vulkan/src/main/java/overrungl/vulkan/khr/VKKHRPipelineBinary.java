@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKKHRPipelineBinary {
     public static final int VK_KHR_PIPELINE_BINARY_SPEC_VERSION = 1;
     public static final String VK_KHR_PIPELINE_BINARY_EXTENSION_NAME = "VK_KHR_pipeline_binary";
@@ -48,13 +47,6 @@ public class VKKHRPipelineBinary {
         public static final FunctionDescriptor FD_vkGetPipelineKeyKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkGetPipelineBinaryDataKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkReleaseCapturedPipelineDataKHR = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCreatePipelineBinariesKHR,
-            FD_vkDestroyPipelineBinaryKHR,
-            FD_vkGetPipelineKeyKHR,
-            FD_vkGetPipelineBinaryDataKHR,
-            FD_vkReleaseCapturedPipelineDataKHR
-        );
         private Descriptors() {}
     }
     public static final class Handles {

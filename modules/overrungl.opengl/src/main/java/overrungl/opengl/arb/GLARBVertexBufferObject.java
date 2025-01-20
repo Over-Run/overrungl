@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -70,19 +69,6 @@ public final class GLARBVertexBufferObject {
         public static final FunctionDescriptor FD_glUnmapBufferARB = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glGetBufferParameterivARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetBufferPointervARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glBindBufferARB,
-            FD_glDeleteBuffersARB,
-            FD_glGenBuffersARB,
-            FD_glIsBufferARB,
-            FD_glBufferDataARB,
-            FD_glBufferSubDataARB,
-            FD_glGetBufferSubDataARB,
-            FD_glMapBufferARB,
-            FD_glUnmapBufferARB,
-            FD_glGetBufferParameterivARB,
-            FD_glGetBufferPointervARB
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glBindBufferARB = RuntimeHelper.downcall(Descriptors.FD_glBindBufferARB);

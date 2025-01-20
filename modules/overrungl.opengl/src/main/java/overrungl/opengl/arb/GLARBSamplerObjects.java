@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -43,22 +42,6 @@ public final class GLARBSamplerObjects {
         public static final FunctionDescriptor FD_glGetSamplerParameterIiv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetSamplerParameterfv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetSamplerParameterIuiv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glGenSamplers,
-            FD_glDeleteSamplers,
-            FD_glIsSampler,
-            FD_glBindSampler,
-            FD_glSamplerParameteri,
-            FD_glSamplerParameteriv,
-            FD_glSamplerParameterf,
-            FD_glSamplerParameterfv,
-            FD_glSamplerParameterIiv,
-            FD_glSamplerParameterIuiv,
-            FD_glGetSamplerParameteriv,
-            FD_glGetSamplerParameterIiv,
-            FD_glGetSamplerParameterfv,
-            FD_glGetSamplerParameterIuiv
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glGenSamplers = RuntimeHelper.downcall(Descriptors.FD_glGenSamplers);

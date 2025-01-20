@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -41,14 +40,6 @@ public final class GLARBVertexAttribBinding {
         public static final FunctionDescriptor FD_glVertexAttribLFormat = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glVertexAttribBinding = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glVertexBindingDivisor = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glBindVertexBuffer,
-            FD_glVertexAttribFormat,
-            FD_glVertexAttribIFormat,
-            FD_glVertexAttribLFormat,
-            FD_glVertexAttribBinding,
-            FD_glVertexBindingDivisor
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glBindVertexBuffer = RuntimeHelper.downcall(Descriptors.FD_glBindVertexBuffer);

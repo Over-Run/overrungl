@@ -19,7 +19,6 @@ package overrungl.opengl.ati;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -48,20 +47,6 @@ public final class GLATIVertexArrayObject {
         public static final FunctionDescriptor FD_glVariantArrayObjectATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glGetVariantArrayObjectfvATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetVariantArrayObjectivATI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glNewObjectBufferATI,
-            FD_glIsObjectBufferATI,
-            FD_glUpdateObjectBufferATI,
-            FD_glGetObjectBufferfvATI,
-            FD_glGetObjectBufferivATI,
-            FD_glFreeObjectBufferATI,
-            FD_glArrayObjectATI,
-            FD_glGetArrayObjectfvATI,
-            FD_glGetArrayObjectivATI,
-            FD_glVariantArrayObjectATI,
-            FD_glGetVariantArrayObjectfvATI,
-            FD_glGetVariantArrayObjectivATI
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glNewObjectBufferATI = RuntimeHelper.downcall(Descriptors.FD_glNewObjectBufferATI);

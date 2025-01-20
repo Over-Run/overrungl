@@ -19,7 +19,6 @@ package overrungl.opengl.sun;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -38,16 +37,6 @@ public final class GLSUNGlobalAlpha {
         public static final FunctionDescriptor FD_glGlobalAlphaFactorubSUN = FunctionDescriptor.ofVoid(ValueLayout.JAVA_BYTE);
         public static final FunctionDescriptor FD_glGlobalAlphaFactorusSUN = FunctionDescriptor.ofVoid(ValueLayout.JAVA_SHORT);
         public static final FunctionDescriptor FD_glGlobalAlphaFactoruiSUN = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glGlobalAlphaFactorbSUN,
-            FD_glGlobalAlphaFactorsSUN,
-            FD_glGlobalAlphaFactoriSUN,
-            FD_glGlobalAlphaFactorfSUN,
-            FD_glGlobalAlphaFactordSUN,
-            FD_glGlobalAlphaFactorubSUN,
-            FD_glGlobalAlphaFactorusSUN,
-            FD_glGlobalAlphaFactoruiSUN
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glGlobalAlphaFactorbSUN = RuntimeHelper.downcall(Descriptors.FD_glGlobalAlphaFactorbSUN);

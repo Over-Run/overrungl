@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.VK13.*;
 public class VKKHRCopyCommands2 {
     public static final int VK_KHR_COPY_COMMANDS_2_SPEC_VERSION = 1;
@@ -46,14 +45,6 @@ public class VKKHRCopyCommands2 {
         public static final FunctionDescriptor FD_vkCmdCopyImageToBuffer2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkCmdBlitImage2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkCmdResolveImage2KHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCmdCopyBuffer2KHR,
-            FD_vkCmdCopyImage2KHR,
-            FD_vkCmdCopyBufferToImage2KHR,
-            FD_vkCmdCopyImageToBuffer2KHR,
-            FD_vkCmdBlitImage2KHR,
-            FD_vkCmdResolveImage2KHR
-        );
         private Descriptors() {}
     }
     public static final class Handles {

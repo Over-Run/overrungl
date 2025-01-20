@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 import static overrungl.vulkan.VK13.*;
 public class VKEXTToolingInfo {
     public static final int VK_EXT_TOOLING_INFO_SPEC_VERSION = 1;
@@ -38,9 +37,6 @@ public class VKEXTToolingInfo {
     private final Handles handles;
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkGetPhysicalDeviceToolPropertiesEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetPhysicalDeviceToolPropertiesEXT
-        );
         private Descriptors() {}
     }
     public static final class Handles {

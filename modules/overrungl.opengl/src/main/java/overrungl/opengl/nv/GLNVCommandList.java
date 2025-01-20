@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -64,25 +63,6 @@ public final class GLNVCommandList {
         public static final FunctionDescriptor FD_glCommandListSegmentsNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glCompileCommandListNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glCallCommandListNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glCreateStatesNV,
-            FD_glDeleteStatesNV,
-            FD_glIsStateNV,
-            FD_glStateCaptureNV,
-            FD_glGetCommandHeaderNV,
-            FD_glGetStageIndexNV,
-            FD_glDrawCommandsNV,
-            FD_glDrawCommandsAddressNV,
-            FD_glDrawCommandsStatesNV,
-            FD_glDrawCommandsStatesAddressNV,
-            FD_glCreateCommandListsNV,
-            FD_glDeleteCommandListsNV,
-            FD_glIsCommandListNV,
-            FD_glListDrawCommandsStatesClientNV,
-            FD_glCommandListSegmentsNV,
-            FD_glCompileCommandListNV,
-            FD_glCallCommandListNV
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glCreateStatesNV = RuntimeHelper.downcall(Descriptors.FD_glCreateStatesNV);

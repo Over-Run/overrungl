@@ -19,7 +19,6 @@ package overrungl.opengl.mesa;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -31,10 +30,6 @@ public final class GLMESAFramebufferFlipY {
         private Descriptors() {}
         public static final FunctionDescriptor FD_glFramebufferParameteriMESA = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glGetFramebufferParameterivMESA = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glFramebufferParameteriMESA,
-            FD_glGetFramebufferParameterivMESA
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glFramebufferParameteriMESA = RuntimeHelper.downcall(Descriptors.FD_glFramebufferParameteriMESA);

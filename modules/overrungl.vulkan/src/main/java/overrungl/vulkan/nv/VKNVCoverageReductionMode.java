@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKNVCoverageReductionMode {
     public static final int VK_COVERAGE_REDUCTION_MODE_MERGE_NV = 0;
     public static final int VK_COVERAGE_REDUCTION_MODE_TRUNCATE_NV = 1;
@@ -34,9 +33,6 @@ public class VKNVCoverageReductionMode {
     private final Handles handles;
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV
-        );
         private Descriptors() {}
     }
     public static final class Handles {

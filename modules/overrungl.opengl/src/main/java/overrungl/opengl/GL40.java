@@ -19,7 +19,6 @@ package overrungl.opengl;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -152,54 +151,6 @@ public class GL40 extends GL33 {
         public static final FunctionDescriptor FD_glBeginQueryIndexed = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glEndQueryIndexed = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glGetQueryIndexediv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glMinSampleShading,
-            FD_glBlendEquationi,
-            FD_glBlendEquationSeparatei,
-            FD_glBlendFunci,
-            FD_glBlendFuncSeparatei,
-            FD_glDrawArraysIndirect,
-            FD_glDrawElementsIndirect,
-            FD_glUniform1d,
-            FD_glUniform2d,
-            FD_glUniform3d,
-            FD_glUniform4d,
-            FD_glUniform1dv,
-            FD_glUniform2dv,
-            FD_glUniform3dv,
-            FD_glUniform4dv,
-            FD_glUniformMatrix2dv,
-            FD_glUniformMatrix3dv,
-            FD_glUniformMatrix4dv,
-            FD_glUniformMatrix2x3dv,
-            FD_glUniformMatrix2x4dv,
-            FD_glUniformMatrix3x2dv,
-            FD_glUniformMatrix3x4dv,
-            FD_glUniformMatrix4x2dv,
-            FD_glUniformMatrix4x3dv,
-            FD_glGetUniformdv,
-            FD_glGetSubroutineUniformLocation,
-            FD_glGetSubroutineIndex,
-            FD_glGetActiveSubroutineUniformiv,
-            FD_glGetActiveSubroutineUniformName,
-            FD_glGetActiveSubroutineName,
-            FD_glUniformSubroutinesuiv,
-            FD_glGetUniformSubroutineuiv,
-            FD_glGetProgramStageiv,
-            FD_glPatchParameteri,
-            FD_glPatchParameterfv,
-            FD_glBindTransformFeedback,
-            FD_glDeleteTransformFeedbacks,
-            FD_glGenTransformFeedbacks,
-            FD_glIsTransformFeedback,
-            FD_glPauseTransformFeedback,
-            FD_glResumeTransformFeedback,
-            FD_glDrawTransformFeedback,
-            FD_glDrawTransformFeedbackStream,
-            FD_glBeginQueryIndexed,
-            FD_glEndQueryIndexed,
-            FD_glGetQueryIndexediv
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glMinSampleShading = RuntimeHelper.downcall(Descriptors.FD_glMinSampleShading);

@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -31,11 +30,6 @@ public final class GLARBBaseInstance {
         public static final FunctionDescriptor FD_glDrawArraysInstancedBaseInstance = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glDrawElementsInstancedBaseInstance = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glDrawElementsInstancedBaseVertexBaseInstance = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glDrawArraysInstancedBaseInstance,
-            FD_glDrawElementsInstancedBaseInstance,
-            FD_glDrawElementsInstancedBaseVertexBaseInstance
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glDrawArraysInstancedBaseInstance = RuntimeHelper.downcall(Descriptors.FD_glDrawArraysInstancedBaseInstance);

@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -53,12 +52,6 @@ public final class GLARBTextureMultisample {
         public static final FunctionDescriptor FD_glTexImage3DMultisample = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN);
         public static final FunctionDescriptor FD_glGetMultisamplefv = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glSampleMaski = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glTexImage2DMultisample,
-            FD_glTexImage3DMultisample,
-            FD_glGetMultisamplefv,
-            FD_glSampleMaski
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glTexImage2DMultisample = RuntimeHelper.downcall(Descriptors.FD_glTexImage2DMultisample);

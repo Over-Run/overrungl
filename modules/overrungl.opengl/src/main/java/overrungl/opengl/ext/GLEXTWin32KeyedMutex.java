@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -30,10 +29,6 @@ public final class GLEXTWin32KeyedMutex {
         private Descriptors() {}
         public static final FunctionDescriptor FD_glAcquireKeyedMutexWin32EXT = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glReleaseKeyedMutexWin32EXT = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glAcquireKeyedMutexWin32EXT,
-            FD_glReleaseKeyedMutexWin32EXT
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glAcquireKeyedMutexWin32EXT = RuntimeHelper.downcall(Descriptors.FD_glAcquireKeyedMutexWin32EXT);

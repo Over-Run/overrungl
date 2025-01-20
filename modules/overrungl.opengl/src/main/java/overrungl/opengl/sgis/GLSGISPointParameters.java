@@ -19,7 +19,6 @@ package overrungl.opengl.sgis;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -34,10 +33,6 @@ public final class GLSGISPointParameters {
         private Descriptors() {}
         public static final FunctionDescriptor FD_glPointParameterfSGIS = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT);
         public static final FunctionDescriptor FD_glPointParameterfvSGIS = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glPointParameterfSGIS,
-            FD_glPointParameterfvSGIS
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glPointParameterfSGIS = RuntimeHelper.downcall(Descriptors.FD_glPointParameterfSGIS);

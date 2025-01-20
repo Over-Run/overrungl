@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKEXTDiscardRectangles {
     public static final int VK_DISCARD_RECTANGLE_MODE_INCLUSIVE_EXT = 0;
     public static final int VK_DISCARD_RECTANGLE_MODE_EXCLUSIVE_EXT = 1;
@@ -38,11 +37,6 @@ public class VKEXTDiscardRectangles {
         public static final FunctionDescriptor FD_vkCmdSetDiscardRectangleEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkCmdSetDiscardRectangleEnableEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_vkCmdSetDiscardRectangleModeEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCmdSetDiscardRectangleEXT,
-            FD_vkCmdSetDiscardRectangleEnableEXT,
-            FD_vkCmdSetDiscardRectangleModeEXT
-        );
         private Descriptors() {}
     }
     public static final class Handles {

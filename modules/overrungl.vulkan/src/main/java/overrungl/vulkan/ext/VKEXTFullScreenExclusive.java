@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKEXTFullScreenExclusive {
     public static final int VK_FULL_SCREEN_EXCLUSIVE_DEFAULT_EXT = 0;
     public static final int VK_FULL_SCREEN_EXCLUSIVE_ALLOWED_EXT = 1;
@@ -40,12 +39,6 @@ public class VKEXTFullScreenExclusive {
         public static final FunctionDescriptor FD_vkAcquireFullScreenExclusiveModeEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkReleaseFullScreenExclusiveModeEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkGetDeviceGroupSurfacePresentModes2EXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetPhysicalDeviceSurfacePresentModes2EXT,
-            FD_vkAcquireFullScreenExclusiveModeEXT,
-            FD_vkReleaseFullScreenExclusiveModeEXT,
-            FD_vkGetDeviceGroupSurfacePresentModes2EXT
-        );
         private Descriptors() {}
     }
     public static final class Handles {

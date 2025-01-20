@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -80,12 +79,6 @@ public final class GLNVMeshShader {
         public static final FunctionDescriptor FD_glDrawMeshTasksIndirectNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG);
         public static final FunctionDescriptor FD_glMultiDrawMeshTasksIndirectNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glMultiDrawMeshTasksIndirectCountNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glDrawMeshTasksNV,
-            FD_glDrawMeshTasksIndirectNV,
-            FD_glMultiDrawMeshTasksIndirectNV,
-            FD_glMultiDrawMeshTasksIndirectCountNV
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glDrawMeshTasksNV = RuntimeHelper.downcall(Descriptors.FD_glDrawMeshTasksNV);

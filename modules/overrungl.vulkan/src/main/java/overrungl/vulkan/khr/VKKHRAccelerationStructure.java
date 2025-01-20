@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKKHRAccelerationStructure {
     public static final int VK_ACCELERATION_STRUCTURE_TYPE_TOP_LEVEL_KHR = 0;
     public static final int VK_ACCELERATION_STRUCTURE_TYPE_BOTTOM_LEVEL_KHR = 1;
@@ -102,24 +101,6 @@ public class VKKHRAccelerationStructure {
         public static final FunctionDescriptor FD_vkCmdWriteAccelerationStructuresPropertiesKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_vkGetDeviceAccelerationStructureCompatibilityKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkGetAccelerationStructureBuildSizesKHR = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCreateAccelerationStructureKHR,
-            FD_vkDestroyAccelerationStructureKHR,
-            FD_vkCmdBuildAccelerationStructuresKHR,
-            FD_vkCmdBuildAccelerationStructuresIndirectKHR,
-            FD_vkBuildAccelerationStructuresKHR,
-            FD_vkCopyAccelerationStructureKHR,
-            FD_vkCopyAccelerationStructureToMemoryKHR,
-            FD_vkCopyMemoryToAccelerationStructureKHR,
-            FD_vkWriteAccelerationStructuresPropertiesKHR,
-            FD_vkCmdCopyAccelerationStructureKHR,
-            FD_vkCmdCopyAccelerationStructureToMemoryKHR,
-            FD_vkCmdCopyMemoryToAccelerationStructureKHR,
-            FD_vkGetAccelerationStructureDeviceAddressKHR,
-            FD_vkCmdWriteAccelerationStructuresPropertiesKHR,
-            FD_vkGetDeviceAccelerationStructureCompatibilityKHR,
-            FD_vkGetAccelerationStructureBuildSizesKHR
-        );
         private Descriptors() {}
     }
     public static final class Handles {

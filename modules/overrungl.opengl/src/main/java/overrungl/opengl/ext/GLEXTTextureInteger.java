@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -81,14 +80,6 @@ public final class GLEXTTextureInteger {
         public static final FunctionDescriptor FD_glGetTexParameterIuivEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glClearColorIiEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glClearColorIuiEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glTexParameterIivEXT,
-            FD_glTexParameterIuivEXT,
-            FD_glGetTexParameterIivEXT,
-            FD_glGetTexParameterIuivEXT,
-            FD_glClearColorIiEXT,
-            FD_glClearColorIuiEXT
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glTexParameterIivEXT = RuntimeHelper.downcall(Descriptors.FD_glTexParameterIivEXT);

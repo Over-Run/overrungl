@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -35,10 +34,6 @@ public final class GLARBBlendFuncExtended {
         private Descriptors() {}
         public static final FunctionDescriptor FD_glBindFragDataLocationIndexed = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetFragDataIndex = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glBindFragDataLocationIndexed,
-            FD_glGetFragDataIndex
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glBindFragDataLocationIndexed = RuntimeHelper.downcall(Descriptors.FD_glBindFragDataLocationIndexed);

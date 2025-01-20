@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKNVXBinaryImport {
     public static final int VK_NVX_BINARY_IMPORT_SPEC_VERSION = 2;
     public static final String VK_NVX_BINARY_IMPORT_EXTENSION_NAME = "VK_NVX_binary_import";
@@ -41,13 +40,6 @@ public class VKNVXBinaryImport {
         public static final FunctionDescriptor FD_vkDestroyCuModuleNVX = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkDestroyCuFunctionNVX = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkCmdCuLaunchKernelNVX = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCreateCuModuleNVX,
-            FD_vkCreateCuFunctionNVX,
-            FD_vkDestroyCuModuleNVX,
-            FD_vkDestroyCuFunctionNVX,
-            FD_vkCmdCuLaunchKernelNVX
-        );
         private Descriptors() {}
     }
     public static final class Handles {

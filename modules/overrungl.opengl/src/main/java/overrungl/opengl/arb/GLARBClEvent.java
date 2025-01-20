@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -31,9 +30,6 @@ public final class GLARBClEvent {
     public static final class Descriptors {
         private Descriptors() {}
         public static final FunctionDescriptor FD_glCreateSyncFromCLeventARB = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glCreateSyncFromCLeventARB
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glCreateSyncFromCLeventARB = RuntimeHelper.downcall(Descriptors.FD_glCreateSyncFromCLeventARB);

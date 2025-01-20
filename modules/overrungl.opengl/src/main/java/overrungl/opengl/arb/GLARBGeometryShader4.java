@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -52,12 +51,6 @@ public final class GLARBGeometryShader4 {
         public static final FunctionDescriptor FD_glFramebufferTextureARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glFramebufferTextureLayerARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glFramebufferTextureFaceARB = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glProgramParameteriARB,
-            FD_glFramebufferTextureARB,
-            FD_glFramebufferTextureLayerARB,
-            FD_glFramebufferTextureFaceARB
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glProgramParameteriARB = RuntimeHelper.downcall(Descriptors.FD_glProgramParameteriARB);

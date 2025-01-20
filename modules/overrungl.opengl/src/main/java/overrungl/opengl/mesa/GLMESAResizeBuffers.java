@@ -19,7 +19,6 @@ package overrungl.opengl.mesa;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -29,9 +28,6 @@ public final class GLMESAResizeBuffers {
     public static final class Descriptors {
         private Descriptors() {}
         public static final FunctionDescriptor FD_glResizeBuffersMESA = FunctionDescriptor.ofVoid();
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glResizeBuffersMESA
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glResizeBuffersMESA = RuntimeHelper.downcall(Descriptors.FD_glResizeBuffersMESA);

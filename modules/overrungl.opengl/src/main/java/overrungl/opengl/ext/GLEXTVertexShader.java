@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -180,50 +179,6 @@ public final class GLEXTVertexShader {
         public static final FunctionDescriptor FD_glGetLocalConstantBooleanvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetLocalConstantIntegervEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetLocalConstantFloatvEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glBeginVertexShaderEXT,
-            FD_glEndVertexShaderEXT,
-            FD_glBindVertexShaderEXT,
-            FD_glGenVertexShadersEXT,
-            FD_glDeleteVertexShaderEXT,
-            FD_glShaderOp1EXT,
-            FD_glShaderOp2EXT,
-            FD_glShaderOp3EXT,
-            FD_glSwizzleEXT,
-            FD_glWriteMaskEXT,
-            FD_glInsertComponentEXT,
-            FD_glExtractComponentEXT,
-            FD_glGenSymbolsEXT,
-            FD_glSetInvariantEXT,
-            FD_glSetLocalConstantEXT,
-            FD_glVariantbvEXT,
-            FD_glVariantsvEXT,
-            FD_glVariantivEXT,
-            FD_glVariantfvEXT,
-            FD_glVariantdvEXT,
-            FD_glVariantubvEXT,
-            FD_glVariantusvEXT,
-            FD_glVariantuivEXT,
-            FD_glVariantPointerEXT,
-            FD_glEnableVariantClientStateEXT,
-            FD_glDisableVariantClientStateEXT,
-            FD_glBindLightParameterEXT,
-            FD_glBindMaterialParameterEXT,
-            FD_glBindTexGenParameterEXT,
-            FD_glBindTextureUnitParameterEXT,
-            FD_glBindParameterEXT,
-            FD_glIsVariantEnabledEXT,
-            FD_glGetVariantBooleanvEXT,
-            FD_glGetVariantIntegervEXT,
-            FD_glGetVariantFloatvEXT,
-            FD_glGetVariantPointervEXT,
-            FD_glGetInvariantBooleanvEXT,
-            FD_glGetInvariantIntegervEXT,
-            FD_glGetInvariantFloatvEXT,
-            FD_glGetLocalConstantBooleanvEXT,
-            FD_glGetLocalConstantIntegervEXT,
-            FD_glGetLocalConstantFloatvEXT
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glBeginVertexShaderEXT = RuntimeHelper.downcall(Descriptors.FD_glBeginVertexShaderEXT);

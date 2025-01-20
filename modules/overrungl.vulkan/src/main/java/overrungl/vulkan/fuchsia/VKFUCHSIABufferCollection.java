@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKFUCHSIABufferCollection {
     public static final int VK_IMAGE_CONSTRAINTS_INFO_CPU_READ_RARELY_FUCHSIA = 0x00000001;
     public static final int VK_IMAGE_CONSTRAINTS_INFO_CPU_READ_OFTEN_FUCHSIA = 0x00000002;
@@ -50,13 +49,6 @@ public class VKFUCHSIABufferCollection {
         public static final FunctionDescriptor FD_vkSetBufferCollectionBufferConstraintsFUCHSIA = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkDestroyBufferCollectionFUCHSIA = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_vkGetBufferCollectionPropertiesFUCHSIA = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCreateBufferCollectionFUCHSIA,
-            FD_vkSetBufferCollectionImageConstraintsFUCHSIA,
-            FD_vkSetBufferCollectionBufferConstraintsFUCHSIA,
-            FD_vkDestroyBufferCollectionFUCHSIA,
-            FD_vkGetBufferCollectionPropertiesFUCHSIA
-        );
         private Descriptors() {}
     }
     public static final class Handles {

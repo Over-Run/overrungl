@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -49,13 +48,6 @@ public final class GLARBES2Compatibility {
         public static final FunctionDescriptor FD_glGetShaderPrecisionFormat = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glDepthRangef = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT);
         public static final FunctionDescriptor FD_glClearDepthf = FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glReleaseShaderCompiler,
-            FD_glShaderBinary,
-            FD_glGetShaderPrecisionFormat,
-            FD_glDepthRangef,
-            FD_glClearDepthf
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glReleaseShaderCompiler = RuntimeHelper.downcall(Descriptors.FD_glReleaseShaderCompiler);

@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -49,27 +48,6 @@ public final class GLNVVertexAttribInteger64bit {
         public static final FunctionDescriptor FD_glGetVertexAttribLi64vNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetVertexAttribLui64vNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glVertexAttribLFormatNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glVertexAttribL1i64NV,
-            FD_glVertexAttribL2i64NV,
-            FD_glVertexAttribL3i64NV,
-            FD_glVertexAttribL4i64NV,
-            FD_glVertexAttribL1i64vNV,
-            FD_glVertexAttribL2i64vNV,
-            FD_glVertexAttribL3i64vNV,
-            FD_glVertexAttribL4i64vNV,
-            FD_glVertexAttribL1ui64NV,
-            FD_glVertexAttribL2ui64NV,
-            FD_glVertexAttribL3ui64NV,
-            FD_glVertexAttribL4ui64NV,
-            FD_glVertexAttribL1ui64vNV,
-            FD_glVertexAttribL2ui64vNV,
-            FD_glVertexAttribL3ui64vNV,
-            FD_glVertexAttribL4ui64vNV,
-            FD_glGetVertexAttribLi64vNV,
-            FD_glGetVertexAttribLui64vNV,
-            FD_glVertexAttribLFormatNV
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glVertexAttribL1i64NV = RuntimeHelper.downcall(Descriptors.FD_glVertexAttribL1i64NV);

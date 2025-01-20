@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKEXTImageDrmFormatModifier {
     public static final int VK_EXT_IMAGE_DRM_FORMAT_MODIFIER_SPEC_VERSION = 2;
     public static final String VK_EXT_IMAGE_DRM_FORMAT_MODIFIER_EXTENSION_NAME = "VK_EXT_image_drm_format_modifier";
@@ -41,9 +40,6 @@ public class VKEXTImageDrmFormatModifier {
     private final Handles handles;
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkGetImageDrmFormatModifierPropertiesEXT = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkGetImageDrmFormatModifierPropertiesEXT
-        );
         private Descriptors() {}
     }
     public static final class Handles {

@@ -19,7 +19,6 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -52,25 +51,6 @@ public final class GLEXTSecondaryColor {
         public static final FunctionDescriptor FD_glSecondaryColor3usEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT);
         public static final FunctionDescriptor FD_glSecondaryColor3usvEXT = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glSecondaryColorPointerEXT = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glSecondaryColor3bEXT,
-            FD_glSecondaryColor3bvEXT,
-            FD_glSecondaryColor3dEXT,
-            FD_glSecondaryColor3dvEXT,
-            FD_glSecondaryColor3fEXT,
-            FD_glSecondaryColor3fvEXT,
-            FD_glSecondaryColor3iEXT,
-            FD_glSecondaryColor3ivEXT,
-            FD_glSecondaryColor3sEXT,
-            FD_glSecondaryColor3svEXT,
-            FD_glSecondaryColor3ubEXT,
-            FD_glSecondaryColor3ubvEXT,
-            FD_glSecondaryColor3uiEXT,
-            FD_glSecondaryColor3uivEXT,
-            FD_glSecondaryColor3usEXT,
-            FD_glSecondaryColor3usvEXT,
-            FD_glSecondaryColorPointerEXT
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glSecondaryColor3bEXT = RuntimeHelper.downcall(Descriptors.FD_glSecondaryColor3bEXT);

@@ -19,7 +19,6 @@ package overrungl.opengl.sgi;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -51,15 +50,6 @@ public final class GLSGIColorTable {
         public static final FunctionDescriptor FD_glGetColorTableSGI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetColorTableParameterfvSGI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetColorTableParameterivSGI = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glColorTableSGI,
-            FD_glColorTableParameterfvSGI,
-            FD_glColorTableParameterivSGI,
-            FD_glCopyColorTableSGI,
-            FD_glGetColorTableSGI,
-            FD_glGetColorTableParameterfvSGI,
-            FD_glGetColorTableParameterivSGI
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glColorTableSGI = RuntimeHelper.downcall(Descriptors.FD_glColorTableSGI);

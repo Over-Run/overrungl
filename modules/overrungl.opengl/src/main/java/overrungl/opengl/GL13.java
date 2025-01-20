@@ -19,7 +19,6 @@ package overrungl.opengl;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -96,17 +95,6 @@ public class GL13 extends GL12 {
         public static final FunctionDescriptor FD_glCompressedTexSubImage2D = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glCompressedTexSubImage1D = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glGetCompressedTexImage = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glActiveTexture,
-            FD_glSampleCoverage,
-            FD_glCompressedTexImage3D,
-            FD_glCompressedTexImage2D,
-            FD_glCompressedTexImage1D,
-            FD_glCompressedTexSubImage3D,
-            FD_glCompressedTexSubImage2D,
-            FD_glCompressedTexSubImage1D,
-            FD_glGetCompressedTexImage
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glActiveTexture = RuntimeHelper.downcall(Descriptors.FD_glActiveTexture);

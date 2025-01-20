@@ -19,7 +19,6 @@ package overrungl.opengl.sgix;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -35,14 +34,6 @@ public final class GLSGIXAsync {
         public static final FunctionDescriptor FD_glGenAsyncMarkersSGIX = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glDeleteAsyncMarkersSGIX = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glIsAsyncMarkerSGIX = FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glAsyncMarkerSGIX,
-            FD_glFinishAsyncSGIX,
-            FD_glPollAsyncSGIX,
-            FD_glGenAsyncMarkersSGIX,
-            FD_glDeleteAsyncMarkersSGIX,
-            FD_glIsAsyncMarkerSGIX
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glAsyncMarkerSGIX = RuntimeHelper.downcall(Descriptors.FD_glAsyncMarkerSGIX);

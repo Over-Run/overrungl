@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -45,20 +44,6 @@ public final class GLNVGpuMulticast {
         public static final FunctionDescriptor FD_glMulticastGetQueryObjectuivNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glMulticastGetQueryObjecti64vNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glMulticastGetQueryObjectui64vNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glRenderGpuMaskNV,
-            FD_glMulticastBufferSubDataNV,
-            FD_glMulticastCopyBufferSubDataNV,
-            FD_glMulticastCopyImageSubDataNV,
-            FD_glMulticastBlitFramebufferNV,
-            FD_glMulticastFramebufferSampleLocationsfvNV,
-            FD_glMulticastBarrierNV,
-            FD_glMulticastWaitSyncNV,
-            FD_glMulticastGetQueryObjectivNV,
-            FD_glMulticastGetQueryObjectuivNV,
-            FD_glMulticastGetQueryObjecti64vNV,
-            FD_glMulticastGetQueryObjectui64vNV
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glRenderGpuMaskNV = RuntimeHelper.downcall(Descriptors.FD_glRenderGpuMaskNV);

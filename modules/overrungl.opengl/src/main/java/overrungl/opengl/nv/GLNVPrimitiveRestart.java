@@ -19,7 +19,6 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -32,10 +31,6 @@ public final class GLNVPrimitiveRestart {
         private Descriptors() {}
         public static final FunctionDescriptor FD_glPrimitiveRestartNV = FunctionDescriptor.ofVoid();
         public static final FunctionDescriptor FD_glPrimitiveRestartIndexNV = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glPrimitiveRestartNV,
-            FD_glPrimitiveRestartIndexNV
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glPrimitiveRestartNV = RuntimeHelper.downcall(Descriptors.FD_glPrimitiveRestartNV);

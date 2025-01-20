@@ -19,7 +19,6 @@ package overrungl.opengl.intel;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -35,11 +34,6 @@ public final class GLINTELMapTexture {
         public static final FunctionDescriptor FD_glSyncTextureINTEL = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glUnmapTexture2DINTEL = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_glMapTexture2DINTEL = FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glSyncTextureINTEL,
-            FD_glUnmapTexture2DINTEL,
-            FD_glMapTexture2DINTEL
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glSyncTextureINTEL = RuntimeHelper.downcall(Descriptors.FD_glSyncTextureINTEL);

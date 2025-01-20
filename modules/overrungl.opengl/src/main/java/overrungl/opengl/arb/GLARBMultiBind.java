@@ -19,7 +19,6 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import java.util.*;
 import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
@@ -34,14 +33,6 @@ public final class GLARBMultiBind {
         public static final FunctionDescriptor FD_glBindSamplers = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glBindImageTextures = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
         public static final FunctionDescriptor FD_glBindVertexBuffers = FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_glBindBuffersBase,
-            FD_glBindBuffersRange,
-            FD_glBindTextures,
-            FD_glBindSamplers,
-            FD_glBindImageTextures,
-            FD_glBindVertexBuffers
-        );
     }
     public static final class Handles {
         public static final MethodHandle MH_glBindBuffersBase = RuntimeHelper.downcall(Descriptors.FD_glBindBuffersBase);

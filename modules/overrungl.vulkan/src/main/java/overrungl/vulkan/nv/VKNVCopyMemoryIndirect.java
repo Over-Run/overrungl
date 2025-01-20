@@ -22,7 +22,6 @@ import overrungl.annotation.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
 import overrungl.vulkan.*;
-import java.util.*;
 public class VKNVCopyMemoryIndirect {
     public static final int VK_NV_COPY_MEMORY_INDIRECT_SPEC_VERSION = 1;
     public static final String VK_NV_COPY_MEMORY_INDIRECT_EXTENSION_NAME = "VK_NV_copy_memory_indirect";
@@ -32,10 +31,6 @@ public class VKNVCopyMemoryIndirect {
     public static final class Descriptors {
         public static final FunctionDescriptor FD_vkCmdCopyMemoryIndirectNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
         public static final FunctionDescriptor FD_vkCmdCopyMemoryToImageIndirectNV = FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS);
-        public static final List<FunctionDescriptor> LIST = List.of(
-            FD_vkCmdCopyMemoryIndirectNV,
-            FD_vkCmdCopyMemoryToImageIndirectNV
-        );
         private Descriptors() {}
     }
     public static final class Handles {
